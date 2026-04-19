@@ -2,7 +2,7 @@
 name: Sprint Contract Negotiation Between Generator and Evaluator
 summary: Generator and evaluator agents negotiate explicit sprint contracts defining granular success criteria before coding begins. Sprint 3 of a retro game had 27 testable criteria for the level editor
   alone.
-implementation_notes: Could adapt for GSD plan-phase: have a planning agent and verification agent negotiate acceptance criteria before execution begins.
+implementation_notes: 'Could adapt for GSD plan-phase: have a planning agent and verification agent negotiate acceptance criteria before execution begins.'
 category: Orchestration
 evidence_strength: Strong (production-tested)
 adoption_status: Not Yet Started
@@ -16,9 +16,9 @@ related_findings: []
 proposals: null
 date_discovered: '2026-04-09'
 last_updated: '2026-04-09'
-pipeline_status: "synthesized"
+pipeline_status: synthesized
 consumed_by:
-  - "agent-workflow-and-execution.md"
+- agent-workflow-and-execution.md
 ---
 
 ## What It Is

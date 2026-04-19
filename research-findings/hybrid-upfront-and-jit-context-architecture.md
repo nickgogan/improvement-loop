@@ -1,6 +1,7 @@
 ---
 name: Hybrid Upfront and Just-in-Time Context Architecture
-summary: Claude Code uses a hybrid model: small high-signal files (CLAUDE.md) are inserted upfront for speed, while glob/grep enable just-in-time retrieval for everything else, bypassing stale indexing issues.
+summary: 'Claude Code uses a hybrid model: small high-signal files (CLAUDE.md) are inserted upfront for speed, while glob/grep enable just-in-time retrieval for everything else, bypassing stale indexing
+  issues.'
 implementation_notes: MetaSystem already uses this pattern (CLAUDE.md files + Glob/Grep runtime). This finding validates the architecture and provides Anthropic's specific rationale for avoiding index-based
   retrieval.
 category: Context Engineering
@@ -18,9 +19,9 @@ related_findings: []
 proposals: null
 date_discovered: '2026-04-09'
 last_updated: '2026-04-09'
-pipeline_status: "synthesized"
+pipeline_status: synthesized
 consumed_by:
-  - "managing-agent-context.md"
+- managing-agent-context.md
 ---
 
 ## What It Is
