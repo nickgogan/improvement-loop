@@ -7,14 +7,14 @@ implementation_notes: null
 category: Orchestration
 evidence_strength: Medium (practitioner-documented)
 adoption_status: Not Yet Started
-proposer_priority: null
+proposer_priority: P3
 applicability:
 - General
 adopted_in: []
 sources: []
 proposals: []
 date_discovered: '2026-03-22'
-last_updated: '2026-04-09'
+last_updated: '2026-04-19'
 related_findings:
 - file: agent-cost-blowup-mitigation-strategies.md
   rel: same-problem

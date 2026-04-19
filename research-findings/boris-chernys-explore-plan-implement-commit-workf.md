@@ -7,7 +7,7 @@ implementation_notes: null
 category: Orchestration
 evidence_strength: Strong (production-tested)
 adoption_status: Already Adopted
-proposer_priority: null
+proposer_priority: Not Flagged
 applicability:
 - S3 (Claude Code Build)
 adopted_in:
@@ -17,7 +17,7 @@ sources:
 - anthropic-claude-code-best-practices.md
 proposals: null
 date_discovered: '2026-03-15'
-last_updated: '2026-04-09'
+last_updated: '2026-04-19'
 related_findings:
 - file: worktree-isolation-for-parallel-agent-sessions.md
   rel: enabled-by

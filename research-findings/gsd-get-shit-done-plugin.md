@@ -6,7 +6,7 @@ implementation_notes: null
 category: Orchestration
 evidence_strength: Medium (practitioner-documented)
 adoption_status: Partially Adopted
-proposer_priority: null
+proposer_priority: P2
 applicability:
 - S3 (Claude Code Build)
 adopted_in:
@@ -16,7 +16,7 @@ sources:
 - claude-code-works-better-when-you-do-this.md
 proposals: null
 date_discovered: '2026-03-15'
-last_updated: '2026-04-09'
+last_updated: '2026-04-19'
 related_findings:
 - file: planner-executor-deterministic-guardrails.md
   rel: enables
