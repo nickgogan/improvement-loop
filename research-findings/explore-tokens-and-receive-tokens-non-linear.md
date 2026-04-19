@@ -7,14 +7,14 @@ implementation_notes: null
 category: Prompt Craft
 evidence_strength: Weak (theoretical)
 adoption_status: Not Yet Started
-proposer_priority: null
+proposer_priority: P3
 applicability:
 - General
 adopted_in: []
 sources: []
 proposals: []
 date_discovered: '2026-03-22'
-last_updated: 2026-04-08
+last_updated: '2026-04-19'
 related_findings:
 - file: cot-fails-without-inductive-generalization.md
   rel: same-problem
