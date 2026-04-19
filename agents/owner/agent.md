@@ -117,10 +117,11 @@ The Owner activates when:
 
 | Skill | Purpose | Status |
 |-------|---------|--------|
-| `/system-health` | Drift detection — compare docs vs actual state | Planned |
-| `/process-feedback` | Read feedback/, triage, investigate, propose actions | Planned |
-| `/maintain-docs` | Update governance/, diagrams when drift detected | Planned |
-| `/system-audit` | Full consistency check — constitutions, contracts, governance | Planned |
+| `/system-health` | Drift detection — compare docs vs actual state, flag divergence | Planned |
+| `/process-feedback` | Read feedback/, triage, investigate root causes, propose actions | Planned |
+| `/maintain-docs` | Update or create system documentation. Two modes: **update** (detect drift, refresh existing docs/diagrams) and **create** (interview the user to produce new docs from scratch when none exist) | Planned |
+| `/system-audit` | Full consistency check — constitutions, contracts, governance compliance | Planned |
+| `/translate-governance` | Read MetaSystem constitution + principles + vocabulary → produce/update system-specific governance rules in `governance/`. Also refreshes `_governance/` snapshot for standalone publishing. Flags drift between source governance and system-specific translations. | Planned |
 
 Skills are planned, not yet implemented. The Owner operates through direct conversation until skills are built.
 
