@@ -11,7 +11,9 @@ applicability:
 - S3 (Claude Code Build)
 adopted_in: []
 sources: []
-related_findings: []
+related_findings:
+- file: visual-skills-management-and-meta-skill-creator.md
+  rel: same-problem
 proposals: null
 date_discovered: '2026-04-08'
 last_updated: '2026-04-19'

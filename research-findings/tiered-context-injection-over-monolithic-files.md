@@ -42,9 +42,11 @@ related_findings:
   rel: same-problem
 - file: context-aware-routing-skill-classifier-sub-skill.md
   rel: same-problem
+- file: step-file-micro-architecture.md
+  rel: same-problem
 proposals: []
 date_discovered: '2026-04-07'
-last_updated: '2026-04-08'
+last_updated: '2026-04-19'
 pipeline_status: synthesized
 consumed_by:
 - managing-agent-context.md

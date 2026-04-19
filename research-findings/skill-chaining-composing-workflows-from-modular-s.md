@@ -16,7 +16,9 @@ sources:
 proposals: null
 date_discovered: '2026-03-22'
 last_updated: '2026-04-19'
-related_findings: []
+related_findings:
+- file: context-aware-routing-skill-classifier-sub-skill.md
+  rel: same-problem
 pipeline_status: raw
 consumed_by: []
 ---

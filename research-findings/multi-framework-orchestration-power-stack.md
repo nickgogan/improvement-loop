@@ -15,13 +15,15 @@ sources:
 - these-3-frameworks-make-claude-code-unstoppable.md
 proposals: null
 date_discovered: '2026-04-07'
-last_updated: '2026-04-09'
+last_updated: '2026-04-19'
 related_findings:
 - file: agent-architecture-layer-impermanence.md
   rel: contradicts
 - file: agent-management-tool-landscape-2026.md
   rel: same-problem
 - file: archon-yaml-defined-harness-workflows.md
+  rel: same-problem
+- file: concierge-agent-architecture-slack-notion-claude-c.md
   rel: same-problem
 pipeline_status: raw
 consumed_by: []

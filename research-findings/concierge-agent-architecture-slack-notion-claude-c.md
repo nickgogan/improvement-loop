@@ -19,6 +19,9 @@ date_discovered: '2026-03-15'
 last_updated: '2026-04-19'
 pipeline_status: raw
 consumed_by: []
+related_findings:
+- file: multi-framework-orchestration-power-stack.md
+  rel: same-problem
 ---
 # Concierge Agent Architecture (Slack + Notion + Claude Code)
 

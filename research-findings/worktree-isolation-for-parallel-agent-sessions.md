@@ -34,6 +34,10 @@ related_findings:
   rel: same-problem
 - file: database-as-shared-memory-coordination.md
   rel: same-problem
+- file: sub-agent-context-isolation-for-parallel-complex.md
+  rel: same-problem
+- file: acp-spawn-cross-tool-delegation.md
+  rel: same-problem
 proposals: null
 date_discovered: '2026-04-09'
 last_updated: '2026-04-19'

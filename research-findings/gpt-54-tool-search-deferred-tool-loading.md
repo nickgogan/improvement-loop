@@ -17,9 +17,11 @@ sources:
 - anthropic-advanced-tool-use.md
 proposals: []
 date_discovered: '2026-04-01'
-last_updated: '2026-04-09'
+last_updated: '2026-04-19'
 related_findings:
 - file: cursor-claude-code-ide-composition.md
+  rel: same-problem
+- file: search-over-list-tool-design-pattern.md
   rel: same-problem
 pipeline_status: synthesized
 consumed_by:

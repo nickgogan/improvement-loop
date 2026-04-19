@@ -16,6 +16,8 @@ related_findings:
   rel: extended-by
 - file: agent-state-machine-with-witness-monitoring.md
   rel: same-problem
+- file: env-var-context-injection.md
+  rel: same-problem
 proposals: null
 date_discovered: '2026-04-08'
 last_updated: '2026-04-19'

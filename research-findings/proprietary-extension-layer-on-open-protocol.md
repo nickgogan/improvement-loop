@@ -13,10 +13,14 @@ applicability:
 adopted_in: []
 sources:
 - conway-anthropics-always-on-agent.md
-related_findings: []
+related_findings:
+- file: conway-always-on-persistent-agent.md
+  rel: enabled-by
+- file: mcp-n-plus-m-integration-economics.md
+  rel: same-problem
 proposals: null
 date_discovered: '2026-04-09'
-last_updated: '2026-04-09'
+last_updated: '2026-04-19'
 pipeline_status: raw
 consumed_by: []
 ---

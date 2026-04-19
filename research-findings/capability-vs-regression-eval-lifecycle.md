@@ -13,10 +13,12 @@ applicability:
 adopted_in: []
 sources:
 - anthropic-demystifying-evals-for-ai-agents.md
-related_findings: []
+related_findings:
+- file: binary-eval-assertion-design-deterministic-plus-ll.md
+  rel: same-problem
 proposals: null
 date_discovered: '2026-04-09'
-last_updated: '2026-04-09'
+last_updated: '2026-04-19'
 pipeline_status: synthesized
 consumed_by:
 - building-agent-evaluation-suites.md

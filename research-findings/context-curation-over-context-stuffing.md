@@ -42,9 +42,11 @@ related_findings:
   rel: same-problem
 - file: spec-first-agent-briefs-prompt-craft-context-inten.md
   rel: same-problem
+- file: hybrid-upfront-and-jit-context-architecture.md
+  rel: same-problem
 proposals: []
 date_discovered: '2026-04-07'
-last_updated: '2026-04-08'
+last_updated: '2026-04-19'
 pipeline_status: synthesized
 consumed_by:
 - managing-agent-context.md

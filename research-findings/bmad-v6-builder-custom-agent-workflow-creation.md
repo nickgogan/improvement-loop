@@ -14,9 +14,16 @@ adopted_in: []
 sources:
 - bmad-v6-is-finally-here.md
 date_discovered: '2026-04-07'
-last_updated: '2026-04-07'
+last_updated: '2026-04-19'
 pipeline_status: raw
 consumed_by: []
+related_findings:
+- file: archon-yaml-defined-harness-workflows.md
+  rel: same-problem
+- file: skills-as-markdown-sop-files-encode-processes.md
+  rel: same-problem
+- file: specialized-harness-engineering-deterministic-rail.md
+  rel: same-problem
 ---
 
 ## What It Is

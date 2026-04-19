@@ -13,10 +13,12 @@ applicability:
 adopted_in: []
 sources:
 - anthropic-writing-effective-tools-for-agents.md
-related_findings: []
+related_findings:
+- file: eval-driven-development-autonomous-quality.md
+  rel: same-problem
 proposals: null
 date_discovered: '2026-04-09'
-last_updated: '2026-04-09'
+last_updated: '2026-04-19'
 pipeline_status: extracted
 consumed_by:
 - skills/eval-driven-tool-iteration-loop.md

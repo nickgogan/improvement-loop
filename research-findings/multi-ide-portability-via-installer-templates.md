@@ -14,6 +14,8 @@ sources: []
 related_findings:
 - file: skills-migration-claude-code-to-co-work-for-dis.md
   rel: same-problem
+- file: template-generated-skills-multi-host.md
+  rel: same-problem
 proposals: null
 date_discovered: '2026-04-08'
 last_updated: '2026-04-19'

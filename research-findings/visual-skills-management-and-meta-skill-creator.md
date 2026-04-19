@@ -14,9 +14,11 @@ adopted_in: []
 sources:
 - stop-using-claude-code-in-terminal.md
 date_discovered: '2026-04-07'
-last_updated: 2026-04-08
+last_updated: '2026-04-19'
 related_findings:
 - file: agent-management-tool-landscape-2026.md
+  rel: same-problem
+- file: meta-skill-for-skill-authorship.md
   rel: same-problem
 pipeline_status: raw
 consumed_by: []

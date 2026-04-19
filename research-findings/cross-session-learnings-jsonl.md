@@ -18,6 +18,8 @@ related_findings:
   rel: same-problem
 - file: semantic-memory-decay-compaction.md
   rel: same-problem
+- file: shell-preamble-as-boot-sequence.md
+  rel: same-problem
 proposals: null
 date_discovered: '2026-04-08'
 last_updated: '2026-04-19'

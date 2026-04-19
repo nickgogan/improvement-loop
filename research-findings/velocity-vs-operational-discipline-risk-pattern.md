@@ -14,9 +14,12 @@ adopted_in: []
 sources:
 - anthropics-2-5-billion-leak-12-critical-pieces.md
 date_discovered: '2026-04-07'
-last_updated: '2026-04-07'
+last_updated: '2026-04-19'
 pipeline_status: raw
 consumed_by: []
+related_findings:
+- file: claude-code-12-agent-primitives.md
+  rel: same-problem
 ---
 
 ## What It Is

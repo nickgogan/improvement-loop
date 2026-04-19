@@ -20,6 +20,8 @@ last_updated: '2026-04-19'
 related_findings:
 - file: agent-architecture-layer-impermanence.md
   rel: contradicts
+- file: bmad-v6-builder-custom-agent-workflow-creation.md
+  rel: same-problem
 pipeline_status: raw
 consumed_by: []
 ---

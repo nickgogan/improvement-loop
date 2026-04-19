@@ -18,6 +18,9 @@ date_discovered: '2026-03-22'
 last_updated: '2026-04-19'
 pipeline_status: raw
 consumed_by: []
+related_findings:
+- file: agentic-harness-self-assessment-skill.md
+  rel: same-problem
 ---
 # MACHINE Framework for Agentic Coding Skill Assessment
 

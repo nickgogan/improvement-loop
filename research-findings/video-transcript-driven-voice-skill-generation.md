@@ -18,6 +18,9 @@ date_discovered: '2026-03-22'
 last_updated: '2026-04-19'
 pipeline_status: raw
 consumed_by: []
+related_findings:
+- file: skill-as-new-employee-mental-model.md
+  rel: same-problem
 ---
 # Video Transcript-Driven Voice Skill Generation
 

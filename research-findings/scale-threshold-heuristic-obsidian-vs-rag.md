@@ -14,9 +14,12 @@ adopted_in: []
 sources:
 - karpathys-obsidian-rag-claude-code.md
 date_discovered: '2026-04-07'
-last_updated: '2026-04-07'
+last_updated: '2026-04-19'
 pipeline_status: raw
 consumed_by: []
+related_findings:
+- file: karpathy-llm-knowledge-base-obsidian-rag.md
+  rel: extended-by
 ---
 
 ## What It Is

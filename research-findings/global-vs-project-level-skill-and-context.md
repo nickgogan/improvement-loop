@@ -23,6 +23,8 @@ related_findings:
   rel: same-problem
 - file: aios-architecture-folder-per-role-agent.md
   rel: same-problem
+- file: skills-vs-projects-complementary-role-separation.md
+  rel: same-problem
 pipeline_status: raw
 consumed_by: []
 ---

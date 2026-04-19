@@ -12,10 +12,12 @@ applicability:
 adopted_in: []
 sources:
 - anthropic-harness-design-long-running-apps.md
-related_findings: []
+related_findings:
+- file: task-contract-pattern-schema-first-agent.md
+  rel: extends
 proposals: null
 date_discovered: '2026-04-09'
-last_updated: '2026-04-09'
+last_updated: '2026-04-19'
 pipeline_status: synthesized
 consumed_by:
 - agent-workflow-and-execution.md

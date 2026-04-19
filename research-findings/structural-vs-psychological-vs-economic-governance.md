@@ -13,7 +13,11 @@ applicability:
 adopted_in: []
 sources:
 - cross-repo-comparison.md
-related_findings: []
+related_findings:
+- file: specification-as-governance-fourth-enforcement-philosophy.md
+  rel: same-problem
+- file: three-enforcement-pipeline-architectures.md
+  rel: same-problem
 proposals: null
 date_discovered: '2026-04-08'
 last_updated: '2026-04-19'

@@ -12,7 +12,9 @@ applicability:
 adopted_in: []
 sources:
 - mem0-analysis.md
-related_findings: []
+related_findings:
+- file: mcp-n-plus-m-integration-economics.md
+  rel: same-problem
 proposals: null
 date_discovered: '2026-04-08'
 last_updated: '2026-04-19'

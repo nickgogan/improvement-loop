@@ -26,6 +26,8 @@ related_findings:
   rel: same-problem
 - file: worktree-isolation-for-parallel-agent-sessions.md
   rel: same-problem
+- file: claude-code-auto-mode-ai-driven-permission-classif.md
+  rel: same-problem
 pipeline_status: raw
 consumed_by: []
 ---

@@ -27,6 +27,8 @@ related_findings:
   rel: same-problem
 - file: archon-yaml-defined-harness-workflows.md
   rel: same-problem
+- file: bmad-v6-builder-custom-agent-workflow-creation.md
+  rel: same-problem
 pipeline_status: raw
 consumed_by: []
 ---

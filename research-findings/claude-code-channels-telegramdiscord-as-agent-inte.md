@@ -19,6 +19,8 @@ last_updated: '2026-04-19'
 related_findings:
 - file: happy-engineering-mobile-claude-code-via-remote.md
   rel: same-problem
+- file: sender-allowlist-for-messaging-interface-security.md
+  rel: enables
 pipeline_status: raw
 consumed_by: []
 ---

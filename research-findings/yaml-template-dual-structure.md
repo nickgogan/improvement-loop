@@ -15,10 +15,12 @@ sources:
 - bmad-method-masterclass.md
 proposals: null
 date_discovered: '2026-04-07'
-last_updated: '2026-04-08'
+last_updated: '2026-04-19'
 related_findings:
 - file: bmad-method-v6-multi-agent-sdlc.md
   rel: enabled-by
+- file: composable-templates-for-lazy-capture.md
+  rel: same-problem
 pipeline_status: synthesized
 consumed_by:
 - model-resilient-prompt-engineering.md

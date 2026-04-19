@@ -20,10 +20,17 @@ sources:
 - anthropic-trustworthy-agents-in-practice.md
 proposals: []
 date_discovered: '2026-04-01'
-last_updated: '2026-04-09'
+last_updated: '2026-04-19'
 pipeline_status: synthesized
 consumed_by:
 - agent-safety-and-permissions.md
+related_findings:
+- file: tiered-permission-system-bash-safety.md
+  rel: same-problem
+- file: human-on-the-loop-hotl-autonomy-tiering-framework.md
+  rel: same-problem
+- file: explicit-permission-allow-listing-for-agent-resou.md
+  rel: same-problem
 ---
 # Claude Code Auto Mode -- AI-Driven Permission Classification
 

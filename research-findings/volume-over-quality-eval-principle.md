@@ -30,9 +30,11 @@ related_findings:
   rel: enables
 - file: factorial-design-eval-systematic-context-variati.md
   rel: enabled-by
+- file: balanced-positive-negative-eval-sets.md
+  rel: same-problem
 proposals: []
 date_discovered: '2026-04-07'
-last_updated: '2026-04-08'
+last_updated: '2026-04-19'
 pipeline_status: synthesized
 consumed_by:
 - building-agent-evaluation-suites.md

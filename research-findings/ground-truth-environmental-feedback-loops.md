@@ -15,10 +15,12 @@ adopted_in:
 sources:
 - anthropic-building-effective-agents.md
 - anthropic-long-running-claude-scientific-computing.md
-related_findings: []
+related_findings:
+- file: ace-execution-feedback-no-labels-required.md
+  rel: same-problem
 proposals: null
 date_discovered: '2026-04-09'
-last_updated: '2026-04-09'
+last_updated: '2026-04-19'
 pipeline_status: synthesized
 consumed_by:
 - session-persistence-and-memory.md

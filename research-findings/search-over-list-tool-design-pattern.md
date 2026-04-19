@@ -12,10 +12,12 @@ applicability:
 adopted_in: []
 sources:
 - anthropic-writing-effective-tools-for-agents.md
-related_findings: []
+related_findings:
+- file: gpt-54-tool-search-deferred-tool-loading.md
+  rel: same-problem
 proposals: null
 date_discovered: '2026-04-09'
-last_updated: '2026-04-09'
+last_updated: '2026-04-19'
 pipeline_status: synthesized
 consumed_by:
 - designing-agent-tools.md

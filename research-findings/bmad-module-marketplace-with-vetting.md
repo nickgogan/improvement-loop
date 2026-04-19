@@ -14,9 +14,12 @@ sources:
 - bmad-v6-is-finally-here.md
 proposals: []
 date_discovered: '2026-04-07'
-last_updated: '2026-04-07'
+last_updated: '2026-04-19'
 pipeline_status: raw
 consumed_by: []
+related_findings:
+- file: bmad-help-adaptive-module-routing.md
+  rel: same-problem
 ---
 
 # BMAD Module Marketplace with Quality and Security Vetting

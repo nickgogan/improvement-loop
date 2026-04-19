@@ -18,13 +18,15 @@ sources:
 - claude-codes-leak-changes-everything.md
 proposals: null
 date_discovered: '2026-04-07'
-last_updated: '2026-04-08'
+last_updated: '2026-04-19'
 related_findings:
 - file: tiered-permission-system-bash-safety.md
   rel: extends
 - file: tool-registry-metadata-first-design.md
   rel: extends
 - file: agent-architecture-layer-impermanence.md
+  rel: same-problem
+- file: velocity-vs-operational-discipline-risk-pattern.md
   rel: same-problem
 pipeline_status: synthesized
 consumed_by:

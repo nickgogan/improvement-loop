@@ -14,11 +14,13 @@ sources:
 - anthropic-just-dropped-ultra-plan.md
 proposals: null
 date_discovered: '2026-04-07'
-last_updated: '2026-04-09'
+last_updated: '2026-04-19'
 related_findings:
 - file: extract-deep-plan-prompt-as-custom-skill.md
   rel: enables
 - file: anthropic-managed-agents-platform.md
+  rel: same-problem
+- file: ultra-plan-ab-testing-infrastructure.md
   rel: same-problem
 pipeline_status: raw
 consumed_by: []

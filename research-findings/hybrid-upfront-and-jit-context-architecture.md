@@ -15,10 +15,12 @@ adopted_in:
 - S3 (Claude Code Build)
 sources:
 - anthropic-effective-context-engineering.md
-related_findings: []
+related_findings:
+- file: context-curation-over-context-stuffing.md
+  rel: same-problem
 proposals: null
 date_discovered: '2026-04-09'
-last_updated: '2026-04-09'
+last_updated: '2026-04-19'
 pipeline_status: synthesized
 consumed_by:
 - managing-agent-context.md

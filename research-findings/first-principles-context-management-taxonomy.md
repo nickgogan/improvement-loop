@@ -24,6 +24,8 @@ related_findings:
   rel: same-problem
 - file: ace-agentic-context-engineering-evolving-playbook.md
   rel: same-problem
+- file: context-type-taxonomy-structural-vs-operational-vs.md
+  rel: same-problem
 pipeline_status: raw
 consumed_by: []
 ---

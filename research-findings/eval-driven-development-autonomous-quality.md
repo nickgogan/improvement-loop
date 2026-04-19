@@ -38,9 +38,11 @@ related_findings:
   rel: same-problem
 - file: ultra-review-multi-agent-bug-hunting-fleet.md
   rel: same-problem
+- file: eval-driven-tool-iteration-loop.md
+  rel: same-problem
 proposals: []
 date_discovered: '2026-04-07'
-last_updated: '2026-04-09'
+last_updated: '2026-04-19'
 pipeline_status: synthesized
 consumed_by:
 - building-agent-evaluation-suites.md

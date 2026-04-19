@@ -19,9 +19,11 @@ related_findings:
   rel: same-problem
 - file: scheduled-task-dashboard-observability-layer.md
   rel: same-problem
+- file: proprietary-extension-layer-on-open-protocol.md
+  rel: enables
 proposals: null
 date_discovered: '2026-04-09'
-last_updated: '2026-04-09'
+last_updated: '2026-04-19'
 pipeline_status: synthesized
 consumed_by:
 - agent-design-patterns.md

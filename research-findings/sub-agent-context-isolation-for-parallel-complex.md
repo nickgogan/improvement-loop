@@ -19,6 +19,11 @@ date_discovered: '2026-03-22'
 last_updated: '2026-04-19'
 pipeline_status: raw
 consumed_by: []
+related_findings:
+- file: worktree-isolation-for-parallel-agent-sessions.md
+  rel: same-problem
+- file: cloud-plan-parallel-multitasking-pattern.md
+  rel: same-problem
 ---
 # Sub-Agent Context Isolation for Parallel Complex Analysis
 

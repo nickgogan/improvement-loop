@@ -14,6 +14,8 @@ sources: []
 related_findings:
 - file: skill-chaining-composing-workflows-from-modular-s.md
   rel: same-problem
+- file: push-vs-pull-context-loading.md
+  rel: same-problem
 proposals: null
 date_discovered: '2026-04-08'
 last_updated: '2026-04-19'

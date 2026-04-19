@@ -17,12 +17,14 @@ sources:
 - self-evolving-claude-code-memory.md
 proposals: null
 date_discovered: '2026-04-07'
-last_updated: 2026-04-08
+last_updated: '2026-04-19'
 related_findings:
 - file: claudemd-as-knowledge-base-traversal-guide.md
   rel: same-problem
 - file: ace-agentic-context-engineering-rag-based.md
   rel: contradicts
+- file: scale-threshold-heuristic-obsidian-vs-rag.md
+  rel: extends
 pipeline_status: raw
 consumed_by: []
 ---

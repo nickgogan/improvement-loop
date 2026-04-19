@@ -13,10 +13,12 @@ adopted_in: []
 sources:
 - bmad-v6-is-finally-here.md
 date_discovered: '2026-04-07'
-last_updated: '2026-04-08'
+last_updated: '2026-04-19'
 related_findings:
 - file: bmad-dependency-graph-module-ordering.md
   rel: enabled-by
+- file: bmad-module-marketplace-with-vetting.md
+  rel: same-problem
 pipeline_status: synthesized
 consumed_by:
 - agent-workflow-and-execution.md

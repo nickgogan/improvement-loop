@@ -27,9 +27,11 @@ related_findings:
   rel: same-problem
 - file: skill-vs-process-distinction-deterministic-rails.md
   rel: enables
+- file: sprint-contract-negotiation-pattern.md
+  rel: extended-by
 proposals: []
 date_discovered: '2026-04-07'
-last_updated: '2026-04-08'
+last_updated: '2026-04-19'
 pipeline_status: synthesized
 consumed_by:
 - agent-architecture-decisions.md

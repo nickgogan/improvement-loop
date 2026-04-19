@@ -14,9 +14,11 @@ adopted_in: []
 sources:
 - anthropics-2-5-billion-leak-12-critical-pieces.md
 date_discovered: '2026-04-07'
-last_updated: 2026-04-08
+last_updated: '2026-04-19'
 related_findings:
 - file: ace-execution-feedback-no-labels-required.md
+  rel: same-problem
+- file: machine-framework-for-agentic-coding-skill-asses.md
   rel: same-problem
 pipeline_status: extracted
 consumed_by:

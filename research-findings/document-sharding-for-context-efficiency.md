@@ -32,6 +32,8 @@ related_findings:
   rel: extended-by
 - file: three-tier-progressive-context-loading.md
   rel: same-problem
+- file: step-file-micro-architecture.md
+  rel: same-problem
 pipeline_status: synthesized
 consumed_by:
 - managing-agent-context.md

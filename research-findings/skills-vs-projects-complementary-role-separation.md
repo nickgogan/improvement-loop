@@ -18,6 +18,9 @@ date_discovered: '2026-03-22'
 last_updated: '2026-04-19'
 pipeline_status: raw
 consumed_by: []
+related_findings:
+- file: global-vs-project-level-skill-and-context.md
+  rel: same-problem
 ---
 # Skills vs. Projects: Complementary Role Separation
 

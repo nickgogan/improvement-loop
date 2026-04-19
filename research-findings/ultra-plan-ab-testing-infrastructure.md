@@ -14,9 +14,12 @@ adopted_in: []
 sources:
 - anthropic-just-dropped-ultra-plan.md
 date_discovered: '2026-04-07'
-last_updated: '2026-04-07'
+last_updated: '2026-04-19'
 pipeline_status: raw
 consumed_by: []
+related_findings:
+- file: claude-code-ultra-plan-three-mode-planning.md
+  rel: same-problem
 ---
 
 ## What It Is

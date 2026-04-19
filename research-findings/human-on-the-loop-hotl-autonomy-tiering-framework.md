@@ -26,6 +26,8 @@ related_findings:
   rel: enabled-by
 - file: agent-state-machine-with-witness-monitoring.md
   rel: same-problem
+- file: claude-code-auto-mode-ai-driven-permission-classif.md
+  rel: same-problem
 pipeline_status: synthesized
 consumed_by:
 - agent-governance-and-trust.md

@@ -35,9 +35,11 @@ related_findings:
   rel: same-problem
 - file: superpowers-plugin-spec-driven-sub-agent-orchestra.md
   rel: same-problem
+- file: bmad-v6-builder-custom-agent-workflow-creation.md
+  rel: same-problem
 proposals: null
 date_discovered: '2026-04-09'
-last_updated: '2026-04-09'
+last_updated: '2026-04-19'
 pipeline_status: synthesized
 consumed_by:
 - agent-workflow-and-execution.md

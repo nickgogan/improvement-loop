@@ -24,9 +24,13 @@ related_findings:
   rel: enables
 - file: mcp-server-cards-discovery.md
   rel: extended-by
+- file: proprietary-extension-layer-on-open-protocol.md
+  rel: same-problem
+- file: mcp-integration-for-memory-as-service.md
+  rel: same-problem
 proposals: []
 date_discovered: '2026-04-07'
-last_updated: '2026-04-08'
+last_updated: '2026-04-19'
 pipeline_status: raw
 consumed_by: []
 ---

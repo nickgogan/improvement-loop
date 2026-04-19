@@ -62,9 +62,11 @@ related_findings:
   rel: extended-by
 - file: outcome-based-reward-design-for-tool-agents.md
   rel: same-problem
+- file: ground-truth-environmental-feedback-loops.md
+  rel: same-problem
 proposals: []
 date_discovered: '2026-04-07'
-last_updated: '2026-04-08'
+last_updated: '2026-04-19'
 pipeline_status: synthesized
 consumed_by:
 - building-agent-evaluation-suites.md

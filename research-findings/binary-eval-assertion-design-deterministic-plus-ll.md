@@ -33,9 +33,11 @@ related_findings:
   rel: same-problem
 - file: test-input-coverage-design-15-30-sweet-spot.md
   rel: enables
+- file: capability-vs-regression-eval-lifecycle.md
+  rel: same-problem
 proposals: []
 date_discovered: '2026-04-07'
-last_updated: '2026-04-08'
+last_updated: '2026-04-19'
 pipeline_status: synthesized
 consumed_by:
 - building-agent-evaluation-suites.md
