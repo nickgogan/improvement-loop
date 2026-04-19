@@ -6,7 +6,7 @@ implementation_notes: Forward-looking pattern — CRDT is not yet implemented in
 category: Agent Design
 evidence_strength: Medium (practitioner-documented)
 adoption_status: Not Yet Started
-proposer_priority: null
+proposer_priority: Not Flagged
 applicability:
 - General
 adopted_in: []
@@ -14,7 +14,7 @@ sources: []
 related_findings: []
 proposals: null
 date_discovered: '2026-04-09'
-last_updated: '2026-04-09'
+last_updated: '2026-04-19'
 pipeline_status: raw
 consumed_by: []
 ---
