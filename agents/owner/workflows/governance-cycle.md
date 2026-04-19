@@ -34,7 +34,6 @@ Periodic refresh of IL governance alignment with MetaSystem source governance. R
      [2] /translate-governance (full run)
               │
          Governance docs updated
-         _governance/ snapshot refreshed
               │
      [3] /system-health --focus governance
               │

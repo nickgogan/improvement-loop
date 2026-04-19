@@ -119,7 +119,7 @@ All IL skills live in `.claude/skills/` under this system directory (per DD-49).
 
 | Skill | Role |
 |-------|------|
-| `/translate-governance` | Read MetaSystem constitution, produce/update IL governance docs and `_governance/` snapshot |
+| `/translate-governance` | Read MetaSystem constitution, produce/update IL governance docs, detect drift |
 | `/maintain-docs` | Detect doc drift and fix (`--update`), or interview to create new docs (`--create`) |
 | `/system-health` | Quick drift detection — compare docs vs filesystem state |
 | `/process-feedback` | Read feedback/, triage items, investigate root causes, propose actions |
@@ -148,8 +148,6 @@ The Librarian uses Read/Glob/Grep tools directly to navigate the KB. No dedicate
 | Read IL IB items | `project-management/implementation-backlog/IB-XX.md` | Read tool |
 | Read cross-system DDs | `../meta-system/project-management/design-decisions/` | Read tool |
 | Read constitution | `../meta-system/governance/constitution.md` | Read tool |
-
-> **Standalone repo note:** If reading from the standalone `improvement-loop` repo (not the MetaSystem monorepo), governance references point to `_governance/` instead of `../meta-system/governance/`. The `_governance/` directory contains a snapshot of the relevant governance docs.
 
 ---
 

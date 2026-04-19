@@ -117,7 +117,7 @@ The Owner activates when:
 
 | Skill | Purpose | Status |
 |-------|---------|--------|
-| `/translate-governance` | Read MetaSystem constitution + principles + vocabulary → produce/update system-specific governance rules in `governance/`. Also refreshes `_governance/` snapshot for standalone publishing. Flags drift between source governance and system-specific translations. | Active |
+| `/translate-governance` | Read MetaSystem constitution + principles + vocabulary → produce/update system-specific governance rules in `governance/`. Flags drift between source governance and system-specific translations. | Active |
 | `/maintain-docs` | Update or create system documentation. Two modes: **update** (detect drift, refresh existing docs/diagrams) and **create** (interview the user to produce new docs from scratch when none exist) | Active |
 | `/system-health` | Drift detection — compare docs vs actual state, flag divergence | Active |
 | `/process-feedback` | Read feedback/, triage, investigate root causes, propose actions | Active |

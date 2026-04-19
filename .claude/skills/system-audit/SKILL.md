@@ -108,8 +108,7 @@ Read `CLAUDE.md` and verify every factual claim:
 1. **Governance docs exist:** Does `governance/` have content beyond `_index.md`?
 2. **Source alignment:** Run the same checks as `/translate-governance --check-only` — are translations current?
 3. **Rule enforcement:** For each governance rule in `governance/`, search for evidence of compliance or violation in agent definitions and skill contracts
-4. **`_governance/` freshness:** Compare `_governance/` files against their sources in `meta-system/governance/`
-5. **`.claude/rules/governance.md`:** Consistent with `governance/` docs?
+4. **`.claude/rules/governance.md`:** Consistent with `governance/` docs?
 
 ### Step 5: Fractal Pattern Compliance
 

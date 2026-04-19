@@ -2,13 +2,12 @@
 name: translate-governance
 description: >-
   Read MetaSystem constitution, values, principles, vocabulary, and fractal pattern,
-  then produce or update IL-specific governance rules in governance/. Also refreshes
-  the _governance/ snapshot for standalone publishing. Flags drift between source
-  governance and existing translations. Use when governance source docs change, when
-  bootstrapping a new system's governance, or periodically to detect drift. DD-86
-  defines this as an Owner agent responsibility.
+  then produce or update IL-specific governance rules in governance/. Flags drift
+  between source governance and existing translations. Use when governance source
+  docs change, when bootstrapping a new system's governance, or periodically to
+  detect drift. DD-86 defines this as an Owner agent responsibility.
 user-invocable: true
-allowed-tools: Read Grep Glob Write Edit Bash
+allowed-tools: Read Grep Glob Write Edit
 argument-hint: "[--check-only]"
 ---
 
@@ -40,7 +39,6 @@ Read MetaSystem governance source documents and produce IL-specific operational 
 | `Glob` | Find governance files by pattern |
 | `Write` | Create new governance translation documents |
 | `Edit` | Update existing translations with drift corrections |
-| `Bash` | Copy files to `_governance/` snapshot directory |
 
 ## Cognitive Disposition
 
@@ -188,28 +186,11 @@ Produce a drift summary:
 
 If `--check-only`, output this report to conversation and stop. Otherwise, continue to Step 6.
 
-### Step 6: Refresh `_governance/` Snapshot
-
-The `_governance/` directory contains a standalone snapshot for the published `improvement-loop` repo (which doesn't have access to `../meta-system/`).
-
-1. Copy MetaSystem governance source files to `_governance/`:
-   - `constitution.md`
-   - `values.md` (if exists in `_governance/`)
-   - `principles.md` (if exists in `_governance/`)
-   - `vocabulary.md` (if exists in `_governance/`)
-   - `fractal-pattern.md` (if exists in `_governance/`)
-
-2. Copy the `guides/` subdirectory if it exists in `_governance/guides/`
-
-3. Use `Bash` with `cp` to perform copies (overwrite existing).
-
-4. Report what was refreshed.
-
-### Step 7: Update `_index.md`
+### Step 6: Update `_index.md`
 
 Update `systems/improvement-loop/governance/_index.md` to reflect the current contents of the directory.
 
-### Step 8: Report
+### Step 7: Report
 
 Output a summary to conversation:
 
@@ -219,7 +200,6 @@ Output a summary to conversation:
 **Created:** {N} new documents
 **Updated:** {N} existing documents
 **Drift detected:** {summary or "none"}
-**Snapshot refreshed:** _governance/ updated with {N} files
 ```
 
 ---
@@ -232,11 +212,8 @@ Output a summary to conversation:
 4. **Preserve existing translations.** Update in place via `Edit`. Don't delete and recreate — this loses git history.
 5. **Provenance is mandatory.** Every translated rule must cite its source document and section. If you can't cite a source, the rule doesn't belong here.
 6. **Drift reports are always produced.** Even if nothing drifted, say so. The absence of drift is information.
-7. **`_governance/` is a copy, not a fork.** The snapshot mirrors source governance verbatim. IL-specific translations live in `governance/`, not `_governance/`.
-
 ## Calibration Notes
 
 - The first run on an empty `governance/` directory will create all documents. Subsequent runs will mostly update and drift-check.
 - Some constitution clauses are IL-irrelevant (e.g., JR's Notion access). Skip these in translations — don't create stub rules.
-- The `_governance/` snapshot exists for the standalone `improvement-loop` repo. If the standalone repo isn't published yet, this step is preparatory but still correct to maintain.
 - This skill complements `/system-audit`, which checks whether the IL system actually follows its governance. This skill maintains what governance says; `/system-audit` checks whether reality matches.
