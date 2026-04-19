@@ -7,7 +7,7 @@ implementation_notes: null
 category: Memory Architecture
 evidence_strength: Medium (practitioner-documented)
 adoption_status: Not Yet Started
-proposer_priority: null
+proposer_priority: P2
 applicability:
 - S3 (Claude Code Build)
 adopted_in: null
@@ -16,7 +16,7 @@ sources:
 - sdk-vs-framework-decision-ai-agents.md
 proposals: null
 date_discovered: '2026-03-18'
-last_updated: 2026-04-09
+last_updated: '2026-04-19'
 related_findings:
 - file: ace-agentic-context-engineering-rag-based.md
   rel: same-problem

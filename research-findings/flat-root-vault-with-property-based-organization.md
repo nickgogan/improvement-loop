@@ -7,14 +7,14 @@ implementation_notes: null
 category: Memory Architecture
 evidence_strength: Strong (production-tested)
 adoption_status: Not Yet Started
-proposer_priority: null
+proposer_priority: Not Flagged
 applicability:
 - S2 (Notion Operations)
 adopted_in: null
 sources: []
 proposals: null
 date_discovered: '2026-03-22'
-last_updated: '2026-04-07'
+last_updated: '2026-04-19'
 pipeline_status: raw
 consumed_by: []
 ---
