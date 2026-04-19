@@ -7,7 +7,7 @@ implementation_notes: 'MetaSystem already has Design Decisions and Build Specs t
 category: Governance
 evidence_strength: Medium (practitioner-documented)
 adoption_status: Not Yet Started
-proposer_priority: null
+proposer_priority: P2
 applicability:
 - General
 adopted_in: []
@@ -21,7 +21,7 @@ related_findings:
   rel: extends
 proposals: []
 date_discovered: '2026-04-09'
-last_updated: '2026-04-09'
+last_updated: '2026-04-19'
 pipeline_status: raw
 consumed_by: []
 ---
