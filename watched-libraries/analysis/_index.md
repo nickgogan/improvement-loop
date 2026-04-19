@@ -38,10 +38,14 @@ Structural analysis docs produced by `/repo-analyzer`. Each entry covers 5 dimen
 | [[archon-analysis\|Archon]] | v0.3.2 | 2026-04-09 | all |
 | [[n8n-analysis\|n8n]] | v2.16.0 | 2026-04-09 | all |
 | [[langgraph-analysis\|LangGraph]] | v1.1.6 | 2026-04-09 | all |
+| [[beads-analysis\|Beads]] | v1.0.2 | 2026-04-19 | all |
+| [[openviking-analysis\|OpenViking]] | latest | 2026-04-19 | all |
+| [[sandbox-analysis\|AIO Sandbox]] | v1.0.0.150 | 2026-04-19 | all |
+| [[deer-flow-analysis\|DeerFlow]] | v2.0 | 2026-04-19 | all |
 
 ## Cross-Repo Comparison
 
-[[cross-repo-comparison|Cross-Repo Structural Comparison]] — All 10 repos compared across 6 dimensions. 14 cross-repo findings candidates. Regenerated 2026-04-09.
+[[cross-repo-comparison|Cross-Repo Structural Comparison]] — All 14 repos compared across 6 dimensions. Regenerated 2026-04-09 (pending update with new batch).
 
 ## Dataview Query
 

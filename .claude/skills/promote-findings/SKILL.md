@@ -186,6 +186,19 @@ For each selected candidate:
    - Body sections populated from the candidate description and analysis doc context.
 4. If dedup status was "Partial match", add a `related_findings` entry linking to the existing finding.
 
+### Step 5b: Priority Re-evaluation Check
+
+For each **partial match** where the existing finding was updated with new evidence:
+
+1. Count how many distinct repo analyses now link to (or corroborate) the existing finding. Check `related_findings` links, source attribution lines, and analysis doc cross-references.
+2. If the finding now has corroborating evidence from **3+ independent repos** and its current `proposer_priority` is `null`, `P3`, or `"Not Flagged"`:
+   - Flag it as a **priority re-evaluation candidate** in the summary output.
+   - Note the current priority, new evidence count, and repo sources.
+3. Do NOT auto-change the priority — this is a flag for user review. The user decides whether to bump.
+4. If evidence_strength is `"Weak (theoretical)"` and the finding now has evidence from 2+ production repos, flag for potential upgrade to `"Medium (practitioner-documented)"`.
+
+Include a **Priority Re-evaluation** section in the Step 8 summary if any candidates were flagged.
+
 ### Step 6: Update Index
 
 1. Add new entries to `systems/improvement-loop/research-findings/_index.md`.

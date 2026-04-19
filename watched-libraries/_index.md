@@ -49,6 +49,10 @@ Structural analyses live in [[watched-library-analyses-index|analysis/]] — pro
 | [[archon\|Archon]] | cherry-pick | v0.3.2 (2026-04-09) | DAG workflow engine, YAML workflows, worktree isolation, multi-platform adapters |
 | [[n8n\|n8n]] | cherry-pick | v2.16.0 (2026-04-09) | Context file architecture (CLAUDE.md→AGENTS.md chain-loading), plugin namespacing, spec-driven development |
 | [[langgraph\|LangGraph]] | cherry-pick | v1.1.6 (2026-04-09) | Pregel BSP orchestration, typed channels, interrupt/Command primitives, threat model pattern |
+| [[beads\|Beads]] | cherry-pick | v1.0.2 (2026-04-19) | Hash-based collision avoidance, dependency graph links, semantic memory decay, agent state machine |
+| [[openviking\|OpenViking]] | cherry-pick | latest (2026-04-19) | L0/L1/L2 tiered context loading, filesystem-as-context paradigm, workspace file taxonomy |
+| [[sandbox\|AIO Sandbox]] | evaluating | v1.0.0.150 (2026-04-19) | MCP Hub aggregation, all-in-one container, protocol adapter pattern |
+| [[deer-flow\|DeerFlow]] | cherry-pick | v2.0 (2026-04-19) | Middleware-as-enforcement, batched parallel subagents, three-tier sandbox provisioner |
 
 ## Dataview Query
 

@@ -107,13 +107,14 @@ All IL skills live in `.claude/skills/` under this system directory (per DD-49).
 | `/finding-crosslink` | Detect and create cross-links between related findings |
 | `/dimension-rebalance` | Reclassify findings after dimension changes |
 
-### Codifier Skills (3)
+### Codifier Skills (4)
 
 | Skill | Role |
 |-------|------|
 | `/identify-artifacts` | Form classification via Form Router rubric |
 | `/extract-artifacts` | Artifact drafting from approved identification reports |
 | `/synthesize-guide` | Guide synthesis from pattern clusters |
+| `/reassess-priorities` | Retroactive priority re-evaluation based on accumulated evidence |
 
 ### Owner Skills (5)
 

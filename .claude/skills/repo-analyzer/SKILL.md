@@ -59,7 +59,7 @@ The Repo Analyst thinks like a structural cartographer, not a code reviewer.
 | `systems/improvement-loop/watched-libraries/analysis/` | Analysis output docs |
 | `systems/improvement-loop/watched-libraries/analysis/_index.md` | Index of all analysis docs |
 | `systems/improvement-loop/watched-libraries/analysis/cross-repo-comparison.md` | Cross-repo comparison report |
-| `/tmp/metasystem-repo-cache/` | Ephemeral shallow clones (outside vault) |
+| `systems/improvement-loop/watched-libraries/_tmp/repo-cache/` | Shallow clones for analysis (gitignored) |
 
 ---
 
@@ -281,17 +281,17 @@ dimensions_analyzed:
 
 ### Step 2: Clone or Reuse Cached Repository
 
-1. Use `Bash` to check if `/tmp/metasystem-repo-cache/{library-name}/` exists and contains a `.git` directory.
-2. If it exists, reuse it. Optionally run `git -C /tmp/metasystem-repo-cache/{library-name}/ pull` if freshness matters.
+1. Use `Bash` to check if `systems/improvement-loop/watched-libraries/_tmp/repo-cache/{library-name}/` exists and contains a `.git` directory.
+2. If it exists, reuse it. Optionally run `git -C systems/improvement-loop/watched-libraries/_tmp/repo-cache/{library-name}/ pull` if freshness matters.
 3. If it does not exist, run:
    ```bash
-   git clone --depth 1 {repo_url} /tmp/metasystem-repo-cache/{library-name}/
+   git clone --depth 1 {repo_url} systems/improvement-loop/watched-libraries/_tmp/repo-cache/{library-name}/
    ```
 4. If clone fails (private repo, rate limit, network), fall back to `WebFetch` on the README URL and note the limitation. Mark affected dimensions as "partial" in the output.
 
 ### Step 3: Structural Inventory (Dimension 1)
 
-1. Count total files: `find /tmp/metasystem-repo-cache/{name}/ -type f -not -path '*/.git/*' | wc -l`
+1. Count total files: `find systems/improvement-loop/watched-libraries/_tmp/repo-cache/{name}/ -type f -not -path '*/.git/*' | wc -l`
 2. Count directories: `find ... -type d -not -path '*/.git/*' | wc -l`
 3. Count by file extension (top 20):
    ```bash
@@ -433,7 +433,7 @@ repos_compared: [list of analyzed library names]
 
 ## Rules
 
-1. **Never persist cloned repos inside the vault.** Always use `/tmp/metasystem-repo-cache/`. Clones in the vault cause git-in-git pain, search pollution, and graph noise.
+1. **Clone repos to the gitignored cache directory.** Always use `systems/improvement-loop/watched-libraries/_tmp/repo-cache/`. This path is in `.gitignore` — clones won't enter version control or pollute Obsidian search.
 2. **Shallow clones only.** `--depth 1` is sufficient for structural analysis. Git history is not needed.
 3. **Do not execute any code from cloned repos.** No `npm install`, `pip install`, `make`, or running scripts. This is a read-only structural pass.
 4. **Do not write to Research Findings.** Analysis docs stay in `watched-libraries/analysis/`. Pattern promotion to the KB is a separate human-gated decision.

@@ -1,0 +1,366 @@
+---
+title: "DeerFlow — Structural Analysis"
+id: "deer-flow-analysis"
+type: "analysis"
+category: "upstream-tracking"
+target_system:
+  - "cross-system"
+stage: "active"
+created: "2026-04-19"
+updated: "2026-04-19"
+author: "improvement-loop"
+source_dd:
+  - "DD-45"
+  - "DD-46"
+tags:
+  - "repo-analysis"
+  - "watched-library"
+  - "deer-flow"
+analyzed_version: "v2.0"
+analyzed_date: "2026-04-19"
+repo_url: "https://github.com/bytedance/deer-flow"
+dimensions_analyzed:
+  - "structural-inventory"
+  - "context-file-map"
+  - "workflow-topology"
+  - "governance-model"
+  - "cross-agent-protocol"
+---
+
+# DeerFlow — Structural Analysis
+
+## Metadata
+- **Repo:** https://github.com/bytedance/deer-flow
+- **Version analyzed:** v2.0
+- **Date:** 2026-04-19
+- **Spectrum position:** cherry-pick
+- **Stars:** 62.7k
+
+---
+
+## 1. Structural Inventory
+
+### File Tree Statistics
+| Metric | Value |
+|--------|-------|
+| Total files | 891 |
+| Total directories | 261 |
+| Markdown files | 117 |
+| MDX files | 35 |
+| Code files (Python) | 333 |
+| Code files (TypeScript/TSX) | 264 |
+| Shell scripts | 20 |
+| Config (JSON/YAML) | 29 |
+| Image files (JPG/PNG) | 28 |
+| CSS files | 7 |
+| HTML files | 9 |
+| MD-to-code ratio | 0.20 (1 MD per ~5 code files) |
+| Max directory depth | 10 |
+
+### Markdown Composition
+| Purpose | Count | Directory |
+|---------|-------|-----------|
+| Public skills | ~50 | `skills/public/` (16 skills × ~3 files each) |
+| Agent context files | ~10 | `backend/CLAUDE.md`, `frontend/CLAUDE.md`, `AGENTS.md`, `.agent/skills/` |
+| Backend docs | ~15 | `backend/docs/` |
+| Plans/PR evidence | ~15 | `docs/plans/`, `docs/pr-evidence/` |
+| Website/blog | ~20 | root-level MDX files |
+| Human documentation | ~7 | root README, CONTRIBUTING, etc. |
+
+### Directory Naming Conventions
+- snake_case for Python packages (`backend/packages/harness/deerflow/`)
+- kebab-case for skills and public-facing (`skills/public/deep-research`, `chart-visualization`)
+- Mixed in frontend (`frontend/src/` uses standard React conventions)
+
+### Top-Level Structure
+```
+.
+├── .agent/skills/          # Internal agent skills (smoke-test)
+├── backend/
+│   ├── app/                # FastAPI application
+│   ├── docs/               # Backend documentation
+│   ├── packages/harness/   # Core DeerFlow harness package
+│   └── tests/              # Backend tests
+├── docker/
+│   ├── nginx/              # Reverse proxy config
+│   └── provisioner/        # Sandbox provisioner (K8s)
+├── docs/                   # Plans and PR evidence
+├── frontend/
+│   ├── public/             # Static assets
+│   ├── scripts/            # Build scripts
+│   ├── src/                # Next.js React app
+│   └── tests/              # Frontend tests
+├── pr-build/               # PR build artifacts
+├── scripts/wizard/         # Setup wizards
+├── skills/public/          # 16 public skill bundles
+```
+
+### Notable Structural Patterns
+- **Harness as a package**: Core agent logic in `backend/packages/harness/deerflow/` — installable, versioned, testable independently
+- **16 public skills**: Each is a self-contained bundle (SKILL.md + references/ + templates/ + scripts/ + agents/)
+- **PR evidence directory**: `docs/pr-evidence/` stores screenshots and evidence for PRs — unusual but effective for review
+- **Gateway mode**: Experimental mode where Gateway embeds the agent runtime, eliminating the LangGraph Server process
+- **Middleware-driven architecture**: 12 composable middlewares control agent behavior
+
+---
+
+## 2. Context File Map
+
+| File Path | Audience | Scope | Mechanism | Content Type | Summary |
+|-----------|----------|-------|-----------|--------------|---------|
+| `backend/CLAUDE.md` | LLM | Project (backend) | Auto-loaded | Workflow/Process + Tool Usage | Architecture map, all `make` commands. "CRITICAL: Always update README.md and CLAUDE.md after every code change" |
+| `frontend/CLAUDE.md` | LLM | Project (frontend) | Auto-loaded | Workflow/Process + Tool Usage | Next.js stack, code style, env vars, test strategy |
+| `backend/AGENTS.md` | LLM | Project (backend) | Chain-loader (`@./CLAUDE.md`) | Workflow/Process | One-liner redirect to CLAUDE.md |
+| `frontend/AGENTS.md` | Both | Project (frontend) | Referenced | Workflow/Process + Identity | Architecture diagram, component ownership, tech stack |
+| `.agent/skills/smoke-test/SKILL.md` | LLM | Task | Referenced (on-demand) | Workflow/Process | Phase-by-phase smoke test SOP |
+| `skills/public/*/SKILL.md` (×16) | LLM | Task | Referenced (progressive load) | Workflow/Process + Tool Usage | Self-contained skill bundles; descriptions injected at boot, full content loaded on-demand |
+| `skills/public/skill-creator/agents/*.md` (×3) | LLM | Task | Referenced (from skill) | Identity/Persona | Sub-agent persona files (analyzer, comparator, grader) |
+| Runtime SOUL.md | LLM | Project | Hook-injected (`apply_prompt_template`) | Identity/Persona + Constraints/Rules | Generated by bootstrap skill; wrapped in `<soul>…</soul>` in system prompt |
+
+### Sampling Notes
+Read 4 skill SKILL.md files in full (deep-research, skill-creator, bootstrap, find-skills). Remaining 12 classified by pattern extrapolation — all follow the same structure (YAML frontmatter with name/description/compatibility, markdown body with workflow steps).
+
+### Context Loading Strategy
+
+DeerFlow uses a **layered, demand-driven injection model**:
+
+1. **Boot layer**: `make_lead_agent()` assembles system prompt at request time via `apply_prompt_template()`. Injects: role identity, SOUL.md content (in `<soul>` tags), memory context, clarification rules, skill catalogue (descriptions only), deferred-tool names, subagent instructions, working-directory rules, current date.
+
+2. **Skill catalogue**: All enabled SKILL.md files scanned at startup (background thread warms cache). Only `name` + `description` fields injected as `<skill>` XML elements. Agent must call `read_file` to get full workflow — **progressive loading, not bulk injection**.
+
+3. **Memory context**: `MemoryMiddleware` queues conversations post-execution; background updater summarizes and writes to per-thread/per-agent storage. Summary injected into next system prompt via `_get_memory_context()` inside `<memory>` tags.
+
+4. **On-demand resources**: Skill reference docs, scripts, templates loaded by agent only when needed. Bundled under `references/`, `templates/`, `scripts/` sibling directories.
+
+5. **CLAUDE.md / AGENTS.md**: Auto-loaded by Claude Code harness for developer-facing coding sessions; NOT injected at runtime into the chat agent.
+
+---
+
+## 3. Workflow Topology
+
+### Runtime Modes
+| Mode | Processes | Entry |
+|------|-----------|-------|
+| Standard | LangGraph Server (2024) + Gateway API (8001) + Frontend (3000) + Nginx (2026) | `make dev` |
+| Gateway (experimental) | Gateway+Runtime (8001) + Frontend (3000) + Nginx (2026) | `make dev-pro` |
+
+### Lead Agent Graph (LangGraph)
+```
+User message
+     │
+     ▼
+apply_prompt_template()
+  ├── SOUL.md → <soul> tags
+  ├── Memory → <memory> tags
+  ├── Skill catalogue → <skill> tags (names only)
+  ├── Subagent instructions
+  └── Working directory rules
+     │
+     ▼
+┌─────────────────────────────┐
+│   AGENT LOOP (LangGraph)    │
+│                             │
+│  Model call                 │
+│     │                       │
+│     ▼                       │
+│  Tool dispatch (parallel)   │◄─── Middleware chain (12 layers)
+│     │                       │
+│     ▼                       │
+│  Model call                 │
+│     │                       │
+│  (cycle until no tool calls │
+│   or interrupt fires)       │
+└─────────────────────────────┘
+     │
+     ▼
+Exit conditions:
+  ├── No tool calls → terminal answer
+  ├── ClarificationMiddleware interrupt → await user response
+  ├── LoopDetectionMiddleware (5 repeats) → force terminal
+  └── Max turns exceeded
+```
+
+### Middleware Chain (12 layers, ordered)
+| # | Middleware | Effect |
+|---|-----------|--------|
+| 1 | ToolErrorHandling, DanglingToolCall, ThreadData, Sandbox, Uploads | Core tool wiring, sandbox lifecycle |
+| 2 | DeerFlowSummarizationMiddleware | Context compression at token/turn threshold |
+| 3 | TodoMiddleware | Injects todo tool + system prompt rules (plan mode) |
+| 4 | TokenUsageMiddleware | Token spend tracking |
+| 5 | TitleMiddleware | Auto-generates thread title after first exchange |
+| 6 | MemoryMiddleware | Queues conversation for async memory update |
+| 7 | ViewImageMiddleware | Injects base64 image content (vision models) |
+| 8 | DeferredToolFilterMiddleware | Strips deferred tool schemas from model binding |
+| 9 | SubagentLimitMiddleware | Hard cap (2-4) on concurrent `task` tool calls |
+| 10 | LoopDetectionMiddleware | Hash-based loop detection; warn at 3, force-stop at 5 |
+| 11 | Custom middlewares | Extension point |
+| 12 | ClarificationMiddleware | Intercepts `ask_clarification`; interrupts execution |
+
+### Sandbox Provisioner Flow
+```
+config.yaml → sandbox.use
+     │
+     ├── LocalSandboxProvider
+     │     └── Files at /mnt/user-data/, host bash disabled by default
+     │
+     ├── AioSandboxProvider (Docker)
+     │     ├── acquire(thread_id) → launch or reuse from LRU pool
+     │     ├── replicas limit (default 3)
+     │     ├── idle_timeout (default 600s) → release idle containers
+     │     └── LRU eviction when cap hit
+     │
+     └── Provisioner/K8s (port 8002)
+           └── Remote backend for K8s-managed sandboxes
+```
+
+### Skill Execution Pipeline
+```
+System prompt lists skills by name + description + path
+     │
+     ▼
+Agent calls read_file(SKILL.md) when task matches
+     │
+     ▼
+Agent follows skill workflow
+  ├── May read references/, templates/, scripts/
+  └── May write output artifacts
+     │
+     ▼
+If skill evolution enabled:
+  └── Agent calls write_skill → security scanner → allow/warn/block
+```
+
+### Human Gates
+- `ask_clarification` tool → `ClarificationMiddleware` halts graph; resumes on user message
+- `GuardrailMiddleware` (optional) → blocks tool calls pre-execution; agent gets error and must adapt
+- ACP agents with `auto_approve_permissions=False` (default) → denies all permission requests
+
+---
+
+## 4. Governance Model
+
+### Constraint Expression
+| Mechanism | Location | Enforcement | Example |
+|-----------|----------|-------------|---------|
+| Sandbox bash audit | `sandbox_audit_middleware.py` | Hard (regex block) | Blocks `rm -rf /`, `dd if=`, `cat /etc/shadow`, fork bombs, etc. |
+| Sandbox bash audit (medium) | `sandbox_audit_middleware.py` | Soft (warn + execute) | Warns on `chmod 777`, `pip install`, `sudo`, `PATH=` modification |
+| Guardrails system | `guardrails/` | Hard (optional, fail-closed) | `GuardrailProvider` interface; `AllowlistProvider` for tool allowlist/denylist |
+| Subagent containment | Lead agent assembly | Hard (tool filtering) | Subagents explicitly disallow `task`, `ask_clarification`, `present_files` |
+| Subagent limit | `SubagentLimitMiddleware` | Hard (middleware) | Truncates excess parallel `task` calls (cap 2-4) |
+| Bash subagent gate | `is_host_bash_allowed()` | Hard (code) | Only available with AioSandboxProvider or explicit `allow_host_bash: true` |
+| Loop detection | `loop_detection_middleware.py` | Hard (middleware) | Warn at 3 identical calls, force-stop at 5; 50-call per-tool-type limit |
+| Skill security scanner | `skills/security_scanner.py` | Hard (LLM + fail-closed) | Blocks prompt-injection, privilege escalation, exfiltration in new skills |
+| Skill path traversal | `skills/manager.py` | Hard (code) | `validate_skill_name()` enforces pattern; blocks `..` traversal; restricts to 4 subdirs |
+| ACP permissions | ACP agent config | Hard (config) | `auto_approve_permissions: false` (default) — all denied |
+
+### Guardrail Patterns
+- **Multi-layer defense**: Regex command audit → guardrail provider → subagent containment → loop detection → skill scanner
+- **Fail-closed defaults**: Guardrails fail-closed on provider errors; skill scanner blocks on model failure; ACP denies all permissions by default
+- **Middleware as enforcement**: Security concerns implemented as composable middleware layers, not monolithic checks
+- **Subagent containment**: Non-recursive (no `task`), non-interactive (no `ask_clarification`), non-presenting (no `present_files`)
+
+### Permission Model
+- Lead agent: full tool access + `task` + `ask_clarification` + `present_files`
+- Subagents: inherit parent tools MINUS `task`, `ask_clarification`, `present_files`
+- Bash subagent: restricted to `bash`, `ls`, `read_file`, `write_file`, `str_replace` only
+- ACP agents: own workspace (`/mnt/acp-workspace/`), read-only bridge from lead
+
+---
+
+## 5. Cross-Agent Protocol
+
+### Agent Roster
+| Agent | Type | Tools | Max Turns |
+|-------|------|-------|-----------|
+| Lead Agent | Orchestrator | All configured + `task` + `ask_clarification` + `present_files` | LangGraph default |
+| general-purpose subagent | Worker | Inherits all parent tools minus `task`/`ask_clarification`/`present_files` | 100 |
+| bash subagent | Specialist | `bash`, `ls`, `read_file`, `write_file`, `str_replace` only | 60 |
+| Bootstrap Agent | Special-purpose | All tools + `setup_agent`, restricted skills (`bootstrap` only) | LangGraph default |
+| ACP Agents (codex, claude_code) | External subprocess | Via ACP protocol, own workspace | Per config |
+
+### Communication Channels
+| Channel | Direction | Mechanism |
+|---------|-----------|-----------|
+| Task dispatch | Lead → Subagent | `task(description, prompt, subagent_type)` tool call |
+| Task result | Subagent → Lead | Return value: `SubagentResult.result` (string) + `ai_messages` (list) |
+| Memory | Lead ↔ Memory system | MemoryMiddleware queues writes; `_get_memory_context()` loads reads |
+| ACP bridge | Lead ↔ ACP agent | `invoke_acp_agent` tool; workspace at `/mnt/acp-workspace/` |
+| Shared state | Lead ↔ Subagent | `ThreadState.sandbox` + `ThreadState.thread_data` propagated |
+
+### Handoff Mechanisms
+- **Lead → Subagent**: Natural language `prompt` in `task()` call. No typed contract, no schema validation — boundary is linguistic.
+- **Subagent → Lead**: Plain-text result summary following output format in system prompt.
+- **Subagent isolation**: No bidirectional state sync. Subagents receive partial state copy (sandbox + thread_data); results flow only as `task` tool return value.
+- **Skill-scoped personas**: `skill-creator` uses agent persona files (analyzer.md, comparator.md, grader.md) — pseudo-multi-agent via prompt files, not separate agent instances.
+
+### Shared State via LangGraph
+| Field | Purpose | Propagated to Subagents? |
+|-------|---------|--------------------------|
+| `sandbox: SandboxState` | Shared sandbox ID | Yes |
+| `thread_data: ThreadDataState` | Workspace/uploads/outputs paths | Yes |
+| `artifacts: list[str]` | Deduplicated artifacts (union reducer) | No |
+| `todos: list` | Task list (TodoMiddleware) | No |
+| `uploaded_files: list[dict]` | Injected by UploadsMiddleware | No |
+| `viewed_images: dict` | Cleared after ViewImageMiddleware injection | No |
+
+### Coordination Pattern
+**Orchestrator-Worker, Batched Parallel Dispatch.**
+
+1. Lead agent reasons about decomposition in `<thinking>` tags
+2. Dispatches up to `max_concurrent_subagents` (2-4, hard-enforced by middleware) `task` calls in a single model response
+3. All `task` calls execute concurrently in `ThreadPoolExecutor` (3 scheduler workers, 3 execution workers)
+4. Lead waits for all to complete (blocking), then synthesizes
+5. For >N sub-tasks, lead batches across multiple model turns
+
+Subagents are **non-recursive**, **non-interactive**, and **non-presenting**. They operate fully autonomously on delegated tasks and return plain-text summaries.
+
+---
+
+## 6. Research Dimension Mapping
+
+| Dimension | Relevance | Key Patterns Observed |
+|-----------|-----------|----------------------|
+| Context Engineering | **High** | Progressive skill loading (descriptions at boot, full content on-demand); SOUL.md in `<soul>` tags; memory injection via `<memory>` tags; DeerFlowSummarizationMiddleware for context compression |
+| Model | Medium | Multi-provider support (OpenAI, Claude, DeepSeek, Qwen); no model-specific optimization patterns |
+| Prompt | Medium | XML tag wrapping (`<soul>`, `<memory>`, `<skill>`); `apply_prompt_template()` composable prompt assembly; `<thinking>` tags for agent reasoning |
+| Tools | **High** | MCP server support; deferred tool filtering; skill registration and evolution; 12-layer middleware for tool interception |
+| Intent | Medium | `ask_clarification` interrupt mechanism; TodoMiddleware for plan mode; subagent task decomposition |
+| Orchestration | **High** | Batched parallel subagent dispatch; `SubagentLimitMiddleware` hard caps; `ThreadPoolExecutor` with scheduler/execution pools; subagent containment (no recursion, no interaction) |
+| Evaluation | Medium | Skill evolution with security scanner; loop detection; tool-frequency hard limits |
+| Sandboxing | **High** | Three-tier provisioner (local → Docker → K8s); LRU container pool with idle eviction; sandbox audit middleware with regex command filtering |
+| Governance | **High** | Multi-layer defense (audit → guardrails → containment → loop detection → scanner); fail-closed defaults; middleware-as-enforcement; subagent tool filtering |
+| Agent Design | **High** | SOUL.md identity pattern; 12-middleware composable agent architecture; skill bundles as self-contained units; sub-agent persona files; progressive skill loading |
+
+### Findings Candidates
+
+1. **Middleware-as-enforcement architecture** (Governance) — 12 composable middleware layers control agent behavior: error handling, sandbox lifecycle, context compression, token tracking, subagent limiting, loop detection, clarification interrupts. Security is not a monolith — it's a stack of composable, ordered layers.
+→ Promoted to [[middleware-as-enforcement-architecture]] on 2026-04-19
+
+2. **Batched parallel subagent dispatch** (Orchestration) — Lead agent dispatches 2-4 concurrent `task` calls in a single model response. `SubagentLimitMiddleware` hard-caps concurrency at the middleware layer. `ThreadPoolExecutor` with separate scheduler and execution pools. Subagents are non-recursive, non-interactive, non-presenting.
+→ Skipped: covered by gstack-review-army-parallel-specialist-dispatch.md on 2026-04-19
+
+3. **Three-tier sandbox provisioner** (Sandboxing) — Graduated isolation: local filesystem → Docker container pool (LRU, idle eviction, replica limits) → Kubernetes (remote backend). Same `SandboxMiddleware` interface regardless of provider. Clean separation of sandbox lifecycle from agent logic.
+→ Promoted to [[three-tier-sandbox-provisioner]] on 2026-04-19
+
+4. **Progressive skill loading** (Context Engineering) — Skill descriptions (~50 tokens each) injected at boot as `<skill>` XML elements. Full SKILL.md content (~500-2000 tokens) loaded on-demand when agent calls `read_file`. Prevents context bloat from 16+ skills while maintaining discoverability.
+→ Promoted to [[progressive-skill-loading]] on 2026-04-19
+
+5. **Loop detection with hash-based sliding window** (Evaluation) — Sliding window of last 20 tool call hashes per thread. Warn at 3 identical consecutive calls (inject system message). Hard-stop at 5 (strip all tool_calls, force terminal answer). Tool-frequency limit: 50 calls to same tool type per session.
+→ Promoted to [[loop-detection-hash-based-sliding-window]] on 2026-04-19
+
+6. **Skill security scanner with fail-closed default** (Governance) — LLM-based scanner classifies new/modified skills as allow/warn/block. Checks for prompt-injection, privilege escalation, exfiltration. On model failure: block by default. JSONL history log per skill.
+→ Promoted to [[skill-security-scanner-fail-closed]] on 2026-04-19
+
+7. **SOUL.md as runtime identity injection** (Agent Design) — SOUL.md files generated by bootstrap skill, stored per-agent. `apply_prompt_template()` wraps content in `<soul>…</soul>` tags and injects into system prompt. No SOUL.md = no soul section. Identity is optional, file-mediated, and scoped per agent.
+→ Skipped: duplicate of soul-md-agent-constitution-pattern.md on 2026-04-19
+
+8. **Sandbox command audit with two-tier severity** (Sandboxing) — Regex-pattern auditing on every bash tool call. High-risk (BLOCK): `rm -rf /`, fork bombs, credential access. Medium-risk (WARN + execute): `chmod 777`, `pip install`, `sudo`. Agents get error messages for blocked commands and can adapt.
+→ Skipped: close to tiered-permission-system-bash-safety.md on 2026-04-19
+
+---
+
+## Version Log
+
+| Date | Version | Dimensions | Notes |
+|------|---------|------------|-------|
+| 2026-04-19 | v2.0 | All 5 | Initial analysis |
