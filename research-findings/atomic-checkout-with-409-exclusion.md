@@ -14,9 +14,11 @@ sources: []
 related_findings:
 - file: worktree-isolation-for-parallel-agent-sessions.md
   rel: same-problem
+- file: database-as-shared-memory-coordination.md
+  rel: same-problem
 proposals: null
 date_discovered: '2026-04-08'
-last_updated: '2026-04-09'
+last_updated: '2026-04-19'
 pipeline_status: raw
 consumed_by: []
 ---

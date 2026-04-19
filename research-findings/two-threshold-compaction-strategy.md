@@ -17,6 +17,16 @@ related_findings:
   rel: extends
 - file: semantic-memory-decay-compaction.md
   rel: same-problem
+- file: ace-delta-updates-over-monolithic-rewrites.md
+  rel: same-problem
+- file: context-bracket-auto-adaptation.md
+  rel: same-problem
+- file: context-rot-silent-killer-and-mitigations.md
+  rel: same-problem
+- file: context-usage-status-line-visual-budget-tracking.md
+  rel: same-problem
+- file: dynamic-tool-pool-assembly-transcript-compaction.md
+  rel: same-problem
 proposals: null
 date_discovered: '2026-04-19'
 last_updated: '2026-04-19'

@@ -11,7 +11,15 @@ applicability:
 - S3 (Claude Code Build)
 adopted_in: []
 sources: []
-related_findings: []
+related_findings:
+- file: isolation-resolver-worktree-lifecycle-algorithm.md
+  rel: same-problem
+- file: os-level-agent-sandboxing-filesystem-network-isolation.md
+  rel: same-problem
+- file: three-tier-sandbox-provisioner.md
+  rel: same-problem
+- file: worktree-isolation-for-parallel-agent-sessions.md
+  rel: same-problem
 proposals: null
 date_discovered: '2026-04-19'
 last_updated: '2026-04-19'

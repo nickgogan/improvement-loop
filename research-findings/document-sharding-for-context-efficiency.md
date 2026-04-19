@@ -16,7 +16,7 @@ sources:
 - bmad-method-masterclass.md
 proposals: []
 date_discovered: '2026-04-07'
-last_updated: '2026-04-08'
+last_updated: '2026-04-19'
 related_findings:
 - file: bmad-method-v6-multi-agent-sdlc.md
   rel: enabled-by
@@ -25,6 +25,12 @@ related_findings:
 - file: ace-agentic-context-engineering-evolving-playbook.md
   rel: same-problem
 - file: agent-context-kiss-commandments-minimum-viable.md
+  rel: same-problem
+- file: progressive-skill-loading.md
+  rel: same-problem
+- file: progressive-tiered-context-loading-convergence.md
+  rel: extended-by
+- file: three-tier-progressive-context-loading.md
   rel: same-problem
 pipeline_status: synthesized
 consumed_by:

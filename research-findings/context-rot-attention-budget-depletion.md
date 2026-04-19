@@ -13,10 +13,14 @@ applicability:
 adopted_in: []
 sources:
 - anthropic-effective-context-engineering.md
-related_findings: []
+related_findings:
+- file: memory-decay-compaction-convergence.md
+  rel: same-problem
+- file: progressive-tiered-context-loading-convergence.md
+  rel: same-problem
 proposals: null
 date_discovered: '2026-04-09'
-last_updated: '2026-04-09'
+last_updated: '2026-04-19'
 pipeline_status: synthesized
 consumed_by:
 - managing-agent-context.md

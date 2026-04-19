@@ -19,6 +19,10 @@ related_findings:
   rel: same-problem
 - file: structural-vs-psychological-vs-economic-governance.md
   rel: extends
+- file: agent-identity-governance-enforcement-layer.md
+  rel: same-problem
+- file: distributed-boundary-guides.md
+  rel: extends
 proposals: null
 date_discovered: '2026-04-19'
 last_updated: '2026-04-19'

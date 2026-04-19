@@ -40,9 +40,21 @@ related_findings:
   rel: enabled-by
 - file: claudemd-as-signal-to-noise-problem-not-size-probl.md
   rel: same-problem
+- file: agent-lifecycle-formalization-spectrum.md
+  rel: same-problem
+- file: agent-state-machine-with-witness-monitoring.md
+  rel: same-problem
+- file: hook-based-transparent-memory-injection.md
+  rel: same-problem
+- file: memory-decay-compaction-convergence.md
+  rel: same-problem
+- file: semantic-memory-decay-compaction.md
+  rel: same-problem
+- file: two-threshold-compaction-strategy.md
+  rel: same-problem
 proposals: []
 date_discovered: '2026-04-07'
-last_updated: '2026-04-08'
+last_updated: '2026-04-19'
 pipeline_status: synthesized
 consumed_by:
 - managing-agent-context.md

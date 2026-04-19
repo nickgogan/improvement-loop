@@ -11,10 +11,14 @@ applicability:
 - S3 (Claude Code Build)
 adopted_in: []
 sources: []
-related_findings: []
+related_findings:
+- file: agent-lifecycle-formalization-spectrum.md
+  rel: extended-by
+- file: agent-state-machine-with-witness-monitoring.md
+  rel: same-problem
 proposals: null
 date_discovered: '2026-04-08'
-last_updated: '2026-04-09'
+last_updated: '2026-04-19'
 pipeline_status: raw
 consumed_by: []
 ---

@@ -18,12 +18,14 @@ sources:
 - anthropic-trustworthy-agents-in-practice.md
 proposals: []
 date_discovered: '2026-04-01'
-last_updated: '2026-04-09'
+last_updated: '2026-04-19'
 related_findings:
 - file: autonomy-gradient-not-binary-delegation.md
   rel: same-problem
 - file: mcp-elicitation-for-user-input.md
   rel: enabled-by
+- file: agent-state-machine-with-witness-monitoring.md
+  rel: same-problem
 pipeline_status: synthesized
 consumed_by:
 - agent-governance-and-trust.md

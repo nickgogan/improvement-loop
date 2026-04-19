@@ -15,13 +15,15 @@ sources:
 - anthropics-2-5-billion-leak-12-critical-pieces.md
 proposals: null
 date_discovered: '2026-04-07'
-last_updated: '2026-04-07'
+last_updated: '2026-04-19'
 related_findings:
 - file: planner-executor-deterministic-guardrails.md
   rel: same-problem
 - file: durable-workflow-engine-for-agent-systems.md
   rel: enabled-by
 - file: system-event-logging-actions-not-words.md
+  rel: same-problem
+- file: agent-state-machine-with-witness-monitoring.md
   rel: same-problem
 pipeline_status: synthesized
 consumed_by:

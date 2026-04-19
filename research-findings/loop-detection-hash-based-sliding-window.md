@@ -14,6 +14,10 @@ sources: []
 related_findings:
 - file: gsd-stall-detection-revision-loop-escalation.md
   rel: same-problem
+- file: agent-cost-blowup-mitigation-strategies.md
+  rel: same-problem
+- file: agent-self-reporting-unreliability-independent-eval.md
+  rel: same-problem
 proposals: null
 date_discovered: '2026-04-19'
 last_updated: '2026-04-19'

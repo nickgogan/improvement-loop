@@ -17,7 +17,7 @@ sources:
 - agentic-context-engineering-ace-iclr-2026-poster.md
 proposals: []
 date_discovered: '2026-04-01'
-last_updated: 2026-04-08
+last_updated: '2026-04-19'
 related_findings:
 - file: ace-execution-feedback-no-labels-required.md
   rel: enables
@@ -76,6 +76,8 @@ related_findings:
 - file: scrum-master-story-contextualization.md
   rel: same-problem
 - file: structured-fact-extraction-from-conversations.md
+  rel: same-problem
+- file: memory-decay-compaction-convergence.md
   rel: same-problem
 pipeline_status: synthesized
 consumed_by:

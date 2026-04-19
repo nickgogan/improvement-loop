@@ -12,10 +12,12 @@ applicability:
 adopted_in: []
 sources:
 - mem0-analysis.md
-related_findings: []
+related_findings:
+- file: hook-based-transparent-memory-injection.md
+  rel: same-problem
 proposals: null
 date_discovered: '2026-04-08'
-last_updated: '2026-04-08'
+last_updated: '2026-04-19'
 pipeline_status: raw
 consumed_by: []
 ---

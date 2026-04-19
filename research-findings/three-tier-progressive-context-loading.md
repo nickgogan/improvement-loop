@@ -17,6 +17,8 @@ related_findings:
   rel: extends
 - file: three-layer-context-chain-loading.md
   rel: same-problem
+- file: document-sharding-for-context-efficiency.md
+  rel: same-problem
 proposals: null
 date_discovered: '2026-04-19'
 last_updated: '2026-04-19'

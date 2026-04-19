@@ -40,9 +40,13 @@ related_findings:
   rel: enables
 - file: claudemd-minimum-viable-rule-only-add-globally.md
   rel: same-problem
+- file: semantic-memory-decay-compaction.md
+  rel: same-problem
+- file: two-threshold-compaction-strategy.md
+  rel: same-problem
 proposals: []
 date_discovered: '2026-04-07'
-last_updated: '2026-04-08'
+last_updated: '2026-04-19'
 pipeline_status: synthesized
 consumed_by:
 - managing-agent-context.md

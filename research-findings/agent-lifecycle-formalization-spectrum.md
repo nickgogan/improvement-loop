@@ -16,6 +16,12 @@ related_findings:
   rel: extends
 - file: identity-depth-correlates-with-persistence.md
   rel: extends
+- file: heartbeat-execution-model.md
+  rel: extends
+- file: dreaming-memory-consolidation.md
+  rel: same-problem
+- file: context-rot-silent-killer-and-mitigations.md
+  rel: same-problem
 proposals: null
 date_discovered: '2026-04-19'
 last_updated: '2026-04-19'

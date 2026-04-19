@@ -11,10 +11,16 @@ applicability:
 - S3 (Claude Code Build)
 adopted_in: []
 sources: []
-related_findings: []
+related_findings:
+- file: agent-lifecycle-formalization-spectrum.md
+  rel: same-problem
+- file: memory-decay-compaction-convergence.md
+  rel: same-problem
+- file: semantic-memory-decay-compaction.md
+  rel: same-problem
 proposals: null
 date_discovered: '2026-04-08'
-last_updated: '2026-04-08'
+last_updated: '2026-04-19'
 pipeline_status: raw
 consumed_by: []
 ---

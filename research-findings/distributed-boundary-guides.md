@@ -14,9 +14,13 @@ sources: []
 related_findings:
 - file: context-file-taxonomy-claudemd-soulmd-agentsmd.md
   rel: extends
+- file: middleware-as-enforcement-architecture.md
+  rel: same-problem
+- file: three-enforcement-pipeline-architectures.md
+  rel: extended-by
 proposals: null
 date_discovered: '2026-04-08'
-last_updated: '2026-04-08'
+last_updated: '2026-04-19'
 pipeline_status: raw
 consumed_by: []
 ---

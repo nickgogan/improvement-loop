@@ -20,8 +20,14 @@ related_findings:
   rel: same-problem
 - file: agent-context-kiss-commandments-minimum-viable.md
   rel: same-problem
+- file: memory-decay-compaction-convergence.md
+  rel: same-problem
+- file: semantic-memory-decay-compaction.md
+  rel: same-problem
+- file: two-threshold-compaction-strategy.md
+  rel: same-problem
 date_discovered: '2026-04-07'
-last_updated: 2026-04-08
+last_updated: '2026-04-19'
 pipeline_status: raw
 consumed_by: []
 ---

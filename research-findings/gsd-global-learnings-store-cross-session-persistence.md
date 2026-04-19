@@ -28,9 +28,11 @@ related_findings:
   rel: same-problem
 - file: claude-code-long-term-memory-via-pre-prompt-recall.md
   rel: same-problem
+- file: hook-based-transparent-memory-injection.md
+  rel: same-problem
 proposals: null
 date_discovered: '2026-04-07'
-last_updated: 2026-04-08
+last_updated: '2026-04-19'
 pipeline_status: synthesized
 consumed_by:
 - managing-agent-context.md

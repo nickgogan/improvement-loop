@@ -16,6 +16,12 @@ related_findings:
   rel: same-problem
 - file: mcp-as-code-api-progressive-tool-discovery.md
   rel: same-problem
+- file: agent-context-kiss-commandments-minimum-viable.md
+  rel: same-problem
+- file: document-sharding-for-context-efficiency.md
+  rel: same-problem
+- file: dynamic-tool-pool-assembly-transcript-compaction.md
+  rel: same-problem
 proposals: null
 date_discovered: '2026-04-19'
 last_updated: '2026-04-19'

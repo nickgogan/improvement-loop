@@ -17,9 +17,11 @@ related_findings:
   rel: extends
 - file: archon-yaml-defined-harness-workflows.md
   rel: extends
+- file: all-in-one-sandbox-architecture.md
+  rel: same-problem
 proposals: null
 date_discovered: '2026-04-09'
-last_updated: '2026-04-09'
+last_updated: '2026-04-19'
 pipeline_status: raw
 consumed_by: []
 ---

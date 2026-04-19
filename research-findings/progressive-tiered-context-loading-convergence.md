@@ -23,6 +23,12 @@ related_findings:
   rel: extends
 - file: gpt-54-tool-search-deferred-tool-loading.md
   rel: same-problem
+- file: agent-context-kiss-commandments-minimum-viable.md
+  rel: same-problem
+- file: context-rot-attention-budget-depletion.md
+  rel: same-problem
+- file: document-sharding-for-context-efficiency.md
+  rel: extends
 proposals: null
 date_discovered: '2026-04-19'
 last_updated: '2026-04-19'

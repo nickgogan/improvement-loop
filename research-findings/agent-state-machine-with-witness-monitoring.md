@@ -11,7 +11,17 @@ applicability:
 - S3 (Claude Code Build)
 adopted_in: []
 sources: []
-related_findings: []
+related_findings:
+- file: heartbeat-execution-model.md
+  rel: same-problem
+- file: context-rot-silent-killer-and-mitigations.md
+  rel: same-problem
+- file: human-on-the-loop-hotl-autonomy-tiering-framework.md
+  rel: same-problem
+- file: session-persistence-crash-resilient.md
+  rel: same-problem
+- file: workflow-state-vs-conversation-state.md
+  rel: same-problem
 proposals: null
 date_discovered: '2026-04-19'
 last_updated: '2026-04-19'

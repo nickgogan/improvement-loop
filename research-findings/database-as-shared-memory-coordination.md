@@ -13,6 +13,18 @@ sources: []
 related_findings:
 - file: file-locking-based-agent-coordination.md
   rel: same-problem
+- file: agent-teams-shared-communication-channel.md
+  rel: same-problem
+- file: atomic-checkout-with-409-exclusion.md
+  rel: same-problem
+- file: file-based-task-locking-parallel-agents.md
+  rel: same-problem
+- file: parallel-claude-code-instances-per-workspace.md
+  rel: same-problem
+- file: session-as-append-only-event-log.md
+  rel: same-problem
+- file: worktree-isolation-for-parallel-agent-sessions.md
+  rel: same-problem
 proposals: null
 date_discovered: '2026-04-19'
 last_updated: '2026-04-19'

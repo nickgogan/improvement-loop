@@ -14,7 +14,7 @@ adopted_in: []
 sources:
 - your-claude-limit-burns-in-90-minutes.md
 date_discovered: '2026-04-07'
-last_updated: '2026-04-08'
+last_updated: '2026-04-19'
 related_findings:
 - file: ace-agentic-context-engineering-evolving-playbook.md
   rel: same-problem
@@ -91,6 +91,10 @@ related_findings:
 - file: tiered-context-injection-over-monolithic-files.md
   rel: same-problem
 - file: token-waste-taxonomy-and-two-mode-workflow.md
+  rel: same-problem
+- file: progressive-tiered-context-loading-convergence.md
+  rel: same-problem
+- file: progressive-skill-loading.md
   rel: same-problem
 pipeline_status: synthesized
 consumed_by:

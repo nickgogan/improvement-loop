@@ -16,6 +16,18 @@ related_findings:
   rel: extends
 - file: claude-code-long-term-memory-via-pre-prompt-recall.md
   rel: extends
+- file: ace-delta-updates-over-monolithic-rewrites.md
+  rel: same-problem
+- file: context-rot-silent-killer-and-mitigations.md
+  rel: same-problem
+- file: context-usage-status-line-visual-budget-tracking.md
+  rel: same-problem
+- file: cross-session-learnings-jsonl.md
+  rel: same-problem
+- file: dreaming-memory-consolidation.md
+  rel: same-problem
+- file: dynamic-tool-pool-assembly-transcript-compaction.md
+  rel: same-problem
 proposals: null
 date_discovered: '2026-04-19'
 last_updated: '2026-04-19'

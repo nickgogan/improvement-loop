@@ -19,6 +19,18 @@ related_findings:
   rel: extends
 - file: five-context-management-techniques-in-claude-code.md
   rel: same-problem
+- file: ace-agentic-context-engineering-evolving-playbook.md
+  rel: same-problem
+- file: context-rot-attention-budget-depletion.md
+  rel: same-problem
+- file: context-rot-silent-killer-and-mitigations.md
+  rel: same-problem
+- file: context-usage-status-line-visual-budget-tracking.md
+  rel: same-problem
+- file: dreaming-memory-consolidation.md
+  rel: same-problem
+- file: dynamic-tool-pool-assembly-transcript-compaction.md
+  rel: same-problem
 proposals: null
 date_discovered: '2026-04-19'
 last_updated: '2026-04-19'

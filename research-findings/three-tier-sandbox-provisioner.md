@@ -14,6 +14,8 @@ sources: []
 related_findings:
 - file: tiered-permission-system-bash-safety.md
   rel: same-problem
+- file: all-in-one-sandbox-architecture.md
+  rel: same-problem
 proposals: null
 date_discovered: '2026-04-19'
 last_updated: '2026-04-19'

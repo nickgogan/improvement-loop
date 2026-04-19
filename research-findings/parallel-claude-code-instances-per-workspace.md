@@ -16,9 +16,11 @@ sources:
 - anthropic-building-c-compiler.md
 proposals: null
 date_discovered: '2026-03-22'
-last_updated: '2026-04-09'
+last_updated: '2026-04-19'
 related_findings:
 - file: agent-management-tool-landscape-2026.md
+  rel: same-problem
+- file: database-as-shared-memory-coordination.md
   rel: same-problem
 pipeline_status: raw
 consumed_by: []

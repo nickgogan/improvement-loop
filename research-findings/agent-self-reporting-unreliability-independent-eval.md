@@ -39,8 +39,10 @@ related_findings:
   rel: same-problem
 - file: eval-awareness-autonomous-benchmark-identification.md
   rel: same-problem
+- file: loop-detection-hash-based-sliding-window.md
+  rel: same-problem
 date_discovered: '2026-04-07'
-last_updated: '2026-04-09'
+last_updated: '2026-04-19'
 pipeline_status: synthesized
 consumed_by:
 - building-agent-evaluation-suites.md
