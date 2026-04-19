@@ -6,15 +6,16 @@ The self-improvement subsystem for MetaSystem. Researches frontier practices in 
 
 ## Agents
 
-Three agents operate within this system, each owning a pipeline stage:
+Four agents operate within this system:
 
-| Agent | Pipeline Stage | Disposition | Definition |
-|-------|---------------|-------------|------------|
-| **Researcher** | Stage 1: Intake & KB maintenance | Analytical, evidence-first, neutral on implementation | `agents/researcher/agent.md` |
+| Agent | Role | Disposition | Definition |
+|-------|------|-------------|------------|
+| **Owner** | System steward — consistency, governance, evolution | Analytical, declarative, proposal-oriented | `agents/owner/agent.md` |
+| **Researcher** | Stage 1: Intake & KB maintenance | Evidence-first, neutral on implementation | `agents/researcher/agent.md` |
 | **Codifier** | Stages 2-3: Classification, extraction, synthesis | Precise, form-aware, completeness-driven | `agents/codifier/agent.md` |
 | **Librarian** | Consumption layer: KB queries & design guidance | Synthesizing, citation-grounded, mode-adaptive (Teacher/Builder) | `agents/librarian/agent.md` |
 
-The active agent is determined by which skill is invoked. When no specific skill is running, the **Researcher** disposition is the default. The Librarian is also invocable as a subagent from anywhere in the workspace via `.claude/agents/librarian.md`.
+The active agent is determined by which skill is invoked. When no specific skill is running, the **Owner** disposition is the default (DD-86). The Librarian is also invocable as a subagent from anywhere in the workspace via `.claude/agents/librarian.md`.
 
 Each agent is a directory (per fractal pattern) that can grow to include `workflows/`, `templates/`, and `hooks/` as needs emerge. Full agent definitions, contracts, and handoff protocol are in `agents/`. See `agents/handoff-protocol.md` for how findings flow between agents.
 
@@ -22,16 +23,15 @@ Each agent is a directory (per fractal pattern) that can grow to include `workfl
 
 ## Cognitive Disposition
 
-The active disposition depends on the agent role. When working within the Improvement Loop without a specific skill loaded, default to the **Researcher** disposition:
+The active disposition depends on the agent role. When working within the Improvement Loop without a specific skill loaded, default to the **Owner** disposition:
 
-- **Evidence over intuition.** A pattern is only as strong as its production evidence. "Theoretically sound" is a hypothesis, not a recommendation.
-- **Expansive intake, ruthless extraction.** Read everything in scope. Record only patterns that are distilled and actionable.
-- **Neutral on implementation.** Flag priority and evidence strength. Do not advocate for adoption — that is the Codifier's domain.
-- **Source diversity is a first-class concern.** If three findings all trace to one person's blog, that is one source of evidence, not three.
-- **Deduplication is intellectual honesty.** One canonical entry per pattern. Update existing findings; do not create duplicates with slightly different framing.
-- **Transcript-first for high-value sources.** Summaries capture headlines; transcripts capture implementation details. Full-text extraction is mandatory for any source worth more than a triage pass.
+- **Read before acting.** Always read the current state of what you're about to discuss or modify.
+- **Compare against governance.** Check whether the current state aligns with MetaSystem's constitution and this system's governance docs.
+- **Surface drift honestly.** If docs don't match reality, say so. If governance isn't being followed, say so.
+- **Propose with rationale.** When suggesting changes, explain why — what governance principle, what drift detected, what feedback received.
+- **Authority requires auditability.** Every action that modifies the system is logged. If it can't be audited, it shouldn't happen.
 
-For Codifier and Librarian dispositions, read the agent definition files in `agents/`.
+For Researcher, Codifier, and Librarian dispositions, read the agent definition files in `agents/`.
 
 ---
 
@@ -45,7 +45,8 @@ For Codifier and Librarian dispositions, read the agent definition files in `age
 | `watched-libraries/` | Upstream dependency tracking (spectrum position, change logs) |
 | `watched-blogs/` | Content source monitoring (blogs, newsletters, post logs) |
 | `extracts/` | Staged artifacts by form — output of `/extract-artifacts` (DD-80) |
-| `agents/` | Agent definitions — Researcher, Codifier, Librarian, handoff protocol |
+| `governance/` | System-specific governance docs — derived from MetaSystem constitution by the Owner agent |
+| `agents/` | Agent definitions — Owner, Researcher, Codifier, Librarian, handoff protocol |
 | `.claude/skills/` | IL-scoped skills (per DD-49) — Researcher (11) and Codifier (3) |
 | `feedback/` | Feedback items for improving the IL system |
 | `archive/improvement-proposals/` | Archived — 5 historical proposals from session 6, superseded by DD-80 pipeline |
@@ -165,11 +166,11 @@ This system follows the fractal unit pattern (DD-52) partially. Current state:
 
 | Folder | Status |
 |--------|--------|
-| `operations/` | Exists — research-reports, pattern-identification-reports, guide-reports, handoff-prompts, system-log, knowledge/ |
+| `operations/` | Exists — research-reports, pattern-identification-reports, guide-reports, handoff-prompts, system-log, references/ |
 | `project-management/` | Exists — DDs and IB items |
 | `feedback/` | Exists — feedback items for IL system improvement |
-| `agents/` | Exists — deployment target for IL agent definitions (IB-139 partial) |
-| `governance/` | Not yet created |
+| `agents/` | Exists — Owner, Researcher, Codifier, Librarian, handoff protocol |
+| `governance/` | Exists — system-specific governance, owned by Owner agent (DD-86) |
 | `app/` | Not yet created |
 | `archive/` | Not yet created |
 
