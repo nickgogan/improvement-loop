@@ -1,0 +1,50 @@
+---
+title: "Boundary Rules — IL Governance"
+type: "governance"
+category: "governance"
+target_system:
+  - "improvement-loop"
+stage: "active"
+created: "2026-04-19"
+updated: "2026-04-19"
+author: "agent"
+source_governance:
+  - "systems/meta-system/governance/constitution.md"
+source_sections:
+  - "Boundary Rules"
+  - "Ownership Matrix"
+  - "The Three Systems"
+tags:
+  - "governance"
+  - "improvement-loop"
+  - "boundaries"
+---
+
+# Boundary Rules — IL Governance
+
+> Derived from: Constitution (`systems/meta-system/governance/constitution.md`)
+> Last reconciled: 2026-04-19
+
+## Rules
+
+1. **IL modifies only IL files.** The Improvement Loop's write scope is limited to the `systems/improvement-loop/` directory tree and its engine directories (`.claude/skills/` under IL, `.claude/agents/` subagent definitions). Never modify files in `systems/meta-system/`, `incubator/`, or workspace root configs.
+   - *Source:* Constitution — Boundary Rules, rule 1; Owner Constitution — Boundaries
+
+2. **Research KB is IL-owned.** Findings, sources, authorities, watched-libraries, watched-blogs, and extracts are IL operational data. They do not belong in meta-system or workspace root.
+   - *Source:* Constitution — The Three Systems; DD-41
+
+3. **IL does not modify Notion schema or operations.** Schema changes go through Claude Build. Notion operations go through Household OS agents. IL has no Notion write access.
+   - *Source:* Constitution — Boundary Rules, rules 1-2
+
+4. **Cross-system changes require human authorization.** If IL discovers a problem in another system, the Owner flags it — never fixes it directly. Nick routes the fix to the appropriate system.
+   - *Source:* Constitution — Boundary Rules; Owner Autonomy Table — Human-Required tier
+
+5. **IL is self-improving within its scope.** IL can evolve its own agents, skills, governance, and pipeline. But changes to how IL interacts with other systems (interface contracts, shared artifacts) require human authorization.
+   - *Source:* Constitution — Ownership Matrix (IL: "Self-improving via research cycle")
+
+6. **Nick is the bridge for external feedback.** IL does not receive automated feedback from Household OS or Claude Build. Nick observes, translates observations into IB items or feedback, and feeds them to IL.
+   - *Source:* Constitution — Boundary Rules, rule 3; Feedback Loop diagram
+
+## Applicability Notes
+
+These rules apply to all IL agents (Owner, Researcher, Codifier, Librarian) and all IL skills. The Owner agent is responsible for enforcing boundary awareness — if a skill or agent action would cross a boundary, the Owner flags it.

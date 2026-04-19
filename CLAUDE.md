@@ -15,7 +15,7 @@ Four agents operate within this system:
 | **Codifier** | Stages 2-3: Classification, extraction, synthesis | Precise, form-aware, completeness-driven | `agents/codifier/agent.md` |
 | **Librarian** | Consumption layer: KB queries & design guidance | Synthesizing, citation-grounded, mode-adaptive (Teacher/Builder) | `agents/librarian/agent.md` |
 
-The active agent is determined by which skill is invoked. When no specific skill is running, the **Owner** disposition is the default (DD-86). The Librarian is also invocable as a subagent from anywhere in the workspace via `.claude/agents/librarian.md`.
+The active agent is determined by which skill is invoked. When no specific skill is running, the **Owner** disposition is the default (DD-86). Both the Owner and Librarian are invocable as subagents from anywhere in the workspace via `.claude/agents/owner.md` and `.claude/agents/librarian.md`.
 
 Each agent is a directory (per fractal pattern) that can grow to include `workflows/`, `templates/`, and `hooks/` as needs emerge. Full agent definitions, contracts, and handoff protocol are in `agents/`. See `agents/handoff-protocol.md` for how findings flow between agents.
 
@@ -47,7 +47,7 @@ For Researcher, Codifier, and Librarian dispositions, read the agent definition 
 | `extracts/` | Staged artifacts by form — output of `/extract-artifacts` (DD-80) |
 | `governance/` | System-specific governance docs — derived from MetaSystem constitution by the Owner agent |
 | `agents/` | Agent definitions — Owner, Researcher, Codifier, Librarian, handoff protocol |
-| `.claude/skills/` | IL-scoped skills (per DD-49) — Researcher (11) and Codifier (3) |
+| `.claude/skills/` | IL-scoped skills (per DD-49) — Researcher (12), Codifier (3), Owner (5) |
 | `feedback/` | Feedback items for improving the IL system |
 | `archive/improvement-proposals/` | Archived — 5 historical proposals from session 6, superseded by DD-80 pipeline |
 | `operations/` | Loop reports, handoff prompts, next-scan-notes, system log |
@@ -114,6 +114,16 @@ All IL skills live in `.claude/skills/` under this system directory (per DD-49).
 | `/identify-artifacts` | Form classification via Form Router rubric |
 | `/extract-artifacts` | Artifact drafting from approved identification reports |
 | `/synthesize-guide` | Guide synthesis from pattern clusters |
+
+### Owner Skills (5)
+
+| Skill | Role |
+|-------|------|
+| `/translate-governance` | Read MetaSystem constitution, produce/update IL governance docs and `_governance/` snapshot |
+| `/maintain-docs` | Detect doc drift and fix (`--update`), or interview to create new docs (`--create`) |
+| `/system-health` | Quick drift detection — compare docs vs filesystem state |
+| `/process-feedback` | Read feedback/, triage items, investigate root causes, propose actions |
+| `/system-audit` | Full consistency check — agents, skills, governance, fractal compliance |
 
 ### Librarian Skills (0)
 

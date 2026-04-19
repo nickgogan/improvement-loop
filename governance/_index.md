@@ -32,10 +32,13 @@ This directory holds governance artifacts that are specific to the IL system —
 
 ## Current Contents
 
-| File | Purpose |
-|------|---------|
-| *(empty — newly created)* | Owner agent will populate as governance translation proceeds |
+| File | Purpose | Source |
+|------|---------|--------|
+| `boundary-rules.md` | What IL can/cannot modify, cross-system constraints | Constitution |
+| `pipeline-rules.md` | How IL work flows through DBDO, human gates, stage boundaries | Constitution, Principles |
+| `agent-rules.md` | Agent boundaries, handoff requirements, agent-as-directory | Constitution, Fractal Pattern, Vocabulary |
+| `knowledge-rules.md` | KB management, terminology, evidence tracking, structural memory | Constitution, Values, Vocabulary |
 
 ## Owner
 
-The Owner agent (`agents/owner/agent.md`) is responsible for creating and maintaining content in this directory.
+The Owner agent (`agents/owner/agent.md`) is responsible for creating and maintaining content in this directory. Use `/translate-governance` to refresh translations and detect drift against source governance.
