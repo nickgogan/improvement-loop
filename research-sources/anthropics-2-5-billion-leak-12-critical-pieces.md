@@ -1,0 +1,32 @@
+---
+name: "I Broke Down Anthropic's $2.5 Billion Leak. Your Agent Is Missing 12 Critical Pieces."
+source_type: "Video"
+status: "Done"
+key_takeaways: "Identifies 12 primitives in 3 tiers from Claude Code leak: tool registry with metadata, permission system with trust tiers, session persistence, budget tracking, structured event logging, multi-layer verification. Agents are 80% infrastructure, 20% model."
+relevance: "High"
+added_by: "Nick"
+tags:
+  - "claude-code"
+  - "orchestration"
+  - "tools"
+  - "evaluation"
+url: "https://www.youtube.com/watch?v=FtCdYhspm7w"
+authority:
+  - "nate-b-jones.md"
+findings:
+  - "claude-code-12-agent-primitives.md"
+  - "tool-registry-metadata-first-design.md"
+  - "tiered-permission-system-bash-safety.md"
+  - "session-persistence-crash-resilient.md"
+  - "workflow-state-vs-conversation-state.md"
+  - "token-budget-pre-turn-projection.md"
+  - "structured-streaming-events-observability.md"
+  - "system-event-logging-actions-not-words.md"
+  - "agent-type-system-six-roles.md"
+  - "dynamic-tool-pool-assembly-transcript-compaction.md"
+  - "two-level-verification-agent-run-plus-harness-inte.md"
+  - "agentic-harness-self-assessment-skill.md"
+  - "velocity-vs-operational-discipline-risk-pattern.md"
+date_added: "2026-04-07"
+date_processed: "2026-04-07"
+---

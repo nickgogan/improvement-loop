@@ -1,0 +1,30 @@
+---
+name: "The Official BMad-Method Masterclass (The Complete IDE Workflow)"
+source_type: "Video"
+status: "Done"
+key_takeaways: "Complete walkthrough of BMAD Method: 4-phase workflow (Analysis→Planning→Solutioning→Implementation), 12+ specialized agent roles (Analyst, PM, Architect, SM, Developer), docs-as-code with context sharding, scale-adaptive flows (Quick vs Enterprise)."
+relevance: "High"
+added_by: "Nick"
+tags:
+  - "orchestration"
+  - "multi-agent"
+  - "skills"
+url: "https://www.youtube.com/watch?v=LorEJPrALcg"
+authority:
+  - "bmad-code.md"
+findings:
+  - "bmad-method-v6-multi-agent-sdlc.md"
+  - "document-sharding-for-context-efficiency.md"
+  - "advanced-elicitation-techniques-library.md"
+  - "new-chat-per-agent-step-context-hygiene.md"
+  - "business-analyst-upstream-quality-gate.md"
+  - "yaml-template-dual-structure.md"
+  - "tech-stack-pinning-table-for-drift-prevention.md"
+  - "correct-course-mid-project-pivot-command.md"
+  - "yaml-templates-with-embedded-elicitation-instructions.md"
+  - "brownfield-aware-agent-variants.md"
+  - "scrum-master-story-contextualization.md"
+  - "qa-agent-independent-compliance-review.md"
+date_added: "2026-04-07"
+date_processed: "2026-04-07"
+---
