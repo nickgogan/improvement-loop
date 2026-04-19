@@ -138,6 +138,8 @@ The Librarian uses Read/Glob/Grep tools directly to navigate the KB. No dedicate
 | Read cross-system DDs | `../meta-system/project-management/design-decisions/` | Read tool |
 | Read constitution | `../meta-system/governance/constitution.md` | Read tool |
 
+> **Standalone repo note:** If reading from the standalone `improvement-loop` repo (not the MetaSystem monorepo), governance references point to `_governance/` instead of `../meta-system/governance/`. The `_governance/` directory contains a snapshot of the relevant governance docs.
+
 ---
 
 ## Reference System
