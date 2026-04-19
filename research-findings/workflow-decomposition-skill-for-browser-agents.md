@@ -7,7 +7,7 @@ implementation_notes: null
 category: Intent Engineering
 evidence_strength: Medium (practitioner-documented)
 adoption_status: Not Yet Started
-proposer_priority: null
+proposer_priority: P3
 applicability:
 - General
 adopted_in: []
@@ -15,7 +15,7 @@ sources:
 - anthropic-didnt-build-a-new-browser-they-did-somet.md
 proposals: []
 date_discovered: '2026-03-22'
-last_updated: '2026-04-08'
+last_updated: '2026-04-19'
 related_findings:
 - file: project-specific-custom-skills-for-repeated-task.md
   rel: same-problem

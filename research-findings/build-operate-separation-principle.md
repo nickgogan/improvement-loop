@@ -7,7 +7,7 @@ implementation_notes: null
 category: Intent Engineering
 evidence_strength: Strong (production-tested)
 adoption_status: Already Adopted
-proposer_priority: null
+proposer_priority: Not Flagged
 applicability:
 - General
 adopted_in:
@@ -16,7 +16,7 @@ sources:
 - four-system-separation-session-research.md
 proposals: []
 date_discovered: '2026-03-16'
-last_updated: '2026-04-08'
+last_updated: '2026-04-19'
 related_findings:
 - file: skill-vs-process-distinction-deterministic-rails.md
   rel: same-problem

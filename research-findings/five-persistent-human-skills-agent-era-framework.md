@@ -7,7 +7,7 @@ implementation_notes: null
 category: Intent Engineering
 evidence_strength: Medium (practitioner-documented)
 adoption_status: Not Yet Started
-proposer_priority: null
+proposer_priority: P3
 applicability:
 - General
 adopted_in: []
@@ -15,7 +15,7 @@ sources:
 - nate-b-jones-videos-feb-mar-2026.md
 proposals: []
 date_discovered: '2026-03-09'
-last_updated: '2026-04-07'
+last_updated: '2026-04-19'
 pipeline_status: raw
 consumed_by: []
 ---
