@@ -6,7 +6,7 @@ implementation_notes: null
 category: Context Engineering
 evidence_strength: Medium (practitioner-documented)
 adoption_status: Not Yet Started
-proposer_priority: null
+proposer_priority: P3 (Monitor)
 applicability:
 - S3 (Claude Code Build)
 adopted_in: []
