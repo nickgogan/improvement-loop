@@ -7,7 +7,7 @@ implementation_notes: null
 category: Tool Integration
 evidence_strength: Strong (production-tested)
 adoption_status: Partially Adopted
-proposer_priority: null
+proposer_priority: P2
 applicability:
 - S3 (Claude Code Build)
 adopted_in:
@@ -16,7 +16,7 @@ sources:
 - cursor-ai-mcp-server-configuration-setup-auth-best.md
 proposals: null
 date_discovered: '2026-03-15'
-last_updated: '2026-04-08'
+last_updated: '2026-04-19'
 related_findings:
 - file: gpt-54-tool-search-deferred-tool-loading.md
   rel: same-problem

@@ -7,14 +7,14 @@ implementation_notes: null
 category: Tool Integration
 evidence_strength: Medium (practitioner-documented)
 adoption_status: Not Yet Started
-proposer_priority: null
+proposer_priority: P3
 applicability:
 - S3 (Claude Code Build)
 adopted_in: []
 sources: []
 proposals: []
 date_discovered: '2026-03-15'
-last_updated: '2026-04-08'
+last_updated: '2026-04-19'
 related_findings:
 - file: obsidian-web-clipper-local-images-ingestion-pipeline.md
   rel: same-problem
