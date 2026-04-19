@@ -1,25 +1,31 @@
 ---
-name: "Progressive/Tiered Context Loading Is Converging"
-summary: "Four repos independently implement progressive context loading — loading minimal context first, expanding on demand. BMAD (L1/L2/L3), OpenViking (L0/L1/L2), DeerFlow (skill descriptions→full SKILL.md), Beads (SKILL.md→14 resource files). Strongest convergent signal in the registry."
+name: Progressive/Tiered Context Loading Is Converging
+summary: Four repos independently implement progressive context loading — loading minimal context first, expanding on demand. BMAD (L1/L2/L3), OpenViking (L0/L1/L2), DeerFlow (skill descriptions→full SKILL.md),
+  Beads (SKILL.md→14 resource files). Strongest convergent signal in the registry.
 implementation_notes: null
-category: "Context Engineering"
-evidence_strength: "Medium (practitioner-documented)"
-adoption_status: "Partially Adopted"
+category: Context Engineering
+evidence_strength: Medium (practitioner-documented)
+adoption_status: Partially Adopted
 proposer_priority: null
 applicability:
-  - "S3 (Claude Code Build)"
-  - "General"
+- S3 (Claude Code Build)
+- General
 adopted_in: []
 sources: []
 related_findings:
-  - {file: "tiered-context-injection-over-monolithic-files.md", rel: "extends"}
-  - {file: "three-layer-context-chain-loading.md", rel: "same-problem"}
-  - {file: "three-tier-progressive-context-loading.md", rel: "extends"}
-  - {file: "progressive-skill-loading.md", rel: "extends"}
-  - {file: "gpt-54-tool-search-deferred-tool-loading.md", rel: "same-problem"}
+- file: tiered-context-injection-over-monolithic-files.md
+  rel: extends
+- file: three-layer-context-chain-loading.md
+  rel: same-problem
+- file: three-tier-progressive-context-loading.md
+  rel: extends
+- file: progressive-skill-loading.md
+  rel: extends
+- file: gpt-54-tool-search-deferred-tool-loading.md
+  rel: same-problem
 proposals: null
-date_discovered: "2026-04-19"
-last_updated: "2026-04-19"
+date_discovered: '2026-04-19'
+last_updated: '2026-04-19'
 ---
 
 ## What It Is

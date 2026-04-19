@@ -18,7 +18,7 @@ last_updated: '2026-04-07'
 related_findings:
 - file: mineru-local-document-parsing-for-rag.md
   rel: enabled-by
-pipeline_status: "raw"
+pipeline_status: raw
 consumed_by: []
 ---
 # RAG-Anything: Multimodal Document Processing for Claude Code

@@ -21,7 +21,7 @@ related_findings:
   rel: same-problem
 - file: brevity-constraints-reverse-llm-performance.md
   rel: same-problem
-pipeline_status: "raw"
+pipeline_status: raw
 consumed_by: []
 ---
 # Star Commands for Explicit Output Format Override

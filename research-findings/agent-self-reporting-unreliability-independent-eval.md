@@ -41,10 +41,10 @@ related_findings:
   rel: same-problem
 date_discovered: '2026-04-07'
 last_updated: '2026-04-09'
-pipeline_status: "synthesized"
+pipeline_status: synthesized
 consumed_by:
-  - "building-agent-evaluation-suites.md"
-  - "rules/agent-self-reporting-unreliability-independent-eval.md"
+- building-agent-evaluation-suites.md
+- rules/agent-self-reporting-unreliability-independent-eval.md
 ---
 
 ## What It Is

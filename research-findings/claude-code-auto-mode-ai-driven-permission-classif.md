@@ -21,9 +21,9 @@ sources:
 proposals: []
 date_discovered: '2026-04-01'
 last_updated: '2026-04-09'
-pipeline_status: "synthesized"
+pipeline_status: synthesized
 consumed_by:
-  - "agent-safety-and-permissions.md"
+- agent-safety-and-permissions.md
 ---
 # Claude Code Auto Mode -- AI-Driven Permission Classification
 

@@ -27,7 +27,7 @@ related_findings:
   rel: same-problem
 - file: context-curation-over-context-stuffing.md
   rel: same-problem
-pipeline_status: "raw"
+pipeline_status: raw
 consumed_by: []
 ---
 # Catastrophic Context Collapse Risk During CLAUDE.md Compaction

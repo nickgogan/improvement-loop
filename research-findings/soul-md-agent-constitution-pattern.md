@@ -22,9 +22,9 @@ related_findings:
   rel: same-problem
 - file: context-file-taxonomy-claudemd-soulmd-agentsmd.md
   rel: extends
-pipeline_status: "synthesized"
+pipeline_status: synthesized
 consumed_by:
-  - "agent-design-patterns.md"
+- agent-design-patterns.md
 ---
 # SOUL.md Agent Constitution Pattern
 

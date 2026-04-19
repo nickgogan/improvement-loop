@@ -19,15 +19,15 @@ proposals: []
 date_discovered: '2026-03-23'
 last_updated: 2026-04-08
 related_findings:
-  - file: "review-obsolescence-as-design-goal.md"
-    rel: "same-problem"
-  - file: "gstack-review-army-parallel-specialist-dispatch.md"
-    rel: "same-problem"
-  - file: "agent-architecture-layer-impermanence.md"
-    rel: "same-problem"
-pipeline_status: "synthesized"
+- file: review-obsolescence-as-design-goal.md
+  rel: same-problem
+- file: gstack-review-army-parallel-specialist-dispatch.md
+  rel: same-problem
+- file: agent-architecture-layer-impermanence.md
+  rel: same-problem
+pipeline_status: synthesized
 consumed_by:
-  - "agent-workflow-and-execution.md"
+- agent-workflow-and-execution.md
 ---
 # Review Pipeline Bottleneck and Quality-at-Source
 

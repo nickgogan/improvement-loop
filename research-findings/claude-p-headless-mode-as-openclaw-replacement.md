@@ -19,7 +19,7 @@ last_updated: '2026-04-09'
 related_findings:
 - file: sdk-vs-framework-decision-for-agent-building.md
   rel: same-problem
-pipeline_status: "raw"
+pipeline_status: raw
 consumed_by: []
 ---
 # claude -p (Headless Mode) as OpenClaw Replacement

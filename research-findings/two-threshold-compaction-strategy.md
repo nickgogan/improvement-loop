@@ -1,22 +1,25 @@
 ---
-name: "Two-Threshold Compaction Strategy"
-summary: "Dual-threshold context management: at 50% context window, trigger non-blocking background upload/archival; at 70%, force-clear uploaded messages and replace with summary. Two stages prevent both premature context loss and context overflow."
+name: Two-Threshold Compaction Strategy
+summary: 'Dual-threshold context management: at 50% context window, trigger non-blocking background upload/archival; at 70%, force-clear uploaded messages and replace with summary. Two stages prevent both
+  premature context loss and context overflow.'
 implementation_notes: null
-category: "Context Engineering"
-evidence_strength: "Medium (practitioner-documented)"
-adoption_status: "Not Yet Started"
+category: Context Engineering
+evidence_strength: Medium (practitioner-documented)
+adoption_status: Not Yet Started
 proposer_priority: null
 applicability:
-  - "S3 (Claude Code Build)"
-  - "General"
+- S3 (Claude Code Build)
+- General
 adopted_in: []
 sources: []
 related_findings:
-  - {file: "token-budget-pre-turn-projection.md", rel: "extends"}
-  - {file: "semantic-memory-decay-compaction.md", rel: "same-problem"}
+- file: token-budget-pre-turn-projection.md
+  rel: extends
+- file: semantic-memory-decay-compaction.md
+  rel: same-problem
 proposals: null
-date_discovered: "2026-04-19"
-last_updated: "2026-04-19"
+date_discovered: '2026-04-19'
+last_updated: '2026-04-19'
 ---
 
 ## What It Is

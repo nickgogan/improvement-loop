@@ -1,28 +1,28 @@
 ---
-name: "Four-Layer Prompt Injection Defense"
-summary: "Defense-in-depth for AI agents reading untrusted web content: content envelope, hidden element stripping, datamarking, and extensible content filter pipeline."
+name: Four-Layer Prompt Injection Defense
+summary: 'Defense-in-depth for AI agents reading untrusted web content: content envelope, hidden element stripping, datamarking, and extensible content filter pipeline.'
 implementation_notes: null
-category: "Sandboxing"
-evidence_strength: "Medium (practitioner-documented)"
-adoption_status: "Not Yet Started"
-proposer_priority: "P1 (Implement Now)"
+category: Sandboxing
+evidence_strength: Medium (practitioner-documented)
+adoption_status: Not Yet Started
+proposer_priority: P1 (Implement Now)
 applicability:
-  - "General / Cross-System"
+- General / Cross-System
 adopted_in: []
 sources:
-  - "gstack-v01590-v015160-changelog.md"
-  - "anthropic-trustworthy-agents-in-practice.md"
+- gstack-v01590-v015160-changelog.md
+- anthropic-trustworthy-agents-in-practice.md
 related_findings:
-  - file: "gsd-prompt-injection-scanner-hardening.md"
-    rel: "same-problem"
-  - file: "prompt-injection-risk-from-trusted-vs-untrusted.md"
-    rel: "extends"
+- file: gsd-prompt-injection-scanner-hardening.md
+  rel: same-problem
+- file: prompt-injection-risk-from-trusted-vs-untrusted.md
+  rel: extends
 proposals: null
-date_discovered: "2026-04-07"
-last_updated: "2026-04-09"
-pipeline_status: "synthesized"
+date_discovered: '2026-04-07'
+last_updated: '2026-04-09'
+pipeline_status: synthesized
 consumed_by:
-  - "agent-safety-and-permissions.md"
+- agent-safety-and-permissions.md
 ---
 # Four-Layer Prompt Injection Defense
 

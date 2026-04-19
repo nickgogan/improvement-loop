@@ -28,7 +28,7 @@ related_findings:
 proposals: null
 date_discovered: '2026-04-07'
 last_updated: '2026-04-09'
-pipeline_status: "raw"
+pipeline_status: raw
 consumed_by: []
 ---
 # Cloud Plan Parallel Multitasking Pattern

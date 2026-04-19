@@ -21,7 +21,7 @@ last_updated: '2026-04-09'
 related_findings:
 - file: mcp-n-plus-m-integration-economics.md
   rel: contradicts
-pipeline_status: "raw"
+pipeline_status: raw
 consumed_by: []
 ---
 # CLI-First Tool Integration: Less Overhead Than MCP for Claude Code

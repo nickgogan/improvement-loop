@@ -1,19 +1,20 @@
 ---
-name: "Agent State Machine with Witness Monitoring"
-summary: "Formal state machine for agent lifecycle (idle→spawning→running→done/stuck/dead/stopped) with an external Witness monitor that tracks heartbeats and can set terminal states. Agents cannot declare themselves dead — separation of monitoring from execution."
+name: Agent State Machine with Witness Monitoring
+summary: Formal state machine for agent lifecycle (idle→spawning→running→done/stuck/dead/stopped) with an external Witness monitor that tracks heartbeats and can set terminal states. Agents cannot declare
+  themselves dead — separation of monitoring from execution.
 implementation_notes: null
-category: "Agent Design"
-evidence_strength: "Medium (practitioner-documented)"
-adoption_status: "Not Yet Started"
+category: Agent Design
+evidence_strength: Medium (practitioner-documented)
+adoption_status: Not Yet Started
 proposer_priority: null
 applicability:
-  - "S3 (Claude Code Build)"
+- S3 (Claude Code Build)
 adopted_in: []
 sources: []
 related_findings: []
 proposals: null
-date_discovered: "2026-04-19"
-last_updated: "2026-04-19"
+date_discovered: '2026-04-19'
+last_updated: '2026-04-19'
 ---
 
 ## What It Is

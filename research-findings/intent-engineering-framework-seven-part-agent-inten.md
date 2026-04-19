@@ -26,9 +26,9 @@ related_findings:
   rel: same-problem
 - file: stop-rules-as-execution-boundaries.md
   rel: extends
-pipeline_status: "synthesized"
+pipeline_status: synthesized
 consumed_by:
-  - "writing-agent-specifications.md"
+- writing-agent-specifications.md
 ---
 # Intent Engineering Framework -- Seven-Part Agent Intent Specification
 

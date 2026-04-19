@@ -21,9 +21,9 @@ last_updated: '2026-04-09'
 related_findings:
 - file: cursor-claude-code-ide-composition.md
   rel: same-problem
-pipeline_status: "synthesized"
+pipeline_status: synthesized
 consumed_by:
-  - "designing-agent-tools.md"
+- designing-agent-tools.md
 ---
 # GPT-5.4 Tool Search -- Deferred Tool Loading
 

@@ -1,28 +1,29 @@
 ---
-name: "Self-Improving Agent: Prompt and Tool Diagnosis"
-summary: "Give the agent its own prompt and failure traces, ask it to diagnose and suggest improvements. Separately, a tool-testing agent uses flawed MCP tools, identifies failure modes, and rewrites tool descriptions. The tool-testing approach yielded 40% decrease in task completion time."
-implementation_notes: "Directly applicable to MetaSystem's skill development workflow. After a skill fails, feed the failure trace back to Claude to diagnose the prompt/tool issue."
-category: "Agent Design"
-evidence_strength: "Strong (production-tested)"
-adoption_status: "Not Yet Started"
-proposer_priority: "P2 (Design Required)"
+name: 'Self-Improving Agent: Prompt and Tool Diagnosis'
+summary: Give the agent its own prompt and failure traces, ask it to diagnose and suggest improvements. Separately, a tool-testing agent uses flawed MCP tools, identifies failure modes, and rewrites tool
+  descriptions. The tool-testing approach yielded 40% decrease in task completion time.
+implementation_notes: Directly applicable to MetaSystem's skill development workflow. After a skill fails, feed the failure trace back to Claude to diagnose the prompt/tool issue.
+category: Agent Design
+evidence_strength: Strong (production-tested)
+adoption_status: Not Yet Started
+proposer_priority: P2 (Design Required)
 applicability:
-  - "S3 (Claude Code Build)"
-  - "General"
+- S3 (Claude Code Build)
+- General
 adopted_in: []
 sources:
-  - "anthropic-multi-agent-research-system.md"
+- anthropic-multi-agent-research-system.md
 related_findings:
-  - file: "agent-self-reporting-unreliability-independent-eval.md"
-    rel: "same-problem"
-  - file: "eval-driven-development-autonomous-quality.md"
-    rel: "same-problem"
+- file: agent-self-reporting-unreliability-independent-eval.md
+  rel: same-problem
+- file: eval-driven-development-autonomous-quality.md
+  rel: same-problem
 proposals: null
-date_discovered: "2026-04-09"
-last_updated: "2026-04-09"
-pipeline_status: "synthesized"
+date_discovered: '2026-04-09'
+last_updated: '2026-04-09'
+pipeline_status: synthesized
 consumed_by:
-  - "agent-design-patterns.md"
+- agent-design-patterns.md
 ---
 
 ## What It Is

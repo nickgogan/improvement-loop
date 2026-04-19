@@ -23,9 +23,9 @@ related_findings:
   rel: extended-by
 - file: tool-gateway-security-boundary.md
   rel: enables
-pipeline_status: "synthesized"
+pipeline_status: synthesized
 consumed_by:
-  - "agent-safety-and-permissions.md"
+- agent-safety-and-permissions.md
 ---
 # Tiered Permission System with Destructive-Command Safety Architecture
 

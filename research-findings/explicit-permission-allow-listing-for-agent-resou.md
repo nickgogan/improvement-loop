@@ -26,7 +26,7 @@ related_findings:
   rel: same-problem
 - file: worktree-isolation-for-parallel-agent-sessions.md
   rel: same-problem
-pipeline_status: "raw"
+pipeline_status: raw
 consumed_by: []
 ---
 # Explicit Permission Allow-Listing for Agent Resource Access

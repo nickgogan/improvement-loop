@@ -27,9 +27,9 @@ related_findings:
 proposals: []
 date_discovered: '2026-04-07'
 last_updated: '2026-04-08'
-pipeline_status: "synthesized"
+pipeline_status: synthesized
 consumed_by:
-  - "agent-design-patterns.md"
+- agent-design-patterns.md
 ---
 
 # Critic/Verifier Loop with Termination Conditions

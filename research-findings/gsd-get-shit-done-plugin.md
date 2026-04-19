@@ -22,7 +22,7 @@ related_findings:
   rel: enables
 - file: archon-yaml-defined-harness-workflows.md
   rel: same-problem
-pipeline_status: "raw"
+pipeline_status: raw
 consumed_by: []
 ---
 # GSD (Get Shit Done) Plugin

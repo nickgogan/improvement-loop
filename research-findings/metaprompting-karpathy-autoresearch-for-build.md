@@ -18,9 +18,9 @@ proposals: []
 date_discovered: '2026-03-15'
 last_updated: 2026-04-08
 related_findings:
-  - file: "advanced-elicitation-techniques-library.md"
-    rel: "same-problem"
-pipeline_status: "raw"
+- file: advanced-elicitation-techniques-library.md
+  rel: same-problem
+pipeline_status: raw
 consumed_by: []
 ---
 # Metaprompting / Karpathy Autoresearch for Build Specs

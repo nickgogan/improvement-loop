@@ -1,21 +1,24 @@
 ---
-name: "Progressive Skill Loading"
-summary: "Skill descriptions (~50 tokens each) injected at boot as XML elements. Full SKILL.md content (~500-2000 tokens) loaded on-demand when agent calls read_file. Prevents context bloat from 16+ skills while maintaining discoverability."
+name: Progressive Skill Loading
+summary: Skill descriptions (~50 tokens each) injected at boot as XML elements. Full SKILL.md content (~500-2000 tokens) loaded on-demand when agent calls read_file. Prevents context bloat from 16+ skills
+  while maintaining discoverability.
 implementation_notes: null
-category: "Context Engineering"
-evidence_strength: "Medium (practitioner-documented)"
-adoption_status: "Partially Adopted"
+category: Context Engineering
+evidence_strength: Medium (practitioner-documented)
+adoption_status: Partially Adopted
 proposer_priority: null
 applicability:
-  - "S3 (Claude Code Build)"
+- S3 (Claude Code Build)
 adopted_in: []
 sources: []
 related_findings:
-  - {file: "gpt-54-tool-search-deferred-tool-loading.md", rel: "same-problem"}
-  - {file: "mcp-as-code-api-progressive-tool-discovery.md", rel: "same-problem"}
+- file: gpt-54-tool-search-deferred-tool-loading.md
+  rel: same-problem
+- file: mcp-as-code-api-progressive-tool-discovery.md
+  rel: same-problem
 proposals: null
-date_discovered: "2026-04-19"
-last_updated: "2026-04-19"
+date_discovered: '2026-04-19'
+last_updated: '2026-04-19'
 ---
 
 ## What It Is

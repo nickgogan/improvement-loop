@@ -1,22 +1,25 @@
 ---
-name: "Middleware-as-Enforcement Architecture"
-summary: "Security and behavioral constraints implemented as composable, ordered middleware layers rather than monolithic checks. 12 middleware layers control agent behavior: error handling, sandbox lifecycle, context compression, token tracking, subagent limiting, loop detection, clarification interrupts."
+name: Middleware-as-Enforcement Architecture
+summary: 'Security and behavioral constraints implemented as composable, ordered middleware layers rather than monolithic checks. 12 middleware layers control agent behavior: error handling, sandbox lifecycle,
+  context compression, token tracking, subagent limiting, loop detection, clarification interrupts.'
 implementation_notes: null
-category: "Governance"
-evidence_strength: "Medium (practitioner-documented)"
-adoption_status: "Not Yet Started"
+category: Governance
+evidence_strength: Medium (practitioner-documented)
+adoption_status: Not Yet Started
 proposer_priority: null
 applicability:
-  - "S3 (Claude Code Build)"
-  - "General"
+- S3 (Claude Code Build)
+- General
 adopted_in: []
 sources: []
 related_findings:
-  - {file: "agent-identity-governance-enforcement-layer.md", rel: "extends"}
-  - {file: "hook-based-enforcement-for-agent-outputs.md", rel: "same-problem"}
+- file: agent-identity-governance-enforcement-layer.md
+  rel: extends
+- file: hook-based-enforcement-for-agent-outputs.md
+  rel: same-problem
 proposals: null
-date_discovered: "2026-04-19"
-last_updated: "2026-04-19"
+date_discovered: '2026-04-19'
+last_updated: '2026-04-19'
 ---
 
 ## What It Is

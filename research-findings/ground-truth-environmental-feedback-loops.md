@@ -1,26 +1,27 @@
 ---
-name: "Ground-Truth Environmental Feedback Loops for Agents"
-summary: "Agents must obtain concrete environmental feedback (tool results, test output, API responses) at each step rather than relying on self-assessment. Environmental feedback, not self-evaluation, drives reliable agent decisions."
-implementation_notes: "Validates MetaSystem's test-before-build and verification-first principles. Coding agents outperform in other domains precisely because of test feedback availability."
-category: "Agent Design"
-evidence_strength: "Strong (production-tested)"
-adoption_status: "Partially Adopted"
-proposer_priority: "P1 (Implement Now)"
+name: Ground-Truth Environmental Feedback Loops for Agents
+summary: Agents must obtain concrete environmental feedback (tool results, test output, API responses) at each step rather than relying on self-assessment. Environmental feedback, not self-evaluation, drives
+  reliable agent decisions.
+implementation_notes: Validates MetaSystem's test-before-build and verification-first principles. Coding agents outperform in other domains precisely because of test feedback availability.
+category: Agent Design
+evidence_strength: Strong (production-tested)
+adoption_status: Partially Adopted
+proposer_priority: P1 (Implement Now)
 applicability:
-  - "S3 (Claude Code Build)"
-  - "General / Cross-System"
+- S3 (Claude Code Build)
+- General / Cross-System
 adopted_in:
-  - "S3 (Claude Code Build)"
+- S3 (Claude Code Build)
 sources:
-  - "anthropic-building-effective-agents.md"
-  - "anthropic-long-running-claude-scientific-computing.md"
+- anthropic-building-effective-agents.md
+- anthropic-long-running-claude-scientific-computing.md
 related_findings: []
 proposals: null
-date_discovered: "2026-04-09"
-last_updated: "2026-04-09"
-pipeline_status: "synthesized"
+date_discovered: '2026-04-09'
+last_updated: '2026-04-09'
+pipeline_status: synthesized
 consumed_by:
-  - "session-persistence-and-memory.md"
+- session-persistence-and-memory.md
 ---
 
 ## What It Is

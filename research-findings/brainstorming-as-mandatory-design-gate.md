@@ -1,21 +1,23 @@
 ---
-name: "Brainstorming as Mandatory Design Gate"
-summary: "Superpowers enforces brainstorming before ANY implementation via HARD-GATE XML tags — no code, no scaffolding, no implementation actions until a design is presented and approved. 'This Is Too Simple To Need A Design' is explicitly listed as an anti-pattern."
+name: Brainstorming as Mandatory Design Gate
+summary: Superpowers enforces brainstorming before ANY implementation via HARD-GATE XML tags — no code, no scaffolding, no implementation actions until a design is presented and approved. 'This Is Too Simple
+  To Need A Design' is explicitly listed as an anti-pattern.
 implementation_notes: null
-category: "Intent Engineering"
-evidence_strength: "Medium (practitioner-documented)"
-adoption_status: "Not Yet Started"
+category: Intent Engineering
+evidence_strength: Medium (practitioner-documented)
+adoption_status: Not Yet Started
 proposer_priority: null
 applicability:
-  - "S3 (Claude Code Build)"
+- S3 (Claude Code Build)
 adopted_in: []
 sources: []
 related_findings:
-  - {file: "superpowers-plugin-spec-driven-sub-agent-orchestra.md", rel: "extends"}
+- file: superpowers-plugin-spec-driven-sub-agent-orchestra.md
+  rel: extends
 proposals: null
-date_discovered: "2026-04-08"
-last_updated: "2026-04-08"
-pipeline_status: "raw"
+date_discovered: '2026-04-08'
+last_updated: '2026-04-08'
+pipeline_status: raw
 consumed_by: []
 ---
 # Brainstorming as Mandatory Design Gate

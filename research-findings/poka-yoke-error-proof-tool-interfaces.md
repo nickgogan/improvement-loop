@@ -1,25 +1,26 @@
 ---
-name: "Poka-Yoke Error-Proof Tool Interface Design"
-summary: "Apply manufacturing error-proofing to tool design: restructure arguments to make errors structurally impossible. Requiring absolute filepaths instead of relative ones eliminated path errors completely in SWE-bench."
-implementation_notes: "Audit MetaSystem tool/skill parameters for poka-yoke opportunities. The file edit tool's absolute path requirement is an example already in use."
-category: "Tool Integration"
-evidence_strength: "Strong (production-tested)"
-adoption_status: "Partially Adopted"
-proposer_priority: "P1 (Implement Now)"
+name: Poka-Yoke Error-Proof Tool Interface Design
+summary: 'Apply manufacturing error-proofing to tool design: restructure arguments to make errors structurally impossible. Requiring absolute filepaths instead of relative ones eliminated path errors completely
+  in SWE-bench.'
+implementation_notes: Audit MetaSystem tool/skill parameters for poka-yoke opportunities. The file edit tool's absolute path requirement is an example already in use.
+category: Tool Integration
+evidence_strength: Strong (production-tested)
+adoption_status: Partially Adopted
+proposer_priority: P1 (Implement Now)
 applicability:
-  - "S3 (Claude Code Build)"
-  - "General / Cross-System"
+- S3 (Claude Code Build)
+- General / Cross-System
 adopted_in:
-  - "S3 (Claude Code Build)"
+- S3 (Claude Code Build)
 sources:
-  - "anthropic-building-effective-agents.md"
+- anthropic-building-effective-agents.md
 related_findings: []
 proposals: null
-date_discovered: "2026-04-09"
-last_updated: "2026-04-09"
-pipeline_status: "synthesized"
+date_discovered: '2026-04-09'
+last_updated: '2026-04-09'
+pipeline_status: synthesized
 consumed_by:
-  - "designing-agent-tools.md"
+- designing-agent-tools.md
 ---
 
 ## What It Is

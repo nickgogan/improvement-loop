@@ -1,21 +1,23 @@
 ---
-name: "Three-Tier Costed Eval System"
-summary: "Three eval tiers with explicit costs: Tier 1 free static validation (<1s), Tier 2 E2E via claude -p (~$3.85/run), Tier 3 LLM-as-judge (~$0.15/run). Diff-based test selection. Gate tier (blocks merge) vs periodic tier (weekly cron) classification."
+name: Three-Tier Costed Eval System
+summary: 'Three eval tiers with explicit costs: Tier 1 free static validation (<1s), Tier 2 E2E via claude -p (~$3.85/run), Tier 3 LLM-as-judge (~$0.15/run). Diff-based test selection. Gate tier (blocks
+  merge) vs periodic tier (weekly cron) classification.'
 implementation_notes: null
-category: "Evaluation"
-evidence_strength: "Medium (practitioner-documented)"
-adoption_status: "Not Yet Started"
+category: Evaluation
+evidence_strength: Medium (practitioner-documented)
+adoption_status: Not Yet Started
 proposer_priority: null
 applicability:
-  - "S3 (Claude Code Build)"
+- S3 (Claude Code Build)
 adopted_in: []
 sources: []
 related_findings:
-  - {file: "four-layer-production-eval-stack-with-golden-traces.md", rel: "same-problem"}
+- file: four-layer-production-eval-stack-with-golden-traces.md
+  rel: same-problem
 proposals: null
-date_discovered: "2026-04-08"
-last_updated: "2026-04-08"
-pipeline_status: "raw"
+date_discovered: '2026-04-08'
+last_updated: '2026-04-08'
+pipeline_status: raw
 consumed_by: []
 ---
 

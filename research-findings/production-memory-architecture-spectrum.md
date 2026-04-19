@@ -1,6 +1,7 @@
 ---
 name: Production Memory Architecture Spectrum
-summary: Five distinct memory architectures observed across 7 repos, from no memory (context window only) to triple storage service (vector + graph + SQLite). Memory sophistication correlates with deployment persistence. Maps the full spectrum of production memory approaches.
+summary: Five distinct memory architectures observed across 7 repos, from no memory (context window only) to triple storage service (vector + graph + SQLite). Memory sophistication correlates with deployment
+  persistence. Maps the full spectrum of production memory approaches.
 implementation_notes: null
 category: Context Engineering
 evidence_strength: Medium (practitioner-documented)
@@ -20,7 +21,7 @@ related_findings:
 proposals: null
 date_discovered: '2026-04-08'
 last_updated: '2026-04-08'
-pipeline_status: "raw"
+pipeline_status: raw
 consumed_by: []
 ---
 ## What It Is

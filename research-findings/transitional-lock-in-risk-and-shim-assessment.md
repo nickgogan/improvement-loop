@@ -1,25 +1,26 @@
 ---
-name: "Transitional Lock-In Risk and Shim Assessment Framework"
-summary: "Every integration choice in the agent stack is either a native architectural bet or a transitional shim. Shims (e.g., email-as-identity for agents) create migration costs when native protocols arrive. Framework: classify each dependency as shim or native, assess swap cost, and plan exit paths."
-implementation_notes: "Apply to MetaSystem's MCP integrations, Notion usage, and file-based governance. Which are architectural bets and which are pragmatic shims we expect to replace?"
-category: "Orchestration"
-evidence_strength: "Medium (practitioner-documented)"
-adoption_status: "Not Yet Started"
-proposer_priority: "P2 (Design Required)"
+name: Transitional Lock-In Risk and Shim Assessment Framework
+summary: 'Every integration choice in the agent stack is either a native architectural bet or a transitional shim. Shims (e.g., email-as-identity for agents) create migration costs when native protocols
+  arrive. Framework: classify each dependency as shim or native, assess swap cost, and plan exit paths.'
+implementation_notes: Apply to MetaSystem's MCP integrations, Notion usage, and file-based governance. Which are architectural bets and which are pragmatic shims we expect to replace?
+category: Orchestration
+evidence_strength: Medium (practitioner-documented)
+adoption_status: Not Yet Started
+proposer_priority: P2 (Design Required)
 applicability:
-  - "S3 (Claude Code Build)"
-  - "General"
+- S3 (Claude Code Build)
+- General
 adopted_in: []
 sources:
-  - "building-agents-on-layers-that-wont-exist.md"
-date_discovered: "2026-04-07"
+- building-agents-on-layers-that-wont-exist.md
+date_discovered: '2026-04-07'
 last_updated: 2026-04-08
 related_findings:
-  - file: "agent-architecture-layer-impermanence.md"
-    rel: "same-problem"
-pipeline_status: "synthesized"
+- file: agent-architecture-layer-impermanence.md
+  rel: same-problem
+pipeline_status: synthesized
 consumed_by:
-  - "agent-architecture-decisions.md"
+- agent-architecture-decisions.md
 ---
 
 ## What It Is

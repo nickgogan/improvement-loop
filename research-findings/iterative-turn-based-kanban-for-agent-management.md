@@ -1,20 +1,21 @@
 ---
-name: "Iterative Turn-Based Kanban for Agent Management"
-summary: "A kanban variant with two columns -- Your Turn and Claude's Turn -- reflecting the iterative, non-sequential nature of agent conversations. Tasks bounce between columns as feedback loops iterate, replacing the traditional linear kanban (Not Started -> In Progress -> Review -> Done)."
+name: Iterative Turn-Based Kanban for Agent Management
+summary: A kanban variant with two columns -- Your Turn and Claude's Turn -- reflecting the iterative, non-sequential nature of agent conversations. Tasks bounce between columns as feedback loops iterate,
+  replacing the traditional linear kanban (Not Started -> In Progress -> Review -> Done).
 implementation_notes: null
-category: "Orchestration"
-evidence_strength: "Medium (practitioner-documented)"
-adoption_status: "Not Yet Started"
-proposer_priority: "P3 (Monitor)"
+category: Orchestration
+evidence_strength: Medium (practitioner-documented)
+adoption_status: Not Yet Started
+proposer_priority: P3 (Monitor)
 applicability:
-  - "S3 (Claude Code Build)"
-  - "General"
+- S3 (Claude Code Build)
+- General
 adopted_in: []
 sources:
-  - "stop-using-claude-code-in-terminal.md"
-date_discovered: "2026-04-07"
-last_updated: "2026-04-07"
-pipeline_status: "raw"
+- stop-using-claude-code-in-terminal.md
+date_discovered: '2026-04-07'
+last_updated: '2026-04-07'
+pipeline_status: raw
 consumed_by: []
 ---
 

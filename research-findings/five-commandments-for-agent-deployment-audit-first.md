@@ -19,9 +19,9 @@ last_updated: '2026-04-07'
 related_findings:
 - file: org-redesign-for-agentic-throughput-high-speed-rail.md
   rel: same-problem
-pipeline_status: "extracted"
+pipeline_status: extracted
 consumed_by:
-  - "skills/five-commandments-agent-deployment.md"
+- skills/five-commandments-agent-deployment.md
 ---
 ## What It Is
 

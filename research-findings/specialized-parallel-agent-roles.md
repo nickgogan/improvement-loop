@@ -1,29 +1,30 @@
 ---
-name: "Specialized Parallel Agent Roles"
-summary: "Assign dedicated agents to narrow specialist roles (deduplication, performance optimization, code quality, design critique, documentation) running in parallel alongside main problem-solving agents. Specialists address cross-cutting concerns without distracting from core task execution."
-implementation_notes: "MetaSystem could run parallel specialist agents during build phases -- one for security review, one for documentation, one for pattern compliance."
-category: "Agent Design"
-evidence_strength: "Strong (production-tested)"
-adoption_status: "Not Yet Started"
-proposer_priority: "P2 (Design Required)"
+name: Specialized Parallel Agent Roles
+summary: Assign dedicated agents to narrow specialist roles (deduplication, performance optimization, code quality, design critique, documentation) running in parallel alongside main problem-solving agents.
+  Specialists address cross-cutting concerns without distracting from core task execution.
+implementation_notes: MetaSystem could run parallel specialist agents during build phases -- one for security review, one for documentation, one for pattern compliance.
+category: Agent Design
+evidence_strength: Strong (production-tested)
+adoption_status: Not Yet Started
+proposer_priority: P2 (Design Required)
 applicability:
-  - "S3 (Claude Code Build)"
+- S3 (Claude Code Build)
 adopted_in: []
 sources:
-  - "anthropic-building-c-compiler.md"
+- anthropic-building-c-compiler.md
 related_findings:
-  - file: "gstack-specialist-role-architecture.md"
-    rel: "same-problem"
-  - file: "ultra-review-multi-agent-bug-hunting-fleet.md"
-    rel: "same-problem"
-  - file: "orchestrated-execution-one-task-per-sub-agent-wit.md"
-    rel: "extends"
+- file: gstack-specialist-role-architecture.md
+  rel: same-problem
+- file: ultra-review-multi-agent-bug-hunting-fleet.md
+  rel: same-problem
+- file: orchestrated-execution-one-task-per-sub-agent-wit.md
+  rel: extends
 proposals: null
-date_discovered: "2026-04-09"
-last_updated: "2026-04-09"
-pipeline_status: "synthesized"
+date_discovered: '2026-04-09'
+last_updated: '2026-04-09'
+pipeline_status: synthesized
 consumed_by:
-  - "agent-design-patterns.md"
+- agent-design-patterns.md
 ---
 
 ## What It Is

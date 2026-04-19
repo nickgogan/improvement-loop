@@ -19,11 +19,11 @@ proposals: []
 date_discovered: '2026-03-28'
 last_updated: 2026-04-08
 related_findings:
-  - file: "advanced-elicitation-techniques-library.md"
-    rel: "same-problem"
-pipeline_status: "extracted"
+- file: advanced-elicitation-techniques-library.md
+  rel: same-problem
+pipeline_status: extracted
 consumed_by:
-  - "skills/thinking-models-mental-framework-commands.md"
+- skills/thinking-models-mental-framework-commands.md
 ---
 # Thinking Models: Mental Framework Commands for Coding Agents
 

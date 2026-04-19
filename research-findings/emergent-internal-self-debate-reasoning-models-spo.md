@@ -19,13 +19,13 @@ proposals: []
 date_discovered: '2026-04-01'
 last_updated: 2026-04-08
 related_findings:
-  - file: "reasoning-model-anti-pattern-prescribed-reasoning.md"
-    rel: "same-problem"
-  - file: "advanced-elicitation-techniques-library.md"
-    rel: "same-problem"
-  - file: "agent-architecture-layer-impermanence.md"
-    rel: "same-problem"
-pipeline_status: "raw"
+- file: reasoning-model-anti-pattern-prescribed-reasoning.md
+  rel: same-problem
+- file: advanced-elicitation-techniques-library.md
+  rel: same-problem
+- file: agent-architecture-layer-impermanence.md
+  rel: same-problem
+pipeline_status: raw
 consumed_by: []
 ---
 # Emergent Internal Self-Debate -- Reasoning Models Spontaneously Simulate Multi-Agent Dialogue

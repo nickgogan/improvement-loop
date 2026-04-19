@@ -24,9 +24,9 @@ related_findings:
   rel: same-problem
 - file: mcp-elicitation-for-user-input.md
   rel: enabled-by
-pipeline_status: "synthesized"
+pipeline_status: synthesized
 consumed_by:
-  - "agent-governance-and-trust.md"
+- agent-governance-and-trust.md
 ---
 # Human-on-the-Loop (HOTL) Autonomy Tiering Framework
 

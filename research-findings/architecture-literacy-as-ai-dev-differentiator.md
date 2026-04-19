@@ -1,21 +1,22 @@
 ---
-name: "Architecture Literacy as AI Dev Differentiator"
-summary: "Understanding system architecture — not just copying prompts — separates effective AI developers. Knowing how components work, why cost optimizations matter, and how entity merging functions enables practitioners to create custom skills, debug issues, and adapt patterns to new contexts."
+name: Architecture Literacy as AI Dev Differentiator
+summary: Understanding system architecture — not just copying prompts — separates effective AI developers. Knowing how components work, why cost optimizations matter, and how entity merging functions enables
+  practitioners to create custom skills, debug issues, and adapt patterns to new contexts.
 implementation_notes: null
-category: "Agent Design"
-evidence_strength: "Weak (theoretical)"
-adoption_status: "Not Yet Started"
-proposer_priority: "P3 (Monitor)"
+category: Agent Design
+evidence_strength: Weak (theoretical)
+adoption_status: Not Yet Started
+proposer_priority: P3 (Monitor)
 applicability:
-  - "General"
+- General
 adopted_in: []
 sources:
-  - "claude-code-plus-rag-anything.md"
+- claude-code-plus-rag-anything.md
 related_findings: []
 proposals: null
-date_discovered: "2026-04-07"
-last_updated: "2026-04-07"
-pipeline_status: "raw"
+date_discovered: '2026-04-07'
+last_updated: '2026-04-07'
+pipeline_status: raw
 consumed_by: []
 ---
 # Architecture Literacy as AI Dev Differentiator

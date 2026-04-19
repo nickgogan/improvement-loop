@@ -1,21 +1,23 @@
 ---
-name: "CEO Mandatory Delegation Pattern"
-summary: "Top-level agent persona explicitly told 'You MUST delegate, do NOT write code yourself.' Defines what the agent should NOT do as architectural intent engineering. CEO creates subtasks with parentId/goalId and routes to domain specialists via chain of command."
+name: CEO Mandatory Delegation Pattern
+summary: Top-level agent persona explicitly told 'You MUST delegate, do NOT write code yourself.' Defines what the agent should NOT do as architectural intent engineering. CEO creates subtasks with parentId/goalId
+  and routes to domain specialists via chain of command.
 implementation_notes: null
-category: "Intent Engineering"
-evidence_strength: "Medium (practitioner-documented)"
-adoption_status: "Not Yet Started"
+category: Intent Engineering
+evidence_strength: Medium (practitioner-documented)
+adoption_status: Not Yet Started
 proposer_priority: null
 applicability:
-  - "S3 (Claude Code Build)"
+- S3 (Claude Code Build)
 adopted_in: []
 sources: []
 related_findings:
-  - {file: "org-chart-hierarchy-as-scalable-claude-code.md", rel: "extends"}
+- file: org-chart-hierarchy-as-scalable-claude-code.md
+  rel: extends
 proposals: null
-date_discovered: "2026-04-08"
-last_updated: "2026-04-08"
-pipeline_status: "raw"
+date_discovered: '2026-04-08'
+last_updated: '2026-04-08'
+pipeline_status: raw
 consumed_by: []
 ---
 

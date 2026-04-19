@@ -19,7 +19,7 @@ last_updated: '2026-04-08'
 related_findings:
 - file: happy-engineering-mobile-claude-code-via-remote.md
   rel: same-problem
-pipeline_status: "raw"
+pipeline_status: raw
 consumed_by: []
 ---
 # Claude Code Channels: Telegram/Discord as Agent Interface

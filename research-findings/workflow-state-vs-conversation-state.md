@@ -23,10 +23,10 @@ related_findings:
   rel: enabled-by
 - file: system-event-logging-actions-not-words.md
   rel: same-problem
-pipeline_status: "synthesized"
+pipeline_status: synthesized
 consumed_by:
-  - "agent-workflow-and-execution.md"
-  - "session-persistence-and-memory.md"
+- agent-workflow-and-execution.md
+- session-persistence-and-memory.md
 ---
 # Workflow State vs. Conversation State Separation
 

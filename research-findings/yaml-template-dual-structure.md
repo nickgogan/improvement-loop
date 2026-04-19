@@ -19,9 +19,9 @@ last_updated: '2026-04-08'
 related_findings:
 - file: bmad-method-v6-multi-agent-sdlc.md
   rel: enabled-by
-pipeline_status: "synthesized"
+pipeline_status: synthesized
 consumed_by:
-  - "model-resilient-prompt-engineering.md"
+- model-resilient-prompt-engineering.md
 ---
 # YAML Template Dual Structure (Schema + Coaching Instructions)
 

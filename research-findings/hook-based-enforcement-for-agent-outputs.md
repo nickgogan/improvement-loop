@@ -1,24 +1,28 @@
 ---
-name: "Hook-Based Enforcement for Agent Outputs"
-summary: "Archon's triage agent uses hooks.PostToolUse with a prompt-based hook that validates whether label application commands include exactly one type, effort, priority label plus area labels. This is enforcement-by-hook — the hook runs after every Bash tool call and can reject invalid operations before they take effect."
+name: Hook-Based Enforcement for Agent Outputs
+summary: Archon's triage agent uses hooks.PostToolUse with a prompt-based hook that validates whether label application commands include exactly one type, effort, priority label plus area labels. This is
+  enforcement-by-hook — the hook runs after every Bash tool call and can reject invalid operations before they take effect.
 implementation_notes: null
-category: "Evaluation"
-evidence_strength: "Medium (practitioner-documented)"
-adoption_status: "Not Yet Started"
+category: Evaluation
+evidence_strength: Medium (practitioner-documented)
+adoption_status: Not Yet Started
 proposer_priority: null
 applicability:
-  - "S3 (Claude Code Build)"
-  - "General"
+- S3 (Claude Code Build)
+- General
 adopted_in: []
 sources: []
 related_findings:
-  - {file: "ide-first-claude-code-with-deterministic-hooks.md", rel: "extends"}
-  - {file: "post-session-hooks-autonomous-version-control.md", rel: "same-problem"}
-  - {file: "two-level-verification-agent-run-plus-harness-inte.md", rel: "same-problem"}
+- file: ide-first-claude-code-with-deterministic-hooks.md
+  rel: extends
+- file: post-session-hooks-autonomous-version-control.md
+  rel: same-problem
+- file: two-level-verification-agent-run-plus-harness-inte.md
+  rel: same-problem
 proposals: null
-date_discovered: "2026-04-09"
-last_updated: "2026-04-09"
-pipeline_status: "raw"
+date_discovered: '2026-04-09'
+last_updated: '2026-04-09'
+pipeline_status: raw
 consumed_by: []
 ---
 

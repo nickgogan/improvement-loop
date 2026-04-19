@@ -1,27 +1,29 @@
 ---
-name: "Model-Specific Context File Sensitivity"
-summary: "Different models respond dramatically differently to context files. Claude Code (Sonnet-4.5) was the ONLY agent where even human-written context files failed to improve performance. GPT-5.1 mini exhibited redundant context-reading behavior (re-reading context files despite already having them). One-size-fits-all context strategies are empirically wrong."
-implementation_notes: "MetaSystem uses Claude Code exclusively. The ETH Zurich finding that Claude Code uniquely doesn't benefit from human-written context files should inform our CLAUDE.md optimization — Claude may already be good enough at self-discovery that most guidance is overhead."
-category: "Context Engineering"
-evidence_strength: "Strong (production-tested)"
-adoption_status: "Not Yet Started"
-proposer_priority: "P2 (Design Required)"
+name: Model-Specific Context File Sensitivity
+summary: Different models respond dramatically differently to context files. Claude Code (Sonnet-4.5) was the ONLY agent where even human-written context files failed to improve performance. GPT-5.1 mini
+  exhibited redundant context-reading behavior (re-reading context files despite already having them). One-size-fits-all context strategies are empirically wrong.
+implementation_notes: MetaSystem uses Claude Code exclusively. The ETH Zurich finding that Claude Code uniquely doesn't benefit from human-written context files should inform our CLAUDE.md optimization
+  — Claude may already be good enough at self-discovery that most guidance is overhead.
+category: Context Engineering
+evidence_strength: Strong (production-tested)
+adoption_status: Not Yet Started
+proposer_priority: P2 (Design Required)
 applicability:
-  - "S3 (Claude Code Build)"
+- S3 (Claude Code Build)
 adopted_in: []
 sources:
-  - "eth-zurich-context-files-paper-march-2026.md"
+- eth-zurich-context-files-paper-march-2026.md
 related_findings:
-  - file: "context-file-instruction-bloat-eth-zurich.md"
-    rel: "extends"
-  - file: "pointers-over-copies-in-context-files.md"
-    rel: "same-problem"
+- file: context-file-instruction-bloat-eth-zurich.md
+  rel: extends
+- file: pointers-over-copies-in-context-files.md
+  rel: same-problem
 proposals: []
-date_discovered: "2026-04-07"
-last_updated: "2026-04-07"
-pipeline_status: "synthesized"
+date_discovered: '2026-04-07'
+last_updated: '2026-04-07'
+pipeline_status: synthesized
 consumed_by:
-  - "managing-agent-context.md"
+- managing-agent-context.md
 ---
 ## What It Is
 

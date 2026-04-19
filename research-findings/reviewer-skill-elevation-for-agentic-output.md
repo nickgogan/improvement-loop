@@ -1,25 +1,28 @@
 ---
-name: "Reviewer Skill Elevation for Agentic Output"
-summary: "Reviewing AI-generated code requires different and often higher skills than writing it: pattern recognition across large diffs, architecture-level reasoning about generated patterns, and the ability to spot subtle errors in plausible-looking code. The reviewer role evolves from 'check correctness' to 'validate design decisions at speed.'"
-implementation_notes: "Relevant to MetaSystem's human gate model. Nick's review skill determines the ceiling of agent productivity."
-category: "Governance"
-evidence_strength: "Medium (practitioner-documented)"
-adoption_status: "Not Yet Started"
-proposer_priority: "P2 (Design Required)"
+name: Reviewer Skill Elevation for Agentic Output
+summary: 'Reviewing AI-generated code requires different and often higher skills than writing it: pattern recognition across large diffs, architecture-level reasoning about generated patterns, and the ability
+  to spot subtle errors in plausible-looking code. The reviewer role evolves from ''check correctness'' to ''validate design decisions at speed.'''
+implementation_notes: Relevant to MetaSystem's human gate model. Nick's review skill determines the ceiling of agent productivity.
+category: Governance
+evidence_strength: Medium (practitioner-documented)
+adoption_status: Not Yet Started
+proposer_priority: P2 (Design Required)
 applicability:
-  - "General"
+- General
 adopted_in: []
 sources:
-  - "agent-produces-100x-org-reviews-3x.md"
+- agent-produces-100x-org-reviews-3x.md
 related_findings:
-  - {file: "org-redesign-for-agentic-throughput-high-speed-rail.md", rel: "extends"}
-  - {file: "review-bandwidth-as-organizational-bottleneck.md", rel: "same-problem"}
+- file: org-redesign-for-agentic-throughput-high-speed-rail.md
+  rel: extends
+- file: review-bandwidth-as-organizational-bottleneck.md
+  rel: same-problem
 proposals: null
-date_discovered: "2026-04-07"
-last_updated: "2026-04-07"
-pipeline_status: "synthesized"
+date_discovered: '2026-04-07'
+last_updated: '2026-04-07'
+pipeline_status: synthesized
 consumed_by:
-  - "agent-governance-and-trust.md"
+- agent-governance-and-trust.md
 ---
 
 # Reviewer Skill Elevation for Agentic Output

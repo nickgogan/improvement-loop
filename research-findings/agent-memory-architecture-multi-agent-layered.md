@@ -18,29 +18,29 @@ proposals: null
 date_discovered: '2026-03-18'
 last_updated: 2026-04-08
 related_findings:
-  - file: "memory-cross-layer-promotion-governance.md"
-    rel: "enables"
-  - file: "biomimetic-memory-auto-recall-over-tool-based.md"
-    rel: "same-problem"
-  - file: "claude-code-hooks-for-automatic-session-memory.md"
-    rel: "same-problem"
-  - file: "claude-code-long-term-memory-via-pre-prompt-recall.md"
-    rel: "same-problem"
-  - file: "compounding-knowledge-loop-internal-data.md"
-    rel: "same-problem"
-  - file: "context-file-taxonomy-claudemd-soulmd-agentsmd.md"
-    rel: "same-problem"
-  - file: "four-layer-enterprise-memory-stack.md"
-    rel: "same-problem"
-  - file: "memory-bank-isolation-per-agent-per-project.md"
-    rel: "same-problem"
-  - file: "memorymd-cross-session-preference-persistence.md"
-    rel: "same-problem"
-  - file: "structured-fact-extraction-from-conversations.md"
-    rel: "same-problem"
-  - file: "ace-agentic-context-engineering-rag-based.md"
-    rel: "same-problem"
-pipeline_status: "raw"
+- file: memory-cross-layer-promotion-governance.md
+  rel: enables
+- file: biomimetic-memory-auto-recall-over-tool-based.md
+  rel: same-problem
+- file: claude-code-hooks-for-automatic-session-memory.md
+  rel: same-problem
+- file: claude-code-long-term-memory-via-pre-prompt-recall.md
+  rel: same-problem
+- file: compounding-knowledge-loop-internal-data.md
+  rel: same-problem
+- file: context-file-taxonomy-claudemd-soulmd-agentsmd.md
+  rel: same-problem
+- file: four-layer-enterprise-memory-stack.md
+  rel: same-problem
+- file: memory-bank-isolation-per-agent-per-project.md
+  rel: same-problem
+- file: memorymd-cross-session-preference-persistence.md
+  rel: same-problem
+- file: structured-fact-extraction-from-conversations.md
+  rel: same-problem
+- file: ace-agentic-context-engineering-rag-based.md
+  rel: same-problem
+pipeline_status: raw
 consumed_by: []
 ---
 # Agent Memory Architecture (Multi-Agent, Layered)

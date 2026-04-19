@@ -19,67 +19,67 @@ proposals: []
 date_discovered: '2026-04-01'
 last_updated: 2026-04-08
 related_findings:
-  - file: "ace-execution-feedback-no-labels-required.md"
-    rel: "enables"
-  - file: "ace-delta-updates-over-monolithic-rewrites.md"
-    rel: "enables"
-  - file: "ace-agentic-context-engineering-rag-based.md"
-    rel: "same-problem"
-  - file: "agent-context-kiss-commandments-minimum-viable.md"
-    rel: "same-problem"
-  - file: "catastrophic-context-collapse-risk-during-claudemd.md"
-    rel: "same-problem"
-  - file: "claudemd-as-knowledge-base-traversal-guide.md"
-    rel: "same-problem"
-  - file: "claudemd-context-rot-from-indiscriminate-rule-accu.md"
-    rel: "same-problem"
-  - file: "claudemd-minimum-viable-rule-only-add-globally.md"
-    rel: "same-problem"
-  - file: "context-as-tree-mental-model-with-trunk-and.md"
-    rel: "same-problem"
-  - file: "context-bracket-auto-adaptation.md"
-    rel: "same-problem"
-  - file: "context-curation-over-context-stuffing.md"
-    rel: "same-problem"
-  - file: "context-file-instruction-bloat-eth-zurich.md"
-    rel: "same-problem"
-  - file: "context-file-taxonomy-claudemd-soulmd-agentsmd.md"
-    rel: "same-problem"
-  - file: "context-rot-silent-killer-and-mitigations.md"
-    rel: "same-problem"
-  - file: "context-usage-status-line-visual-budget-tracking.md"
-    rel: "same-problem"
-  - file: "document-sharding-for-context-efficiency.md"
-    rel: "same-problem"
-  - file: "dynamic-tool-pool-assembly-transcript-compaction.md"
-    rel: "same-problem"
-  - file: "three-tier-vault-architecture-global-shared-local.md"
-    rel: "same-problem"
-  - file: "tiered-context-injection-over-monolithic-files.md"
-    rel: "same-problem"
-  - file: "first-principles-context-management-taxonomy.md"
-    rel: "same-problem"
-  - file: "five-context-management-techniques-in-claude-code.md"
-    rel: "same-problem"
-  - file: "gsd-global-learnings-store-cross-session-persistence.md"
-    rel: "same-problem"
-  - file: "new-chat-per-agent-step-context-hygiene.md"
-    rel: "same-problem"
-  - file: "notebooklm-as-external-knowledge-base-for-context.md"
-    rel: "same-problem"
-  - file: "openspec-ycombinator.md"
-    rel: "same-problem"
-  - file: "progress-md-session-bridge.md"
-    rel: "same-problem"
-  - file: "rlm-pattern-external-prompt-environment-with-dyna.md"
-    rel: "same-problem"
-  - file: "scrum-master-story-contextualization.md"
-    rel: "same-problem"
-  - file: "structured-fact-extraction-from-conversations.md"
-    rel: "same-problem"
-pipeline_status: "synthesized"
+- file: ace-execution-feedback-no-labels-required.md
+  rel: enables
+- file: ace-delta-updates-over-monolithic-rewrites.md
+  rel: enables
+- file: ace-agentic-context-engineering-rag-based.md
+  rel: same-problem
+- file: agent-context-kiss-commandments-minimum-viable.md
+  rel: same-problem
+- file: catastrophic-context-collapse-risk-during-claudemd.md
+  rel: same-problem
+- file: claudemd-as-knowledge-base-traversal-guide.md
+  rel: same-problem
+- file: claudemd-context-rot-from-indiscriminate-rule-accu.md
+  rel: same-problem
+- file: claudemd-minimum-viable-rule-only-add-globally.md
+  rel: same-problem
+- file: context-as-tree-mental-model-with-trunk-and.md
+  rel: same-problem
+- file: context-bracket-auto-adaptation.md
+  rel: same-problem
+- file: context-curation-over-context-stuffing.md
+  rel: same-problem
+- file: context-file-instruction-bloat-eth-zurich.md
+  rel: same-problem
+- file: context-file-taxonomy-claudemd-soulmd-agentsmd.md
+  rel: same-problem
+- file: context-rot-silent-killer-and-mitigations.md
+  rel: same-problem
+- file: context-usage-status-line-visual-budget-tracking.md
+  rel: same-problem
+- file: document-sharding-for-context-efficiency.md
+  rel: same-problem
+- file: dynamic-tool-pool-assembly-transcript-compaction.md
+  rel: same-problem
+- file: three-tier-vault-architecture-global-shared-local.md
+  rel: same-problem
+- file: tiered-context-injection-over-monolithic-files.md
+  rel: same-problem
+- file: first-principles-context-management-taxonomy.md
+  rel: same-problem
+- file: five-context-management-techniques-in-claude-code.md
+  rel: same-problem
+- file: gsd-global-learnings-store-cross-session-persistence.md
+  rel: same-problem
+- file: new-chat-per-agent-step-context-hygiene.md
+  rel: same-problem
+- file: notebooklm-as-external-knowledge-base-for-context.md
+  rel: same-problem
+- file: openspec-ycombinator.md
+  rel: same-problem
+- file: progress-md-session-bridge.md
+  rel: same-problem
+- file: rlm-pattern-external-prompt-environment-with-dyna.md
+  rel: same-problem
+- file: scrum-master-story-contextualization.md
+  rel: same-problem
+- file: structured-fact-extraction-from-conversations.md
+  rel: same-problem
+pipeline_status: synthesized
 consumed_by:
-  - "managing-agent-context.md"
+- managing-agent-context.md
 ---
 # ACE (Agentic Context Engineering) -- Evolving Playbook
 

@@ -1,20 +1,21 @@
 ---
-name: "Autoplan Auto-Decision Pipeline"
-summary: "Chains CEO, design, eng, and devex reviews with 6 auto-decision principles. Auto-resolves clear findings (obvious fixes, standard patterns). Surfaces only 'taste decisions' at the human gate: close approaches, borderline scope calls, and Codex disagreements."
+name: Autoplan Auto-Decision Pipeline
+summary: 'Chains CEO, design, eng, and devex reviews with 6 auto-decision principles. Auto-resolves clear findings (obvious fixes, standard patterns). Surfaces only ''taste decisions'' at the human gate:
+  close approaches, borderline scope calls, and Codex disagreements.'
 implementation_notes: null
-category: "Orchestration"
-evidence_strength: "Medium (practitioner-documented)"
-adoption_status: "Not Yet Started"
+category: Orchestration
+evidence_strength: Medium (practitioner-documented)
+adoption_status: Not Yet Started
 proposer_priority: null
 applicability:
-  - "S3 (Claude Code Build)"
+- S3 (Claude Code Build)
 adopted_in: []
 sources: []
 related_findings: []
 proposals: null
-date_discovered: "2026-04-08"
-last_updated: "2026-04-08"
-pipeline_status: "raw"
+date_discovered: '2026-04-08'
+last_updated: '2026-04-08'
+pipeline_status: raw
 consumed_by: []
 ---
 

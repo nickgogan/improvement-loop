@@ -17,15 +17,14 @@ sources:
 - anthropic-effective-harnesses-long-running-agents.md
 - anthropic-building-c-compiler.md
 related_findings:
-  - file: "gsd-global-learnings-store-cross-session-persistence.md"
-    rel: "extended-by"
-  - file: "ace-agentic-context-engineering-evolving-playbook.md"
-    rel: "same-problem"
-    rel: "extended-by"
+- file: gsd-global-learnings-store-cross-session-persistence.md
+  rel: extended-by
+- file: ace-agentic-context-engineering-evolving-playbook.md
+  rel: extended-by
 proposals: null
 date_discovered: '2026-03-15'
 last_updated: 2026-04-09
-pipeline_status: "raw"
+pipeline_status: raw
 consumed_by: []
 ---
 # PROGRESS.md Session Bridge

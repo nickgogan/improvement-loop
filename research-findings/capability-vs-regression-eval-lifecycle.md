@@ -1,24 +1,25 @@
 ---
-name: "Capability vs Regression Eval Suite Lifecycle"
-summary: "Organize evals into capability suites (measuring new abilities, starting at low pass rates) and regression suites (maintaining near-100% to catch backsliding). Capability evals graduate to regression as they saturate."
-implementation_notes: "MetaSystem has no formal eval suites yet. When building, design the lifecycle from the start: capability evals for new features, graduation threshold, regression monitoring."
-category: "Evaluation"
-evidence_strength: "Strong (production-tested)"
-adoption_status: "Not Yet Started"
-proposer_priority: "P2 (Design Required)"
+name: Capability vs Regression Eval Suite Lifecycle
+summary: Organize evals into capability suites (measuring new abilities, starting at low pass rates) and regression suites (maintaining near-100% to catch backsliding). Capability evals graduate to regression
+  as they saturate.
+implementation_notes: 'MetaSystem has no formal eval suites yet. When building, design the lifecycle from the start: capability evals for new features, graduation threshold, regression monitoring.'
+category: Evaluation
+evidence_strength: Strong (production-tested)
+adoption_status: Not Yet Started
+proposer_priority: P2 (Design Required)
 applicability:
-  - "S3 (Claude Code Build)"
-  - "General / Cross-System"
+- S3 (Claude Code Build)
+- General / Cross-System
 adopted_in: []
 sources:
-  - "anthropic-demystifying-evals-for-ai-agents.md"
+- anthropic-demystifying-evals-for-ai-agents.md
 related_findings: []
 proposals: null
-date_discovered: "2026-04-09"
-last_updated: "2026-04-09"
-pipeline_status: "synthesized"
+date_discovered: '2026-04-09'
+last_updated: '2026-04-09'
+pipeline_status: synthesized
 consumed_by:
-  - "building-agent-evaluation-suites.md"
+- building-agent-evaluation-suites.md
 ---
 
 ## What It Is

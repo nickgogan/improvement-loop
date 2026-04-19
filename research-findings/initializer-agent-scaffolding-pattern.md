@@ -1,29 +1,30 @@
 ---
-name: "Initializer Agent Scaffolding Pattern"
-summary: "A specialized first-session agent that expands a high-level prompt into a comprehensive feature list, creates progress tracking artifacts, and commits a clean baseline -- ensuring all subsequent coding sessions have structured state to orient from."
-implementation_notes: "MetaSystem's /bootstrap skill is a partial implementation. Could be extended with auto-generated feature lists and progress tracking files for new projects."
-category: "Agent Design"
-evidence_strength: "Strong (production-tested)"
-adoption_status: "Not Yet Started"
-proposer_priority: "P2 (Design Required)"
+name: Initializer Agent Scaffolding Pattern
+summary: A specialized first-session agent that expands a high-level prompt into a comprehensive feature list, creates progress tracking artifacts, and commits a clean baseline -- ensuring all subsequent
+  coding sessions have structured state to orient from.
+implementation_notes: MetaSystem's /bootstrap skill is a partial implementation. Could be extended with auto-generated feature lists and progress tracking files for new projects.
+category: Agent Design
+evidence_strength: Strong (production-tested)
+adoption_status: Not Yet Started
+proposer_priority: P2 (Design Required)
 applicability:
-  - "S3 (Claude Code Build)"
+- S3 (Claude Code Build)
 adopted_in: []
 sources:
-  - "anthropic-effective-harnesses-long-running-agents.md"
+- anthropic-effective-harnesses-long-running-agents.md
 related_findings:
-  - file: "progress-md-session-bridge.md"
-    rel: "enables"
-  - file: "ralph-wiggum-execution-pattern.md"
-    rel: "same-problem"
-  - file: "incremental-one-feature-per-session-pattern.md"
-    rel: "enables"
+- file: progress-md-session-bridge.md
+  rel: enables
+- file: ralph-wiggum-execution-pattern.md
+  rel: same-problem
+- file: incremental-one-feature-per-session-pattern.md
+  rel: enables
 proposals: null
-date_discovered: "2026-04-09"
-last_updated: "2026-04-09"
-pipeline_status: "extracted"
+date_discovered: '2026-04-09'
+last_updated: '2026-04-09'
+pipeline_status: extracted
 consumed_by:
-  - "agents/initializer-agent-scaffolding.md"
+- agents/initializer-agent-scaffolding.md
 ---
 
 ## What It Is

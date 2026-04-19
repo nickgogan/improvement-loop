@@ -1,23 +1,26 @@
 ---
-name: "Janitor Static Analysis with TCR Workflow"
-summary: "n8n's janitor is a custom AST-based static analysis tool for Playwright test architecture enforcement with 7 rules (selector-purity, no-page-in-flow, boundary-protection, etc.). Uses TCR (test-commit-revert): changes commit only if tests pass, revert if they fail. Includes baseline tracking for incremental cleanup."
+name: Janitor Static Analysis with TCR Workflow
+summary: 'n8n''s janitor is a custom AST-based static analysis tool for Playwright test architecture enforcement with 7 rules (selector-purity, no-page-in-flow, boundary-protection, etc.). Uses TCR (test-commit-revert):
+  changes commit only if tests pass, revert if they fail. Includes baseline tracking for incremental cleanup.'
 implementation_notes: null
-category: "Evaluation"
-evidence_strength: "Medium (practitioner-documented)"
-adoption_status: "Not Yet Started"
+category: Evaluation
+evidence_strength: Medium (practitioner-documented)
+adoption_status: Not Yet Started
 proposer_priority: null
 applicability:
-  - "S3 (Claude Code Build)"
-  - "General"
+- S3 (Claude Code Build)
+- General
 adopted_in: []
 sources: []
 related_findings:
-  - {file: "specification-as-governance-fourth-enforcement-philosophy.md", rel: "same-problem"}
-  - {file: "two-level-verification-agent-run-plus-harness-inte.md", rel: "same-problem"}
+- file: specification-as-governance-fourth-enforcement-philosophy.md
+  rel: same-problem
+- file: two-level-verification-agent-run-plus-harness-inte.md
+  rel: same-problem
 proposals: null
-date_discovered: "2026-04-09"
-last_updated: "2026-04-09"
-pipeline_status: "raw"
+date_discovered: '2026-04-09'
+last_updated: '2026-04-09'
+pipeline_status: raw
 consumed_by: []
 ---
 

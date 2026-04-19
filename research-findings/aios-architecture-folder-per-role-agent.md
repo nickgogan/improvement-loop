@@ -21,7 +21,7 @@ related_findings:
   rel: contradicts
 - file: global-vs-project-level-skill-and-context.md
   rel: same-problem
-pipeline_status: "raw"
+pipeline_status: raw
 consumed_by: []
 ---
 # AIOS Architecture: Folder-Per-Role Agent Organization

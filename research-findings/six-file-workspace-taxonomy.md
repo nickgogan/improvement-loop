@@ -1,6 +1,7 @@
 ---
 name: Six-File Workspace Taxonomy
-summary: OpenClaw defines 6 workspace files for agent identity — SOUL.md (personality/values), USER.md (user profile), AGENTS.md (rules), TOOLS.md (environment), HEARTBEAT.md (proactive tasks), MEMORY.md (long-term memory). Clean separation of concerns for agent context.
+summary: OpenClaw defines 6 workspace files for agent identity — SOUL.md (personality/values), USER.md (user profile), AGENTS.md (rules), TOOLS.md (environment), HEARTBEAT.md (proactive tasks), MEMORY.md
+  (long-term memory). Clean separation of concerns for agent context.
 implementation_notes: null
 category: Agent Design
 evidence_strength: Medium (practitioner-documented)
@@ -18,7 +19,7 @@ related_findings:
 proposals: null
 date_discovered: '2026-04-08'
 last_updated: '2026-04-08'
-pipeline_status: "raw"
+pipeline_status: raw
 consumed_by: []
 ---
 ## What It Is

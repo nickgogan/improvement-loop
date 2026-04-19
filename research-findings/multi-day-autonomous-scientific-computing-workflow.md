@@ -1,33 +1,35 @@
 ---
-name: "Multi-Day Autonomous Scientific Computing Workflow"
-summary: "A four-component workflow for deploying Claude as an autonomous agent team for multi-day scientific computing: CLAUDE.md as iterative plan, CHANGELOG.md as persistent lab notes, test oracle against reference implementation, and git for crash recovery. Compresses months of domain work into days."
-implementation_notes: "Validates and extends MetaSystem's existing patterns (PROGRESS.md, Ralph loop, ground-truth feedback). The shift from tight conversational oversight to high-level objective specification is the key design insight."
-category: "Orchestration"
-evidence_strength: "Strong (production-tested)"
-adoption_status: "Not Yet Started"
-proposer_priority: "P2 (Design Required)"
+name: Multi-Day Autonomous Scientific Computing Workflow
+summary: 'A four-component workflow for deploying Claude as an autonomous agent team for multi-day scientific computing: CLAUDE.md as iterative plan, CHANGELOG.md as persistent lab notes, test oracle against
+  reference implementation, and git for crash recovery. Compresses months of domain work into days.'
+implementation_notes: Validates and extends MetaSystem's existing patterns (PROGRESS.md, Ralph loop, ground-truth feedback). The shift from tight conversational oversight to high-level objective specification
+  is the key design insight.
+category: Orchestration
+evidence_strength: Strong (production-tested)
+adoption_status: Not Yet Started
+proposer_priority: P2 (Design Required)
 applicability:
-  - "S3 (Claude Code Build)"
+- S3 (Claude Code Build)
 adopted_in: []
 sources:
-  - "anthropic-long-running-claude-scientific-computing.md"
+- anthropic-long-running-claude-scientific-computing.md
 related_findings:
-  - file: "session-persistence-crash-resilient.md"
-    rel: "same-problem"
-  - file: "ralph-wiggum-execution-pattern.md"
-    rel: "enables"
-  - file: "ground-truth-environmental-feedback-loops.md"
-    rel: "enables"
-  - file: "progress-md-session-bridge.md"
-    rel: "extends"
-  - file: "conway-always-on-persistent-agent.md"
-    rel: "same-problem"
+- file: session-persistence-crash-resilient.md
+  rel: same-problem
+- file: ralph-wiggum-execution-pattern.md
+  rel: enables
+- file: ground-truth-environmental-feedback-loops.md
+  rel: enables
+- file: progress-md-session-bridge.md
+  rel: extends
+- file: conway-always-on-persistent-agent.md
+  rel: same-problem
 proposals: null
-date_discovered: "2026-04-09"
-last_updated: "2026-04-09"
-pipeline_status: "synthesized"
+date_discovered: '2026-04-09'
+last_updated: '2026-04-09'
+pipeline_status: synthesized
 consumed_by:
-  - "agent-workflow-and-execution.md"
+- agent-workflow-and-execution.md
 ---
 # Multi-Day Autonomous Scientific Computing Workflow
 

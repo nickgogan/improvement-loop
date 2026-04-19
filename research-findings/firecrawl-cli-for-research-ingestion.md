@@ -18,7 +18,7 @@ last_updated: '2026-04-08'
 related_findings:
 - file: obsidian-web-clipper-local-images-ingestion-pipeline.md
   rel: same-problem
-pipeline_status: "raw"
+pipeline_status: raw
 consumed_by: []
 ---
 # Firecrawl CLI for Research Ingestion

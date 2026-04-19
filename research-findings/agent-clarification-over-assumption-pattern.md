@@ -1,30 +1,31 @@
 ---
-name: "Agent Clarification Over Assumption Pattern"
-summary: "Agents must distinguish resolvable gaps (can be solved by research or tool use) from intent/preference questions requiring user input — and pause for the latter rather than assuming. Anthropic trains this via ambiguity scenarios and constitutional guidance."
+name: Agent Clarification Over Assumption Pattern
+summary: Agents must distinguish resolvable gaps (can be solved by research or tool use) from intent/preference questions requiring user input — and pause for the latter rather than assuming. Anthropic
+  trains this via ambiguity scenarios and constitutional guidance.
 implementation_notes: null
-category: "Agent Design"
-evidence_strength: "Strong (production-tested)"
-adoption_status: "Not Yet Started"
-proposer_priority: "P2 (Design Required)"
+category: Agent Design
+evidence_strength: Strong (production-tested)
+adoption_status: Not Yet Started
+proposer_priority: P2 (Design Required)
 applicability:
-  - "S3 (Claude Code Build)"
-  - "General / Cross-System"
+- S3 (Claude Code Build)
+- General / Cross-System
 adopted_in: []
 sources:
-  - "anthropic-trustworthy-agents-in-practice.md"
+- anthropic-trustworthy-agents-in-practice.md
 related_findings:
-  - file: "autonomy-gradient-not-binary-delegation.md"
-    rel: "same-problem"
-  - file: "trust-calibration-progressive-autonomy-ramp.md"
-    rel: "enables"
-  - file: "mcp-elicitation-for-user-input.md"
-    rel: "same-problem"
+- file: autonomy-gradient-not-binary-delegation.md
+  rel: same-problem
+- file: trust-calibration-progressive-autonomy-ramp.md
+  rel: enables
+- file: mcp-elicitation-for-user-input.md
+  rel: same-problem
 proposals: null
-date_discovered: "2026-04-09"
-last_updated: "2026-04-09"
-pipeline_status: "synthesized"
+date_discovered: '2026-04-09'
+last_updated: '2026-04-09'
+pipeline_status: synthesized
 consumed_by:
-  - "agent-design-patterns.md"
+- agent-design-patterns.md
 ---
 # Agent Clarification Over Assumption Pattern
 

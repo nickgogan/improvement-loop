@@ -1,24 +1,25 @@
 ---
-name: "Git Status Context Injection and Token Hygiene"
-summary: "Claude Code injects git status (up to 2000 chars / ~500 tokens) into every conversation start. Messy repos with many untracked files waste tokens and distract the model. IDE integrations (VS Code, JetBrains) silently stream open files and highlighted lines. Practitioners recommend frequent commits and post-session hooks for autonomous cleanup."
-implementation_notes: "Directly applicable to MetaSystem. Current .gitignore and commit hygiene directly affect Claude Code token efficiency. Post-session hooks can auto-push to branches."
-category: "Context Engineering"
-evidence_strength: "Strong (production-tested)"
-adoption_status: "Not Yet Started"
-proposer_priority: "P1 (Implement Now)"
+name: Git Status Context Injection and Token Hygiene
+summary: Claude Code injects git status (up to 2000 chars / ~500 tokens) into every conversation start. Messy repos with many untracked files waste tokens and distract the model. IDE integrations (VS Code,
+  JetBrains) silently stream open files and highlighted lines. Practitioners recommend frequent commits and post-session hooks for autonomous cleanup.
+implementation_notes: Directly applicable to MetaSystem. Current .gitignore and commit hygiene directly affect Claude Code token efficiency. Post-session hooks can auto-push to branches.
+category: Context Engineering
+evidence_strength: Strong (production-tested)
+adoption_status: Not Yet Started
+proposer_priority: P1 (Implement Now)
 applicability:
-  - "S3 (Claude Code Build)"
+- S3 (Claude Code Build)
 adopted_in: []
-sources: ["claude-codes-leak-changes-everything.md"]
+sources:
+- claude-codes-leak-changes-everything.md
 related_findings:
-  - file: "post-session-hooks-autonomous-version-control.md"
-    rel: "same-problem"
-  - file: "agent-context-kiss-commandments-minimum-viable.md"
-    rel: "same-problem"
-    rel: "same-problem"
-date_discovered: "2026-04-07"
+- file: post-session-hooks-autonomous-version-control.md
+  rel: same-problem
+- file: agent-context-kiss-commandments-minimum-viable.md
+  rel: same-problem
+date_discovered: '2026-04-07'
 last_updated: 2026-04-08
-pipeline_status: "raw"
+pipeline_status: raw
 consumed_by: []
 ---
 

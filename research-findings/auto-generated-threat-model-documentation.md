@@ -1,22 +1,25 @@
 ---
-name: "Auto-Generated Threat Model Documentation"
-summary: "LangGraph maintains a .github/THREAT_MODEL.md with trust boundaries, component inventory (17 components), data classification (9 categories), and specific threats. Auto-generated with commit hash and date. No other watched library has a comparable governance artifact."
+name: Auto-Generated Threat Model Documentation
+summary: LangGraph maintains a .github/THREAT_MODEL.md with trust boundaries, component inventory (17 components), data classification (9 categories), and specific threats. Auto-generated with commit hash
+  and date. No other watched library has a comparable governance artifact.
 implementation_notes: null
-category: "Governance"
-evidence_strength: "Medium (practitioner-documented)"
-adoption_status: "Not Yet Started"
+category: Governance
+evidence_strength: Medium (practitioner-documented)
+adoption_status: Not Yet Started
 proposer_priority: null
 applicability:
-  - "General"
+- General
 adopted_in: []
 sources: []
 related_findings:
-  - {file: "five-commandments-for-agent-deployment-audit-first.md", rel: "same-problem"}
-  - {file: "immutable-sessions-as-audit-architecture.md", rel: "same-problem"}
+- file: five-commandments-for-agent-deployment-audit-first.md
+  rel: same-problem
+- file: immutable-sessions-as-audit-architecture.md
+  rel: same-problem
 proposals: null
-date_discovered: "2026-04-09"
-last_updated: "2026-04-09"
-pipeline_status: "raw"
+date_discovered: '2026-04-09'
+last_updated: '2026-04-09'
+pipeline_status: raw
 consumed_by: []
 ---
 

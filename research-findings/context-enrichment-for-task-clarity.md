@@ -18,12 +18,12 @@ proposals: []
 date_discovered: '2026-03-23'
 last_updated: 2026-04-08
 related_findings:
-  - file: "advanced-elicitation-techniques-library.md"
-    rel: "same-problem"
-pipeline_status: "synthesized"
+- file: advanced-elicitation-techniques-library.md
+  rel: same-problem
+pipeline_status: synthesized
 consumed_by:
-  - "managing-agent-context.md"
-  - "writing-agent-specifications.md"
+- managing-agent-context.md
+- writing-agent-specifications.md
 ---
 # Context Enrichment for Task Clarity
 

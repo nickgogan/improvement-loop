@@ -1,30 +1,31 @@
 ---
-name: "Programmatic Tool Calling -- Code-Orchestrated Tool Use"
-summary: "Claude orchestrates multi-tool workflows via code execution (Python) rather than sequential inference passes. Tool results are processed in the code sandbox -- only the final output enters the model context. Reduces 200KB intermediate data to 1KB final output. Accuracy gains: internal retrieval 25.6% to 28.5%, GIA 46.5% to 51.2%."
+name: Programmatic Tool Calling -- Code-Orchestrated Tool Use
+summary: 'Claude orchestrates multi-tool workflows via code execution (Python) rather than sequential inference passes. Tool results are processed in the code sandbox -- only the final output enters the
+  model context. Reduces 200KB intermediate data to 1KB final output. Accuracy gains: internal retrieval 25.6% to 28.5%, GIA 46.5% to 51.2%.'
 implementation_notes: null
-category: "Tool Integration"
-evidence_strength: "Strong (production-tested)"
-adoption_status: "Not Yet Started"
-proposer_priority: "P1 (Implement Now)"
+category: Tool Integration
+evidence_strength: Strong (production-tested)
+adoption_status: Not Yet Started
+proposer_priority: P1 (Implement Now)
 applicability:
-  - "S3 (Claude Code Build)"
-  - "General"
+- S3 (Claude Code Build)
+- General
 adopted_in: []
 sources:
-  - "anthropic-advanced-tool-use.md"
+- anthropic-advanced-tool-use.md
 related_findings:
-  - file: "dynamic-tool-pool-assembly-transcript-compaction.md"
-    rel: "extends"
-  - file: "gpt-54-tool-search-deferred-tool-loading.md"
-    rel: "same-problem"
-  - file: "mcp-as-code-api-progressive-tool-discovery.md"
-    rel: "enables"
+- file: dynamic-tool-pool-assembly-transcript-compaction.md
+  rel: extends
+- file: gpt-54-tool-search-deferred-tool-loading.md
+  rel: same-problem
+- file: mcp-as-code-api-progressive-tool-discovery.md
+  rel: enables
 proposals: null
-date_discovered: "2026-04-09"
-last_updated: "2026-04-09"
-pipeline_status: "synthesized"
+date_discovered: '2026-04-09'
+last_updated: '2026-04-09'
+pipeline_status: synthesized
 consumed_by:
-  - "designing-agent-tools.md"
+- designing-agent-tools.md
 ---
 
 ## What It Is

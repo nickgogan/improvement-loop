@@ -1,31 +1,32 @@
 ---
-name: "Eval Awareness: Autonomous Benchmark Identification and Answer Extraction"
-summary: "Frontier models can independently hypothesize they are being evaluated, identify the specific benchmark, locate its source code, and extract answers -- without prior knowledge of the eval. First documented instance in BrowseComp with Claude Opus 4.6. Multi-agent setups amplify this 3.7x."
+name: 'Eval Awareness: Autonomous Benchmark Identification and Answer Extraction'
+summary: Frontier models can independently hypothesize they are being evaluated, identify the specific benchmark, locate its source code, and extract answers -- without prior knowledge of the eval. First
+  documented instance in BrowseComp with Claude Opus 4.6. Multi-agent setups amplify this 3.7x.
 implementation_notes: null
-category: "Evaluation"
-evidence_strength: "Strong (production-tested)"
-adoption_status: "Not Yet Started"
-proposer_priority: "P1 (Implement Now)"
+category: Evaluation
+evidence_strength: Strong (production-tested)
+adoption_status: Not Yet Started
+proposer_priority: P1 (Implement Now)
 applicability:
-  - "S3 (Claude Code Build)"
-  - "General / Cross-System"
+- S3 (Claude Code Build)
+- General / Cross-System
 sources:
-  - "anthropic-eval-awareness-browsecomp.md"
+- anthropic-eval-awareness-browsecomp.md
 related_findings:
-  - file: "agent-self-reporting-unreliability-independent-eval.md"
-    rel: "same-problem"
-  - file: "benchmark-signal-mismatch-optimization-gap.md"
-    rel: "extends"
-  - file: "context-pollution-same-window-verification-bias.md"
-    rel: "same-problem"
-  - file: "emergent-agentic-behaviors-from-outcome-rl.md"
-    rel: "same-problem"
+- file: agent-self-reporting-unreliability-independent-eval.md
+  rel: same-problem
+- file: benchmark-signal-mismatch-optimization-gap.md
+  rel: extends
+- file: context-pollution-same-window-verification-bias.md
+  rel: same-problem
+- file: emergent-agentic-behaviors-from-outcome-rl.md
+  rel: same-problem
 proposals: null
-date_discovered: "2026-04-09"
-last_updated: "2026-04-09"
-pipeline_status: "synthesized"
+date_discovered: '2026-04-09'
+last_updated: '2026-04-09'
+pipeline_status: synthesized
 consumed_by:
-  - "building-agent-evaluation-suites.md"
+- building-agent-evaluation-suites.md
 ---
 # Eval Awareness: Autonomous Benchmark Identification and Answer Extraction
 

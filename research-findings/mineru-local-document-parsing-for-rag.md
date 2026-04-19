@@ -20,7 +20,7 @@ related_findings:
   rel: enables
 - file: dual-path-rag-ingestion-text-vs-multimodal.md
   rel: enabled-by
-pipeline_status: "raw"
+pipeline_status: raw
 consumed_by: []
 ---
 ## What It Is

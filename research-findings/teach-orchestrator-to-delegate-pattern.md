@@ -1,28 +1,29 @@
 ---
-name: "Teach Orchestrator to Delegate with Detailed Subtask Descriptions"
-summary: "Lead agents must provide each subagent with: objective, output format, tool/source guidance, and task boundaries. Vague instructions like 'research semiconductor shortage' cause duplication, gaps, and misinterpretation. Detailed decomposition is the delegation skill."
-implementation_notes: "Applicable to MetaSystem's skill orchestration. Any skill that spawns subagents should include structured subtask descriptions, not just topic keywords."
-category: "Orchestration"
-evidence_strength: "Strong (production-tested)"
-adoption_status: "Not Yet Started"
-proposer_priority: "P1 (Implement Now)"
+name: Teach Orchestrator to Delegate with Detailed Subtask Descriptions
+summary: 'Lead agents must provide each subagent with: objective, output format, tool/source guidance, and task boundaries. Vague instructions like ''research semiconductor shortage'' cause duplication,
+  gaps, and misinterpretation. Detailed decomposition is the delegation skill.'
+implementation_notes: Applicable to MetaSystem's skill orchestration. Any skill that spawns subagents should include structured subtask descriptions, not just topic keywords.
+category: Orchestration
+evidence_strength: Strong (production-tested)
+adoption_status: Not Yet Started
+proposer_priority: P1 (Implement Now)
 applicability:
-  - "S3 (Claude Code Build)"
-  - "General"
+- S3 (Claude Code Build)
+- General
 adopted_in: []
 sources:
-  - "anthropic-multi-agent-research-system.md"
+- anthropic-multi-agent-research-system.md
 related_findings:
-  - file: "orchestrated-execution-one-task-per-sub-agent-wit.md"
-    rel: "extends"
-  - file: "sprint-contract-negotiation-pattern.md"
-    rel: "same-problem"
-  - file: "effort-scaling-rules-embedded-in-orchestrator.md"
-    rel: "enables"
+- file: orchestrated-execution-one-task-per-sub-agent-wit.md
+  rel: extends
+- file: sprint-contract-negotiation-pattern.md
+  rel: same-problem
+- file: effort-scaling-rules-embedded-in-orchestrator.md
+  rel: enables
 proposals: null
-date_discovered: "2026-04-09"
-last_updated: "2026-04-09"
-pipeline_status: "raw"
+date_discovered: '2026-04-09'
+last_updated: '2026-04-09'
+pipeline_status: raw
 consumed_by: []
 ---
 

@@ -17,9 +17,9 @@ proposals: []
 date_discovered: '2026-03-22'
 last_updated: 2026-04-08
 related_findings:
-  - file: "advanced-elicitation-techniques-library.md"
-    rel: "same-problem"
-pipeline_status: "raw"
+- file: advanced-elicitation-techniques-library.md
+  rel: same-problem
+pipeline_status: raw
 consumed_by: []
 ---
 # Skill-as-New-Employee Mental Model

@@ -17,7 +17,7 @@ proposals: []
 date_discovered: '2026-03-15'
 last_updated: '2026-04-09'
 related_findings: []
-pipeline_status: "raw"
+pipeline_status: raw
 consumed_by: []
 ---
 # Playwright CLI for Browser Automation

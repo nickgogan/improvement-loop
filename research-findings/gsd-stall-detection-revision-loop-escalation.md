@@ -1,29 +1,29 @@
 ---
-name: "GSD Stall Detection — Revision Loop Escalation"
-summary: "Monitors issue-count trajectory in plan-phase revision loops and escalates when progress plateaus, combined with hard stop gates and consecutive-call guards."
+name: GSD Stall Detection — Revision Loop Escalation
+summary: Monitors issue-count trajectory in plan-phase revision loops and escalates when progress plateaus, combined with hard stop gates and consecutive-call guards.
 implementation_notes: null
-category: "Orchestration"
-evidence_strength: "Medium (practitioner-documented)"
-adoption_status: "Not Yet Started"
-proposer_priority: "P2 (Design Required)"
+category: Orchestration
+evidence_strength: Medium (practitioner-documented)
+adoption_status: Not Yet Started
+proposer_priority: P2 (Design Required)
 applicability:
-  - "General / Cross-System"
+- General / Cross-System
 adopted_in: []
 sources:
-  - "gsd-v1340-v1342-changelog.md"
+- gsd-v1340-v1342-changelog.md
 related_findings:
-  - file: "graceful-degradation-modes-for-agent-failure.md"
-    rel: "same-problem"
-  - file: "token-budget-pre-turn-projection.md"
-    rel: "same-problem"
-  - file: "agent-cost-blowup-mitigation-strategies.md"
-    rel: "same-problem"
+- file: graceful-degradation-modes-for-agent-failure.md
+  rel: same-problem
+- file: token-budget-pre-turn-projection.md
+  rel: same-problem
+- file: agent-cost-blowup-mitigation-strategies.md
+  rel: same-problem
 proposals: null
-date_discovered: "2026-04-07"
+date_discovered: '2026-04-07'
 last_updated: 2026-04-08
-pipeline_status: "synthesized"
+pipeline_status: synthesized
 consumed_by:
-  - "agent-workflow-and-execution.md"
+- agent-workflow-and-execution.md
 ---
 
 ## What It Is

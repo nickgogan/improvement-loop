@@ -1,40 +1,39 @@
 ---
-name: "GSD Global Learnings Store — Cross-Session Persistence"
-summary: "Persistent CRUD library for cross-session learnings stored outside .planning/, auto-injected into planner context at phase start."
+name: GSD Global Learnings Store — Cross-Session Persistence
+summary: Persistent CRUD library for cross-session learnings stored outside .planning/, auto-injected into planner context at phase start.
 implementation_notes: null
-category: "Context Engineering"
-evidence_strength: "Medium (practitioner-documented)"
-adoption_status: "Not Yet Started"
-proposer_priority: "P2 (Design Required)"
+category: Context Engineering
+evidence_strength: Medium (practitioner-documented)
+adoption_status: Not Yet Started
+proposer_priority: P2 (Design Required)
 applicability:
-  - "General / Cross-System"
+- General / Cross-System
 adopted_in: []
 sources:
-  - "gsd-v1340-v1342-changelog.md"
+- gsd-v1340-v1342-changelog.md
 related_findings:
-  - file: "gsd-queryable-codebase-intelligence-store.md"
-    rel: "same-problem"
-  - file: "progress-md-session-bridge.md"
-    rel: "extends"
-  - file: "four-tier-agent-memory-model-with-write-policy.md"
-    rel: "same-problem"
-  - file: "claude-code-long-term-memory-via-pre-prompt-recall.md"
-    rel: "same-problem"
-  - file: "ace-agentic-context-engineering-evolving-playbook.md"
-    rel: "same-problem"
-    rel: "same-problem"
-  - file: "progress-md-session-bridge.md"
-    rel: "extends"
-  - file: "four-tier-agent-memory-model-with-write-policy.md"
-    rel: "same-problem"
-  - file: "claude-code-long-term-memory-via-pre-prompt-recall.md"
-    rel: "same-problem"
+- file: gsd-queryable-codebase-intelligence-store.md
+  rel: same-problem
+- file: progress-md-session-bridge.md
+  rel: extends
+- file: four-tier-agent-memory-model-with-write-policy.md
+  rel: same-problem
+- file: claude-code-long-term-memory-via-pre-prompt-recall.md
+  rel: same-problem
+- file: ace-agentic-context-engineering-evolving-playbook.md
+  rel: same-problem
+- file: progress-md-session-bridge.md
+  rel: extends
+- file: four-tier-agent-memory-model-with-write-policy.md
+  rel: same-problem
+- file: claude-code-long-term-memory-via-pre-prompt-recall.md
+  rel: same-problem
 proposals: null
-date_discovered: "2026-04-07"
+date_discovered: '2026-04-07'
 last_updated: 2026-04-08
-pipeline_status: "synthesized"
+pipeline_status: synthesized
 consumed_by:
-  - "managing-agent-context.md"
+- managing-agent-context.md
 ---
 
 ## What It Is

@@ -1,19 +1,21 @@
 ---
-name: "Ultra Plan A/B Testing Infrastructure for Planning Modes"
-summary: "Anthropic uses server-controlled remote config to A/B/C test Ultra Plan variants (simple, visual, deep) by measuring acceptance rates. The same infrastructure can route to unreleased models. Users cannot choose their variant. Practitioner recommendation: extract the deep plan prompt as a deterministic skill."
-implementation_notes: "The A/B testing pattern itself is interesting -- measuring plan acceptance rates as a proxy for plan quality. Could inform how MetaSystem evaluates its own planning skills."
-category: "Evaluation"
-evidence_strength: "Strong (production-tested)"
-adoption_status: "Not Yet Started"
-proposer_priority: "P3 (Monitor)"
+name: Ultra Plan A/B Testing Infrastructure for Planning Modes
+summary: 'Anthropic uses server-controlled remote config to A/B/C test Ultra Plan variants (simple, visual, deep) by measuring acceptance rates. The same infrastructure can route to unreleased models. Users
+  cannot choose their variant. Practitioner recommendation: extract the deep plan prompt as a deterministic skill.'
+implementation_notes: The A/B testing pattern itself is interesting -- measuring plan acceptance rates as a proxy for plan quality. Could inform how MetaSystem evaluates its own planning skills.
+category: Evaluation
+evidence_strength: Strong (production-tested)
+adoption_status: Not Yet Started
+proposer_priority: P3 (Monitor)
 applicability:
-  - "S3 (Claude Code Build)"
-  - "General"
+- S3 (Claude Code Build)
+- General
 adopted_in: []
-sources: ["anthropic-just-dropped-ultra-plan.md"]
-date_discovered: "2026-04-07"
-last_updated: "2026-04-07"
-pipeline_status: "raw"
+sources:
+- anthropic-just-dropped-ultra-plan.md
+date_discovered: '2026-04-07'
+last_updated: '2026-04-07'
+pipeline_status: raw
 consumed_by: []
 ---
 

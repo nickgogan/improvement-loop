@@ -1,21 +1,23 @@
 ---
-name: "Cross-Session Learnings JSONL"
-summary: "Per-project learnings stored in append-only JSONL files that persist across sessions. Loaded in preamble, searched at skill start. Managed via /learn skill (review, search, prune, export). Complemented by session markers and timeline events."
+name: Cross-Session Learnings JSONL
+summary: Per-project learnings stored in append-only JSONL files that persist across sessions. Loaded in preamble, searched at skill start. Managed via /learn skill (review, search, prune, export). Complemented
+  by session markers and timeline events.
 implementation_notes: null
-category: "Context Engineering"
-evidence_strength: "Medium (practitioner-documented)"
-adoption_status: "Not Yet Started"
+category: Context Engineering
+evidence_strength: Medium (practitioner-documented)
+adoption_status: Not Yet Started
 proposer_priority: null
 applicability:
-  - "S3 (Claude Code Build)"
+- S3 (Claude Code Build)
 adopted_in: []
 sources: []
 related_findings:
-  - {file: "gsd-global-learnings-store-cross-session-persistence.md", rel: "same-problem"}
+- file: gsd-global-learnings-store-cross-session-persistence.md
+  rel: same-problem
 proposals: null
-date_discovered: "2026-04-08"
-last_updated: "2026-04-08"
-pipeline_status: "raw"
+date_discovered: '2026-04-08'
+last_updated: '2026-04-08'
+pipeline_status: raw
 consumed_by: []
 ---
 

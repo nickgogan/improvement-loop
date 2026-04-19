@@ -1,6 +1,7 @@
 ---
 name: Named Agent Personas with Session Lock
-summary: BMAD agents have personal names (Mary, John, Winston, Amelia), distinct communication styles, and explicit personality traits. Persona persistence is enforced — "must not break character until user dismisses." Session-level identity consistency across sub-skill invocations.
+summary: BMAD agents have personal names (Mary, John, Winston, Amelia), distinct communication styles, and explicit personality traits. Persona persistence is enforced — "must not break character until
+  user dismisses." Session-level identity consistency across sub-skill invocations.
 implementation_notes: null
 category: Agent Design
 evidence_strength: Medium (practitioner-documented)
@@ -14,7 +15,7 @@ related_findings: []
 proposals: null
 date_discovered: '2026-04-08'
 last_updated: '2026-04-08'
-pipeline_status: "raw"
+pipeline_status: raw
 consumed_by: []
 ---
 ## What It Is

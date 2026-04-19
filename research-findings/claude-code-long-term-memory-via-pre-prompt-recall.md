@@ -32,9 +32,9 @@ related_findings:
   rel: same-problem
 - file: memory-bank-isolation-per-agent-per-project.md
   rel: same-problem
-pipeline_status: "synthesized"
+pipeline_status: synthesized
 consumed_by:
-  - "session-persistence-and-memory.md"
+- session-persistence-and-memory.md
 ---
 # Claude Code long-term memory via pre-prompt recall + periodic post-turn retention windows
 

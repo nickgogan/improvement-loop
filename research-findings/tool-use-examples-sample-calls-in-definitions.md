@@ -1,26 +1,27 @@
 ---
-name: "Tool Use Examples -- Sample Calls in Tool Definitions"
-summary: "Embedding example invocations directly in tool definitions teaches models correct usage patterns beyond what schemas alone convey. Accuracy on complex parameters improved from 72% to 90% in Anthropic internal testing. Addresses nested objects, optional parameter correlations, and domain-specific conventions."
+name: Tool Use Examples -- Sample Calls in Tool Definitions
+summary: Embedding example invocations directly in tool definitions teaches models correct usage patterns beyond what schemas alone convey. Accuracy on complex parameters improved from 72% to 90% in Anthropic
+  internal testing. Addresses nested objects, optional parameter correlations, and domain-specific conventions.
 implementation_notes: null
-category: "Tool Integration"
-evidence_strength: "Strong (production-tested)"
-adoption_status: "Not Yet Started"
-proposer_priority: "P2 (Design Required)"
+category: Tool Integration
+evidence_strength: Strong (production-tested)
+adoption_status: Not Yet Started
+proposer_priority: P2 (Design Required)
 applicability:
-  - "S3 (Claude Code Build)"
-  - "General"
+- S3 (Claude Code Build)
+- General
 adopted_in: []
 sources:
-  - "anthropic-advanced-tool-use.md"
+- anthropic-advanced-tool-use.md
 related_findings:
-  - file: "poka-yoke-error-proof-tool-interfaces.md"
-    rel: "extends"
+- file: poka-yoke-error-proof-tool-interfaces.md
+  rel: extends
 proposals: null
-date_discovered: "2026-04-09"
-last_updated: "2026-04-09"
-pipeline_status: "synthesized"
+date_discovered: '2026-04-09'
+last_updated: '2026-04-09'
+pipeline_status: synthesized
 consumed_by:
-  - "designing-agent-tools.md"
+- designing-agent-tools.md
 ---
 
 ## What It Is

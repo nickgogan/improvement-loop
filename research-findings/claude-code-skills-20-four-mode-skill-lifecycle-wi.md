@@ -28,9 +28,9 @@ related_findings:
   rel: enables
 - file: builder-validator-chain-pattern.md
   rel: same-problem
-pipeline_status: "synthesized"
+pipeline_status: synthesized
 consumed_by:
-  - "building-agent-evaluation-suites.md"
+- building-agent-evaluation-suites.md
 ---
 # Claude Code Skills 2.0 -- Four-Mode Skill Lifecycle with Binary Evals
 

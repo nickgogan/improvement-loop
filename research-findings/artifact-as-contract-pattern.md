@@ -1,21 +1,23 @@
 ---
-name: "Artifact-as-Contract Pattern"
-summary: "In GSD, templates define artifact schemas (PLAN.md, SUMMARY.md, VERIFICATION.md) that serve as inter-phase communication contracts — each artifact is both the output of one phase and the input contract for the next, eliminating the need for inter-agent messaging infrastructure."
+name: Artifact-as-Contract Pattern
+summary: In GSD, templates define artifact schemas (PLAN.md, SUMMARY.md, VERIFICATION.md) that serve as inter-phase communication contracts — each artifact is both the output of one phase and the input
+  contract for the next, eliminating the need for inter-agent messaging infrastructure.
 implementation_notes: null
-category: "Orchestration"
-evidence_strength: "Medium (practitioner-documented)"
-adoption_status: "Not Yet Started"
+category: Orchestration
+evidence_strength: Medium (practitioner-documented)
+adoption_status: Not Yet Started
 proposer_priority: null
 applicability:
-  - "S3 (Claude Code Build)"
+- S3 (Claude Code Build)
 adopted_in: []
 sources: []
 related_findings:
-  - {file: "spec-as-source-of-truth-for-agent-construction.md", rel: "same-problem"}
+- file: spec-as-source-of-truth-for-agent-construction.md
+  rel: same-problem
 proposals: null
-date_discovered: "2026-04-08"
-last_updated: "2026-04-08"
-pipeline_status: "raw"
+date_discovered: '2026-04-08'
+last_updated: '2026-04-08'
+pipeline_status: raw
 consumed_by: []
 ---
 # Artifact-as-Contract Pattern

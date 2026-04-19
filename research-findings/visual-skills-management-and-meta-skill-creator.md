@@ -1,23 +1,24 @@
 ---
-name: "Visual Skills Management and Meta-Skill Creator"
-summary: "A dashboard that renders all agent skills as browsable, searchable, editable cards with live markdown preview. Includes a meta-skill creator that generates new skills from descriptions, GitHub references, or uploaded files, adapting them to the local agent OS."
+name: Visual Skills Management and Meta-Skill Creator
+summary: A dashboard that renders all agent skills as browsable, searchable, editable cards with live markdown preview. Includes a meta-skill creator that generates new skills from descriptions, GitHub
+  references, or uploaded files, adapting them to the local agent OS.
 implementation_notes: null
-category: "Tool Integration"
-evidence_strength: "Medium (practitioner-documented)"
-adoption_status: "Not Yet Started"
-proposer_priority: "P3 (Monitor)"
+category: Tool Integration
+evidence_strength: Medium (practitioner-documented)
+adoption_status: Not Yet Started
+proposer_priority: P3 (Monitor)
 applicability:
-  - "S3 (Claude Code Build)"
-  - "General"
+- S3 (Claude Code Build)
+- General
 adopted_in: []
 sources:
-  - "stop-using-claude-code-in-terminal.md"
-date_discovered: "2026-04-07"
+- stop-using-claude-code-in-terminal.md
+date_discovered: '2026-04-07'
 last_updated: 2026-04-08
 related_findings:
-  - file: "agent-management-tool-landscape-2026.md"
-    rel: "same-problem"
-pipeline_status: "raw"
+- file: agent-management-tool-landscape-2026.md
+  rel: same-problem
+pipeline_status: raw
 consumed_by: []
 ---
 

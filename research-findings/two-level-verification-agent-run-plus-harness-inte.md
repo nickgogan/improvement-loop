@@ -24,9 +24,9 @@ related_findings:
   rel: same-problem
 - file: cross-model-verification-for-bug-finding.md
   rel: same-problem
-pipeline_status: "synthesized"
+pipeline_status: synthesized
 consumed_by:
-  - "building-agent-evaluation-suites.md"
+- building-agent-evaluation-suites.md
 ---
 ## What It Is
 

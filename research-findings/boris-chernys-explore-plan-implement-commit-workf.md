@@ -21,7 +21,7 @@ last_updated: '2026-04-09'
 related_findings:
 - file: worktree-isolation-for-parallel-agent-sessions.md
   rel: enabled-by
-pipeline_status: "raw"
+pipeline_status: raw
 consumed_by: []
 ---
 # Boris Cherny's Explore-Plan-Implement-Commit Workflow

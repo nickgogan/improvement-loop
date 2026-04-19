@@ -25,7 +25,7 @@ related_findings:
   rel: same-problem
 - file: advanced-elicitation-techniques-library.md
   rel: same-problem
-pipeline_status: "raw"
+pipeline_status: raw
 consumed_by: []
 ---
 # Business Analyst as Upstream Quality Gate

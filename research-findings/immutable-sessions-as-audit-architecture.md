@@ -1,23 +1,26 @@
 ---
-name: "Immutable Sessions as Audit Architecture"
-summary: "Archon's sessions are never mutated — only deactivated and replaced, linked by parent_session_id. Combined with workflow_events table and immutable session transitions, this creates a complete audit trail of every state change. A governance pattern for compliance-sensitive or debugging-heavy agent environments."
+name: Immutable Sessions as Audit Architecture
+summary: Archon's sessions are never mutated — only deactivated and replaced, linked by parent_session_id. Combined with workflow_events table and immutable session transitions, this creates a complete
+  audit trail of every state change. A governance pattern for compliance-sensitive or debugging-heavy agent environments.
 implementation_notes: null
-category: "Governance"
-evidence_strength: "Medium (practitioner-documented)"
-adoption_status: "Not Yet Started"
+category: Governance
+evidence_strength: Medium (practitioner-documented)
+adoption_status: Not Yet Started
 proposer_priority: null
 applicability:
-  - "S3 (Claude Code Build)"
-  - "General"
+- S3 (Claude Code Build)
+- General
 adopted_in: []
 sources: []
 related_findings:
-  - {file: "five-commandments-for-agent-deployment-audit-first.md", rel: "same-problem"}
-  - {file: "archon-yaml-defined-harness-workflows.md", rel: "extends"}
+- file: five-commandments-for-agent-deployment-audit-first.md
+  rel: same-problem
+- file: archon-yaml-defined-harness-workflows.md
+  rel: extends
 proposals: null
-date_discovered: "2026-04-09"
-last_updated: "2026-04-09"
-pipeline_status: "raw"
+date_discovered: '2026-04-09'
+last_updated: '2026-04-09'
+pipeline_status: raw
 consumed_by: []
 ---
 

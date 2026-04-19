@@ -1,23 +1,27 @@
 ---
-name: "Three Enforcement Pipeline Architectures — Middleware vs Hooks vs Rules"
-summary: "Three governance enforcement architectures at increasing sophistication: static rules (GSD, BMAD), event-driven hooks (Archon, Beads), request-pipeline middleware (DeerFlow). Each trades simplicity for power."
+name: Three Enforcement Pipeline Architectures — Middleware vs Hooks vs Rules
+summary: 'Three governance enforcement architectures at increasing sophistication: static rules (GSD, BMAD), event-driven hooks (Archon, Beads), request-pipeline middleware (DeerFlow). Each trades simplicity
+  for power.'
 implementation_notes: null
-category: "Governance"
-evidence_strength: "Medium (practitioner-documented)"
-adoption_status: "Partially Adopted"
+category: Governance
+evidence_strength: Medium (practitioner-documented)
+adoption_status: Partially Adopted
 proposer_priority: null
 applicability:
-  - "S3 (Claude Code Build)"
-  - "General"
+- S3 (Claude Code Build)
+- General
 adopted_in: []
 sources: []
 related_findings:
-  - {file: "middleware-as-enforcement-architecture.md", rel: "extends"}
-  - {file: "hook-based-enforcement-for-agent-outputs.md", rel: "same-problem"}
-  - {file: "structural-vs-psychological-vs-economic-governance.md", rel: "extends"}
+- file: middleware-as-enforcement-architecture.md
+  rel: extends
+- file: hook-based-enforcement-for-agent-outputs.md
+  rel: same-problem
+- file: structural-vs-psychological-vs-economic-governance.md
+  rel: extends
 proposals: null
-date_discovered: "2026-04-19"
-last_updated: "2026-04-19"
+date_discovered: '2026-04-19'
+last_updated: '2026-04-19'
 ---
 
 ## What It Is

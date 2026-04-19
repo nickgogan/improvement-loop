@@ -20,7 +20,7 @@ last_updated: '2026-04-08'
 related_findings:
 - file: skill-vs-process-distinction-deterministic-rails.md
   rel: same-problem
-pipeline_status: "raw"
+pipeline_status: raw
 consumed_by: []
 ---
 # Build/Operate Separation Principle

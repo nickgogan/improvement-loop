@@ -21,7 +21,7 @@ last_updated: '2026-04-09'
 related_findings:
 - file: agent-cost-blowup-mitigation-strategies.md
   rel: extended-by
-pipeline_status: "raw"
+pipeline_status: raw
 consumed_by: []
 ---
 # Model Tier Routing: Expensive Orchestrator, Cheap Sub-Agents

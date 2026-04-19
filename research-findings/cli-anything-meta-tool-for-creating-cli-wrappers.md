@@ -19,7 +19,7 @@ last_updated: '2026-04-08'
 related_findings:
 - file: dynamic-discovery-architecture-self-updating-cli-f.md
   rel: same-problem
-pipeline_status: "raw"
+pipeline_status: raw
 consumed_by: []
 ---
 # CLI Anything: Meta-Tool for Creating CLI Wrappers for Any Open-Source App

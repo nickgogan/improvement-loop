@@ -21,9 +21,9 @@ related_findings:
   rel: same-problem
 - file: unified-tracing-opentelemetry-for-agents.md
   rel: same-problem
-pipeline_status: "synthesized"
+pipeline_status: synthesized
 consumed_by:
-  - "agent-workflow-and-execution.md"
+- agent-workflow-and-execution.md
 ---
 # Structured Streaming Events for System Observability
 

@@ -23,7 +23,7 @@ related_findings:
   rel: same-problem
 - file: cross-model-verification-for-bug-finding.md
   rel: same-problem
-pipeline_status: "raw"
+pipeline_status: raw
 consumed_by: []
 ---
 # Test-Driven Development as Counterweight to Agentic Randomness

@@ -1,7 +1,7 @@
 ---
 name: Agent-as-Guest Metaphor
-summary: "OpenClaw frames the agent's role with: \"You have access to someone's life \u2014 their messages, files, calendar, maybe even their home. That's intimacy. Treat it with respect.\" This philosophical framing\
-  \ shapes concrete privacy rules and action constraints."
+summary: 'OpenClaw frames the agent''s role with: "You have access to someone''s life — their messages, files, calendar, maybe even their home. That''s intimacy. Treat it with respect." This philosophical
+  framing shapes concrete privacy rules and action constraints.'
 implementation_notes: null
 category: Agent Design
 evidence_strength: Medium (practitioner-documented)
@@ -15,7 +15,7 @@ related_findings: []
 proposals: null
 date_discovered: '2026-04-08'
 last_updated: '2026-04-08'
-pipeline_status: "raw"
+pipeline_status: raw
 consumed_by: []
 ---
 ## What It Is

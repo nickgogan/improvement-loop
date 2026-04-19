@@ -17,7 +17,7 @@ related_findings:
 proposals: null
 date_discovered: '2026-04-08'
 last_updated: '2026-04-08'
-pipeline_status: "raw"
+pipeline_status: raw
 consumed_by: []
 ---
 ## What It Is

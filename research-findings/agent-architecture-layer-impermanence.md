@@ -79,9 +79,9 @@ related_findings:
   rel: same-problem
 - file: skills-as-markdown-sop-files-encode-processes.md
   rel: contradicts
-pipeline_status: "synthesized"
+pipeline_status: synthesized
 consumed_by:
-  - "agent-architecture-decisions.md"
+- agent-architecture-decisions.md
 ---
 
 # Agent Architecture Layer Impermanence (Bitter Lesson for Agents)

@@ -1,6 +1,7 @@
 ---
 name: Scoped Memory Model
-summary: mem0 scopes all memories by three composable dimensions — user_id, agent_id, and run_id — enabling intersection queries (e.g., user + agent = personalized agent memory). All CRUD operations filter by scope. No cross-scope access without explicit filtering.
+summary: mem0 scopes all memories by three composable dimensions — user_id, agent_id, and run_id — enabling intersection queries (e.g., user + agent = personalized agent memory). All CRUD operations filter
+  by scope. No cross-scope access without explicit filtering.
 implementation_notes: null
 category: Context Engineering
 evidence_strength: Medium (practitioner-documented)
@@ -17,7 +18,7 @@ related_findings:
 proposals: null
 date_discovered: '2026-04-08'
 last_updated: '2026-04-08'
-pipeline_status: "raw"
+pipeline_status: raw
 consumed_by: []
 ---
 ## What It Is

@@ -1,23 +1,27 @@
 ---
-name: "Memory Decay/Compaction Is Converging on Multi-Strategy Approaches"
-summary: "Four repos address context compaction with semantically-aware strategies beyond simple truncation: Beads (semantic decay), OpenViking (two-threshold), Paperclip (weekly synthesis + decay), DeerFlow (async summarization). Each solves a different facet of the same problem."
+name: Memory Decay/Compaction Is Converging on Multi-Strategy Approaches
+summary: 'Four repos address context compaction with semantically-aware strategies beyond simple truncation: Beads (semantic decay), OpenViking (two-threshold), Paperclip (weekly synthesis + decay), DeerFlow
+  (async summarization). Each solves a different facet of the same problem.'
 implementation_notes: null
-category: "Context Engineering"
-evidence_strength: "Medium (practitioner-documented)"
-adoption_status: "Not Yet Started"
+category: Context Engineering
+evidence_strength: Medium (practitioner-documented)
+adoption_status: Not Yet Started
 proposer_priority: null
 applicability:
-  - "S3 (Claude Code Build)"
-  - "General"
+- S3 (Claude Code Build)
+- General
 adopted_in: []
 sources: []
 related_findings:
-  - {file: "semantic-memory-decay-compaction.md", rel: "extends"}
-  - {file: "two-threshold-compaction-strategy.md", rel: "extends"}
-  - {file: "five-context-management-techniques-in-claude-code.md", rel: "same-problem"}
+- file: semantic-memory-decay-compaction.md
+  rel: extends
+- file: two-threshold-compaction-strategy.md
+  rel: extends
+- file: five-context-management-techniques-in-claude-code.md
+  rel: same-problem
 proposals: null
-date_discovered: "2026-04-19"
-last_updated: "2026-04-19"
+date_discovered: '2026-04-19'
+last_updated: '2026-04-19'
 ---
 
 ## What It Is

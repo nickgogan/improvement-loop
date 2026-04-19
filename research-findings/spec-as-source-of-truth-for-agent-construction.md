@@ -20,7 +20,7 @@ related_findings:
   rel: same-problem
 - file: task-contract-pattern-schema-first-agent.md
   rel: same-problem
-pipeline_status: "raw"
+pipeline_status: raw
 consumed_by: []
 ---
 # Spec-as-Source-of-Truth for Agent Construction

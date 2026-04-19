@@ -1,23 +1,23 @@
 ---
-name: "Tech Stack Pinning Table for Library Drift Prevention"
-summary: "The Architect agent generates a table of specific technologies and version numbers. The dev agent references this to prevent 'sneaky' library substitutions when the pinned technology causes friction."
-implementation_notes: "Add tech-stack.md to any project using agent-driven development. Include in dev agent's always-load config."
-category: "Context Engineering"
-evidence_strength: "Strong (production-tested)"
-adoption_status: "Not Yet Started"
-proposer_priority: "P1 (Implement Now)"
+name: Tech Stack Pinning Table for Library Drift Prevention
+summary: The Architect agent generates a table of specific technologies and version numbers. The dev agent references this to prevent 'sneaky' library substitutions when the pinned technology causes friction.
+implementation_notes: Add tech-stack.md to any project using agent-driven development. Include in dev agent's always-load config.
+category: Context Engineering
+evidence_strength: Strong (production-tested)
+adoption_status: Not Yet Started
+proposer_priority: P1 (Implement Now)
 applicability:
-  - "S3 (Claude Code Build)"
-  - "General"
+- S3 (Claude Code Build)
+- General
 adopted_in: []
 sources:
-  - "bmad-method-masterclass.md"
+- bmad-method-masterclass.md
 proposals: null
-date_discovered: "2026-04-07"
-last_updated: "2026-04-07"
-pipeline_status: "extracted"
+date_discovered: '2026-04-07'
+last_updated: '2026-04-07'
+pipeline_status: extracted
 consumed_by:
-  - "templates/tech-stack-pinning-table.md"
+- templates/tech-stack-pinning-table.md
 ---
 
 # Tech Stack Pinning Table for Library Drift Prevention

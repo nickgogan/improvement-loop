@@ -19,9 +19,9 @@ last_updated: '2026-04-07'
 related_findings:
 - file: context-file-taxonomy-claudemd-soulmd-agentsmd.md
   rel: enabled-by
-pipeline_status: "extracted"
+pipeline_status: extracted
 consumed_by:
-  - "rules/pre-compression-identity-pinning.md"
+- rules/pre-compression-identity-pinning.md
 ---
 # Pre-Compression Identity Pinning (Soul.md Survives Compaction)
 

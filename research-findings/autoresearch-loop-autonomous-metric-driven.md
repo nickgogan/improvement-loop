@@ -17,9 +17,9 @@ proposals: []
 date_discovered: '2026-03-22'
 last_updated: 2026-04-08
 related_findings:
-  - file: "agent-cost-blowup-mitigation-strategies.md"
-    rel: "same-problem"
-pipeline_status: "raw"
+- file: agent-cost-blowup-mitigation-strategies.md
+  rel: same-problem
+pipeline_status: raw
 consumed_by: []
 ---
 # Autoresearch Loop: Autonomous Metric-Driven Experiment Cycles

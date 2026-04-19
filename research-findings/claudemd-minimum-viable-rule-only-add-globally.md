@@ -17,19 +17,19 @@ proposals: []
 date_discovered: '2026-03-22'
 last_updated: 2026-04-08
 related_findings:
-  - file: "context-file-instruction-bloat-eth-zurich.md"
-    rel: "same-problem"
-  - file: "context-curation-over-context-stuffing.md"
-    rel: "same-problem"
-  - file: "tiered-context-injection-over-monolithic-files.md"
-    rel: "same-problem"
-  - file: "ace-agentic-context-engineering-evolving-playbook.md"
-    rel: "same-problem"
-  - file: "ace-delta-updates-over-monolithic-rewrites.md"
-    rel: "same-problem"
-  - file: "agent-context-kiss-commandments-minimum-viable.md"
-    rel: "same-problem"
-pipeline_status: "raw"
+- file: context-file-instruction-bloat-eth-zurich.md
+  rel: same-problem
+- file: context-curation-over-context-stuffing.md
+  rel: same-problem
+- file: tiered-context-injection-over-monolithic-files.md
+  rel: same-problem
+- file: ace-agentic-context-engineering-evolving-playbook.md
+  rel: same-problem
+- file: ace-delta-updates-over-monolithic-rewrites.md
+  rel: same-problem
+- file: agent-context-kiss-commandments-minimum-viable.md
+  rel: same-problem
+pipeline_status: raw
 consumed_by: []
 ---
 # CLAUDE.md Minimum Viable Rule: Only Add Globally True Lines

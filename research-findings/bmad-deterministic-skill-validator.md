@@ -1,31 +1,31 @@
 ---
-name: "Deterministic Skill Validator"
-summary: "Deterministic inference-based skill validator with 19 rules across 6 categories, CI-integrated, replacing adversarial LLM review for skill quality assurance."
+name: Deterministic Skill Validator
+summary: Deterministic inference-based skill validator with 19 rules across 6 categories, CI-integrated, replacing adversarial LLM review for skill quality assurance.
 implementation_notes: null
-category: "Evaluation"
-evidence_strength: "Medium (practitioner-documented)"
-adoption_status: "Not Yet Started"
-proposer_priority: "P2 (Design Required)"
+category: Evaluation
+evidence_strength: Medium (practitioner-documented)
+adoption_status: Not Yet Started
+proposer_priority: P2 (Design Required)
 applicability:
-  - "General / Cross-System"
+- General / Cross-System
 adopted_in: []
 sources:
-  - "bmad-v610-v622-changelog.md"
+- bmad-v610-v622-changelog.md
 related_findings:
-  - file: "llm-as-judge-pattern-for-verification-agents.md"
-    rel: "same-problem"
-  - file: "agent-self-reporting-unreliability-independent-eval.md"
-    rel: "same-problem"
-  - file: "four-layer-production-eval-stack-with-golden-traces.md"
-    rel: "same-problem"
-  - file: "ace-execution-feedback-no-labels-required.md"
-    rel: "same-problem"
+- file: llm-as-judge-pattern-for-verification-agents.md
+  rel: same-problem
+- file: agent-self-reporting-unreliability-independent-eval.md
+  rel: same-problem
+- file: four-layer-production-eval-stack-with-golden-traces.md
+  rel: same-problem
+- file: ace-execution-feedback-no-labels-required.md
+  rel: same-problem
 proposals: null
-date_discovered: "2026-04-07"
+date_discovered: '2026-04-07'
 last_updated: 2026-04-08
-pipeline_status: "synthesized"
+pipeline_status: synthesized
 consumed_by:
-  - "building-agent-evaluation-suites.md"
+- building-agent-evaluation-suites.md
 ---
 # Deterministic Skill Validator
 

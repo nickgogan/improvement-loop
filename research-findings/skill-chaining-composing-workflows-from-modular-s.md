@@ -17,7 +17,7 @@ proposals: null
 date_discovered: '2026-03-22'
 last_updated: '2026-04-09'
 related_findings: []
-pipeline_status: "raw"
+pipeline_status: raw
 consumed_by: []
 ---
 # Skill Chaining: Composing Workflows from Modular Skill Units

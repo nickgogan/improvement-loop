@@ -1,24 +1,26 @@
 ---
-name: "Micro Compact: Stale Tool Call Removal Strategy"
-summary: "An unreleased compaction strategy in Claude Code that removes tool calls older than the most recent five from agent context. Tool calls are identified as the most context-dense part of Claude Code sessions. Feature-flagged off, but signals Anthropic's direction on granular compaction."
+name: 'Micro Compact: Stale Tool Call Removal Strategy'
+summary: An unreleased compaction strategy in Claude Code that removes tool calls older than the most recent five from agent context. Tool calls are identified as the most context-dense part of Claude Code
+  sessions. Feature-flagged off, but signals Anthropic's direction on granular compaction.
 implementation_notes: null
-category: "Context Engineering"
-evidence_strength: "Medium (practitioner-documented)"
-adoption_status: "Not Yet Started"
-proposer_priority: "P3 (Monitor)"
+category: Context Engineering
+evidence_strength: Medium (practitioner-documented)
+adoption_status: Not Yet Started
+proposer_priority: P3 (Monitor)
 applicability:
-  - "S3 (Claude Code Build)"
-  - "General"
+- S3 (Claude Code Build)
+- General
 adopted_in: []
-sources: ["claude-codes-leak-changes-everything.md"]
-date_discovered: "2026-04-07"
+sources:
+- claude-codes-leak-changes-everything.md
+date_discovered: '2026-04-07'
 last_updated: 2026-04-08
 related_findings:
-  - file: "ace-delta-updates-over-monolithic-rewrites.md"
-    rel: "same-problem"
-  - file: "agent-context-kiss-commandments-minimum-viable.md"
-    rel: "same-problem"
-pipeline_status: "raw"
+- file: ace-delta-updates-over-monolithic-rewrites.md
+  rel: same-problem
+- file: agent-context-kiss-commandments-minimum-viable.md
+  rel: same-problem
+pipeline_status: raw
 consumed_by: []
 ---
 

@@ -1,24 +1,28 @@
 ---
-name: "Monorepo Context Distribution — Three Strategies"
-summary: "Three monorepo repos solve package-level AI context differently: n8n distributes CLAUDE.md→AGENTS.md chain-loaders per package (~44 packages), Archon uses path-scoped .claude/rules/*.md files that auto-load by directory (11 rules), and LangGraph uses a single global CLAUDE.md for all 8 libraries. Tradeoff: context precision vs. authoring effort vs. simplicity."
+name: Monorepo Context Distribution — Three Strategies
+summary: 'Three monorepo repos solve package-level AI context differently: n8n distributes CLAUDE.md→AGENTS.md chain-loaders per package (~44 packages), Archon uses path-scoped .claude/rules/*.md files
+  that auto-load by directory (11 rules), and LangGraph uses a single global CLAUDE.md for all 8 libraries. Tradeoff: context precision vs. authoring effort vs. simplicity.'
 implementation_notes: null
-category: "Context Engineering"
-evidence_strength: "Medium (practitioner-documented)"
-adoption_status: "Not Yet Started"
+category: Context Engineering
+evidence_strength: Medium (practitioner-documented)
+adoption_status: Not Yet Started
 proposer_priority: null
 applicability:
-  - "S3 (Claude Code Build)"
-  - "General"
+- S3 (Claude Code Build)
+- General
 adopted_in: []
 sources: []
 related_findings:
-  - {file: "seven-context-loading-mechanisms-no-convergence.md", rel: "extends"}
-  - {file: "tiered-context-injection-over-monolithic-files.md", rel: "same-problem"}
-  - {file: "cross-platform-context-file-strategy.md", rel: "same-problem"}
+- file: seven-context-loading-mechanisms-no-convergence.md
+  rel: extends
+- file: tiered-context-injection-over-monolithic-files.md
+  rel: same-problem
+- file: cross-platform-context-file-strategy.md
+  rel: same-problem
 proposals: null
-date_discovered: "2026-04-09"
-last_updated: "2026-04-09"
-pipeline_status: "raw"
+date_discovered: '2026-04-09'
+last_updated: '2026-04-09'
+pipeline_status: raw
 consumed_by: []
 ---
 

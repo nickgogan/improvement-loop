@@ -19,8 +19,8 @@ sources:
 proposals: []
 date_discovered: '2026-03-16'
 last_updated: 2026-04-08
-related_findings:
-pipeline_status: "raw"
+related_findings: null
+pipeline_status: raw
 consumed_by: []
 ---
 # Self-Evolving Loop Pattern

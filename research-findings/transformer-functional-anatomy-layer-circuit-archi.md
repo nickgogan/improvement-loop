@@ -1,20 +1,22 @@
 ---
-notion_id: "32c1e08b-9b34-81d3-b75e-cfb686b9a481"
-name: "Transformer Functional Anatomy -- Layer Circuit Architecture"
-summary: "LLMs have genuine functional anatomy: early layers encode, middle layers reason in indivisible multi-layer circuits, late layers decode. Duplicating entire circuits improves performance without weight changes. Single-layer duplication fails because circuits must execute as complete units."
-implementation_notes: "Mostly theoretical for us. But explains why longer thinking time works (more forward passes through reasoning circuits), why model size matters non-linearly, and why truncating reasoning is destructive."
-category: "Model Selection"
-evidence_strength: "Medium (practitioner-documented)"
-adoption_status: "Not Yet Started"
-proposer_priority: "P3 (Monitor)"
+notion_id: 32c1e08b-9b34-81d3-b75e-cfb686b9a481
+name: Transformer Functional Anatomy -- Layer Circuit Architecture
+summary: 'LLMs have genuine functional anatomy: early layers encode, middle layers reason in indivisible multi-layer circuits, late layers decode. Duplicating entire circuits improves performance without
+  weight changes. Single-layer duplication fails because circuits must execute as complete units.'
+implementation_notes: Mostly theoretical for us. But explains why longer thinking time works (more forward passes through reasoning circuits), why model size matters non-linearly, and why truncating reasoning
+  is destructive.
+category: Model Selection
+evidence_strength: Medium (practitioner-documented)
+adoption_status: Not Yet Started
+proposer_priority: P3 (Monitor)
 applicability:
-  - "General"
+- General
 adopted_in: []
 sources: []
 proposals: []
-date_discovered: "2026-03-23"
-last_updated: "2026-03-23"
-pipeline_status: "raw"
+date_discovered: '2026-03-23'
+last_updated: '2026-03-23'
+pipeline_status: raw
 consumed_by: []
 ---
 

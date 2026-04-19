@@ -21,7 +21,7 @@ related_findings:
   rel: extends
 - file: mcp-n-plus-m-integration-economics.md
   rel: enabled-by
-pipeline_status: "raw"
+pipeline_status: raw
 consumed_by: []
 ---
 # Context7 MCP

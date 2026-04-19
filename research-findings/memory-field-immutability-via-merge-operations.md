@@ -1,21 +1,23 @@
 ---
-name: "Memory Field Immutability via Merge Operations"
-summary: "Schema-level merge_op field on memory templates controls how fields are updated: immutable (never overwrite), upsert (update in place), append (add to list). Prevents identity drift while allowing mutable fields to evolve."
+name: Memory Field Immutability via Merge Operations
+summary: 'Schema-level merge_op field on memory templates controls how fields are updated: immutable (never overwrite), upsert (update in place), append (add to list). Prevents identity drift while allowing
+  mutable fields to evolve.'
 implementation_notes: null
-category: "Governance"
-evidence_strength: "Medium (practitioner-documented)"
-adoption_status: "Not Yet Started"
+category: Governance
+evidence_strength: Medium (practitioner-documented)
+adoption_status: Not Yet Started
 proposer_priority: null
 applicability:
-  - "S3 (Claude Code Build)"
-  - "General"
+- S3 (Claude Code Build)
+- General
 adopted_in: []
 sources: []
 related_findings:
-  - {file: "governance-memory-append-only-audit-layer.md", rel: "extends"}
+- file: governance-memory-append-only-audit-layer.md
+  rel: extends
 proposals: null
-date_discovered: "2026-04-19"
-last_updated: "2026-04-19"
+date_discovered: '2026-04-19'
+last_updated: '2026-04-19'
 ---
 
 ## What It Is

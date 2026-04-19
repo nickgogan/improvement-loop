@@ -23,7 +23,7 @@ related_findings:
   rel: same-problem
 - file: aios-architecture-folder-per-role-agent.md
   rel: same-problem
-pipeline_status: "raw"
+pipeline_status: raw
 consumed_by: []
 ---
 # Global vs. Project-Level Skill and Context Scoping

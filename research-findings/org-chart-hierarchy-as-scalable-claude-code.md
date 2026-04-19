@@ -23,7 +23,7 @@ related_findings:
   rel: same-problem
 - file: harness-engineering-third-evolution.md
   rel: same-problem
-pipeline_status: "raw"
+pipeline_status: raw
 consumed_by: []
 ---
 # Org-Chart Hierarchy as Scalable Claude Code Architecture

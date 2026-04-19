@@ -1,35 +1,35 @@
 ---
-name: "Obsidian as Transparent Frontend vs RAG Black Box"
-summary: "Obsidian provides full transparency — human can see, read, edit, and navigate all knowledge via the desktop app — versus RAG systems where knowledge is abstracted away in a black box. Even graph RAG with visual node views is less efficient for human inspection. Transparency enables manual correction, curation, and trust verification."
-implementation_notes: "Validates MetaSystem's Obsidian vault approach over RAG-based knowledge management."
-category: "Memory Architecture"
-evidence_strength: "Medium (practitioner-documented)"
-adoption_status: "Already Adopted"
-proposer_priority: "P3 (Monitor)"
+name: Obsidian as Transparent Frontend vs RAG Black Box
+summary: Obsidian provides full transparency — human can see, read, edit, and navigate all knowledge via the desktop app — versus RAG systems where knowledge is abstracted away in a black box. Even graph
+  RAG with visual node views is less efficient for human inspection. Transparency enables manual correction, curation, and trust verification.
+implementation_notes: Validates MetaSystem's Obsidian vault approach over RAG-based knowledge management.
+category: Memory Architecture
+evidence_strength: Medium (practitioner-documented)
+adoption_status: Already Adopted
+proposer_priority: P3 (Monitor)
 applicability:
-  - "S3 (Claude Code Build)"
+- S3 (Claude Code Build)
 adopted_in:
-  - "General / Cross-System"
+- General / Cross-System
 sources:
-  - "karpathys-obsidian-rag-claude-code.md"
+- karpathys-obsidian-rag-claude-code.md
 related_findings:
-  - file: "karpathy-llm-knowledge-base-obsidian-rag.md"
-    rel: "extends"
-  - file: "scale-threshold-heuristic-obsidian-vs-rag.md"
-    rel: "same-problem"
-  - file: "dual-ingestion-funnel-human-clip-plus-llm-research.md"
-    rel: "same-problem"
-  - file: "start-simple-migrate-when-forced-pragmatic-architecture.md"
-    rel: "same-problem"
-  - file: "ace-agentic-context-engineering-rag-based.md"
-    rel: "contradicts"
-    rel: "same-problem"
-  - file: "start-simple-migrate-when-forced-pragmatic-architecture.md"
-    rel: "same-problem"
+- file: karpathy-llm-knowledge-base-obsidian-rag.md
+  rel: extends
+- file: scale-threshold-heuristic-obsidian-vs-rag.md
+  rel: same-problem
+- file: dual-ingestion-funnel-human-clip-plus-llm-research.md
+  rel: same-problem
+- file: start-simple-migrate-when-forced-pragmatic-architecture.md
+  rel: same-problem
+- file: ace-agentic-context-engineering-rag-based.md
+  rel: same-problem
+- file: start-simple-migrate-when-forced-pragmatic-architecture.md
+  rel: same-problem
 proposals: null
-date_discovered: "2026-04-07"
+date_discovered: '2026-04-07'
 last_updated: 2026-04-08
-pipeline_status: "raw"
+pipeline_status: raw
 consumed_by: []
 ---
 # Obsidian as Transparent Frontend vs RAG Black Box

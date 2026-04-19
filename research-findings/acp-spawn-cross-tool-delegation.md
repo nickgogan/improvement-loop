@@ -1,6 +1,7 @@
 ---
 name: ACP Spawn — Cross-Tool Delegation
-summary: OpenClaw's Agent Client Protocol enables spawning subprocesses for coding tasks using Claude Code, Codex, OpenCode, or Pi. Background mode with session monitoring. Multi-AI-tool orchestration at runtime — the agent delegates to specialized coding tools rather than doing everything itself.
+summary: OpenClaw's Agent Client Protocol enables spawning subprocesses for coding tasks using Claude Code, Codex, OpenCode, or Pi. Background mode with session monitoring. Multi-AI-tool orchestration at
+  runtime — the agent delegates to specialized coding tools rather than doing everything itself.
 implementation_notes: null
 category: Orchestration
 evidence_strength: Medium (practitioner-documented)
@@ -14,7 +15,7 @@ related_findings: []
 proposals: null
 date_discovered: '2026-04-08'
 last_updated: '2026-04-08'
-pipeline_status: "raw"
+pipeline_status: raw
 consumed_by: []
 ---
 ## What It Is

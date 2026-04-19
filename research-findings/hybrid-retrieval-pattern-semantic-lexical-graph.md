@@ -18,9 +18,9 @@ proposals: null
 date_discovered: '2026-03-18'
 last_updated: 2026-04-09
 related_findings:
-  - file: "ace-agentic-context-engineering-rag-based.md"
-    rel: "same-problem"
-pipeline_status: "raw"
+- file: ace-agentic-context-engineering-rag-based.md
+  rel: same-problem
+pipeline_status: raw
 consumed_by: []
 ---
 # Hybrid Retrieval Pattern (Semantic + Lexical + Graph)

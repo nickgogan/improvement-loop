@@ -19,7 +19,7 @@ last_updated: '2026-04-08'
 related_findings:
 - file: claude-code-channels-telegramdiscord-as-agent-inte.md
   rel: same-problem
-pipeline_status: "raw"
+pipeline_status: raw
 consumed_by: []
 ---
 # Happy Engineering: Mobile Claude Code via Remote Terminal

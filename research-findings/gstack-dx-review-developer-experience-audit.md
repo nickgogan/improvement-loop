@@ -1,22 +1,23 @@
 ---
-name: "DX Review — Developer Experience Audit"
-summary: "Developer experience review as a distinct specialist skill evaluating setup friction, API ergonomics, documentation quality, error messages, and onboarding flow."
+name: DX Review — Developer Experience Audit
+summary: Developer experience review as a distinct specialist skill evaluating setup friction, API ergonomics, documentation quality, error messages, and onboarding flow.
 implementation_notes: null
-category: "Evaluation"
-evidence_strength: "Medium (practitioner-documented)"
-adoption_status: "Not Yet Started"
-proposer_priority: "P3 (Backlog)"
+category: Evaluation
+evidence_strength: Medium (practitioner-documented)
+adoption_status: Not Yet Started
+proposer_priority: P3 (Monitor)
 applicability:
-  - "General / Cross-System"
+- General / Cross-System
 adopted_in: []
 sources:
-  - "gstack-v01590-v015160-changelog.md"
+- gstack-v01590-v015160-changelog.md
 related_findings:
-  - {file: "gstack-review-army-parallel-specialist-dispatch.md", rel: "extends"}
+- file: gstack-review-army-parallel-specialist-dispatch.md
+  rel: extends
 proposals: null
-date_discovered: "2026-04-07"
-last_updated: "2026-04-07"
-pipeline_status: "raw"
+date_discovered: '2026-04-07'
+last_updated: '2026-04-07'
+pipeline_status: raw
 consumed_by: []
 ---
 # DX Review — Developer Experience Audit

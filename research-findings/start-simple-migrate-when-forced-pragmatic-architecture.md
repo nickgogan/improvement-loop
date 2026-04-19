@@ -1,25 +1,27 @@
 ---
-name: "Start Simple, Migrate When Forced (Pragmatic Architecture)"
-summary: "Start with the simplest system that might work and only migrate to more complex infrastructure when hitting clear scaling limits. Anti-pattern: arguing about system choice before trying either. Applied to AI knowledge management: use Obsidian first, migrate to RAG only when scale forces it."
+name: Start Simple, Migrate When Forced (Pragmatic Architecture)
+summary: 'Start with the simplest system that might work and only migrate to more complex infrastructure when hitting clear scaling limits. Anti-pattern: arguing about system choice before trying either.
+  Applied to AI knowledge management: use Obsidian first, migrate to RAG only when scale forces it.'
 implementation_notes: null
-category: "Agent Design"
-evidence_strength: "Weak (theoretical)"
-adoption_status: "Already Adopted"
-proposer_priority: "P3 (Monitor)"
+category: Agent Design
+evidence_strength: Weak (theoretical)
+adoption_status: Already Adopted
+proposer_priority: P3 (Monitor)
 applicability:
-  - "General"
+- General
 adopted_in:
-  - "General / Cross-System"
+- General / Cross-System
 sources:
-  - "karpathys-obsidian-rag-claude-code.md"
+- karpathys-obsidian-rag-claude-code.md
 related_findings:
-  - {file: "scale-threshold-heuristic-obsidian-vs-rag.md", rel: "extends"}
-  - file: "obsidian-as-transparent-frontend-vs-rag-black-box.md"
-    rel: "same-problem"
+- file: scale-threshold-heuristic-obsidian-vs-rag.md
+  rel: extends
+- file: obsidian-as-transparent-frontend-vs-rag-black-box.md
+  rel: same-problem
 proposals: null
-date_discovered: "2026-04-07"
-last_updated: "2026-04-07"
-pipeline_status: "raw"
+date_discovered: '2026-04-07'
+last_updated: '2026-04-07'
+pipeline_status: raw
 consumed_by: []
 ---
 # Start Simple, Migrate When Forced (Pragmatic Architecture)

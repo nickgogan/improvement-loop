@@ -1,22 +1,23 @@
 ---
-name: "Progressive Search: Wide Then Narrow"
-summary: "Prompt agents to start with short, broad search queries, evaluate information availability, then narrow. Counters the default LLM behavior of generating overly specific queries that yield few results. Mimics expert human research strategy."
-implementation_notes: "Applicable to MetaSystem's research-loop and any agent that uses web search tools."
-category: "Prompt Craft"
-evidence_strength: "Strong (production-tested)"
-adoption_status: "Not Yet Started"
-proposer_priority: "P1 (Implement Now)"
+name: 'Progressive Search: Wide Then Narrow'
+summary: Prompt agents to start with short, broad search queries, evaluate information availability, then narrow. Counters the default LLM behavior of generating overly specific queries that yield few results.
+  Mimics expert human research strategy.
+implementation_notes: Applicable to MetaSystem's research-loop and any agent that uses web search tools.
+category: Prompt Craft
+evidence_strength: Strong (production-tested)
+adoption_status: Not Yet Started
+proposer_priority: P1 (Implement Now)
 applicability:
-  - "S3 (Claude Code Build)"
-  - "General"
+- S3 (Claude Code Build)
+- General
 adopted_in: []
 sources:
-  - "anthropic-multi-agent-research-system.md"
+- anthropic-multi-agent-research-system.md
 related_findings: []
 proposals: null
-date_discovered: "2026-04-09"
-last_updated: "2026-04-09"
-pipeline_status: "raw"
+date_discovered: '2026-04-09'
+last_updated: '2026-04-09'
+pipeline_status: raw
 consumed_by: []
 ---
 

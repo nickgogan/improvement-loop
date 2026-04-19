@@ -1,20 +1,21 @@
 ---
-name: "Human Partner Framing"
-summary: "Superpowers deliberately uses 'human partner' instead of 'user' throughout all skills, documented as a design decision that should not be changed. Frames the agent-human relationship as collaborative rather than service-oriented, influencing how the agent conceptualizes its own role."
+name: Human Partner Framing
+summary: Superpowers deliberately uses 'human partner' instead of 'user' throughout all skills, documented as a design decision that should not be changed. Frames the agent-human relationship as collaborative
+  rather than service-oriented, influencing how the agent conceptualizes its own role.
 implementation_notes: null
-category: "Agent Design"
-evidence_strength: "Medium (practitioner-documented)"
-adoption_status: "Not Yet Started"
+category: Agent Design
+evidence_strength: Medium (practitioner-documented)
+adoption_status: Not Yet Started
 proposer_priority: null
 applicability:
-  - "S3 (Claude Code Build)"
+- S3 (Claude Code Build)
 adopted_in: []
 sources: []
 related_findings: []
 proposals: null
-date_discovered: "2026-04-08"
-last_updated: "2026-04-08"
-pipeline_status: "raw"
+date_discovered: '2026-04-08'
+last_updated: '2026-04-08'
+pipeline_status: raw
 consumed_by: []
 ---
 # Human Partner Framing

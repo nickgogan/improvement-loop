@@ -16,11 +16,11 @@ proposals: []
 date_discovered: '2026-03-22'
 last_updated: 2026-04-08
 related_findings:
-  - file: "cot-fails-without-inductive-generalization.md"
-    rel: "same-problem"
-  - file: "advanced-elicitation-techniques-library.md"
-    rel: "same-problem"
-pipeline_status: "raw"
+- file: cot-fails-without-inductive-generalization.md
+  rel: same-problem
+- file: advanced-elicitation-techniques-library.md
+  rel: same-problem
+pipeline_status: raw
 consumed_by: []
 ---
 # Explore Tokens and Receive Tokens: Non-Linear Reasoning Injection

@@ -1,6 +1,7 @@
 ---
 name: Provider Pattern at Scale
-summary: mem0 implements 78 providers across 5 categories (24 LLM, 30 vector, 15 embedding, 4 graph, 5 reranker), all inheriting from abstract base classes with consistent interfaces. Factory pattern for instantiation. Optional dependency groups prevent core install bloat.
+summary: mem0 implements 78 providers across 5 categories (24 LLM, 30 vector, 15 embedding, 4 graph, 5 reranker), all inheriting from abstract base classes with consistent interfaces. Factory pattern for
+  instantiation. Optional dependency groups prevent core install bloat.
 implementation_notes: null
 category: Tool Integration
 evidence_strength: Medium (practitioner-documented)
@@ -15,7 +16,7 @@ related_findings: []
 proposals: null
 date_discovered: '2026-04-08'
 last_updated: '2026-04-08'
-pipeline_status: "raw"
+pipeline_status: raw
 consumed_by: []
 ---
 ## What It Is

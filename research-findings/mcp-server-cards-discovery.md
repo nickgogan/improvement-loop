@@ -23,7 +23,7 @@ related_findings:
 proposals: []
 date_discovered: '2026-04-07'
 last_updated: '2026-04-08'
-pipeline_status: "raw"
+pipeline_status: raw
 consumed_by: []
 ---
 # MCP Server Cards for Decentralized Discovery

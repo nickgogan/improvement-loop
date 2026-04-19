@@ -20,7 +20,7 @@ related_findings:
   rel: same-problem
 - file: advisor-executor-api-pattern.md
   rel: same-problem
-pipeline_status: "raw"
+pipeline_status: raw
 consumed_by: []
 ---
 # Multimodel Routing Architecture: Specialized Models per Task Type

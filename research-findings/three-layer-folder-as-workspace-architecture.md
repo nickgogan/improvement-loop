@@ -21,7 +21,7 @@ related_findings:
   rel: enabled-by
 - file: agent-context-kiss-commandments-minimum-viable.md
   rel: same-problem
-pipeline_status: "raw"
+pipeline_status: raw
 consumed_by: []
 ---
 # Three-Layer Folder-as-Workspace Architecture

@@ -1,23 +1,26 @@
 ---
-name: "IsolationResolver — 7-Step Worktree Lifecycle Algorithm"
-summary: "Archon implements a concrete 7-step algorithm for worktree resolution: existing env → no codebase skip → workflow reuse → linked issue sharing → PR branch adoption → limit check + auto-cleanup → create new. Includes orphan cleanup and branded types (RepoPath, BranchName, WorktreePath) to prevent string-type confusion."
+name: IsolationResolver — 7-Step Worktree Lifecycle Algorithm
+summary: 'Archon implements a concrete 7-step algorithm for worktree resolution: existing env → no codebase skip → workflow reuse → linked issue sharing → PR branch adoption → limit check + auto-cleanup
+  → create new. Includes orphan cleanup and branded types (RepoPath, BranchName, WorktreePath) to prevent string-type confusion.'
 implementation_notes: null
-category: "Sandboxing"
-evidence_strength: "Medium (practitioner-documented)"
-adoption_status: "Not Yet Started"
+category: Sandboxing
+evidence_strength: Medium (practitioner-documented)
+adoption_status: Not Yet Started
 proposer_priority: null
 applicability:
-  - "S3 (Claude Code Build)"
-  - "General"
+- S3 (Claude Code Build)
+- General
 adopted_in: []
 sources: []
 related_findings:
-  - {file: "worktree-isolation-for-parallel-agent-sessions.md", rel: "extends"}
-  - {file: "archon-yaml-defined-harness-workflows.md", rel: "extends"}
+- file: worktree-isolation-for-parallel-agent-sessions.md
+  rel: extends
+- file: archon-yaml-defined-harness-workflows.md
+  rel: extends
 proposals: null
-date_discovered: "2026-04-09"
-last_updated: "2026-04-09"
-pipeline_status: "raw"
+date_discovered: '2026-04-09'
+last_updated: '2026-04-09'
+pipeline_status: raw
 consumed_by: []
 ---
 

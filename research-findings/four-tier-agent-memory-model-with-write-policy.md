@@ -1,40 +1,42 @@
 ---
-name: "Four-Tier Agent Memory Model with Write Policy"
-summary: "Production agents need four distinct memory tiers: working (short-lived run state), episodic (task history with provenance), semantic (policy/docs as retrieval), and user (preferences requiring consent). Memory writes must be policy-governed: extract candidate -> classify type -> policy check -> attach provenance -> write with TTL/confidence. Never allow unrestricted model-authored long-term writes."
-implementation_notes: "MetaSystem has working memory (PROGRESS.md) and semantic memory (CLAUDE.md, skills). Missing: episodic memory with provenance, user memory with consent, and most critically -- a write policy governing what agents can persist and for how long. The existing MEMORY.md is an unstructured append-only store without TTL, confidence scores, or provenance metadata."
-category: "Memory Architecture"
-evidence_strength: "Strong (production-tested)"
-adoption_status: "Not Yet Started"
-proposer_priority: "P2 (Design Required)"
+name: Four-Tier Agent Memory Model with Write Policy
+summary: 'Production agents need four distinct memory tiers: working (short-lived run state), episodic (task history with provenance), semantic (policy/docs as retrieval), and user (preferences requiring
+  consent). Memory writes must be policy-governed: extract candidate -> classify type -> policy check -> attach provenance -> write with TTL/confidence. Never allow unrestricted model-authored long-term
+  writes.'
+implementation_notes: 'MetaSystem has working memory (PROGRESS.md) and semantic memory (CLAUDE.md, skills). Missing: episodic memory with provenance, user memory with consent, and most critically -- a write
+  policy governing what agents can persist and for how long. The existing MEMORY.md is an unstructured append-only store without TTL, confidence scores, or provenance metadata.'
+category: Memory Architecture
+evidence_strength: Strong (production-tested)
+adoption_status: Not Yet Started
+proposer_priority: P2 (Design Required)
 applicability:
-  - "General"
+- General
 adopted_in: []
 sources:
-  - "ai-agents-in-production-2026-nick-gupta-linkedin.md"
+- ai-agents-in-production-2026-nick-gupta-linkedin.md
 related_findings:
-  - file: "agent-memory-architecture-multi-agent-layered.md"
-    rel: "extends"
-  - file: "memory-cross-layer-promotion-governance.md"
-    rel: "same-problem"
-  - file: "context-rot-silent-killer-and-mitigations.md"
-    rel: "same-problem"
-  - file: "gsd-global-learnings-store-cross-session-persistence.md"
-    rel: "same-problem"
-  - file: "ace-agentic-context-engineering-rag-based.md"
-    rel: "same-problem"
-    rel: "extends"
-  - file: "memory-cross-layer-promotion-governance.md"
-    rel: "same-problem"
-  - file: "context-rot-silent-killer-and-mitigations.md"
-    rel: "same-problem"
-  - file: "gsd-global-learnings-store-cross-session-persistence.md"
-    rel: "same-problem"
+- file: agent-memory-architecture-multi-agent-layered.md
+  rel: extends
+- file: memory-cross-layer-promotion-governance.md
+  rel: same-problem
+- file: context-rot-silent-killer-and-mitigations.md
+  rel: same-problem
+- file: gsd-global-learnings-store-cross-session-persistence.md
+  rel: same-problem
+- file: ace-agentic-context-engineering-rag-based.md
+  rel: extends
+- file: memory-cross-layer-promotion-governance.md
+  rel: same-problem
+- file: context-rot-silent-killer-and-mitigations.md
+  rel: same-problem
+- file: gsd-global-learnings-store-cross-session-persistence.md
+  rel: same-problem
 proposals: []
-date_discovered: "2026-04-07"
+date_discovered: '2026-04-07'
 last_updated: 2026-04-08
-pipeline_status: "synthesized"
+pipeline_status: synthesized
 consumed_by:
-  - "session-persistence-and-memory.md"
+- session-persistence-and-memory.md
 ---
 
 # Four-Tier Agent Memory Model with Write Policy

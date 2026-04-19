@@ -1,25 +1,26 @@
 ---
-name: "Cross-Architecture Model Diffing for Safety Auditing"
-summary: "Dedicated Feature Crosscoder (DFC) enables cross-architecture model diffing to find behavioral differences between unrelated AI models. Three-section dictionary (shared, model-A-only, model-B-only) avoids false matches. Discovered embedded political alignment, copyright refusal mechanisms, and propaganda features across Llama, Qwen, GPT-OSS, and DeepSeek models."
+name: Cross-Architecture Model Diffing for Safety Auditing
+summary: Dedicated Feature Crosscoder (DFC) enables cross-architecture model diffing to find behavioral differences between unrelated AI models. Three-section dictionary (shared, model-A-only, model-B-only)
+  avoids false matches. Discovered embedded political alignment, copyright refusal mechanisms, and propaganda features across Llama, Qwen, GPT-OSS, and DeepSeek models.
 implementation_notes: null
-category: "Evaluation"
-evidence_strength: "Medium (peer-reviewed research)"
-adoption_status: "Not Yet Started"
-proposer_priority: "P3 (Not Yet Actionable)"
+category: Evaluation
+evidence_strength: Medium (practitioner-documented)
+adoption_status: Not Yet Started
+proposer_priority: P3 (Monitor)
 applicability:
-  - "General / Cross-System"
+- General / Cross-System
 adopted_in: []
 sources:
-  - "anthropic-ai-diff-tool.md"
+- anthropic-ai-diff-tool.md
 related_findings:
-  - file: "cross-model-verification-for-bug-finding.md"
-    rel: "same-problem"
-  - file: "benchmark-signal-mismatch-optimization-gap.md"
-    rel: "same-problem"
+- file: cross-model-verification-for-bug-finding.md
+  rel: same-problem
+- file: benchmark-signal-mismatch-optimization-gap.md
+  rel: same-problem
 proposals: null
-date_discovered: "2026-04-09"
-last_updated: "2026-04-09"
-pipeline_status: "raw"
+date_discovered: '2026-04-09'
+last_updated: '2026-04-09'
+pipeline_status: raw
 consumed_by: []
 ---
 # Cross-Architecture Model Diffing for Safety Auditing

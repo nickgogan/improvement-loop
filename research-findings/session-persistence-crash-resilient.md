@@ -22,10 +22,10 @@ last_updated: '2026-04-09'
 related_findings:
 - file: durable-workflow-engine-for-agent-systems.md
   rel: same-problem
-pipeline_status: "synthesized"
+pipeline_status: synthesized
 consumed_by:
-  - "agent-workflow-and-execution.md"
-  - "session-persistence-and-memory.md"
+- agent-workflow-and-execution.md
+- session-persistence-and-memory.md
 ---
 # Session Persistence as Recoverable State (Crash-Resilient)
 

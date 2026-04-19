@@ -19,11 +19,11 @@ proposals: null
 date_discovered: '2026-04-07'
 last_updated: 2026-04-08
 related_findings:
-  - file: "claudemd-as-knowledge-base-traversal-guide.md"
-    rel: "same-problem"
-  - file: "ace-agentic-context-engineering-rag-based.md"
-    rel: "contradicts"
-pipeline_status: "raw"
+- file: claudemd-as-knowledge-base-traversal-guide.md
+  rel: same-problem
+- file: ace-agentic-context-engineering-rag-based.md
+  rel: contradicts
+pipeline_status: raw
 consumed_by: []
 ---
 # Karpathy LLM Knowledge Base (Obsidian RAG Alternative)

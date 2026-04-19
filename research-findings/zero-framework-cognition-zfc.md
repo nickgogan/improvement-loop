@@ -1,20 +1,22 @@
 ---
-name: "Zero Framework Cognition (ZFC)"
-summary: "Architectural principle keeping all cognitive/heuristic logic in LLM prompts, not in application code. Code handles state transitions, SQL queries, and data flow; LLMs handle all decisions. No hardcoded sequential logic in AI decision paths."
+name: Zero Framework Cognition (ZFC)
+summary: Architectural principle keeping all cognitive/heuristic logic in LLM prompts, not in application code. Code handles state transitions, SQL queries, and data flow; LLMs handle all decisions. No
+  hardcoded sequential logic in AI decision paths.
 implementation_notes: null
-category: "Agent Design"
-evidence_strength: "Medium (practitioner-documented)"
-adoption_status: "Not Yet Started"
+category: Agent Design
+evidence_strength: Medium (practitioner-documented)
+adoption_status: Not Yet Started
 proposer_priority: null
 applicability:
-  - "S3 (Claude Code Build)"
+- S3 (Claude Code Build)
 adopted_in: []
 sources: []
 related_findings:
-  - {file: "framework-abstraction-tax-for-agents.md", rel: "extends"}
+- file: framework-abstraction-tax-for-agents.md
+  rel: extends
 proposals: null
-date_discovered: "2026-04-19"
-last_updated: "2026-04-19"
+date_discovered: '2026-04-19'
+last_updated: '2026-04-19'
 ---
 
 ## What It Is

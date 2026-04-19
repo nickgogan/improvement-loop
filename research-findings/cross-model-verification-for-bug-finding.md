@@ -49,9 +49,9 @@ related_findings:
 proposals: null
 date_discovered: '2026-04-09'
 last_updated: '2026-04-09'
-pipeline_status: "extracted"
+pipeline_status: extracted
 consumed_by:
-  - "skills/cross-model-verification-for-bug-finding.md"
+- skills/cross-model-verification-for-bug-finding.md
 ---
 # Cross-Model Verification for Bug Finding
 

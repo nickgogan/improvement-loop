@@ -1,25 +1,27 @@
 ---
-name: "Token Budget Tracking with Pre-Turn Projection Checks"
-summary: "Hard token limits with pre-turn projection that calculates expected cost before each API call and stops execution before the call is made if the budget would be exceeded. Config: max turns, max tokens, compaction threshold."
-implementation_notes: "MetaSystem doesn't currently track token budgets. This would be valuable for research-loop and other expensive scan operations."
-category: "Orchestration"
-evidence_strength: "Strong (production-tested)"
-adoption_status: "Not Yet Started"
-proposer_priority: "P2 (Design Required)"
+name: Token Budget Tracking with Pre-Turn Projection Checks
+summary: 'Hard token limits with pre-turn projection that calculates expected cost before each API call and stops execution before the call is made if the budget would be exceeded. Config: max turns, max
+  tokens, compaction threshold.'
+implementation_notes: MetaSystem doesn't currently track token budgets. This would be valuable for research-loop and other expensive scan operations.
+category: Orchestration
+evidence_strength: Strong (production-tested)
+adoption_status: Not Yet Started
+proposer_priority: P2 (Design Required)
 applicability:
-  - "S3 (Claude Code Build)"
-  - "General"
+- S3 (Claude Code Build)
+- General
 adopted_in: []
 sources:
-  - "anthropics-2-5-billion-leak-12-critical-pieces.md"
+- anthropics-2-5-billion-leak-12-critical-pieces.md
 related_findings:
-  - {file: "gsd-stall-detection-revision-loop-escalation.md", rel: "same-problem"}
+- file: gsd-stall-detection-revision-loop-escalation.md
+  rel: same-problem
 proposals: null
-date_discovered: "2026-04-07"
-last_updated: "2026-04-07"
-pipeline_status: "extracted"
+date_discovered: '2026-04-07'
+last_updated: '2026-04-07'
+pipeline_status: extracted
 consumed_by:
-  - "rules/token-budget-pre-turn-projection.md"
+- rules/token-budget-pre-turn-projection.md
 ---
 
 # Token Budget Tracking with Pre-Turn Projection Checks

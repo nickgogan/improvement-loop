@@ -23,7 +23,7 @@ related_findings:
   rel: same-problem
 - file: cross-model-verification-for-bug-finding.md
   rel: same-problem
-pipeline_status: "raw"
+pipeline_status: raw
 consumed_by: []
 ---
 # SWECI Benchmark: AI Fails at Code Maintenance (75% Break Existing Features)

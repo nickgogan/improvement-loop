@@ -19,11 +19,11 @@ proposals: []
 date_discovered: '2026-04-01'
 last_updated: 2026-04-08
 related_findings:
-  - file: "agent-cost-blowup-mitigation-strategies.md"
-    rel: "enabled-by"
-pipeline_status: "synthesized"
+- file: agent-cost-blowup-mitigation-strategies.md
+  rel: enabled-by
+pipeline_status: synthesized
 consumed_by:
-  - "agent-workflow-and-execution.md"
+- agent-workflow-and-execution.md
 ---
 # Claude Code /loop -- In-Session Cron Scheduling
 

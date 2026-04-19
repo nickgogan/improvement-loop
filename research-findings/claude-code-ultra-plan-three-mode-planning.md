@@ -20,7 +20,7 @@ related_findings:
   rel: enables
 - file: anthropic-managed-agents-platform.md
   rel: same-problem
-pipeline_status: "raw"
+pipeline_status: raw
 consumed_by: []
 ---
 # Claude Code Ultra Plan: Three-Mode Cloud Planning

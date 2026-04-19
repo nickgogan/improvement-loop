@@ -1,24 +1,25 @@
 ---
-name: "llms-full.txt: AI-Optimized Documentation Endpoint"
-summary: "Documentation sites produce an llms-full.txt file that agents can consume directly. BMad's docs site at docs.bmadmethod.org provides this endpoint. \"You can point your AI agent to this URL and the agent can answer questions for you.\""
+name: 'llms-full.txt: AI-Optimized Documentation Endpoint'
+summary: Documentation sites produce an llms-full.txt file that agents can consume directly. BMad's docs site at docs.bmadmethod.org provides this endpoint. "You can point your AI agent to this URL and
+  the agent can answer questions for you."
 implementation_notes: null
-category: "Context Engineering"
-evidence_strength: "Medium (practitioner-documented)"
-adoption_status: "Not Yet Started"
-proposer_priority: "P3 (Monitor)"
+category: Context Engineering
+evidence_strength: Medium (practitioner-documented)
+adoption_status: Not Yet Started
+proposer_priority: P3 (Monitor)
 applicability:
-  - "S3 (Claude Code Build)"
-  - "General"
+- S3 (Claude Code Build)
+- General
 adopted_in: []
 sources:
-  - "bmad-v6-is-finally-here.md"
+- bmad-v6-is-finally-here.md
 proposals: []
-date_discovered: "2026-04-07"
+date_discovered: '2026-04-07'
 last_updated: 2026-04-08
 related_findings:
-  - file: "agent-context-kiss-commandments-minimum-viable.md"
-    rel: "same-problem"
-pipeline_status: "raw"
+- file: agent-context-kiss-commandments-minimum-viable.md
+  rel: same-problem
+pipeline_status: raw
 consumed_by: []
 ---
 

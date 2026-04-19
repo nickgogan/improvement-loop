@@ -21,7 +21,7 @@ related_findings:
   rel: same-problem
 - file: conway-always-on-persistent-agent.md
   rel: same-problem
-pipeline_status: "raw"
+pipeline_status: raw
 consumed_by: []
 ---
 

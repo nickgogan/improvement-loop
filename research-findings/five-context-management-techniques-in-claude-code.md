@@ -17,15 +17,15 @@ proposals: null
 date_discovered: '2026-03-22'
 last_updated: 2026-04-08
 related_findings:
-  - file: "context-curation-over-context-stuffing.md"
-    rel: "same-problem"
-  - file: "ace-delta-updates-over-monolithic-rewrites.md"
-    rel: "same-problem"
-  - file: "agent-context-kiss-commandments-minimum-viable.md"
-    rel: "same-problem"
-  - file: "ace-agentic-context-engineering-evolving-playbook.md"
-    rel: "same-problem"
-pipeline_status: "raw"
+- file: context-curation-over-context-stuffing.md
+  rel: same-problem
+- file: ace-delta-updates-over-monolithic-rewrites.md
+  rel: same-problem
+- file: agent-context-kiss-commandments-minimum-viable.md
+  rel: same-problem
+- file: ace-agentic-context-engineering-evolving-playbook.md
+  rel: same-problem
+pipeline_status: raw
 consumed_by: []
 ---
 # Five Context Management Techniques in Claude Code

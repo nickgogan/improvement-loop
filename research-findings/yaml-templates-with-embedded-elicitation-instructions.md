@@ -23,9 +23,9 @@ related_findings:
   rel: same-problem
 - file: bmad-method-v6-multi-agent-sdlc.md
   rel: enabled-by
-pipeline_status: "extracted"
+pipeline_status: extracted
 consumed_by:
-  - "templates/yaml-templates-with-embedded-elicitation.md"
+- templates/yaml-templates-with-embedded-elicitation.md
 ---
 ## What It Is
 

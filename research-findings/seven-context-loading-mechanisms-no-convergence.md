@@ -1,6 +1,7 @@
 ---
 name: Seven Context Loading Mechanisms — No Convergence
-summary: Seven analyzed repos exhibit seven distinct context loading strategies, from chain-loading via @-references to library APIs. No two repos use the same mechanism. The ecosystem has not converged on a standard approach to context loading.
+summary: Seven analyzed repos exhibit seven distinct context loading strategies, from chain-loading via @-references to library APIs. No two repos use the same mechanism. The ecosystem has not converged
+  on a standard approach to context loading.
 implementation_notes: null
 category: Context Engineering
 evidence_strength: Medium (practitioner-documented)
@@ -16,7 +17,7 @@ related_findings: []
 proposals: null
 date_discovered: '2026-04-08'
 last_updated: '2026-04-08'
-pipeline_status: "raw"
+pipeline_status: raw
 consumed_by: []
 ---
 ## What It Is

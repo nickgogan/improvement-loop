@@ -31,7 +31,7 @@ related_findings:
   rel: enabled-by
 - file: ultra-review-multi-agent-bug-hunting-fleet.md
   rel: same-problem
-pipeline_status: "raw"
+pipeline_status: raw
 consumed_by: []
 ---
 # Four-Layer Agent Evaluation Architecture

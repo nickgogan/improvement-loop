@@ -1,20 +1,21 @@
 ---
-name: "Environment Variable Context Injection"
-summary: "Execution context injected via environment variables (task ID, wake reason, agent ID) rather than file assembly. Combined with a heartbeat-context API endpoint for compact state and cursor-based pagination for incremental comment loading."
+name: Environment Variable Context Injection
+summary: Execution context injected via environment variables (task ID, wake reason, agent ID) rather than file assembly. Combined with a heartbeat-context API endpoint for compact state and cursor-based
+  pagination for incremental comment loading.
 implementation_notes: null
-category: "Context Engineering"
-evidence_strength: "Medium (practitioner-documented)"
-adoption_status: "Not Yet Started"
+category: Context Engineering
+evidence_strength: Medium (practitioner-documented)
+adoption_status: Not Yet Started
 proposer_priority: null
 applicability:
-  - "S3 (Claude Code Build)"
+- S3 (Claude Code Build)
 adopted_in: []
 sources: []
 related_findings: []
 proposals: null
-date_discovered: "2026-04-08"
-last_updated: "2026-04-08"
-pipeline_status: "raw"
+date_discovered: '2026-04-08'
+last_updated: '2026-04-08'
+pipeline_status: raw
 consumed_by: []
 ---
 

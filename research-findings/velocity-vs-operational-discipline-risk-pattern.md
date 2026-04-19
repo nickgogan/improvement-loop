@@ -1,20 +1,21 @@
 ---
-name: "Velocity vs. Operational Discipline Risk Pattern"
-summary: "When AI writes 90% of code and engineers ship 5 releases/day, the surface area for configuration drift and security leaks expands dramatically. The Anthropic double-leak (Mythos + Claude Code source) exemplifies this tension. Solution: invest in 'boring' primitives (build pipeline validation, publish step checks, permission enforcement) to match operational rigor to shipping velocity."
+name: Velocity vs. Operational Discipline Risk Pattern
+summary: 'When AI writes 90% of code and engineers ship 5 releases/day, the surface area for configuration drift and security leaks expands dramatically. The Anthropic double-leak (Mythos + Claude Code
+  source) exemplifies this tension. Solution: invest in ''boring'' primitives (build pipeline validation, publish step checks, permission enforcement) to match operational rigor to shipping velocity.'
 implementation_notes: null
-category: "Orchestration"
-evidence_strength: "Medium (practitioner-documented)"
-adoption_status: "Not Yet Started"
-proposer_priority: "P3 (Monitor)"
+category: Orchestration
+evidence_strength: Medium (practitioner-documented)
+adoption_status: Not Yet Started
+proposer_priority: P3 (Monitor)
 applicability:
-  - "S3 (Claude Code Build)"
-  - "General"
+- S3 (Claude Code Build)
+- General
 adopted_in: []
 sources:
-  - "anthropics-2-5-billion-leak-12-critical-pieces.md"
-date_discovered: "2026-04-07"
-last_updated: "2026-04-07"
-pipeline_status: "raw"
+- anthropics-2-5-billion-leak-12-critical-pieces.md
+date_discovered: '2026-04-07'
+last_updated: '2026-04-07'
+pipeline_status: raw
 consumed_by: []
 ---
 

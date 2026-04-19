@@ -1,25 +1,27 @@
 ---
-name: "Stupid Button: Six-Question Token Waste Self-Audit Diagnostic"
-summary: "A six-question rapid self-assessment for token waste: (1) raw file formats, (2) conversation freshness, (3) model-task matching, (4) context pre-load audit, (5) prompt caching status, (6) search routing efficiency. Implemented as a prompt, a skill, and automated guardrails."
-implementation_notes: "The three-tier implementation (prompt for beginners, skill for intermediate, guardrails for advanced) maps to MetaSystem's skill architecture. The guardrails tier -- automatic markdown conversion, index-first retrieval, minimum viable context scoping -- is directly implementable."
-category: "Context Engineering"
-evidence_strength: "Medium (practitioner-documented)"
-adoption_status: "Not Yet Started"
-proposer_priority: "P2 (Design Required)"
+name: 'Stupid Button: Six-Question Token Waste Self-Audit Diagnostic'
+summary: 'A six-question rapid self-assessment for token waste: (1) raw file formats, (2) conversation freshness, (3) model-task matching, (4) context pre-load audit, (5) prompt caching status, (6) search
+  routing efficiency. Implemented as a prompt, a skill, and automated guardrails.'
+implementation_notes: The three-tier implementation (prompt for beginners, skill for intermediate, guardrails for advanced) maps to MetaSystem's skill architecture. The guardrails tier -- automatic markdown
+  conversion, index-first retrieval, minimum viable context scoping -- is directly implementable.
+category: Context Engineering
+evidence_strength: Medium (practitioner-documented)
+adoption_status: Not Yet Started
+proposer_priority: P2 (Design Required)
 applicability:
-  - "S3 (Claude Code Build)"
-  - "General"
+- S3 (Claude Code Build)
+- General
 adopted_in: []
 sources:
-  - "your-claude-limit-burns-in-90-minutes.md"
-date_discovered: "2026-04-07"
+- your-claude-limit-burns-in-90-minutes.md
+date_discovered: '2026-04-07'
 last_updated: 2026-04-08
 related_findings:
-  - file: "agent-context-kiss-commandments-minimum-viable.md"
-    rel: "same-problem"
-pipeline_status: "extracted"
+- file: agent-context-kiss-commandments-minimum-viable.md
+  rel: same-problem
+pipeline_status: extracted
 consumed_by:
-  - "skills/stupid-button-token-audit-diagnostic.md"
+- skills/stupid-button-token-audit-diagnostic.md
 ---
 
 ## What It Is

@@ -20,7 +20,7 @@ last_updated: '2026-04-08'
 related_findings:
 - file: dynamic-discovery-architecture-self-updating-cli-f.md
   rel: enabled-by
-pipeline_status: "raw"
+pipeline_status: raw
 consumed_by: []
 ---
 # GWS CLI: Full Google Workspace Control from Claude Code

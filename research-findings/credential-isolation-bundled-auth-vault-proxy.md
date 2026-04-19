@@ -1,28 +1,29 @@
 ---
-name: "Credential Isolation: Bundled Auth and Vault Proxy"
-summary: "Keep credentials out of agent sandbox reach via two patterns: bundled auth (inject at sandbox init, e.g., clone repo with scoped token wired to local remote) and vault proxy (session-associated token fetched by dedicated proxy, never exposed to agent). Prevents prompt injection credential theft."
+name: 'Credential Isolation: Bundled Auth and Vault Proxy'
+summary: 'Keep credentials out of agent sandbox reach via two patterns: bundled auth (inject at sandbox init, e.g., clone repo with scoped token wired to local remote) and vault proxy (session-associated
+  token fetched by dedicated proxy, never exposed to agent). Prevents prompt injection credential theft.'
 implementation_notes: null
-category: "Sandboxing"
-evidence_strength: "Strong (production-tested)"
-adoption_status: "Not Yet Started"
-proposer_priority: "P2 (Design Required)"
+category: Sandboxing
+evidence_strength: Strong (production-tested)
+adoption_status: Not Yet Started
+proposer_priority: P2 (Design Required)
 applicability:
-  - "S3 (Claude Code Build)"
-  - "General"
+- S3 (Claude Code Build)
+- General
 adopted_in: []
 sources:
-  - "anthropic-managed-agents-decoupling.md"
+- anthropic-managed-agents-decoupling.md
 related_findings:
-  - file: "tool-gateway-security-boundary.md"
-    rel: "same-problem"
-  - file: "tiered-permission-system-bash-safety.md"
-    rel: "same-problem"
-  - file: "anthropic-managed-agents-platform.md"
-    rel: "extends"
+- file: tool-gateway-security-boundary.md
+  rel: same-problem
+- file: tiered-permission-system-bash-safety.md
+  rel: same-problem
+- file: anthropic-managed-agents-platform.md
+  rel: extends
 proposals: null
-date_discovered: "2026-04-09"
-last_updated: "2026-04-09"
-pipeline_status: "raw"
+date_discovered: '2026-04-09'
+last_updated: '2026-04-09'
+pipeline_status: raw
 consumed_by: []
 ---
 

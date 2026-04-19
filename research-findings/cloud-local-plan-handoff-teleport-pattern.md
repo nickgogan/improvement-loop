@@ -1,25 +1,28 @@
 ---
-name: "Cloud-Local Plan Handoff (Teleport Pattern)"
-summary: "Bidirectional handoff between cloud and local environments for planning. Plans originate locally and get 'refined' by uploading to cloud for validation, or originate on cloud and get 'teleported back' to local terminal for execution. Supports starting a fresh local session with an approved cloud plan."
-implementation_notes: "Relevant to any architecture where planning and execution happen in different environments."
-category: "Orchestration"
-evidence_strength: "Strong (production-tested)"
-adoption_status: "Not Yet Started"
-proposer_priority: "P2 (Design Required)"
+name: Cloud-Local Plan Handoff (Teleport Pattern)
+summary: Bidirectional handoff between cloud and local environments for planning. Plans originate locally and get 'refined' by uploading to cloud for validation, or originate on cloud and get 'teleported
+  back' to local terminal for execution. Supports starting a fresh local session with an approved cloud plan.
+implementation_notes: Relevant to any architecture where planning and execution happen in different environments.
+category: Orchestration
+evidence_strength: Strong (production-tested)
+adoption_status: Not Yet Started
+proposer_priority: P2 (Design Required)
 applicability:
-  - "S3 (Claude Code Build)"
+- S3 (Claude Code Build)
 adopted_in: []
 sources:
-  - "anthropic-just-dropped-ultra-plan.md"
+- anthropic-just-dropped-ultra-plan.md
 related_findings:
-  - {file: "claude-code-ultra-plan-three-mode-planning.md", rel: "extends"}
-  - {file: "cloud-plan-parallel-multitasking-pattern.md", rel: "same-problem"}
+- file: claude-code-ultra-plan-three-mode-planning.md
+  rel: extends
+- file: cloud-plan-parallel-multitasking-pattern.md
+  rel: same-problem
 proposals: null
-date_discovered: "2026-04-07"
-last_updated: "2026-04-07"
-pipeline_status: "synthesized"
+date_discovered: '2026-04-07'
+last_updated: '2026-04-07'
+pipeline_status: synthesized
 consumed_by:
-  - "agent-workflow-and-execution.md"
+- agent-workflow-and-execution.md
 ---
 # Cloud-Local Plan Handoff (Teleport Pattern)
 

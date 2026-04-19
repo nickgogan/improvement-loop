@@ -19,9 +19,9 @@ last_updated: '2026-04-08'
 related_findings:
 - file: ace-agentic-context-engineering-rag-based.md
   rel: enables
-pipeline_status: "synthesized"
+pipeline_status: synthesized
 consumed_by:
-  - "managing-agent-context.md"
+- managing-agent-context.md
 ---
 
 # Fundamental Limits of Single-Vector Embedding Retrieval

@@ -15,14 +15,14 @@ sources:
 - anthropic-didnt-build-a-new-browser-they-did-somet.md
 - anthropic-trustworthy-agents-in-practice.md
 related_findings:
-  - file: "gstack-four-layer-prompt-injection-defense.md"
-    rel: "extended-by"
-  - file: "gsd-prompt-injection-scanner-hardening.md"
-    rel: "extended-by"
+- file: gstack-four-layer-prompt-injection-defense.md
+  rel: extended-by
+- file: gsd-prompt-injection-scanner-hardening.md
+  rel: extended-by
 proposals: []
 date_discovered: '2026-03-22'
 last_updated: '2026-04-09'
-pipeline_status: "raw"
+pipeline_status: raw
 consumed_by: []
 ---
 # Prompt Injection Risk from Trusted vs. Untrusted Web Content

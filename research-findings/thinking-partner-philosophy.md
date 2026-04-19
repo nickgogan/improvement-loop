@@ -1,20 +1,21 @@
 ---
-name: "Thinking Partner Philosophy"
-summary: "GSD's discuss-phase frames the agent-human relationship as 'user = founder/visionary, Claude = builder' — the agent does not explore WHAT to build (that is decided) but clarifies HOW to implement via gray-area questions, assumption extraction, and decision locking, producing CONTEXT.md with locked decisions."
+name: Thinking Partner Philosophy
+summary: GSD's discuss-phase frames the agent-human relationship as 'user = founder/visionary, Claude = builder' — the agent does not explore WHAT to build (that is decided) but clarifies HOW to implement
+  via gray-area questions, assumption extraction, and decision locking, producing CONTEXT.md with locked decisions.
 implementation_notes: null
-category: "Prompt Craft"
-evidence_strength: "Medium (practitioner-documented)"
-adoption_status: "Not Yet Started"
+category: Prompt Craft
+evidence_strength: Medium (practitioner-documented)
+adoption_status: Not Yet Started
 proposer_priority: null
 applicability:
-  - "S3 (Claude Code Build)"
+- S3 (Claude Code Build)
 adopted_in: []
 sources: []
 related_findings: []
 proposals: null
-date_discovered: "2026-04-08"
-last_updated: "2026-04-08"
-pipeline_status: "raw"
+date_discovered: '2026-04-08'
+last_updated: '2026-04-08'
+pipeline_status: raw
 consumed_by: []
 ---
 # Thinking Partner Philosophy

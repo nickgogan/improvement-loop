@@ -26,9 +26,9 @@ related_findings:
   rel: extends
 - file: agent-architecture-layer-impermanence.md
   rel: same-problem
-pipeline_status: "synthesized"
+pipeline_status: synthesized
 consumed_by:
-  - "agent-architecture-decisions.md"
+- agent-architecture-decisions.md
 ---
 # Claude Code 12 Agent Primitives (Three-Tier Architecture)
 

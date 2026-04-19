@@ -27,9 +27,9 @@ related_findings:
   rel: same-problem
 - file: ace-agentic-context-engineering-rag-based.md
   rel: same-problem
-pipeline_status: "synthesized"
+pipeline_status: synthesized
 consumed_by:
-  - "session-persistence-and-memory.md"
+- session-persistence-and-memory.md
 ---
 # Four-Layer Enterprise Memory Stack (Working / Episodic / Semantic / Governance)
 

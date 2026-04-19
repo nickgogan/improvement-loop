@@ -17,9 +17,9 @@ related_findings:
 proposals: null
 date_discovered: '2026-04-07'
 last_updated: '2026-04-08'
-pipeline_status: "extracted"
+pipeline_status: extracted
 consumed_by:
-  - "templates/execution-context-profiles-mode-switching.md"
+- templates/execution-context-profiles-mode-switching.md
 ---
 
 ## What It Is

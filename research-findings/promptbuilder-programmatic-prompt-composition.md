@@ -1,21 +1,22 @@
 ---
-name: "PromptBuilder — Programmatic Prompt Composition with Visual Workflow Rendering"
-summary: "n8n's ai-workflow-builder has a PromptBuilder class with section(), sectionIf(), examples(), and build() methods for composing LLM prompts programmatically. Workflow JSON is converted to Mermaid flowcharts for LLM consumption — more readable and fewer tokens than raw JSON."
+name: PromptBuilder — Programmatic Prompt Composition with Visual Workflow Rendering
+summary: n8n's ai-workflow-builder has a PromptBuilder class with section(), sectionIf(), examples(), and build() methods for composing LLM prompts programmatically. Workflow JSON is converted to Mermaid
+  flowcharts for LLM consumption — more readable and fewer tokens than raw JSON.
 implementation_notes: null
-category: "Prompt Craft"
-evidence_strength: "Medium (practitioner-documented)"
-adoption_status: "Not Yet Started"
+category: Prompt Craft
+evidence_strength: Medium (practitioner-documented)
+adoption_status: Not Yet Started
 proposer_priority: null
 applicability:
-  - "S3 (Claude Code Build)"
-  - "General"
+- S3 (Claude Code Build)
+- General
 adopted_in: []
 sources: []
 related_findings: []
 proposals: null
-date_discovered: "2026-04-09"
-last_updated: "2026-04-09"
-pipeline_status: "raw"
+date_discovered: '2026-04-09'
+last_updated: '2026-04-09'
+pipeline_status: raw
 consumed_by: []
 ---
 

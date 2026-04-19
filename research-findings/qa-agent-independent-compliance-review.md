@@ -24,9 +24,9 @@ related_findings:
   rel: extends
 - file: cross-model-verification-for-bug-finding.md
   rel: same-problem
-pipeline_status: "extracted"
+pipeline_status: extracted
 consumed_by:
-  - "agents/qa-agent-independent-compliance-review.md"
+- agents/qa-agent-independent-compliance-review.md
 ---
 ## What It Is
 

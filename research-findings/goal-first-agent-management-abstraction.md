@@ -1,24 +1,25 @@
 ---
-name: "Goal-First Agent Management Abstraction"
-summary: "Instead of managing terminal sessions or IDE windows, manage business goals. The system determines what sessions to spin up, how many agents, and what planning depth is required. 'Start from the top and work downwards.'"
+name: Goal-First Agent Management Abstraction
+summary: Instead of managing terminal sessions or IDE windows, manage business goals. The system determines what sessions to spin up, how many agents, and what planning depth is required. 'Start from the
+  top and work downwards.'
 implementation_notes: null
-category: "Orchestration"
-evidence_strength: "Medium (practitioner-documented)"
-adoption_status: "Not Yet Started"
-proposer_priority: "P3 (Monitor)"
+category: Orchestration
+evidence_strength: Medium (practitioner-documented)
+adoption_status: Not Yet Started
+proposer_priority: P3 (Monitor)
 applicability:
-  - "S3 (Claude Code Build)"
-  - "General"
+- S3 (Claude Code Build)
+- General
 adopted_in: []
 sources:
-  - "stop-using-claude-code-in-terminal.md"
+- stop-using-claude-code-in-terminal.md
 proposals: null
-date_discovered: "2026-04-07"
+date_discovered: '2026-04-07'
 last_updated: 2026-04-08
 related_findings:
-  - file: "agent-architecture-layer-impermanence.md"
-    rel: "same-problem"
-pipeline_status: "raw"
+- file: agent-architecture-layer-impermanence.md
+  rel: same-problem
+pipeline_status: raw
 consumed_by: []
 ---
 

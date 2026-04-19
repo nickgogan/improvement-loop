@@ -1,20 +1,21 @@
 ---
-name: "Database-as-Shared-Memory Coordination"
-summary: "Multi-agent coordination via a shared versioned database (Dolt) rather than message passing or file-based handoffs. Hash-based IDs prevent collision. Cell-level merge handles concurrent writes."
+name: Database-as-Shared-Memory Coordination
+summary: Multi-agent coordination via a shared versioned database (Dolt) rather than message passing or file-based handoffs. Hash-based IDs prevent collision. Cell-level merge handles concurrent writes.
 implementation_notes: null
-category: "Orchestration"
-evidence_strength: "Medium (practitioner-documented)"
-adoption_status: "Not Yet Started"
+category: Orchestration
+evidence_strength: Medium (practitioner-documented)
+adoption_status: Not Yet Started
 proposer_priority: null
 applicability:
-  - "S3 (Claude Code Build)"
+- S3 (Claude Code Build)
 adopted_in: []
 sources: []
 related_findings:
-  - {file: "file-locking-based-agent-coordination.md", rel: "same-problem"}
+- file: file-locking-based-agent-coordination.md
+  rel: same-problem
 proposals: null
-date_discovered: "2026-04-19"
-last_updated: "2026-04-19"
+date_discovered: '2026-04-19'
+last_updated: '2026-04-19'
 ---
 
 ## What It Is

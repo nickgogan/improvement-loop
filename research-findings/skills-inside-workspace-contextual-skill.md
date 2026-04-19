@@ -21,7 +21,7 @@ related_findings:
   rel: enables
 - file: task-to-file-routing-table-in-context-files.md
   rel: same-problem
-pipeline_status: "raw"
+pipeline_status: raw
 consumed_by: []
 ---
 # Skills-Inside-Workspace: Contextual Skill Invocation Rather Than Always-Loaded

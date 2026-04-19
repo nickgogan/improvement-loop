@@ -28,7 +28,7 @@ related_findings:
 proposals: []
 date_discovered: '2026-03-23'
 last_updated: '2026-04-08'
-pipeline_status: "raw"
+pipeline_status: raw
 consumed_by: []
 ---
 # RL-Trained Autonomous Tool Selection (ARTIST Pattern)

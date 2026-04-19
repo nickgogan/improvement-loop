@@ -1,20 +1,22 @@
 ---
-name: "Loop Detection with Hash-Based Sliding Window"
-summary: "Sliding window of last 20 tool call hashes per thread for loop detection. Warn at 3 identical consecutive calls (inject system message). Hard-stop at 5 (strip tool_calls, force terminal answer). Tool-frequency limit: 50 calls to same tool type per session."
+name: Loop Detection with Hash-Based Sliding Window
+summary: 'Sliding window of last 20 tool call hashes per thread for loop detection. Warn at 3 identical consecutive calls (inject system message). Hard-stop at 5 (strip tool_calls, force terminal answer).
+  Tool-frequency limit: 50 calls to same tool type per session.'
 implementation_notes: null
-category: "Evaluation"
-evidence_strength: "Medium (practitioner-documented)"
-adoption_status: "Not Yet Started"
+category: Evaluation
+evidence_strength: Medium (practitioner-documented)
+adoption_status: Not Yet Started
 proposer_priority: null
 applicability:
-  - "S3 (Claude Code Build)"
+- S3 (Claude Code Build)
 adopted_in: []
 sources: []
 related_findings:
-  - {file: "gsd-stall-detection-revision-loop-escalation.md", rel: "same-problem"}
+- file: gsd-stall-detection-revision-loop-escalation.md
+  rel: same-problem
 proposals: null
-date_discovered: "2026-04-19"
-last_updated: "2026-04-19"
+date_discovered: '2026-04-19'
+last_updated: '2026-04-19'
 ---
 
 ## What It Is

@@ -1,6 +1,7 @@
 ---
 name: Anti-Bias Protocol for LLM Ideation
-summary: BMAD's brainstorming skill includes an explicit anti-bias protocol — "consciously shift creative domain every 10 ideas" and "aim for 100+ ideas before organization." Addresses LLM semantic clustering, a known failure mode no other analyzed repo mitigates explicitly.
+summary: BMAD's brainstorming skill includes an explicit anti-bias protocol — "consciously shift creative domain every 10 ideas" and "aim for 100+ ideas before organization." Addresses LLM semantic clustering,
+  a known failure mode no other analyzed repo mitigates explicitly.
 implementation_notes: null
 category: Prompt Craft
 evidence_strength: Medium (practitioner-documented)
@@ -14,7 +15,7 @@ related_findings: []
 proposals: null
 date_discovered: '2026-04-08'
 last_updated: '2026-04-08'
-pipeline_status: "raw"
+pipeline_status: raw
 consumed_by: []
 ---
 ## What It Is

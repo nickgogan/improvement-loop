@@ -21,7 +21,7 @@ related_findings:
   rel: extends
 - file: archon-yaml-defined-harness-workflows.md
   rel: same-problem
-pipeline_status: "raw"
+pipeline_status: raw
 consumed_by: []
 ---
 # Orchestrated Competition: n Sub-Agents Solve the Same Problem in Parallel

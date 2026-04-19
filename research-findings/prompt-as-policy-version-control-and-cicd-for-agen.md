@@ -19,11 +19,11 @@ proposals: []
 date_discovered: '2026-04-01'
 last_updated: 2026-04-08
 related_findings:
-  - file: "advanced-elicitation-techniques-library.md"
-    rel: "same-problem"
-pipeline_status: "synthesized"
+- file: advanced-elicitation-techniques-library.md
+  rel: same-problem
+pipeline_status: synthesized
 consumed_by:
-  - "model-resilient-prompt-engineering.md"
+- model-resilient-prompt-engineering.md
 ---
 # Prompt-as-Policy -- Version Control and CI/CD for Agent Prompts
 

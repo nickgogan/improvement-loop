@@ -1,26 +1,28 @@
 ---
-name: "DAG vs BSP — Two Graph-Based Orchestration Models"
-summary: "Two distinct graph-based execution models are emerging for agent orchestration: declarative YAML DAGs (Archon) with topological layer parallelism and mixed node types, vs programmatic BSP/Pregel (LangGraph) with typed channel communication and superstep synchronization. Both enable structured parallelism but target different users and use cases."
-implementation_notes: "MetaSystem's GSD uses ad-hoc phase sequencing — neither DAG nor BSP. If more complex orchestration is ever needed, these two models represent the design space. DAG is more accessible (YAML authoring); BSP is more powerful (typed state, fan-out, time-travel checkpoints)."
+name: DAG vs BSP — Two Graph-Based Orchestration Models
+summary: 'Two distinct graph-based execution models are emerging for agent orchestration: declarative YAML DAGs (Archon) with topological layer parallelism and mixed node types, vs programmatic BSP/Pregel
+  (LangGraph) with typed channel communication and superstep synchronization. Both enable structured parallelism but target different users and use cases.'
+implementation_notes: MetaSystem's GSD uses ad-hoc phase sequencing — neither DAG nor BSP. If more complex orchestration is ever needed, these two models represent the design space. DAG is more accessible
+  (YAML authoring); BSP is more powerful (typed state, fan-out, time-travel checkpoints).
 category: Orchestration
-evidence_strength: "Medium (practitioner-documented)"
-adoption_status: "Not Yet Started"
+evidence_strength: Medium (practitioner-documented)
+adoption_status: Not Yet Started
 proposer_priority: null
 applicability:
-  - "General"
+- General
 adopted_in: []
 sources: []
 related_findings:
-  - file: archon-yaml-defined-harness-workflows.md
-    rel: extends
-  - file: durable-workflow-engine-for-agent-systems.md
-    rel: extends
-  - file: orchestration-correlates-with-product-type.md
-    rel: extends
+- file: archon-yaml-defined-harness-workflows.md
+  rel: extends
+- file: durable-workflow-engine-for-agent-systems.md
+  rel: extends
+- file: orchestration-correlates-with-product-type.md
+  rel: extends
 proposals: []
-date_discovered: "2026-04-09"
-last_updated: "2026-04-09"
-pipeline_status: "raw"
+date_discovered: '2026-04-09'
+last_updated: '2026-04-09'
+pipeline_status: raw
 consumed_by: []
 ---
 

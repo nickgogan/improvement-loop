@@ -17,11 +17,11 @@ proposals: []
 date_discovered: '2026-03-22'
 last_updated: 2026-04-08
 related_findings:
-  - file: "context-gap-task-vs-job.md"
-    rel: "same-problem"
-  - file: "ace-agentic-context-engineering-rag-based.md"
-    rel: "enabled-by"
-pipeline_status: "raw"
+- file: context-gap-task-vs-job.md
+  rel: same-problem
+- file: ace-agentic-context-engineering-rag-based.md
+  rel: enabled-by
+pipeline_status: raw
 consumed_by: []
 ---
 # Production Database Wipeout: Agent Context Blindness Failure Mode

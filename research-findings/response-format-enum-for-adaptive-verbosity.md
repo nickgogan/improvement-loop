@@ -1,24 +1,24 @@
 ---
-name: "Response Format Enum for Adaptive Tool Verbosity"
-summary: "Add a response_format enum parameter (detailed vs. concise) to tool return values, letting the agent choose verbosity based on current task needs. ~65% token reduction when using concise format."
-implementation_notes: "Consider adding response_format to MCP tools that return variable-length results. Especially useful for tools that return full document content when often only metadata is needed."
-category: "Context Engineering"
-evidence_strength: "Strong (production-tested)"
-adoption_status: "Not Yet Started"
-proposer_priority: "P2 (Design Required)"
+name: Response Format Enum for Adaptive Tool Verbosity
+summary: Add a response_format enum parameter (detailed vs. concise) to tool return values, letting the agent choose verbosity based on current task needs. ~65% token reduction when using concise format.
+implementation_notes: Consider adding response_format to MCP tools that return variable-length results. Especially useful for tools that return full document content when often only metadata is needed.
+category: Context Engineering
+evidence_strength: Strong (production-tested)
+adoption_status: Not Yet Started
+proposer_priority: P2 (Design Required)
 applicability:
-  - "S3 (Claude Code Build)"
-  - "General / Cross-System"
+- S3 (Claude Code Build)
+- General / Cross-System
 adopted_in: []
 sources:
-  - "anthropic-writing-effective-tools-for-agents.md"
+- anthropic-writing-effective-tools-for-agents.md
 related_findings: []
 proposals: null
-date_discovered: "2026-04-09"
-last_updated: "2026-04-09"
-pipeline_status: "synthesized"
+date_discovered: '2026-04-09'
+last_updated: '2026-04-09'
+pipeline_status: synthesized
 consumed_by:
-  - "managing-agent-context.md"
+- managing-agent-context.md
 ---
 
 ## What It Is

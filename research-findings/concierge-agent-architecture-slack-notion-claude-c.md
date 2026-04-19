@@ -17,7 +17,7 @@ sources:
 proposals: []
 date_discovered: '2026-03-15'
 last_updated: '2026-04-07'
-pipeline_status: "raw"
+pipeline_status: raw
 consumed_by: []
 ---
 # Concierge Agent Architecture (Slack + Notion + Claude Code)

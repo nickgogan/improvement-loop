@@ -1,19 +1,21 @@
 ---
-name: "BMAD Builder: Custom Agent and Workflow Creation Tool"
-summary: "BMAD V6 introduces the BMAD Builder -- a tool for creating custom personalized agents with memory, full workflows for structured processes, and simple skills, all compliant with the BMAD ecosystem. Designed for skill-compliant cross-platform operation."
+name: 'BMAD Builder: Custom Agent and Workflow Creation Tool'
+summary: BMAD V6 introduces the BMAD Builder -- a tool for creating custom personalized agents with memory, full workflows for structured processes, and simple skills, all compliant with the BMAD ecosystem.
+  Designed for skill-compliant cross-platform operation.
 implementation_notes: null
-category: "Orchestration"
-evidence_strength: "Medium (practitioner-documented)"
-adoption_status: "Not Yet Started"
-proposer_priority: "P3 (Monitor)"
+category: Orchestration
+evidence_strength: Medium (practitioner-documented)
+adoption_status: Not Yet Started
+proposer_priority: P3 (Monitor)
 applicability:
-  - "S3 (Claude Code Build)"
-  - "General"
+- S3 (Claude Code Build)
+- General
 adopted_in: []
-sources: ["bmad-v6-is-finally-here.md"]
-date_discovered: "2026-04-07"
-last_updated: "2026-04-07"
-pipeline_status: "raw"
+sources:
+- bmad-v6-is-finally-here.md
+date_discovered: '2026-04-07'
+last_updated: '2026-04-07'
+pipeline_status: raw
 consumed_by: []
 ---
 

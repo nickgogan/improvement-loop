@@ -25,9 +25,9 @@ related_findings:
 proposals: []
 date_discovered: '2026-04-07'
 last_updated: '2026-04-08'
-pipeline_status: "synthesized"
+pipeline_status: synthesized
 consumed_by:
-  - "model-resilient-prompt-engineering.md"
+- model-resilient-prompt-engineering.md
 ---
 # Chain-of-Thought Fails Without Inductive Generalization
 

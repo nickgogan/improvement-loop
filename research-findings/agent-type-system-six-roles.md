@@ -26,9 +26,9 @@ related_findings:
   rel: same-problem
 - file: explicit-permission-allow-listing-for-agent-resou.md
   rel: same-problem
-pipeline_status: "synthesized"
+pipeline_status: synthesized
 consumed_by:
-  - "agent-architecture-decisions.md"
+- agent-architecture-decisions.md
 ---
 # Agent Type System (Six Built-In Roles with Explicit Constraints)
 

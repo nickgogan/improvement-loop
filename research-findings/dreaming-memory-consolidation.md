@@ -1,6 +1,7 @@
 ---
 name: Dreaming Memory Consolidation
-summary: OpenClaw implements three-phase background memory consolidation mimicking human sleep — Light (sort/stage), Deep (score/promote with threshold gates), REM (extract themes/reflections). Includes Dream Diary (DREAMS.md) for human review and session transcript redaction.
+summary: OpenClaw implements three-phase background memory consolidation mimicking human sleep — Light (sort/stage), Deep (score/promote with threshold gates), REM (extract themes/reflections). Includes
+  Dream Diary (DREAMS.md) for human review and session transcript redaction.
 implementation_notes: null
 category: Context Engineering
 evidence_strength: Medium (practitioner-documented)
@@ -14,7 +15,7 @@ related_findings: []
 proposals: null
 date_discovered: '2026-04-08'
 last_updated: '2026-04-08'
-pipeline_status: "raw"
+pipeline_status: raw
 consumed_by: []
 ---
 ## What It Is

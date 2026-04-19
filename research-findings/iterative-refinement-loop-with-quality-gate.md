@@ -31,7 +31,7 @@ related_findings:
   rel: same-problem
 - file: builder-validator-chain-pattern.md
   rel: same-problem
-pipeline_status: "raw"
+pipeline_status: raw
 consumed_by: []
 ---
 # Iterative Refinement Loop with Quality Gate

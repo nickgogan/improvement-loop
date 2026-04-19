@@ -27,7 +27,7 @@ related_findings:
   rel: same-problem
 - file: archon-yaml-defined-harness-workflows.md
   rel: same-problem
-pipeline_status: "raw"
+pipeline_status: raw
 consumed_by: []
 ---
 # Specialized Harness Engineering: Deterministic Rails for Complex Workflows

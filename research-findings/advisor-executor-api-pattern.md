@@ -23,10 +23,10 @@ related_findings:
 proposals: null
 date_discovered: '2026-04-09'
 last_updated: '2026-04-09'
-pipeline_status: "synthesized"
+pipeline_status: synthesized
 consumed_by:
-  - "agent-architecture-decisions.md"
-  - "model-resilient-prompt-engineering.md"
+- agent-architecture-decisions.md
+- model-resilient-prompt-engineering.md
 ---
 # Advisor-Executor API Pattern (Opus Advises, Sonnet Executes)
 

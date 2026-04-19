@@ -21,9 +21,9 @@ related_findings:
   rel: extended-by
 - file: mcp-server-cards-discovery.md
   rel: same-problem
-pipeline_status: "synthesized"
+pipeline_status: synthesized
 consumed_by:
-  - "designing-agent-tools.md"
+- designing-agent-tools.md
 ---
 # Tool Registry with Metadata-First Design
 

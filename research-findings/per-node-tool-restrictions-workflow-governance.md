@@ -1,24 +1,28 @@
 ---
-name: "Per-Node Tool Restrictions as Workflow-Level Governance"
-summary: "Archon's workflow YAML nodes can specify allowed_tools or denied_tools arrays, giving fine-grained tool access control per workflow step. The orchestrator's routing calls use tools: [] to prevent any tool use during classification. This is tool-level sandboxing within a workflow — the finest granularity observed across all watched libraries."
+name: Per-Node Tool Restrictions as Workflow-Level Governance
+summary: 'Archon''s workflow YAML nodes can specify allowed_tools or denied_tools arrays, giving fine-grained tool access control per workflow step. The orchestrator''s routing calls use tools: [] to prevent
+  any tool use during classification. This is tool-level sandboxing within a workflow — the finest granularity observed across all watched libraries.'
 implementation_notes: null
-category: "Governance"
-evidence_strength: "Medium (practitioner-documented)"
-adoption_status: "Not Yet Started"
+category: Governance
+evidence_strength: Medium (practitioner-documented)
+adoption_status: Not Yet Started
 proposer_priority: null
 applicability:
-  - "S3 (Claude Code Build)"
-  - "General"
+- S3 (Claude Code Build)
+- General
 adopted_in: []
 sources: []
 related_findings:
-  - {file: "archon-yaml-defined-harness-workflows.md", rel: "extends"}
-  - {file: "explicit-permission-allow-listing-for-agent-resou.md", rel: "same-problem"}
-  - {file: "tiered-permission-system-bash-safety.md", rel: "same-problem"}
+- file: archon-yaml-defined-harness-workflows.md
+  rel: extends
+- file: explicit-permission-allow-listing-for-agent-resou.md
+  rel: same-problem
+- file: tiered-permission-system-bash-safety.md
+  rel: same-problem
 proposals: null
-date_discovered: "2026-04-09"
-last_updated: "2026-04-09"
-pipeline_status: "raw"
+date_discovered: '2026-04-09'
+last_updated: '2026-04-09'
+pipeline_status: raw
 consumed_by: []
 ---
 

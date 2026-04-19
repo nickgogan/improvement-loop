@@ -23,10 +23,10 @@ related_findings:
   rel: same-problem
 - file: unified-tracing-opentelemetry-for-agents.md
   rel: extended-by
-pipeline_status: "synthesized"
+pipeline_status: synthesized
 consumed_by:
-  - "building-agent-evaluation-suites.md"
-  - "rules/system-event-logging-actions-not-words.md"
+- building-agent-evaluation-suites.md
+- rules/system-event-logging-actions-not-words.md
 ---
 # System Event Logging (Actions, Not Just Words)
 

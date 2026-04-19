@@ -19,7 +19,7 @@ last_updated: '2026-04-08'
 related_findings:
 - file: claude-dispatch-native-mobile-to-local-agent-orch.md
   rel: same-problem
-pipeline_status: "raw"
+pipeline_status: raw
 consumed_by: []
 ---
 # Skills + CLI Tools as Mobile-Triggerable Modules

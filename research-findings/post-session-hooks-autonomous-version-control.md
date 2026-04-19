@@ -1,26 +1,28 @@
 ---
-name: "Post-Session Hooks for Autonomous Version Control"
-summary: "Using Claude Code's post-session hooks to automatically commit and push work when a session ends, ensuring no work is lost even if the user walks away. The hook fires on session completion, running git add/commit/push without human intervention."
-implementation_notes: "Already partially captured in hooks finding. This is the specific autonomous version control use case."
-category: "Tool Integration"
-evidence_strength: "Medium (practitioner-documented)"
-adoption_status: "Not Yet Started"
-proposer_priority: "P2 (Design Required)"
+name: Post-Session Hooks for Autonomous Version Control
+summary: Using Claude Code's post-session hooks to automatically commit and push work when a session ends, ensuring no work is lost even if the user walks away. The hook fires on session completion, running
+  git add/commit/push without human intervention.
+implementation_notes: Already partially captured in hooks finding. This is the specific autonomous version control use case.
+category: Tool Integration
+evidence_strength: Medium (practitioner-documented)
+adoption_status: Not Yet Started
+proposer_priority: P2 (Design Required)
 applicability:
-  - "S3 (Claude Code Build)"
+- S3 (Claude Code Build)
 adopted_in: []
 sources:
-  - "claude-codes-leak-changes-everything.md"
+- claude-codes-leak-changes-everything.md
 related_findings:
-  - {file: "ide-first-claude-code-with-deterministic-hooks.md", rel: "extends"}
-  - file: "git-status-context-injection-token-hygiene.md"
-    rel: "same-problem"
+- file: ide-first-claude-code-with-deterministic-hooks.md
+  rel: extends
+- file: git-status-context-injection-token-hygiene.md
+  rel: same-problem
 proposals: null
-date_discovered: "2026-04-07"
-last_updated: "2026-04-07"
-pipeline_status: "extracted"
+date_discovered: '2026-04-07'
+last_updated: '2026-04-07'
+pipeline_status: extracted
 consumed_by:
-  - "skills/post-session-hooks-autonomous-version-control.md"
+- skills/post-session-hooks-autonomous-version-control.md
 ---
 
 ## What It Is

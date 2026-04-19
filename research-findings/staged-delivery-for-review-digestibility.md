@@ -1,26 +1,29 @@
 ---
-name: "Staged Delivery for Review Digestibility"
-summary: "Agents should deliver work in review-digestible chunks rather than monolithic outputs. Each delivery stage should be independently reviewable and reversible. The chunk size is calibrated to the reviewer's capacity, not the agent's production capacity."
-implementation_notes: "GSD's phase model already does this. The insight is that chunk size should be reviewer-calibrated, not production-calibrated."
-category: "Orchestration"
-evidence_strength: "Medium (practitioner-documented)"
-adoption_status: "Partially Adopted"
-proposer_priority: "P2 (Design Required)"
+name: Staged Delivery for Review Digestibility
+summary: Agents should deliver work in review-digestible chunks rather than monolithic outputs. Each delivery stage should be independently reviewable and reversible. The chunk size is calibrated to the
+  reviewer's capacity, not the agent's production capacity.
+implementation_notes: GSD's phase model already does this. The insight is that chunk size should be reviewer-calibrated, not production-calibrated.
+category: Orchestration
+evidence_strength: Medium (practitioner-documented)
+adoption_status: Partially Adopted
+proposer_priority: P2 (Design Required)
 applicability:
-  - "S3 (Claude Code Build)"
+- S3 (Claude Code Build)
 adopted_in:
-  - "S3 (Claude Code Build)"
+- S3 (Claude Code Build)
 sources:
-  - "agent-produces-100x-org-reviews-3x.md"
+- agent-produces-100x-org-reviews-3x.md
 related_findings:
-  - {file: "review-pipeline-bottleneck-and-quality-at-source.md", rel: "same-problem"}
-  - {file: "compound-review-debt-from-deferred-inspection.md", rel: "same-problem"}
+- file: review-pipeline-bottleneck-and-quality-at-source.md
+  rel: same-problem
+- file: compound-review-debt-from-deferred-inspection.md
+  rel: same-problem
 proposals: null
-date_discovered: "2026-04-07"
-last_updated: "2026-04-07"
-pipeline_status: "synthesized"
+date_discovered: '2026-04-07'
+last_updated: '2026-04-07'
+pipeline_status: synthesized
 consumed_by:
-  - "agent-workflow-and-execution.md"
+- agent-workflow-and-execution.md
 ---
 
 # Staged Delivery for Review Digestibility

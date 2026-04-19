@@ -16,11 +16,11 @@ sources:
 date_discovered: '2026-04-07'
 last_updated: 2026-04-08
 related_findings:
-  - file: "five-commandments-for-agent-deployment-audit-first.md"
-    rel: "same-problem"
-  - file: "agent-architecture-layer-impermanence.md"
-    rel: "same-problem"
-pipeline_status: "raw"
+- file: five-commandments-for-agent-deployment-audit-first.md
+  rel: same-problem
+- file: agent-architecture-layer-impermanence.md
+  rel: same-problem
+pipeline_status: raw
 consumed_by: []
 ---
 ## What It Is

@@ -25,9 +25,9 @@ related_findings:
   rel: same-problem
 - file: harness-engineering-third-evolution.md
   rel: same-problem
-pipeline_status: "synthesized"
+pipeline_status: synthesized
 consumed_by:
-  - "agent-architecture-decisions.md"
+- agent-architecture-decisions.md
 ---
 ## What It Is
 

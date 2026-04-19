@@ -21,7 +21,7 @@ related_findings:
   rel: same-problem
 - file: gws-cli-full-google-workspace-control-from.md
   rel: enables
-pipeline_status: "raw"
+pipeline_status: raw
 consumed_by: []
 ---
 # Dynamic Discovery Architecture: Self-Updating CLI from API Schemas

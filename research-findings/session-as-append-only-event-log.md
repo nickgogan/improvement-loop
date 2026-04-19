@@ -1,36 +1,37 @@
 ---
-name: "Session as Append-Only Event Log"
-summary: "Externalize agent session state as an append-only event log outside the context window and sandbox. Enables crash-proof recovery via getSession(id)/wake(sessionId)/emitEvent(id, event), flexible context slicing via getEvents(), and decoupling of session durability from harness lifecycle."
-implementation_notes: "MetaSystem uses PROGRESS.md as a coarse session log. An append-only structured event log would enable finer-grained recovery and cross-session context slicing."
-category: "Orchestration"
-evidence_strength: "Strong (production-tested)"
-adoption_status: "Not Yet Started"
-proposer_priority: "P2 (Design Required)"
+name: Session as Append-Only Event Log
+summary: Externalize agent session state as an append-only event log outside the context window and sandbox. Enables crash-proof recovery via getSession(id)/wake(sessionId)/emitEvent(id, event), flexible
+  context slicing via getEvents(), and decoupling of session durability from harness lifecycle.
+implementation_notes: MetaSystem uses PROGRESS.md as a coarse session log. An append-only structured event log would enable finer-grained recovery and cross-session context slicing.
+category: Orchestration
+evidence_strength: Strong (production-tested)
+adoption_status: Not Yet Started
+proposer_priority: P2 (Design Required)
 applicability:
-  - "S3 (Claude Code Build)"
-  - "General"
+- S3 (Claude Code Build)
+- General
 adopted_in: []
 sources:
-  - "anthropic-managed-agents-decoupling.md"
+- anthropic-managed-agents-decoupling.md
 related_findings:
-  - file: "session-persistence-crash-resilient.md"
-    rel: "extends"
-  - file: "immutable-sessions-as-audit-architecture.md"
-    rel: "same-problem"
-  - file: "workflow-state-vs-conversation-state.md"
-    rel: "extends"
-  - file: "durable-workflow-engine-for-agent-systems.md"
-    rel: "same-problem"
-  - file: "brain-hands-decoupling-architecture.md"
-    rel: "enabled-by"
-  - file: "system-event-logging-actions-not-words.md"
-    rel: "same-problem"
+- file: session-persistence-crash-resilient.md
+  rel: extends
+- file: immutable-sessions-as-audit-architecture.md
+  rel: same-problem
+- file: workflow-state-vs-conversation-state.md
+  rel: extends
+- file: durable-workflow-engine-for-agent-systems.md
+  rel: same-problem
+- file: brain-hands-decoupling-architecture.md
+  rel: enabled-by
+- file: system-event-logging-actions-not-words.md
+  rel: same-problem
 proposals: null
-date_discovered: "2026-04-09"
-last_updated: "2026-04-09"
-pipeline_status: "synthesized"
+date_discovered: '2026-04-09'
+last_updated: '2026-04-09'
+pipeline_status: synthesized
 consumed_by:
-  - "agent-workflow-and-execution.md"
+- agent-workflow-and-execution.md
 ---
 
 ## What It Is

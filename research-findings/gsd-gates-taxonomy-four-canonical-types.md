@@ -17,9 +17,9 @@ related_findings:
 proposals: null
 date_discovered: '2026-04-07'
 last_updated: '2026-04-08'
-pipeline_status: "synthesized"
+pipeline_status: synthesized
 consumed_by:
-  - "building-agent-evaluation-suites.md"
+- building-agent-evaluation-suites.md
 ---
 
 ## What It Is

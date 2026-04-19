@@ -1,21 +1,23 @@
 ---
-name: "Three Sandbox Architectures for Agent Execution"
-summary: "Three distinct sandbox architectures observed: worktree isolation (GSD, Archon), monolithic container (AIO Sandbox), graduated provisioner (DeerFlow). Each trades complexity for isolation differently."
+name: Three Sandbox Architectures for Agent Execution
+summary: 'Three distinct sandbox architectures observed: worktree isolation (GSD, Archon), monolithic container (AIO Sandbox), graduated provisioner (DeerFlow). Each trades complexity for isolation differently.'
 implementation_notes: null
-category: "Sandboxing"
-evidence_strength: "Medium (practitioner-documented)"
-adoption_status: "Not Yet Started"
+category: Sandboxing
+evidence_strength: Medium (practitioner-documented)
+adoption_status: Not Yet Started
 proposer_priority: null
 applicability:
-  - "S3 (Claude Code Build)"
+- S3 (Claude Code Build)
 adopted_in: []
 sources: []
 related_findings:
-  - {file: "all-in-one-sandbox-architecture.md", rel: "same-problem"}
-  - {file: "three-tier-sandbox-provisioner.md", rel: "same-problem"}
+- file: all-in-one-sandbox-architecture.md
+  rel: same-problem
+- file: three-tier-sandbox-provisioner.md
+  rel: same-problem
 proposals: null
-date_discovered: "2026-04-19"
-last_updated: "2026-04-19"
+date_discovered: '2026-04-19'
+last_updated: '2026-04-19'
 ---
 
 ## What It Is

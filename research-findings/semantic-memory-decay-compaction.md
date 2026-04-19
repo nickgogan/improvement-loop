@@ -1,21 +1,24 @@
 ---
-name: "Semantic Memory Decay Compaction"
-summary: "Closed/completed work items are summarized rather than deleted, preserving context while reducing noise. Decay-weighted scoring determines what survives compaction — recent and high-impact items get higher survival priority."
+name: Semantic Memory Decay Compaction
+summary: Closed/completed work items are summarized rather than deleted, preserving context while reducing noise. Decay-weighted scoring determines what survives compaction — recent and high-impact items
+  get higher survival priority.
 implementation_notes: null
-category: "Context Engineering"
-evidence_strength: "Medium (practitioner-documented)"
-adoption_status: "Not Yet Started"
+category: Context Engineering
+evidence_strength: Medium (practitioner-documented)
+adoption_status: Not Yet Started
 proposer_priority: null
 applicability:
-  - "S3 (Claude Code Build)"
+- S3 (Claude Code Build)
 adopted_in: []
 sources: []
 related_findings:
-  - {file: "five-context-management-techniques-in-claude-code.md", rel: "extends"}
-  - {file: "claude-code-long-term-memory-via-pre-prompt-recall.md", rel: "extends"}
+- file: five-context-management-techniques-in-claude-code.md
+  rel: extends
+- file: claude-code-long-term-memory-via-pre-prompt-recall.md
+  rel: extends
 proposals: null
-date_discovered: "2026-04-19"
-last_updated: "2026-04-19"
+date_discovered: '2026-04-19'
+last_updated: '2026-04-19'
 ---
 
 ## What It Is

@@ -1,6 +1,7 @@
 ---
 name: Pluggable Context Engine
-summary: OpenClaw's context engine has a 4-phase lifecycle (ingest, assemble, compact, afterTurn) and can be replaced by third-party plugins. Separates context assembly logic from the agent loop, enabling experimentation with different context strategies.
+summary: OpenClaw's context engine has a 4-phase lifecycle (ingest, assemble, compact, afterTurn) and can be replaced by third-party plugins. Separates context assembly logic from the agent loop, enabling
+  experimentation with different context strategies.
 implementation_notes: null
 category: Context Engineering
 evidence_strength: Medium (practitioner-documented)
@@ -14,7 +15,7 @@ related_findings: []
 proposals: null
 date_discovered: '2026-04-08'
 last_updated: '2026-04-08'
-pipeline_status: "raw"
+pipeline_status: raw
 consumed_by: []
 ---
 ## What It Is

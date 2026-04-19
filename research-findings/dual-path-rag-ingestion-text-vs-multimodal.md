@@ -19,9 +19,9 @@ last_updated: '2026-04-07'
 related_findings:
 - file: mineru-local-document-parsing-for-rag.md
   rel: enables
-- file: "scalpel-local-parse-then-llm-cost-optimization.md"
-  rel: "same-problem"
-pipeline_status: "raw"
+- file: scalpel-local-parse-then-llm-cost-optimization.md
+  rel: same-problem
+pipeline_status: raw
 consumed_by: []
 ---
 ## What It Is

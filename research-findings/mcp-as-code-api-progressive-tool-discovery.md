@@ -1,34 +1,35 @@
 ---
-name: "MCP as Code API -- Progressive Tool Discovery via Filesystem"
-summary: "Reimagining MCP servers as code APIs rather than direct tool calls. Agents discover tools by navigating filesystem hierarchies (progressive disclosure) and execute them programmatically. 98.7% token reduction demonstrated (150K to 2K tokens). Intermediate results stay in execution environment, enabling privacy preservation via automatic PII tokenization."
+name: MCP as Code API -- Progressive Tool Discovery via Filesystem
+summary: Reimagining MCP servers as code APIs rather than direct tool calls. Agents discover tools by navigating filesystem hierarchies (progressive disclosure) and execute them programmatically. 98.7%
+  token reduction demonstrated (150K to 2K tokens). Intermediate results stay in execution environment, enabling privacy preservation via automatic PII tokenization.
 implementation_notes: null
-category: "Tool Integration"
-evidence_strength: "Strong (production-tested)"
-adoption_status: "Not Yet Started"
-proposer_priority: "P1 (Implement Now)"
+category: Tool Integration
+evidence_strength: Strong (production-tested)
+adoption_status: Not Yet Started
+proposer_priority: P1 (Implement Now)
 applicability:
-  - "S3 (Claude Code Build)"
-  - "General"
+- S3 (Claude Code Build)
+- General
 adopted_in: []
 sources:
-  - "anthropic-code-execution-with-mcp.md"
+- anthropic-code-execution-with-mcp.md
 related_findings:
-  - file: "dynamic-tool-pool-assembly-transcript-compaction.md"
-    rel: "extends"
-  - file: "gpt-54-tool-search-deferred-tool-loading.md"
-    rel: "same-problem"
-  - file: "cli-first-tool-integration-less-overhead-than-mcp.md"
-    rel: "same-problem"
-  - file: "programmatic-tool-calling-code-orchestrated-tool-use.md"
-    rel: "enabled-by"
-  - file: "mcp-ecosystem-critical-mass-97m-installs.md"
-    rel: "extends"
+- file: dynamic-tool-pool-assembly-transcript-compaction.md
+  rel: extends
+- file: gpt-54-tool-search-deferred-tool-loading.md
+  rel: same-problem
+- file: cli-first-tool-integration-less-overhead-than-mcp.md
+  rel: same-problem
+- file: programmatic-tool-calling-code-orchestrated-tool-use.md
+  rel: enabled-by
+- file: mcp-ecosystem-critical-mass-97m-installs.md
+  rel: extends
 proposals: null
-date_discovered: "2026-04-09"
-last_updated: "2026-04-09"
-pipeline_status: "synthesized"
+date_discovered: '2026-04-09'
+last_updated: '2026-04-09'
+pipeline_status: synthesized
 consumed_by:
-  - "designing-agent-tools.md"
+- designing-agent-tools.md
 ---
 
 ## What It Is

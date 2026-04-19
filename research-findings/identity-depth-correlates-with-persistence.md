@@ -1,6 +1,7 @@
 ---
 name: Identity Depth Correlates with Persistence
-summary: Agent identity depth correlates with deployment model across 7 repos. Persistent agents have deep identity (SOUL.md, memory systems, personality). Ephemeral agents have shallow identity (role labels, tool lists). Identity investment should match deployment persistence.
+summary: Agent identity depth correlates with deployment model across 7 repos. Persistent agents have deep identity (SOUL.md, memory systems, personality). Ephemeral agents have shallow identity (role labels,
+  tool lists). Identity investment should match deployment persistence.
 implementation_notes: null
 category: Agent Design
 evidence_strength: Medium (practitioner-documented)
@@ -16,7 +17,7 @@ related_findings: []
 proposals: null
 date_discovered: '2026-04-08'
 last_updated: '2026-04-08'
-pipeline_status: "raw"
+pipeline_status: raw
 consumed_by: []
 ---
 ## What It Is

@@ -1,20 +1,21 @@
 ---
-name: "Template-Generated Skills with Multi-Host Variants"
-summary: "SKILL.md files generated from .tmpl templates via gen-skill-docs.ts. Templates are source of truth; SKILL.md is a build artifact. Host configs for 8 platforms define preamble, allowed-tools, and tool aliases. 38 templates produce 41 skills."
+name: Template-Generated Skills with Multi-Host Variants
+summary: SKILL.md files generated from .tmpl templates via gen-skill-docs.ts. Templates are source of truth; SKILL.md is a build artifact. Host configs for 8 platforms define preamble, allowed-tools, and
+  tool aliases. 38 templates produce 41 skills.
 implementation_notes: null
-category: "Agent Design"
-evidence_strength: "Medium (practitioner-documented)"
-adoption_status: "Not Yet Started"
+category: Agent Design
+evidence_strength: Medium (practitioner-documented)
+adoption_status: Not Yet Started
 proposer_priority: null
 applicability:
-  - "S3 (Claude Code Build)"
+- S3 (Claude Code Build)
 adopted_in: []
 sources: []
 related_findings: []
 proposals: null
-date_discovered: "2026-04-08"
-last_updated: "2026-04-08"
-pipeline_status: "raw"
+date_discovered: '2026-04-08'
+last_updated: '2026-04-08'
+pipeline_status: raw
 consumed_by: []
 ---
 

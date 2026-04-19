@@ -1,6 +1,7 @@
 ---
 name: Prompt Cache Stability as Correctness
-summary: OpenClaw treats deterministic ordering of model payloads as performance-critical correctness. Truncation prefers mutating newest content first to keep the prefix byte-identical for cache hits. Most frameworks ignore prompt caching implications entirely.
+summary: OpenClaw treats deterministic ordering of model payloads as performance-critical correctness. Truncation prefers mutating newest content first to keep the prefix byte-identical for cache hits.
+  Most frameworks ignore prompt caching implications entirely.
 implementation_notes: null
 category: Context Engineering
 evidence_strength: Medium (practitioner-documented)
@@ -14,7 +15,7 @@ related_findings: []
 proposals: null
 date_discovered: '2026-04-08'
 last_updated: '2026-04-08'
-pipeline_status: "raw"
+pipeline_status: raw
 consumed_by: []
 ---
 ## What It Is

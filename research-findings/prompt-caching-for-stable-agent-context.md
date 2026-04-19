@@ -17,9 +17,9 @@ sources:
 proposals: null
 date_discovered: '2026-04-07'
 last_updated: '2026-04-08'
-pipeline_status: "synthesized"
+pipeline_status: synthesized
 consumed_by:
-  - "managing-agent-context.md"
+- managing-agent-context.md
 ---
 
 ## What It Is

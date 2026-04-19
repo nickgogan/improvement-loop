@@ -17,17 +17,17 @@ proposals: []
 date_discovered: '2026-03-22'
 last_updated: 2026-04-08
 related_findings:
-  - file: "context-engineering-supersedes-prompt-engineering.md"
-    rel: "enabled-by"
-  - file: "memory-bank-isolation-per-agent-per-project.md"
-    rel: "same-problem"
-  - file: "memory-cross-layer-promotion-governance.md"
-    rel: "enabled-by"
-  - file: "agent-memory-architecture-multi-agent-layered.md"
-    rel: "same-problem"
-  - file: "ace-agentic-context-engineering-rag-based.md"
-    rel: "same-problem"
-pipeline_status: "raw"
+- file: context-engineering-supersedes-prompt-engineering.md
+  rel: enabled-by
+- file: memory-bank-isolation-per-agent-per-project.md
+  rel: same-problem
+- file: memory-cross-layer-promotion-governance.md
+  rel: enabled-by
+- file: agent-memory-architecture-multi-agent-layered.md
+  rel: same-problem
+- file: ace-agentic-context-engineering-rag-based.md
+  rel: same-problem
+pipeline_status: raw
 consumed_by: []
 ---
 # memory.md: Cross-Session Preference Persistence via Self-Updating File

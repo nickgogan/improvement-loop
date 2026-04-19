@@ -23,9 +23,9 @@ related_findings:
   rel: same-problem
 - file: brevity-constraints-reverse-llm-performance.md
   rel: same-problem
-pipeline_status: "synthesized"
+pipeline_status: synthesized
 consumed_by:
-  - "model-resilient-prompt-engineering.md"
+- model-resilient-prompt-engineering.md
 ---
 
 ## What It Is

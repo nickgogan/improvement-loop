@@ -1,18 +1,20 @@
 ---
-name: "Agent-to-Agent Payment: x402 Protocol and Coinbase Wallet"
-summary: "Claude Code's codebase contains /pay, /wallet, and /x402 commands for configuring agent payment capabilities via Coinbase wallet. Agents can pay for APIs or pay other agents with per-session spend limits. Early/experimental but signals Anthropic's direction on agent economics."
+name: 'Agent-to-Agent Payment: x402 Protocol and Coinbase Wallet'
+summary: Claude Code's codebase contains /pay, /wallet, and /x402 commands for configuring agent payment capabilities via Coinbase wallet. Agents can pay for APIs or pay other agents with per-session spend
+  limits. Early/experimental but signals Anthropic's direction on agent economics.
 implementation_notes: null
-category: "Tool Integration"
-evidence_strength: "Weak (theoretical)"
-adoption_status: "Not Yet Started"
-proposer_priority: "P3 (Monitor)"
+category: Tool Integration
+evidence_strength: Weak (theoretical)
+adoption_status: Not Yet Started
+proposer_priority: P3 (Monitor)
 applicability:
-  - "General"
+- General
 adopted_in: []
-sources: ["claude-codes-leak-changes-everything.md"]
-date_discovered: "2026-04-07"
-last_updated: "2026-04-07"
-pipeline_status: "raw"
+sources:
+- claude-codes-leak-changes-everything.md
+date_discovered: '2026-04-07'
+last_updated: '2026-04-07'
+pipeline_status: raw
 consumed_by: []
 ---
 

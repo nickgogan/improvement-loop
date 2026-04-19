@@ -17,13 +17,13 @@ proposals: null
 date_discovered: '2026-04-07'
 last_updated: 2026-04-08
 related_findings:
-  - file: "pointers-over-copies-in-context-files.md"
-    rel: "same-problem"
-  - file: "agent-context-kiss-commandments-minimum-viable.md"
-    rel: "same-problem"
-pipeline_status: "extracted"
+- file: pointers-over-copies-in-context-files.md
+  rel: same-problem
+- file: agent-context-kiss-commandments-minimum-viable.md
+  rel: same-problem
+pipeline_status: extracted
 consumed_by:
-  - "rules/file-read-deduplication.md"
+- rules/file-read-deduplication.md
 ---
 ## What It Is
 

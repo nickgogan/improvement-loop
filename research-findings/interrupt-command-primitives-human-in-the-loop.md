@@ -1,22 +1,25 @@
 ---
-name: "Interrupt/Command Primitives for Human-in-the-Loop"
-summary: "LangGraph provides interrupt(value) to pause graph execution at any point with full state persistence via checkpoint, and Command(goto=..., update=...) to combine state mutation with routing control in a single atomic primitive. Together they provide a clean abstraction for human-agent collaboration more flexible than simple approval gates."
+name: Interrupt/Command Primitives for Human-in-the-Loop
+summary: LangGraph provides interrupt(value) to pause graph execution at any point with full state persistence via checkpoint, and Command(goto=..., update=...) to combine state mutation with routing control
+  in a single atomic primitive. Together they provide a clean abstraction for human-agent collaboration more flexible than simple approval gates.
 implementation_notes: null
-category: "Intent Engineering"
-evidence_strength: "Medium (practitioner-documented)"
-adoption_status: "Not Yet Started"
+category: Intent Engineering
+evidence_strength: Medium (practitioner-documented)
+adoption_status: Not Yet Started
 proposer_priority: null
 applicability:
-  - "General"
+- General
 adopted_in: []
 sources: []
 related_findings:
-  - {file: "dag-vs-bsp-two-graph-based-orchestration-models.md", rel: "extends"}
-  - {file: "human-on-the-loop-hotl-autonomy-tiering-framework.md", rel: "same-problem"}
+- file: dag-vs-bsp-two-graph-based-orchestration-models.md
+  rel: extends
+- file: human-on-the-loop-hotl-autonomy-tiering-framework.md
+  rel: same-problem
 proposals: null
-date_discovered: "2026-04-09"
-last_updated: "2026-04-09"
-pipeline_status: "raw"
+date_discovered: '2026-04-09'
+last_updated: '2026-04-09'
+pipeline_status: raw
 consumed_by: []
 ---
 

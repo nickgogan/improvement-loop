@@ -1,6 +1,7 @@
 ---
 name: MCP Integration for Memory as Service
-summary: mem0 exposes 9 MCP tools (add, search, get, update, delete memories plus entity management) that any MCP-capable agent can use. Turns memory from a library dependency into a protocol-standard service accessible from Claude Code, Cursor, and Codex.
+summary: mem0 exposes 9 MCP tools (add, search, get, update, delete memories plus entity management) that any MCP-capable agent can use. Turns memory from a library dependency into a protocol-standard service
+  accessible from Claude Code, Cursor, and Codex.
 implementation_notes: null
 category: Tool Integration
 evidence_strength: Medium (practitioner-documented)
@@ -15,7 +16,7 @@ related_findings: []
 proposals: null
 date_discovered: '2026-04-08'
 last_updated: '2026-04-08'
-pipeline_status: "raw"
+pipeline_status: raw
 consumed_by: []
 ---
 ## What It Is

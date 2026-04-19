@@ -1,22 +1,24 @@
 ---
-name: "BMAD V6 Diataxis Documentation Framework"
-summary: "BMAD V6 adopted the Diataxis framework (tutorials, how-to guides, explanations, reference) for its documentation site, making documentation a first-class citizen. Combined with llms-full.txt endpoint for agent-consumable docs."
+name: BMAD V6 Diataxis Documentation Framework
+summary: BMAD V6 adopted the Diataxis framework (tutorials, how-to guides, explanations, reference) for its documentation site, making documentation a first-class citizen. Combined with llms-full.txt endpoint
+  for agent-consumable docs.
 implementation_notes: null
-category: "Context Engineering"
-evidence_strength: "Medium (practitioner-documented)"
-adoption_status: "Not Yet Started"
-proposer_priority: "P3 (Monitor)"
+category: Context Engineering
+evidence_strength: Medium (practitioner-documented)
+adoption_status: Not Yet Started
+proposer_priority: P3 (Monitor)
 applicability:
-  - "S3 (Claude Code Build)"
-  - "General"
+- S3 (Claude Code Build)
+- General
 adopted_in: []
-sources: ["bmad-v6-is-finally-here.md"]
-date_discovered: "2026-04-07"
+sources:
+- bmad-v6-is-finally-here.md
+date_discovered: '2026-04-07'
 last_updated: 2026-04-08
 related_findings:
-  - file: "agent-context-kiss-commandments-minimum-viable.md"
-    rel: "same-problem"
-pipeline_status: "raw"
+- file: agent-context-kiss-commandments-minimum-viable.md
+  rel: same-problem
+pipeline_status: raw
 consumed_by: []
 ---
 

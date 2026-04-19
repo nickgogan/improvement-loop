@@ -19,7 +19,7 @@ last_updated: '2026-04-08'
 related_findings:
 - file: multi-ide-portability-via-installer-templates.md
   rel: same-problem
-pipeline_status: "raw"
+pipeline_status: raw
 consumed_by: []
 ---
 # Skills Migration: Claude Code to Co-work for Dispatch Compatibility

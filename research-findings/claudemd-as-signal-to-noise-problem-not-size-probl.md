@@ -22,7 +22,7 @@ related_findings:
   rel: same-problem
 - file: tiered-context-injection-over-monolithic-files.md
   rel: same-problem
-pipeline_status: "raw"
+pipeline_status: raw
 consumed_by: []
 ---
 # CLAUDE.md as Signal-to-Noise Problem, Not Size Problem

@@ -17,7 +17,7 @@ last_updated: '2026-04-08'
 related_findings:
 - file: stacking-paul-with-carl-for-domain-scoped.md
   rel: same-problem
-pipeline_status: "raw"
+pipeline_status: raw
 consumed_by: []
 ---
 

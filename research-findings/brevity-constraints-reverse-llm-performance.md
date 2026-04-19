@@ -23,9 +23,9 @@ related_findings:
 proposals: null
 date_discovered: '2026-04-09'
 last_updated: '2026-04-09'
-pipeline_status: "synthesized"
+pipeline_status: synthesized
 consumed_by:
-  - "model-resilient-prompt-engineering.md"
+- model-resilient-prompt-engineering.md
 ---
 
 ## What It Is

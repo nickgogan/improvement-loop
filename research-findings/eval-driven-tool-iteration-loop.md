@@ -1,24 +1,25 @@
 ---
-name: "Eval-Driven Tool Iteration Loop"
-summary: "Run structured evaluations on tools using real-world tasks, then feed evaluation transcripts to Claude to refactor the tools — creating a systematic improvement loop. Slack MCP tools outperformed human-written baselines after agent-driven refactoring."
-implementation_notes: "Could apply to MetaSystem's MCP tool definitions and skill procedures. Run evals, read transcripts, let Claude suggest tool improvements."
-category: "Evaluation"
-evidence_strength: "Strong (production-tested)"
-adoption_status: "Not Yet Started"
-proposer_priority: "P2 (Design Required)"
+name: Eval-Driven Tool Iteration Loop
+summary: Run structured evaluations on tools using real-world tasks, then feed evaluation transcripts to Claude to refactor the tools — creating a systematic improvement loop. Slack MCP tools outperformed
+  human-written baselines after agent-driven refactoring.
+implementation_notes: Could apply to MetaSystem's MCP tool definitions and skill procedures. Run evals, read transcripts, let Claude suggest tool improvements.
+category: Evaluation
+evidence_strength: Strong (production-tested)
+adoption_status: Not Yet Started
+proposer_priority: P2 (Design Required)
 applicability:
-  - "S3 (Claude Code Build)"
-  - "Improvement Loop"
+- S3 (Claude Code Build)
+- Improvement Loop
 adopted_in: []
 sources:
-  - "anthropic-writing-effective-tools-for-agents.md"
+- anthropic-writing-effective-tools-for-agents.md
 related_findings: []
 proposals: null
-date_discovered: "2026-04-09"
-last_updated: "2026-04-09"
-pipeline_status: "extracted"
+date_discovered: '2026-04-09'
+last_updated: '2026-04-09'
+pipeline_status: extracted
 consumed_by:
-  - "skills/eval-driven-tool-iteration-loop.md"
+- skills/eval-driven-tool-iteration-loop.md
 ---
 
 ## What It Is

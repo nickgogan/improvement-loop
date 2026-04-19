@@ -1,7 +1,7 @@
 ---
 name: Cost Concentration in Generation vs Evaluation Phases
-summary: In multi-agent harnesses, token cost is overwhelmingly concentrated in generation (57% in build round 1) while planning (0.4%) and QA (8% total) are negligible, making GAN-style architectures
-  economically viable.
+summary: In multi-agent harnesses, token cost is overwhelmingly concentrated in generation (57% in build round 1) while planning (0.4%) and QA (8% total) are negligible, making GAN-style architectures economically
+  viable.
 implementation_notes: null
 category: Orchestration
 evidence_strength: Strong (production-tested)
@@ -17,7 +17,7 @@ related_findings: []
 proposals: null
 date_discovered: '2026-04-09'
 last_updated: '2026-04-09'
-pipeline_status: "raw"
+pipeline_status: raw
 consumed_by: []
 ---
 

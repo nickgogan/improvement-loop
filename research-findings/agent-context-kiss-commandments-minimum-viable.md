@@ -92,9 +92,9 @@ related_findings:
   rel: same-problem
 - file: token-waste-taxonomy-and-two-mode-workflow.md
   rel: same-problem
-pipeline_status: "synthesized"
+pipeline_status: synthesized
 consumed_by:
-  - "managing-agent-context.md"
+- managing-agent-context.md
 ---
 
 ## What It Is

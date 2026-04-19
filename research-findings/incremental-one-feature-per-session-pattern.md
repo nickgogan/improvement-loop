@@ -1,33 +1,34 @@
 ---
-name: "Incremental One-Feature-Per-Session Execution"
-summary: "Strict prompting limits each agent session to implementing exactly one feature before leaving the codebase in a clean, mergeable state. Progress tracking via artifacts (progress file + git history) enables fresh-context sessions to pick up where the last left off."
-implementation_notes: "Directly applicable to MetaSystem's relay-race architecture. Each session should have a single focused objective with explicit clean-state criteria."
-category: "Agent Design"
-evidence_strength: "Strong (production-tested)"
-adoption_status: "Partially Adopted"
-proposer_priority: "P1 (Implement Now)"
+name: Incremental One-Feature-Per-Session Execution
+summary: Strict prompting limits each agent session to implementing exactly one feature before leaving the codebase in a clean, mergeable state. Progress tracking via artifacts (progress file + git history)
+  enables fresh-context sessions to pick up where the last left off.
+implementation_notes: Directly applicable to MetaSystem's relay-race architecture. Each session should have a single focused objective with explicit clean-state criteria.
+category: Agent Design
+evidence_strength: Strong (production-tested)
+adoption_status: Partially Adopted
+proposer_priority: P1 (Implement Now)
 applicability:
-  - "S3 (Claude Code Build)"
+- S3 (Claude Code Build)
 adopted_in: []
 sources:
-  - "anthropic-effective-harnesses-long-running-agents.md"
+- anthropic-effective-harnesses-long-running-agents.md
 related_findings:
-  - file: "ralph-wiggum-execution-pattern.md"
-    rel: "same-problem"
-  - file: "progress-md-session-bridge.md"
-    rel: "enables"
-  - file: "initializer-agent-scaffolding-pattern.md"
-    rel: "enabled-by"
-  - file: "marathon-vs-relay-race-plugin-architecture.md"
-    rel: "same-problem"
-  - file: "context-rot-silent-killer-and-mitigations.md"
-    rel: "same-problem"
+- file: ralph-wiggum-execution-pattern.md
+  rel: same-problem
+- file: progress-md-session-bridge.md
+  rel: enables
+- file: initializer-agent-scaffolding-pattern.md
+  rel: enabled-by
+- file: marathon-vs-relay-race-plugin-architecture.md
+  rel: same-problem
+- file: context-rot-silent-killer-and-mitigations.md
+  rel: same-problem
 proposals: null
-date_discovered: "2026-04-09"
-last_updated: "2026-04-09"
-pipeline_status: "synthesized"
+date_discovered: '2026-04-09'
+last_updated: '2026-04-09'
+pipeline_status: synthesized
 consumed_by:
-  - "session-persistence-and-memory.md"
+- session-persistence-and-memory.md
 ---
 
 ## What It Is

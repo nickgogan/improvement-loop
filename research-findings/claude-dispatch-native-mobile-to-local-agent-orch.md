@@ -19,7 +19,7 @@ last_updated: '2026-04-08'
 related_findings:
 - file: skills-cli-tools-as-mobile-triggerable-modules.md
   rel: same-problem
-pipeline_status: "raw"
+pipeline_status: raw
 consumed_by: []
 ---
 # Claude Dispatch: Native Mobile-to-Local Agent Orchestration

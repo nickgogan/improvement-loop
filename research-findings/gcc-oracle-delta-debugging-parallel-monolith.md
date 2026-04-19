@@ -1,21 +1,22 @@
 ---
-name: "Oracle + Delta Debugging for Parallelizing Monolithic Tasks"
-summary: "When a single giant task (e.g., kernel compilation) prevents parallelism, randomly compile most files with a known-good oracle (GCC), remainder with the agent's output. Failures isolate bugs to the agent's subset. Delta debugging then finds interacting file pairs that fail together but pass independently."
+name: Oracle + Delta Debugging for Parallelizing Monolithic Tasks
+summary: When a single giant task (e.g., kernel compilation) prevents parallelism, randomly compile most files with a known-good oracle (GCC), remainder with the agent's output. Failures isolate bugs to
+  the agent's subset. Delta debugging then finds interacting file pairs that fail together but pass independently.
 implementation_notes: null
-category: "Evaluation"
-evidence_strength: "Strong (production-tested)"
-adoption_status: "Not Yet Started"
-proposer_priority: "P3 (Monitor)"
+category: Evaluation
+evidence_strength: Strong (production-tested)
+adoption_status: Not Yet Started
+proposer_priority: P3 (Monitor)
 applicability:
-  - "S3 (Claude Code Build)"
+- S3 (Claude Code Build)
 adopted_in: []
 sources:
-  - "anthropic-building-c-compiler.md"
+- anthropic-building-c-compiler.md
 related_findings: []
 proposals: null
-date_discovered: "2026-04-09"
-last_updated: "2026-04-09"
-pipeline_status: "raw"
+date_discovered: '2026-04-09'
+last_updated: '2026-04-09'
+pipeline_status: raw
 consumed_by: []
 ---
 

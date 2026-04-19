@@ -1,36 +1,38 @@
 ---
-name: "Brain-Hands Decoupling Architecture"
-summary: "Decouple agent 'brains' (LLM + harness) from 'hands' (sandboxes, tools, execution environments) via a uniform execute(name, input) -> string interface. Enables independent scaling, failure isolation, lazy provisioning (60-90% TTFT reduction), and many-brains/many-hands topologies."
-implementation_notes: "MetaSystem's skill architecture partially decouples brain from hands (skills are tools). The key gap is that our tools are co-located with the brain -- no independent scaling or failure isolation."
-category: "Orchestration"
-evidence_strength: "Strong (production-tested)"
-adoption_status: "Not Yet Started"
-proposer_priority: "P2 (Design Required)"
+name: Brain-Hands Decoupling Architecture
+summary: Decouple agent 'brains' (LLM + harness) from 'hands' (sandboxes, tools, execution environments) via a uniform execute(name, input) -> string interface. Enables independent scaling, failure isolation,
+  lazy provisioning (60-90% TTFT reduction), and many-brains/many-hands topologies.
+implementation_notes: MetaSystem's skill architecture partially decouples brain from hands (skills are tools). The key gap is that our tools are co-located with the brain -- no independent scaling or failure
+  isolation.
+category: Orchestration
+evidence_strength: Strong (production-tested)
+adoption_status: Not Yet Started
+proposer_priority: P2 (Design Required)
 applicability:
-  - "S3 (Claude Code Build)"
-  - "General"
+- S3 (Claude Code Build)
+- General
 adopted_in: []
 sources:
-  - "anthropic-managed-agents-decoupling.md"
+- anthropic-managed-agents-decoupling.md
 related_findings:
-  - file: "anthropic-managed-agents-platform.md"
-    rel: "extends"
-  - file: "durable-workflow-engine-for-agent-systems.md"
-    rel: "same-problem"
-  - file: "session-persistence-crash-resilient.md"
-    rel: "same-problem"
-  - file: "tool-gateway-security-boundary.md"
-    rel: "same-problem"
-  - file: "session-as-append-only-event-log.md"
-    rel: "enables"
-  - file: "acp-spawn-cross-tool-delegation.md"
-    rel: "same-problem"
+- file: anthropic-managed-agents-platform.md
+  rel: extends
+- file: durable-workflow-engine-for-agent-systems.md
+  rel: same-problem
+- file: session-persistence-crash-resilient.md
+  rel: same-problem
+- file: tool-gateway-security-boundary.md
+  rel: same-problem
+- file: session-as-append-only-event-log.md
+  rel: enables
+- file: acp-spawn-cross-tool-delegation.md
+  rel: same-problem
 proposals: null
-date_discovered: "2026-04-09"
-last_updated: "2026-04-09"
-pipeline_status: "synthesized"
+date_discovered: '2026-04-09'
+last_updated: '2026-04-09'
+pipeline_status: synthesized
 consumed_by:
-  - "agent-architecture-decisions.md"
+- agent-architecture-decisions.md
 ---
 
 ## What It Is

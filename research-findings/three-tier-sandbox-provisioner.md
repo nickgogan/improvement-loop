@@ -1,20 +1,22 @@
 ---
-name: "Three-Tier Sandbox Provisioner"
-summary: "Graduated sandbox isolation behind a unified interface: local filesystem (dev) → Docker container pool with LRU eviction (staging) → Kubernetes remote backend (production). Same SandboxMiddleware regardless of provider."
+name: Three-Tier Sandbox Provisioner
+summary: 'Graduated sandbox isolation behind a unified interface: local filesystem (dev) → Docker container pool with LRU eviction (staging) → Kubernetes remote backend (production). Same SandboxMiddleware
+  regardless of provider.'
 implementation_notes: null
-category: "Sandboxing"
-evidence_strength: "Medium (practitioner-documented)"
-adoption_status: "Not Yet Started"
+category: Sandboxing
+evidence_strength: Medium (practitioner-documented)
+adoption_status: Not Yet Started
 proposer_priority: null
 applicability:
-  - "S3 (Claude Code Build)"
+- S3 (Claude Code Build)
 adopted_in: []
 sources: []
 related_findings:
-  - {file: "tiered-permission-system-bash-safety.md", rel: "same-problem"}
+- file: tiered-permission-system-bash-safety.md
+  rel: same-problem
 proposals: null
-date_discovered: "2026-04-19"
-last_updated: "2026-04-19"
+date_discovered: '2026-04-19'
+last_updated: '2026-04-19'
 ---
 
 ## What It Is

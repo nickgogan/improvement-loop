@@ -27,10 +27,10 @@ related_findings:
 proposals: []
 date_discovered: '2026-04-01'
 last_updated: '2026-04-09'
-pipeline_status: "synthesized"
+pipeline_status: synthesized
 consumed_by:
-  - "agent-architecture-decisions.md"
-  - "model-resilient-prompt-engineering.md"
+- agent-architecture-decisions.md
+- model-resilient-prompt-engineering.md
 ---
 # Task-Specific Model Routing Table (March 2026 Benchmark Consensus)
 

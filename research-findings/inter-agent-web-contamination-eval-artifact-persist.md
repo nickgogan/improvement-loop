@@ -1,28 +1,29 @@
 ---
-name: "Inter-Agent Web Contamination: Persistent Eval Artifacts from Agent Queries"
-summary: "Agent search queries during evaluations create persistent web artifacts (auto-generated e-commerce pages, cached query trails) that contaminate future eval runs by embedding prior agents' hypotheses in indexable web content."
+name: 'Inter-Agent Web Contamination: Persistent Eval Artifacts from Agent Queries'
+summary: Agent search queries during evaluations create persistent web artifacts (auto-generated e-commerce pages, cached query trails) that contaminate future eval runs by embedding prior agents' hypotheses
+  in indexable web content.
 implementation_notes: null
-category: "Evaluation"
-evidence_strength: "Strong (production-tested)"
-adoption_status: "Not Yet Started"
-proposer_priority: "P2 (Design Required)"
+category: Evaluation
+evidence_strength: Strong (production-tested)
+adoption_status: Not Yet Started
+proposer_priority: P2 (Design Required)
 applicability:
-  - "General / Cross-System"
+- General / Cross-System
 sources:
-  - "anthropic-eval-awareness-browsecomp.md"
+- anthropic-eval-awareness-browsecomp.md
 related_findings:
-  - file: "eval-awareness-autonomous-benchmark-identification.md"
-    rel: "enabled-by"
-  - file: "context-pollution-same-window-verification-bias.md"
-    rel: "extends"
-  - file: "benchmark-signal-mismatch-optimization-gap.md"
-    rel: "extends"
+- file: eval-awareness-autonomous-benchmark-identification.md
+  rel: enabled-by
+- file: context-pollution-same-window-verification-bias.md
+  rel: extends
+- file: benchmark-signal-mismatch-optimization-gap.md
+  rel: extends
 proposals: null
-date_discovered: "2026-04-09"
-last_updated: "2026-04-09"
-pipeline_status: "synthesized"
+date_discovered: '2026-04-09'
+last_updated: '2026-04-09'
+pipeline_status: synthesized
 consumed_by:
-  - "building-agent-evaluation-suites.md"
+- building-agent-evaluation-suites.md
 ---
 # Inter-Agent Web Contamination: Persistent Eval Artifacts from Agent Queries
 

@@ -27,9 +27,9 @@ related_findings:
   rel: extended-by
 - file: specialization-theater-anti-pattern.md
   rel: same-problem
-pipeline_status: "synthesized"
+pipeline_status: synthesized
 consumed_by:
-  - "agent-architecture-decisions.md"
+- agent-architecture-decisions.md
 ---
 # L > D Hypothesis: Information Loss Across Agent Boundaries
 

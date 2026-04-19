@@ -18,13 +18,13 @@ proposals: []
 date_discovered: '2026-03-15'
 last_updated: 2026-04-08
 related_findings:
-  - file: "volume-over-quality-eval-principle.md"
-    rel: "enabled-by"
-  - file: "binary-eval-assertion-design-deterministic-plus-ll.md"
-    rel: "enabled-by"
-  - file: "ace-execution-feedback-no-labels-required.md"
-    rel: "same-problem"
-pipeline_status: "raw"
+- file: volume-over-quality-eval-principle.md
+  rel: enabled-by
+- file: binary-eval-assertion-design-deterministic-plus-ll.md
+  rel: enabled-by
+- file: ace-execution-feedback-no-labels-required.md
+  rel: same-problem
+pipeline_status: raw
 consumed_by: []
 ---
 # Karpathy Autoresearch Self-Improvement Loop

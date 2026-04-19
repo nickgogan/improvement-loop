@@ -1,21 +1,23 @@
 ---
-name: "PARA-Based File Memory"
-summary: "Three-layer memory system based on PARA (Projects/Areas/Resources/Archives): knowledge graph with atomic YAML facts and supersession tracking, daily notes as raw timeline, and tacit knowledge (MEMORY.md) for user operating patterns. Includes memory decay and weekly synthesis."
+name: PARA-Based File Memory
+summary: 'Three-layer memory system based on PARA (Projects/Areas/Resources/Archives): knowledge graph with atomic YAML facts and supersession tracking, daily notes as raw timeline, and tacit knowledge
+  (MEMORY.md) for user operating patterns. Includes memory decay and weekly synthesis.'
 implementation_notes: null
-category: "Context Engineering"
-evidence_strength: "Medium (practitioner-documented)"
-adoption_status: "Not Yet Started"
+category: Context Engineering
+evidence_strength: Medium (practitioner-documented)
+adoption_status: Not Yet Started
 proposer_priority: null
 applicability:
-  - "S3 (Claude Code Build)"
+- S3 (Claude Code Build)
 adopted_in: []
 sources: []
 related_findings:
-  - {file: "four-tier-agent-memory-model-with-write-policy.md", rel: "same-problem"}
+- file: four-tier-agent-memory-model-with-write-policy.md
+  rel: same-problem
 proposals: null
-date_discovered: "2026-04-08"
-last_updated: "2026-04-08"
-pipeline_status: "raw"
+date_discovered: '2026-04-08'
+last_updated: '2026-04-08'
+pipeline_status: raw
 consumed_by: []
 ---
 

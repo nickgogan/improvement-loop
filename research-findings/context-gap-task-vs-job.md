@@ -21,7 +21,7 @@ related_findings:
   rel: same-problem
 - file: production-database-wipeout-agent-context.md
   rel: same-problem
-pipeline_status: "raw"
+pipeline_status: raw
 consumed_by: []
 ---
 # Context Gap: Task vs. Job

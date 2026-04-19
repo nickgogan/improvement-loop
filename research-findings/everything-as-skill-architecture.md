@@ -1,6 +1,7 @@
 ---
 name: Everything-as-Skill Architecture
-summary: Post-v6.2.2, BMAD merged agents, workflows, and personas into a unified SKILL.md-based architecture. Agent personas ARE skills — when activated, the skill "becomes" the persona. Eliminates the agent/skill/workflow three-way distinction.
+summary: Post-v6.2.2, BMAD merged agents, workflows, and personas into a unified SKILL.md-based architecture. Agent personas ARE skills — when activated, the skill "becomes" the persona. Eliminates the
+  agent/skill/workflow three-way distinction.
 implementation_notes: null
 category: Agent Design
 evidence_strength: Medium (practitioner-documented)
@@ -16,7 +17,7 @@ related_findings:
 proposals: null
 date_discovered: '2026-04-08'
 last_updated: '2026-04-08'
-pipeline_status: "raw"
+pipeline_status: raw
 consumed_by: []
 ---
 ## What It Is

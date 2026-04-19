@@ -1,20 +1,21 @@
 ---
-name: "Brownfield-Aware Agent Variants for Legacy Codebases"
-summary: "Dedicated brownfield variants of PM and Architect agents that include additional steps for understanding existing code, identifying constraints, and planning changes that respect the current system state -- distinct from greenfield workflows."
+name: Brownfield-Aware Agent Variants for Legacy Codebases
+summary: Dedicated brownfield variants of PM and Architect agents that include additional steps for understanding existing code, identifying constraints, and planning changes that respect the current system
+  state -- distinct from greenfield workflows.
 implementation_notes: null
-category: "Orchestration"
-evidence_strength: "Medium (practitioner-documented)"
-adoption_status: "Not Yet Started"
-proposer_priority: "P3 (Monitor)"
+category: Orchestration
+evidence_strength: Medium (practitioner-documented)
+adoption_status: Not Yet Started
+proposer_priority: P3 (Monitor)
 applicability:
-  - "S3 (Claude Code Build)"
-  - "General"
+- S3 (Claude Code Build)
+- General
 adopted_in: []
 sources:
-  - "bmad-method-masterclass.md"
-date_discovered: "2026-04-07"
-last_updated: "2026-04-07"
-pipeline_status: "raw"
+- bmad-method-masterclass.md
+date_discovered: '2026-04-07'
+last_updated: '2026-04-07'
+pipeline_status: raw
 consumed_by: []
 ---
 

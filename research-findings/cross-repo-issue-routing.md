@@ -1,19 +1,20 @@
 ---
-name: "Cross-Repo Issue Routing"
-summary: "Pattern-based routing of issues/tasks across repository boundaries via configuration files. External dependencies tracked as typed references. Hydration pulls related issues from other repos for context."
+name: Cross-Repo Issue Routing
+summary: Pattern-based routing of issues/tasks across repository boundaries via configuration files. External dependencies tracked as typed references. Hydration pulls related issues from other repos for
+  context.
 implementation_notes: null
-category: "Orchestration"
-evidence_strength: "Medium (practitioner-documented)"
-adoption_status: "Not Yet Started"
+category: Orchestration
+evidence_strength: Medium (practitioner-documented)
+adoption_status: Not Yet Started
 proposer_priority: null
 applicability:
-  - "S3 (Claude Code Build)"
+- S3 (Claude Code Build)
 adopted_in: []
 sources: []
 related_findings: []
 proposals: null
-date_discovered: "2026-04-19"
-last_updated: "2026-04-19"
+date_discovered: '2026-04-19'
+last_updated: '2026-04-19'
 ---
 
 ## What It Is

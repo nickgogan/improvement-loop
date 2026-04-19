@@ -1,21 +1,24 @@
 ---
-name: "Skill Security Scanner with Fail-Closed Default"
-summary: "LLM-based scanner classifies new/modified skills as allow/warn/block. Checks for prompt-injection, privilege escalation, exfiltration. On model failure: block by default. JSONL history log per skill."
+name: Skill Security Scanner with Fail-Closed Default
+summary: 'LLM-based scanner classifies new/modified skills as allow/warn/block. Checks for prompt-injection, privilege escalation, exfiltration. On model failure: block by default. JSONL history log per
+  skill.'
 implementation_notes: null
-category: "Governance"
-evidence_strength: "Medium (practitioner-documented)"
-adoption_status: "Not Yet Started"
+category: Governance
+evidence_strength: Medium (practitioner-documented)
+adoption_status: Not Yet Started
 proposer_priority: null
 applicability:
-  - "S3 (Claude Code Build)"
+- S3 (Claude Code Build)
 adopted_in: []
 sources: []
 related_findings:
-  - {file: "bmad-module-marketplace-with-vetting.md", rel: "same-problem"}
-  - {file: "gsd-prompt-injection-scanner-hardening.md", rel: "extends"}
+- file: bmad-module-marketplace-with-vetting.md
+  rel: same-problem
+- file: gsd-prompt-injection-scanner-hardening.md
+  rel: extends
 proposals: null
-date_discovered: "2026-04-19"
-last_updated: "2026-04-19"
+date_discovered: '2026-04-19'
+last_updated: '2026-04-19'
 ---
 
 ## What It Is

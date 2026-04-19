@@ -1,22 +1,25 @@
 ---
-name: "Plugin Namespacing for Organizational Context"
-summary: "n8n uses .claude/plugins/n8n/ with an n8n: prefix for all skills, commands, and agents — preventing collisions in large teams where multiple developers might have personal Claude Code plugins. The plugin system auto-discovers and namespace-prefixes all items."
+name: Plugin Namespacing for Organizational Context
+summary: 'n8n uses .claude/plugins/n8n/ with an n8n: prefix for all skills, commands, and agents — preventing collisions in large teams where multiple developers might have personal Claude Code plugins.
+  The plugin system auto-discovers and namespace-prefixes all items.'
 implementation_notes: null
-category: "Context Engineering"
-evidence_strength: "Medium (practitioner-documented)"
-adoption_status: "Not Yet Started"
+category: Context Engineering
+evidence_strength: Medium (practitioner-documented)
+adoption_status: Not Yet Started
 proposer_priority: null
 applicability:
-  - "S3 (Claude Code Build)"
+- S3 (Claude Code Build)
 adopted_in: []
 sources: []
 related_findings:
-  - {file: "monorepo-context-distribution-three-strategies.md", rel: "same-problem"}
-  - {file: "skills-inside-workspace-contextual-skill.md", rel: "extends"}
+- file: monorepo-context-distribution-three-strategies.md
+  rel: same-problem
+- file: skills-inside-workspace-contextual-skill.md
+  rel: extends
 proposals: null
-date_discovered: "2026-04-09"
-last_updated: "2026-04-09"
-pipeline_status: "raw"
+date_discovered: '2026-04-09'
+last_updated: '2026-04-09'
+pipeline_status: raw
 consumed_by: []
 ---
 

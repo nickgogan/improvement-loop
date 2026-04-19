@@ -1,20 +1,21 @@
 ---
-name: "Meta-Skill for Skill Authorship"
-summary: "Superpowers' writing-skills/ directory contains a skill that teaches agents how to write skills — including persuasion principles, Anthropic best practices, testing methodology, and example skills. Self-referential capability development enabling the framework to extend itself."
+name: Meta-Skill for Skill Authorship
+summary: Superpowers' writing-skills/ directory contains a skill that teaches agents how to write skills — including persuasion principles, Anthropic best practices, testing methodology, and example skills.
+  Self-referential capability development enabling the framework to extend itself.
 implementation_notes: null
-category: "Agent Design"
-evidence_strength: "Medium (practitioner-documented)"
-adoption_status: "Not Yet Started"
+category: Agent Design
+evidence_strength: Medium (practitioner-documented)
+adoption_status: Not Yet Started
 proposer_priority: null
 applicability:
-  - "S3 (Claude Code Build)"
+- S3 (Claude Code Build)
 adopted_in: []
 sources: []
 related_findings: []
 proposals: null
-date_discovered: "2026-04-08"
-last_updated: "2026-04-08"
-pipeline_status: "raw"
+date_discovered: '2026-04-08'
+last_updated: '2026-04-08'
+pipeline_status: raw
 consumed_by: []
 ---
 # Meta-Skill for Skill Authorship

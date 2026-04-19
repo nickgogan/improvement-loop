@@ -1,32 +1,33 @@
 ---
-name: "Effort Scaling Rules Embedded in Orchestrator"
-summary: "Embed explicit resource allocation rules in the lead agent prompt: 1 subagent/3-10 calls for factual queries, 2-4 subagents/10-15 calls for comparisons, 10+ subagents with divided roles for complex research. Prevents overinvestment in simple queries and underinvestment in complex ones."
-implementation_notes: "Directly applicable to MetaSystem's research-loop and any orchestrator skill. Add explicit scaling rules to orchestrator prompts."
-category: "Orchestration"
-evidence_strength: "Strong (production-tested)"
-adoption_status: "Not Yet Started"
-proposer_priority: "P1 (Implement Now)"
+name: Effort Scaling Rules Embedded in Orchestrator
+summary: 'Embed explicit resource allocation rules in the lead agent prompt: 1 subagent/3-10 calls for factual queries, 2-4 subagents/10-15 calls for comparisons, 10+ subagents with divided roles for complex
+  research. Prevents overinvestment in simple queries and underinvestment in complex ones.'
+implementation_notes: Directly applicable to MetaSystem's research-loop and any orchestrator skill. Add explicit scaling rules to orchestrator prompts.
+category: Orchestration
+evidence_strength: Strong (production-tested)
+adoption_status: Not Yet Started
+proposer_priority: P1 (Implement Now)
 applicability:
-  - "S3 (Claude Code Build)"
-  - "General"
+- S3 (Claude Code Build)
+- General
 adopted_in: []
 sources:
-  - "anthropic-multi-agent-research-system.md"
+- anthropic-multi-agent-research-system.md
 related_findings:
-  - file: "sub-agent-context-isolation-for-parallel-complex.md"
-    rel: "extends"
-  - file: "orchestrated-execution-one-task-per-sub-agent-wit.md"
-    rel: "extends"
-  - file: "agent-cost-blowup-mitigation-strategies.md"
-    rel: "same-problem"
-  - file: "task-complexity-tiering-quick-campaign-deep-build.md"
-    rel: "same-problem"
+- file: sub-agent-context-isolation-for-parallel-complex.md
+  rel: extends
+- file: orchestrated-execution-one-task-per-sub-agent-wit.md
+  rel: extends
+- file: agent-cost-blowup-mitigation-strategies.md
+  rel: same-problem
+- file: task-complexity-tiering-quick-campaign-deep-build.md
+  rel: same-problem
 proposals: null
-date_discovered: "2026-04-09"
-last_updated: "2026-04-09"
-pipeline_status: "synthesized"
+date_discovered: '2026-04-09'
+last_updated: '2026-04-09'
+pipeline_status: synthesized
 consumed_by:
-  - "session-persistence-and-memory.md"
+- session-persistence-and-memory.md
 ---
 
 ## What It Is

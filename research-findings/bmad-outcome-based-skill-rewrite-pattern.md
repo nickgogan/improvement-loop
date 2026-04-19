@@ -1,32 +1,31 @@
 ---
-name: "Outcome-Based Skill Rewrite Pattern"
-summary: "Rewriting skill instructions from procedural step-by-step format to outcome-based design, cutting token consumption ~50% while letting the LLM choose its own execution path."
+name: Outcome-Based Skill Rewrite Pattern
+summary: Rewriting skill instructions from procedural step-by-step format to outcome-based design, cutting token consumption ~50% while letting the LLM choose its own execution path.
 implementation_notes: null
-category: "Prompt Craft"
-evidence_strength: "Medium (practitioner-documented)"
-adoption_status: "Not Yet Started"
-proposer_priority: "P2 (Design Required)"
+category: Prompt Craft
+evidence_strength: Medium (practitioner-documented)
+adoption_status: Not Yet Started
+proposer_priority: P2 (Design Required)
 applicability:
-  - "General / Cross-System"
+- General / Cross-System
 adopted_in: []
 sources:
-  - "bmad-v610-v622-changelog.md"
+- bmad-v610-v622-changelog.md
 related_findings:
-  - file: "skill-as-script-wrapper-for-complex-pipelines.md"
-    rel: "same-problem"
-  - file: "context-curation-over-context-stuffing.md"
-    rel: "same-problem"
-  - file: "agent-context-kiss-commandments-minimum-viable.md"
-    rel: "same-problem"
-    rel: "same-problem"
-  - file: "context-curation-over-context-stuffing.md"
-    rel: "same-problem"
+- file: skill-as-script-wrapper-for-complex-pipelines.md
+  rel: same-problem
+- file: context-curation-over-context-stuffing.md
+  rel: same-problem
+- file: agent-context-kiss-commandments-minimum-viable.md
+  rel: same-problem
+- file: context-curation-over-context-stuffing.md
+  rel: same-problem
 proposals: null
-date_discovered: "2026-04-07"
+date_discovered: '2026-04-07'
 last_updated: 2026-04-08
-pipeline_status: "synthesized"
+pipeline_status: synthesized
 consumed_by:
-  - "model-resilient-prompt-engineering.md"
+- model-resilient-prompt-engineering.md
 ---
 # Outcome-Based Skill Rewrite Pattern
 

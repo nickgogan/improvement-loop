@@ -1,24 +1,24 @@
 ---
-name: "Balanced Positive and Negative Eval Sets"
-summary: "Test both positive cases (behavior should trigger) and negative cases (behavior should not trigger). Claude.ai's web search overtriggered because early evals only tested 'should search' scenarios."
-implementation_notes: "When building evals for MetaSystem skills (e.g., should research-loop extract a finding or skip it?), include explicit negative cases to prevent overtriggering."
-category: "Evaluation"
-evidence_strength: "Strong (production-tested)"
-adoption_status: "Not Yet Started"
-proposer_priority: "P2 (Design Required)"
+name: Balanced Positive and Negative Eval Sets
+summary: Test both positive cases (behavior should trigger) and negative cases (behavior should not trigger). Claude.ai's web search overtriggered because early evals only tested 'should search' scenarios.
+implementation_notes: When building evals for MetaSystem skills (e.g., should research-loop extract a finding or skip it?), include explicit negative cases to prevent overtriggering.
+category: Evaluation
+evidence_strength: Strong (production-tested)
+adoption_status: Not Yet Started
+proposer_priority: P2 (Design Required)
 applicability:
-  - "S3 (Claude Code Build)"
-  - "General / Cross-System"
+- S3 (Claude Code Build)
+- General / Cross-System
 adopted_in: []
 sources:
-  - "anthropic-demystifying-evals-for-ai-agents.md"
+- anthropic-demystifying-evals-for-ai-agents.md
 related_findings: []
 proposals: null
-date_discovered: "2026-04-09"
-last_updated: "2026-04-09"
-pipeline_status: "extracted"
+date_discovered: '2026-04-09'
+last_updated: '2026-04-09'
+pipeline_status: extracted
 consumed_by:
-  - "rules/balanced-positive-negative-eval-sets.md"
+- rules/balanced-positive-negative-eval-sets.md
 ---
 
 ## What It Is

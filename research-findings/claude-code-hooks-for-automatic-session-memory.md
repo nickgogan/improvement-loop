@@ -17,13 +17,13 @@ proposals: []
 date_discovered: '2026-04-07'
 last_updated: 2026-04-08
 related_findings:
-  - file: "structured-fact-extraction-from-conversations.md"
-    rel: "same-problem"
-  - file: "agent-memory-architecture-multi-agent-layered.md"
-    rel: "same-problem"
-  - file: "ace-agentic-context-engineering-rag-based.md"
-    rel: "same-problem"
-pipeline_status: "raw"
+- file: structured-fact-extraction-from-conversations.md
+  rel: same-problem
+- file: agent-memory-architecture-multi-agent-layered.md
+  rel: same-problem
+- file: ace-agentic-context-engineering-rag-based.md
+  rel: same-problem
+pipeline_status: raw
 consumed_by: []
 ---
 # Claude Code Hooks for Automatic Session Memory

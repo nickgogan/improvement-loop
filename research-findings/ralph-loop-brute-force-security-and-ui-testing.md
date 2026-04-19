@@ -21,7 +21,7 @@ related_findings:
   rel: extended-by
 - file: cross-model-verification-for-bug-finding.md
   rel: same-problem
-pipeline_status: "raw"
+pipeline_status: raw
 consumed_by: []
 ---
 # Ralph Loop Brute-Force Security and UI Testing

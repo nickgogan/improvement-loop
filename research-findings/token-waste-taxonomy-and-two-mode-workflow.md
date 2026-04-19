@@ -1,26 +1,27 @@
 ---
-name: "Token Waste Taxonomy and Two-Mode Workflow (Gather vs Focus)"
-summary: "Identifies five token waste patterns from ChatGPT habits (raw PDF ingestion, conversation sprawl, plugin overhead, model mixing, accumulated junk) and prescribes a two-mode workflow — Gather mode for short info-collection threads, Focus mode for synthesized execution — to cut costs 10x."
-implementation_notes: "MetaSystem already uses session boundaries but lacks explicit gather/focus mode separation. PDF pre-processing and plugin auditing are directly actionable."
-category: "Context Engineering"
-evidence_strength: "Strong (production-tested)"
-adoption_status: "Partially Adopted"
-proposer_priority: "P1 (Implement Now)"
+name: Token Waste Taxonomy and Two-Mode Workflow (Gather vs Focus)
+summary: Identifies five token waste patterns from ChatGPT habits (raw PDF ingestion, conversation sprawl, plugin overhead, model mixing, accumulated junk) and prescribes a two-mode workflow — Gather mode
+  for short info-collection threads, Focus mode for synthesized execution — to cut costs 10x.
+implementation_notes: MetaSystem already uses session boundaries but lacks explicit gather/focus mode separation. PDF pre-processing and plugin auditing are directly actionable.
+category: Context Engineering
+evidence_strength: Strong (production-tested)
+adoption_status: Partially Adopted
+proposer_priority: P1 (Implement Now)
 applicability:
-  - "S3 (Claude Code Build)"
-  - "General"
+- S3 (Claude Code Build)
+- General
 adopted_in: []
 sources:
-  - "your-claude-limit-burns-in-90-minutes.md"
+- your-claude-limit-burns-in-90-minutes.md
 proposals: null
-date_discovered: "2026-04-07"
+date_discovered: '2026-04-07'
 last_updated: 2026-04-08
 related_findings:
-  - file: "ace-delta-updates-over-monolithic-rewrites.md"
-    rel: "same-problem"
-  - file: "agent-context-kiss-commandments-minimum-viable.md"
-    rel: "same-problem"
-pipeline_status: "raw"
+- file: ace-delta-updates-over-monolithic-rewrites.md
+  rel: same-problem
+- file: agent-context-kiss-commandments-minimum-viable.md
+  rel: same-problem
+pipeline_status: raw
 consumed_by: []
 ---
 

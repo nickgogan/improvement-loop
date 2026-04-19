@@ -16,9 +16,9 @@ proposals: null
 date_discovered: '2026-03-22'
 last_updated: 2026-04-08
 related_findings:
-  - file: "ace-agentic-context-engineering-rag-based.md"
-    rel: "contradicts"
-pipeline_status: "raw"
+- file: ace-agentic-context-engineering-rag-based.md
+  rel: contradicts
+pipeline_status: raw
 consumed_by: []
 ---
 # File-Over-App Philosophy for Knowledge Permanence

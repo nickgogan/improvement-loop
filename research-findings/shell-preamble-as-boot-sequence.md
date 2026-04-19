@@ -1,20 +1,21 @@
 ---
-name: "Shell Preamble as Boot Sequence"
-summary: "Every SKILL.md starts with an identical ~80-line bash preamble that runs on invocation: checks updates, creates session markers, loads config, detects repo mode, loads learnings, records timeline events, checks routing rules. Injected by template generator."
+name: Shell Preamble as Boot Sequence
+summary: 'Every SKILL.md starts with an identical ~80-line bash preamble that runs on invocation: checks updates, creates session markers, loads config, detects repo mode, loads learnings, records timeline
+  events, checks routing rules. Injected by template generator.'
 implementation_notes: null
-category: "Context Engineering"
-evidence_strength: "Medium (practitioner-documented)"
-adoption_status: "Not Yet Started"
+category: Context Engineering
+evidence_strength: Medium (practitioner-documented)
+adoption_status: Not Yet Started
 proposer_priority: null
 applicability:
-  - "S3 (Claude Code Build)"
+- S3 (Claude Code Build)
 adopted_in: []
 sources: []
 related_findings: []
 proposals: null
-date_discovered: "2026-04-08"
-last_updated: "2026-04-08"
-pipeline_status: "raw"
+date_discovered: '2026-04-08'
+last_updated: '2026-04-08'
+pipeline_status: raw
 consumed_by: []
 ---
 

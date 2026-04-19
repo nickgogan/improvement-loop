@@ -1,30 +1,31 @@
 ---
-name: "Emergent Tool Strategy Optimization via Meta-Learning"
-summary: "HyperAgents' meta-agents autonomously discovered tool-calling patterns that reduced unnecessary API calls by 30-40%. Strategies included: call sequencing for maximum context efficiency, expensive-tools-last ordering, and failure-type-specific recovery (reducing repetitive failure cycles). These emerged without explicit programming."
-implementation_notes: "Our agents don't currently track or optimize their own tool-calling patterns. The HyperAgents finding suggests value in logging tool call sequences and identifying waste — e.g., redundant file reads, unnecessary web fetches. Even without self-modification, manual analysis of tool call logs could reveal 30-40% optimization opportunities."
-category: "Tool Integration"
-evidence_strength: "Medium (practitioner-documented)"
-adoption_status: "Not Yet Started"
-proposer_priority: "P3 (Monitor)"
+name: Emergent Tool Strategy Optimization via Meta-Learning
+summary: 'HyperAgents'' meta-agents autonomously discovered tool-calling patterns that reduced unnecessary API calls by 30-40%. Strategies included: call sequencing for maximum context efficiency, expensive-tools-last
+  ordering, and failure-type-specific recovery (reducing repetitive failure cycles). These emerged without explicit programming.'
+implementation_notes: Our agents don't currently track or optimize their own tool-calling patterns. The HyperAgents finding suggests value in logging tool call sequences and identifying waste — e.g., redundant
+  file reads, unnecessary web fetches. Even without self-modification, manual analysis of tool call logs could reveal 30-40% optimization opportunities.
+category: Tool Integration
+evidence_strength: Medium (practitioner-documented)
+adoption_status: Not Yet Started
+proposer_priority: P3 (Monitor)
 applicability:
-  - "General"
+- General
 adopted_in: []
 sources:
-  - "hyperagents-arxiv-260319461.md"
+- hyperagents-arxiv-260319461.md
 related_findings:
-  - file: "metacognitive-self-modification-hyperagents.md"
-    rel: "enabled-by"
-  - file: "file-read-deduplication-pattern.md"
-    rel: "same-problem"
-  - file: "agent-cost-blowup-mitigation-strategies.md"
-    rel: "same-problem"
-    rel: "enabled-by"
-  - file: "file-read-deduplication-pattern.md"
-    rel: "same-problem"
+- file: metacognitive-self-modification-hyperagents.md
+  rel: enabled-by
+- file: file-read-deduplication-pattern.md
+  rel: same-problem
+- file: agent-cost-blowup-mitigation-strategies.md
+  rel: enabled-by
+- file: file-read-deduplication-pattern.md
+  rel: same-problem
 proposals: []
-date_discovered: "2026-04-07"
+date_discovered: '2026-04-07'
 last_updated: 2026-04-08
-pipeline_status: "raw"
+pipeline_status: raw
 consumed_by: []
 ---
 ## What It Is

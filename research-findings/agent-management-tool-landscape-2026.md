@@ -1,43 +1,44 @@
 ---
-name: "Agent Management Tool Landscape (2026)"
-summary: "Survey of agent management approaches categorized by abstraction level: terminal multiplexers (tmux), GUI wrappers (Claude Desktop), developer kanbans (Vibe Kanban), autonomous company frameworks (Paperclip), and custom command centers. All existing tools are developer/code-oriented; the gap is goal-first interfaces for business users."
+name: Agent Management Tool Landscape (2026)
+summary: 'Survey of agent management approaches categorized by abstraction level: terminal multiplexers (tmux), GUI wrappers (Claude Desktop), developer kanbans (Vibe Kanban), autonomous company frameworks
+  (Paperclip), and custom command centers. All existing tools are developer/code-oriented; the gap is goal-first interfaces for business users.'
 implementation_notes: null
-category: "Orchestration"
-evidence_strength: "Medium (practitioner-documented)"
-adoption_status: "Not Yet Started"
-proposer_priority: "P3 (Monitor)"
+category: Orchestration
+evidence_strength: Medium (practitioner-documented)
+adoption_status: Not Yet Started
+proposer_priority: P3 (Monitor)
 applicability:
-  - "General"
+- General
 adopted_in: []
 sources:
-  - "stop-using-claude-code-in-terminal.md"
+- stop-using-claude-code-in-terminal.md
 related_findings:
-  - file: "goal-first-agent-management-abstraction.md"
-    rel: "extends"
-  - file: "visual-skills-management-and-meta-skill-creator.md"
-    rel: "same-problem"
-  - file: "warp-terminal-for-multi-instance-claude-code-manag.md"
-    rel: "same-problem"
-  - file: "marathon-vs-relay-race-plugin-architecture.md"
-    rel: "same-problem"
-  - file: "org-chart-hierarchy-as-scalable-claude-code.md"
-    rel: "same-problem"
-  - file: "parallel-claude-code-instances-per-workspace.md"
-    rel: "same-problem"
-  - file: "six-layer-agent-infrastructure-stack.md"
-    rel: "same-problem"
-  - file: "specialization-theater-anti-pattern.md"
-    rel: "same-problem"
-  - file: "superpowers-plugin-spec-driven-sub-agent-orchestra.md"
-    rel: "same-problem"
-  - file: "multi-framework-orchestration-power-stack.md"
-    rel: "same-problem"
-  - file: "agent-architecture-layer-impermanence.md"
-    rel: "same-problem"
+- file: goal-first-agent-management-abstraction.md
+  rel: extends
+- file: visual-skills-management-and-meta-skill-creator.md
+  rel: same-problem
+- file: warp-terminal-for-multi-instance-claude-code-manag.md
+  rel: same-problem
+- file: marathon-vs-relay-race-plugin-architecture.md
+  rel: same-problem
+- file: org-chart-hierarchy-as-scalable-claude-code.md
+  rel: same-problem
+- file: parallel-claude-code-instances-per-workspace.md
+  rel: same-problem
+- file: six-layer-agent-infrastructure-stack.md
+  rel: same-problem
+- file: specialization-theater-anti-pattern.md
+  rel: same-problem
+- file: superpowers-plugin-spec-driven-sub-agent-orchestra.md
+  rel: same-problem
+- file: multi-framework-orchestration-power-stack.md
+  rel: same-problem
+- file: agent-architecture-layer-impermanence.md
+  rel: same-problem
 proposals: null
-date_discovered: "2026-04-07"
+date_discovered: '2026-04-07'
 last_updated: 2026-04-08
-pipeline_status: "raw"
+pipeline_status: raw
 consumed_by: []
 ---
 

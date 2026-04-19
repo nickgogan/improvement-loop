@@ -1,21 +1,23 @@
 ---
-name: "Budget Governance with Hard Stop"
-summary: "Real resource governance with auto-pause at 100% budget, critical-tasks-only above 80%, per-agent billing codes, and board approval gates for consequential spend. Budget is a server-enforced hard constraint — agents cannot overspend."
+name: Budget Governance with Hard Stop
+summary: Real resource governance with auto-pause at 100% budget, critical-tasks-only above 80%, per-agent billing codes, and board approval gates for consequential spend. Budget is a server-enforced hard
+  constraint — agents cannot overspend.
 implementation_notes: null
-category: "Governance"
-evidence_strength: "Medium (practitioner-documented)"
-adoption_status: "Not Yet Started"
+category: Governance
+evidence_strength: Medium (practitioner-documented)
+adoption_status: Not Yet Started
 proposer_priority: null
 applicability:
-  - "S3 (Claude Code Build)"
+- S3 (Claude Code Build)
 adopted_in: []
 sources: []
 related_findings:
-  - {file: "token-budget-pre-turn-projection.md", rel: "same-problem"}
+- file: token-budget-pre-turn-projection.md
+  rel: same-problem
 proposals: null
-date_discovered: "2026-04-08"
-last_updated: "2026-04-08"
-pipeline_status: "raw"
+date_discovered: '2026-04-08'
+last_updated: '2026-04-08'
+pipeline_status: raw
 consumed_by: []
 ---
 

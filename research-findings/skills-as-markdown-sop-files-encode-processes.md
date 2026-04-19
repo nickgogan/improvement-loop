@@ -20,7 +20,7 @@ last_updated: '2026-04-08'
 related_findings:
 - file: agent-architecture-layer-impermanence.md
   rel: contradicts
-pipeline_status: "raw"
+pipeline_status: raw
 consumed_by: []
 ---
 # Skills as Markdown SOP Files: Encode Processes Once, Reuse Forever

@@ -21,9 +21,9 @@ related_findings:
   rel: same-problem
 - file: worktree-isolation-for-parallel-agent-sessions.md
   rel: same-problem
-pipeline_status: "synthesized"
+pipeline_status: synthesized
 consumed_by:
-  - "agent-architecture-decisions.md"
+- agent-architecture-decisions.md
 ---
 ## What It Is
 

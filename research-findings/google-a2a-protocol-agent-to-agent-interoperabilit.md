@@ -20,9 +20,9 @@ last_updated: '2026-04-08'
 related_findings:
 - file: mcp-ecosystem-critical-mass-97m-installs.md
   rel: enabled-by
-pipeline_status: "synthesized"
+pipeline_status: synthesized
 consumed_by:
-  - "agent-architecture-decisions.md"
+- agent-architecture-decisions.md
 ---
 # Google A2A Protocol -- Agent-to-Agent Interoperability Standard
 

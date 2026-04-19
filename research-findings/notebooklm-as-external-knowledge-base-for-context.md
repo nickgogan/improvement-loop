@@ -22,9 +22,9 @@ related_findings:
   rel: same-problem
 - file: ace-agentic-context-engineering-evolving-playbook.md
   rel: same-problem
-pipeline_status: "synthesized"
+pipeline_status: synthesized
 consumed_by:
-  - "managing-agent-context.md"
+- managing-agent-context.md
 ---
 ## What It Is
 

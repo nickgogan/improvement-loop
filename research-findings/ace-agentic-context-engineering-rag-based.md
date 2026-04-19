@@ -72,7 +72,7 @@ related_findings:
   rel: contradicts
 - file: fundamental-limits-of-single-vector-embedding-retr.md
   rel: enabled-by
-pipeline_status: "raw"
+pipeline_status: raw
 consumed_by: []
 ---
 # ACE (Agentic Context Engineering) RAG-Based Playbook

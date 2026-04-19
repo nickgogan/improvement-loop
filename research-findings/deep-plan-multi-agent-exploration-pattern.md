@@ -20,9 +20,9 @@ related_findings:
   rel: same-problem
 - file: worktree-isolation-for-parallel-agent-sessions.md
   rel: same-problem
-pipeline_status: "synthesized"
+pipeline_status: synthesized
 consumed_by:
-  - "agent-architecture-decisions.md"
+- agent-architecture-decisions.md
 ---
 ## What It Is
 A multi-agent exploration pattern extracted from Claude Code's deep plan mode. Instead of a single agent planning linearly, deep plan spawns multiple specialized sub-agents that each analyze the problem from a different angle: architecture analysis, file identification, risk detection, and critique. These agents run in parallel (or sequentially with distinct concerns), then their outputs are synthesized into a unified plan.

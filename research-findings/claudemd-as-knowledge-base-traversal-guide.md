@@ -17,15 +17,15 @@ sources:
 date_discovered: '2026-04-07'
 last_updated: 2026-04-08
 related_findings:
-  - file: "karpathy-llm-knowledge-base-obsidian-rag.md"
-    rel: "same-problem"
-  - file: "ace-agentic-context-engineering-evolving-playbook.md"
-    rel: "same-problem"
-  - file: "agent-context-kiss-commandments-minimum-viable.md"
-    rel: "same-problem"
-pipeline_status: "synthesized"
+- file: karpathy-llm-knowledge-base-obsidian-rag.md
+  rel: same-problem
+- file: ace-agentic-context-engineering-evolving-playbook.md
+  rel: same-problem
+- file: agent-context-kiss-commandments-minimum-viable.md
+  rel: same-problem
+pipeline_status: synthesized
 consumed_by:
-  - "managing-agent-context.md"
+- managing-agent-context.md
 ---
 ## What It Is
 

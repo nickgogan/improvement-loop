@@ -16,15 +16,15 @@ proposals: []
 date_discovered: '2026-03-22'
 last_updated: 2026-04-08
 related_findings:
-  - file: "context-rot-silent-killer-and-mitigations.md"
-    rel: "same-problem"
-  - file: "gsd-queryable-codebase-intelligence-store.md"
-    rel: "same-problem"
-  - file: "agent-context-kiss-commandments-minimum-viable.md"
-    rel: "same-problem"
-  - file: "ace-agentic-context-engineering-evolving-playbook.md"
-    rel: "same-problem"
-pipeline_status: "raw"
+- file: context-rot-silent-killer-and-mitigations.md
+  rel: same-problem
+- file: gsd-queryable-codebase-intelligence-store.md
+  rel: same-problem
+- file: agent-context-kiss-commandments-minimum-viable.md
+  rel: same-problem
+- file: ace-agentic-context-engineering-evolving-playbook.md
+  rel: same-problem
+pipeline_status: raw
 consumed_by: []
 ---
 # First-Principles Context Management Taxonomy

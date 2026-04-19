@@ -18,11 +18,11 @@ proposals: null
 date_discovered: '2026-03-09'
 last_updated: 2026-04-08
 related_findings:
-  - file: "four-discipline-prompt-evaluator.md"
-    rel: "extended-by"
-  - file: "advanced-elicitation-techniques-library.md"
-    rel: "same-problem"
-pipeline_status: "raw"
+- file: four-discipline-prompt-evaluator.md
+  rel: extended-by
+- file: advanced-elicitation-techniques-library.md
+  rel: same-problem
+pipeline_status: raw
 consumed_by: []
 ---
 # The Four-Discipline Prompting Stack (Nate B. Jones)

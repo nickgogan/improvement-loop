@@ -20,7 +20,7 @@ last_updated: '2026-04-09'
 related_findings:
 - file: agent-management-tool-landscape-2026.md
   rel: same-problem
-pipeline_status: "raw"
+pipeline_status: raw
 consumed_by: []
 ---
 # Parallel Claude Code Instances per Workspace

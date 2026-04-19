@@ -26,7 +26,7 @@ related_findings:
   rel: same-problem
 - file: ace-execution-feedback-no-labels-required.md
   rel: same-problem
-pipeline_status: "raw"
+pipeline_status: raw
 consumed_by: []
 ---
 # Compounding Knowledge Loop (Internal Data)

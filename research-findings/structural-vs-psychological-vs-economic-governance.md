@@ -1,6 +1,7 @@
 ---
 name: Structural vs Psychological vs Economic Governance
-summary: Three distinct governance enforcement philosophies observed across 7 repos. Structural (tool allowlists, validators, CI checks), Psychological (persuasion engineering, rationalization prevention), and Economic (budget hard-stops, atomic checkout exclusion). No repo uses all three.
+summary: Three distinct governance enforcement philosophies observed across 7 repos. Structural (tool allowlists, validators, CI checks), Psychological (persuasion engineering, rationalization prevention),
+  and Economic (budget hard-stops, atomic checkout exclusion). No repo uses all three.
 implementation_notes: null
 category: Governance
 evidence_strength: Medium (practitioner-documented)
@@ -16,7 +17,7 @@ related_findings: []
 proposals: null
 date_discovered: '2026-04-08'
 last_updated: '2026-04-08'
-pipeline_status: "raw"
+pipeline_status: raw
 consumed_by: []
 ---
 ## What It Is

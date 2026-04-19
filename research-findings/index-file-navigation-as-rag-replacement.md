@@ -23,9 +23,9 @@ related_findings:
   rel: contradicts
 - file: pointers-over-copies-in-context-files.md
   rel: same-problem
-pipeline_status: "synthesized"
+pipeline_status: synthesized
 consumed_by:
-  - "managing-agent-context.md"
+- managing-agent-context.md
 ---
 
 # Index-File Navigation as RAG Replacement

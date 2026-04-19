@@ -1,23 +1,26 @@
 ---
-name: "Intent-Based Meta-Routing Skill"
-summary: "Archon's archon-dev skill acts as a meta-router: it inspects user input keywords and dispatches to one of 10 specialized cookbooks. This is intent classification implemented as a routing table in markdown, not code. Each cookbook is a self-contained workflow for a specific development task."
+name: Intent-Based Meta-Routing Skill
+summary: 'Archon''s archon-dev skill acts as a meta-router: it inspects user input keywords and dispatches to one of 10 specialized cookbooks. This is intent classification implemented as a routing table
+  in markdown, not code. Each cookbook is a self-contained workflow for a specific development task.'
 implementation_notes: null
-category: "Intent Engineering"
-evidence_strength: "Medium (practitioner-documented)"
-adoption_status: "Not Yet Started"
+category: Intent Engineering
+evidence_strength: Medium (practitioner-documented)
+adoption_status: Not Yet Started
 proposer_priority: null
 applicability:
-  - "S3 (Claude Code Build)"
-  - "General"
+- S3 (Claude Code Build)
+- General
 adopted_in: []
 sources: []
 related_findings:
-  - {file: "context-aware-routing-skill-classifier-sub-skill.md", rel: "same-problem"}
-  - {file: "archon-yaml-defined-harness-workflows.md", rel: "extends"}
+- file: context-aware-routing-skill-classifier-sub-skill.md
+  rel: same-problem
+- file: archon-yaml-defined-harness-workflows.md
+  rel: extends
 proposals: null
-date_discovered: "2026-04-09"
-last_updated: "2026-04-09"
-pipeline_status: "raw"
+date_discovered: '2026-04-09'
+last_updated: '2026-04-09'
+pipeline_status: raw
 consumed_by: []
 ---
 

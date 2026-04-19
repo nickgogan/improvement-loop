@@ -1,26 +1,28 @@
 ---
-name: "Specification-as-Governance — Fourth Enforcement Philosophy"
-summary: "Beyond structural, psychological, and economic enforcement, a fourth governance philosophy encodes rules as executable specifications: conformance test suites that implementations must pass (LangGraph) and spec-driven development skills that enforce bidirectional sync between specs and code (n8n). Governance by contract — compliance is verified, not just instructed."
-implementation_notes: "MetaSystem already has Design Decisions and Build Specs that serve a similar intent — but without automated bidirectional enforcement. The gap is: DDs are read by agents as soft constraints, not verified as conformance tests. n8n's spec-driven development pattern is the most directly applicable — specs as living documents with bidirectional sync."
+name: Specification-as-Governance — Fourth Enforcement Philosophy
+summary: 'Beyond structural, psychological, and economic enforcement, a fourth governance philosophy encodes rules as executable specifications: conformance test suites that implementations must pass (LangGraph)
+  and spec-driven development skills that enforce bidirectional sync between specs and code (n8n). Governance by contract — compliance is verified, not just instructed.'
+implementation_notes: 'MetaSystem already has Design Decisions and Build Specs that serve a similar intent — but without automated bidirectional enforcement. The gap is: DDs are read by agents as soft constraints,
+  not verified as conformance tests. n8n''s spec-driven development pattern is the most directly applicable — specs as living documents with bidirectional sync.'
 category: Governance
-evidence_strength: "Medium (practitioner-documented)"
-adoption_status: "Not Yet Started"
+evidence_strength: Medium (practitioner-documented)
+adoption_status: Not Yet Started
 proposer_priority: null
 applicability:
-  - "General"
+- General
 adopted_in: []
 sources: []
 related_findings:
-  - file: structural-vs-psychological-vs-economic-governance.md
-    rel: extends
-  - file: rationalization-prevention-pattern.md
-    rel: same-problem
-  - file: superpowers-plugin-spec-driven-sub-agent-orchestra.md
-    rel: extends
+- file: structural-vs-psychological-vs-economic-governance.md
+  rel: extends
+- file: rationalization-prevention-pattern.md
+  rel: same-problem
+- file: superpowers-plugin-spec-driven-sub-agent-orchestra.md
+  rel: extends
 proposals: []
-date_discovered: "2026-04-09"
-last_updated: "2026-04-09"
-pipeline_status: "raw"
+date_discovered: '2026-04-09'
+last_updated: '2026-04-09'
+pipeline_status: raw
 consumed_by: []
 ---
 

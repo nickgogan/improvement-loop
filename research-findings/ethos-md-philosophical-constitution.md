@@ -1,21 +1,23 @@
 ---
-name: "ETHOS.md Philosophical Constitution"
-summary: "Philosophical principles injected into every skill: 'Boil the Lake' (completeness is cheap with AI), 'Search Before Building' (check 3 layers before creating), 'User Sovereignty' (AI recommends, users decide). Distinct from SOUL.md (identity) and CLAUDE.md (rules)."
+name: ETHOS.md Philosophical Constitution
+summary: 'Philosophical principles injected into every skill: ''Boil the Lake'' (completeness is cheap with AI), ''Search Before Building'' (check 3 layers before creating), ''User Sovereignty'' (AI recommends,
+  users decide). Distinct from SOUL.md (identity) and CLAUDE.md (rules).'
 implementation_notes: null
-category: "Prompt Craft"
-evidence_strength: "Medium (practitioner-documented)"
-adoption_status: "Not Yet Started"
+category: Prompt Craft
+evidence_strength: Medium (practitioner-documented)
+adoption_status: Not Yet Started
 proposer_priority: null
 applicability:
-  - "S3 (Claude Code Build)"
+- S3 (Claude Code Build)
 adopted_in: []
 sources: []
 related_findings:
-  - {file: "soul-md-agent-constitution-pattern.md", rel: "same-problem"}
+- file: soul-md-agent-constitution-pattern.md
+  rel: same-problem
 proposals: null
-date_discovered: "2026-04-08"
-last_updated: "2026-04-08"
-pipeline_status: "raw"
+date_discovered: '2026-04-08'
+last_updated: '2026-04-08'
+pipeline_status: raw
 consumed_by: []
 ---
 

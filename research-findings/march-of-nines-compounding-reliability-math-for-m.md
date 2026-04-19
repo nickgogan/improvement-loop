@@ -21,7 +21,7 @@ related_findings:
   rel: enables
 - file: prompt-only-tool-use-ceiling.md
   rel: same-problem
-pipeline_status: "raw"
+pipeline_status: raw
 consumed_by: []
 ---
 # March of Nines: Compounding Reliability Math for Multi-Step Agents

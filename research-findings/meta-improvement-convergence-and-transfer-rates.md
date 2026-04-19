@@ -1,30 +1,31 @@
 ---
-name: "Meta-Improvement Convergence Patterns and Transfer Rates"
-summary: "HyperAgents empirically quantify how self-improvement converges: plateau at 8-12 iterations, early volatility (days 1-5, +/-5-8%), stabilization (days 6-10, +/-1-2%), maturity (day 11+, <0.5% variance). Cross-domain transfer rates measured: error recovery 72%, tool strategies 65%, memory management 70%, formatting 45%."
-implementation_notes: "When iterating on MetaSystem skill procedures, expect diminishing returns after 8-12 revision cycles. Focus early iterations on high-signal changes, then shift to cross-domain transfer (reusing patterns from one skill in another)."
-category: "Evaluation"
-evidence_strength: "Medium (practitioner-documented)"
-adoption_status: "Not Yet Started"
-proposer_priority: "P3 (Monitor)"
+name: Meta-Improvement Convergence Patterns and Transfer Rates
+summary: 'HyperAgents empirically quantify how self-improvement converges: plateau at 8-12 iterations, early volatility (days 1-5, +/-5-8%), stabilization (days 6-10, +/-1-2%), maturity (day 11+, <0.5%
+  variance). Cross-domain transfer rates measured: error recovery 72%, tool strategies 65%, memory management 70%, formatting 45%.'
+implementation_notes: When iterating on MetaSystem skill procedures, expect diminishing returns after 8-12 revision cycles. Focus early iterations on high-signal changes, then shift to cross-domain transfer
+  (reusing patterns from one skill in another).
+category: Evaluation
+evidence_strength: Medium (practitioner-documented)
+adoption_status: Not Yet Started
+proposer_priority: P3 (Monitor)
 applicability:
-  - "General"
+- General
 adopted_in: []
 sources:
-  - "hyperagents-arxiv-260319461.md"
+- hyperagents-arxiv-260319461.md
 related_findings:
-  - file: "cross-domain-transfer-of-meta-improvements.md"
-    rel: "extends"
-  - file: "metacognitive-self-modification-hyperagents.md"
-    rel: "extends"
-  - file: "ace-execution-feedback-no-labels-required.md"
-    rel: "same-problem"
-    rel: "extends"
-  - file: "metacognitive-self-modification-hyperagents.md"
-    rel: "extends"
+- file: cross-domain-transfer-of-meta-improvements.md
+  rel: extends
+- file: metacognitive-self-modification-hyperagents.md
+  rel: extends
+- file: ace-execution-feedback-no-labels-required.md
+  rel: extends
+- file: metacognitive-self-modification-hyperagents.md
+  rel: extends
 proposals: []
-date_discovered: "2026-04-07"
+date_discovered: '2026-04-07'
 last_updated: 2026-04-08
-pipeline_status: "raw"
+pipeline_status: raw
 consumed_by: []
 ---
 ## What It Is

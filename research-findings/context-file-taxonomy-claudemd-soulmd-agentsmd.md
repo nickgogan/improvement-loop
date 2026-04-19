@@ -31,7 +31,7 @@ related_findings:
   rel: same-problem
 - file: tiered-context-injection-over-monolithic-files.md
   rel: enables
-pipeline_status: "raw"
+pipeline_status: raw
 consumed_by: []
 ---
 # Context File Taxonomy (CLAUDE.md, SOUL.md, AGENTS.md, etc.)

@@ -1,20 +1,21 @@
 ---
-name: "Persuasion-Engineered Skill Design"
-summary: "Superpowers explicitly applies 7 persuasion principles from Meincke et al. (2025, N=28,000) to skill design — authority, commitment, scarcity, social proof, reciprocity, liking, unity — documenting 33%→72% compliance improvement. Shows the most research-backed approach to making agents follow rules across all analyzed repos."
+name: Persuasion-Engineered Skill Design
+summary: Superpowers explicitly applies 7 persuasion principles from Meincke et al. (2025, N=28,000) to skill design — authority, commitment, scarcity, social proof, reciprocity, liking, unity — documenting
+  33%→72% compliance improvement. Shows the most research-backed approach to making agents follow rules across all analyzed repos.
 implementation_notes: null
-category: "Prompt Craft"
-evidence_strength: "Medium (practitioner-documented)"
-adoption_status: "Not Yet Started"
+category: Prompt Craft
+evidence_strength: Medium (practitioner-documented)
+adoption_status: Not Yet Started
 proposer_priority: null
 applicability:
-  - "S3 (Claude Code Build)"
+- S3 (Claude Code Build)
 adopted_in: []
 sources: []
 related_findings: []
 proposals: null
-date_discovered: "2026-04-08"
-last_updated: "2026-04-08"
-pipeline_status: "raw"
+date_discovered: '2026-04-08'
+last_updated: '2026-04-08'
+pipeline_status: raw
 consumed_by: []
 ---
 # Persuasion-Engineered Skill Design

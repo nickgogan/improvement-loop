@@ -1,6 +1,7 @@
 ---
 name: Triple Storage Memory Architecture
-summary: mem0 implements triple storage — vector stores for semantic similarity, graph stores for relationship-aware retrieval, and SQLite for metadata/history/dedup. The graph layer is optional on top of vector, not a replacement. 78 total providers across 5 categories all following abstract base + factory pattern.
+summary: mem0 implements triple storage — vector stores for semantic similarity, graph stores for relationship-aware retrieval, and SQLite for metadata/history/dedup. The graph layer is optional on top
+  of vector, not a replacement. 78 total providers across 5 categories all following abstract base + factory pattern.
 implementation_notes: null
 category: Context Engineering
 evidence_strength: Medium (practitioner-documented)
@@ -17,7 +18,7 @@ related_findings:
 proposals: null
 date_discovered: '2026-04-08'
 last_updated: '2026-04-08'
-pipeline_status: "raw"
+pipeline_status: raw
 consumed_by: []
 ---
 ## What It Is

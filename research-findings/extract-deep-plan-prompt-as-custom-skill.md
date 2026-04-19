@@ -18,10 +18,10 @@ last_updated: '2026-04-07'
 related_findings:
 - file: claude-code-ultra-plan-three-mode-planning.md
   rel: enabled-by
-pipeline_status: "synthesized"
+pipeline_status: synthesized
 consumed_by:
-  - "model-resilient-prompt-engineering.md"
-  - "skills/deep-plan-four-agent-pipeline.md"
+- model-resilient-prompt-engineering.md
+- skills/deep-plan-four-agent-pipeline.md
 ---
 # Extract Deep Plan Prompt as Custom Skill (Ultra Plan Bypass)
 

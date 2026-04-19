@@ -17,9 +17,9 @@ proposals: null
 date_discovered: '2026-03-22'
 last_updated: 2026-04-08
 related_findings:
-  - file: "agent-architecture-layer-impermanence.md"
-    rel: "same-problem"
-pipeline_status: "raw"
+- file: agent-architecture-layer-impermanence.md
+  rel: same-problem
+pipeline_status: raw
 consumed_by: []
 ---
 # Four-Zone Agent Architecture Framework

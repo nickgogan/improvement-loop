@@ -1,21 +1,23 @@
 ---
-name: "Three-Layer Context Chain Loading"
-summary: "GSD's command→workflow→agent @-reference chain pre-assembles complete context through three layers of dynamic injection — commands reference workflows, workflows reference docs, agents read project CLAUDE.md and skills — giving agents full context without needing to discover what to load."
+name: Three-Layer Context Chain Loading
+summary: GSD's command→workflow→agent @-reference chain pre-assembles complete context through three layers of dynamic injection — commands reference workflows, workflows reference docs, agents read project
+  CLAUDE.md and skills — giving agents full context without needing to discover what to load.
 implementation_notes: null
-category: "Context Engineering"
-evidence_strength: "Medium (practitioner-documented)"
-adoption_status: "Not Yet Started"
+category: Context Engineering
+evidence_strength: Medium (practitioner-documented)
+adoption_status: Not Yet Started
 proposer_priority: null
 applicability:
-  - "S3 (Claude Code Build)"
+- S3 (Claude Code Build)
 adopted_in: []
 sources: []
 related_findings:
-  - {file: "skill-chaining-composing-workflows-from-modular-s.md", rel: "same-problem"}
+- file: skill-chaining-composing-workflows-from-modular-s.md
+  rel: same-problem
 proposals: null
-date_discovered: "2026-04-08"
-last_updated: "2026-04-08"
-pipeline_status: "raw"
+date_discovered: '2026-04-08'
+last_updated: '2026-04-08'
+pipeline_status: raw
 consumed_by: []
 ---
 # Three-Layer Context Chain Loading

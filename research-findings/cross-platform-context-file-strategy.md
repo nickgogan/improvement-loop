@@ -1,25 +1,30 @@
 ---
-name: "Cross-Platform Context File Strategy"
-summary: "Three distinct strategies for maintaining AI coding context files that work across multiple tools (Claude Code, GitHub Copilot, Cursor, Codex): platform-specific mirroring (Archon), chain-loader indirection (n8n), and content duplication (LangGraph). As multi-tool environments become standard, cross-platform context portability is an emerging architectural concern."
+name: Cross-Platform Context File Strategy
+summary: 'Three distinct strategies for maintaining AI coding context files that work across multiple tools (Claude Code, GitHub Copilot, Cursor, Codex): platform-specific mirroring (Archon), chain-loader
+  indirection (n8n), and content duplication (LangGraph). As multi-tool environments become standard, cross-platform context portability is an emerging architectural concern.'
 implementation_notes: null
-category: "Context Engineering"
-evidence_strength: "Medium (practitioner-documented)"
-adoption_status: "Not Yet Started"
+category: Context Engineering
+evidence_strength: Medium (practitioner-documented)
+adoption_status: Not Yet Started
 proposer_priority: null
 applicability:
-  - "S3 (Claude Code Build)"
-  - "General"
+- S3 (Claude Code Build)
+- General
 adopted_in: []
 sources: []
 related_findings:
-  - {file: "seven-context-loading-mechanisms-no-convergence.md", rel: "extends"}
-  - {file: "context-file-taxonomy-claudemd-soulmd-agentsmd.md", rel: "extends"}
-  - {file: "three-layer-context-chain-loading.md", rel: "extends"}
-  - {file: "monorepo-context-distribution-three-strategies.md", rel: "same-problem"}
+- file: seven-context-loading-mechanisms-no-convergence.md
+  rel: extends
+- file: context-file-taxonomy-claudemd-soulmd-agentsmd.md
+  rel: extends
+- file: three-layer-context-chain-loading.md
+  rel: extends
+- file: monorepo-context-distribution-three-strategies.md
+  rel: same-problem
 proposals: null
-date_discovered: "2026-04-09"
-last_updated: "2026-04-09"
-pipeline_status: "raw"
+date_discovered: '2026-04-09'
+last_updated: '2026-04-09'
+pipeline_status: raw
 consumed_by: []
 ---
 

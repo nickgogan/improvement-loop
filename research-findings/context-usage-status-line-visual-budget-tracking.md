@@ -1,28 +1,28 @@
 ---
-name: "Context Usage Status Line (Visual Budget Tracking)"
-summary: "A customizable status line in the Claude Code terminal showing real-time context window consumption as a percentage or visual progress bar. Triggers manual context resets at configurable thresholds (typically 50%) to prevent accuracy degradation."
+name: Context Usage Status Line (Visual Budget Tracking)
+summary: A customizable status line in the Claude Code terminal showing real-time context window consumption as a percentage or visual progress bar. Triggers manual context resets at configurable thresholds
+  (typically 50%) to prevent accuracy degradation.
 implementation_notes: null
-category: "Context Engineering"
-evidence_strength: "Medium (practitioner-documented)"
-adoption_status: "Not Yet Started"
-proposer_priority: "P3 (Monitor)"
+category: Context Engineering
+evidence_strength: Medium (practitioner-documented)
+adoption_status: Not Yet Started
+proposer_priority: P3 (Monitor)
 applicability:
-  - "S3 (Claude Code Build)"
-  - "General"
+- S3 (Claude Code Build)
+- General
 adopted_in: []
 sources:
-  - "claude-code-works-better-when-you-do-this.md"
+- claude-code-works-better-when-you-do-this.md
 related_findings:
-  - file: "ide-context-streaming-silent-token-tax.md"
-    rel: "same-problem"
-  - file: "ace-agentic-context-engineering-evolving-playbook.md"
-    rel: "same-problem"
-  - file: "agent-context-kiss-commandments-minimum-viable.md"
-    rel: "same-problem"
-    rel: "same-problem"
-date_discovered: "2026-04-07"
+- file: ide-context-streaming-silent-token-tax.md
+  rel: same-problem
+- file: ace-agentic-context-engineering-evolving-playbook.md
+  rel: same-problem
+- file: agent-context-kiss-commandments-minimum-viable.md
+  rel: same-problem
+date_discovered: '2026-04-07'
 last_updated: 2026-04-08
-pipeline_status: "raw"
+pipeline_status: raw
 consumed_by: []
 ---
 

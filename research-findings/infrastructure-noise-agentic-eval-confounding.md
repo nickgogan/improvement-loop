@@ -1,31 +1,32 @@
 ---
-name: "Infrastructure Noise: Resource Configuration as Agentic Eval Confound"
-summary: "Infrastructure configuration (CPU, RAM, resource enforcement) swings agentic coding benchmark scores by up to 6 percentage points (p < 0.01), exceeding typical leaderboard gaps between top models. Resource enforcement strategy (guaranteed allocation vs hard kill threshold) is the primary noise source, with infra error rates ranging from 5.8% at strict 1x to 0.5% uncapped."
+name: 'Infrastructure Noise: Resource Configuration as Agentic Eval Confound'
+summary: Infrastructure configuration (CPU, RAM, resource enforcement) swings agentic coding benchmark scores by up to 6 percentage points (p < 0.01), exceeding typical leaderboard gaps between top models.
+  Resource enforcement strategy (guaranteed allocation vs hard kill threshold) is the primary noise source, with infra error rates ranging from 5.8% at strict 1x to 0.5% uncapped.
 implementation_notes: null
-category: "Evaluation"
-evidence_strength: "Strong (production-tested)"
-adoption_status: "Not Yet Started"
-proposer_priority: "P1 (Implement Now)"
+category: Evaluation
+evidence_strength: Strong (production-tested)
+adoption_status: Not Yet Started
+proposer_priority: P1 (Implement Now)
 applicability:
-  - "S3 (Claude Code Build)"
-  - "General / Cross-System"
+- S3 (Claude Code Build)
+- General / Cross-System
 sources:
-  - "anthropic-infrastructure-noise-evals.md"
+- anthropic-infrastructure-noise-evals.md
 related_findings:
-  - file: "benchmark-signal-mismatch-optimization-gap.md"
-    rel: "extends"
-  - file: "factorial-design-eval-systematic-context-variati.md"
-    rel: "same-problem"
-  - file: "four-layer-production-eval-stack-with-golden-traces.md"
-    rel: "same-problem"
-  - file: "eval-driven-development-autonomous-quality.md"
-    rel: "same-problem"
+- file: benchmark-signal-mismatch-optimization-gap.md
+  rel: extends
+- file: factorial-design-eval-systematic-context-variati.md
+  rel: same-problem
+- file: four-layer-production-eval-stack-with-golden-traces.md
+  rel: same-problem
+- file: eval-driven-development-autonomous-quality.md
+  rel: same-problem
 proposals: null
-date_discovered: "2026-04-09"
-last_updated: "2026-04-09"
-pipeline_status: "synthesized"
+date_discovered: '2026-04-09'
+last_updated: '2026-04-09'
+pipeline_status: synthesized
 consumed_by:
-  - "building-agent-evaluation-suites.md"
+- building-agent-evaluation-suites.md
 ---
 # Infrastructure Noise: Resource Configuration as Agentic Eval Confound
 

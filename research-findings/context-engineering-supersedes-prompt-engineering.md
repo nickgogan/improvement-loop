@@ -23,7 +23,7 @@ related_findings:
   rel: extended-by
 - file: model-agnostic-prompting-three-properties.md
   rel: same-problem
-pipeline_status: "raw"
+pipeline_status: raw
 consumed_by: []
 ---
 # Context Engineering Supersedes Prompt Engineering

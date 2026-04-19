@@ -1,22 +1,25 @@
 ---
-name: "Tool Injection via Type Annotations"
-summary: "LangGraph tools declare what they need via type annotations: InjectedState for graph state access, InjectedStore for persistent store access, ToolRuntime for runtime context. The framework injects these at call time. This is declarative permission boundaries for tools — a tool can only access what it explicitly requests."
+name: Tool Injection via Type Annotations
+summary: 'LangGraph tools declare what they need via type annotations: InjectedState for graph state access, InjectedStore for persistent store access, ToolRuntime for runtime context. The framework injects
+  these at call time. This is declarative permission boundaries for tools — a tool can only access what it explicitly requests.'
 implementation_notes: null
-category: "Tool Integration"
-evidence_strength: "Medium (practitioner-documented)"
-adoption_status: "Not Yet Started"
+category: Tool Integration
+evidence_strength: Medium (practitioner-documented)
+adoption_status: Not Yet Started
 proposer_priority: null
 applicability:
-  - "General"
+- General
 adopted_in: []
 sources: []
 related_findings:
-  - {file: "explicit-permission-allow-listing-for-agent-resou.md", rel: "same-problem"}
-  - {file: "per-node-tool-restrictions-workflow-governance.md", rel: "same-problem"}
+- file: explicit-permission-allow-listing-for-agent-resou.md
+  rel: same-problem
+- file: per-node-tool-restrictions-workflow-governance.md
+  rel: same-problem
 proposals: null
-date_discovered: "2026-04-09"
-last_updated: "2026-04-09"
-pipeline_status: "raw"
+date_discovered: '2026-04-09'
+last_updated: '2026-04-09'
+pipeline_status: raw
 consumed_by: []
 ---
 

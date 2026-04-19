@@ -24,7 +24,7 @@ related_findings:
   rel: enabled-by
 - file: ralph-loop-brute-force-security-and-ui-testing.md
   rel: extends
-pipeline_status: "raw"
+pipeline_status: raw
 consumed_by: []
 ---
 # Ralph Wiggum Execution Pattern

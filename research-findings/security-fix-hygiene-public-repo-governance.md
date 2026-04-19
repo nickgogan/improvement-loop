@@ -1,21 +1,23 @@
 ---
-name: "Security Fix Hygiene as Public Repo Governance"
-summary: "n8n has explicit rules for security-related work in a public repository: neutral branch names, commit messages, test descriptions, and code comments. Never expose the attack vector or vulnerability type in any public-facing artifact. A governance pattern for open-source projects where attackers monitor repo activity."
+name: Security Fix Hygiene as Public Repo Governance
+summary: 'n8n has explicit rules for security-related work in a public repository: neutral branch names, commit messages, test descriptions, and code comments. Never expose the attack vector or vulnerability
+  type in any public-facing artifact. A governance pattern for open-source projects where attackers monitor repo activity.'
 implementation_notes: null
-category: "Governance"
-evidence_strength: "Medium (practitioner-documented)"
-adoption_status: "Not Yet Started"
+category: Governance
+evidence_strength: Medium (practitioner-documented)
+adoption_status: Not Yet Started
 proposer_priority: null
 applicability:
-  - "General"
+- General
 adopted_in: []
 sources: []
 related_findings:
-  - {file: "structural-vs-psychological-vs-economic-governance.md", rel: "extends"}
+- file: structural-vs-psychological-vs-economic-governance.md
+  rel: extends
 proposals: null
-date_discovered: "2026-04-09"
-last_updated: "2026-04-09"
-pipeline_status: "raw"
+date_discovered: '2026-04-09'
+last_updated: '2026-04-09'
+pipeline_status: raw
 consumed_by: []
 ---
 

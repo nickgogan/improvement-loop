@@ -19,7 +19,7 @@ last_updated: '2026-04-09'
 related_findings:
 - file: archon-yaml-defined-harness-workflows.md
   rel: same-problem
-pipeline_status: "raw"
+pipeline_status: raw
 consumed_by: []
 ---
 # Phase-Task Hierarchical Plan Decomposition

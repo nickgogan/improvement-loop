@@ -1,27 +1,27 @@
 ---
-name: "GSD Queryable Codebase Intelligence Store"
-summary: "Persistent .planning/intel/ store with structured JSON for files, exports, symbols, patterns, and dependencies — queryable via CLI with incremental updates."
+name: GSD Queryable Codebase Intelligence Store
+summary: Persistent .planning/intel/ store with structured JSON for files, exports, symbols, patterns, and dependencies — queryable via CLI with incremental updates.
 implementation_notes: null
-category: "Tool Integration"
-evidence_strength: "Medium (practitioner-documented)"
-adoption_status: "Not Yet Started"
-proposer_priority: "P2 (Design Required)"
+category: Tool Integration
+evidence_strength: Medium (practitioner-documented)
+adoption_status: Not Yet Started
+proposer_priority: P2 (Design Required)
 applicability:
-  - "General / Cross-System"
+- General / Cross-System
 adopted_in: []
 sources:
-  - "gsd-v1340-v1342-changelog.md"
+- gsd-v1340-v1342-changelog.md
 related_findings:
-  - file: "gsd-global-learnings-store-cross-session-persistence.md"
-    rel: "same-problem"
-  - file: "first-principles-context-management-taxonomy.md"
-    rel: "same-problem"
+- file: gsd-global-learnings-store-cross-session-persistence.md
+  rel: same-problem
+- file: first-principles-context-management-taxonomy.md
+  rel: same-problem
 proposals: null
-date_discovered: "2026-04-07"
-last_updated: "2026-04-07"
-pipeline_status: "synthesized"
+date_discovered: '2026-04-07'
+last_updated: '2026-04-07'
+pipeline_status: synthesized
 consumed_by:
-  - "designing-agent-tools.md"
+- designing-agent-tools.md
 ---
 
 ## What It Is

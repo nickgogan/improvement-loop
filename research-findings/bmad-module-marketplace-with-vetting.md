@@ -1,21 +1,21 @@
 ---
-name: "BMAD Module Marketplace with Quality and Security Vetting"
-summary: "A curated marketplace for community-built BMAD modules with mandatory quality and security vetting. \"Unlike any random skill repository, these things are fully vetted for both quality and security.\""
+name: BMAD Module Marketplace with Quality and Security Vetting
+summary: A curated marketplace for community-built BMAD modules with mandatory quality and security vetting. "Unlike any random skill repository, these things are fully vetted for both quality and security."
 implementation_notes: null
-category: "Orchestration"
-evidence_strength: "Medium (practitioner-documented)"
-adoption_status: "Not Yet Started"
-proposer_priority: "P3 (Monitor)"
+category: Orchestration
+evidence_strength: Medium (practitioner-documented)
+adoption_status: Not Yet Started
+proposer_priority: P3 (Monitor)
 applicability:
-  - "S3 (Claude Code Build)"
-  - "General"
+- S3 (Claude Code Build)
+- General
 adopted_in: []
 sources:
-  - "bmad-v6-is-finally-here.md"
+- bmad-v6-is-finally-here.md
 proposals: []
-date_discovered: "2026-04-07"
-last_updated: "2026-04-07"
-pipeline_status: "raw"
+date_discovered: '2026-04-07'
+last_updated: '2026-04-07'
+pipeline_status: raw
 consumed_by: []
 ---
 

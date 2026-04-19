@@ -1,27 +1,27 @@
 ---
-name: "GSD Prompt Injection Scanner Hardening"
-summary: "Proactive prompt injection scanner with four detection layers: invisible Unicode, encoding obfuscation, structural validation, and entropy analysis."
+name: GSD Prompt Injection Scanner Hardening
+summary: 'Proactive prompt injection scanner with four detection layers: invisible Unicode, encoding obfuscation, structural validation, and entropy analysis.'
 implementation_notes: null
-category: "Sandboxing"
-evidence_strength: "Medium (practitioner-documented)"
-adoption_status: "Not Yet Started"
-proposer_priority: "P2 (Design Required)"
+category: Sandboxing
+evidence_strength: Medium (practitioner-documented)
+adoption_status: Not Yet Started
+proposer_priority: P2 (Design Required)
 applicability:
-  - "General / Cross-System"
+- General / Cross-System
 adopted_in: []
 sources:
-  - "gsd-v1340-v1342-changelog.md"
+- gsd-v1340-v1342-changelog.md
 related_findings:
-  - file: "gstack-four-layer-prompt-injection-defense.md"
-    rel: "same-problem"
-  - file: "prompt-injection-risk-from-trusted-vs-untrusted.md"
-    rel: "extends"
+- file: gstack-four-layer-prompt-injection-defense.md
+  rel: same-problem
+- file: prompt-injection-risk-from-trusted-vs-untrusted.md
+  rel: extends
 proposals: null
-date_discovered: "2026-04-07"
-last_updated: "2026-04-07"
-pipeline_status: "extracted"
+date_discovered: '2026-04-07'
+last_updated: '2026-04-07'
+pipeline_status: extracted
 consumed_by:
-  - "skills/prompt-injection-scanner-hardening.md"
+- skills/prompt-injection-scanner-hardening.md
 ---
 
 ## What It Is

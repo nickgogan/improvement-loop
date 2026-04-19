@@ -1,20 +1,21 @@
 ---
-name: "Rationalization Prevention Pattern"
-summary: "Superpowers includes explicit tables of common LLM rationalizations with rebuttals ('I am confident' → 'Confidence != evidence') and Red Flags tables of thoughts that mean STOP — anticipating and blocking specific ways LLMs evade constraints. No other analyzed repo addresses rationalization as a governance concern."
+name: Rationalization Prevention Pattern
+summary: Superpowers includes explicit tables of common LLM rationalizations with rebuttals ('I am confident' → 'Confidence != evidence') and Red Flags tables of thoughts that mean STOP — anticipating and
+  blocking specific ways LLMs evade constraints. No other analyzed repo addresses rationalization as a governance concern.
 implementation_notes: null
-category: "Governance"
-evidence_strength: "Medium (practitioner-documented)"
-adoption_status: "Not Yet Started"
+category: Governance
+evidence_strength: Medium (practitioner-documented)
+adoption_status: Not Yet Started
 proposer_priority: null
 applicability:
-  - "S3 (Claude Code Build)"
+- S3 (Claude Code Build)
 adopted_in: []
 sources: []
 related_findings: []
 proposals: null
-date_discovered: "2026-04-08"
-last_updated: "2026-04-08"
-pipeline_status: "raw"
+date_discovered: '2026-04-08'
+last_updated: '2026-04-08'
+pipeline_status: raw
 consumed_by: []
 ---
 # Rationalization Prevention Pattern

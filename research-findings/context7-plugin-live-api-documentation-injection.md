@@ -19,7 +19,7 @@ last_updated: '2026-04-07'
 related_findings:
 - file: context7-mcp.md
   rel: extended-by
-pipeline_status: "raw"
+pipeline_status: raw
 consumed_by: []
 ---
 # Context7 Plugin: Live API Documentation Injection

@@ -1,27 +1,29 @@
 ---
-name: "pass@k vs pass^k Eval Metrics for Agent Reliability"
-summary: "Two complementary metrics for non-deterministic agents: pass@k (probability of at least one success in k trials — optimistic) vs pass^k (probability all k trials succeed — consistency-focused). Metric choice is a design decision."
-implementation_notes: "MetaSystem's verification loops should explicitly choose which metric applies. pass^k for production reliability gates; pass@k for capability exploration. Current eval approach doesn't distinguish these."
-category: "Evaluation"
-evidence_strength: "Strong (production-tested)"
-adoption_status: "Not Yet Started"
-proposer_priority: "P1 (Implement Now)"
+name: pass@k vs pass^k Eval Metrics for Agent Reliability
+summary: 'Two complementary metrics for non-deterministic agents: pass@k (probability of at least one success in k trials — optimistic) vs pass^k (probability all k trials succeed — consistency-focused).
+  Metric choice is a design decision.'
+implementation_notes: MetaSystem's verification loops should explicitly choose which metric applies. pass^k for production reliability gates; pass@k for capability exploration. Current eval approach doesn't
+  distinguish these.
+category: Evaluation
+evidence_strength: Strong (production-tested)
+adoption_status: Not Yet Started
+proposer_priority: P1 (Implement Now)
 applicability:
-  - "S3 (Claude Code Build)"
-  - "General / Cross-System"
+- S3 (Claude Code Build)
+- General / Cross-System
 adopted_in: []
 sources:
-  - "anthropic-demystifying-evals-for-ai-agents.md"
-  - "anthropic-claude-think-tool.md"
+- anthropic-demystifying-evals-for-ai-agents.md
+- anthropic-claude-think-tool.md
 related_findings:
-  - file: "think-tool-scratchpad-for-mid-chain-reasoning.md"
-    rel: "enables"
+- file: think-tool-scratchpad-for-mid-chain-reasoning.md
+  rel: enables
 proposals: null
-date_discovered: "2026-04-09"
-last_updated: "2026-04-09"
-pipeline_status: "synthesized"
+date_discovered: '2026-04-09'
+last_updated: '2026-04-09'
+pipeline_status: synthesized
 consumed_by:
-  - "building-agent-evaluation-suites.md"
+- building-agent-evaluation-suites.md
 ---
 
 ## What It Is

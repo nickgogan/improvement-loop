@@ -16,9 +16,9 @@ proposals: []
 date_discovered: '2026-03-09'
 last_updated: 2026-04-08
 related_findings:
-  - file: "ace-agentic-context-engineering-evolving-playbook.md"
-    rel: "same-problem"
-pipeline_status: "raw"
+- file: ace-agentic-context-engineering-evolving-playbook.md
+  rel: same-problem
+pipeline_status: raw
 consumed_by: []
 ---
 # OpenSpec (YCombinator)

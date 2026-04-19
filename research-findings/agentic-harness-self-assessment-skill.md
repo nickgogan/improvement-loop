@@ -1,25 +1,26 @@
 ---
-name: "Agentic Harness Self-Assessment Skill (Design + Evaluation Modes)"
-summary: "A Claude Code skill with two modes: Design Mode (walks through structured design of a new agent harness, recommending primitives and phased implementation) and Evaluation Mode (points at an existing harness codebase and identifies missing primitives, ordered by severity). Grounded in the 12-primitive framework from the Claude Code leak."
+name: Agentic Harness Self-Assessment Skill (Design + Evaluation Modes)
+summary: 'A Claude Code skill with two modes: Design Mode (walks through structured design of a new agent harness, recommending primitives and phased implementation) and Evaluation Mode (points at an existing
+  harness codebase and identifies missing primitives, ordered by severity). Grounded in the 12-primitive framework from the Claude Code leak.'
 implementation_notes: null
-category: "Evaluation"
-evidence_strength: "Medium (practitioner-documented)"
-adoption_status: "Not Yet Started"
-proposer_priority: "P2 (Design Required)"
+category: Evaluation
+evidence_strength: Medium (practitioner-documented)
+adoption_status: Not Yet Started
+proposer_priority: P2 (Design Required)
 applicability:
-  - "S3 (Claude Code Build)"
-  - "General"
+- S3 (Claude Code Build)
+- General
 adopted_in: []
 sources:
-  - "anthropics-2-5-billion-leak-12-critical-pieces.md"
-date_discovered: "2026-04-07"
+- anthropics-2-5-billion-leak-12-critical-pieces.md
+date_discovered: '2026-04-07'
 last_updated: 2026-04-08
 related_findings:
-  - file: "ace-execution-feedback-no-labels-required.md"
-    rel: "same-problem"
-pipeline_status: "extracted"
+- file: ace-execution-feedback-no-labels-required.md
+  rel: same-problem
+pipeline_status: extracted
 consumed_by:
-  - "skills/agentic-harness-self-assessment.md"
+- skills/agentic-harness-self-assessment.md
 ---
 
 ## What It Is

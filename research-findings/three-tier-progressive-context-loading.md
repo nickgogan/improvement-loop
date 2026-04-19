@@ -1,22 +1,25 @@
 ---
-name: "Three-Tier Progressive Context Loading (L0/L1/L2)"
-summary: "Every file and directory gets three representations: L0 abstract (~100 tokens), L1 overview (~2k tokens), L2 full content. Retrieval traverses tiers on demand — scoring at L0, reranking at L1, reading at L2 — dramatically reducing token waste."
+name: Three-Tier Progressive Context Loading (L0/L1/L2)
+summary: 'Every file and directory gets three representations: L0 abstract (~100 tokens), L1 overview (~2k tokens), L2 full content. Retrieval traverses tiers on demand — scoring at L0, reranking at L1,
+  reading at L2 — dramatically reducing token waste.'
 implementation_notes: null
-category: "Context Engineering"
-evidence_strength: "Medium (practitioner-documented)"
-adoption_status: "Partially Adopted"
+category: Context Engineering
+evidence_strength: Medium (practitioner-documented)
+adoption_status: Partially Adopted
 proposer_priority: null
 applicability:
-  - "S3 (Claude Code Build)"
-  - "General"
+- S3 (Claude Code Build)
+- General
 adopted_in: []
 sources: []
 related_findings:
-  - {file: "tiered-context-injection-over-monolithic-files.md", rel: "extends"}
-  - {file: "three-layer-context-chain-loading.md", rel: "same-problem"}
+- file: tiered-context-injection-over-monolithic-files.md
+  rel: extends
+- file: three-layer-context-chain-loading.md
+  rel: same-problem
 proposals: null
-date_discovered: "2026-04-19"
-last_updated: "2026-04-19"
+date_discovered: '2026-04-19'
+last_updated: '2026-04-19'
 ---
 
 ## What It Is

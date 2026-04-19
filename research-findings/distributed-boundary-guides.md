@@ -1,6 +1,7 @@
 ---
 name: Distributed Boundary Guides
-summary: OpenClaw places AGENTS.md/CLAUDE.md symlink pairs at each major subsystem boundary. Root AGENTS.md (~300 lines) sets global rules; subsystem files add local constraints. CLAUDE.md is always a symlink to AGENTS.md for cross-AI-tool compatibility. Progressive disclosure for governance.
+summary: OpenClaw places AGENTS.md/CLAUDE.md symlink pairs at each major subsystem boundary. Root AGENTS.md (~300 lines) sets global rules; subsystem files add local constraints. CLAUDE.md is always a symlink
+  to AGENTS.md for cross-AI-tool compatibility. Progressive disclosure for governance.
 implementation_notes: null
 category: Governance
 evidence_strength: Medium (practitioner-documented)
@@ -16,7 +17,7 @@ related_findings:
 proposals: null
 date_discovered: '2026-04-08'
 last_updated: '2026-04-08'
-pipeline_status: "raw"
+pipeline_status: raw
 consumed_by: []
 ---
 ## What It Is

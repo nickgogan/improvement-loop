@@ -22,10 +22,10 @@ related_findings:
   rel: same-problem
 - file: builder-validator-chain-pattern.md
   rel: same-problem
-pipeline_status: "synthesized"
+pipeline_status: synthesized
 consumed_by:
-  - "agent-safety-and-permissions.md"
-  - "building-agent-evaluation-suites.md"
+- agent-safety-and-permissions.md
+- building-agent-evaluation-suites.md
 ---
 ## What It Is
 Two of Nate B Jones's five commandments for agent deployment, extracted as standalone patterns because they span Evaluation and Sandboxing:

@@ -1,25 +1,26 @@
 ---
-name: "Task Complexity Tiering: Quick Task, Campaign, Deep Build"
-summary: "Three-tier task classification that determines agent planning depth and session architecture. Quick tasks run inline; campaigns break into subtasks with multiple deliverables; deep builds invoke full phase-based planning with many output files."
+name: 'Task Complexity Tiering: Quick Task, Campaign, Deep Build'
+summary: Three-tier task classification that determines agent planning depth and session architecture. Quick tasks run inline; campaigns break into subtasks with multiple deliverables; deep builds invoke
+  full phase-based planning with many output files.
 implementation_notes: null
-category: "Orchestration"
-evidence_strength: "Medium (practitioner-documented)"
-adoption_status: "Not Yet Started"
-proposer_priority: "P2 (Design Required)"
+category: Orchestration
+evidence_strength: Medium (practitioner-documented)
+adoption_status: Not Yet Started
+proposer_priority: P2 (Design Required)
 applicability:
-  - "S3 (Claude Code Build)"
-  - "General"
+- S3 (Claude Code Build)
+- General
 adopted_in: []
 sources:
-  - "stop-using-claude-code-in-terminal.md"
-date_discovered: "2026-04-07"
+- stop-using-claude-code-in-terminal.md
+date_discovered: '2026-04-07'
 last_updated: 2026-04-08
 related_findings:
-  - file: "agent-architecture-layer-impermanence.md"
-    rel: "same-problem"
-pipeline_status: "synthesized"
+- file: agent-architecture-layer-impermanence.md
+  rel: same-problem
+pipeline_status: synthesized
 consumed_by:
-  - "agent-workflow-and-execution.md"
+- agent-workflow-and-execution.md
 ---
 
 ## What It Is

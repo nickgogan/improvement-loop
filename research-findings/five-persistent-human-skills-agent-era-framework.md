@@ -16,7 +16,7 @@ sources:
 proposals: []
 date_discovered: '2026-03-09'
 last_updated: '2026-04-07'
-pipeline_status: "raw"
+pipeline_status: raw
 consumed_by: []
 ---
 # Five Persistent Human Skills (Agent-Era Framework)

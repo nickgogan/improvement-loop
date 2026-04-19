@@ -1,25 +1,26 @@
 ---
-name: "Test Output Design for LLM Context Windows"
-summary: "Design test output for agent consumption: limit console to a few summary lines, log details to files for agent grep, format errors as single-line greppable strings, pre-compute aggregate stats. Prevents context window pollution from verbose test output."
-implementation_notes: "Directly applicable to MetaSystem's eval and testing infrastructure. Test harnesses should emit LLM-friendly output by default."
-category: "Context Engineering"
-evidence_strength: "Strong (production-tested)"
-adoption_status: "Not Yet Started"
-proposer_priority: "P1 (Implement Now)"
+name: Test Output Design for LLM Context Windows
+summary: 'Design test output for agent consumption: limit console to a few summary lines, log details to files for agent grep, format errors as single-line greppable strings, pre-compute aggregate stats.
+  Prevents context window pollution from verbose test output.'
+implementation_notes: Directly applicable to MetaSystem's eval and testing infrastructure. Test harnesses should emit LLM-friendly output by default.
+category: Context Engineering
+evidence_strength: Strong (production-tested)
+adoption_status: Not Yet Started
+proposer_priority: P1 (Implement Now)
 applicability:
-  - "S3 (Claude Code Build)"
+- S3 (Claude Code Build)
 adopted_in: []
 sources:
-  - "anthropic-building-c-compiler.md"
+- anthropic-building-c-compiler.md
 related_findings:
-  - file: "context-rot-silent-killer-and-mitigations.md"
-    rel: "same-problem"
-  - file: "agent-context-kiss-commandments-minimum-viable.md"
-    rel: "same-problem"
+- file: context-rot-silent-killer-and-mitigations.md
+  rel: same-problem
+- file: agent-context-kiss-commandments-minimum-viable.md
+  rel: same-problem
 proposals: null
-date_discovered: "2026-04-09"
-last_updated: "2026-04-09"
-pipeline_status: "raw"
+date_discovered: '2026-04-09'
+last_updated: '2026-04-09'
+pipeline_status: raw
 consumed_by: []
 ---
 

@@ -23,9 +23,9 @@ related_findings:
 proposals: null
 date_discovered: '2026-04-07'
 last_updated: '2026-04-08'
-pipeline_status: "synthesized"
+pipeline_status: synthesized
 consumed_by:
-  - "agent-governance-and-trust.md"
+- agent-governance-and-trust.md
 ---
 
 # Compound Review Debt from Deferred Inspection

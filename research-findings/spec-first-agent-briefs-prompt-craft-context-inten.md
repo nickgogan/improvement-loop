@@ -23,9 +23,9 @@ last_updated: '2026-04-07'
 related_findings:
 - file: acceptance-criteria-as-verifiable-eval-anchor.md
   rel: extends
-pipeline_status: "synthesized"
+pipeline_status: synthesized
 consumed_by:
-  - "writing-agent-specifications.md"
+- writing-agent-specifications.md
 ---
 # Spec-first agent briefs: Prompt Craft -> Context -> Intent -> Specification engineering
 

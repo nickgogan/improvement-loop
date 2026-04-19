@@ -1,23 +1,24 @@
 ---
-name: "Framework Abstraction Tax for Agent Development"
-summary: "Agent frameworks add abstraction layers that obscure prompts and responses, making debugging harder. Anthropic found the most successful implementations used simple, composable patterns rather than complex frameworks."
+name: Framework Abstraction Tax for Agent Development
+summary: Agent frameworks add abstraction layers that obscure prompts and responses, making debugging harder. Anthropic found the most successful implementations used simple, composable patterns rather
+  than complex frameworks.
 implementation_notes: null
-category: "Agent Design"
-evidence_strength: "Strong (production-tested)"
-adoption_status: "Already Adopted"
-proposer_priority: "P3 (Monitor)"
+category: Agent Design
+evidence_strength: Strong (production-tested)
+adoption_status: Already Adopted
+proposer_priority: P3 (Monitor)
 applicability:
-  - "S3 (Claude Code Build)"
-  - "General / Cross-System"
+- S3 (Claude Code Build)
+- General / Cross-System
 adopted_in:
-  - "S3 (Claude Code Build)"
+- S3 (Claude Code Build)
 sources:
-  - "anthropic-building-effective-agents.md"
+- anthropic-building-effective-agents.md
 related_findings: []
 proposals: null
-date_discovered: "2026-04-09"
-last_updated: "2026-04-09"
-pipeline_status: "raw"
+date_discovered: '2026-04-09'
+last_updated: '2026-04-09'
+pipeline_status: raw
 consumed_by: []
 ---
 

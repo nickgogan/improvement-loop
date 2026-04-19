@@ -35,7 +35,7 @@ related_findings:
   rel: same-problem
 - file: ace-agentic-context-engineering-rag-based.md
   rel: same-problem
-pipeline_status: "raw"
+pipeline_status: raw
 consumed_by: []
 ---
 # CLAUDE.md Context Rot from Indiscriminate Rule Accumulation

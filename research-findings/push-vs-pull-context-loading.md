@@ -1,20 +1,21 @@
 ---
-name: "Push vs Pull Context Loading"
-summary: "Two opposing approaches to agent context assembly — push model (GSD) where the harness pre-assembles everything via @-reference chains, and pull model (Superpowers) where the harness loads one bootstrap skill and the agent self-activates others on demand. BMAD's 3-level progressive disclosure splits the difference. No convergence across 7 analyzed repos."
+name: Push vs Pull Context Loading
+summary: Two opposing approaches to agent context assembly — push model (GSD) where the harness pre-assembles everything via @-reference chains, and pull model (Superpowers) where the harness loads one
+  bootstrap skill and the agent self-activates others on demand. BMAD's 3-level progressive disclosure splits the difference. No convergence across 7 analyzed repos.
 implementation_notes: null
-category: "Context Engineering"
-evidence_strength: "Medium (practitioner-documented)"
-adoption_status: "Not Yet Started"
+category: Context Engineering
+evidence_strength: Medium (practitioner-documented)
+adoption_status: Not Yet Started
 proposer_priority: null
 applicability:
-  - "S3 (Claude Code Build)"
+- S3 (Claude Code Build)
 adopted_in: []
 sources: []
 related_findings: []
 proposals: null
-date_discovered: "2026-04-08"
-last_updated: "2026-04-08"
-pipeline_status: "raw"
+date_discovered: '2026-04-08'
+last_updated: '2026-04-08'
+pipeline_status: raw
 consumed_by: []
 ---
 # Push vs Pull Context Loading

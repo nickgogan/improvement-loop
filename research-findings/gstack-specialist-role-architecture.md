@@ -1,26 +1,27 @@
 ---
-name: "gstack Specialist Role Architecture and 5-Layer Governance"
-summary: "gstack replaces single general-purpose agent with specialist role pipeline (CEO, Engineer, QA, Designer, Release Engineer). The 5-layer governance system (Role Focus, Data Flow, Quality Control, Boil the Lake, Keep Simple) makes role adherence robust. Garry Tan (YC CEO) created it."
-implementation_notes: "The 5-layer governance and 'Boil the Lake' principle are independently valuable patterns. Design which roles map to MetaSystem's agent systems."
-category: "Orchestration"
-evidence_strength: "Medium (practitioner-documented)"
-adoption_status: "Not Yet Started"
-proposer_priority: "P2 (Design Required)"
+name: gstack Specialist Role Architecture and 5-Layer Governance
+summary: gstack replaces single general-purpose agent with specialist role pipeline (CEO, Engineer, QA, Designer, Release Engineer). The 5-layer governance system (Role Focus, Data Flow, Quality Control,
+  Boil the Lake, Keep Simple) makes role adherence robust. Garry Tan (YC CEO) created it.
+implementation_notes: The 5-layer governance and 'Boil the Lake' principle are independently valuable patterns. Design which roles map to MetaSystem's agent systems.
+category: Orchestration
+evidence_strength: Medium (practitioner-documented)
+adoption_status: Not Yet Started
+proposer_priority: P2 (Design Required)
 applicability:
-  - "S3 (Claude Code Build)"
-  - "General"
+- S3 (Claude Code Build)
+- General
 adopted_in: []
 sources:
-  - "these-3-frameworks-make-claude-code-unstoppable.md"
+- these-3-frameworks-make-claude-code-unstoppable.md
 proposals: null
-date_discovered: "2026-04-07"
+date_discovered: '2026-04-07'
 last_updated: 2026-04-08
 related_findings:
-  - file: "agent-architecture-layer-impermanence.md"
-    rel: "contradicts"
-pipeline_status: "synthesized"
+- file: agent-architecture-layer-impermanence.md
+  rel: contradicts
+pipeline_status: synthesized
 consumed_by:
-  - "agent-architecture-decisions.md"
+- agent-architecture-decisions.md
 ---
 
 ## What It Is

@@ -25,9 +25,9 @@ related_findings:
   rel: same-problem
 - file: agent-context-kiss-commandments-minimum-viable.md
   rel: same-problem
-pipeline_status: "synthesized"
+pipeline_status: synthesized
 consumed_by:
-  - "managing-agent-context.md"
+- managing-agent-context.md
 ---
 # Dynamic Tool Pool Assembly and Transcript Compaction
 

@@ -1,29 +1,30 @@
 ---
-name: "File-Based Task Locking for Parallel Agents"
-summary: "Parallel agents claim exclusive tasks by writing lock files to a shared directory (e.g., current_tasks/parse_if_statement.txt). No inter-agent communication or orchestration needed -- agents self-select tasks, acquire locks, pull/merge/work/push, and release locks. Git handles conflicts."
-implementation_notes: "Applicable to MetaSystem parallel skill execution. Could use a locks/ directory in the workspace for concurrent agent coordination."
-category: "Orchestration"
-evidence_strength: "Strong (production-tested)"
-adoption_status: "Not Yet Started"
-proposer_priority: "P1 (Implement Now)"
+name: File-Based Task Locking for Parallel Agents
+summary: Parallel agents claim exclusive tasks by writing lock files to a shared directory (e.g., current_tasks/parse_if_statement.txt). No inter-agent communication or orchestration needed -- agents self-select
+  tasks, acquire locks, pull/merge/work/push, and release locks. Git handles conflicts.
+implementation_notes: Applicable to MetaSystem parallel skill execution. Could use a locks/ directory in the workspace for concurrent agent coordination.
+category: Orchestration
+evidence_strength: Strong (production-tested)
+adoption_status: Not Yet Started
+proposer_priority: P1 (Implement Now)
 applicability:
-  - "S3 (Claude Code Build)"
+- S3 (Claude Code Build)
 adopted_in: []
 sources:
-  - "anthropic-building-c-compiler.md"
+- anthropic-building-c-compiler.md
 related_findings:
-  - file: "worktree-isolation-for-parallel-agent-sessions.md"
-    rel: "same-problem"
-  - file: "parallel-claude-code-instances-per-workspace.md"
-    rel: "extends"
-  - file: "atomic-checkout-with-409-exclusion.md"
-    rel: "same-problem"
+- file: worktree-isolation-for-parallel-agent-sessions.md
+  rel: same-problem
+- file: parallel-claude-code-instances-per-workspace.md
+  rel: extends
+- file: atomic-checkout-with-409-exclusion.md
+  rel: same-problem
 proposals: null
-date_discovered: "2026-04-09"
-last_updated: "2026-04-09"
-pipeline_status: "synthesized"
+date_discovered: '2026-04-09'
+last_updated: '2026-04-09'
+pipeline_status: synthesized
 consumed_by:
-  - "session-persistence-and-memory.md"
+- session-persistence-and-memory.md
 ---
 
 ## What It Is

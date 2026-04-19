@@ -17,9 +17,9 @@ proposals: null
 date_discovered: '2026-03-22'
 last_updated: 2026-04-08
 related_findings:
-  - file: "agent-context-kiss-commandments-minimum-viable.md"
-    rel: "same-problem"
-pipeline_status: "raw"
+- file: agent-context-kiss-commandments-minimum-viable.md
+  rel: same-problem
+pipeline_status: raw
 consumed_by: []
 ---
 # Subagent Exploration Mode: Parallel Codebase Mapping and Tracing

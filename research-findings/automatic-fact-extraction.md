@@ -1,6 +1,7 @@
 ---
 name: Automatic Fact Extraction
-summary: mem0 automatically extracts facts from conversations via LLM without explicit user action. Messages go in, structured memories come out. The extraction pipeline identifies discrete facts, embeds them, stores in vector (+ optional graph), and deduplicates against existing memories.
+summary: mem0 automatically extracts facts from conversations via LLM without explicit user action. Messages go in, structured memories come out. The extraction pipeline identifies discrete facts, embeds
+  them, stores in vector (+ optional graph), and deduplicates against existing memories.
 implementation_notes: null
 category: Context Engineering
 evidence_strength: Medium (practitioner-documented)
@@ -15,7 +16,7 @@ related_findings: []
 proposals: null
 date_discovered: '2026-04-08'
 last_updated: '2026-04-08'
-pipeline_status: "raw"
+pipeline_status: raw
 consumed_by: []
 ---
 ## What It Is

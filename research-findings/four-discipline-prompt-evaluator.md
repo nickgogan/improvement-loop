@@ -27,7 +27,7 @@ related_findings:
   rel: enabled-by
 - file: volume-over-quality-eval-principle.md
   rel: same-problem
-pipeline_status: "raw"
+pipeline_status: raw
 consumed_by: []
 ---
 # Four-Discipline Prompt Evaluator

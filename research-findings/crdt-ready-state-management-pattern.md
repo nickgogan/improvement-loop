@@ -1,20 +1,21 @@
 ---
-name: "CRDT-Ready State Management Pattern"
-summary: "n8n's workflowDocument store uses a public/apply method split where all mutations go through private apply*() methods that write to refs and fire event hooks. Designed for future CRDT support: local actions, remote sync, and undo/redo all converge on the same apply methods. A forward-looking architectural pattern documented in a deeply nested CLAUDE.md."
-implementation_notes: "Forward-looking pattern — CRDT is not yet implemented in n8n. Worth monitoring to see if this pattern emerges elsewhere as collaborative agent editing becomes more common."
-category: "Agent Design"
-evidence_strength: "Medium (practitioner-documented)"
-adoption_status: "Not Yet Started"
+name: CRDT-Ready State Management Pattern
+summary: 'n8n''s workflowDocument store uses a public/apply method split where all mutations go through private apply*() methods that write to refs and fire event hooks. Designed for future CRDT support:
+  local actions, remote sync, and undo/redo all converge on the same apply methods. A forward-looking architectural pattern documented in a deeply nested CLAUDE.md.'
+implementation_notes: Forward-looking pattern — CRDT is not yet implemented in n8n. Worth monitoring to see if this pattern emerges elsewhere as collaborative agent editing becomes more common.
+category: Agent Design
+evidence_strength: Medium (practitioner-documented)
+adoption_status: Not Yet Started
 proposer_priority: null
 applicability:
-  - "General"
+- General
 adopted_in: []
 sources: []
 related_findings: []
 proposals: null
-date_discovered: "2026-04-09"
-last_updated: "2026-04-09"
-pipeline_status: "raw"
+date_discovered: '2026-04-09'
+last_updated: '2026-04-09'
+pipeline_status: raw
 consumed_by: []
 ---
 

@@ -1,24 +1,25 @@
 ---
-name: "One-Shot PRD Prompt for Full System Bootstrap"
-summary: "A single declarative PRD prompt pasted into Claude Code with zero other context scaffolds an entire system (folders, scripts, hooks, agents.md, index.md). Karpathy published a gist; Cole Medin's repo has an equivalent."
-implementation_notes: "MetaSystem's /bootstrap could be enhanced to support PRD-as-prompt scaffolding rather than requiring manifest.json or interactive interview."
-category: "Context Engineering"
-evidence_strength: "Strong (production-tested)"
-adoption_status: "Not Yet Started"
-proposer_priority: "P2 (Design Required)"
+name: One-Shot PRD Prompt for Full System Bootstrap
+summary: A single declarative PRD prompt pasted into Claude Code with zero other context scaffolds an entire system (folders, scripts, hooks, agents.md, index.md). Karpathy published a gist; Cole Medin's
+  repo has an equivalent.
+implementation_notes: MetaSystem's /bootstrap could be enhanced to support PRD-as-prompt scaffolding rather than requiring manifest.json or interactive interview.
+category: Context Engineering
+evidence_strength: Strong (production-tested)
+adoption_status: Not Yet Started
+proposer_priority: P2 (Design Required)
 applicability:
-  - "S3 (Claude Code Build)"
-  - "General"
+- S3 (Claude Code Build)
+- General
 adopted_in: []
 sources:
-  - "self-evolving-claude-code-memory.md"
+- self-evolving-claude-code-memory.md
 proposals: null
-date_discovered: "2026-04-07"
-last_updated: "2026-04-07"
-pipeline_status: "synthesized"
+date_discovered: '2026-04-07'
+last_updated: '2026-04-07'
+pipeline_status: synthesized
 consumed_by:
-  - "managing-agent-context.md"
-  - "templates/one-shot-prd-prompt-for-system-bootstrap.md"
+- managing-agent-context.md
+- templates/one-shot-prd-prompt-for-system-bootstrap.md
 ---
 
 # One-Shot PRD Prompt for Full System Bootstrap

@@ -1,31 +1,32 @@
 ---
-name: "OS-Level Agent Sandboxing -- Filesystem and Network Isolation"
-summary: "Production sandboxing for coding agents using OS primitives (Linux bubblewrap, macOS seatbelt) to enforce filesystem and network isolation. Reduces permission prompts by 84%. Network isolation via Unix domain socket proxy with domain allowlisting. Credential proxy keeps secrets outside sandbox. Open-sourced by Anthropic."
+name: OS-Level Agent Sandboxing -- Filesystem and Network Isolation
+summary: Production sandboxing for coding agents using OS primitives (Linux bubblewrap, macOS seatbelt) to enforce filesystem and network isolation. Reduces permission prompts by 84%. Network isolation
+  via Unix domain socket proxy with domain allowlisting. Credential proxy keeps secrets outside sandbox. Open-sourced by Anthropic.
 implementation_notes: null
-category: "Sandboxing"
-evidence_strength: "Strong (production-tested)"
-adoption_status: "Not Yet Started"
-proposer_priority: "P1 (Implement Now)"
+category: Sandboxing
+evidence_strength: Strong (production-tested)
+adoption_status: Not Yet Started
+proposer_priority: P1 (Implement Now)
 applicability:
-  - "S3 (Claude Code Build)"
+- S3 (Claude Code Build)
 adopted_in: []
 sources:
-  - "anthropic-claude-code-sandboxing.md"
+- anthropic-claude-code-sandboxing.md
 related_findings:
-  - file: "tiered-permission-system-bash-safety.md"
-    rel: "extends"
-  - file: "claude-code-auto-mode-ai-driven-permission-classif.md"
-    rel: "same-problem"
-  - file: "tool-gateway-security-boundary.md"
-    rel: "enables"
-  - file: "explicit-permission-allow-listing-for-agent-resou.md"
-    rel: "same-problem"
+- file: tiered-permission-system-bash-safety.md
+  rel: extends
+- file: claude-code-auto-mode-ai-driven-permission-classif.md
+  rel: same-problem
+- file: tool-gateway-security-boundary.md
+  rel: enables
+- file: explicit-permission-allow-listing-for-agent-resou.md
+  rel: same-problem
 proposals: null
-date_discovered: "2026-04-09"
-last_updated: "2026-04-09"
-pipeline_status: "synthesized"
+date_discovered: '2026-04-09'
+last_updated: '2026-04-09'
+pipeline_status: synthesized
 consumed_by:
-  - "agent-safety-and-permissions.md"
+- agent-safety-and-permissions.md
 ---
 
 ## What It Is

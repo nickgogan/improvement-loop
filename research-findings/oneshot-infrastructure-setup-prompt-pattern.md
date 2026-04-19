@@ -15,9 +15,9 @@ sources:
 proposals: null
 date_discovered: '2026-04-07'
 last_updated: '2026-04-08'
-pipeline_status: "synthesized"
+pipeline_status: synthesized
 consumed_by:
-  - "model-resilient-prompt-engineering.md"
+- model-resilient-prompt-engineering.md
 ---
 # Oneshot Infrastructure Setup Prompt Pattern
 

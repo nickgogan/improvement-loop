@@ -1,19 +1,20 @@
 ---
-name: "All-in-One Sandbox Architecture"
-summary: "Single Docker container packaging browser (VNC+CDP), shell, file system, IDE (VSCode), notebooks (Jupyter), and MCP servers with a shared filesystem. Eliminates cross-service communication overhead at the cost of seccomp:unconfined for browser support."
+name: All-in-One Sandbox Architecture
+summary: Single Docker container packaging browser (VNC+CDP), shell, file system, IDE (VSCode), notebooks (Jupyter), and MCP servers with a shared filesystem. Eliminates cross-service communication overhead
+  at the cost of seccomp:unconfined for browser support.
 implementation_notes: null
-category: "Sandboxing"
-evidence_strength: "Medium (practitioner-documented)"
-adoption_status: "Not Yet Started"
+category: Sandboxing
+evidence_strength: Medium (practitioner-documented)
+adoption_status: Not Yet Started
 proposer_priority: null
 applicability:
-  - "S3 (Claude Code Build)"
+- S3 (Claude Code Build)
 adopted_in: []
 sources: []
 related_findings: []
 proposals: null
-date_discovered: "2026-04-19"
-last_updated: "2026-04-19"
+date_discovered: '2026-04-19'
+last_updated: '2026-04-19'
 ---
 
 ## What It Is

@@ -22,7 +22,7 @@ last_updated: '2026-04-09'
 related_findings:
 - file: advanced-elicitation-techniques-library.md
   rel: same-problem
-pipeline_status: "raw"
+pipeline_status: raw
 consumed_by: []
 ---
 # Meta-Prompting: Separating Analysis from Execution in Agent Workflows

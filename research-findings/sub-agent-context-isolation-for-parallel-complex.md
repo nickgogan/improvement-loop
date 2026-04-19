@@ -17,7 +17,7 @@ sources:
 proposals: null
 date_discovered: '2026-03-22'
 last_updated: '2026-04-09'
-pipeline_status: "raw"
+pipeline_status: raw
 consumed_by: []
 ---
 # Sub-Agent Context Isolation for Parallel Complex Analysis

@@ -1,28 +1,29 @@
 ---
-name: "Think Tool: Dedicated Scratchpad for Mid-Chain Reasoning"
-summary: "A 'think' tool gives agents a structured scratchpad to reason about tool outputs mid-response without side effects, improving policy compliance and sequential decision accuracy. Distinct from extended thinking (pre-response planning) -- think tool processes new information discovered during execution."
+name: 'Think Tool: Dedicated Scratchpad for Mid-Chain Reasoning'
+summary: A 'think' tool gives agents a structured scratchpad to reason about tool outputs mid-response without side effects, improving policy compliance and sequential decision accuracy. Distinct from extended
+  thinking (pre-response planning) -- think tool processes new information discovered during execution.
 implementation_notes: null
-category: "Tool Integration"
-evidence_strength: "Strong (production-tested)"
-adoption_status: "Not Yet Started"
-proposer_priority: "P1 (Implement Now)"
+category: Tool Integration
+evidence_strength: Strong (production-tested)
+adoption_status: Not Yet Started
+proposer_priority: P1 (Implement Now)
 applicability:
-  - "S3 (Claude Code Build)"
+- S3 (Claude Code Build)
 sources:
-  - "anthropic-claude-think-tool.md"
+- anthropic-claude-think-tool.md
 related_findings:
-  - file: "thinking-models-mental-framework-commands-for-codi.md"
-    rel: "same-problem"
-  - file: "chain-of-thought-reasoning-output-divergence.md"
-    rel: "same-problem"
-  - file: "rationalization-prevention-pattern.md"
-    rel: "same-problem"
+- file: thinking-models-mental-framework-commands-for-codi.md
+  rel: same-problem
+- file: chain-of-thought-reasoning-output-divergence.md
+  rel: same-problem
+- file: rationalization-prevention-pattern.md
+  rel: same-problem
 proposals: null
-date_discovered: "2026-04-09"
-last_updated: "2026-04-09"
-pipeline_status: "synthesized"
+date_discovered: '2026-04-09'
+last_updated: '2026-04-09'
+pipeline_status: synthesized
 consumed_by:
-  - "designing-agent-tools.md"
+- designing-agent-tools.md
 ---
 # Think Tool: Dedicated Scratchpad for Mid-Chain Reasoning
 

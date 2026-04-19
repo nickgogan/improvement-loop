@@ -18,13 +18,13 @@ proposals: null
 date_discovered: '2026-03-16'
 last_updated: 2026-04-08
 related_findings:
-  - file: "context-file-instruction-bloat-eth-zurich.md"
-    rel: "same-problem"
-  - file: "ace-agentic-context-engineering-evolving-playbook.md"
-    rel: "same-problem"
-  - file: "agent-context-kiss-commandments-minimum-viable.md"
-    rel: "same-problem"
-pipeline_status: "raw"
+- file: context-file-instruction-bloat-eth-zurich.md
+  rel: same-problem
+- file: ace-agentic-context-engineering-evolving-playbook.md
+  rel: same-problem
+- file: agent-context-kiss-commandments-minimum-viable.md
+  rel: same-problem
+pipeline_status: raw
 consumed_by: []
 ---
 # Three-Tier Vault Architecture (Global/Shared/Local)

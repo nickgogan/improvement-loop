@@ -25,10 +25,10 @@ related_findings:
   rel: same-problem
 - file: advanced-elicitation-techniques-library.md
   rel: contradicts
-pipeline_status: "synthesized"
+pipeline_status: synthesized
 consumed_by:
-  - "model-resilient-prompt-engineering.md"
-  - "rules/reasoning-model-anti-pattern-prescribed-reasoning.md"
+- model-resilient-prompt-engineering.md
+- rules/reasoning-model-anti-pattern-prescribed-reasoning.md
 ---
 # Reasoning Model Anti-Pattern -- Prescribed Reasoning Paths Degrade Performance
 

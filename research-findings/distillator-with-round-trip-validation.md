@@ -1,6 +1,7 @@
 ---
 name: Distillator with Round-Trip Validation
-summary: BMAD's Distillator skill performs lossless document compression for LLM consumption. Distinguished from summarization — "distillates are lossless compression." Verified by spawning a reconstruction subagent that rebuilds from the distillate alone, then diffs for semantic gaps.
+summary: BMAD's Distillator skill performs lossless document compression for LLM consumption. Distinguished from summarization — "distillates are lossless compression." Verified by spawning a reconstruction
+  subagent that rebuilds from the distillate alone, then diffs for semantic gaps.
 implementation_notes: null
 category: Context Engineering
 evidence_strength: Medium (practitioner-documented)
@@ -14,7 +15,7 @@ related_findings: []
 proposals: null
 date_discovered: '2026-04-08'
 last_updated: '2026-04-08'
-pipeline_status: "raw"
+pipeline_status: raw
 consumed_by: []
 ---
 ## What It Is

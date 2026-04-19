@@ -17,9 +17,9 @@ last_updated: '2026-04-08'
 related_findings:
 - file: bmad-dependency-graph-module-ordering.md
   rel: enabled-by
-pipeline_status: "synthesized"
+pipeline_status: synthesized
 consumed_by:
-  - "agent-workflow-and-execution.md"
+- agent-workflow-and-execution.md
 ---
 
 ## What It Is

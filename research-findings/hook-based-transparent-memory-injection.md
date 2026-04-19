@@ -1,21 +1,24 @@
 ---
-name: "Hook-Based Transparent Memory Injection"
-summary: "Three-hook lifecycle (SessionStart→bootstrap, UserPromptSubmit→auto-recall, Stop→auto-capture) enables transparent memory without agent awareness. Memory is injected and captured via hooks — the agent never explicitly manages memory."
+name: Hook-Based Transparent Memory Injection
+summary: Three-hook lifecycle (SessionStart→bootstrap, UserPromptSubmit→auto-recall, Stop→auto-capture) enables transparent memory without agent awareness. Memory is injected and captured via hooks — the
+  agent never explicitly manages memory.
 implementation_notes: null
-category: "Context Engineering"
-evidence_strength: "Medium (practitioner-documented)"
-adoption_status: "Not Yet Started"
+category: Context Engineering
+evidence_strength: Medium (practitioner-documented)
+adoption_status: Not Yet Started
 proposer_priority: null
 applicability:
-  - "S3 (Claude Code Build)"
+- S3 (Claude Code Build)
 adopted_in: []
 sources: []
 related_findings:
-  - {file: "hook-based-enforcement-for-agent-outputs.md", rel: "extends"}
-  - {file: "claude-code-long-term-memory-via-pre-prompt-recall.md", rel: "enables"}
+- file: hook-based-enforcement-for-agent-outputs.md
+  rel: extends
+- file: claude-code-long-term-memory-via-pre-prompt-recall.md
+  rel: enables
 proposals: null
-date_discovered: "2026-04-19"
-last_updated: "2026-04-19"
+date_discovered: '2026-04-19'
+last_updated: '2026-04-19'
 ---
 
 ## What It Is

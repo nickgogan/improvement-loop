@@ -19,17 +19,17 @@ proposals: []
 date_discovered: '2026-03-23'
 last_updated: 2026-04-08
 related_findings:
-  - file: "capability-saturation-threshold-45-percent.md"
-    rel: "same-problem"
-  - file: "specialization-theater-anti-pattern.md"
-    rel: "extends"
-  - file: "acceptance-criteria-as-verifiable-eval-anchor.md"
-    rel: "same-problem"
-  - file: "ace-execution-feedback-no-labels-required.md"
-    rel: "same-problem"
-pipeline_status: "synthesized"
+- file: capability-saturation-threshold-45-percent.md
+  rel: same-problem
+- file: specialization-theater-anti-pattern.md
+  rel: extends
+- file: acceptance-criteria-as-verifiable-eval-anchor.md
+  rel: same-problem
+- file: ace-execution-feedback-no-labels-required.md
+  rel: same-problem
+pipeline_status: synthesized
 consumed_by:
-  - "building-agent-evaluation-suites.md"
+- building-agent-evaluation-suites.md
 ---
 # Tool-Shaped Object Evaluation Lens
 

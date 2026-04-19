@@ -1,28 +1,29 @@
 ---
-name: "Six-Layer Agent Infrastructure Stack (Named Layers with Maturity Assessment)"
-summary: "Six infrastructure layers for agent systems: (1) Compute & Sandboxing, (2) Identity & Communication, (3) Memory & State, (4) Tools & Integration, (5) Provisioning & Billing, (6) Orchestration & Coordination. Each layer has distinct maturity (compute=mature, orchestration=biggest gap)."
-implementation_notes: "Use as an audit framework for MetaSystem's own agent infrastructure. Identify which layers are covered, which are shims, and which are gaps."
-category: "Orchestration"
-evidence_strength: "Medium (practitioner-documented)"
-adoption_status: "Not Yet Started"
-proposer_priority: "P2 (Design Required)"
+name: Six-Layer Agent Infrastructure Stack (Named Layers with Maturity Assessment)
+summary: 'Six infrastructure layers for agent systems: (1) Compute & Sandboxing, (2) Identity & Communication, (3) Memory & State, (4) Tools & Integration, (5) Provisioning & Billing, (6) Orchestration
+  & Coordination. Each layer has distinct maturity (compute=mature, orchestration=biggest gap).'
+implementation_notes: Use as an audit framework for MetaSystem's own agent infrastructure. Identify which layers are covered, which are shims, and which are gaps.
+category: Orchestration
+evidence_strength: Medium (practitioner-documented)
+adoption_status: Not Yet Started
+proposer_priority: P2 (Design Required)
 applicability:
-  - "S3 (Claude Code Build)"
-  - "General"
+- S3 (Claude Code Build)
+- General
 adopted_in: []
 sources:
-  - "building-agents-on-layers-that-wont-exist.md"
+- building-agents-on-layers-that-wont-exist.md
 proposals: []
-date_discovered: "2026-04-07"
+date_discovered: '2026-04-07'
 last_updated: 2026-04-08
 related_findings:
-  - file: "agent-architecture-layer-impermanence.md"
-    rel: "extended-by"
-  - file: "agent-management-tool-landscape-2026.md"
-    rel: "same-problem"
-pipeline_status: "synthesized"
+- file: agent-architecture-layer-impermanence.md
+  rel: extended-by
+- file: agent-management-tool-landscape-2026.md
+  rel: same-problem
+pipeline_status: synthesized
 consumed_by:
-  - "agent-architecture-decisions.md"
+- agent-architecture-decisions.md
 ---
 
 # Six-Layer Agent Infrastructure Stack (Named Layers with Maturity Assessment)

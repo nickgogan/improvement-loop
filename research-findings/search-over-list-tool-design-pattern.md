@@ -1,24 +1,24 @@
 ---
-name: "Search-Over-List Tool Design Pattern"
-summary: "Replace list/enumerate tools with search/filter tools to match agent affordances — agents have limited context windows but abundant compute, so searching is cheaper than listing."
-implementation_notes: "Audit current MCP tool definitions for list-style patterns that could be converted to search-style. Especially relevant for research-sources and research-findings queries."
-category: "Tool Integration"
-evidence_strength: "Strong (production-tested)"
-adoption_status: "Not Yet Started"
-proposer_priority: "P2 (Design Required)"
+name: Search-Over-List Tool Design Pattern
+summary: Replace list/enumerate tools with search/filter tools to match agent affordances — agents have limited context windows but abundant compute, so searching is cheaper than listing.
+implementation_notes: Audit current MCP tool definitions for list-style patterns that could be converted to search-style. Especially relevant for research-sources and research-findings queries.
+category: Tool Integration
+evidence_strength: Strong (production-tested)
+adoption_status: Not Yet Started
+proposer_priority: P2 (Design Required)
 applicability:
-  - "S3 (Claude Code Build)"
-  - "General / Cross-System"
+- S3 (Claude Code Build)
+- General / Cross-System
 adopted_in: []
 sources:
-  - "anthropic-writing-effective-tools-for-agents.md"
+- anthropic-writing-effective-tools-for-agents.md
 related_findings: []
 proposals: null
-date_discovered: "2026-04-09"
-last_updated: "2026-04-09"
-pipeline_status: "synthesized"
+date_discovered: '2026-04-09'
+last_updated: '2026-04-09'
+pipeline_status: synthesized
 consumed_by:
-  - "designing-agent-tools.md"
+- designing-agent-tools.md
 ---
 
 ## What It Is

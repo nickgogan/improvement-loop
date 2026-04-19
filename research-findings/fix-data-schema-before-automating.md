@@ -19,9 +19,9 @@ last_updated: '2026-04-07'
 related_findings:
 - file: independent-eval-and-scoped-authority-commandments.md
   rel: same-problem
-pipeline_status: "extracted"
+pipeline_status: extracted
 consumed_by:
-  - "rules/fix-data-schema-before-automating.md"
+- rules/fix-data-schema-before-automating.md
 ---
 ## What It Is
 

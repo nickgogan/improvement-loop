@@ -1,24 +1,25 @@
 ---
-name: "Non-Deterministic Tool Contract Model"
-summary: "Tools for agents represent a fundamentally different contract than traditional APIs — the agent chooses whether to use a tool and how to interpret its response, requiring design for persuasion rather than specification."
-implementation_notes: "Reframes MetaSystem's tool/skill design philosophy. Tool descriptions should make the right tool the obvious choice, not just the available one."
-category: "Tool Integration"
-evidence_strength: "Medium (practitioner-documented)"
-adoption_status: "Not Yet Started"
-proposer_priority: "P2 (Design Required)"
+name: Non-Deterministic Tool Contract Model
+summary: Tools for agents represent a fundamentally different contract than traditional APIs — the agent chooses whether to use a tool and how to interpret its response, requiring design for persuasion
+  rather than specification.
+implementation_notes: Reframes MetaSystem's tool/skill design philosophy. Tool descriptions should make the right tool the obvious choice, not just the available one.
+category: Tool Integration
+evidence_strength: Medium (practitioner-documented)
+adoption_status: Not Yet Started
+proposer_priority: P2 (Design Required)
 applicability:
-  - "S3 (Claude Code Build)"
-  - "General / Cross-System"
+- S3 (Claude Code Build)
+- General / Cross-System
 adopted_in: []
 sources:
-  - "anthropic-writing-effective-tools-for-agents.md"
+- anthropic-writing-effective-tools-for-agents.md
 related_findings: []
 proposals: null
-date_discovered: "2026-04-09"
-last_updated: "2026-04-09"
-pipeline_status: "synthesized"
+date_discovered: '2026-04-09'
+last_updated: '2026-04-09'
+pipeline_status: synthesized
 consumed_by:
-  - "designing-agent-tools.md"
+- designing-agent-tools.md
 ---
 
 ## What It Is
