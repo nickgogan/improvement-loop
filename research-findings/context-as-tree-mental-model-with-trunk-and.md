@@ -7,7 +7,7 @@ implementation_notes: null
 category: Context Engineering
 evidence_strength: Medium (practitioner-documented)
 adoption_status: Not Yet Started
-proposer_priority: null
+proposer_priority: P3
 applicability:
 - S3 (Claude Code Build)
 adopted_in: []
@@ -15,7 +15,7 @@ sources:
 - claude-code-works-better-when-you-do-this.md
 proposals: []
 date_discovered: '2026-03-22'
-last_updated: 2026-04-08
+last_updated: '2026-04-19'
 related_findings:
 - file: ace-agentic-context-engineering-evolving-playbook.md
   rel: same-problem

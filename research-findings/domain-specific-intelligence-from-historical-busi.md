@@ -7,7 +7,7 @@ implementation_notes: null
 category: Context Engineering
 evidence_strength: Medium (practitioner-documented)
 adoption_status: Not Yet Started
-proposer_priority: null
+proposer_priority: P3
 applicability:
 - Perplexity Skills
 adopted_in: null
@@ -15,7 +15,7 @@ sources:
 - most-people-build-claude-skills-wrong-heres-what-w.md
 proposals: null
 date_discovered: '2026-03-22'
-last_updated: '2026-04-07'
+last_updated: '2026-04-19'
 pipeline_status: raw
 consumed_by: []
 ---

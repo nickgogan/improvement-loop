@@ -7,7 +7,7 @@ implementation_notes: null
 category: Context Engineering
 evidence_strength: Strong (production-tested)
 adoption_status: Partially Adopted
-proposer_priority: null
+proposer_priority: P2
 applicability:
 - S3 (Claude Code Build)
 adopted_in:
@@ -16,7 +16,7 @@ sources:
 - four-system-separation-session-research.md
 proposals: null
 date_discovered: '2026-03-16'
-last_updated: 2026-04-08
+last_updated: '2026-04-19'
 related_findings:
 - file: context-file-instruction-bloat-eth-zurich.md
   rel: same-problem
