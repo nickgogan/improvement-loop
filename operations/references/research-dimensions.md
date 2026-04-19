@@ -1,7 +1,7 @@
 ---
 name: Research Dimensions
-description: Active query registry for the ten research dimensions. Read by research-loop at scan start. Updated at scan end with query refinements.
-last_updated: "2026-04-07"
+description: Active query registry for the eleven research dimensions. Read by research-loop at scan start. Updated at scan end with query refinements.
+last_updated: "2026-04-19"
 ---
 
 # Research Dimensions
@@ -211,3 +211,28 @@ This file is the **active query source** for the research-loop skill. The skill 
 - `agent persona identity language model`
 - `agent initialization context architecture`
 - `cognitive agent identity persistence`
+
+---
+
+## Dimension 11: Agentic OS
+
+**What to search for:**
+- Personal knowledge management with AI agents (second brain, vault-as-OS)
+- Obsidian + AI agent integration patterns (CLI, terminal plugins, graph views)
+- Scheduled agent tasks for life/business operations (morning briefs, meeting transcript ingestion, analytics rollups)
+- File-based personal OS architecture (folder structure, index files, CLAUDE.md as routing layer)
+- Context infrastructure maturity models (chat → projects → skills → file access → second brain → business OS)
+- Team context sharing and permission patterns (sync, relay plugins, access control)
+- Experiment/ritual tracking with agent assistance
+- Daily routine automation and habit-tracking workflows
+
+**Web queries:**
+- `AI agent personal OS second brain [current year]`
+- `obsidian claude code knowledge management workflow [current year]`
+- `agentic business OS scheduled tasks automation [current year]`
+- `personal productivity AI agent operations [current year]`
+
+**arXiv queries:**
+- `personal knowledge management AI agent`
+- `AI assistant daily workflow automation`
+- `human AI collaborative knowledge system`
