@@ -59,7 +59,7 @@ The Identifier thinks like a strict classifier — mechanical, rubric-first, con
 | Path | Purpose |
 |------|---------|
 | `systems/improvement-loop/research-findings/` | Input — findings to classify |
-| `systems/improvement-loop/operations/knowledge/form-classification-rubric.md` | Decision spec — form classification criteria |
+| `systems/improvement-loop/operations/references/form-classification-rubric.md` | Decision spec — form classification criteria |
 | `systems/improvement-loop/extracts/` | Dedup check — skip already-extracted findings |
 | `systems/improvement-loop/operations/pattern-identification-reports/` | Output — identification reports |
 
@@ -97,7 +97,7 @@ Format each finding as shown in the subagent prompt template's "Findings to Clas
 
 ### Step 2: Load Classification Context
 
-Read the rubric: `systems/improvement-loop/operations/knowledge/form-classification-rubric.md`. Extract §1 through §5 inclusive (Pattern, Skill, Rule, Template, Agent). Stop before the "Open questions" section — the subagents do not need the open questions, schema drift, or calibration sections. The extracted content will be inserted into the subagent prompt where the `[EMBED]` directive appears.
+Read the rubric: `systems/improvement-loop/operations/references/form-classification-rubric.md`. Extract §1 through §5 inclusive (Pattern, Skill, Rule, Template, Agent). Stop before the "Open questions" section — the subagents do not need the open questions, schema drift, or calibration sections. The extracted content will be inserted into the subagent prompt where the `[EMBED]` directive appears.
 
 ### Step 3: Batch & Classify (Sonnet Subagents)
 
@@ -319,7 +319,7 @@ Next:
 
 ### Step 6: Guide Cluster Check (DD-81)
 
-After classification, check each **pattern-classified** finding against the guide routing table at `systems/improvement-loop/operations/knowledge/guide-routing-table.md`:
+After classification, check each **pattern-classified** finding against the guide routing table at `systems/improvement-loop/operations/references/guide-routing-table.md`:
 
 1. Read the routing table.
 2. For each pattern finding, match its `category` to a research dimension, then look up the dimension's primary guide cluster.

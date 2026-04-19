@@ -80,7 +80,7 @@ Run `/finding-crosslink` to connect the 21 new Pass 2 findings + any new upstrea
 - **Start by reading `PROGRESS.md`** — this is the authoritative session history and current state. Then read this handoff prompt for session-specific instructions.
 - Read `CLAUDE.md` and `systems/improvement-loop/CLAUDE.md` before starting work.
 - **Full execution allowed** — can create/edit findings, update indexes, modify source files, create source entries.
-- **New findings use 10-dimension category set.** See `systems/improvement-loop/operations/knowledge/research-dimensions.md`.
+- **New findings use 10-dimension category set.** See `systems/improvement-loop/operations/references/research-dimensions.md`.
 - **New findings include `related_findings: []`** in frontmatter.
 - Do NOT update PROGRESS.md until session end (governance rule).
 - Do NOT run `/research-proposer` — deferred to a dedicated session.
@@ -92,7 +92,7 @@ Run `/finding-crosslink` to connect the 21 new Pass 2 findings + any new upstrea
 |------|---------|
 | `PROGRESS.md` | Full session history and current focus |
 | `systems/improvement-loop/CLAUDE.md` | IL system identity, Researcher persona, pipeline, constraints |
-| `systems/improvement-loop/operations/knowledge/research-dimensions.md` | Current 10 dimensions |
+| `systems/improvement-loop/operations/references/research-dimensions.md` | Current 10 dimensions |
 | `.claude/skills/research-loop/SKILL.md` | Research extraction procedure with two-pass model |
 | `.claude/skills/finding-crosslink/SKILL.md` | Cross-link detection procedure (4 relationship types) |
 | `systems/improvement-loop/watched-libraries/` | Current 7 watched-library entries |

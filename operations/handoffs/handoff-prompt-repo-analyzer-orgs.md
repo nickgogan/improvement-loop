@@ -70,7 +70,7 @@ Then run:
 | Existing analyses | `systems/improvement-loop/watched-libraries/analysis/` |
 | GSD analysis | `systems/improvement-loop/watched-libraries/analysis/gsd-analysis.md` |
 | Superpowers analysis | `systems/improvement-loop/watched-libraries/analysis/superpowers-analysis.md` |
-| Research dimensions | `systems/improvement-loop/operations/knowledge/research-dimensions.md` |
+| Research dimensions | `systems/improvement-loop/operations/references/research-dimensions.md` |
 | Research findings | `systems/improvement-loop/research-findings/` |
 | Repo analyzer skill | `.claude/skills/repo-analyzer/SKILL.md` |
 | Promote findings skill | `.claude/skills/promote-findings/SKILL.md` |

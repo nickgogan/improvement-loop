@@ -171,7 +171,7 @@ url: "https://docs.anthropic.com"
 
 Every scan covers ten dimensions mapping to concrete aspects of agent system design: **Context Engineering, Model, Prompt, Tools, Intent, Orchestration, Evaluation, Sandboxing, Governance, and Agent Design**.
 
-**Active queries live in an external registry:** `systems/improvement-loop/operations/knowledge/research-dimensions.md`. The skill reads this file at Step 0 and proposes query refinements at Step 6. To steer future scans, edit the registry — no need to modify this skill definition.
+**Active queries live in an external registry:** `systems/improvement-loop/operations/references/research-dimensions.md`. The skill reads this file at Step 0 and proposes query refinements at Step 6. To steer future scans, edit the registry — no need to modify this skill definition.
 
 The registry contains, for each dimension: what to search for, web queries, and arXiv queries (where applicable). If the registry file is missing or unreadable, fall back to the dimension descriptions and sample queries documented in the registry's initial version (committed 2026-04-07).
 
@@ -209,7 +209,7 @@ When the user provides URLs to process:
 
 ### Step 0: Read Context Files
 
-1. Use `Read` to read `systems/improvement-loop/operations/knowledge/research-dimensions.md` — the active query registry. This tells you the current dimensions, what to search for, and the latest queries.
+1. Use `Read` to read `systems/improvement-loop/operations/references/research-dimensions.md` — the active query registry. This tells you the current dimensions, what to search for, and the latest queries.
 2. Use `Read` to read `systems/improvement-loop/operations/next-scan-notes.md` — review the **Next Scan Notes** section. Some provided URLs may directly address items flagged in previous scans.
 
 ### Step 1: Create Source Entries
@@ -326,7 +326,7 @@ Triggered by phrases like `"run arxiv scan"`, `"search arxiv for papers"`, `"sca
 
 ### Step 0: Read Context Files
 
-1. Use `Read` to read `systems/improvement-loop/operations/knowledge/research-dimensions.md` — the active query registry. Use the arXiv queries listed under each dimension.
+1. Use `Read` to read `systems/improvement-loop/operations/references/research-dimensions.md` — the active query registry. Use the arXiv queries listed under each dimension.
 2. Use `Read` to read `systems/improvement-loop/operations/next-scan-notes.md` for any paper topics or authors flagged from the previous run.
 
 ### Step 1: Determine Scope
@@ -397,7 +397,7 @@ Append an `## arXiv Scan` section to the current delta report (or create a stand
 
 **Update next-scan-notes:** Use `Edit` to update `systems/improvement-loop/operations/next-scan-notes.md` with any arXiv-specific items to carry forward (authors to track, preprints to revisit when published, emerging sub-fields gaining traction).
 
-**Refine arXiv queries:** Review the arXiv queries in `systems/improvement-loop/operations/knowledge/research-dimensions.md` and use `Edit` to refine them based on what this scan revealed — add queries for emerging sub-fields, retire queries that return noise, sharpen terminology. Update the `last_updated` field in the frontmatter.
+**Refine arXiv queries:** Review the arXiv queries in `systems/improvement-loop/operations/references/research-dimensions.md` and use `Edit` to refine them based on what this scan revealed — add queries for emerging sub-fields, retire queries that return noise, sharpen terminology. Update the `last_updated` field in the frontmatter.
 
 ---
 
@@ -407,7 +407,7 @@ For scheduled scans or on-demand "scan for new patterns" requests:
 
 ### Step 0: Read Context Files
 
-1. Use `Read` to read `systems/improvement-loop/operations/knowledge/research-dimensions.md` — the active query registry. This is your authoritative source for what to search and which queries to use. The dimensions and queries in this file may have been refined by previous scans.
+1. Use `Read` to read `systems/improvement-loop/operations/references/research-dimensions.md` — the active query registry. This is your authoritative source for what to search and which queries to use. The dimensions and queries in this file may have been refined by previous scans.
 2. Use `Read` to read `systems/improvement-loop/operations/next-scan-notes.md` — review the **Next Scan Notes** section. This contains emerging trends, upcoming releases, and specific items flagged for investigation from the previous run. These are operational instructions from the previous research agent.
 
 ### Step 1: Load Current State
@@ -495,7 +495,7 @@ Save a local delta report to `systems/improvement-loop/operations/research-repor
 - Specific items from the previous Next Scan Notes that were NOT resolved (carry forward)
 - Any items that WERE resolved (remove or note as addressed)
 
-**Refine the query registry:** Review `systems/improvement-loop/operations/knowledge/research-dimensions.md` and use `Edit` to propose refinements based on what this scan revealed:
+**Refine the query registry:** Review `systems/improvement-loop/operations/references/research-dimensions.md` and use `Edit` to propose refinements based on what this scan revealed:
 - **Add queries** that would have surfaced findings you discovered indirectly (e.g., through a tangential source)
 - **Retire queries** that consistently return noise or outdated results
 - **Sharpen queries** where the current phrasing misses the target (too broad, wrong terminology)

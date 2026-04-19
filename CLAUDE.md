@@ -50,7 +50,7 @@ For Codifier and Librarian dispositions, read the agent definition files in `age
 | `feedback/` | Feedback items for improving the IL system |
 | `archive/improvement-proposals/` | Archived — 5 historical proposals from session 6, superseded by DD-80 pipeline |
 | `operations/` | Loop reports, handoff prompts, next-scan-notes, system log |
-| `operations/knowledge/` | Research dimensions registry (`research-dimensions.md`) |
+| `operations/references/` | Research dimensions registry (`research-dimensions.md`) |
 | `project-management/` | Design Decisions and Implementation Backlog items |
 
 Each directory contains an `_index.md` catalog for Obsidian navigation and agent discovery.
@@ -131,7 +131,7 @@ The Librarian uses Read/Glob/Grep tools directly to navigate the KB. No dedicate
 | Read/write authorities | `research-authorities/*.md` | Read/Write/Edit tools |
 | Read watched libraries | `watched-libraries/*.md` | Read tool |
 | Read proposals (Researcher) | `improvement-proposals/*.md` | Read tool only |
-| Read research dimensions | `operations/knowledge/research-dimensions.md` | Read tool |
+| Read research dimensions | `operations/references/research-dimensions.md` | Read tool |
 | Read next-scan-notes | `operations/next-scan-notes.md` | Read tool |
 | Read IL Design Decisions | `project-management/design-decisions/DD-XX.md` | Read tool |
 | Read IL IB items | `project-management/implementation-backlog/IB-XX.md` | Read tool |
@@ -148,7 +148,7 @@ The Librarian uses Read/Glob/Grep tools directly to navigate the KB. No dedicate
 |------|---------------|
 | Current session state and focus | `PROGRESS.md` |
 | Research extraction procedure | `.claude/skills/research-loop/SKILL.md` |
-| Research dimension queries | `operations/knowledge/research-dimensions.md` |
+| Research dimension queries | `operations/references/research-dimensions.md` |
 | Scan carry-forward notes | `operations/next-scan-notes.md` |
 | Previous delta reports | `operations/research-reports/` |
 | Frontmatter schema for all entries | `../../_schema.yaml` |

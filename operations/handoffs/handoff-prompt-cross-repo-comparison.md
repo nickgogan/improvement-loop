@@ -47,7 +47,7 @@ Run `/repo-analyzer --compare` to produce `cross-repo-comparison.md` across all 
 | Paperclip analysis | `systems/improvement-loop/watched-libraries/analysis/paperclip-analysis.md` |
 | gstack analysis | `systems/improvement-loop/watched-libraries/analysis/gstack-analysis.md` |
 | mem0 analysis | `systems/improvement-loop/watched-libraries/analysis/mem0-analysis.md` |
-| Research dimensions | `systems/improvement-loop/operations/knowledge/research-dimensions.md` |
+| Research dimensions | `systems/improvement-loop/operations/references/research-dimensions.md` |
 | Repo analyzer skill | `.claude/skills/repo-analyzer/SKILL.md` |
 | Repo cache (ephemeral) | `/tmp/metasystem-repo-cache/` |
 

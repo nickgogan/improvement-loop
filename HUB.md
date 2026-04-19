@@ -91,8 +91,8 @@ SORT file.name ASC
 
 | Resource | Path |
 |----------|------|
-| Guide Routing Table | [[operations/knowledge/guide-routing-table]] |
-| Research Dimensions | [[operations/knowledge/research-dimensions]] |
+| Guide Routing Table | [[operations/references/guide-routing-table]] |
+| Research Dimensions | [[operations/references/research-dimensions]] |
 | Handoff Protocol | [[agents/handoff-protocol]] |
 | IL CLAUDE.md | [[CLAUDE]] |
 | Research Reports | `operations/research-reports/` |

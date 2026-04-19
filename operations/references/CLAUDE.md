@@ -1,6 +1,6 @@
-# Improvement Loop — Knowledge
+# Improvement Loop — References
 
-Durable reference material for how the Improvement Loop system operates. Not session artifacts, not governance — system knowledge.
+Durable reference material for how the Improvement Loop system operates. Not session artifacts, not governance — operational references.
 
 ## What belongs here
 

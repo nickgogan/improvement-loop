@@ -127,7 +127,7 @@ Sessions 17-21 are in the root PROGRESS.md. Summary of sessions 22-28:
 - **Session 25** — Full P1 extraction: 75 artifacts. Pipeline redesigned (DD-81): patterns → `/synthesize-guide`, non-patterns → `/extract-artifacts`. Guide routing table created with 8 clusters (G1-G8).
 - **Session 26** — All 8 guide clusters synthesized (G1-G8). 70 findings consumed, ~18,600 words. Cross-reference pass: 27 inter-guide references added.
 - **Session 27** — P2 identification complete: 120 findings classified. G9 (Governance) and G10 (Agent Design) candidate clusters detected. Operations directories restructured.
-- **Session 28** — P2 non-pattern extraction: 19 artifacts staged. `extracted-artifacts/` → `extracts/`, `knowledge/` → `operations/knowledge/`. 2-headed agent architecture proposed (Researcher + Codifier), deferred.
+- **Session 28** — P2 non-pattern extraction: 19 artifacts staged. `extracted-artifacts/` → `extracts/`, `knowledge/` → `operations/references/`. 2-headed agent architecture proposed (Researcher + Codifier), deferred.
 
 ## KB Totals (as of session 28)
 
@@ -138,9 +138,9 @@ Sessions 17-21 are in the root PROGRESS.md. Summary of sessions 22-28:
 | Entity | Path |
 |--------|------|
 | Staged extracts | `extracts/` |
-| Guide routing table | `operations/knowledge/guide-routing-table.md` |
-| Research dimensions | `operations/knowledge/research-dimensions.md` |
-| Form classification rubric | `operations/knowledge/form-classification-rubric.md` |
+| Guide routing table | `operations/references/guide-routing-table.md` |
+| Research dimensions | `operations/references/research-dimensions.md` |
+| Form classification rubric | `operations/references/form-classification-rubric.md` |
 | P2 identification report | `operations/pattern-identification-reports/2026-04-19-identification-report-4.md` |
 | Research findings | `research-findings/` |
 | Watched libraries registry | `watched-libraries/_index.md` |

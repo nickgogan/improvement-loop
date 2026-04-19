@@ -22,7 +22,7 @@ Hand-classified reference set for Form Router calibration. **Target: 50 findings
 
 Purpose: (a) stress-test the rubric at real volume, surface gaps, amend the rubric in place; (b) derive logprob thresholds for `HIGH` / `MEDIUM` / `LOW` confidence once automated; (c) serve as ground-truth for Router regression testing.
 
-**Source rubric:** [[form-classification-rubric]] (in `systems/improvement-loop/operations/knowledge/`)
+**Source rubric:** [[form-classification-rubric]] (in `systems/improvement-loop/operations/references/`)
 
 **Status:** complete. 50 findings classified across 4 batches. 2 rubric amendments applied.
 

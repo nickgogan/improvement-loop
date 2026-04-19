@@ -56,7 +56,7 @@ Ground the design in real findings — pick 3-4 P1 findings from the KB and walk
 |--------|------|
 | Research loop skill | `.claude/skills/research-loop/SKILL.md` |
 | Research proposer skill | `.claude/skills/research-proposer/SKILL.md` |
-| Research dimensions | `systems/improvement-loop/operations/knowledge/research-dimensions.md` |
+| Research dimensions | `systems/improvement-loop/operations/references/research-dimensions.md` |
 | Existing proposals | `systems/improvement-loop/improvement-proposals/` |
 | Capability type selection pattern | `systems/meta-system/knowledge/patterns/capability-type-selection.md` |
 | Existing codified patterns | `systems/meta-system/knowledge/patterns/` |

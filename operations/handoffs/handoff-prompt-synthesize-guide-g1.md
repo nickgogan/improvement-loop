@@ -46,7 +46,7 @@ Run `/synthesize-guide` on Guide Cluster G1 ("Writing Agent Specifications") to 
 - **Read before building.** Start with `PROGRESS.md` (session 25 entry), then read the `/synthesize-guide` skill at `.claude/skills/synthesize-guide/SKILL.md`.
 - **Execution allowed.** Edit files, run skills, update vault.
 - **Do NOT file new DDs.** DD-75-81 are fresh. Surface candidates in conversation if needed.
-- **Guide routing table is authoritative.** Read `systems/improvement-loop/operations/knowledge/guide-routing-table.md` for cluster definitions and routing rules.
+- **Guide routing table is authoritative.** Read `systems/improvement-loop/operations/references/guide-routing-table.md` for cluster definitions and routing rules.
 - **Stage, don't deploy.** Write to `extracts/guides/`, not to `meta-system/knowledge/guides/`.
 
 ## KEY REFERENCES
@@ -54,8 +54,8 @@ Run `/synthesize-guide` on Guide Cluster G1 ("Writing Agent Specifications") to 
 | Entity | Path |
 |---|---|
 | /synthesize-guide skill | `.claude/skills/synthesize-guide/SKILL.md` |
-| Guide routing table | `systems/improvement-loop/operations/knowledge/guide-routing-table.md` |
-| Research dimensions | `systems/improvement-loop/operations/knowledge/research-dimensions.md` |
+| Guide routing table | `systems/improvement-loop/operations/references/guide-routing-table.md` |
+| Research dimensions | `systems/improvement-loop/operations/references/research-dimensions.md` |
 | Extracted artifacts index | `systems/improvement-loop/extracts/_index.md` |
 | Existing guides (format reference) | `systems/meta-system/knowledge/guides/` |
 | DD-81 (pipeline split) | `systems/improvement-loop/project-management/design-decisions/DD-81.md` |
@@ -71,7 +71,7 @@ Run `/synthesize-guide` on Guide Cluster G1 ("Writing Agent Specifications") to 
 1. **Full P1 extraction complete** — 75 artifacts extracted (70 patterns, 3 rules, 1 skill, 1 template). All source findings back-annotated. Index updated.
 2. **Pipeline redesigned (DD-81)** — Pattern findings bypass `/extract-artifacts` and route to `/synthesize-guide`. Non-patterns still extract directly. `/extract-artifacts` updated with pattern-skip filter.
 3. **`/synthesize-guide` skill written** — Full SKILL.md at `.claude/skills/synthesize-guide/SKILL.md`. Reads guide routing table at Step 0, produces guides with embedded templates, checks unrouted bucket.
-4. **Guide routing table created** — `systems/improvement-loop/operations/knowledge/guide-routing-table.md`. Maps 10 research dimensions to 8 guide clusters (G1-G8). Includes unrouted bucket with graduation trigger (5+ related findings), lifecycle stages, and trigger keywords.
+4. **Guide routing table created** — `systems/improvement-loop/operations/references/guide-routing-table.md`. Maps 10 research dimensions to 8 guide clusters (G1-G8). Includes unrouted bucket with graduation trigger (5+ related findings), lifecycle stages, and trigger keywords.
 5. **`/identify-artifacts` updated** — New Step 6 checks pattern findings against routing table, flags unroutable findings, detects candidate clusters.
 6. **Taxonomy is intentionally open** — 8 clusters from P1 data. P2 (~120 findings) will likely reveal new clusters. The unrouted bucket + graduation trigger ensures the taxonomy grows from evidence.
 

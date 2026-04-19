@@ -27,7 +27,7 @@ Build the `/extract-artifacts` skill (IB-147). This skill scans codified artifac
 
 ## RULES
 
-- **Read before building.** Start with `PROGRESS.md` (session 22 entry), then the rubric at `systems/improvement-loop/operations/knowledge/form-classification-rubric.md` (especially the calibration findings section and DD table). Those two files provide full context.
+- **Read before building.** Start with `PROGRESS.md` (session 22 entry), then the rubric at `systems/improvement-loop/operations/references/form-classification-rubric.md` (especially the calibration findings section and DD table). Those two files provide full context.
 - **Execution allowed.** Create files, build the skill, make vault changes.
 - **Use existing skill patterns.** Read 2-3 existing skills in `.claude/skills/` for the SKILL.md format and structure before writing.
 - **DD-77 is the design constraint.** The skill operates on codified artifact bodies in `meta-system/knowledge/`, not on Router metadata. It harvests secondary forms from already-codified patterns.
@@ -39,7 +39,7 @@ Build the `/extract-artifacts` skill (IB-147). This skill scans codified artifac
 
 | Entity | Path |
 |---|---|
-| Rubric (with calibration findings) | `systems/improvement-loop/operations/knowledge/form-classification-rubric.md` |
+| Rubric (with calibration findings) | `systems/improvement-loop/operations/references/form-classification-rubric.md` |
 | Calibration set (co-occurrence data) | `systems/improvement-loop/operations/loop-reports/2026-04-11-router-calibration-set.md` |
 | Prior session summary | `PROGRESS.md` session 22 entry |
 | DD-77 (single-form, /extract-artifacts delegation) | `systems/improvement-loop/project-management/design-decisions/DD-77.md` |

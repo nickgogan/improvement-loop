@@ -16,7 +16,7 @@ Review existing research findings after a dimension change and reclassify or spl
 
 ## When to Use This Skill
 
-- A new dimension has been added to `systems/improvement-loop/operations/knowledge/research-dimensions.md`
+- A new dimension has been added to `systems/improvement-loop/operations/references/research-dimensions.md`
 - An existing dimension has been split or renamed
 - The category distribution across findings feels unbalanced or forced
 - Periodic audit of category accuracy (e.g., after a large batch of findings)
@@ -25,7 +25,7 @@ Review existing research findings after a dimension change and reclassify or spl
 
 ### Step 0: Load Context
 
-1. Read `systems/improvement-loop/operations/knowledge/research-dimensions.md` — get the full set of dimensions and their "What to search for" descriptions. These descriptions are the classification rubric.
+1. Read `systems/improvement-loop/operations/references/research-dimensions.md` — get the full set of dimensions and their "What to search for" descriptions. These descriptions are the classification rubric.
 2. Identify the **target dimension(s)** — either from the user's argument or by diffing against the last known dimension set. If the user specifies a dimension name, focus on that one. If not, evaluate all dimensions.
 
 ### Step 1: Scan Findings

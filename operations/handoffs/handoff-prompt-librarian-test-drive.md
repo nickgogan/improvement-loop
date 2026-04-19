@@ -40,7 +40,7 @@ Nick wants to ask a bunch of questions about overall MetaSystem design and indiv
 |---|---|
 | Librarian engine definition | `.claude/agents/librarian.md` |
 | Librarian full spec | `systems/improvement-loop/agents/librarian/agent.md` |
-| Guide routing table | `systems/improvement-loop/operations/knowledge/guide-routing-table.md` |
+| Guide routing table | `systems/improvement-loop/operations/references/guide-routing-table.md` |
 | All 11 guides | `systems/improvement-loop/extracts/guides/` |
 | IL CLAUDE.md | `systems/improvement-loop/CLAUDE.md` |
 | Meta-system CLAUDE.md | `systems/meta-system/CLAUDE.md` |

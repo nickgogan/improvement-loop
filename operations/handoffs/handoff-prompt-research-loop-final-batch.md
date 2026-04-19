@@ -39,7 +39,7 @@ Nick will provide the source URLs at the start of the session.
 | Entity | Path |
 |--------|------|
 | Progress file (scoped) | `systems/improvement-loop/PROGRESS.md` |
-| Research dimensions | `systems/improvement-loop/operations/knowledge/research-dimensions.md` |
+| Research dimensions | `systems/improvement-loop/operations/references/research-dimensions.md` |
 | Research findings | `systems/improvement-loop/research-findings/` |
 | Research sources | `systems/improvement-loop/research-sources/` |
 | Research authorities | `systems/improvement-loop/research-authorities/` |

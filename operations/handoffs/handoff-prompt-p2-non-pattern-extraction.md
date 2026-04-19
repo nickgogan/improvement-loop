@@ -47,7 +47,7 @@ Extract the 20 non-pattern P2 findings into staged artifacts using `/extract-art
 |---|---|
 | P2 identification report | `systems/improvement-loop/operations/pattern-identification-reports/2026-04-19-identification-report-4.md` |
 | /extract-artifacts skill | `.claude/skills/extract-artifacts/SKILL.md` |
-| Form classification rubric | `systems/improvement-loop/operations/knowledge/form-classification-rubric.md` |
+| Form classification rubric | `systems/improvement-loop/operations/references/form-classification-rubric.md` |
 | Extracted artifacts staging | `systems/improvement-loop/extracts/` |
 | Pipeline guide | `systems/meta-system/knowledge/guides/research-to-codification-pipeline.md` |
 

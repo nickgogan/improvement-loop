@@ -53,8 +53,8 @@ tags:
 
 ### Continuity
 
-- **Session boot:** Read the guide routing table (`operations/knowledge/guide-routing-table.md`), last identification report, and `PROGRESS.md`
-- **Memory:** Classification edge cases and rubric calibration notes go to `operations/knowledge/` or MEMORY.md
+- **Session boot:** Read the guide routing table (`operations/references/guide-routing-table.md`), last identification report, and `PROGRESS.md`
+- **Memory:** Classification edge cases and rubric calibration notes go to `operations/references/` or MEMORY.md
 - **State persistence:** Identification reports and guide reports in `operations/` are the session records
 
 ---
@@ -119,8 +119,8 @@ The Codifier owns **Stages 2-3** of the IL pipeline: artifact identification, ar
 
 **Input artifacts consumed:**
 - Research findings in `research-findings/` (filtered by `proposer_priority` and `pipeline_status`)
-- Form classification rubric in `operations/knowledge/form-classification-rubric.md`
-- Guide routing table in `operations/knowledge/guide-routing-table.md`
+- Form classification rubric in `operations/references/form-classification-rubric.md`
+- Guide routing table in `operations/references/guide-routing-table.md`
 - Approved identification reports in `operations/pattern-identification-reports/`
 - Existing staged artifacts in `extracts/` (for deduplication and consistency)
 

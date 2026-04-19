@@ -36,7 +36,7 @@ Nick is the architect and owner of MetaSystem. He makes design calls; you surfac
 | Entity | Path |
 |---|---|
 | /synthesize-guide skill | `.claude/skills/synthesize-guide/SKILL.md` |
-| Guide routing table | `systems/improvement-loop/operations/knowledge/guide-routing-table.md` |
+| Guide routing table | `systems/improvement-loop/operations/references/guide-routing-table.md` |
 | Staged guides | `systems/improvement-loop/extracts/guides/` |
 | Extracted artifacts index | `systems/improvement-loop/extracts/_index.md` |
 | Deployed guides (target) | `systems/meta-system/knowledge/guides/` |

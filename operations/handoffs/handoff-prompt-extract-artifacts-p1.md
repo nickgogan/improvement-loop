@@ -41,7 +41,7 @@ This is the first production run of `/extract-artifacts`. Expect to process find
 | Identification report (input) | `systems/improvement-loop/operations/identification-reports/2026-04-19-identification-report-3.md` |
 | Extract-artifacts skill | `.claude/skills/extract-artifacts/SKILL.md` |
 | Identify-artifacts skill | `.claude/skills/identify-artifacts/SKILL.md` |
-| Form classification rubric | `systems/improvement-loop/operations/knowledge/form-classification-rubric.md` |
+| Form classification rubric | `systems/improvement-loop/operations/references/form-classification-rubric.md` |
 | Extracted artifacts staging | `systems/improvement-loop/extracts/` |
 | DD-78 (ContractSpec) | `systems/improvement-loop/project-management/design-decisions/DD-78.md` |
 | DD-80 (pipeline simplification) | `systems/improvement-loop/project-management/design-decisions/DD-80.md` |

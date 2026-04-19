@@ -50,7 +50,7 @@ Promote remaining findings candidates from repo-analyzer analysis docs and the c
 | Research Findings KB | `systems/improvement-loop/research-findings/` |
 | Findings index | `systems/improvement-loop/research-findings/_index.md` |
 | Promote-findings skill | `.claude/skills/promote-findings/SKILL.md` |
-| Research dimensions | `systems/improvement-loop/operations/knowledge/research-dimensions.md` |
+| Research dimensions | `systems/improvement-loop/operations/references/research-dimensions.md` |
 
 ## CONTEXT FROM PRIOR SESSION
 

@@ -56,8 +56,8 @@ The Guide Author thinks like a technical writer and practitioner — not a resea
 | Path | Purpose |
 |------|---------|
 | `systems/improvement-loop/research-findings/` | Input — source finding files |
-| `systems/improvement-loop/operations/knowledge/research-dimensions.md` | Input — dimension definitions for `--dimension` mode |
-| `systems/improvement-loop/operations/knowledge/guide-routing-table.md` | Input — dimension→guide mapping, unrouted bucket, trigger keywords |
+| `systems/improvement-loop/operations/references/research-dimensions.md` | Input — dimension definitions for `--dimension` mode |
+| `systems/improvement-loop/operations/references/guide-routing-table.md` | Input — dimension→guide mapping, unrouted bucket, trigger keywords |
 | `systems/improvement-loop/extracts/guides/` | Output — staged guide drafts |
 | `systems/improvement-loop/extracts/patterns/` | Reference — pattern artifacts from initial extraction (optional enrichment) |
 | `systems/meta-system/knowledge/guides/` | Reference — existing deployed guides (match format) |
@@ -68,7 +68,7 @@ The Guide Author thinks like a technical writer and practitioner — not a resea
 
 ### Step 0: Resolve Finding Set
 
-1. **Read the guide routing table** at `systems/improvement-loop/operations/knowledge/guide-routing-table.md`. This is the authoritative mapping between dimensions, guide clusters, findings, and **synthesis status** (last synthesized date, finding count at synthesis, output path, status).
+1. **Read the guide routing table** at `systems/improvement-loop/operations/references/guide-routing-table.md`. This is the authoritative mapping between dimensions, guide clusters, findings, and **synthesis status** (last synthesized date, finding count at synthesis, output path, status).
 
 2. **Check synthesis status.** If the target cluster has been synthesized before, report the prior run date, finding count at that time, and current finding count. If current count exceeds prior count by 3+, note that the guide is stale and should be re-synthesized. If the guide already exists and the finding count hasn't changed, confirm with the user before re-running.
 
@@ -182,7 +182,7 @@ contract:
 | [Guide Title](guides/guide-filename.md) | guide | [[finding-1]], [[finding-2]], ... | [date] | No |
 ```
 
-2. **Update the Synthesis Status table** in `systems/improvement-loop/operations/knowledge/guide-routing-table.md`. Set the cluster's row to: last synthesized date, finding count, output path, and status (`draft`). If re-synthesizing an existing guide, update the row in place.
+2. **Update the Synthesis Status table** in `systems/improvement-loop/operations/references/guide-routing-table.md`. Set the cluster's row to: last synthesized date, finding count, output path, and status (`draft`). If re-synthesizing an existing guide, update the row in place.
 
 3. **Cross-reference adjacent guides.** Check the Related Guides sections of other cluster guides for cross-references to add. If the new or updated guide connects to existing guides, add bidirectional Related Guides entries in both the new guide and the adjacent guides.
 

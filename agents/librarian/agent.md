@@ -135,8 +135,8 @@ These are noted as potential future work, not commitments. The Librarian operate
 - Staged guides in `extracts/guides/`
 - Staged artifacts in `extracts/{form}/`
 - Deployed artifacts in `meta-system/knowledge/`
-- Guide routing table in `operations/knowledge/guide-routing-table.md`
-- Research dimensions in `operations/knowledge/research-dimensions.md`
+- Guide routing table in `operations/references/guide-routing-table.md`
+- Research dimensions in `operations/references/research-dimensions.md`
 
 **Output artifacts produced:**
 - None. The Librarian produces conversational output, not files.

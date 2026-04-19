@@ -69,7 +69,7 @@ Read the user's question or topic. Determine:
 
 ### Step 1: Dimension Check
 
-Read `systems/improvement-loop/operations/knowledge/research-dimensions.md` and the guide routing table at `systems/improvement-loop/operations/knowledge/guide-routing-table.md`.
+Read `systems/improvement-loop/operations/references/research-dimensions.md` and the guide routing table at `systems/improvement-loop/operations/references/guide-routing-table.md`.
 
 **Check:** Does the topic fit one or more of the 10 active dimensions?
 

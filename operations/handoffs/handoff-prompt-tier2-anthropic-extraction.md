@@ -58,7 +58,7 @@ After extraction, update the `/watch-blogs` entries (remove dry-run state): upda
 | Triage report (has all URLs + pattern estimates) | `systems/improvement-loop/operations/loop-reports/2026-04-09-watch-blogs-triage.md` |
 | Research loop skill | `.claude/skills/research-loop/SKILL.md` |
 | Watch blogs skill | `.claude/skills/watch-blogs/SKILL.md` |
-| Research dimensions | `systems/improvement-loop/operations/knowledge/research-dimensions.md` |
+| Research dimensions | `systems/improvement-loop/operations/references/research-dimensions.md` |
 | Next scan notes | `systems/improvement-loop/operations/next-scan-notes.md` |
 | Watched blog: Anthropic Engineering | `systems/improvement-loop/watched-blogs/anthropic-engineering.md` |
 | Watched blog: Anthropic Research | `systems/improvement-loop/watched-blogs/anthropic-research.md` |

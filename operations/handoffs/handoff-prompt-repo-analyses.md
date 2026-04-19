@@ -72,7 +72,7 @@ Run `/promote-findings all` to promote candidates from all 5 new analysis docs. 
 | Analysis index | `systems/improvement-loop/watched-libraries/analysis/_index.md` |
 | GSD analysis (completed) | `systems/improvement-loop/watched-libraries/analysis/gsd-analysis.md` |
 | Superpowers analysis (completed) | `systems/improvement-loop/watched-libraries/analysis/superpowers-analysis.md` |
-| Research dimensions | `systems/improvement-loop/operations/knowledge/research-dimensions.md` |
+| Research dimensions | `systems/improvement-loop/operations/references/research-dimensions.md` |
 | Research findings KB | `systems/improvement-loop/research-findings/` |
 | Repo analyzer skill | `.claude/skills/repo-analyzer/SKILL.md` |
 | Promote findings skill | `.claude/skills/promote-findings/SKILL.md` |

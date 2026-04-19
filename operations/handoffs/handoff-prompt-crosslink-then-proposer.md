@@ -38,7 +38,7 @@ Two-part session:
 |--------|------|
 | Progress file (scoped) | `systems/improvement-loop/PROGRESS.md` |
 | Delta report (session 15) | `systems/improvement-loop/operations/loop-reports/2026-04-09-delta-report.md` |
-| Research dimensions | `systems/improvement-loop/operations/knowledge/research-dimensions.md` |
+| Research dimensions | `systems/improvement-loop/operations/references/research-dimensions.md` |
 | Research findings | `systems/improvement-loop/research-findings/` |
 | Findings index | `systems/improvement-loop/research-findings/_index.md` |
 | Research loop skill | `.claude/skills/research-loop/SKILL.md` |

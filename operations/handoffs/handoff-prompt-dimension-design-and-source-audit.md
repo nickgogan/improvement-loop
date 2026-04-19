@@ -25,7 +25,7 @@ Nick is the architect of MetaSystem — a governing layer for a Household Operat
 Nick suspects that agent internal architecture — identity, persona, soul files, memory topology, capability boundaries — may deserve its own research dimension. Currently these patterns are scattered across Context Engineering, Prompt Craft, and Memory Architecture.
 
 **Investigate:**
-1. Read the current 9 dimensions in `systems/improvement-loop/operations/knowledge/research-dimensions.md`. Understand what each covers.
+1. Read the current 9 dimensions in `systems/improvement-loop/operations/references/research-dimensions.md`. Understand what each covers.
 2. Search existing findings for agent design patterns: grep for terms like `soul`, `persona`, `identity`, `agent architecture`, `capability boundar`, `agent design`, `onboarding`, `boot sequence`, `SOUL.md`, `agents.md`.
 3. For each match, check its current category. Build a cluster map: which findings would move to "Agent Design" if it existed?
 4. Evaluate: is this cluster coherent enough to be a dimension? Or are the patterns better served by their current homes? Key test: would "Agent Design" have its own distinct search queries that don't overlap heavily with existing dimensions?
@@ -62,7 +62,7 @@ The 16 recent video sources had a 46.5% miss rate with summary-based extraction.
 |------|---------|
 | `PROGRESS.md` | Full session history and current focus |
 | `systems/improvement-loop/CLAUDE.md` | IL system identity, Researcher persona, pipeline, constraints |
-| `systems/improvement-loop/operations/knowledge/research-dimensions.md` | Current 9 dimensions — will be evaluated for expansion |
+| `systems/improvement-loop/operations/references/research-dimensions.md` | Current 9 dimensions — will be evaluated for expansion |
 | `.claude/skills/research-loop/SKILL.md` | Research extraction procedure with two-pass model |
 | `.claude/skills/dimension-rebalance/SKILL.md` | Rebalance skill — use if new dimension is approved |
 | `systems/improvement-loop/research-findings/_index.md` | Current findings catalog (176 entries) |

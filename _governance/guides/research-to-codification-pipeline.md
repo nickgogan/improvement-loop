@@ -74,7 +74,7 @@ Each classified finding gets:
 - Reason codes and rationale
 - Co-occurrence notes (secondary forms embedded in primary)
 
-**What happens here:** `/identify-artifacts` reads findings and classifies each into one of 5 forms using the rubric (`systems/improvement-loop/operations/knowledge/form-classification-rubric.md`). Classification is parallelized via Sonnet subagent batches. No artifact drafting — output is a structured report.
+**What happens here:** `/identify-artifacts` reads findings and classifies each into one of 5 forms using the rubric (`systems/improvement-loop/operations/references/form-classification-rubric.md`). Classification is parallelized via Sonnet subagent batches. No artifact drafting — output is a structured report.
 
 **Human gate:** Review the identification report. Set Status to APPROVED / REJECTED / REDIRECTED per finding. Redirect allows changing the assigned form before extraction.
 

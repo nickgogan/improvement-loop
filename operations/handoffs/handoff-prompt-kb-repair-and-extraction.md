@@ -79,7 +79,7 @@ After extraction is complete, run the finding-crosslink skill on the full KB to 
 
 - Read `CLAUDE.md` and `systems/improvement-loop/CLAUDE.md` before starting work.
 - **Full execution allowed** — can create/edit findings, update indexes, modify source files, run all skills.
-- **New findings use 10-dimension category set.** The 10th dimension is "Agent Design" — for findings about agent identity, persona, boot sequence, onboarding, or capability boundary definition. See `systems/improvement-loop/operations/knowledge/research-dimensions.md`.
+- **New findings use 10-dimension category set.** The 10th dimension is "Agent Design" — for findings about agent identity, persona, boot sequence, onboarding, or capability boundary definition. See `systems/improvement-loop/operations/references/research-dimensions.md`.
 - **New findings include `related_findings: []`** in frontmatter. Populate if obvious relationships are spotted during extraction; otherwise leave empty for the crosslink pass.
 - Do NOT update PROGRESS.md until session end (governance rule).
 - Do NOT run `/research-proposer` — deferred to a future session.
@@ -91,7 +91,7 @@ After extraction is complete, run the finding-crosslink skill on the full KB to 
 |------|---------|
 | `PROGRESS.md` | Full session history and current focus |
 | `systems/improvement-loop/CLAUDE.md` | IL system identity, Researcher persona, pipeline, constraints |
-| `systems/improvement-loop/operations/knowledge/research-dimensions.md` | Current 10 dimensions (including new Agent Design) |
+| `systems/improvement-loop/operations/references/research-dimensions.md` | Current 10 dimensions (including new Agent Design) |
 | `.claude/skills/research-loop/SKILL.md` | Research extraction procedure with two-pass model |
 | `.claude/skills/linkage-repair/SKILL.md` | Linkage repair skill — run first |
 | `.claude/skills/finding-crosslink/SKILL.md` | Cross-linking skill — run after extraction |

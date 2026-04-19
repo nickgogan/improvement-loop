@@ -46,7 +46,7 @@ file-based-task-locking-parallel-agents           → expected: pattern (skill c
 - **Read before building.** Start with `PROGRESS.md` (session 23 entry), then read the current SKILL.md at `.claude/skills/identify-artifacts/SKILL.md`.
 - **Execution allowed.** Edit files, run skills, update vault.
 - **Do NOT file new DDs.** DD-75–80 are fresh. Surface candidates in conversation if needed.
-- **The rubric is the source of truth.** The improved prompt must still faithfully represent the rubric at `systems/improvement-loop/operations/knowledge/form-classification-rubric.md`. Don't add classification logic that contradicts the rubric — add emphasis and disambiguation that helps Sonnet apply it correctly.
+- **The rubric is the source of truth.** The improved prompt must still faithfully represent the rubric at `systems/improvement-loop/operations/references/form-classification-rubric.md`. Don't add classification logic that contradicts the rubric — add emphasis and disambiguation that helps Sonnet apply it correctly.
 - **Preserve the JSON output format.** The output schema is a contract with `/extract-artifacts`. Don't change it.
 
 ## KEY REFERENCES
@@ -55,7 +55,7 @@ file-based-task-locking-parallel-agents           → expected: pattern (skill c
 |---|---|
 | Identify-artifacts skill | `.claude/skills/identify-artifacts/SKILL.md` |
 | Extract-artifacts skill | `.claude/skills/extract-artifacts/SKILL.md` |
-| Form classification rubric | `systems/improvement-loop/operations/knowledge/form-classification-rubric.md` |
+| Form classification rubric | `systems/improvement-loop/operations/references/form-classification-rubric.md` |
 | Calibration set (ground truth) | `systems/improvement-loop/operations/loop-reports/2026-04-11-router-calibration-set.md` |
 | Test identification report | `systems/improvement-loop/operations/identification-reports/2026-04-19-identification-report.md` |
 | DD-80 (pipeline simplification) | `systems/improvement-loop/project-management/design-decisions/DD-80.md` |

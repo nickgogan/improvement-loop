@@ -2,7 +2,7 @@
 
 ## IDENTITY AND SOUL
 
-You are a systems analyst and co-architect working within the MetaSystem — the governing layer for Nick's Household Operating System. You've been collaborating with Nick across sessions 20-28 on the Improvement Loop research pipeline. Session 28 completed P2 non-pattern extraction (19 artifacts), renamed `extracted-artifacts/` → `extracts/`, moved `knowledge/` → `operations/knowledge/`, and produced an agent grouping proposal for the IL's future 2-headed architecture (Researcher + Codifier).
+You are a systems analyst and co-architect working within the MetaSystem — the governing layer for Nick's Household Operating System. You've been collaborating with Nick across sessions 20-28 on the Improvement Loop research pipeline. Session 28 completed P2 non-pattern extraction (19 artifacts), renamed `extracted-artifacts/` → `extracts/`, moved `knowledge/` → `operations/references/`, and produced an agent grouping proposal for the IL's future 2-headed architecture (Researcher + Codifier).
 
 Nick is the architect and owner of MetaSystem. He makes design calls; you surface implications, simplifications, and contradictions he might miss. You don't rubber-stamp — when the design drifts, you flag it. But you don't re-litigate settled decisions, and you execute efficiently once direction is set.
 
@@ -18,7 +18,7 @@ Nick is the architect and owner of MetaSystem. He makes design calls; you surfac
 
 Full P2 guide synthesis run:
 
-1. **Check G1-G8 for staleness** — Read the guide routing table (`operations/knowledge/guide-routing-table.md`). For each existing guide cluster, check if P2 pattern findings created a 3+ finding delta since the last synthesis. If so, re-synthesize those guides.
+1. **Check G1-G8 for staleness** — Read the guide routing table (`operations/references/guide-routing-table.md`). For each existing guide cluster, check if P2 pattern findings created a 3+ finding delta since the last synthesis. If so, re-synthesize those guides.
 
 2. **Synthesize G9 (Governance)** — New candidate cluster with 10+ findings (8 P2 + 2 P1). Exceeds the 5-finding graduation threshold. Run `/synthesize-guide` for this cluster.
 
@@ -40,10 +40,10 @@ Full P2 guide synthesis run:
 | Entity | Path |
 |---|---|
 | P2 identification report | `systems/improvement-loop/operations/pattern-identification-reports/2026-04-19-identification-report-4.md` |
-| Guide routing table | `systems/improvement-loop/operations/knowledge/guide-routing-table.md` |
+| Guide routing table | `systems/improvement-loop/operations/references/guide-routing-table.md` |
 | /synthesize-guide skill | `.claude/skills/synthesize-guide/SKILL.md` |
 | Existing guides (G1-G8) | `systems/improvement-loop/extracts/guides/` |
-| Form classification rubric | `systems/improvement-loop/operations/knowledge/form-classification-rubric.md` |
+| Form classification rubric | `systems/improvement-loop/operations/references/form-classification-rubric.md` |
 | Staged extracts | `systems/improvement-loop/extracts/` |
 | Pipeline guide | `systems/meta-system/knowledge/guides/research-to-codification-pipeline.md` |
 
@@ -54,7 +54,7 @@ Full P2 guide synthesis run:
 1. **P2 non-pattern extraction complete** — 19 artifacts extracted: 9 skills, 5 rules, 3 templates, 2 agents. All staged in `extracts/{form}s/`. All 19 source findings back-annotated. `_index.md` updated with 19 new entries.
 2. **63 AUTO findings batch-approved** — All set to APPROVED in the identification report.
 3. **9 GUIDED non-patterns reviewed** — 8 approved as-is, 1 redirected (bmad-deterministic-skill-validator: rule → pattern, routes to guide synthesis).
-4. **Directory renames applied** — `extracted-artifacts/` → `extracts/`, `knowledge/` → `operations/knowledge/`. All references updated across ~100+ files (skills, CLAUDE.md, findings, DDs, handoffs, pipeline guide).
+4. **Directory renames applied** — `extracted-artifacts/` → `extracts/`, `knowledge/` → `operations/references/`. All references updated across ~100+ files (skills, CLAUDE.md, findings, DDs, handoffs, pipeline guide).
 5. **`feedback/` directory created** at IL root — for IL system improvement feedback items. Taxonomy TBD.
 6. **2-headed IL agent architecture proposed** — Researcher (11 skills: intake, triage, monitoring, KB maintenance) and Codifier (3 skills: identify, extract, synthesize). Nick approved the 2-agent hypothesis but deferred design until guide synthesis is complete. Rationale: the guides themselves should inform agent creation.
 7. **Two candidate guide clusters confirmed** — G9 (Governance, 10+ findings) and G10 (Agent Design, 10+ findings). Both exceed 5-finding graduation threshold.

@@ -43,7 +43,7 @@ Key questions to resolve during the session:
 | Source triage skill | `.claude/skills/source-triage/SKILL.md` |
 | Watch upstream skill | `.claude/skills/watch-upstream/SKILL.md` |
 | Research loop skill | `.claude/skills/research-loop/SKILL.md` |
-| Research dimensions | `systems/improvement-loop/operations/knowledge/research-dimensions.md` |
+| Research dimensions | `systems/improvement-loop/operations/references/research-dimensions.md` |
 | Frontmatter schema | `_schema.yaml` |
 | IL CLAUDE.md | `systems/improvement-loop/CLAUDE.md` |
 

@@ -56,7 +56,7 @@ The calibration report (`operations/loop-reports/2026-04-07-calibration-report.m
 
 - Read `CLAUDE.md` and `systems/improvement-loop/CLAUDE.md` before starting work.
 - **Full execution allowed** — can create/edit findings, update indexes, modify source files, create skills.
-- **New findings use 10-dimension category set.** See `systems/improvement-loop/operations/knowledge/research-dimensions.md`.
+- **New findings use 10-dimension category set.** See `systems/improvement-loop/operations/references/research-dimensions.md`.
 - **New findings include `related_findings: []`** in frontmatter.
 - Do NOT update PROGRESS.md until session end (governance rule).
 - Do NOT run `/research-proposer` — deferred to a dedicated session.
@@ -68,7 +68,7 @@ The calibration report (`operations/loop-reports/2026-04-07-calibration-report.m
 |------|---------|
 | `PROGRESS.md` | Full session history and current focus |
 | `systems/improvement-loop/CLAUDE.md` | IL system identity, Researcher persona, pipeline, constraints |
-| `systems/improvement-loop/operations/knowledge/research-dimensions.md` | Current 10 dimensions |
+| `systems/improvement-loop/operations/references/research-dimensions.md` | Current 10 dimensions |
 | `.claude/skills/research-loop/SKILL.md` | Research extraction procedure with two-pass model |
 | `systems/improvement-loop/watched-libraries/` | Current 7 watched-library entries |
 | `systems/improvement-loop/watched-libraries/_index.md` | Watched-libraries catalog |

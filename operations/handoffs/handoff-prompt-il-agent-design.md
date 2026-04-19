@@ -45,7 +45,7 @@ This is a consumption-layer agent (interface to the KB) vs. the Researcher and C
 
 | Entity | Path |
 |---|---|
-| Guide routing table | `systems/improvement-loop/operations/knowledge/guide-routing-table.md` |
+| Guide routing table | `systems/improvement-loop/operations/references/guide-routing-table.md` |
 | G10 — Agent Design Patterns | `systems/improvement-loop/extracts/guides/agent-design-patterns.md` |
 | G1 — Writing Agent Specifications | `systems/improvement-loop/extracts/guides/writing-agent-specifications.md` |
 | G3 — Agent Architecture Decisions | `systems/improvement-loop/extracts/guides/agent-architecture-decisions.md` |

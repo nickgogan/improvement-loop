@@ -366,7 +366,7 @@ dimensions_analyzed:
 
 ### Step 7b: Research Dimension Mapping (Dimension 6)
 
-1. Read the active research dimensions registry at `systems/improvement-loop/operations/knowledge/research-dimensions.md`.
+1. Read the active research dimensions registry at `systems/improvement-loop/operations/references/research-dimensions.md`.
 2. For each of the 10 dimensions, assess how relevant this repo's patterns are:
    - **High**: The repo has explicit, well-developed patterns that directly exemplify this dimension (e.g., a multi-agent orchestration framework is High for Orchestration).
    - **Medium**: The repo touches this dimension but it's not a primary focus (e.g., a tool framework that has some context management but isn't centered on it).
