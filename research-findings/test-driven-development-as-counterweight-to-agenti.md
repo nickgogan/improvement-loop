@@ -7,7 +7,7 @@ implementation_notes: null
 category: Evaluation
 evidence_strength: Strong (production-tested)
 adoption_status: Not Yet Started
-proposer_priority: null
+proposer_priority: P1
 applicability:
 - S3 (Claude Code Build)
 adopted_in: []
@@ -15,7 +15,7 @@ sources:
 - your-ai-coding-is-bad-heres-how-to-fix-it.md
 proposals: []
 date_discovered: '2026-03-22'
-last_updated: '2026-04-09'
+last_updated: '2026-04-19'
 related_findings:
 - file: ace-execution-feedback-no-labels-required.md
   rel: same-problem

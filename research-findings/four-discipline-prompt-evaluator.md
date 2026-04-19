@@ -7,7 +7,7 @@ implementation_notes: null
 category: Evaluation
 evidence_strength: Strong (production-tested)
 adoption_status: Already Adopted
-proposer_priority: null
+proposer_priority: Not Flagged
 applicability:
 - Perplexity Skills
 adopted_in:
@@ -17,7 +17,7 @@ sources:
 - anthropic-prompt-evaluation-framework.md
 proposals: []
 date_discovered: '2026-03-16'
-last_updated: '2026-04-08'
+last_updated: '2026-04-19'
 related_findings:
 - file: the-four-discipline-prompting-stack-nate-b-jones.md
   rel: extends

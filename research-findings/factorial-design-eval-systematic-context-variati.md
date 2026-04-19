@@ -7,7 +7,7 @@ implementation_notes: null
 category: Evaluation
 evidence_strength: Strong (production-tested)
 adoption_status: Not Yet Started
-proposer_priority: null
+proposer_priority: P1
 applicability:
 - General
 adopted_in: null
@@ -16,7 +16,7 @@ sources:
 - anthropic-infrastructure-noise-evals.md
 proposals: null
 date_discovered: '2026-03-22'
-last_updated: '2026-04-09'
+last_updated: '2026-04-19'
 related_findings:
 - file: success-rate-eval-over-binary-pass-fail.md
   rel: extends

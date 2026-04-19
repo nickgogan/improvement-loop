@@ -7,7 +7,7 @@ implementation_notes: null
 category: Evaluation
 evidence_strength: Strong (production-tested)
 adoption_status: Not Yet Started
-proposer_priority: null
+proposer_priority: P3
 applicability:
 - General
 adopted_in: null
@@ -15,7 +15,7 @@ sources:
 - chatgpt-health-identified-respiratory-failure-then.md
 proposals: null
 date_discovered: '2026-03-22'
-last_updated: 2026-04-08
+last_updated: '2026-04-19'
 related_findings:
 - file: acceptance-criteria-as-verifiable-eval-anchor.md
   rel: same-problem
