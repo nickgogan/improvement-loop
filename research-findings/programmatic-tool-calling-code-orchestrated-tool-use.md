@@ -13,6 +13,7 @@ applicability:
 adopted_in: []
 sources:
 - anthropic-advanced-tool-use.md
+- tastematter-concept-graph-mcp-ai-signal.md
 related_findings:
 - file: dynamic-tool-pool-assembly-transcript-compaction.md
   rel: extends
@@ -22,7 +23,7 @@ related_findings:
   rel: enables
 proposals: null
 date_discovered: '2026-04-09'
-last_updated: '2026-04-09'
+last_updated: '2026-04-20'
 pipeline_status: synthesized
 consumed_by:
 - designing-agent-tools.md
@@ -50,6 +51,9 @@ Could be combined with Tool Search Tool for discovery + execution pipeline. Erro
 
 ## Potential Failure Modes
 Extra code generation step adds latency for simple single-tool calls. Claude needs to write correct orchestration code -- bugs in generated code fail silently within the sandbox. Not beneficial when Claude needs all intermediates for reasoning (e.g., decision-making that depends on individual data points rather than aggregates).
+
+## Corroborating Evidence — 2026-04-20
+TasteMatter MCP server (practitioner-built, Cloudflare-originated) demonstrates the same pattern for knowledge graph access: rather than exposing a list of graph query tools, the agent writes code against the graph schema. The builder reports ~90% token reduction and describes this as the "core innovation" of the MCP server's design. This is a second independent practitioner confirming the pattern's token efficiency claims and generalizability beyond Anthropic's internal use cases.
 
 ## Extraction Note — 2026-04-19
 Extracted as **pattern**: [[programmatic-tool-calling-code-orchestrated-tool-use.md]] in `extracts/patterns/`

@@ -13,6 +13,7 @@ applicability:
 adopted_in: []
 sources:
 - anthropic-code-execution-with-mcp.md
+- tastematter-concept-graph-mcp-ai-signal.md
 related_findings:
 - file: dynamic-tool-pool-assembly-transcript-compaction.md
   rel: extends
@@ -28,7 +29,7 @@ related_findings:
   rel: same-problem
 proposals: null
 date_discovered: '2026-04-09'
-last_updated: '2026-04-19'
+last_updated: '2026-04-20'
 pipeline_status: synthesized
 consumed_by:
 - designing-agent-tools.md
@@ -56,6 +57,9 @@ Standardized filesystem layout for MCP-as-code-API servers. Caching of frequentl
 
 ## Potential Failure Modes
 Requires secure sandboxing, resource limits, and monitoring infrastructure -- adds operational overhead. Filesystem exploration adds latency vs. pre-loaded tools for simple, predictable workflows. Code execution introduces a new failure mode (bugs in generated orchestration code). Not all MCP servers may be easily restructured as filesystem hierarchies.
+
+## Corroborating Evidence — 2026-04-20
+TasteMatter MCP server applies the code-mode variant of this pattern to a knowledge graph: the MCP server exposes two tools (search + execute), the agent writes SQL-like code against the graph schema rather than enumerating query parameters, and intermediate graph data stays in the execution environment. The builder attributes the pattern to Cloudflare and reports ~90% content consumption reduction. This confirms the pattern generalizes beyond filesystem/tool-discovery contexts to any structured data store accessible via MCP.
 
 ## Extraction Note — 2026-04-19
 Extracted as **pattern**: [[progressive-tool-discovery-via-filesystem.md]] in `extracts/patterns/`

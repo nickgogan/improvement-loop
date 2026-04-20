@@ -13,13 +13,16 @@ applicability:
 adopted_in: []
 sources:
 - claude-codes-leak-changes-everything.md
+- interactive-html-artifacts-claude-code-bun.md
 proposals: []
 date_discovered: '2026-03-22'
-last_updated: '2026-04-19'
+last_updated: '2026-04-20'
 related_findings:
 - file: happy-engineering-mobile-claude-code-via-remote.md
   rel: same-problem
 - file: sender-allowlist-for-messaging-interface-security.md
+  rel: enables
+- file: bun-hot-reload-interactive-html-artifact-feedback-loop.md
   rel: enables
 pipeline_status: raw
 consumed_by: []
@@ -34,6 +37,9 @@ Removes the requirement to be at a desktop to dispatch long-running agent tasks.
 
 ## Why People Are Using It
 Humans already use Telegram/Discord to communicate with people; extending that to agents lowers the cognitive context-switch cost of delegating work. Multiple creators built third-party versions of this -- indicating strong unmet demand that Anthropic has now addressed officially.
+
+## Custom Channel Plugin: HTML Artifact as Live Frontend
+Beyond Telegram/Discord, the Channels feature supports building custom channel plugins. A practitioner used this to wire a local HTML artifact directly to Claude Code: the artifact runs on a local port (launched with `claude --dangerously-load-development-channels server:<name>`), users pin comments in the UI, and each pinned comment is automatically sent back to Claude Code as a new message — no clipboard export step required. Claude Code then queries MCP servers (e.g., PostHog, Stripe), updates the artifact file, and the browser hot-reloads. This creates a pattern where the artifact serves dual roles: operational dashboard (reading and exploring data) and conversational surface (editing the dashboard itself). The artifact becomes a custom frontend with Claude Code as the backend.
 
 ## Potential Alternatives
 OpenClaw/Claudebot (third-party Telegram wrappers, now largely superseded), Claude Dispatch for co-work, web-based agent dashboards, scheduled cron-triggered agents.
