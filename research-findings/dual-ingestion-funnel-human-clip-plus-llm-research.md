@@ -20,6 +20,8 @@ related_findings:
   rel: extends
 - file: obsidian-as-transparent-frontend-vs-rag-black-box.md
   rel: same-problem
+- file: context-infrastructure-seven-level-maturity-model.md
+  rel: enables
 proposals: null
 date_discovered: '2026-04-07'
 last_updated: '2026-04-07'

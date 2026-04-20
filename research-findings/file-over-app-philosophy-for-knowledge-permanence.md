@@ -4,7 +4,7 @@ name: File-Over-App Philosophy for Knowledge Permanence
 summary: Storing all notes as plain-text markdown files in a local folder — not in a proprietary database — ensures knowledge persists independently of any software, application, or service. This is a deliberate
   architectural constraint that prioritizes longevity and portability.
 implementation_notes: null
-category: Memory Architecture
+category: Agentic OS
 evidence_strength: Strong (production-tested)
 adoption_status: Not Yet Started
 proposer_priority: P3

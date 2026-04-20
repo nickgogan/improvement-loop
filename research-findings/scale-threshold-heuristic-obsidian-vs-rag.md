@@ -20,6 +20,8 @@ consumed_by: []
 related_findings:
 - file: karpathy-llm-knowledge-base-obsidian-rag.md
   rel: extended-by
+- file: context-infrastructure-seven-level-maturity-model.md
+  rel: enables
 ---
 
 ## What It Is

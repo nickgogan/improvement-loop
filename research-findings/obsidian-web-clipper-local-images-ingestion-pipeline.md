@@ -20,6 +20,8 @@ last_updated: '2026-04-19'
 related_findings:
 - file: firecrawl-cli-for-research-ingestion.md
   rel: same-problem
+- file: context-infrastructure-seven-level-maturity-model.md
+  rel: enables
 pipeline_status: raw
 consumed_by: []
 ---
