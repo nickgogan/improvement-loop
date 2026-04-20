@@ -13,8 +13,9 @@ adopted_in: []
 sources:
 - agent-produces-100x-org-reviews-3x.md
 - every-layer-of-review-makes-you-10x-slower.md
+- unbundling-management-ai-age-routing-sensemaking.md
 date_discovered: '2026-04-07'
-last_updated: 2026-04-08
+last_updated: '2026-04-20'
 related_findings:
 - file: five-commandments-for-agent-deployment-audit-first.md
   rel: same-problem
@@ -48,3 +49,6 @@ Could be combined with the "Agent Self-Reporting Unreliability" finding to desig
 ## Potential Failure Modes
 
 Org redesign is slow and politically complex. The high-speed rail analogy assumes clean boundaries between agent work and human work, but many real workflows have fuzzy handoffs. Premature org redesign before agent capabilities are proven creates disruption without corresponding benefit.
+
+## Update — 2026-04-20 (Nate B Jones, Unbundling Management)
+Jones' unbundling framework reframes the "span of control" question: in the AI era, span is no longer about routing bandwidth but about the speed of the market-signal → production loop. The Kimi PM example (3 agents, 2 hours, 70% implementation code) illustrates the high-speed rail pattern live at 300-person scale — agents are the rail, PM intervenes at three judgment points only. The update reinforces that org redesign around handoff points is not theoretical: it is already the operating model at AI-native firms. The failure mode of not redesigning (Meta compression model) trades throughput speed for burnout and attrition. See [[management-unbundling-routing-sensemaking-accountability.md]] for the full three-function decomposition.

@@ -14,9 +14,10 @@ applicability:
 adopted_in: []
 sources:
 - self-evolving-claude-code-memory.md
+- world-models-orgs-three-architectures.md
 proposals: []
 date_discovered: '2026-04-07'
-last_updated: '2026-04-08'
+last_updated: '2026-04-20'
 related_findings:
 - file: memory-bank-isolation-per-agent-per-project.md
   rel: same-problem
@@ -25,6 +26,8 @@ related_findings:
 - file: ace-agentic-context-engineering-rag-based.md
   rel: same-problem
 - file: ace-execution-feedback-no-labels-required.md
+  rel: same-problem
+- file: signal-capture-as-byproduct-of-work.md
   rel: same-problem
 pipeline_status: raw
 consumed_by: []
@@ -48,6 +51,9 @@ Quality gates before promotion to wiki. Conflict detection when new session data
 
 ## Potential Failure Modes
 Garbage-in-garbage-out if session quality is low. Knowledge drift if contradictory information accumulates. Wiki bloat without periodic pruning. The compounding effect assumes sessions produce genuinely novel insights.
+
+## Outcome Encoding — Corroborating Evidence (2026-04-20)
+A second source (world-models-orgs-three-architectures.md) reinforces a critical gap in most implementations: the loop only compounds when it encodes **outcomes**, not just events. A knowledge base records what happened. A world model — and by extension this pattern — must record: (1) what happened, (2) what was done about it, and (3) what resulted. Without element 3, month six looks like month one. Outcomes don't encode themselves; someone must close the loop between action and result. This requires organizational readiness — teams willing to record results honestly, including failures. Most implementations skip this, which is why compounding fails to materialize in practice.
 
 ## Extraction Note — 2026-04-19
 Extracted as **pattern**: [[compounding-knowledge-loop]] in `extracts/patterns/`

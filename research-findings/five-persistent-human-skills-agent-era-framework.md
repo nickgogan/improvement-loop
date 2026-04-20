@@ -13,9 +13,10 @@ applicability:
 adopted_in: []
 sources:
 - nate-b-jones-videos-feb-mar-2026.md
+- unbundling-management-ai-age-routing-sensemaking.md
 proposals: []
 date_discovered: '2026-03-09'
-last_updated: '2026-04-19'
+last_updated: '2026-04-20'
 pipeline_status: raw
 consumed_by: []
 ---
@@ -41,3 +42,6 @@ Could be encoded as a periodic self-assessment checklist tied to the Improvement
 
 ## Potential Failure Modes
 Without concrete metrics for each skill, the framework stays theoretical. It becomes easy to believe you are maintaining all five skills while actually letting several atrophy silently.
+
+## Update — 2026-04-20 (Nate B Jones, Unbundling Management)
+Jones' management unbundling framework independently converges on the same insight from an organizational angle. Sensemaking maps directly to skills 1 (boundary sensing) and 5 (leverage calibration): knowing where agent authority should stop and where human effort compounds most. Accountability/feedback maps to skill 2 (seam design): architecting the handoffs between human and agent so that accountability doesn't fall into the gap. The Kimi case study provides a live failure mode: a company that atrophied accountability (skill 2) and sensemaking (skills 1, 5) in favor of routing speed, producing measurable culture strain and attrition. Block's DRI rotation pattern is a concrete organizational mechanism for preserving sensemaking skill at scale — see [[dri-rotation-pattern-time-bounded-sensemaking-ownership.md]].

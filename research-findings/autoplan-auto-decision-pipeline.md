@@ -6,15 +6,22 @@ implementation_notes: null
 category: Orchestration
 evidence_strength: Medium (practitioner-documented)
 adoption_status: Not Yet Started
-proposer_priority: Not Flagged
+proposer_priority: "P2 (Design Required)"
 applicability:
 - S3 (Claude Code Build)
 adopted_in: []
-sources: []
-related_findings: []
+sources:
+  - "gstack-planning-multi-persona-spec-review.md"
+related_findings:
+  - file: gstack-office-hours-socratic-discovery-pipeline.md
+    rel: feeds-into
+  - file: gstack-spec-team-parallel-research-agents.md
+    rel: feeds-into
+  - file: planning-session-bias-separate-context-windows.md
+    rel: same-problem
 proposals: null
 date_discovered: '2026-04-08'
-last_updated: '2026-04-19'
+last_updated: '2026-04-20'
 pipeline_status: raw
 consumed_by: []
 ---
@@ -38,3 +45,6 @@ Learning from human gate decisions to improve auto-resolution over time. Configu
 
 ## Potential Failure Modes
 Auto-resolution of findings that were actually taste decisions (false confidence). Codex disagreements being noisy rather than signal-bearing. Review pipeline overhead for small changes that don't warrant multi-role review. Human gate atrophy if most decisions are auto-resolved and the human rubber-stamps the remainder.
+
+## Update — 2026-04-20
+Live demonstration on BookZero (brownfield SaaS) clarifies the mechanics and scale. The sequential review chain runs CEO → Design → Engineering, each as a dedicated sub-agent. Observed output: 41 total findings (10 from CEO, 15 from Design, 16 from Engineering), 22 auto-decisions made, plus a small number of flagged human decisions. Token cost for the auto-plan phase: ~200k. The pattern runs on a spec file (markdown in the backlog directory) produced by the spec-team phase — not on code. This distinguishes it from the review-army pattern (which reviews diffs): autoplan reviews a spec document before any implementation begins. The three-role sequential chain (CEO → Design → Eng) maps cleanly to GStack's specialist role architecture, with each sub-agent operating with role blinders per the 5-layer governance system.
