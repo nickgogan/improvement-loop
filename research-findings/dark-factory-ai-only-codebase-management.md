@@ -14,6 +14,7 @@ applicability:
 adopted_in: []
 sources:
 - archon-live-stream-agent-workflows-dark-factory.md
+- dark-factory-archon-autonomous-coding.md
 related_findings:
 - file: archon-yaml-defined-harness-workflows.md
   rel: enabled-by
@@ -23,9 +24,13 @@ related_findings:
   rel: enabled-by
 - file: specialized-harness-engineering-deterministic-rail.md
   rel: enabled-by
+- file: holdout-validation-pattern-blind-regression.md
+  rel: enabled-by
+- file: github-label-as-workflow-state.md
+  rel: enabled-by
 proposals: null
 date_discovered: '2026-04-19'
-last_updated: '2026-04-19'
+last_updated: '2026-04-20'
 pipeline_status: raw
 consumed_by: []
 ---
@@ -33,7 +38,19 @@ consumed_by: []
 # Dark Factory: AI-Only Autonomous Codebase Management
 
 ## What It Is
-A "dark factory" is a codebase where AI agent workflows are the sole authors of all code changes. The concept originates in 1990s manufacturing where fully robotized factories needed no lights because no humans worked there. Applied to software: every GitHub issue is automatically triaged (is this worth addressing for this codebase?), implemented, reviewed, and PR-merged by Archon-style harness workflows — with the human only approving final merges or monitoring via dashboard. Cole Medin described building this as a public experiment using Archon workflows on a VPS: anyone can open an issue, Archon classifies it, handles it end-to-end through an issue → implementation → PR → review → merge pipeline. MiniMax M2.7 was being tested as the underlying model (rate-limit workaround vs. Claude Opus) to enable scale.
+A "dark factory" is a codebase where AI agent workflows are the sole authors of all code changes. The concept originates in 1990s manufacturing where fully robotized factories needed no lights because no humans worked there. Applied to software: every GitHub issue is automatically triaged (is this worth addressing for this codebase?), implemented, reviewed, and PR-merged by Archon-style harness workflows — with the human only approving final merges or monitoring via dashboard.
+
+The concept was named/framed by Dan Shapiro (January 2026 blog post: "Five Levels from Spicy Autocomplete to the Dark Factory"). The levels: 0 (AI as search), 1 (coding intern/cruise control), 2 (pair programmer), 3 (hands-off but monitoring — recommended for most), 4 (engineering team with harnesses), 5 (dark factory — no human steering wheel).
+
+**StrongDM** runs a production dark factory: shipping AI-authored PRs continuously with no human code review before merge. They open-sourced their PRD/architecture approach but not the full implementation. Key StrongDM innovation: the **holdout validation pattern** — the validation agent runs full regression testing without knowing what was just implemented, preventing sycophantic confirmation bias.
+
+Cole Medin's public dark factory implementation uses:
+- **Archon workflows on a VPS** (not local) with a cron job orchestrator that checks every N minutes for unlabeled GitHub issues
+- **MiniMax M2.7** as the underlying LLM (Anthropic-compatible API endpoint, ~Claude Haiku cost, better quality) — bypasses Claude subscription rate limits for high-volume public workload
+- **4 workflows**: triage → implement → validate-PR → fix
+- **GitHub labels as state machine**: `factory-accepted`, `in-progress`, `needs-fixed`, `needs-human`, `factory-rate-limit`
+- **Batch size cap**: 10 issues per orchestrator cycle (prevents token runaway on issue spikes)
+- **Governance layer**: mission.md + factory-rules.md injected into every workflow as shared context
 
 ## Why It Matters
 The dark factory represents the ceiling of harness engineering maturity. It forces every part of the SDLC to be defined as an explicit, testable workflow: issue classification, research, implementation, testing, PR review, and merge gating. Attempting to build one surfaces every assumption about workflow reliability and human oversight. Even if not pursued to completion, defining "what would a dark factory require?" clarifies which harness workflows need the most hardening.

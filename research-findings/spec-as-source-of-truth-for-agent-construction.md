@@ -11,15 +11,20 @@ proposer_priority: P3
 applicability:
 - S3 (Claude Code Build)
 adopted_in: null
-sources: []
+sources:
+- dark-code-spec-driven-comprehension-gates.md
 proposals: null
 date_discovered: '2026-03-22'
-last_updated: '2026-04-19'
+last_updated: '2026-04-20'
 related_findings:
 - file: acceptance-criteria-as-verifiable-eval-anchor.md
   rel: same-problem
 - file: task-contract-pattern-schema-first-agent.md
   rel: same-problem
+- file: dark-code-organizational-capability-problem.md
+  rel: same-problem
+- file: eval-driven-development-autonomous-quality.md
+  rel: enables
 pipeline_status: raw
 consumed_by: []
 ---
@@ -42,3 +47,6 @@ A structured spec template with mandatory fields for all four zones. Version con
 
 ## Potential Failure Modes
 Spec drift: the agent implementation diverges from the spec over time if the spec is not kept updated. Specs that are too high-level leave ambiguous implementation decisions.
+
+## Update — 2026-04-20
+Reinforced by "Dark Code" framing: a clearly written spec is also the eval. The agent can iterate against the spec as a test until it passes — so spec-as-source-of-truth serves dual duty as implementation artifact and autonomous quality gate. Amazon rebuilt their AI coding tool Kira with this principle after a major December 2025 outage: the tool now turns prompts into requirements, tasks, and task lists before code generation begins.

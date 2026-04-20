@@ -15,6 +15,7 @@ adopted_in: []
 sources:
 - archon-open-source-harness-builder.md
 - archon-live-stream-agent-workflows-dark-factory.md
+- dark-factory-archon-autonomous-coding.md
 related_findings:
 - file: bmad-method-v6-multi-agent-sdlc.md
   rel: same-problem
@@ -40,7 +41,7 @@ related_findings:
   rel: same-problem
 proposals: null
 date_discovered: '2026-04-09'
-last_updated: '2026-04-19'
+last_updated: '2026-04-20'
 pipeline_status: synthesized
 consumed_by:
 - agent-workflow-and-execution.md
@@ -69,6 +70,9 @@ Practitioners report going from "AI shepherding" (manually kicking off skills/co
 - **Database**: SQLite (default) or Postgres. Stores registered projects, conversations, workflow execution history.
 - **Default workflows shipped**: fix GitHub issue (most-used), interactive PRD, plan-to-PR (PIV loop), Ralph loop, validate PR, adversarial dev, workflow builder (meta: build new workflows).
 - **Token efficiency**: four parallel GitHub issue fix + validate PR workflows used ~20% of 5-hour Claude subscription limit (Sonnet default, Opus for implementation nodes only).
+- **Provider model aliasing via environment variables**: Archon workflow YAML specifies model names (`opus`, `sonnet`, `haiku`). To run workflows on a non-Anthropic provider, set environment variables that remap these names to alternative model IDs (e.g., `ANTHROPIC_MODEL_OPUS=minimax-m2.7`, `ANTHROPIC_BASE_URL=https://api.minimax.io/v1`). This allows all existing workflow YAMLs to run unchanged on MiniMax, GLM 5.1, Qwen, or any OpenAI-compatible provider. Useful for high-volume autonomous pipelines where Claude subscription rate limits are a constraint.
+- **VPS deployment for autonomous pipelines**: For dark factory use (public-facing, autonomous, always-on), Archon runs on a VPS rather than a developer's local machine. A cron job (orchestrator shell script) triggers on schedule, reads GitHub issue labels, and dispatches Archon workflows via CLI. VPS avoids Anthropic TOS issues with running workflows triggered by external users.
+- **Triage workflow node design (5 nodes)**: (1) Fetch untriaged issues (deterministic GitHub CLI), (2) Fetch factory rules/mission files (deterministic read), (3) Fetch open PRs (deterministic GitHub CLI, optional — helps detect in-flight duplicates), (4) Classify issues against mission (agentic, LLM decision, uses Sonnet-tier model for nuance), (5) Apply labels and comments (deterministic — separates the "decide" step from the "act" step). Batch cap: 10 issues per cycle.
 
 ## Potential Improvements
 - Visual workflow builder (N8N-like interface — explicitly on the Archon roadmap)

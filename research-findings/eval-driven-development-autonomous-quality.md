@@ -40,9 +40,13 @@ related_findings:
   rel: same-problem
 - file: eval-driven-tool-iteration-loop.md
   rel: same-problem
+- file: dark-code-organizational-capability-problem.md
+  rel: same-problem
+- file: spec-as-source-of-truth-for-agent-construction.md
+  rel: enabled-by
 proposals: []
 date_discovered: '2026-04-07'
-last_updated: '2026-04-19'
+last_updated: '2026-04-20'
 pipeline_status: synthesized
 consumed_by:
 - building-agent-evaluation-suites.md
@@ -70,6 +74,9 @@ The pattern connects to broader industry trends: Anthropic's own emphasis on eva
 ## Potential Improvements
 
 MetaSystem could implement this by: (1) defining eval criteria per skill (e.g., research-loop findings must have all required frontmatter fields, sources must be bidirectionally linked), (2) building a lightweight eval runner that checks agent outputs before presenting to the human gate, (3) tracking eval pass rates over time to measure agent improvement.
+
+## Update — 2026-04-20
+The "spec becomes the eval" mechanism makes the spec-to-eval path explicit: a clearly written spec is the test the agent iterates against until it passes. This closes the loop between spec-driven development (Layer 1 of the dark code response) and eval-driven development — they are not separate practices but two ends of the same flywheel. Comprehension gate output at PR review (Layer 3) can additionally feed back into eval criteria, continuously improving the quality signal.
 
 ## Potential Failure Modes
 
