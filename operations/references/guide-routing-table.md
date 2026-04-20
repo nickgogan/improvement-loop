@@ -87,11 +87,16 @@ Findings that don't map cleanly to any active guide cluster. Reviewed after each
 
 | Finding | Category | Same-Problem Links | Notes |
 |---------|----------|--------------------|-------|
-| *(empty — all findings routed)* | | | |
+| [[claude-code-daily-brief-multi-source-inbox-obsidian]] | Agentic OS | → ai-managed-vault, → multi-agent-proportional-summarization | Personal agentic OS — aggregation layer. Added 2026-04-20. |
+| [[ai-managed-vault-separate-from-human-vault]] | Agentic OS | → claude-code-daily-brief, → multi-agent-proportional-summarization, → open-brain (G7) | Personal agentic OS — storage layer. Added 2026-04-20. |
 
 **Graduation trigger:** When 5+ unrouted findings share `same-problem` relationships, they form a candidate cluster. Surface to Nick for guide creation approval.
 
-**History:** 2 P1 Governance findings (review-bandwidth, review-obsolescence) graduated to G9 on 2026-04-19.
+**Emerging theme (below threshold):** "Agentic OS" category — 2 pattern findings + 1 skill (multi-agent-proportional-summarization) form a 3-finding cluster describing components of a personal agentic OS. Not yet at 5-finding threshold. Monitor next 2 research-loop runs for additional Agentic OS findings before proposing G11.
+
+**History:**
+- 2 P1 Governance findings (review-bandwidth, review-obsolescence) graduated to G9 on 2026-04-19.
+- 2 P2 Agentic OS findings added 2026-04-20 (session 43 identification run) — first entries in new category not yet covered by the dimension registry.
 
 ---
 
