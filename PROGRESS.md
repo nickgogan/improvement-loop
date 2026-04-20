@@ -1,10 +1,10 @@
 # Improvement Loop — Progress
 
-**Last Updated:** 2026-04-19 (session 28)
+**Last Updated:** 2026-04-20 (session 40)
 
 ## Current Focus
 
-**P2 non-pattern extraction complete. Guide synthesis next — G1-G8 staleness check + G9/G10 new clusters.**
+**Batch 2 extraction in progress. 2 new videos processed (session 40). OB1 repo analysis + 13 remaining Batch 2 sources next.**
 
 **Pipeline state:**
 ```
@@ -110,12 +110,15 @@
 
 ## What Still Needs Work
 
-1. **P2 guide synthesis** — Check G1-G8 staleness from P2 deltas, synthesize G9 (Governance) and G10 (Agent Design)
-2. **Deploy staged artifacts** — 8 guides + 5 P1 non-patterns + 19 P2 non-patterns in `extracts/`
-3. **Design IL agents** — Researcher and Codifier agent definitions using the guides (deferred until guides complete)
-4. **P3 identification** — 63 findings at Monitor priority per DD-72
-5. **feedback/ taxonomy** — Structure for the new IL feedback directory
-6. **Unified processed-findings tracking** — Current dedup mechanisms work but have gaps
+1. **OB1 repo analysis** — New watched library (`https://github.com/NateBJones-Projects/OB1`). Analyze + promote findings.
+2. **Batch 2 extraction** — 13 sources approved, not yet extracted. Process in parallel waves.
+3. **P2 guide synthesis** — Check G1-G8 staleness from P2 deltas, synthesize G9 (Governance) and G10 (Agent Design)
+4. **Deploy staged artifacts** — 8 guides + 5 P1 non-patterns + 19 P2 non-patterns in `extracts/`
+5. **Design IL agents** — Researcher and Codifier agent definitions using the guides (deferred until guides complete)
+6. **P3 identification** — 63 findings at Monitor priority per DD-72
+7. **feedback/ taxonomy** — Structure for the new IL feedback directory
+8. **Unified processed-findings tracking** — Current dedup mechanisms work but have gaps
+9. **Temp directory cleanup** — Design cleanup for `/tmp/metasystem-repo-cache/` (repo-analyzer) and transcript fetcher temp files. Consider automated cleanup, TTL pruning, or manual skill.
 
 ## What Changed Sessions 22-28
 
@@ -129,9 +132,16 @@ Sessions 17-21 are in the root PROGRESS.md. Summary of sessions 22-28:
 - **Session 27** — P2 identification complete: 120 findings classified. G9 (Governance) and G10 (Agent Design) candidate clusters detected. Operations directories restructured.
 - **Session 28** — P2 non-pattern extraction: 19 artifacts staged. `extracted-artifacts/` → `extracts/`, `knowledge/` → `operations/references/`. 2-headed agent architecture proposed (Researcher + Codifier), deferred.
 
-## KB Totals (as of session 28)
+### Sessions 37-40 (Batch 1 & 2 research loop)
 
-~382 findings, 85 sources, 1220 crosslinks. 10 research dimensions. 7 watched libraries. P1 (75) and P2 (120) fully classified. 94 artifacts staged in `extracts/` (75 P1 + 19 P2). 8 guides synthesized (G1-G8), 2 pending (G9-G10).
+- **Session 37** — Batch 1: 14 YouTube videos processed via Pass 2 deep extraction. 38 new findings across 11 dimensions (including new Agentic OS dimension, DD-87). Delta report + SL entry.
+- **Session 38** — Batch 2 transcript acquisition. Built Playwright + yt-dlp backends for transcript fetcher.
+- **Session 39** — Batch 2 triage: 15 sources evaluated, 13 approved for extraction, 2 skipped (#17 product demo, #21 model release news). All 13 transcripts committed.
+- **Session 40** — 2 new YouTube videos processed. 1 new finding (`five-pillar-agentic-os-framework.md`, P2, Agentic OS), 4 existing findings updated. Transcript fetcher enhanced with `parse_transcript_html()` for manual HTML fallback. OB1 repo queued as 8th watched library.
+
+## KB Totals (as of session 40)
+
+~499 findings, 121 sources, 11 research dimensions. 7 watched libraries (OB1 pending as 8th). P1 (75) and P2 (120) fully classified. 94 artifacts staged in `extracts/` (75 P1 + 19 P2). 8 guides synthesized (G1-G8), 2 pending (G9-G10).
 
 ## Key Files
 
