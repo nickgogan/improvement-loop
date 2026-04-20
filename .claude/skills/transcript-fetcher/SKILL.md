@@ -87,6 +87,22 @@ Each transcript file contains:
 - Full concatenated text (for quick reading)
 - Timestamped segments (for precise citation)
 
+### Step 3b: Parse from Saved HTML (fallback)
+
+If the automated fetch fails (no captions) but the user provides the transcript panel HTML
+(copied from YouTube's "Show transcript" panel), parse it directly:
+
+```bash
+# From an HTML file — video ID inferred from filename or provided explicitly
+python incubator/claude-build/app/transcript-fetcher/fetch.py --from-html /path/to/transcript.html --video-id VIDEO_ID
+```
+
+The parser handles both YouTube DOM formats:
+- **Old:** `ytd-transcript-segment-renderer` with `.segment-timestamp` / `.segment-text`
+- **New:** `transcript-segment-view-model` with `.ytwTranscriptSegmentViewModelTimestamp`
+
+The `parse_transcript_html(html, video_id)` function is also importable for programmatic use.
+
 ### Step 4: Report Results
 
 Report which transcripts were fetched successfully and which failed. Common failure reasons:
