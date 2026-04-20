@@ -1,7 +1,6 @@
 ---
 name: Structural vs Psychological vs Economic Governance
-summary: Three distinct governance enforcement philosophies observed across 7 repos. Structural (tool allowlists, validators, CI checks), Psychological (persuasion engineering, rationalization prevention),
-  and Economic (budget hard-stops, atomic checkout exclusion). No repo uses all three.
+summary: Six distinct governance enforcement philosophies observed across 15 repos. Structural (tool allowlists, validators), Psychological (persuasion engineering), Economic (budget hard-stops), Specification-as-governance (conformance tests), Middleware-as-enforcement (composable pipeline), and Two-layer split (CI + LLM judgment). No repo uses all six.
 implementation_notes: null
 category: Governance
 evidence_strength: Medium (practitioner-documented)
@@ -20,7 +19,7 @@ related_findings:
   rel: same-problem
 proposals: null
 date_discovered: '2026-04-08'
-last_updated: '2026-04-19'
+last_updated: '2026-04-20'
 pipeline_status: raw
 consumed_by: []
 ---
@@ -34,7 +33,15 @@ Three distinct governance enforcement philosophies observed across 7 repos:
 
 3. **Economic** (Paperclip) — enforcement via resource constraints. Budget hard-stops prevent overspending regardless of agent intent. Atomic checkout exclusion prevents conflicting concurrent modifications. Board approval gates require authorization before resource-intensive operations. Agent can't overspend because the server stops it. Works because rule-breaking is impossible, not just discouraged.
 
-No repo uses all three approaches.
+Three additional philosophies identified in subsequent analysis (15 repos total):
+
+4. **Specification-as-governance** (LangGraph, n8n) — enforcement via contracts. Conformance tests, spec-driven development, strict TypeScript. Compliance is verified against a specification rather than enforced at runtime.
+
+5. **Middleware-as-enforcement** (DeerFlow) — enforcement via pipeline. 12 composable, ordered middleware layers intercept every tool call and model response. Most sophisticated enforcement pipeline in the registry.
+
+6. **Two-layer split** (OB1) — enforcement via separation of concerns. Deterministic CI (15 automated rules that block PRs) handles what machines can check; LLM admin skill handles what requires judgment (security deep scan, mission fit, naming consistency). First repo to explicitly separate mechanical checks from AI-judgment checks.
+
+No repo uses all six approaches. Each philosophy correlates with repo type: structural for frameworks, economic for products with real money, psychological for skill packs, specification for typed codebases, middleware for complex agent harnesses, two-layer split for community contribution platforms.
 
 ## Why It Matters
 

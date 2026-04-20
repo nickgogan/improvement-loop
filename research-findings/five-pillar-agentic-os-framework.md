@@ -28,6 +28,10 @@ related_findings:
     rel: same-problem
   - file: claude-code-channels-telegramdiscord-as-agent-inte.md
     rel: enables
+  - file: progressive-adoption-path-compounding-extensions.md
+    rel: extends
+  - file: time-window-proactive-agent-loop.md
+    rel: extends
 proposals: null
 date_discovered: "2026-04-20"
 last_updated: "2026-04-20"
@@ -67,6 +71,8 @@ Hermes and OpenClaw provide the same five pillars with different wrappers. Claud
 ## Potential Improvements
 
 The framework doesn't address multi-user scenarios (team context sharing, permission boundaries). The supervisor UI is a local wrapper — could evolve into a proper web-based dashboard. The self-learning skill loop could be formalized with binary evals (Skills 2.0 pattern) rather than purely human feedback.
+
+**OB1 validation (2026-04-20):** OB1 (Open Brain) provides the first concrete community-tested implementation of all five pillars: (1) Persistent memory via Supabase pgvector shared brain, (2) Self-improving skills via lessons log + Phase 4 self-modification (see [[self-improving-skill-lessons-log]]), (3) Interaction layer via dashboards (SvelteKit, Next.js), (4) Scheduled workflows via Life Engine proactive agent loop (see [[time-window-proactive-agent-loop]]), (5) Business context via `thoughts` table as shared brain accessible by all AI clients. OB1 additionally demonstrates a progressive adoption path (see [[progressive-adoption-path-compounding-extensions]]) — 6 compounding extensions that move users from single-domain to cross-domain agent capabilities. This validates the framework with real community adoption rather than solo-practitioner usage.
 
 ## Potential Failure Modes
 
