@@ -14,9 +14,10 @@ applicability:
 adopted_in: []
 sources:
 - seven-levels-context-infrastructure-ai-agents.md
+- claude-code-for-life-daily-briefs-obsidian-memory.md
 proposals: []
 date_discovered: '2026-04-19'
-last_updated: '2026-04-19'
+last_updated: '2026-04-20'
 related_findings:
 - file: self-evolving-loop-pattern.md
   rel: extends
@@ -46,6 +47,8 @@ A second brain seeded with static context (ICP, brand voice, strategy docs) quic
 
 ## Why People Are Using It
 Beni demonstrated this with Firefly (meeting transcript tool) + Claude scheduled tasks. The morning brief pattern is the consumption-side complement — it makes the live context actionable by synthesizing it into a daily focus list rather than requiring the human to navigate the vault manually.
+
+A second practitioner (see: claude-code-for-life-daily-briefs-obsidian-memory) extends the pattern to a daily news digest variant: Claude Code researches 3-5 top news items per topic (AI, macroeconomics, local news, world news) daily and updates a single persistent Obsidian document — a "living and breathing document" that can track any subject on a daily or weekly cadence. This confirms the morning brief and topic-research sub-patterns work in personal as well as business contexts.
 
 ## Potential Improvements
 Near-real-time ingestion (event-driven rather than daily cron) for high-velocity contexts. Conflict detection when a scheduled update contradicts existing vault content. Staleness indicators showing when a vault section was last updated by a scheduled task vs. manual edit.

@@ -13,6 +13,7 @@ applicability:
 adopted_in: []
 sources:
 - anthropic-trustworthy-agents-in-practice.md
+- karpathy-skills-claudemd-four-principles.md
 related_findings:
 - file: autonomy-gradient-not-binary-delegation.md
   rel: same-problem
@@ -22,7 +23,7 @@ related_findings:
   rel: same-problem
 proposals: null
 date_discovered: '2026-04-09'
-last_updated: '2026-04-09'
+last_updated: '2026-04-20'
 pipeline_status: synthesized
 consumed_by:
 - agent-design-patterns.md
@@ -45,3 +46,6 @@ Could be combined with the autonomy gradient (DD finding) to create a two-dimens
 
 ## Potential Failure Modes
 The model may misclassify resolvable gaps as intent questions (over-asking) or vice versa (over-assuming). The check-in rate doubling on complex tasks could become annoying if not well-calibrated — users may train the model to stop asking by dismissing questions, degrading the safety signal. Cultural differences in communication style may affect what counts as "ambiguous."
+
+## Additional Evidence — 2026-04-20
+RoboNuggets (Jay) demonstrated this as Principle 1 of the Karpathy Skills CLAUDE.md (43K GitHub stars in one week). Side-by-side demo: vanilla Claude Code confirmed a light-mode toggle was implemented when it was not; the Karpathy-CLAUDE.md agent asked clarifying questions first and one-shotted the correct implementation. The video explicitly traces the failure to Karpathy's tweet observation: "models make wrong assumptions on your behalf and just run along with them without checking." The practitioner framing — "without this rule, Claude assumes; with it, Claude asks first" — makes this concrete enough to include as a codified CLAUDE.md rule rather than just a training principle.

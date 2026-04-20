@@ -11,10 +11,11 @@ proposer_priority: P3
 applicability:
 - S2 (Notion Operations)
 adopted_in: null
-sources: []
+sources:
+- claude-code-for-life-daily-briefs-obsidian-memory.md
 proposals: null
 date_discovered: '2026-03-22'
-last_updated: '2026-04-19'
+last_updated: '2026-04-20'
 related_findings:
 - file: ace-agentic-context-engineering-rag-based.md
   rel: contradicts
@@ -31,6 +32,8 @@ For AI agent workflows that need to read, write, and maintain a knowledge base o
 
 ## Why People Are Using It
 Protects against software deprecation, data migration nightmares, and vendor lock-in. Also makes the knowledge base trivially accessible to AI tools (Claude Code, grep, etc.) without building integrations.
+
+A second practitioner explicitly articulates the model-agnostic portability rationale: by having Claude Code write exclusively to an Obsidian vault (markdown files on local disk), the user can "disconnect Claude Code and connect this Obsidian vault to a different AI model and continue our workflow." The vault and its accumulated memories persist across AI model transitions — something impossible with vendor-hosted memory systems (ChatGPT memory, Claude Projects). This frames file-over-app not just as a longevity pattern but as an AI vendor independence strategy.
 
 ## Potential Alternatives
 Notion (proprietary database), Roam Research (proprietary format), Obsidian Sync (cloud), SQLite databases. All involve some form of lock-in or additional access complexity.

@@ -13,8 +13,9 @@ applicability:
 adopted_in: []
 sources:
 - your-claude-limit-burns-in-90-minutes.md
+- karpathy-skills-claudemd-four-principles.md
 date_discovered: '2026-04-07'
-last_updated: '2026-04-19'
+last_updated: '2026-04-20'
 related_findings:
 - file: ace-agentic-context-engineering-evolving-playbook.md
   rel: same-problem
@@ -132,6 +133,9 @@ MetaSystem could implement commandment 1 (index references) via the existing ind
 ## Potential Failure Modes
 
 Aggressive context scoping (commandment 4) can starve agents of context they actually need, leading to incorrect outputs. The tension between "minimum viable context" and "sufficient context for correct operation" requires calibration per task type. Over-indexing on token cost could lead teams to use cheaper models where quality models are genuinely needed.
+
+## Additional Evidence — 2026-04-20
+RoboNuggets (Jay) adds a causal explanation for why agents overbuild by default: LLMs are trained predominantly on production codebases, so they default to production-scale patterns even for simple feature additions. A search-bar feature that should be 20 lines becomes 50+ lines because the model is pattern-matching to enterprise-grade implementations. Karpathy Skills CLAUDE.md encodes "simplicity first" as an explicit CLAUDE.md rule to override this training-induced bias. Demo: with the rule, Claude added a tab-filter search bar in 20 lines and deliberately avoided separator-tracking logic and unrequested additions; without it, the agent produced a confirmed-but-broken implementation. This confirms the KISS commandments framing from a different angle — the overbuilding problem is not just token waste, it is a training-data artifact requiring explicit instruction to suppress.
 
 ## Extraction Note — 2026-04-19
 Extracted as **pattern**: [[minimum-viable-agent-context]] in `extracts/patterns/`

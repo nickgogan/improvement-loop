@@ -13,14 +13,17 @@ applicability:
 adopted_in: []
 sources:
 - your-ai-agent-fails-975-of-real-work-the-fix-isnt.md
+- agent-cold-start-tacit-knowledge-elicitation.md
 proposals: []
 date_discovered: '2026-03-22'
-last_updated: '2026-04-19'
+last_updated: '2026-04-20'
 related_findings:
 - file: sweci-benchmark-ai-fails-at-code-maintenance.md
   rel: same-problem
 - file: production-database-wipeout-agent-context.md
   rel: same-problem
+- file: tacit-knowledge-as-agent-delegation-barrier.md
+  rel: extended-by
 pipeline_status: raw
 consumed_by: []
 ---
