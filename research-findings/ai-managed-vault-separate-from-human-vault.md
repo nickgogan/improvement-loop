@@ -1,29 +1,36 @@
 ---
-name: "AI-Managed Vault Separate from Human Vault"
-summary: "Maintain two distinct Obsidian vaults: one owned and written by humans (personal notes, thinking), and one owned and written exclusively by the AI (summaries, entity pages, project docs, meeting notes). The human uses the AI vault read-only. The separation keeps human curation intact, makes the AI vault model-agnostic, and creates an ownable, portable AI memory store."
-implementation_notes: "The AI vault holds: video/content summaries, entity profiles (people, concepts, tools), meeting notes, project documentation. The human never writes into the AI vault. The AI never writes into the human vault. Since all content is markdown files on local disk, swapping the AI model (Claude → future model) requires no data migration — the vault connects to any model that can read files. The AI vault is the realization of 'owning your AI memories.'"
-category: "Agentic OS"
-evidence_strength: "Medium (practitioner-documented)"
-adoption_status: "Not Yet Started"
-proposer_priority: "P2 (Design Required)"
+name: AI-Managed Vault Separate from Human Vault
+summary: 'Maintain two distinct Obsidian vaults: one owned and written by humans (personal notes, thinking), and one owned and written exclusively by the AI (summaries, entity pages, project docs, meeting
+  notes). The human uses the AI vault read-only. The separation keeps human curation intact, makes the AI vault model-agnostic, and creates an ownable, portable AI memory store.'
+implementation_notes: 'The AI vault holds: video/content summaries, entity profiles (people, concepts, tools), meeting notes, project documentation. The human never writes into the AI vault. The AI never
+  writes into the human vault. Since all content is markdown files on local disk, swapping the AI model (Claude → future model) requires no data migration — the vault connects to any model that can read
+  files. The AI vault is the realization of ''owning your AI memories.'''
+category: Agentic OS
+evidence_strength: Medium (practitioner-documented)
+adoption_status: Not Yet Started
+proposer_priority: P2 (Design Required)
 applicability:
-  - "S3 (Claude Code Build)"
-  - "General"
+- S3 (Claude Code Build)
+- General
 adopted_in: []
 sources:
-  - "claude-code-for-life-daily-briefs-obsidian-memory.md"
+- claude-code-for-life-daily-briefs-obsidian-memory.md
 related_findings:
-  - file: "obsidian-as-transparent-frontend-vs-rag-black-box.md"
-    rel: "extends"
-  - file: "file-over-app-philosophy-for-knowledge-permanence.md"
-    rel: "companion"
-  - file: "claude-code-as-vault-query-engine-project-assistant.md"
-    rel: "extends"
-  - file: "behavioral-context-portability-intelligence-lock-in.md"
-    rel: "same-problem"
+- file: obsidian-as-transparent-frontend-vs-rag-black-box.md
+  rel: extends
+- file: file-over-app-philosophy-for-knowledge-permanence.md
+  rel: companion
+- file: claude-code-as-vault-query-engine-project-assistant.md
+  rel: extends
+- file: behavioral-context-portability-intelligence-lock-in.md
+  rel: same-problem
+- file: build-operate-separation-principle.md
+  rel: same-problem
+- file: karpathy-llm-knowledge-base-obsidian-rag.md
+  rel: same-problem
 proposals: null
-date_discovered: "2026-04-20"
-last_updated: "2026-04-20"
+date_discovered: '2026-04-20'
+last_updated: '2026-04-20'
 pipeline_status: raw
 consumed_by: []
 ---

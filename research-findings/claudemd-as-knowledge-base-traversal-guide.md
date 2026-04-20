@@ -15,7 +15,7 @@ adopted_in: []
 sources:
 - karpathys-obsidian-rag-claude-code.md
 date_discovered: '2026-04-07'
-last_updated: 2026-04-08
+last_updated: '2026-04-20'
 related_findings:
 - file: karpathy-llm-knowledge-base-obsidian-rag.md
   rel: same-problem
@@ -27,6 +27,8 @@ related_findings:
   rel: part-of
 - file: skills-as-pointers-to-second-brain-files.md
   rel: enables
+- file: self-describing-codebase-structural-semantic-context.md
+  rel: same-problem
 pipeline_status: synthesized
 consumed_by:
 - managing-agent-context.md

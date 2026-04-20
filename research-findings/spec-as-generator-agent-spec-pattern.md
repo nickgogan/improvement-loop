@@ -1,24 +1,28 @@
 ---
-name: "Spec-as-Generator (AGENT_SPEC) Pattern"
-summary: "A machine-readable specification file that lets an AI agent generate all required contribution files from a single prompt. OB1's AGENT_SPEC.md defines the exact output files (5), their schemas, naming conventions, validation checklist, and an example prompt — enabling one-shot scaffold generation for new extensions."
-implementation_notes: "MetaSystem's /bootstrap skill generates fractal structure but doesn't use a machine-readable spec file. The AGENT_SPEC pattern could improve bootstrap quality by providing a strict contract that AI agents follow for file generation."
-category: "Agent Design"
-evidence_strength: "Medium (practitioner-documented)"
-adoption_status: "Not Yet Started"
+name: Spec-as-Generator (AGENT_SPEC) Pattern
+summary: A machine-readable specification file that lets an AI agent generate all required contribution files from a single prompt. OB1's AGENT_SPEC.md defines the exact output files (5), their schemas,
+  naming conventions, validation checklist, and an example prompt — enabling one-shot scaffold generation for new extensions.
+implementation_notes: MetaSystem's /bootstrap skill generates fractal structure but doesn't use a machine-readable spec file. The AGENT_SPEC pattern could improve bootstrap quality by providing a strict
+  contract that AI agents follow for file generation.
+category: Agent Design
+evidence_strength: Medium (practitioner-documented)
+adoption_status: Not Yet Started
 proposer_priority: P3 (Monitor)
 applicability:
-  - "S3 (Claude Code Build)"
+- S3 (Claude Code Build)
 adopted_in: []
 sources: []
 related_findings:
-  - file: "meta-skill-for-skill-authorship.md"
-    rel: "same-problem"
-  - file: "spec-as-source-of-truth-for-agent-construction.md"
-    rel: "extends"
-  - file: "yaml-template-dual-structure.md"
-    rel: "same-problem"
-date_discovered: "2026-04-20"
-last_updated: "2026-04-20"
+- file: meta-skill-for-skill-authorship.md
+  rel: same-problem
+- file: spec-as-source-of-truth-for-agent-construction.md
+  rel: extends
+- file: yaml-template-dual-structure.md
+  rel: same-problem
+- file: agent-onboarding-via-interview-style-context.md
+  rel: same-problem
+date_discovered: '2026-04-20'
+last_updated: '2026-04-20'
 pipeline_status: raw
 consumed_by: []
 ---

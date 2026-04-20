@@ -22,9 +22,11 @@ related_findings:
   rel: same-problem
 - file: context-rot-silent-killer-and-mitigations.md
   rel: same-problem
+- file: work-disavowal-failure-mode-context-limit-cheating.md
+  rel: same-problem
 proposals: null
 date_discovered: '2026-04-19'
-last_updated: '2026-04-19'
+last_updated: '2026-04-20'
 ---
 
 ## What It Is

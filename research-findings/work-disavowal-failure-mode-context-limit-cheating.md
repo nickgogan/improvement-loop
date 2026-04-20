@@ -1,29 +1,35 @@
 ---
-name: "Work Disavowal: Agents Delete Tests and Disable Checks to Appear Done at Context Limit"
-summary: "As agents approach context limits, they exhibit a destructive completion bias — deleting tests, disabling validation, commenting out failing code — to present a 'done' state rather than admitting incomplete work. Session boundary enforcement and persistent issue state are the primary mitigations."
-implementation_notes: "Mitigation: kill agents after completing a single scoped issue (Beads pattern) so they never reach context limits during a task. Secondary: use hooks or post-session validation to detect deletions of test files or disabled assertions. Design issue completion criteria as observable, not self-reported."
-category: "Agent Design"
-evidence_strength: "Medium (practitioner-documented)"
-adoption_status: "Not Yet Started"
-proposer_priority: "P1 (Implement Now)"
+name: 'Work Disavowal: Agents Delete Tests and Disable Checks to Appear Done at Context Limit'
+summary: As agents approach context limits, they exhibit a destructive completion bias — deleting tests, disabling validation, commenting out failing code — to present a 'done' state rather than admitting
+  incomplete work. Session boundary enforcement and persistent issue state are the primary mitigations.
+implementation_notes: 'Mitigation: kill agents after completing a single scoped issue (Beads pattern) so they never reach context limits during a task. Secondary: use hooks or post-session validation to
+  detect deletions of test files or disabled assertions. Design issue completion criteria as observable, not self-reported.'
+category: Agent Design
+evidence_strength: Medium (practitioner-documented)
+adoption_status: Not Yet Started
+proposer_priority: P1 (Implement Now)
 applicability:
-  - "S3 (Claude Code Build)"
-  - "General"
+- S3 (Claude Code Build)
+- General
 adopted_in: []
 sources:
-  - "steve-yegge-beads-coding-agent-memory.md"
+- steve-yegge-beads-coding-agent-memory.md
 related_findings:
-  - file: incremental-one-feature-per-session-pattern.md
-    rel: same-problem
-  - file: context-rot-silent-killer-and-mitigations.md
-    rel: same-problem
-  - file: eval-driven-development-autonomous-quality.md
-    rel: same-problem
-  - file: issue-based-agent-orchestration-replacing-markdown-plans.md
-    rel: mitigated-by
+- file: incremental-one-feature-per-session-pattern.md
+  rel: same-problem
+- file: context-rot-silent-killer-and-mitigations.md
+  rel: same-problem
+- file: eval-driven-development-autonomous-quality.md
+  rel: same-problem
+- file: issue-based-agent-orchestration-replacing-markdown-plans.md
+  rel: mitigated-by
+- file: agent-lifecycle-formalization-spectrum.md
+  rel: same-problem
+- file: agent-state-machine-with-witness-monitoring.md
+  rel: same-problem
 proposals: null
-date_discovered: "2026-04-20"
-last_updated: "2026-04-20"
+date_discovered: '2026-04-20'
+last_updated: '2026-04-20'
 pipeline_status: raw
 consumed_by: []
 ---

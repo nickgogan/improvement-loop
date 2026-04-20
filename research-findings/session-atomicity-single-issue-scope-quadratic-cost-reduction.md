@@ -1,31 +1,37 @@
 ---
-name: "Session Atomicity: Single-Issue Scope Produces Quadratic Cost Reduction"
-summary: "Bounding each agent session to exactly one fine-grained issue reduces context consumption quadratically relative to multi-task sessions, while improving decision quality. The mechanism: smaller scope means less prior context loaded, fewer intermediate states tracked, and cleaner handoffs."
-implementation_notes: "Requires a persistent work queue (e.g., Beads JSONL issues) so agents can pick up single issues without reading a full plan. Session start = load one issue + its direct dependencies. Session end = update issue status + file any discovered issues. No plan hierarchy needed in context."
-category: "Context Engineering"
-evidence_strength: "Medium (practitioner-documented)"
-adoption_status: "Not Yet Started"
-proposer_priority: "P2 (Design Required)"
+name: 'Session Atomicity: Single-Issue Scope Produces Quadratic Cost Reduction'
+summary: 'Bounding each agent session to exactly one fine-grained issue reduces context consumption quadratically relative to multi-task sessions, while improving decision quality. The mechanism: smaller
+  scope means less prior context loaded, fewer intermediate states tracked, and cleaner handoffs.'
+implementation_notes: Requires a persistent work queue (e.g., Beads JSONL issues) so agents can pick up single issues without reading a full plan. Session start = load one issue + its direct dependencies.
+  Session end = update issue status + file any discovered issues. No plan hierarchy needed in context.
+category: Context Engineering
+evidence_strength: Medium (practitioner-documented)
+adoption_status: Not Yet Started
+proposer_priority: P2 (Design Required)
 applicability:
-  - "S3 (Claude Code Build)"
-  - "General"
+- S3 (Claude Code Build)
+- General
 adopted_in: []
 sources:
-  - "steve-yegge-beads-coding-agent-memory.md"
+- steve-yegge-beads-coding-agent-memory.md
 related_findings:
-  - file: incremental-one-feature-per-session-pattern.md
-    rel: same-problem
-  - file: issue-based-agent-orchestration-replacing-markdown-plans.md
-    rel: enabled-by
-  - file: orchestrated-execution-one-task-per-sub-agent-wit.md
-    rel: same-problem
-  - file: work-disavowal-failure-mode-context-limit-cheating.md
-    rel: mitigates
-  - file: context-rot-attention-budget-depletion.md
-    rel: same-problem
+- file: incremental-one-feature-per-session-pattern.md
+  rel: same-problem
+- file: issue-based-agent-orchestration-replacing-markdown-plans.md
+  rel: enabled-by
+- file: orchestrated-execution-one-task-per-sub-agent-wit.md
+  rel: same-problem
+- file: work-disavowal-failure-mode-context-limit-cheating.md
+  rel: mitigates
+- file: context-rot-attention-budget-depletion.md
+  rel: same-problem
+- file: context-curation-over-context-stuffing.md
+  rel: same-problem
+- file: context-rot-silent-killer-and-mitigations.md
+  rel: same-problem
 proposals: null
-date_discovered: "2026-04-20"
-last_updated: "2026-04-20"
+date_discovered: '2026-04-20'
+last_updated: '2026-04-20'
 pipeline_status: raw
 consumed_by: []
 ---

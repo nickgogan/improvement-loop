@@ -15,13 +15,15 @@ sources:
 - self-evolving-claude-code-memory.md
 proposals: []
 date_discovered: '2026-04-07'
-last_updated: 2026-04-08
+last_updated: '2026-04-20'
 related_findings:
 - file: structured-fact-extraction-from-conversations.md
   rel: same-problem
 - file: agent-memory-architecture-multi-agent-layered.md
   rel: same-problem
 - file: ace-agentic-context-engineering-rag-based.md
+  rel: same-problem
+- file: signal-capture-as-byproduct-of-work.md
   rel: same-problem
 pipeline_status: raw
 consumed_by: []

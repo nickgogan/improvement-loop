@@ -1,29 +1,32 @@
 ---
-name: "Concept Graph with Support/Contradiction Detection"
-summary: "An LLM-maintained knowledge graph that checks each new piece of ingested content against existing concepts to classify whether it supports or contradicts them, then generates actionable daily briefs with full attribution chains. Goes beyond wiki compilation by encoding relationships between ideas, not just the ideas themselves."
+name: Concept Graph with Support/Contradiction Detection
+summary: An LLM-maintained knowledge graph that checks each new piece of ingested content against existing concepts to classify whether it supports or contradicts them, then generates actionable daily briefs
+  with full attribution chains. Goes beyond wiki compilation by encoding relationships between ideas, not just the ideas themselves.
 implementation_notes: null
-category: "Memory Architecture"
-evidence_strength: "Medium (practitioner-documented)"
-adoption_status: "Not Yet Started"
-proposer_priority: "P2 (Design Required)"
+category: Memory Architecture
+evidence_strength: Medium (practitioner-documented)
+adoption_status: Not Yet Started
+proposer_priority: P2 (Design Required)
 applicability:
-  - "S3 (Claude Code Build)"
-  - "General"
+- S3 (Claude Code Build)
+- General
 adopted_in: []
 sources:
-  - "tastematter-concept-graph-mcp-ai-signal.md"
+- tastematter-concept-graph-mcp-ai-signal.md
 related_findings:
-  - file: karpathy-llm-knowledge-base-obsidian-rag.md
-    rel: extends
-  - file: compounding-knowledge-loop-internal-data.md
-    rel: same-problem
-  - file: dual-ingestion-funnel-human-clip-plus-llm-research.md
-    rel: same-problem
-  - file: mcp-accessible-concept-graph-domain-context.md
-    rel: companion
+- file: karpathy-llm-knowledge-base-obsidian-rag.md
+  rel: extends
+- file: compounding-knowledge-loop-internal-data.md
+  rel: same-problem
+- file: dual-ingestion-funnel-human-clip-plus-llm-research.md
+  rel: same-problem
+- file: mcp-accessible-concept-graph-domain-context.md
+  rel: companion
+- file: claude-code-daily-brief-multi-source-inbox-obsidian.md
+  rel: same-problem
 proposals: null
-date_discovered: "2026-04-20"
-last_updated: "2026-04-20"
+date_discovered: '2026-04-20'
+last_updated: '2026-04-20'
 pipeline_status: raw
 consumed_by: []
 ---

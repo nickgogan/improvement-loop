@@ -14,11 +14,13 @@ sources:
 - claude-codes-leak-changes-everything.md
 proposals: null
 date_discovered: '2026-04-07'
-last_updated: '2026-04-09'
+last_updated: '2026-04-20'
 related_findings:
 - file: mcp-async-task-model.md
   rel: same-problem
 - file: conway-always-on-persistent-agent.md
+  rel: same-problem
+- file: claude-routines-webhook-triggered-pipeline-chaining.md
   rel: same-problem
 pipeline_status: raw
 consumed_by: []

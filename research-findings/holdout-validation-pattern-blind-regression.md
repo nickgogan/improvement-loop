@@ -1,31 +1,37 @@
 ---
-name: "Holdout Validation Pattern: Blind Regression Testing for Agent Workflows"
-summary: "The validation agent deliberately receives no information about what was just implemented — it runs full regression testing without knowing the scope of change, preventing sycophantic confirmation. Pioneered by StrongDM in production dark factory use."
-implementation_notes: "Implement as a separate Archon node (or separate session) that receives only the codebase state and a test suite, not the implementation PR or issue description. The validation agent must not be able to read git commit messages or PR descriptions during testing. In Archon, use fresh=true session setting for the validate node and pass only the repo path and test script."
-category: "Evaluation"
-evidence_strength: "Medium (practitioner-documented)"
-adoption_status: "Not Yet Started"
-proposer_priority: "P2 (Design Required)"
+name: 'Holdout Validation Pattern: Blind Regression Testing for Agent Workflows'
+summary: The validation agent deliberately receives no information about what was just implemented — it runs full regression testing without knowing the scope of change, preventing sycophantic confirmation.
+  Pioneered by StrongDM in production dark factory use.
+implementation_notes: Implement as a separate Archon node (or separate session) that receives only the codebase state and a test suite, not the implementation PR or issue description. The validation agent
+  must not be able to read git commit messages or PR descriptions during testing. In Archon, use fresh=true session setting for the validate node and pass only the repo path and test script.
+category: Evaluation
+evidence_strength: Medium (practitioner-documented)
+adoption_status: Not Yet Started
+proposer_priority: P2 (Design Required)
 applicability:
-  - "S3 (Claude Code Build)"
-  - "General"
+- S3 (Claude Code Build)
+- General
 adopted_in: []
 sources:
-  - "dark-factory-archon-autonomous-coding.md"
+- dark-factory-archon-autonomous-coding.md
 related_findings:
-  - file: context-pollution-same-window-verification-bias.md
-    rel: extends
-  - file: planning-session-bias-separate-context-windows.md
-    rel: same-problem
-  - file: dark-factory-ai-only-codebase-management.md
-    rel: enabled-by
-  - file: archon-yaml-defined-harness-workflows.md
-    rel: enabled-by
-  - file: builder-validator-chain-pattern.md
-    rel: same-problem
+- file: context-pollution-same-window-verification-bias.md
+  rel: extends
+- file: planning-session-bias-separate-context-windows.md
+  rel: same-problem
+- file: dark-factory-ai-only-codebase-management.md
+  rel: enabled-by
+- file: archon-yaml-defined-harness-workflows.md
+  rel: enabled-by
+- file: builder-validator-chain-pattern.md
+  rel: same-problem
+- file: agent-self-reporting-unreliability-independent-eval.md
+  rel: same-problem
+- file: context-order-diversity-for-bug-detection.md
+  rel: same-problem
 proposals: null
-date_discovered: "2026-04-20"
-last_updated: "2026-04-20"
+date_discovered: '2026-04-20'
+last_updated: '2026-04-20'
 pipeline_status: raw
 consumed_by: []
 ---

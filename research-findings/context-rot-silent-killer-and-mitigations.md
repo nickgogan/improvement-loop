@@ -52,9 +52,11 @@ related_findings:
   rel: same-problem
 - file: two-threshold-compaction-strategy.md
   rel: same-problem
+- file: session-atomicity-single-issue-scope-quadratic-cost-reduction.md
+  rel: same-problem
 proposals: []
 date_discovered: '2026-04-07'
-last_updated: '2026-04-19'
+last_updated: '2026-04-20'
 pipeline_status: synthesized
 consumed_by:
 - managing-agent-context.md

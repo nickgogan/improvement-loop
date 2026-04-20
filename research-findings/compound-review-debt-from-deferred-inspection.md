@@ -20,9 +20,11 @@ related_findings:
   rel: same-problem
 - file: staged-delivery-for-review-digestibility.md
   rel: same-problem
+- file: dark-code-organizational-capability-problem.md
+  rel: same-problem
 proposals: null
 date_discovered: '2026-04-07'
-last_updated: '2026-04-08'
+last_updated: '2026-04-20'
 pipeline_status: synthesized
 consumed_by:
 - agent-governance-and-trust.md

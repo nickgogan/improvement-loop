@@ -1,31 +1,35 @@
 ---
-name: "Issue-Based Agent Orchestration Replacing Markdown Plan Hierarchies"
-summary: "Persistent, queryable issue graphs replace markdown plan files as the coordination layer for multi-session agent work. Agents file discovered problems as structured issues with dependency links, eliminating context-loss-driven work abandonment and plan proliferation."
-implementation_notes: "The Beads system stores issues as JSONL in git, giving both queryability and version history. Agents use `bd ready --json` to find actionable work without reading a plan file. Four dependency link types (parent/child, blocking, discovered-from) enable richer work graphs than GitHub Issues. Drop-in config via single-line agent instruction files."
-category: "Orchestration"
-evidence_strength: "Medium (practitioner-documented)"
-adoption_status: "Not Yet Started"
-proposer_priority: "P1 (Implement Now)"
+name: Issue-Based Agent Orchestration Replacing Markdown Plan Hierarchies
+summary: Persistent, queryable issue graphs replace markdown plan files as the coordination layer for multi-session agent work. Agents file discovered problems as structured issues with dependency links,
+  eliminating context-loss-driven work abandonment and plan proliferation.
+implementation_notes: The Beads system stores issues as JSONL in git, giving both queryability and version history. Agents use `bd ready --json` to find actionable work without reading a plan file. Four
+  dependency link types (parent/child, blocking, discovered-from) enable richer work graphs than GitHub Issues. Drop-in config via single-line agent instruction files.
+category: Orchestration
+evidence_strength: Medium (practitioner-documented)
+adoption_status: Not Yet Started
+proposer_priority: P1 (Implement Now)
 applicability:
-  - "S3 (Claude Code Build)"
-  - "General"
+- S3 (Claude Code Build)
+- General
 adopted_in: []
 sources:
-  - "steve-yegge-beads-coding-agent-memory.md"
+- steve-yegge-beads-coding-agent-memory.md
 related_findings:
-  - file: incremental-one-feature-per-session-pattern.md
-    rel: same-problem
-  - file: orchestrated-execution-one-task-per-sub-agent-wit.md
-    rel: same-problem
-  - file: phase-task-hierarchical-plan-decomposition.md
-    rel: same-problem
-  - file: cross-session-learnings-jsonl.md
-    rel: same-problem
-  - file: file-based-task-locking-parallel-agents.md
-    rel: same-problem
+- file: incremental-one-feature-per-session-pattern.md
+  rel: same-problem
+- file: orchestrated-execution-one-task-per-sub-agent-wit.md
+  rel: same-problem
+- file: phase-task-hierarchical-plan-decomposition.md
+  rel: same-problem
+- file: cross-session-learnings-jsonl.md
+  rel: same-problem
+- file: file-based-task-locking-parallel-agents.md
+  rel: same-problem
+- file: agent-sprawl-anti-pattern-microservices-redux.md
+  rel: same-problem
 proposals: null
-date_discovered: "2026-04-20"
-last_updated: "2026-04-20"
+date_discovered: '2026-04-20'
+last_updated: '2026-04-20'
 pipeline_status: raw
 consumed_by: []
 ---

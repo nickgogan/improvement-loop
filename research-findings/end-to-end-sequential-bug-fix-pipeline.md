@@ -1,6 +1,7 @@
 ---
 name: End-to-End Sequential Bug-Fix Pipeline
-summary: A single skill chains an entire bug-fix workflow — read ticket (Jira MCP) → reproduce (Playwright) → research → implement → review (sub-agents) → verify (Playwright) → commit → deploy → QA push — executing all stages in strict sequential order within one orchestrator thread.
+summary: A single skill chains an entire bug-fix workflow — read ticket (Jira MCP) → reproduce (Playwright) → research → implement → review (sub-agents) → verify (Playwright) → commit → deploy → QA push
+  — executing all stages in strict sequential order within one orchestrator thread.
 implementation_notes: Sub-agents can be spawned at individual stages (review, QA) to avoid context bloat in the main thread; the pipeline as a whole is still sequential even if a stage internally uses parallelism.
 category: Orchestration
 evidence_strength: Medium (practitioner-documented)
@@ -14,7 +15,7 @@ sources:
 - five-claude-code-agent-patterns.md
 proposals: null
 date_discovered: '2026-04-19'
-last_updated: '2026-04-19'
+last_updated: '2026-04-20'
 related_findings:
 - file: skill-chaining-composing-workflows-from-modular-s.md
   rel: same-problem
@@ -23,6 +24,8 @@ related_findings:
 - file: two-stage-sequential-review.md
   rel: same-problem
 - file: dag-vs-bsp-two-graph-based-orchestration-models.md
+  rel: same-problem
+- file: claude-routines-webhook-triggered-pipeline-chaining.md
   rel: same-problem
 pipeline_status: raw
 consumed_by: []

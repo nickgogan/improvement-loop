@@ -43,8 +43,10 @@ related_findings:
   rel: same-problem
 - file: chain-of-thought-reasoning-output-divergence.md
   rel: same-problem
+- file: holdout-validation-pattern-blind-regression.md
+  rel: same-problem
 date_discovered: '2026-04-07'
-last_updated: '2026-04-19'
+last_updated: '2026-04-20'
 pipeline_status: synthesized
 consumed_by:
 - building-agent-evaluation-suites.md

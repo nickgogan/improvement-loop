@@ -1,29 +1,34 @@
 ---
-name: "GitHub Labels as Distributed Workflow State"
-summary: "Using GitHub issue and PR labels as a persistent, distributed state machine for autonomous agent workflows. Labels encode current processing state (in-progress, needs-fixed, needs-human, rate-limited) and act as coordination locks — preventing duplicate workflows from firing on the same issue."
-implementation_notes: "Create a label set covering all workflow states before deploying autonomous workflows. The orchestrator (cron job) reads labels before dispatching — only issues with no factory label are eligible for triage; only triage-accepted issues are eligible for implementation. Labels survive system restarts, require no separate state DB, and are visible in the GitHub UI for human monitoring. Label `needs-human` after N consecutive failures to create a human escalation path."
-category: "Orchestration"
-evidence_strength: "Medium (practitioner-documented)"
-adoption_status: "Not Yet Started"
-proposer_priority: "P2 (Design Required)"
+name: GitHub Labels as Distributed Workflow State
+summary: Using GitHub issue and PR labels as a persistent, distributed state machine for autonomous agent workflows. Labels encode current processing state (in-progress, needs-fixed, needs-human, rate-limited)
+  and act as coordination locks — preventing duplicate workflows from firing on the same issue.
+implementation_notes: Create a label set covering all workflow states before deploying autonomous workflows. The orchestrator (cron job) reads labels before dispatching — only issues with no factory label
+  are eligible for triage; only triage-accepted issues are eligible for implementation. Labels survive system restarts, require no separate state DB, and are visible in the GitHub UI for human monitoring.
+  Label `needs-human` after N consecutive failures to create a human escalation path.
+category: Orchestration
+evidence_strength: Medium (practitioner-documented)
+adoption_status: Not Yet Started
+proposer_priority: P2 (Design Required)
 applicability:
-  - "S3 (Claude Code Build)"
-  - "General"
+- S3 (Claude Code Build)
+- General
 adopted_in: []
 sources:
-  - "dark-factory-archon-autonomous-coding.md"
+- dark-factory-archon-autonomous-coding.md
 related_findings:
-  - file: dark-factory-ai-only-codebase-management.md
-    rel: enabled-by
-  - file: archon-yaml-defined-harness-workflows.md
-    rel: enabled-by
-  - file: github-actions-cron-as-agent-scheduler.md
-    rel: same-problem
-  - file: effort-scaling-rules-embedded-in-orchestrator.md
-    rel: same-problem
+- file: dark-factory-ai-only-codebase-management.md
+  rel: enabled-by
+- file: archon-yaml-defined-harness-workflows.md
+  rel: enabled-by
+- file: github-actions-cron-as-agent-scheduler.md
+  rel: same-problem
+- file: effort-scaling-rules-embedded-in-orchestrator.md
+  rel: same-problem
+- file: atomic-checkout-with-409-exclusion.md
+  rel: same-problem
 proposals: null
-date_discovered: "2026-04-20"
-last_updated: "2026-04-20"
+date_discovered: '2026-04-20'
+last_updated: '2026-04-20'
 pipeline_status: raw
 consumed_by: []
 ---

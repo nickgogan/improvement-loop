@@ -16,9 +16,11 @@ related_findings:
   rel: same-problem
 - file: database-as-shared-memory-coordination.md
   rel: same-problem
+- file: github-label-as-workflow-state.md
+  rel: same-problem
 proposals: null
 date_discovered: '2026-04-08'
-last_updated: '2026-04-19'
+last_updated: '2026-04-20'
 pipeline_status: raw
 consumed_by: []
 ---

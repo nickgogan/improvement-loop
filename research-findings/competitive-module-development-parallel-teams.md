@@ -26,9 +26,11 @@ related_findings:
   rel: same-problem
 - file: org-redesign-for-agentic-throughput-high-speed-rail.md
   rel: same-problem
+- file: gstack-spec-team-parallel-research-agents.md
+  rel: same-problem
 proposals: []
 date_discovered: '2026-04-07'
-last_updated: '2026-04-08'
+last_updated: '2026-04-20'
 pipeline_status: raw
 consumed_by: []
 ---

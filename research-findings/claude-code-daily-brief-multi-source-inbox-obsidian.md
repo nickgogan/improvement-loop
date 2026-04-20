@@ -1,29 +1,38 @@
 ---
-name: "Claude Code Daily Brief with Multi-Source Inbox and Obsidian Output"
-summary: "Claude Code aggregates Gmail, Google Calendar, Beeper (unified messaging), and Things 3 todos into a single Obsidian daily brief note each morning. It also performs inbox triage — auto-archiving cold outreach and spam — so the human only sees high-signal items. Replaces reactive notification-checking with a single intentional daily read."
-implementation_notes: "Concrete integrations used: Gmail API, Google Calendar API, Beeper (aggregates X/DMs, WhatsApp, Telegram, Signal), Things 3 todo app. The brief includes: weather, calendar events, actionable emails, messages requiring response, today's tasks. Inbox archival is rule-taught — the user trains Claude Code on what to archive vs. surface. Output is an Obsidian note updated daily (not a new note each day)."
-category: "Agentic OS"
-evidence_strength: "Medium (practitioner-documented)"
-adoption_status: "Not Yet Started"
-proposer_priority: "P2 (Design Required)"
+name: Claude Code Daily Brief with Multi-Source Inbox and Obsidian Output
+summary: Claude Code aggregates Gmail, Google Calendar, Beeper (unified messaging), and Things 3 todos into a single Obsidian daily brief note each morning. It also performs inbox triage — auto-archiving
+  cold outreach and spam — so the human only sees high-signal items. Replaces reactive notification-checking with a single intentional daily read.
+implementation_notes: 'Concrete integrations used: Gmail API, Google Calendar API, Beeper (aggregates X/DMs, WhatsApp, Telegram, Signal), Things 3 todo app. The brief includes: weather, calendar events,
+  actionable emails, messages requiring response, today''s tasks. Inbox archival is rule-taught — the user trains Claude Code on what to archive vs. surface. Output is an Obsidian note updated daily (not
+  a new note each day).'
+category: Agentic OS
+evidence_strength: Medium (practitioner-documented)
+adoption_status: Not Yet Started
+proposer_priority: P2 (Design Required)
 applicability:
-  - "S3 (Claude Code Build)"
-  - "General"
+- S3 (Claude Code Build)
+- General
 adopted_in: []
 sources:
-  - "claude-code-for-life-daily-briefs-obsidian-memory.md"
+- claude-code-for-life-daily-briefs-obsidian-memory.md
 related_findings:
-  - file: "scheduled-tasks-for-real-time-context-maintenance.md"
-    rel: "extends"
-  - file: "time-window-proactive-agent-loop.md"
-    rel: "same-problem"
-  - file: "claude-code-as-vault-query-engine-project-assistant.md"
-    rel: "companion"
-  - file: "five-pillar-agentic-os-framework.md"
-    rel: "part-of"
+- file: scheduled-tasks-for-real-time-context-maintenance.md
+  rel: extends
+- file: time-window-proactive-agent-loop.md
+  rel: same-problem
+- file: claude-code-as-vault-query-engine-project-assistant.md
+  rel: companion
+- file: five-pillar-agentic-os-framework.md
+  rel: part-of
+- file: cited-health-interview-pattern-parallelized-kb-qa.md
+  rel: same-problem
+- file: concept-graph-support-contradiction-detection.md
+  rel: same-problem
+- file: gws-cli-full-google-workspace-control-from.md
+  rel: enabled-by
 proposals: null
-date_discovered: "2026-04-20"
-last_updated: "2026-04-20"
+date_discovered: '2026-04-20'
+last_updated: '2026-04-20'
 pipeline_status: raw
 consumed_by: []
 ---

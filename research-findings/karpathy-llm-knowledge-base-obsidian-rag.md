@@ -18,7 +18,7 @@ sources:
 - karpathy-llm-wiki-local-implementation.md
 proposals: null
 date_discovered: '2026-04-07'
-last_updated: '2026-04-19'
+last_updated: '2026-04-20'
 related_findings:
 - file: claudemd-as-knowledge-base-traversal-guide.md
   rel: same-problem
@@ -26,6 +26,8 @@ related_findings:
   rel: contradicts
 - file: scale-threshold-heuristic-obsidian-vs-rag.md
   rel: extends
+- file: ai-managed-vault-separate-from-human-vault.md
+  rel: same-problem
 pipeline_status: raw
 consumed_by: []
 ---

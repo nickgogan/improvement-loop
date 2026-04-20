@@ -1,28 +1,35 @@
 ---
-name: "GStack Spec Team — Parallel Research Agents for Spec Gray Areas"
-summary: "After a design doc is approved, 5 parallel specialist agents (Backend Architect, Frontend Designer, QA Strategist, Product Manager, Devil's Advocate) simultaneously research and surface concerns on spec gray areas — open decisions not resolved by the design doc. Results feed the spec before any persona-based review."
+name: GStack Spec Team — Parallel Research Agents for Spec Gray Areas
+summary: After a design doc is approved, 5 parallel specialist agents (Backend Architect, Frontend Designer, QA Strategist, Product Manager, Devil's Advocate) simultaneously research and surface concerns
+  on spec gray areas — open decisions not resolved by the design doc. Results feed the spec before any persona-based review.
 implementation_notes: null
-category: "Orchestration"
-evidence_strength: "Medium (practitioner-documented)"
-adoption_status: "Not Yet Started"
-proposer_priority: "P2 (Design Required)"
+category: Orchestration
+evidence_strength: Medium (practitioner-documented)
+adoption_status: Not Yet Started
+proposer_priority: P2 (Design Required)
 applicability:
-  - "S3 (Claude Code Build)"
+- S3 (Claude Code Build)
 adopted_in: []
 sources:
-  - "gstack-planning-multi-persona-spec-review.md"
+- gstack-planning-multi-persona-spec-review.md
 related_findings:
-  - file: gstack-review-army-parallel-specialist-dispatch.md
-    rel: same-problem
-  - file: specialized-parallel-agent-roles.md
-    rel: same-problem
-  - file: gstack-specialist-role-architecture.md
-    rel: enabled-by
-  - file: autoplan-auto-decision-pipeline.md
-    rel: feeds-into
+- file: gstack-review-army-parallel-specialist-dispatch.md
+  rel: same-problem
+- file: specialized-parallel-agent-roles.md
+  rel: same-problem
+- file: gstack-specialist-role-architecture.md
+  rel: enabled-by
+- file: autoplan-auto-decision-pipeline.md
+  rel: feeds-into
+- file: capability-saturation-threshold-45-percent.md
+  rel: contradicts
+- file: claude-code-12-agent-primitives.md
+  rel: enabled-by
+- file: competitive-module-development-parallel-teams.md
+  rel: same-problem
 proposals: null
-date_discovered: "2026-04-20"
-last_updated: "2026-04-20"
+date_discovered: '2026-04-20'
+last_updated: '2026-04-20'
 pipeline_status: raw
 consumed_by: []
 ---

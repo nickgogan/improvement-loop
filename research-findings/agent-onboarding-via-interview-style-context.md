@@ -24,6 +24,8 @@ related_findings:
   rel: same-problem
 - file: open-brain-personal-knowledge-store-pattern.md
   rel: enables
+- file: spec-as-generator-agent-spec-pattern.md
+  rel: same-problem
 pipeline_status: raw
 consumed_by: []
 ---

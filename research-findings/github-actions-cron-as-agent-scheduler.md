@@ -13,9 +13,12 @@ adopted_in: []
 sources: []
 proposals: []
 date_discovered: '2026-03-22'
-last_updated: '2026-04-19'
+last_updated: '2026-04-20'
 pipeline_status: raw
 consumed_by: []
+related_findings:
+- file: claude-routines-webhook-triggered-pipeline-chaining.md
+  rel: same-problem
 ---
 # GitHub Actions Cron as Agent Scheduler
 

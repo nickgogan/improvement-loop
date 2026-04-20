@@ -1,33 +1,38 @@
 ---
-name: "Dark Code as Organizational Capability Problem"
-summary: "'Dark code' — AI-generated code that passes tests but was never understood by any human — is an organizational capability problem, not a tooling or security problem. Comprehension decouples from authorship at AI velocity. The fix is a three-layer response: spec-driven development (force understanding before code exists), self-describing systems (embed comprehension in the codebase), and AI-assisted comprehension gates (legibility checks at PR review)."
-implementation_notes: "Directly applicable to MetaSystem build practice. All three layers are actionable: (1) every build task should start with a written spec, (2) modules should carry manifests + behavioral contracts, (3) PR review should include a structured comprehension gate prompting senior-engineer-style questions."
-category: "Governance"
-evidence_strength: "Medium (practitioner-documented)"
-adoption_status: "Not Yet Started"
-proposer_priority: "P2 (Design Required)"
+name: Dark Code as Organizational Capability Problem
+summary: '''Dark code'' — AI-generated code that passes tests but was never understood by any human — is an organizational capability problem, not a tooling or security problem. Comprehension decouples
+  from authorship at AI velocity. The fix is a three-layer response: spec-driven development (force understanding before code exists), self-describing systems (embed comprehension in the codebase), and
+  AI-assisted comprehension gates (legibility checks at PR review).'
+implementation_notes: 'Directly applicable to MetaSystem build practice. All three layers are actionable: (1) every build task should start with a written spec, (2) modules should carry manifests + behavioral
+  contracts, (3) PR review should include a structured comprehension gate prompting senior-engineer-style questions.'
+category: Governance
+evidence_strength: Medium (practitioner-documented)
+adoption_status: Not Yet Started
+proposer_priority: P2 (Design Required)
 applicability:
-  - "S3 (Claude Code Build)"
-  - "General"
+- S3 (Claude Code Build)
+- General
 adopted_in: []
 sources:
-  - "dark-code-spec-driven-comprehension-gates.md"
+- dark-code-spec-driven-comprehension-gates.md
 related_findings:
-  - file: spec-as-source-of-truth-for-agent-construction.md
-    rel: same-problem
-  - file: spec-first-agent-briefs-prompt-craft-context-inten.md
-    rel: same-problem
-  - file: eval-driven-development-autonomous-quality.md
-    rel: enabled-by
-  - file: self-describing-codebase-structural-semantic-context.md
-    rel: enabled-by
-  - file: review-pipeline-bottleneck-and-quality-at-source.md
-    rel: same-problem
-  - file: dark-factory-ai-only-codebase-management.md
-    rel: contradicts
+- file: spec-as-source-of-truth-for-agent-construction.md
+  rel: same-problem
+- file: spec-first-agent-briefs-prompt-craft-context-inten.md
+  rel: same-problem
+- file: eval-driven-development-autonomous-quality.md
+  rel: enabled-by
+- file: self-describing-codebase-structural-semantic-context.md
+  rel: enabled-by
+- file: review-pipeline-bottleneck-and-quality-at-source.md
+  rel: same-problem
+- file: dark-factory-ai-only-codebase-management.md
+  rel: contradicts
+- file: compound-review-debt-from-deferred-inspection.md
+  rel: same-problem
 proposals: null
-date_discovered: "2026-04-20"
-last_updated: "2026-04-20"
+date_discovered: '2026-04-20'
+last_updated: '2026-04-20'
 pipeline_status: raw
 consumed_by: []
 ---

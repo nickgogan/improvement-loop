@@ -39,6 +39,8 @@ related_findings:
   rel: same-problem
 - file: bmad-v6-builder-custom-agent-workflow-creation.md
   rel: same-problem
+- file: claude-routines-webhook-triggered-pipeline-chaining.md
+  rel: same-problem
 proposals: null
 date_discovered: '2026-04-09'
 last_updated: '2026-04-20'

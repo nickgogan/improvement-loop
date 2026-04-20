@@ -1,31 +1,34 @@
 ---
-name: "Context-Order Diversity for Bug Detection"
-summary: "Bugs can be made visible or invisible by the order in which code is loaded into an LLM's context window. Intentionally diversifying traversal entry points across parallel sub-agents ensures that no single ordering bias hides a real bug."
+name: Context-Order Diversity for Bug Detection
+summary: Bugs can be made visible or invisible by the order in which code is loaded into an LLM's context window. Intentionally diversifying traversal entry points across parallel sub-agents ensures that
+  no single ordering bias hides a real bug.
 implementation_notes: null
-category: "Evaluation"
-evidence_strength: "Medium (practitioner-documented)"
-adoption_status: "Not Yet Started"
-proposer_priority: "P2 (Design Required)"
+category: Evaluation
+evidence_strength: Medium (practitioner-documented)
+adoption_status: Not Yet Started
+proposer_priority: P2 (Design Required)
 applicability:
-  - "S3 (Claude Code Build)"
+- S3 (Claude Code Build)
 adopted_in: []
 sources:
-  - "claude-code-ultra-review-multi-agent-verification.md"
+- claude-code-ultra-review-multi-agent-verification.md
 related_findings:
-  - file: ultra-review-multi-agent-bug-hunting-fleet.md
-    rel: extends
-  - file: context-pollution-same-window-verification-bias.md
-    rel: same-problem
-  - file: subagent-exploration-mode-parallel-codebase-mappi.md
-    rel: same-problem
-  - file: fork-subagent-parallel-trajectory-exploration.md
-    rel: same-problem
-  - file: cross-model-verification-for-bug-finding.md
-    rel: same-problem
+- file: ultra-review-multi-agent-bug-hunting-fleet.md
+  rel: extends
+- file: context-pollution-same-window-verification-bias.md
+  rel: same-problem
+- file: subagent-exploration-mode-parallel-codebase-mappi.md
+  rel: same-problem
+- file: fork-subagent-parallel-trajectory-exploration.md
+  rel: same-problem
+- file: cross-model-verification-for-bug-finding.md
+  rel: same-problem
+- file: holdout-validation-pattern-blind-regression.md
+  rel: same-problem
 proposals: null
-date_discovered: "2026-04-19"
-last_updated: "2026-04-19"
-pipeline_status: "raw"
+date_discovered: '2026-04-19'
+last_updated: '2026-04-20'
+pipeline_status: raw
 consumed_by: []
 ---
 # Context-Order Diversity for Bug Detection

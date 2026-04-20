@@ -1,27 +1,34 @@
 ---
-name: "Signal Capture as Byproduct of Work"
-summary: "Organizational knowledge systems only compound if signal capture is a byproduct of doing the work — not a separate documentation act. When feeding the system requires extra effort, the people with the most valuable context will strategically withhold it, and the system stagnates."
+name: Signal Capture as Byproduct of Work
+summary: Organizational knowledge systems only compound if signal capture is a byproduct of doing the work — not a separate documentation act. When feeding the system requires extra effort, the people with
+  the most valuable context will strategically withhold it, and the system stagnates.
 implementation_notes: null
-category: "Memory Architecture"
-evidence_strength: "Medium (practitioner-documented)"
-adoption_status: "Not Yet Started"
-proposer_priority: "P2 (Design Required)"
+category: Memory Architecture
+evidence_strength: Medium (practitioner-documented)
+adoption_status: Not Yet Started
+proposer_priority: P2 (Design Required)
 applicability:
-  - "General"
-  - "S3 (Claude Code Build)"
+- General
+- S3 (Claude Code Build)
 adopted_in: []
 sources:
-  - "world-models-orgs-three-architectures.md"
+- world-models-orgs-three-architectures.md
 related_findings:
-  - file: compounding-knowledge-loop-internal-data.md
-    rel: same-problem
-  - file: org-world-model-three-architecture-patterns.md
-    rel: part-of
-  - file: tacit-knowledge-as-agent-delegation-barrier.md
-    rel: same-problem
+- file: compounding-knowledge-loop-internal-data.md
+  rel: same-problem
+- file: org-world-model-three-architecture-patterns.md
+  rel: part-of
+- file: tacit-knowledge-as-agent-delegation-barrier.md
+  rel: same-problem
+- file: claude-code-hooks-for-automatic-session-memory.md
+  rel: same-problem
+- file: claude-code-long-term-memory-via-pre-prompt-recall.md
+  rel: same-problem
+- file: composable-templates-for-lazy-capture.md
+  rel: same-problem
 proposals: null
-date_discovered: "2026-04-20"
-last_updated: "2026-04-20"
+date_discovered: '2026-04-20'
+last_updated: '2026-04-20'
 pipeline_status: raw
 consumed_by: []
 ---

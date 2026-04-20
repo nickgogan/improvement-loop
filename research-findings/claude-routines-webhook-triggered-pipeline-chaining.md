@@ -1,29 +1,41 @@
 ---
-name: "Claude Routines Webhook-Triggered Pipeline Chaining"
-summary: "Routines can be chained into end-to-end business pipelines via webhooks: an external event (e.g., Fireflies call transcript ready) fires Routine A (proposal generator), whose output triggers Routine B (signed-contract handler), and so on. Each routine is a discrete cloud-hosted agent with its own connectors and SOP prompt."
-implementation_notes: "Directly applicable to MetaSystem's improvement loop and Household OS — any multi-step process with external triggers (calendar events, form submissions, signed agreements) can be decomposed into a chain of routines rather than a single monolithic agent session."
-category: "Orchestration"
-evidence_strength: "Strong (production-tested)"
-adoption_status: "Not Yet Started"
-proposer_priority: "P1 (Implement Now)"
+name: Claude Routines Webhook-Triggered Pipeline Chaining
+summary: 'Routines can be chained into end-to-end business pipelines via webhooks: an external event (e.g., Fireflies call transcript ready) fires Routine A (proposal generator), whose output triggers Routine
+  B (signed-contract handler), and so on. Each routine is a discrete cloud-hosted agent with its own connectors and SOP prompt.'
+implementation_notes: Directly applicable to MetaSystem's improvement loop and Household OS — any multi-step process with external triggers (calendar events, form submissions, signed agreements) can be
+  decomposed into a chain of routines rather than a single monolithic agent session.
+category: Orchestration
+evidence_strength: Strong (production-tested)
+adoption_status: Not Yet Started
+proposer_priority: P1 (Implement Now)
 applicability:
-  - "S3 (Claude Code Build)"
-  - "General"
+- S3 (Claude Code Build)
+- General
 adopted_in: []
 sources:
-  - "claude-routines-scheduled-automations-webhooks.md"
+- claude-routines-scheduled-automations-webhooks.md
 related_findings:
-  - file: anthropic-managed-agents-platform.md
-    rel: extends
-  - file: skill-chaining-composing-workflows-from-modular-s.md
-    rel: contrasts-with
-  - file: durable-workflow-engine-for-agent-systems.md
-    rel: same-problem
-  - file: two-agent-chained-content-pipeline-research-publi.md
-    rel: same-problem
+- file: anthropic-managed-agents-platform.md
+  rel: extends
+- file: skill-chaining-composing-workflows-from-modular-s.md
+  rel: contrasts-with
+- file: durable-workflow-engine-for-agent-systems.md
+  rel: same-problem
+- file: two-agent-chained-content-pipeline-research-publi.md
+  rel: same-problem
+- file: archon-yaml-defined-harness-workflows.md
+  rel: same-problem
+- file: claude-dispatch-native-mobile-to-local-agent-orch.md
+  rel: same-problem
+- file: end-to-end-sequential-bug-fix-pipeline.md
+  rel: same-problem
+- file: github-actions-cron-as-agent-scheduler.md
+  rel: same-problem
+- file: kairos-autonomous-background-daemon.md
+  rel: same-problem
 proposals: null
-date_discovered: "2026-04-20"
-last_updated: "2026-04-20"
+date_discovered: '2026-04-20'
+last_updated: '2026-04-20'
 pipeline_status: raw
 consumed_by: []
 ---

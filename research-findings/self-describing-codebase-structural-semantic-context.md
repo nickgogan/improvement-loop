@@ -1,31 +1,36 @@
 ---
-name: "Self-Describing Codebases via Structural and Semantic Context Layers"
-summary: "Making a codebase inherently self-describing requires two distinct context layers: structural context (module manifests answering 'where' — what a module does, what it depends on, what depends on it) and semantic context (behavioral contracts on interfaces answering 'what' — performance expectations, failure modes, retry semantics, not just data shape). Together, these make comprehension embedded in the code rather than locked in individual heads."
-implementation_notes: "Add module manifests to each app/ directory in MetaSystem — short markdown files covering purpose, dependencies in/out, and key constraints. Add behavioral contract annotations to all skill interfaces: expected output format, failure modes, retry behavior, and performance expectations. These are the structural and semantic layers of a self-describing codebase."
-category: "Context Engineering"
-evidence_strength: "Medium (practitioner-documented)"
-adoption_status: "Not Yet Started"
-proposer_priority: "P2 (Design Required)"
+name: Self-Describing Codebases via Structural and Semantic Context Layers
+summary: 'Making a codebase inherently self-describing requires two distinct context layers: structural context (module manifests answering ''where'' — what a module does, what it depends on, what depends
+  on it) and semantic context (behavioral contracts on interfaces answering ''what'' — performance expectations, failure modes, retry semantics, not just data shape). Together, these make comprehension
+  embedded in the code rather than locked in individual heads.'
+implementation_notes: 'Add module manifests to each app/ directory in MetaSystem — short markdown files covering purpose, dependencies in/out, and key constraints. Add behavioral contract annotations to
+  all skill interfaces: expected output format, failure modes, retry behavior, and performance expectations. These are the structural and semantic layers of a self-describing codebase.'
+category: Context Engineering
+evidence_strength: Medium (practitioner-documented)
+adoption_status: Not Yet Started
+proposer_priority: P2 (Design Required)
 applicability:
-  - "S3 (Claude Code Build)"
-  - "General"
+- S3 (Claude Code Build)
+- General
 adopted_in: []
 sources:
-  - "dark-code-spec-driven-comprehension-gates.md"
+- dark-code-spec-driven-comprehension-gates.md
 related_findings:
-  - file: context-file-taxonomy-claudemd-soulmd-agentsmd.md
-    rel: same-problem
-  - file: context-curation-over-context-stuffing.md
-    rel: same-problem
-  - file: dark-code-organizational-capability-problem.md
-    rel: enabled-by
-  - file: ai-readable-naming-conventions-as-a-navigation.md
-    rel: same-problem
-  - file: claudemd-as-signal-to-noise-problem-not-size-probl.md
-    rel: same-problem
+- file: context-file-taxonomy-claudemd-soulmd-agentsmd.md
+  rel: same-problem
+- file: context-curation-over-context-stuffing.md
+  rel: same-problem
+- file: dark-code-organizational-capability-problem.md
+  rel: enabled-by
+- file: ai-readable-naming-conventions-as-a-navigation.md
+  rel: same-problem
+- file: claudemd-as-signal-to-noise-problem-not-size-probl.md
+  rel: same-problem
+- file: claudemd-as-knowledge-base-traversal-guide.md
+  rel: same-problem
 proposals: null
-date_discovered: "2026-04-20"
-last_updated: "2026-04-20"
+date_discovered: '2026-04-20'
+last_updated: '2026-04-20'
 pipeline_status: raw
 consumed_by: []
 ---

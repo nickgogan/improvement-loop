@@ -15,12 +15,16 @@ sources:
 - notebooklm-claude-code-expert-experiments.md
 proposals: []
 date_discovered: '2026-04-19'
-last_updated: '2026-04-19'
+last_updated: '2026-04-20'
 related_findings:
 - file: notebooklm-mcp-claude-code-cited-knowledge-layer.md
   rel: companion
 - file: learn-plan-act-review-loop-closing-the-knowledge-gap.md
   rel: companion
+- file: claude-code-daily-brief-multi-source-inbox-obsidian.md
+  rel: same-problem
+- file: multi-agent-proportional-content-summarization.md
+  rel: same-problem
 pipeline_status: raw
 consumed_by: []
 ---

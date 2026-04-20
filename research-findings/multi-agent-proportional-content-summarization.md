@@ -1,29 +1,35 @@
 ---
-name: "Multi-Agent Proportional Content Summarization to Obsidian"
-summary: "Claude Code downloads a video/podcast/article transcript, splits it into chunks, dispatches sub-agents to summarize each chunk, and assembles a structured Obsidian note proportional in depth to the content length. For long content (2-3 hour podcast), the result is a Wikipedia-like article with TLDR callout, timestamps, top quotes, and entity pages for people and concepts mentioned."
-implementation_notes: "Workflow steps: (1) Download transcript via yt-dlp or equivalent; if no transcript, download video and run Whisper transcription locally. (2) Split transcript into segments. (3) Sub-agents summarize individual segments. (4) Assemble into structured Obsidian note with: video thumbnail (via Obsidian plugin), TLDR callout block, timestamped topic index, key quotes section, people/concepts mentioned section. (5) For each entity mentioned, create a stub page in the vault. Summary depth is proportional: 500-page book → 15-20 min read summary. Implemented as a Claude Code skill installable from a URL."
-category: "Agentic OS"
-evidence_strength: "Medium (practitioner-documented)"
-adoption_status: "Not Yet Started"
-proposer_priority: "P2 (Design Required)"
+name: Multi-Agent Proportional Content Summarization to Obsidian
+summary: Claude Code downloads a video/podcast/article transcript, splits it into chunks, dispatches sub-agents to summarize each chunk, and assembles a structured Obsidian note proportional in depth to
+  the content length. For long content (2-3 hour podcast), the result is a Wikipedia-like article with TLDR callout, timestamps, top quotes, and entity pages for people and concepts mentioned.
+implementation_notes: 'Workflow steps: (1) Download transcript via yt-dlp or equivalent; if no transcript, download video and run Whisper transcription locally. (2) Split transcript into segments. (3) Sub-agents
+  summarize individual segments. (4) Assemble into structured Obsidian note with: video thumbnail (via Obsidian plugin), TLDR callout block, timestamped topic index, key quotes section, people/concepts
+  mentioned section. (5) For each entity mentioned, create a stub page in the vault. Summary depth is proportional: 500-page book → 15-20 min read summary. Implemented as a Claude Code skill installable
+  from a URL.'
+category: Agentic OS
+evidence_strength: Medium (practitioner-documented)
+adoption_status: Not Yet Started
+proposer_priority: P2 (Design Required)
 applicability:
-  - "S3 (Claude Code Build)"
-  - "General"
+- S3 (Claude Code Build)
+- General
 adopted_in: []
 sources:
-  - "claude-code-for-life-daily-briefs-obsidian-memory.md"
+- claude-code-for-life-daily-briefs-obsidian-memory.md
 related_findings:
-  - file: "bulk-youtube-ingestion-notebooklm-via-terminal.md"
-    rel: "same-problem"
-  - file: "obsidian-as-transparent-frontend-vs-rag-black-box.md"
-    rel: "companion"
-  - file: "claude-code-as-vault-query-engine-project-assistant.md"
-    rel: "companion"
-  - file: "subagent-exploration-mode-parallel-codebase-mappi.md"
-    rel: "same-technique"
+- file: bulk-youtube-ingestion-notebooklm-via-terminal.md
+  rel: same-problem
+- file: obsidian-as-transparent-frontend-vs-rag-black-box.md
+  rel: companion
+- file: claude-code-as-vault-query-engine-project-assistant.md
+  rel: companion
+- file: subagent-exploration-mode-parallel-codebase-mappi.md
+  rel: same-technique
+- file: cited-health-interview-pattern-parallelized-kb-qa.md
+  rel: same-problem
 proposals: null
-date_discovered: "2026-04-20"
-last_updated: "2026-04-20"
+date_discovered: '2026-04-20'
+last_updated: '2026-04-20'
 pipeline_status: raw
 consumed_by: []
 ---

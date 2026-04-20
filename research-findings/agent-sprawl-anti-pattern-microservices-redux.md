@@ -15,7 +15,7 @@ sources:
 - building-agents-on-layers-that-wont-exist.md
 - multi-agent-orchestration-production-playbook-nick.md
 date_discovered: '2026-04-07'
-last_updated: '2026-04-09'
+last_updated: '2026-04-20'
 related_findings:
 - file: specialization-theater-anti-pattern.md
   rel: same-problem
@@ -24,6 +24,8 @@ related_findings:
 - file: mcp-enterprise-governance-gaps.md
   rel: same-problem
 - file: harness-engineering-third-evolution.md
+  rel: same-problem
+- file: issue-based-agent-orchestration-replacing-markdown-plans.md
   rel: same-problem
 pipeline_status: synthesized
 consumed_by:

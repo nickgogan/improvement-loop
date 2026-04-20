@@ -16,10 +16,12 @@ sources:
 - googleworkspace-cli-one-cli-for-all-of-google-work.md
 proposals: []
 date_discovered: '2026-03-22'
-last_updated: '2026-04-19'
+last_updated: '2026-04-20'
 related_findings:
 - file: dynamic-discovery-architecture-self-updating-cli-f.md
   rel: enabled-by
+- file: claude-code-daily-brief-multi-source-inbox-obsidian.md
+  rel: enables
 pipeline_status: raw
 consumed_by: []
 ---

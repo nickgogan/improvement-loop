@@ -18,7 +18,7 @@ sources:
 - claude-codes-leak-changes-everything.md
 proposals: null
 date_discovered: '2026-04-07'
-last_updated: '2026-04-19'
+last_updated: '2026-04-20'
 related_findings:
 - file: tiered-permission-system-bash-safety.md
   rel: extends
@@ -28,6 +28,8 @@ related_findings:
   rel: same-problem
 - file: velocity-vs-operational-discipline-risk-pattern.md
   rel: same-problem
+- file: gstack-spec-team-parallel-research-agents.md
+  rel: enables
 pipeline_status: synthesized
 consumed_by:
 - agent-architecture-decisions.md
