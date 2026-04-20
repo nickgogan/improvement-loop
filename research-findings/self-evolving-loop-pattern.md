@@ -16,9 +16,10 @@ sources:
 - anthropic-psm-research-context-engineering-guide.md
 - openai-self-evolving-agents-cookbook.md
 - gstack-v01590-v015160-changelog.md
+- agentic-os-five-pillars-claude-code.md
 proposals: []
 date_discovered: '2026-03-16'
-last_updated: '2026-04-19'
+last_updated: '2026-04-20'
 related_findings: null
 pipeline_status: raw
 consumed_by: []
@@ -46,3 +47,14 @@ Loop fatigue: if monthly reports consistently show little change, the human revi
 **HyperAgents (arXiv 2603.19461, March 19)** is the research-level extension: agents that improve *how they improve themselves*, not just what they do. Meta-level improvements (persistent memory, performance tracking) transfer across domains. Progression: Reflexion -> ADAS -> DGM -> HyperAgents. The Skills 2.0 eval loop is the production implementation of the same principle.
 **Updated evidence strength:** Strong (was Medium -- now has official Anthropic implementation + peer-reviewed research)
 **Sources:** https://pasqualepillitteri.it/en/news/341/claude-code-skills-2-0-evals-benchmarks-guide / https://www.mindstudio.ai/blog/self-improving-ai-skills-binary-evals-claude-code / https://arxiv.org/abs/2603.19461
+
+## Practitioner Variant — 2026-04-20
+
+Agentic Academy documents a lightweight self-learning skill loop operating at the individual skill level (vs. the system-wide Skills 2.0 eval harness):
+
+1. **Skill definition** in SKILL.md (< 200 lines, stripped of surplus)
+2. **Reference files** for additional context (loaded on-demand, not embedded)
+3. **learnings.md** (or rules section in SKILL.md) — non-negotiable rules accumulated from human feedback
+4. **Feedback step** built into the skill workflow — after each execution, the skill asks for feedback, codifies corrections as rules in learnings.md
+
+This is a manual variant of the binary eval loop: instead of automated assertion testing, the human provides qualitative feedback that gets codified into rules the skill must follow. Lighter-weight than Skills 2.0 but applicable to skills where binary assertions are hard to write (e.g., content generation, creative tasks). The adapted Anthropic skill-creator skill enforces the 200-line cap and context separation.

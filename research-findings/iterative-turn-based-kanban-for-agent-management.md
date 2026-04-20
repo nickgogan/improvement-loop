@@ -13,8 +13,9 @@ applicability:
 adopted_in: []
 sources:
 - stop-using-claude-code-in-terminal.md
+- agentic-os-five-pillars-claude-code.md
 date_discovered: '2026-04-07'
-last_updated: '2026-04-07'
+last_updated: '2026-04-20'
 pipeline_status: raw
 consumed_by: []
 ---
@@ -40,3 +41,15 @@ Could be combined with priority scoring to surface the most important items in "
 ## Potential Failure Modes
 
 Risk of tasks accumulating in "Your Turn" faster than the human can review them -- the same review bottleneck problem identified in the Review Pipeline Bottleneck finding. The iterative model could also mask tasks that should be rejected outright rather than iterated upon endlessly.
+
+## Additional Evidence — 2026-04-20
+
+Agentic Academy's "Command Center" is a production implementation of this pattern, evolved from turn-based kanban to goal-based kanban. Key differences from Simon Scrapes' version:
+
+- **Business goals as top-level entities** (not tasks). Each goal spawns a Claude Code instance shown on the kanban board.
+- **Plan sidebar:** Each goal shows the conversation alongside a plan that auto-updates as execution progresses.
+- **Sub-chats within goals** for managing multiple conversation threads under one business outcome.
+- **Quick asks via Claude Code Channels** (Telegram/iMessage/Discord) for lightweight interactions, reserving the Command Center for complex multi-day goals.
+- **Local-first architecture:** Runs as a UI wrapper on top of terminal, compatible with Pro/Max subscription (Anthropic usage policy compliant).
+
+The evolution from task-level to goal-level kanban reflects the practitioner insight that "the real question now that agents are so good is how do we manage multiple conversations and multiple goals at the same time." The human role explicitly shifts from executor to supervisor.

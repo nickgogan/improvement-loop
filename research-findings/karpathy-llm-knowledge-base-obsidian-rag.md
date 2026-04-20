@@ -15,6 +15,7 @@ adopted_in: []
 sources:
 - karpathys-obsidian-rag-claude-code.md
 - self-evolving-claude-code-memory.md
+- karpathy-llm-wiki-local-implementation.md
 proposals: null
 date_discovered: '2026-04-07'
 last_updated: '2026-04-19'
@@ -53,6 +54,18 @@ Incremental compile — only process new or changed docs instead of full recompi
 
 ## Potential Failure Modes
 Wiki quality degrades if LLM compilation isn't periodically supervised. Index can grow unwieldy without periodic pruning. Scale ceiling around ~1000 docs before vector search outperforms file traversal. Session log noise can pollute the knowledge base if not filtered.
+
+## Local Implementation Evidence — 2026-04-20
+
+"Nanny" (YouTube) built a fully local implementation using Ollama (Gemma 4) + LangChain + Obsidian. Key implementation details that add to the pattern:
+
+- **Multi-view wiki generation:** Four view types from the same underlying data — index.md (broad summary), topic-based views (articles grouped by theme), entity-based views (articles grouped by author/company/country), source-based views (per-article detail with cross-links). Each view is a different traversal path into the same knowledge.
+- **Structured JSON extraction:** LLM prompted to output JSON with summary, key_points, topics (broad categories), and entities (specific: persons, companies). JSON mode enforced at the Ollama level.
+- **Topic/entity deduplication via merge:** After per-article extraction, topics and entities are merged by name — if two articles share the "learning" topic, one topic page is created linking both. Same dedup for entities.
+- **Chrome Clipper as ingestion pipeline:** Obsidian Chrome extension captures web articles with full metadata (author, date, source, title, body) into a `clippings/` folder. This is the "human clip" path of the dual ingestion funnel.
+- **Limitation:** Implementation is static (full regeneration each run), not incremental as Karpathy envisioned. Author notes incremental update is straightforward to add.
+
+This corroborates the pattern's applicability: even a minimal local model (Gemma 4B) can power the wiki compilation step, validating Karpathy's claim that the LLM work is "basic — any LLM can do it."
 
 ## Extraction Note — 2026-04-19
 Extracted as **pattern**: [[llm-compiled-knowledge-base-over-vector-rag.md]] in `extracts/patterns/`

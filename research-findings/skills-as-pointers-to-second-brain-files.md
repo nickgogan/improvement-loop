@@ -15,9 +15,10 @@ applicability:
 adopted_in: []
 sources:
 - seven-levels-context-infrastructure-ai-agents.md
+- agentic-os-five-pillars-claude-code.md
 proposals: []
 date_discovered: '2026-04-19'
-last_updated: '2026-04-19'
+last_updated: '2026-04-20'
 related_findings:
 - file: claudemd-as-knowledge-base-traversal-guide.md
   rel: extends
@@ -52,3 +53,9 @@ A skill audit tool that detects duplicated content across skills and proposes va
 
 ## Potential Failure Modes
 Skills become dependent on vault file structure — reorganizing the vault breaks skill path references. Vault files may not exist when a skill runs in a context without vault access. Path references in SKILL.md become stale if vault is restructured without updating all referencing skills. Requires the vault to be mounted or accessible in every context where the skill runs.
+
+## Additional Evidence — 2026-04-20
+
+Agentic Academy's "Five-Pillar Agentic OS" video independently validates this pattern as "business context" — pillar 5 (the foundation layer). Their implementation: a single `brand-context/` folder containing voice profile, ICP, positioning, and client details. Every skill references this folder. "Update the information once and every skill gets that update when it runs." They explicitly frame this as the #1 thing to build first: "Start with the business brain, not the agents. Every feature gets multiplied by having the solid context foundation layer underneath it."
+
+The adapted Anthropic skill-creator skill enforces context hygiene: SKILL.md kept under 200 lines, all reference context in separate files loaded on-demand. This matches the "pointers over copies" principle — skills reference the brand context folder rather than embedding context.

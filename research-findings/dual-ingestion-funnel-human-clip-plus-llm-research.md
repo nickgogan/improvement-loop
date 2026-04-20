@@ -13,6 +13,7 @@ adopted_in:
 - Improvement Loop
 sources:
 - karpathys-obsidian-rag-claude-code.md
+- karpathy-llm-wiki-local-implementation.md
 related_findings:
 - file: karpathy-llm-knowledge-base-obsidian-rag.md
   rel: extends
