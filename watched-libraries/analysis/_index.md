@@ -42,6 +42,7 @@ Structural analysis docs produced by `/repo-analyzer`. Each entry covers 5 dimen
 | [[openviking-analysis\|OpenViking]] | latest | 2026-04-19 | all |
 | [[sandbox-analysis\|AIO Sandbox]] | v1.0.0.150 | 2026-04-19 | all |
 | [[deer-flow-analysis\|DeerFlow]] | v2.0 | 2026-04-19 | all |
+| [[ob1-analysis\|OB1 (Open Brain)]] | latest | 2026-04-20 | all |
 
 ## Cross-Repo Comparison
 
