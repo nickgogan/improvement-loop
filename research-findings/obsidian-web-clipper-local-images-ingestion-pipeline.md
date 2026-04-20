@@ -14,8 +14,9 @@ applicability:
 adopted_in: []
 sources:
 - karpathys-obsidian-rag-claude-code.md
+- karpathy-obsidian-rag-markdown-knowledge-base.md
 date_discovered: '2026-04-07'
-last_updated: '2026-04-08'
+last_updated: '2026-04-19'
 related_findings:
 - file: firecrawl-cli-for-research-ingestion.md
   rel: same-problem

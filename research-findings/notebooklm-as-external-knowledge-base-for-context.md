@@ -22,6 +22,8 @@ related_findings:
   rel: same-problem
 - file: ace-agentic-context-engineering-evolving-playbook.md
   rel: same-problem
+- file: notebooklm-mcp-claude-code-cited-knowledge-layer.md
+  rel: companion
 pipeline_status: synthesized
 consumed_by:
 - managing-agent-context.md

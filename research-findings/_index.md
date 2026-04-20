@@ -297,3 +297,8 @@ consumed_by: []
 | Interrupt/Command Primitives for Human-in-the-Loop | Intent Engineering | Medium (practitioner-documented) | Not Yet Started | | General |
 | Tool Injection via Type Annotations | Tool Integration | Medium (practitioner-documented) | Not Yet Started | | General |
 | Auto-Generated Threat Model Documentation | Governance | Medium (practitioner-documented) | Not Yet Started | | General |
+| Context Infrastructure Seven-Level Maturity Model | Agentic OS | Medium (practitioner-documented) | Already Adopted | P3 (Monitor) | General, S3 (Claude Code Build) |
+| Skills as Pointers to Second Brain Files | Context Engineering | Medium (practitioner-documented) | Not Yet Started | P2 (Design Required) | S3 (Claude Code Build), General |
+| Scheduled Tasks for Real-Time Context Maintenance | Agentic OS | Medium (practitioner-documented) | Not Yet Started | P2 (Design Required) | General, S3 (Claude Code Build) |
+| Obsidian Relay Plugin for Team Context Sync | Agentic OS | Medium (practitioner-documented) | Not Yet Started | P3 (Monitor) | General |
+| Context Layer Operator Role and Maintenance Cadence | Agentic OS | Medium (practitioner-documented) | Partially Adopted | P2 (Design Required) | General, S3 (Claude Code Build) |

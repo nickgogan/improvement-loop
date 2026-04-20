@@ -10,7 +10,8 @@ proposer_priority: P2
 applicability:
 - S3 (Claude Code Build)
 adopted_in: []
-sources: []
+sources:
+- 11-step-governance-build-order-multi-agent-systems.md
 related_findings:
 - file: heartbeat-execution-model.md
   rel: same-problem
@@ -21,6 +22,8 @@ related_findings:
 - file: session-persistence-crash-resilient.md
   rel: same-problem
 - file: workflow-state-vs-conversation-state.md
+  rel: same-problem
+- file: governed-dependency-chain-build-order.md
   rel: same-problem
 proposals: null
 date_discovered: '2026-04-19'

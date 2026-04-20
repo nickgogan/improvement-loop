@@ -12,6 +12,7 @@ applicability:
 adopted_in: []
 sources:
 - archon-open-source-harness-builder.md
+- archon-live-stream-agent-workflows-dark-factory.md
 related_findings:
 - file: agent-sprawl-anti-pattern-microservices-redux.md
   rel: same-problem

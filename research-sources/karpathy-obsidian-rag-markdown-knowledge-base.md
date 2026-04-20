@@ -1,0 +1,30 @@
+---
+name: "Karpathy's Obsidian RAG — Markdown Knowledge Base Without Vector DB"
+source_type: "Video"
+status: "Done"
+key_takeaways: "Structured markdown vault with hierarchical wiki indexes replaces RAG for solo operators. Vault → raw/ (staging) → wiki/ (master index + sub-wiki indexes). CLAUDE.md as navigation layer. LLM auto-maintains indexes. Web Clipper for human ingestion; Claude Code for autonomous research ingestion. Scale threshold (~1000 docs) determines when true RAG is needed."
+relevance: "High"
+added_by: "Researcher Agent"
+tags:
+  - "memory"
+  - "context-engineering"
+  - "claude-code"
+  - "knowledge-base"
+  - "obsidian"
+  - "rag"
+url: "https://www.youtube.com/watch?v=OSZdFnQmgRw"
+authority:
+  - "chase-ai.md"
+findings:
+  - "karpathy-llm-knowledge-base-obsidian-rag.md"
+  - "obsidian-web-clipper-local-images-ingestion-pipeline.md"
+  - "claudemd-as-knowledge-base-traversal-guide.md"
+  - "scale-threshold-heuristic-obsidian-vs-rag.md"
+  - "dual-ingestion-funnel-human-clip-plus-llm-research.md"
+  - "obsidian-as-transparent-frontend-vs-rag-black-box.md"
+  - "start-simple-migrate-when-forced-pragmatic-architecture.md"
+  - "index-file-navigation-as-rag-replacement.md"
+date_added: "2026-04-19"
+date_processed: "2026-04-19"
+note: "Same video as karpathys-obsidian-rag-claude-code.md (processed 2026-04-07). All findings were extracted in that session. This entry created in session 36 batch Pass 2."
+---

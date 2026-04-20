@@ -14,6 +14,7 @@ applicability:
 adopted_in: []
 sources:
 - hitl-agentic-ai-strataio-2026-guide.md
+- 11-step-governance-build-order-multi-agent-systems.md
 related_findings:
 - file: human-on-the-loop-hotl-autonomy-tiering-framework.md
   rel: extends
@@ -38,6 +39,8 @@ related_findings:
 - file: tool-gateway-security-boundary.md
   rel: same-problem
 - file: three-enforcement-pipeline-architectures.md
+  rel: same-problem
+- file: actor-passport-schema-bound-identity.md
   rel: same-problem
 proposals: []
 date_discovered: '2026-04-07'

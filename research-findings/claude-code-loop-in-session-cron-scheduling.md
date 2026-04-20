@@ -21,6 +21,8 @@ last_updated: 2026-04-08
 related_findings:
 - file: agent-cost-blowup-mitigation-strategies.md
   rel: enabled-by
+- file: monitor-vs-loop-event-driven-vs-time-driven.md
+  rel: contrasts-with
 pipeline_status: synthesized
 consumed_by:
 - agent-workflow-and-execution.md

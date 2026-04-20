@@ -80,3 +80,5 @@ row_count: 57
 | You're Building AI Agents on Layers That Won't Exist in 18 Months | Video | Done | High | Nick | orchestration, context-engineering, prompt-engineering |
 | I Built Self-Evolving Claude Code Memory w/ Karpathy's LLM Knowledge Bases | Video | Done | High | Nick | memory, context-engineering, claude-code |
 | The Official BMad-Method Masterclass (The Complete IDE Workflow) | Video | Done | High | Nick | orchestration, multi-agent, skills |
+| 7 Levels of Context Infrastructure for AI Agents | Video | Done | High | Nick | context-infrastructure, second-brain, obsidian, skills, scheduled-tasks, team-context |
+| 11-Step Governance Build Order for Multi-Agent Systems | Video | Done | High | Nick | governance, orchestration, multi-agent |

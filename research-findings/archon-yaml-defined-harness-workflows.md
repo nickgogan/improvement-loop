@@ -14,6 +14,7 @@ applicability:
 adopted_in: []
 sources:
 - archon-open-source-harness-builder.md
+- archon-live-stream-agent-workflows-dark-factory.md
 related_findings:
 - file: bmad-method-v6-multi-agent-sdlc.md
   rel: same-problem
@@ -60,12 +61,24 @@ Practitioners report going from "AI shepherding" (manually kicking off skills/co
 - Custom harness scripts (shell scripts chaining Claude Code sessions)
 - Anthropic's agent teams (native, but experimental and expensive)
 
+## Additional Implementation Details (from live stream)
+- **Context persistence parameter**: each node can be set to `continue` (extend prior node's session) or `fresh` (new session reading only the artifact). Fresh sessions prevent planning bias — planning node writes to `artifact_dir`, implementation node reads from it.
+- **Adapters**: CLI (invoked from Claude Code/Codex), web UI (mission control dashboard with live log streaming), Slack, GitHub (comment `@archon` on an issue), Telegram. All adapters support parallel execution.
+- **Installation**: clone repo → open Claude Code in the Archon directory → say "setup Archon" → the Archon skill self-configures (installs bun, registers repos, configures credentials in a separate terminal to avoid API key exposure in the LLM session).
+- **Skill deployment**: copy `.claude/skills/archon/` into any target codebase so Claude Code can invoke Archon workflows from that codebase's context without opening the Archon repo.
+- **Database**: SQLite (default) or Postgres. Stores registered projects, conversations, workflow execution history.
+- **Default workflows shipped**: fix GitHub issue (most-used), interactive PRD, plan-to-PR (PIV loop), Ralph loop, validate PR, adversarial dev, workflow builder (meta: build new workflows).
+- **Token efficiency**: four parallel GitHub issue fix + validate PR workflows used ~20% of 5-hour Claude subscription limit (Sonnet default, Opus for implementation nodes only).
+
 ## Potential Improvements
 - Visual workflow builder (N8N-like interface — explicitly on the Archon roadmap)
 - Cross-workflow state sharing for dependent tasks
 - Auto-workflow generation from git history patterns
+- Model override via CLI flag (not yet supported — must edit YAML or ask agent to temporarily change it)
+- Sub-workflow execution (nesting workflows — requested but not yet built)
 
 ## Potential Failure Modes
 - Token cost amplification — each node is a full session, complex workflows burn many tokens
 - Workflow rigidity — YAML-defined steps may not adapt well to unexpected intermediate states
 - Model mismatch — using Haiku for a node that needs Sonnet-level reasoning silently degrades output
+- Workflow iteration required — first-run workflows often have minor issues (missing artifact paths in human-gate messages, research gaps not propagated) that require a few debug cycles

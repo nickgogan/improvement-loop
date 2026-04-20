@@ -13,6 +13,7 @@ applicability:
 adopted_in: []
 sources:
 - claude-code-ultra-review-bug-hunter.md
+- claude-code-ultra-review-multi-agent-verification.md
 related_findings:
 - file: agent-self-reporting-unreliability-independent-eval.md
   rel: same-problem

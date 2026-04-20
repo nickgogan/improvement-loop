@@ -23,6 +23,10 @@ related_findings:
   rel: same-problem
 - file: distributed-boundary-guides.md
   rel: extends
+- file: policy-as-data-runtime-governance-pattern.md
+  rel: same-problem
+- file: runtime-governance-gap-buildtime-to-production.md
+  rel: same-problem
 proposals: null
 date_discovered: '2026-04-19'
 last_updated: '2026-04-19'

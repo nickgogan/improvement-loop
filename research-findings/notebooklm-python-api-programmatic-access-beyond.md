@@ -15,6 +15,7 @@ sources:
 - 10-cli-tools-that-make-claude-code-unstoppable.md
 - claude-code-works-better-when-you-do-this.md
 - notebooklm-py-unofficial-python-api-skill-for-note.md
+- notebooklm-claude-code-expert-experiments.md
 proposals: null
 date_discovered: '2026-03-22'
 last_updated: '2026-04-19'

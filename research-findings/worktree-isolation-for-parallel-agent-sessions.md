@@ -13,6 +13,7 @@ adopted_in: []
 sources:
 - five-agentic-patterns-claude-code.md
 - anthropic-building-c-compiler.md
+- five-claude-code-agent-patterns.md
 related_findings:
 - file: agent-teams-shared-communication-channel.md
   rel: same-problem

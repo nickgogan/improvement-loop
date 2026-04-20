@@ -15,6 +15,7 @@ applicability:
 adopted_in: []
 sources:
 - 4-layer-memory-stack-for-2026-enterprise-agents-al.md
+- 11-step-governance-build-order-multi-agent-systems.md
 related_findings:
 - file: mcp-enterprise-governance-gaps.md
   rel: same-problem
@@ -26,6 +27,8 @@ related_findings:
   rel: same-problem
 - file: agent-identity-governance-enforcement-layer.md
   rel: same-problem
+- file: governed-dependency-chain-build-order.md
+  rel: part-of
 proposals: []
 date_discovered: '2026-04-07'
 last_updated: '2026-04-08'

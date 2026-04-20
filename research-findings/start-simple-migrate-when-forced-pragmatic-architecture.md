@@ -13,6 +13,7 @@ adopted_in:
 - General / Cross-System
 sources:
 - karpathys-obsidian-rag-claude-code.md
+- karpathy-obsidian-rag-markdown-knowledge-base.md
 related_findings:
 - file: scale-threshold-heuristic-obsidian-vs-rag.md
   rel: extends
@@ -20,7 +21,7 @@ related_findings:
   rel: same-problem
 proposals: null
 date_discovered: '2026-04-07'
-last_updated: '2026-04-07'
+last_updated: '2026-04-19'
 pipeline_status: raw
 consumed_by: []
 ---

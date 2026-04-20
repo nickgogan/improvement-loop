@@ -23,6 +23,10 @@ related_findings:
   rel: same-problem
 - file: agent-context-kiss-commandments-minimum-viable.md
   rel: same-problem
+- file: context-infrastructure-seven-level-maturity-model.md
+  rel: part-of
+- file: skills-as-pointers-to-second-brain-files.md
+  rel: enables
 pipeline_status: synthesized
 consumed_by:
 - managing-agent-context.md
