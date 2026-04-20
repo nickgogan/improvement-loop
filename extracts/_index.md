@@ -4,7 +4,7 @@ type: "index"
 target_system:
   - "improvement-loop"
 created: "2026-04-19"
-updated: "2026-04-19"
+updated: "2026-04-20"
 ---
 
 # Extracted Artifacts
@@ -135,3 +135,5 @@ Staged artifacts produced by `/extract-artifacts` from research findings. Each a
 | [Model-Resilient Prompt Engineering](guides/model-resilient-prompt-engineering.md) | guide | 15 findings (5 P1 + 10 P2) | 2026-04-19 | No |
 | [Agent Governance and Trust](guides/agent-governance-and-trust.md) | guide | 10 findings (2 P1 + 8 P2) | 2026-04-19 | No |
 | [Agent Design Patterns](guides/agent-design-patterns.md) | guide | 11 findings (11 P2) | 2026-04-19 | No |
+| [Surgical Change Constraint — Agent Scope Boundary](rules/surgical-change-agent-scope.md) | rule | [[surgical-change-constraint-agent-scope]] | 2026-04-20 | No |
+| [Multi-Agent Proportional Content Summarization to Obsidian](skills/multi-agent-proportional-content-summarization.md) | skill | [[multi-agent-proportional-content-summarization]] | 2026-04-20 | No |

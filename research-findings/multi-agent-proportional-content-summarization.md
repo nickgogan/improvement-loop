@@ -30,8 +30,9 @@ related_findings:
 proposals: null
 date_discovered: '2026-04-20'
 last_updated: '2026-04-20'
-pipeline_status: raw
-consumed_by: []
+pipeline_status: extracted
+consumed_by:
+  - skills/multi-agent-proportional-content-summarization.md
 ---
 # Multi-Agent Proportional Content Summarization to Obsidian
 
@@ -73,3 +74,6 @@ Practitioner uses it to evaluate whether a long podcast contains novel informati
 - Sub-agent chunk boundaries may cut mid-thought; naive splitting (by word count) can produce incoherent chunk summaries at boundaries
 - Entity page proliferation at scale — a large vault accumulates thousands of stub pages that become noise; without curation, discoverability degrades
 - The proportionality heuristic requires calibration — what counts as "15-20 minute read" depth for a 500-page book needs explicit token/word targets
+
+## Extraction Note — 2026-04-20
+Extracted as **skill**: [[multi-agent-proportional-content-summarization]] in `extracts/skills/`

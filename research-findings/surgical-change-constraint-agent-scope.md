@@ -22,8 +22,9 @@ related_findings:
 proposals: null
 date_discovered: "2026-04-20"
 last_updated: "2026-04-20"
-pipeline_status: raw
-consumed_by: []
+pipeline_status: extracted
+consumed_by:
+  - rules/surgical-change-agent-scope.md
 ---
 
 ## What It Is
@@ -55,3 +56,6 @@ Could be combined with a pre-task scope declaration step: agent states the exact
 ## Potential Failure Modes
 
 Over-constraining to surgical changes can prevent the agent from making necessary refactors when a feature genuinely requires restructuring adjacent code. The rule works best when tasks are well-scoped; ambiguous tasks may require scope negotiation before the surgical constraint applies. Agents may still make "invisible" changes (e.g., normalizing whitespace, reordering dict keys) that pass surgical inspection but pollute diffs.
+
+## Extraction Note — 2026-04-20
+Extracted as **rule**: [[surgical-change-agent-scope]] in `extracts/rules/`

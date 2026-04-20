@@ -5,9 +5,9 @@ summary: A "dark factory" codebase is one where AI is the sole author of all cod
 implementation_notes: The dark factory pattern is the logical endpoint of harness engineering — when your workflows are reliable enough to own the full SDLC. Requires high-confidence issue classification,
   automated test validation, and a PR review workflow before human gate at merge only. Not currently viable without human review of PRs in most codebases.
 category: Orchestration
-evidence_strength: Low (theory + early experiment)
+evidence_strength: Medium (practitioner-documented)
 adoption_status: Not Yet Started
-proposer_priority: P3
+proposer_priority: P2 (Design Required)
 applicability:
 - S3 (Claude Code Build)
 - General
