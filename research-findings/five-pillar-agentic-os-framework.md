@@ -5,7 +5,7 @@ implementation_notes: "MetaSystem already has pillars 1 (CLAUDE.md + MEMORY.md),
 category: Agentic OS
 evidence_strength: Medium (practitioner-documented)
 adoption_status: Partially Adopted
-proposer_priority: P2 (Design Required)
+priority: P2 (Design Required)
 applicability:
   - S3 (Claude Code Build)
   - General

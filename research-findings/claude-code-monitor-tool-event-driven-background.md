@@ -7,7 +7,7 @@ implementation_notes: Directly applicable to MetaSystem's improvement loop and a
 category: Tool Integration
 evidence_strength: Strong (production-tested)
 adoption_status: Not Yet Started
-proposer_priority: P2 (Plan)
+priority: P2 (Plan)
 applicability:
 - S3 (Claude Code Build)
 adopted_in: []

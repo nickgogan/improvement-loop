@@ -7,7 +7,7 @@ implementation_notes: 'MetaSystem''s skill SKILL.md files partially implement th
 category: Orchestration
 evidence_strength: Strong (production-tested)
 adoption_status: Not Yet Started
-proposer_priority: P1 (Implement Now)
+priority: P1 (Implement Now)
 applicability:
 - General
 adopted_in: []

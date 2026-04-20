@@ -6,7 +6,7 @@ implementation_notes: null
 category: Tool Integration
 evidence_strength: Weak (theoretical)
 adoption_status: Not Yet Started
-proposer_priority: P3 (Monitor)
+priority: P3 (Monitor)
 applicability:
 - General
 adopted_in: []

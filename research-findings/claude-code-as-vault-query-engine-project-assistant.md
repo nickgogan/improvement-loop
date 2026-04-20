@@ -5,7 +5,7 @@ implementation_notes: MetaSystem already uses this pattern for the IL KB (Claude
 category: Agentic OS
 evidence_strength: Medium (practitioner-documented)
 adoption_status: Partially Adopted
-proposer_priority: P3 (Monitor)
+priority: P3 (Monitor)
 applicability:
 - General
 - S3 (Claude Code Build)

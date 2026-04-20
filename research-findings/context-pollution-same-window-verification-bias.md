@@ -6,7 +6,7 @@ implementation_notes: Argues for spawning verification in a separate context (su
 category: Evaluation
 evidence_strength: Medium (practitioner-documented)
 adoption_status: Not Yet Started
-proposer_priority: P1 (Implement Now)
+priority: P1 (Implement Now)
 applicability:
 - S3 (Claude Code Build)
 - General

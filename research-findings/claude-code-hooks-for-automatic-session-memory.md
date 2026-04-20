@@ -6,7 +6,7 @@ implementation_notes: MetaSystem already has PROGRESS.md as a manual bridge. Hoo
 category: Memory Architecture
 evidence_strength: Medium (practitioner-documented)
 adoption_status: Not Yet Started
-proposer_priority: P1 (Implement Now)
+priority: P1 (Implement Now)
 applicability:
 - S3 (Claude Code Build)
 - General

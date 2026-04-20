@@ -212,7 +212,7 @@ Mix across categories; leans toward expected form diversity to exercise the rubr
 - **Triggered by:** Batch 1, rows 6–15 (multiple single-source findings with unambiguous form classification)
 - **Rubric section:** Top-level, after tier dispatch logic (new paragraph before §1)
 - **Before:** Confidence signals in §1–§5 reference "multiple independent known uses" for HIGH, conflating evidence strength with form-classification certainty
-- **After:** Added clarification that `router_confidence` measures form-classification certainty specifically. Evidence strength is captured by the finding's existing `evidence_strength` field and gates `proposer_priority`, not `router_confidence`. A single-source finding can be HIGH confidence if the form is unambiguous.
+- **After:** Added clarification that `router_confidence` measures form-classification certainty specifically. Evidence strength is captured by the finding's existing `evidence_strength` field and gates `priority`, not `router_confidence`. A single-source finding can be HIGH confidence if the form is unambiguous.
 - **Impact on classifications:** Row 9 remains MED (genuine form ambiguity — problem framing vs solution shape, not evidence thinness). Rows 7, 10, 12, 13, 15 are HIGH despite single sources because no other form is a plausible fit.
 
 ### Amendment 2 — Anti-pattern findings as natural rule candidates

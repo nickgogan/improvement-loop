@@ -7,7 +7,7 @@ implementation_notes: MetaSystem has an implicit version of this role (Nick as s
 category: Agentic OS
 evidence_strength: Medium (practitioner-documented)
 adoption_status: Partially Adopted
-proposer_priority: P2 (Design Required)
+priority: P2 (Design Required)
 applicability:
 - General
 - S3 (Claude Code Build)

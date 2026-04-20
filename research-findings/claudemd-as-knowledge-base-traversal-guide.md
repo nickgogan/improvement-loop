@@ -7,7 +7,7 @@ implementation_notes: MetaSystem's CLAUDE.md already contains a reference table 
 category: Context Engineering
 evidence_strength: Medium (practitioner-documented)
 adoption_status: Partially Adopted
-proposer_priority: P2 (Design Required)
+priority: P2 (Design Required)
 applicability:
 - S3 (Claude Code Build)
 - General

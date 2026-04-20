@@ -7,7 +7,7 @@ implementation_notes: 'Applicable to agent design: run N sub-agents on the same 
 category: Orchestration
 evidence_strength: Medium (practitioner-documented)
 adoption_status: Not Yet Started
-proposer_priority: P3 (Monitor)
+priority: P3 (Monitor)
 applicability:
 - General
 adopted_in: []

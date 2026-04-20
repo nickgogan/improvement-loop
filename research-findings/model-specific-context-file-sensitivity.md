@@ -7,7 +7,7 @@ implementation_notes: MetaSystem uses Claude Code exclusively. The ETH Zurich fi
 category: Context Engineering
 evidence_strength: Strong (production-tested)
 adoption_status: Not Yet Started
-proposer_priority: P2 (Design Required)
+priority: P2 (Design Required)
 applicability:
 - S3 (Claude Code Build)
 adopted_in: []

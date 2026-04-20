@@ -8,7 +8,7 @@ implementation_notes: "Claude Routines is Anthropic's literal 1:1 replacement fo
 category: Tool Integration
 evidence_strength: Strong (production-tested)
 adoption_status: Not Yet Started
-proposer_priority: P2 (Design Required)
+priority: P2 (Design Required)
 applicability:
 - General
 adopted_in: []

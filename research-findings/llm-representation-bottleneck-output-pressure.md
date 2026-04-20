@@ -7,7 +7,7 @@ implementation_notes: null
 category: Model Selection
 evidence_strength: Weak (theoretical)
 adoption_status: Not Yet Started
-proposer_priority: Not Flagged
+priority: Not Flagged
 applicability:
 - General
 adopted_in: []

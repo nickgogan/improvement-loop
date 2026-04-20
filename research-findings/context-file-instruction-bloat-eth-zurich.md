@@ -7,7 +7,7 @@ implementation_notes: 'Validate against MetaSystem''s own CLAUDE.md files. Apply
 category: Context Engineering
 evidence_strength: Strong (production-tested)
 adoption_status: Not Yet Started
-proposer_priority: P1 (Implement Now)
+priority: P1 (Implement Now)
 applicability:
 - General
 adopted_in: []

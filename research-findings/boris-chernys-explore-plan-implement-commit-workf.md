@@ -7,7 +7,7 @@ implementation_notes: null
 category: Orchestration
 evidence_strength: Strong (production-tested)
 adoption_status: Already Adopted
-proposer_priority: Not Flagged
+priority: Not Flagged
 applicability:
 - S3 (Claude Code Build)
 adopted_in:

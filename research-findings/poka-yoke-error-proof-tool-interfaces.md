@@ -6,7 +6,7 @@ implementation_notes: Audit MetaSystem tool/skill parameters for poka-yoke oppor
 category: Tool Integration
 evidence_strength: Strong (production-tested)
 adoption_status: Partially Adopted
-proposer_priority: P1 (Implement Now)
+priority: P1 (Implement Now)
 applicability:
 - S3 (Claude Code Build)
 - General / Cross-System

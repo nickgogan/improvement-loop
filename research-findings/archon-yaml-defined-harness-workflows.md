@@ -7,7 +7,7 @@ implementation_notes: 'The hybrid deterministic+agentic node approach and per-no
 category: Orchestration
 evidence_strength: Medium (practitioner-documented)
 adoption_status: Not Yet Started
-proposer_priority: P2 (Design Required)
+priority: P2 (Design Required)
 applicability:
 - S3 (Claude Code Build)
 - General

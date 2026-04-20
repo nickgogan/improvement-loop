@@ -20,7 +20,7 @@ Run a full KB health cleanup sweep on the 459 research findings in `systems/impr
 
 ### Phase 1: YAML Normalization
 Fix inconsistent YAML quoting across all 459 findings. Pick ONE convention (unquoted is dominant at ~177 vs ~82 quoted) and normalize all frontmatter values:
-- `proposer_priority` — all unquoted (e.g., `P1 (Implement Now)` not `"P1 (Implement Now)"`)
+- `priority` — all unquoted (e.g., `P1 (Implement Now)` not `"P1 (Implement Now)"`)
 - `evidence_strength` — all unquoted
 - `adoption_status` — all unquoted
 - `category` — all unquoted
@@ -49,7 +49,7 @@ Produce a summary of what was cleaned, normalized, crosslinked, and reassessed. 
 - **Read the Researcher agent definition first** — `systems/improvement-loop/agents/researcher/agent.md`. The KB is Researcher-owned.
 - **Full execution allowed.** Edit findings, run skills, commit and push. Batch efficiently.
 - **Atomic commits per phase.** One commit per phase so work is recoverable.
-- **Don't modify finding body content.** Only frontmatter fields are changed in phases 1-2. Phase 3 adds `related_findings` links. Phase 4 may change `proposer_priority` and `evidence_strength` with user approval.
+- **Don't modify finding body content.** Only frontmatter fields are changed in phases 1-2. Phase 3 adds `related_findings` links. Phase 4 may change `priority` and `evidence_strength` with user approval.
 - **Track governance.** File an SL entry summarizing what was cleaned.
 
 ## KEY REFERENCES

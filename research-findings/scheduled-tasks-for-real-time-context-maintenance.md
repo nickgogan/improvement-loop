@@ -7,7 +7,7 @@ implementation_notes: MetaSystem has scheduled research-loop tasks but not real-
 category: Agentic OS
 evidence_strength: Strong (production-tested)
 adoption_status: Not Yet Started
-proposer_priority: P2 (Design Required)
+priority: P2 (Design Required)
 applicability:
 - General
 - S3 (Claude Code Build)

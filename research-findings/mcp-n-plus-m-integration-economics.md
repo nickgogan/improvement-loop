@@ -7,7 +7,7 @@ implementation_notes: MetaSystem already uses MCP servers (Context7, Notion, Per
 category: Tool Integration
 evidence_strength: Strong (production-tested)
 adoption_status: Partially Adopted
-proposer_priority: P3 (Monitor)
+priority: P3 (Monitor)
 applicability:
 - General
 adopted_in: []

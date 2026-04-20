@@ -175,7 +175,7 @@ This ensures the Librarian presents the most refined version of the knowledge, w
 ## Anti-Patterns
 
 ### 1. Researcher classifying its own findings
-If the Researcher starts making form decisions ("this finding should be a rule"), it has crossed into Codifier territory. The Researcher sets `proposer_priority` and `evidence_strength` — not form assignments.
+If the Researcher starts making form decisions ("this finding should be a rule"), it has crossed into Codifier territory. The Researcher sets `priority` and `evidence_strength` — not form assignments.
 
 ### 2. Codifier doing intake
 If the Codifier discovers new patterns while synthesizing guides, it does NOT create findings. It notes the gap in the guide report and surfaces it to Nick, who may direct the Researcher to investigate.

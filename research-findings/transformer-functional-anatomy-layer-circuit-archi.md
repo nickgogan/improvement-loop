@@ -8,7 +8,7 @@ implementation_notes: Mostly theoretical for us. But explains why longer thinkin
 category: Model Selection
 evidence_strength: Medium (practitioner-documented)
 adoption_status: Not Yet Started
-proposer_priority: P3 (Monitor)
+priority: P3 (Monitor)
 applicability:
 - General
 adopted_in: []

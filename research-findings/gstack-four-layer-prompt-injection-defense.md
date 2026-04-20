@@ -5,7 +5,7 @@ implementation_notes: null
 category: Sandboxing
 evidence_strength: Medium (practitioner-documented)
 adoption_status: Not Yet Started
-proposer_priority: P1 (Implement Now)
+priority: P1 (Implement Now)
 applicability:
 - General / Cross-System
 adopted_in: []

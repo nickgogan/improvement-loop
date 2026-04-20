@@ -179,7 +179,7 @@ If the user opts for persistence:
 1. **Write finding entries** using the standard Research Findings schema:
    - Filename: kebab-case slug + `.md`
    - Set `pipeline_status: raw`
-   - Set `proposer_priority: null` (not yet triaged)
+   - Set `priority: null` (not yet triaged)
    - Set `evidence_strength` based on source quality
    - Set `category` to the matched research dimension
    - Set `date_discovered` to today

@@ -6,7 +6,7 @@ implementation_notes: Design work needed on implementation mechanism (shared fil
 category: Orchestration
 evidence_strength: Medium (practitioner-documented)
 adoption_status: Not Yet Started
-proposer_priority: P2 (Design Required)
+priority: P2 (Design Required)
 applicability:
 - S3 (Claude Code Build)
 - General

@@ -110,7 +110,7 @@ implementation_notes: null
 category: "Memory Architecture"  # Context Engineering, Prompt Craft, Tool Integration, Model Selection, Intent Engineering, Orchestration, Memory Architecture, Evaluation, Sandboxing, Governance, Agent Design
 evidence_strength: "Medium (practitioner-documented)"  # Strong (production-tested), Medium (practitioner-documented), Weak (theoretical)
 adoption_status: "Partially Adopted"  # Already Adopted, Partially Adopted, Not Yet Started
-proposer_priority: null  # P1 (Implement Now), P2 (Design Required), P3 (Monitor), Not Flagged
+priority: null  # P1 (Implement Now), P2 (Design Required), P3 (Monitor), Not Flagged
 applicability:
   - "S3 (Claude Code Build)"  # S2 (Notion Operations), S3 (Claude Code Build), Perplexity Skills, General
 adopted_in:
@@ -249,7 +249,7 @@ For each distinct pattern/technique found in the source:
    - Update `_index.md` for the findings directory
 3. **If no existing finding:**
    - Use `Write` to create a new markdown file in `systems/improvement-loop/research-findings/` with all frontmatter properties
-   - Set proposer_priority based on evidence strength + applicability (see Triage Rules below)
+   - Set priority based on evidence strength + applicability (see Triage Rules below)
    - Write the full page body (What It Is, Why It Matters, Why People Are Using It, Potential Improvements, Potential Failure Modes)
    - Add the source filename to the finding's `sources` list and vice versa (use relative filenames)
    - Update `_index.md` for the findings directory

@@ -7,7 +7,7 @@ implementation_notes: null
 category: Intent Engineering
 evidence_strength: Strong (production-tested)
 adoption_status: Already Adopted
-proposer_priority: Not Flagged
+priority: Not Flagged
 applicability:
 - General
 adopted_in:

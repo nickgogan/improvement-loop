@@ -7,7 +7,7 @@ implementation_notes: This validates investing in domain-agnostic improvement in
 category: Agent Design
 evidence_strength: Medium (practitioner-documented)
 adoption_status: Not Yet Started
-proposer_priority: P3 (Monitor)
+priority: P3 (Monitor)
 applicability:
 - General
 adopted_in: []

@@ -6,7 +6,7 @@ implementation_notes: Validates MetaSystem's Obsidian vault approach over RAG-ba
 category: Agentic OS
 evidence_strength: Medium (practitioner-documented)
 adoption_status: Already Adopted
-proposer_priority: P3 (Monitor)
+priority: P3 (Monitor)
 applicability:
 - S3 (Claude Code Build)
 adopted_in:

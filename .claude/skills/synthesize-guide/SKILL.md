@@ -73,7 +73,7 @@ The Guide Author thinks like a technical writer and practitioner — not a resea
 2. **Check synthesis status.** If the target cluster has been synthesized before, report the prior run date, finding count at that time, and current finding count. If current count exceeds prior count by 3+, note that the guide is stale and should be re-synthesized. If the guide already exists and the finding count hasn't changed, confirm with the user before re-running.
 
 3. Parse the argument to determine input mode:
-   - **Topic:** Match the topic against the routing table's trigger keywords to identify the target guide cluster. Use the cluster's dimensions to query findings by `category:`. Also traverse `related_findings:` links (rel: `same-problem`) from matches to expand the set. Filter to `proposer_priority: P1`.
+   - **Topic:** Match the topic against the routing table's trigger keywords to identify the target guide cluster. Use the cluster's dimensions to query findings by `category:`. Also traverse `related_findings:` links (rel: `same-problem`) from matches to expand the set. Filter to `priority: P1`.
    - **Dimension:** Look up the dimension in the routing table to find its primary and secondary guide clusters. Grep finding files for matching category. Filter to P1.
    - **Finding list:** Read each specified finding file directly.
 

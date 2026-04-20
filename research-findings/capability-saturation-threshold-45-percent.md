@@ -7,7 +7,7 @@ implementation_notes: 'Provides a concrete decision heuristic: if a single agent
 category: Orchestration
 evidence_strength: Strong (production-tested)
 adoption_status: Not Yet Started
-proposer_priority: P1 (Implement Now)
+priority: P1 (Implement Now)
 applicability:
 - General
 adopted_in: []

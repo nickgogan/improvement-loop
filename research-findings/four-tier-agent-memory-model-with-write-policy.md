@@ -8,7 +8,7 @@ implementation_notes: 'MetaSystem has working memory (PROGRESS.md) and semantic 
 category: Memory Architecture
 evidence_strength: Strong (production-tested)
 adoption_status: Not Yet Started
-proposer_priority: P2 (Design Required)
+priority: P2 (Design Required)
 applicability:
 - General
 adopted_in: []

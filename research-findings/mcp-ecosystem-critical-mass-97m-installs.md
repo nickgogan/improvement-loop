@@ -7,7 +7,7 @@ implementation_notes: MetaSystem already uses MCP (Context7, Notion, Perplexity)
 category: Tool Integration
 evidence_strength: Strong (production-tested)
 adoption_status: Partially Adopted
-proposer_priority: P2 (Design Required)
+priority: P2 (Design Required)
 applicability:
 - General
 adopted_in: []

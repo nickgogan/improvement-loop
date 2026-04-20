@@ -150,7 +150,7 @@ The Researcher owns **Stage 1** of the IL pipeline: research intake, source proc
 - The Researcher does NOT hand off directly to the Codifier
 - Handoff is mediated by the filesystem: findings with `pipeline_status: raw` accumulate in the KB
 - Nick decides when to invoke the Codifier's `/identify-artifacts` on accumulated findings
-- The `pipeline_status` field and `proposer_priority` field are the interface contract — the Codifier reads these to determine what to process
+- The `pipeline_status` field and `priority` field are the interface contract — the Codifier reads these to determine what to process
 
 ---
 

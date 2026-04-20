@@ -5,7 +5,7 @@ implementation_notes: "MetaSystem uses MCP servers for external services (Notion
 category: "Tool Integration"
 evidence_strength: "Medium (practitioner-documented)"
 adoption_status: "Not Yet Started"
-proposer_priority: P3 (Monitor)
+priority: P3 (Monitor)
 applicability:
   - "S3 (Claude Code Build)"
   - "General"

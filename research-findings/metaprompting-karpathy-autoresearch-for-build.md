@@ -7,7 +7,7 @@ implementation_notes: null
 category: Prompt Craft
 evidence_strength: Strong (production-tested)
 adoption_status: Partially Adopted
-proposer_priority: P2
+priority: P2
 applicability:
 - Perplexity Skills
 adopted_in:

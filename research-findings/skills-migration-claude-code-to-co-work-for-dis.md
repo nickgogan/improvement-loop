@@ -7,7 +7,7 @@ implementation_notes: null
 category: Tool Integration
 evidence_strength: Strong (production-tested)
 adoption_status: Not Yet Started
-proposer_priority: P3
+priority: P3
 applicability:
 - S3 (Claude Code Build)
 adopted_in: null

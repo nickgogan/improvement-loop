@@ -8,7 +8,7 @@ implementation_notes: 'Impacts our retrieval for memory, skill matching, Notion 
 category: Context Engineering
 evidence_strength: Strong (production-tested)
 adoption_status: Partially Adopted
-proposer_priority: P1 (Implement Now)
+priority: P1 (Implement Now)
 applicability:
 - General
 adopted_in: []

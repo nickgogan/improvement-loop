@@ -5,7 +5,7 @@ implementation_notes: null
 category: "Governance"
 evidence_strength: "Medium (practitioner-documented)"
 adoption_status: "Not Yet Started"
-proposer_priority: "P1 (Strong, Directly Applicable)"
+priority: "P1 (Strong, Directly Applicable)"
 applicability:
   - "General"
 adopted_in: []

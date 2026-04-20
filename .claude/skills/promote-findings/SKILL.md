@@ -69,7 +69,7 @@ implementation_notes: null
 category: "Context Engineering"  # Context Engineering, Prompt Craft, Tool Integration, Model Selection, Intent Engineering, Orchestration, Memory Architecture, Evaluation, Sandboxing, Governance, Agent Design
 evidence_strength: "Medium (practitioner-documented)"
 adoption_status: "Not Yet Started"  # Already Adopted, Partially Adopted, Not Yet Started
-proposer_priority: null  # P1 (Implement Now), P2 (Design Required), P3 (Monitor), Not Flagged
+priority: null  # P1 (Implement Now), P2 (Design Required), P3 (Monitor), Not Flagged
 applicability:
   - "S3 (Claude Code Build)"
 adopted_in: []
@@ -182,7 +182,7 @@ For each selected candidate:
    - Full frontmatter per schema above
    - `evidence_strength`: Default to `"Medium (practitioner-documented)"`. Upgrade to `"Strong (production-tested)"` only if the analysis doc notes production usage or significant adoption (e.g., "used by engineers at Amazon, Google").
    - `adoption_status`: Default to `"Not Yet Started"`. Set to `"Partially Adopted"` if the analysis doc notes MetaSystem already uses a variant of this pattern.
-   - `proposer_priority`: Leave as `null`. The `/research-proposer` assigns priority.
+   - `priority`: Leave as `null`. The `/research-proposer` assigns priority.
    - Body sections populated from the candidate description and analysis doc context.
 4. If dedup status was "Partial match", add a `related_findings` entry linking to the existing finding.
 
@@ -191,7 +191,7 @@ For each selected candidate:
 For each **partial match** where the existing finding was updated with new evidence:
 
 1. Count how many distinct repo analyses now link to (or corroborate) the existing finding. Check `related_findings` links, source attribution lines, and analysis doc cross-references.
-2. If the finding now has corroborating evidence from **3+ independent repos** and its current `proposer_priority` is `null`, `P3`, or `"Not Flagged"`:
+2. If the finding now has corroborating evidence from **3+ independent repos** and its current `priority` is `null`, `P3`, or `"Not Flagged"`:
    - Flag it as a **priority re-evaluation candidate** in the summary output.
    - Note the current priority, new evidence count, and repo sources.
 3. Do NOT auto-change the priority — this is a flag for user review. The user decides whether to bump.

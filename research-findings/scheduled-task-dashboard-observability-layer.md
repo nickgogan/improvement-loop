@@ -6,7 +6,7 @@ implementation_notes: Relevant to MetaSystem's periodic maintenance skills (watc
 category: Orchestration
 evidence_strength: Strong (production-tested)
 adoption_status: Not Yet Started
-proposer_priority: P2 (Design Required)
+priority: P2 (Design Required)
 applicability:
 - S3 (Claude Code Build)
 adopted_in: []

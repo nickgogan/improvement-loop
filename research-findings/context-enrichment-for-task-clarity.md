@@ -8,7 +8,7 @@ implementation_notes: We do this inconsistently. Every skill should have a Task 
 category: Context Engineering
 evidence_strength: Strong (production-tested)
 adoption_status: Partially Adopted
-proposer_priority: P1 (Implement Now)
+priority: P1 (Implement Now)
 applicability:
 - Perplexity Skills
 adopted_in: []

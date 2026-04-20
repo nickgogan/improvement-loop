@@ -8,7 +8,7 @@ implementation_notes: 'The KB has no current model selection guidance. March 202
 category: Model Selection
 evidence_strength: Strong (production-tested)
 adoption_status: Not Yet Started
-proposer_priority: P1 (Implement Now)
+priority: P1 (Implement Now)
 applicability:
 - S3 (Claude Code Build)
 adopted_in: []

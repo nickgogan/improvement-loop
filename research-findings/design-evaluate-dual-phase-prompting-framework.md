@@ -7,7 +7,7 @@ implementation_notes: Applicable to how MetaSystem designs agent briefs and eval
 category: Prompt Craft
 evidence_strength: Medium (practitioner-documented)
 adoption_status: Not Yet Started
-proposer_priority: P2 (Design Required)
+priority: P2 (Design Required)
 applicability:
 - General
 adopted_in: []

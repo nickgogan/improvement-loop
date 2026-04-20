@@ -7,7 +7,7 @@ implementation_notes: null
 category: Memory Architecture
 evidence_strength: Strong (production-tested)
 adoption_status: Not Yet Started
-proposer_priority: Not Flagged
+priority: Not Flagged
 applicability:
 - S2 (Notion Operations)
 adopted_in: null

@@ -5,7 +5,7 @@ implementation_notes: Audit current MCP tool definitions for list-style patterns
 category: Tool Integration
 evidence_strength: Strong (production-tested)
 adoption_status: Not Yet Started
-proposer_priority: P2 (Design Required)
+priority: P2 (Design Required)
 applicability:
 - S3 (Claude Code Build)
 - General / Cross-System

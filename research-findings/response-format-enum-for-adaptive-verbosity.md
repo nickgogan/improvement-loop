@@ -5,7 +5,7 @@ implementation_notes: Consider adding response_format to MCP tools that return v
 category: Context Engineering
 evidence_strength: Strong (production-tested)
 adoption_status: Not Yet Started
-proposer_priority: P2 (Design Required)
+priority: P2 (Design Required)
 applicability:
 - S3 (Claude Code Build)
 - General / Cross-System

@@ -7,7 +7,7 @@ implementation_notes: Enables long-running research or build tasks to execute as
 category: Tool Integration
 evidence_strength: Medium (practitioner-documented)
 adoption_status: Not Yet Started
-proposer_priority: P3 (Monitor)
+priority: P3 (Monitor)
 applicability:
 - General
 adopted_in: []

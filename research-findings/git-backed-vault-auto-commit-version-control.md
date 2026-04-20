@@ -5,7 +5,7 @@ implementation_notes: MetaSystem vault is already Git-backed. The auto-commit pl
 category: Agentic OS
 evidence_strength: Strong (production-tested)
 adoption_status: Partially Adopted
-proposer_priority: P3 (Monitor)
+priority: P3 (Monitor)
 applicability:
 - General
 - S3 (Claude Code Build)

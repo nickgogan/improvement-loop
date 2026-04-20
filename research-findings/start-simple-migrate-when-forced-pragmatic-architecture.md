@@ -6,7 +6,7 @@ implementation_notes: null
 category: Agent Design
 evidence_strength: Weak (theoretical)
 adoption_status: Already Adopted
-proposer_priority: P3 (Monitor)
+priority: P3 (Monitor)
 applicability:
 - General
 adopted_in:

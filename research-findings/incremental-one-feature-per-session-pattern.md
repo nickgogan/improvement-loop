@@ -6,7 +6,7 @@ implementation_notes: Directly applicable to MetaSystem's relay-race architectur
 category: Agent Design
 evidence_strength: Strong (production-tested)
 adoption_status: Partially Adopted
-proposer_priority: P1 (Implement Now)
+priority: P1 (Implement Now)
 applicability:
 - S3 (Claude Code Build)
 adopted_in: []

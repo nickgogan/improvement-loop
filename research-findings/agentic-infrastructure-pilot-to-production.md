@@ -7,7 +7,7 @@ implementation_notes: The pilot-to-production transition means the industry's fo
 category: Agent Design
 evidence_strength: Strong (production-tested)
 adoption_status: Not Yet Started
-proposer_priority: P2 (Design Required)
+priority: P2 (Design Required)
 applicability:
 - General
 adopted_in: []

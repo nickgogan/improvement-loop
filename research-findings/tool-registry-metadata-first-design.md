@@ -6,7 +6,7 @@ implementation_notes: MetaSystem's skills serve a similar role but lack the meta
 category: Tool Integration
 evidence_strength: Strong (production-tested)
 adoption_status: Not Yet Started
-proposer_priority: P1 (Implement Now)
+priority: P1 (Implement Now)
 applicability:
 - S3 (Claude Code Build)
 - General

@@ -9,7 +9,7 @@ implementation_notes: 'Extends the KB''s Self-Evolving Loop Pattern with specifi
 category: Evaluation
 evidence_strength: Strong (production-tested)
 adoption_status: Not Yet Started
-proposer_priority: P1 (Implement Now)
+priority: P1 (Implement Now)
 applicability:
 - S3 (Claude Code Build)
 adopted_in: []

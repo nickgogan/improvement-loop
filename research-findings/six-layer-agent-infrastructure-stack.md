@@ -6,7 +6,7 @@ implementation_notes: Use as an audit framework for MetaSystem's own agent infra
 category: Orchestration
 evidence_strength: Medium (practitioner-documented)
 adoption_status: Not Yet Started
-proposer_priority: P2 (Design Required)
+priority: P2 (Design Required)
 applicability:
 - S3 (Claude Code Build)
 - General

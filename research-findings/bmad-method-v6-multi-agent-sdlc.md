@@ -7,7 +7,7 @@ implementation_notes: BMAD's agent team model parallels MetaSystem's DD-60 (comp
 category: Orchestration
 evidence_strength: Strong (production-tested)
 adoption_status: Not Yet Started
-proposer_priority: P2 (Design Required)
+priority: P2 (Design Required)
 applicability:
 - S3 (Claude Code Build)
 - General

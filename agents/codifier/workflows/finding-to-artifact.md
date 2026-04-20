@@ -74,7 +74,7 @@ The Codifier's end-to-end pipeline: classify research findings into forms, draft
 
 | Point | Question | Answer |
 |-------|----------|--------|
-| Step 1 | Which findings to classify? | Filter by: `proposer_priority` P1/P2, `pipeline_status: raw`. |
+| Step 1 | Which findings to classify? | Filter by: `priority` P1/P2, `pipeline_status: raw`. |
 | Step 1 | Form ambiguous (co-occurrence)? | Classify conservatively (pattern > skill). Flag for Nick. |
 | After Step 2 | Guide synthesis warranted? | Check guide routing table. If a cluster has 3+ new findings → yes. |
 | Step 4 | Who deploys? | Nick only. Codifier stages; never deploys to enforcement locations. |

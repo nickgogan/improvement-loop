@@ -5,7 +5,7 @@ implementation_notes: "MetaSystem has no proactive agent. The pattern could info
 category: "Agentic OS"
 evidence_strength: "Medium (practitioner-documented)"
 adoption_status: "Not Yet Started"
-proposer_priority: P2 (Design Required)
+priority: P2 (Design Required)
 applicability:
   - "S3 (Claude Code Build)"
   - "General"

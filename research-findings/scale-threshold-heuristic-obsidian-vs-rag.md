@@ -6,7 +6,7 @@ implementation_notes: MetaSystem operates well under this threshold. The heurist
 category: Memory Architecture
 evidence_strength: Medium (practitioner-documented)
 adoption_status: Partially Adopted
-proposer_priority: P3 (Monitor)
+priority: P3 (Monitor)
 applicability:
 - S3 (Claude Code Build)
 - General

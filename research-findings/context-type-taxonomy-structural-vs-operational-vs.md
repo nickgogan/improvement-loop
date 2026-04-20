@@ -7,7 +7,7 @@ implementation_notes: null
 category: Context Engineering
 evidence_strength: Medium (practitioner-documented)
 adoption_status: Not Yet Started
-proposer_priority: Not Flagged
+priority: Not Flagged
 applicability:
 - General
 adopted_in: []

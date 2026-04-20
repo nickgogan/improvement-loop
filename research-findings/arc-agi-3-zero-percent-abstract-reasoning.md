@@ -7,7 +7,7 @@ implementation_notes: This is a ceiling reminder for any agent design that assum
 category: Evaluation
 evidence_strength: Strong (production-tested)
 adoption_status: Not Yet Started
-proposer_priority: P2 (Design Required)
+priority: P2 (Design Required)
 applicability:
 - General
 adopted_in: []

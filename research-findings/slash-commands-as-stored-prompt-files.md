@@ -5,7 +5,7 @@ implementation_notes: This pattern is a lighter-weight alternative to full skill
 category: Tool Integration
 evidence_strength: Medium (practitioner-documented)
 adoption_status: Not Yet Started
-proposer_priority: P3 (Monitor)
+priority: P3 (Monitor)
 applicability:
 - General
 - S3 (Claude Code Build)

@@ -7,7 +7,7 @@ implementation_notes: 'Audit MetaSystem CLAUDE.md files for any embedded code pa
 category: Context Engineering
 evidence_strength: Medium (practitioner-documented)
 adoption_status: Partially Adopted
-proposer_priority: P2 (Design Required)
+priority: P2 (Design Required)
 applicability:
 - General
 adopted_in: []

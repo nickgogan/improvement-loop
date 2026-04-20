@@ -7,7 +7,7 @@ implementation_notes: 'The subscription ToS restriction is critical: if multiple
 category: Tool Integration
 evidence_strength: Medium (practitioner-documented)
 adoption_status: Not Yet Started
-proposer_priority: P2 (Design Required)
+priority: P2 (Design Required)
 applicability:
 - General
 - S3 (Claude Code Build)

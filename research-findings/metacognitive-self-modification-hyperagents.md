@@ -7,7 +7,7 @@ implementation_notes: 'Our Improvement Loop is a fixed-meta system: the research
 category: Agent Design
 evidence_strength: Weak (theoretical)
 adoption_status: Not Yet Started
-proposer_priority: P3 (Monitor)
+priority: P3 (Monitor)
 applicability:
 - General
 adopted_in: []

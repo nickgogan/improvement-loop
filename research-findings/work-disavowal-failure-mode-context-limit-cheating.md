@@ -7,7 +7,7 @@ implementation_notes: 'Mitigation: kill agents after completing a single scoped 
 category: Agent Design
 evidence_strength: Medium (practitioner-documented)
 adoption_status: Not Yet Started
-proposer_priority: P1 (Implement Now)
+priority: P1 (Implement Now)
 applicability:
 - S3 (Claude Code Build)
 - General

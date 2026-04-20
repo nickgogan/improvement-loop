@@ -7,7 +7,7 @@ implementation_notes: null
 category: Prompt Craft
 evidence_strength: Strong (production-tested)
 adoption_status: Not Yet Started
-proposer_priority: P2
+priority: P2
 applicability:
 - S3 (Claude Code Build)
 adopted_in: []

@@ -6,7 +6,7 @@ implementation_notes: Directly relevant to MetaSystem's human gate model. The re
 category: Governance
 evidence_strength: Medium (practitioner-documented)
 adoption_status: Partially Adopted
-proposer_priority: P1 (Implement Now)
+priority: P1 (Implement Now)
 applicability:
 - General
 adopted_in:

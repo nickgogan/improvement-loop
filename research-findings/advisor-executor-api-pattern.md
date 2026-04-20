@@ -7,7 +7,7 @@ implementation_notes: 'This is an API feature, not a Claude Code feature. Set ty
 category: Model Selection
 evidence_strength: Strong (production-tested)
 adoption_status: Not Yet Started
-proposer_priority: P1 (Implement Now)
+priority: P1 (Implement Now)
 applicability:
 - General
 adopted_in: []

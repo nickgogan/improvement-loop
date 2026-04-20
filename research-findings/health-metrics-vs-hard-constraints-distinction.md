@@ -9,7 +9,7 @@ implementation_notes: MetaSystem's current constraints are all prompt-layer (CLA
 category: Intent Engineering
 evidence_strength: Strong (production-tested)
 adoption_status: Not Yet Started
-proposer_priority: P1 (Implement Now)
+priority: P1 (Implement Now)
 applicability:
 - General
 adopted_in: []

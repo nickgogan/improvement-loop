@@ -6,7 +6,7 @@ implementation_notes: null
 category: Orchestration
 evidence_strength: Medium (practitioner-documented)
 adoption_status: Partially Adopted
-proposer_priority: P2
+priority: P2
 applicability:
 - General
 adopted_in: []

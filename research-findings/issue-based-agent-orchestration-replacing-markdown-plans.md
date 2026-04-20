@@ -7,7 +7,7 @@ implementation_notes: The Beads system stores issues as JSONL in git, giving bot
 category: Orchestration
 evidence_strength: Medium (practitioner-documented)
 adoption_status: Not Yet Started
-proposer_priority: P1 (Implement Now)
+priority: P1 (Implement Now)
 applicability:
 - S3 (Claude Code Build)
 - General

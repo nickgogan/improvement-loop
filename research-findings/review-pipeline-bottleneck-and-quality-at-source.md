@@ -8,7 +8,7 @@ implementation_notes: The 'AI Developer Descent into Madness' (generate->bugs->m
 category: Orchestration
 evidence_strength: Strong (production-tested)
 adoption_status: Partially Adopted
-proposer_priority: P2 (Design Required)
+priority: P2 (Design Required)
 applicability:
 - General
 adopted_in: []

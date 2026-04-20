@@ -65,7 +65,7 @@ The Reassessor thinks like an evidence auditor — systematic, conservative, evi
 A finding is a **reassessment candidate** if any of the following are true:
 
 ### Criterion 1: Evidence Accumulation
-The finding now has corroborating evidence from **3+ independent sources** (repos, blog posts, papers, production reports) but its `proposer_priority` is `null`, `"Not Flagged"`, or `"P3 (Monitor)"`.
+The finding now has corroborating evidence from **3+ independent sources** (repos, blog posts, papers, production reports) but its `priority` is `null`, `"Not Flagged"`, or `"P3 (Monitor)"`.
 
 **How to count:**
 - Each unique repo in `related_findings` or source attribution counts as one source
@@ -103,7 +103,7 @@ The finding has 3+ `related_findings` links with relationship type `extends` or 
 
 1. Use `Glob` to find all `*.md` files in `systems/improvement-loop/research-findings/` (excluding `_index.md`).
 2. For each finding, use `Read` to extract frontmatter fields:
-   - `name`, `category`, `evidence_strength`, `proposer_priority`, `adoption_status`
+   - `name`, `category`, `evidence_strength`, `priority`, `adoption_status`
    - `sources` (list), `related_findings` (list with `file` and `rel` fields)
    - `date_discovered`, `last_updated`
 3. If `--category` or `--dimension` specified, filter to matching findings only.
@@ -171,7 +171,7 @@ Findings reviewed but not flagged: {count}
 If not `--dry-run`:
 1. Present the candidates table to the user.
 2. For each approved change, use `Edit` to update the finding's frontmatter:
-   - Update `proposer_priority` field
+   - Update `priority` field
    - Update `evidence_strength` field (if criterion 2 triggered)
    - Update `adoption_status` field (if criterion 3 triggered)
    - Update `last_updated` to today's date

@@ -5,7 +5,7 @@ implementation_notes: null
 category: "Tool Integration"
 evidence_strength: "Medium (practitioner-documented)"
 adoption_status: "Not Yet Started"
-proposer_priority: "P2 (Strong / needs design)"
+priority: "P2 (Strong / needs design)"
 applicability:
   - "S3 (Claude Code Build)"
 adopted_in: []

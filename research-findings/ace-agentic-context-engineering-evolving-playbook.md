@@ -9,7 +9,7 @@ implementation_notes: 'Directly complements the Anti-Compact Rule finding. ACE i
 category: Context Engineering
 evidence_strength: Strong (production-tested)
 adoption_status: Not Yet Started
-proposer_priority: P1 (Implement Now)
+priority: P1 (Implement Now)
 applicability:
 - S3 (Claude Code Build)
 adopted_in: []

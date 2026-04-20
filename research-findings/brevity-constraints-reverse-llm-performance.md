@@ -6,7 +6,7 @@ implementation_notes: Add conciseness constraints to system prompts. Even a simp
 category: Prompt Craft
 evidence_strength: Medium (practitioner-documented)
 adoption_status: Not Yet Started
-proposer_priority: P2 (Design Required)
+priority: P2 (Design Required)
 applicability:
 - S3 (Claude Code Build)
 - General

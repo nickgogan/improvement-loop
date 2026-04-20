@@ -44,8 +44,8 @@ The Identifier thinks like a strict classifier — mechanical, rubric-first, con
 
 | Argument | Effect |
 |----------|--------|
-| `P1` | All findings with `proposer_priority: "P1 (Implement Now)"` |
-| `P2` | All findings with `proposer_priority: "P2 (Design Required)"` |
+| `P1` | All findings with `priority: "P1 (Implement Now)"` |
+| `P2` | All findings with `priority: "P2 (Design Required)"` |
 | `P1 P2` | Both P1 and P2 findings |
 | `<finding-name>...` | Specific finding file stems |
 | `--category <cat>` | Filter by category (e.g., `--category "Context Engineering"`) |
@@ -71,7 +71,7 @@ The Identifier thinks like a strict classifier — mechanical, rubric-first, con
 
 Parse arguments to build the finding set:
 
-1. **Priority filter:** `P1`, `P2`, or both — use `Grep` to search `systems/improvement-loop/research-findings/` for matching `proposer_priority:` values.
+1. **Priority filter:** `P1`, `P2`, or both — use `Grep` to search `systems/improvement-loop/research-findings/` for matching `priority:` values.
 2. **Named findings:** match file stems against `research-findings/*.md`.
 3. **Category filter:** `--category` — grep for matching `category:` values.
 4. **No args:** prompt user for scope.
@@ -89,7 +89,7 @@ Report the filtered count: "Found N findings matching scope (M filtered out: D d
 
 For each finding in scope, read the file and extract:
 
-1. **Frontmatter fields:** `name`, `category`, `proposer_priority`, `evidence_strength`, `summary`
+1. **Frontmatter fields:** `name`, `category`, `priority`, `evidence_strength`, `summary`
 2. **Filename stem:** the file name without `.md` extension
 3. **Body sections:** Include the finding's "What It Is" and "Why It Matters" sections (or the first two substantive body sections if named differently). These sections capture center of gravity more reliably than raw character truncation. If neither section exists, use the first 800 chars of body content.
 
@@ -195,7 +195,7 @@ A finding describes a tool with defined input/output for mid-chain reasoning. WR
 - **Filename:** [exact filename]
 - **Name:** [name from frontmatter]
 - **Category:** [category]
-- **Priority:** [proposer_priority]
+- **Priority:** [priority]
 - **Evidence Strength:** [evidence_strength]
 - **Summary:** [summary from frontmatter]
 - **Body excerpt:** [Include "What It Is" and "Why It Matters" sections, or first two substantive body sections. These capture center of gravity better than raw character truncation.]

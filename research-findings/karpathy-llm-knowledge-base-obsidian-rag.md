@@ -7,7 +7,7 @@ implementation_notes: MetaSystem IS an Obsidian vault with this exact pattern em
 category: Memory Architecture
 evidence_strength: Strong (production-tested)
 adoption_status: Partially Adopted
-proposer_priority: P1 (Implement Now)
+priority: P1 (Implement Now)
 applicability:
 - S3 (Claude Code Build)
 - General

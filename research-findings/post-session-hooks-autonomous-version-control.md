@@ -6,7 +6,7 @@ implementation_notes: Already partially captured in hooks finding. This is the s
 category: Tool Integration
 evidence_strength: Medium (practitioner-documented)
 adoption_status: Not Yet Started
-proposer_priority: P2 (Design Required)
+priority: P2 (Design Required)
 applicability:
 - S3 (Claude Code Build)
 adopted_in: []

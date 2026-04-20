@@ -18,7 +18,7 @@ argument-hint: "<P1|P2|category|system> [finding-names...]"
 | `Read` | Read local KB files (findings, sources, authorities, proposals), vault files (DDs, CLAUDE.md, skill files), and architecture docs |
 | `Write` | Create new proposal entries as markdown files with YAML frontmatter + page body |
 | `Edit` | Update existing proposal or index entries |
-| `Grep` | Search KB by frontmatter properties (e.g., `proposer_priority: "P1"`, `category`, `adoption_status`) |
+| `Grep` | Search KB by frontmatter properties (e.g., `priority: "P1"`, `category`, `adoption_status`) |
 | `Glob` | Find KB files by pattern (e.g., `systems/improvement-loop/research-findings/*.md`) |
 | `WebFetch` | Fetch external URLs if needed for evidence checking |
 
@@ -58,7 +58,7 @@ This skill enforces strict read/write boundaries:
 
 | Scope | Path | Access |
 |-------|------|--------|
-| READ | `systems/improvement-loop/research-findings/` | Read-only — search and read findings files, use Grep to filter by `proposer_priority` and other frontmatter fields |
+| READ | `systems/improvement-loop/research-findings/` | Read-only — search and read findings files, use Grep to filter by `priority` and other frontmatter fields |
 | READ | `systems/improvement-loop/research-sources/` | Read-only — check source evidence |
 | READ | `systems/improvement-loop/research-authorities/` | Read-only — check authority credibility |
 | READ | Current system state: DDs via `Read` from system-scoped `project-management/design-decisions/` folders, architecture docs via `Read` from `incubator/household-os/knowledge/reference/`, vault files via `Read`, skill files via `Read` | Read-only — fetch for diffing |
@@ -126,7 +126,7 @@ The proposer runs as a five-phase pipeline. By default, all phases run in sequen
 
 **Goal:** Determine which parts of the system are relevant to this run, to avoid reading the entire system into context.
 
-1. Search `systems/improvement-loop/research-findings/` for the target findings. Use `Grep` to filter by frontmatter fields — default filter: `proposer_priority: "P1"`. The user may override with P2, P3, specific categories, or specific finding names.
+1. Search `systems/improvement-loop/research-findings/` for the target findings. Use `Grep` to filter by frontmatter fields — default filter: `priority: "P1"`. The user may override with P2, P3, specific categories, or specific finding names.
 2. For each finding, read it with the `Read` tool to examine its `applicability` property and page body (particularly "What It Is" and "Why It Matters") to understand what system surfaces it touches.
 3. Build a **scope map** — a list of which system components need to be read:
 
@@ -289,7 +289,7 @@ The proposer can be invoked with different scoping strategies depending on the u
 ```
 "Run the proposer on P1 findings"
 ```
-Processes all findings with `proposer_priority: "P1 (Implement Now)"`. Good for acting on the most urgent improvements.
+Processes all findings with `priority: "P1 (Implement Now)"`. Good for acting on the most urgent improvements.
 
 ### By Category
 ```

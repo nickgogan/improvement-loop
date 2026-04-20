@@ -7,7 +7,7 @@ implementation_notes: Provides a concrete task taxonomy for MetaSystem's agent a
 category: Orchestration
 evidence_strength: Strong (production-tested)
 adoption_status: Partially Adopted
-proposer_priority: P1 (Implement Now)
+priority: P1 (Implement Now)
 applicability:
 - General
 adopted_in: []

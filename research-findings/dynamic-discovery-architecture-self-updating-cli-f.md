@@ -7,7 +7,7 @@ implementation_notes: Interesting architectural pattern for any tool that wraps 
 category: Tool Integration
 evidence_strength: Strong (production-tested)
 adoption_status: Not Yet Started
-proposer_priority: P3 (Monitor)
+priority: P3 (Monitor)
 applicability:
 - General
 adopted_in: []

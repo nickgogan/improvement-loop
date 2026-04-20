@@ -320,7 +320,7 @@ guidance drifts from frontier practice.
 | Update existing finding | Low | Yes (git revert) | Full Autonomy |
 | Create new source | Low | Yes (delete file) | Full Autonomy |
 | Change evidence_strength | Med | Yes (revert) | Guarded |
-| Change proposer_priority | Med | Yes (revert) | Guarded |
+| Change priority | Med | Yes (revert) | Guarded |
 | Merge/split findings | Med | Partially | Proposal-First |
 | Modify authority tier | High | Yes but consequential | Human-Required |
 

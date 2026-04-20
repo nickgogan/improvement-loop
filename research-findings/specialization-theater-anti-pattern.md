@@ -7,7 +7,7 @@ implementation_notes: 'Direct warning for MetaSystem. When designing agent archi
 category: Orchestration
 evidence_strength: Medium (practitioner-documented)
 adoption_status: Not Yet Started
-proposer_priority: P1 (Implement Now)
+priority: P1 (Implement Now)
 applicability:
 - General
 adopted_in: []

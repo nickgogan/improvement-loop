@@ -8,7 +8,7 @@ implementation_notes: 'KB existing patterns don''t address when agents should as
 category: Governance
 evidence_strength: Medium (practitioner-documented)
 adoption_status: Not Yet Started
-proposer_priority: P2 (Design Required)
+priority: P2 (Design Required)
 applicability:
 - General
 adopted_in: []

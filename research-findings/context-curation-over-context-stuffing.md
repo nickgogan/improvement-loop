@@ -8,7 +8,7 @@ implementation_notes: 'Directly applicable to MetaSystem CLAUDE.md and skills. C
 category: Context Engineering
 evidence_strength: Medium (practitioner-documented)
 adoption_status: Partially Adopted
-proposer_priority: P1 (Implement Now)
+priority: P1 (Implement Now)
 applicability:
 - S3 (Claude Code Build)
 - General

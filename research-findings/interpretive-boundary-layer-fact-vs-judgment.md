@@ -5,7 +5,7 @@ implementation_notes: null
 category: "Governance"
 evidence_strength: "Medium (practitioner-documented)"
 adoption_status: "Not Yet Started"
-proposer_priority: "P1 (Implement Now)"
+priority: "P1 (Implement Now)"
 applicability:
   - "General"
   - "S3 (Claude Code Build)"

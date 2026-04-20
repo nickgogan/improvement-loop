@@ -7,7 +7,7 @@ implementation_notes: MetaSystem's skill files partially implement this -- each 
 category: Context Engineering
 evidence_strength: Medium (practitioner-documented)
 adoption_status: Not Yet Started
-proposer_priority: P1 (Implement Now)
+priority: P1 (Implement Now)
 applicability:
 - S3 (Claude Code Build)
 adopted_in: []

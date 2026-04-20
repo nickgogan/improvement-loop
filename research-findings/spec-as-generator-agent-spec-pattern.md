@@ -7,7 +7,7 @@ implementation_notes: MetaSystem's /bootstrap skill generates fractal structure 
 category: Agent Design
 evidence_strength: Medium (practitioner-documented)
 adoption_status: Not Yet Started
-proposer_priority: P3 (Monitor)
+priority: P3 (Monitor)
 applicability:
 - S3 (Claude Code Build)
 adopted_in: []

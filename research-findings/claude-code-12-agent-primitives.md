@@ -8,7 +8,7 @@ implementation_notes: 'MetaSystem has partial coverage: tool registry (skills), 
 category: Orchestration
 evidence_strength: Strong (production-tested)
 adoption_status: Partially Adopted
-proposer_priority: P1 (Implement Now)
+priority: P1 (Implement Now)
 applicability:
 - S3 (Claude Code Build)
 - General

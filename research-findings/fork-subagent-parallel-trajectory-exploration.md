@@ -7,7 +7,7 @@ implementation_notes: Feature-flagged (not yet live). Monitor for release. The p
 category: Orchestration
 evidence_strength: Medium (practitioner-documented)
 adoption_status: Not Yet Started
-proposer_priority: P3 (Monitor)
+priority: P3 (Monitor)
 applicability:
 - S3 (Claude Code Build)
 adopted_in: []

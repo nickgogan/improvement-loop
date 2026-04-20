@@ -7,7 +7,7 @@ implementation_notes: Relevant when MetaSystem agents gain write access to exter
 category: Governance
 evidence_strength: Medium (practitioner-documented)
 adoption_status: Not Yet Started
-proposer_priority: P3 (Monitor)
+priority: P3 (Monitor)
 applicability:
 - General
 adopted_in: []

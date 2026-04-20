@@ -8,7 +8,7 @@ implementation_notes: MetaSystem agents currently either succeed or fail with no
 category: Orchestration
 evidence_strength: Strong (production-tested)
 adoption_status: Not Yet Started
-proposer_priority: P2 (Design Required)
+priority: P2 (Design Required)
 applicability:
 - General
 adopted_in: []

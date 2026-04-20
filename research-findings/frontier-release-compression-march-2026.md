@@ -7,7 +7,7 @@ implementation_notes: The compression of release cycles means model selection gu
 category: Model Selection
 evidence_strength: Strong (production-tested)
 adoption_status: Not Yet Started
-proposer_priority: P2 (Design Required)
+priority: P2 (Design Required)
 applicability:
 - General
 adopted_in: []

@@ -6,7 +6,7 @@ implementation_notes: null
 category: Evaluation
 evidence_strength: Strong (production-tested)
 adoption_status: Not Yet Started
-proposer_priority: P2 (Design Required)
+priority: P2 (Design Required)
 applicability:
 - General / Cross-System
 sources:

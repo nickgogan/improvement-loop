@@ -7,7 +7,7 @@ implementation_notes: 'Apply to MetaSystem''s PROGRESS.md and any evolving conte
 category: Context Engineering
 evidence_strength: Strong (production-tested)
 adoption_status: Not Yet Started
-proposer_priority: P1 (Implement Now)
+priority: P1 (Implement Now)
 applicability:
 - General
 adopted_in: []

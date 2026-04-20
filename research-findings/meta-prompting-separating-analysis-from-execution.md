@@ -8,7 +8,7 @@ implementation_notes: Similar pattern exists in our research-loop (extraction ->
 category: Prompt Craft
 evidence_strength: Medium (practitioner-documented)
 adoption_status: Partially Adopted
-proposer_priority: P3 (Monitor)
+priority: P3 (Monitor)
 applicability:
 - S3 (Claude Code Build)
 - Perplexity Skills

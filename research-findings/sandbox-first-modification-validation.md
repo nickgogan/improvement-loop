@@ -7,7 +7,7 @@ implementation_notes: 'Our improvement pipeline modifies skills and context file
 category: Governance
 evidence_strength: Medium (practitioner-documented)
 adoption_status: Not Yet Started
-proposer_priority: P3 (Monitor)
+priority: P3 (Monitor)
 applicability:
 - General
 adopted_in: []

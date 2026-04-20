@@ -6,7 +6,7 @@ implementation_notes: Pattern is distinct from parallel sub-agents (which share 
 category: Orchestration
 evidence_strength: Medium (practitioner-documented)
 adoption_status: Not Yet Started
-proposer_priority: P3 (Monitor)
+priority: P3 (Monitor)
 applicability:
 - S3 (Claude Code Build)
 adopted_in: []

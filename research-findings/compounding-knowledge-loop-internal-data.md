@@ -7,7 +7,7 @@ implementation_notes: MetaSystem's research-loop already implements a version of
 category: Memory Architecture
 evidence_strength: Medium (practitioner-documented)
 adoption_status: Not Yet Started
-proposer_priority: P1 (Implement Now)
+priority: P1 (Implement Now)
 applicability:
 - S3 (Claude Code Build)
 - General

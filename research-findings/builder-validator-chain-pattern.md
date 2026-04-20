@@ -6,7 +6,7 @@ implementation_notes: null
 category: Evaluation
 evidence_strength: Strong (production-tested)
 adoption_status: Partially Adopted
-proposer_priority: P2 (Design Required)
+priority: P2 (Design Required)
 applicability:
 - S3 (Claude Code Build)
 adopted_in:

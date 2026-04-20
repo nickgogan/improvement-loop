@@ -7,7 +7,7 @@ implementation_notes: Requires a persistent work queue (e.g., Beads JSONL issues
 category: Context Engineering
 evidence_strength: Medium (practitioner-documented)
 adoption_status: Not Yet Started
-proposer_priority: P2 (Design Required)
+priority: P2 (Design Required)
 applicability:
 - S3 (Claude Code Build)
 - General

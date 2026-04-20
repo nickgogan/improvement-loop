@@ -7,7 +7,7 @@ implementation_notes: MetaSystem has no cost monitoring or budgeting. Claude Cod
 category: Orchestration
 evidence_strength: Strong (production-tested)
 adoption_status: Not Yet Started
-proposer_priority: P2 (Design Required)
+priority: P2 (Design Required)
 applicability:
 - General
 adopted_in: []

@@ -7,7 +7,7 @@ implementation_notes: MetaSystem's GSD uses ad-hoc phase sequencing — neither 
 category: Orchestration
 evidence_strength: Medium (practitioner-documented)
 adoption_status: Not Yet Started
-proposer_priority: P3
+priority: P3
 applicability:
 - General
 adopted_in: []

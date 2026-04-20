@@ -6,7 +6,7 @@ implementation_notes: null
 category: Agent Design
 evidence_strength: Strong (production-tested)
 adoption_status: Already Adopted
-proposer_priority: P3 (Monitor)
+priority: P3 (Monitor)
 applicability:
 - S3 (Claude Code Build)
 - General / Cross-System

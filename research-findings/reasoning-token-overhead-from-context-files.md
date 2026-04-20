@@ -7,7 +7,7 @@ implementation_notes: 'When auditing MetaSystem CLAUDE.md files for bloat, measu
 category: Context Engineering
 evidence_strength: Strong (production-tested)
 adoption_status: Not Yet Started
-proposer_priority: P2 (Design Required)
+priority: P2 (Design Required)
 applicability:
 - General
 adopted_in: []

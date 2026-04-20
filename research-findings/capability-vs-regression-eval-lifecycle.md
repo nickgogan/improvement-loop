@@ -6,7 +6,7 @@ implementation_notes: 'MetaSystem has no formal eval suites yet. When building, 
 category: Evaluation
 evidence_strength: Strong (production-tested)
 adoption_status: Not Yet Started
-proposer_priority: P2 (Design Required)
+priority: P2 (Design Required)
 applicability:
 - S3 (Claude Code Build)
 - General / Cross-System

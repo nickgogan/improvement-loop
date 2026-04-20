@@ -6,7 +6,7 @@ implementation_notes: null
 category: Agentic OS
 evidence_strength: Medium (practitioner-documented)
 adoption_status: Not Yet Started
-proposer_priority: P3
+priority: P3
 applicability:
 - General
 - S3 (Claude Code Build)

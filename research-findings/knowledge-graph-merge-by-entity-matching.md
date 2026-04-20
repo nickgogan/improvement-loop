@@ -6,7 +6,7 @@ implementation_notes: Applicable to any system ingesting knowledge from heteroge
 category: Memory Architecture
 evidence_strength: Medium (practitioner-documented)
 adoption_status: Not Yet Started
-proposer_priority: P3 (Monitor)
+priority: P3 (Monitor)
 applicability:
 - General
 adopted_in: []

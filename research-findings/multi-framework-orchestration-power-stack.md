@@ -6,7 +6,7 @@ implementation_notes: P3 — adopt individual frameworks first, revisit composit
 category: Orchestration
 evidence_strength: Weak (theoretical)
 adoption_status: Not Yet Started
-proposer_priority: P3 (Monitor)
+priority: P3 (Monitor)
 applicability:
 - S3 (Claude Code Build)
 - General

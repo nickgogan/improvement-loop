@@ -103,7 +103,7 @@ Present the report to the user. Wait for approval before making any changes. The
    - Set `date_discovered` to the original's date (the pattern was discovered then, just miscategorized)
    - Set `last_updated` to today
    - Write body sections focused on the new dimension's concern
-   - Set `proposer_priority` based on triage rules
+   - Set `priority` based on triage rules
 4. Update the original finding's source entries to also reference the new finding.
 
 ### Step 6: Update Index
@@ -137,5 +137,5 @@ If a finding could fit two categories, the **primary subject** (what the finding
 - **Don't over-split.** A finding that mentions sandboxing in passing while being primarily about orchestration should stay in Orchestration. Only split when both concerns are substantial enough to warrant standalone KB entries.
 - **Preserve evidence.** When splitting, both resulting findings should reference the same sources. Don't lose provenance.
 - **Category is not a tag.** A finding has one category. If it touches multiple dimensions, the category reflects its primary concern. Tags (in source entries) can reflect secondary concerns.
-- **Respect existing proposer_priority.** Reclassification doesn't change priority. Splits may need priority re-evaluation for the new finding.
+- **Respect existing priority.** Reclassification doesn't change priority. Splits may need priority re-evaluation for the new finding.
 - **The dimension descriptions in research-dimensions.md are authoritative.** If there's ambiguity, re-read the "What to search for" section for each candidate dimension.

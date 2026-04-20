@@ -7,7 +7,7 @@ implementation_notes: null
 category: Context Engineering
 evidence_strength: Weak (theoretical)
 adoption_status: Not Yet Started
-proposer_priority: P3
+priority: P3
 applicability:
 - S3 (Claude Code Build)
 adopted_in: []

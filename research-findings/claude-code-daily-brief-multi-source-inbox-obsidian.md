@@ -8,7 +8,7 @@ implementation_notes: 'Concrete integrations used: Gmail API, Google Calendar AP
 category: Agentic OS
 evidence_strength: Medium (practitioner-documented)
 adoption_status: Not Yet Started
-proposer_priority: P2 (Design Required)
+priority: P2 (Design Required)
 applicability:
 - S3 (Claude Code Build)
 - General

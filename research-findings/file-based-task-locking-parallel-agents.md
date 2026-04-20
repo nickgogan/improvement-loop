@@ -6,7 +6,7 @@ implementation_notes: Applicable to MetaSystem parallel skill execution. Could u
 category: Orchestration
 evidence_strength: Strong (production-tested)
 adoption_status: Not Yet Started
-proposer_priority: P1 (Implement Now)
+priority: P1 (Implement Now)
 applicability:
 - S3 (Claude Code Build)
 adopted_in: []

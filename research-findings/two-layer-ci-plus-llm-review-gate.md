@@ -5,7 +5,7 @@ implementation_notes: "MetaSystem uses human review gates but has no automated C
 category: "Governance"
 evidence_strength: "Medium (practitioner-documented)"
 adoption_status: "Not Yet Started"
-proposer_priority: P2 (Design Required)
+priority: P2 (Design Required)
 applicability:
   - "S3 (Claude Code Build)"
   - "General"

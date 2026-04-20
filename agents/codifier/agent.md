@@ -118,7 +118,7 @@ The Codifier owns **Stages 2-3** of the IL pipeline: artifact identification, ar
 ## Communication
 
 **Input artifacts consumed:**
-- Research findings in `research-findings/` (filtered by `proposer_priority` and `pipeline_status`)
+- Research findings in `research-findings/` (filtered by `priority` and `pipeline_status`)
 - Form classification rubric in `operations/references/form-classification-rubric.md`
 - Guide routing table in `operations/references/guide-routing-table.md`
 - Approved identification reports in `operations/pattern-identification-reports/`
@@ -133,7 +133,7 @@ The Codifier owns **Stages 2-3** of the IL pipeline: artifact identification, ar
 
 **Handoff from Researcher:**
 - The Codifier does NOT receive direct handoffs from the Researcher
-- The Codifier reads the KB state — findings with `pipeline_status: raw` and appropriate `proposer_priority` are the input
+- The Codifier reads the KB state — findings with `pipeline_status: raw` and appropriate `priority` are the input
 - Nick triggers Codifier work by invoking `/identify-artifacts` on accumulated findings
 - The `pipeline_status` field transitions managed by the Codifier: `raw` → `synthesized` (when consumed by a guide) or `extracted` (when consumed by an artifact extraction)
 

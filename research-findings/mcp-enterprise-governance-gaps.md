@@ -7,7 +7,7 @@ implementation_notes: These gaps affect MetaSystem indirectly -- our scale is sm
 category: Governance
 evidence_strength: Strong (production-tested)
 adoption_status: Not Yet Started
-proposer_priority: P3 (Monitor)
+priority: P3 (Monitor)
 applicability:
 - General
 adopted_in: []

@@ -6,7 +6,7 @@ implementation_notes: Directly applicable to MetaSystem's research-loop and any 
 category: Orchestration
 evidence_strength: Strong (production-tested)
 adoption_status: Not Yet Started
-proposer_priority: P1 (Implement Now)
+priority: P1 (Implement Now)
 applicability:
 - S3 (Claude Code Build)
 - General

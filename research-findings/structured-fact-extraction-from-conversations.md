@@ -7,7 +7,7 @@ implementation_notes: 'MetaSystem''s current approach stores session notes as pr
 category: Memory Architecture
 evidence_strength: Medium (practitioner-documented)
 adoption_status: Not Yet Started
-proposer_priority: P2 (Design Required)
+priority: P2 (Design Required)
 applicability:
 - General
 adopted_in: []

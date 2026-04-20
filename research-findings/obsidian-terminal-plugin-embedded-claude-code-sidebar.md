@@ -5,7 +5,7 @@ implementation_notes: This is the integration point for the "Claude Code inside 
 category: Tool Integration
 evidence_strength: Strong (production-tested)
 adoption_status: Not Yet Started
-proposer_priority: P3 (Monitor)
+priority: P3 (Monitor)
 applicability:
 - S3 (Claude Code Build)
 - General

@@ -7,7 +7,7 @@ implementation_notes: null
 category: Agentic OS
 evidence_strength: Strong (production-tested)
 adoption_status: Not Yet Started
-proposer_priority: P3
+priority: P3
 applicability:
 - S2 (Notion Operations)
 adopted_in: null

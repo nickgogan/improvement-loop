@@ -20,7 +20,7 @@ Two workstreams to execute in order. Budget approximately 60% of the session on 
 
 ### Workstream A: Null-Priority Triage (192 findings)
 
-192 findings (42% of KB) have `proposer_priority: null`. These need triage — not full `/identify-artifacts` classification, but at minimum a priority assignment so the Codifier can filter effectively.
+192 findings (42% of KB) have `priority: null`. These need triage — not full `/identify-artifacts` classification, but at minimum a priority assignment so the Codifier can filter effectively.
 
 **Approach:** Batch by category, largest first. For each batch:
 
@@ -30,7 +30,7 @@ Two workstreams to execute in order. Budget approximately 60% of the session on 
    - **P2 (Design Required):** Medium+ evidence + applicable but needs design work. Or: adopted elsewhere, design needed for MetaSystem.
    - **P3 (Monitor):** Weak evidence, single-source, theoretical, or not yet actionable for MetaSystem.
    - **Not Flagged:** Informational only — useful context but no implementation path (landscape surveys, anti-patterns to avoid, theoretical findings).
-3. Write `proposer_priority` and `last_updated` via `kb_parser.write_frontmatter()`.
+3. Write `priority` and `last_updated` via `kb_parser.write_frontmatter()`.
 4. **Human gate:** Present a summary table of assignments per batch (category) before moving to the next. Nick may override individual assignments.
 
 **Category order (largest null-priority count first):**

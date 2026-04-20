@@ -8,7 +8,7 @@ implementation_notes: 'Directly applicable to evaluating whether our multi-agent
 category: Evaluation
 evidence_strength: Medium (practitioner-documented)
 adoption_status: Not Yet Started
-proposer_priority: P1 (Implement Now)
+priority: P1 (Implement Now)
 applicability:
 - General
 adopted_in: []

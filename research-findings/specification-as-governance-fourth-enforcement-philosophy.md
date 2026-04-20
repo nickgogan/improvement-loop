@@ -7,7 +7,7 @@ implementation_notes: 'MetaSystem already has Design Decisions and Build Specs t
 category: Governance
 evidence_strength: Medium (practitioner-documented)
 adoption_status: Not Yet Started
-proposer_priority: P2
+priority: P2
 applicability:
 - General
 adopted_in: []

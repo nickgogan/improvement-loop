@@ -7,7 +7,7 @@ implementation_notes: The model maps directly onto MetaSystem's architecture —
 category: Agentic OS
 evidence_strength: Medium (practitioner-documented)
 adoption_status: Already Adopted
-proposer_priority: P2 (Design Required)
+priority: P2 (Design Required)
 applicability:
 - General
 - S3 (Claude Code Build)

@@ -7,7 +7,7 @@ implementation_notes: When iterating on MetaSystem skill procedures, expect dimi
 category: Evaluation
 evidence_strength: Medium (practitioner-documented)
 adoption_status: Not Yet Started
-proposer_priority: P3 (Monitor)
+priority: P3 (Monitor)
 applicability:
 - General
 adopted_in: []

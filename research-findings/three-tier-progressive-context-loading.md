@@ -6,7 +6,7 @@ implementation_notes: null
 category: Context Engineering
 evidence_strength: Medium (practitioner-documented)
 adoption_status: Partially Adopted
-proposer_priority: P2
+priority: P2
 applicability:
 - S3 (Claude Code Build)
 - General

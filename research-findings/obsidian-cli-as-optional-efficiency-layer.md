@@ -5,7 +5,7 @@ implementation_notes: Reinforces MetaSystem's existing architecture — the vaul
 category: Tool Integration
 evidence_strength: Strong (practitioner-documented, explicitly stated)
 adoption_status: Partially Adopted
-proposer_priority: P3 (Monitor)
+priority: P3 (Monitor)
 applicability:
 - General
 - S3 (Claude Code Build)

@@ -6,7 +6,7 @@ implementation_notes: GSD's phase model already does this. The insight is that c
 category: Orchestration
 evidence_strength: Medium (practitioner-documented)
 adoption_status: Partially Adopted
-proposer_priority: P2 (Design Required)
+priority: P2 (Design Required)
 applicability:
 - S3 (Claude Code Build)
 adopted_in:

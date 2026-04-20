@@ -6,7 +6,7 @@ implementation_notes: Build or adopt a behavioral audit skill now. The behaviora
 category: Governance
 evidence_strength: Medium (practitioner-documented)
 adoption_status: Not Yet Started
-proposer_priority: P2 (Design Required)
+priority: P2 (Design Required)
 applicability:
 - General
 adopted_in: []

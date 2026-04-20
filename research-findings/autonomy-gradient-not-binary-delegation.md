@@ -7,7 +7,7 @@ implementation_notes: MetaSystem currently uses a binary human gate (DD-29). Thi
 category: Intent Engineering
 evidence_strength: Strong (production-tested)
 adoption_status: Not Yet Started
-proposer_priority: P1 (Implement Now)
+priority: P1 (Implement Now)
 applicability:
 - General
 adopted_in: []

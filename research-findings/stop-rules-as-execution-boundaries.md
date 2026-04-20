@@ -7,7 +7,7 @@ implementation_notes: 'Audit MetaSystem agent specs (skills, handoff prompts) fo
 category: Intent Engineering
 evidence_strength: Medium (practitioner-documented)
 adoption_status: Not Yet Started
-proposer_priority: P2 (Design Required)
+priority: P2 (Design Required)
 applicability:
 - General
 adopted_in: []

@@ -117,7 +117,7 @@ def build_finding_map(findings_dir=None):
     """Build a map of all research finding files.
 
     Returns: {filename: {name, category, summary, evidence_strength, adoption_status,
-              proposer_priority, applicability, sources_files, sources_notion,
+              priority, applicability, sources_files, sources_notion,
               related_findings, date_discovered, last_updated}}
     """
     d = findings_dir or FINDINGS_DIR
@@ -133,7 +133,7 @@ def build_finding_map(findings_dir=None):
             "summary": (fm.get("summary", "") or "")[:200],
             "evidence_strength": fm.get("evidence_strength", "") or "",
             "adoption_status": fm.get("adoption_status", "") or "",
-            "proposer_priority": fm.get("proposer_priority") or "",
+            "priority": fm.get("priority") or "",
             "applicability": normalize_list(fm.get("applicability")),
             "sources_files": extract_file_refs(sources_raw),
             "sources_notion": extract_notion_refs(sources_raw),
