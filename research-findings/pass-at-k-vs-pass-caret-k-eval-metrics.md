@@ -18,9 +18,11 @@ sources:
 related_findings:
 - file: think-tool-scratchpad-for-mid-chain-reasoning.md
   rel: enables
+- file: data-agent-benchmark-dab-cross-dbms-pipeline-eval.md
+  rel: extended-by
 proposals: null
 date_discovered: '2026-04-09'
-last_updated: '2026-04-09'
+last_updated: '2026-04-20'
 pipeline_status: synthesized
 consumed_by:
 - building-agent-evaluation-suites.md

@@ -54,6 +54,7 @@ Structural analyses live in [[watched-library-analyses-index|analysis/]] — pro
 | [[sandbox\|AIO Sandbox]] | evaluating | v1.0.0.150 (2026-04-19) | MCP Hub aggregation, all-in-one container, protocol adapter pattern |
 | [[deer-flow\|DeerFlow]] | cherry-pick | v2.0 (2026-04-19) | Middleware-as-enforcement, batched parallel subagents, three-tier sandbox provisioner |
 | [[ob1\|OB1 (Open Brain)]] | cherry-pick | latest (2026-04-20) | Skill template architecture, self-improving skills, two-layer review gate, personal OS domain extensions |
+| [[memongo\|Memongo]] | evaluating | latest (2026-04-20) | MongoDB-native memory — single-store polymorphic evidence, $rankFusion hybrid retrieval, query decomposition + RRF, weighted-signal reranking, importance decay, surprisal novelty gate |
 
 ## Dataview Query
 

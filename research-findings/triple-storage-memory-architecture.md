@@ -15,9 +15,11 @@ sources:
 related_findings:
 - file: four-layer-enterprise-memory-stack.md
   rel: same-problem
+- file: mongodb-single-store-polymorphic-evidence-memory.md
+  rel: contradicts
 proposals: null
 date_discovered: '2026-04-08'
-last_updated: '2026-04-19'
+last_updated: '2026-04-20'
 pipeline_status: raw
 consumed_by: []
 ---

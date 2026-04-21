@@ -13,7 +13,7 @@ specialty:
   - "agent-design"
   - "governance"
 notes: "Creator of Claude and Claude Code. Primary source for context engineering, tool design, evaluation frameworks, and agent architecture patterns. Engineering blog is the highest-density source in the KB for actionable agent patterns."
-source_count: 23
+source_count: 24
 sources:
   - "anthropic-writing-effective-tools-for-agents.md"
   - "anthropic-demystifying-evals-for-ai-agents.md"
@@ -38,6 +38,7 @@ sources:
   - "anthropic-trustworthy-agents-in-practice.md"
   - "anthropic-emotion-concepts-function.md"
   - "anthropic-ai-diff-tool.md"
+  - "anthropic-claude-code-session-management-1m-context.md"
 url: "https://docs.anthropic.com"
 ---
 

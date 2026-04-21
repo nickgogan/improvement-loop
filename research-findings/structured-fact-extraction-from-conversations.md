@@ -13,6 +13,7 @@ applicability:
 adopted_in: []
 sources:
 - openclaude-build-a-claude-code-agent-with-long-ter.md
+- memongo-mongodb-native-agent-memory-github.md
 related_findings:
 - file: biomimetic-memory-auto-recall-over-tool-based.md
   rel: same-problem
@@ -26,9 +27,13 @@ related_findings:
   rel: same-problem
 - file: ace-agentic-context-engineering-evolving-playbook.md
   rel: same-problem
+- file: surprisal-novelty-as-memory-write-gate.md
+  rel: extends
+- file: query-decomposition-sub-query-rrf-merge.md
+  rel: same-problem
 proposals: []
 date_discovered: '2026-04-07'
-last_updated: '2026-04-08'
+last_updated: '2026-04-20'
 pipeline_status: synthesized
 consumed_by:
 - session-persistence-and-memory.md
@@ -62,6 +67,10 @@ The always-on agent community has independently discovered that "compaction kill
 ## Why People Are Using It
 
 Multiple implementations exist: Hindsight (biomimetic, production-grade), claude-code-vector-memory (ChromaDB-backed with hybrid scoring: 70% semantic + 20% recency + 10% complexity), and Anthropic's own research on long-running Claude sessions using CHANGELOG.md as structured memory.
+
+## Corroborating Evidence — 2026-04-20 (Memongo)
+
+Memongo (MongoDB-native agent memory) implements structured fact extraction as part of its ingestion pipeline: a lightweight LLM (GPT-4-mini) runs fact extraction, QA pair generation, and session evidence synthesis on every incoming turn before storage. The QA pair generation is notable — it extends fact extraction into retrieval-shaped structures, optimizing for later recall. Memongo also pairs fact extraction with an upstream surprisal novelty gate (see [[surprisal-novelty-as-memory-write-gate.md]]), which filters redundant facts before they hit the collection — a combination Hindsight doesn't explicitly implement.
 
 ## Potential Improvements
 

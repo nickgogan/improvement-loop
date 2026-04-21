@@ -69,3 +69,8 @@
 | Vercel | Company | Tier 2 (experienced practitioner) | tools | 1 | https://vercel.com |
 | WorkOS | Company | Tier 2 (experienced practitioner) | mcp | 1 | https://workos.com |
 | Yann LeCun | Individual | Tier 1 (creator/researcher) | evaluation | 1 | https://yann.lecun.com |
+
+<!-- Session 45 additions (2026-04-20) — not yet alphabetically merged -->
+| Memongo / romiluz13 | Individual | Tier 2 (experienced practitioner) | memory, mongodb, agent-design | 1 | https://github.com/romiluz13 |
+| Simon Willison | Individual | Tier 1 (creator/researcher) | agent-design, prompt-engineering, claude-code, documentation | 1 | https://simonwillison.net |
+| UC Berkeley EPIC Lab (Parameswaran group + collaborators) | Institution | Tier 1 (creator/researcher) | evaluation, memory, data-systems, agentic-workloads | 2 | https://github.com/ucbepic |

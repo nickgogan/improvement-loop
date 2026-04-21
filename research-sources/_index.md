@@ -2,7 +2,7 @@
 database: "Research Sources"
 notion_id: "9f14b2814bac4a1382800ccc325d57d5"
 extracted: "2026-04-04"
-row_count: 131
+row_count: 136
 ---
 
 | Name | Source Type | Status | Relevance | Added By | Tags |
@@ -138,3 +138,10 @@ row_count: 131
 | Your AI Agent Fails 97.5% of Real Work. The Fix Isn't Coding. | Video | Done | High | Nick | evaluation |
 | Your AI Coding is BAD. Here's How to Fix It. | Video | Done | High | Nick | context-engineering |
 | Your Claude Limit Burns In 90 Minutes Because Of One ChatGPT Habit | Video | Done | High | Nick | context-engineering, claude-code, prompt-engineering |
+
+<!-- Session 45 additions (2026-04-20) — not yet alphabetically merged -->
+| Memongo — MongoDB-Native Long-Term Memory for AI Agents (GitHub) | Documentation | Done | High | Nick | memory, context-engineering, orchestration, evaluation, mcp, mongodb |
+| Using Claude Code: Session Management and 1M Context | Blog Post | Done | High | Nick | claude-code, context-engineering, session-management, orchestration |
+| Can AI Agents Answer Your Data Questions? A Benchmark for Data Agents (DAB) | Research Paper | Done | Medium | Nick | evaluation, benchmark, data-agents, multi-database |
+| Supporting Our AI Overlords: Redesigning Data Systems to be Agent-First | Research Paper | Done | Medium | Nick | memory, orchestration, data-systems, agentic-workloads, research-direction |
+| Linear Walkthroughs — Simon Willison's Agentic Engineering Patterns Guide | Blog Post | Done | High | Nick | context-engineering, prompt-engineering, agent-design, claude-code, documentation |

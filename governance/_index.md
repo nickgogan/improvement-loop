@@ -32,12 +32,18 @@ This directory holds governance artifacts that are specific to the IL system —
 
 ## Current Contents
 
+### Root — ratified governance rules
+
 | File | Purpose | Source |
 |------|---------|--------|
 | `boundary-rules.md` | What IL can/cannot modify, cross-system constraints | Constitution |
 | `pipeline-rules.md` | How IL work flows through DBDO, human gates, stage boundaries | Constitution, Principles |
 | `agent-rules.md` | Agent boundaries, handoff requirements, agent-as-directory | Constitution, Fractal Pattern, Vocabulary |
 | `knowledge-rules.md` | KB management, terminology, evidence tracking, structural memory | Constitution, Values, Vocabulary |
+
+### `proposals/` — Owner-authored governance-rule proposals
+
+Proposal-First tier output per the Owner autonomy table. Contains tracking-mechanism proposals, DD proposals, amendment proposals, and drift reports with remediation plans. Each proposal is Owner-written and Nick-gated; ratified proposals migrate upstream into DDs, governance rules, or the implementation backlog. The session-50 four-zone architecture proposal (`proposals/2026-04-22-dd-proposal-owner-design-artifact-placement.md`) formalizes this subfolder's role.
 
 ## Owner
 

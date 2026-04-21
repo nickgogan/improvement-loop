@@ -1,18 +1,23 @@
 # Improvement Loop — Progress
 
-**Last Updated:** 2026-04-20 (session 40)
+**Last Updated:** 2026-04-21 (session 49)
+
+**Note on tracking drift:** Sessions 17-21 were in the root PROGRESS.md. Sessions 22+ were supposed to be tracked here, but sessions 41-46 ended up in the root PROGRESS.md instead. Session 47 resumed correct tracking in this file. Per memory feedback, session-by-session narrative lives in `operations/system-log/`; this file carries current focus and pointers only.
 
 ## Current Focus
 
-**Batch 2 extraction in progress. 2 new videos processed (session 40). OB1 repo analysis + 13 remaining Batch 2 sources next.**
+**Librarian reference layer is executable end-to-end. Next: design how the Librarian learns from use.**
 
-**Pipeline state:**
-```
-/research-loop (intake)  →  /identify-artifacts  →  /extract-artifacts  →  /synthesize-guide  →  [deploy]
-     done (sessions 15-16)    done (sessions 24,27)   done (sessions 25,28)   partial (G1-G8 done, G9-G10 next)
-```
+Option α' (session 47) has been fully built out. Session 48 validated it empirically — four composition tests (3-guide agent slice, 7-guide agent audit, prompt audit, skill audit) all passed — and produced the first three exemplars (`harness.md`, `second-brain.md`, `audit.md`). Session 49 closed the substrate: 35 Librarian use cases canonicalized, a formal read-contract specified (10-step execution flow, 3-hop Tier-2 ceiling, Tier-3 consumer-request-gated), three more concept files (`agent.md`, `prompt.md`, `skill.md`), and three IL-scoped assessment skills (`assess-agent`, `assess-prompt`, `assess-skill` at `systems/improvement-loop/.claude/skills/`). `assess-prompt` is framed as an *extension over `/prompt-evaluator`* — not a parallel rubric — after mid-session Nick push-back on duplication.
 
-**Note:** Sessions 17-21 were recorded in the root PROGRESS.md. From session 22 onward, IL session updates are tracked here.
+**Session 50 focus (handoff prepared):** Owner persona. Primary task: design the Librarian boundary-case tracking mechanism — where encounter data (no concept match, ambiguous verb, hop-ceiling hit, KB gap, Tier-3 read) lives so Nick + Codifier can see patterns over time and prioritize next-wave authoring. Nick's session-49 annotation on read-contract §9 is the source question. Output lands in `governance/proposals/` (not `project-management/design-notes/`) per Nick's session-49-close decision that Owner-authored design artifacts belong in `governance/`; a companion DD proposal codifies that placement rule. Secondary stream: SL pattern-recognition on Nick's ad-hoc brief. Handoff at `operations/handoffs/handoff-prompt-session-50-owner-boundary-case-tracking.md`.
+
+**Reference-layer authoring backlog (from use-case registry):**
+- P2 concepts: `memory.md` (variants), `context-rot.md`. P2 operations: `diagnose.md`, `design.md`.
+- P3 concepts: `agentic-systems.md`, `prompt-caching.md`, `mcp.md`. P3 operations: `decide.md`, `fetch.md`, `explain.md`, `whats-new.md`, `coverage.md`. P4: `plan.md`.
+- Session 51+ Codifier scope after the boundary-case tracking design lands.
+
+**Pipeline state unchanged from session 48:** `/research-loop` → `/identify-artifacts` → `/synthesize-guide` (absorbs non-pattern inlining per pipeline collapse proposal) → lift-and-deploy from `guide#anchor`. G7/G2/G9 re-syntheses remain gated on lifecycle-spec Phase-1 DDs.
 
 ---
 
@@ -110,15 +115,44 @@
 
 ## What Still Needs Work
 
-1. **OB1 repo analysis** — New watched library (`https://github.com/NateBJones-Projects/OB1`). Analyze + promote findings.
-2. **Batch 2 extraction** — 13 sources approved, not yet extracted. Process in parallel waves.
-3. **P2 guide synthesis** — Check G1-G8 staleness from P2 deltas, synthesize G9 (Governance) and G10 (Agent Design)
-4. **Deploy staged artifacts** — 8 guides + 5 P1 non-patterns + 19 P2 non-patterns in `extracts/`
-5. **Design IL agents** — Researcher and Codifier agent definitions using the guides (deferred until guides complete)
-6. **P3 identification** — 63 findings at Monitor priority per DD-72
-7. **feedback/ taxonomy** — Structure for the new IL feedback directory
-8. **Unified processed-findings tracking** — Current dedup mechanisms work but have gaps
-9. **Temp directory cleanup** — Design cleanup for `/tmp/metasystem-repo-cache/` (repo-analyzer) and transcript fetcher temp files. Consider automated cleanup, TTL pruning, or manual skill.
+### Session 48 execution scope (Codifier — Librarian reference layer build)
+
+Handoff at `operations/handoffs/handoff-prompt-session-48-codifier-librarian-reference-layer-build.md`. Six phases, gate at each:
+
+1. **Phase 1 — Contract-section spot-check** on G1+G2+G10 to validate Option α' (invariants compose into agent-audit rubric?). Outcome gates the rest. If pass: α' holds. If fail: escalate to view artifacts for assessment use cases.
+2. **Phase 2 — `research-dimensions.md` rewrite:** Researcher-specific preamble + Agentic OS → Agentic Systems rename. Update `guide-routing-table.md` Agentic OS references.
+3. **Phase 3 — Three exemplar files** in `operations/references/librarian/`: `harness.md` (concept, no variants), `second-brain.md` (concept, three variants: human / AI / hybrid), `audit.md` (operation). Plus `_index.md`.
+4. **Phase 4 — Librarian use-case registry** under (concept, operation) decomposition. Map 35 session-46 use cases onto file pairs.
+5. **Phase 5 — Librarian read-contract design:** three-tier access formalization, confidence/provenance protocols, consumer input handling.
+6. **Phase 6 — Three assessment skill SKILL.md drafts:** `/assess-prompt`, `/assess-agent`, `/assess-skill` as load-and-apply wrappers over (audit operation × concept file).
+
+### Pending Nick decisions (carried)
+
+- Review session-47 design notes at v2 state (substrate audit + collapse proposal).
+- Session-45 identification Status fields — 4 guided-tier + 8 auto-tier entries still pending APPROVED/REJECTED/REDIRECTED.
+- Session-46 Phase 1 lifecycle-spec DDs (DD-X1, DD-X3, DD-X4) — approval unblocks G7/G2/G9 re-syntheses.
+- Terminology check: "curator" usage — confirmed as Codifier unless rename intended.
+
+### Blocked / paused
+
+- Re-synthesize G7 Memory (+11), G2 Context (+3), G9 Governance (+4) — blocked on lifecycle-spec Phase 1 DD approval.
+- Deploy 11 guides from `extracts/guides/` to `meta-system/knowledge/guides/` — paused pending pipeline-collapse decision.
+- Deploy non-pattern extracts — paused; under collapse proposal these become migration-into-guides candidates per Phase M1 audit.
+- Retroactive migration/retirement of ~26 existing non-guide/non-pattern extracts + ~57–62 inline-candidate patterns — analysis-only in session 48 if scope allows.
+
+### Secondary / IB candidates
+
+- DD-78 amendment (Contract sections' dual role under α') — defer until Phase 1 spot-check outcome.
+- DD-82 amendment (Librarian's expanded role) — defer until reference layer is exercised.
+- References-by-agent reorg IB — mirror `librarian/` with `researcher/` and `codifier/` subfolders; update skill path refs in `/identify-artifacts`, `/synthesize-guide`, `/research-loop`. Author IB in session 48; execute in session 49+.
+
+### Long-tail carry-forward (pre-session-41)
+
+- OB1 repo analysis (watched library queued as 8th).
+- P3 identification — 63 findings at Monitor priority per DD-72.
+- `feedback/` taxonomy — structure for IL feedback directory.
+- Unified processed-findings tracking — current dedup has gaps.
+- Temp directory cleanup — `/tmp/metasystem-repo-cache/`.
 
 ## What Changed Sessions 22-28
 
@@ -139,19 +173,46 @@ Sessions 17-21 are in the root PROGRESS.md. Summary of sessions 22-28:
 - **Session 39** — Batch 2 triage: 15 sources evaluated, 13 approved for extraction, 2 skipped (#17 product demo, #21 model release news). All 13 transcripts committed.
 - **Session 40** — 2 new YouTube videos processed. 1 new finding (`five-pillar-agentic-os-framework.md`, P2, Agentic OS), 4 existing findings updated. Transcript fetcher enhanced with `parse_transcript_html()` for manual HTML fallback. OB1 repo queued as 8th watched library.
 
-## KB Totals (as of session 40)
+### Sessions 41-46 (tracked in root PROGRESS.md — backfill from SL entries when needed)
 
-~499 findings, 121 sources, 11 research dimensions. 7 watched libraries (OB1 pending as 8th). P1 (75) and P2 (120) fully classified. 94 artifacts staged in `extracts/` (75 P1 + 19 P2). 8 guides synthesized (G1-G8), 2 pending (G9-G10).
+High-level summary derived from `operations/system-log/` and root PROGRESS.md. For detail, consult SL entries and handoff prompts.
+
+- **Session 41** — Batch 2 extraction handoff prep.
+- **Sessions 42-44** — Batch 2 extraction and subsequent identification runs. Session 44 staged 26 non-pattern extracts across rules/skills/templates/agents.
+- **Session 45** — Researcher final-batch intake: 12 new findings (Memongo cluster, Anthropic session-management blog, UC Berkeley papers, Simon Willison walkthroughs).
+- **Session 46 (Codifier)** — Session-45 identification (91.7% pattern rate). Produced artifact **lifecycle spec** (9 proposed DDs) + artifact **acceptance rubric** (3 more DDs). Librarian use-case registry draft (35 use cases / 9 categories). G7 / G2 / G9 re-syntheses gated on lifecycle-spec Phase 1 DDs.
+- **DD-82** (IL 4-agent architecture) and **DD-86** (Owner responsibility) filed somewhere in this window. 4-agent team (Owner / Researcher / Codifier / Librarian) operational.
+- **KB growth during gap:** ~499 → 545 findings; 7 → 16 watched libraries; 8 → 11 guides (G9 Governance and G10 Agent Design synthesized; G3b Workflow added).
+
+### Session 47 (Codifier — Pipeline Collapse + Substrate Audit)
+
+- Produced **pipeline collapse proposal** (`project-management/design-notes/2026-04-20-pipeline-collapse-proposal.md`). Retire standalone non-pattern extract directories. `/extract-artifacts` retires as user-invocable. `/synthesize-guide` absorbs full responsibility. DD-X9 obviated. 4 new proposed DDs (section manifest, deploy-by-anchor, anchor stability, `/extract-artifacts` deprecation).
+- Produced **substrate audit** (`project-management/design-notes/2026-04-20-substrate-audit-dimensions-patterns-guides-vs-librarian.md`) in response to Nick's ultrathink challenge on whether the taxonomy chain supports Librarian use cases. v1 recommended Option α (view artifacts). v2 (post-interview) replaced with Option α' — **Librarian reference layer** (concept files + operation files as pointer artifacts) + **three-tier access** (guides → patterns+findings graph → watched-library repos).
+- **Interview-resolved:** dimensions reframe-only (Agentic OS → Agentic Systems, no Harness dimension); "consumer artifacts" framing dropped in favor of (concept, operation) decomposition; variants as first-class optional field for Agent, Memory, Second Brain (three variants: human / AI / hybrid).
+- Collapse proposal's Librarian Read Contract section trimmed (v2) to point to the substrate audit; section manifest retained as agreed mechanism for anchor stability + deploy metadata.
+- Session 47 SL entry + session 48 handoff prompt written.
+- **Deferred to session 48:** Contract-section spot-check to validate Option α', `research-dimensions.md` rewrite, three exemplar reference files (harness, second-brain, audit), Librarian use-case registry under new decomposition, read-contract design, three assessment skill drafts.
+
+## KB Totals (as of session 47)
+
+545 findings, 136 sources, 70 authorities, 11 research dimensions, 16 watched libraries. 11 guides synthesized (G1-G10 + G3b). ~109 artifacts staged in `extracts/` (11 guides + 72 patterns + 9 rules + 11 skills + 4 templates + 2 agents). Under collapse proposal, `extracts/` would shrink to ~30-40 (guides + ~10-15 cross-cutting patterns) post-migration.
 
 ## Key Files
 
 | Entity | Path |
 |--------|------|
-| Staged extracts | `extracts/` |
+| Next session handoff | `operations/handoffs/handoff-prompt-session-48-codifier-librarian-reference-layer-build.md` |
+| Session 47 SL entry | `operations/system-log/session-47-codifier-pipeline-collapse-substrate-audit-librarian-reference-layer.md` |
+| Pipeline collapse proposal | `project-management/design-notes/2026-04-20-pipeline-collapse-proposal.md` |
+| Substrate audit | `project-management/design-notes/2026-04-20-substrate-audit-dimensions-patterns-guides-vs-librarian.md` |
+| Artifact lifecycle spec (session 46) | `project-management/design-notes/2026-04-20-artifact-lifecycle-spec.md` |
+| Artifact acceptance rubric (session 46) | `project-management/design-notes/2026-04-20-artifact-acceptance-rubric.md` |
+| Session 45 identification report | `operations/pattern-identification-reports/2026-04-20-session-45-identification-report.md` |
 | Guide routing table | `operations/references/guide-routing-table.md` |
 | Research dimensions | `operations/references/research-dimensions.md` |
 | Form classification rubric | `operations/references/form-classification-rubric.md` |
-| P2 identification report | `operations/pattern-identification-reports/2026-04-19-identification-report-4.md` |
+| Staged extracts | `extracts/` |
 | Research findings | `research-findings/` |
 | Watched libraries registry | `watched-libraries/_index.md` |
-| Next session handoff | `operations/handoffs/handoff-prompt-p2-guide-synthesis.md` |
+| IL agent definitions | `agents/{owner,researcher,codifier,librarian}/agent.md` |
+| IL CLAUDE.md | `CLAUDE.md` (at system root) |

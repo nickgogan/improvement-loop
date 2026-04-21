@@ -20,4 +20,14 @@ aliases: []
 
 # Project Management
 
-Requirements, milestones, and progress tracking for Improvement Loop work.
+Deliberative and governance-adjacent substrate for the Improvement Loop — design decisions (ratified rules), implementation backlog (tracked work), and design notes (deliberative specifications). Owner-governed per DD-55/56/86.
+
+## Subfolders
+
+| Subfolder | Contains | Governance |
+|-----------|----------|------------|
+| `design-decisions/` | Ratified DDs (immutable per DD-44) | Owner triages, Nick files |
+| `implementation-backlog/` | Tracked work items (IB) | Owner-governed |
+| `design-notes/` | Deliberative specifications — substrate audits, read contracts, use-case registries, rubrics, lifecycle specs, pipeline-mechanics proposals | Owner-governed; any agent authors |
+
+`design-notes/` was added 2026-04-22 via the four-zone architecture proposal (`../governance/proposals/2026-04-22-dd-proposal-owner-design-artifact-placement.md`). Seven files migrated in from the deprecated `operations/design-notes/`.

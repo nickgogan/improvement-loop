@@ -2,7 +2,7 @@
 database: "Research Findings"
 notion_id: "94f8eaa18b27412a86570d95e70d63e3"
 extracted: "2026-04-04"
-row_count: 533
+row_count: 545
 pipeline_status: "raw"
 consumed_by: []
 ---
@@ -542,3 +542,17 @@ consumed_by: []
 | YAML Template Dual Structure (Schema + Coaching Instructions) | Prompt Craft | Strong (production-tested) | Not Yet Started | P2 (Design Required) | S3 (Claude Code Build), Perplexity Skills |
 | YAML Templates with Embedded Elicitation Instructions | Context Engineering | Medium (practitioner-documented) | Not Yet Started | P2 (Design Required) | S3 (Claude Code Build), General |
 | Zero Framework Cognition (ZFC) | Agent Design | Medium (practitioner-documented) | Not Yet Started | P3 | S3 (Claude Code Build) |
+
+<!-- Session 45 additions (2026-04-20) — not yet alphabetically merged; sorted block below -->
+| Agent-Generated Codebase Walkthrough for Onboarding | Context Engineering | Medium (practitioner-documented) | Not Yet Started | P2 | S3 (Claude Code Build), General |
+| Agentic Speculation — Four Characteristics That Redesign Data Systems | Memory Architecture | Weak (theoretical) | Not Yet Started | P3 | General |
+| Claude Code Context Management Decision Matrix — Five Tools | Context Engineering | Strong (production-tested) | Partially Adopted | P1 | S3 (Claude Code Build), General |
+| Data Agent Benchmark (DAB) — Cross-DBMS Pipeline Evaluation | Evaluation | Strong (production-tested) | Not Yet Started | P2 | General |
+| Importance-Based Memory Decay with Permanent Exemption | Memory Architecture | Medium (practitioner-documented) | Not Yet Started | P3 | S3 (Claude Code Build), General |
+| MongoDB Single-Store Polymorphic Evidence Memory | Memory Architecture | Medium (practitioner-documented) | Not Yet Started | P2 | S3 (Claude Code Build), General |
+| Post-Retrieval Reranking via Weighted Signal Composition | Memory Architecture | Medium (practitioner-documented) | Not Yet Started | P2 | S3 (Claude Code Build), General |
+| Proactive Compaction Before Intelligence Degradation | Context Engineering | Strong (production-tested) | Not Yet Started | P2 | S3 (Claude Code Build), General |
+| Programmatic Snippet Extraction via Shell — Anti-Hallucination Rule | Prompt Craft | Medium (practitioner-documented) | Not Yet Started | P2 | S3 (Claude Code Build), General |
+| Query Decomposition with Sub-Query RRF Merge | Memory Architecture | Medium (practitioner-documented) | Not Yet Started | P2 | S3 (Claude Code Build), General |
+| Rank Fusion Hybrid Retrieval on MongoDB Atlas | Memory Architecture | Medium (practitioner-documented) | Not Yet Started | P2 | S3 (Claude Code Build), General |
+| Surprisal Novelty as Memory Write Gate | Memory Architecture | Medium (practitioner-documented) | Not Yet Started | P2 | S3 (Claude Code Build), General |

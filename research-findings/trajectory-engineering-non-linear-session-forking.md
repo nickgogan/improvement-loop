@@ -13,11 +13,16 @@ applicability:
 adopted_in: []
 sources:
 - claude-code-works-better-when-you-do-this.md
+- anthropic-claude-code-session-management-1m-context.md
 proposals: []
 date_discovered: '2026-03-22'
-last_updated: '2026-04-19'
+last_updated: '2026-04-20'
 related_findings:
 - file: fork-subagent-parallel-trajectory-exploration.md
+  rel: same-problem
+- file: claude-code-context-management-decision-matrix-five-tools.md
+  rel: extends
+- file: proactive-compaction-before-intelligence-degradation.md
   rel: same-problem
 pipeline_status: raw
 consumed_by: []
@@ -41,3 +46,7 @@ Visualizing the session tree structure (not just a linear history) would make tr
 
 ## Potential Failure Modes
 Without clear mental tagging of trunk vs. branch content, practitioners may trim context that was actually load-bearing. Time-travel is limited to the current session — it cannot restore context from a previous session.
+
+## Corroborating Evidence — 2026-04-20 (Anthropic canonical framing)
+
+Anthropic's April 2026 "Session Management and 1M Context" blog post (Thariq Shihipar) formalizes the /rewind primitive as a first-class matrix cell in the product decision framework (see [[claude-code-context-management-decision-matrix-five-tools.md]]). Anthropic's guidance: "Rewind is often the better approach to correction" — rather than forward-patching with "that didn't work, try X," rewind post-file-reads and re-prompt with the learnings. This promotes Roman's practitioner framing of trajectory engineering from "advanced technique" to "Anthropic-recommended default." The shortcut is now officially Esc+Esc. Evidence_strength remains Strong; applicability widens to all Claude Code users, not just advanced practitioners.

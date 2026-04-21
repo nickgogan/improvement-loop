@@ -20,6 +20,12 @@ last_updated: '2026-04-19'
 related_findings:
 - file: ace-agentic-context-engineering-rag-based.md
   rel: same-problem
+- file: rank-fusion-hybrid-retrieval-mongodb-atlas.md
+  rel: extended-by
+- file: query-decomposition-sub-query-rrf-merge.md
+  rel: extended-by
+- file: post-retrieval-reranking-weighted-signal-composition.md
+  rel: extended-by
 pipeline_status: raw
 consumed_by: []
 ---

@@ -10,7 +10,8 @@ priority: P3
 applicability:
 - S3 (Claude Code Build)
 adopted_in: []
-sources: []
+sources:
+- memongo-mongodb-native-agent-memory-github.md
 related_findings:
 - file: agent-lifecycle-formalization-spectrum.md
   rel: same-problem
@@ -18,9 +19,13 @@ related_findings:
   rel: same-problem
 - file: semantic-memory-decay-compaction.md
   rel: same-problem
+- file: importance-based-decay-permanent-exemption.md
+  rel: same-problem
+- file: surprisal-novelty-as-memory-write-gate.md
+  rel: same-problem
 proposals: null
 date_discovered: '2026-04-08'
-last_updated: '2026-04-19'
+last_updated: '2026-04-20'
 pipeline_status: raw
 consumed_by: []
 ---

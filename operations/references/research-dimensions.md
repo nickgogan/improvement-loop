@@ -1,12 +1,25 @@
 ---
 name: Research Dimensions
-description: Active query registry for the eleven research dimensions. Read by research-loop at scan start. Updated at scan end with query refinements.
-last_updated: "2026-04-19"
+description: Researcher-side scan topics — eleven dimensions naming what the Researcher scans for in the world. Read by /research-loop at scan start. Not a consumer routing layer; consumer-facing navigation is the Librarian's reference layer.
+last_updated: "2026-04-21"
 ---
 
 # Research Dimensions
 
-This file is the **active query source** for the research-loop skill. The skill reads it at Step 0 and proposes refinements at Step 6. Edit queries here to steer future scans — no need to touch the skill definition.
+This file is the **active query source** for the `/research-loop` skill. The Researcher reads it at Step 0 of every scan and proposes refinements at Step 6. Edit queries here to steer future scans — no need to touch the skill definition.
+
+---
+
+## What these dimensions are (and are not)
+
+**These are Researcher-side scan topics.** Each dimension names *what the Researcher goes looking for in the world* — an aspect of agent systems where external practice is worth harvesting. The dimensions partition the frontier so scans stay bounded and the KB stays indexable by topic of origin.
+
+**These are not consumer categories.** They are not how the Librarian routes a user's question ("audit my agent.md", "how do I handle memory?", "compare MongoDB single-store vs triple-storage"). Consumer-facing navigation is the Librarian's job — it decomposes a query into reads against guides, patterns, findings, and watched-library repos, using concept files (noun-keyed) and operation files (verb-keyed) in `operations/references/librarian/`. A single consumer question typically spans multiple dimensions and guides; the dimension registry does not pre-solve that composition and is not meant to.
+
+**Consequences of this framing:**
+- **Drift signal:** a dimension that begins to index by *what consumers build* rather than *what the Researcher scans* is drifting. Dimension 11 (Agentic Systems) is the edge case that forced this clarification — it names a class of operational systems the Researcher scans in the world, not a consumer artifact class. Scan-topic framing preserved.
+- **Do not grow the registry for cross-cutting consumer themes.** "Harness," "Context Rot," "Second Brain," "MCP" are consumer concepts that span aspects — they belong in the Librarian reference layer as concept files, not here. The registry grows only when a new *scan topic* surfaces with enough external research mass to need its own query shape.
+- **Findings still carry a `category:` from this registry.** That stays Researcher-side metadata (origin-of-finding). It is not a consumer-visible route.
 
 ---
 
@@ -214,25 +227,30 @@ This file is the **active query source** for the research-loop skill. The skill 
 
 ---
 
-## Dimension 11: Agentic OS
+## Dimension 11: Agentic Systems
+
+**Scope.** Personal, team, and business *operational systems* in which multiple agents serve user workflows. The unit of analysis is the system-level assembly — vault-as-OS, daily-brief pipeline, team context-sharing setup, business operations agent stack — not an individual agent. (Renamed from "Agentic OS" on 2026-04-21 to reflect that the scan topic covers team and business systems, not only personal OS.)
 
 **What to search for:**
 - Personal knowledge management with AI agents (second brain, vault-as-OS)
 - Obsidian + AI agent integration patterns (CLI, terminal plugins, graph views)
 - Scheduled agent tasks for life/business operations (morning briefs, meeting transcript ingestion, analytics rollups)
-- File-based personal OS architecture (folder structure, index files, CLAUDE.md as routing layer)
+- File-based personal/team OS architecture (folder structure, index files, CLAUDE.md as routing layer)
 - Context infrastructure maturity models (chat → projects → skills → file access → second brain → business OS)
-- Team context sharing and permission patterns (sync, relay plugins, access control)
-- Experiment/ritual tracking with agent assistance
-- Daily routine automation and habit-tracking workflows
+- Team context sharing and permission patterns (sync, relay plugins, access control, shared memory layers)
+- Multi-agent business operations in production orgs (cross-agent protocols, shared state, delegation topologies across roles)
+- Experiment/ritual tracking and daily routine automation with agent assistance
 
 **Web queries:**
 - `AI agent personal OS second brain [current year]`
 - `obsidian claude code knowledge management workflow [current year]`
 - `agentic business OS scheduled tasks automation [current year]`
 - `personal productivity AI agent operations [current year]`
+- `team AI agent shared context collaboration [current year]`
+- `multi-agent business operations production [current year]`
 
 **arXiv queries:**
 - `personal knowledge management AI agent`
 - `AI assistant daily workflow automation`
 - `human AI collaborative knowledge system`
+- `multi-agent team knowledge sharing`
