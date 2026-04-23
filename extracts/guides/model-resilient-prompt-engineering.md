@@ -258,7 +258,7 @@ Produce a structured finding entry for each distinct pattern in the source that 
 
 ### Context
 Source transcript: {{SOURCE_PATH}}
-Existing findings index: systems/improvement-loop/research-findings/_index.md
+Existing findings directory: systems/improvement-loop/research-findings/ (filter with ripgrep on frontmatter `category:` / `dimension:`)
 
 ### Output Format
 YAML frontmatter per _schema.yaml, followed by markdown body with sections:

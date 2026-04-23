@@ -64,8 +64,8 @@ If the scope is omitted ("what does the KB cover?" with no noun), the response i
 
 For the named scope, read:
 
-- **Dimension scope:** research-dimensions.md (definition), guide-routing-table.md (dimension → guide mapping), `research-findings/_index.md` filtered by dimension.
-- **Concept scope:** concept file (composition table), `research-findings/_index.md` / `extracts/guides/_index.md` filtered by concept's aliases / tags.
+- **Dimension scope:** research-dimensions.md (definition), guide-routing-table.md (dimension → guide mapping), `research-findings/*.md` filtered by dimension (ripgrep frontmatter `category:`).
+- **Concept scope:** concept file (composition table), `research-findings/*.md` / `extracts/guides/*.md` filtered by concept's aliases / tags (ripgrep frontmatter `tags:` or `aliases:`).
 - **Pattern-class scope:** `research-findings/` files' frontmatter `related_findings` entries, filtered by edge type.
 
 Do not read substrate bodies. If the consumer wants body-level detail after the coverage map, hand off to `fetch` or `explain`.

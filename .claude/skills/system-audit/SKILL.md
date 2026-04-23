@@ -47,7 +47,7 @@ You are the **Owner** performing a thorough inspection. This is Full Autonomy ti
 
 - **Exhaustive but scannable.** Check everything, but organize findings so Nick can scan the report in 2 minutes and drill into details as needed.
 - **Evidence-based findings.** Every finding includes: what was expected, what was observed, and where to look.
-- **Severity classification.** Not all findings are equal. A missing agent definition matters more than a slightly outdated `_index.md`.
+- **Severity classification.** Not all findings are equal. A missing agent definition matters more than a cosmetic inconsistency in a folder README.
 - **No fixes in the audit.** The audit produces findings. Fixes come from other skills or manual action. Mixing audit and repair compromises both.
 
 ---
@@ -105,7 +105,7 @@ Read `CLAUDE.md` and verify every factual claim:
 
 ### Step 4: Governance Compliance
 
-1. **Governance docs exist:** Does `governance/` have content beyond `_index.md`?
+1. **Governance docs exist:** Does `governance/` have content beyond its folder README?
 2. **Source alignment:** Run the same checks as `/translate-governance --check-only` — are translations current?
 3. **Rule enforcement:** For each governance rule in `governance/`, search for evidence of compliance or violation in agent definitions and skill contracts
 4. **`.claude/rules/governance.md`:** Consistent with `governance/` docs?
@@ -114,15 +114,15 @@ Read `CLAUDE.md` and verify every factual claim:
 
 Check against the canonical structure in `meta-system/governance/fractal-pattern.md`:
 
-| Required | Path | Exists | Has `_index.md` | Has Content |
-|----------|------|--------|-----------------|-------------|
-| `app/` | `app/` | ? | ? | ? |
-| `governance/` | `governance/` | ? | ? | ? |
-| `knowledge/` | `knowledge/` | ? | ? | ? |
-| `agents/` | `agents/` | ? | ? | ? |
-| `project-management/` | `project-management/` | ? | ? | ? |
-| `operations/` | `operations/` | ? | ? | ? |
-| `archive/` | `archive/` | ? | ? | ? |
+| Required | Path | Exists | Has Content |
+|----------|------|--------|-------------|
+| `app/` | `app/` | ? | ? |
+| `governance/` | `governance/` | ? | ? |
+| `knowledge/` | `knowledge/` | ? | ? |
+| `agents/` | `agents/` | ? | ? |
+| `project-management/` | `project-management/` | ? | ? |
+| `operations/` | `operations/` | ? | ? |
+| `archive/` | `archive/` | ? | ? |
 
 Also check knowledge vault subdirectories: `patterns/`, `guides/`, `templates/`, `reference/`.
 
@@ -211,7 +211,7 @@ tags:
 
 ### Step 10: Create `operations/audit-reports/` if Needed
 
-If the directory doesn't exist, create it with an `_index.md`.
+If the directory doesn't exist, create it.
 
 ---
 

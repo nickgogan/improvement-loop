@@ -75,8 +75,7 @@ This skill covers source processing, finding extraction, priority triage, and de
 ### Conventions
 
 - **Filename:** kebab-case slug of the entry name + `.md` (e.g., `context-window-compaction.md`)
-- **Index files:** Each directory has an `_index.md` containing a markdown table summarizing all rows
-- **After creating or updating any entry, also update the corresponding `_index.md`**
+- **Discovery is frontmatter-driven.** Research findings, sources, and authorities folders no longer maintain `_index.md` catalogs — filter entries with ripgrep on frontmatter fields instead.
 - **Relations between entries use filenames** (e.g., `sources: ["article-name.md"]`) instead of URLs or IDs
 
 ### Research Sources Frontmatter Schema
@@ -245,13 +244,11 @@ For each distinct pattern/technique found in the source:
    - Edit the `last_updated` frontmatter field to today's date
    - Add the source filename to the finding's `sources` list
    - Strengthen evidence if this source adds production evidence
-   - Update `_index.md` for the findings directory
 3. **If no existing finding:**
    - Use `Write` to create a new markdown file in `systems/improvement-loop/research-findings/` with all frontmatter properties
    - Set priority based on evidence strength + applicability (see Triage Rules below)
    - Write the full page body (What It Is, Why It Matters, Why People Are Using It, Potential Improvements, Potential Failure Modes)
    - Add the source filename to the finding's `sources` list and vice versa (use relative filenames)
-   - Update `_index.md` for the findings directory
 
 ### Step 4: Complete Source Entry
 
@@ -262,14 +259,13 @@ Use `Edit` to update the Research Sources entry:
 - tags: finalized based on content
 - relevance: assessed based on applicability to our systems
 - findings: list of finding filenames linked to this source
-- Update `_index.md` for the sources directory
 
 ### Step 5: Update Authorities
 
 For each person, channel, or institution referenced in the source:
 1. Use `Grep` to search `systems/improvement-loop/research-authorities/` for an existing entry
-2. **If found:** Use `Edit` to update source_count, add the source filename to the `sources` list, and update `_index.md`
-3. **If not found:** Use `Write` to create a new markdown file in `systems/improvement-loop/research-authorities/` with type, specialty, credibility, notes, and the source filename in `sources`. Update `_index.md`
+2. **If found:** Use `Edit` to update source_count and add the source filename to the `sources` list.
+3. **If not found:** Use `Write` to create a new markdown file in `systems/improvement-loop/research-authorities/` with type, specialty, credibility, notes, and the source filename in `sources`.
 
 This ensures the authority landscape stays current and source diversity is trackable.
 
@@ -439,7 +435,6 @@ For each finding, check the Research Findings directory using `Grep`:
 - Use `Write` to create new Research Sources entries in `systems/improvement-loop/research-sources/` for all web articles reviewed
 - Use `Write` or `Edit` to create or update Research Findings entries in `systems/improvement-loop/research-findings/` for gaps and conflicts
 - Add source filenames to finding `sources` lists and vice versa
-- Update all affected `_index.md` files
 
 ### Step 5: Produce Delta Report
 

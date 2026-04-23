@@ -174,19 +174,13 @@ contract:
 ---
 ```
 
-### Step 5: Update Index and Synthesis Status
+### Step 5: Update Synthesis Status and Cross-References
 
-1. Add an entry to `systems/improvement-loop/extracts/_index.md`:
+1. **Update the Synthesis Status table** in `systems/improvement-loop/operations/references/guide-routing-table.md`. Set the cluster's row to: last synthesized date, finding count, output path, and status (`draft`). If re-synthesizing an existing guide, update the row in place.
 
-```markdown
-| [Guide Title](guides/guide-filename.md) | guide | [[finding-1]], [[finding-2]], ... | [date] | No |
-```
+2. **Cross-reference adjacent guides.** Check the Related Guides sections of other cluster guides for cross-references to add. If the new or updated guide connects to existing guides, add bidirectional Related Guides entries in both the new guide and the adjacent guides.
 
-2. **Update the Synthesis Status table** in `systems/improvement-loop/operations/references/guide-routing-table.md`. Set the cluster's row to: last synthesized date, finding count, output path, and status (`draft`). If re-synthesizing an existing guide, update the row in place.
-
-3. **Cross-reference adjacent guides.** Check the Related Guides sections of other cluster guides for cross-references to add. If the new or updated guide connects to existing guides, add bidirectional Related Guides entries in both the new guide and the adjacent guides.
-
-4. **Back-annotate finding files.** For each finding consumed by this guide, update its frontmatter:
+3. **Back-annotate finding files.** For each finding consumed by this guide, update its frontmatter:
    - Set `pipeline_status: "synthesized"`
    - Add the guide filename to `consumed_by:` (e.g., `"managing-agent-context.md"`)
    - If the finding already has `consumed_by` entries (e.g., from individual extraction), append rather than replace.

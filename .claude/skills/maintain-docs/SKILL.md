@@ -62,7 +62,6 @@ If a target is specified (e.g., `--update CLAUDE.md`, `--update agents`), scope 
 | System CLAUDE.md | `CLAUDE.md` | Agent table, skill tables, directory table, hard constraints, data sources |
 | Agent definitions | `agents/*/agent.md` | Skill inventories, scope, communication tables |
 | Skill contracts | `.claude/skills/*/SKILL.md` | Tools listed, procedures, paths referenced |
-| Index files | `*/_index.md` | Tables match actual directory contents |
 | Governance docs | `governance/*.md` | Aligned with current source governance |
 | Operational refs | `operations/references/*.md` | Still accurate |
 
@@ -77,7 +76,6 @@ For each surface, read the actual filesystem state:
 - **Skill tables:** `Glob` for `.claude/skills/*/SKILL.md` — count them, list them
 - **Agent table:** `Glob` for `agents/*/agent.md` — count them, list them
 - **Directory table:** `ls` equivalent via `Glob` for top-level directories
-- **Index files:** Compare `_index.md` table rows against actual files in the directory
 - **Cross-references:** `Grep` for paths, filenames, and counts mentioned in docs
 
 ### Step 4: Produce Drift Report
@@ -171,12 +169,11 @@ Based on the answers, draft the document with:
 
 Present the draft to the user. This is Proposal-First tier — structural documentation shapes how agents understand the system. Wait for approval before writing.
 
-### Step 5: Write and Update Index
+### Step 5: Write
 
 After approval:
 1. Write the document to the appropriate directory
-2. Update the directory's `_index.md`
-3. If the new doc affects CLAUDE.md references, note that for the next `--update` run
+2. If the new doc affects CLAUDE.md references, note that for the next `--update` run
 
 ---
 
@@ -187,8 +184,7 @@ After approval:
 3. **Never fabricate system state.** If you can't verify something by reading files, say "unable to verify" rather than guessing.
 4. **Don't rewrite docs for style.** Update mode fixes factual errors. It doesn't rewrite prose, add commentary, or reorganize sections unless factual accuracy requires it.
 5. **Preserve document ownership.** Some docs are authored by Nick. Update factual details but don't change voice or intent.
-6. **Index updates are best-effort.** Per governance rules, `_index.md` updates are not blocking. Fix them when convenient but don't treat them as critical.
-7. **Cross-system docs are out of scope.** If drift is found in `meta-system/` docs, flag it but don't fix it. That's cross-system, Human-Required tier.
+6. **Cross-system docs are out of scope.** If drift is found in `meta-system/` docs, flag it but don't fix it. That's cross-system, Human-Required tier.
 
 ## Calibration Notes
 

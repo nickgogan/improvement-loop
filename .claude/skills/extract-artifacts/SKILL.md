@@ -236,15 +236,7 @@ For each written artifact, use `Edit` to append an extraction note to the source
 Extracted as **[assigned_form]**: [[artifact-filename]] in `extracts/[form]s/`
 ```
 
-### Step 5: Update Index
-
-Add new entries to `systems/improvement-loop/extracts/_index.md` catalog section:
-
-```markdown
-| [Artifact Title](forms/artifact-filename.md) | [form] | [[source-finding]] | [date] | No |
-```
-
-### Step 6: Back-Annotate Finding Files
+### Step 5: Back-Annotate Finding Files
 
 For each extracted finding, update its frontmatter:
 
@@ -253,7 +245,7 @@ For each extracted finding, update its frontmatter:
 
 If the finding already has `pipeline_status: "synthesized"` (consumed by a guide), keep `synthesized` and append the artifact to `consumed_by`.
 
-### Step 7: Summary
+### Step 6: Summary
 
 Report to the user:
 
@@ -288,8 +280,7 @@ Next: Review staged artifacts in extracts/. Deploy to enforcement locations when
 3. **Dedup at write time.** Check if an artifact for this finding already exists in `extracts/`. Skip if so.
 4. **Do not deploy.** Write to `extracts/` only. Deployment is a separate act.
 5. **Back-annotate after writing.** The source finding gets a note linking to the extracted artifact.
-6. **Update `_index.md` after every write.**
-7. **Respect REDIRECTED status.** If the user changed the form in the report, use the user's form, not the original classification.
+6. **Respect REDIRECTED status.** If the user changed the form in the report, use the user's form, not the original classification.
 
 ---
 

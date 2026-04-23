@@ -42,7 +42,6 @@ The Promoter thinks like a librarian, not a researcher.
 | `systems/improvement-loop/watched-libraries/analysis/` | Analysis docs (input) |
 | `systems/improvement-loop/watched-libraries/analysis/cross-repo-comparison.md` | Comparison report (input) |
 | `systems/improvement-loop/research-findings/` | Research Findings KB (output) |
-| `systems/improvement-loop/research-findings/_index.md` | Findings index (update) |
 
 ---
 
@@ -199,11 +198,7 @@ For each **partial match** where the existing finding was updated with new evide
 
 Include a **Priority Re-evaluation** section in the Step 8 summary if any candidates were flagged.
 
-### Step 6: Update Index
-
-1. Add new entries to `systems/improvement-loop/research-findings/_index.md`.
-
-### Step 7: Link Back to Analysis Doc
+### Step 6: Link Back to Analysis Doc
 
 1. For each analysis doc that had candidates reviewed, use `Edit` to add a note under **every** candidate in the Findings Candidates section:
    - Promoted: `→ Promoted to [[finding-filename]] on {date}`
@@ -214,7 +209,7 @@ Include a **Priority Re-evaluation** section in the Step 8 summary if any candid
 
    **Every candidate must have a `→` annotation after review.** A candidate without a `→` prefix means "not yet reviewed." This makes completeness checking trivial: `grep -c "^[0-9]" analysis.md` vs `grep -c "→" analysis.md`.
 
-### Step 8: Summary
+### Step 7: Summary
 
 Report to the user:
 - How many candidates were reviewed
@@ -232,5 +227,4 @@ Report to the user:
 3. **Default evidence strength is Medium.** Analysis docs observe patterns in repos — not production telemetry. Only upgrade to Strong with explicit evidence.
 4. **Do not create research sources.** Analysis docs are internal artifacts, not external sources. Use inline attribution in the finding body instead.
 5. **Preserve the analysis link.** Every promoted finding links back to its source analysis doc via Obsidian wiki-link. Every promoted candidate in the analysis doc links forward to the finding.
-6. **Update `_index.md` after every write.**
-7. **Do not modify existing findings without user approval.** If a dedup check finds a full match, present the option to update the existing finding — don't overwrite silently.
+6. **Do not modify existing findings without user approval.** If a dedup check finds a full match, present the option to update the existing finding — don't overwrite silently.

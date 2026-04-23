@@ -192,9 +192,7 @@ If the user opts for persistence:
 
 3. **Check for extensions** — if a finding extends an existing KB entry, update the existing entry via `Edit` rather than creating a duplicate. Add the new source to the existing finding's `sources` list.
 
-4. **Update `_index.md`** files for both `research-findings/` and `research-sources/` if new entries were created.
-
-5. **Update the report** — set `persist_findings: true` in the report frontmatter and add a section listing what was written:
+4. **Update the report** — set `persist_findings: true` in the report frontmatter and add a section listing what was written:
    ```markdown
    ## Persisted Artifacts
    - Finding: `{filename}` — {name}

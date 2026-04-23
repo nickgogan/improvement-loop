@@ -7,7 +7,7 @@ target_system:
   - "improvement-loop"
 stage: "active"
 created: "2026-04-22"
-updated: "2026-04-22"
+updated: "2026-04-23"
 author: "owner"
 source_dd:
   - "DD-52"
@@ -19,8 +19,6 @@ tags:
   - "project-management"
   - "moc"
   - "improvement-loop"
-aliases:
-  - "Design notes catalog"
 ---
 
 # Improvement Loop — Design Notes
@@ -49,33 +47,17 @@ Deliberative specifications for IL pipeline mechanics, substrate architecture, r
 
 Owner-governed folder; any agent may author here. Shape governs placement, not author (see DD-89 for the four-zone architecture that frames this rule).
 
-## Current contents
+## Discovery
 
-| File | Created | Author | Shape |
-|------|---------|--------|-------|
-| `2026-04-20-artifact-acceptance-rubric.md` | 2026-04-20 | Codifier (session 46) | Acceptance rubric |
-| `2026-04-20-artifact-lifecycle-spec.md` | 2026-04-20 | Codifier (session 46) | Lifecycle spec |
-| `2026-04-20-pipeline-collapse-proposal.md` | 2026-04-20 | Codifier (session 47) | Pipeline-mechanics proposal |
-| `2026-04-20-substrate-audit-dimensions-patterns-guides-vs-librarian.md` | 2026-04-20 | Codifier (session 47) | Substrate audit |
-| `2026-04-21-contract-section-spotcheck-agent-audit.md` | 2026-04-21 | Codifier (session 48) | Spot-check report |
-| `2026-04-21-librarian-read-contract.md` | 2026-04-21 | Codifier (session 49) | Read contract |
-| `2026-04-21-librarian-use-case-registry.md` | 2026-04-21 | Codifier (session 49) | Use-case registry |
-| `2026-04-21-agent-reflections-to-proposals-architecture.md` | 2026-04-21 | Owner (session 51) | Self-improvement architecture spec |
-| `2026-04-21-session-telemetry-harness-requirements.md` | 2026-04-21 | Owner (session 51) | Harness-portable observability spec |
-| `2026-04-22-librarian-boundary-case-tracking.md` | 2026-04-22 | Owner (session 50) | Tracking-mechanism spec (awaiting Nick's gate) |
+Browse the folder directly or filter by frontmatter (`author`, `stage`, tags). Files are dated (`YYYY-MM-DD-slug.md`); chronological order reflects authorship order.
 
 ## Provenance
 
-The first seven files were migrated from `operations/design-notes/` on 2026-04-22 during session 50, when the Owner proposed the four-zone architecture (ratified as DD-89). The `operations/design-notes/` folder was deprecated and removed.
-
-The two session-51 files were authored natively in this folder under the new four-zone convention. Both are substrate design notes for cross-system DDs (DD-90 session telemetry; DD-91 reflections architecture).
-
-The 2026-04-22 boundary-case-tracking file was relocated here during session 52 from `governance/proposals/` after DD-89's proposals-folder scope was clarified to agent-initiated output only.
+The first seven design notes in this folder were migrated from `operations/design-notes/` on 2026-04-22 during session 50, when the Owner proposed the four-zone architecture (ratified as DD-89). The `operations/design-notes/` folder was deprecated and removed. Session-51 files were authored natively under the new convention. The 2026-04-22 boundary-case-tracking note was relocated from `governance/proposals/` during session 52 after DD-89's proposals-folder scope was clarified to agent-initiated output only.
 
 ## Cross-References
 
 - Four-zone architecture: DD-89
-- Project-management parent: `project-management/_index.md`
 - Design Decisions: `project-management/design-decisions/`
 - Implementation Backlog: `project-management/implementation-backlog/`
 - Governing DDs: DD-52 (fractal pattern), DD-86 (Owner responsibility)

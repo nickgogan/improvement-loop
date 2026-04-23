@@ -110,7 +110,6 @@ Compare IL directory structure against the fractal pattern:
 | `archive/` | ? | ? |
 
 Also check:
-- Does each directory have an `_index.md`?
 - Are there top-level files that should be in a subdirectory?
 
 ### Step 5: Recent SL Entries Check
@@ -156,7 +155,7 @@ Output to conversation (not written to file — this is a diagnostic):
 1. **Autonomy tier: Full Autonomy.** This is a read-only diagnostic. No writes, no proposals, no fixes.
 2. **Output to conversation only.** Don't write report files — this is a quick check, not an audit artifact.
 3. **Be specific about drift.** "Skills drifted" is useless. "CLAUDE.md says 12 Researcher skills but filesystem has 11 — missing: dimension-rebalance" is actionable.
-4. **Don't flag cosmetic issues.** A typo in an `_index.md` is not a health issue. Focus on structural, count, and reference accuracy.
+4. **Don't flag cosmetic issues.** Minor doc typos are not health issues. Focus on structural, count, and reference accuracy.
 5. **Stay in scope.** Only check IL system state. If you notice issues in other systems, ignore them — the Owner's scope is IL only.
 
 ## Calibration Notes

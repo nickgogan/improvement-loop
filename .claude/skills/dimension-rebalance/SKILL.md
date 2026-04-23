@@ -90,7 +90,6 @@ Present the report to the user. Wait for approval before making any changes. The
 **For Type A (reclassify):**
 1. Use `Edit` to update the finding's `category` field in frontmatter.
 2. Use `Edit` to update the finding's `last_updated` field to today.
-3. Note the change for `_index.md` update.
 
 **For Type B (split):**
 1. Read the original finding fully.
@@ -106,14 +105,9 @@ Present the report to the user. Wait for approval before making any changes. The
    - Set `priority` based on triage rules
 4. Update the original finding's source entries to also reference the new finding.
 
-### Step 6: Update Index
+### Step 6: Report
 
-After all changes are applied:
-1. Use `Edit` to update `systems/improvement-loop/research-findings/_index.md`:
-   - Update rows for reclassified findings (new category)
-   - Add rows for newly split findings
-   - Update `row_count` in frontmatter
-2. Report final category distribution.
+Report final category distribution. Use `rg -c '^category: "' systems/improvement-loop/research-findings/*.md | cut -d: -f1 | xargs -I{} sh -c 'printf "%s  " "$(basename {})"; rg "^category: " {}'` or similar to get live counts directly from frontmatter.
 
 ## Classification Rubric
 
