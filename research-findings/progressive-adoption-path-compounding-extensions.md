@@ -2,7 +2,7 @@
 name: "Progressive Adoption Path with Compounding Extensions"
 summary: "A curated sequence of domain extensions that build on each other, creating cross-domain agent capabilities through progressive adoption. OB1's 6-extension learning path moves users from single-domain (household knowledge) to cross-domain integration (CRM knows captured thoughts, meal planner checks who's home, job contacts become professional network contacts)."
 implementation_notes: "MetaSystem has no progressive adoption path. Systems are designed as standalone units. The extension compounding pattern could inform how Household OS capabilities are sequenced and how cross-domain integration is designed."
-category: "Agentic OS"
+category: "Agentic Systems"
 evidence_strength: "Medium (practitioner-documented)"
 adoption_status: "Not Yet Started"
 priority: P2 (Design Required)

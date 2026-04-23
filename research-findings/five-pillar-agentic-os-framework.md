@@ -2,7 +2,7 @@
 name: Five-Pillar Agentic OS Framework
 summary: "Five capabilities that define a personal/business Agentic OS: (1) persistent memory (layered context), (2) self-improving skills (learnings.md feedback loop), (3) interaction layer (supervisor UI for multi-goal management), (4) scheduled workflows (skill chaining with human checkpoints), (5) business context (shared brand folder as foundation). Framework argues context infrastructure matters more than agent frameworks — 'start with the business brain, not the agents.'"
 implementation_notes: "MetaSystem already has pillars 1 (CLAUDE.md + MEMORY.md), 2 (skills with reference files), and 4 (routines/cron). Missing: pillar 3 (supervisor UI for multi-goal visibility) and pillar 5 (shared business context folder that all skills reference). The 'business brain first' principle aligns with MetaSystem's constitution-first approach."
-category: Agentic OS
+category: Agentic Systems
 evidence_strength: Medium (practitioner-documented)
 adoption_status: Partially Adopted
 priority: P2 (Design Required)

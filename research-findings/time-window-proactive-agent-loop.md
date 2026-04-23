@@ -2,7 +2,7 @@
 name: "Time-Window Proactive Agent Loop"
 summary: "A scheduled agent that runs a time-aware decision loop: date anchor → duplicate check → time window classification → external pull (calendar, weather) → internal enrich (knowledge base search) → deliver via channel → log. OB1's Life Engine implements 7 briefing types across 5 time windows with habit tracking, weekly self-improvement reviews, and channel delivery (Telegram/Discord)."
 implementation_notes: "MetaSystem has no proactive agent. The pattern could inform Household OS daily operations — morning briefings, pre-meeting prep, evening reviews. The date anchoring and duplicate checking are critical implementation details that summaries miss."
-category: "Agentic OS"
+category: "Agentic Systems"
 evidence_strength: "Medium (practitioner-documented)"
 adoption_status: "Not Yet Started"
 priority: P2 (Design Required)

@@ -27,6 +27,8 @@ related_findings:
   rel: same-problem
 - file: legitimate-multi-agent-domains-taxonomy.md
   rel: same-problem
+- file: subagent-isolation-contract.md
+  rel: same-problem
 - file: marathon-vs-relay-race-plugin-architecture.md
   rel: same-problem
 - file: multi-framework-orchestration-power-stack.md

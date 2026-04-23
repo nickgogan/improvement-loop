@@ -19,6 +19,8 @@ related_findings:
   rel: same-problem
 - file: superpowers-plugin-spec-driven-sub-agent-orchestra.md
   rel: extends
+- file: declared-transformations-contract-conformance.md
+  rel: extended-by
 proposals: []
 date_discovered: '2026-04-09'
 last_updated: '2026-04-19'

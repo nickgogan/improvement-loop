@@ -36,15 +36,15 @@ This directory holds governance artifacts that are specific to the IL system —
 
 | File | Purpose | Source |
 |------|---------|--------|
-| `boundary-rules.md` | What IL can/cannot modify, cross-system constraints | Constitution |
-| `pipeline-rules.md` | How IL work flows through DBDO, human gates, stage boundaries | Constitution, Principles |
-| `agent-rules.md` | Agent boundaries, handoff requirements, agent-as-directory | Constitution, Fractal Pattern, Vocabulary |
+| `boundary-rules.md` | What IL can/cannot modify, cross-system constraints, artifact placement (four-zone) | Constitution, DD-89 |
+| `pipeline-rules.md` | How IL work flows through DBDO, human gates, stage boundaries, SL telemetry | Constitution, Principles, DD-90 |
+| `agent-rules.md` | Agent boundaries, handoff requirements, agent-as-directory, agent-private reflections, proposal pathways | Constitution, Fractal Pattern, Vocabulary, DD-89, DD-91 |
 | `knowledge-rules.md` | KB management, terminology, evidence tracking, structural memory | Constitution, Values, Vocabulary |
 
-### `proposals/` — Owner-authored governance-rule proposals
+### `proposals/` — agent-authored governance-rule proposals (Proposal-First tier)
 
-Proposal-First tier output per the Owner autonomy table. Contains tracking-mechanism proposals, DD proposals, amendment proposals, and drift reports with remediation plans. Each proposal is Owner-written and Nick-gated; ratified proposals migrate upstream into DDs, governance rules, or the implementation backlog. The session-50 four-zone architecture proposal (`proposals/2026-04-22-dd-proposal-owner-design-artifact-placement.md`) formalizes this subfolder's role.
+Per DD-89 (four-zone architecture) and DD-91 (reflections-to-proposals), this subfolder holds **agent-initiated** proposals — output from `/solicit-proposals` rounds (structured) or ad-hoc proposals raised by an individual agent (unstructured). Both pathways land here; both face Nick's review at acceptance time; accepted proposals convert to IB items or become DDs. Owner + Nick collaborative governance work bypasses this path and writes DDs directly — `governance/proposals/` is not the home for Owner's own drafts when he and Nick are co-authoring governance.
 
 ## Owner
 
-The Owner agent (`agents/owner/agent.md`) is responsible for creating and maintaining content in this directory. Use `/translate-governance` to refresh translations and detect drift against source governance.
+The Owner agent (`agents/owner/agent.md`) is responsible for creating and maintaining content in this directory. Use `/translate-governance` to refresh translations and detect drift against source governance. Use `/solicit-proposals` to run reflection rounds that seed agent-initiated proposals.

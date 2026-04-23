@@ -6,7 +6,7 @@ target_system:
   - "improvement-loop"
 stage: "active"
 created: "2026-04-19"
-updated: "2026-04-19"
+updated: "2026-04-22"
 author: "agent"
 source_governance:
   - "systems/meta-system/governance/constitution.md"
@@ -15,17 +15,19 @@ source_sections:
   - "Design Philosophy"
   - "The Pipeline"
   - "The Feedback Loop"
+  - "DD-90 (session telemetry)"
 tags:
   - "governance"
   - "improvement-loop"
   - "pipeline"
   - "human-gate"
+  - "telemetry"
 ---
 
 # Pipeline Rules — IL Governance
 
-> Derived from: Constitution (`systems/meta-system/governance/constitution.md`), Principles (`systems/meta-system/governance/principles.md`)
-> Last reconciled: 2026-04-19
+> Derived from: Constitution (`systems/meta-system/governance/constitution.md`), Principles (`systems/meta-system/governance/principles.md`), DD-90 (session telemetry)
+> Last reconciled: 2026-04-22
 
 ## Rules
 
@@ -47,6 +49,9 @@ tags:
 6. **Learn and improve every cycle.** Every research scan, every audit, every feedback triage produces learnings. SL entries capture events. The Owner detects patterns. The pipeline should get faster and more accurate over time.
    - *Source:* Principles — DBDO Pipeline step 6 ("Learn and Improve")
 
+7. **SL entries carry session telemetry.** Every SL entry written at session close includes a `telemetry:` block with these fields: `model`, `tokens_consumed`, `context_window_size`, `context_window_pct_peak`, `turns`, `tool_calls`, `subagents[]`, `capture_quality` (`measured` / `estimated`), and `harness`. `"unknown"` is a first-class value when a field is neither measurable nor reasonably estimable — entries are not held back waiting for unknown data. Nick is not a telemetry source. When evaluating a harness substitution, the prior harness's capture-layer disclosures become the baseline against which the candidate's observability is judged.
+   - *Source:* DD-90 (session telemetry) — requirement layer (harness-portable) + capture layer (harness-specific)
+
 ## Applicability Notes
 
-These rules govern the flow of work through the IL system. The Researcher owns Stage 1, the Codifier owns Stages 2-3, and Nick owns Stage 4. The Owner oversees pipeline health but does not execute pipeline stages — the Owner is a steward, not a participant in the research pipeline.
+These rules govern the flow of work through the IL system. The Researcher owns Stage 1, the Codifier owns Stages 2-3, and Nick owns Stage 4. The Owner oversees pipeline health but does not execute pipeline stages — the Owner is a steward, not a participant in the research pipeline. Rule 7 (telemetry) applies to every agent disposition at session close — whoever is authoring the SL entry populates the `telemetry:` block.

@@ -21,6 +21,8 @@ related_findings:
   rel: extends
 - file: monorepo-context-distribution-three-strategies.md
   rel: same-problem
+- file: universal-harness-context-via-symlink.md
+  rel: extended-by
 proposals: null
 date_discovered: '2026-04-09'
 last_updated: '2026-04-19'

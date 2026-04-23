@@ -6,7 +6,7 @@ implementation_notes: 'Workflow steps: (1) Download transcript via yt-dlp or equ
   summarize individual segments. (4) Assemble into structured Obsidian note with: video thumbnail (via Obsidian plugin), TLDR callout block, timestamped topic index, key quotes section, people/concepts
   mentioned section. (5) For each entity mentioned, create a stub page in the vault. Summary depth is proportional: 500-page book → 15-20 min read summary. Implemented as a Claude Code skill installable
   from a URL.'
-category: Agentic OS
+category: Agentic Systems
 evidence_strength: Medium (practitioner-documented)
 adoption_status: Not Yet Started
 priority: P2 (Design Required)

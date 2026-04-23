@@ -27,6 +27,8 @@ related_findings:
   rel: same-problem
 - file: six-layer-agent-infrastructure-stack.md
   rel: same-problem
+- file: agent-native-app-store-emerging-category.md
+  rel: same-problem
 - file: specialization-theater-anti-pattern.md
   rel: same-problem
 - file: superpowers-plugin-spec-driven-sub-agent-orchestra.md

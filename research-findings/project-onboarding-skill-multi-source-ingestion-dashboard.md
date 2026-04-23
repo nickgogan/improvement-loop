@@ -2,7 +2,7 @@
 name: Project Onboarding Skill — Multi-Source Ingestion into Structured Dashboard
 summary: A Claude Code skill that ingests Gmail threads and local files for a project, then creates a standardized Obsidian project folder with overview, conversation log, links, and documents sections. Converts ad-hoc data collection into a repeatable, one-command project intake workflow.
 implementation_notes: Directly applicable to MetaSystem. The IL pipeline already stages findings from multiple sources; the same "collect → organize → structure" pattern could apply to any project-level intake. The Gmail OAuth integration is a dependency.
-category: Agentic OS
+category: Agentic Systems
 evidence_strength: Medium (practitioner-documented)
 adoption_status: Not Yet Started
 priority: P2 (Design Required)

@@ -21,6 +21,8 @@ related_findings:
     rel: same-problem
   - file: concept-graph-support-contradiction-detection.md
     rel: same-problem
+  - file: content-derived-temporal-expiration-contradiction-resolution.md
+    rel: same-problem
 proposals: null
 date_discovered: "2026-04-20"
 last_updated: "2026-04-20"

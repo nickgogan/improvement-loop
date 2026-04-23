@@ -6,7 +6,7 @@ target_system:
   - "improvement-loop"
 stage: "active"
 created: "2026-04-19"
-updated: "2026-04-19"
+updated: "2026-04-22"
 author: "agent"
 source_governance:
   - "systems/meta-system/governance/constitution.md"
@@ -14,16 +14,18 @@ source_sections:
   - "Boundary Rules"
   - "Ownership Matrix"
   - "The Three Systems"
+  - "DD-89 (four-zone artifact placement)"
 tags:
   - "governance"
   - "improvement-loop"
   - "boundaries"
+  - "four-zone"
 ---
 
 # Boundary Rules — IL Governance
 
-> Derived from: Constitution (`systems/meta-system/governance/constitution.md`)
-> Last reconciled: 2026-04-19
+> Derived from: Constitution (`systems/meta-system/governance/constitution.md`), DD-89 (four-zone architecture)
+> Last reconciled: 2026-04-22
 
 ## Rules
 
@@ -45,6 +47,9 @@ tags:
 6. **Nick is the bridge for external feedback.** IL does not receive automated feedback from Household OS or Claude Build. Nick observes, translates observations into IB items or feedback, and feeds them to IL.
    - *Source:* Constitution — Boundary Rules, rule 3; Feedback Loop diagram
 
+7. **Artifact placement by shape, not author role.** IL has four zones for design-and-governance artifacts. Deliberative specifications (substrate audits, read contracts, use-case registries, acceptance rubrics, lifecycle specs, spot-checks, tracking-mechanism specs) go to `project-management/design-notes/`. Agent-initiated proposals (from `/solicit-proposals` rounds or ad-hoc) go to `governance/proposals/`. Ratified governance rules go to `governance/` root. Runtime event output (SL entries, handoffs, research-reports, loop-reports, identification reports, extraction reports) goes to `operations/`. `operations/design-notes/` does not exist (deprecated 2026-04-22). Owner + Nick collaborative governance work writes DDs directly and does not pass through `governance/proposals/`.
+   - *Source:* DD-89 (four-zone architecture) — artifact shape governs placement; author role is a heuristic, not authority.
+
 ## Applicability Notes
 
-These rules apply to all IL agents (Owner, Researcher, Codifier, Librarian) and all IL skills. The Owner agent is responsible for enforcing boundary awareness — if a skill or agent action would cross a boundary, the Owner flags it.
+These rules apply to all IL agents (Owner, Researcher, Codifier, Librarian) and all IL skills. The Owner agent is responsible for enforcing boundary awareness — if a skill or agent action would cross a boundary, the Owner flags it. Artifact-placement questions route through Rule 7's shape-determines-zone mapping; when in doubt about placement, the Owner adjudicates against DD-89.

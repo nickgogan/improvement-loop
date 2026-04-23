@@ -3,7 +3,7 @@ name: Obsidian as Transparent Frontend vs RAG Black Box
 summary: Obsidian provides full transparency — human can see, read, edit, and navigate all knowledge via the desktop app — versus RAG systems where knowledge is abstracted away in a black box. Even graph
   RAG with visual node views is less efficient for human inspection. Transparency enables manual correction, curation, and trust verification.
 implementation_notes: Validates MetaSystem's Obsidian vault approach over RAG-based knowledge management.
-category: Agentic OS
+category: Agentic Systems
 evidence_strength: Medium (practitioner-documented)
 adoption_status: Already Adopted
 priority: P3 (Monitor)

@@ -25,6 +25,8 @@ related_findings:
   rel: same-problem
 - file: signal-capture-as-byproduct-of-work.md
   rel: same-problem
+- file: background-hooks-as-token-economy.md
+  rel: extended-by
 pipeline_status: raw
 consumed_by: []
 ---

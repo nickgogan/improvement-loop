@@ -145,3 +145,35 @@ row_count: 136
 | Can AI Agents Answer Your Data Questions? A Benchmark for Data Agents (DAB) | Research Paper | Done | Medium | Nick | evaluation, benchmark, data-agents, multi-database |
 | Supporting Our AI Overlords: Redesigning Data Systems to be Agent-First | Research Paper | Done | Medium | Nick | memory, orchestration, data-systems, agentic-workloads, research-direction |
 | Linear Walkthroughs — Simon Willison's Agentic Engineering Patterns Guide | Blog Post | Done | High | Nick | context-engineering, prompt-engineering, agent-design, claude-code, documentation |
+
+<!-- Session 58 additions (2026-04-23, Bucket B — LongMemEval cluster) -->
+| LongMemEval: Benchmarking Chat Assistants on Long-Term Interactive Memory (Wu et al. 2024) | Academic Paper | Done | High | Claude | benchmarking, memory-architecture, evaluation, canonical-paper |
+| LongMemEval Dataset on HuggingFace (xiaowu0162/longmemeval) | Dataset | Done | High | Claude | dataset, benchmarking, memory-architecture, deprecation, governance |
+| REM Labs LongMemEval Aggregated Leaderboard | Leaderboard / Benchmark Aggregation | Done | High | Claude | benchmarking, leaderboard, memory-architecture, governance, conflict-of-interest |
+| Vectorize — MemPalace Benchmarks Don't Withstand Scrutiny (third-party adjudication) | Blog Post / Article | Done | High | Claude | benchmarking, adjudication, memory-architecture, governance, third-party-review |
+| Supermemory Research — LongMemEval ~85% on GPT-4o | Research Page / Technical Report | Done | High | Claude | benchmarking, memory-architecture, supermemory, rag, hybrid-search |
+| Supermemory — We Broke the Frontier in Agent Memory (99% SOTA ASMR, 2026-03-22) | Blog Post | Done | High | Claude | benchmarking, memory-architecture, supermemory, agentic-retrieval, governance, ensemble-eval |
+
+<!-- Session 58 additions (2026-04-23, Bucket A — Simon Willison + Anthropic subagents + Nate B. Jones) -->
+| Subagents — Simon Willison's Agentic Engineering Patterns Guide | Blog Post | Done | High | Claude | agent-design, orchestration, subagents, claude-code, context-engineering |
+| Anti-patterns — Simon Willison's Agentic Engineering Patterns Guide | Blog Post | Done | Medium | Claude | governance, agent-design, code-review, human-in-the-loop |
+| Hoard things you know how to do — Simon Willison's Agentic Engineering Patterns | Blog Post | Done | High | Claude | agent-design, context-engineering, knowledge-management, personal-productivity |
+| Red/green TDD — Simon Willison's Agentic Engineering Patterns | Blog Post | Done | High | Claude | evaluation, agent-design, test-driven-development, claude-code |
+| First run the tests — Simon Willison's Agentic Engineering Patterns | Blog Post | Done | Medium | Claude | agent-design, evaluation, test-driven-development, prompt-engineering |
+| Interactive explanations — Simon Willison's Agentic Engineering Patterns | Blog Post | Done | High | Claude | agent-design, context-engineering, documentation, visualization, claude-code |
+| Create Custom Subagents — Anthropic Claude Code Docs | Documentation | Done | High | Claude | agent-design, subagents, claude-code, orchestration, governance, canonical-source |
+| The 5 Layers AI Cannot Replace — Nate B. Jones (YouTube, batch-1 deferred video ib2m9HVX7as) | Video | Done | High | Nick | strategic-framework, agent-economy, business-model, governance, distribution, liability |
+
+<!-- Session 59 additions (2026-04-23, Bucket C locate sweep) -->
+| Introducing the Machine Payments Protocol — Stripe Blog | Blog | Done | High | Claude | agent-economy, payments, stripe, standards |
+| Build Agentic AI SaaS Billing Workflows — Stripe Documentation | Documentation | Done | High | Claude | agent-economy, payments, stripe, canonical-source |
+| Daytona vs E2B in 2026: Which Sandbox for AI Code Execution — Northflank Blog | Blog | Done | High | Claude | sandboxing, e2b, daytona, firecracker, microvm |
+| E2B vs Daytona: Sandbox Comparison for Platform Engineers — ZenML Blog | Blog | Done | Medium | Claude | sandboxing, e2b, daytona |
+| Context Windows — Claude API Docs | Documentation | Done | High | Claude | context-engineering, canonical-source, anthropic, token-budget |
+| Token-Budget-Aware LLM Reasoning — arXiv 2412.18547 / ACL 2025 Findings | Paper | Done | Medium | Claude | context-engineering, token-budget, reasoning, academic |
+| Claude Code Source Leak: Everything Found (2026) — claudefa.st | Blog | Done | High | Claude | claude-code, security, source-leak, bash-security |
+| Claude Code's Entire Source Code Was Just Leaked via npm Source Maps — DEV Community | Blog | Done | Medium | Claude | claude-code, security, source-leak |
+| Superpowers, GSD, and GSTACK: Picking the Right Framework for Your Coding Agent — Pulumi Blog | Blog | Done | High | Claude | orchestration, claude-code, frameworks |
+| Superpowers, GSD, and gstack: What Each Claude Code Framework Actually Constrains — Ewan Mak / Medium | Blog | Done | Medium | Claude | orchestration, claude-code, frameworks |
+| Your Agent Is 80% Plumbing. Here Are the 12 Pieces You're Missing — Nate B. Jones / Substack | Newsletter | Done | High | Claude | nate-b-jones, claude-code, skills, distribution |
+| everything-claude-code — affaan-m / GitHub | Repository | Done | Medium | Claude | claude-code, skills, harness, distribution |

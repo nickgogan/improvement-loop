@@ -3,7 +3,7 @@ name: 'Morning Routine Skill with Active Experiment Check-In'
 summary: A Claude Code skill named "daily" that runs at morning start, surfaces all active experiments from Obsidian, asks targeted observation questions for each, logs responses, and generates next
   actions for the day — converting a daily habit into an automated experiment review and scheduling loop.
 implementation_notes: null
-category: Agentic OS
+category: Agentic Systems
 evidence_strength: Medium (practitioner-documented)
 adoption_status: Not Yet Started
 priority: P2 (Design Required)

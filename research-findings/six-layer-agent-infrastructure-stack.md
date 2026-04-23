@@ -21,6 +21,8 @@ related_findings:
   rel: extended-by
 - file: agent-management-tool-landscape-2026.md
   rel: same-problem
+- file: five-durable-verticals-ai-cannot-replace.md
+  rel: same-problem
 pipeline_status: synthesized
 consumed_by:
 - agent-architecture-decisions.md

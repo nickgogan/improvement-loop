@@ -3,7 +3,7 @@ name: 'NotebookLM MCP + Claude Code: Cited Knowledge Layer for Agentic Workflows
 summary: Connect Claude Code to NotebookLM via MCP so agents can query a grounded knowledge base mid-workflow and receive citation-traceable answers. The combination turns a personal AI assistant into a
   research-grounded executor that can attribute every protocol recommendation back to a specific source timestamp.
 implementation_notes: null
-category: Agentic OS
+category: Agentic Systems
 evidence_strength: Medium (practitioner-documented)
 adoption_status: Not Yet Started
 priority: P2 (Design Required)

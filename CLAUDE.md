@@ -46,7 +46,9 @@ For Researcher, Codifier, and Librarian dispositions, read the agent definition 
 | `watched-blogs/` | Content source monitoring (blogs, newsletters, post logs) |
 | `extracts/` | Staged artifacts by form — output of `/extract-artifacts` (DD-80) |
 | `governance/` | System-specific governance docs — derived from MetaSystem constitution by the Owner agent |
-| `agents/` | Agent definitions — Owner, Researcher, Codifier, Librarian, handoff protocol |
+| `agents/` | Agent definitions — Owner, Researcher, Codifier, Librarian, handoff protocol. Each agent directory may include a `reflections/` subfolder for agent-private self-reflections fed into `/solicit-proposals` rounds. |
+| `project-management/design-notes/` | Deliberative specifications (substrate audits, read contracts, lifecycle specs, acceptance rubrics) — any agent may author; Owner-governed per four-zone architecture |
+| `governance/proposals/` | Owner-authored governance-rule proposals (Proposal-First tier); also the destination for agent-authored proposals emerging from `/solicit-proposals` rounds |
 | `.claude/skills/` | IL-scoped skills (per DD-49) — Researcher (12), Codifier (3), Owner (5) |
 | `feedback/` | Feedback items for improving the IL system |
 | `archive/improvement-proposals/` | Archived — 5 historical proposals from session 6, superseded by DD-80 pipeline |
@@ -116,7 +118,7 @@ All IL skills live in `.claude/skills/` under this system directory (per DD-49).
 | `/synthesize-guide` | Guide synthesis from pattern clusters |
 | `/reassess-priorities` | Retroactive priority re-evaluation based on accumulated evidence |
 
-### Owner Skills (5)
+### Owner Skills (6)
 
 | Skill | Role |
 |-------|------|
@@ -125,6 +127,7 @@ All IL skills live in `.claude/skills/` under this system directory (per DD-49).
 | `/system-health` | Quick drift detection — compare docs vs filesystem state |
 | `/process-feedback` | Read feedback/, triage items, investigate root causes, propose actions |
 | `/system-audit` | Full consistency check — agents, skills, governance, fractal compliance |
+| `/solicit-proposals` | Run a reflection round — per-agent self-reflection → per-agent proposal drafts → Nick gates |
 
 ### Librarian Skills (0)
 

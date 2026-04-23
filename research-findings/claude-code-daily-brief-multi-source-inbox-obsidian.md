@@ -5,7 +5,7 @@ summary: Claude Code aggregates Gmail, Google Calendar, Beeper (unified messagin
 implementation_notes: 'Concrete integrations used: Gmail API, Google Calendar API, Beeper (aggregates X/DMs, WhatsApp, Telegram, Signal), Things 3 todo app. The brief includes: weather, calendar events,
   actionable emails, messages requiring response, today''s tasks. Inbox archival is rule-taught — the user trains Claude Code on what to archive vs. surface. Output is an Obsidian note updated daily (not
   a new note each day).'
-category: Agentic OS
+category: Agentic Systems
 evidence_strength: Medium (practitioner-documented)
 adoption_status: Not Yet Started
 priority: P2 (Design Required)

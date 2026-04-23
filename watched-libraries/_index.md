@@ -55,6 +55,8 @@ Structural analyses live in [[watched-library-analyses-index|analysis/]] — pro
 | [[deer-flow\|DeerFlow]] | cherry-pick | v2.0 (2026-04-19) | Middleware-as-enforcement, batched parallel subagents, three-tier sandbox provisioner |
 | [[ob1\|OB1 (Open Brain)]] | cherry-pick | latest (2026-04-20) | Skill template architecture, self-improving skills, two-layer review gate, personal OS domain extensions |
 | [[memongo\|Memongo]] | evaluating | latest (2026-04-20) | MongoDB-native memory — single-store polymorphic evidence, $rankFusion hybrid retrieval, query decomposition + RRF, weighted-signal reranking, importance decay, surprisal novelty gate |
+| [[mempalace\|MemPalace]] | evaluating | 3.3.2 (2026-04-23) | Local-first AI memory — verbatim-storage thesis, structured-index + unstructured-retrieval (wings/rooms/drawers + AAAK closets), background-hooks save model, AGENTS.md↔CLAUDE.md symlink, retraction log as governance artifact, tool-enforced dev/held-out split |
+| [[supermemory\|Supermemory]] | evaluating | latest (2026-04-23) | Cloud-capable extraction-based memory — typed-relationship evolution graph (updates/extends/derives), static+dynamic profile composition, memory-vs-RAG framing, content-derived temporal expiration, hierarchical container-tag multi-tenancy, cross-provider benchmarking framework (MemoryBench), SKILL-as-package-export |
 
 ## Dataview Query
 

@@ -4,7 +4,7 @@ summary: The Obsidian Relay community plugin syncs local vault changes across te
   access control. Viable for teams up to 3 people on the free tier. Alternative options include GitHub sync and Obsidian Sync (paid).
 implementation_notes: MetaSystem currently operates as a single-user vault. If the system expands to multi-contributor contexts, Relay is the lowest-friction team sync path. The per-folder sync granularity
   aligns with MetaSystem's system-scoped folder architecture — different systems could sync to different contributor subsets. GitHub is the natural alternative given MetaSystem is already a git repo.
-category: Agentic OS
+category: Agentic Systems
 evidence_strength: Medium (practitioner-documented)
 adoption_status: Not Yet Started
 priority: P3 (Monitor)

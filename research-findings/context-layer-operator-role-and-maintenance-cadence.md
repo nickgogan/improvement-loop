@@ -4,7 +4,7 @@ summary: At L6+ (second brain / business OS), one person must own the context la
   documents, and contextual conflicts. Without ownership and cadence, context quality degrades as the vault grows.
 implementation_notes: MetaSystem has an implicit version of this role (Nick as system steward) but no formalized weekly maintenance cadence. The IL Owner agent's /system-health and /system-audit skills
   partially cover this. A formal maintenance checklist — duplicates, misplaced files, conflicting content — could be added as a scheduled Owner task or a quarterly ritual.
-category: Agentic OS
+category: Agentic Systems
 evidence_strength: Medium (practitioner-documented)
 adoption_status: Partially Adopted
 priority: P2 (Design Required)

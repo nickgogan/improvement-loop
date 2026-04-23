@@ -21,6 +21,8 @@ related_findings:
     rel: enabled-by
   - file: agent-onboarding-via-interview-style-context.md
     rel: same-problem
+  - file: interactive-explanations-extend-linear-walkthroughs.md
+    rel: extended-by
 proposals: null
 date_discovered: "2026-04-20"
 last_updated: "2026-04-20"

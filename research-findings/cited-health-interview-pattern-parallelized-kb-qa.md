@@ -3,7 +3,7 @@ name: 'Cited Health Interview Pattern: Parallelized KB Q&A for Personal Protocol
 summary: Run multiple Claude Code sub-agents in parallel against a NotebookLM expert knowledge base, each tasked with querying a different health dimension (sleep, exercise, supplements, stress, biomarkers,
   etc.), then aggregate the citation-grounded answers into a structured assessment that drives personal experiment design.
 implementation_notes: null
-category: Agentic OS
+category: Agentic Systems
 evidence_strength: Medium (practitioner-documented)
 adoption_status: Not Yet Started
 priority: P3

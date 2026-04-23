@@ -3,7 +3,7 @@ name: 'Obsidian Experiment Notes as Personal Data Layer for Behavior Change Trac
 summary: Structure personal experiments as Obsidian markdown files with typed frontmatter (hypothesis, protocol, observations, numeric data fields) so Claude Code can read existing experiment data, log new
   observations, and surface experiment status — turning a personal vault into a queryable behavioral data layer.
 implementation_notes: null
-category: Agentic OS
+category: Agentic Systems
 evidence_strength: Medium (practitioner-documented)
 adoption_status: Not Yet Started
 priority: P2 (Design Required)

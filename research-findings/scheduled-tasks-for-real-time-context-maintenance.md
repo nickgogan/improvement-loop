@@ -4,7 +4,7 @@ summary: Scheduled agent tasks automatically push live operational data (meeting
   context current without manual updates. A morning brief task then pulls from this live context to generate a prioritized daily overview.
 implementation_notes: MetaSystem has scheduled research-loop tasks but not real-time context maintenance tasks. The pattern suggests adding scheduled tasks for: (1) session notes/logs auto-filed into the
   vault, (2) PROGRESS.md updates triggered by completed IB items, (3) a daily brief that pulls from the vault's current state. This directly extends the existing scheduled research loop infrastructure.
-category: Agentic OS
+category: Agentic Systems
 evidence_strength: Strong (production-tested)
 adoption_status: Not Yet Started
 priority: P2 (Design Required)

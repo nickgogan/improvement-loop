@@ -1,7 +1,6 @@
 ---
 name: Tiered Permission System with Destructive-Command Safety Architecture
-summary: A three-tier trust architecture for agent tools (built-in → plug-in → skills/user-defined) backed by an 18-module bash security layer that pre-classifies commands as read-only, mutating, or destructive
-  with pre-approved patterns and domain-specific safety checks.
+summary: A three-tier trust architecture for agent tools (built-in → plug-in → skills/user-defined) backed by bashSecurity.ts — a bash security layer running 23 numbered checks per command, 18 of which specifically block Zsh builtins. Commands are pre-classified (read-only, mutating, destructive) with pre-approved patterns, domain-specific safety checks, and named injection-vector defenses. The taxonomy of injection vectors is captured as a separate extended finding.
 implementation_notes: MetaSystem governance rules require human gate for destructive operations. The tiered model could formalize this into a systematic classification.
 category: Sandboxing
 evidence_strength: Strong (production-tested)
@@ -15,9 +14,10 @@ sources:
 - anthropics-2-5-billion-leak-12-critical-pieces.md
 - anthropic-claude-code-auto-mode.md
 - anthropic-claude-code-sandboxing.md
+- claudefa-st-claude-code-source-leak.md
 proposals: null
 date_discovered: '2026-04-07'
-last_updated: '2026-04-19'
+last_updated: '2026-04-23'
 related_findings:
 - file: claude-code-12-agent-primitives.md
   rel: extended-by
@@ -25,6 +25,8 @@ related_findings:
   rel: enables
 - file: claude-code-auto-mode-ai-driven-permission-classif.md
   rel: same-problem
+- file: shell-injection-vector-taxonomy-agent-bash-security.md
+  rel: extended-by
 pipeline_status: synthesized
 consumed_by:
 - agent-safety-and-permissions.md
@@ -32,7 +34,7 @@ consumed_by:
 # Tiered Permission System with Destructive-Command Safety Architecture
 
 ## What It Is
-Three trust tiers: built-in (highest, always available) → plug-in (medium, disableable) → skills (user-defined, lowest trust). The bash tool has 18 security modules: pre-approved patterns, destructive command detection and warnings, domain-specific safety checks, sandbox termination. Application pattern: pre-classify all tools as read-only / mutating / destructive; log all permission grants.
+Three trust tiers: built-in (highest, always available) → plug-in (medium, disableable) → skills (user-defined, lowest trust). The bash tool's `bashSecurity.ts` runs 23 numbered checks per command; 18 of those checks specifically block Zsh builtins (aliases, functions, eval variants, etc.). The remaining checks cover pre-approved patterns, destructive-command detection, domain-specific safety, sandbox termination, and named injection-vector defenses (see [[shell-injection-vector-taxonomy-agent-bash-security]] for the enumerated vectors, including Zsh equals expansion, unicode zero-width-space, IFS null-byte, and a malformed-token bypass surfaced via HackerOne review). Application pattern: pre-classify all tools as read-only / mutating / destructive; log all permission grants.
 
 ## Why It Matters
 Shell-access agents are the highest-risk surface. The 18-module approach prevents catastrophic actions (rm -rf, drop table) while allowing productive work. Permission audit logging creates accountability.

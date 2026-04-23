@@ -9,7 +9,7 @@ description: >-
   If no IL extension fires, reports that the 4-discipline scorecard is
   sufficient and exits.
 user-invocable: true
-allowed-tools: Read Grep Glob Skill
+allowed-tools: Read Grep Glob Skill Write
 argument-hint: "<prompt-text|file-path> [--evaluator-output <path-to-prior-/prompt-evaluator-output>]"
 ---
 
@@ -206,11 +206,19 @@ output when `/prompt-evaluator` has run.
   that but state the coverage gap explicitly ("running IL extension only;
   4-discipline baseline was skipped at consumer request").
 
+## Boundary-Case Encounter Logging
+
+On any deviation from the Tier-1 happy path (the 13-type encounter taxonomy — missing concept/operation, ambiguous verb/variant, cross-concept, verb-noun-mismatch, oversized-artifact, hop-ceiling-hit, tier-3-read, low-confidence, kb-gap, redirect, clarification-asked), append a structured record to `operations/system-log/session-<N>-librarian-encounters.md` per the entry schema. Create the file on the session's first encounter; append thereafter. `<N>` matches the session's SL entry number (infer from most recent `session-<N>-*.md` in the folder).
+
+- Schema, controlled vocabulary of 13 encounter types, per-encounter body shape, and feedback routing: `systems/improvement-loop/project-management/design-notes/2026-04-22-librarian-boundary-case-tracking.md`
+- Write scope is narrowed to `operations/system-log/` only — do not write elsewhere.
+
 ## Cross-References
 
 - Baseline skill: `.claude/skills/prompt-evaluator/SKILL.md` (workspace root)
 - Operation file: `systems/improvement-loop/operations/references/librarian/audit.md`
 - Concept file: `systems/improvement-loop/operations/references/librarian/prompt.md`
 - Read-contract: `systems/improvement-loop/project-management/design-notes/2026-04-21-librarian-read-contract.md`
+- Boundary-case tracking: `systems/improvement-loop/project-management/design-notes/2026-04-22-librarian-boundary-case-tracking.md`
 - Librarian agent definition: `systems/improvement-loop/agents/librarian/agent.md`
-- Governing DDs: DD-78, DD-82
+- Governing DDs: DD-78, DD-82, DD-89

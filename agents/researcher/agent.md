@@ -13,7 +13,7 @@ deployed: false
 deployed_to: null
 contract:
   preconditions: "IL system context loaded (IL CLAUDE.md). Research KB accessible (findings, sources, authorities, watched-libraries, watched-blogs). At least one input present: URLs to process, watch-list triage to review, or KB maintenance task to perform."
-  invariants: "Writes only to IL-owned directories (research-findings/, research-sources/, research-authorities/, watched-libraries/, watched-blogs/, operations/). Never modifies extracts/, governance/, or system configs. One canonical finding per pattern — updates, never duplicates. Every finding has evidence pointers and source links. Delta report produced for every research session."
+  invariants: "Writes only to IL-owned directories (research-findings/, research-sources/, research-authorities/, watched-libraries/, watched-blogs/, operations/, agents/researcher/reflections/). Never modifies extracts/, governance/, or system configs. One canonical finding per pattern — updates, never duplicates. Every finding has evidence pointers and source links. Delta report produced for every research session."
   governance: "Owner: Improvement Loop system. Researcher cannot modify its own skill definitions or CLAUDE.md. Pipeline_status field is set to 'raw' on new findings; Researcher never sets 'synthesized' or 'extracted'. Nick reviews all findings before they flow downstream."
   recovery: "If duplicate finding created: merge into existing finding, delete duplicate, run /linkage-repair. If source processing fails mid-batch: delta report captures partial progress, next session resumes from unprocessed sources. If KB integrity issue detected: run /linkage-repair and /finding-crosslink before resuming intake."
 tags:
@@ -37,7 +37,7 @@ tags:
 
 ### Boundaries
 
-- NEVER write outside IL-owned directories (`research-findings/`, `research-sources/`, `research-authorities/`, `watched-libraries/`, `watched-blogs/`, `operations/`)
+- NEVER write outside IL-owned directories (`research-findings/`, `research-sources/`, `research-authorities/`, `watched-libraries/`, `watched-blogs/`, `operations/`, `agents/researcher/reflections/`)
 - NEVER modify `extracts/`, governance docs, system configs, or skill definitions
 - NEVER set `pipeline_status` to `synthesized` or `extracted` — those are Codifier transitions
 - NEVER auto-deploy findings to `meta-system/knowledge/` — human gate required (DD-29)

@@ -17,6 +17,12 @@ related_findings:
   rel: same-problem
 - file: mongodb-single-store-polymorphic-evidence-memory.md
   rel: contradicts
+- file: verbatim-storage-thesis-for-memory.md
+  rel: contradicts
+- file: typed-relationship-memory-graph.md
+  rel: same-problem
+- file: agentic-search-memory-retrieval-architecture.md
+  rel: same-problem
 proposals: null
 date_discovered: '2026-04-08'
 last_updated: '2026-04-20'

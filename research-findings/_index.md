@@ -556,3 +556,58 @@ consumed_by: []
 | Query Decomposition with Sub-Query RRF Merge | Memory Architecture | Medium (practitioner-documented) | Not Yet Started | P2 | S3 (Claude Code Build), General |
 | Rank Fusion Hybrid Retrieval on MongoDB Atlas | Memory Architecture | Medium (practitioner-documented) | Not Yet Started | P2 | S3 (Claude Code Build), General |
 | Surprisal Novelty as Memory Write Gate | Memory Architecture | Medium (practitioner-documented) | Not Yet Started | P2 | S3 (Claude Code Build), General |
+
+<!-- Session 56 additions (2026-04-23) — not yet alphabetically merged; sorted block below -->
+| Advisory-Only Recommendations for Broad-Blast or Persistent Mutations | Governance | Medium (practitioner-documented) | Partially Adopted | Not Flagged | General |
+| Benchmark Operating Contract — Lane Taxonomy and Publishable-Claim Invariants | Evaluation | Medium (practitioner-documented) | Not Yet Started | Not Flagged | General |
+| Environment-Scoped Release Lanes with Bounded-Claim Language | Governance | Medium (practitioner-documented) | Not Yet Started | Not Flagged | General |
+| Feature-by-Layer Capability Matrix in Agent-Addressed Context Files | Context Engineering | Medium (practitioner-documented) | Not Yet Started | Not Flagged | General |
+
+<!-- Session 57 additions (2026-04-23, MemPalace intake) — not yet alphabetically merged; sorted block below -->
+| Background Hooks as Token Economy for Memory Bookkeeping | Context Engineering | Medium (practitioner-documented) | Not Yet Started | Not Flagged | General, S3 (Claude Code Build) |
+| Declared-Transformations Contract with Conformance Tests | Governance | Medium (practitioner-documented) | Not Yet Started | Not Flagged | General |
+| Impostor-Domain Callout at README Top | Governance | Weak (single-practitioner) | Not Yet Started | Not Flagged | General |
+| Independent-Convergence Validation as Retrieval-Ceiling Evidence | Evaluation | Medium (practitioner-documented) | Not Yet Started | Not Flagged | General |
+| Retraction Log as First-Class Governance Artifact | Governance | Medium (practitioner-documented) | Not Yet Started | Not Flagged | General |
+| Shared Instructions Source with Multi-Harness Plugin Wrappers | Context Engineering | Medium (practitioner-documented) | Not Yet Started | Not Flagged | General |
+| Tool-Enforced Dev/Held-Out Benchmark Split with Teaching-to-the-Test Self-Disclosure | Evaluation | Medium (practitioner-documented) | Not Yet Started | Not Flagged | General |
+| Universal-Harness Context via AGENTS.md ↔ CLAUDE.md Symlink | Context Engineering | Medium (practitioner-documented) | Not Yet Started | Not Flagged | General, S3 (Claude Code Build) |
+| Verbatim-Storage Thesis for Long-Term Agent Memory | Memory Architecture | Medium (practitioner-documented) | Not Yet Started | Not Flagged | General |
+
+<!-- Session 57 additions (2026-04-23, Supermemory intake) — not yet alphabetically merged; sorted block below -->
+| Content-Derived Temporal Expiration and Automatic Contradiction Resolution | Memory Architecture | Medium (practitioner-documented) | Not Yet Started | Not Flagged | General |
+| Cross-Provider Benchmarking Framework as Trust Mechanism | Evaluation | Medium (practitioner-documented) | Not Yet Started | Not Flagged | General |
+| Hierarchical Container-Tag Multi-Tenancy with Scope-at-Query-Time | Agent Design | Medium (practitioner-documented) | Not Yet Started | Not Flagged | General |
+| Memory vs RAG as Product Distinction | Memory Architecture | Medium (practitioner-documented) | Partially Adopted | Not Flagged | General |
+| SKILL-as-Package-Export with Architecture-First References Directory | Context Engineering | Medium (practitioner-documented) | Not Yet Started | Not Flagged | General |
+| Static + Dynamic User Profile Composition in One API Call | Memory Architecture | Medium (practitioner-documented) | Not Yet Started | Not Flagged | General |
+| Typed-Relationship Memory Graph (updates/extends/derives) | Memory Architecture | Medium (practitioner-documented) | Not Yet Started | Not Flagged | General, S3 (Claude Code Build) |
+
+<!-- Session 58 additions (2026-04-23, Bucket B — LongMemEval cluster) — not yet alphabetically merged; sorted block below -->
+| Agentic Search and Memory Retrieval (ASMR) Architecture | Memory Architecture | Low (single-vendor sandbox, not production-shipped) | Exploratory | Not Flagged | General |
+| Benchmark Dataset Deprecation Lifecycle | Governance | Medium (benchmark-level governance — HF deprecation documented) | Not Yet Started | Not Flagged | General |
+| Ensemble Eval: Require Majority Agreement, Not Union-of-Successes | Evaluation | Medium (practitioner-documented + inferential) | Not Yet Started | Not Flagged | General |
+| Experimental-Sandbox Labeling Discipline | Governance | Low (single-vendor-documented) | Not Yet Started | Not Flagged | General |
+| External Benchmark Hosting as Trust Mechanism | Governance | Low (single-vendor-documented) | Not Yet Started | Not Flagged | General |
+| Production-Configuration Baseline Discipline | Evaluation | Medium (third-party adjudicated + independent-reproduction-corroborated) | Not Yet Started | Not Flagged | General |
+
+<!-- Session 58 additions (2026-04-23, Bucket A — Simon Willison + Anthropic subagents + Nate B. Jones) -->
+| Agent-Native App Store as Emerging Distribution Category | Agent Design | Weak (thesis / practitioner hypothesis) | Not Yet Started | Not Flagged | General |
+| Capability-Restricted Agent Spawning via Allowlist Syntax | Governance | Strong (first-party Anthropic canonical spec) | Not Yet Started | Not Flagged | General, S3 (Claude Code Build) |
+| Confirm-Failure-First TDD Discipline for Coding Agents | Evaluation | Strong (production-tested practitioner discipline) | Not Yet Started | Not Flagged | General, S3 (Claude Code Build) |
+| Five Durable Verticals AI Cannot Replace (Trust, Context, Distribution, Taste, Liability) | Agent Design | Medium (practitioner-documented strategic framework) | Not Yet Started | Not Flagged | General |
+| Foreground vs Background Subagent Permission Models (Upfront vs Pass-Through) | Governance | Strong (first-party Anthropic canonical spec) | Not Yet Started | Not Flagged | General, S3 (Claude Code Build) |
+| Inline-Scoped MCP Servers per Subagent (Tool Context Isolation) | Context Engineering | Strong (first-party Anthropic canonical spec) | Not Yet Started | Not Flagged | General, S3 (Claude Code Build) |
+| Interactive Explanations Extend Linear Walkthroughs for Spatial/Temporal Algorithms | Context Engineering | Medium (practitioner-documented) | Not Yet Started | Not Flagged | General, S3 (Claude Code Build) |
+| Personal Knowledge Hoard as Agent Recombination Substrate | Context Engineering | Medium (practitioner-documented at scale) | Partially Adopted | Not Flagged | General, S3 (Claude Code Build) |
+| Subagent Isolation Contract: Fresh Context, Explicit Skills, No Nesting | Agent Design | Strong (first-party Anthropic canonical spec) | Not Yet Started | Not Flagged | General, S3 (Claude Code Build) |
+| Subagent Persistent Memory Directory with Auto-Curation | Memory Architecture | Strong (first-party Anthropic canonical spec) | Not Yet Started | Not Flagged | General, S3 (Claude Code Build) |
+| Subagent Scope Priority Ladder (Managed > CLI > Project > User > Plugin) | Governance | Strong (first-party Anthropic canonical spec) | Partially Adopted | Not Flagged | General, S3 (Claude Code Build) |
+
+<!-- Session 59 additions (2026-04-23, Bucket C locate sweep) — not yet alphabetically merged; sorted block below -->
+| Audit-Skill as Expert Harness Distribution Channel | Tool Integration | Medium (practitioner-documented) | Not Yet Started | P3 (Monitor) | General |
+| Claude Code Framework Taxonomy: gstack Thinks, GSD Stabilizes, Superpowers Executes | Orchestration | Medium (practitioner-documented) | Partially Adopted | P2 (Design Required) | General, S3 (Claude Code Build) |
+| Machine Payments Protocol (MPP) for Agent-to-Service Payments | Tool Integration | Medium (practitioner-documented) | Not Yet Started | P3 (Monitor) | General |
+| Model-Native Context Window Awareness | Context Engineering | Strong (production-tested) | Not Yet Started | P2 (Design Required) | General, S3 (Claude Code Build) |
+| Sandbox Architecture by Threat Model (microVM vs Container) | Sandboxing | Strong (production-tested) | Not Yet Started | P2 (Design Required) | General, S3 (Claude Code Build) |
+| Shell-Injection Vector Taxonomy for Agent Bash Security | Sandboxing | Strong (production-tested) | Not Yet Started | P2 (Design Required) | General, S3 (Claude Code Build) |

@@ -3,7 +3,7 @@ name: 'Bulk YouTube Channel Ingestion into NotebookLM via Terminal Command'
 summary: Use Claude Code to fetch all videos from a YouTube channel, filter by relevance criteria, and bulk-upload 200+ sources to a new NotebookLM notebook in a single terminal command — replacing hours
   of manual link-by-link uploads.
 implementation_notes: null
-category: Agentic OS
+category: Agentic Systems
 evidence_strength: Medium (practitioner-documented)
 adoption_status: Not Yet Started
 priority: P3

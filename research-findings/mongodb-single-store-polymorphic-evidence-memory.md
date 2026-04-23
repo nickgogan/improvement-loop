@@ -21,6 +21,14 @@ related_findings:
     rel: same-problem
   - file: agent-memory-architecture-multi-agent-layered.md
     rel: same-problem
+  - file: verbatim-storage-thesis-for-memory.md
+    rel: same-problem
+  - file: typed-relationship-memory-graph.md
+    rel: same-problem
+  - file: agentic-search-memory-retrieval-architecture.md
+    rel: same-problem
+  - file: subagent-persistent-memory-directory.md
+    rel: same-problem
 proposals: null
 date_discovered: "2026-04-20"
 last_updated: "2026-04-20"

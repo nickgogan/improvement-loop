@@ -5,7 +5,7 @@ summary: 'Maintain two distinct Obsidian vaults: one owned and written by humans
 implementation_notes: 'The AI vault holds: video/content summaries, entity profiles (people, concepts, tools), meeting notes, project documentation. The human never writes into the AI vault. The AI never
   writes into the human vault. Since all content is markdown files on local disk, swapping the AI model (Claude → future model) requires no data migration — the vault connects to any model that can read
   files. The AI vault is the realization of ''owning your AI memories.'''
-category: Agentic OS
+category: Agentic Systems
 evidence_strength: Medium (practitioner-documented)
 adoption_status: Not Yet Started
 priority: P2 (Design Required)

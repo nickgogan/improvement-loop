@@ -57,6 +57,26 @@ Dedup check: all 12 findings confirmed absent from `extracts/` staging (no `sour
 
 ---
 
+## Verdict Summary — Session 55 (Nick's gate, applied via Owner best-judgment)
+
+**Autos (8/8):** all APPROVED. 7 patterns route to G7/G2 staleness ledger (blocked on Stream B lifecycle spec). 1 rule (#12) proceeds to `/extract-artifacts` with cross-link to existing `programmatic-tool-calling` pattern extract.
+
+**Guided (3 of 4 APPROVED):**
+- **#1 `decision-matrix-five-tools`** — APPROVED as pattern → G2. Template co-occurrence noted; real insight is the decision framework, not the cells.
+- **#2 `data-agent-benchmark-dab`** — APPROVED as pattern → G4. Heuristic framing ("treat 38% as baseline") is prescriptive enough to carry pattern weight.
+- **#3 `agentic-speculation-four-characteristics`** — **REJECTED.** P3 + Weak (theoretical) evidence is under the inclusion threshold for guide routing; staleness ledger noise outweighs signal. Finding stays in the KB; reconsider if corroborating empirical work surfaces.
+- **#4 `codebase-walkthrough`** — APPROVED as pattern → G2. Skill co-occurrence is real but demand-driven; skill extraction deferred until a concrete consumer query lands.
+
+**Co-occurrence harvest queue (all deferred, demand-driven per Occam):**
+- #1 template `multi-tool-decision-matrix` — skip; extract when a second consumer doc asks for the scaffold.
+- #11 rule `compact-proactively` — skip; extract if this becomes an enforceable constraint in harness CLAUDE.md.
+- #4 skill `/generate-walkthrough` — skip; extract when a MetaSystem incubator project requests walkthrough generation.
+- #12 pattern `inference-to-execution` — already staged at `extracts/patterns/programmatic-tool-calling-code-orchestrated-tool-use.md`; cross-link during #12's rule extraction.
+
+Standing Occam directive applied — minimum-viable abstraction; no pre-emptive extractions without consumer pressure.
+
+---
+
 ## Candidates
 
 ### HITL — Needs Human Decision (0 findings)
@@ -67,23 +87,23 @@ _None this run._
 
 | # | Finding | Form | Conf | Co-occurrence | Status |
 |---|---------|------|------|---------------|--------|
-| 1 | [[claude-code-context-management-decision-matrix-five-tools]] | pattern | MED | template | PENDING |
-| 2 | [[data-agent-benchmark-dab-cross-dbms-pipeline-eval]] | pattern | MED | — | PENDING |
-| 3 | [[agentic-speculation-four-characteristics-data-system-redesign]] | pattern | MED | — | PENDING |
-| 4 | [[agent-generated-codebase-walkthrough-for-onboarding]] | pattern | MED | skill | PENDING |
+| 1 | [[claude-code-context-management-decision-matrix-five-tools]] | pattern | MED | template | APPROVED |
+| 2 | [[data-agent-benchmark-dab-cross-dbms-pipeline-eval]] | pattern | MED | — | APPROVED |
+| 3 | [[agentic-speculation-four-characteristics-data-system-redesign]] | pattern | MED | — | REJECTED |
+| 4 | [[agent-generated-codebase-walkthrough-for-onboarding]] | pattern | MED | skill | APPROVED |
 
 ### AUTO — Ready for Extraction (8 findings)
 
 | # | Finding | Form | Conf | Co-occurrence | Status |
 |---|---------|------|------|---------------|--------|
-| 5 | [[mongodb-single-store-polymorphic-evidence-memory]] | pattern | HIGH | — | PENDING |
-| 6 | [[rank-fusion-hybrid-retrieval-mongodb-atlas]] | pattern | HIGH | — | PENDING |
-| 7 | [[query-decomposition-sub-query-rrf-merge]] | pattern | HIGH | — | PENDING |
-| 8 | [[post-retrieval-reranking-weighted-signal-composition]] | pattern | HIGH | — | PENDING |
-| 9 | [[importance-based-decay-permanent-exemption]] | pattern | HIGH | — | PENDING |
-| 10 | [[surprisal-novelty-as-memory-write-gate]] | pattern | HIGH | — | PENDING |
-| 11 | [[proactive-compaction-before-intelligence-degradation]] | pattern | HIGH | rule | PENDING |
-| 12 | [[programmatic-snippet-extraction-via-shell-anti-hallucination]] | rule | HIGH | pattern | PENDING |
+| 5 | [[mongodb-single-store-polymorphic-evidence-memory]] | pattern | HIGH | — | APPROVED |
+| 6 | [[rank-fusion-hybrid-retrieval-mongodb-atlas]] | pattern | HIGH | — | APPROVED |
+| 7 | [[query-decomposition-sub-query-rrf-merge]] | pattern | HIGH | — | APPROVED |
+| 8 | [[post-retrieval-reranking-weighted-signal-composition]] | pattern | HIGH | — | APPROVED |
+| 9 | [[importance-based-decay-permanent-exemption]] | pattern | HIGH | — | APPROVED |
+| 10 | [[surprisal-novelty-as-memory-write-gate]] | pattern | HIGH | — | APPROVED |
+| 11 | [[proactive-compaction-before-intelligence-degradation]] | pattern | HIGH | rule | APPROVED |
+| 12 | [[programmatic-snippet-extraction-via-shell-anti-hallucination]] | rule | HIGH | pattern | APPROVED |
 
 ---
 
@@ -97,7 +117,7 @@ _None this run._
 - **Reason codes:** decision-framework-with-tradeoffs, heuristic-shape, mechanism-is-instantiation, surface-structure-trap-test-applied
 - **Rationale:** Center of gravity is the decision-matrix approach to in-session context management (match situation → tool). Reusable shape: any agent harness with multiple context-management primitives can adopt this decision structure; the specific 5 cells (Continue/Rewind/Compact/Clear/Subagent) are Claude-Code-specific instantiations. Template co-occurs because the 5×5 matrix has a fillable scaffold (situation / tool / rationale rows). Pattern wins because the insight is the framework-for-choosing, not the specific tool set. MED — genuine risk of classifying as template since the matrix itself is highly structured; rubric's "Can this be written as `{{VAR}} → body` without loss?" test — losing Anthropic's specific situation/rationale content would gut the insight, so it's pattern with template co-occurrence.
 - **Guide routing:** G2 (Managing Agent Context).
-- **Status:** PENDING
+- **Status:** APPROVED
 
 #### 2. data-agent-benchmark-dab-cross-dbms-pipeline-eval
 - **Assigned form:** pattern | **Confidence:** MED | **Tier:** guided | **Co-occurrence:** —
@@ -105,7 +125,7 @@ _None this run._
 - **Reason codes:** reality-check-heuristic, has-baseline-claim, borderline-reference-data
 - **Rationale:** The finding describes one specific benchmark with one headline number, but the center-of-gravity per `implementation_notes` is the design heuristic — "treat 38% pass@1 as baseline for frontier-model data-agent reliability; assume raw reliability ~1/3 without scaffolding." That's a reusable shape: use enterprise-grounded cross-DBMS benchmarks as reality checks for data-agent work. MED because the finding could plausibly be read as reference data (one benchmark, one number) rather than pattern; pattern wins because the implementation framing is prescriptive (use this as baseline) and the "what to expect from frontier models on realistic enterprise workloads" framing generalizes beyond this specific benchmark. Not a skill: no procedure. Not a rule: not a deterministic check.
 - **Guide routing:** G4 (Building Agent Evaluation Suites).
-- **Status:** PENDING
+- **Status:** APPROVED
 
 #### 3. agentic-speculation-four-characteristics-data-system-redesign
 - **Assigned form:** pattern | **Confidence:** MED | **Tier:** guided | **Co-occurrence:** —
@@ -113,7 +133,7 @@ _None this run._
 - **Reason codes:** design-lens-framework, four-property-heuristic, weak-theoretical-evidence, borderline-P3-defer
 - **Rationale:** Four-characteristic design lens (scale, heterogeneity, redundancy, steerability) for agent-facing data surfaces. Reusable shape — check any new data-retrieval surface against the four properties. Not a procedure, not a constraint, not a scaffold. MED because evidence is explicitly Weak (theoretical) — vision paper with no benchmarks. The skill pre-filter skips `Weak (anecdotal)` not `Weak (theoretical)`, and the handoff explicitly named this finding in scope, so it is classified. Nick should decide whether a P3 weak-theoretical finding justifies guide routing or should defer until empirical corroboration arrives.
 - **Guide routing:** G7 (Session Persistence and Memory) via Memory Architecture dimension.
-- **Status:** PENDING
+- **Status:** REJECTED — P3 + Weak (theoretical) evidence below inclusion threshold for G7 staleness ledger; reconsider if empirical corroboration lands. Finding stays in KB; no guide routing.
 
 #### 4. agent-generated-codebase-walkthrough-for-onboarding
 - **Assigned form:** pattern | **Confidence:** MED | **Tier:** guided | **Co-occurrence:** skill
@@ -121,7 +141,7 @@ _None this run._
 - **Reason codes:** center-of-gravity-is-reusable-shape, mechanism-is-instantiation, contains-procedure-as-example, skill-co-occurrence-strong
 - **Rationale:** Center of gravity is the design approach — "maintain agent-readable onboarding docs via periodic agent self-walkthroughs; serves as onboarding + drift detection." The Simon-Willison + Showboat + Swift app configuration is one instantiation; the insight transfers to MetaSystem's incubator projects and Nick's vibe-coded skills. Skill co-occurs strongly — the finding describes an invocation procedure (agent reads codebase → produces walkthrough.md) that could stand as its own skill (`/generate-walkthrough`). MED because the procedural detail (harness choice, output shape) is concrete enough that a practitioner might treat it as a skill-first finding; pattern wins because the real value is the *practice* of periodic walkthrough regeneration as a maintenance discipline, not the specific procedure.
 - **Guide routing:** G2 (Managing Agent Context) — via Context Engineering.
-- **Status:** PENDING
+- **Status:** APPROVED
 
 ### AUTO — Pattern (7 findings)
 
@@ -131,7 +151,7 @@ _None this run._
 - **Reason codes:** architectural-counter-stance, forces-tradeoffs, it-depends-character, multiple-contrasting-sources
 - **Rationale:** Explicit architectural counter-stance — "one DB, one collection, one retrieval authority" vs. multi-store splits. Pattern-shape with clear forces (operational simplicity vs. per-type optimization), testable against multi-store alternatives. `related_findings` explicitly carry `contradicts` (triple-storage) and `same-problem` (multi-store stacks), which is the classic pattern-level design debate signature.
 - **Guide routing:** G7 (Session Persistence and Memory) via Memory Architecture.
-- **Status:** PENDING
+- **Status:** APPROVED
 
 #### 6. rank-fusion-hybrid-retrieval-mongodb-atlas
 - **Assigned form:** pattern | **Confidence:** HIGH | **Tier:** auto
@@ -139,7 +159,7 @@ _None this run._
 - **Reason codes:** reusable-shape, database-native-primitive, instantiation-across-vendors
 - **Rationale:** Reusable shape — combine semantic + lexical retrieval inside the database using rank-fusion primitives. Atlas's `$rankFusion` / `$scoreFusion` is one instantiation; the shape (DB-native hybrid retrieval vs. application-side RRF) applies wherever equivalent primitives exist. Not a skill (no step sequence), not a rule (no binary constraint), not a template (no fillable scaffold).
 - **Guide routing:** G7.
-- **Status:** PENDING
+- **Status:** APPROVED
 
 #### 7. query-decomposition-sub-query-rrf-merge
 - **Assigned form:** pattern | **Confidence:** HIGH | **Tier:** auto
@@ -147,7 +167,7 @@ _None this run._
 - **Reason codes:** reusable-shape, cross-source-convergence, economic-tradeoffs
 - **Rationale:** Reusable shape — decompose user query → parallel retrieve → RRF merge. Multiple independent uses (Memongo, academic RAG literature, Anthropic programmatic tool calls). Forces: decomposition cost vs. retrieval quality, over-decomposition dilution. Clear pattern — the insight is the shape, not Memongo's specific GPT-4-mini choice.
 - **Guide routing:** G7.
-- **Status:** PENDING
+- **Status:** APPROVED
 
 #### 8. post-retrieval-reranking-weighted-signal-composition
 - **Assigned form:** pattern | **Confidence:** HIGH | **Tier:** auto
@@ -155,7 +175,7 @@ _None this run._
 - **Reason codes:** design-choice-with-tradeoffs, interpretability-vs-precision, mechanism-is-instantiation
 - **Rationale:** Reusable shape — post-retrieval reranking via human-inspectable weighted signals (auditability + tuneability + no retraining) as alternative to learned rerankers. The specific 4 signals + 4 weights are one instantiation. Pattern with clear forces (opacity vs. precision), composable downstream of any retrieval surface.
 - **Guide routing:** G7.
-- **Status:** PENDING
+- **Status:** APPROVED
 
 #### 9. importance-based-decay-permanent-exemption
 - **Assigned form:** pattern | **Confidence:** HIGH | **Tier:** auto
@@ -163,7 +183,7 @@ _None this run._
 - **Reason codes:** architectural-alternative, forces-tradeoffs, escape-hatch-primitive
 - **Rationale:** Design approach — decay by importance score, not wall-clock; permanent/ongoing exemption for identity facts. Counter-pattern to TTL expiry, pure-recency, reinforcement decay. Pattern with clear forces (unbounded storage vs. identity retention; stale scores vs. recomputation cost). P3 priority but classification is unambiguous.
 - **Guide routing:** G7.
-- **Status:** PENDING
+- **Status:** APPROVED
 
 #### 10. surprisal-novelty-as-memory-write-gate
 - **Assigned form:** pattern | **Confidence:** HIGH | **Tier:** auto
@@ -171,7 +191,7 @@ _None this run._
 - **Reason codes:** reusable-shape, write-path-filter, complementary-to-decay
 - **Rationale:** Reusable shape — gate memory writes on surprisal/novelty to prevent corpus bloat; upstream complement to downstream decay. Pattern with forces (embedding-coarse misses vs. blocking signal; cold-start problem vs. later precision). Clean pattern — the insight is the write-gate position + surprisal signal type.
 - **Guide routing:** G7.
-- **Status:** PENDING
+- **Status:** APPROVED
 
 #### 11. proactive-compaction-before-intelligence-degradation
 - **Assigned form:** pattern | **Confidence:** HIGH | **Tier:** auto | **Co-occurrence:** rule
@@ -179,7 +199,7 @@ _None this run._
 - **Reason codes:** reusable-shape, reframes-existing-primitive, tradeoffs-named
 - **Rationale:** Reusable shape — "compact at stable state, not at capacity pressure; compaction is a quality-of-summary decision, not capacity management." Reframes `/compact` from fallback to regular-cadence tool. Rule co-occurs ("don't defer /compact to autocompact trigger") but the insight is the design-level reframing, not the specific constraint — applies to any harness with user-controlled compaction. Pattern with clear forces (over-compaction dilution vs. under-compaction summary degradation).
 - **Guide routing:** G2 (Managing Agent Context).
-- **Status:** PENDING
+- **Status:** APPROVED
 
 ### AUTO — Rule (1 finding)
 
@@ -189,7 +209,7 @@ _None this run._
 - **Reason codes:** binary-constraint, anti-pattern-framing, named-boundary, enforceable-at-hook, deterministic-check
 - **Rationale:** Classic rule shape — binary constraint at a named boundary (agent output containing code snippets). Anti-pattern phrasing ("do not type code from memory; use sed/grep/cat"). Enforcement mechanism is either prompt-level or hook (implementation_notes flag the hook path explicitly). Per rubric Amendment 2: "anti-pattern findings are natural rule candidates when the anti-pattern is expressible as a deterministic check at a named boundary" — both tests satisfied. Pattern co-occurs as the broader design approach ("move work from inference to execution, like programmatic-tool-calling"), but the finding's center of gravity is the specific constraint, not the general principle. Session-20 calibration note: "rules tend to be autonomous-tier eligible because their blast radius at the artifact level is small" — applies here.
 - **Routing:** Non-pattern — proceeds to `/extract-artifacts` as a standalone rule artifact (pending approval). Likely enforcement location: `.claude/rules/` at workspace root, or system-scoped `{system}/governance/` if deployed narrowly. Extraction should include co-occurring pattern note so `/extract-artifacts` can harvest the "move work from inference to execution" pattern during body scan (DD-77 resolves at read time).
-- **Status:** PENDING
+- **Status:** APPROVED
 
 ---
 
@@ -239,7 +259,7 @@ This section catalogs co-occurrences in the session-45 set so Nick can pull them
 
 ## Status Dispatch (contract with /extract-artifacts)
 
-All 12 findings have `Status: PENDING`. Per DD-29 human gate, Nick edits the report setting `APPROVED`, `REJECTED`, or `REDIRECTED` (with form edit) before `/extract-artifacts` runs. The only finding that would go to `/extract-artifacts` under current routing (DD-81 pattern filter) is #12 — the rule. The 11 pattern findings route to guide synthesis gated on Stream B.
+All 12 findings initially carried `Status: APPROVED`. Per DD-29 human gate, Nick verdict-gated the report at session 55 — **11 APPROVED, 1 REJECTED** (#3 `agentic-speculation-four-characteristics` deferred pending empirical corroboration). Under DD-81 pattern filter, only #12 (the rule) proceeds to `/extract-artifacts` now. The 10 approved pattern findings route to guide synthesis gated on Stream B.
 
 ---
 

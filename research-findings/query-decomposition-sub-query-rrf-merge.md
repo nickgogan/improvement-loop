@@ -19,6 +19,8 @@ related_findings:
     rel: same-problem
   - file: hybrid-retrieval-pattern-semantic-lexical-graph.md
     rel: extends
+  - file: agentic-search-memory-retrieval-architecture.md
+    rel: extended-by
 proposals: null
 date_discovered: "2026-04-20"
 last_updated: "2026-04-20"

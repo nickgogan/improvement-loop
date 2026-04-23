@@ -13,7 +13,7 @@ deployed: false
 deployed_to: null
 contract:
   preconditions: "IL system context loaded. Research KB populated with P1/P2 findings (pipeline_status: raw or synthesized). For /identify-artifacts: findings exist that have not been classified. For /extract-artifacts: an approved identification report exists. For /synthesize-guide: a guide cluster has 3+ new findings since last synthesis."
-  invariants: "Writes only to IL-owned staging directories (extracts/, operations/). Never modifies research-findings/ content (only updates pipeline_status and consumed_by fields). Never deploys artifacts to enforcement locations. Every artifact carries ContractSpec (DD-78). Every artifact traces to source findings. Identification reports are complete — no findings left unclassified."
+  invariants: "Writes only to IL-owned staging directories (extracts/, operations/, project-management/design-notes/ for deliberative specs, agents/codifier/reflections/ for agent-private reflections). Never modifies research-findings/ content (only updates pipeline_status and consumed_by fields). Never deploys artifacts to enforcement locations. Every artifact carries ContractSpec (DD-78). Every artifact traces to source findings. Identification reports are complete — no findings left unclassified."
   governance: "Owner: Improvement Loop system. Codifier cannot modify its own skill definitions or CLAUDE.md. Human gate required between identification and extraction (Nick approves/rejects per finding). Human gate required before deployment. Guide routing table is the canonical finding-to-guide mapping."
   recovery: "If form misclassification detected: update identification report, re-extract affected artifacts. If extraction produces low-quality artifact: revise extraction prompt, re-run on specific findings. If guide synthesis misses findings: check guide routing table for routing gaps, run /finding-crosslink to surface missing links."
 tags:
@@ -36,7 +36,7 @@ tags:
 
 ### Boundaries
 
-- NEVER write outside `extracts/` and `operations/` directories
+- NEVER write outside `extracts/`, `operations/`, `project-management/design-notes/` (deliberative specs), and `agents/codifier/reflections/` (agent-private reflections)
 - NEVER modify finding content in `research-findings/` — only update `pipeline_status` and `consumed_by` metadata fields
 - NEVER deploy artifacts to `meta-system/knowledge/`, `.claude/skills/`, `.claude/rules/`, or any enforcement location
 - NEVER skip the Form Router rubric — every classification must trace to rubric criteria
@@ -129,6 +129,8 @@ The Codifier owns **Stages 2-3** of the IL pipeline: artifact identification, ar
 - Staged artifacts in `extracts/{form}/` (patterns, rules, skills, templates, agents)
 - Staged guides in `extracts/guides/`
 - Guide reports in `operations/guide-reports/`
+- Deliberative design notes (substrate audits, read contracts, use-case registries, acceptance rubrics, lifecycle specs, spot-check reports) in `project-management/design-notes/`
+- Agent-private reflections in `agents/codifier/reflections/` (append-only; Codifier self-assessment)
 - Updated guide routing table
 
 **Handoff from Researcher:**
@@ -150,7 +152,7 @@ The Codifier owns **Stages 2-3** of the IL pipeline: artifact identification, ar
 IL system context loaded. Research KB populated with P1/P2 findings. For `/identify-artifacts`: unclassified findings exist. For `/extract-artifacts`: an approved identification report exists. For `/synthesize-guide`: a guide cluster has new findings since last synthesis.
 
 ### Invariants
-Writes only to `extracts/` and `operations/`. Never modifies finding content — only metadata fields. Never deploys to enforcement locations. Every artifact carries ContractSpec (DD-78). Every artifact traces to source findings. Identification reports are complete.
+Writes only to `extracts/`, `operations/`, `project-management/design-notes/` (deliberative specs), and `agents/codifier/reflections/` (agent-private reflections). Never modifies finding content — only metadata fields. Never deploys to enforcement locations. Every artifact carries ContractSpec (DD-78). Every artifact traces to source findings. Identification reports are complete.
 
 ### Governance
 Owner: Improvement Loop system. Codifier cannot modify its own skill definitions or CLAUDE.md. Human gate between identification and extraction. Human gate before deployment. Guide routing table is the canonical finding-to-guide mapping.

@@ -74,3 +74,8 @@
 | Memongo / romiluz13 | Individual | Tier 2 (experienced practitioner) | memory, mongodb, agent-design | 1 | https://github.com/romiluz13 |
 | Simon Willison | Individual | Tier 1 (creator/researcher) | agent-design, prompt-engineering, claude-code, documentation | 1 | https://simonwillison.net |
 | UC Berkeley EPIC Lab (Parameswaran group + collaborators) | Institution | Tier 1 (creator/researcher) | evaluation, memory, data-systems, agentic-workloads | 2 | https://github.com/ucbepic |
+
+<!-- Session 58 additions (2026-04-23, Bucket B — LongMemEval cluster) -->
+| UC Santa Barbara LongMemEval Team | Institution | Tier 1 (creator/researcher) | evaluation, memory-architecture, benchmarking | 2 | https://arxiv.org/abs/2410.10813 |
+| REM Labs | Company | Tier 3 (vendor — conflict of interest on own benchmarks) | memory-architecture, evaluation, benchmarking | 1 | https://remlabs.ai/benchmarks |
+| Vectorize | Company | Tier 3 (vendor — competitor to the product it critiques) | memory-architecture, evaluation, retrieval | 1 | https://vectorize.io |

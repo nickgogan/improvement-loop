@@ -15,6 +15,8 @@ sources:
 related_findings:
 - file: memory-bank-isolation-per-agent-per-project.md
   rel: same-problem
+- file: hierarchical-container-tag-multi-tenancy.md
+  rel: same-problem
 proposals: null
 date_discovered: '2026-04-08'
 last_updated: '2026-04-19'

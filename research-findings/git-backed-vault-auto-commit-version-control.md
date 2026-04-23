@@ -2,7 +2,7 @@
 name: Git-Backed Vault with Auto-Commit for Free Version Control
 summary: Cloning a GitHub repository as the Obsidian vault root gives free version control and cloud sync. The Obsidian Git community plugin then auto-commits changes after a configurable idle period (e.g., 1 minute) and pulls on startup — eliminating manual commit discipline.
 implementation_notes: MetaSystem vault is already Git-backed. The auto-commit plugin could close the gap between edit and commit, reducing risk of lost work between manual commits.
-category: Agentic OS
+category: Agentic Systems
 evidence_strength: Strong (production-tested)
 adoption_status: Partially Adopted
 priority: P3 (Monitor)

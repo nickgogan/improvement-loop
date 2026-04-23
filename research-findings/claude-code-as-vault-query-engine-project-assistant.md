@@ -2,7 +2,7 @@
 name: Claude Code as Vault Query Engine for Project Management
 summary: Using Claude Code with an Obsidian vault as the knowledge store to answer project status questions, draft responses, and generate action items. The vault is the memory; Claude Code is the query and action layer on top.
 implementation_notes: MetaSystem already uses this pattern for the IL KB (Claude Code queries findings, runs cross-links, generates reports). The finding documents the generalized pattern for personal project management.
-category: Agentic OS
+category: Agentic Systems
 evidence_strength: Medium (practitioner-documented)
 adoption_status: Partially Adopted
 priority: P3 (Monitor)

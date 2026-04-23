@@ -1,7 +1,7 @@
 ---
 title: "Librarian Boundary-Case Tracking Mechanism"
-type: "proposal"
-stage: "proposed"
+type: "design-note"
+stage: "accepted"
 target_system:
   - "improvement-loop"
 created: "2026-04-22"
@@ -27,7 +27,9 @@ aliases:
 
 # Librarian Boundary-Case Tracking Mechanism
 
-**Status:** Owner proposal. Answers Nick's session-49 read-contract §9 annotation: *"Definitely capture these somewhere (let's explicitly think about where) so that way we can make sure the Librarian remains useful over time and tracks with what the world needs from it."* Proposes where boundary-case encounters live, how they are shaped, how patterns surface, and how gaps feed back into authoring. Nothing is deployed until Nick gates this document.
+**Status:** **Accepted by Nick in session 52 (2026-04-22).** All six §6 Proposal-First items ratified; infrastructure deployed the same session (schema amendment; `assess-agent` / `assess-prompt` / `assess-skill` SKILL.md addenda with Write-tool permission scoped to `operations/system-log/`; DD-82 Librarian write scope amended). The `/summarize-encounters` skill remains named-but-not-built per §6 item 5; build trigger is volume or Nick's brief.
+
+Answers Nick's session-49 read-contract §9 annotation: *"Definitely capture these somewhere (let's explicitly think about where) so that way we can make sure the Librarian remains useful over time and tracks with what the world needs from it."*
 
 ---
 

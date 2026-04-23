@@ -7,7 +7,7 @@ description: >-
   audit.md × skill.md from the Librarian reference layer. Read-only; produces
   findings + follow-ups.
 user-invocable: true
-allowed-tools: Read Grep Glob
+allowed-tools: Read Grep Glob Write
 argument-hint: "<skill-file-path>"
 ---
 
@@ -119,6 +119,13 @@ top: "Classification: safety-critical (trigger: <which>)." or
   not describe the destructive operations, flag as a follow-up (the skill
   may be misconfigured).
 
+## Boundary-Case Encounter Logging
+
+On any deviation from the Tier-1 happy path (the 13-type encounter taxonomy — missing concept/operation, ambiguous verb/variant, cross-concept, verb-noun-mismatch, oversized-artifact, hop-ceiling-hit, tier-3-read, low-confidence, kb-gap, redirect, clarification-asked), append a structured record to `operations/system-log/session-<N>-librarian-encounters.md` per the entry schema. Create the file on the session's first encounter; append thereafter. `<N>` matches the session's SL entry number (infer from most recent `session-<N>-*.md` in the folder).
+
+- Schema, controlled vocabulary of 13 encounter types, per-encounter body shape, and feedback routing: `systems/improvement-loop/project-management/design-notes/2026-04-22-librarian-boundary-case-tracking.md`
+- Write scope is narrowed to `operations/system-log/` only — do not write elsewhere.
+
 ## Cross-References
 
 - Operation file: `systems/improvement-loop/operations/references/librarian/audit.md`
@@ -126,4 +133,5 @@ top: "Classification: safety-critical (trigger: <which>)." or
 - Session-48 Test 4 (where the G9.I6 gate was validated):
   `systems/improvement-loop/project-management/design-notes/2026-04-21-contract-section-spotcheck-agent-audit.md`
 - Read-contract: `systems/improvement-loop/project-management/design-notes/2026-04-21-librarian-read-contract.md`
-- Governing DDs: DD-78, DD-82
+- Boundary-case tracking: `systems/improvement-loop/project-management/design-notes/2026-04-22-librarian-boundary-case-tracking.md`
+- Governing DDs: DD-78, DD-82, DD-89

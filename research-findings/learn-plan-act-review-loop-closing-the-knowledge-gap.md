@@ -3,7 +3,7 @@ name: 'Learn-Plan-Act-Review Loop: Closing the Knowledge-to-Behavior Gap'
 summary: Most people consume expert knowledge (podcasts, articles, research) but never translate it into changed behavior. The Learn-Plan-Act-Review loop is a four-stage personal OS pattern that forces closure
   by connecting knowledge ingestion directly to experiment design, calendar scheduling, and daily review.
 implementation_notes: null
-category: Agentic OS
+category: Agentic Systems
 evidence_strength: Medium (practitioner-documented)
 adoption_status: Not Yet Started
 priority: P2 (Design Required)

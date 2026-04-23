@@ -4,7 +4,7 @@ summary: A structured progression model for AI agent context infrastructure with
   (L4), co-work projects by area (L5), centralized second brain/personal OS (L6), to full business OS with team sync and permissions (L7). Each level resolves the primary limitation of the previous.
 implementation_notes: The model maps directly onto MetaSystem's architecture — MetaSystem already operates at approximately L6/L7 (Obsidian vault, CLAUDE.md routing, system-scoped folders). The model provides
   a useful vocabulary for explaining the design to new contributors and for identifying the specific transition point being targeted in any upgrade.
-category: Agentic OS
+category: Agentic Systems
 evidence_strength: Medium (practitioner-documented)
 adoption_status: Already Adopted
 priority: P2 (Design Required)

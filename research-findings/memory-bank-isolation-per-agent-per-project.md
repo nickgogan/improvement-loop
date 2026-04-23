@@ -30,6 +30,8 @@ related_findings:
   rel: same-problem
 - file: multi-client-context-isolation-with-shared-skills.md
   rel: same-problem
+- file: hierarchical-container-tag-multi-tenancy.md
+  rel: same-problem
 proposals: []
 date_discovered: '2026-04-07'
 last_updated: '2026-04-08'

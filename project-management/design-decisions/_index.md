@@ -35,3 +35,4 @@ Design Decisions governing the Improvement Loop pipeline.
 | DD-69 | Bidirectional linkage invariant between sources and findings. Zero-link entries are structural defects. | Binding |
 | DD-70 | Finding cross-reference model with four relationship types: enables, contradicts, extends, same-problem. | Binding |
 | DD-71 | Source triage verdict taxonomy: EXTRACT, SKIP, DEFER, LINK-ONLY via fixed decision tree. | Binding |
+| DD-89 | Four-zone architecture for IL design-and-governance artifacts: design-notes/, governance/proposals/, governance/, operations/. | Binding |
