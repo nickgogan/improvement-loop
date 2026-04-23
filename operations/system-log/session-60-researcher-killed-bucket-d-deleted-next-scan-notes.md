@@ -73,6 +73,12 @@ Historical references (SL entries, prior handoffs, prior delta reports) left unt
 
 New feedback memory: `feedback_check_premise_before_executing_handoff.md`. Composes with — does not contradict — `feedback_sweep_over_piecemeal.md`. The distinction: sweeps are for clearing Nick-sanctioned backlogs; a sweep-mode memory being cited to justify an agent-proposed task is misapplication.
 
+### Stream E — `_index.md` audit + next-session handoff
+
+The next-scan-notes cleanup surfaced `_index.md` as a broader drift-tracking problem. Audit of all 49 `_index.md` files across MetaSystem classified them into 5 patterns: (A) hand-maintained ledger tables (IB/DD Status) — drifting; (B) large static catalogs (research-findings 590 rows, sources 164, authorities 75) — stale since 2026-04-04 extract; (C) narrative-only folder READMEs — redundant with CLAUDE.md; (D) load-bearing substrate maps (Librarian references, IL/meta-system governance narrative) — keep; (E) Dataview-driven live-query files — keep.
+
+Nick approved Option A (full sweep) but deferred execution to the next session to avoid mid-session scope blowout. Mid-session discovery that `/ib`, `/dd`, `/track`, and `/bootstrap` all have "Update `_index.md`" steps baked in (4 skill edits), plus ~40 other active files carry specific-path references — total scope ≈30 file ops + 4 skill edits + ~40 reference fix-ups. Handoff produced at `operations/handoff-prompts/handoff-prompt-index-md-full-cleanup.md` with explicit Nick-sanctioned origin field (per session 60's lesson about agent-authored handoffs accumulating unsanctioned work).
+
 ---
 
 ## Artifacts Produced
@@ -84,7 +90,8 @@ New feedback memory: `feedback_check_premise_before_executing_handoff.md`. Compo
 | 3 | Memory | `~/.claude/projects/-Users-nickgogan-MetaSystem/memory/feedback_check_premise_before_executing_handoff.md` |
 | 4 | Memory index update | `~/.claude/projects/-Users-nickgogan-MetaSystem/memory/MEMORY.md` |
 | 5 | Deletion | `operations/next-scan-notes.md` |
-| 6 | This SL entry | `operations/system-log/session-60-researcher-killed-bucket-d-deleted-next-scan-notes.md` |
+| 6 | Handoff (cross-system) | `operations/handoff-prompts/handoff-prompt-index-md-full-cleanup.md` |
+| 7 | This SL entry | `operations/system-log/session-60-researcher-killed-bucket-d-deleted-next-scan-notes.md` |
 
 ## What Did Not Happen
 

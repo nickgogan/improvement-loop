@@ -33,7 +33,9 @@ Session 59 (Researcher, 2026-04-23):
 
 ---
 ## Nick's Prioritizaton
+- **Full `_index.md` cleanup sweep (next session)** — cross-system; handoff at `operations/handoff-prompts/handoff-prompt-index-md-full-cleanup.md`. ~30 file ops + 4 skill edits + ~40 reference cleanups. Nick-sanctioned at session 60 close.
 - **Codifier reassess (IB-149) + G7/G2/G9 re-synthesis (session 61+)** — 4 session-57 priority-reeval candidates flagged, now filed as IB-149; 17 session-58 + 6 session-59 new findings may surface more on a full pass. Three guides further past staleness threshold.
+- **Librarian subagent template for cross-concept queries** (read-contract Q4) — cross-concept query handling noted in the read-contract but not built. Promoted from "Open IB Items" at session 60 close. Position in queue TBD.
 - **DD-78 amendment** (Contract triple-role) — deferred until reference layer is more exercised.
 - **Retroactive migration** of ~100 existing non-guide/non-pattern extracts — per pipeline-collapse Phase M1 audit.
 
@@ -48,12 +50,7 @@ Session 59 (Researcher, 2026-04-23):
 
 ## Open IB Items
 
-Listed in `project-management/implementation-backlog/_index.md`. Highlights: IB-138 flesh-out, IB-139 fractal completion (`app/`, `archive/` still missing).
-
-Forward-going work from session 50+ not yet filed as IB:
-- References-by-agent reorg (mirror `librarian/` with `researcher/`, `codifier/`).
-- Librarian subagent template for cross-concept queries (read-contract Q4).
-- Controlled-vocabulary amendment path for encounter types.
+Filed items live in `project-management/implementation-backlog/IB-*.md`. Source-of-truth status is the `status:` field in each file's frontmatter.
 
 ---
 
