@@ -52,7 +52,7 @@ For Researcher, Codifier, and Librarian dispositions, read the agent definition 
 | `.claude/skills/` | IL-scoped skills (per DD-49) — Researcher (12), Codifier (3), Owner (5) |
 | `feedback/` | Feedback items for improving the IL system |
 | `archive/improvement-proposals/` | Archived — 5 historical proposals from session 6, superseded by DD-80 pipeline |
-| `operations/` | Loop reports, handoff prompts, next-scan-notes, system log |
+| `operations/` | Loop reports, handoff prompts, system log |
 | `operations/references/` | Research dimensions registry (`research-dimensions.md`) |
 | `project-management/` | Design Decisions and Implementation Backlog items |
 
@@ -147,7 +147,6 @@ The Librarian uses Read/Glob/Grep tools directly to navigate the KB. No dedicate
 | Read watched libraries | `watched-libraries/*.md` | Read tool |
 | Read proposals (Researcher) | `improvement-proposals/*.md` | Read tool only |
 | Read research dimensions | `operations/references/research-dimensions.md` | Read tool |
-| Read next-scan-notes | `operations/next-scan-notes.md` | Read tool |
 | Read IL Design Decisions | `project-management/design-decisions/DD-XX.md` | Read tool |
 | Read IL IB items | `project-management/implementation-backlog/IB-XX.md` | Read tool |
 | Read cross-system DDs | `../meta-system/project-management/design-decisions/` | Read tool |
@@ -162,7 +161,6 @@ The Librarian uses Read/Glob/Grep tools directly to navigate the KB. No dedicate
 | Current session state and focus | `PROGRESS.md` |
 | Research extraction procedure | `.claude/skills/research-loop/SKILL.md` |
 | Research dimension queries | `operations/references/research-dimensions.md` |
-| Scan carry-forward notes | `operations/next-scan-notes.md` |
 | Previous delta reports | `operations/research-reports/` |
 | Frontmatter schema for all entries | `../../_schema.yaml` |
 | IL Design Decisions | `project-management/design-decisions/` |

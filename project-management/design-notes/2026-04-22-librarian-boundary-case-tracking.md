@@ -207,7 +207,7 @@ When encounters accumulate, gaps surface. The feedback path connects those to ex
 
 1. **Use-case registry** (`project-management/design-notes/2026-04-21-librarian-use-case-registry.md`) — the authoritative list of planned concept/operation files with P2/P3/P4 priorities. Natural home for demand-driven reprioritization.
 2. **Implementation Backlog** (`project-management/implementation-backlog/`) — for structural changes that don't fit the registry (e.g., a new parser alias, a new variant, a threshold change).
-3. **Researcher queue** via `next-scan-notes.md` — if an encounter reveals a gap in research coverage (KB-gap type), it becomes a research scan target, not an authoring target.
+3. **Researcher queue** via IB items — if an encounter reveals a gap in research coverage (KB-gap type), it becomes a research scan target filed as an IB item, not an authoring target.
 
 ### 5.2 Routing rules (proposed)
 
@@ -219,7 +219,7 @@ When encounters accumulate, gaps surface. The feedback path connects those to ex
 | `ambiguous-variant` | Concept file update (variant-selection heuristics) | Codifier |
 | `hop-ceiling-hit` (frequent) | IB item → revisit 3-hop ceiling; tune with evidence | Owner proposal |
 | `oversized-artifact` (frequent) | IB item → scope protocol refinement | Owner proposal |
-| `kb-gap` | `next-scan-notes.md` → Researcher queues for next scan | Researcher |
+| `kb-gap` | IB item → Researcher queues for next scan | Researcher |
 | `redirect` (frequent to same target) | Read-contract §8.1 update, or scope-expansion proposal | Owner |
 | `low-confidence` (pattern by aspect) | Evidence-strength review; possibly Researcher scan | Researcher or Codifier |
 | `verb-noun-mismatch` | Usually parser-side; IB if frequent | Codifier |

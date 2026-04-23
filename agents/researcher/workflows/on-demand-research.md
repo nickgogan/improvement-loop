@@ -77,4 +77,4 @@ Targeted research for a specific question. The second intake pathway (DD-83), co
 
 - `/research-query` produces findings identical in format to `/research-loop`
 - On-demand findings enter the same pipeline (raw → identify → extract → deploy)
-- On-demand reports may surface topics for the next periodic scan's next-scan-notes
+- On-demand reports may surface topics worth filing as IB items or as follow-up queries in the research-dimensions registry

@@ -57,7 +57,7 @@ The five lanes: **Official retrieval** (publishable), **Internal retrieval** (in
 
 For MetaSystem specifically: this is a ready-made discipline we can adopt the moment we start publishing any kind of score — IL finding priorities backed by confidence metrics, agent performance over time, skill/guide effectiveness measurements, cross-repo comparison numbers. Without it, we drift into "our number looks good" without being able to prove the number means what we say. With it, any number we put in front of Nick (or eventually a third party) comes with its own audit trail.
 
-The contract also provides concrete guardrails against two common benchmark-engineering failures that have already surfaced in the KB's own source cluster: (a) the "patch the 3 questions you failed, retest on the same set, claim 100%" move (MemPalace's disclosed methodology issue — see `operations/next-scan-notes.md` leaderboard bullet); (b) the "compare retrieval recall against end-to-end QA accuracy" move that makes systems look better than they are.
+The contract also provides concrete guardrails against two common benchmark-engineering failures that have already surfaced in the KB's own source cluster: (a) the "patch the 3 questions you failed, retest on the same set, claim 100%" move (MemPalace's disclosed methodology issue — captured in `tool-enforced-dev-heldout-split.md`); (b) the "compare retrieval recall against end-to-end QA accuracy" move that makes systems look better than they are.
 
 ## Why People Are Using It
 

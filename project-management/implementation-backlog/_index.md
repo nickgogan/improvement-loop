@@ -31,3 +31,4 @@ IB items for the Improvement Loop.
 | IB-104 | Update DD-41 spec for IL promotion to top-level peer | Done |
 | IB-138 | Flesh out improvement-loop/ with CLAUDE.md and pipeline configuration | Queued |
 | IB-139 | Apply fractal pattern to improvement-loop/ | Queued |
+| IB-149 | Run /reassess-priorities on findings flagged since session 57 | Queued |

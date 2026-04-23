@@ -28,7 +28,7 @@ Full research scan cycle across dimensions. The Researcher's primary workflow fo
 ```
 [1] /research-loop [scope]
          │
-         Read dimensions registry + next-scan-notes
+         Read dimensions registry
          Search across dimensions via Perplexity
          Process sources, extract findings
          Deduplicate against KB

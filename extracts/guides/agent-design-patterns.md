@@ -287,7 +287,7 @@ Example: Sprint decomposition was essential with Sonnet 4.5 (context anxiety). W
 
 ## Continuity
 - Session boot: Read _index.md and last delta report
-- Memory: Carry-forward notes in operations/next-scan-notes.md
+- Memory: Cross-session items become structured records (IB items, findings, entity corrections). No free-form carry-forward file.
 - State: Each extraction session produces a delta report
 ```
 

@@ -96,4 +96,3 @@ SORT file.name ASC
 | Handoff Protocol | [[agents/handoff-protocol]] |
 | IL CLAUDE.md | [[CLAUDE]] |
 | Research Reports | `operations/research-reports/` |
-| Next Scan Notes | [[operations/next-scan-notes]] |

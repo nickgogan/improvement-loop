@@ -1,10 +1,26 @@
 # Improvement Loop — Progress
 
-**Last Updated:** 2026-04-23 (session 59 close)
+**Last Updated:** 2026-04-23 (session 60 close)
 
 ## Current Focus
 
-**Session 59 complete. Researcher disposition. Bucket C closed (all 13 locate items swept). Bucket D (MemoryBench) deferred to session 60 as standalone scope.**
+**Session 60 complete. Researcher disposition. Bucket D killed — never Nick-sanctioned. `operations/next-scan-notes.md` deleted; live item migrated to IB-149.**
+
+Session 60 (Researcher, 2026-04-23):
+
+- Piped Bucket D handoff for MemoryBench LongMemEval head-to-head. Feasibility check surfaced credentials blocker (escalation required per handoff's own rules). Provenance trace revealed Bucket D was agent-proposed at session-57 close, never Nick-sanctioned, rolled forward across three handoffs. Nick killed the task.
+- Deleted `operations/next-scan-notes.md` — the file had become a filing-discipline release valve where agent-proposed items accumulated weight without gates. One live item migrated to **IB-149** (`/reassess-priorities` over session 57-59 findings).
+- Surgical cleanup across 10 active files (CLAUDE.md, HUB.md, researcher/agent.md, 2 workflows, research-loop SKILL.md, 1 finding, 1 design note, 1 extract). Delta-report template also stripped of its own `## Next Scan Notes` section so the accumulation pattern doesn't just migrate into per-session deltas.
+- New memory captured: `feedback_check_premise_before_executing_handoff.md`. Composes with — does not contradict — `feedback_sweep_over_piecemeal`.
+- No research intake, no findings, no delta report this session.
+
+Prior: Session 59 (Researcher, 2026-04-23):
+
+- **Bucket C — 13 locate items swept to completion.** Disposition: 6 PROMOTED (new findings), 1 PROMOTED+AMENDED (new finding + edit to existing), 3 SKIP-WITH-REASON, 2 NO-FIX-NEEDED (bookkeeping lag — items already resolved by prior work but never struck), 1 LOCATED-no-new (substance already in KB).
+- **6 new findings promoted** at `pipeline_status: raw`: `stripe-machine-payments-protocol-agent-economy` (P3), `sandbox-architecture-by-threat-model-microvm-vs-container` (P2), `model-native-context-window-awareness` (P2), `shell-injection-vector-taxonomy-agent-bash-security` (P2), `framework-tension-taxonomy-superpowers-gsd-gstack` (P2), `audit-skill-as-expert-harness-distribution-channel` (P3).
+- **1 amendment**: `tiered-permission-system-bash-safety.md` corrected from "18-module bash security" to "23 numbered checks, 18 of which block Zsh builtins"; reciprocal `extended-by` link installed.
+- **12 new sources, 0 new authorities.** Existing authority files cover citations.
+- **Mid-session reflective question from Nick**: why so many backlog items rolled forward across sessions. Answered in-chat with four root causes (priority crowding; under-used skip-with-reason; backlog format rewards addition over closure; bookkeeping lag). Structural fix (due-by-session / auto-skip-after-N for locate-only items) flagged, not filed — awaiting direction.
 
 Session 59 (Researcher, 2026-04-23):
 
@@ -13,13 +29,11 @@ Session 59 (Researcher, 2026-04-23):
 - **1 amendment**: `tiered-permission-system-bash-safety.md` corrected from "18-module bash security" to "23 numbered checks, 18 of which block Zsh builtins"; reciprocal `extended-by` link installed.
 - **12 new sources, 0 new authorities.** Existing authority files cover citations.
 - **Mid-session reflective question from Nick**: why so many backlog items rolled forward across sessions. Answered in-chat with four root causes (priority crowding; under-used skip-with-reason; backlog format rewards addition over closure; bookkeeping lag). Structural fix (due-by-session / auto-skip-after-N for locate-only items) flagged, not filed — awaiting direction.
-- **Bucket D deferred to session 60**. Handoff at `operations/handoffs/handoff-prompt-session-60-researcher-memorybench-evaluation.md`. MemoryBench head-to-head requires environment setup (bun, framework clone, judge-model access, adapter targets) and is naturally a longer runway than mid-session allows.
+- **Bucket D deferred to session 60**. Handoff at `operations/handoffs/handoff-prompt-session-60-researcher-memorybench-evaluation.md`. (*Session 60 note: Bucket D killed — never Nick-sanctioned. See session-60 SL entry.*)
 
 ---
 ## Nick's Prioritizaton
-- **Research backlog — Bucket D MemoryBench evaluation (session 60)** — standalone-scope; handoff written. Direct input for Nick's ongoing Memongo iteration.
-- **Codifier reassess + G7/G2/G9 re-synthesis (session 61+)** — 4 session-57 priority-reeval candidates still flagged; 17 session-58 + 6 session-59 new findings may surface more. Three guides further past staleness threshold.
-- **Backlog-hygiene structural fix** (optional IB candidate) — require locate-only items to carry due-by-session or auto-skip-after-N. Evidence-base: session 59 found 3 of 13 items were already-resolved bookkeeping lag, and 6 of 13 produced net-new findings when attempted. Awaits Nick direction.
+- **Codifier reassess (IB-149) + G7/G2/G9 re-synthesis (session 61+)** — 4 session-57 priority-reeval candidates flagged, now filed as IB-149; 17 session-58 + 6 session-59 new findings may surface more on a full pass. Three guides further past staleness threshold.
 - **DD-78 amendment** (Contract triple-role) — deferred until reference layer is more exercised.
 - **Retroactive migration** of ~100 existing non-guide/non-pattern extracts — per pipeline-collapse Phase M1 audit.
 

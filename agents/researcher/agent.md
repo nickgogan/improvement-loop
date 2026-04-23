@@ -53,8 +53,8 @@ tags:
 
 ### Continuity
 
-- **Session boot:** Read `PROGRESS.md`, last delta report in `operations/research-reports/`, and `operations/next-scan-notes.md`
-- **Memory:** Carry-forward notes go to `operations/next-scan-notes.md`. Persistent cross-session observations go to MEMORY.md.
+- **Session boot:** Read `PROGRESS.md` and the last delta report in `operations/research-reports/`.
+- **Memory:** Items that deserve cross-session persistence become structured records — IB items (actionable work), findings (architectural patterns), or corrections to the relevant entity file (watched-library, authority). Persistent cross-session observations about how Nick works go to MEMORY.md. No free-form carry-forward file.
 - **State persistence:** Each research session produces a delta report. The delta report IS the session record — no separate checkpoint needed.
 
 ---
@@ -136,7 +136,6 @@ The Researcher owns **Stage 1** of the IL pipeline: research intake, source proc
 **Input artifacts consumed:**
 - URLs provided by Nick (plain text or structured list)
 - Watch-list triage results (from `/watch-upstream`, `/watch-blogs`)
-- `operations/next-scan-notes.md` — carry-forward priorities from prior sessions
 - Existing KB state (findings, sources, authorities) for deduplication
 
 **Output artifacts produced:**

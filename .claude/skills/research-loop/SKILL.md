@@ -71,7 +71,6 @@ This skill covers source processing, finding extraction, priority triage, and de
 - **Research Sources:** `systems/improvement-loop/research-sources/`
 - **Research Findings:** `systems/improvement-loop/research-findings/`
 - **Research Authorities:** `systems/improvement-loop/research-authorities/`
-- **Next Scan Notes:** `systems/improvement-loop/operations/next-scan-notes.md`
 
 ### Conventions
 
@@ -210,7 +209,7 @@ When the user provides URLs to process:
 ### Step 0: Read Context Files
 
 1. Use `Read` to read `systems/improvement-loop/operations/references/research-dimensions.md` — the active query registry. This tells you the current dimensions, what to search for, and the latest queries.
-2. Use `Read` to read `systems/improvement-loop/operations/next-scan-notes.md` — review the **Next Scan Notes** section. Some provided URLs may directly address items flagged in previous scans.
+2. Use `Read` on the most recent delta report in `systems/improvement-loop/operations/research-reports/` for session-local context. Provided URLs that overlap with prior deferrals should have surfaced as IB items or findings — check there rather than in free-form notes.
 
 ### Step 1: Create Source Entries
 
@@ -327,7 +326,7 @@ Triggered by phrases like `"run arxiv scan"`, `"search arxiv for papers"`, `"sca
 ### Step 0: Read Context Files
 
 1. Use `Read` to read `systems/improvement-loop/operations/references/research-dimensions.md` — the active query registry. Use the arXiv queries listed under each dimension.
-2. Use `Read` to read `systems/improvement-loop/operations/next-scan-notes.md` for any paper topics or authors flagged from the previous run.
+2. Use `Read` to read the most recent delta report in `systems/improvement-loop/operations/research-reports/` for session-local context (what was searched last, what was deferred, what questions emerged). Items requiring cross-session persistence should already be IB items or findings.
 
 ### Step 1: Determine Scope
 
@@ -388,16 +387,13 @@ Append an `## arXiv Scan` section to the current delta report (or create a stand
 
 ### Low-Signal Papers (Excluded)
 [Brief list with reason for exclusion]
-
-### Next Scan Notes (arXiv)
-[Specific authors, topics, or upcoming paper releases to watch]
 ```
 
-### Step 5: Update Next Scan Notes and Refine Queries
+Items worth tracking across sessions (authors, preprints awaiting publication, emerging sub-fields) should be filed as IB items or as follow-up queries in the research-dimensions registry — not as carry-forward prose.
 
-**Update next-scan-notes:** Use `Edit` to update `systems/improvement-loop/operations/next-scan-notes.md` with any arXiv-specific items to carry forward (authors to track, preprints to revisit when published, emerging sub-fields gaining traction).
+### Step 5: Refine Queries
 
-**Refine arXiv queries:** Review the arXiv queries in `systems/improvement-loop/operations/references/research-dimensions.md` and use `Edit` to refine them based on what this scan revealed — add queries for emerging sub-fields, retire queries that return noise, sharpen terminology. Update the `last_updated` field in the frontmatter.
+Review the arXiv queries in `systems/improvement-loop/operations/references/research-dimensions.md` and use `Edit` to refine them based on what this scan revealed — add queries for emerging sub-fields, retire queries that return noise, sharpen terminology. Update the `last_updated` field in the frontmatter.
 
 ---
 
@@ -408,7 +404,7 @@ For scheduled scans or on-demand "scan for new patterns" requests:
 ### Step 0: Read Context Files
 
 1. Use `Read` to read `systems/improvement-loop/operations/references/research-dimensions.md` — the active query registry. This is your authoritative source for what to search and which queries to use. The dimensions and queries in this file may have been refined by previous scans.
-2. Use `Read` to read `systems/improvement-loop/operations/next-scan-notes.md` — review the **Next Scan Notes** section. This contains emerging trends, upcoming releases, and specific items flagged for investigation from the previous run. These are operational instructions from the previous research agent.
+2. Use `Read` to read the most recent delta report in `systems/improvement-loop/operations/research-reports/` for session-local context (what was searched, what was deferred, what questions emerged). Items requiring cross-session persistence should already be IB items or findings — not carry-forward prose.
 
 ### Step 1: Load Current State
 
@@ -482,20 +478,13 @@ Save a local delta report to `systems/improvement-loop/operations/research-repor
 ## Evaluation Handoff
 **Prompts to evaluate:** [list specific prompts/configs for prompt-evaluator]
 **Focus areas:** [which rubric dimensions are most relevant]
-
-## Next Scan Notes
-[Emerging trends, upcoming releases to watch]
 ```
 
-### Step 6: Update Next Scan Notes and Refine Queries
+Emerging trends and items worth cross-session tracking should be filed as findings (at P3 Monitor if early) or as IB items — not as carry-forward prose in the delta report.
 
-**Update next-scan-notes:** Use `Edit` to update `systems/improvement-loop/operations/next-scan-notes.md` with the current run's notes. This replaces the previous contents — it is a living document, not an append log. Include:
-- Emerging trends observed during this scan
-- Upcoming releases or developments to monitor
-- Specific items from the previous Next Scan Notes that were NOT resolved (carry forward)
-- Any items that WERE resolved (remove or note as addressed)
+### Step 6: Refine Queries
 
-**Refine the query registry:** Review `systems/improvement-loop/operations/references/research-dimensions.md` and use `Edit` to propose refinements based on what this scan revealed:
+Review `systems/improvement-loop/operations/references/research-dimensions.md` and use `Edit` to propose refinements based on what this scan revealed:
 - **Add queries** that would have surfaced findings you discovered indirectly (e.g., through a tangential source)
 - **Retire queries** that consistently return noise or outdated results
 - **Sharpen queries** where the current phrasing misses the target (too broad, wrong terminology)
