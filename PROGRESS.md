@@ -1,10 +1,23 @@
 # Improvement Loop — Progress
 
-**Last Updated:** 2026-04-23 (session 60 close)
+**Last Updated:** 2026-04-23 (session 61 close)
 
 ## Current Focus
 
-**Session 60 complete. Researcher disposition. Bucket D killed — never Nick-sanctioned. `operations/next-scan-notes.md` deleted; live item migrated to IB-149.**
+**Session 61 complete. Cross-system disposition (not an IL-agent-role session). `_index.md` cleanup sweep executed (49 → 22 files); DD-55, DD-56, DD-65, DD-74, IB-142 amended in-session. Queue item #1 closed. Next session target: queue #2 (IB-149 reassess) as Codifier. Handoff at `operations/handoffs/handoff-prompt-session-62-codifier-ib-149-reassess.md`.**
+
+Session 61 (Cross-system maintainer, 2026-04-23):
+
+- Executed the Nick-sanctioned `_index.md` cleanup sweep from the session-60 handoff. 7 phases: 12 ledger catalogs deleted, 2 simplified, 16 narrative files renamed to CLAUDE.md, 2 structure maps stripped of `Count` columns, 4 cross-system skills + 9 IL skills edited to stop writing to deleted catalogs, active-file reference leaks patched, end-state verified.
+- Nick-sanctioned in-session follow-up: amended DD-55, DD-56, DD-65, DD-74, IB-142 via DD-44 "minor refinement, same scope" path (in-place with amendment footnotes + SL entry). DD-65's broader skill-inventory drift (6 listed, 24+ actual) flagged for a separate future session.
+- Retargeted workspace PROGRESS.md at IL queue #2 (IB-149) — previous pointer was stale session-48 target.
+- New memory captured earlier this day: `feedback_check_premise_before_executing_handoff.md`. No new memory from session 61 beyond what was captured pre-handoff.
+- Three commits: sweep, DD amendments, PROGRESS retarget. Plus two SL entries: `session-61-index-md-cleanup-sweep.md`, `session-61-dd-amendments-index-md-drift.md` (both cross-system).
+- No research intake, no KB changes, no findings extractions.
+
+Prior: Session 60 (Researcher, 2026-04-23):
+
+- Bucket D killed — never Nick-sanctioned. `operations/next-scan-notes.md` deleted; live item migrated to IB-149.
 
 Session 60 (Researcher, 2026-04-23):
 
@@ -33,10 +46,11 @@ Session 59 (Researcher, 2026-04-23):
 
 ---
 ## Nick's Prioritizaton
-- **Full `_index.md` cleanup sweep (next session)** — cross-system; handoff at `operations/handoff-prompts/handoff-prompt-index-md-full-cleanup.md`. ~30 file ops + 4 skill edits + ~40 reference cleanups. Nick-sanctioned at session 60 close.
-- **Codifier reassess (IB-149) + G7/G2/G9 re-synthesis (session 61+)** — 4 session-57 priority-reeval candidates flagged, now filed as IB-149; 17 session-58 + 6 session-59 new findings may surface more on a full pass. Three guides further past staleness threshold.
+- ~~**Full `_index.md` cleanup sweep**~~ — ✅ closed session 61. See `session-61-index-md-cleanup-sweep.md` and `session-61-dd-amendments-index-md-drift.md` (both cross-system SLs).
+- **Codifier reassess (IB-149) (next session)** + G7/G2/G9 re-synthesis (blocked on Lifecycle-spec Phase-1 DDs) — IB-149 unblocked; handoff at `operations/handoffs/handoff-prompt-session-62-codifier-ib-149-reassess.md`. 4 session-57 candidates flagged; 17 session-58 + 6 session-59 new findings may surface more on a full pass. Three guides further past staleness threshold.
 - **Librarian subagent template for cross-concept queries** (read-contract Q4) — cross-concept query handling noted in the read-contract but not built. Promoted from "Open IB Items" at session 60 close. Position in queue TBD.
 - **DD-78 amendment** (Contract triple-role) — deferred until reference layer is more exercised.
+- **DD-65 full supersession** — flagged in session 61. Skill-inventory drift (6 listed vs 24+ actual) warrants formal supersession beyond the in-place amendment. Position in queue TBD.
 - **Retroactive migration** of ~100 existing non-guide/non-pattern extracts — per pipeline-collapse Phase M1 audit.
 
 ## Pending Nick Gates
