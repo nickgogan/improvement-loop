@@ -3,14 +3,24 @@ title: "Eval-Driven Tool Iteration Loop"
 type: "extracted-artifact"
 assigned_form: "skill"
 source_finding: "eval-driven-tool-iteration-loop"
-confidence: "HIGH"
-tier: "auto"
-reason_codes: []
-co_occurrence: null
 extraction_date: "2026-04-19"
 identification_report: "2026-04-19-identification-report-4.md"
 deployed: false
 deployed_to: null
+context:
+  applies_to:
+    - "agentic coding systems with tool interfaces that can be iteratively refined"
+    - "teams building or maintaining MCP tool definitions, skill procedures, or agent APIs"
+    - "any workflow where agent tool performance is measurable via transcripts"
+  platform_coupling: "specific:claude-code"
+  autonomy: "hitl-only"
+  stage: "verify"
+  reversibility: "medium — refactoring changes tool interfaces and implementations; rollback requires reverting to prior implementation; held-out test set provides the safety net"
+  auditability: "high — transcript corpus, refactoring rationale document, and before/after metric delta report are all preserved as first-class artifacts"
+  evidence_strength: "Strong"
+  adoption:
+    status: "Not Yet Started"
+    notes: "Anthropic internally applied this process to Slack MCP tools, which outperformed human-written baselines after agent-driven refactoring."
 contract:
   preconditions: "Prototype tool is implemented and locally validated. Evaluation task set is defined, diverse, and representative. Held-out test set is prepared and sequestered."
   invariants: "Held-out test set is never used during optimization phases. Every refactoring cycle is followed by a held-out test run. Transcript corpus is preserved as an artifact."

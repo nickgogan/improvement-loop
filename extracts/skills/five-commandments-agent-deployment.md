@@ -3,14 +3,24 @@ title: "Five Commandments for Agent Deployment (Audit-First Framework)"
 type: "extracted-artifact"
 assigned_form: "skill"
 source_finding: "five-commandments-for-agent-deployment-audit-first"
-confidence: "HIGH"
-tier: "auto"
-reason_codes: []
-co_occurrence: null
 extraction_date: "2026-04-19"
 identification_report: "2026-04-19-identification-report-4.md"
 deployed: false
 deployed_to: null
+context:
+  applies_to:
+    - "any team deploying an agent or automated system into a production environment"
+    - "agent deployment readiness reviews at any scale"
+    - "governance frameworks for agentic systems requiring pre-deployment sign-off"
+  platform_coupling: "agnostic"
+  autonomy: "hitl-only"
+  stage: "operate"
+  reversibility: "low — the skill produces a deployment gate decision and supporting documentation; reversing a GO decision requires re-running the full framework"
+  auditability: "high — each commandment gate produces a documented artifact (audit report, data readiness assessment, observability spec, authority scope doc) that is independently reviewable"
+  evidence_strength: "Strong"
+  adoption:
+    status: "Not Yet Started"
+    notes: null
 contract:
   preconditions: "Agent deployment scope is defined. A human decision-maker is identified. All five commandments are evaluated in sequence. Practitioners are accessible for Commandment 1 audit."
   invariants: "Each commandment gate is a hard blocking dependency. Deployment GO requires all five gates passed. Observability is live before agent processes production input. Authority scope is approved by human decision-maker."

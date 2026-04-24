@@ -3,16 +3,24 @@ title: "System Event Logging — Actions, Not Just Words"
 type: "extracted-artifact"
 assigned_form: "rule"
 source_finding: "system-event-logging-actions-not-words"
-confidence: "MED"
-tier: "guided"
-reason_codes:
-  - "deterministic-check"
-  - "enforcement-boundary"
-co_occurrence: null
 extraction_date: "2026-04-19"
 identification_report: "2026-04-19-identification-report-3.md"
 deployed: false
 deployed_to: null
+context:
+  applies_to:
+    - "agent systems and automated pipelines where post-hoc behavior auditing or debugging is required"
+    - "production agent deployments where tool calls and routing decisions must be reconstructable"
+    - "agent harness specifications that define what events are captured and how"
+  platform_coupling: "agnostic"
+  autonomy: "all"
+  stage: "operate"
+  reversibility: "low — retrofitting structured action logging into a deployed system requires harness changes and log format design; Nate B Jones: 'easy to add now; expensive to retrofit'"
+  auditability: "high — structured log entries with timestamp, category, type, and payload are directly inspectable; completeness is checkable against the minimum required event categories"
+  evidence_strength: "Strong"
+  adoption:
+    status: "Not Yet Started"
+    notes: "Anthropic production Claude Code uses structured action logging; this workspace's session-level system log (manual, per-session) is a partial analog but does not cover automated per-event granularity."
 contract:
   preconditions: "Structured log format defined. Log storage location specified. Sensitive data handling policy exists."
   invariants: "Every tool call and routing decision is logged. Entries are structured, not free-text. Logs are append-only during a session."

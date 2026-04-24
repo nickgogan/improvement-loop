@@ -3,14 +3,24 @@ title: "Pre-Compression Identity Pinning (Soul.md Survives Compaction)"
 type: "extracted-artifact"
 assigned_form: "rule"
 source_finding: "pre-compression-identity-pinning"
-confidence: "HIGH"
-tier: "auto"
-reason_codes: []
-co_occurrence: null
 extraction_date: "2026-04-19"
 identification_report: "2026-04-19-identification-report-4.md"
 deployed: false
 deployed_to: null
+context:
+  applies_to:
+    - "autonomous agents with defined identity files running long sessions where context compaction is possible"
+    - "agent harness designs that implement or customize context compaction"
+    - "safety-sensitive agent deployments where behavioral drift from identity loss is a concern"
+  platform_coupling: "agnostic"
+  autonomy: "autonomous-only"
+  stage: "operate"
+  reversibility: "medium — removing pinning requires modifying session initialization and compaction configuration; behavioral drift may be observed before the gap is caught"
+  auditability: "medium — post-compaction context can be inspected to confirm identity file presence; requires tooling or harness-level assertion"
+  evidence_strength: "Medium"
+  adoption:
+    status: "Not Yet Started"
+    notes: "OpenClaw implements this as structural pinning with forced disk-read at session start; no equivalent mechanism deployed in this context as of extraction date."
 contract:
   preconditions: "The agent has a designated identity file on disk. The execution environment supports explicit context ordering. A compaction routine exists or is possible."
   invariants: "Identity file is always the first element in the context window. Identity content is never altered by compaction. Pinning is re-applied after every compaction event."

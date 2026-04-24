@@ -18,7 +18,7 @@ Monitor watched libraries for upstream changes and produce triage reports.
 ## When to Use This Skill
 
 - Periodically (monthly recommended) to check for upstream changes
-- Before a research-proposer run, to ensure watched-library data is current
+- Before an identification/extraction run (`/identify-artifacts`, `/extract-artifacts`), to ensure watched-library data is current
 - When the user mentions a library update or new release
 - After adding a new watched-library entry
 

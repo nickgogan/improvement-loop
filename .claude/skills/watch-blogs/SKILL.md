@@ -17,7 +17,7 @@ Monitor watched blogs and content sources for new posts and produce triage repor
 ## When to Use This Skill
 
 - Periodically (weekly/biweekly recommended) to check for new blog posts
-- Before a research-proposer run, to ensure content sources are current
+- Before an identification/extraction run (`/identify-artifacts`, `/extract-artifacts`), to ensure content sources are current
 - When the user mentions a blog post or new article
 - After adding a new watched-blog entry
 

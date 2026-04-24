@@ -3,14 +3,24 @@ title: "One-Shot PRD Prompt for Full System Bootstrap"
 type: "extracted-artifact"
 assigned_form: "template"
 source_finding: "one-shot-prd-prompt-for-system-bootstrap"
-confidence: "MED"
-tier: "guided"
-reason_codes: []
-co_occurrence: "pattern"
 extraction_date: "2026-04-19"
 identification_report: "2026-04-19-identification-report-4.md"
 deployed: false
 deployed_to: null
+context:
+  applies_to:
+    - "greenfield system initialization in agentic coding environments"
+    - "declarative scaffold generation from a single PRD document"
+    - "teams seeking reproducible, one-pass project bootstrapping without interactive setup"
+  platform_coupling: "agnostic"
+  autonomy: "all"
+  stage: "specify"
+  reversibility: "low — the bootstrapped file structure is a system artifact; removing it requires manually deleting the generated scaffold, though the PRD template itself is trivially removable"
+  auditability: "high — the PRD is the sole source of truth; a produced scaffold can be diffed against the PRD's declared structure to verify compliance"
+  evidence_strength: "Strong"
+  adoption:
+    status: "Not Yet Started"
+    notes: "Production-validated independently by Karpathy (LLM KB system gist) and Cole Medin (working implementation). No adoption within this system at time of extraction."
 contract:
   preconditions: "The PRD document is complete — all variables populated before rendering. Agent starts in a fresh context. Target system has no existing files to reconcile."
   invariants: "The rendered PRD is the sole source of truth for the bootstrap session. Reproducibility anchors must be present when the same PRD will be used across multiple sessions."

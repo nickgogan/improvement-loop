@@ -1,12 +1,12 @@
 # Improvement Loop — Progress
 
-**Last Updated:** 2026-04-24 (session 63 close)
+**Last Updated:** 2026-04-24 (session 64 close)
 
 ## Current Focus
 
-**Session 63 complete. Codifier disposition. Primary (guide-routing check, DD-81) + secondary (`/extract-artifacts`) both executed; in-session scope expanded to file DD-92 (ContextSpec on every extracted artifact) as companion to DD-78. Routing: 12 P2 patterns routed cleanly (G2 +4, G4 +2, G7 +2, G9 +3, G10 +1); 0 unrouted; 0 candidate guide clusters. Extraction: 1 rule artifact (`confirm-failure-first-tdd`) after DD-81 pattern filter; 15 patterns routed to `/synthesize-guide`; 2 DEFERRED on evidence. Governance: DD-92 filed (Binding); TDD rule retrofitted as reference implementation; Sub-dimension 1.B (Memory Isolation and Topology) added to `research-dimensions.md` after S2 proposal acceptance; Finding Count column removed from `guide-routing-table.md`. Follow-up: IB-150/151/152 (DD-92 rollout) + IB-153 (/dimension-rebalance).**
+**Session 64 complete. Codifier disposition. DD-92 direct-filing deviation resolved (Option 1 — content-gated direct-DD-filing accepted as precedent). Priority-assignment ownership gap closed via Option A (Researcher intake / Curator authoritative) — 3 skill-contract edits across `/promote-findings`, `/identify-artifacts`, `/reassess-priorities`; shared Researcher triage rubric across both intake paths; no DD filed. IB-151 DD-92 backfill: 26 consumer-facing extracts (9 rules + 11 skills + 4 templates + 2 agents) retrofitted with ContextSpec via 4 parallel Sonnet subagent batches; IL classification meta stripped; universal-vocab compliance verified programmatically (0 violations across 27 blocks). Patterns excluded from IB-151 scope — intermediate enrichment inputs per `extracts/patterns/CLAUDE.md`, not deployed artifacts. In-session cleanup: 10 stale `/research-proposer` references patched across 6 skill files + `/research-loop` Triage Rules section rename. IB-151 marked Done.**
 
-**Next session target:** priority-assignment pass — address `/promote-findings` upstream drift (priority-assignment ownership gap across `/promote-findings`, `/identify-artifacts`, `/reassess-priorities`). Followed by `/extract-artifacts` next cycle (incl. IB-151 DD-92 backfill). Guide re-synthesis only if context allows and Lifecycle-spec Phase-1 DDs have unblocked. **First turn:** raise DD-92 direct-filing deviation for Nick's ruling before any task work. Handoff at `operations/handoffs/handoff-prompt-session-64-codifier-priority-assignment-extract.md`.
+**Next session target:** **IB-150 — `/extract-artifacts` skill update for DD-92.** Now sequence-ready: DD-92 ruling resolved; reference implementation and backfilled examples in place; skill-contract pattern established by this session's edits. Modify `/extract-artifacts` to generate ContextSpec by default in universal vocabulary and enforce the constraint. Handoff at `operations/handoffs/handoff-prompt-session-65-codifier-ib-150-extract-artifacts-update.md`.
 
 Session 63 (Codifier, 2026-04-24):
 
@@ -82,13 +82,14 @@ Session 59 (Researcher, 2026-04-23):
 - ~~**Full `_index.md` cleanup sweep**~~ — ✅ closed session 61.
 - ~~**Codifier reassess (IB-149)**~~ — ✅ closed session 62.
 - ~~**Guide-routing check (DD-81) + `/extract-artifacts`**~~ — ✅ closed session 63. 12 P2 patterns routed; 1 rule extracted; DD-92 filed.
-- **`/promote-findings` upstream drift — priority-assignment pass** (next session, session 64) — structural fix for the priority-assignment ownership gap across `/promote-findings`, `/identify-artifacts`, `/reassess-priorities`. Per session 62+63 SLs, session-58 findings were promoted at `priority: null, pipeline_status: raw`; responsibility for initial priority assignment is orphaned. Owner-adjacent governance work; Nick has directed Codifier to lead.
-- **`/extract-artifacts` next cycle** (session 64 follow-on) — IB-151 DD-92 backfill of ~9 existing extracts is the most concrete near-term extraction work. IB-150 (skill update) sequence-dependent on Nick's ack of the DD-92 direct-filing deviation.
-- **Guide re-synthesis (G2/G4/G7/G9/G10)** (session 64 stretch goal if context allows) — session-63 routing added inflow across 5 guides. Partially blocked on Lifecycle-spec Phase-1 DDs (DD-X1, DD-X3, DD-X4) for G7/G2/G9 specifically.
+- ~~**`/promote-findings` upstream drift — priority-assignment pass**~~ — ✅ closed session 64. Option A (Researcher intake / Curator authoritative); 3 skill-contract edits; shared Researcher triage rubric across both intake paths.
+- ~~**DD-92 direct-filing deviation audit**~~ — ✅ closed session 64. Option 1 (accept content-gated direct-DD-filing precedent).
+- ~~**IB-151 — DD-92 ContextSpec backfill**~~ — ✅ closed session 64. 26 consumer-facing extracts backfilled; patterns excluded per intermediate-input framing.
+- **IB-150 — `/extract-artifacts` skill update for DD-92** (next session, session 65) — generate ContextSpec by default in universal vocabulary; enforce the constraint; emit flag if `applies_to` mechanically copies source `applicability`. Sequence-ready: reference implementation and backfilled examples in place.
+- **Guide re-synthesis (G4/G10)** (session 65 stretch if context allows) — unblocked guides from session-63 inflow (G4 +2, G10 +1). G2/G7/G9 remain partially blocked on Lifecycle-spec Phase-1 DDs.
 - **Candidate 2 re-evaluation** (spec-as-governance P2 → P1) — revisit at 4th–5th independent-repo surfacing per session-62 decision.
-- **DD-92 direct-filing deviation audit** (Owner session) — Codifier filed DD-92 directly rather than via `governance/proposals/`; content was Nick-gated but filing mechanics warrant an audit. See session-63 SL "Deviations flagged" block.
+- **IB-152 — `/assess-skill` / `/assess-agent` ContextSpec audit extension** — P3; follows IB-150.
 - **IB-153 — `/dimension-rebalance` after Sub-dim 1.B** — Codifier capacity; not urgent per Nick. Will reclassify Memory Architecture findings to Context Engineering parent.
-- **IB-152 — `/assess-skill` / `/assess-agent` extension for ContextSpec audit** — P3; follows IB-150 and IB-151.
 - **Decay cluster cluster-normalization** — held per Nick; decay is a tracked research sub-dimension (1.A) but not a near-term build target.
 - **Librarian subagent template for cross-concept queries** (read-contract Q4) — position in queue TBD.
 - **DD-78 amendment** (Contract triple-role) — deferred until reference layer is more exercised.

@@ -323,7 +323,7 @@ Report:
 - **Don't link everything.** Most pairs will have no relationship. A well-linked KB targets 2-4 links per finding on average. Apply a soft cap of ~15 links per finding — beyond that, raise the threshold for additional links to that finding to prevent hub distortion.
 - **Summaries are sufficient for initial evaluation** — but summaries produce ~30% false positives on `same-problem` (the loosest test). This is expected; the mandatory Step 7 validation pass catches these using full file reads. Do NOT skip validation.
 - **same-problem is the error-prone type.** Contradicts, enables, and extends have tight binary tests that produce high-precision results from summaries alone. Same-problem's Q1 ("same problem?") is subjective enough that subagents default to YES when they see topical overlap. The anti-patterns in the prompt template exist to counter this — make sure they are included.
-- **Cross-category links are the highest value.** Same-category relationships are useful but less surprising. The real KB quality win is discovering that a Context Engineering finding `enables` an Orchestration finding — these are the insights that help the Proposer.
+- **Cross-category links are the highest value.** Same-category relationships are useful but less surprising. The real KB quality win is discovering that a Context Engineering finding `enables` an Orchestration finding — these are the insights that help the Codifier during classification and extraction.
 - **Run incrementally.** After a backfill of 20 new findings, run with `--category` for the affected categories rather than re-evaluating the entire KB.
 - **Existing links are preserved.** If a finding already has `related_findings:` entries, don't remove them — only add new ones. Dedup against existing links before proposing.
 
@@ -334,7 +334,7 @@ Reference data from the first full-KB crosslink pass (323 findings, 800 pairs ev
 - **Hit rate:** 27% (218 links from 800 pairs). If your hit rate is much higher (>40%), the subagents are likely being too loose on same-problem.
 - **Type distribution:** 89% same-problem, 5% contradicts, 4% enables, 1% extends. Same-problem dominates because it's the loosest test. If contradicts or enables are >10% of total, double-check — those are the high-precision types.
 - **Validation error rates by type:** contradicts 0% errors, enables ~40% errors (over-reach on Q2), same-problem ~30-60% errors (category proximity false positives). Budget validation time accordingly.
-- **Hub cap matters:** Without a cap, one finding (KISS Commandments) accumulated 40 links. This distorts the graph and makes that finding appear in every Proposer query. The soft cap of ~15 prevents this.
+- **Hub cap matters:** Without a cap, one finding (KISS Commandments) accumulated 40 links. This distorts the graph and makes that finding appear in every Codifier cross-finding query. The soft cap of ~15 prevents this.
 - **YAML writing:** Regex-based frontmatter editing broke 84/161 files on first attempt due to multi-line `related_findings` entries. Always use `kb_parser.write_frontmatter()` — it validates round-trip parsing before writing.
 - **Enables error rate in bulk operations:** Dedicated crosslink evaluation produces ~40% enables errors. Bulk migration/classification produces ~85% enables errors. The difference is scrutiny level. When classifying legacy untyped links, default to same-problem unless the dependency is definitional (B is an explicit sub-component of A).
 

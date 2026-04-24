@@ -3,14 +3,24 @@ title: "Initializer Agent Scaffolding Pattern"
 type: "extracted-artifact"
 assigned_form: "agent"
 source_finding: "initializer-agent-scaffolding-pattern"
-confidence: "MED"
-tier: "guided"
-reason_codes: []
-co_occurrence: "skill"
 extraction_date: "2026-04-19"
 identification_report: "2026-04-19-identification-report-4.md"
 deployed: false
 deployed_to: null
+context:
+  applies_to:
+    - "agentic coding systems that use multi-session coding loops with a dedicated first-session setup phase"
+    - "projects where exhaustive feature enumeration and progress tracking are required before coding begins"
+    - "harnesses for long-running coding agents that need an unambiguous, explicit scope definition"
+  platform_coupling: "agnostic"
+  autonomy: "all"
+  stage: "specify"
+  reversibility: "low — the initializer produces git-committed artifacts (progress tracker, init script, baseline commit) that require manual cleanup to undo; the agent definition itself is trivially removable"
+  auditability: "high — the initial git commit and feature list are persistent, inspectable records; compliance with the one-time-run constraint is verifiable via git log"
+  evidence_strength: "Strong"
+  adoption:
+    status: "Not Yet Started"
+    notes: "Documented by Anthropic as the foundation of their harness for long-running agents. No adoption within this system at time of extraction."
 contract:
   preconditions: "User has provided a high-level prompt. Project directory is writable. Running in a fresh context window. Required tooling is installed."
   invariants: "Runs exactly once per project. Every feature is marked [FAILING] at commit time. init.sh is idempotent. Git commit is the first in the project."

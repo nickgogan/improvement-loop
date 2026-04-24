@@ -3,14 +3,24 @@ title: "Fix Data and Schema Before Automating"
 type: "extracted-artifact"
 assigned_form: "rule"
 source_finding: "fix-data-schema-before-automating"
-confidence: "HIGH"
-tier: "auto"
-reason_codes: []
-co_occurrence: null
 extraction_date: "2026-04-19"
 identification_report: "2026-04-19-identification-report-4.md"
 deployed: false
 deployed_to: null
+context:
+  applies_to:
+    - "workflow automation design where agents read from or write to structured data stores"
+    - "agentic coding systems operating on knowledge bases, CRM records, or any structured data"
+    - "agent deployment gates where schema validation is a prerequisite"
+  platform_coupling: "agnostic"
+  autonomy: "all"
+  stage: "specify"
+  reversibility: "high — automation built on unvalidated data requires full halt, data audit, schema definition, and restart; accumulated dirty records may require manual remediation"
+  auditability: "high — machine-readable schemas and validation run results are directly inspectable; compliance is verifiable before automation begins"
+  evidence_strength: "Strong"
+  adoption:
+    status: "Not Yet Started"
+    notes: "Pattern is partially adopted via _schema.yaml in this project; not yet enforced as a gate before agent workflow automation."
 contract:
   preconditions: "A workflow automation is being designed that reads or writes data. The data stores are known. A schema authoring mechanism is available."
   invariants: "No automation runs against data that has not passed schema validation. Schemas are versioned and stored alongside the automation. Conflict resolution strategies are documented before the first run."

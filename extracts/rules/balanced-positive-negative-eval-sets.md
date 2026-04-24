@@ -3,14 +3,24 @@ title: "Balanced Positive and Negative Eval Sets"
 type: "extracted-artifact"
 assigned_form: "rule"
 source_finding: "balanced-positive-negative-eval-sets"
-confidence: "HIGH"
-tier: "auto"
-reason_codes: []
-co_occurrence: null
 extraction_date: "2026-04-19"
 identification_report: "2026-04-19-identification-report-4.md"
 deployed: false
 deployed_to: null
+context:
+  applies_to:
+    - "agent evaluation suite design for any decision axis (trigger vs. restrain)"
+    - "agent optimization and fine-tuning runs"
+    - "skill-assessment rubrics evaluating agent action/restraint behavior"
+  platform_coupling: "agnostic"
+  autonomy: "all"
+  stage: "verify"
+  reversibility: "low — positive-only suites that have driven optimization require reconstruction and re-run from last known-balanced checkpoint"
+  auditability: "high — class balance in an eval suite is directly measurable; negative case count is inspectable before any optimization run"
+  evidence_strength: "Strong"
+  adoption:
+    status: "Not Yet Started"
+    notes: "Claude.ai web search overtriggering documented as the reference failure case; Anthropic corrected via rebalancing after multiple refinement rounds."
 contract:
   preconditions: "An eval suite exists or is being designed for an agent decision axis. The capability has at least one identifiable scenario where restraint is correct."
   invariants: "Every eval suite used to drive optimization contains documented negative cases. Class balance is reviewed whenever new cases are added."

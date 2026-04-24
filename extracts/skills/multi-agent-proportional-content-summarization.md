@@ -3,19 +3,24 @@ title: "Multi-Agent Proportional Content Summarization to Obsidian"
 type: "extracted-artifact"
 assigned_form: "skill"
 source_finding: "multi-agent-proportional-content-summarization"
-confidence: "HIGH"
-tier: "auto"
-reason_codes:
-  - "explicit-defined-inputs-outputs"
-  - "ordered-steps"
-  - "explicit-invocation"
-  - "stateless-per-run"
-  - "mechanism-is-the-insight"
-co_occurrence: "pattern"
 extraction_date: "2026-04-20"
 identification_report: "2026-04-20-identification-report.md"
 deployed: false
 deployed_to: null
+context:
+  applies_to:
+    - "agentic coding systems that ingest long-form content (video, audio, articles, books) and need persistent, navigable knowledge artifacts"
+    - "personal knowledge management workflows using Obsidian or similar vault tools"
+    - "multi-agent orchestration pipelines where parallel subagent dispatch is available"
+  platform_coupling: "specific:claude-code"
+  autonomy: "all"
+  stage: "operate"
+  reversibility: "low — writes Obsidian notes and entity stub pages to vault; removal requires manual file deletion or vault cleanup tooling"
+  auditability: "medium — each output note is a readable artifact with source attribution; entity stub provenance is traceable via back-references; transcript acquisition step is auditable by source URL"
+  evidence_strength: "Medium"
+  adoption:
+    status: "Not Yet Started"
+    notes: "Pattern documented by a practitioner sharing the skill as installable from a URL, suggesting early community adoption; no production deployments known within this system at time of extraction."
 contract:
   preconditions: "Claude Code harness is available with subagent dispatch. Target Obsidian vault is accessible and writable. Transcript source is fetchable (yt-dlp for YouTube, Whisper for audio without transcript, readable text for articles). The vault has a stable convention for entity stub pages."
   invariants: "Summary depth is proportional to source length — short content produces concise summaries, long content produces comprehensive artifacts. Every output note carries a TLDR, timestamp index (where applicable), and entity references. Entity stub pages are created once and reused across summaries (no duplicate stubs for the same entity)."

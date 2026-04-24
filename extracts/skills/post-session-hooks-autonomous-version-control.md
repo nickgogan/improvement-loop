@@ -3,14 +3,23 @@ title: "Post-Session Hooks for Autonomous Version Control"
 type: "extracted-artifact"
 assigned_form: "skill"
 source_finding: "post-session-hooks-autonomous-version-control"
-confidence: "MED"
-tier: "guided"
-reason_codes: []
-co_occurrence: null
 extraction_date: "2026-04-19"
 identification_report: "2026-04-19-identification-report-4.md"
 deployed: false
 deployed_to: null
+context:
+  applies_to:
+    - "agentic coding systems using version-controlled repositories where session work must be preserved automatically"
+    - "multi-session agent workflows where manual commit discipline cannot be relied upon"
+  platform_coupling: "specific:claude-code"
+  autonomy: "hitl-only"
+  stage: "operate"
+  reversibility: "medium — hook configuration can be removed, but autonomous commits already pushed to remote are permanent without force-revert"
+  auditability: "high — every commit and push produces a git log entry; failure logs are explicitly required by the invariants; hook execution is traceable per session"
+  evidence_strength: "Medium"
+  adoption:
+    status: "Not Yet Started"
+    notes: "Pattern documented by practitioners running multiple concurrent agent sessions; no production deployments known within this system at time of extraction."
 contract:
   preconditions: "Git repository is initialized with a valid remote. Authorized branch and file scope are defined before hook configuration. Pre-commit hooks have been audited."
   invariants: "Hook never pushes to main or master without explicit per-session authorization. Commit failures are always logged and surfaced. Local commits are never rolled back on push failure."

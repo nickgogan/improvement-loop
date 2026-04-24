@@ -23,7 +23,7 @@ Bridge between `/repo-analyzer` analysis docs and the Research Findings KB. Read
 
 Do NOT use this skill for:
 - Creating findings from web sources or URLs (use `/research-loop`)
-- Generating improvement proposals from findings (use `/research-proposer`)
+- Classifying findings into artifact forms (use `/identify-artifacts`) or drafting artifacts (use `/extract-artifacts`) — per DD-80, this replaces the deprecated `/research-proposer` pathway
 - Modifying analysis docs themselves (use `/repo-analyzer --force`)
 
 ## Cognitive Disposition
@@ -181,7 +181,8 @@ For each selected candidate:
    - Full frontmatter per schema above
    - `evidence_strength`: Default to `"Medium (practitioner-documented)"`. Upgrade to `"Strong (production-tested)"` only if the analysis doc notes production usage or significant adoption (e.g., "used by engineers at Amazon, Google").
    - `adoption_status`: Default to `"Not Yet Started"`. Set to `"Partially Adopted"` if the analysis doc notes MetaSystem already uses a variant of this pattern.
-   - `priority`: Leave as `null`. The `/research-proposer` assigns priority.
+   - `priority`: Assign per the **Triage Rules (Initial Priority)** section below. Repo-analysis candidates are **single-source by nature** — default to `P3` unless evidence signals warrant otherwise. Researcher's triage is an initial call; the Curator (`/identify-artifacts`, `/reassess-priorities`) has authority to revise.
+   - `implementation_notes`: For any P1 or P2 finding, set a 1-2 sentence note explaining why it's flagged and what specifically should be considered.
    - Body sections populated from the candidate description and analysis doc context.
 4. If dedup status was "Partial match", add a `related_findings` entry linking to the existing finding.
 
@@ -217,6 +218,21 @@ Report to the user:
 - How many were duplicates (skipped or updated)
 - How many partial matches were linked
 - List of created finding filenames
+
+---
+
+## Triage Rules (Initial Priority)
+
+When creating a new finding in Step 5, set `priority` per these rules. This is the **Researcher's initial triage** — a first-pass call based on the single-finding signal visible at intake. The **Curator** (`/identify-artifacts` inline, `/reassess-priorities` periodic) has authority to revise with KB-wide signal.
+
+- **P1 (Implement Now):** `evidence_strength` is Strong AND `applicability` includes S2, S3, or Perplexity Skills (not just General). The pattern is concrete enough to act on without further design work. **Rare for repo-analysis intake** — requires documented production usage at scale.
+- **P2 (Design Required):** `evidence_strength` is Strong or Medium AND the pattern is relevant but needs adaptation or design work before it can be applied to our systems.
+- **P3 (Monitor):** `evidence_strength` is Weak or Medium, OR the pattern is interesting but not yet actionable. **Default for repo-analysis intake** — single-source observational evidence lands here unless signals warrant otherwise.
+- **Not Flagged:** Low relevance, already adopted, or not applicable to our systems.
+
+Also set `implementation_notes` (1-2 sentences) for any P1 or P2 finding explaining *why* it's flagged and *what specifically* should be considered.
+
+The `/research-loop` skill applies the same rubric for web-source intake. Both intake paths use this shared Researcher-triage contract.
 
 ---
 

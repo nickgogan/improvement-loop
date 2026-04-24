@@ -48,7 +48,7 @@ The Researcher thinks like a thorough, skeptical analyst — not a consultant, n
 
 - **Evidence over intuition.** A pattern is only as strong as the production evidence behind it. "Theoretically sound" is not a recommendation — it's a hypothesis. Upgrade evidence strength only when you find practitioners documenting real results.
 - **Expansive intake, ruthless extraction.** Read everything in scope. But only record patterns that are distilled and actionable. If you can't explain what it is, why it matters, and how it could fail in three concise sections, it's not ready for the KB.
-- **Neutral on implementation.** Do not form opinions about whether we should adopt a finding. That's the Proposer's job. Your job is to flag priority, note evidence strength, and move on. The moment you start advocating for adoption, you've crossed the boundary.
+- **Neutral on implementation.** Do not form opinions about whether we should adopt a finding. That's the Codifier's job (`/identify-artifacts` + `/extract-artifacts`). Your job is to flag priority, note evidence strength, and move on. The moment you start advocating for adoption, you've crossed the boundary.
 - **Source diversity is a first-class concern.** Track who says what. If three findings all trace back to the same person's blog, that's one source of evidence, not three. The Authorities DB exists to prevent over-indexing.
 - **Deduplication is intellectual honesty.** One canonical entry per pattern. When a new source covers something already in the KB, update the existing finding — don't create a new one just because the framing is slightly different.
 
@@ -62,7 +62,7 @@ The research loop is a structured methodology. It scans ten dimensions, processe
 Sources (URLs, web scans) → Extract → KB (local vault) → Delta Report → Evaluate → Enhance → Deploy
 ```
 
-This skill covers source processing, finding extraction, priority triage, and delta report generation. The research-proposer skill (separate) reads the KB and generates improvement proposals. Evaluation and enhancement are handled by prompt-evaluator and prompt-enhancer skills.
+This skill covers source processing, finding extraction, priority triage, and delta report generation. The codification pipeline (`/identify-artifacts` + `/extract-artifacts`, per DD-80) reads the KB and produces staged artifacts for deployment. Evaluation and enhancement are handled by prompt-evaluator and prompt-enhancer skills.
 
 ## Local KB Structure
 
@@ -136,7 +136,7 @@ Each finding entry gets a full page body with these sections:
 [Adoption signals, practitioner evidence, community traction]
 
 ## Potential Alternatives
-[Optional. Other approaches that solve the same problem differently. Include name, brief description, and why someone might choose it over this pattern. Helps the Proposer agent understand the decision landscape.]
+[Optional. Other approaches that solve the same problem differently. Include name, brief description, and why someone might choose it over this pattern. Helps the Codifier understand the decision landscape during classification and extraction.]
 
 ## Potential Improvements
 [Where this pattern could evolve, emerging variations]
@@ -145,7 +145,7 @@ Each finding entry gets a full page body with these sections:
 [How it could go wrong in practice, known limitations, edge cases]
 ```
 
-Keep the tone concise and distilled — the essence, not exhaustive detail. The research-proposer skill may do its own follow-up research on implementation specifics. The Potential Alternatives section is optional — include it when meaningful alternatives exist, skip it for patterns that are clearly the only viable approach.
+Keep the tone concise and distilled — the essence, not exhaustive detail. The codification pipeline (`/identify-artifacts` + `/extract-artifacts`) handles implementation-specific drafting downstream. The Potential Alternatives section is optional — include it when meaningful alternatives exist, skip it for patterns that are clearly the only viable approach.
 
 ### Research Authorities Frontmatter Schema
 
@@ -376,7 +376,7 @@ Append an `## arXiv Scan` section to the current delta report (or create a stand
 |-------|---------|------|----------|--------|
 
 ### New Findings from Papers
-[Table of new KB entries created, with Proposer Priority]
+[Table of new KB entries created, with Initial Priority]
 
 ### Updated Findings
 [Existing findings that received new academic evidence]
@@ -462,7 +462,7 @@ Save a local delta report to `systems/improvement-loop/operations/research-repor
 ## Recommendations
 
 ### Priority 1 (High Impact, Low Effort)
-[Specific patterns from the KB that the Proposer should look at]
+[Specific patterns from the KB that the Codifier should look at during classification and extraction]
 
 ### Priority 2 (High Impact, Higher Effort)
 [Patterns requiring more design work]
@@ -489,16 +489,20 @@ Review `systems/improvement-loop/operations/references/research-dimensions.md` a
 
 ---
 
-## Triage Rules (Proposer Priority)
+## Triage Rules (Initial Priority)
 
-When creating or updating findings, set the Proposer Priority field:
+This is the **Researcher's initial triage** — a first-pass call based on the single-finding signal visible at intake. The **Curator** (`/identify-artifacts` Step 3.5 inline; `/reassess-priorities` periodic deep pass) has authority to revise with KB-wide signal.
+
+When creating or updating findings, set the `priority` field:
 
 - **P1 (Implement Now):** Evidence Strength is Strong AND Applicability includes S2 or S3 or Perplexity Skills (not just General). The pattern is concrete enough to act on without further design work.
 - **P2 (Design Required):** Evidence Strength is Strong or Medium AND the pattern is relevant but needs adaptation or design work before it can be applied to our systems.
 - **P3 (Monitor):** Evidence Strength is Weak or Medium, or the pattern is interesting but not yet actionable. Revisit next cycle.
 - **Not Flagged:** Low relevance, already adopted, or not applicable to our systems.
 
-Also set Implementation Notes (1-2 sentences) for any P1 or P2 finding explaining *why* it's flagged and *what specifically* should be considered.
+Also set `implementation_notes` (1-2 sentences) for any P1 or P2 finding explaining *why* it's flagged and *what specifically* should be considered.
+
+The `/promote-findings` skill (repo-analysis intake) applies the same rubric. Both intake paths use this shared Researcher-triage contract.
 
 ---
 
@@ -506,11 +510,12 @@ Also set Implementation Notes (1-2 sentences) for any P1 or P2 finding explainin
 
 | Step | Skill | What happens |
 |------|-------|-------------|
-| 1. Research + Triage | **research-loop** (this skill) | Process sources, populate KB, set priorities, produce delta report |
+| 1. Research + Triage | **research-loop** (this skill) | Process sources, populate KB, set initial priorities (Researcher triage), produce delta report |
 | *Human gate* | | Review findings and priorities |
-| 1.5. Propose | **research-proposer** (on-demand) | Read KB, generate improvement proposals to Proposals DB |
-| 2. Evaluate | **prompt-evaluator** | Score flagged prompts against rubric |
-| 3. Enhance | **prompt-enhancer** | Rewrite flagged prompts using evaluator output |
+| 2. Identify | **identify-artifacts** | Classify findings into forms (pattern/skill/rule/template/agent); Curator priority review |
+| *Human gate* | | Review classification report |
+| 3. Extract | **extract-artifacts** | Draft staged artifacts from approved identification report |
+| *Human gate* | | Review staged artifacts |
 | 4. Deploy | Human judgment | Review, test, commit through build system |
 
 ---
@@ -536,9 +541,9 @@ Not every run needs all ten dimensions:
 - **Recency bias is intentional.** Recent production patterns > older research papers.
 - **Not every finding is a recommendation.** "Already in KB" validates existing design.
 - **The loop should get faster over time.** Early runs find many gaps; later runs find fewer.
-- **Keep findings concise.** The research-proposer skill will do its own deep dives on implementation.
+- **Keep findings concise.** The codification pipeline (`/identify-artifacts` + `/extract-artifacts`) handles implementation-level drafting.
 - **Deduplication is critical.** One canonical entry per pattern. Update existing entries, don't create duplicates.
-- **Triage is part of extraction.** Every finding gets a Proposer Priority. Don't defer this to a later step.
+- **Triage is part of extraction.** Every finding gets an initial priority (Researcher triage). Don't defer this to a later step.
 - **Write scope:** This skill writes ONLY to Research Sources, Research Findings, and Research Authorities. It does NOT write to the Improvement Proposals DB.
 - **arXiv evidence is theoretical by default.** A paper describing a memory architecture is `Weak (theoretical)` unless it reports empirical benchmarks (`Medium`) or has documented real-world adoption (`Strong`). Do not over-promote academic findings — the practitioner web scan is where production evidence lives.
 - **arXiv scans complement, not replace, web scans.** Run both for a complete picture. Papers reveal what is being explored; practitioner posts reveal what is being shipped.

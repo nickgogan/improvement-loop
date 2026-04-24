@@ -217,6 +217,30 @@ IMPORTANT: Output ONLY valid JSON objects, one per line. No markdown fencing, no
 
 **Batch launch:** Use the `Agent` tool with `model: "sonnet"` for each batch. Launch all batches in parallel.
 
+### Step 3.5: Curator Priority Review
+
+After subagent classifications are gathered and before writing the report (Step 4), perform a Curator-authority pass over each classified finding's priority.
+
+**Context.** Each finding entered with a `priority` value set by the Researcher at intake (`/promote-findings` or `/research-loop`, per the shared Triage Rules). The Researcher's triage is a useful first guess based on single-finding signal. The Curator's curation pass brings KB-wide signal — form classification result, cross-finding convergence, evidence visible only at aggregate — that the Researcher could not see at intake.
+
+**Per-finding evaluation.** For each classified finding, ask:
+
+1. Does the assigned form + confidence change the priority fit? (E.g., a rule with LOW-confidence form on weak evidence rarely warrants P2. A pattern with HIGH confidence and convergent adoption across 3+ independent orgs rarely stays at P3.)
+2. Does cross-KB signal suggest revision? (Search `related_findings` links, source corroboration, convergent implementations across watched libraries.)
+3. Does the intake-time Researcher rubric fit the pattern's actual fit now?
+
+**If revision is warranted**, record it in the identification report as a proposal — do NOT write to frontmatter. Nick gates at report review. The report's Details block gains:
+
+```markdown
+- **Current priority:** {current} (Researcher triage)
+- **Proposed priority:** {proposed} (Curator revision)
+- **Revision rationale:** {1-2 sentences citing the KB-wide signal that drove the change}
+```
+
+If no revision is warranted, omit the revision block — the finding stays at Researcher-assigned priority.
+
+**Authority.** Curator revisions are authoritative over Researcher initial triage. The Researcher's role is to produce; the Curator's role is to curate. Priority is a curation call.
+
 ### Step 4: Collect & Write Report
 
 1. Gather all subagent outputs.
@@ -285,6 +309,10 @@ findings_filtered: {M}
 - **Co-occurrence:** rule (specific constraint embedded)
 - **Rationale:** [2-3 sentence explanation from subagent]
 - **Status:** PENDING
+- **Current priority:** P3 (Researcher triage)  _[include only if Curator revision is proposed]_
+- **Proposed priority:** P2 (Curator revision)  _[include only if Curator revision is proposed]_
+- **Revision rationale:** [1-2 sentences citing KB-wide signal]  _[include only if Curator revision is proposed]_
+- **Priority-revision status:** PENDING  _[include only if Curator revision is proposed; Nick sets APPROVED/REJECTED]_
 
 [Repeat for each finding]
 ```
@@ -335,10 +363,11 @@ Guide routing: {routed_count} pattern findings mapped to guide clusters, {unrout
 
 ### Step 7: Back-Annotate Finding Files
 
-After the identification report is written, update each classified finding file's frontmatter:
+After the identification report is written AND Nick has gated proposals, update each classified finding file's frontmatter:
 
 1. Set `pipeline_status: "classified"` on every finding that was classified in this run.
 2. Leave `consumed_by: []` — this field is populated later by `/extract-artifacts` or `/synthesize-guide`.
+3. **If a Curator priority revision was proposed in Step 3.5 AND Nick approved it**, update `priority` to the new value. Do NOT write priority without Nick's approval — revisions are proposals until gated.
 
 This enables unified pipeline tracking. A finding's `pipeline_status` field answers "where is this finding in the pipeline?" without checking multiple locations.
 
@@ -346,13 +375,14 @@ This enables unified pipeline tracking. A finding's `pipeline_status` field answ
 
 ## Rules
 
-1. **Classification only.** Do not draft artifacts, do not write to `extracts/`.
+1. **Classification + curation, not extraction.** This skill classifies form (Step 3) and reviews Researcher priority triage (Step 3.5). Do not draft artifacts, do not write to `extracts/`.
 2. **Rubric is the decision spec.** Apply it mechanically. The rubric was calibrated against 50 findings (session 22).
 3. **Single form per finding** (DD-77). Note co-occurrence but do not classify as both.
 4. **Dedup is mandatory.** Check `extracts/` before classifying. Don't re-identify already-extracted findings.
 5. **Weak evidence stays as findings.** Skip `evidence_strength: "Weak (anecdotal)"` unless explicitly named.
 6. **Report format is a contract.** The Status/Form fields in the report are what `/extract-artifacts` reads. Don't change the format without updating `/extract-artifacts`.
 7. **One report per run.** If a report already exists for today's date, append a sequence number (`-2`, `-3`).
+8. **Curator authority on priority.** Initial priority is set by the Researcher at intake (`/promote-findings`, `/research-loop`). Curator revisions proposed in Step 3.5 are authoritative when Nick-approved — Researcher triage is a first guess, not the final word. Periodic bulk re-evaluation belongs to `/reassess-priorities`.
 
 ---
 

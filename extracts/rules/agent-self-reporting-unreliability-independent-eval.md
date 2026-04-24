@@ -3,18 +3,25 @@ title: "Agent Self-Reporting Unreliability and Independent Evaluation Requiremen
 type: "extracted-artifact"
 assigned_form: "rule"
 source_finding: "agent-self-reporting-unreliability-independent-eval"
-confidence: "HIGH"
-tier: "auto"
-reason_codes:
-  - "must-never-language"
-  - "deterministic-check"
-  - "enforcement-boundary"
-  - "binary-pass-fail"
-co_occurrence: null
 extraction_date: "2026-04-19"
 identification_report: "2026-04-19-identification-report-3.md"
 deployed: false
 deployed_to: null
+context:
+  applies_to:
+    - "agentic coding systems that execute tasks and report completion status"
+    - "build pipelines with automated post-task verification gates"
+    - "production agent deployments where output quality is externally measurable"
+    - "development workflows relying on agent-produced artifacts"
+  platform_coupling: "agnostic"
+  autonomy: "all"
+  stage: "verify"
+  reversibility: "trivial — prompt-level and hook-level instruction; removal is a deletion with no migration cost"
+  auditability: "high when independent checks produce structured logs; low when only agent self-attestation is retained"
+  evidence_strength: "Strong"
+  adoption:
+    status: "Not Yet Started"
+    notes: "MetaSystem's pre-commit hook system (linters, type checks) is a partial independent-evaluation analog; no post-task verification hooks deployed as of extraction date."
 contract:
   preconditions: "Success criteria for the agent task are defined before execution begins. At least one independent verification mechanism exists for the task type."
   invariants: "No agent task is marked complete based solely on agent self-report. Verification mechanisms remain structurally independent from the agent under evaluation. Verification results are logged."

@@ -243,7 +243,7 @@ dimensions_analyzed:
 | Governance | | |
 | Agent Design | | |
 
-[Rate relevance as `High`, `Medium`, `Low`, or `None`. For High/Medium, note the specific patterns observed that map to this dimension. This bridges structural analysis to the research pipeline — `/research-proposer` can read this to understand what implementation details back a pattern.]
+[Rate relevance as `High`, `Medium`, `Low`, or `None`. For High/Medium, note the specific patterns observed that map to this dimension. This bridges structural analysis to the research pipeline — `/identify-artifacts` and `/extract-artifacts` can read this to understand what implementation details back a pattern.]
 
 ### Findings Candidates
 

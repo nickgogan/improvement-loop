@@ -3,14 +3,24 @@ title: "GSD Prompt Injection Scanner Hardening"
 type: "extracted-artifact"
 assigned_form: "skill"
 source_finding: "gsd-prompt-injection-scanner-hardening"
-confidence: "HIGH"
-tier: "auto"
-reason_codes: []
-co_occurrence: null
 extraction_date: "2026-04-19"
 identification_report: "2026-04-19-identification-report-4.md"
 deployed: false
 deployed_to: null
+context:
+  applies_to:
+    - "agentic systems that ingest external content at runtime (user input, web fetches, file contents, tool outputs)"
+    - "agent harnesses requiring pre-processing security gates before content enters the agent context window"
+    - "production agent deployments where prompt injection is a credible attack vector"
+  platform_coupling: "agnostic"
+  autonomy: "all"
+  stage: "secure"
+  reversibility: "trivial — scanner is stateless and read-only; enabling or disabling it requires only hook configuration changes with no data migration"
+  auditability: "high — every FLAG and BLOCK verdict is logged with evidence before action; scan results include per-layer verdicts and triggering evidence; invariants require audit trail availability"
+  evidence_strength: "Medium"
+  adoption:
+    status: "Not Yet Started"
+    notes: "Documented as part of a versioned agentic framework changelog; no production deployments known within this system at time of extraction."
 contract:
   preconditions: "Content unit and source classification are provided. Scanner has access to Unicode tables and encoding detection. Entropy baselines are configured. Audit trail storage is available."
   invariants: "All four layers run on every scan. Overall verdict is always the most restrictive. Every FLAG and BLOCK is logged before action. Scanner never modifies the content unit."

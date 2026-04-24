@@ -3,14 +3,24 @@ title: "Correct Course: Structured Mid-Project Pivot Command"
 type: "extracted-artifact"
 assigned_form: "skill"
 source_finding: "correct-course-mid-project-pivot-command"
-confidence: "HIGH"
-tier: "auto"
-reason_codes: []
-co_occurrence: null
 extraction_date: "2026-04-19"
 identification_report: "2026-04-19-identification-report-4.md"
 deployed: false
 deployed_to: null
+context:
+  applies_to:
+    - "agentic software development workflows where story-based planning is in flight"
+    - "Scrum Master or project manager agent personas handling mid-project scope changes"
+    - "developers needing a structured pivot mechanism that preserves completed work"
+  platform_coupling: "agnostic"
+  autonomy: "hitl-only"
+  stage: "specify"
+  reversibility: "low — revised backlog and updated artifact documents require developer review before taking effect; no code is changed by the skill itself"
+  auditability: "high — every backlog change is tagged [PRESERVED], [MODIFIED], [NEW], or [REMOVED] and presented for explicit developer approval before any effect"
+  evidence_strength: "Medium"
+  adoption:
+    status: "Not Yet Started"
+    notes: null
 contract:
   preconditions: "Developer has wrapped the current in-progress story. All project artifacts are present and readable. Developer has provided a clear pivot description."
   invariants: "Completed stories marked [PRESERVED] are never modified. No backlog changes take effect without explicit developer approval. All artifact changes are declared atomically."

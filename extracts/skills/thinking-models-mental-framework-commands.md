@@ -3,14 +3,24 @@ title: "Thinking Models: Mental Framework Commands for Coding Agents"
 type: "extracted-artifact"
 assigned_form: "skill"
 source_finding: "thinking-models-mental-framework-commands-for-codi"
-confidence: "MED"
-tier: "guided"
-reason_codes: []
-co_occurrence: null
 extraction_date: "2026-04-19"
 identification_report: "2026-04-19-identification-report-4.md"
 deployed: false
 deployed_to: null
+context:
+  applies_to:
+    - "coding agents that need structured multi-angle reasoning before committing to a design or implementation decision"
+    - "agent skill libraries where on-demand reasoning frameworks can be invoked as slash commands"
+    - "specification and architecture phases where single-mode reasoning risks missing trade-offs or root causes"
+  platform_coupling: "agnostic"
+  autonomy: "all"
+  stage: "specify"
+  reversibility: "trivial — each command invocation is stateless reasoning; no files or configs are modified by the framework execution itself"
+  auditability: "medium — framework outputs are explicit structured reasoning artifacts that can be inspected; however, whether the correct framework was selected and genuinely applied (vs. cargo-culted) requires human review"
+  evidence_strength: "Medium"
+  adoption:
+    status: "Not Yet Started"
+    notes: "TACHES packages these as installable slash commands with per-model .md definition files; no production deployments known within this system at time of extraction."
 contract:
   preconditions: "Problem statement or decision context is available and sufficiently defined. The agent has access to the .md definition file for the selected framework(s)."
   invariants: "Each framework is applied independently before synthesis. Framework output is never treated as the final deliverable — it must produce a concrete downstream artifact."

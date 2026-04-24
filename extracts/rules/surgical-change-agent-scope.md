@@ -3,19 +3,24 @@ title: "Surgical Change Constraint — Agent Scope Boundary"
 type: "extracted-artifact"
 assigned_form: "rule"
 source_finding: "surgical-change-constraint-agent-scope"
-confidence: "HIGH"
-tier: "auto"
-reason_codes:
-  - "binary-must-not-constraint"
-  - "deterministic-check-at-named-boundary"
-  - "no-procedure"
-  - "no-cognitive-disposition"
-  - "hard-gate-semantics"
-co_occurrence: "pattern"
 extraction_date: "2026-04-20"
 identification_report: "2026-04-20-identification-report.md"
 deployed: false
 deployed_to: null
+context:
+  applies_to:
+    - "agentic coding systems executing bounded tasks on existing codebases"
+    - "agent harness and system prompt configurations governing edit behavior"
+    - "pre-commit or diff-verification hooks that validate task scope compliance"
+  platform_coupling: "agnostic"
+  autonomy: "all"
+  stage: "build"
+  reversibility: "medium — out-of-scope edits that have been committed require explicit revert and diff review; pre-commit enforcement makes this trivial if caught early"
+  auditability: "high — diff-scope check is fully deterministic; every changed hunk is verifiable against declared task scope"
+  evidence_strength: "Medium"
+  adoption:
+    status: "Not Yet Started"
+    notes: "Karpathy Skills CLAUDE.md encodes this as Principle 3; not yet adopted in this workspace's CLAUDE.md or hook configuration."
 contract:
   preconditions: "Task scope is declared before execution (target files, line ranges, or semantic scope). Diff tooling is available to compare pre-task and post-task state. Agent has a means to surface the intended diff before commit."
   invariants: "Agent changes are confined to the declared task scope. Edits outside declared scope are either reverted or flagged as scope violations. The declared scope is immutable for the duration of the task unless a new scope is negotiated."

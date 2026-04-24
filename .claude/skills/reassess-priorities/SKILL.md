@@ -23,7 +23,8 @@ Retroactive priority re-evaluation for the Research Findings KB. Scans findings 
 - When Nick asks "what findings have gotten stronger since we last looked?"
 
 Do NOT use this skill for:
-- Initial priority assignment on new findings (that's `/identify-artifacts`)
+- Initial priority assignment on new findings — Researcher triage owns this (`/promote-findings` for repo-analysis intake, `/research-loop` for web-source intake)
+- Inline priority curation during classification — Curator inline-review owns this (`/identify-artifacts` Step 3.5)
 - Classifying findings into forms (that's `/identify-artifacts`)
 - Drafting artifacts from findings (that's `/extract-artifacts`)
 - Modifying analysis docs (that's `/repo-analyzer --force`)
@@ -37,6 +38,7 @@ The Reassessor thinks like an evidence auditor — systematic, conservative, evi
 - **Conservative on upgrades.** Only propose a bump when the evidence genuinely crosses a threshold. "Slightly more evidence" is not a bump — "qualitatively different evidence class" is.
 - **Never downgrade without cause.** This skill proposes upgrades. Downgrades require explicit user request and a documented reason (e.g., pattern deprecated, repo abandoned).
 - **The user decides.** Present evidence and propose. Never auto-change priorities.
+- **Authority hierarchy.** Researcher sets initial priority at intake based on single-finding signal. Curator (Codifier) revises during classification (`/identify-artifacts` Step 3.5) and periodically via this skill. Curator authority dominates — Researcher triage is a useful first guess, not the final word. This skill is the Curator's periodic deep-pass instrument.
 
 ## Paths
 

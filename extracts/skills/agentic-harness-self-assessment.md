@@ -3,14 +3,24 @@ title: "Agentic Harness Self-Assessment Skill (Design + Evaluation Modes)"
 type: "extracted-artifact"
 assigned_form: "skill"
 source_finding: "agentic-harness-self-assessment-skill"
-confidence: "HIGH"
-tier: "guided"
-reason_codes: []
-co_occurrence: null
 extraction_date: "2026-04-19"
 identification_report: "2026-04-19-identification-report-4.md"
 deployed: false
 deployed_to: null
+context:
+  applies_to:
+    - "agentic coding systems undergoing harness design or architecture review"
+    - "teams assessing whether their agent harness covers foundational primitives"
+    - "greenfield agent builders selecting a minimum viable primitive set"
+  platform_coupling: "specific:claude-code"
+  autonomy: "hitl-only"
+  stage: "specify"
+  reversibility: "trivial — skill invocation produces a report or recommendation; no system state is modified"
+  auditability: "medium — assessment output is human-readable and cites specific primitives; quality depends on codebase read coverage"
+  evidence_strength: "Medium"
+  adoption:
+    status: "Not Yet Started"
+    notes: null
 contract:
   preconditions: "For Design Mode: agent description is sufficiently concrete. For Evaluation Mode: codebase is accessible and readable; the 12-primitive framework definition is available as reference."
   invariants: "Single-agent architecture is the default recommendation unless explicit justification for orchestration. Every finding in Evaluation Mode is accompanied by a concrete remediation and a confirmatory test specification."

@@ -3,18 +3,24 @@ title: "Deep Plan — 4-Agent Planning Pipeline"
 type: "extracted-artifact"
 assigned_form: "skill"
 source_finding: "extract-deep-plan-prompt-as-custom-skill"
-confidence: "HIGH"
-tier: "auto"
-reason_codes:
-  - "ordered-steps"
-  - "defined-inputs-outputs"
-  - "explicit-invocation"
-  - "stateless"
-co_occurrence: null
 extraction_date: "2026-04-19"
 identification_report: "2026-04-19-identification-report-3.md"
 deployed: false
 deployed_to: null
+context:
+  applies_to:
+    - "agentic coding systems requiring deterministic, high-quality planning passes"
+    - "any agent workflow where a planner-critic-refiner-finalizer pipeline adds value"
+    - "teams wanting to bypass server-controlled planning variant randomization"
+  platform_coupling: "specific:claude-code"
+  autonomy: "all"
+  stage: "specify"
+  reversibility: "trivial — produces a plan document; no system state is modified"
+  auditability: "high — critique log is appended to the final plan as a collapsible artifact; every blocking concern is tracked to resolution"
+  evidence_strength: "Strong"
+  adoption:
+    status: "Not Yet Started"
+    notes: null
 contract:
   preconditions: "Clear task description provided. Read access to context files. Reasoning-class model available."
   invariants: "All four stages execute in order. Critic pass is never skipped. All blocking concerns resolved before finalization. No CoT scaffolding in any prompt."

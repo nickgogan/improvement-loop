@@ -3,14 +3,24 @@ title: "Token Budget Tracking with Pre-Turn Projection Checks"
 type: "extracted-artifact"
 assigned_form: "rule"
 source_finding: "token-budget-pre-turn-projection"
-confidence: "HIGH"
-tier: "auto"
-reason_codes: []
-co_occurrence: null
 extraction_date: "2026-04-19"
 identification_report: "2026-04-19-identification-report-4.md"
 deployed: false
 deployed_to: null
+context:
+  applies_to:
+    - "agentic execution loops with configured token or turn budget parameters"
+    - "agent harness implementations that manage API call orchestration"
+    - "long-running or cost-sensitive automated agent workflows"
+  platform_coupling: "agnostic"
+  autonomy: "autonomous-only"
+  stage: "operate"
+  reversibility: "trivial — pre-turn projection is additive logic in the execution loop; removal reverts to post-hoc budget enforcement with no data loss"
+  auditability: "high — projection checks and their outcomes (proceed vs. degrade) are loggable at the execution loop layer; overage events produce explicit log entries"
+  evidence_strength: "Strong"
+  adoption:
+    status: "Not Yet Started"
+    notes: "Anthropic production Claude Code applies this pattern in its execution loop configuration; no equivalent budget projection mechanism deployed in this workspace as of extraction date."
 contract:
   preconditions: "An agentic execution loop is running with at least one configured budget parameter. A projection mechanism exists in the loop implementation."
   invariants: "No API call is issued without a preceding projection check. Budget thresholds are static for the duration of a run. A degradation path is always reachable."

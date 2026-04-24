@@ -3,14 +3,24 @@ title: "Stupid Button: Six-Question Token Waste Self-Audit Diagnostic"
 type: "extracted-artifact"
 assigned_form: "skill"
 source_finding: "stupid-button-six-question-token-audit-diagnostic"
-confidence: "HIGH"
-tier: "auto"
-reason_codes: []
-co_occurrence: null
 extraction_date: "2026-04-19"
 identification_report: "2026-04-19-identification-report-4.md"
 deployed: false
 deployed_to: null
+context:
+  applies_to:
+    - "agentic coding systems where token efficiency is operationally significant"
+    - "teams or individuals running high-volume Claude sessions who need concrete waste diagnosis, not generic advice"
+    - "context engineering audits at session boundaries or during system setup"
+  platform_coupling: "agnostic"
+  autonomy: "all"
+  stage: "operate"
+  reversibility: "trivial — diagnostic only; produces a report but does not modify any configuration or files unless the user acts on recommendations"
+  auditability: "high — invariants require all six questions answered with specific named instances and measured token counts; outputs are concrete, not generic"
+  evidence_strength: "Medium"
+  adoption:
+    status: "Not Yet Started"
+    notes: "Documented by a practitioner (Nate B Jones) with quantified cost comparisons ($8-10 sloppy vs ~$1 clean per session); no production deployments known within this system at time of extraction."
 contract:
   preconditions: "User has declared the target scope and selected an implementation tier. For Tier 2: session metadata is accessible. For Tier 3: integration infrastructure exists."
   invariants: "All six questions are answered for the declared scope. Outputs are specific (named instances, measured token counts) not generic advice. Tier escalation is a recommendation, not automatic."

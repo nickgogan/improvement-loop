@@ -3,19 +3,24 @@ title: "Reasoning Model Anti-Pattern — Prescribed Reasoning Paths Degrade Perf
 type: "extracted-artifact"
 assigned_form: "rule"
 source_finding: "reasoning-model-anti-pattern-prescribed-reasoning"
-confidence: "HIGH"
-tier: "auto"
-reason_codes:
-  - "must-not"
-  - "deterministic-check"
-  - "binary-pass-fail"
-  - "enforcement-boundary"
-  - "anti-pattern-expressible-as-check"
-co_occurrence: null
 extraction_date: "2026-04-19"
 identification_report: "2026-04-19-identification-report-3.md"
 deployed: false
 deployed_to: null
+context:
+  applies_to:
+    - "prompt authors writing system prompts, skill definitions, or agent specifications targeting reasoning-class models"
+    - "prompt evaluation and audit workflows for reasoning-model deployments"
+    - "migration of legacy prompts from non-reasoning to reasoning-class models"
+  platform_coupling: "agnostic"
+  autonomy: "all"
+  stage: "specify"
+  reversibility: "low — prompts written with prescribed reasoning patterns require full audit and rewrite; quality regressions discovered after removal require constraint-tightening, not rollback"
+  auditability: "high — anti-pattern text patterns (CoT scaffolding, few-shot blocks) are mechanically detectable via text scan; binary pass/fail per prompt"
+  evidence_strength: "Strong"
+  adoption:
+    status: "Not Yet Started"
+    notes: "Tested across GPT-5.4, Claude 4.6, Gemini 3.1; existing skill definitions in this workspace have not yet been audited for compliance."
 contract:
   preconditions: "Target model is identified as reasoning-class. Prompt author understands Goal + Constraints + Context replacement pattern."
   invariants: "No reasoning-model prompt contains CoT scaffolding, few-shot examples, self-consistency runs, least-to-most decomposition, or skeleton-of-thought. Non-reasoning model prompts are explicitly excluded."

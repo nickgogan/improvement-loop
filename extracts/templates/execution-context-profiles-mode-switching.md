@@ -3,14 +3,24 @@ title: "GSD Execution Context Profiles — Mode Switching Template"
 type: "extracted-artifact"
 assigned_form: "template"
 source_finding: "gsd-execution-context-profiles-mode-switching"
-confidence: "MED"
-tier: "guided"
-reason_codes: []
-co_occurrence: null
 extraction_date: "2026-04-19"
 identification_report: "2026-04-19-identification-report-4.md"
 deployed: false
 deployed_to: null
+context:
+  applies_to:
+    - "single-agent systems that must shift output type across task phases (implementation, research, audit)"
+    - "agentic coding workflows with distinct dev, research, and review phases"
+    - "projects where one generalist agent handles multiple output concerns rather than a specialist team"
+  platform_coupling: "agnostic"
+  autonomy: "all"
+  stage: "specify"
+  reversibility: "trivial — prompt-level template; no migration cost to remove or replace"
+  auditability: "medium — mode selection is explicit in the rendered prompt, but mode-mismatch errors may only surface in output quality, not in logs"
+  evidence_strength: "Medium"
+  adoption:
+    status: "Not Yet Started"
+    notes: null
 contract:
   preconditions: "The agent is capable of producing outputs appropriate to the selected mode. MODE is set explicitly before rendering. The task has been classified against the three-mode taxonomy."
   invariants: "One and only one mode is active per task invocation. Mode is not changed mid-task without a new rendered prompt. Template structure is preserved across all renderings."

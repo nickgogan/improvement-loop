@@ -3,14 +3,24 @@ title: "QA Agent as Independent Compliance Reviewer in Fresh Context"
 type: "extracted-artifact"
 assigned_form: "agent"
 source_finding: "qa-agent-independent-compliance-review"
-confidence: "HIGH"
-tier: "auto"
-reason_codes: []
-co_occurrence: null
 extraction_date: "2026-04-19"
 identification_report: "2026-04-19-identification-report-4.md"
 deployed: false
 deployed_to: null
+context:
+  applies_to:
+    - "multi-agent coding pipelines with a distinct review stage after implementation"
+    - "story-based or ticket-based development workflows where implementation and review are separate phases"
+    - "agentic systems requiring independent compliance checks against architecture docs and coding standards"
+  platform_coupling: "agnostic"
+  autonomy: "hitl-only"
+  stage: "verify"
+  reversibility: "trivial — the agent produces append-only report sections in an existing story file; no production state is modified"
+  auditability: "high — QA report is appended to the story file verbatim; every review pass is timestamped and traceable; the agent's read-only constraint is mechanically enforceable"
+  evidence_strength: "Medium"
+  adoption:
+    status: "Not Yet Started"
+    notes: "Standard pipeline stage in the BMad Method. Production failure mode documented by Nate B Jones ($14K voice agent with unvalidated data schemas) cited as motivating case in source finding."
 contract:
   preconditions: "Story file exists with status ready-for-review. Quinn is in a fresh context window. Architecture docs and coding standards are readable. Quinn runs on the strongest available model."
   invariants: "Quinn never modifies source code — only appends to the story file's QA section. Fresh context is non-negotiable. QA section is append-only. A report is produced for every story reviewed."

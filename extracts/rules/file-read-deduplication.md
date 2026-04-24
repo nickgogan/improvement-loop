@@ -3,14 +3,24 @@ title: "File Read Deduplication (18% Duplicate Reads, 2.6% Fleet Savings)"
 type: "extracted-artifact"
 assigned_form: "rule"
 source_finding: "file-read-deduplication-pattern"
-confidence: "MED"
-tier: "guided"
-reason_codes: []
-co_occurrence: null
 extraction_date: "2026-04-19"
 identification_report: "2026-04-19-identification-report-4.md"
 deployed: false
 deployed_to: null
+context:
+  applies_to:
+    - "agentic coding systems with file-read-heavy workflows"
+    - "custom agent harnesses where file read tool calls are interceptable"
+    - "long-session agent workflows reading large reference or configuration files repeatedly"
+  platform_coupling: "agnostic"
+  autonomy: "all"
+  stage: "operate"
+  reversibility: "trivial — deduplication layer is additive infrastructure; removing it reverts to full re-reads with no data loss"
+  auditability: "medium — stub responses are logged and distinguishable from full reads; session read history is inspectable in harness state"
+  evidence_strength: "Strong"
+  adoption:
+    status: "Not Yet Started"
+    notes: "Pattern is implemented in Claude Code's production infrastructure; not yet adopted in custom harness context as of extraction date."
 contract:
   preconditions: "Session-scoped read history is initialized at session start. The execution environment provides filesystem mtime. File read tool call is interceptable."
   invariants: "Read history is strictly session-scoped. mtime comparison is always against the live filesystem. Every full read updates the history entry. Stub response is unambiguous."

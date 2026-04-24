@@ -3,14 +3,24 @@ title: "Cross-Model Verification for Bug Finding"
 type: "extracted-artifact"
 assigned_form: "skill"
 source_finding: "cross-model-verification-for-bug-finding"
-confidence: "MED"
-tier: "guided"
-reason_codes: []
-co_occurrence: null
 extraction_date: "2026-04-19"
 identification_report: "2026-04-19-identification-report-4.md"
 deployed: false
 deployed_to: null
+context:
+  applies_to:
+    - "agentic code review pipelines where high-precision bug detection is required"
+    - "multi-model agent harnesses with access to at least two distinct LLM providers"
+    - "high-value review surfaces where false negatives carry significant risk"
+  platform_coupling: "specific:claude-code"
+  autonomy: "hitl-only"
+  stage: "verify"
+  reversibility: "trivial — skill produces a structured findings report; no code is modified"
+  auditability: "high — disagreement signal is a first-class output; all findings are classified by inter-model agreement and preserved as artifacts"
+  evidence_strength: "Medium"
+  adoption:
+    status: "Not Yet Started"
+    notes: null
 contract:
   preconditions: "Codex headless mode is available and budgeted. Claude Code sub-agent spawning is available. Review surface is scoped before invocation. Sub-agents execute in parallel with no shared state during the finding phase."
   invariants: "Finding phase and verification phase remain strictly separated — no sub-agent reads another sub-agent's output until finding is complete. Disagreement signal is never discarded; it is always surfaced as a first-class output. Human review is required for all disagreement-class findings before any remediation action."

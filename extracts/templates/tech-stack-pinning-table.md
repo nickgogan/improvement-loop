@@ -3,18 +3,24 @@ title: "Tech Stack Pinning Table for Library Drift Prevention"
 type: "extracted-artifact"
 assigned_form: "template"
 source_finding: "tech-stack-pinning-table-for-drift-prevention"
-confidence: "HIGH"
-tier: "auto"
-reason_codes:
-  - "scaffold"
-  - "named-variables"
-  - "repeatable-generation"
-  - "build-artifact"
-co_occurrence: null
 extraction_date: "2026-04-19"
 identification_report: "2026-04-19-identification-report-3.md"
 deployed: false
 deployed_to: null
+context:
+  applies_to:
+    - "agent-driven development projects where dependency substitution by the agent is a risk"
+    - "multi-agent pipelines where different agents may have divergent package preferences"
+    - "any project using always-loaded agent context to enforce structural governance"
+  platform_coupling: "agnostic"
+  autonomy: "all"
+  stage: "build"
+  reversibility: "low — the rendered pinning table embeds version decisions that require human review to change; the template itself is trivially removable"
+  auditability: "high — agent-installed packages can be mechanically compared against the pinning table; any deviation is immediately detectable via dependency manifest diff"
+  evidence_strength: "Strong"
+  adoption:
+    status: "Not Yet Started"
+    notes: "Production-validated in the BMad Method; presented in the BMad Masterclass with explicit anti-pattern description of agents substituting dependencies silently."
 contract:
   preconditions: "Dependency choices made. Update authority designated. Rendered file configured as always-loaded agent context."
   invariants: "Pinning table is single source of truth for authorized dependencies. Agents never install unlisted packages or bump versions without approval. Table reviewed at specified cadence."

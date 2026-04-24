@@ -3,14 +3,24 @@ title: "YAML Templates with Embedded Elicitation Instructions"
 type: "extracted-artifact"
 assigned_form: "template"
 source_finding: "yaml-templates-with-embedded-elicitation-instructions"
-confidence: "HIGH"
-tier: "auto"
-reason_codes: []
-co_occurrence: null
 extraction_date: "2026-04-19"
 identification_report: "2026-04-19-identification-report-4.md"
 deployed: false
 deployed_to: null
+context:
+  applies_to:
+    - "collaborative document production workflows where human judgment is required at each section"
+    - "specification and design artifacts that must not be one-shot drafted (briefs, architecture docs, PRDs)"
+    - "human-in-the-loop document authoring sessions in agentic coding or design pipelines"
+  platform_coupling: "agnostic"
+  autonomy: "hitl-only"
+  stage: "specify"
+  reversibility: "trivial — the template is a YAML file; removal or replacement has no downstream migration cost"
+  auditability: "high — section-by-section acceptance is explicit; each approved section is written to disk immediately, leaving an auditable incremental record"
+  evidence_strength: "Medium"
+  adoption:
+    status: "Not Yet Started"
+    notes: "Core mechanism of the BMad Method document production pipeline, used across Analyst, PM, and Architect agent types. No adoption within this system at time of extraction."
 contract:
   preconditions: "SECTIONS variable is fully populated with at least one entry. OUTPUT_FILE_PATH is writable. If PRIOR_ARTIFACTS is non-empty, all listed files exist. The human is available for turn-based interaction."
   invariants: "Agent writes each approved section immediately upon acceptance. Elicitation menu is presented after every section draft. Agent does not advance without explicit human signal. agent_instructions block is never removed or summarized."
