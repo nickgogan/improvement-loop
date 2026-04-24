@@ -1,10 +1,43 @@
 # Improvement Loop — Progress
 
-**Last Updated:** 2026-04-23 (session 61 close)
+**Last Updated:** 2026-04-24 (session 63 close)
 
 ## Current Focus
 
-**Session 61 complete. Cross-system disposition (not an IL-agent-role session). `_index.md` cleanup sweep executed (49 → 22 files); DD-55, DD-56, DD-65, DD-74, IB-142 amended in-session. Queue item #1 closed. Next session target: queue #2 (IB-149 reassess) as Codifier. Handoff at `operations/handoffs/handoff-prompt-session-62-codifier-ib-149-reassess.md`.**
+**Session 63 complete. Codifier disposition. Primary (guide-routing check, DD-81) + secondary (`/extract-artifacts`) both executed; in-session scope expanded to file DD-92 (ContextSpec on every extracted artifact) as companion to DD-78. Routing: 12 P2 patterns routed cleanly (G2 +4, G4 +2, G7 +2, G9 +3, G10 +1); 0 unrouted; 0 candidate guide clusters. Extraction: 1 rule artifact (`confirm-failure-first-tdd`) after DD-81 pattern filter; 15 patterns routed to `/synthesize-guide`; 2 DEFERRED on evidence. Governance: DD-92 filed (Binding); TDD rule retrofitted as reference implementation; Sub-dimension 1.B (Memory Isolation and Topology) added to `research-dimensions.md` after S2 proposal acceptance; Finding Count column removed from `guide-routing-table.md`. Follow-up: IB-150/151/152 (DD-92 rollout) + IB-153 (/dimension-rebalance).**
+
+**Next session target:** priority-assignment pass — address `/promote-findings` upstream drift (priority-assignment ownership gap across `/promote-findings`, `/identify-artifacts`, `/reassess-priorities`). Followed by `/extract-artifacts` next cycle (incl. IB-151 DD-92 backfill). Guide re-synthesis only if context allows and Lifecycle-spec Phase-1 DDs have unblocked.
+
+Session 63 (Codifier, 2026-04-24):
+
+- **Guide-routing check (DD-81).** 12 P2 patterns routed to existing active clusters; 0 unrouted; 0 candidate cluster flagged. Form-shape verified inline for the 2 IB-149 primary bumps (both patterns). Report at `operations/research-reports/guide-routing-check-2026-04-24.md` (Nick-annotated).
+- **Side findings applied.** S1: `pipeline_status: raw → classified` on `cross-platform-context-file-strategy` and `memory-bank-isolation-per-agent-per-project`. S3: hardcoded `Finding Count (P1)` column removed from `guide-routing-table.md` Active Clusters table.
+- **S2 proposal filed and accepted.** Context Engineering sub-dimension enrichment. Applied: Sub-dimension 1.B (Memory Isolation and Topology) added to `research-dimensions.md` under Dimension 1. `/dimension-rebalance` pass queued as IB-153.
+- **/extract-artifacts.** 1 rule artifact extracted (`extracts/rules/confirm-failure-first-tdd.md`); 15 patterns filtered to `/synthesize-guide` per DD-81; 2 DEFERRED on evidence grounds. Source back-annotated (`pipeline_status: classified → extracted`; `consumed_by`; extraction note in body).
+- **DD-92 filed.** ContextSpec on every extracted artifact — companion to DD-78. Universal-vocabulary constraint (no MetaSystem scope labels or IL-internal skill names on deployed artifacts). Frontmatter-only (no body duplication). 8 fields: applies_to, platform_coupling, autonomy, stage, reversibility, auditability, evidence_strength, adoption (status + notes). TDD rule retrofitted as reference implementation.
+- **4 IBs filed.** IB-150 (`/extract-artifacts` skill update), IB-151 (backfill ~9 extracts), IB-152 (`/assess-*` ContextSpec audit), IB-153 (`/dimension-rebalance` post-1.B).
+- **Deviations flagged.** Inline extraction (not subagent batch) — scope was 1 finding. DD-92 filed directly rather than via `governance/proposals/` — content was Nick-gated at every design call; deviation worth an Owner audit.
+
+Prior: Session 62 (Codifier, 2026-04-24):
+
+- **IB-149 reassess.** Ran `/reassess-priorities` per skill contract. 2 priority bumps applied; 2 holds confirmed with rationale. Skill-rubric-vs-IB-149 tension (Candidate 2) surfaced to Nick; rubric governed, hold at P2 pending 4th–5th independent-repo surfacing.
+- **Taxonomy evolution.** Added Sub-dimension 1.A (Memory Decay, Forgetting, and Compaction) under Dimension 1 with rationale, 8 search topics, 5 web queries, 5 arxiv queries, 9 seed findings, graduation criteria. Meta-section added on dimension/sub-dimension taxonomy shape. Side-fix: hardcoded count in `operations/references/CLAUDE.md` softened.
+- **Drift §1 + §2 classification sweep.** 18 null-priority findings classified inline (deviation from Sonnet-subagent contract flagged in report). 16 APPROVED (14 pattern + 1 rule + 1 pattern-guided), 2 DEFERRED on evidence grounds (`agentic-search-memory-retrieval-architecture`, `agent-native-app-store-emerging-category`). 11 × P2 + 7 × P3 priorities applied. `pipeline_status: raw → classified` on all 18.
+- **Artifacts:** `priority-reassessment-2026-04-23.md` (Nick-annotated), `2026-04-24-identification-report.md`, session-62 SL, IB-149 closed, 20 finding frontmatter updates (2 primary bumps + 18 drift sweep).
+- **Observations:** rubric-vs-note tensions surfaced rather than suppressed; inline-vs-subagent deviation was explicit; summary-count miscalculation caught on self-review; `/promote-findings` upstream drift (priority-assignment ownership gap) flagged for separate Owner-level work.
+
+Prior: Session 61 (Cross-system maintainer, 2026-04-23):
+
+- Executed the Nick-sanctioned `_index.md` cleanup sweep from the session-60 handoff. 7 phases: 12 ledger catalogs deleted, 2 simplified, 16 narrative files renamed to CLAUDE.md, 2 structure maps stripped of `Count` columns, 4 cross-system skills + 9 IL skills edited to stop writing to deleted catalogs, active-file reference leaks patched, end-state verified.
+- Nick-sanctioned in-session follow-up: amended DD-55, DD-56, DD-65, DD-74, IB-142 via DD-44 "minor refinement, same scope" path (in-place with amendment footnotes + SL entry). DD-65's broader skill-inventory drift (6 listed, 24+ actual) flagged for a separate future session.
+- Retargeted workspace PROGRESS.md at IL queue #2 (IB-149) — previous pointer was stale session-48 target.
+- New memory captured earlier this day: `feedback_check_premise_before_executing_handoff.md`. No new memory from session 61 beyond what was captured pre-handoff.
+- Three commits: sweep, DD amendments, PROGRESS retarget. Plus two SL entries: `session-61-index-md-cleanup-sweep.md`, `session-61-dd-amendments-index-md-drift.md` (both cross-system).
+- No research intake, no KB changes, no findings extractions.
+
+Prior: Session 60 (Researcher, 2026-04-23):
+
+- Bucket D killed — never Nick-sanctioned. `operations/next-scan-notes.md` deleted; live item migrated to IB-149.
 
 Session 61 (Cross-system maintainer, 2026-04-23):
 
@@ -46,12 +79,22 @@ Session 59 (Researcher, 2026-04-23):
 
 ---
 ## Nick's Prioritizaton
-- ~~**Full `_index.md` cleanup sweep**~~ — ✅ closed session 61. See `session-61-index-md-cleanup-sweep.md` and `session-61-dd-amendments-index-md-drift.md` (both cross-system SLs).
-- **Codifier reassess (IB-149) (next session)** + G7/G2/G9 re-synthesis (blocked on Lifecycle-spec Phase-1 DDs) — IB-149 unblocked; handoff at `operations/handoffs/handoff-prompt-session-62-codifier-ib-149-reassess.md`. 4 session-57 candidates flagged; 17 session-58 + 6 session-59 new findings may surface more on a full pass. Three guides further past staleness threshold.
-- **Librarian subagent template for cross-concept queries** (read-contract Q4) — cross-concept query handling noted in the read-contract but not built. Promoted from "Open IB Items" at session 60 close. Position in queue TBD.
+- ~~**Full `_index.md` cleanup sweep**~~ — ✅ closed session 61.
+- ~~**Codifier reassess (IB-149)**~~ — ✅ closed session 62.
+- ~~**Guide-routing check (DD-81) + `/extract-artifacts`**~~ — ✅ closed session 63. 12 P2 patterns routed; 1 rule extracted; DD-92 filed.
+- **`/promote-findings` upstream drift — priority-assignment pass** (next session, session 64) — structural fix for the priority-assignment ownership gap across `/promote-findings`, `/identify-artifacts`, `/reassess-priorities`. Per session 62+63 SLs, session-58 findings were promoted at `priority: null, pipeline_status: raw`; responsibility for initial priority assignment is orphaned. Owner-adjacent governance work; Nick has directed Codifier to lead.
+- **`/extract-artifacts` next cycle** (session 64 follow-on) — IB-151 DD-92 backfill of ~9 existing extracts is the most concrete near-term extraction work. IB-150 (skill update) sequence-dependent on Nick's ack of the DD-92 direct-filing deviation.
+- **Guide re-synthesis (G2/G4/G7/G9/G10)** (session 64 stretch goal if context allows) — session-63 routing added inflow across 5 guides. Partially blocked on Lifecycle-spec Phase-1 DDs (DD-X1, DD-X3, DD-X4) for G7/G2/G9 specifically.
+- **Candidate 2 re-evaluation** (spec-as-governance P2 → P1) — revisit at 4th–5th independent-repo surfacing per session-62 decision.
+- **DD-92 direct-filing deviation audit** (Owner session) — Codifier filed DD-92 directly rather than via `governance/proposals/`; content was Nick-gated but filing mechanics warrant an audit. See session-63 SL "Deviations flagged" block.
+- **IB-153 — `/dimension-rebalance` after Sub-dim 1.B** — Codifier capacity; not urgent per Nick. Will reclassify Memory Architecture findings to Context Engineering parent.
+- **IB-152 — `/assess-skill` / `/assess-agent` extension for ContextSpec audit** — P3; follows IB-150 and IB-151.
+- **Decay cluster cluster-normalization** — held per Nick; decay is a tracked research sub-dimension (1.A) but not a near-term build target.
+- **Librarian subagent template for cross-concept queries** (read-contract Q4) — position in queue TBD.
 - **DD-78 amendment** (Contract triple-role) — deferred until reference layer is more exercised.
-- **DD-65 full supersession** — flagged in session 61. Skill-inventory drift (6 listed vs 24+ actual) warrants formal supersession beyond the in-place amendment. Position in queue TBD.
+- **DD-65 full supersession** — flagged in session 61. Position in queue TBD.
 - **Retroactive migration** of ~100 existing non-guide/non-pattern extracts — per pipeline-collapse Phase M1 audit.
+- **Re-evaluate DEFERRED findings** (session 62): `agentic-search-memory-retrieval-architecture` (needs 2nd production source), `agent-native-app-store-emerging-category` (needs evidence maturity).
 
 ## Pending Nick Gates
 
@@ -59,7 +102,8 @@ Session 59 (Researcher, 2026-04-23):
 - **Lifecycle-spec Phase-1 DDs** (DD-X1, DD-X3, DD-X4) — approval unblocks G7/G2/G9 re-syntheses.
 
 ### Deferred by Nick (active)
-- **Visualization brainstorm** — boil DDs/architecture into human-visualizable form.
+- **Visualization brainstorm** — boil DDs/architecture into human-visualizable form. (Session 62 note: `interactive-explanations-extend-linear-walkthroughs` finding — now P2 — is a direct technique for this work.)
+- **Decay design-space prioritization** — cluster-normalization held; re-evaluate if Household OS or another near-term build needs principled forgetting.
 ---
 
 ## Open IB Items
