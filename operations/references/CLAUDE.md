@@ -18,5 +18,5 @@ Durable reference material for how the Improvement Loop system operates. Not ses
 
 | File | Purpose |
 |------|---------|
-| `research-dimensions.md` | Registry of 10 research dimensions scoped for IL scanning |
+| `research-dimensions.md` | Registry of research dimensions (with sub-dimensions) scoped for IL scanning |
 | `form-classification-rubric.md` | Form Router decision spec — per-form inclusion/exclusion criteria, tier dispatch, calibration findings |

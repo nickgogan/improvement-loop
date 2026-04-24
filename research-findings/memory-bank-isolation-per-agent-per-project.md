@@ -7,7 +7,7 @@ implementation_notes: If MetaSystem adopts semantic memory, ensure separate memo
 category: Memory Architecture
 evidence_strength: Medium (practitioner-documented)
 adoption_status: Not Yet Started
-priority: P3 (Monitor)
+priority: P2
 applicability:
 - General
 adopted_in: []
@@ -34,8 +34,8 @@ related_findings:
   rel: same-problem
 proposals: []
 date_discovered: '2026-04-07'
-last_updated: '2026-04-08'
-pipeline_status: raw
+last_updated: '2026-04-24'
+pipeline_status: classified
 consumed_by: []
 ---
 ## What It Is

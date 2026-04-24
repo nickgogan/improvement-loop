@@ -9,7 +9,7 @@ type: "reference"
 target_system:
   - "improvement-loop"
 created: "2026-04-19"
-updated: "2026-04-21"
+updated: "2026-04-24"
 source_dd:
   - "DD-81"
 ---
@@ -67,19 +67,21 @@ Each cluster defines a guide by the practitioner question it answers. The `stage
 
 ### Active Clusters
 
-| ID | Guide Title | Question | Stage | Dimensions | Finding Count (P1) |
-|----|------------|----------|-------|------------|-------------------|
-| G1 | Writing Agent Specifications | "How do I specify what my agent should do?" | specify | Intent, Context, Orchestration | 8 |
-| G2 | Managing Agent Context | "My agent is losing context or burning tokens" | build | Context Engineering | 26 |
-| G3 | Agent Architecture Decisions | "Should I use one agent or many? How do I compose?" | build | Orchestration, Model | 21 |
-| G3b | Agent Workflow and Execution | "How do I run agents in production?" | operate | Orchestration | 20 |
-| G4 | Building Agent Evaluation Suites | "How do I verify my agent actually works?" | verify | Evaluation | 30 |
-| G5 | Designing Agent Tools | "How do I design tools for agents?" | build | Tools | 14 |
-| G6 | Agent Safety and Permissions | "How do I make my agent system safe?" | secure | Sandboxing, Evaluation | 6 |
-| G7 | Session Persistence and Memory | "How do I handle memory and session continuity?" | operate | Context, Orchestration, Memory Architecture | 14 |
-| G8 | Model-Resilient Prompt Engineering | "How do I write prompts that survive model upgrades?" | build | Prompt, Model | 15 |
-| G9 | Agent Governance and Trust | "How do I govern agent autonomy and maintain human oversight?" | secure | Governance | 10 |
-| G10 | Agent Design Patterns | "How do I design an individual agent's identity and behavior?" | specify | Agent Design | 11 |
+Current per-cluster finding counts are not enumerated here — they drift per session and are better sourced by ripgrep on `category:` in `research-findings/*.md` at read time.
+
+| ID | Guide Title | Question | Stage | Dimensions |
+|----|------------|----------|-------|------------|
+| G1 | Writing Agent Specifications | "How do I specify what my agent should do?" | specify | Intent, Context, Orchestration |
+| G2 | Managing Agent Context | "My agent is losing context or burning tokens" | build | Context Engineering |
+| G3 | Agent Architecture Decisions | "Should I use one agent or many? How do I compose?" | build | Orchestration, Model |
+| G3b | Agent Workflow and Execution | "How do I run agents in production?" | operate | Orchestration |
+| G4 | Building Agent Evaluation Suites | "How do I verify my agent actually works?" | verify | Evaluation |
+| G5 | Designing Agent Tools | "How do I design tools for agents?" | build | Tools |
+| G6 | Agent Safety and Permissions | "How do I make my agent system safe?" | secure | Sandboxing, Evaluation |
+| G7 | Session Persistence and Memory | "How do I handle memory and session continuity?" | operate | Context, Orchestration, Memory Architecture |
+| G8 | Model-Resilient Prompt Engineering | "How do I write prompts that survive model upgrades?" | build | Prompt, Model |
+| G9 | Agent Governance and Trust | "How do I govern agent autonomy and maintain human oversight?" | secure | Governance |
+| G10 | Agent Design Patterns | "How do I design an individual agent's identity and behavior?" | specify | Agent Design |
 
 ### Unrouted Bucket
 

@@ -5,7 +5,7 @@ implementation_notes: "Reference implementation is Supermemory's ASMR sandbox. E
 category: "Memory Architecture"
 evidence_strength: "Low (single-vendor sandbox, not production-shipped)"
 adoption_status: "Exploratory"
-priority: null
+priority: P3
 applicability:
   - "General"
 adopted_in: []
@@ -26,8 +26,8 @@ related_findings:
     rel: same-problem
 proposals: null
 date_discovered: "2026-04-23"
-last_updated: "2026-04-23"
-pipeline_status: raw
+last_updated: "2026-04-24"
+pipeline_status: classified
 consumed_by: []
 ---
 

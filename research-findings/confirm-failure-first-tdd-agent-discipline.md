@@ -5,7 +5,7 @@ implementation_notes: "Embed the verification requirement in any TDD-adjacent sk
 category: "Evaluation"
 evidence_strength: "Strong (production-tested practitioner discipline)"
 adoption_status: "Not Yet Started"
-priority: null
+priority: P2
 applicability:
   - "General"
   - "S3 (Claude Code Build)"
@@ -19,9 +19,10 @@ related_findings:
     rel: same-problem
 proposals: null
 date_discovered: "2026-04-23"
-last_updated: "2026-04-23"
-pipeline_status: raw
-consumed_by: []
+last_updated: "2026-04-24"
+pipeline_status: extracted
+consumed_by:
+  - "rules/confirm-failure-first-tdd.md"
 ---
 
 ## What It Is
@@ -74,3 +75,6 @@ The implicit-definition approach is evidence of partial adoption but not reliabl
 - **Model skips verification silently.** Agent says "I confirmed the test fails" without actually running it. Mitigation: require the agent to produce the specific error message in its response.
 - **Red-verification on non-determinism.** Flaky tests may fail on one run and pass on another; red-verification doesn't distinguish. Mitigation: run multiple times or use only deterministic tests for this discipline.
 - **Overzealous application.** Not every test needs red verification — regression tests exist specifically to pass on the current code. Blanket "always verify red first" fails for retrofit testing. Mitigation: scope the discipline to new-behavior tests, not pre-existing regression coverage.
+
+## Extraction Note — 2026-04-24
+Extracted as **rule**: [[confirm-failure-first-tdd]] in `extracts/rules/`

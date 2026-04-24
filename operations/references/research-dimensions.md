@@ -1,7 +1,7 @@
 ---
 name: Research Dimensions
-description: Researcher-side scan topics — eleven dimensions naming what the Researcher scans for in the world. Read by /research-loop at scan start. Not a consumer routing layer; consumer-facing navigation is the Librarian's reference layer.
-last_updated: "2026-04-21"
+description: Researcher-side scan topics — dimensions (top-level) and sub-dimensions (second-level) naming what the Researcher scans for in the world. Read by /research-loop at scan start. Not a consumer routing layer; consumer-facing navigation is the Librarian's reference layer.
+last_updated: "2026-04-24 (session 63 — added Sub-dimension 1.B)"
 ---
 
 # Research Dimensions
@@ -20,6 +20,29 @@ This file is the **active query source** for the `/research-loop` skill. The Res
 - **Drift signal:** a dimension that begins to index by *what consumers build* rather than *what the Researcher scans* is drifting. Dimension 11 (Agentic Systems) is the edge case that forced this clarification — it names a class of operational systems the Researcher scans in the world, not a consumer artifact class. Scan-topic framing preserved.
 - **Do not grow the registry for cross-cutting consumer themes.** "Harness," "Context Rot," "Second Brain," "MCP" are consumer concepts that span aspects — they belong in the Librarian reference layer as concept files, not here. The registry grows only when a new *scan topic* surfaces with enough external research mass to need its own query shape.
 - **Findings still carry a `category:` from this registry.** That stays Researcher-side metadata (origin-of-finding). It is not a consumer-visible route.
+
+---
+
+## Taxonomy shape (dimensions + sub-dimensions)
+
+Dimensions are top-level scan topics. A **sub-dimension** is a second-level scan topic under a parent dimension — introduced only when a topic has accumulated enough external research mass to deserve its own queries, but is still best understood as a facet of a broader parent. Sub-dimensions carry their own query shape and seed-finding cluster; they do not fork a new `category:` in frontmatter.
+
+**When to elevate a sub-dimension to its own top-level dimension:** the sub-dimension's findings no longer compose primarily within the parent — they are referenced by multiple sibling dimensions, have an independent consumer concept in the Librarian reference layer, and have ≥10 findings. Until then, keep it nested.
+
+**Current taxonomy:**
+- Dimension 1: Context Engineering
+  - Sub-dimension 1.A: Memory Decay, Forgetting, and Compaction *(added 2026-04-24)*
+  - Sub-dimension 1.B: Memory Isolation and Topology *(added 2026-04-24)*
+- Dimension 2: Model
+- Dimension 3: Prompt
+- Dimension 4: Tools
+- Dimension 5: Intent
+- Dimension 6: Orchestration
+- Dimension 7: Evaluation
+- Dimension 8: Sandboxing
+- Dimension 9: Governance
+- Dimension 10: Agent Design
+- Dimension 11: Agentic Systems
 
 ---
 
@@ -43,6 +66,83 @@ This file is the **active query source** for the `/research-loop` skill. The Res
 - `retrieval augmented generation agent`
 - `long-term memory autonomous agents`
 - `cognitive architecture LLM`
+
+### Sub-dimension 1.A: Memory Decay, Forgetting, and Compaction
+
+**Why this sub-dimension.** Human memory's defining characteristic is its *selectivity* — forgetting is architecturally fundamental, not a failure mode. Agent memory systems are independently converging on the same conclusion: what gets written, what gets preserved, what gets superseded, and what expires is as load-bearing as what gets retrieved. The KB already has a three-strategy decay cluster (Memongo importance-based, Memongo surprisal-gated writes, Supermemory content-derived expiration). Elevating this as a named sub-dimension gives future scans an explicit query shape and a home for the cluster, without forking a new top-level dimension.
+
+**What to search for:**
+- Write-time filters: surprisal/novelty gates, deduplication at ingestion, contradiction detection at write
+- Decay functions: importance-based, recency-weighted, reinforcement-based (access-count), hybrid
+- Permanent-exemption patterns: identity/preference/constitution memories that bypass decay
+- Content-derived expiration: date-parsing from content, event-bound TTL, referenced-entity expiry
+- Memory versioning & supersession: Updates relationships, `isLatest` flags, superseded-but-retained history, archive-on-Nth-generation pruning
+- Cross-session compaction: when to summarize vs. drop vs. merge; two-threshold compaction strategies
+- Cognitive architecture models: ACT-R activation decay, Soar chunking, working-memory capacity, interference-based forgetting
+- Failure modes: stale-importance bloat, permanent-tag abuse, false-positive contradiction resolution, embedding-nearby-but-semantically-distinct collisions, timezone drift in content-derived dates
+
+**Web queries:**
+- `agent memory forgetting decay strategies [current year]`
+- `LLM agent memory compaction supersession [current year]`
+- `memory novelty surprisal write gating production`
+- `content-derived TTL semantic expiration agent memory`
+- `memory importance score provenance recomputation`
+
+**arXiv queries:**
+- `memory decay forgetting language model agent`
+- `continual learning memory consolidation LLM`
+- `importance-weighted memory neural network`
+- `cognitive architecture activation decay`
+- `interference-based forgetting episodic memory`
+
+**KB cluster (seed findings, 2026-04-24):**
+- `importance-based-decay-permanent-exemption` (Memongo)
+- `surprisal-novelty-as-memory-write-gate` (Memongo)
+- `content-derived-temporal-expiration-contradiction-resolution` (Supermemory)
+- `semantic-memory-decay-compaction`
+- `memory-decay-compaction-convergence`
+- `two-threshold-compaction-strategy`
+- `proactive-compaction-before-intelligence-degradation`
+- `dreaming-memory-consolidation` (referenced via same-problem from the cluster)
+- `memory-field-immutability-via-merge-operations`
+
+**Graduation criteria (when to elevate to a top-level dimension):** ≥10 findings specifically about decay mechanics (not retrieval, not storage topology), multiple sibling-dimension references to these findings (e.g., Governance using forgetting as a compliance primitive), and an independent Librarian concept file that routes consumer questions to this cluster. Until then, keep nested under Dimension 1.
+
+### Sub-dimension 1.B: Memory Isolation and Topology
+
+**Why this sub-dimension.** Memory *selectivity* (1.A) and memory *isolation* (1.B) are orthogonal concerns. Decay asks "what gets forgotten?"; isolation asks "whose memory sees what?" Multi-agent, multi-project, and multi-tenant agent systems are independently converging on isolation primitives — bank IDs, per-agent directories, tenant tags, channel-scoped recall — that prevent cross-contamination between contexts sharing a memory substrate. Extracted findings from session 63's guide-routing check revealed that `category: Memory Architecture` was orphaned — not registered as a dimension, yet admitted by the routing table. Elevating isolation as a named sub-dimension gives these findings a registered home without forking a new top-level dimension.
+
+**What to search for:**
+- Bank-ID and channel-based isolation primitives (Hindsight, mem0, Supermemory)
+- Per-agent persistent memory directories (Claude Code agent-memory pattern)
+- Per-project memory scopes; per-session vs cross-session boundaries
+- Multi-tenant memory tagging and hierarchical container schemes
+- Cross-agent memory sharing protocols; opt-in vs opt-out defaults
+- Memory access-control patterns (permissions on memory entries, ACLs on recall)
+- Scope-boundary alignment with system boundaries (system-scoped memory mirroring system-scoped governance)
+- Collision and contamination failure modes (embedding-near collisions, channel leakage, tag drift)
+
+**Web queries:**
+- `agent memory isolation per-agent per-project [current year]`
+- `multi-tenant agent memory bank id channel`
+- `multi-agent memory sharing protocol opt-in`
+- `agent memory scope boundary system`
+- `memory access control agent permissions`
+
+**arXiv queries:**
+- `multi-agent memory isolation language model`
+- `hierarchical memory scope LLM agent`
+- `cross-agent knowledge sharing protocol`
+- `multi-tenant retrieval augmented generation`
+
+**KB cluster (seed findings, 2026-04-24):**
+- `memory-bank-isolation-per-agent-per-project` (Hindsight)
+- `subagent-persistent-memory-directory` (Claude Code)
+- `hierarchical-container-tag-multi-tenancy`
+- `multi-client-context-isolation-with-shared-skills`
+- additional neighbors via same-problem links on the above
+
+**Graduation criteria (when to elevate to a top-level dimension):** Same threshold as 1.A — ≥10 findings specifically about isolation/topology mechanics (not decay, not storage medium, not retrieval algorithm), multiple sibling-dimension references to these findings, and an independent Librarian concept file that routes consumer questions here. Until then, keep nested under Dimension 1.
 
 ---
 

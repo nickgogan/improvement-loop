@@ -6,7 +6,7 @@ implementation_notes: null
 category: Context Engineering
 evidence_strength: Medium (practitioner-documented)
 adoption_status: Not Yet Started
-priority: P3
+priority: P2
 applicability:
 - S3 (Claude Code Build)
 - General
@@ -25,8 +25,8 @@ related_findings:
   rel: extended-by
 proposals: null
 date_discovered: '2026-04-09'
-last_updated: '2026-04-19'
-pipeline_status: raw
+last_updated: '2026-04-24'
+pipeline_status: classified
 consumed_by: []
 ---
 

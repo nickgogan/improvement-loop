@@ -5,7 +5,7 @@ implementation_notes: null
 category: "Evaluation"
 evidence_strength: "Medium (third-party adjudicated + independent-reproduction-corroborated)"
 adoption_status: "Not Yet Started"
-priority: null
+priority: P2
 applicability:
   - "General"
 adopted_in: []
@@ -26,8 +26,8 @@ related_findings:
     rel: same-problem
 proposals: null
 date_discovered: "2026-04-23"
-last_updated: "2026-04-23"
-pipeline_status: raw
+last_updated: "2026-04-24"
+pipeline_status: classified
 consumed_by: []
 ---
 
