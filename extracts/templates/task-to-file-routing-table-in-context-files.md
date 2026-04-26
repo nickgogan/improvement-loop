@@ -6,6 +6,7 @@ source_finding: task-to-file-routing-table-in-context-files
 extraction_date: '2026-04-26'
 last_change_session: 66
 last_change_sl: "session-66-codifier-ib-150-acceptance-test"
+version: 1
 identification_report: 2026-04-26-identification-report.md
 deployed: false
 deployed_to: null
