@@ -110,11 +110,67 @@ Phase-1 lifecycle ratification complete. The three DDs are now the live governan
 
 The 31-artifact retroactive backfill makes the entire non-guide extract corpus DD-95-conformant from session 70 forward.
 
+## Post-Phase-1 Governance Work (Nick Scope Expansion)
+
+After Phase-1 close, Nick directed two additional governance items: DD-78 amendment (Contract triple-role) and DD-65 full supersession. Both were on the standing queue (DD-78 marked `[deferred]` until reference layer is more exercised; DD-65 marked "Position TBD"). Nick judged the reference-layer-exercise threshold met (sessions 47-49 + operational use in `/assess-skill`/`/assess-agent`) and authorized both.
+
+### DD-78 Amendment — Contract Triple-Role
+
+**Path:** In-place body amendment per DD-44 §When-to-Amend ("Minor refinement, same scope"). No new DD number.
+
+**Substance:** Added new section `## Contract Triple-Role (amended 2026-04-26 per session-70 ratification)` between `## Why` and `## Related`. Names the three roles Contract sections do operationally:
+
+1. **Artifact-self-governance** (original DD-78 role) — runtime semantics: preconditions, invariants, governance, recovery for the artifact when it fires.
+2. **Emergent audit criteria** — `/assess-skill` and `/assess-agent` derive WHAT TO CHECK directly from Contract content. No separate audit-criteria schema; Contract IS the audit criteria.
+3. **Audit-applicability gating** — Contract `preconditions` act as gates determining WHETHER audit checks fire ("Preconditions-as-gates pattern" in `operations/references/librarian/audit.md`).
+
+**Provenance:** Roles 2 and 3 surfaced during the Librarian reference-layer build (sessions 47-49). The Contract triple-role flag in session-48 SL was the initial framing flag; session-49 SL UC-6.2 was the second; session-70 codifies. Three sessions of operational use cleared the "wait for recurrence" threshold from standing feedback principles.
+
+**Frontmatter touch:** Added `updated: "2026-04-26"`. Status unchanged (Binding). `date: "2026-04-11"` preserved.
+
+**Cross-References update:** Added the operational anchors (`audit.md`, `agent.md`, `2026-04-21-librarian-use-case-registry.md`) and the three SL provenance links (sessions 48, 49, 70).
+
+**Outcome:** DD-78 is now self-describing for the consumer-side audit pathway. Future agent sessions reading DD-78 will encounter the triple-role property without needing to grep SLs to understand why Contract is the universal interface.
+
+### DD-65 Supersession — Path B (No Successor)
+
+**Path:** Status change + body callout per DD-44 §Mark-as-Superseded-no-successor ("DD no longer applies, no successor needed"). Two paths were presented to Nick (Path A: file successor DD; Path B: no-successor supersession). Nick chose Path B.
+
+**Rationale presented:** Path A would require a new DD that recapitulates DD-80/82/83/86/89/91 + the local-first KB data model — duplicated content, conflicts with token-economy principle. Path B preserves history, marks DD-65 inactive for query purposes, points future readers to the live references already in place.
+
+**Substance:**
+
+- **Frontmatter:** `status: "Binding"` → `status: "Superseded"`. Added `updated: "2026-04-26"`. `supersedes: "DD-35"` preserved (DD-65's own predecessor link).
+- **Body callout** added at top, before existing "For agents" line. Enumerates piecewise supersession:
+  - **Skill inventory + 4-agent architecture:** DD-82
+  - **Pipeline:** DD-80
+  - **On-demand research:** DD-83
+  - **Owner autonomy:** DD-86
+  - **Reference layer architecture:** DD-89 (four-zone)
+  - **Reflections-to-proposals:** DD-91
+  - **Local-first KB data model + Perplexity toolchain:** `systems/improvement-loop/CLAUDE.md` + DD-29 + DD-49
+- **Body content preserved.** Per DD-44 §1 ("Never delete or renumber a DD"), the 2026-04-06 snapshot remains as historical record.
+
+**Cross-reference scan (DD-44 §Rollout step 5):** Searched all DD files for references to DD-65. The only non-self reference is `DD-35.md`, which is itself already Superseded (DD-35 has `status: "Superseded"` and `superseded_by: "DD-65"`). No active Binding DDs reference DD-65. The supersession chain `DD-35 → DD-65 → [piecewise]` is preserved without further edits.
+
+**Outcome:** DD-65 is now filtered out of `status: "Binding"` queries. The active IL state is fully described by the union of DD-80/82/83/86/89/91 + IL CLAUDE.md + `_schema.yaml`. The 2026-04-06 historical snapshot remains accessible for provenance.
+
+### Per-Action Summary
+
+| Action | DD | Mechanic | Result |
+|---|---|---|---|
+| Amend | DD-78 | In-place body section + Cross-Refs update + `updated:` field | Status remains Binding; triple-role framing now self-described |
+| Supersede | DD-65 | Status change + body callout + `updated:` field | Status now Superseded; piecewise supersession chain enumerated |
+
+No new DD numbers consumed. Two existing DDs touched in-place per their respective DD-44 paths.
+
 ## Cross-References
 
 - **Lifecycle spec (frozen reference):** `project-management/design-notes/2026-04-20-artifact-lifecycle-spec.md`
-- **Filed DDs:** `project-management/design-decisions/DD-93.md`, `DD-94.md`, `DD-95.md`
+- **Filed DDs (Phase 1):** `project-management/design-decisions/DD-93.md`, `DD-94.md`, `DD-95.md`
 - **Filed IBs:** `project-management/implementation-backlog/IB-154.md`, `IB-155.md`, `IB-156.md`
+- **Amended DD:** `project-management/design-decisions/DD-78.md` (Contract triple-role)
+- **Superseded DD:** `../meta-system/project-management/design-decisions/DD-65.md`
 - **Schema:** `_schema.yaml` (Lifecycle Tracking block)
 - **Predecessor SL:** `session-69-codifier-g3-entry15-fold-in.md`
 - **Handoff input:** `operations/handoffs/handoff-prompt-session-70-owner-lifecycle-spec-phase1-unblock.md`

@@ -1,10 +1,16 @@
 # Improvement Loop — Progress
 
-**Last Updated:** 2026-04-26 (session 70 close — Lifecycle-spec Phase-1 ratified)
+**Last Updated:** 2026-04-26 (session 70 close — Lifecycle-spec Phase-1 ratified + DD-78 amended + DD-65 superseded)
 
 ## Current Focus
 
-Owner disposition. Session 70 ratified Phase-1 of the artifact lifecycle spec — three DDs filed (DD-93 preserved-section enforcement, DD-94 guide companion changelog, DD-95 non-guide `last_change_*` frontmatter). All three accepted as-spec. Three implementation IBs queued (IB-154, IB-155, IB-156). `_schema.yaml` updated with the two new fields. 31-artifact retroactive backfill executed in-session per Nick directive (scope expansion from spec's deferred IB framing). Session-70 SL: `session-70-owner-lifecycle-spec-phase1-ratification.md`.
+Owner disposition. Session 70 closed three governance items:
+
+1. **Lifecycle-spec Phase-1 ratification.** DD-93 (preserved-section enforcement), DD-94 (guide companion changelog), DD-95 (non-guide `last_change_*` frontmatter). All accepted as-spec. IB-154/155/156 queued. `_schema.yaml` updated. 31-artifact backfill executed in-session.
+2. **DD-78 amendment.** Contract triple-role framing added — Contract sections operationally do three jobs (artifact-self-governance + emergent audit criteria + audit-applicability gating). In-place body amendment per DD-44 §When-to-Amend. Status remains Binding.
+3. **DD-65 supersession.** Path B (no-successor) per DD-44 §Mark-as-Superseded-no-successor. Body callout enumerates piecewise supersession by DD-80/82/83/86/89/91 + IL CLAUDE.md + DD-29/49. Status changed Binding → Superseded.
+
+Session-70 SL: `session-70-owner-lifecycle-spec-phase1-ratification.md`.
 
 **Next session target (Codifier disposition):** **G7 / G2 / G9 re-synthesis.** Phase-1 ratification has unblocked the largest pending Codifier unit. G7 is the most overdue (+11 findings since last synthesis). Re-synthesis runs against the new lifecycle contract — `/synthesize-guide` will need IB-154 + IB-155 implementation work to honor preserved sections and write companion changelog entries.
 
@@ -20,8 +26,6 @@ Ordered queue. Status markers: `[nick-gate]` waits on Nick's ruling; `[deferred]
 - **Candidate 2 re-evaluation** (spec-as-governance P2 → P1) — [trigger] revisit at 4th–5th independent-repo surfacing per session-62 decision.
 - **IB-153** — /dimension-rebalance after Sub-dim 1.B. Codifier capacity; not urgent per Nick. Will reclassify Memory Architecture findings to Context Engineering parent.
 - **Librarian subagent template** for cross-concept queries (read-contract Q4). Position TBD.
-- **DD-78 amendment** — Contract triple-role. [deferred] until reference layer is more exercised.
-- **DD-65 full supersession** — skill-inventory drift flagged session 61 (6 listed, 24+ actual). Position TBD.
 - **Retroactive migration of ~100 non-guide/non-pattern extracts** — per pipeline-collapse Phase M1 audit.
 - **Re-evaluate DEFERRED findings** (session 62): `agentic-search-memory-retrieval-architecture` ([trigger] 2nd production source), `agent-native-app-store-emerging-category` ([trigger] evidence maturity).
 - **Lifecycle-spec Phase-2 / Phase-3 DDs (DD-X2, DD-X5–X9)** — [deferred] sequence after Phase-1 ratification lands. Out of scope for session 70.
