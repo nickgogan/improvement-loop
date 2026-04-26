@@ -1,14 +1,15 @@
 # Improvement Loop — Progress
 
-**Last Updated:** 2026-04-26 (session 70 close — Lifecycle-spec Phase-1 ratified + DD-78 amended + DD-65 superseded)
+**Last Updated:** 2026-04-26 (session 70 close — Lifecycle-spec Phase-1 + Phase-2 ratified, DD-78 amended, DD-65 superseded)
 
 ## Current Focus
 
-Owner disposition. Session 70 closed three governance items:
+Owner disposition. Session 70 closed four governance items:
 
 1. **Lifecycle-spec Phase-1 ratification.** DD-93 (preserved-section enforcement), DD-94 (guide companion changelog), DD-95 (non-guide `last_change_*` frontmatter). All accepted as-spec. IB-154/155/156 queued. `_schema.yaml` updated. 31-artifact backfill executed in-session.
 2. **DD-78 amendment.** Contract triple-role framing added — Contract sections operationally do three jobs (artifact-self-governance + emergent audit criteria + audit-applicability gating). In-place body amendment per DD-44 §When-to-Amend. Status remains Binding.
 3. **DD-65 supersession.** Path B (no-successor) per DD-44 §Mark-as-Superseded-no-successor. Body callout enumerates piecewise supersession by DD-80/82/83/86/89/91 + IL CLAUDE.md + DD-29/49. Status changed Binding → Superseded.
+4. **Lifecycle-spec Phase-2 ratification.** DD-96 (source drift detection — Codifier on-demand `/detect-drift` skill, no autonomous regen, Nick gates re-extraction). DD-97 (extension rubric for rules/skills — LLM-loose calibration (i), propose-don't-decide, Nick gates merge). Both accepted as-spec. IB-157/158 queued.
 
 Session-70 SL: `session-70-owner-lifecycle-spec-phase1-ratification.md`.
 
@@ -22,18 +23,16 @@ Ordered queue. Status markers: `[nick-gate]` waits on Nick's ruling; `[deferred]
 
 - **G7 / G2 / G9 re-synthesis** — top unblocked Codifier unit. G7 most overdue (+11 findings). Requires IB-154 + IB-155 work to honor DD-93 preservation and DD-94 companion changelog on the regen path.
 - **IB-154 / IB-155 / IB-156** — Phase-1 implementation work. IB-154 + IB-155 are gating for G7/G2/G9 re-synthesis (skill must honor preservation + write changelog entries before next regen). IB-156 is independent — `/extract-artifacts` writer update for `last_change_*` going forward.
+- **IB-157 / IB-158** — Phase-2 implementation work. IB-157 builds the on-demand `/detect-drift` skill (DD-96). IB-158 adds the corpus-scan + extension-proposal step to `/extract-artifacts` (DD-97). Both Codifier scope; both unblocked.
 - **Promote `harness-engineering-third-evolution` from `raw` to `classified`** — adjacent and reinforcing to G3 Step 8 (added session 69). Researcher-or-Codifier scope, low-cost. Position TBD; could fold into next intake or `/identify-artifacts` pass.
 - **Candidate 2 re-evaluation** (spec-as-governance P2 → P1) — [trigger] revisit at 4th–5th independent-repo surfacing per session-62 decision.
 - **IB-153** — /dimension-rebalance after Sub-dim 1.B. Codifier capacity; not urgent per Nick. Will reclassify Memory Architecture findings to Context Engineering parent.
 - **Librarian subagent template** for cross-concept queries (read-contract Q4). Position TBD.
 - **Retroactive migration of ~100 non-guide/non-pattern extracts** — per pipeline-collapse Phase M1 audit.
 - **Re-evaluate DEFERRED findings** (session 62): `agentic-search-memory-retrieval-architecture` ([trigger] 2nd production source), `agent-native-app-store-emerging-category` ([trigger] evidence maturity).
-- **Lifecycle-spec Phase-2 / Phase-3 DDs (DD-X2, DD-X5–X9)** — [deferred] sequence after Phase-1 ratification lands. Out of scope for session 70.
+- **Lifecycle-spec Phase-3 DDs (DD-X5, DD-X6, DD-X8, DD-X9)** — [deferred] guide-split / theme-graduation / template-and-agent versioning / co-occurrence harvesting. Phase 1 + Phase 2 ratified session 70.
 - **Visualization brainstorm** — [deferred] boil DDs/architecture into human-visualizable form. Session 62: `interactive-explanations-extend-linear-walkthroughs` finding (P2) is a direct technique for this work.
 - **Decay cluster-normalization** — [deferred] held per Nick; decay tracked as sub-dim 1.A research, not a near-term build target. Re-evaluate if Household OS or another near-term build needs principled forgetting.
-- **First /solicit-proposals round** — [deferred] infrastructure live; thrice-deferred. Waits until Nick directs a dedicated Owner session.
-- **Deploy 11 guides** from `extracts/guides/` to `meta-system/knowledge/guides/` — [deferred] paused pending pipeline-collapse decision.
-- **Test three assess-\* skills against real artifacts** — [trigger] seeds first encounter log once tracking is approved.
 - **`agent.md` variant-depth iteration** — [trigger] demand-driven on concrete consumer queries; variants (prompt-based / harness-based / autonomous-vs-supervised) exist as stubs per session-49 gate.
 - **Weight calibration** for use-case-registry core/long-tail estimates — [trigger] meaningful once encounter tracking accumulates data.
 - **`/summarize-encounters` skill build** — [trigger] volume trigger or Nick's brief.

@@ -164,11 +164,67 @@ After Phase-1 close, Nick directed two additional governance items: DD-78 amendm
 
 No new DD numbers consumed. Two existing DDs touched in-place per their respective DD-44 paths.
 
+## Lifecycle-Spec Phase-2 Ratification (Nick Scope Expansion)
+
+After the post-Phase-1 governance items (DD-78 amendment + DD-65 supersession), Nick directed Phase-2 of the lifecycle spec — the two remaining non-guide-lifecycle DDs (DD-X2 source drift detection, DD-X7 extension rubric for rules / skills). Per spec §Recommendation Shape, Phase 2 was the natural next batch ahead of Phase 3 (which addresses creation/structural questions and is deferred).
+
+### DD-96 (DD-X2) — Source Drift Detection
+
+**Substance:** Non-guide extracts (rules / skills / templates / agents) are scanned on-demand for source drift. Trigger: `source_finding.updated > artifact.extraction_date` (strict; equal dates not drift). Response: emit drift report at `operations/drift-reports/<YYYY-MM-DD>-source-drift.md` with closed three-value Recommendation enum (`re-run /extract-artifacts on this finding` | `dismiss as cosmetic` | `reclassify`). Read-only invariant — scan never modifies artifacts; never auto-re-extracts. Nick gates re-extraction.
+
+**Trigger mechanism — three options considered, (a) selected:** (a) on-demand new skill (cheapest mechanism cost; matches IL operational rhythm), (b) embedded in `/extract-artifacts` (couples concerns), (c) periodic (premature operational discipline). Initial draft proposed Curator ownership (mistaken read of Nick's directive); corrected to Codifier ownership per Nick's clarification — drift detection is Codifier's territory, not the planned Vault Curator's broader vault-integrity scope.
+
+**Producer/consumer pairing with DD-95:** DD-95 records when an artifact changed (last_change_session pointer); DD-96 detects when source content changed. Together they cover both sides of the drift window for non-guide extracts.
+
+**No-autonomous-regen invariant:** intentionally rejected the natural temptation to re-extract on detected drift. Source updates are not always artifact-relevant; the DD-29 stage-boundary gate is structural. Report-only matches the gate.
+
+**Frontmatter:** `target_system: "Improvement Loop"`, `scope_category: "Process"`, status Binding from filing. New directory `operations/drift-reports/` will be created on first scan run (IB-157 implementation work).
+
+### DD-97 (DD-X7) — Extension Rubric for Rules / Skills
+
+**Substance:** Before drafting a new rule or skill artifact, `/extract-artifacts` scans the matching `extracts/{rules,skills}/` directory for semantically similar artifacts. On match, emit a structured extension proposal (candidate + existing artifact + diff sketch + Codifier recommendation from closed enum: `extend existing` | `create new (false positive)` | `parameterize as mode variant`). Skill does NOT auto-merge; Nick rules per proposal. No-match path unchanged from current behavior.
+
+**Per-class extension shape:**
+- **Rule:** append a row to existing rule's "Evidence" section; body wording delta optional (Codifier proposes; Nick gates).
+- **Skill:** add mode flag to existing skill's invocation contract; original behavior remains default; new variant documented as mode option.
+
+**Templates and agents are out of scope** — templates use versioning per future DD-X8 (deferred Phase 3); agents never auto-create per spec §2.3 (DD-82 governs the 4-agent architecture).
+
+**Calibration — Open Question 5 resolution.** Three calibrations were presented: (i) LLM judgment, loose; (ii) ContractSpec-overlap structured; (iii) hybrid (both signals required). Nick selected **(i)**. Rationale: starting strict and loosening on observed under-firing is harder than starting loose and tightening on observed false-positive volume. Nick gate is the structural backstop — false positives cost one read, not a corpus violation. Promotion to (ii) or (iii) requires a follow-up DD if false-positive volume justifies it.
+
+**Why now (vs deferring on the "tolerate one-off" principle):** corpus is at 12 rules + 12 skills today; mechanism cost is low while corpus is small. Same logical pattern as DD-94 (companion changelogs) — install discipline before volume forces a retrofit. Past 50 of either form, manual review burden compounds.
+
+### Per-DD Phase-2 Ruling Table
+
+| DD | Title | Ruling | Notes |
+|---|---|---|---|
+| **DD-96** | Source drift detection (non-guide extracts) | **Accepted as-spec, calibration (a) on-demand** | First-draft ownership corrected from Curator → Codifier per Nick clarification. No structural changes. |
+| **DD-97** | Extension rubric for rules / skills | **Accepted as-spec, calibration (i) LLM-loose** | Open Q5 resolved in favor of loose recall + Nick-gate backstop. Calibration tightening deferred to follow-up DD if needed. |
+
+### Per-IB Phase-2 Scope
+
+| IB | DD | Scope | Priority |
+|---|---|---|---|
+| **IB-157** | DD-96 | Build new on-demand `/detect-drift` skill at `.claude/skills/detect-drift/SKILL.md`. Procedure: enumerate non-guide extracts; resolve `source_finding`; compare dates; emit drift entries (closed Recommendation enum) at `operations/drift-reports/<YYYY-MM-DD>-source-drift.md`. Read-only invariant. 6 acceptance cases. Codifier scope. P2. New directory created on first scan. |
+| **IB-158** | DD-97 | Update `.claude/skills/extract-artifacts/SKILL.md` to add corpus-scan step before drafting rule or skill artifacts. LLM-loose semantic-similarity check. Emit structured extension proposal on match (candidate + existing artifact + diff sketch + recommendation). Templates/agents skip the rubric. No-match path unchanged. 6 acceptance cases. Codifier scope. P2. |
+
+Both IBs are unblocked (no upstream dependencies). IB-157 builds a new skill; IB-158 modifies an existing skill.
+
+### Phase-2 Summary
+
+| Action | DD | Mechanic | Result |
+|---|---|---|---|
+| File | DD-96 | New DD; Codifier ownership; on-demand trigger; report-only | Source drift detection is now codified. Producer-side counterpart to DD-95's consumer-side pointer. |
+| File | DD-97 | New DD; LLM-loose calibration (i); propose-don't-decide; Nick-gate merge | Extension rubric prevents redundant artifacts at corpus scale. Templates/agents deferred to Phase 3. |
+
+**Out of scope for session 70:** Phase 3 (DD-X5 split, DD-X6 graduation, DD-X8 versioning, DD-X9 co-occurrence harvesting) remains deferred per spec §Recommendation Shape. Phase 3 addresses creation/structural lifecycle questions; less time-pressured than Phase 1 (clobber risk) or Phase 2 (drift / redundancy).
+
 ## Cross-References
 
 - **Lifecycle spec (frozen reference):** `project-management/design-notes/2026-04-20-artifact-lifecycle-spec.md`
 - **Filed DDs (Phase 1):** `project-management/design-decisions/DD-93.md`, `DD-94.md`, `DD-95.md`
-- **Filed IBs:** `project-management/implementation-backlog/IB-154.md`, `IB-155.md`, `IB-156.md`
+- **Filed DDs (Phase 2):** `project-management/design-decisions/DD-96.md`, `DD-97.md`
+- **Filed IBs:** `project-management/implementation-backlog/IB-154.md`, `IB-155.md`, `IB-156.md`, `IB-157.md`, `IB-158.md`
 - **Amended DD:** `project-management/design-decisions/DD-78.md` (Contract triple-role)
 - **Superseded DD:** `../meta-system/project-management/design-decisions/DD-65.md`
 - **Schema:** `_schema.yaml` (Lifecycle Tracking block)
