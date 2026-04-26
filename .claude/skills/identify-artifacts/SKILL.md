@@ -374,12 +374,91 @@ For each Active Cluster row in the routing table, evaluate the DD-98 split trigg
 
 **Read-only by contract.** This step never auto-executes a split, never writes destination guides, never updates the routing table, never deprecates the source guide, never modifies DD-94 changelog files. Both detection paths (`/synthesize-guide` Step 0.7 AND `/identify-artifacts` Step 6.a) emit identical proposal artifact shapes — the proposal path and shape are skill-agnostic. If both skills detect on the same trigger in the same cycle, both emissions are written (filename collision triggers `-2`/`-3` suffix); Nick reads the latest and the duplicates are audit-trail.
 
+**Step 6.b — Theme-Graduation Detection (DD-99).** For the Unrouted Bucket section of the routing table, evaluate the DD-99 graduation trigger (conjunction; both required):
+
+(i) **Finding-count threshold:** the bucket holds ≥5 unrouted findings clustered by category, tag, or `same-problem` link.
+
+(ii) **Linkage threshold:** at least one `same-problem` relationship spans the cluster (per the four-relationship type system codified by `/finding-crosslink`). Categorical co-occurrence WITHOUT `same-problem` linkage does NOT trigger graduation — that's a tag mistake, not a coherent emerging theme.
+
+**Outcome dispatch:**
+
+| Trigger result | Action |
+|----------------|--------|
+| **Both thresholds met** | (a) Flag the cluster in the identification report's 'Candidate Cluster' section per spec §2.4 with a `**DD-99 graduation candidate**` marker. (b) Emit a structured graduation-proposal artifact at `operations/graduation-proposals/<YYYY-MM-DD>-<theme>-graduation-proposal.md` with PROMOTE / ABSORB / DEFER recommendation per the proposal shape below. (c) Surface a heads-up in the identification report summary: "⚠ DD-99 graduation trigger fired for theme `<theme>` — proposal at `operations/graduation-proposals/<filename>`." |
+| **Count ≥5 only (no `same-problem` linkage)** | NO proposal. Cluster is categorical co-occurrence; surface inline in the identification report's narrative ("Unrouted bucket has `<count>` findings tagged `<category>`; no `same-problem` linkage detected — likely categorical accident, not an emerging theme.") and continue. |
+| **Linkage present but count <5** | NO proposal. Sub-threshold mass; surface inline as informational ("Unrouted bucket has `<count>` findings with `same-problem` linkage; below volume threshold. Monitor for additional findings."). |
+| **Neither** | No-op. |
+
+**Cross-dimension flag.** If the cluster's findings span ≥2 existing dimensions per the routing table's Dimension → Guide mapping, set the proposal's cross-dimension flag. **Cross-dimension findings disqualify ABSORB** — Codifier's recommendation MUST be PROMOTE or DEFER; ABSORB-with-cross-dimension is invalid by contract per DD-99 §The Constraint.
+
+**Graduation-proposal artifact shape (per DD-99 §Response):**
+
+```markdown
+---
+type: "graduation-proposal"
+target_system:
+  - "improvement-loop"
+generated_by: "/identify-artifacts"
+date: "<YYYY-MM-DD>"
+theme_name: "<proposed-theme-name>"
+finding_count: <int>
+cross_dimension: <bool>
+session: <int>
+sl: "<active-sl-stem>"
+---
+
+# Graduation Proposal — <Proposed Theme Name>
+
+## Theme identity
+
+- **Proposed theme name:** "<theme name>"
+- **Current Unrouted Bucket entries:** [[finding-stem-1]], [[finding-stem-2]], ... (total finding count <int>)
+
+## Linkage map
+
+`same-problem` relationships among the findings:
+
+- [[finding-1]] ↔ [[finding-2]] (same-problem: "<problem statement>")
+- [[finding-2]] ↔ [[finding-3]] (same-problem: "<problem statement>")
+- ...
+
+(Cross-category and cross-dimension links called out explicitly.)
+
+## Cross-dimension flag
+
+`cross_dimension: <true | false>` — set when findings span ≥2 existing dimensions per the routing table's Dimension → Guide mapping.
+
+## Path recommendation (closed enum)
+
+**Recommendation:** `PROMOTE — new dimension + guide cluster` | `ABSORB — into existing dimension` | `DEFER — sub-threshold linkage`
+
+**Rationale:** <1–3 lines explaining why this recommendation. Cite structural distinctness (PROMOTE), sub-theme-of-existing-dimension fit (ABSORB), or weak linkage / single connector (DEFER).>
+
+**Note on cross-dimension constraint:** if `cross_dimension: true`, ABSORB is INVALID — recommendation MUST be PROMOTE or DEFER per DD-99 §The Constraint.
+
+## Per-path execution sketch
+
+What artifacts the executing path would touch:
+
+- **PROMOTE:** `operations/references/research-dimensions.md` (add new dimension entry); routing table (add new Active Cluster row + new Synthesis Status row + Dimension → Guide mapping update + Unrouted Bucket entries removed + History entry); new guide stub at `extracts/guides/<new-stem>.md` via `/synthesize-guide`; new companion changelog with `theme-graduation` first entry (per DD-94 enum amendment).
+- **ABSORB:** routing table (Dimension → Guide mapping updated to reflect absorbed sub-theme; Unrouted Bucket entries removed; History entry; no new Active Cluster row); `/dimension-rebalance` run reclassifies affected findings to destination dimension; destination guide's next regen uses `dimension-rebalance` trigger (DD-94 enum existing tag — no amendment needed for ABSORB path).
+- **DEFER:** no execution; cluster monitored on next research-loop cycle.
+```
+
+**Stale-proposal hygiene.** If between proposal emission and Nick's ruling the cluster's finding count drops below 5 (a finding gets reclassified, the bucket gets repaired by `/linkage-repair`, etc.), Codifier flags the proposal as stale on the next detection cycle: append `## Stale as of <YYYY-MM-DD>` header below the title heading. The stale proposal is RETAINED for audit (not deleted); a new proposal supersedes if the cluster re-crosses threshold later.
+
+**Read-only by contract.** Step 6.b never auto-executes either path: never edits research-dimensions.md, never updates the routing table, never creates new guide stubs, never invokes `/dimension-rebalance`. Execution requires Nick's ruling — DD for PROMOTE; ruling-on-proposal + routing-table update + `/dimension-rebalance` invocation for ABSORB.
+
+**One proposal, one recommendation.** Per DD-99 §Rules #3, the proposal carries exactly ONE path recommendation. Ambiguity (PROMOTE-vs-ABSORB undecided) defaults to DEFER with explanation; emitting a proposal without a recommendation is a defect.
+
 **Report addition:**
 ```
 Guide routing: {routed_count} pattern findings mapped to guide clusters, {unrouted_count} unrouted.
 {If candidate cluster detected:} ⚠ Candidate guide cluster detected in unrouted bucket ({count} related findings). Review for new guide creation.
 {If split trigger fired (DD-98):} ⚠ Split trigger fired for {S} cluster(s): {list of guide-stems}. Proposals at operations/split-proposals/.
 {If single-condition observation (DD-98):} Monitor: {list of cluster observations from the dispatch table}.
+{If graduation trigger fired (DD-99):} ⚠ Graduation trigger fired for theme '{theme}': {finding count} findings with same-problem linkage. Proposal at operations/graduation-proposals/<filename>. Recommendation: {PROMOTE|ABSORB|DEFER}.
+{If single-condition graduation observation (DD-99):} Monitor: {bucket-state observation from the dispatch table}.
 ```
 
 ### Step 7: Back-Annotate Finding Files
@@ -414,6 +493,11 @@ This enables unified pipeline tracking. A finding's `pipeline_status` field answ
 | Subagent returns malformed JSON | JSON parse error in Step 3 | Log the batch, re-run with smaller batch size |
 | All findings classify as pattern | >95% pattern rate | Expected — 92% pattern is the calibration baseline. Only flag if named non-pattern findings are misclassified. |
 | Subagent ignores rubric exclusions | Form assignment contradicts clear exclusion signal | Flag in report with a note; Nick decides at review time |
+| DD-98 split single-condition observation (count ≥25 only OR question ≥2 only) | Step 6.a dispatch table single-condition path | NO proposal file. Inline informational note in identification report only ("G-`<stem>` at <count> findings; remains single-question" or analogous). Monitor on next routing-table read. Mirrors `/synthesize-guide` Step 0.7's single-condition behavior. |
+| DD-99 graduation single-condition observation (count ≥5 with NO same-problem links, OR linkage with count <5) | Step 6.b dispatch table single-condition path | NO proposal file. Inline note in identification report ("Unrouted bucket has `<count>` findings tagged `<category>`; no `same-problem` linkage detected" OR "`<count>` findings with linkage; below volume threshold"). Monitor on next cycle. |
+| Cross-dimension graduation cluster + Codifier proposes ABSORB | Step 6.b cross-dimension flag check | INVALID by contract (DD-99 §The Constraint). Codifier MUST set recommendation to PROMOTE or DEFER on cross-dimension clusters. If a proposal with `cross_dimension: true` AND `recommendation: ABSORB` is emitted, it is defective; Nick rejects and re-emission is required. Surface in next governance audit. |
+| Stale graduation-proposal cycle: cluster drops below 5 between emission and Nick gate | Step 6.b detection cycle finds finding count <5 for a theme with an open graduation proposal | Append `## Stale as of YYYY-MM-DD` header below the proposal's title heading. Stale proposal RETAINED for audit (not deleted). New proposal emitted if cluster re-crosses threshold later. |
+| Split-proposal or graduation-proposal filename collision (same theme/guide, same day) | Step 6.a or Step 6.b atomic-write check | Append `-2`, `-3` to colliding filename. Both proposals retained for audit; Nick reads the latest. |
 
 ---
 
@@ -426,3 +510,4 @@ This enables unified pipeline tracking. A finding's `pipeline_status` field answ
 | DD-77 | Single-form classification; co-occurrence noted only |
 | DD-80 | Pipeline simplification — this skill + /extract-artifacts replace the Proposer |
 | DD-98 | Guide split procedure — Step 6.a evaluates the conjunction (count ≥25 AND practitioner-question count ≥2) at routing-table read; on match, emits a split-proposal artifact at `operations/split-proposals/` with per-finding bifurcation, preserved-section disposition (DD-93), routing-table impact, and Codifier recommendation. Read-only by contract — never auto-executes; never modifies the source guide, routing table, or DD-94 changelog files. Both `/identify-artifacts` Step 6.a AND `/synthesize-guide` Step 0.7 share identical emission semantics. Single-condition observations surface inline in the identification report; do NOT emit a proposal file. |
+| DD-99 | Theme graduation procedure — Step 6.b evaluates the Unrouted Bucket conjunction (count ≥5 AND ≥1 `same-problem` link spans the cluster) at routing-table read. On both-thresholds match: flags the cluster in the identification report's Candidate Cluster section AND emits a graduation-proposal artifact at `operations/graduation-proposals/<YYYY-MM-DD>-<theme>-graduation-proposal.md` with PROMOTE/ABSORB/DEFER recommendation. Cross-dimension findings disqualify ABSORB (recommendation MUST be PROMOTE or DEFER). One proposal, one recommendation; ambiguity defaults to DEFER. Read-only by contract — never edits research-dimensions.md, never updates routing table, never creates new guide stubs, never invokes `/dimension-rebalance`. Stale-proposal hygiene: append `## Stale as of <date>` header on next detection cycle if cluster drops below 5; proposal retained for audit. PROMOTE path uses DD-94's new `theme-graduation` enum tag on the new guide's first changelog entry (per IB-160 enum amendment); ABSORB path uses the existing `dimension-rebalance` tag on the destination guide's next regen. |
