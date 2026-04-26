@@ -80,9 +80,9 @@ Extend `/assess-skill` and `/assess-agent` so they validate DD-92 ContextSpec co
 ### Unresolved (carry into session 67)
 
 1. **IB-152** — your primary task this session.
-2. **4 session-66 staged artifacts await Nick's deployment review.** Standard staged-artifact lifecycle (DD-39 / DD-80). Not for Codifier this session unless Nick redirects.
-3. **Vocabulary ratification (ACCEPTED vs APPROVED).** Nick-gate. Queued in PROGRESS.md.
-4. **Entry-15 reflection (harness spectrum).** Carried as input to G3 re-synthesis when that work is undertaken.
+2. **Entry-15 reflection (harness spectrum).** Carried as input to G3 re-synthesis when that work is undertaken.
+
+**Dropped post-session (Nick clarified after close):** Vocabulary delta (ACCEPTED was a typo, not a preference — no contract amendment) and deployment review of 4 staged artifacts (no near-term deployment plans — staging is the de facto end-state, matching the parked 11-guides-deployment item).
 
 ### Deferred
 
