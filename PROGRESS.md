@@ -1,12 +1,12 @@
 # Improvement Loop — Progress
 
-**Last Updated:** 2026-04-24 (session 65 close)
+**Last Updated:** 2026-04-26 (session 65 close + session 66 handoff filed)
 
 ## Current Focus
 
-Codifier disposition. Session 65 closed IB-150 — `/extract-artifacts` now generates DD-92-conformant ContextSpec by default (8 edits; new Step 2.5 Validate Drafts enforces presence + mechanical-copy + forbidden-vocab; IL classification meta stripped at write). Session-65 SL: `session-65-codifier-ib-150-extract-artifacts-dd92-update.md`.
+Codifier disposition. Session 65 closed IB-150 — `/extract-artifacts` now generates DD-92-conformant ContextSpec by default (8 edits; new Step 2.5 Validate Drafts enforces presence + mechanical-copy + forbidden-vocab; IL classification meta stripped at write). Session-65 SL: `session-65-codifier-ib-150-extract-artifacts-dd92-update.md`. Session-65 commit: `a42225f`.
 
-**Next session target:** **IB-152** — `/assess-skill` / `/assess-agent` ContextSpec audit extension. Unblocked by IB-150.
+**Next session target:** **IB-150 acceptance test** — full P1 batch (25 raw findings) through `/identify-artifacts` → Nick review → `/extract-artifacts`. Validates DD-92 contract end-to-end on real findings. Handoff at `operations/handoffs/handoff-prompt-session-66-codifier-ib-150-acceptance-test.md`. IB-152 sequenced after if acceptance passes.
 
 ---
 
@@ -14,7 +14,8 @@ Codifier disposition. Session 65 closed IB-150 — `/extract-artifacts` now gene
 
 Ordered queue. Status markers: `[nick-gate]` waits on Nick's ruling; `[deferred]` held by Nick, re-evaluate on trigger; `[trigger]` waits on external evidence or volume; `[don't-do-yet]` do not reintroduce until a specific upstream condition lands.
 
-- **IB-152** — /assess-skill / /assess-agent ContextSpec audit extension. P3. Consumer-side audit tooling validates ContextSpec presence and universal-vocab conformance on deployed artifacts.
+- **IB-150 acceptance test** — full P1 batch (25 raw findings) through `/identify-artifacts` → Nick review → `/extract-artifacts`. Verifies DD-92 ContextSpec generation, mechanical-copy guard, forbidden-vocab scan, and IL-meta stripping work end-to-end. Handoff filed.
+- **IB-152** — /assess-skill / /assess-agent ContextSpec audit extension. P3. Consumer-side audit tooling validates ContextSpec presence and universal-vocab conformance on deployed artifacts. Sequenced after acceptance test passes.
 - **Guide re-synthesis (G4/G10)** — unblocked by session-63 inflow (G4 +2, G10 +1). G2/G7/G9 remain partially blocked on Lifecycle-spec Phase-1 DDs.
 - **Fresh /extract-artifacts run** — real acceptance test of IB-150's skill update. Opens when promoted + curated + non-pattern findings reach the extractable queue.
 - **Candidate 2 re-evaluation** (spec-as-governance P2 → P1) — [trigger] revisit at 4th–5th independent-repo surfacing per session-62 decision.
