@@ -63,6 +63,7 @@ The Extractor thinks like an artifact author — opinionated, form-appropriate, 
 | `systems/improvement-loop/research-findings/` | Input — full finding files (read for drafting) |
 | `systems/improvement-loop/extracts/` | Output — staged artifacts by form |
 | `systems/improvement-loop/extracts/{rules,templates,agents,skills,patterns}/` | Per-form output directories |
+| `systems/improvement-loop/operations/extension-proposals/` | Output — DD-97 extension-proposal reports (created on first run; not pre-created) |
 
 ---
 
@@ -97,9 +98,78 @@ If 0 findings are approved, report and exit.
 
 If 0 non-pattern findings remain after the pattern filter, report and exit — suggest running `/synthesize-guide` for the pattern findings.
 
+### Step 1.7: Corpus Scan + Extension Proposal (DD-97) — rule and skill forms only
+
+Before drafting any new rule or skill artifact, the skill scans the matching corpus directory for semantic overlap with the candidate finding. On match, the skill emits a structured extension proposal and routes the finding away from drafting; Nick rules per proposal. On no-match, the finding proceeds to Step 2 drafting per current behavior.
+
+**Scope.** This step fires only when `assigned_form ∈ {rule, skill}`. Templates and agents skip this step entirely (out of scope per DD-97 §Scope and Non-Goals: templates version per future DD-X8; agents never auto-create per spec §2.3). Patterns are already filtered in Step 1 (DD-81).
+
+**Calibration — LLM judgment, loose (DD-97 calibration (i)).** No structured threshold (e.g., ContractSpec invariant overlap by N fields). The LLM reads the candidate finding's name, summary, body, and ContextSpec context plus each candidate-corpus artifact's title, summary, ContractSpec content, and body language. False-positive volume is acceptable; the Nick gate catches them. Promotion to (ii) ContractSpec-overlap-structured or (iii) hybrid requires a future DD if false-positive volume becomes burdensome.
+
+**Procedure:**
+
+1. **Partition findings by form.** Build `rule_findings` (subset with `assigned_form == "rule"`) and `skill_findings` (subset with `assigned_form == "skill"`). Templates / agents pass through untouched.
+
+2. **Glob corpus.** For rule findings, enumerate `extracts/rules/*.md` (skip `_index.md`). For skill findings, enumerate `extracts/skills/*.md` (skip `_index.md`). For each corpus artifact, read the title, summary or first body paragraph, and ContractSpec block.
+
+3. **Per-finding similarity check.** For each candidate in `rule_findings ∪ skill_findings`, compare against every artifact in the matching corpus using LLM judgment. Identify zero, one, or many semantic-overlap candidates. The judgment runs on title + summary + body + ContractSpec; no structured threshold.
+
+4. **Categorize each finding:**
+   - **No match:** finding proceeds to Step 2 drafting per current behavior. Tag as `extension_status: "no_match"`.
+   - **Single match:** emit one extension proposal (see step 5). Tag as `extension_status: "proposed"`. Skip from Step 2 drafting.
+   - **Multiple plausible matches:** surface the strongest match in the proposal's primary block + flag the other candidates as secondaries (see step 5). Tag as `extension_status: "proposed"`. Skip from Step 2 drafting. Nick rules merge target.
+
+5. **Construct extension proposal block** for each `proposed` finding:
+
+   ```markdown
+   ### <candidate-finding-stem>
+
+   **Form:** rule | skill
+   **Existing artifact (primary match):** [[<existing-artifact-stem>]]
+   **Secondary matches:** [[<other-artifact-stem>]], [[<other-artifact-stem>]]   (omit line if zero)
+
+   **Codifier recommendation:** extend existing | create new (false positive) | parameterize as mode variant
+
+   **Why this match:** <1–2 lines explaining the semantic overlap the LLM observed.>
+
+   **Diff sketch:**
+
+   <For rule extensions: the proposed appended Evidence row, with the new source finding cited alongside the original. Body wording delta is proposed if the new evidence shifts the rule's claim; otherwise body unchanged.>
+
+   <For skill parameterization: the proposed mode flag (e.g., `--strict` / `--loose`), how the new variant differs from the original behavior, the documentation block to add to the existing skill's body, and the ContractSpec invariant additions covering the new mode.>
+
+   **Notes:** <Optional one-liner — ambiguity, edge case, why the recommendation is what it is.>
+   ```
+
+6. **Aggregate and write the extension-proposals report.** Path: `operations/extension-proposals/<YYYY-MM-DD>-extension-proposals.md`. The report opens with a one-paragraph summary (total candidates scanned, proposals emitted, no-match passthroughs, forms scanned, source identification report) followed by per-proposal blocks in candidate-stem alphabetical order. If no proposals were emitted, the report file is NOT written — the skill reports "No extension proposals; all rule/skill findings proceed to drafting."
+
+   **Report frontmatter:**
+   ```yaml
+   ---
+   type: "extension-proposals-report"
+   target_system:
+     - "improvement-loop"
+   generated_by: "/extract-artifacts"
+   date: "<YYYY-MM-DD>"
+   identification_report: "<source identification report filename>"
+   total_rule_skill_candidates: <int>
+   proposals_emitted: <int>
+   no_match_passthrough: <int>
+   forms_scanned:
+     - "rules"
+     - "skills"
+   ---
+   ```
+
+7. **Report to user (always — even with `--auto`).** Surface a one-line summary: "Extension proposals: {P} emitted (rules: {R}, skills: {S}); {NM} findings passing through to drafting. Report: operations/extension-proposals/<filename>." If `P > 0`, surface a Nick-gate prompt: "Review the proposals report. To execute an extension, Nick rules per proposal; this skill does not auto-merge."
+
+**Auto-merge prohibition.** The skill MUST NOT modify any existing artifact in this step. The only file written by Step 1.7 is the extension-proposals report. Application of an extension (appending Evidence rows, adding mode flags) is downstream of Nick's ruling and is not a Step 1.7 behavior. Extension-application via `/extract-artifacts` is left for a future IB; for v1, applying the proposal is a manual edit guided by Nick's ruling and the proposal's diff sketch.
+
 ### Step 2: Draft Artifacts (Subagents)
 
-For each approved finding:
+**Filter out extension-proposed findings.** Per Step 1.7, any rule or skill finding tagged `extension_status: "proposed"` is routed to the extension-proposals report and does NOT proceed to drafting. Template and agent findings, plus rule/skill findings tagged `extension_status: "no_match"`, proceed normally.
+
+For each approved finding **not flagged for extension proposal**:
 
 1. **Read the full finding file** from `systems/improvement-loop/research-findings/{id}.md`. The identification report only had a summary — drafting needs the full body.
 
@@ -398,6 +468,9 @@ Next: Review staged artifacts in extracts/. Deploy to enforcement locations when
 | `--sl` missing on non-guide write | Step 2.7 SL stem resolution | Prompt unless `--auto`. With `--auto`, abort with structured error naming the missing argument. |
 | `--sl` stem does not resolve to existing SL file | Step 2.7 SL existence check | Abort the write; structured error names missing-file path; recommend writing the SL entry first or correcting the `--sl` argument. |
 | `--update` mode targets a finding with no existing artifact | Step 3 dedup check | Treat as create — write the artifact normally; surface an informational note in the summary so the operator knows update mode found no prior artifact. |
+| Skill auto-merges an extension instead of proposing | Step 1.7 auto-merge prohibition | Procedural violation — DD-97 §Rules #3 forbids auto-merge. The only file Step 1.7 writes is the extension-proposals report. Surface in next governance audit. |
+| Extension proposal emitted for template or agent finding | Step 1.7 scope filter | Procedural violation — DD-97 §Scope excludes templates and agents. Surface and log; the proposal is invalid. |
+| Multiple plausible matches and Codifier silently picks one | Step 1.7 multi-match handling | The proposal must surface the strongest match as primary AND flag secondaries; Nick rules merge target. Single-match-without-secondaries on a multi-match input is a procedural failure. |
 
 ---
 
@@ -410,3 +483,4 @@ Next: Review staged artifacts in extracts/. Deploy to enforcement locations when
 | DD-80 | Pipeline simplification — /identify-artifacts + this skill replace the Proposer |
 | DD-92 | ContextSpec on every artifact; universal-vocab constraint; mechanical-copy prohibition; IL classification meta stripped at extraction. Reference: `extracts/rules/confirm-failure-first-tdd.md` |
 | DD-95 | Lifecycle pointer (`last_change_session` + `last_change_sl`) on every non-guide create AND update; SL stem validated at write time; both fields overwritten on update; guides excluded. Step 2.7, Step 3 frontmatter template, Step 3 update-mode dedup behavior. |
+| DD-97 | Corpus scan + extension proposal before drafting rule or skill artifacts; calibration (i) LLM-loose; propose-don't-decide invariant; closed Codifier-recommendation enum; templates and agents excluded; auto-merge prohibition. Step 1.7. |
