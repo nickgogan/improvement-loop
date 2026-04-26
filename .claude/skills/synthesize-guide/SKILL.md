@@ -87,6 +87,39 @@ The Guide Author thinks like a technical writer and practitioner — not a resea
 
 7. **Flag unroutable findings.** If any findings in the confirmed set don't map to the target guide cluster via the routing table, note them. After the guide is written, add them to the routing table's Unrouted Bucket if they truly don't fit, or update the routing table if the guide's scope has expanded.
 
+### Step 0.5: Pre-Regen Preservation Capture (re-synthesis only) — DD-93
+
+If the target guide file does **not** yet exist in `extracts/guides/`, this step is a no-op — proceed to Step 1.
+
+If the target guide already exists, this is a re-synthesis. Two surfaces are preserved verbatim across the regen (DD-93):
+
+1. **Canonical named section.** The body of any `## Nick's Annotations` section (heading not included; body only — every line between the heading and the next `^## ` heading or EOF).
+2. **Marked regions.** The body of every block bounded by `<!-- PRESERVE -->` and `<!-- /PRESERVE -->` HTML comments. Multiple regions are supported. Markers are not preserved; only the content between them is preserved.
+
+**Capture procedure:**
+
+1. Read the existing guide file at `systems/improvement-loop/extracts/guides/<guide-stem>.md`.
+2. Parse and extract:
+   - **Annotations capture:** locate `^## Nick's Annotations\s*$`. If found, capture (a) the byte-content of the section body (everything from the line after the heading up to but excluding the next `^## ` heading or EOF), and (b) the section's **ordinal position** among `^## ` headings (1-indexed, including the title `# ` heading? — no: count only `## ` level-2 headings). If absent, mark `annotations_present: false`.
+   - **Marked-region capture:** scan the file for every `<!-- PRESERVE -->` … `<!-- /PRESERVE -->` pair in document order. For each region, capture (a) the byte-content between the markers (excluding the markers themselves), (b) the **anchor section** — the `^## ` heading immediately preceding the opening marker (by name), and (c) the ordinal index of the region within that anchor section (1st, 2nd, … marked region under that heading).
+3. Validate marker structure:
+   - Every `<!-- PRESERVE -->` must have a matching closing `<!-- /PRESERVE -->`. Unmatched markers are an error — abort the synthesis with a structured error report (which marker is unmatched, line number, recommended fix).
+   - Markers MUST NOT nest. A second `<!-- PRESERVE -->` before the first `<!-- /PRESERVE -->` is an error — abort.
+4. Hold all captured content in memory under a `preserved` structure:
+   ```
+   preserved = {
+     annotations: { present: bool, body: str, ordinal: int },
+     regions: [
+       { anchor_section: str, ordinal_in_section: int, body: str },
+       ...
+     ]
+   }
+   ```
+   This structure is the input to Step 3.5 (re-insertion) and Step 3.7 (regression test).
+5. **Report to user (unless `--auto`):** "Re-synthesis detected. Preserved surfaces captured: annotations={present|absent}, marked-regions=N." This is informational; no human gate.
+
+A guide with no `## Nick's Annotations` section and no marked regions has `preserved` empty — Steps 3.5 and 3.7 are no-ops, and behavior is identical to the legacy full-regenerate path.
+
 ### Step 1: Read and Analyze Findings
 
 1. Read all confirmed finding files in full.
@@ -140,6 +173,41 @@ Draft the full guide body. Key principles:
 4. **Decision trees for choices.** When findings describe competing approaches (e.g., single-agent vs. multi-agent), present a decision tree with criteria, not a description of both options.
 5. **Pitfalls from failure modes.** Every finding has potential failure modes — synthesize these into a practical "what goes wrong" section.
 6. **ContractSpec per DD-78.** The guide carries preconditions (what must be true to use this guide), invariants (what the guide assumes stays true), governance (who owns and updates the guide), and recovery (what to do when assumptions break).
+
+### Step 3.5: Re-Insert Preserved Content (re-synthesis only) — DD-93
+
+If `preserved` from Step 0.5 is empty, skip. Otherwise:
+
+1. **Annotations re-insertion.** If `preserved.annotations.present` is true:
+   - Scan the candidate body for an existing `## Nick's Annotations` heading. If the structural template emitted one, replace its body with the captured `preserved.annotations.body` byte-for-byte.
+   - If the structural template did not emit a `## Nick's Annotations` heading, append the section to the tail of the candidate body (after all other `^## ` sections, before the file's closing newline) using the canonical heading `## Nick's Annotations` followed by the captured body.
+   - Position MUST be either (a) the original ordinal location if the structural template still reserves a slot at that ordinal, or (b) tail of the body otherwise. Never silently relocate to a different mid-body slot.
+
+2. **Marked-region re-insertion.** For each captured region, in document order:
+   - Locate the candidate body's anchor section by name (`preserved.regions[i].anchor_section`).
+   - Within that section, find the closest semantically-equivalent insertion point. The default heuristic: insert the region (wrapped in fresh `<!-- PRESERVE -->` … `<!-- /PRESERVE -->` markers) at the start of the anchor section's body, after any subheading-free intro paragraph and before any `### ` subheading. If multiple regions targeted the same anchor section, preserve their captured ordinal order.
+   - If the anchor section no longer exists in the candidate body (renamed, removed, or merged), do NOT silently drop the region. Append it to the tail of the candidate body wrapped in markers, with a leading HTML comment `<!-- preserved-region: anchor "<original-section-name>" no longer present in regen; appended at tail -->`. The post-regen regression test (Step 3.7) will still confirm byte-equality of the region body.
+
+3. **Output is the candidate body.** The candidate body is the input to Step 3.7 (regression test). The skill does NOT write the file in this step.
+
+### Step 3.7: Post-Regen Regression Test (fail-closed) — DD-93
+
+If `preserved` is empty, skip. Otherwise this is a hard gate before Step 4.
+
+1. **Re-extract preserved surfaces** from the candidate body using the same procedure as Step 0.5. Build a candidate-side `preserved_after` structure with the same shape.
+2. **Byte-compare** every captured surface against its candidate-side counterpart:
+   - Annotations: `preserved.annotations.body` vs `preserved_after.annotations.body` — byte-equality required.
+   - Each region: `preserved.regions[i].body` vs `preserved_after.regions[i].body` — byte-equality required, in original document order. Region count MUST match.
+3. **On any inequality (drift):**
+   - **Abort the write.** The candidate body is NOT written to disk. The existing guide file is unchanged.
+   - **Emit a structured drift report** to stdout containing:
+     - Which preserved surface drifted (`annotations` or `regions[i] (anchor: "<section-name>")`)
+     - The byte-level diff (unified diff format, captured-vs-candidate)
+     - The recommended fix path (one of: "skill bug — re-insertion logic dropped or transformed bytes", "structural template removed the anchor section without fallback", "marker validation passed pre-regen but post-regen extraction lost a region")
+   - **Exit non-zero.** The session does not proceed to Step 4. Nick re-runs after the skill-side bug is fixed.
+4. **On full byte-equality across all surfaces:** proceed to Step 4. The candidate body is now the writable body.
+
+This regression test is the enforcement mechanism for DD-93. It must run on every re-synthesis where `preserved` is non-empty. A skill that writes a guide without running this check has violated the contract.
 
 ### Step 4: Write Guide
 
@@ -228,6 +296,8 @@ Next: Review the staged guide. Deploy to meta-system/knowledge/guides/ when read
 | Findings are too unrelated to synthesize | Step 1 clustering produces singletons | Flag to user — these may need separate guides or aren't guide material |
 | No templates produced | Step 3 produces no `{{VARIABLE}}` blocks | Fail — return to Step 3 with explicit template extraction instruction |
 | Guide is too long (>5000 words) | Word count check after Step 3 | Split into multiple guides or extract reference sections into appendices |
+| Unmatched / nested `<!-- PRESERVE -->` markers in existing guide | Step 0.5 marker validation | Abort synthesis with structured marker error (line, recommended fix). Nick repairs the guide; re-run. |
+| Preserved-section drift on regen | Step 3.7 byte-diff fails | Abort write; emit structured drift report (which surface, diff, recommended fix). No file change. Re-run after skill bug fixed. |
 
 ---
 
@@ -240,3 +310,4 @@ Next: Review the staged guide. Deploy to meta-system/knowledge/guides/ when read
 | DD-78 | ContractSpec on every artifact, including guides |
 | DD-45 | Knowledge architecture — guides live in meta-system/knowledge/guides/ |
 | DD-46 | Pull model — guides are pulled by consuming systems |
+| DD-93 | Preserved sections on guide regen (`## Nick's Annotations` + `<!-- PRESERVE -->` regions); post-regen byte-equality regression test; fail-closed on drift. Steps 0.5 / 3.5 / 3.7. |
