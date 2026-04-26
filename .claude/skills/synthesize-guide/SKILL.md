@@ -293,6 +293,84 @@ If this is a **re-synthesis** (the guide existed pre-Step-4 and was rewritten), 
 
 This step runs after Step 4 (guide write) and before Step 5 (synthesis status / cross-references). The guide file is already on disk at this point; if Step 4.5 fails on a >15-line entry, the guide is on disk but the changelog has no entry — Nick re-runs Step 4.5 after slimming the entry, or invokes a manual append.
 
+### Step 4.7: Co-occurrence Harvest Scan + Queue Write — DD-101
+
+For each pattern finding absorbed into this guide body, scan the finding for embedded artifact-shaped content of a non-pattern form, and append rows to a per-guide harvest queue file. Read-only by contract: never auto-extract; never modify the finding's classification; never create the harvested artifact. Extraction is downstream via Nick's ruling and `/extract-artifacts`'s queue-row promotion path (DD-101 §Promotion + IB-164).
+
+This step runs after Step 4.5 (changelog write) and before Step 5 (synthesis status). It is a no-op if no embedded artifact-shaped content is detected AND no prior queue rows would be superseded.
+
+**Item 1 — Per-finding co-occurrence scan.**
+
+For each pattern finding in the absorbed set (the same set used for Step 3 drafting; the finding bodies were loaded in Step 1):
+
+1. Examine the finding's body for prose that reads as artifact-shaped content of one of three target forms (closed enum):
+   - **rule shape** — imperative directive ("never X", "always Y"); machine-enforceable; fits rule artifact form per the form-classification rubric.
+   - **skill shape** — a procedure with input/output, invocation contract, step-by-step structure.
+   - **template shape** — a structural scaffold meant for rendering (frontmatter blocks, placeholder fields, structural form).
+2. Detection is **LLM-loose**, calibrated like DD-97 and Step 1.8 of `/extract-artifacts` — false-positives tolerable (cost: one Nick gate per row); false-negatives tolerable (cost: embedded artifact stays embedded; another consumer may surface it per DD-77).
+
+**Agent-shape suppression invariant (DD-82).** If detection would surface agent-shaped content (a candidate for the `agent` form), the candidate is logged inline in the run report (NOT the queue) for Nick's separate review. The queue NEVER carries agent-form rows. This is structural, not advisory: the row-write path enforces a closed-enum target-form check (`rule` | `skill` | `template`; agent rejected — abort the row write and surface a procedural violation if encountered). Three-layer enforcement of DD-82's never-auto-create invariant: (1) Item 1's enum-target check; (2) the inline-narrative path for agent-shaped detections; (3) `/extract-artifacts`'s defensive abort on agent-target queue rows per IB-164.
+
+**Item 2 — Per-guide queue file location and shape.**
+
+Queue file location: `systems/improvement-loop/extracts/guides/<guide-stem>.harvest-queue.md` (one-to-one with the guide; same stem). Mirrors DD-94's companion changelog convention at `<guide-stem>.changelog.md` — same per-guide-locality structural pattern.
+
+If the queue file does NOT exist AND at least one row would be appended this regen, create it with this header:
+
+```markdown
+# Co-occurrence Harvest Queue — <Guide Title>
+
+Embedded artifact candidates surfaced during `/synthesize-guide` runs. Per DD-101.
+Nothing here is auto-extracted; rows feed `/extract-artifacts` only after Nick rules.
+
+| Date queued | Status | Target form | Source finding | Suggested headline | Recommendation |
+|---|---|---|---|---|---|
+
+## Per-row details
+```
+
+If the queue file exists, parse the existing summary table and per-row details blocks to enable duplicate suppression (Item 2.b) and supersession (Item 2.c).
+
+**Item 2.a — Per-row content fields (required, per DD-101 §The Constraint).**
+
+Each detected candidate appends one summary-table row AND one per-row details block. Required fields:
+
+- **Date queued** — ISO date of the regen run.
+- **Status** — closed enum: `queued` | `nick-approved` | `nick-dismissed` | `extracted` | `superseded`. New rows are `queued`; status transitions are downstream of this skill (Nick rulings + IB-164 extractions + Item 2.c supersession).
+- **Target form** — closed enum: `rule` | `skill` | `template`. Agent excluded by the Item 1 suppression invariant.
+- **Source finding** — the pattern finding whose body contained the embedded prose; wikilink `[[<finding-stem>]]`.
+- **Source excerpt** — verbatim quote of the embedded prose, ≤8 lines. Long candidates use ellipsis with the structural anchor preserved.
+- **Codifier's reading** — 1–3 lines explaining why this prose reads as the target form (cites form-rubric criteria when relevant).
+- **Suggested headline** — Codifier's proposed artifact title.
+- **Recommendation** — closed enum: `extract via /extract-artifacts` | `dismiss as inline` | `merge into existing [[<artifact-stem>]]`.
+- **Resolution** — filled by IB-164 / Nick rulings; closed enum: `extracted to [[<artifact-stem>]]` | `dismissed` | `merged into [[<artifact-stem>]]` | `superseded`. New rows leave this field blank.
+
+Per-row details block heading: `### <finding-stem>::<target-form>::<headline-slug>` where `<headline-slug>` is a kebab-case slug of the suggested headline (≤6 words). This compound heading is the row's structural ID for IB-164's queue-row references and for duplicate-suppression matching.
+
+**Item 2.b — Duplicate suppression at write.**
+
+Before appending a new row, check the existing queue file for any row with the same `(source_finding, target_form)` tuple:
+
+- If a row exists with status `queued`, `nick-dismissed`, `extracted`, or `superseded`: NO new row is appended — the prior row stands. Even terminal-status rows (`nick-dismissed`, `extracted`, `superseded`) suppress re-emission: the candidate has been resolved (or marked-as-resolved) and re-detection on regen does NOT re-emit. This prevents queue-bloat from regen cycles re-detecting the same embedded prose.
+- The duplicate-suppression key is `(source_finding, target_form)`; the headline-slug is NOT part of the key (the same finding's same target-form prose with a slightly different proposed headline is the same candidate).
+
+**Item 2.c — Supersession on cluster departure.**
+
+Before scanning the absorbed set, compare the prior `source_findings[]` from the on-disk guide (cached during Step 0.5) against the current regen's absorbed set. For each pattern finding that was previously in the cluster but is NO longer in this regen's absorbed set (e.g., dimension-rebalance moved it elsewhere — see IB-153 path):
+
+- For every queue row whose `source_finding` matches the departed finding AND whose status is `queued` or `nick-approved`: mark the row's Status as `superseded` AND the Resolution as `superseded`. Append a footer line to the per-row details block: `Superseded YYYY-MM-DD — Session NN — [[session-NN-<descriptor>]] — source finding departed cluster.` The row is NOT deleted (audit trail).
+- Leave `extracted` rows as `extracted`: the artifact exists; the source's later cluster-movement does not invalidate it.
+- Leave `nick-dismissed` rows as `nick-dismissed`: Nick's ruling stands.
+- Supersession is structural, NOT Nick-judgmental; do NOT flip rows to `nick-dismissed` for departure reasons.
+
+**Item 3 — Append-only across regen cycles.** New rows append to the summary table (most-recent-last) AND to the per-row details section (in document order). Existing rows persist with their current Status and Resolution — `/synthesize-guide` NEVER mutates a row's Status or Resolution except via Item 2.c's supersession path. Status transitions for Nick's rulings (`nick-approved` / `nick-dismissed`) + IB-164's extractions (`extracted`) are downstream of this skill; this step writes new rows and supersession-marks departed-source rows only. Rows are NEVER deleted.
+
+**Item 4 — Initial-synthesis behavior.** If this is an initial synthesis (the guide file did not exist before Step 4), the queue file is also new; create it on first detection per Item 2. If no candidates are detected on initial synthesis, the queue file is NOT created — companion files materialize on first detection, not on first synthesis. (Mirrors DD-94's changelog initial-synthesis behavior: companion file created lazily on first qualifying event.)
+
+**Atomic write.** Read the current queue file (or treat as empty if absent); construct the updated content (header + summary table with new rows appended + existing rows preserved + per-row details with new blocks appended + existing blocks preserved + Item 2.c supersession annotations); write the result. Do not mutate prior rows except for Item 2.c.
+
+**Report to user (unless `--auto`):** "Co-occurrence harvest scan: {N} embedded artifact candidates detected ({R} rule, {S} skill, {T} template; {A} agent-shape suppressed and inline-noted). {Q} new rows appended to `<guide-stem>.harvest-queue.md`; {D} suppressed as duplicates of prior rows. {SU} prior rows superseded due to source-finding cluster departure." If no candidates detected, no prior rows superseded, AND no queue file existed beforehand, report "No co-occurrence harvest candidates detected; no queue file written."
+
 ### Step 5: Update Synthesis Status and Cross-References
 
 1. **Update the Synthesis Status table** in `systems/improvement-loop/operations/references/guide-routing-table.md`. Set the cluster's row to: last synthesized date, finding count, output path, and status (`draft`). If re-synthesizing an existing guide, update the row in place.
@@ -353,6 +431,10 @@ Next: Review the staged guide. Deploy to meta-system/knowledge/guides/ when read
 | `--trigger` tag not in closed enum | Step 4.5 enum validation | Reject with structured report (offending tag, valid enum). Skill exits non-zero. New tags require DD amendment. |
 | Changelog entry exceeds 15 non-header lines | Step 4.5 line-cap check | Abort entry write (entry is not appended; guide file already on disk). Emit structured report; recommend moving narrative to SL. Re-run Step 4.5 after slimming. |
 | Changelog entry 11–15 non-header lines | Step 4.5 line-cap check | Write with warning; warning identifies over-budget bullets. Caller may slim and reissue, or accept the verbose entry. |
+| Harvest queue write failure mid-regen | Step 4.7 atomic-write step fails | Procedural failure — Step 4.7 is expected to write the queue alongside the guide draft. The guide file is already on disk at this point (Step 4 completed); the queue file is partial or missing. Recovery: re-run Step 4.7 manually, or accept the missed-emission and let the next regen re-detect (duplicate-suppression will not fire because the prior row was never written). Flag as governance audit item if recurring. |
+| Agent-shape content detected during Step 4.7 scan | Step 4.7 Item 1 agent-suppression check | Suppress queue emission per the Item 1 invariant; log the candidate inline in the run report (NOT the queue) for Nick's separate review. The queue NEVER carries agent-form rows. If a queue row write is attempted with `target form: agent`, abort the row write with structured error citing DD-82 + DD-101 §Rules for `/synthesize-guide` item 3. Surface the procedural violation. |
+| Duplicate-suppression collision (existing row with same `(source_finding, target_form)`) | Step 4.7 Item 2.b pre-write check | Suppress the new row write — the prior row stands regardless of its current status (`queued`, `nick-dismissed`, `extracted`, or `superseded`). This is expected behavior, not a failure mode; documented here for verification that the suppression path activates on duplicate detection. Run report's `D` count surfaces the suppressed-as-duplicate rows. |
+| Source-finding cluster departure path (status update for `queued`/`nick-approved`; non-update for `extracted`/`nick-dismissed`) | Step 4.7 Item 2.c supersession check | Mark `queued` and `nick-approved` rows whose departed source matches as `superseded` with cited regen session + SL stem; leave `extracted` and `nick-dismissed` rows unchanged. This is expected behavior, not a failure mode; documented here for verification that supersession does NOT over-write Nick's terminal rulings or live extractions. |
 
 ---
 
@@ -367,3 +449,5 @@ Next: Review the staged guide. Deploy to meta-system/knowledge/guides/ when read
 | DD-46 | Pull model — guides are pulled by consuming systems |
 | DD-93 | Preserved sections on guide regen (`## Nick's Annotations` + `<!-- PRESERVE -->` regions); post-regen byte-equality regression test; fail-closed on drift. Steps 0.5 / 3.5 / 3.7. |
 | DD-94 | Companion changelog file per guide at `extracts/guides/changelog/<stem>.changelog.md`; one entry per re-synthesis with closed trigger-tag enum, ~10-line cap (≤10 clean / 11–15 warn / >15 abort), most-recent-first append. Step 4.5. |
+| DD-101 | Per-guide co-occurrence harvest queue file at `extracts/guides/<stem>.harvest-queue.md`. Per-finding scan during regen for embedded artifact-shaped content (target forms: rule \| skill \| template; agent suppressed inline per DD-82). LLM-loose calibration. Closed-enum Status, Target form, Recommendation, Resolution. Duplicate suppression on `(source_finding, target_form)`. Append-only across regen; supersession-on-departure for `queued`/`nick-approved` rows; `extracted` and `nick-dismissed` rows unchanged on departure; rows never deleted. Read-only by contract — extraction is downstream via Nick's ruling + IB-164's `/extract-artifacts` queue-row promotion path. Step 4.7. |
+| DD-82 | Agent never-auto-create invariant — three-layer enforcement at the harvest layer: (1) Step 4.7 Item 1 closed-enum target-form check rejects `agent` target; (2) agent-shaped detections are logged inline in the run report only, never queued; (3) `/extract-artifacts` defensive abort on agent-target queue rows per IB-164 (defense-in-depth). |
