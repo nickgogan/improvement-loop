@@ -13,7 +13,7 @@ Owner disposition. Session 70 closed four governance items:
 
 Session-70 SL: `session-70-owner-lifecycle-spec-phase1-ratification.md`.
 
-**Next session target (Codifier disposition):** **G7 / G2 / G9 re-synthesis.** Phase-1 ratification has unblocked the largest pending Codifier unit. G7 is the most overdue (+11 findings since last synthesis). Re-synthesis runs against the new lifecycle contract — `/synthesize-guide` will need IB-154 + IB-155 implementation work to honor preserved sections and write companion changelog entries.
+**Next session target (session 71 — Codifier disposition):** **`/synthesize-guide` lifecycle update — ship IB-154 + IB-155.** Update the skill to honor DD-93 preserved sections + DD-94 companion changelog appender; backfill 11 retroactive stubs into `extracts/guides/changelog/`. Two atomic commits (IB-154 first, then IB-155). After this lands, G7/G2/G9 re-synthesis becomes top unblocked Codifier work. Handoff: `operations/handoffs/handoff-prompt-session-71-codifier-ib-154-ib-155-synthesize-guide-update.md`.
 
 ---
 
