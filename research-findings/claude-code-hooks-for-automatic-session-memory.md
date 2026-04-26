@@ -27,8 +27,8 @@ related_findings:
   rel: same-problem
 - file: background-hooks-as-token-economy.md
   rel: extended-by
-pipeline_status: raw
-consumed_by: []
+pipeline_status: extracted
+consumed_by: ["patterns/hook-based-automatic-session-memory.md"]
 ---
 # Claude Code Hooks for Automatic Session Memory
 

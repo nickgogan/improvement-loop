@@ -21,8 +21,8 @@ related_findings:
   rel: same-problem
 - file: agent-context-kiss-commandments-minimum-viable.md
   rel: same-problem
-pipeline_status: raw
-consumed_by: []
+pipeline_status: extracted
+consumed_by: ["patterns/token-waste-taxonomy-and-two-mode-workflow.md"]
 ---
 
 # Token Waste Taxonomy and Two-Mode Workflow (Gather vs Focus)

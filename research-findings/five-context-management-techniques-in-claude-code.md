@@ -25,7 +25,7 @@ related_findings:
   rel: same-problem
 - file: ace-agentic-context-engineering-evolving-playbook.md
   rel: same-problem
-pipeline_status: raw
+pipeline_status: "classified"
 consumed_by: []
 ---
 # Five Context Management Techniques in Claude Code

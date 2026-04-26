@@ -31,8 +31,9 @@ related_findings:
   rel: same-problem
 - file: builder-validator-chain-pattern.md
   rel: same-problem
-pipeline_status: raw
-consumed_by: []
+pipeline_status: extracted
+consumed_by:
+- skills/iterative-refinement-loop-with-quality-gate.md
 ---
 # Iterative Refinement Loop with Quality Gate
 
@@ -53,3 +54,6 @@ Logging scores and failure reasons per iteration creates an audit trail and can 
 
 ## Potential Failure Modes
 Self-evaluation by the same model that generated the output has known limitations — the model may be consistently biased toward rating its own outputs highly. Max 3 loops may be insufficient for complex outputs.
+
+## Extraction Note — 2026-04-26
+Extracted as **skill**: [[iterative-refinement-loop-with-quality-gate]] in `extracts/skills/`

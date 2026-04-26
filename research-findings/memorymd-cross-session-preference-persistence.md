@@ -27,7 +27,7 @@ related_findings:
   rel: same-problem
 - file: ace-agentic-context-engineering-rag-based.md
   rel: same-problem
-pipeline_status: raw
+pipeline_status: "classified"
 consumed_by: []
 ---
 # memory.md: Cross-Session Preference Persistence via Self-Updating File

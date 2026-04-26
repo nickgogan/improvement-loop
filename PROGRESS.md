@@ -1,12 +1,12 @@
 # Improvement Loop — Progress
 
-**Last Updated:** 2026-04-26 (session 65 close + session 66 handoff filed)
+**Last Updated:** 2026-04-26 (session 66 close — IB-150 acceptance test PASS)
 
 ## Current Focus
 
-Codifier disposition. Session 65 closed IB-150 — `/extract-artifacts` now generates DD-92-conformant ContextSpec by default (8 edits; new Step 2.5 Validate Drafts enforces presence + mechanical-copy + forbidden-vocab; IL classification meta stripped at write). Session-65 SL: `session-65-codifier-ib-150-extract-artifacts-dd92-update.md`. Session-65 commit: `a42225f`.
+Codifier disposition. Session 66 PASSED IB-150 acceptance test (5/5 criteria) — `/extract-artifacts` validated end-to-end on the 4 non-pattern P1 findings (2 rules, 1 skill, 1 template). Step 2.5 firing log: 4 validated, 0 flagged, 0 re-drafts; the new prompt language prevented mechanical-copy and forbidden-vocab failure modes upstream of the guards. Side fix: 10 stale-status findings (raw despite existing extracts) back-annotated to `extracted`. Session-66 SL: `session-66-codifier-ib-150-acceptance-test.md`.
 
-**Next session target:** **IB-150 acceptance test** — full P1 batch (25 raw findings) through `/identify-artifacts` → Nick review → `/extract-artifacts`. Validates DD-92 contract end-to-end on real findings. Handoff at `operations/handoffs/handoff-prompt-session-66-codifier-ib-150-acceptance-test.md`. IB-152 sequenced after if acceptance passes.
+**Next session target:** **IB-152** — `/assess-skill` / `/assess-agent` ContextSpec audit extension. Sequence-ready since the upstream contract is now validated. Codifier scope, P3. Consumer-side audit tooling validates ContextSpec presence and universal-vocab conformance on deployed artifacts.
 
 ---
 
@@ -14,10 +14,10 @@ Codifier disposition. Session 65 closed IB-150 — `/extract-artifacts` now gene
 
 Ordered queue. Status markers: `[nick-gate]` waits on Nick's ruling; `[deferred]` held by Nick, re-evaluate on trigger; `[trigger]` waits on external evidence or volume; `[don't-do-yet]` do not reintroduce until a specific upstream condition lands.
 
-- **IB-150 acceptance test** — full P1 batch (25 raw findings) through `/identify-artifacts` → Nick review → `/extract-artifacts`. Verifies DD-92 ContextSpec generation, mechanical-copy guard, forbidden-vocab scan, and IL-meta stripping work end-to-end. Handoff filed.
-- **IB-152** — /assess-skill / /assess-agent ContextSpec audit extension. P3. Consumer-side audit tooling validates ContextSpec presence and universal-vocab conformance on deployed artifacts. Sequenced after acceptance test passes.
-- **Guide re-synthesis (G4/G10)** — unblocked by session-63 inflow (G4 +2, G10 +1). G2/G7/G9 remain partially blocked on Lifecycle-spec Phase-1 DDs.
-- **Fresh /extract-artifacts run** — real acceptance test of IB-150's skill update. Opens when promoted + curated + non-pattern findings reach the extractable queue.
+- **IB-152** — /assess-skill / /assess-agent ContextSpec audit extension. P3. Consumer-side audit tooling validates ContextSpec presence and universal-vocab conformance on deployed artifacts. Now sequence-ready (IB-150 contract validated session 66).
+- **Deploy 4 newly-staged artifacts** (session-66 output) — review and deploy `extracts/rules/claudemd-minimum-viable-rule-only-add-globally-true-lines.md`, `extracts/rules/explicit-permission-allow-listing-for-agent-resource-access.md`, `extracts/skills/iterative-refinement-loop-with-quality-gate.md`, `extracts/templates/task-to-file-routing-table-in-context-files.md`. [nick-gate]
+- **Guide re-synthesis (G4/G10)** — unblocked by session-63 inflow (G4 +2, G10 +1). G2/G7/G9 remain partially blocked on Lifecycle-spec Phase-1 DDs. G3 should fold in entry-15 reflection (harness spectrum) when re-synthesized.
+- **Vocabulary ratification — ACCEPTED vs APPROVED** — Nick used `ACCEPTED` consistently in session-66 report review; if preferred, file a small contract amendment to `/identify-artifacts` and `/extract-artifacts` Status enum. [nick-gate]
 - **Candidate 2 re-evaluation** (spec-as-governance P2 → P1) — [trigger] revisit at 4th–5th independent-repo surfacing per session-62 decision.
 - **IB-153** — /dimension-rebalance after Sub-dim 1.B. Codifier capacity; not urgent per Nick. Will reclassify Memory Architecture findings to Context Engineering parent.
 - **Librarian subagent template** for cross-concept queries (read-contract Q4). Position TBD.

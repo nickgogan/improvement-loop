@@ -28,8 +28,9 @@ related_findings:
   rel: same-problem
 - file: claude-code-auto-mode-ai-driven-permission-classif.md
   rel: same-problem
-pipeline_status: raw
-consumed_by: []
+pipeline_status: extracted
+consumed_by:
+- rules/explicit-permission-allow-listing-for-agent-resource-access.md
 ---
 # Explicit Permission Allow-Listing for Agent Resource Access
 
@@ -50,3 +51,6 @@ Persistent allow-lists per skill so frequently-used skills don't trigger repeat 
 
 ## Potential Failure Modes
 Permission fatigue — if every skill triggers multiple approval dialogs, users may start blindly approving everything, defeating the purpose. The model requires the user to be present and attentive at approval time.
+
+## Extraction Note — 2026-04-26
+Extracted as **rule**: [[explicit-permission-allow-listing-for-agent-resource-access]] in `extracts/rules/`

@@ -19,8 +19,8 @@ related_findings:
   rel: same-problem
 date_discovered: '2026-04-07'
 last_updated: 2026-04-08
-pipeline_status: raw
-consumed_by: []
+pipeline_status: extracted
+consumed_by: ["patterns/git-status-context-injection-token-hygiene.md"]
 ---
 
 ## What It Is

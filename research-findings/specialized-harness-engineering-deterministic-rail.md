@@ -29,7 +29,7 @@ related_findings:
   rel: same-problem
 - file: bmad-v6-builder-custom-agent-workflow-creation.md
   rel: same-problem
-pipeline_status: raw
+pipeline_status: "classified"
 consumed_by: []
 ---
 # Specialized Harness Engineering: Deterministic Rails for Complex Workflows

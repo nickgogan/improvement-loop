@@ -21,8 +21,9 @@ related_findings:
   rel: same-problem
 - file: agent-context-kiss-commandments-minimum-viable.md
   rel: same-problem
-pipeline_status: raw
-consumed_by: []
+pipeline_status: extracted
+consumed_by:
+- templates/task-to-file-routing-table-in-context-files.md
 ---
 # Task-to-File Routing Table in Context Files
 
@@ -43,3 +44,6 @@ Dynamic routing based on task analysis: the agent reads the routing table but al
 
 ## Potential Failure Modes
 Routing table becomes stale as workspace evolves (files referenced in table no longer exist or have been renamed). Task ambiguity: a task that spans multiple rows creates confusion about which context to load.
+
+## Extraction Note — 2026-04-26
+Extracted as **template**: [[task-to-file-routing-table-in-context-files]] in `extracts/templates/`

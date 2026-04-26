@@ -22,8 +22,8 @@ related_findings:
   rel: same-problem
 - file: ultra-plan-ab-testing-infrastructure.md
   rel: same-problem
-pipeline_status: raw
-consumed_by: []
+pipeline_status: extracted
+consumed_by: ["patterns/three-mode-cloud-planning.md"]
 ---
 # Claude Code Ultra Plan: Three-Mode Cloud Planning
 

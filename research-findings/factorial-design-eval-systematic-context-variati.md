@@ -26,7 +26,7 @@ related_findings:
   rel: enables
 - file: infrastructure-noise-agentic-eval-confounding.md
   rel: same-problem
-pipeline_status: raw
+pipeline_status: "classified"
 consumed_by: []
 ---
 # Factorial Design Eval: Systematic Context Variation for Hidden Bias Detection

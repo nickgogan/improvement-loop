@@ -29,8 +29,8 @@ related_findings:
   rel: same-problem
 - file: signal-capture-as-byproduct-of-work.md
   rel: same-problem
-pipeline_status: raw
-consumed_by: []
+pipeline_status: extracted
+consumed_by: ["patterns/compounding-knowledge-loop.md"]
 ---
 # Compounding Knowledge Loop (Internal Data)
 

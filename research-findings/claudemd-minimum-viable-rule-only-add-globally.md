@@ -29,8 +29,9 @@ related_findings:
   rel: same-problem
 - file: agent-context-kiss-commandments-minimum-viable.md
   rel: same-problem
-pipeline_status: raw
-consumed_by: []
+pipeline_status: extracted
+consumed_by:
+- rules/claudemd-minimum-viable-rule-only-add-globally-true-lines.md
 ---
 # CLAUDE.md Minimum Viable Rule: Only Add Globally True Lines
 
@@ -51,3 +52,6 @@ Claude Code tooling that shows token budget consumption from CLAUDE.md before ea
 
 ## Potential Failure Modes
 Too-lean CLAUDE.md means the model repeatedly makes the same preventable mistakes. Finding the right balance requires empirical experimentation per workflow.
+
+## Extraction Note — 2026-04-26
+Extracted as **rule**: [[claudemd-minimum-viable-rule-only-add-globally-true-lines]] in `extracts/rules/`
