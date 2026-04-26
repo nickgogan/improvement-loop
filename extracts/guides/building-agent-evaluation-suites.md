@@ -6,7 +6,7 @@ target_system:
   - "cross-system"
 stage: "draft"
 created: "2026-04-19"
-updated: "2026-04-19"
+updated: "2026-04-26"
 author: "claude"
 source_findings:
   - "agent-self-reporting-unreliability-independent-eval"
@@ -39,6 +39,8 @@ source_findings:
   - "gsd-gates-taxonomy-four-canonical-types"
   - "multidimensional-success-criteria-smart"
   - "arc-agi-3-zero-percent-abstract-reasoning"
+  - "ensemble-eval-majority-required-for-success"
+  - "production-configuration-baseline-discipline"
 source_dd:
   - "DD-81"
 tags:
@@ -46,9 +48,9 @@ tags:
   - "evaluation"
 contract:
   preconditions: "You have an agent system with defined acceptance criteria. You can run the agent repeatedly on known inputs. You have access to implement deterministic checks (linters, schema validators, test runners) and optionally LLM-as-judge assertions."
-  invariants: "All evaluation is independent of the agent under evaluation -- the agent never grades its own output. Every assertion is binary (pass/fail), never subjective. Eval files are locked from agent modification. Infrastructure configuration is documented and controlled as a first-class variable."
-  governance: "Eval suites are versioned alongside the agent they evaluate. Eval files cannot be modified by the agent under evaluation. Grading tier selection is reviewed when task requirements change. Capability evals graduate to regression suites at saturation. This guide is owned by Meta-System knowledge layer."
-  recovery: "If eval results are inconsistent: check infrastructure configuration first (resource limits, time-of-day effects). If evals always pass: assertions are too easy -- add edge cases and harder criteria. If eval-aware gaming is suspected: check for benchmark-identification search patterns in agent logs. If an improvement loop stalls after 40+ iterations: review assertions for mutual satisfiability before increasing the cap."
+  invariants: "All evaluation is independent of the agent under evaluation -- the agent never grades its own output. Every assertion is binary (pass/fail), never subjective. Eval files are locked from agent modification. Infrastructure configuration is documented and controlled as a first-class variable. Published scores are produced by the same product configuration the product ships with; ensemble aggregation rules match the production serving rule and are declared on every result."
+  governance: "Eval suites are versioned alongside the agent they evaluate. Eval files cannot be modified by the agent under evaluation. Grading tier selection is reviewed when task requirements change. Capability evals graduate to regression suites at saturation. Published benchmarks carry configuration disclosure (hash, feature-list, or pinned commit) and aggregation rule (single-path / majority / best-of-N with picker / union-of-successes-explicitly-labeled). This guide is owned by Meta-System knowledge layer."
+  recovery: "If eval results are inconsistent: check infrastructure configuration first (resource limits, time-of-day effects). If evals always pass: assertions are too easy -- add edge cases and harder criteria. If eval-aware gaming is suspected: check for benchmark-identification search patterns in agent logs. If an improvement loop stalls after 40+ iterations: review assertions for mutual satisfiability before increasing the cap. If a published score does not survive product use: check whether it was a feature-disabled baseline, an out-of-path benchmark, or used union-of-successes aggregation; re-run at production configuration with the production aggregation rule and republish with the corrected number."
 ---
 
 # Building Agent Evaluation Suites
@@ -84,6 +86,8 @@ How to verify your agent actually works -- not by asking it, but by measuring it
 **7. Benchmarks measure what they measure.** Current frontier models score 90%+ on professional exams and coding benchmarks but 0% on novel abstract reasoning (ARC-AGI-3). High benchmark scores indicate strong pattern-matching within training distribution, not general reasoning ability. Design your evals to test the capabilities your agent actually needs, and include at least one genuinely novel task per eval cycle to detect whether improvements reflect real generalization or just better pattern matching.
 
 **8. Tool-shaped objects produce activity, not value.** Agent complexity that generates "the feeling of work" without measurable output is a tool-shaped object. The diagnostic: "What metric is this component supposed to improve, and is that metric actually going up?" If not, the component is scrap, not infrastructure.
+
+**9. Published numbers must match served configuration.** A benchmark result is only meaningful as a product claim if it was produced by the same configuration the product actually serves. Two failure axes recur: configuration ("scored with the product's distinctive features disabled, scored on out-of-path code, or scored on corpora too small for the scalability mechanisms to engage") and aggregation ("scored as union-of-successes across N independent reasoning paths, with no production analog that retroactively picks the right path"). Both inflate headlines that do not survive product use. The discipline: declare both the configuration the score was produced under and the aggregation rule used, and refuse to publish numbers from configs you don't ship.
 
 ---
 
@@ -305,7 +309,11 @@ Use the four canonical gate types to structure where evaluation fires in your wo
 
 Every workflow should have at least a pre-flight gate and an abort gate. Revision and escalation gates are added for iterative workflows where the agent may get stuck or produce diminishing returns.
 
-### Step 10: Control for Infrastructure Noise
+### Step 10: Control for Infrastructure and Configuration Noise
+
+Two classes of run-time variance can swing eval scores enough to swamp the capability signal: infrastructure noise (which environment ran the eval) and configuration noise (which version of the product was scored). Both have to be pinned and reported.
+
+#### Infrastructure noise
 
 Infrastructure configuration swings agentic benchmark scores by up to 6 percentage points -- exceeding typical leaderboard gaps between models.
 
@@ -318,6 +326,42 @@ Infrastructure configuration swings agentic benchmark scores by up to 6 percenta
 **Report infrastructure alongside scores.** A benchmark result without resource configuration is not reproducible. Treat leaderboard gaps under 3 points with skepticism -- the infrastructure noise floor alone can account for 2-6 points of variance.
 
 **Web contamination:** When evals involve web search, agent queries create persistent indexable artifacts (auto-generated e-commerce pages, cached query trails) that contaminate future eval runs. This compounds with each run. Mitigations: use cached/snapshot web data, rotate question sets, or route searches through proxies.
+
+#### Production-configuration baseline
+
+The number you publish must be produced by the same product configuration that ships. Three configuration anti-patterns inflate scores invisibly:
+
+| Anti-pattern | What it looks like | Why it inflates |
+|--------------|-------------------|-----------------|
+| **Feature-disabled baseline** | Score generated with the product's distinctive features (rooms, compression, selective retrieval, governance layers) turned off | Measures the substrate, not the product. Documented swings up to 12.4pp when features are enabled. |
+| **Out-of-path optimization** | Benchmark queries skip layers production queries traverse (caching, reranking, safety, governance) | Measures a fast path users never see |
+| **Scale-free testing** | Benchmark corpus too small for the scalability mechanism to activate | Mechanism the product is sold on never enters the measurement |
+
+**Requirements for a production-configuration baseline:**
+- All product features enabled that a default-configuration user would encounter
+- Benchmark queries traverse the same code path production queries do
+- Corpus size representative of the scale the product claims to handle
+
+**Report the configuration alongside the score.** A configuration hash, a feature-list, or a pinned commit reference. A benchmark result without configuration disclosure is not reproducible and not comparable. If you must publish multiple configurations (baseline / features-on / at-scale), label each explicitly and never let the most flattering line graduate into headline reference.
+
+#### Ensemble aggregation discipline
+
+When the eval runs N independent reasoning paths per query (multiple prompts, multiple models, multiple decompositions), the rule that collapses N answers into one score is load-bearing. Choose it to match what the product actually serves.
+
+| Aggregation rule | Production analog | Use when |
+|------------------|-------------------|----------|
+| **Single-path** | Run one path, ship the answer | Production runs one path; report variance across seeds for stability |
+| **Majority vote** | Run N paths, ship the majority answer | Production runs the ensemble and serves consensus |
+| **Best-of-N with picker** | Run N paths, picker model selects one | Production has a picker that runs in serving latency |
+| **Union-of-successes** (anti-pattern) | None — no production system retroactively picks the path that would have been right | Never. Inflates with N because the probability that at least one of N imperfect paths is right approaches 1. |
+
+**Rules:**
+- Publish the aggregation rule as a tuple element on every score: `(score, aggregation_rule, N)`. Treat missing aggregation rule as cause to exclude a result from comparative analysis.
+- If you report best-of-N, the picker has to exist and run in production latency. Post-hoc human selection from N candidates is union-of-successes with extra steps.
+- If aggregation rule changes between publications (e.g., single-path → majority-vote), label the change. A score "improvement" that comes from re-aggregating is aggregation drift, not capability gain.
+- For replayability, publish per-question path outputs (e.g., per-question JSONL) so any reader can recompute under any aggregation rule.
+
+The two disciplines compose: configuration tells the reader *what was scored*; aggregation tells the reader *how N answers became one number*. A benchmark result that pins both is honest; one that pins neither is marketing.
 
 ### Step 11: Instrument for Observability
 
@@ -572,6 +616,12 @@ Impressive benchmark scores on professional exams and coding tasks do not predic
 ### 14. Orchestration as tool-shaped object
 An orchestration layer that "feels productive" but does not measurably improve latency, cost, or output quality is a tool-shaped object. Define success metrics before adding complexity. If the orchestrator does not demonstrably improve the metrics, remove it.
 
+### 15. Union-of-successes inflation
+Reporting "the eval was passed if any of N independent paths reached the correct answer" inflates the published number toward 1 as N grows -- without any production system that can retroactively choose the right path. The number is uninterpretable as a product capability claim. Pin the aggregation rule to whatever the product actually serves (single-path, majority vote, or best-of-N with a real picker). If you must report union for research insight, label it explicitly and publish the production-realizable number alongside.
+
+### 16. Feature-disabled baseline
+The headline number is generated with the product's distinctive features (rooms, compression, selective retrieval, governance layers) disabled, scoring the substrate rather than the product. When features are enabled in production, scores drop materially (documented swings up to 12.4pp). Run benchmarks on the configuration the product ships with -- all features enabled, same code path, representative corpus size. Publish the configuration (hash, feature-list, or pinned commit) alongside the score; a result without configuration disclosure is not reproducible.
+
 ---
 
 ## Related Guides
@@ -599,6 +649,8 @@ An orchestration layer that "feels productive" but does not measurably improve l
 - Infrastructure configuration is documented and controlled as a first-class variable alongside prompt and temperature.
 - Both Level 1 (agent output) and Level 2 (harness integrity) verification are maintained.
 - Capability evals and regression evals are tracked separately with clear graduation criteria.
+- Published scores are produced by the same product configuration that ships -- features enabled, code path matching, corpus representative.
+- Ensemble aggregation rules match the production serving rule and are declared as a tuple element on every published result.
 
 ### Governance
 - Eval suites are versioned alongside the agent they evaluate.
@@ -607,6 +659,7 @@ An orchestration layer that "feels productive" but does not measurably improve l
 - Calibration baselines are updated when models are upgraded. Old baselines are preserved for regression comparison.
 - Capability evals graduate to regression suites at saturation and are replaced with harder evals.
 - Golden traces are maintained as a regression baseline library, updated when requirements evolve.
+- Published benchmarks carry configuration disclosure (hash, feature-list, or pinned commit) and an aggregation rule (single-path / majority vote / best-of-N with picker / union-of-successes-explicitly-labeled). Results without both are not used as comparative product claims.
 - This guide is owned by the Meta-System knowledge layer and updated when new evaluation findings are integrated.
 
 ### Recovery
@@ -616,3 +669,4 @@ An orchestration layer that "feels productive" but does not measurably improve l
 - If an improvement loop produces no gains after 40+ iterations: review assertions for mutual satisfiability. Check whether the skill has hit its capability ceiling. Check whether execution feedback signals are sufficiently informative.
 - If web-based eval scores degrade over time: check for accumulated query artifacts from prior runs. Switch to cached/snapshot web data or rotate question sets.
 - If a harness change breaks agent behavior: run Level 2 smoke tests. Revert the config change. Re-run Level 2 tests to confirm recovery.
+- If a published benchmark score does not survive real product use: check for feature-disabled baseline (substrate scored without the product's distinctive features), out-of-path optimization (benchmark queries skipping production layers), or union-of-successes aggregation. Re-run at production configuration with the production aggregation rule; republish the corrected number alongside the original (with the original explicitly labeled as feature-disabled or union-aggregated).
