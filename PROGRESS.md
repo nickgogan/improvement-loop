@@ -1,27 +1,29 @@
 # Improvement Loop — Progress
 
-**Last Updated:** 2026-04-26 (session 72 close — top-3 prioritization queue: items 1 + 2 surfaced for Nick gate; items 3a + 3b trigger checks deferred-continued)
+**Last Updated:** 2026-04-26 (session 73 close — /detect-drift smoke-test + scan.py codification + Librarian cross-concept subagent template)
 
 ## Current Focus
 
-Codifier disposition. Session 72 walked the top 3 items in Nick's Prioritization queue per session-72 handoff scope — evidence-driven evaluation rather than skill build.
+Codifier disposition. Session 73 ran the first end-to-end `/detect-drift` smoke-test, then expanded scope twice (Nick-directed) to codify scan.py and pull the Librarian cross-concept subagent template forward.
 
-**Item 1 — `harness-engineering-third-evolution`: classified pattern HIGH/auto, P2 retained.** `/identify-artifacts` single-finding scope. Report at `operations/pattern-identification-reports/2026-04-26-identification-report-2.md`. Routes to G3 (reinforces session-69 G3 Step 8). Curator review retained P2 — convergent-adoption signal strengthens evidence, not priority. PENDING Nick gate; on approval, Codifier back-annotates `pipeline_status: classified` on the finding.
+**Outcome 1 — `/detect-drift` smoke-test against live extracts corpus.** First run of IB-157. 31 artifacts scanned across 4 forms; 1 drift hit, 30 clean, 0 enumeration gaps, 0 unresolvable sources. Report at `operations/drift-reports/2026-04-26-source-drift.md`. Drift hit: `rules/agent-self-reporting-unreliability-independent-eval` (source updated 2026-04-20, extracted 2026-04-19). Codifier recommendation: `dismiss as cosmetic` — source body shows post-extraction administrative updates only (extraction-note section, `consumed_by` list growth, `pipeline_status: synthesized`); artifact substance unchanged. PENDING Nick gate.
 
-**Item 2 — `specification-as-governance-fourth-enforcement-philosophy`: trigger FIRED, P2 → P1 proposed.** Targeted `/reassess-priorities` single-candidate scan. Report at `operations/research-reports/priority-reassessment-2026-04-26-spec-as-governance.md`. Independence audit — conservative count = 5 independent sources with production evidence at #5 (3 prior — LangGraph, n8n, Superpowers — plus 2 strong NEW: MemPalace RFC 002 with code-level conformance machinery; Amazon Kira post-outage rebuild). Skill rubric Criterion 1 P1 threshold met cleanly. Session 62's hold-at-P2 (rubric required 5+; only 3 visible) cleared. PENDING Nick gate; on approval, Codifier applies `priority: P1` to the frontmatter.
+**Outcome 2 — `scan.py` helper + SKILL.md update.** First pass of the smoke-test (LLM-driven inline parsing) returned a false-clean result; spot-check surfaced a YAML quote-style heterogeneity bug (corpus has 27 double-quoted + 4 single-quoted `extraction_date` fields; inline parser stripped only double quotes, silently masking the drift hit). Nick directed mid-session codification. `scan.py` reifies Steps 1-2 of `/detect-drift` (enumeration + frontmatter parse + source resolution + strict-greater-than compare); LLM-judgment steps (recommendation, report construction) remain in the skill body.
 
-**Items 3a + 3b — DEFERRED findings trigger checks: NOT FIRED.** `agentic-search-memory-retrieval-architecture` — still single-vendor sandbox source (Supermemory); no 2nd production deployment. `agent-native-app-store-emerging-category` — adjacent landscape findings confirm category gap unfilled; no ecosystem-maturity evidence. Structural signal underpinning both: no new entries in `research-sources/` since session 62 — Researcher hasn't run any external scan that could surface new evidence. Continued deferral with full evidence trail in session-72 SL. No frontmatter or PROGRESS-line change (deliberate — bumping `last_updated` to record "checked, no change" would create false-change signal in future `/detect-drift` runs).
+**Outcome 3 — Librarian cross-concept subagent template (read-contract §Q4).** Workflow file at `agents/librarian/workflows/cross-concept-subagent.md`. Lucene-style decomposition: one subagent per `(operation × concept)` pair, parent recombines via per-operation join rules. Includes parameterized subagent prompt template, recombination logic across all 9 operations, UC-9.2 worked example, failure-modes table.
 
-**Held for next pass (surfaced from item 2):**
+**Smoke-test signals (5 from handoff + 1 surfaced):** enumeration coverage clean (31/31); source-pointer resolution clean (31/31); DD-96 amendment field-name alignment clean (0 legacy `updated`); recommendation-enum distribution single data point (1 hit / 1 `dismiss as cosmetic`); DD-95 lifecycle-pointer presence — corpus fully backfilled, **pre-DD-95 graceful-degradation path NOT exercised** (future fixture-based validation needed); surfaced — YAML quote-style heterogeneity in artifact frontmatter, corpus-wide.
 
-- Evidence-strength upgrade Medium → Strong on spec-as-governance — defensible on Kira citation but held per skill Rule 5 (priority and evidence_strength are separate passes). Next periodic `/reassess-priorities` full-KB pass.
-- `sources: []` frontmatter gap on spec-as-governance (body cites `[[langgraph-analysis]]` and `[[n8n-analysis]]` but frontmatter is empty). Out of `/reassess-priorities` scope. Refer to `/linkage-repair` or Researcher cleanup.
+**Surfaced for Owner / Nick gate (not filed inline per standing rule):**
 
-**Three atomic outcome commits + close commit.** No DDs / IBs filed inline (standing rule). Single-finding inline classification (item 1) and single-candidate inline reassessment (item 2) — both deviations from canonical Sonnet-batch / full-KB-scan procedures, declared in each report's run-note block.
+- Operation-file "join rule" subsection — the cross-concept template names join rules for all 9 operations but those rules currently live in the template, not in the operation files themselves. IB candidate.
+- YAML quote-style normalization across the artifact corpus — affects all frontmatter readers, not just `/detect-drift`. Owner-routable.
 
-Session-72 SL: `session-72-codifier-queue-top-3.md`.
+**Four atomic commits** (three outcome commits + close commit). No DDs / IBs filed inline (standing rule).
 
-**Next session target (session 73 — Codifier):** **First `/detect-drift` smoke-test run against the live KB.** Validates IB-157 read paths end-to-end (enumeration coverage, source-pointer resolution, DD-96 field-name alignment, recommendation-enum distribution, lifecycle-pointer graceful-degradation on pre-DD-95 artifacts). Read-only by contract — Nick gates re-extraction. Optional pre-task: apply Nick gates from session-72 items 1 + 2 if gated (one-line frontmatter Edits). G7 / G2 / G9 re-synthesis is the natural follow-up session. Handoff: `operations/handoffs/handoff-prompt-session-73-codifier-detect-drift-smoke-test.md`.
+Session-73 SL: `session-73-codifier-detect-drift-smoke-test.md`.
+
+**Next session target (session 74):** **Lifecycle-spec Phase-3 DDs (DD-X5 / DD-X6 / DD-X8 / DD-X9).** Per Nick's session-73 direction. Phase 1 + Phase 2 ratified session 70. Phase-3 four-DD bundle: guide-split / theme-graduation / template-and-agent versioning / co-occurrence harvesting. Handoff: `operations/handoffs/handoff-prompt-session-74-codifier-lifecycle-phase-3-dds.md` (written this session's close via `/session-handoff`).
 
 ---
 
@@ -29,12 +31,10 @@ Session-72 SL: `session-72-codifier-queue-top-3.md`.
 
 Ordered queue. Status markers: `[nick-gate]` waits on Nick's ruling; `[deferred]` held by Nick, re-evaluate on trigger; `[trigger]` waits on external evidence or volume; `[don't-do-yet]` do not reintroduce until a specific upstream condition lands.
 
-- **Lifecycle-spec Phase-3 DDs (DD-X5, DD-X6, DD-X8, DD-X9)** — [deferred] guide-split / theme-graduation / template-and-agent versioning / co-occurrence harvesting. Phase 1 + Phase 2 ratified session 70.
-- **Librarian subagent template** for cross-concept queries (read-contract Q4). Position TBD.
-- **First `/detect-drift` smoke-test run against the live KB** — validates IB-157 read paths (enumeration-gap counts, unresolvable-source counts). Low-cost; can fold into next Codifier session.
+- **Lifecycle-spec Phase-3 DDs (DD-X5, DD-X6, DD-X8, DD-X9)** — [next-session] guide-split / theme-graduation / template-and-agent versioning / co-occurrence harvesting. Phase 1 + Phase 2 ratified session 70. Promoted to next-session focus by Nick at session-73 close.
 - **IB-153** — /dimension-rebalance after Sub-dim 1.B. Codifier capacity; not urgent per Nick. Will reclassify Memory Architecture findings to Context Engineering parent.
-- **G7 / G2 / G9 re-synthesis** — top unblocked Codifier unit. G7 most overdue (+11 findings). Skill is fully lifecycle-aware after session 71 (DD-93 preservation + DD-94 changelog on `/synthesize-guide`; DD-95 lifecycle pointer + DD-97 corpus-scan extension proposal on `/extract-artifacts`; DD-96 `/detect-drift` skill available). Re-synthesis is the natural live-validation gate for IB-154 + IB-155.
 - **Retroactive migration of ~100 non-guide/non-pattern extracts** — per pipeline-collapse Phase M1 audit.
+- **G7 / G2 / G9 re-synthesis** — top unblocked Codifier unit. G7 most overdue (+11 findings). Skill is fully lifecycle-aware after session 71 (DD-93 preservation + DD-94 changelog on `/synthesize-guide`; DD-95 lifecycle pointer + DD-97 corpus-scan extension proposal on `/extract-artifacts`; DD-96 `/detect-drift` skill available). Re-synthesis is the natural live-validation gate for IB-154 + IB-155.
 - **`/summarize-encounters` skill build** — [trigger] volume trigger or Nick's brief.
 - **Visualization brainstorm** — [deferred] boil DDs/architecture into human-visualizable form. Session 62: `interactive-explanations-extend-linear-walkthroughs` finding (P2) is a direct technique for this work.
 - **`agent.md` variant-depth iteration** — [trigger] demand-driven on concrete consumer queries; variants (prompt-based / harness-based / autonomous-vs-supervised) exist as stubs per session-49 gate.
