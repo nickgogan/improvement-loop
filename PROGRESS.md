@@ -1,20 +1,20 @@
 # Improvement Loop — Progress
 
-**Last Updated:** 2026-04-26 (session 74 close — Phase-3 lifecycle-spec DDs filed + session-75 handoff written)
+**Last Updated:** 2026-04-26 (session 75 close — Phase-3 implementation IBs filed (IB-159 → IB-164))
 
 ## Current Focus
 
-Codifier disposition. Session 74 closed the artifact-lifecycle spec's design loop by filing the four Phase-3 DDs in a single Codifier pass: DD-98 (guide split), DD-99 (theme graduation), DD-100 (template and agent versioning), DD-101 (co-occurrence harvest queue). Phase 1 (DD-93/94/95) and Phase 2 (DD-96/97) ratified session 70; Phase 3 closes the spec.
+Codifier disposition. Session 75 closed the Phase-3 IB sweep by filing the six implementation IBs that translate DD-98/99/100/101 into actionable backlog items. Phase 1 (DD-93/94/95) implementation sweep was IB-154/155/156 (session 71); Phase 2 (DD-96/97) implementation sweep was IB-157/158 (session 71); Phase 3's implementation sweep is now IB-159 through IB-164.
 
-**Outcome — four DDs filed.** Each DD codifies its own procedure or structural pattern. Two amend DD-94's closed trigger-tag enum (DD-98 adds `guide-split`; DD-99 adds `theme-graduation`); the amendments honor DD-94's "new trigger tags require a DD amendment" rule by being the DDs that amend it. DD-100 is the missing Phase-3 sibling to DD-97 — DD-97 governs rule/skill extension; DD-100 governs template versioning and agent version-bump (with DD-82 invariant: agent bumps require Nick's prior approval). DD-101 makes DD-77's "co-occurrence resolved at read time by downstream consumers" operational for one specific consumer (`/synthesize-guide`), without contradicting DD-77's negative design decision.
+**Outcome — six IBs filed.** IB-159 (DD-98 split-trigger detection on `/synthesize-guide` Step 0 + `/identify-artifacts` routing-table reads + DD-94 enum bullet add `guide-split`); IB-160 (DD-99 graduation-trigger detection on `/identify-artifacts` Step 6 + DD-94 enum bullet add `theme-graduation`); IB-161 (DD-100 `_schema.yaml` `version: integer` field for template/agent extracts + retroactive `version: 1` backfill of all 6 templates and 3 agents); IB-162 (DD-100 template version-bump path + agent flag-only path on `/extract-artifacts`); IB-163 (DD-101 co-occurrence harvest-queue scan on `/synthesize-guide` absorption phase); IB-164 (DD-101 queue-row promotion path on `/extract-artifacts` with DD-97/DD-100 dispatch by target form).
 
-**Cross-DD consistency check passed inline.** Seven cross-DD invariants spot-checked at filing time (DD-94 enum amendments, DD-95 per-version independence, DD-96 multi-version scan, DD-77 read-time-resolution preservation, DD-93 preserved-section disposition on split, DD-97/DD-100 downstream from DD-101, IB-153 dependency for DD-99 ABSORB path). No structural ambiguities surfaced for stop-and-surface.
+**Cross-IB consistency check passed inline.** Seven cross-IB invariants spot-checked at filing time (DD-94 enum bullet split additivity, IB-161 → IB-162 schema dependency, IB-163 → IB-164 input dependency, IB-162 → IB-164 template-target dispatch, DD-77 invariant preservation in IB-163+IB-164, DD-82 agent invariant three-layer enforcement, DD-93 preserved-section disposition in IB-159). Recommended execution order: IB-161 → IB-162 → IB-163 → IB-164 → (IB-159 + IB-160 parallel).
 
-**Four atomic commits** (one per DD). Form matches DD-93..97 verbatim — frontmatter, agent callout, Constraint, Why, Rules, Acceptance Criteria, Scope and Non-Goals, Related, Source, Phase-3 Marker. No spec rewrites; the design note remains a frozen reference. No Phase-3 IB filing inline (standing rule); IB sweep is session-75+ work.
+**Six atomic commits** (one per IB). Form matches IB-154..158 verbatim — frontmatter-only with all substance in `notes:` field. All six at status `Queued`, priority `P2`, type `Build`. No skill modifications inline (standing rule); skill SKILL.md edits are downstream of IB approval.
 
-Session-74 SL: `session-74-codifier-lifecycle-phase-3-dds.md`.
+Session-75 SL: `session-75-codifier-phase-3-ib-sweep.md`.
 
-**Next session target (session 75):** **Phase-3 IB sweep** — implementation IBs for DD-98/99/100/101 (top of Nick's prioritization queue per session-74 close edit). Anticipated 5–6 IBs covering: split-trigger detection on `/synthesize-guide` or `/identify-artifacts` (DD-98) + DD-94 enum-bullet edit; graduation-trigger detection on `/identify-artifacts` (DD-99) + DD-94 enum-bullet edit; `_schema.yaml` `version` field addition (DD-100); template version-bump path on `/extract-artifacts` (DD-100); harvest-queue scan on `/synthesize-guide` (DD-101); queue-row promotion path on `/extract-artifacts` (DD-101). Analogous to session 71's IB-154…158 sweep. Handoff: `operations/handoffs/handoff-prompt-session-75-codifier-phase-3-ib-sweep.md` (written this session's close via `/session-handoff`).
+**Next session target:** Per the prioritization queue below, the natural next-up Codifier units are: (a) execute the Phase-3 IB sweep (IB-159 → IB-164 — analogous to session 71's IB-154..158 implementation sweep, ~6 atomic commits in one session); or (b) G7 / G2 / G9 re-synthesis (top unblocked Codifier unit per existing queue; live-validation gate for IB-154+155); or (c) `/summarize-encounters` brainstorm (Nick has flagged for collaborative scoping). Nick gates which to take next.
 
 ---
 
@@ -22,8 +22,8 @@ Session-74 SL: `session-74-codifier-lifecycle-phase-3-dds.md`.
 
 Ordered queue. Status markers: `[nick-gate]` waits on Nick's ruling; `[deferred]` held by Nick, re-evaluate on trigger; `[trigger]` waits on external evidence or volume; `[don't-do-yet]` do not reintroduce until a specific upstream condition lands.
 
-- **Phase-3 IB sweep** — implementation IBs for DD-98/99/100/101 (session 74 filing). Analogous to session 71's IB-154…158 sweep for Phases 1+2. Includes DD-94's enum-bullet edits (`guide-split`, `theme-graduation`) and `_schema.yaml`'s `version` field addition.
-- **`/summarize-encounters` skill build** — [trigger] volume trigger or Nick's brief.
+- **Phase-3 IB execution** — implement IB-159 → IB-164 (session 75 filing). Recommended order per session-75 SL cross-IB consistency notes: IB-161 (schema + backfill) → IB-162 (`/extract-artifacts` version-bump path) → IB-163 (`/synthesize-guide` queue scan) → IB-164 (`/extract-artifacts` queue-row promotion) → IB-159 + IB-160 (parallel; independent of DD-100/DD-101 chain). Analogous to session 71's IB-154..158 implementation sweep.
+- **`/summarize-encounters` skill build** — [trigger] volume trigger or Nick's brief. Nick: Lets brainstorm together what this could look like and why.
 - **IB-153** — /dimension-rebalance after Sub-dim 1.B. Codifier capacity; not urgent per Nick. Will reclassify Memory Architecture findings to Context Engineering parent.
 - **G7 / G2 / G9 re-synthesis** — top unblocked Codifier unit. G7 most overdue (+11 findings). Skill is fully lifecycle-aware after session 71 (DD-93 preservation + DD-94 changelog on `/synthesize-guide`; DD-95 lifecycle pointer + DD-97 corpus-scan extension proposal on `/extract-artifacts`; DD-96 `/detect-drift` skill available). Re-synthesis is the natural live-validation gate for IB-154 + IB-155.
 - **Retroactive migration of ~100 non-guide/non-pattern extracts** — per pipeline-collapse Phase M1 audit.
