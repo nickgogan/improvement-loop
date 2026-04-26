@@ -50,6 +50,8 @@ The Extractor thinks like an artifact author — opinionated, form-appropriate, 
 | `--sl STEM` | Active session's SL filename stem (no path, no `.md`). Required on every write of a non-guide artifact (DD-95). Skill prompts if missing (unless `--auto`, which aborts). Validated against `operations/system-log/<stem>.md` before any artifact is written. |
 | `--update` | Re-extraction mode (DD-95). When set, the skill OVERWRITES existing artifacts whose `source_finding` matches a finding in the current run, rather than skipping them per the default dedup-at-write rule. Triggers: post-drift-report Nick ruling (DD-96), Nick-requested re-extraction, dimension-rebalance regen. On update, body + ContractSpec + ContextSpec are regenerated; `last_change_session` + `last_change_sl` are overwritten with the current session's values; `extraction_date` is preserved (the original extraction date — not the update date); `deployed` + `deployed_to` are preserved. |
 | `--version-bump <agent-stem>` | Explicit agent version-bump invocation (DD-100, DD-82). Required when bumping an agent: agent forms are flag-and-exit by default per DD-82's never-auto-create invariant (Step 1.8 agent branch); Nick's prior approval is structural, not skill-resolvable from corpus scan. When set, the named agent stem is treated as a Nick-approved version-bump candidate and routed through the version-bump write path (Item 3 of Step 1.8) rather than flagged-and-exited. Templates do NOT use this flag — template version bumps are auto-proposed by the corpus scan and Nick rules per proposal in the standard flow. |
+| `--harvest-row <guide-stem>::<target-form>::<headline-slug>` | Harvest-queue row promotion mode (DD-101). Reads the named row from `extracts/guides/<guide-stem>.harvest-queue.md`; verifies row Status is `nick-approved`; treats the row's source_finding as the artifact's source, the row's target form as the artifact's assigned_form, and the row's source excerpt + Codifier's reading + suggested headline as the drafting input. Routes through DD-97 (Step 1.7) for `rule`/`skill` targets; DD-100 (Step 1.8 Branch A) for `template` targets; defensive abort for `agent` targets. On successful write, Step 4.8 updates the originating queue row's Status to `extracted` and Resolution to `extracted to [[<artifact-stem>]]` (or DD-97 merge / DD-100 version-bump variant). The skill never auto-polls harvest queues; this flag is the only entry path to harvest-queue input. Mutually exclusive with `<report-filename>` and `--latest`. |
+| `--harvest-dismiss <guide-stem>::<target-form>::<headline-slug>` | Harvest-queue row dismissal mode (DD-101). Reads the named row and updates Status to `nick-dismissed`, Resolution to `dismissed`. Row is retained in the queue file for audit. Queue-only operation — no drafting, no artifact write. Accepted on rows with Status `queued` or `nick-approved`; rejected on `extracted` or `superseded` rows (terminal states; dismissal would be incoherent). Mutually exclusive with `<report-filename>`, `--latest`, and `--harvest-row`. |
 | `--auto` | Skip human selection — draft all APPROVED and all non-HITL PENDING findings. Use only when user has pre-reviewed the report. |
 
 **No arguments:** prompt for the report filename.
@@ -71,13 +73,53 @@ The Extractor thinks like an artifact author — opinionated, form-appropriate, 
 
 ## Procedure
 
-### Step 0: Load Report
+### Step 0: Load Input — Dispatch on Invocation Mode
+
+The skill operates in three mutually-exclusive invocation modes. Validate that exactly one of the input flags is provided; abort with a structured error on multi-mode invocations (e.g., `<report> --harvest-row …` is ill-formed).
+
+| Mode | Input flag | Input shape | Pipeline path |
+|------|-----------|-------------|---------------|
+| **Identification-report (default)** | `<report-filename>` or `--latest` | Identification report from `/identify-artifacts` | Steps 1, 1.7, 1.8, 2, 2.5, 2.7, 3, 4, 5 — full pipeline |
+| **Harvest-queue promotion (DD-101)** | `--harvest-row <id>` | One Nick-approved row from `extracts/guides/<stem>.harvest-queue.md` | Step 0a → Steps 1.7 (if rule/skill) or 1.8 (if template), 2, 2.5, 2.7, 3 → Step 4.8 (queue write-back) |
+| **Harvest-queue dismissal (DD-101)** | `--harvest-dismiss <id>` | One row from `extracts/guides/<stem>.harvest-queue.md` | Step 0a (resolve) → Step 4.8 (queue-only update); skip drafting entirely |
+
+**Identification-report-mode procedure:**
 
 1. Parse the argument to find the identification report:
    - Named file: read `systems/improvement-loop/operations/pattern-identification-reports/{arg}`
    - `--latest`: glob for `*-identification-report*.md` in `operations/pattern-identification-reports/`, sort by date, take the most recent
 2. Read the report. Parse the Details section to extract per-finding entries: `id`, `assigned_form`, `confidence`, `tier`, `reason_codes`, `co_occurrence`, `rationale`, `Status`.
 3. Report: "Loaded identification report: {filename}. {N} findings total."
+
+**Harvest-queue-mode procedure:** skip the report-load above and proceed to Step 0a.
+
+### Step 0a: Resolve Harvest Queue Row (DD-101) — harvest mode only
+
+Fires only when `--harvest-row` or `--harvest-dismiss` is set. Skip entirely in identification-report mode.
+
+1. **Parse the row ID.** Argument shape: `<guide-stem>::<target-form>::<headline-slug>` (the compound row-heading ID established by IB-163's Step 4.7). Validate three components separated by `::`. Reject ill-formed IDs with a structured error citing the expected format.
+
+2. **Resolve the queue file.** Path: `systems/improvement-loop/extracts/guides/<guide-stem>.harvest-queue.md`. Read the file. If the file does not exist, abort with a structured error: "Queue file `<path>` not found; row reference cannot be resolved. Recovery: verify `<guide-stem>` matches an existing guide and `/synthesize-guide` has run with co-occurrence detections."
+
+3. **Locate the row.** Find the per-row details block whose heading matches `### <guide-stem>::<target-form>::<headline-slug>` exactly. If no matching block, abort with a structured error citing the expected heading and listing the queue file's existing row IDs. Likely cause: typo, stale row-id, headline-slug drift between regens (the duplicate-suppression key is `(source_finding, target_form)`, so a re-detected candidate may carry a different headline-slug than the cited row even though the row stands; verify the cited row exists in this guide's queue, not a different guide's).
+
+4. **Read row fields.** Parse the per-row details block to extract: Date queued, Status, Target form, Source finding, Source excerpt, Codifier's reading, Suggested headline, Recommendation, Resolution. Validate Target form is in the closed enum `{rule, skill, template}` — if `agent`, abort with a structured error citing DD-82 + DD-101 §Rules for `/synthesize-guide` item 3 (agent rows are impossible by upstream construction; defensive abort on encountering one).
+
+5. **Status check (mode-specific).**
+   - **`--harvest-row` mode:** Status MUST be `nick-approved`. If `queued`, abort with a structured error: "Row Status is `queued`; Nick has not approved this candidate. Recovery: edit the queue file to set Status `nick-approved` (or use `--harvest-dismiss` to dismiss as inline)." If `extracted` or `superseded`, abort: "Row Status is `<status>`; the candidate is already resolved. No further extraction needed." If `nick-dismissed`, abort: "Row Status is `nick-dismissed`; the candidate has been ruled inline-only. No artifact will be created."
+   - **`--harvest-dismiss` mode:** Status must be `queued` or `nick-approved`. Reject `extracted` (artifact exists; dismissal is incoherent) and `superseded` (structural status; dismissal would mask the supersession reason). Reject `nick-dismissed` (already dismissed; idempotent re-flip is informational, not actionable; abort with a no-op note).
+
+6. **Build synthetic finding entry.** For `--harvest-row` mode only: construct an in-memory entry that downstream Steps 1+ can consume:
+   - `id` = row's Source finding stem (the original pattern finding); the harvested artifact's `source_finding` per DD-101 §Promotion ("source_finding = the original pattern finding").
+   - `assigned_form` = row's Target form.
+   - `Status` = `APPROVED` (Nick has already gated via the `nick-approved` queue Status; the synthetic identification-report-style Status is set to APPROVED so the Step 1 filter passes the entry through).
+   - `harvest_row_id` = the compound `<guide-stem>::<target-form>::<headline-slug>` ID; cached for Step 4.8's write-back.
+   - `harvest_source_excerpt`, `harvest_codifier_reading`, `harvest_suggested_headline` — cached as drafting input alongside (or in lieu of) the source finding's body. The downstream subagent prompt (Step 2) MAY use the row's excerpt as supplementary context to the source finding's full body; the row's suggested headline MAY seed the artifact title.
+   Tag the entry: this is a single-entry "report" for downstream filter consistency.
+
+7. **Single-entry contract.** Harvest-mode invocations process EXACTLY one queue row per invocation. Multi-row batching is not supported — each row is a Nick-gated decision; conflating multiple rows into one invocation would erode the per-row gate. Multi-row processing is achieved by sequential `/extract-artifacts --harvest-row <id1>` then `/extract-artifacts --harvest-row <id2>` invocations.
+
+8. **Report to user:** "Harvest queue row resolved: source_finding=`<finding-stem>`, target_form=`<form>`, suggested headline=`<headline>`. Routing through {DD-97 corpus scan (Step 1.7) | DD-100 corpus scan (Step 1.8 Branch A)} per target form."
 
 ### Step 1: Filter to Approved
 
@@ -517,6 +559,68 @@ For each written artifact, use `Edit` to append an extraction note to the source
 Extracted as **[assigned_form]**: [[artifact-filename]] in `extracts/[form]s/`
 ```
 
+### Step 4.8: Harvest-Queue Row Write-back (DD-101) — harvest mode only
+
+Fires only in harvest-queue invocation modes (`--harvest-row` or `--harvest-dismiss`). Skip entirely in identification-report mode.
+
+For `--harvest-dismiss` mode, this step is invoked DIRECTLY after Step 0a (skip Steps 1, 1.7, 1.8, 2, 2.5, 2.7, 3, 4 — there is no drafting, no artifact write, and no source-finding back-annotation; the operation is queue-only).
+
+For `--harvest-row` mode, this step runs after Step 4 (back-annotate source) and before Step 5 (back-annotate finding files).
+
+**Inputs.** The cached `harvest_row_id` from Step 0a (compound `<guide-stem>::<target-form>::<headline-slug>`); the active `(active_session, active_sl_stem)` pair from Step 2.7 (cached even though no DD-95 artifact-write occurs in dismiss mode — Step 2.7 still resolves both fields when `--session` and `--sl` are passed; in dismiss mode the SL stem is used to annotate the queue-row footer); the outcome of Steps 1.7 / 1.8 / 3 (whether an artifact was written, whether an extension or version-bump proposal was emitted, or no-op).
+
+**Branch dispatch.**
+
+| Branch | Trigger | Action |
+|--------|---------|--------|
+| **A — Dismissal** | `--harvest-dismiss` set | Update row Status → `nick-dismissed`; Resolution → `dismissed`; append dismissal footer. |
+| **B — New artifact written** | `--harvest-row` + finding NOT tagged `extension_status: "proposed"` AND NOT tagged `version_bump_status: "proposed"` AND artifact written in Step 3 | Update row Status → `extracted`; Resolution → `extracted to [[<artifact-stem>]]`; append extraction footer. |
+| **C — DD-97 extension proposal emitted (rule/skill)** | `--harvest-row` + finding tagged `extension_status: "proposed"` (Step 1.7 multi-or-single-match path) | Status remains `nick-approved`; Resolution remains blank; append pending-merge annotation citing the extension-proposals report and the primary-match artifact stem. |
+| **D — DD-100 version-bump proposal emitted (template)** | `--harvest-row` + finding tagged `version_bump_status: "proposed"` (Step 1.8 Branch A multi-or-single-match path) | Status remains `nick-approved`; Resolution remains blank; append pending-version-bump annotation citing the version-bump-proposals report and the proposed `<existing-stem>-v<N+1>.md` filename. |
+| **E — Defensive abort (agent target)** | Step 0a step 4 detected `target form: agent` (should be unreachable per IB-163 suppression invariant) | Step 0a already aborted; Step 4.8 never runs in this case. Documented for completeness. |
+
+**Branch A — Dismissal (queue-only update):**
+
+1. Read the queue file at `extracts/guides/<guide-stem>.harvest-queue.md`.
+2. Locate the matching summary-table row (by source finding + target form) and the matching per-row details block (by compound heading).
+3. Update the summary-table row's Status column to `nick-dismissed` and Recommendation/Resolution column display to reflect dismissal.
+4. Update the per-row details block: change `**Status:** <prior>` to `**Status:** nick-dismissed`; change/set `**Resolution:** dismissed`.
+5. Append a footer line to the per-row details block: `Dismissed YYYY-MM-DD — Session NN — [[<active_sl_stem>]] — per --harvest-dismiss invocation.`
+6. Atomic write: read existing → modify in-place for the named row → write the result. All other rows unchanged.
+7. Report: "Harvest queue row dismissed: `<row-id>`. Status → `nick-dismissed`. Row retained in `<guide-stem>.harvest-queue.md` for audit."
+
+**Branch B — New artifact written:**
+
+1. Read the queue file.
+2. Locate the row by compound ID.
+3. Update summary table: Status → `extracted`; Recommendation/Resolution display → `extracted to [[<artifact-stem>]]`.
+4. Update per-row details: `**Status:** extracted`; `**Resolution:** extracted to [[<artifact-stem>]]`.
+5. Append footer: `Extracted YYYY-MM-DD — Session NN — [[<active_sl_stem>]] — to [[<artifact-stem>]].`
+6. Atomic write.
+7. Report: "Harvest queue row promoted to extracted artifact: `<row-id>` → `[[<artifact-stem>]]`. Status → `extracted`."
+
+**Branch C — DD-97 extension proposal emitted (rule/skill, no artifact written this invocation):**
+
+1. Read the queue file.
+2. Locate the row.
+3. Status remains `nick-approved`; Resolution remains blank in summary table and per-row details (do NOT pre-fill — the merge has not yet applied).
+4. Append a pending annotation footer to the per-row details block: `Pending merge YYYY-MM-DD — Session NN — [[<active_sl_stem>]] — DD-97 extension proposal emitted at [[operations/extension-proposals/<extension-proposals-filename>]]; primary match [[<existing-artifact-stem>]]. Manual apply per DD-97 v1 (Step 1.7 auto-merge prohibition); after apply, row Status flips to `extracted` and Resolution to `merged into [[<existing-artifact-stem>]]` via manual queue edit (or future skill mode).`
+5. Atomic write.
+6. Report: "Harvest queue row routed to DD-97 extension path: `<row-id>`. Extension proposal emitted at `operations/extension-proposals/<filename>`. Row Status remains `nick-approved`; manual merge per DD-97 v1 (Step 1.7 auto-merge prohibition); update queue row Status manually after apply, or await future skill-mode that closes the merge loop."
+
+**Branch D — DD-100 version-bump proposal emitted (template, no artifact written this invocation):**
+
+1. Read the queue file.
+2. Locate the row.
+3. Status remains `nick-approved`; Resolution remains blank.
+4. Append annotation footer: `Pending version-bump YYYY-MM-DD — Session NN — [[<active_sl_stem>]] — DD-100 version-bump proposal emitted at [[operations/version-bump-proposals/<version-bump-proposals-filename>]]; primary match [[<existing-template-stem>]] (current version v<N>); proposed filename `<existing-template-stem>-v<N+1>.md`. On Nick ruling: re-invoke `/extract-artifacts --harvest-row <row-id>` AFTER updating the existing template (or with the proposal-applied-as-instruction) — at that point Step 1.8 Branch A's match-disambiguation will route to the version-bump write path; row Status flips to `extracted` and Resolution to `version-bumped to [[<existing-template-stem>-v<N+1>]]` post-write.`
+5. Atomic write.
+6. Report: "Harvest queue row routed to DD-100 version-bump path: `<row-id>`. Version-bump proposal emitted at `operations/version-bump-proposals/<filename>`. Row Status remains `nick-approved`; await Nick ruling on the version-bump proposal."
+
+**Atomic-write invariants (all branches).** Step 4.8 reads the entire queue file, mutates only the named row's Status / Resolution / footer block, and writes the entire file back. All other rows (regardless of their state) are preserved byte-equivalent. Failure mid-write leaves the file in a known prior-or-new state per filesystem atomicity; a partial-write recovery is captured in the failure-modes table below. The queue file's `## Per-row details` section ordering is preserved (no reordering during update).
+
+**Run-report summary (always).** "Harvest queue write-back: row `<row-id>` updated. Branch: <A|B|C|D>. Status: `<old>` → `<new>` (or unchanged with pending annotation)."
+
 ### Step 5: Back-Annotate Finding Files
 
 For each extracted finding, update its frontmatter:
@@ -598,6 +702,16 @@ Next: Review staged artifacts in extracts/. Deploy to enforcement locations when
 | `--version-bump` passed for a template form | Step 1.8 Branch A guard / argument validation | Ill-formed invocation — `--version-bump` applies only to agents (DD-82 invariant). Templates auto-propose via the corpus scan; Nick rules per proposal. Abort with structured error citing the form-mismatch. |
 | `--version-bump <stem>` set but more than one agent finding in the run targets that stem | Step 1.8 Branch B' single-target enforcement | Ambiguous: which finding drives the bump? Abort with structured error. Recovery: re-scope the identification report to one finding via `--findings`. |
 | `--version-bump` combined with `--update` | Step 3 versioned-write branch ill-formed-combination check | Abort with structured error. `--update` overwrites the unsuffixed baseline (DD-95 re-extraction); versioned writes produce a new sibling file (DD-100 version bump). The combination is structurally incoherent. |
+| Harvest-row invocation with Status `queued` (not yet `nick-approved`) | Step 0a step 5 status check (`--harvest-row` mode) | Abort with structured error: "Row Status is `queued`; Nick has not approved this candidate." Recovery: edit the queue file to flip Status `queued` → `nick-approved` (Nick's gate decision; manual or via Obsidian), or use `--harvest-dismiss` to dismiss as inline. Procedural violation if the skill auto-extracts on a `queued` row — DD-101 §Rules for `/synthesize-guide` item 7 + this skill's Step 0a Status check are the structural enforcement. |
+| Harvest-row reference resolves to non-existent row | Step 0a step 3 row-locate failure | Abort with structured error citing the expected compound heading and listing the queue file's existing row IDs. Likely cause: typo in row ID, stale row-id (cluster departed and row was superseded; check for a `superseded` row matching the source_finding), or row in a different guide's queue file (verify `<guide-stem>` prefix). |
+| Harvest-queue row target form is `agent` | Step 0a step 4 closed-enum target-form check | Abort with structured error citing DD-82 + DD-101 §Rules for `/synthesize-guide` item 3 (agent rows are impossible by upstream IB-163 suppression invariant; defensive abort on encountering one indicates contract violation upstream). Surface in next governance audit. |
+| Harvest-row invocation with Status `extracted` or `superseded` | Step 0a step 5 status check (`--harvest-row` mode) | Abort with informational note: "Row Status is `<status>`; the candidate is already resolved. No further extraction needed." For `extracted`: artifact exists; consult the row's Resolution for the artifact pointer. For `superseded`: source finding departed cluster; the candidate was rendered moot before extraction. |
+| Harvest-row invocation with Status `nick-dismissed` | Step 0a step 5 status check (`--harvest-row` mode) | Abort with informational note: "Row Status is `nick-dismissed`; Nick ruled the candidate inline-only. No artifact will be created." If Nick later changes posture, edit the queue file to flip back to `nick-approved` and re-invoke. |
+| Harvest-dismiss invocation on `extracted` or `superseded` row | Step 0a step 5 status check (`--harvest-dismiss` mode) | Abort: dismissal is incoherent on terminal-status rows. `extracted` rows have a written artifact; `superseded` rows reflect structural cluster movement. Dismissal as inline only applies to candidates not yet resolved. |
+| Harvest-dismiss invocation on `nick-dismissed` row | Step 0a step 5 status check (`--harvest-dismiss` mode) | No-op informational note: row is already dismissed. The skill exits without modifying the row. Idempotent re-flip is not actionable. |
+| Multiple input modes set simultaneously (e.g., `<report>` + `--harvest-row`) | Step 0 dispatch validation | Abort with structured error citing the conflicting flags. The three input modes are mutually exclusive — pick one per invocation. |
+| Queue-write-back failure mid-extraction (Branch B; artifact written but row update failed) | Step 4.8 atomic-write fails post Step-3 artifact write | Recovery is human-mediated re-run of the row update. The artifact is on disk in `extracts/<form>s/`; the queue row remains in its prior status. Recovery: locate the artifact, manually edit the queue row to Status `extracted` + Resolution `extracted to [[<artifact-stem>]]` + extraction footer; OR re-run the same `/extract-artifacts --harvest-row <id>` invocation, which will detect the existing artifact via Step 3 dedup and skip drafting, then complete Step 4.8 to update the row. (Idempotent recovery path; no second artifact created.) |
+| Queue-write-back failure mid-dismiss (Branch A; queue file partial-write) | Step 4.8 atomic-write fails in dismiss mode | Filesystem atomicity preserves the file in a known prior-or-new state. Recovery: re-run `/extract-artifacts --harvest-dismiss <id>` — the operation is idempotent in dismiss mode (re-flipping `nick-dismissed` → `nick-dismissed` is a no-op). |
 
 ---
 
@@ -612,4 +726,5 @@ Next: Review staged artifacts in extracts/. Deploy to enforcement locations when
 | DD-95 | Lifecycle pointer (`last_change_session` + `last_change_sl`) on every non-guide create AND update; SL stem validated at write time; both fields overwritten on update; guides excluded. Step 2.7, Step 3 frontmatter template, Step 3 update-mode dedup behavior. |
 | DD-97 | Corpus scan + extension proposal before drafting rule or skill artifacts; calibration (i) LLM-loose; propose-don't-decide invariant; closed Codifier-recommendation enum; templates and agents excluded; auto-merge prohibition. Step 1.7. |
 | DD-100 | Template version-bump rubric + agent flag-only path. Templates auto-scan + propose to `operations/version-bump-proposals/`; Nick gates per proposal; on rule, write `<name>-v<N+1>.md` with full independent frontmatter (own `source_finding`, own `extraction_date`, own `last_change_*`, own `contract`, own `context`, own `version: <N+1>`). Agents flag-and-exit per DD-82 invariant; explicit `--version-bump <stem>` flag is required for any agent version-bump write. Compute-N from filename enumeration; collision-abort; missing-baseline-abort; never overwrite an existing version. `--version-bump` + `--update` is ill-formed. Step 1.8 + Step 2 filter + Step 3 versioned-write branch + Step 3 frontmatter `version` field. |
-| DD-82 | Agent never-auto-create invariant — three-layer enforcement on this skill: (1) Step 1.8 Branch B flag-and-exit on any agent-classified finding without `--version-bump`; (2) `--version-bump <stem>` requires explicit operator scoping (Nick's prior approval is structural, not skill-resolvable from corpus scan); (3) Branch A guard rejects `--version-bump` on template forms (templates auto-propose). Defensive: any path that would write an agent file without explicit Nick approval is a procedural violation. |
+| DD-82 | Agent never-auto-create invariant — multi-layer enforcement on this skill: (1) Step 1.8 Branch B flag-and-exit on any agent-classified finding without `--version-bump`; (2) `--version-bump <stem>` requires explicit operator scoping (Nick's prior approval is structural, not skill-resolvable from corpus scan); (3) Branch A guard rejects `--version-bump` on template forms (templates auto-propose); (4) Step 0a defensive abort on any harvest-queue row with `target form: agent` (IB-163 should have suppressed at write-side; defensive abort catches a contract violation upstream). Defensive: any path that would write an agent file without explicit Nick approval is a procedural violation. |
+| DD-101 | Harvest-queue row consumer mode. `--harvest-row <id>` accepts a Nick-approved row from `extracts/guides/<stem>.harvest-queue.md` as input; routes through DD-97 (Step 1.7) for rule/skill targets, DD-100 (Step 1.8 Branch A) for template targets; defensive abort for agent targets. `--harvest-dismiss <id>` performs queue-only Status update to `nick-dismissed`. Step 0 input-mode dispatch (mutually exclusive with identification-report mode); Step 0a row resolution + Status check (closed-enum `nick-approved` for promotion; `queued` or `nick-approved` for dismissal); Step 4.8 queue write-back with four branches (A dismissal, B extracted-new, C DD-97 extension proposal pending, D DD-100 version-bump proposal pending) plus defensive Branch E for agent (unreachable per upstream invariants). Atomic-write preserves all other rows byte-equivalent. The skill never auto-polls harvest queues — explicit `--harvest-row` / `--harvest-dismiss` is the only entry path. Single-row-per-invocation contract; multi-row processing via sequential invocations. The original pattern finding (the row's source_finding) remains pattern-classified throughout per DD-101 §Promotion; its `consumed_by[]` array gains the new harvested artifact's pointer alongside the original guide's via Step 5's existing back-annotation logic. DD-77's "Router picks one form, full stop" preserved — harvest is consumer-side resolution at extract time; never Router-side flagging. |
