@@ -4,6 +4,8 @@ type: "extracted-artifact"
 assigned_form: "skill"
 source_finding: "extract-deep-plan-prompt-as-custom-skill"
 extraction_date: "2026-04-19"
+last_change_session: 44
+last_change_sl: "session-44-codifier-extraction-run"
 identification_report: "2026-04-19-identification-report-3.md"
 deployed: false
 deployed_to: null

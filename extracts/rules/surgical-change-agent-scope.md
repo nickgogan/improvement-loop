@@ -4,6 +4,8 @@ type: "extracted-artifact"
 assigned_form: "rule"
 source_finding: "surgical-change-constraint-agent-scope"
 extraction_date: "2026-04-20"
+last_change_session: 44
+last_change_sl: "session-44-codifier-extraction-run"
 identification_report: "2026-04-20-identification-report.md"
 deployed: false
 deployed_to: null

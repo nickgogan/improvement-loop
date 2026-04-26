@@ -4,6 +4,8 @@ type: extracted-artifact
 assigned_form: rule
 source_finding: explicit-permission-allow-listing-for-agent-resou
 extraction_date: '2026-04-26'
+last_change_session: 66
+last_change_sl: "session-66-codifier-ib-150-acceptance-test"
 identification_report: 2026-04-26-identification-report.md
 deployed: false
 deployed_to: null

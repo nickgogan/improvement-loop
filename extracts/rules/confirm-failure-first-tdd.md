@@ -5,6 +5,8 @@ assigned_form: "rule"
 source_finding: "confirm-failure-first-tdd-agent-discipline"
 identification_report: "2026-04-24-identification-report.md"
 extraction_date: "2026-04-24"
+last_change_session: 63
+last_change_sl: "session-63-codifier-guide-routing-extract-dd92"
 deployed: false
 deployed_to: null
 context:

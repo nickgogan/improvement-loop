@@ -1,12 +1,12 @@
 # Improvement Loop — Progress
 
-**Last Updated:** 2026-04-26 (session 69 close + session 70 handoff generated — Lifecycle-spec Phase-1 unblock)
+**Last Updated:** 2026-04-26 (session 70 close — Lifecycle-spec Phase-1 ratified)
 
 ## Current Focus
 
-Codifier disposition. Session 69 closed G3 entry-15 fold-in — G3 absorbed `specialized-harness-engineering-deterministic-rail` plus Nick's session-66 amplification ("harnesses lie on a spectrum from prompt-driven to deterministic-with-code"). New Step 8 (Position on the Harness Spectrum) added; Step 6 augmented with productive-tension paragraph; Pitfall #10 added. Session-69 SL: `session-69-codifier-g3-entry15-fold-in.md`.
+Owner disposition. Session 70 ratified Phase-1 of the artifact lifecycle spec — three DDs filed (DD-93 preserved-section enforcement, DD-94 guide companion changelog, DD-95 non-guide `last_change_*` frontmatter). All three accepted as-spec. Three implementation IBs queued (IB-154, IB-155, IB-156). `_schema.yaml` updated with the two new fields. 31-artifact retroactive backfill executed in-session per Nick directive (scope expansion from spec's deferred IB framing). Session-70 SL: `session-70-owner-lifecycle-spec-phase1-ratification.md`.
 
-**Next session target (session 70 — Owner disposition):** **Lifecycle-spec Phase-1 unblock — ratify DD-X1 / DD-X3 / DD-X4.** Walk Nick through each one-at-a-time; file as DD-93/94/95; queue implementation IBs. After this lands, G7/G2/G9 re-synthesis becomes top unblocked Codifier unit. Handoff: `operations/handoffs/handoff-prompt-session-70-owner-lifecycle-spec-phase1-unblock.md`.
+**Next session target (Codifier disposition):** **G7 / G2 / G9 re-synthesis.** Phase-1 ratification has unblocked the largest pending Codifier unit. G7 is the most overdue (+11 findings since last synthesis). Re-synthesis runs against the new lifecycle contract — `/synthesize-guide` will need IB-154 + IB-155 implementation work to honor preserved sections and write companion changelog entries.
 
 ---
 
@@ -14,8 +14,8 @@ Codifier disposition. Session 69 closed G3 entry-15 fold-in — G3 absorbed `spe
 
 Ordered queue. Status markers: `[nick-gate]` waits on Nick's ruling; `[deferred]` held by Nick, re-evaluate on trigger; `[trigger]` waits on external evidence or volume; `[don't-do-yet]` do not reintroduce until a specific upstream condition lands.
 
-- **Lifecycle-spec Phase-1 ratification (DD-X1, DD-X3, DD-X4)** — next session target (session 70, Owner disposition). Handoff generated: `operations/handoffs/handoff-prompt-session-70-owner-lifecycle-spec-phase1-unblock.md`.
-- **G2/G7/G9 re-synthesis** — becomes top unblocked Codifier unit once session 70 ratifies Phase-1 DDs.
+- **G7 / G2 / G9 re-synthesis** — top unblocked Codifier unit. G7 most overdue (+11 findings). Requires IB-154 + IB-155 work to honor DD-93 preservation and DD-94 companion changelog on the regen path.
+- **IB-154 / IB-155 / IB-156** — Phase-1 implementation work. IB-154 + IB-155 are gating for G7/G2/G9 re-synthesis (skill must honor preservation + write changelog entries before next regen). IB-156 is independent — `/extract-artifacts` writer update for `last_change_*` going forward.
 - **Promote `harness-engineering-third-evolution` from `raw` to `classified`** — adjacent and reinforcing to G3 Step 8 (added session 69). Researcher-or-Codifier scope, low-cost. Position TBD; could fold into next intake or `/identify-artifacts` pass.
 - **Candidate 2 re-evaluation** (spec-as-governance P2 → P1) — [trigger] revisit at 4th–5th independent-repo surfacing per session-62 decision.
 - **IB-153** — /dimension-rebalance after Sub-dim 1.B. Codifier capacity; not urgent per Nick. Will reclassify Memory Architecture findings to Context Engineering parent.
