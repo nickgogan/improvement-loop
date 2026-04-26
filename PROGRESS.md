@@ -21,7 +21,7 @@ After this session: `/synthesize-guide` honors DD-93 + DD-94; `/extract-artifact
 
 Session-71 SL: `session-71-codifier-ib-154-ib-155-synthesize-guide-update.md` (filename retained from initial handoff scope; body covers all five IBs in Phase A + Phase B sections).
 
-**Next session target:** **G7 / G2 / G9 re-synthesis** (Codifier disposition) — top-of-queue and the natural live-validation gate for IB-154 + IB-155 (preservation + changelog). Subsequent live-validation gates: first `/extract-artifacts` run with new findings (validates IB-156 + IB-158); first `/detect-drift` run against the live KB (validates IB-157).
+**Next session target (session 72 — Codifier disposition):** **Top 3 items in Nick's Prioritization** — (1) promote `harness-engineering-third-evolution` from raw → classified; (2) Candidate 2 re-evaluation [trigger]: check if 4th–5th independent-repo surfacing has fired since session 62; (3) Re-evaluate two DEFERRED findings [trigger checks]: `agentic-search-memory-retrieval-architecture` (2nd production source?) and `agent-native-app-store-emerging-category` (evidence maturity?). Session texture is evidence-driven evaluation, not skill build — trigger checks before action on items 2-3. G7/G2/G9 re-synthesis remains queued for a subsequent session. Handoff: `operations/handoffs/handoff-prompt-session-72-codifier-queue-top-3.md`.
 
 ---
 
