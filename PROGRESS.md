@@ -29,10 +29,8 @@ Session-72 SL: `session-72-codifier-queue-top-3.md`.
 
 Ordered queue. Status markers: `[nick-gate]` waits on Nick's ruling; `[deferred]` held by Nick, re-evaluate on trigger; `[trigger]` waits on external evidence or volume; `[don't-do-yet]` do not reintroduce until a specific upstream condition lands.
 
-- **Re-evaluate DEFERRED findings** (session 62): `agentic-search-memory-retrieval-architecture` ([trigger] 2nd production source — checked 2026-04-26, NOT fired; still single-vendor Supermemory sandbox), `agent-native-app-store-emerging-category` ([trigger] ecosystem maturity — checked 2026-04-26, NOT fired; category still pre-operational per adjacent landscape findings). Continued deferral. Re-check when new external scan surfaces relevant evidence (gated on `/research-loop` cadence).
 - **Lifecycle-spec Phase-3 DDs (DD-X5, DD-X6, DD-X8, DD-X9)** — [deferred] guide-split / theme-graduation / template-and-agent versioning / co-occurrence harvesting. Phase 1 + Phase 2 ratified session 70.
 - **Librarian subagent template** for cross-concept queries (read-contract Q4). Position TBD.
-- **Decay cluster-normalization** — [deferred] held per Nick; decay tracked as sub-dim 1.A research, not a near-term build target. Re-evaluate if Household OS or another near-term build needs principled forgetting.
 - **First `/detect-drift` smoke-test run against the live KB** — validates IB-157 read paths (enumeration-gap counts, unresolvable-source counts). Low-cost; can fold into next Codifier session.
 - **IB-153** — /dimension-rebalance after Sub-dim 1.B. Codifier capacity; not urgent per Nick. Will reclassify Memory Architecture findings to Context Engineering parent.
 - **G7 / G2 / G9 re-synthesis** — top unblocked Codifier unit. G7 most overdue (+11 findings). Skill is fully lifecycle-aware after session 71 (DD-93 preservation + DD-94 changelog on `/synthesize-guide`; DD-95 lifecycle pointer + DD-97 corpus-scan extension proposal on `/extract-artifacts`; DD-96 `/detect-drift` skill available). Re-synthesis is the natural live-validation gate for IB-154 + IB-155.
