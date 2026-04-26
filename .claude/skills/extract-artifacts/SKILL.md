@@ -46,6 +46,9 @@ The Extractor thinks like an artifact author — opinionated, form-appropriate, 
 |----------|--------|
 | `<report-filename>` | The identification report to process (e.g., `2026-04-19-identification-report.md`) |
 | `--latest` | Find and use the most recent identification report in `operations/pattern-identification-reports/` |
+| `--session NN` | Active IL session number for the lifecycle-pointer fields (DD-95). Required on every write of a non-guide artifact (rule, skill, template, agent). Skill prompts if missing (unless `--auto`, which aborts). Ignored for guide writes (this skill does not write guides; defensive). |
+| `--sl STEM` | Active session's SL filename stem (no path, no `.md`). Required on every write of a non-guide artifact (DD-95). Skill prompts if missing (unless `--auto`, which aborts). Validated against `operations/system-log/<stem>.md` before any artifact is written. |
+| `--update` | Re-extraction mode (DD-95). When set, the skill OVERWRITES existing artifacts whose `source_finding` matches a finding in the current run, rather than skipping them per the default dedup-at-write rule. Triggers: post-drift-report Nick ruling (DD-96), Nick-requested re-extraction, dimension-rebalance regen. On update, body + ContractSpec + ContextSpec are regenerated; `last_change_session` + `last_change_sl` are overwritten with the current session's values; `extraction_date` is preserved (the original extraction date — not the update date); `deployed` + `deployed_to` are preserved. |
 | `--auto` | Skip human selection — draft all APPROVED and all non-HITL PENDING findings. Use only when user has pre-reviewed the report. |
 
 **No arguments:** prompt for the report filename.
@@ -221,13 +224,40 @@ For each drafted artifact, run three checks BEFORE writing. Any artifact failing
 
 Report: "Validation: {V} artifacts passed, {F} flagged ({M} missing-fields, {C} mechanical-copy, {B} forbidden-vocab)."
 
+### Step 2.7: Resolve Lifecycle Pointer (DD-95) — non-guide artifacts only
+
+Every non-guide artifact (rule, skill, template, agent) carries two required frontmatter fields per DD-95:
+
+- `last_change_session: <integer>` — the active IL session number.
+- `last_change_sl: "<sl-filename-stem>"` — the bare filename stem of the active session's System Log entry (no path, no `.md` extension).
+
+This step resolves both values before any artifact is written. The skill never auto-derives the session number from git or filesystem state — both fields are explicit inputs.
+
+1. **Resolve session number.**
+   - Read `--session NN`. If absent and not `--auto`, prompt the user (e.g., "Active IL session number?"). If absent and `--auto`, abort with a structured error naming the missing argument.
+   - Validate it is a positive integer. Reject otherwise.
+
+2. **Resolve SL filename stem.**
+   - Read `--sl STEM`. If absent and not `--auto`, prompt. If absent and `--auto`, abort.
+   - Strip any leading `operations/system-log/` and any trailing `.md` if the user passed a path or filename — store the bare stem.
+
+3. **Validate SL stem resolves.**
+   - Check that `systems/improvement-loop/operations/system-log/<stem>.md` exists. If absent, abort the write with a structured error: missing-file path, recommended fix path ("write the SL entry first, then re-run /extract-artifacts; or correct the --sl argument").
+   - This validation runs ONCE per skill invocation. The same `(session, sl-stem)` pair is used for every non-guide artifact written in this run.
+
+4. **Hold for Step 3.** Cache `(active_session, active_sl_stem)` for use during the per-artifact write loop. Both fields are written verbatim into the frontmatter of every non-guide artifact created or updated in this run.
+
+5. **Pattern artifacts excluded — bookkeeping note.** Pattern findings are filtered out in Step 1 (DD-81 pattern routing) and never reach the write step. Guides are not written by this skill at all. Lifecycle-pointer fields apply ONLY to rule, skill, template, agent forms. The writer must not emit either field on a guide artifact under any circumstance — defense in depth, even though no current code path leads to guide writes from this skill.
+
 ### Step 3: Write Artifacts
 
 For each drafted artifact:
 
 1. **Generate filename:** kebab-case from the artifact title. E.g., `absolute-filepath-rule.md` for a rule about absolute filepaths.
 
-2. **Check for filename collision** in the target directory. Append `-2`, `-3` if needed.
+2. **Check for filename collision and dedup behavior** in the target directory:
+   - **Default mode (no `--update`):** if an existing artifact has the same `source_finding`, skip per Rule #4 (dedup-at-write). If a different artifact uses the same filename, append `-2`, `-3` to the new artifact's filename.
+   - **Update mode (`--update`):** if an existing artifact has the same `source_finding`, this is a re-extraction. Read the existing artifact's frontmatter to capture preserve-on-update fields: `extraction_date`, `deployed`, `deployed_to`. The new body + ContractSpec + ContextSpec replace the existing ones. The two preserved fields are written back verbatim. `last_change_session` + `last_change_sl` are overwritten with the active session's values from Step 2.7 (no preservation; the SL chain carries the prior pointer). Filename is unchanged.
 
 3. **Write the artifact file** to `systems/improvement-loop/extracts/{assigned_form}s/`:
 
@@ -238,6 +268,8 @@ type: "extracted-artifact"
 assigned_form: "[pattern|skill|rule|template|agent]"
 source_finding: "[finding-file-stem]"
 extraction_date: "[YYYY-MM-DD]"
+last_change_session: [active session integer — DD-95]
+last_change_sl: "[active session SL stem — DD-95]"
 identification_report: "[report-filename]"
 deployed: false
 deployed_to: null
@@ -343,7 +375,7 @@ Next: Review staged artifacts in extracts/. Deploy to enforcement locations when
    c. `applies_to` re-derived in universal vocabulary; NEVER a mechanical copy of `source_finding.applicability`. Mechanical-copy guard runs in Step 2.5.
    d. IL classification meta (`confidence`, `tier`, `reason_codes`, `co_occurrence`) NOT emitted in the written artifact — IL-internal bookkeeping only. These are read from the report for drafting rationale, stripped at write.
    e. Reference implementation: `extracts/rules/confirm-failure-first-tdd.md` — consult when in doubt about field shape.
-4. **Dedup at write time.** Check if an artifact for this finding already exists in `extracts/`. Skip if so.
+4. **Dedup at write time.** Check if an artifact for this finding already exists in `extracts/`. In default mode, skip. In `--update` mode (DD-95 re-extraction path: post-drift-report ruling, Nick-requested re-extraction, dimension-rebalance), overwrite the existing artifact per Step 3 update-mode rules — body + ContractSpec + ContextSpec regenerated; `extraction_date`, `deployed`, `deployed_to` preserved; `last_change_session` + `last_change_sl` overwritten with current session values.
 5. **Do not deploy.** Write to `extracts/` only. Deployment is a separate act.
 6. **Back-annotate after writing.** The source finding gets a note linking to the extracted artifact.
 7. **Respect REDIRECTED status.** If the user changed the form in the report, use the user's form, not the original classification.
@@ -362,6 +394,10 @@ Next: Review staged artifacts in extracts/. Deploy to enforcement locations when
 | Mechanical copy of source.applicability detected | Step 2.5: source `applicability` strings appear verbatim in `context.applies_to` | Flag artifact, request re-draft with explicit re-derivation instruction. Do not write original. |
 | Forbidden vocabulary in ContextSpec | Step 2.5: token scan finds MetaSystem scope labels, IL-internal skill names, or IL-specific paths | Flag artifact, request re-draft with universal-vocabulary instruction. Do not write original. |
 | Finding file not found | Read returns error | Skip this finding, report in summary |
+| `--session` missing on non-guide write | Step 2.7 session resolution | Prompt unless `--auto`. With `--auto`, abort with structured error naming the missing argument. |
+| `--sl` missing on non-guide write | Step 2.7 SL stem resolution | Prompt unless `--auto`. With `--auto`, abort with structured error naming the missing argument. |
+| `--sl` stem does not resolve to existing SL file | Step 2.7 SL existence check | Abort the write; structured error names missing-file path; recommend writing the SL entry first or correcting the `--sl` argument. |
+| `--update` mode targets a finding with no existing artifact | Step 3 dedup check | Treat as create — write the artifact normally; surface an informational note in the summary so the operator knows update mode found no prior artifact. |
 
 ---
 
@@ -373,3 +409,4 @@ Next: Review staged artifacts in extracts/. Deploy to enforcement locations when
 | DD-78 | ContractSpec on every artifact |
 | DD-80 | Pipeline simplification — /identify-artifacts + this skill replace the Proposer |
 | DD-92 | ContextSpec on every artifact; universal-vocab constraint; mechanical-copy prohibition; IL classification meta stripped at extraction. Reference: `extracts/rules/confirm-failure-first-tdd.md` |
+| DD-95 | Lifecycle pointer (`last_change_session` + `last_change_sl`) on every non-guide create AND update; SL stem validated at write time; both fields overwritten on update; guides excluded. Step 2.7, Step 3 frontmatter template, Step 3 update-mode dedup behavior. |
