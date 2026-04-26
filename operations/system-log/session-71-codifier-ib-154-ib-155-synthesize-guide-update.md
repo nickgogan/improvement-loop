@@ -1,36 +1,43 @@
 ---
-title: "Session 71 — Codifier: /synthesize-guide Lifecycle Update (IB-154 + IB-155)"
+title: "Session 71 — Codifier: Phase-1+2 Lifecycle Implementation Sweep (IB-154 → IB-158)"
 type: "system-log"
 target_system:
   - "improvement-loop"
 actor: "Claude (Codifier disposition)"
-area: "skills / synthesize-guide / artifact-lifecycle / phase-1-implementation"
+area: "skills / synthesize-guide / extract-artifacts / detect-drift / artifact-lifecycle"
 change_type: "Update"
 milestone: null
-rationale: "Shipped two of the three Phase-1 implementation IBs queued by session 70: IB-154 (DD-93 preserved-section enforcement) and IB-155 (DD-94 companion changelog appender + retroactive stubs). Both IBs touch `.claude/skills/synthesize-guide/SKILL.md`. Together they unblock G7 / G2 / G9 re-synthesis — the next-largest pending Codifier unit. Two atomic commits per handoff sequencing (IB-154 first, IB-155 second). No `/synthesize-guide` runs against real guides this session — skill change only; live validation is next-session work. IB-156 (`/extract-artifacts` writer update for `last_change_*`) is independent and remains queued."
-source_dd: "DD-29, DD-78, DD-80, DD-93, DD-94"
+rationale: "Shipped the full Phase-1 + Phase-2 implementation queue across one session — the five IBs (IB-154 through IB-158) ratified in session 70. Initial handoff scope was IB-154 + IB-155 only; Nick directed in-session expansion to IB-156/157/158 after the first two committed cleanly (analogous to session 70's in-session backfill scope expansion). Five atomic commits, one per IB. After this session: `/synthesize-guide` honors DD-93 preservation + DD-94 companion changelog; `/extract-artifacts` honors DD-95 lifecycle pointer + DD-97 corpus-scan extension proposal; new `/detect-drift` skill implements DD-96 source-drift visibility. G7 / G2 / G9 re-synthesis is unblocked AND non-guide artifact lifecycle is fully wired (writer side, reader side, drift visibility, redundancy avoidance). One field-name discrepancy logged for a future DD-96 amendment: findings carry `last_updated`, DD-96 §Rules #2 names the field `updated`; implementation reads the live-schema field, semantic intent preserved."
+source_dd: "DD-29, DD-78, DD-80, DD-81, DD-93, DD-94, DD-95, DD-96, DD-97"
 timestamp: "2026-04-26T00:00:00Z"
 session: 71
 tags:
   - "system-log"
   - "codifier"
   - "skill-update"
+  - "skill-create"
   - "synthesize-guide"
+  - "extract-artifacts"
+  - "detect-drift"
   - "lifecycle-spec"
   - "phase-1-implementation"
+  - "phase-2-implementation"
   - "dd-93"
   - "dd-94"
+  - "dd-95"
+  - "dd-96"
+  - "dd-97"
 telemetry:
   model: "claude-opus-4-7[1m]"
   tokens_consumed: "unknown"
   context_window_size: 1000000
   context_window_pct_peak: "unknown"
-  turns: "~15"
-  tool_calls: "~30"
+  turns: "~30"
+  tool_calls: "~70"
   subagents: 0
   capture_quality: "estimated"
   harness: "claude-code-cli-cursor-macos"
-  capture_note: "Codifier session: read DD-93 + DD-94 + IB-154 + IB-155 + current SKILL.md upfront, then implemented IB-154 (3 procedure-step inserts + failure-mode rows + DD-table row), committed atomically, then IB-155 (1 procedure-step insert + 2 new arguments + 4 failure-mode rows + DD-table row + 11 retroactive stubs), committed atomically. No subagents."
+  capture_note: "Codifier session, two phases. Phase A (initial handoff scope): IB-154 (3 procedure-step inserts to /synthesize-guide), then IB-155 (1 procedure-step insert + 2 new args + 4 failure-mode rows + 11 retroactive stubs), then session-71 close (SL + IB notes flips + PROGRESS.md retarget). Phase B (Nick scope expansion mid-session): IB-156 (3 new args + Step 2.7 + Step 3 update-mode behavior on /extract-artifacts), IB-157 (full new skill /detect-drift, ~250 lines), IB-158 (Step 1.7 corpus-scan + extension-proposal report on /extract-artifacts), then this addendum + PROGRESS.md final retarget. No subagents at any point."
 ---
 
 # Session 71 — Codifier: `/synthesize-guide` Lifecycle Update (IB-154 + IB-155)
@@ -107,6 +114,66 @@ None.
 - 11 companion changelog files exist at `extracts/guides/changelog/`, each with one initial-synthesis stub.
 - `/synthesize-guide` skill now honors DD-93 (preservation, fail-closed) and DD-94 (changelog, line-cap) on every re-synthesis.
 
-## Next Session Target
+## Next Session Target (initial scope, pre-expansion)
 
 **G7 / G2 / G9 re-synthesis.** All three are now fully unblocked. G7 is most overdue (+11 findings since last synthesis per the routing table). The actual lifecycle behaviors (preservation, regression test, changelog entry) get their first real exercise on these regen runs.
+
+---
+
+## Scope Expansion — Phase B (IB-156 + IB-157 + IB-158)
+
+After IB-154 + IB-155 committed cleanly, Nick directed in-session expansion to ship the remaining three Phase-1+2 implementation IBs. Pattern matches session 70's in-session backfill expansion: the handoff §Out-of-scope is informational; Nick's mid-session direction is authoritative.
+
+### Per-IB Outcomes — Phase B
+
+| IB | DD | What Shipped | Acceptance |
+|---|---|---|---|
+| **IB-156** | DD-95 | Three procedure-step inserts to `.claude/skills/extract-artifacts/SKILL.md`: three new arguments (`--session NN`, `--sl STEM`, `--update`), Step 2.7 (Resolve Lifecycle Pointer — session resolution + SL stem validation, both abort write on missing), Step 3 update-mode dedup behavior (preserves `extraction_date`, `deployed`, `deployed_to`; overwrites `last_change_*` per DD-95 §Rules #1–#2). Step 3 frontmatter template gains `last_change_session` + `last_change_sl` between `extraction_date` and `identification_report` — matches session-70 backfill ordering. Rule #4 amended; failure-modes table gains four rows; Design Decisions table gains DD-95. | All 6 cases from DD-95 §Acceptance Criteria addressed by procedure design. Live validation deferred to next non-guide artifact write. |
+| **IB-157** | DD-96 | New skill at `.claude/skills/detect-drift/SKILL.md` — ~250 lines. On-demand source-drift scanner. Read-only by contract. Enumerates `extracts/{rules,skills,templates,agents}/`, resolves each artifact's `source_finding`, compares the finding's `last_updated` (see field-name reconciliation below) against the artifact's `extraction_date`, emits per-run drift report at `operations/drift-reports/<YYYY-MM-DD>-source-drift.md`. Strict comparison semantics (`>`, not `>=`). Closed three-value Recommendation enum: `re-run /extract-artifacts on this finding` \| `dismiss as cosmetic` \| `reclassify`. Guides + patterns excluded. Procedural-failure mode for any write outside `operations/drift-reports/`. Two argument flags (`--include`/`--exclude` mutually exclusive form filters; `--context` invocation-context tag). | All 6 cases from DD-96 §Acceptance Criteria addressed by procedure design. Live validation deferred to first scan against the live KB. |
+| **IB-158** | DD-97 | New Step 1.7 in `.claude/skills/extract-artifacts/SKILL.md` between Step 1 (Filter to Approved) and Step 2 (Draft Artifacts). Calibration (i) LLM-loose. Per-finding categorization: no-match passes through to drafting (no behavioral change); single-match emits one extension proposal and skips drafting; multi-match emits proposal with strongest match as primary + secondaries flagged. Templates and agents skip Step 1.7 entirely. Per-proposal block carries: candidate stem, primary + secondary existing artifacts, Codifier recommendation from closed enum (`extend existing` \| `create new (false positive)` \| `parameterize as mode variant`), why-this-match line, diff sketch (rule: appended Evidence row; skill: added mode flag + ContractSpec invariant additions), optional notes line. Aggregated proposals written to `operations/extension-proposals/<YYYY-MM-DD>-extension-proposals.md`. Auto-merge prohibition codified — Step 1.7 NEVER modifies an existing artifact; only file written is the proposals report. Step 2 amended to filter out `extension_status: "proposed"` findings. Failure-modes table gains three rows; Design Decisions table gains DD-97. Extension-application via `/extract-artifacts` is left for a future IB; v1 applies extensions as manual edits guided by the proposal's diff sketch. | All 6 cases from DD-97 §Acceptance Criteria addressed by procedure design. Live validation deferred to first run against an identification report containing rule/skill candidates. |
+
+### Commits — Phase B
+
+3. `Session 71: IB-156 — /extract-artifacts last_change_* writer + SL validation (DD-95)` — 1 file, +39 / -2.
+4. `Session 71: IB-157 — /detect-drift skill (DD-96)` — 1 file (new), +251.
+5. `Session 71: IB-158 — /extract-artifacts corpus-scan + extension-proposal (DD-97)` — 1 file, +75 / -1.
+
+Five total atomic commits in this session (IB-154, IB-155, session-close, IB-156, IB-157, IB-158, then this addendum). Note: IB-156 and IB-158 both touch the same file; sequenced separately to keep IB-per-commit cleanliness.
+
+### Resolved Ambiguities — Phase B
+
+- **DD-95 update-path support.** The IB-156 notes asked for `last_change_*` writes on both create AND update. The pre-existing `/extract-artifacts` skill is structurally create-only with dedup-skip on existing source_findings (Rule #4). Resolution: added `--update` flag flipping dedup-skip to overwrite-existing, with explicit preservation rules (`extraction_date`, `deployed`, `deployed_to` retained; `last_change_*` overwritten; body + ContractSpec + ContextSpec regenerated). Documented in Step 3 update-mode dedup behavior. Not a deviation; specification edge case clarified.
+
+- **DD-97 extension-application path.** DD-97 §Rules #4 says "Re-running `/extract-artifacts` on a flagged finding to apply the extension requires Nick's explicit ruling on the proposal." The skill's apply path is unspecified — does the same `/extract-artifacts` invocation handle apply, or is it a separate skill / manual edit? Resolution for v1: Step 1.7 only emits proposals; applying an extension is a manual edit guided by the proposal's diff sketch. Promoting the apply path to skill-native behavior is left for a future IB. Documented in Step 1.7 auto-merge-prohibition section. Not a deviation; downstream-of-this-IB scope clarification.
+
+### Bugs Surfaced — Phase B
+
+- **DD-96 field-name vs live-schema discrepancy.** DD-96 §The Constraint and §Rules #2 specify the source field as `source_finding.updated`. Findings actually carry `last_updated` (588/588 in the live KB; 0 carry `updated`). The schema is the source of truth; DD-96's field name was a specification slip. Resolution: `/detect-drift` reads `last_updated` to match the live schema; semantic intent (most-recent source-content update timestamp) is preserved. The discrepancy is documented in `/detect-drift` Rules #7 and queued below for a future DD-96 amendment.
+
+### Contract Amendments Proposed — Phase B
+
+- **DD-96 amendment candidate.** Update DD-96 §The Constraint and §Rules #2 to read `source_finding.last_updated` instead of `source_finding.updated`. This aligns the DD with the live schema. Filing is a future Owner-session task per DD-44 §When-to-Amend (in-place body amendment, status remains Binding). Surface via `/track dd update` or governance audit; do not file inline (per session-71 handoff §Rules: "No new DDs / IBs mid-session").
+
+### Logged for Future — Phase B
+
+- **DD-97 calibration tightening.** v1 is calibration (i) — LLM-loose. If false-positive volume becomes burdensome (Nick rejects >X% of proposals on real runs), DD-97 can be amended to (ii) ContractSpec-overlap-structured or (iii) hybrid. Trigger is Nick-observed; not pre-emptive.
+- **DD-97 extension-application skill behavior.** v1 leaves apply-step as a manual edit. If extension proposals become high-volume (>5/run), promote to skill-native behavior in a follow-up IB.
+- **DD-96 trigger promotion.** v1 is on-demand only. If drift-scan volume justifies it (frequent invocations, Nick-observed sweep value), promote to periodic in a follow-up DD per DD-96 §Why.
+- **`/detect-drift` first-run validation.** First scan against the live KB will surface enumeration-gap and unresolvable-source counts; treat output as a smoke test for the skill's read paths.
+
+## Status After Session — Final
+
+- **IB-154:** Done (Phase A).
+- **IB-155:** Done (Phase A).
+- **IB-156:** Done (Phase B).
+- **IB-157:** Done (Phase B).
+- **IB-158:** Done (Phase B).
+- **DD-93/94/95/96/97:** all Binding; full Phase-1 + Phase-2 implementation now matches contract. Phase-3 DDs (DD-X5/X6/X8/X9) remain deferred per session-70 SL.
+- **`/synthesize-guide`:** honors DD-93 preservation + DD-94 changelog appender. 11 retroactive stubs at `extracts/guides/changelog/`.
+- **`/extract-artifacts`:** honors DD-95 lifecycle pointer (Step 2.7 + Step 3 update mode) + DD-97 corpus-scan extension proposal (Step 1.7).
+- **`/detect-drift`:** new skill, on-demand source-drift scanner, read-only by contract.
+- New operations directories prepared but not yet populated: `operations/drift-reports/`, `operations/extension-proposals/` (each created on first run of its associated skill).
+
+## Final Next-Session Target
+
+**G7 / G2 / G9 re-synthesis** remains the top-of-queue Codifier unit. It is the natural live-validation gate for IB-154 + IB-155 (preservation + changelog) and incidentally exercises the lifecycle layer end-to-end. After that, the next live-validation gates are: first `/extract-artifacts` run with new findings (validates IB-156 + IB-158); first `/detect-drift` run against the live KB (validates IB-157).
