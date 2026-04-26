@@ -122,6 +122,122 @@ If the target guide already exists, this is a re-synthesis. Two surfaces are pre
 
 A guide with no `## Nick's Annotations` section and no marked regions has `preserved` empty — Steps 3.5 and 3.7 are no-ops, and behavior is identical to the legacy full-regenerate path.
 
+### Step 0.7: Split-Trigger Detection (DD-98) — re-synthesis only
+
+Read-only detection step. Evaluates the DD-98 split trigger against the resolved finding set + routing-table cluster identity (from Step 0). On match, emits a split-proposal artifact at `operations/split-proposals/<YYYY-MM-DD>-<guide-stem>-split-proposal.md`. Never auto-executes a split; never writes destination guide files; never updates the routing table; never modifies DD-94 changelog files. The regen of the source guide continues regardless — the proposal is a side-channel artifact for Nick's gate.
+
+If the target guide does not yet exist (initial synthesis), this step is a no-op — the trigger evaluates against an existing cluster's finding mass + question bifurcation; a brand-new guide has neither yet.
+
+**Trigger evaluation (conjunction; both required per DD-98 §The Constraint):**
+
+1. **Finding-count threshold.** The resolved cluster's `source_findings[]` (or its routed cluster as enumerated by the routing table) contains ≥25 findings. Use the resolved count from Step 0 (post finding-set confirmation; not the routing table's snapshot count, which may lag).
+
+2. **Practitioner-question threshold.** The findings cluster around ≥2 distinct practitioner questions. Detection is LLM-judgmental, calibrated like DD-97 — read the findings' `summary` and body sections; identify the questions readers would bring (e.g., 'How do I structure my agent?' vs. 'How do I evaluate it?'). False-positives caught at Nick's gate. The judgment runs over the absorbed finding set; reasonable confidence is sufficient.
+
+**Outcome dispatch:**
+
+| Trigger result | Action |
+|----------------|--------|
+| **Both thresholds met** | Emit split-proposal file (procedure below). Regen continues against existing structure. |
+| **Count ≥25 only (single coherent question)** | NO proposal file. Surface inline in synthesis report: "G-`<stem>` at <count> findings; remains single-question. Monitor for question bifurcation on next regen." |
+| **Question count ≥2 only (count <25)** | NO proposal file. Surface inline: "G-`<stem>` at <count> findings; touches `<N>` practitioner questions but below volume threshold. Monitor for volume crossing." |
+| **Neither threshold met** | No-op. No surface in run report. |
+
+**Proposal file path:** `operations/split-proposals/<YYYY-MM-DD>-<guide-stem>-split-proposal.md`. The directory is created lazily on first proposal emission (not pre-created).
+
+**Proposal file shape (per DD-98 §Response):**
+
+```markdown
+---
+type: "split-proposal"
+target_system:
+  - "improvement-loop"
+generated_by: "/synthesize-guide"
+date: "<YYYY-MM-DD>"
+source_guide: "<guide-stem>"
+finding_count: <int>
+practitioner_question_count: <int>
+session: <int>
+sl: "<active-sl-stem>"
+---
+
+# Split Proposal — <Guide Title>
+
+## Source guide identity
+
+- **Guide stem:** `<guide-stem>`
+- **Current title:** "<Guide Title>"
+- **Finding count:** <N> (post-resolution; ≥25)
+- **Routing-table row:** [link to row in `operations/references/guide-routing-table.md`]
+
+## Practitioner-question analysis
+
+The source cluster covers <K> distinct practitioner questions:
+
+1. **Q1:** "<question text>"
+   - Findings clustering against Q1: [[finding-stem-1]], [[finding-stem-2]], ...
+2. **Q2:** "<question text>"
+   - Findings clustering against Q2: [[finding-stem-X]], [[finding-stem-Y]], ...
+
+(Repeat for K questions; ≥2 by trigger condition.)
+
+## Proposed bifurcation
+
+Destination guide names (working draft; per-split DD codifies finals):
+
+- **Destination A:** `<proposed-stem-A>` — practitioner question: "<Q1>"
+- **Destination B:** `<proposed-stem-B>` — practitioner question: "<Q2>"
+
+Per-finding routing (every finding routed; no implicit handling per DD-98 §Rules #4):
+
+| Finding | Disposition |
+|---------|-------------|
+| [[finding-stem-1]] | A |
+| [[finding-stem-2]] | A |
+| [[finding-stem-X]] | B |
+| [[finding-stem-shared]] | shared (route to both) |
+| [[finding-stem-contested]] | contested (Codifier cannot route confidently) |
+
+## Preserved-section disposition (DD-93)
+
+Source guide's preserved surfaces, per region (every region disposed explicitly per DD-98 §Rules #5):
+
+- **`## Nick's Annotations` block:** route to A | route to B | duplicate to both | (rationale)
+- **`<!-- PRESERVE -->` region #1 (anchor: "<section name>"):** route to A | route to B | duplicate to both | (rationale)
+- **`<!-- PRESERVE -->` region #2 (anchor: "<section name>"):** route to A | route to B | duplicate to both | (rationale)
+
+(Repeat for every captured region; if no preserved surfaces, write "Source guide has no preserved sections per DD-93 capture.")
+
+## Routing-table impact
+
+- **Source guide:** proposed deprecation (`stage: deprecated`) post-split.
+- **New rows:**
+  - `<proposed-stem-A>` — practitioner question, dimensions, lifecycle stage = `draft`.
+  - `<proposed-stem-B>` — practitioner question, dimensions, lifecycle stage = `draft`.
+- **Dimension → Guide mapping changes:** [list any dimension routing updates].
+
+## Codifier recommendation
+
+Closed enum: `proceed with split as proposed` | `defer pending more findings` | `re-evaluate practitioner-question bifurcation` | `absorb into adjacent guide instead`
+
+**Recommendation:** <one of the four enum values>
+
+**Rationale:** <1–3 lines explaining why this recommendation. Cite the bifurcation precision (% routed cleanly vs. shared vs. contested), the preservation disposition complexity, or any structural concerns.>
+
+## Notes
+
+(Optional: edge cases, ambiguity, follow-ups.)
+```
+
+**Atomic write.** Construct the proposal file content; check for filename collision (rare but possible if two regens of the same guide run on the same day; append `-2`, `-3` if needed); write the file. Do NOT write any other artifact in this step. Do NOT update the source guide, routing table, or any changelog.
+
+**Report to user (always):** "Split-trigger detection: <outcome>. " followed by:
+- If proposal emitted: "Proposal at `operations/split-proposals/<filename>`. Nick rules per proposal — execution requires a per-split DD per DD-98."
+- If single-condition observation: the inline note text from the dispatch table.
+- If no-op: omit (no run-report surface).
+
+**Idempotency.** Re-running a regen on the same day with the same finding set may re-emit a proposal — but the proposal file's filename collision check appends `-2` etc. Subsequent proposals are not duplicates of prior content (regen captures may differ); they're additional artifacts. Nick reads the latest one.
+
 ### Step 1: Read and Analyze Findings
 
 1. Read all confirmed finding files in full.
@@ -252,7 +368,7 @@ If this is a **re-synthesis** (the guide existed pre-Step-4 and was rewritten), 
 
 1. **Resolve trigger tag.**
    - Read `--trigger TAG`. If absent and not `--auto`, prompt the user; if absent and `--auto`, abort with a structured error naming the missing argument.
-   - Validate against the closed enum: `staleness-threshold`, `nick-request`, `dimension-rebalance`, `finding-removed`, `structural-edit`. Any other value (including `initial-synthesis`, which is reserved for the one-time IB-155 backfill) MUST be rejected with a structured rejection report (offending tag, valid enum, recommended fix). New tags require a DD amendment, not ad-hoc invention.
+   - Validate against the closed enum: `staleness-threshold`, `nick-request`, `dimension-rebalance`, `finding-removed`, `structural-edit`, `guide-split` (DD-98). Any other value (including `initial-synthesis`, which is reserved for the one-time IB-155 backfill) MUST be rejected with a structured rejection report (offending tag, valid enum, recommended fix). New tags require a DD amendment, not ad-hoc invention.
 
 2. **Resolve session number.** Read `--session NN`. If absent and not `--auto`, prompt; if absent and `--auto`, abort.
 
@@ -435,6 +551,12 @@ Next: Review the staged guide. Deploy to meta-system/knowledge/guides/ when read
 | Agent-shape content detected during Step 4.7 scan | Step 4.7 Item 1 agent-suppression check | Suppress queue emission per the Item 1 invariant; log the candidate inline in the run report (NOT the queue) for Nick's separate review. The queue NEVER carries agent-form rows. If a queue row write is attempted with `target form: agent`, abort the row write with structured error citing DD-82 + DD-101 §Rules for `/synthesize-guide` item 3. Surface the procedural violation. |
 | Duplicate-suppression collision (existing row with same `(source_finding, target_form)`) | Step 4.7 Item 2.b pre-write check | Suppress the new row write — the prior row stands regardless of its current status (`queued`, `nick-dismissed`, `extracted`, or `superseded`). This is expected behavior, not a failure mode; documented here for verification that the suppression path activates on duplicate detection. Run report's `D` count surfaces the suppressed-as-duplicate rows. |
 | Source-finding cluster departure path (status update for `queued`/`nick-approved`; non-update for `extracted`/`nick-dismissed`) | Step 4.7 Item 2.c supersession check | Mark `queued` and `nick-approved` rows whose departed source matches as `superseded` with cited regen session + SL stem; leave `extracted` and `nick-dismissed` rows unchanged. This is expected behavior, not a failure mode; documented here for verification that supersession does NOT over-write Nick's terminal rulings or live extractions. |
+| Split-trigger fires (≥25 findings AND ≥2 practitioner questions) but practitioner-question bifurcation is unclear in proposal | Step 0.7 emission | Codifier flags the proposal's `Codifier recommendation` field as `re-evaluate practitioner-question bifurcation`. Nick rules: defer (re-cluster on next intake), absorb shared findings into one destination by judgment, or split with explicit duplication. The proposal IS still emitted — the recommendation captures the structural concern. |
+| Split-trigger fires; >20% of findings flag as `shared` or `contested` | Step 0.7 bifurcation precision check | Same as above — recommendation `re-evaluate practitioner-question bifurcation` with the bifurcation precision summary noted in the proposal's per-finding routing table. Nick rules sequencing: re-evaluate, defer, or accept the imprecise split. |
+| Single-condition split observation (count crosses but practitioner-question stays at 1, or vice versa) | Step 0.7 dispatch table single-condition path | NO proposal file emitted. Inline informational note in run report only ("G-`<stem>` at <count> findings; remains single-question" or analogous). Monitor on next regen cycle. |
+| Split-trigger fires but source guide is mid-`/synthesize-guide` regen | Step 0.7 detection runs at Step 0.7; regen continues regardless | Regen completes against existing source structure. Split-proposal is emitted at the end of Step 0.7 (BEFORE Step 1 drafting begins); regen proceeds with the proposal as a side-channel artifact. The regen's changelog entry (Step 4.5) uses its normal trigger (`staleness-threshold`, etc.); the split-proposal is a separate artifact. |
+| Split-proposal filename collision (two regens of the same guide on the same day) | Step 0.7 atomic write filename collision check | Append `-2`, `-3` to the colliding filename. Both proposals retained for audit; Nick reads the latest. |
+| Initial-synthesis triggers split-proposal emission | Step 0.7 initial-synthesis no-op gate | Defensive: Step 0.7 is no-op on initial synthesis (no existing cluster to split). If somehow triggered (e.g., a guide whose finding-set was pre-curated to ≥25 with ≥2 questions on first synthesis), the proposal is still emitted — DD-98's threshold semantics apply regardless of synthesis history. Edge case; document if observed. |
 
 ---
 
@@ -450,4 +572,5 @@ Next: Review the staged guide. Deploy to meta-system/knowledge/guides/ when read
 | DD-93 | Preserved sections on guide regen (`## Nick's Annotations` + `<!-- PRESERVE -->` regions); post-regen byte-equality regression test; fail-closed on drift. Steps 0.5 / 3.5 / 3.7. |
 | DD-94 | Companion changelog file per guide at `extracts/guides/changelog/<stem>.changelog.md`; one entry per re-synthesis with closed trigger-tag enum, ~10-line cap (≤10 clean / 11–15 warn / >15 abort), most-recent-first append. Step 4.5. |
 | DD-101 | Per-guide co-occurrence harvest queue file at `extracts/guides/<stem>.harvest-queue.md`. Per-finding scan during regen for embedded artifact-shaped content (target forms: rule \| skill \| template; agent suppressed inline per DD-82). LLM-loose calibration. Closed-enum Status, Target form, Recommendation, Resolution. Duplicate suppression on `(source_finding, target_form)`. Append-only across regen; supersession-on-departure for `queued`/`nick-approved` rows; `extracted` and `nick-dismissed` rows unchanged on departure; rows never deleted. Read-only by contract — extraction is downstream via Nick's ruling + IB-164's `/extract-artifacts` queue-row promotion path. Step 4.7. |
+| DD-98 | Guide split procedure. Step 0.7 evaluates the conjunction (count ≥25 AND practitioner-question count ≥2) at routing-table read; on match, emits a split-proposal artifact at `operations/split-proposals/<YYYY-MM-DD>-<guide-stem>-split-proposal.md` with per-finding bifurcation, preserved-section disposition (DD-93), routing-table impact, and Codifier recommendation from closed enum (`proceed with split as proposed` \| `defer pending more findings` \| `re-evaluate practitioner-question bifurcation` \| `absorb into adjacent guide instead`). Read-only by contract — never auto-executes; never modifies the source guide or routing table; never modifies DD-94 changelog files based on its own proposal. Initial-synthesis is no-op. Single-condition observations surface inline only. Both `/synthesize-guide` Step 0.7 AND `/identify-artifacts` Step 6.a share identical emission semantics. Step 4.5 enum extended to accept `guide-split` for source-final + destination-first changelog entries (per-split DD execution path; not at Step 0.7 emission time). |
 | DD-82 | Agent never-auto-create invariant — three-layer enforcement at the harvest layer: (1) Step 4.7 Item 1 closed-enum target-form check rejects `agent` target; (2) agent-shaped detections are logged inline in the run report only, never queued; (3) `/extract-artifacts` defensive abort on agent-target queue rows per IB-164 (defense-in-depth). |

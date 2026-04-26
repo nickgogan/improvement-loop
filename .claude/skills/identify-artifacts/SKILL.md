@@ -345,9 +345,9 @@ Next:
   - {unrouted_count} findings did not map to an existing guide cluster (see Unrouted section in report)
 ```
 
-### Step 6: Guide Cluster Check (DD-81)
+### Step 6: Guide Cluster Check (DD-81) + Lifecycle-Trigger Detection (DD-98)
 
-After classification, check each **pattern-classified** finding against the guide routing table at `systems/improvement-loop/operations/references/guide-routing-table.md`:
+After classification, check each **pattern-classified** finding against the guide routing table at `systems/improvement-loop/operations/references/guide-routing-table.md`. Also evaluate per-cluster lifecycle triggers (DD-98 split-trigger) at the same routing-table read.
 
 1. Read the routing table.
 2. For each pattern finding, match its `category` to a research dimension, then look up the dimension's primary guide cluster.
@@ -355,10 +355,31 @@ After classification, check each **pattern-classified** finding against the guid
 4. If no guide cluster maps → add the finding to the **Unrouted Bucket** section of the routing table.
 5. After processing all findings, check: does the unrouted bucket now contain 5+ findings with `same-problem` relationships? If yes, flag a **candidate cluster** in the identification report summary.
 
-Report addition:
+**Step 6.a — Split-Trigger Detection (DD-98).** For each Active Cluster in the routing table whose finding-count crosses the threshold:
+
+For each Active Cluster row in the routing table, evaluate the DD-98 split trigger (conjunction; both required):
+
+(i) **Finding-count threshold:** the cluster's current `source_findings[]` count is ≥25. Use the routing table's snapshot count or recompute from the guide's frontmatter — both are acceptable for the heads-up; the proposal artifact (emitted below) cites the recomputed count.
+
+(ii) **Practitioner-question threshold:** the cluster covers ≥2 distinct practitioner questions. Detection is LLM-judgmental, calibrated like DD-97 — read the cluster's findings (or the guide's body if synthesized) and identify the questions readers would bring. False-positives caught at Nick's gate.
+
+**Outcome dispatch (mirrors `/synthesize-guide` Step 0.7):**
+
+| Trigger result | Action |
+|----------------|--------|
+| **Both thresholds met** | (a) Emit split-proposal file at `operations/split-proposals/<YYYY-MM-DD>-<guide-stem>-split-proposal.md` with the same shape as `/synthesize-guide` Step 0.7 emits. (b) Surface a heads-up in the identification report summary: "⚠ DD-98 split trigger fired for cluster `<guide-stem>` — proposal at `operations/split-proposals/<filename>`." |
+| **Count ≥25 only (single coherent question)** | NO proposal file. Surface inline in identification report: "G-`<stem>` at <count> findings; remains single-question. Monitor for question bifurcation on next cycle." |
+| **Question count ≥2 only (count <25)** | NO proposal file. Surface inline: "G-`<stem>` at <count> findings; touches `<N>` practitioner questions but below volume threshold. Monitor for volume crossing." |
+| **Neither** | No-op. |
+
+**Read-only by contract.** This step never auto-executes a split, never writes destination guides, never updates the routing table, never deprecates the source guide, never modifies DD-94 changelog files. Both detection paths (`/synthesize-guide` Step 0.7 AND `/identify-artifacts` Step 6.a) emit identical proposal artifact shapes — the proposal path and shape are skill-agnostic. If both skills detect on the same trigger in the same cycle, both emissions are written (filename collision triggers `-2`/`-3` suffix); Nick reads the latest and the duplicates are audit-trail.
+
+**Report addition:**
 ```
 Guide routing: {routed_count} pattern findings mapped to guide clusters, {unrouted_count} unrouted.
 {If candidate cluster detected:} ⚠ Candidate guide cluster detected in unrouted bucket ({count} related findings). Review for new guide creation.
+{If split trigger fired (DD-98):} ⚠ Split trigger fired for {S} cluster(s): {list of guide-stems}. Proposals at operations/split-proposals/.
+{If single-condition observation (DD-98):} Monitor: {list of cluster observations from the dispatch table}.
 ```
 
 ### Step 7: Back-Annotate Finding Files
@@ -404,3 +425,4 @@ This enables unified pipeline tracking. A finding's `pipeline_status` field answ
 | DD-76 | Role count > 1 biases toward pattern |
 | DD-77 | Single-form classification; co-occurrence noted only |
 | DD-80 | Pipeline simplification — this skill + /extract-artifacts replace the Proposer |
+| DD-98 | Guide split procedure — Step 6.a evaluates the conjunction (count ≥25 AND practitioner-question count ≥2) at routing-table read; on match, emits a split-proposal artifact at `operations/split-proposals/` with per-finding bifurcation, preserved-section disposition (DD-93), routing-table impact, and Codifier recommendation. Read-only by contract — never auto-executes; never modifies the source guide, routing table, or DD-94 changelog files. Both `/identify-artifacts` Step 6.a AND `/synthesize-guide` Step 0.7 share identical emission semantics. Single-condition observations surface inline in the identification report; do NOT emit a proposal file. |
