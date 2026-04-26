@@ -45,6 +45,8 @@ The Guide Author thinks like a technical writer and practitioner — not a resea
 | `<topic>` | A topic string (e.g., "agent context management"). Skill finds relevant findings by category and related_findings graph. |
 | `--dimension DIM` | A research dimension name (e.g., "Context Engineering"). Collects all P1 findings in that dimension. |
 | `--findings ID1,ID2,...` | Explicit comma-separated finding file stems. Most precise input. |
+| `--trigger TAG` | Re-synthesis trigger tag for the companion changelog entry (DD-94). Required on re-synthesis. Closed enum: `staleness-threshold` \| `nick-request` \| `dimension-rebalance` \| `finding-removed` \| `structural-edit`. The skill rejects any other value. Ignored on initial synthesis. |
+| `--session NN` | Active session number for the changelog entry (DD-94). Required on re-synthesis. Skill prompts if missing (unless `--auto`, which aborts). Ignored on initial synthesis. |
 | `--auto` | Skip human confirmation of finding selection — draft immediately. Use only when the finding set is pre-curated. |
 
 **No arguments:** prompt for topic or dimension.
@@ -242,6 +244,55 @@ contract:
 ---
 ```
 
+### Step 4.5: Append Companion Changelog Entry (re-synthesis only) — DD-94
+
+If this is an **initial synthesis** (the guide file did not exist before Step 4), skip — no changelog entry is written. The companion changelog file is only created on the first re-synthesis after DD-94 lands; new guides accrue history starting from their first re-synthesis.
+
+If this is a **re-synthesis** (the guide existed pre-Step-4 and was rewritten), write a companion changelog entry. The companion file lives at `systems/improvement-loop/extracts/guides/changelog/<guide-stem>.changelog.md` (one-to-one with the guide; same stem).
+
+1. **Resolve trigger tag.**
+   - Read `--trigger TAG`. If absent and not `--auto`, prompt the user; if absent and `--auto`, abort with a structured error naming the missing argument.
+   - Validate against the closed enum: `staleness-threshold`, `nick-request`, `dimension-rebalance`, `finding-removed`, `structural-edit`. Any other value (including `initial-synthesis`, which is reserved for the one-time IB-155 backfill) MUST be rejected with a structured rejection report (offending tag, valid enum, recommended fix). New tags require a DD amendment, not ad-hoc invention.
+
+2. **Resolve session number.** Read `--session NN`. If absent and not `--auto`, prompt; if absent and `--auto`, abort.
+
+3. **Resolve date.** Use the current date in `YYYY-MM-DD` format.
+
+4. **Compute entry fields.**
+   - **Findings count and delta.** Total = length of `source_findings[]` in the freshly-written guide frontmatter. Delta = compare the new `source_findings[]` against the prior version's `source_findings[]` (read from the on-disk guide before Step 4 wrote over it; cache during Step 0.5). Compute `added` (new stems not in prior set) and `removed` (prior stems not in new set).
+   - **Structural line.** 1–2 lines describing what changed at the guide-architectural level (e.g., "Added Step 8 on harness engineering; Pitfalls expanded with three new failure modes."). If the only change is finding-set churn, write "no structural changes; finding-set churn only." If multiple triggers apply, name secondary triggers here.
+   - **Preserved line.** Derived from Step 3.7 output. One of: `\`## Nick's Annotations\` untouched`, `<!-- PRESERVE --> regions intact (N regions)`, `\`## Nick's Annotations\` untouched + <!-- PRESERVE --> regions intact (N regions)`, or `none`.
+   - **SL link.** The current session's SL stem (e.g., `session-71-codifier-ib-154-ib-155-synthesize-guide-update`). Wrapped in wikilink syntax: `[[session-71-codifier-ib-154-ib-155-synthesize-guide-update]]`. The SL entry will be authored at session close; the link is forward-pointing.
+
+5. **Construct the entry block** in this exact shape:
+   ```markdown
+   ## YYYY-MM-DD — Session NN — <trigger-tag>
+
+   - Findings: <N> (+<added>, -<removed> since last synthesis)
+   - Added: [[finding-stem-1]], [[finding-stem-2]]
+   - Removed: [[finding-stem-x]]
+   - Structural: <1–2 lines>
+   - Preserved: <preservation status>
+   - SL: [[session-NN-<descriptor>]]
+   ```
+   Omit the `Added:` line if the added list is empty; omit the `Removed:` line if the removed list is empty. The header line and the five remaining bullets (Findings, Structural, Preserved, SL — minus any omitted Added/Removed) MUST be present.
+
+6. **Enforce line cap.** Count non-header lines (everything after the `## ` header line, excluding the trailing newline). Bands:
+   - **≤10 lines: clean.** Write the entry.
+   - **11–15 lines: warning.** Write the entry; surface a warning in skill output naming the over-budget bullet(s) and recommending narrative content move to SL.
+   - **>15 lines: abort.** Do NOT write the entry. Emit a structured report (line count, offending bullets, recommended fix path: "move narrative to SL; keep structural line to 1–2 lines"). Skill exits non-zero. Nick re-runs after slimming.
+
+7. **Locate or create the companion file.**
+   - Check `systems/improvement-loop/extracts/guides/changelog/<guide-stem>.changelog.md`.
+   - If absent, create it with a single-line title heading: `# Changelog — <guide title>` (the guide title from frontmatter, not the kebab-case stem) followed by a blank line. Then proceed to insert the new entry directly below the title heading.
+   - If present, locate the title heading (`^# `). Insert the new entry directly below it, separated by a blank line, **above all existing entries**. Most-recent-first ordering is invariant.
+
+8. **Atomic write.** Read the current file (or treat as empty if absent), construct the new file content (title + blank line + new entry + blank line + existing entries), write the result. Do not mutate existing entries.
+
+9. **Report to user (unless `--auto`):** "Changelog entry appended at `extracts/guides/changelog/<stem>.changelog.md` — trigger: <tag>, lines: N (clean|warning)." Warnings are surfaced; aborts have already exited the skill non-zero before reaching this point.
+
+This step runs after Step 4 (guide write) and before Step 5 (synthesis status / cross-references). The guide file is already on disk at this point; if Step 4.5 fails on a >15-line entry, the guide is on disk but the changelog has no entry — Nick re-runs Step 4.5 after slimming the entry, or invokes a manual append.
+
 ### Step 5: Update Synthesis Status and Cross-References
 
 1. **Update the Synthesis Status table** in `systems/improvement-loop/operations/references/guide-routing-table.md`. Set the cluster's row to: last synthesized date, finding count, output path, and status (`draft`). If re-synthesizing an existing guide, update the row in place.
@@ -298,6 +349,10 @@ Next: Review the staged guide. Deploy to meta-system/knowledge/guides/ when read
 | Guide is too long (>5000 words) | Word count check after Step 3 | Split into multiple guides or extract reference sections into appendices |
 | Unmatched / nested `<!-- PRESERVE -->` markers in existing guide | Step 0.5 marker validation | Abort synthesis with structured marker error (line, recommended fix). Nick repairs the guide; re-run. |
 | Preserved-section drift on regen | Step 3.7 byte-diff fails | Abort write; emit structured drift report (which surface, diff, recommended fix). No file change. Re-run after skill bug fixed. |
+| `--trigger` tag missing on re-synthesis | Step 4.5 trigger resolution | Prompt unless `--auto`. With `--auto`, abort with structured error naming the missing argument. |
+| `--trigger` tag not in closed enum | Step 4.5 enum validation | Reject with structured report (offending tag, valid enum). Skill exits non-zero. New tags require DD amendment. |
+| Changelog entry exceeds 15 non-header lines | Step 4.5 line-cap check | Abort entry write (entry is not appended; guide file already on disk). Emit structured report; recommend moving narrative to SL. Re-run Step 4.5 after slimming. |
+| Changelog entry 11–15 non-header lines | Step 4.5 line-cap check | Write with warning; warning identifies over-budget bullets. Caller may slim and reissue, or accept the verbose entry. |
 
 ---
 
@@ -311,3 +366,4 @@ Next: Review the staged guide. Deploy to meta-system/knowledge/guides/ when read
 | DD-45 | Knowledge architecture — guides live in meta-system/knowledge/guides/ |
 | DD-46 | Pull model — guides are pulled by consuming systems |
 | DD-93 | Preserved sections on guide regen (`## Nick's Annotations` + `<!-- PRESERVE -->` regions); post-regen byte-equality regression test; fail-closed on drift. Steps 0.5 / 3.5 / 3.7. |
+| DD-94 | Companion changelog file per guide at `extracts/guides/changelog/<stem>.changelog.md`; one entry per re-synthesis with closed trigger-tag enum, ~10-line cap (≤10 clean / 11–15 warn / >15 abort), most-recent-first append. Step 4.5. |
