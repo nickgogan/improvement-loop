@@ -9,7 +9,7 @@ description: >-
   Nick gates re-extraction on the report. Use after large finding intakes,
   dimension rebalances, before a planned /extract-artifacts run, or on Nick request.
 user-invocable: true
-allowed-tools: Read Grep Glob Write
+allowed-tools: Bash Read Grep Glob Write
 argument-hint: "[--include rules,skills,templates,agents] [--exclude rules,skills,templates,agents] [--context <invocation-context>]"
 ---
 
@@ -68,8 +68,11 @@ The Drift Detector thinks like a quartermaster — count what is, compare agains
 | `systems/improvement-loop/extracts/agents/` | Input — agent artifacts to scan |
 | `systems/improvement-loop/research-findings/` | Input — source findings (read for `last_updated` field) |
 | `systems/improvement-loop/operations/drift-reports/` | Output — per-run drift reports |
+| `.claude/skills/detect-drift/scan.py` | Helper script — codifies Steps 1+2 (enumeration, frontmatter parse, source resolution, strict-greater-than compare). Called from Step 1. |
 
 The output directory is created on first scan (it does not exist by default).
+
+The helper script is the deterministic part of this skill. The LLM-driven part is Step 2 onwards (recommendation per hit, report construction). Smoke-tested session 73; codified after the first run surfaced a quote-style heterogeneity bug in inline LLM parsing — see `operations/system-log/session-73-codifier-detect-drift-smoke-test.md`.
 
 ---
 
@@ -83,43 +86,61 @@ The output directory is created on first scan (it does not exist by default).
 4. Resolve `invocation_context` — value of `--context` or default `"manual scan"`.
 5. Report: "Scanning {len(forms)} form(s): {forms_list}. Context: {invocation_context}."
 
-### Step 1: Enumerate Artifacts
+### Step 1: Run Helper Script and Load Results
 
-For each form in `forms`:
+Invoke the codified enumeration helper from the IL system root (`systems/improvement-loop/`):
 
-1. Glob `extracts/{form}/*.md`. Exclude `_index.md`.
-2. For each artifact file, parse frontmatter and capture:
-   - `source_finding` — the finding stem (string)
-   - `extraction_date` — `YYYY-MM-DD` string
-   - `assigned_form` — for sanity-check (must match the form directory)
-3. Skip any artifact missing `source_finding` or `extraction_date` (log under `enumeration_gaps` for the report's top matter — these are not drift hits, they are scan gaps).
+```bash
+python3 .claude/skills/detect-drift/scan.py \
+    [--include rules,skills,templates,agents] \
+    [--exclude ...] \
+    --context "<invocation_context>" \
+    [--out /tmp/drift-scan-<date>.json]
+```
 
-Maintain a flat list of artifact records: `[(path, source_finding_stem, extraction_date, assigned_form), ...]`.
+Pass through the `--include`/`--exclude`/`--context` arguments resolved in Step 0. The script prints the output JSON path on stdout.
 
-Report: "Enumerated {N} artifacts across {len(forms)} form(s). {G} enumeration gaps (missing source_finding or extraction_date)."
+Read the JSON file. The shape:
 
-### Step 2: Resolve Source Findings and Detect Drift
+```jsonc
+{
+  "scan_date": "<YYYY-MM-DD>",
+  "invocation_context": "<string>",
+  "forms_scanned": ["rules", ...],
+  "total_scanned": <int>,
+  "drift_hits": [
+    {
+      "path": "extracts/<form>/<file>.md",
+      "stem": "<artifact-stem>",
+      "form": "<form>",
+      "source_finding": "<finding-stem>",
+      "extraction_date": "<YYYY-MM-DD>",
+      "source_last_updated": "<YYYY-MM-DD>",
+      "assigned_form": "<form-singular>",
+      "has_lifecycle_ptr": <bool>,
+      "has_deployed": <bool>
+    }
+  ],
+  "clean_count": <int>,
+  "enumeration_gaps": [{"path": ..., "stem": ..., "reason": ...}],
+  "unresolvable_sources": [{"path": ..., "stem": ..., "source": ..., "reason": ...}],
+  "per_form": {"rules": {"scanned": ..., "drift_hits": ...}, ...},
+  "smoke_test_signals": {
+    "lifecycle_ptr_present": <int>,
+    "lifecycle_ptr_total": <int>,
+    "deployed_marker_present": <int>,
+    "findings_with_legacy_updated": [{"finding": ..., "legacy_updated": ...}],
+    "form_dir_mismatches": [{"path": ..., "assigned_form": ..., "expected": ...}],
+    "extraction_date_quote_styles": {"double": ..., "single": ..., "unquoted": ...}
+  }
+}
+```
 
-For each artifact record:
+The helper handles enumeration, frontmatter parse (single+double quote styles), source resolution, missing-field gap-logging, and the strict-greater-than `YYYY-MM-DD` compare. The skill body is responsible only for: judging recommendations per hit (Step 2), constructing the report (Step 3), and writing it (Step 4).
 
-1. **Read the source finding** at `research-findings/<source_finding>.md`. If absent, log under `unresolvable_sources` (not a drift hit; a separate scan gap that may indicate finding deletion/rename — surface in report top matter).
-2. **Read the finding's `last_updated` field** — the schema's date-of-last-update marker on findings. DD-96 §Rules #2 names this field directly (the original filing said `updated`; corrected to `last_updated` in the session-71 amendment to match the live schema).
-3. **Compare.** If `source.last_updated > artifact.extraction_date` (strict greater-than on `YYYY-MM-DD` lexical compare), record a drift hit:
-   ```
-   {
-     artifact_stem: "<artifact-stem-without-.md>",
-     artifact_path: "extracts/<form>/<file>",
-     source_finding_stem: "<finding-stem>",
-     source_last_updated: "<YYYY-MM-DD>",
-     artifact_extraction_date: "<YYYY-MM-DD>",
-     recommendation: <see Step 3>
-   }
-   ```
-4. If `source.last_updated <= artifact.extraction_date`, this artifact is drift-clean — increment the clean count, no entry recorded.
+Report: "Enumerated {total_scanned} artifacts across {len(forms_scanned)} form(s). {len(drift_hits)} drift hit(s). {len(enumeration_gaps)} enumeration gap(s). {len(unresolvable_sources)} unresolvable source(s)."
 
-Maintain a list of drift hits and three counters: `total_scanned`, `drift_hits`, `clean_count`.
-
-### Step 3: Codifier Recommendation per Hit
+### Step 2: Codifier Recommendation per Hit
 
 For each drift hit, the Codifier emits a recommendation from the closed three-value enum (DD-96 §The Constraint):
 
@@ -133,7 +154,7 @@ The recommendation is the Codifier's first-pass judgment based on a quick read o
 
 If the Codifier cannot judge confidently (e.g., the source content has changed substantially and could be either re-extract or reclassify), default to `re-run /extract-artifacts on this finding` with a one-line note in the entry's body explaining the ambiguity.
 
-### Step 4: Construct Report
+### Step 3: Construct Report
 
 The report file is named `operations/drift-reports/<YYYY-MM-DD>-source-drift.md` where `<YYYY-MM-DD>` is the current date. If a file with that name already exists (multiple scans on the same date), append a hyphen-numeric suffix: `<YYYY-MM-DD>-source-drift-2.md`, `-3.md`, etc.
 
@@ -186,7 +207,7 @@ forms_scanned:
 
 The `Recommendation` line uses one of the three closed-enum values verbatim. No free-form text in that field.
 
-### Step 5: Write Report and Summarize
+### Step 4: Write Report and Summarize
 
 1. **Atomic write** the report file at `operations/drift-reports/<filename>`. The directory is created if absent (first scan ever).
 2. **Report to user:**
@@ -227,13 +248,13 @@ The `Recommendation` line uses one of the three closed-enum values verbatim. No 
 |---------|-----------|----------|
 | `--include` and `--exclude` both passed | Step 0 argument validation | Reject with structured error; require one or the other (not both). |
 | `--include` / `--exclude` value not in valid form set | Step 0 enum check | Reject with structured error naming the invalid value and the valid set. |
-| Artifact missing `source_finding` or `extraction_date` | Step 1 frontmatter parse | Log to `enumeration_gaps`; skip from drift comparison. Surface in report's Enumeration Gaps section. |
-| Source finding file not found | Step 2 read | Log to `unresolvable_sources`; skip from drift comparison. Surface in report's Unresolvable Sources section. May indicate finding deletion or rename — Nick reviews. |
-| Source finding missing `last_updated` field | Step 2 frontmatter parse | Log to `unresolvable_sources` with reason `missing-last-updated`; skip from drift comparison. |
-| Date strings malformed (not `YYYY-MM-DD`) | Step 2 compare | Log to `unresolvable_sources` with reason `malformed-date`; skip from drift comparison. |
-| Codifier cannot confidently choose a recommendation | Step 3 judgment | Default to `re-run /extract-artifacts on this finding` with a one-line note in the entry body explaining the ambiguity. |
-| Skill attempts to write outside `operations/drift-reports/` | Step 5 path check | Procedural violation — read-only invariant breached. Abort the run; surface in next governance audit. |
-| Multiple scans on the same date | Step 5 collision check | Append hyphen-numeric suffix (`-2.md`, `-3.md`) to the report filename. Each scan keeps its own report. |
+| Artifact missing `source_finding` or `extraction_date` | scan.py frontmatter parse | Log to `enumeration_gaps`; skip from drift comparison. Surface in report's Enumeration Gaps section. |
+| Source finding file not found | scan.py source resolution | Log to `unresolvable_sources`; skip from drift comparison. Surface in report's Unresolvable Sources section. May indicate finding deletion or rename — Nick reviews. |
+| Source finding missing `last_updated` field | scan.py source resolution | Log to `unresolvable_sources` with reason `missing-last-updated`; skip from drift comparison. |
+| Date strings malformed (not `YYYY-MM-DD`) | scan.py date compare | Log to `unresolvable_sources` with reason `malformed-date`; skip from drift comparison. |
+| Codifier cannot confidently choose a recommendation | Step 2 judgment | Default to `re-run /extract-artifacts on this finding` with a one-line note in the entry body explaining the ambiguity. |
+| Skill attempts to write outside `operations/drift-reports/` | Step 4 path check | Procedural violation — read-only invariant breached. Abort the run; surface in next governance audit. |
+| Multiple scans on the same date | Step 4 collision check | Append hyphen-numeric suffix (`-2.md`, `-3.md`) to the report filename. Each scan keeps its own report. |
 
 ---
 
