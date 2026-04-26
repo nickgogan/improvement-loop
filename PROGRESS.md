@@ -1,29 +1,23 @@
 # Improvement Loop — Progress
 
-**Last Updated:** 2026-04-26 (session 73 close — /detect-drift smoke-test + scan.py codification + Librarian cross-concept subagent template)
+**Last Updated:** 2026-04-26 (session 74 close — Phase-3 lifecycle-spec DDs filed, design loop closed)
 
 ## Current Focus
 
-Codifier disposition. Session 73 ran the first end-to-end `/detect-drift` smoke-test, then expanded scope twice (Nick-directed) to codify scan.py and pull the Librarian cross-concept subagent template forward.
+Codifier disposition. Session 74 closed the artifact-lifecycle spec's design loop by filing the four Phase-3 DDs in a single Codifier pass: DD-98 (guide split), DD-99 (theme graduation), DD-100 (template and agent versioning), DD-101 (co-occurrence harvest queue). Phase 1 (DD-93/94/95) and Phase 2 (DD-96/97) ratified session 70; Phase 3 closes the spec.
 
-**Outcome 1 — `/detect-drift` smoke-test against live extracts corpus.** First run of IB-157. 31 artifacts scanned across 4 forms; 1 drift hit, 30 clean, 0 enumeration gaps, 0 unresolvable sources. Report at `operations/drift-reports/2026-04-26-source-drift.md`. Drift hit: `rules/agent-self-reporting-unreliability-independent-eval` (source updated 2026-04-20, extracted 2026-04-19). Codifier recommendation: `dismiss as cosmetic` — source body shows post-extraction administrative updates only (extraction-note section, `consumed_by` list growth, `pipeline_status: synthesized`); artifact substance unchanged. PENDING Nick gate.
+**Outcome — four DDs filed.** Each DD codifies its own procedure or structural pattern. Two amend DD-94's closed trigger-tag enum (DD-98 adds `guide-split`; DD-99 adds `theme-graduation`); the amendments honor DD-94's "new trigger tags require a DD amendment" rule by being the DDs that amend it. DD-100 is the missing Phase-3 sibling to DD-97 — DD-97 governs rule/skill extension; DD-100 governs template versioning and agent version-bump (with DD-82 invariant: agent bumps require Nick's prior approval). DD-101 makes DD-77's "co-occurrence resolved at read time by downstream consumers" operational for one specific consumer (`/synthesize-guide`), without contradicting DD-77's negative design decision.
 
-**Outcome 2 — `scan.py` helper + SKILL.md update.** First pass of the smoke-test (LLM-driven inline parsing) returned a false-clean result; spot-check surfaced a YAML quote-style heterogeneity bug (corpus has 27 double-quoted + 4 single-quoted `extraction_date` fields; inline parser stripped only double quotes, silently masking the drift hit). Nick directed mid-session codification. `scan.py` reifies Steps 1-2 of `/detect-drift` (enumeration + frontmatter parse + source resolution + strict-greater-than compare); LLM-judgment steps (recommendation, report construction) remain in the skill body.
+**Cross-DD consistency check passed inline.** Seven cross-DD invariants spot-checked at filing time (DD-94 enum amendments, DD-95 per-version independence, DD-96 multi-version scan, DD-77 read-time-resolution preservation, DD-93 preserved-section disposition on split, DD-97/DD-100 downstream from DD-101, IB-153 dependency for DD-99 ABSORB path). No structural ambiguities surfaced for stop-and-surface.
 
-**Outcome 3 — Librarian cross-concept subagent template (read-contract §Q4).** Workflow file at `agents/librarian/workflows/cross-concept-subagent.md`. Lucene-style decomposition: one subagent per `(operation × concept)` pair, parent recombines via per-operation join rules. Includes parameterized subagent prompt template, recombination logic across all 9 operations, UC-9.2 worked example, failure-modes table.
+**Four atomic commits** (one per DD). Form matches DD-93..97 verbatim — frontmatter, agent callout, Constraint, Why, Rules, Acceptance Criteria, Scope and Non-Goals, Related, Source, Phase-3 Marker. No spec rewrites; the design note remains a frozen reference. No Phase-3 IB filing inline (standing rule); IB sweep is session-75+ work.
 
-**Smoke-test signals (5 from handoff + 1 surfaced):** enumeration coverage clean (31/31); source-pointer resolution clean (31/31); DD-96 amendment field-name alignment clean (0 legacy `updated`); recommendation-enum distribution single data point (1 hit / 1 `dismiss as cosmetic`); DD-95 lifecycle-pointer presence — corpus fully backfilled, **pre-DD-95 graceful-degradation path NOT exercised** (future fixture-based validation needed); surfaced — YAML quote-style heterogeneity in artifact frontmatter, corpus-wide.
+Session-74 SL: `session-74-codifier-lifecycle-phase-3-dds.md`.
 
-**Surfaced for Owner / Nick gate (not filed inline per standing rule):**
-
-- Operation-file "join rule" subsection — the cross-concept template names join rules for all 9 operations but those rules currently live in the template, not in the operation files themselves. IB candidate.
-- YAML quote-style normalization across the artifact corpus — affects all frontmatter readers, not just `/detect-drift`. Owner-routable.
-
-**Four atomic commits** (three outcome commits + close commit). No DDs / IBs filed inline (standing rule).
-
-Session-73 SL: `session-73-codifier-detect-drift-smoke-test.md`.
-
-**Next session target (session 74):** **Lifecycle-spec Phase-3 DDs (DD-X5 / DD-X6 / DD-X8 / DD-X9).** Per Nick's session-73 direction. Phase 1 + Phase 2 ratified session 70. Phase-3 four-DD bundle: guide-split / theme-graduation / template-and-agent versioning / co-occurrence harvesting. Handoff: `operations/handoffs/handoff-prompt-session-74-codifier-lifecycle-phase-3-dds.md` (written this session's close via `/session-handoff`).
+**Next session target (session 75):** Open. Top candidates from Nick's prioritization queue:
+- **G7 / G2 / G9 re-synthesis** — top unblocked Codifier unit; live-validation gate for IB-154 + IB-155. G7 most overdue (+11 findings).
+- **Retroactive migration of ~100 non-guide/non-pattern extracts** — pipeline-collapse Phase M1 audit follow-up.
+- **Phase-3 IB sweep** — implementation IBs for DD-98/99/100/101, analogous to session 71's IB-154…158 sweep. Includes DD-94's enum-bullet edits and `_schema.yaml`'s `version` field addition.
 
 ---
 
@@ -31,10 +25,10 @@ Session-73 SL: `session-73-codifier-detect-drift-smoke-test.md`.
 
 Ordered queue. Status markers: `[nick-gate]` waits on Nick's ruling; `[deferred]` held by Nick, re-evaluate on trigger; `[trigger]` waits on external evidence or volume; `[don't-do-yet]` do not reintroduce until a specific upstream condition lands.
 
-- **Lifecycle-spec Phase-3 DDs (DD-X5, DD-X6, DD-X8, DD-X9)** — [next-session] guide-split / theme-graduation / template-and-agent versioning / co-occurrence harvesting. Phase 1 + Phase 2 ratified session 70. Promoted to next-session focus by Nick at session-73 close.
-- **IB-153** — /dimension-rebalance after Sub-dim 1.B. Codifier capacity; not urgent per Nick. Will reclassify Memory Architecture findings to Context Engineering parent.
-- **Retroactive migration of ~100 non-guide/non-pattern extracts** — per pipeline-collapse Phase M1 audit.
 - **G7 / G2 / G9 re-synthesis** — top unblocked Codifier unit. G7 most overdue (+11 findings). Skill is fully lifecycle-aware after session 71 (DD-93 preservation + DD-94 changelog on `/synthesize-guide`; DD-95 lifecycle pointer + DD-97 corpus-scan extension proposal on `/extract-artifacts`; DD-96 `/detect-drift` skill available). Re-synthesis is the natural live-validation gate for IB-154 + IB-155.
+- **Retroactive migration of ~100 non-guide/non-pattern extracts** — per pipeline-collapse Phase M1 audit.
+- **Phase-3 IB sweep** — implementation IBs for DD-98/99/100/101 (session 74 filing). Analogous to session 71's IB-154…158 sweep for Phases 1+2. Includes DD-94's enum-bullet edits (`guide-split`, `theme-graduation`) and `_schema.yaml`'s `version` field addition.
+- **IB-153** — /dimension-rebalance after Sub-dim 1.B. Codifier capacity; not urgent per Nick. Will reclassify Memory Architecture findings to Context Engineering parent.
 - **`/summarize-encounters` skill build** — [trigger] volume trigger or Nick's brief.
 - **Visualization brainstorm** — [deferred] boil DDs/architecture into human-visualizable form. Session 62: `interactive-explanations-extend-linear-walkthroughs` finding (P2) is a direct technique for this work.
 - **`agent.md` variant-depth iteration** — [trigger] demand-driven on concrete consumer queries; variants (prompt-based / harness-based / autonomous-vs-supervised) exist as stubs per session-49 gate.
