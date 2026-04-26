@@ -3,7 +3,7 @@ name: extract-artifacts
 description: >-
   Draft and write staged artifacts from an approved identification report. Works off the
   output of /identify-artifacts — no classification logic. Reads the report, drafts artifacts
-  for approved findings, writes them to extracts/ with ContractSpec (DD-78).
+  for approved findings, writes them to extracts/ with ContractSpec (DD-78) and ContextSpec (DD-92).
   Human gate before writing unless --auto.
 user-invocable: true
 allowed-tools: Read Grep Glob Write Edit Agent
@@ -32,8 +32,11 @@ The Extractor thinks like an artifact author — opinionated, form-appropriate, 
 
 - **Form-appropriate drafting.** A rule should be crisp and enforceable (condition/action/boundary). A template should have clear variables and a fillable body. A pattern should have problem/forces/solution/consequences. Don't write everything in pattern prose.
 - **ContractSpec is mandatory.** Every artifact carries `preconditions / invariants / governance / recovery` (DD-78). No exceptions. Think about what breaks, not just what works.
+- **ContextSpec is mandatory.** Every artifact carries consumer-fit metadata (DD-92): `applies_to`, `platform_coupling`, `autonomy`, `stage`, `reversibility`, `auditability`, `evidence_strength`, `adoption`. Think about who adopts this, at what stage, at what cost, with what reversibility.
+- **Universal vocabulary.** ContextSpec fields must be readable by consumers outside MetaSystem. No IL-internal labels (`S2`, `S3`, `General`, `Perplexity Skills`), no IL-internal skill names (`/identify-artifacts`, `/assess-skill`), no IL-specific paths. `applies_to` is re-derived in universal vocabulary — it is NOT a mechanical copy of `source_finding.applicability` (which is IL-internal bookkeeping).
 - **Source-faithful.** The artifact should faithfully represent the finding's insight. Don't add interpretations the finding doesn't support.
 - **Self-contained.** A reader should understand the artifact without needing to read the source finding. Link back, but don't depend on it.
+- **Reference implementation.** `extracts/rules/confirm-failure-first-tdd.md` is the canonical ContextSpec example. Consult it before drafting when in doubt about field shape.
 
 ---
 
@@ -114,6 +117,36 @@ Every artifact MUST include a ContractSpec with four sub-blocks:
 - governance: Who owns, who can modify, what gates apply
 - recovery: What happens when preconditions or invariants are violated
 
+## ContextSpec (DD-92) — Required on Every Artifact
+
+Every artifact MUST include a ContextSpec with consumer-fit metadata. All 8 fields required (`adoption.notes` is optional):
+
+- **applies_to:** List of plain-English strings describing what kind of consumer situation fits this artifact. Narrative, not enum. Universal vocabulary only.
+- **platform_coupling:** "agnostic" | "specific:<platform>" (e.g., "specific:claude-code")
+- **autonomy:** "all" | "hitl-only" | "autonomous-only"
+- **stage:** "specify" | "build" | "verify" | "secure" | "operate"
+- **reversibility:** "trivial — <note>" | "low — <note>" | "medium — <note>" | "high — <note>" | "irreversible — <note>"
+- **auditability:** Plain-English description of how externally verifiable compliance is.
+- **evidence_strength:** "Low" | "Medium" | "Strong" — inherit from the source finding's `evidence_strength` field.
+- **adoption.status:** "Not Yet Started" | "Partially Adopted" | "Adopted" — inherit from the source finding.
+- **adoption.notes:** Plain-English past-signal — where applied, with what outcomes. Optional; set null if unknown.
+
+### Universal Vocabulary — Hard Constraint
+
+ContextSpec fields must be readable by consumers OUTSIDE MetaSystem. Forbidden tokens:
+
+- MetaSystem scope labels: `S2`, `S3`, `General`, `Perplexity Skills` (IL bookkeeping, not consumer-facing)
+- IL-internal skill names: `/identify-artifacts`, `/extract-artifacts`, `/assess-skill`, `/assess-agent`, `/research-loop`, `/promote-findings`, etc. Use generic descriptors instead ("classification tooling", "skill-assessment rubrics")
+- IL-specific paths: `systems/improvement-loop/...`, `extracts/...`, `research-findings/...`
+
+`CLAUDE.md` is borderline — Anthropic-canonical, acceptable as a concrete example.
+
+### Mechanical-Copy Prohibition
+
+`applies_to` MUST be re-derived in universal vocabulary based on what the finding describes. Do NOT mechanically copy `source_finding.applicability`. Source `applicability` is IL-internal bookkeeping (which of our systems to attend to). ContextSpec `applies_to` is consumer-facing description (what kind of consumer situation fits). These are distinct layers. Translate, do not paste.
+
+Reference implementation: consult the ContextSpec block in `extracts/rules/confirm-failure-first-tdd.md` before drafting.
+
 ## Form-Specific Structure
 
 ### Pattern
@@ -154,8 +187,11 @@ Every artifact MUST include a ContractSpec with four sub-blocks:
 - **ID:** [finding file stem]
 - **Name:** [name]
 - **Assigned Form:** [form from report]
-- **Reason Codes:** [from report]
-- **Co-occurrence:** [from report, or null]
+- **Reason Codes:** [from report — drafting rationale only; do NOT emit in the written artifact]
+- **Co-occurrence:** [from report, or null — drafting rationale only]
+- **Source applicability (IL-internal — DO NOT COPY into `applies_to`):** [source finding's `applicability` field]
+- **Source evidence_strength:** [Strong|Medium|Low — inherit verbatim into `context.evidence_strength`]
+- **Source adoption.status:** [Not Yet Started|Partially Adopted|Adopted — inherit verbatim into `context.adoption.status`]
 - **Full Finding Body:**
 [entire finding body text]
 
@@ -163,10 +199,27 @@ Every artifact MUST include a ContractSpec with four sub-blocks:
 
 IMPORTANT: Output ONLY valid JSON objects, one per line. No markdown fencing, no commentary.
 
-{"id": "finding-file-stem", "title": "Artifact Title", "assigned_form": "pattern|skill|rule|template|agent", "body": "The full artifact body in markdown, using the form-appropriate structure above. Use actual newlines (not \\n) within the body.", "contract": {"preconditions": "...", "invariants": "...", "governance": "...", "recovery": "..."}}
+{"id": "finding-file-stem", "title": "Artifact Title", "assigned_form": "pattern|skill|rule|template|agent", "body": "The full artifact body in markdown, using the form-appropriate structure above. Use actual newlines (not \\n) within the body.", "contract": {"preconditions": "...", "invariants": "...", "governance": "...", "recovery": "..."}, "context": {"applies_to": ["...", "..."], "platform_coupling": "agnostic|specific:<platform>", "autonomy": "all|hitl-only|autonomous-only", "stage": "specify|build|verify|secure|operate", "reversibility": "trivial|low|medium|high|irreversible — <note>", "auditability": "...", "evidence_strength": "Low|Medium|Strong", "adoption": {"status": "Not Yet Started|Partially Adopted|Adopted", "notes": "... or null"}}}
 ```
 
 **Batch launch:** Use the `Agent` tool for each batch. Launch all batches in parallel.
+
+### Step 2.5: Validate Drafts
+
+For each drafted artifact, run three checks BEFORE writing. Any artifact failing a check is flagged and NOT written — surface in the Step 6 summary.
+
+1. **ContextSpec presence (DD-92).** Verify all 8 required fields are present and non-null: `applies_to`, `platform_coupling`, `autonomy`, `stage`, `reversibility`, `auditability`, `evidence_strength`, `adoption.status`. (`adoption.notes` may be null.) If any required field is missing or null, flag.
+
+2. **Mechanical-copy guard (DD-92).** Read the source finding's `applicability` field from its frontmatter. Compare each string against every entry in `context.applies_to`. If any source-`applicability` string appears verbatim (or as an obvious near-paraphrase) in `applies_to`, flag. Require re-draft with explicit instruction: re-derive in universal consumer-facing vocabulary, do not paste.
+
+3. **Forbidden-vocabulary scan (DD-92).** Scan all ContextSpec field values (all of `applies_to`, plus `platform_coupling`, `autonomy`, `stage`, `reversibility`, `auditability`, `adoption.notes`) for forbidden tokens:
+   - MetaSystem scope labels: `S2`, `S3`, `General` (when used as scope shorthand), `Perplexity Skills`
+   - IL-internal skill name patterns: any `/identify-artifacts`, `/extract-artifacts`, `/assess-skill`, `/assess-agent`, `/research-loop`, `/promote-findings`, `/synthesize-guide`, `/reassess-priorities`, etc.
+   - IL-specific path prefixes: `systems/improvement-loop/`, `extracts/`, `research-findings/`, `research-sources/`, `research-authorities/`
+
+   If any forbidden token found, flag. Require re-draft with universal-vocabulary instruction.
+
+Report: "Validation: {V} artifacts passed, {F} flagged ({M} missing-fields, {C} mechanical-copy, {B} forbidden-vocab)."
 
 ### Step 3: Write Artifacts
 
@@ -184,16 +237,23 @@ title: "[Artifact Title]"
 type: "extracted-artifact"
 assigned_form: "[pattern|skill|rule|template|agent]"
 source_finding: "[finding-file-stem]"
-confidence: "[HIGH|MED|LOW]"
-tier: "[auto|guided|hitl]"
-reason_codes:
-  - "[code1]"
-  - "[code2]"
-co_occurrence: null
 extraction_date: "[YYYY-MM-DD]"
 identification_report: "[report-filename]"
 deployed: false
 deployed_to: null
+context:
+  applies_to:
+    - "[universal-vocabulary consumer-context string]"
+    - "[another universal-vocabulary string]"
+  platform_coupling: "[agnostic | specific:<platform>]"
+  autonomy: "[all | hitl-only | autonomous-only]"
+  stage: "[specify | build | verify | secure | operate]"
+  reversibility: "[trivial|low|medium|high|irreversible] — [note]"
+  auditability: "[plain-English: how externally verifiable is compliance]"
+  evidence_strength: "[Low | Medium | Strong]"
+  adoption:
+    status: "[Not Yet Started | Partially Adopted | Adopted]"
+    notes: "[plain-English past-signal, or null]"
 contract:
   preconditions: "[...]"
   invariants: "[...]"
@@ -277,10 +337,16 @@ Next: Review staged artifacts in extracts/. Deploy to enforcement locations when
 
 1. **Never classify.** This skill reads forms from the identification report. If a finding has no report entry, it cannot be extracted.
 2. **ContractSpec on every artifact** (DD-78). If a subagent omits it, flag the artifact for manual review — do not write without a contract.
-3. **Dedup at write time.** Check if an artifact for this finding already exists in `extracts/`. Skip if so.
-4. **Do not deploy.** Write to `extracts/` only. Deployment is a separate act.
-5. **Back-annotate after writing.** The source finding gets a note linking to the extracted artifact.
-6. **Respect REDIRECTED status.** If the user changed the form in the report, use the user's form, not the original classification.
+3. **DD-92 ContextSpec requirements.** Every artifact carries a complete ContextSpec in universal vocabulary. Specifically:
+   a. All 8 required fields present: `applies_to`, `platform_coupling`, `autonomy`, `stage`, `reversibility`, `auditability`, `evidence_strength`, `adoption.status`. `adoption.notes` optional. Missing field → flag, do not write.
+   b. No MetaSystem scope labels (`S2`, `S3`, `General`, `Perplexity Skills`), no IL-internal skill names (`/identify-artifacts`, `/assess-skill`, etc.), no IL-specific paths. Forbidden-vocab scan runs in Step 2.5.
+   c. `applies_to` re-derived in universal vocabulary; NEVER a mechanical copy of `source_finding.applicability`. Mechanical-copy guard runs in Step 2.5.
+   d. IL classification meta (`confidence`, `tier`, `reason_codes`, `co_occurrence`) NOT emitted in the written artifact — IL-internal bookkeeping only. These are read from the report for drafting rationale, stripped at write.
+   e. Reference implementation: `extracts/rules/confirm-failure-first-tdd.md` — consult when in doubt about field shape.
+4. **Dedup at write time.** Check if an artifact for this finding already exists in `extracts/`. Skip if so.
+5. **Do not deploy.** Write to `extracts/` only. Deployment is a separate act.
+6. **Back-annotate after writing.** The source finding gets a note linking to the extracted artifact.
+7. **Respect REDIRECTED status.** If the user changed the form in the report, use the user's form, not the original classification.
 
 ---
 
@@ -292,6 +358,9 @@ Next: Review staged artifacts in extracts/. Deploy to enforcement locations when
 | Report has no APPROVED entries | Filter in Step 1 returns 0 | Report and exit — suggest user review the report |
 | Subagent returns malformed JSON | JSON parse error | Log the batch, re-run with smaller batch size |
 | ContractSpec missing from draft | `contract` field is null or empty | Flag artifact, do not write. Report in summary. |
+| ContextSpec missing or incomplete | Step 2.5: `context` field absent, or any required sub-field (except `adoption.notes`) null | Flag artifact, do not write. Report in summary. |
+| Mechanical copy of source.applicability detected | Step 2.5: source `applicability` strings appear verbatim in `context.applies_to` | Flag artifact, request re-draft with explicit re-derivation instruction. Do not write original. |
+| Forbidden vocabulary in ContextSpec | Step 2.5: token scan finds MetaSystem scope labels, IL-internal skill names, or IL-specific paths | Flag artifact, request re-draft with universal-vocabulary instruction. Do not write original. |
 | Finding file not found | Read returns error | Skip this finding, report in summary |
 
 ---
@@ -303,3 +372,4 @@ Next: Review staged artifacts in extracts/. Deploy to enforcement locations when
 | DD-77 | Single-form classification — one artifact per finding |
 | DD-78 | ContractSpec on every artifact |
 | DD-80 | Pipeline simplification — /identify-artifacts + this skill replace the Proposer |
+| DD-92 | ContextSpec on every artifact; universal-vocab constraint; mechanical-copy prohibition; IL classification meta stripped at extraction. Reference: `extracts/rules/confirm-failure-first-tdd.md` |
