@@ -103,7 +103,7 @@ Report: "Enumerated {N} artifacts across {len(forms)} form(s). {G} enumeration g
 For each artifact record:
 
 1. **Read the source finding** at `research-findings/<source_finding>.md`. If absent, log under `unresolvable_sources` (not a drift hit; a separate scan gap that may indicate finding deletion/rename — surface in report top matter).
-2. **Read the finding's `last_updated` field.** This is the field findings actually carry (the schema's date-of-last-update marker). DD-96 §Rules #2 names the field `updated`; the implementation reads `last_updated` to match the live schema. The semantic intent of DD-96 is preserved — most-recent source-content update — and the field-name reconciliation is logged for a future DD-96 amendment.
+2. **Read the finding's `last_updated` field** — the schema's date-of-last-update marker on findings. DD-96 §Rules #2 names this field directly (the original filing said `updated`; corrected to `last_updated` in the session-71 amendment to match the live schema).
 3. **Compare.** If `source.last_updated > artifact.extraction_date` (strict greater-than on `YYYY-MM-DD` lexical compare), record a drift hit:
    ```
    {
@@ -217,7 +217,7 @@ The `Recommendation` line uses one of the three closed-enum values verbatim. No 
 4. **Closed Recommendation enum.** Only `re-run /extract-artifacts on this finding`, `dismiss as cosmetic`, `reclassify`. Free-form text in the Recommendation field is a contract violation; surface as a procedural failure.
 5. **Guides and patterns excluded.** The scan does not enumerate `extracts/guides/` or `extracts/patterns/`. Their drift surfaces through different mechanisms (DD-93/94 for guides; DD-81 + `/synthesize-guide` for patterns).
 6. **Per-run reports.** Each invocation produces its own dated file. Reports accumulate; they are never overwritten across runs.
-7. **Field-name reconciliation logged.** DD-96 §Rules #2 specifies `source_finding.updated`; the implementation reads `last_updated` to match the live schema. The semantic intent (most-recent source-content update timestamp) is preserved. The field-name discrepancy is logged for a future DD-96 amendment — see the session-71 SL "Logged for future" section.
+7. **Source field is `last_updated`.** Per DD-96 §Rules #2 (as amended 2026-04-26 / session 71). The original DD-96 filing named the field `updated`; the session-71 amendment corrected it to match the live finding schema. Skill and contract are aligned — no reconciliation required at the implementation layer.
 
 ---
 

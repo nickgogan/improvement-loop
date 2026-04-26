@@ -7,7 +7,7 @@ actor: "Claude (Codifier disposition)"
 area: "skills / synthesize-guide / extract-artifacts / detect-drift / artifact-lifecycle"
 change_type: "Update"
 milestone: null
-rationale: "Shipped the full Phase-1 + Phase-2 implementation queue across one session — the five IBs (IB-154 through IB-158) ratified in session 70. Initial handoff scope was IB-154 + IB-155 only; Nick directed in-session expansion to IB-156/157/158 after the first two committed cleanly (analogous to session 70's in-session backfill scope expansion). Five atomic commits, one per IB. After this session: `/synthesize-guide` honors DD-93 preservation + DD-94 companion changelog; `/extract-artifacts` honors DD-95 lifecycle pointer + DD-97 corpus-scan extension proposal; new `/detect-drift` skill implements DD-96 source-drift visibility. G7 / G2 / G9 re-synthesis is unblocked AND non-guide artifact lifecycle is fully wired (writer side, reader side, drift visibility, redundancy avoidance). One field-name discrepancy logged for a future DD-96 amendment: findings carry `last_updated`, DD-96 §Rules #2 names the field `updated`; implementation reads the live-schema field, semantic intent preserved."
+rationale: "Shipped the full Phase-1 + Phase-2 implementation queue across one session — the five IBs (IB-154 through IB-158) ratified in session 70 — plus an in-session DD-96 amendment after Nick direction. Initial handoff scope was IB-154 + IB-155 only; Nick directed mid-session expansion to IB-156/157/158 after the first two committed cleanly (Phase B), then directed in-session amendment of DD-96 after the field-name bug surfaced (Phase C). Six atomic commits — five IBs + DD-96 amendment + the close commits. After this session: `/synthesize-guide` honors DD-93 preservation + DD-94 companion changelog; `/extract-artifacts` honors DD-95 lifecycle pointer + DD-97 corpus-scan extension proposal; new `/detect-drift` skill implements DD-96 source-drift visibility; DD-96 corrected to read `source_finding.last_updated` (live-schema-aligned). G7 / G2 / G9 re-synthesis is unblocked AND non-guide artifact lifecycle is fully wired (writer side, reader side, drift visibility, redundancy avoidance) AND the contract layer is consistent with the live schema."
 source_dd: "DD-29, DD-78, DD-80, DD-81, DD-93, DD-94, DD-95, DD-96, DD-97"
 timestamp: "2026-04-26T00:00:00Z"
 session: 71
@@ -148,11 +148,17 @@ Five total atomic commits in this session (IB-154, IB-155, session-close, IB-156
 
 ### Bugs Surfaced — Phase B
 
-- **DD-96 field-name vs live-schema discrepancy.** DD-96 §The Constraint and §Rules #2 specify the source field as `source_finding.updated`. Findings actually carry `last_updated` (588/588 in the live KB; 0 carry `updated`). The schema is the source of truth; DD-96's field name was a specification slip. Resolution: `/detect-drift` reads `last_updated` to match the live schema; semantic intent (most-recent source-content update timestamp) is preserved. The discrepancy is documented in `/detect-drift` Rules #7 and queued below for a future DD-96 amendment.
+- **DD-96 field-name vs live-schema discrepancy.** DD-96 §The Constraint and §Rules #2 specified the source field as `source_finding.updated`. Findings actually carry `last_updated` (588/588 in the live KB; 0 carry `updated`). The schema is the source of truth; DD-96's field name was a specification slip. Surfaced during IB-157 (`/detect-drift`) implementation when wiring the comparison against the live KB.
 
-### Contract Amendments Proposed — Phase B
+### Contract Amendments Applied — Phase C (post-Nick-direction)
 
-- **DD-96 amendment candidate.** Update DD-96 §The Constraint and §Rules #2 to read `source_finding.last_updated` instead of `source_finding.updated`. This aligns the DD with the live schema. Filing is a future Owner-session task per DD-44 §When-to-Amend (in-place body amendment, status remains Binding). Surface via `/track dd update` or governance audit; do not file inline (per session-71 handoff §Rules: "No new DDs / IBs mid-session").
+After Phase B closed, Nick directed in-session correction of the DD-96 field-name bug. Session 71 thus has a third phase: a single in-place amendment to DD-96 per DD-44 §When-to-Amend.
+
+- **DD-96 amendment.** Updated §The Constraint pseudo-code (`f.updated` → `f.last_updated`), the agent callout (`updated` → `last_updated`), and §Rules #2 (`source_finding.updated` → `source_finding.last_updated`). Frontmatter `updated: "2026-04-26"` added. New `## Amendment Provenance` section records the field-name correction with rationale (live schema is source of truth) and confirms substance is unchanged (same field, same comparison semantics, same most-recent-update intent — purely a label-vs-schema reconciliation). Status remains Binding. `/detect-drift` SKILL.md Rules #7 retired the reconciliation note (skill + contract are now aligned at the field-name layer); Step 2 read-instruction simplified to cite the amended DD directly.
+
+  **Why amend in-session despite handoff §Rules.** Handoff §Rules said "No new DDs / IBs mid-session." This is an *amendment* to an existing DD, not a new DD; and Nick's direction overrides the handoff norm (same authority pattern as the Phase-B scope expansion). DD-44 §When-to-Amend is the operative governance — in-place body amendment for label/schema corrections that don't change substance.
+
+  **Commit:** `Session 71: amend DD-96 — source.updated → source.last_updated (field-name vs live-schema fix)`.
 
 ### Logged for Future — Phase B
 
