@@ -49,6 +49,7 @@ The Extractor thinks like an artifact author — opinionated, form-appropriate, 
 | `--session NN` | Active IL session number for the lifecycle-pointer fields (DD-95). Required on every write of a non-guide artifact (rule, skill, template, agent). Skill prompts if missing (unless `--auto`, which aborts). Ignored for guide writes (this skill does not write guides; defensive). |
 | `--sl STEM` | Active session's SL filename stem (no path, no `.md`). Required on every write of a non-guide artifact (DD-95). Skill prompts if missing (unless `--auto`, which aborts). Validated against `operations/system-log/<stem>.md` before any artifact is written. |
 | `--update` | Re-extraction mode (DD-95). When set, the skill OVERWRITES existing artifacts whose `source_finding` matches a finding in the current run, rather than skipping them per the default dedup-at-write rule. Triggers: post-drift-report Nick ruling (DD-96), Nick-requested re-extraction, dimension-rebalance regen. On update, body + ContractSpec + ContextSpec are regenerated; `last_change_session` + `last_change_sl` are overwritten with the current session's values; `extraction_date` is preserved (the original extraction date — not the update date); `deployed` + `deployed_to` are preserved. |
+| `--version-bump <agent-stem>` | Explicit agent version-bump invocation (DD-100, DD-82). Required when bumping an agent: agent forms are flag-and-exit by default per DD-82's never-auto-create invariant (Step 1.8 agent branch); Nick's prior approval is structural, not skill-resolvable from corpus scan. When set, the named agent stem is treated as a Nick-approved version-bump candidate and routed through the version-bump write path (Item 3 of Step 1.8) rather than flagged-and-exited. Templates do NOT use this flag — template version bumps are auto-proposed by the corpus scan and Nick rules per proposal in the standard flow. |
 | `--auto` | Skip human selection — draft all APPROVED and all non-HITL PENDING findings. Use only when user has pre-reviewed the report. |
 
 **No arguments:** prompt for the report filename.
@@ -64,6 +65,7 @@ The Extractor thinks like an artifact author — opinionated, form-appropriate, 
 | `systems/improvement-loop/extracts/` | Output — staged artifacts by form |
 | `systems/improvement-loop/extracts/{rules,templates,agents,skills,patterns}/` | Per-form output directories |
 | `systems/improvement-loop/operations/extension-proposals/` | Output — DD-97 extension-proposal reports (created on first run; not pre-created) |
+| `systems/improvement-loop/operations/version-bump-proposals/` | Output — DD-100 template version-bump-proposal reports (created on first run; not pre-created) |
 
 ---
 
@@ -165,11 +167,126 @@ Before drafting any new rule or skill artifact, the skill scans the matching cor
 
 **Auto-merge prohibition.** The skill MUST NOT modify any existing artifact in this step. The only file written by Step 1.7 is the extension-proposals report. Application of an extension (appending Evidence rows, adding mode flags) is downstream of Nick's ruling and is not a Step 1.7 behavior. Extension-application via `/extract-artifacts` is left for a future IB; for v1, applying the proposal is a manual edit guided by Nick's ruling and the proposal's diff sketch.
 
+### Step 1.8: Template Version-Bump + Agent Flag-Only (DD-100) — template and agent forms only
+
+Before drafting any new template or agent artifact, the skill enforces DD-100's writer-side rubric: templates auto-scan for evolution and propose a version bump when a candidate matches an existing template; agents NEVER auto-scan and NEVER auto-bump per DD-82's never-auto-create invariant — agent-classified findings are flagged for Nick's review and exit. Nick gates every bump.
+
+**Scope.** This step fires only when `assigned_form ∈ {template, agent}`. Rules and skills are routed through Step 1.7's DD-97 path (out of DD-100 scope per DD-100 §Scope and Non-Goals). Patterns are filtered in Step 1 (DD-81). Each form takes a different branch — templates auto-scan; agents flag-and-exit.
+
+**Calibration — LLM judgment, loose (DD-97 calibration parity).** No structured threshold. The LLM reads the candidate finding's name, summary, body, and ContextSpec context plus each candidate-corpus template's title, summary, ContractSpec content, and body language. False-positive volume is acceptable; the Nick gate catches them. Calibration matches DD-97's loose-trigger philosophy.
+
+**Branch A — Templates (auto-scan + version-bump proposal).**
+
+For each candidate finding with `assigned_form == "template"`:
+
+1. **Glob template corpus.** Enumerate `extracts/templates/<name>.md` and `extracts/templates/<name>-v*.md` siblings (skip `_index.md`). For each baseline `<name>` stem, group its versioned siblings together — the "current" template is the highest-version member of the group (computed as `max(integers extracted from -v<N> suffixes; treat unsuffixed file as v1)`). Read each baseline's title, summary or first body paragraph, and ContractSpec block. The corpus-scan target is the highest-version member of each group; lower versions are historical and not scan-targets (DD-100 §The Constraint: each version is independent; the latest version is the "current" template for evolution comparison).
+
+2. **Per-finding similarity check.** For each candidate template-finding, compare against each baseline group's current template using LLM judgment (parity with Step 1.7). Identify zero, one, or many semantic-overlap candidates. Judgment runs on title + summary + body + ContractSpec; no structured threshold.
+
+3. **Categorize each finding.**
+   - **No match:** finding proceeds to Step 2 drafting per current behavior — a brand-new template at unsuffixed `<name>.md`. Tag as `version_bump_status: "no_match"`.
+   - **Single match:** emit one version-bump proposal block (see step 4). Tag as `version_bump_status: "proposed"`. Skip from Step 2 drafting.
+   - **Multiple plausible matches:** surface the strongest match in the proposal's primary block; flag the other candidates as secondaries. Tag as `version_bump_status: "proposed"`. Skip from Step 2 drafting. Nick rules version-bump target.
+
+4. **Construct version-bump proposal block** for each `proposed` finding:
+
+   ```markdown
+   ### <candidate-finding-stem>
+
+   **Form:** template
+   **Existing template (primary match):** [[<existing-template-stem>]] (current version: v<N>)
+   **Secondary matches:** [[<other-template-stem>]] (v<M>), [[<other-template-stem>]] (v<P>)   (omit line if zero)
+
+   **Proposed filename:** `<existing-template-stem>-v<N+1>.md`
+
+   **Codifier recommendation:** version-bump | create new (false positive) | defer
+
+   **Why this match:** <1–2 lines explaining the semantic overlap the LLM observed.>
+
+   **Diff sketch:**
+
+   <How the new finding's content evolves the existing template — schema/vocabulary/scaffold changes, new placeholders, removed sections, restructured backbone. Cite specific deltas at the structural level (frontmatter blocks, body sections, variable names) rather than narrative summaries.>
+
+   **Notes:** <Optional one-liner — ambiguity, edge case, why the recommendation is what it is.>
+   ```
+
+5. **Aggregate and write the version-bump-proposals report.** Path: `operations/version-bump-proposals/<YYYY-MM-DD>-version-bump-proposals.md`. The report opens with a one-paragraph summary (total template candidates scanned, proposals emitted, no-match passthroughs, source identification report) followed by per-proposal blocks in candidate-stem alphabetical order. If no proposals were emitted, the report file is NOT written — the skill reports "No version-bump proposals; all template findings proceed to drafting as new templates."
+
+   **Report frontmatter:**
+   ```yaml
+   ---
+   type: "version-bump-proposals-report"
+   target_system:
+     - "improvement-loop"
+   generated_by: "/extract-artifacts"
+   date: "<YYYY-MM-DD>"
+   identification_report: "<source identification report filename>"
+   total_template_candidates: <int>
+   proposals_emitted: <int>
+   no_match_passthrough: <int>
+   ---
+   ```
+
+**Branch B — Agents (flag-and-exit; DD-82 invariant).**
+
+For each candidate finding with `assigned_form == "agent"` AND `--version-bump` is NOT set:
+
+1. **Never scan corpus.** Do NOT enumerate `extracts/agents/`; do NOT compare against existing agents; do NOT emit a version-bump proposal.
+
+2. **Flag for Nick review.** Emit a structured note in the run report citing:
+   - The candidate finding stem.
+   - The candidate's agent shape (1–2 lines from the finding's body summarizing the proposed agent's disposition + scope).
+   - The DD-82 + DD-100 §Rules #4 prior-approval requirement.
+   - Recommended next action: "Nick reviews the candidate; if version-bump is approved, re-invoke `/extract-artifacts --version-bump <agent-stem>` against this finding to write `<agent-stem>-v<N+1>.md`. Otherwise, the finding remains classified as `agent` but stages no artifact."
+
+3. **Tag and exit.** Tag the finding `version_bump_status: "agent-flagged"`. Skip from Step 2 drafting. The skill never auto-bumps an agent.
+
+**Branch B' — Explicit agent version-bump (`--version-bump <agent-stem>` set).**
+
+When the operator passes `--version-bump <agent-stem>`, an agent-classified finding is treated as Nick-approved for version bump:
+
+1. **Bypass flag-and-exit.** The candidate skips the Branch B exit and routes to the version-bump write path (same write mechanics as templates — Item 3 below).
+
+2. **Verify baseline existence.** Check `extracts/agents/<agent-stem>.md` (or any `<agent-stem>-v<N>.md` siblings) exists. If no baseline, abort with structured error per Item 3 (c).
+
+3. **Single-target enforcement.** `--version-bump` accepts exactly one stem; the skill aborts if more than one agent-classified finding in the run targets that stem (ambiguous: which finding drives the bump?). Recovery: scope the identification report to the one finding via `--findings`.
+
+4. **Tag.** Tag the finding `version_bump_status: "agent-approved-bump"`. Routes through Step 2 drafting — but the writer-side (Step 3) treats it as a versioned write per Item 3 below.
+
+**Item 3 — Compute-N + collision + missing-baseline rules (writer-side).**
+
+These rules apply at write time (Step 3) for any artifact whose tag is `version_bump_status ∈ {"proposed" (post Nick-rules-version-bump), "agent-approved-bump"}` — i.e., a versioned write rather than a new-baseline write. They are codified here to keep the version-bump rubric self-contained:
+
+(a) **Compute next N.** Enumerate `<name>.md` and `<name>-v*.md` siblings in the directory. Treat the unsuffixed `<name>.md` as v1 (implicit). Take `N = max(existing version integers) + 1`. The new file is `<name>-v<N>.md`.
+
+(b) **Filename collision check.** Before writing `<name>-v<N>.md`, verify the path is unused. Collision aborts the write with a structured error citing the colliding filename and the most likely cause (N-computation race, manual file creation, or filesystem state drift between scan and write). Recovery: human review.
+
+(c) **Missing-baseline check.** Verify `<name>.md` (the implicit v1 baseline) exists before writing any v2+ sibling. If missing (deleted in error), abort the write with a structured error: "v1 baseline `<name>.md` missing; cannot version-bump from a non-existent baseline. Recovery: restore v1 from git, then re-run."
+
+(d) **No in-place version overwrite.** Once `<name>-v<N>.md` exists, `/extract-artifacts` NEVER overwrites it. Subsequent regen of an even-newer version produces `<name>-v<N+1>.md`, never an in-place rewrite of any prior version. The `--update` flag (DD-95 re-extraction path) does NOT apply to versioned files — `--update` overwrites the unsuffixed baseline only. A `--version-bump`+`--update` combination is ill-formed; the skill aborts with a structured error.
+
+(e) **Full independent frontmatter on every version.** Each version carries its own `source_finding` (typically the version-bumping finding; can differ by Nick direction), own `extraction_date` (current write date; never inherited), own `last_change_session` + `last_change_sl` (per DD-95), own `contract` (DD-78), own `context` (DD-92), own `version: <N>` (per DD-100 + IB-161 schema field). Cross-version frontmatter inheritance is forbidden — every version writes fresh from the current run's resolved values.
+
+**Disposition table** (summary of branch outcomes per form):
+
+| Form | --version-bump | Branch | Outcome |
+|------|----------------|--------|---------|
+| template | not set | A — auto-scan | proposal emitted on match; or pass-through to Step 2 (new template) on no_match |
+| template | set | (ill-formed) | abort: --version-bump applies only to agents per the IB scope; templates auto-propose |
+| agent | not set | B — flag-and-exit | run report flags candidate; no draft, no proposal, no write |
+| agent | set | B' — explicit bump | proceed to Step 2 drafting and Step 3 versioned write |
+
+**Run report.** Always surface a one-line summary: "Template version-bump proposals: {P} emitted; {NM} template findings passing through to drafting. Agent flags: {F} agent findings flagged for Nick review; {AB} agent findings treated as approved bumps via --version-bump." If `P > 0`, surface a Nick-gate prompt: "Review the version-bump-proposals report. To execute a bump, Nick rules per proposal; this skill does not auto-write versioned templates." If `F > 0`, surface a Nick-review prompt: "Agent candidates flagged: {list}. To approve a bump, re-invoke `/extract-artifacts --version-bump <stem>` against the flagged finding's identification report." Surface always — even with `--auto`.
+
+**Auto-bump prohibition.** The skill MUST NOT write any versioned file in Step 1.8. Step 1.8's only side-effects are: (a) the version-bump-proposals report (templates with matches); (b) inline run-report flags (agents); (c) tag-on-finding for Step 2 routing. Versioned writes happen in Step 3 after Nick has ruled (templates) or after `--version-bump` is explicitly passed (agents). A versioned write triggered by Step 1.8 alone, without Nick's intervening rule or explicit flag, is a procedural violation.
+
 ### Step 2: Draft Artifacts (Subagents)
 
-**Filter out extension-proposed findings.** Per Step 1.7, any rule or skill finding tagged `extension_status: "proposed"` is routed to the extension-proposals report and does NOT proceed to drafting. Template and agent findings, plus rule/skill findings tagged `extension_status: "no_match"`, proceed normally.
+**Filter out extension-proposed findings.** Per Step 1.7, any rule or skill finding tagged `extension_status: "proposed"` is routed to the extension-proposals report and does NOT proceed to drafting.
 
-For each approved finding **not flagged for extension proposal**:
+**Filter out version-bump-proposed and agent-flagged findings.** Per Step 1.8, any template finding tagged `version_bump_status: "proposed"` is routed to the version-bump-proposals report and does NOT proceed to drafting; any agent finding tagged `version_bump_status: "agent-flagged"` is routed to the run-report flag list and does NOT proceed to drafting. Findings tagged `version_bump_status: "no_match"` (templates with no evolution match) proceed normally to draft as a new template at unsuffixed filename. Findings tagged `version_bump_status: "agent-approved-bump"` (explicit `--version-bump` invocation) proceed to drafting AND route through Step 3's versioned-write path per Step 1.8 Item 3.
+
+For each approved finding **not flagged for extension proposal AND not flagged for version-bump proposal AND not flagged-and-exited as agent**:
 
 1. **Read the full finding file** from `systems/improvement-loop/research-findings/{id}.md`. The identification report only had a summary — drafting needs the full body.
 
@@ -326,8 +443,9 @@ For each drafted artifact:
 1. **Generate filename:** kebab-case from the artifact title. E.g., `absolute-filepath-rule.md` for a rule about absolute filepaths.
 
 2. **Check for filename collision and dedup behavior** in the target directory:
-   - **Default mode (no `--update`):** if an existing artifact has the same `source_finding`, skip per Rule #4 (dedup-at-write). If a different artifact uses the same filename, append `-2`, `-3` to the new artifact's filename.
-   - **Update mode (`--update`):** if an existing artifact has the same `source_finding`, this is a re-extraction. Read the existing artifact's frontmatter to capture preserve-on-update fields: `extraction_date`, `deployed`, `deployed_to`. The new body + ContractSpec + ContextSpec replace the existing ones. The two preserved fields are written back verbatim. `last_change_session` + `last_change_sl` are overwritten with the active session's values from Step 2.7 (no preservation; the SL chain carries the prior pointer). Filename is unchanged.
+   - **Default mode (no `--update`, no versioned write):** if an existing artifact has the same `source_finding`, skip per Rule #4 (dedup-at-write). If a different artifact uses the same filename, append `-2`, `-3` to the new artifact's filename.
+   - **Update mode (`--update`):** if an existing artifact has the same `source_finding`, this is a re-extraction. Read the existing artifact's frontmatter to capture preserve-on-update fields: `extraction_date`, `deployed`, `deployed_to`. The new body + ContractSpec + ContextSpec replace the existing ones. The two preserved fields are written back verbatim. `last_change_session` + `last_change_sl` are overwritten with the active session's values from Step 2.7 (no preservation; the SL chain carries the prior pointer). Filename is unchanged. `--update` does NOT apply to versioned writes — see versioned-write branch below.
+   - **Versioned-write branch (DD-100 — finding tagged `version_bump_status: "proposed"` post Nick-rules-version-bump, OR `version_bump_status: "agent-approved-bump"` via `--version-bump`):** apply the Step 1.8 Item 3 rules (a)–(e). Compute `N = max(existing version integers) + 1` from `<existing-stem>.md` and `<existing-stem>-v*.md` siblings; pre-write filename collision check (abort on collision); missing-baseline check (abort if `<existing-stem>.md` missing); never overwrite an existing version. Filename is `<existing-stem>-v<N>.md`. Frontmatter is fully independent (own `source_finding`, own `extraction_date` = current date, own `last_change_*`, own `contract`, own `context`, own `version: <N>`); never inherit fields from prior versions. Combining `--update` with a versioned write is ill-formed — abort.
 
 3. **Write the artifact file** to `systems/improvement-loop/extracts/{assigned_form}s/`:
 
@@ -340,6 +458,7 @@ source_finding: "[finding-file-stem]"
 extraction_date: "[YYYY-MM-DD]"
 last_change_session: [active session integer — DD-95]
 last_change_sl: "[active session SL stem — DD-95]"
+version: [integer — DD-100; required for template/agent v2+; optional v1 (omit for v1 if writing as new baseline; emit explicit "version: 1" only on retroactive backfill); omit for rule/skill/pattern/guide]
 identification_report: "[report-filename]"
 deployed: false
 deployed_to: null
@@ -471,6 +590,14 @@ Next: Review staged artifacts in extracts/. Deploy to enforcement locations when
 | Skill auto-merges an extension instead of proposing | Step 1.7 auto-merge prohibition | Procedural violation — DD-97 §Rules #3 forbids auto-merge. The only file Step 1.7 writes is the extension-proposals report. Surface in next governance audit. |
 | Extension proposal emitted for template or agent finding | Step 1.7 scope filter | Procedural violation — DD-97 §Scope excludes templates and agents. Surface and log; the proposal is invalid. |
 | Multiple plausible matches and Codifier silently picks one | Step 1.7 multi-match handling | The proposal must surface the strongest match as primary AND flag secondaries; Nick rules merge target. Single-match-without-secondaries on a multi-match input is a procedural failure. |
+| Versioned write attempted but v1 baseline `<name>.md` is missing | Step 1.8 Item 3 (c) / Step 3 versioned-write branch missing-baseline check | Abort the write with structured error naming the missing baseline. Never silently re-create v1 from a non-v1 source. Recovery: restore v1 from git (or recreate from prior session's commit), then re-run. |
+| Filename collision: `<name>-v<N>.md` already exists when skill computes N | Step 1.8 Item 3 (b) / Step 3 versioned-write branch pre-write check | Abort with structured error naming the colliding filename and likely cause (N-computation drift, manual file creation, filesystem state drift). Recovery: human review of the directory state. |
+| Auto-bump attempt for agent form (no `--version-bump` set) | Step 1.8 Branch B agent flag-and-exit invariant | Procedural violation — DD-82's never-auto-create invariant + DD-100 §Rules #4 forbid auto-bump for agents. The skill MUST flag-and-exit when an agent-classified finding is encountered without `--version-bump`. Surface in next governance audit. |
+| In-place overwrite of an existing `<name>-v<N>.md` body | Step 1.8 Item 3 (d) / Step 3 versioned-write branch invariant | Procedural violation — DD-100 §Rules #7 forbids in-place version overwrite. Subsequent regen MUST produce `<name>-v<N+1>.md`, not a re-write. Surface and revert from git. |
+| Template version-bump-proposed but corpus scan finds NO match | Step 1.8 Branch A categorization (no_match path) | Expected behavior — finding tagged `version_bump_status: "no_match"` proceeds to Step 2 drafting as a brand-new template at the unsuffixed filename. The "no match → proceed to draft new template" path is regression-equivalent to the pre-IB-162 baseline; documented to disambiguate from the "match → proposal" path. |
+| `--version-bump` passed for a template form | Step 1.8 Branch A guard / argument validation | Ill-formed invocation — `--version-bump` applies only to agents (DD-82 invariant). Templates auto-propose via the corpus scan; Nick rules per proposal. Abort with structured error citing the form-mismatch. |
+| `--version-bump <stem>` set but more than one agent finding in the run targets that stem | Step 1.8 Branch B' single-target enforcement | Ambiguous: which finding drives the bump? Abort with structured error. Recovery: re-scope the identification report to one finding via `--findings`. |
+| `--version-bump` combined with `--update` | Step 3 versioned-write branch ill-formed-combination check | Abort with structured error. `--update` overwrites the unsuffixed baseline (DD-95 re-extraction); versioned writes produce a new sibling file (DD-100 version bump). The combination is structurally incoherent. |
 
 ---
 
@@ -484,3 +611,5 @@ Next: Review staged artifacts in extracts/. Deploy to enforcement locations when
 | DD-92 | ContextSpec on every artifact; universal-vocab constraint; mechanical-copy prohibition; IL classification meta stripped at extraction. Reference: `extracts/rules/confirm-failure-first-tdd.md` |
 | DD-95 | Lifecycle pointer (`last_change_session` + `last_change_sl`) on every non-guide create AND update; SL stem validated at write time; both fields overwritten on update; guides excluded. Step 2.7, Step 3 frontmatter template, Step 3 update-mode dedup behavior. |
 | DD-97 | Corpus scan + extension proposal before drafting rule or skill artifacts; calibration (i) LLM-loose; propose-don't-decide invariant; closed Codifier-recommendation enum; templates and agents excluded; auto-merge prohibition. Step 1.7. |
+| DD-100 | Template version-bump rubric + agent flag-only path. Templates auto-scan + propose to `operations/version-bump-proposals/`; Nick gates per proposal; on rule, write `<name>-v<N+1>.md` with full independent frontmatter (own `source_finding`, own `extraction_date`, own `last_change_*`, own `contract`, own `context`, own `version: <N+1>`). Agents flag-and-exit per DD-82 invariant; explicit `--version-bump <stem>` flag is required for any agent version-bump write. Compute-N from filename enumeration; collision-abort; missing-baseline-abort; never overwrite an existing version. `--version-bump` + `--update` is ill-formed. Step 1.8 + Step 2 filter + Step 3 versioned-write branch + Step 3 frontmatter `version` field. |
+| DD-82 | Agent never-auto-create invariant — three-layer enforcement on this skill: (1) Step 1.8 Branch B flag-and-exit on any agent-classified finding without `--version-bump`; (2) `--version-bump <stem>` requires explicit operator scoping (Nick's prior approval is structural, not skill-resolvable from corpus scan); (3) Branch A guard rejects `--version-bump` on template forms (templates auto-propose). Defensive: any path that would write an agent file without explicit Nick approval is a procedural violation. |
