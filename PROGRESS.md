@@ -1,6 +1,6 @@
 # Improvement Loop — Progress
 
-**Last Updated:** 2026-04-26 (session 74 close — Phase-3 lifecycle-spec DDs filed, design loop closed)
+**Last Updated:** 2026-04-26 (session 74 close — Phase-3 lifecycle-spec DDs filed + session-75 handoff written)
 
 ## Current Focus
 
@@ -14,10 +14,7 @@ Codifier disposition. Session 74 closed the artifact-lifecycle spec's design loo
 
 Session-74 SL: `session-74-codifier-lifecycle-phase-3-dds.md`.
 
-**Next session target (session 75):** Open. Top candidates from Nick's prioritization queue:
-- **G7 / G2 / G9 re-synthesis** — top unblocked Codifier unit; live-validation gate for IB-154 + IB-155. G7 most overdue (+11 findings).
-- **Retroactive migration of ~100 non-guide/non-pattern extracts** — pipeline-collapse Phase M1 audit follow-up.
-- **Phase-3 IB sweep** — implementation IBs for DD-98/99/100/101, analogous to session 71's IB-154…158 sweep. Includes DD-94's enum-bullet edits and `_schema.yaml`'s `version` field addition.
+**Next session target (session 75):** **Phase-3 IB sweep** — implementation IBs for DD-98/99/100/101 (top of Nick's prioritization queue per session-74 close edit). Anticipated 5–6 IBs covering: split-trigger detection on `/synthesize-guide` or `/identify-artifacts` (DD-98) + DD-94 enum-bullet edit; graduation-trigger detection on `/identify-artifacts` (DD-99) + DD-94 enum-bullet edit; `_schema.yaml` `version` field addition (DD-100); template version-bump path on `/extract-artifacts` (DD-100); harvest-queue scan on `/synthesize-guide` (DD-101); queue-row promotion path on `/extract-artifacts` (DD-101). Analogous to session 71's IB-154…158 sweep. Handoff: `operations/handoffs/handoff-prompt-session-75-codifier-phase-3-ib-sweep.md` (written this session's close via `/session-handoff`).
 
 ---
 
@@ -25,11 +22,11 @@ Session-74 SL: `session-74-codifier-lifecycle-phase-3-dds.md`.
 
 Ordered queue. Status markers: `[nick-gate]` waits on Nick's ruling; `[deferred]` held by Nick, re-evaluate on trigger; `[trigger]` waits on external evidence or volume; `[don't-do-yet]` do not reintroduce until a specific upstream condition lands.
 
+- **Phase-3 IB sweep** — implementation IBs for DD-98/99/100/101 (session 74 filing). Analogous to session 71's IB-154…158 sweep for Phases 1+2. Includes DD-94's enum-bullet edits (`guide-split`, `theme-graduation`) and `_schema.yaml`'s `version` field addition.
+- **`/summarize-encounters` skill build** — [trigger] volume trigger or Nick's brief.
+- **IB-153** — /dimension-rebalance after Sub-dim 1.B. Codifier capacity; not urgent per Nick. Will reclassify Memory Architecture findings to Context Engineering parent.
 - **G7 / G2 / G9 re-synthesis** — top unblocked Codifier unit. G7 most overdue (+11 findings). Skill is fully lifecycle-aware after session 71 (DD-93 preservation + DD-94 changelog on `/synthesize-guide`; DD-95 lifecycle pointer + DD-97 corpus-scan extension proposal on `/extract-artifacts`; DD-96 `/detect-drift` skill available). Re-synthesis is the natural live-validation gate for IB-154 + IB-155.
 - **Retroactive migration of ~100 non-guide/non-pattern extracts** — per pipeline-collapse Phase M1 audit.
-- **Phase-3 IB sweep** — implementation IBs for DD-98/99/100/101 (session 74 filing). Analogous to session 71's IB-154…158 sweep for Phases 1+2. Includes DD-94's enum-bullet edits (`guide-split`, `theme-graduation`) and `_schema.yaml`'s `version` field addition.
-- **IB-153** — /dimension-rebalance after Sub-dim 1.B. Codifier capacity; not urgent per Nick. Will reclassify Memory Architecture findings to Context Engineering parent.
-- **`/summarize-encounters` skill build** — [trigger] volume trigger or Nick's brief.
 - **Visualization brainstorm** — [deferred] boil DDs/architecture into human-visualizable form. Session 62: `interactive-explanations-extend-linear-walkthroughs` finding (P2) is a direct technique for this work.
 - **`agent.md` variant-depth iteration** — [trigger] demand-driven on concrete consumer queries; variants (prompt-based / harness-based / autonomous-vs-supervised) exist as stubs per session-49 gate.
 - **Weight calibration** for use-case-registry core/long-tail estimates — [trigger] meaningful once encounter tracking accumulates data.
