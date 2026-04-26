@@ -6,7 +6,7 @@ target_system:
   - "cross-system"
 stage: "draft"
 created: "2026-04-19"
-updated: "2026-04-19"
+updated: "2026-04-26"
 author: "claude"
 source_findings:
   - "capability-saturation-threshold-45-percent"
@@ -30,6 +30,7 @@ source_findings:
   - "transitional-lock-in-risk-and-shim-assessment"
   - "six-layer-agent-infrastructure-stack"
   - "claude-code-12-agent-primitives"
+  - "specialized-harness-engineering-deterministic-rail"
 source_dd:
   - "DD-81"
 tags:
@@ -37,10 +38,10 @@ tags:
   - "orchestration"
   - "architecture"
 contract:
-  preconditions: "Agent system design phase; topology not yet committed"
-  invariants: "Architecture choices traceable to task requirements"
+  preconditions: "Agent system design phase; topology not yet committed; harness-spectrum position is a deliberate decision, not a default"
+  invariants: "Architecture choices traceable to task requirements; harness-determinism position (prompt-driven / generic / specialized) is chosen against an explicit reliability requirement; specialized-harness investments are classified as bets (with intended life) or shims (with planned removal trigger)"
   governance: "IL-owned draft; Nick deploys"
-  recovery: "If architecture shows specialization theater symptoms, revisit single-agent default"
+  recovery: "If architecture shows specialization theater symptoms, revisit single-agent default. If specialized harness brittleness blocks real-world inputs, reconsider spectrum position — the right zone may be one step left (generic harness)."
 ---
 
 # Agent Architecture Decisions
@@ -70,6 +71,8 @@ This guide provides empirically-grounded decision frameworks for agent system to
 **4. Contracts at every boundary.** Without explicit input/output schemas, quality constraints, and tool permissions at every agent boundary, agents negotiate interfaces in natural language -- introducing ambiguity, drift, and hallucination that compounds across boundaries.
 
 **5. Infrastructure is impermanent -- plan for it.** Current agent infrastructure layers (retrieval pipelines, heavy prompt scaffolding, verification gates) will be progressively absorbed by model-native capabilities. Classify each dependency as an architectural bet or a transitional shim, and design for easy removal.
+
+**6. Harnesses lie on a determinism spectrum -- choose position deliberately.** Agent systems sit somewhere between "entirely LLM-initiated and driven via just prompts" (a chat with Claude Code, Manus) and "mostly deterministic, where workflows are instantiated and wired together with code" (a specialized Python harness with phase gates, schema validation, state DB, and sub-agent delegation). The position is not a default -- it's a decision. Prompt-driven systems are flexible, cheap to build, and absorb model improvements automatically. Specialized harnesses are reliable, repeatable, and recoverable, but cost real engineering investment and are bets that determinism will still pay off when the model catches up. Topology decisions (single vs multi-agent, Pattern A-E) are *inside* the harness; the harness itself is the wrapper around them. Pick the position that matches your reliability requirement and your tolerance for the corresponding engineering cost.
 
 ---
 
@@ -270,6 +273,8 @@ Before investing in infrastructure, audit each layer for impermanence and lock-i
 
 **The bitter lesson for agents:** Bigger models demand simplification, not more scaffolding. Teams investing in complex RAG, prompt chains, and verification gates risk building on sand. Safety infrastructure (security, permissions, audit trails) should never be simplified away -- the bitter lesson applies to intelligence tasks, not safety constraints.
 
+**Specialized harnesses are deliberate bets against this lesson.** Step 8 introduces the harness determinism spectrum, where specialized harnesses (phase-gated Python rails, schema-validated transitions) deliver reliability the model alone can't yet provide. The bet is that the reliability gain outweighs the eventual obsolescence of the scaffolding. Both Step 6 and Step 8 can be correct simultaneously: don't over-build scaffolding the model will absorb, *and* if your reliability requirement is unmet, build the scaffolding anyway with a planned review trigger. Make the bet explicit -- classify the harness investment as bet (intended life: N model generations) or shim (planned removal when feature X lands), so the decision is reviewable as model capability evolves.
+
 ### Step 7: Build the Infrastructure Layer
 
 Production agent systems need infrastructure beyond the model. Audit against this three-tier checklist:
@@ -283,6 +288,51 @@ Production agent systems need infrastructure beyond the model. Audit against thi
 **Agents are 80% infrastructure, 20% model.** Anthropic's Claude Code invests 80% of its 512K-line TypeScript codebase in infrastructure. Most teams build the model layer and skip the plumbing -- then hit scaling walls when they cannot debug, recover from crashes, or control costs.
 
 For detailed guidance on implementing each tier in production -- workflow engines, observability, cost management, and degradation modes -- see *Agent Workflow and Execution* (G3b).
+
+### Step 8: Position on the Harness Spectrum
+
+Once topology, contracts, models, and infrastructure tiers are decided, decide *how much of the workflow is prompt-driven vs. wired together in code*. This is the harness-determinism axis -- orthogonal to topology (Step 3) and to layer impermanence (Step 6). Three zones:
+
+| Zone | What it looks like | Reliability | Engineering cost | Brittleness | Examples |
+|------|--------------------|-------------|------------------|-------------|----------|
+| **Prompt-driven** | The agent decides phase transitions, output shape, and sub-task routing in the prompt. The "harness" is conversation + tool calls. | Variable -- depends on model capability and prompt quality | Low | Low (model upgrades absorb improvements automatically) | Vanilla chat, Manus, ad-hoc Claude Code sessions |
+| **Generic harness** | Reusable scaffolding (skills, hooks, slash commands, workflow conventions) that runs across many tasks. Phase transitions, tool permissions, and context shape are codified but the agent still decides most steps. | Higher -- conventions catch common failure modes | Medium -- amortized across many tasks | Medium -- conventions can ossify; harness-version drift | Claude Code (the harness), GSD, Cursor's agent mode |
+| **Specialized harness** | Purpose-built code (Python or otherwise) wraps LLM calls with explicit phase gates, structured output schemas, sub-agent delegation, persistent state, and model-tier routing. Each phase is a function with validation; LLM steps are scoped within them. | Highest -- determinism by construction; failure modes are the harness's, not the model's | High -- real engineering project | High -- rigid schemas break on real-world drift; risk of building scaffolding the next model would render unnecessary | Stripe's PR validator (1,300 PRs/week), Karpathy-style contract-review harness, Archon YAML-defined workflow DAGs |
+
+**Specialized-harness primitives** (when you commit to that zone):
+
+- **Phase-gating.** Phase N+1 only proceeds after Phase N output passes validation. State transitions are explicit, not emergent.
+- **Structured output schemas at every phase.** Each phase produces validated JSON or equivalent, not free text. Downstream phases consume by schema, not by parsing.
+- **Sub-agent delegation per unit.** Each independent unit of work (clause, file, hypothesis) gets its own LLM call with fresh context. Prevents context pollution at the unit level.
+- **State management via a database.** A `harness_runs` table (or equivalent) tracks current phase, status, outputs. Crashes restart from the last successful phase, not from scratch.
+- **Virtual file system / scratch pad.** Every phase writes its output as a file. The full run is replayable and auditable.
+- **Model tier routing.** Expensive orchestrator model for the main reasoning; cheap fast model for sub-agent extraction. Cost scales with phase importance, not phase count.
+
+The contract-review demo cited in the source material consumed 323K tokens in sub-agent contexts vs. 7K in the orchestrator's main context -- the harness made context isolation tractable at scale.
+
+**When to invest in a specialized harness:**
+
+| Trigger | What it tells you |
+|---------|-------------------|
+| Single-agent baseline below 45% **and** task is repeated production work | You can't fix it with better prompts; the variance has to be engineered out. |
+| Cost-of-failure is high (financial, safety, compliance) | Determinism is a feature buyers pay for. Stripe's 1,300 PRs/week works because the harness gates against 3M tests. |
+| Task structure is genuinely phase-decomposable | If the work has natural phases (research → outline → draft → review → publish), the harness adds clarity. If it's exploratory and emergent, the harness will fight the work. |
+| You will run this workflow >100 times | Engineering cost amortizes. Below ~100 runs, generic harness is usually enough. |
+
+**When *not* to invest:**
+
+- The task runs <10 times. Generic harness is cheaper end-to-end.
+- The model is improving fast enough that next-model-generation will absorb your scaffolding (Step 6 impermanence audit applies here too).
+- The task is exploratory and the right phase decomposition isn't yet known. Premature schema-locking creates rework.
+- The cost of failure is low. Variance is acceptable; reliability investment isn't.
+
+**Productive tension with Step 6.** Specialized harnesses are *deliberate architectural bets against the bitter lesson*. The `contradicts` link between specialized harness engineering and the layer-impermanence principle is real -- but both are correct depending on where you sit on the spectrum and what your task demands. Step 6 says "don't build scaffolding the model will absorb"; Step 8 says "if your reliability requirement is unmet by the model alone, build the scaffolding anyway and accept that it may be a finite-life investment." The right move is to make the bet *explicit*: classify the harness investment as a bet (with intended life) or a shim (with planned removal trigger), so the decision is reviewable when model capability changes.
+
+**Migration paths between zones:**
+
+- Prompt-driven → Generic: codify recurring conventions into skills, hooks, or slash commands. Reusability is the trigger.
+- Generic → Specialized: when conventions stop catching the failures, and the failures cost real money or trust. Phase-gate the most failure-prone transition first; expand from there.
+- Specialized → Generic (reverse migration): when the next model generation makes one of the harness's deterministic checks redundant, retire that check. Keep the harness; shrink its surface.
 
 ---
 
@@ -455,6 +505,21 @@ INFRASTRUCTURE STATUS:
 - Tier 2: PROGRESS.md for session persistence (manual) △
 - Tier 3: Delta reports for observability ✓
   Missing: automated session persistence, budget tracking
+
+HARNESS SPECTRUM POSITION:
+- Zone: Generic harness (Claude Code + IL skills + slash commands)
+- Rationale: Workflow runs ~weekly (well below the >100-run amortization
+  threshold for specialized harness); cost-of-failure is low (Nick gates
+  every output); task structure is exploratory enough that rigid phase
+  schemas would fight the work.
+- Bet vs shim: skills + slash commands are a bet (expected to outlast
+  several model generations). PROGRESS.md as session-persistence is a
+  shim (plan to retire when native session continuity matures).
+- Trigger to reconsider: if extraction throughput plateaus and Nick's
+  gate-cost becomes the bottleneck, evaluate phase-gating the
+  identify→extract transition with structured-output validation —
+  i.e., move that one transition into a specialized-harness shape
+  while keeping the rest generic.
 ```
 
 ---
@@ -488,6 +553,9 @@ Every multi-agent architecture should document what happens if it underperforms:
 ### 9. Framework-as-architecture (26 agents for a solo project)
 Full SDLC frameworks like BMAD (26 agents, 68 workflows) are powerful for team-scale projects but overkill for solo developers or small tasks. Match framework complexity to project complexity. The gstack governance layers add value but also add significant prompt overhead.
 
+### 10. Premature harness engineering
+Building a specialized Python harness with phase gates, schema validation, and a state DB before the prompt-driven or generic-harness baseline has been measured. Symptoms: the team is two months into harness development before any agent has run end-to-end on real inputs; schemas are designed for hypothetical inputs the team hasn't seen yet; harness complexity is mistaken for harness quality. Real-world inputs rarely match clean schemas, and rigid validation breaks where flexible LLM judgment would have absorbed the variance. Also: under-100-run workflows almost never amortize the engineering cost of a specialized harness -- generic harness with conventions is the right zone for low-volume work. Decision rule: only commit to specialized harness when (a) generic-harness baseline has been measured and is insufficient, (b) the workflow will run >100 times, *and* (c) cost-of-failure justifies the brittleness tradeoff. Otherwise, stay one zone left on the spectrum.
+
 ---
 
 ## Related Guides
@@ -515,6 +583,8 @@ Full SDLC frameworks like BMAD (26 agents, 68 workflows) are powerful for team-s
 - Every agent boundary has an explicit contract validated at runtime.
 - Model selection is task-based, not provider-based or prestige-based.
 - Infrastructure dependencies are classified as architectural bets or transitional shims.
+- Harness-determinism position (prompt-driven / generic / specialized) is a deliberate decision tied to an explicit reliability requirement, not a default.
+- Specialized-harness investments are classified as bets (with intended life across model generations) or shims (with planned removal trigger), so the decision is reviewable as model capability evolves.
 
 ### Governance
 - Architecture decisions that affect system boundaries are documented as Design Decisions (DDs).
@@ -529,3 +599,5 @@ Full SDLC frameworks like BMAD (26 agents, 68 workflows) are powerful for team-s
 - If model costs are unexpectedly high: check for Opus overuse. Apply the Advisor-Executor pattern or route bulk work to cheaper models.
 - If the system fails to recover from crashes: implement workflow state separation and session persistence (see G3b, Steps 1-2).
 - If infrastructure feels fragile: run the four-question impermanence audit and the three-question lock-in assessment. Simplify layers that score poorly.
+- If a specialized harness is breaking on real-world inputs (rigid schemas rejecting valid variance, phase gates failing on edge cases the schema didn't anticipate): reconsider the spectrum position. The right zone may be one step left -- generic harness with conventions that flex where the LLM judgment is sound, plus phase-gating only on the highest-cost-of-failure transitions.
+- If specialized-harness scaffolding has been surpassed by model-native capability (a phase gate the model now handles correctly without it): retire that check rather than the whole harness. Keep the harness; shrink its surface.

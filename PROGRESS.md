@@ -1,12 +1,12 @@
 # Improvement Loop — Progress
 
-**Last Updated:** 2026-04-26 (session 68 close — G4/G10 re-synthesized)
+**Last Updated:** 2026-04-26 (session 69 close — G3 entry-15 fold-in)
 
 ## Current Focus
 
-Codifier disposition. Session 68 closed G4 + G10 re-synthesis — G4 absorbed +2 findings (`ensemble-eval-majority-required-for-success`, `production-configuration-baseline-discipline`) as pure additions (Key Concept #9, extended Step 10, Pitfalls #15-16, contract). G10 absorbed +1 finding (`subagent-isolation-contract`) with a new Step 7 (Subagent Design) plus a third template — surfaced to Nick before write and approved. Routing-table Synthesis Status updated for both rows; all 3 source findings back-annotated to `pipeline_status: synthesized`. Session-68 SL: `session-68-codifier-guide-resynthesis-g4-g10.md`.
+Codifier disposition. Session 69 closed G3 entry-15 fold-in — G3 absorbed `specialized-harness-engineering-deterministic-rail` plus Nick's session-66 amplification ("harnesses lie on a spectrum from prompt-driven to deterministic-with-code"). New Step 8 (Position on the Harness Spectrum) added with three-zone table, when-to-invest triggers, and migration paths; Step 6 augmented with a productive-tension paragraph linking layer-impermanence to the harness-spectrum bet; new Pitfall #10 (premature harness engineering); worked example annotated with spectrum-position rationale. Source finding back-annotated to `pipeline_status: synthesized`. Session-69 SL: `session-69-codifier-g3-entry15-fold-in.md`.
 
-**Next session target:** Topmost unblocked queue item. **G3 entry-15 fold-in (harness spectrum)** is the cleanest single-purpose Codifier unit and is unblocked. Lifecycle-spec Phase-1 DDs (Nick-gated) would unblock G2/G7/G9 if Nick is ready to direct that work. `/solicit-proposals` first round (thrice-deferred) and `IB-153` (`/dimension-rebalance`) are also Codifier-scope and available; no priority tag in queue. Nick to direct.
+**Next session target:** Topmost unblocked queue item. **G2/G7/G9 re-synthesis** is the largest pending unit but is partially blocked on Lifecycle-spec Phase-1 DDs (Nick-gated). Available unblocked Codifier-scope work: `/solicit-proposals` first round (thrice-deferred — needs dedicated Owner session, not Codifier), IB-153 (`/dimension-rebalance` after Sub-dim 1.B), Librarian subagent template (position TBD), promote `harness-engineering-third-evolution` from `raw` to `classified`. Nick to direct.
 
 ---
 
@@ -14,8 +14,8 @@ Codifier disposition. Session 68 closed G4 + G10 re-synthesis — G4 absorbed +2
 
 Ordered queue. Status markers: `[nick-gate]` waits on Nick's ruling; `[deferred]` held by Nick, re-evaluate on trigger; `[trigger]` waits on external evidence or volume; `[don't-do-yet]` do not reintroduce until a specific upstream condition lands.
 
-- **G3 entry-15 fold-in** — re-synthesize G3 (Agent Architecture Decisions) to incorporate the harness-spectrum reflection (entry-15). Codifier scope, unblocked. Topmost unblocked item.
 - **G2/G7/G9 re-synthesis** — partially blocked on Lifecycle-spec Phase-1 DDs (next bullet). Becomes top unblocked once Lifecycle-spec gate clears.
+- **Promote `harness-engineering-third-evolution` from `raw` to `classified`** — adjacent and reinforcing to G3 Step 8 (added session 69). Researcher-or-Codifier scope, low-cost. Position TBD; could fold into next intake or `/identify-artifacts` pass.
 - **Candidate 2 re-evaluation** (spec-as-governance P2 → P1) — [trigger] revisit at 4th–5th independent-repo surfacing per session-62 decision.
 - **IB-153** — /dimension-rebalance after Sub-dim 1.B. Codifier capacity; not urgent per Nick. Will reclassify Memory Architecture findings to Context Engineering parent.
 - **Librarian subagent template** for cross-concept queries (read-contract Q4). Position TBD.

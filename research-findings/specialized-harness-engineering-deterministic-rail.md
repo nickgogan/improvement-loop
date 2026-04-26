@@ -15,7 +15,7 @@ sources:
 - andrej-karpathys-math-proves-agent-skills-will-fai.md
 proposals: []
 date_discovered: '2026-03-22'
-last_updated: '2026-04-19'
+last_updated: '2026-04-26'
 related_findings:
 - file: march-of-nines-compounding-reliability-math-for-m.md
   rel: enabled-by
@@ -29,8 +29,9 @@ related_findings:
   rel: same-problem
 - file: bmad-v6-builder-custom-agent-workflow-creation.md
   rel: same-problem
-pipeline_status: "classified"
-consumed_by: []
+pipeline_status: "synthesized"
+consumed_by:
+- guides/agent-architecture-decisions.md
 ---
 # Specialized Harness Engineering: Deterministic Rails for Complex Workflows
 
