@@ -21,7 +21,7 @@ Codifier disposition. Session 72 walked the top 3 items in Nick's Prioritization
 
 Session-72 SL: `session-72-codifier-queue-top-3.md`.
 
-**Next session target:** Now that the top 3 items are cleared from the Codifier-side, the natural next units are (a) **G7 / G2 / G9 re-synthesis** (also the live-validation gate for IB-154 + IB-155) and/or (b) **first `/detect-drift` smoke-test run** (low-cost validation gate for IB-157). Either or both fit a single session. Nick gates which proceeds first via the prioritization queue below.
+**Next session target (session 73 — Codifier):** **First `/detect-drift` smoke-test run against the live KB.** Validates IB-157 read paths end-to-end (enumeration coverage, source-pointer resolution, DD-96 field-name alignment, recommendation-enum distribution, lifecycle-pointer graceful-degradation on pre-DD-95 artifacts). Read-only by contract — Nick gates re-extraction. Optional pre-task: apply Nick gates from session-72 items 1 + 2 if gated (one-line frontmatter Edits). G7 / G2 / G9 re-synthesis is the natural follow-up session. Handoff: `operations/handoffs/handoff-prompt-session-73-codifier-detect-drift-smoke-test.md`.
 
 ---
 
@@ -35,11 +35,10 @@ Ordered queue. Status markers: `[nick-gate]` waits on Nick's ruling; `[deferred]
 - **IB-153** — /dimension-rebalance after Sub-dim 1.B. Codifier capacity; not urgent per Nick. Will reclassify Memory Architecture findings to Context Engineering parent.
 - **G7 / G2 / G9 re-synthesis** — top unblocked Codifier unit. G7 most overdue (+11 findings). Skill is fully lifecycle-aware after session 71 (DD-93 preservation + DD-94 changelog on `/synthesize-guide`; DD-95 lifecycle pointer + DD-97 corpus-scan extension proposal on `/extract-artifacts`; DD-96 `/detect-drift` skill available). Re-synthesis is the natural live-validation gate for IB-154 + IB-155.
 - **Retroactive migration of ~100 non-guide/non-pattern extracts** — per pipeline-collapse Phase M1 audit.
+- **`/summarize-encounters` skill build** — [trigger] volume trigger or Nick's brief.
 - **Visualization brainstorm** — [deferred] boil DDs/architecture into human-visualizable form. Session 62: `interactive-explanations-extend-linear-walkthroughs` finding (P2) is a direct technique for this work.
 - **`agent.md` variant-depth iteration** — [trigger] demand-driven on concrete consumer queries; variants (prompt-based / harness-based / autonomous-vs-supervised) exist as stubs per session-49 gate.
 - **Weight calibration** for use-case-registry core/long-tail estimates — [trigger] meaningful once encounter tracking accumulates data.
-- **`/summarize-encounters` skill build** — [trigger] volume trigger or Nick's brief.
-
 ---
 
 ## Open IB Items
