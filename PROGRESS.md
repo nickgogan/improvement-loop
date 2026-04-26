@@ -1,12 +1,12 @@
 # Improvement Loop — Progress
 
-**Last Updated:** 2026-04-26 (session 66 close — IB-150 acceptance test PASS)
+**Last Updated:** 2026-04-26 (session 67 close — IB-152 done)
 
 ## Current Focus
 
-Codifier disposition. Session 66 PASSED IB-150 acceptance test (5/5 criteria) — `/extract-artifacts` validated end-to-end on the 4 non-pattern P1 findings (2 rules, 1 skill, 1 template). Step 2.5 firing log: 4 validated, 0 flagged, 0 re-drafts; the new prompt language prevented mechanical-copy and forbidden-vocab failure modes upstream of the guards. Side fix: 10 stale-status findings (raw despite existing extracts) back-annotated to `extracted`. Session-66 SL: `session-66-codifier-ib-150-acceptance-test.md`.
+Codifier disposition. Session 67 closed IB-152 — `/assess-skill` and `/assess-agent` now carry a Step 3.5 DD-92 ContextSpec audit (presence + universal-vocab + IL-meta leak), pure additive over the existing Contract-derived audit. All 5 acceptance dry-runs PASS (TDD ref + 4 session-66 staged + 3 synthetic non-conformant). DD-92 producer↔consumer loop now closed: extract-artifacts writes, assess-skill/assess-agent audits. Session-67 SL: `session-67-codifier-ib-152-assess-contextspec-extension.md`.
 
-**Next session target:** **IB-152** — `/assess-skill` / `/assess-agent` ContextSpec audit extension. Sequence-ready since the upstream contract is now validated. Codifier scope, P3. Consumer-side audit tooling validates ContextSpec presence and universal-vocab conformance on deployed artifacts.
+**Next session target:** **Guide re-synthesis (G4 / G10)** — unblocked by session-63 inflow (G4 +2, G10 +1). G2/G7/G9 remain partially blocked on Lifecycle-spec Phase-1 DDs (Nick-gated). G3 should fold in entry-15 reflection (harness spectrum) when re-synthesized. Codifier scope, no priority tag in queue but topmost unblocked item.
 
 ---
 
@@ -14,7 +14,6 @@ Codifier disposition. Session 66 PASSED IB-150 acceptance test (5/5 criteria) �
 
 Ordered queue. Status markers: `[nick-gate]` waits on Nick's ruling; `[deferred]` held by Nick, re-evaluate on trigger; `[trigger]` waits on external evidence or volume; `[don't-do-yet]` do not reintroduce until a specific upstream condition lands.
 
-- **IB-152** — /assess-skill / /assess-agent ContextSpec audit extension. P3. Consumer-side audit tooling validates ContextSpec presence and universal-vocab conformance on deployed artifacts. Now sequence-ready (IB-150 contract validated session 66).
 - **Guide re-synthesis (G4/G10)** — unblocked by session-63 inflow (G4 +2, G10 +1). G2/G7/G9 remain partially blocked on Lifecycle-spec Phase-1 DDs. G3 should fold in entry-15 reflection (harness spectrum) when re-synthesized.
 - **Candidate 2 re-evaluation** (spec-as-governance P2 → P1) — [trigger] revisit at 4th–5th independent-repo surfacing per session-62 decision.
 - **IB-153** — /dimension-rebalance after Sub-dim 1.B. Codifier capacity; not urgent per Nick. Will reclassify Memory Architecture findings to Context Engineering parent.

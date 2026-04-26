@@ -3,9 +3,11 @@ name: assess-skill
 description: >-
   Audit a consumer-submitted SKILL.md against Contract-derived criteria from
   IL guides G1, G3b, G5, G6, G8 — plus G9.I6 for safety-critical skills (any
-  skill whose allowed-tools or procedure perform destructive actions). Composes
-  audit.md × skill.md from the Librarian reference layer. Read-only; produces
-  findings + follow-ups.
+  skill whose allowed-tools or procedure perform destructive actions). Also
+  validates DD-92 ContextSpec conformance (presence, universal vocabulary,
+  IL-meta leak) on artifacts that carry a `context:` frontmatter block.
+  Composes audit.md × skill.md from the Librarian reference layer. Read-only;
+  produces findings + follow-ups.
 user-invocable: true
 allowed-tools: Read Grep Glob Write
 argument-hint: "<skill-file-path>"
@@ -47,7 +49,9 @@ rule from session 48 Test 4.
 
 Librarian Audit — read-only, citation-grounded, safety-aware. The G9.I6 gate
 is a forcing function for destructive-action skills; do not skip it even if
-the skill prose doesn't raise the topic.
+the skill prose doesn't raise the topic. The DD-92 ContextSpec audit is a
+deploy-boundary check — it fires when the artifact carries a `context:`
+frontmatter block, regardless of whether the skill prose mentions it.
 
 ## Paths
 
@@ -92,6 +96,59 @@ System-verifiable follow-ups: e.g., "is the skill tested in dry-run mode
 before being used against production?" — system-verifiable, becomes a
 follow-up question.
 
+### Step 3.5: DD-92 ContextSpec audit
+
+Additive deploy-boundary check on artifact frontmatter. Composes with — does
+not replace — the Contract-derived audit above.
+
+**Applicability gate.** Inspect the artifact frontmatter for a `context:`
+block. If absent, record one informational note in the working report:
+"DD-92 ContextSpec audit skipped — no `context:` block in frontmatter.
+DD-92 binds extracted and deployed artifacts; consumer-submitted artifacts
+without ContextSpec are not flagged here." Skip the three checks below.
+
+If present, run all three checks. Findings emit into the same file-verifiable
+table as Contract-derived findings; cite source as `DD-92` (literal, not
+`<guide>.md#<anchor>`); tier 1; confidence High.
+
+**Check 1 — Presence.** Verify all 8 required fields under `context:` are
+present and non-null:
+
+- `applies_to` (non-empty list)
+- `platform_coupling`
+- `autonomy`
+- `stage`
+- `reversibility`
+- `auditability`
+- `evidence_strength`
+- `adoption.status`
+
+(`adoption.notes` may be null.) For each missing or null field, emit one
+finding: aspect="ContextSpec presence", outcome=Missing, evidence=field name.
+
+**Check 2 — Universal-vocabulary scan.** Scan the values of `applies_to`
+(each list entry), `platform_coupling`, `autonomy`, `stage`, `reversibility`,
+`auditability`, and `adoption.notes` for forbidden tokens — same set as
+`/extract-artifacts` Step 2.5:
+
+- MetaSystem scope labels: `S2`, `S3`, `General` (when used as scope
+  shorthand), `Perplexity Skills`
+- IL-internal skill names: `/identify-artifacts`, `/extract-artifacts`,
+  `/assess-skill`, `/assess-agent`, `/research-loop`, `/promote-findings`,
+  `/synthesize-guide`, `/reassess-priorities`
+- IL-specific path prefixes: `systems/improvement-loop/`, `extracts/`,
+  `research-findings/`, `research-sources/`, `research-authorities/`
+
+For each hit, emit one finding: aspect="ContextSpec universal vocabulary",
+outcome=Violated, evidence=`<field>: '<offending token>'`.
+
+**Check 3 — IL-meta leak.** Inspect top-level frontmatter (NOT inside the
+`context:` block) for any of: `confidence`, `tier`, `reason_codes`,
+`co_occurrence`. Per DD-92, IL classification metadata MUST be stripped at
+the deploy boundary. For each present, emit one finding: aspect="IL
+classification meta leak", outcome=Violated, evidence=`top-level frontmatter
+contains '<key>'`.
+
 ### Step 4: Assemble report
 
 Per `audit.md` §"Output shape". Read-contract elements (query restatement,
@@ -107,7 +164,11 @@ Per `audit.md` Phase 5.
 
 See `audit.md` §"Output shape". Add a one-line classification note at the
 top: "Classification: safety-critical (trigger: <which>)." or
-"Classification: non-safety-critical."
+"Classification: non-safety-critical." DD-92 ContextSpec findings (if any)
+interleave with Contract-derived findings in the same file-verifiable
+findings table; source cited as `DD-92`. The applicability-gate note (when
+ContextSpec is absent) appears in the Summary or as a one-line preamble to
+the findings table.
 
 ## Boundaries
 
@@ -134,4 +195,4 @@ On any deviation from the Tier-1 happy path (the 13-type encounter taxonomy — 
   `systems/improvement-loop/project-management/design-notes/2026-04-21-contract-section-spotcheck-agent-audit.md`
 - Read-contract: `systems/improvement-loop/project-management/design-notes/2026-04-21-librarian-read-contract.md`
 - Boundary-case tracking: `systems/improvement-loop/project-management/design-notes/2026-04-22-librarian-boundary-case-tracking.md`
-- Governing DDs: DD-78, DD-82, DD-89
+- Governing DDs: DD-78, DD-82, DD-89, DD-92
