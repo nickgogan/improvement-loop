@@ -6,7 +6,7 @@ description: >-
   Improvement Loop for pattern-classified findings. Human gate before writing.
 user-invocable: true
 allowed-tools: Read Grep Glob Write Edit Agent
-argument-hint: "<topic|--dimension DIM|--findings ID1,ID2,...> [--auto]"
+argument-hint: "<topic|--dimension DIM|--findings ID1,ID2,...> [--p1-only] [--auto]"
 ---
 
 # Synthesize Guide
@@ -43,8 +43,9 @@ The Guide Author thinks like a technical writer and practitioner — not a resea
 | Argument | Effect |
 |----------|--------|
 | `<topic>` | A topic string (e.g., "agent context management"). Skill finds relevant findings by category and related_findings graph. |
-| `--dimension DIM` | A research dimension name (e.g., "Context Engineering"). Collects all P1 findings in that dimension. |
-| `--findings ID1,ID2,...` | Explicit comma-separated finding file stems. Most precise input. |
+| `--dimension DIM` | A research dimension name (e.g., "Context Engineering"). Collects all P1+P2 findings in that dimension (default; pass `--p1-only` for strict P1-only behavior). |
+| `--findings ID1,ID2,...` | Explicit comma-separated finding file stems. Most precise input. Priority filter does not apply — explicit lists are taken as given. |
+| `--p1-only` | Restrict topic and dimension auto-collection to `priority: P1` findings only. Default (no flag) collects P1+P2. Has no effect in `--findings` mode. |
 | `--trigger TAG` | Re-synthesis trigger tag for the companion changelog entry (DD-94). Required on re-synthesis. Closed enum: `staleness-threshold` \| `nick-request` \| `dimension-rebalance` \| `finding-removed` \| `structural-edit`. The skill rejects any other value. Ignored on initial synthesis. |
 | `--session NN` | Active session number for the changelog entry (DD-94). Required on re-synthesis. Skill prompts if missing (unless `--auto`, which aborts). Ignored on initial synthesis. |
 | `--auto` | Skip human confirmation of finding selection — draft immediately. Use only when the finding set is pre-curated. |
@@ -75,9 +76,11 @@ The Guide Author thinks like a technical writer and practitioner — not a resea
 2. **Check synthesis status.** If the target cluster has been synthesized before, report the prior run date, finding count at that time, and current finding count. If current count exceeds prior count by 3+, note that the guide is stale and should be re-synthesized. If the guide already exists and the finding count hasn't changed, confirm with the user before re-running.
 
 3. Parse the argument to determine input mode:
-   - **Topic:** Match the topic against the routing table's trigger keywords to identify the target guide cluster. Use the cluster's dimensions to query findings by `category:`. Also traverse `related_findings:` links (rel: `same-problem`) from matches to expand the set. Filter to `priority: P1`.
-   - **Dimension:** Look up the dimension in the routing table to find its primary and secondary guide clusters. Grep finding files for matching category. Filter to P1.
-   - **Finding list:** Read each specified finding file directly.
+   - **Topic:** Match the topic against the routing table's trigger keywords to identify the target guide cluster. Use the cluster's dimensions to query findings by `category:`. Also traverse `related_findings:` links (rel: `same-problem`) from matches to expand the set. Filter to `priority` ∈ {P1, P2} by default; if `--p1-only` was passed, filter to P1 only.
+   - **Dimension:** Look up the dimension in the routing table to find its primary and secondary guide clusters. Grep finding files for matching category. Filter to P1+P2 by default; `--p1-only` restricts to P1.
+   - **Finding list:** Read each specified finding file directly. The priority filter does not apply — explicit lists are taken as given (P3 included if listed).
+
+   **Rationale for the P1+P2 default.** Sessions 77–79 live-validated `/synthesize-guide` on real cluster load (G7 mid-cluster=27, G2 large=44, G9 small=16) and produced clean guides each pass — all using `--findings` mode with mixed P1+P2 lists. The substrate handles P1+P2 cleanly. The prior P1-only auto-collection default was more restrictive than what synthesis can absorb, risking thinner topic/dimension-mode clusters than the explicit-list mode demonstrates. `--p1-only` remains available for strict opt-in.
 
 3. **Check unrouted bucket.** Scan the routing table's Unrouted Bucket for findings that share `same-problem` links with the resolved set. Offer these as candidates for inclusion.
 
