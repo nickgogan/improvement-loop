@@ -37,7 +37,7 @@ Tracks when `/synthesize-guide` was last run against each cluster, how many find
 | G6 | Agent Safety and Permissions | 2026-04-19 | 5 | `extracts/guides/agent-safety-and-permissions.md` | draft |
 | G7 | Session Persistence and Memory | 2026-04-26 | 27 | `extracts/guides/session-persistence-and-memory.md` | draft |
 | G8 | Model-Resilient Prompt Engineering | 2026-04-19 | 15 | `extracts/guides/model-resilient-prompt-engineering.md` | draft |
-| G9 | Agent Governance and Trust | 2026-04-19 | 10 | `extracts/guides/agent-governance-and-trust.md` | draft |
+| G9 | Agent Governance and Trust | 2026-04-26 | 16 | `extracts/guides/agent-governance-and-trust.md` | draft |
 | G10 | Agent Design Patterns | 2026-04-26 | 12 | `extracts/guides/agent-design-patterns.md` | draft |
 
 **Staleness indicator:** If a cluster's finding count (in the Guide Clusters table below) exceeds "Findings at Synthesis" by 3+, the guide should be re-synthesized to incorporate new material.

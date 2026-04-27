@@ -1014,6 +1014,7 @@ Maintaining `CLAUDE.md`, `AGENTS.md`, and `.cursorrules` as parallel files works
 - **Context curation for measurement:** To measure whether removing a context element actually improves output, see *Building Agent Evaluation Suites* (G4) for eval-driven context optimization.
 - **Multi-agent composition and scope:** Step 3f (curating context for downstream agents) and Step 5 defense #6 (atomic session scoping) intersect with single-vs-multi-agent decisions; see *Agent Architecture Decisions* (G3) for composition patterns.
 - **Model-specific context sensitivity:** The model-specific findings (Step 4g, Pitfall #9) tie into prompt-engineering portability across model upgrades; see *Model-Resilient Prompt Engineering* (G8) for the prompt side of model-resilience.
+- **Distributed boundary files for governance:** The AGENTS.md/CLAUDE.md placement at subsystem boundaries (Step 8 cross-platform portability + monorepo distribution) doubles as the governance-distribution layer — same files, two readers. See *Agent Governance and Trust* (G9), Section 4 Layer 4 (Distributed Governance Scope), for the rule-distribution discipline at the same locations: universal rules in the root file, subsystem-specific rules at the boundary, explicit inheritance semantics.
 
 ---
 
