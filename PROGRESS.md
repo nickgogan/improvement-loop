@@ -30,7 +30,7 @@ Codifier disposition. Session 84 ran a two-phase pass per the piped handoff: (1)
 4. **DD-98 split-trigger watch** on G11's first re-synthesis. Count threshold met (≥25 findings).
 5. **Edit-tool stale-read pattern** — session 84 validated sequential-edits-per-file workaround for orchestrator-direct execution; pattern still needs codification for subagent-batched workflows.
 
-**Next session target:** open. Optional cleanup work (bidirectional cross-refs hygiene; subagent-discipline architectural decision via /solicit-proposals reflection round; Codifier calibration reflection round). New research-loop or guide-regen will be needed to replenish the harvest queues before the next IB-164 promotion cycle.
+**Next session target (session 85):** Resolve the subagent queue-mutation discipline architectural decision (logged-for-future since session 83). Codifier disposition; execution allowed. Three options on the table: (a) end-to-end subagent mode dropping orchestrator-batched plan, (b) defensive abort in subagent prompt, (c) hybrid with subagent forbidden from queue access. Both prior SLs lean toward (a). Output: `/extract-artifacts` SKILL.md amendment + possible IB amendment + atomic commit at session close. Handoff prompt: `operations/handoffs/handoff-prompt-session-85-codifier-subagent-queue-mutation-discipline.md`.
 
 
 ---
