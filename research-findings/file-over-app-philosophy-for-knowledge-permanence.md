@@ -19,8 +19,9 @@ last_updated: '2026-04-20'
 related_findings:
 - file: ace-agentic-context-engineering-rag-based.md
   rel: contradicts
-pipeline_status: raw
-consumed_by: []
+pipeline_status: synthesized
+consumed_by:
+  - "building-agentic-systems.md"
 ---
 # File-Over-App Philosophy for Knowledge Permanence
 

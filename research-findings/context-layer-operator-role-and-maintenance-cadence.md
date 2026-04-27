@@ -27,8 +27,9 @@ related_findings:
   rel: same-problem
 - file: scheduled-tasks-for-real-time-context-maintenance.md
   rel: same-problem
-pipeline_status: raw
-consumed_by: []
+pipeline_status: synthesized
+consumed_by:
+  - "building-agentic-systems.md"
 ---
 # Context Layer Operator Role and Maintenance Cadence
 

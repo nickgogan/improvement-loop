@@ -30,9 +30,10 @@ related_findings:
 proposals: null
 date_discovered: '2026-04-20'
 last_updated: '2026-04-20'
-pipeline_status: extracted
+pipeline_status: synthesized
 consumed_by:
   - skills/multi-agent-proportional-content-summarization.md
+  - "building-agentic-systems.md"
 ---
 # Multi-Agent Proportional Content Summarization to Obsidian
 

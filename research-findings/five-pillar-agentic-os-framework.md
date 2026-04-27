@@ -35,8 +35,9 @@ related_findings:
 proposals: null
 date_discovered: "2026-04-20"
 last_updated: "2026-04-20"
-pipeline_status: raw
-consumed_by: []
+pipeline_status: synthesized
+consumed_by:
+  - "building-agentic-systems.md"
 ---
 # Five-Pillar Agentic OS Framework
 

@@ -31,8 +31,9 @@ related_findings:
   rel: extends
 - file: obsidian-relay-plugin-for-team-context-sync.md
   rel: extends
-pipeline_status: raw
-consumed_by: []
+pipeline_status: synthesized
+consumed_by:
+  - "building-agentic-systems.md"
 ---
 # Context Infrastructure Seven-Level Maturity Model
 

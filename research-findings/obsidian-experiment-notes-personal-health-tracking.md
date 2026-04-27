@@ -20,8 +20,9 @@ related_findings:
   rel: companion
 - file: scale-threshold-heuristic-obsidian-vs-rag.md
   rel: companion
-pipeline_status: raw
-consumed_by: []
+pipeline_status: synthesized
+consumed_by:
+  - "building-agentic-systems.md"
 ---
 # Obsidian Experiment Notes as Personal Data Layer for Behavior Change Tracking
 

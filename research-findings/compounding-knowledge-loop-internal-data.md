@@ -29,8 +29,8 @@ related_findings:
   rel: same-problem
 - file: signal-capture-as-byproduct-of-work.md
   rel: same-problem
-pipeline_status: extracted
-consumed_by: ["patterns/compounding-knowledge-loop.md"]
+pipeline_status: synthesized
+consumed_by: ["patterns/compounding-knowledge-loop.md", "building-agentic-systems.md"]
 ---
 # Compounding Knowledge Loop (Internal Data)
 

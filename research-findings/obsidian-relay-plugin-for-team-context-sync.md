@@ -23,8 +23,9 @@ related_findings:
   rel: extends
 - file: context-layer-operator-role-and-maintenance-cadence.md
   rel: same-problem
-pipeline_status: raw
-consumed_by: []
+pipeline_status: synthesized
+consumed_by:
+  - "building-agentic-systems.md"
 ---
 # Obsidian Relay Plugin for Team Context Sync
 

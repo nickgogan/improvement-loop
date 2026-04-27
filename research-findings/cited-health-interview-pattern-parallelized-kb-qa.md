@@ -25,8 +25,9 @@ related_findings:
   rel: same-problem
 - file: multi-agent-proportional-content-summarization.md
   rel: same-problem
-pipeline_status: raw
-consumed_by: []
+pipeline_status: synthesized
+consumed_by:
+  - "building-agentic-systems.md"
 ---
 # Cited Health Interview Pattern: Parallelized KB Q&A for Personal Protocol Design
 

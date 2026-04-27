@@ -21,8 +21,9 @@ related_findings:
   rel: companion
 - file: notebooklm-mcp-claude-code-cited-knowledge-layer.md
   rel: companion
-pipeline_status: raw
-consumed_by: []
+pipeline_status: synthesized
+consumed_by:
+  - "building-agentic-systems.md"
 ---
 # Bulk YouTube Channel Ingestion into NotebookLM via Terminal Command
 

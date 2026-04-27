@@ -15,8 +15,9 @@ sources:
 - karpathys-obsidian-rag-claude-code.md
 date_discovered: '2026-04-07'
 last_updated: '2026-04-27'
-pipeline_status: raw
-consumed_by: []
+pipeline_status: synthesized
+consumed_by:
+  - "building-agentic-systems.md"
 related_findings:
 - file: karpathy-llm-knowledge-base-obsidian-rag.md
   rel: extended-by

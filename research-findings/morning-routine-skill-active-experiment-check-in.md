@@ -20,8 +20,9 @@ related_findings:
   rel: companion
 - file: obsidian-experiment-notes-personal-health-tracking.md
   rel: companion
-pipeline_status: raw
-consumed_by: []
+pipeline_status: synthesized
+consumed_by:
+  - "building-agentic-systems.md"
 ---
 # Morning Routine Skill with Active Experiment Check-In
 

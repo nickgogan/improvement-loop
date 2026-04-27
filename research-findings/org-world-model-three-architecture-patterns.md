@@ -27,6 +27,7 @@ last_updated: "2026-04-27"
 pipeline_status: synthesized
 consumed_by:
   - "session-persistence-and-memory.md"
+  - "building-agentic-systems.md"
 ---
 
 ## What It Is

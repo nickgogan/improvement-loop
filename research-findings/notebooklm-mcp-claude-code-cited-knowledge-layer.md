@@ -21,8 +21,9 @@ related_findings:
   rel: same-problem
 - file: notebooklm-python-api-programmatic-access-beyond.md
   rel: companion
-pipeline_status: raw
-consumed_by: []
+pipeline_status: synthesized
+consumed_by:
+  - "building-agentic-systems.md"
 ---
 # NotebookLM MCP + Claude Code: Cited Knowledge Layer for Agentic Workflows
 

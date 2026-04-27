@@ -15,8 +15,9 @@ sources: []
 proposals: null
 date_discovered: '2026-03-22'
 last_updated: '2026-04-27'
-pipeline_status: raw
-consumed_by: []
+pipeline_status: synthesized
+consumed_by:
+  - "building-agentic-systems.md"
 related_findings:
 - file: yaml-template-dual-structure.md
   rel: same-problem

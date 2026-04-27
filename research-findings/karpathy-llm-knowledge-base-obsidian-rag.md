@@ -28,8 +28,8 @@ related_findings:
   rel: extends
 - file: ai-managed-vault-separate-from-human-vault.md
   rel: same-problem
-pipeline_status: extracted
-consumed_by: ["patterns/llm-compiled-knowledge-base-over-vector-rag.md"]
+pipeline_status: synthesized
+consumed_by: ["patterns/llm-compiled-knowledge-base-over-vector-rag.md", "building-agentic-systems.md"]
 ---
 # Karpathy LLM Knowledge Base (Obsidian RAG Alternative)
 

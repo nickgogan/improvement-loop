@@ -9,7 +9,7 @@ type: "reference"
 target_system:
   - "improvement-loop"
 created: "2026-04-19"
-updated: "2026-04-26"
+updated: "2026-04-27"
 source_dd:
   - "DD-81"
 ---
@@ -39,6 +39,7 @@ Tracks when `/synthesize-guide` was last run against each cluster, how many find
 | G8 | Model-Resilient Prompt Engineering | 2026-04-19 | 15 | `extracts/guides/model-resilient-prompt-engineering.md` | draft |
 | G9 | Agent Governance and Trust | 2026-04-26 | 16 | `extracts/guides/agent-governance-and-trust.md` | draft |
 | G10 | Agent Design Patterns | 2026-04-26 | 12 | `extracts/guides/agent-design-patterns.md` | draft |
+| G11 | Building Agentic Systems | 2026-04-27 | 29 | `extracts/guides/building-agentic-systems.md` | draft |
 
 **Staleness indicator:** If a cluster's finding count (in the Guide Clusters table below) exceeds "Findings at Synthesis" by 3+, the guide should be re-synthesized to incorporate new material.
 
@@ -58,6 +59,7 @@ Tracks when `/synthesize-guide` was last run against each cluster, how many find
 | Sandboxing | Agent Safety and Permissions | — | Clean 1:1 mapping |
 | Governance | Agent Governance and Trust | — | Graduated from unrouted; 10 findings (2 P1 + 8 P2) |
 | Agent Design | Agent Design Patterns | Writing Agent Specs, Session Persistence | Graduated from scattered; 11 P2 findings |
+| Agentic Systems | Building Agentic Systems | Session Persistence and Memory, Orchestration | Graduated 2026-04-27 from emerging-theme; 29 findings post-IB-153 rebalance |
 
 ---
 
@@ -82,6 +84,7 @@ Current per-cluster finding counts are not enumerated here — they drift per se
 | G8 | Model-Resilient Prompt Engineering | "How do I write prompts that survive model upgrades?" | build | Prompt Craft, Model Selection |
 | G9 | Agent Governance and Trust | "How do I govern agent autonomy and maintain human oversight?" | secure | Governance |
 | G10 | Agent Design Patterns | "How do I design an individual agent's identity and behavior?" | specify | Agent Design |
+| G11 | Building Agentic Systems | "How do I build a personal/team/business agentic system on top of a knowledge store?" | specify | Agentic Systems |
 
 ### Unrouted Bucket
 
@@ -89,16 +92,14 @@ Findings that don't map cleanly to any active guide cluster. Reviewed after each
 
 | Finding | Category | Same-Problem Links | Notes |
 |---------|----------|--------------------|-------|
-| [[claude-code-daily-brief-multi-source-inbox-obsidian]] | Agentic Systems | → ai-managed-vault, → multi-agent-proportional-summarization | Agentic Systems — personal aggregation layer. Added 2026-04-20. |
-| [[ai-managed-vault-separate-from-human-vault]] | Agentic Systems | → claude-code-daily-brief, → multi-agent-proportional-summarization, → open-brain (G7) | Agentic Systems — personal storage layer. Added 2026-04-20. |
+| _(empty)_ | | | |
 
 **Graduation trigger:** When 5+ unrouted findings share `same-problem` relationships, they form a candidate cluster. Surface to Nick for guide creation approval.
-
-**Emerging theme (below threshold):** "Agentic Systems" category — 2 pattern findings + 1 skill (multi-agent-proportional-summarization) form a 3-finding cluster describing components of a personal agentic system. Not yet at 5-finding threshold. Monitor next 2 research-loop runs for additional Agentic Systems findings before proposing G11.
 
 **History:**
 - 2 P1 Governance findings (review-bandwidth, review-obsolescence) graduated to G9 on 2026-04-19.
 - 2 P2 Agentic Systems findings added 2026-04-20 (session 43 identification run) — first entries in this category (category previously named "Agentic OS"; renamed 2026-04-21 to reflect team/business scope).
+- Agentic Systems theme graduated to G11 (Building Agentic Systems) on 2026-04-27 (session 82) — 29 findings post-IB-153 dimension rebalance, 5.8× over the 5-finding threshold.
 
 ---
 
@@ -137,7 +138,7 @@ Secondary navigation axis. Agents can query by stage to get all relevant guides 
 
 | Stage | Guides | Practitioner Phase |
 |-------|--------|-------------------|
-| **specify** | G1 (Agent Specs), G10 (Agent Design) | Defining what the agent should do and how it behaves |
+| **specify** | G1 (Agent Specs), G10 (Agent Design), G11 (Agentic Systems) | Defining what the agent or system should do and how it behaves |
 | **build** | G2 (Context), G3 (Architecture), G5 (Tools), G8 (Prompts) | Implementing the agent system |
 | **verify** | G4 (Evaluation) | Checking correctness and reliability |
 | **secure** | G6 (Safety), G9 (Governance) | Hardening permissions, boundaries, and oversight |
@@ -162,3 +163,4 @@ For agent-driven guide discovery. An agent encountering these terms in a task de
 | governance, trust, autonomy, oversight, review process, audit trail, human-on-the-loop, trust calibration | G9 |
 | agent identity, constitution, soul, prompt layers, agent lifecycle, behavioral patterns, clarification, self-improvement | G10 |
 | workflow, execution, cost, degradation, stall detection, observability, tracing, sprint contract, durable workflow | G3b |
+| vault-as-OS, second brain, personal knowledge management, daily brief, scheduled agent, file-over-app, agentic OS, knowledge store, Obsidian, vault, PKM, context infrastructure | G11 |

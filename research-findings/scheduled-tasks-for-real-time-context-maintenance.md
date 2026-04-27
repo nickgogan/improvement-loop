@@ -27,8 +27,9 @@ related_findings:
   rel: same-problem
 - file: compounding-knowledge-loop-internal-data.md
   rel: same-problem
-pipeline_status: raw
-consumed_by: []
+pipeline_status: synthesized
+consumed_by:
+  - "building-agentic-systems.md"
 ---
 # Scheduled Tasks for Real-Time Context Maintenance
 
