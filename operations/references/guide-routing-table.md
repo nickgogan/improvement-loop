@@ -29,7 +29,7 @@ Tracks when `/synthesize-guide` was last run against each cluster, how many find
 | ID | Guide Title | Last Synthesized | Findings at Synthesis | Output Path | Status |
 |----|------------|-----------------|----------------------|-------------|--------|
 | G1 | Writing Agent Specifications | 2026-04-19 | 7 | `extracts/guides/writing-agent-specifications.md` | draft |
-| G2 | Managing Agent Context | 2026-04-19 | 26 | `extracts/guides/managing-agent-context.md` | draft |
+| G2 | Managing Agent Context | 2026-04-26 | 44 | `extracts/guides/managing-agent-context.md` | draft |
 | G3 | Agent Architecture Decisions | 2026-04-26 | 22 | `extracts/guides/agent-architecture-decisions.md` | draft |
 | G3b | Agent Workflow and Execution | 2026-04-19 | 20 | `extracts/guides/agent-workflow-and-execution.md` | draft |
 | G4 | Building Agent Evaluation Suites | 2026-04-26 | 32 | `extracts/guides/building-agent-evaluation-suites.md` | draft |

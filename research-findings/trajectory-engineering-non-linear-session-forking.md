@@ -24,8 +24,9 @@ related_findings:
   rel: extends
 - file: proactive-compaction-before-intelligence-degradation.md
   rel: same-problem
-pipeline_status: raw
-consumed_by: []
+pipeline_status: synthesized
+consumed_by:
+- managing-agent-context.md
 ---
 # Trajectory Engineering: Non-Linear Session Forking with /re
 

@@ -25,8 +25,9 @@ related_findings:
 proposals: null
 date_discovered: '2026-04-23'
 last_updated: '2026-04-23'
-pipeline_status: raw
-consumed_by: []
+pipeline_status: synthesized
+consumed_by:
+- managing-agent-context.md
 ---
 
 # Model-Native Context Window Awareness

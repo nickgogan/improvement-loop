@@ -24,8 +24,9 @@ related_findings:
   rel: same-problem
 - file: agent-context-kiss-commandments-minimum-viable.md
   rel: same-problem
-pipeline_status: raw
-consumed_by: []
+pipeline_status: synthesized
+consumed_by:
+- managing-agent-context.md
 ---
 # Three-Tier Vault Architecture (Global/Shared/Local)
 

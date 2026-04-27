@@ -566,6 +566,7 @@ Building a specialized Python harness with phase gates, schema validation, and a
 - **Infrastructure tiers -> session persistence:** The persistence and workflow state infrastructure in Step 7 is detailed in *Session Persistence and Memory* (G7).
 - **Boundary contracts -> tool design:** Risk classification for agent boundaries maps to tool registry design in *Designing Agent Tools* (G5).
 - **Architecture evaluation -> testing:** Validating that architecture choices produce expected outcomes uses the frameworks in *Building Agent Evaluation Suites* (G4).
+- **Per-agent context scope -> context curation:** The "scope each agent's context to the minimum it needs" principle for multi-agent designs is detailed in *Managing Agent Context* (G2), particularly the sub-agent context package pattern (G2 Step 3f) and the atomic-session scoping defense (G2 Step 5 defense #6).
 
 ---
 

@@ -24,8 +24,9 @@ related_findings:
 proposals: null
 date_discovered: '2026-03-15'
 last_updated: '2026-04-19'
-pipeline_status: raw
-consumed_by: []
+pipeline_status: synthesized
+consumed_by:
+- managing-agent-context.md
 ---
 # PROGRESS.md Session Bridge
 

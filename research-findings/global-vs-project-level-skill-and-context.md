@@ -25,8 +25,9 @@ related_findings:
   rel: same-problem
 - file: skills-vs-projects-complementary-role-separation.md
   rel: same-problem
-pipeline_status: raw
-consumed_by: []
+pipeline_status: synthesized
+consumed_by:
+- managing-agent-context.md
 ---
 # Global vs. Project-Level Skill and Context Scoping
 

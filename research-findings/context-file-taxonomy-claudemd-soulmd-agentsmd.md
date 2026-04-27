@@ -31,8 +31,9 @@ related_findings:
   rel: same-problem
 - file: tiered-context-injection-over-monolithic-files.md
   rel: enables
-pipeline_status: raw
-consumed_by: []
+pipeline_status: synthesized
+consumed_by:
+- managing-agent-context.md
 ---
 # Context File Taxonomy (CLAUDE.md, SOUL.md, AGENTS.md, etc.)
 

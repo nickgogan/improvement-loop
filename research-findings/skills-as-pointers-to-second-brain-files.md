@@ -28,8 +28,9 @@ related_findings:
   rel: part-of
 - file: compounding-knowledge-loop-internal-data.md
   rel: same-problem
-pipeline_status: raw
-consumed_by: []
+pipeline_status: synthesized
+consumed_by:
+- managing-agent-context.md
 ---
 # Skills as Pointers to Second Brain Files
 
