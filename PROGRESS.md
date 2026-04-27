@@ -1,6 +1,6 @@
 # Improvement Loop — Progress
 
-**Last Updated:** 2026-04-27 (session 80 close — IB-153 dimension rebalance: Memory Architecture orphan retired (41 → 0); Dim 2-5 names aligned)
+**Last Updated:** 2026-04-27 (session 80 close — IB-153 dimension rebalance: Memory Architecture orphan retired (41 → 0); Dim 2-5 names aligned; downstream consumers cleaned + 3 follow-ups queued)
 
 ## Current Focus
 
@@ -18,10 +18,12 @@ Codifier disposition. Session 80 closed **IB-153** — the cleanup follow-up to 
 
 **One atomic commit:** 46 files changed, +199/-100. Session-80 SL: `session-80-codifier-ib-153-dimension-rebalance.md`.
 
+**Downstream-consumer cleanup (second commit, same session):** Three skill/artifact files that hardcoded the orphaned `Memory Architecture` category were corrected to prevent future drift: `/research-loop` SKILL.md (frontmatter scaffold + arXiv default-query map; the Memory Architecture row split into Sub-dim 1.A and 1.B query bundles), `/promote-findings` SKILL.md (allowed-categories comment), and the G7 guide frontmatter at `extracts/guides/session-persistence-and-memory.md` (orphan `category: "Memory Architecture"` → `Context Engineering`). Both skill comments also added the previously-missing `Agentic Systems` to the allowed list.
+
 **Logged-for-future, not done:**
 1. **YAML category-quoting normalization** (quoted vs unquoted variants across the KB) — flagged in the rebalance report's "Additional Drift" section but left out of scope; no behavioral impact, would be a separate hygiene pass.
-2. **`guide-routing-table.md` line 97 stale note** — "Agentic Systems below 5-finding threshold" prose is now stale (29 ≥ 5). Not in IB-153 scope; left for the future decision about whether to propose G11.
-3. **Sub-dim 1.B graduation criteria** — with 8 explicit isolation/topology findings (the 2 seeds + 6 of the borderlines absorbed there), 1.B is below the ≥10 graduation threshold but moving toward it. Continue monitoring.
+
+(The other two follow-ups originally logged here — G11 candidacy / routing-table line 97 staleness, and Sub-dim 1.B graduation track — were promoted into Nick's Prioritization below as proper queue items, alongside a third post-rebalance follow-up: G2-vs-G7 routing disambiguation.)
 
 **Next session target:** Back to the natural next-up Codifier unit — Nick rulings on the **38 cumulative harvest-queue rows** (G7 + G2 + G9) gating downstream `/extract-artifacts` queue-row promotion (IB-164). Top unblocked action remains: Nick rules a batch. Alternative: spec-amendment-from-live-validation session (optional, motivated by logged-for-future #1 cadence-3 from session 79).
 
@@ -32,6 +34,9 @@ Codifier disposition. Session 80 closed **IB-153** — the cleanup follow-up to 
 Ordered queue. Status markers: `[nick-gate]` waits on Nick's ruling; `[deferred]` held by Nick, re-evaluate on trigger; `[trigger]` waits on external evidence or volume; `[don't-do-yet]` do not reintroduce until a specific upstream condition lands.
 
 - **Harvest-queue rulings (cumulative G7 + G2 + G9 — 38 rows)** — `[nick-gate]` top unblocked item gating downstream Codifier work. 8 G7 rows (5 extract + 3 dismiss recommendations) from session 77; 16 G2 rows (9 extract + 7 dismiss) from session 78; 14 G9 rows (10 extract + 4 dismiss) from session 79. Approved-extraction rows feed `/extract-artifacts` queue-row promotion path (IB-164). Suggested batching: rule via batch (most rows are rule-shape; cleanest review unit); skill via individual review; template via dismiss-vs-extract calibration check (most templates are already absorbed inline).
+- **G11 (Agentic Systems guide) candidacy** — `[nick-gate]` decision point opened by session-80 rebalance. Agentic Systems cluster jumped from 21 → 29 findings (8 borderlines re-routed from the Memory Architecture orphan). Well above the routing-table's 5+ unrouted-cluster threshold; cluster is reasonably cohesive (vault-as-OS, personal-knowledge-store, org-world-model patterns). Routing-table line 97 stale note ("below 5-finding threshold") is now factually wrong either way. Two paths: (a) propose G11 next and start synthesis, OR (b) update line 97 to reflect current state and defer G11. Nick gates direction.
+- **G2 vs G7 routing disambiguation audit** — `[trigger]` post-rebalance check. Both G2 (Managing Agent Context) and G7 (Session Persistence and Memory) now share `Context Engineering` in their routing-table Dimensions field; the prior discriminator (G7 also having "Memory Architecture") is gone. Disambiguation now lives entirely in stage (build vs operate), question text, and trigger-keyword table (lines 148-164). Functional but weaker. Trigger: if the next `/identify-artifacts` run mis-routes a finding between G2 and G7 (or queues an ambiguous one), spend a session formalizing the discriminator (e.g., explicit `lifecycle: build|operate` field on findings, OR a routing-rubric step that consults trigger keywords first when Dimensions overlap). Not urgent until evidence of misrouting.
+- **Sub-dim 1.B graduation track monitoring** — `[trigger]` count-based. Post-rebalance, Sub-dim 1.B (Memory Isolation and Topology) has 4 explicit seed findings retained in Context Engineering; the 8 borderlines moved to Agentic Systems were system-shape, not isolation/topology mechanism, so 1.B count is unchanged. Graduation threshold is ≥10 findings. Trigger: re-evaluate cluster size after each `/research-loop` run that touches isolation/topology themes. Defer top-level Dim 12 candidacy until threshold met.
 - **Spec amendment from live-validation observations** — Optional. Logged-for-future #1 reaches 3-occurrence cadence (G7 + G2 + G9 all used `--findings` mode at effective P1+P2 bar; skill spec Step 0.3 prescribes P1-only filter for topic/dimension input modes). Candidate amendment: extend Step 0.3 filter language to include P2 by default with a flag for P1-only, OR per-cluster `priority_floor` field on routing table. Low-priority; not blocking. Defer to a separate "spec amendment from live-validation observations" session.
 - **Retroactive migration of ~100 non-guide/non-pattern extracts** — per pipeline-collapse Phase M1 audit.
 - **Visualization brainstorm** — [deferred] boil DDs/architecture into human-visualizable form. Session 62: `interactive-explanations-extend-linear-walkthroughs` finding (P2) is a direct technique for this work.

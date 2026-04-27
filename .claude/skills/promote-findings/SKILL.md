@@ -65,7 +65,7 @@ The Promoter thinks like a librarian, not a researcher.
 name: "Finding Name"
 summary: "Summary text"
 implementation_notes: null
-category: "Context Engineering"  # Context Engineering, Prompt Craft, Tool Integration, Model Selection, Intent Engineering, Orchestration, Memory Architecture, Evaluation, Sandboxing, Governance, Agent Design
+category: "Context Engineering"  # Context Engineering, Prompt Craft, Tool Integration, Model Selection, Intent Engineering, Orchestration, Evaluation, Sandboxing, Governance, Agent Design, Agentic Systems
 evidence_strength: "Medium (practitioner-documented)"
 adoption_status: "Not Yet Started"  # Already Adopted, Partially Adopted, Not Yet Started
 priority: null  # P1 (Implement Now), P2 (Design Required), P3 (Monitor), Not Flagged

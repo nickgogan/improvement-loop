@@ -1,7 +1,7 @@
 ---
 title: "Session Persistence and Memory"
 type: "guideline"
-category: "Memory Architecture"
+category: "Context Engineering"
 target_system:
   - "cross-system"
 stage: "draft"

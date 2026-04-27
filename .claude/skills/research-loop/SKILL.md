@@ -105,7 +105,7 @@ date_processed: "2026-03-22"
 name: "Finding Name"
 summary: "Summary text"
 implementation_notes: null
-category: "Memory Architecture"  # Context Engineering, Prompt Craft, Tool Integration, Model Selection, Intent Engineering, Orchestration, Memory Architecture, Evaluation, Sandboxing, Governance, Agent Design
+category: "Context Engineering"  # Context Engineering, Prompt Craft, Tool Integration, Model Selection, Intent Engineering, Orchestration, Evaluation, Sandboxing, Governance, Agent Design, Agentic Systems
 evidence_strength: "Medium (practitioner-documented)"  # Strong (production-tested), Medium (practitioner-documented), Weak (theoretical)
 adoption_status: "Partially Adopted"  # Already Adopted, Partially Adopted, Not Yet Started
 priority: null  # P1 (Implement Now), P2 (Design Required), P3 (Monitor), Not Flagged
@@ -330,10 +330,11 @@ If the user specifies a topic (e.g., `"scan arxiv for memory architecture papers
 
 | Category | arXiv Subject Areas | Default Queries |
 |----------|--------------------|-----------------|
-| Memory Architecture | cs.AI, cs.LG, cs.CL | `agent memory architecture`, `episodic memory LLM`, `long-term memory autonomous agents` |
-| Context Engineering | cs.AI, cs.CL | `context window management LLM`, `dynamic context injection agents`, `RAG retrieval augmented generation agent` |
+| Context Engineering | cs.AI, cs.CL | `context window management LLM`, `dynamic context injection agents`, `RAG retrieval augmented generation agent`, `agent memory architecture`, `episodic memory LLM`, `long-term memory autonomous agents` |
+| └ Sub-dim 1.A (Memory Decay) | cs.AI, cs.LG, cs.CL | `memory decay forgetting language model agent`, `continual learning memory consolidation LLM`, `importance-weighted memory neural network`, `cognitive architecture activation decay`, `interference-based forgetting episodic memory` |
+| └ Sub-dim 1.B (Memory Isolation) | cs.AI, cs.MA, cs.CL | `multi-agent memory isolation language model`, `hierarchical memory scope LLM agent`, `cross-agent knowledge sharing protocol`, `multi-tenant retrieval augmented generation` |
 | Orchestration / Multi-Agent | cs.MA, cs.AI | `multi-agent LLM orchestration`, `agentic workflow planning`, `tool-augmented language model` |
-| Prompt & Intent | cs.CL, cs.AI | `chain of thought prompting`, `instruction following LLM`, `alignment language model agent` |
+| Prompt Craft & Intent Engineering | cs.CL, cs.AI | `chain of thought prompting`, `instruction following LLM`, `alignment language model agent` |
 
 ### Step 2: Search arXiv
 
