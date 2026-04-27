@@ -466,6 +466,31 @@ Each detected candidate appends one summary-table row AND one per-row details bl
 
 Per-row details block heading: `### <finding-stem>::<target-form>::<headline-slug>` where `<headline-slug>` is a kebab-case slug of the suggested headline (≤6 words). This compound heading is the row's structural ID for IB-164's queue-row references and for duplicate-suppression matching.
 
+**Per-row block exemplar (renders ALL 9 required fields — copy this shape; do not abridge):**
+
+```markdown
+### <finding-stem>::<target-form>::<headline-slug>
+
+- **Date queued:** YYYY-MM-DD
+- **Status:** queued
+- **Target form:** <rule|skill|template>
+- **Source finding:** [[<finding-stem>]]
+- **Source excerpt:**
+  > "<verbatim ≤8-line excerpt of the embedded prose>"
+- **Codifier's reading:** <1–3 lines explaining why this prose reads as the target form (cite form-rubric criteria when relevant)>
+- **Suggested headline:** <kebab-case slug, matches the heading suffix>
+- **Recommendation:** extract via /extract-artifacts | dismiss as inline | merge into existing [[<artifact-stem>]]
+- **Resolution:**
+```
+
+Summary-table row exemplar (six columns mirror the per-row block's first eight non-excerpt fields, condensed for scanning):
+
+```markdown
+| 2026-04-26 | queued | rule | [[<finding-stem>]] | "<one-line headline>" | extract via /extract-artifacts |
+```
+
+**Both surfaces are required for every detected candidate.** Omitting either the summary-table row OR any of the 9 per-row fields is a procedural defect (caught at audit time per DD-101 §Acceptance Criteria; would also surface in any downstream rulings session that inspects per-row blocks). The summary table is for scanning; the per-row block carries the substance — they MUST agree on the (source_finding, target_form, headline-slug, status, recommendation) tuple at all times.
+
 **Item 2.b — Duplicate suppression at write.**
 
 Before appending a new row, check the existing queue file for any row with the same `(source_finding, target_form)` tuple:

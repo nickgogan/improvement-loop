@@ -5,21 +5,21 @@ Nothing here is auto-extracted; rows feed `/extract-artifacts` only after Nick r
 
 | Date queued | Status | Target form | Source finding | Suggested headline | Recommendation |
 |---|---|---|---|---|---|
-| 2026-04-26 | queued | rule | [[memorymd-cross-session-preference-persistence]] | agent-must-read-and-update-memory-md-on-startup | extract via /extract-artifacts |
-| 2026-04-26 | queued | rule | [[ground-truth-environmental-feedback-loops]] | verify-with-environmental-feedback-not-self-assessment | extract via /extract-artifacts |
-| 2026-04-26 | queued | skill | [[file-based-task-locking-parallel-agents]] | filesystem-lock-parallel-agent-coordination | extract via /extract-artifacts |
-| 2026-04-26 | queued | skill | [[structured-fact-extraction-from-conversations]] | structured-fact-extraction-from-agent-turn | extract via /extract-artifacts |
-| 2026-04-26 | queued | rule | [[effort-scaling-rules-embedded-in-orchestrator]] | tier-based-orchestrator-effort-scaling-rules | extract via /extract-artifacts |
-| 2026-04-26 | queued | rule | [[incremental-one-feature-per-session-pattern]] | one-feature-per-session-clean-state-exit | dismiss as inline |
-| 2026-04-26 | queued | template | [[memory-bank-isolation-per-agent-per-project]] | memory-bank-isolation-config-template | dismiss as inline |
-| 2026-04-26 | queued | skill | [[ace-agentic-context-engineering-rag-based]] | ace-generator-reflector-curator-loop | dismiss as inline |
+| 2026-04-26 | nick-approved | rule | [[memorymd-cross-session-preference-persistence]] | agent-must-read-and-update-memory-md-on-startup | extract via /extract-artifacts |
+| 2026-04-26 | nick-approved | rule | [[ground-truth-environmental-feedback-loops]] | verify-with-environmental-feedback-not-self-assessment | extract via /extract-artifacts |
+| 2026-04-26 | nick-approved | skill | [[file-based-task-locking-parallel-agents]] | filesystem-lock-parallel-agent-coordination | extract via /extract-artifacts |
+| 2026-04-26 | nick-approved | skill | [[structured-fact-extraction-from-conversations]] | structured-fact-extraction-from-agent-turn | extract via /extract-artifacts |
+| 2026-04-26 | nick-approved | rule | [[effort-scaling-rules-embedded-in-orchestrator]] | tier-based-orchestrator-effort-scaling-rules | extract via /extract-artifacts |
+| 2026-04-26 | nick-dismissed | rule | [[incremental-one-feature-per-session-pattern]] | one-feature-per-session-clean-state-exit | dismiss as inline |
+| 2026-04-26 | nick-dismissed | template | [[memory-bank-isolation-per-agent-per-project]] | memory-bank-isolation-config-template | dismiss as inline |
+| 2026-04-26 | nick-dismissed | skill | [[ace-agentic-context-engineering-rag-based]] | ace-generator-reflector-curator-loop | dismiss as inline |
 
 ## Per-row details
 
 ### memorymd-cross-session-preference-persistence::rule::agent-must-read-and-update-memory-md-on-startup
 
 - **Date queued:** 2026-04-26
-- **Status:** queued
+- **Status:** nick-approved
 - **Target form:** rule
 - **Source finding:** [[memorymd-cross-session-preference-persistence]]
 - **Source excerpt:**
@@ -32,7 +32,7 @@ Nothing here is auto-extracted; rows feed `/extract-artifacts` only after Nick r
 ### ground-truth-environmental-feedback-loops::rule::verify-with-environmental-feedback-not-self-assessment
 
 - **Date queued:** 2026-04-26
-- **Status:** queued
+- **Status:** nick-approved
 - **Target form:** rule
 - **Source finding:** [[ground-truth-environmental-feedback-loops]]
 - **Source excerpt:**
@@ -45,7 +45,7 @@ Nothing here is auto-extracted; rows feed `/extract-artifacts` only after Nick r
 ### file-based-task-locking-parallel-agents::skill::filesystem-lock-parallel-agent-coordination
 
 - **Date queued:** 2026-04-26
-- **Status:** queued
+- **Status:** nick-approved
 - **Target form:** skill
 - **Source finding:** [[file-based-task-locking-parallel-agents]]
 - **Source excerpt:**
@@ -58,7 +58,7 @@ Nothing here is auto-extracted; rows feed `/extract-artifacts` only after Nick r
 ### structured-fact-extraction-from-conversations::skill::structured-fact-extraction-from-agent-turn
 
 - **Date queued:** 2026-04-26
-- **Status:** queued
+- **Status:** nick-approved
 - **Target form:** skill
 - **Source finding:** [[structured-fact-extraction-from-conversations]]
 - **Source excerpt:**
@@ -71,7 +71,7 @@ Nothing here is auto-extracted; rows feed `/extract-artifacts` only after Nick r
 ### effort-scaling-rules-embedded-in-orchestrator::rule::tier-based-orchestrator-effort-scaling-rules
 
 - **Date queued:** 2026-04-26
-- **Status:** queued
+- **Status:** nick-approved
 - **Target form:** rule
 - **Source finding:** [[effort-scaling-rules-embedded-in-orchestrator]]
 - **Source excerpt:**
@@ -84,7 +84,7 @@ Nothing here is auto-extracted; rows feed `/extract-artifacts` only after Nick r
 ### incremental-one-feature-per-session-pattern::rule::one-feature-per-session-clean-state-exit
 
 - **Date queued:** 2026-04-26
-- **Status:** queued
+- **Status:** nick-dismissed
 - **Target form:** rule
 - **Source finding:** [[incremental-one-feature-per-session-pattern]]
 - **Source excerpt:**
@@ -92,12 +92,12 @@ Nothing here is auto-extracted; rows feed `/extract-artifacts` only after Nick r
 - **Codifier's reading:** Rule-shape — imperative directive about session scope and exit-state. Machine-enforceable via session-handoff hooks (verify single objective declared at session start; verify clean state at session close). However, this principle is already deeply embedded in MetaSystem session-handoff conventions and IL governance; codifying as a separate rule artifact would duplicate enforcement that already lives in the handoff prompts and session-handoff skill.
 - **Suggested headline:** one-feature-per-session-clean-state-exit
 - **Recommendation:** dismiss as inline
-- **Resolution:** _(awaiting Nick's ruling)_
+- **Resolution:** dismissed
 
 ### memory-bank-isolation-per-agent-per-project::template::memory-bank-isolation-config-template
 
 - **Date queued:** 2026-04-26
-- **Status:** queued
+- **Status:** nick-dismissed
 - **Target form:** template
 - **Source finding:** [[memory-bank-isolation-per-agent-per-project]]
 - **Source excerpt:**
@@ -105,12 +105,12 @@ Nothing here is auto-extracted; rows feed `/extract-artifacts` only after Nick r
 - **Codifier's reading:** Template-shape — a structural scaffold of named configuration keys with per-key descriptions. Concrete (Hindsight-specific) but generalizable to any memory-isolation framework. The shape (key + role + isolation-axis) is template form per the form-classification rubric. However, this scaffold has already been absorbed into the guide's `Memory Architecture Specification` template (see the `bank_isolation` block, Step 1.4); a separate template artifact would duplicate that surface.
 - **Suggested headline:** memory-bank-isolation-config-template
 - **Recommendation:** dismiss as inline
-- **Resolution:** _(awaiting Nick's ruling)_
+- **Resolution:** dismissed
 
 ### ace-agentic-context-engineering-rag-based::skill::ace-generator-reflector-curator-loop
 
 - **Date queued:** 2026-04-26
-- **Status:** queued
+- **Status:** nick-dismissed
 - **Target form:** skill
 - **Source finding:** [[ace-agentic-context-engineering-rag-based]]
 - **Source excerpt:**
@@ -118,4 +118,4 @@ Nothing here is auto-extracted; rows feed `/extract-artifacts` only after Nick r
 - **Codifier's reading:** Skill-shape — three-stage pipeline with named components, each having clear input/output/invocation contracts. ACE is treated in source literature as a deployable system. However, ACE is more architectural-pattern than single-skill: it requires a vector DB, a reflector loop, a curator loop, and a binary success signal. Extracting as a single IL skill would mis-scope it. Better deployed (when MetaSystem reaches RAG scale) as a system upgrade documented in the guide, not as a self-contained skill artifact.
 - **Suggested headline:** ace-generator-reflector-curator-loop
 - **Recommendation:** dismiss as inline
-- **Resolution:** _(awaiting Nick's ruling)_
+- **Resolution:** dismissed
