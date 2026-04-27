@@ -38,6 +38,11 @@ last_updated: "2026-04-20"
 pipeline_status: synthesized
 consumed_by:
   - "building-agentic-systems.md"
+  - artifact: scheduled-workflows-require-human-checkpoint
+    type: extracted-artifact
+    form: rule
+    date: 2026-04-27
+    session: 83
 ---
 # Five-Pillar Agentic OS Framework
 
@@ -78,3 +83,7 @@ The framework doesn't address multi-user scenarios (team context sharing, permis
 ## Potential Failure Modes
 
 The "80% automated" threshold for scheduled workflows may not transfer across domains — content generation has different failure modes than data analysis or code generation. Business context folder becomes a single point of staleness if not maintained. The supervisor UI pattern adds a layer of complexity that solo operators may not need.
+
+## Extraction Note — 2026-04-27
+
+Extracted as **rule**: [[scheduled-workflows-require-human-checkpoint]] in `extracts/rules/`. Harvested from the G11 (building-agentic-systems) queue per IB-164 / DD-101 promotion path.

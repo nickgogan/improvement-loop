@@ -34,6 +34,11 @@ last_updated: '2026-04-20'
 pipeline_status: synthesized
 consumed_by:
   - "building-agentic-systems.md"
+  - artifact: ai-and-human-vaults-must-be-separate
+    type: extracted-artifact
+    form: rule
+    date: 2026-04-27
+    session: 83
 ---
 # AI-Managed Vault Separate from Human Vault
 
@@ -67,3 +72,7 @@ Practitioner has used Obsidian for several years (personal vault) and now runs a
 - Two vaults create navigation overhead — the human must know which vault to check for a given piece of information
 - The model-agnostic portability claim requires that future models also use file I/O as their primary interface; if AI memory systems shift to opaque databases, the portability advantage erodes
 - Growing AI vaults without curation accumulate outdated or low-quality content over time; the "it just grows" framing can lead to quality degradation
+
+## Extraction Note — 2026-04-27
+
+Extracted as **rule**: [[ai-and-human-vaults-must-be-separate]] in `extracts/rules/`. Harvested from the G11 (building-agentic-systems) queue per IB-164 / DD-101 promotion path.

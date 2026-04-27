@@ -24,6 +24,11 @@ last_updated: '2026-04-07'
 pipeline_status: synthesized
 consumed_by:
 - managing-agent-context.md
+- artifact: test-context-strategies-against-actual-model
+  type: extracted-artifact
+  form: rule
+  date: 2026-04-27
+  session: 83
 ---
 ## What It Is
 
@@ -53,3 +58,7 @@ Model-specific context profiles: maintain different context file strategies per 
 ## Potential Failure Modes
 
 Model-specific findings expire quickly as models are updated. Claude Code's context management may change with new releases, potentially making context files more or less effective. The study tested specific model versions — generalization to future versions is uncertain.
+
+## Extraction Note — 2026-04-27
+
+Extracted as **rule**: [[test-context-strategies-against-your-actual-model]] in `extracts/rules/`. Harvested from the G2 (managing-agent-context) queue per IB-164 / DD-101 promotion path.

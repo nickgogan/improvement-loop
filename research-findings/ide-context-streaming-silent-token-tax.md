@@ -27,6 +27,11 @@ last_updated: '2026-04-08'
 pipeline_status: synthesized
 consumed_by:
 - managing-agent-context.md
+- artifact: close-irrelevant-ide-files-during-agent-sessions
+  type: extracted-artifact
+  form: rule
+  date: 2026-04-27
+  session: 83
 ---
 
 ## What It Is
@@ -48,3 +53,7 @@ Provide a visible indicator of injected context and its token cost. Allow users 
 ## Potential Failure Modes
 
 Disabling IDE context streaming may degrade the model's ability to provide contextually relevant responses. Users who optimize aggressively for token savings may lose the ergonomic benefits of IDE-aware assistance. Configuration complexity could create a new source of confusion for users who do not understand context window mechanics.
+
+## Extraction Note — 2026-04-27
+
+Extracted as **rule**: [[close-irrelevant-ide-files-during-agent-sessions]] in `extracts/rules/`. Harvested from the G2 (managing-agent-context) queue per IB-164 / DD-101 promotion path.

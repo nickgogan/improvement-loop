@@ -28,6 +28,11 @@ last_updated: '2026-04-09'
 pipeline_status: synthesized
 consumed_by:
 - session-persistence-and-memory.md
+- artifact: tier-based-orchestrator-effort-scaling-rules
+  type: extracted-artifact
+  form: rule
+  date: 2026-04-27
+  session: 83
 ---
 
 ## What It Is

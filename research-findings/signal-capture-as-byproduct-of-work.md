@@ -33,6 +33,11 @@ pipeline_status: synthesized
 consumed_by:
   - "session-persistence-and-memory.md"
   - "building-agentic-systems.md"
+  - artifact: capture-must-be-byproduct-of-work
+    type: extracted-artifact
+    form: rule
+    date: 2026-04-27
+    session: 83
 ---
 
 ## What It Is
@@ -75,3 +80,7 @@ Raised as one of five principles for building world models that compound into re
 - Tool lock-in: optimizing for passive capture in one tool stack makes migration painful
 - Privacy concerns: automatic capture of work conversations may create compliance issues in regulated industries
 - The model may accumulate a skewed picture of reality if only certain types of work are naturally logged (e.g., code commits but not architecture discussions)
+
+## Extraction Note — 2026-04-27
+
+Extracted as **rule**: [[capture-must-be-byproduct-of-work]] in `extracts/rules/`. Harvested from the G11 (building-agentic-systems) queue per IB-164 / DD-101 promotion path.

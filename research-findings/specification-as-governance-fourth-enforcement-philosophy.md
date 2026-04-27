@@ -28,6 +28,11 @@ pipeline_status: synthesized
 consumed_by:
 - agent-governance-and-trust.md
 - spec-and-code-reconcile-bidirectionally.md
+- artifact: spec-driven-development-loop
+  type: extracted-artifact
+  form: skill
+  date: 2026-04-27
+  session: 83
 ---
 
 ## What It Is

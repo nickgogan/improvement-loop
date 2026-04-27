@@ -27,6 +27,11 @@ related_findings:
 pipeline_status: synthesized
 consumed_by:
 - managing-agent-context.md
+- artifact: re-fork-and-trim-trajectory-procedure
+  type: extracted-artifact
+  form: skill
+  date: 2026-04-27
+  session: 83
 ---
 # Trajectory Engineering: Non-Linear Session Forking with /re
 

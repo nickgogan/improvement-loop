@@ -27,6 +27,11 @@ last_updated: '2026-04-19'
 pipeline_status: synthesized
 consumed_by:
 - managing-agent-context.md
+- artifact: progressmd-session-bridge-template
+  type: extracted-artifact
+  form: template
+  date: 2026-04-27
+  session: 83
 ---
 # PROGRESS.md Session Bridge
 

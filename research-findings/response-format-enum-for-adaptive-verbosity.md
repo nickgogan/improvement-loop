@@ -19,6 +19,11 @@ last_updated: '2026-04-09'
 pipeline_status: synthesized
 consumed_by:
 - managing-agent-context.md
+- artifact: tool-response-format-enum
+  type: extracted-artifact
+  form: template
+  date: 2026-04-27
+  session: 83
 ---
 
 ## What It Is

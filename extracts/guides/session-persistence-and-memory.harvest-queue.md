@@ -5,11 +5,11 @@ Nothing here is auto-extracted; rows feed `/extract-artifacts` only after Nick r
 
 | Date queued | Status | Target form | Source finding | Suggested headline | Recommendation |
 |---|---|---|---|---|---|
-| 2026-04-26 | nick-approved | rule | [[memorymd-cross-session-preference-persistence]] | agent-must-read-and-update-memory-md-on-startup | extract via /extract-artifacts |
+| 2026-04-26 | extracted | rule | [[memorymd-cross-session-preference-persistence]] | agent-must-read-and-update-memory-md-on-startup | extracted to [[agent-must-read-and-update-memory-md-on-startup]] |
 | 2026-04-26 | nick-approved | rule | [[ground-truth-environmental-feedback-loops]] | verify-with-environmental-feedback-not-self-assessment | extract via /extract-artifacts |
-| 2026-04-26 | nick-approved | skill | [[file-based-task-locking-parallel-agents]] | filesystem-lock-parallel-agent-coordination | extract via /extract-artifacts |
-| 2026-04-26 | nick-approved | skill | [[structured-fact-extraction-from-conversations]] | structured-fact-extraction-from-agent-turn | extract via /extract-artifacts |
-| 2026-04-26 | nick-approved | rule | [[effort-scaling-rules-embedded-in-orchestrator]] | tier-based-orchestrator-effort-scaling-rules | extract via /extract-artifacts |
+| 2026-04-26 | extracted | skill | [[file-based-task-locking-parallel-agents]] | filesystem-lock-parallel-agent-coordination | extracted to [[filesystem-lock-parallel-agent-coordination]] |
+| 2026-04-26 | extracted | skill | [[structured-fact-extraction-from-conversations]] | structured-fact-extraction-from-agent-turn | extracted to [[structured-fact-extraction-from-agent-turn]] |
+| 2026-04-26 | extracted | rule | [[effort-scaling-rules-embedded-in-orchestrator]] | tier-based-orchestrator-effort-scaling-rules | extracted to [[tier-based-orchestrator-effort-scaling-rules]] |
 | 2026-04-26 | nick-dismissed | rule | [[incremental-one-feature-per-session-pattern]] | one-feature-per-session-clean-state-exit | dismiss as inline |
 | 2026-04-26 | nick-dismissed | template | [[memory-bank-isolation-per-agent-per-project]] | memory-bank-isolation-config-template | dismiss as inline |
 | 2026-04-26 | nick-dismissed | skill | [[ace-agentic-context-engineering-rag-based]] | ace-generator-reflector-curator-loop | dismiss as inline |
@@ -19,7 +19,7 @@ Nothing here is auto-extracted; rows feed `/extract-artifacts` only after Nick r
 ### memorymd-cross-session-preference-persistence::rule::agent-must-read-and-update-memory-md-on-startup
 
 - **Date queued:** 2026-04-26
-- **Status:** nick-approved
+- **Status:** extracted
 - **Target form:** rule
 - **Source finding:** [[memorymd-cross-session-preference-persistence]]
 - **Source excerpt:**
@@ -27,7 +27,9 @@ Nothing here is auto-extracted; rows feed `/extract-artifacts` only after Nick r
 - **Codifier's reading:** Clean rule-shape — imperative voice, machine-enforceable directive intended for system-prompt injection. Fits the rule artifact form per the form-classification rubric: scope-bounded (memory.md), declarative obligation (read/update), single concern. Independently deployable as a project-level rule on any agent harness that supports CLAUDE.md-style context files.
 - **Suggested headline:** agent-must-read-and-update-memory-md-on-startup
 - **Recommendation:** extract via /extract-artifacts
-- **Resolution:** _(awaiting Nick's ruling)_
+- **Resolution:** extracted to [[agent-must-read-and-update-memory-md-on-startup]]
+
+Extracted 2026-04-27 — Session 83 — [[session-83-codifier-ib164-resume-extract-artifacts]] — to [[agent-must-read-and-update-memory-md-on-startup]].
 
 ### ground-truth-environmental-feedback-loops::rule::verify-with-environmental-feedback-not-self-assessment
 
@@ -42,10 +44,12 @@ Nothing here is auto-extracted; rows feed `/extract-artifacts` only after Nick r
 - **Recommendation:** extract via /extract-artifacts
 - **Resolution:** _(awaiting Nick's ruling)_
 
+Pending merge 2026-04-27 — Session 83 — [[session-83-codifier-ib164-resume-extract-artifacts]] — DD-97 extension proposal emitted at [[operations/extension-proposals/2026-04-27-verify-with-environmental-feedback-extension-proposal]]; primary match [[agent-self-reporting-unreliability-independent-eval]]. Manual apply per DD-97 v1 (Step 1.7 auto-merge prohibition); after apply, row Status flips to `extracted` and Resolution to `merged into [[agent-self-reporting-unreliability-independent-eval]]` via manual queue edit (or future skill mode).
+
 ### file-based-task-locking-parallel-agents::skill::filesystem-lock-parallel-agent-coordination
 
 - **Date queued:** 2026-04-26
-- **Status:** nick-approved
+- **Status:** extracted
 - **Target form:** skill
 - **Source finding:** [[file-based-task-locking-parallel-agents]]
 - **Source excerpt:**
@@ -53,12 +57,14 @@ Nothing here is auto-extracted; rows feed `/extract-artifacts` only after Nick r
 - **Codifier's reading:** Skill-shape — a five-step procedure with a clear invocation contract (input: task name; output: completed task + released lock). The lock-acquisition primitive (atomic file creation) and the cleanup step are well-bounded. Fits skill artifact form: procedure with input/output, step-by-step structure, deployable as a callable workflow.
 - **Suggested headline:** filesystem-lock-parallel-agent-coordination
 - **Recommendation:** extract via /extract-artifacts
-- **Resolution:** _(awaiting Nick's ruling)_
+- **Resolution:** extracted to [[filesystem-lock-parallel-agent-coordination]]
+
+Extracted 2026-04-27 — Session 83 — [[session-83-codifier-ib164-resume-extract-artifacts]] — to [[filesystem-lock-parallel-agent-coordination]].
 
 ### structured-fact-extraction-from-conversations::skill::structured-fact-extraction-from-agent-turn
 
 - **Date queued:** 2026-04-26
-- **Status:** nick-approved
+- **Status:** extracted
 - **Target form:** skill
 - **Source finding:** [[structured-fact-extraction-from-conversations]]
 - **Source excerpt:**
@@ -66,12 +72,14 @@ Nothing here is auto-extracted; rows feed `/extract-artifacts` only after Nick r
 - **Codifier's reading:** Skill-shape — a post-turn extraction procedure with explicit input (conversation turn), structured output (typed facts with provenance), and invocation contract (background, after each turn). The output schema (type / content / timestamp / entities / confidence) is well-defined enough to be a skill contract. Could be deployed as a Claude Code hook or as a periodic background skill.
 - **Suggested headline:** structured-fact-extraction-from-agent-turn
 - **Recommendation:** extract via /extract-artifacts
-- **Resolution:** _(awaiting Nick's ruling)_
+- **Resolution:** extracted to [[structured-fact-extraction-from-agent-turn]]
+
+Extracted 2026-04-27 — Session 83 — [[session-83-codifier-ib164-resume-extract-artifacts]] — to [[structured-fact-extraction-from-agent-turn]].
 
 ### effort-scaling-rules-embedded-in-orchestrator::rule::tier-based-orchestrator-effort-scaling-rules
 
 - **Date queued:** 2026-04-26
-- **Status:** nick-approved
+- **Status:** extracted
 - **Target form:** rule
 - **Source finding:** [[effort-scaling-rules-embedded-in-orchestrator]]
 - **Source excerpt:**
@@ -79,7 +87,9 @@ Nothing here is auto-extracted; rows feed `/extract-artifacts` only after Nick r
 - **Codifier's reading:** Rule-shape — explicit resource-allocation directive that an orchestrator agent should consult before spawning subagents. The finding's title literally names them as "rules"; the tier-based table provides the enforceable thresholds. Fits rule artifact form: imperative, scope-bounded (orchestrator prompts), machine-enforceable via spawn-time check.
 - **Suggested headline:** tier-based-orchestrator-effort-scaling-rules
 - **Recommendation:** extract via /extract-artifacts
-- **Resolution:** _(awaiting Nick's ruling)_
+- **Resolution:** extracted to [[tier-based-orchestrator-effort-scaling-rules]]
+
+Extracted 2026-04-27 — Session 83 — [[session-83-codifier-ib164-resume-extract-artifacts]] — to [[tier-based-orchestrator-effort-scaling-rules]].
 
 ### incremental-one-feature-per-session-pattern::rule::one-feature-per-session-clean-state-exit
 

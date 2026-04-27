@@ -37,6 +37,11 @@ pipeline_status: synthesized
 consumed_by:
 - agent-governance-and-trust.md
 - ship-only-what-at-least-one-human-comprehended.md
+- artifact: comprehension-gate-at-pr-review
+  type: extracted-artifact
+  form: skill
+  date: 2026-04-27
+  session: 83
 ---
 # Dark Code as Organizational Capability Problem
 

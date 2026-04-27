@@ -6,9 +6,9 @@ Nothing here is auto-extracted; rows feed `/extract-artifacts` only after Nick r
 | Date queued | Status | Target form | Source finding | Suggested headline | Recommendation |
 |---|---|---|---|---|---|
 | 2026-04-26 | extracted | rule | [[dark-code-organizational-capability-problem]] | "Ship only what at least one human comprehended" | extracted to [[ship-only-what-at-least-one-human-comprehended]] |
-| 2026-04-26 | nick-approved | skill | [[dark-code-organizational-capability-problem]] | "Comprehension Gate at PR Review" | extract via /extract-artifacts |
+| 2026-04-26 | extracted | skill | [[dark-code-organizational-capability-problem]] | "Comprehension Gate at PR Review" | extracted to [[comprehension-gate-at-pr-review]] |
 | 2026-04-26 | extracted | rule | [[distributed-boundary-guides]] | "CLAUDE.md is a symlink to AGENTS.md at every governance boundary" | extracted to [[claudemd-symlink-to-agentsmd-at-every-governance-boundary]] |
-| 2026-04-26 | nick-approved | skill | [[specification-as-governance-fourth-enforcement-philosophy]] | "Spec-Driven Development Loop" | extract via /extract-artifacts |
+| 2026-04-26 | extracted | skill | [[specification-as-governance-fourth-enforcement-philosophy]] | "Spec-Driven Development Loop" | extracted to [[spec-driven-development-loop]] |
 | 2026-04-26 | extracted | rule | [[specification-as-governance-fourth-enforcement-philosophy]] | "Spec and code reconcile bidirectionally on every change" | extracted to [[spec-and-code-reconcile-bidirectionally]] |
 | 2026-04-26 | extracted | rule | [[review-obsolescence-as-design-goal]] | "Every recurring review comment must triage to mechanism or judgment-only" | extracted to [[every-recurring-review-comment-triages-to-mechanism-or-judgment]] |
 | 2026-04-26 | extracted | rule | [[compound-review-debt-from-deferred-inspection]] | "Maximum unreviewed depth policy" | extracted to [[maximum-unreviewed-depth-policy]] |
@@ -39,14 +39,16 @@ Extracted 2026-04-27 — Session 82 — [[session-82-codifier-extract-artifacts-
 ### dark-code-organizational-capability-problem::skill::comprehension-gate-at-pr-review
 
 - **Date queued:** 2026-04-26
-- **Status:** nick-approved
+- **Status:** extracted
 - **Target form:** skill
 - **Source finding:** [[dark-code-organizational-capability-problem]]
 - **Source excerpt:** "An AI-assisted filter at PR review that asks senior-engineer-style questions as code is reviewed: why was this dependency called here? How is caching structured in relation to other services? What are the separation-of-concerns implications? The gate makes architectural questions immediately legible rather than requiring the reviewer to surface them from scratch. Output from comprehension gate checks feeds back into evals — creating a flywheel that improves code quality and review quality simultaneously."
 - **Codifier's reading:** Procedural pattern with input (PR diff + prior context), per-question prompts (dependency rationale, caching topology, separation-of-concerns), and output (gate verdict + eval-feedback signal). Has clear step-by-step structure suitable for SKILL.md form. Fits skill artifact form. The skill would carry a starter prompt set drawn from senior-engineer review patterns plus a feedback loop to evals.
 - **Suggested headline:** comprehension-gate-at-pr-review
 - **Recommendation:** extract via /extract-artifacts
-- **Resolution:**
+- **Resolution:** extracted to [[comprehension-gate-at-pr-review]]
+
+Extracted 2026-04-27 — Session 83 — [[session-83-codifier-ib164-resume-extract-artifacts]] — to [[comprehension-gate-at-pr-review]].
 
 ### distributed-boundary-guides::rule::claudemd-symlink-to-agentsmd-at-every-governance-boundary
 
@@ -66,14 +68,16 @@ Extracted 2026-04-27 — Session 82 — [[session-82-codifier-extract-artifacts-
 ### specification-as-governance-fourth-enforcement-philosophy::skill::spec-driven-development-loop
 
 - **Date queued:** 2026-04-26
-- **Status:** nick-approved
+- **Status:** extracted
 - **Target form:** skill
 - **Source finding:** [[specification-as-governance-fourth-enforcement-philosophy]]
 - **Source excerpt:** "n8n's spec-driven development skill: `.claude/specs/` files serve as living architectural decisions. The skill enforces bidirectional sync between specs and implementation code. Core loop: read spec → implement → verify alignment → update spec or code. TODO checkboxes track completion, with strikethrough+annotation for deliberately skipped items. Specs are the source of truth, not the code."
 - **Codifier's reading:** Procedural pattern with explicit input/output and step-by-step structure (read → implement → verify → reconcile). Has clear invocation contract (specs in `.claude/specs/`, agent enters loop), step semantics (TODO checkboxes for completion tracking), and termination criteria (alignment verified). Fits skill artifact form per the form-classification rubric. Skill would package the loop with the TODO-checkbox convention and the spec-or-code reconciliation step.
 - **Suggested headline:** spec-driven-development-loop
 - **Recommendation:** extract via /extract-artifacts
-- **Resolution:**
+- **Resolution:** extracted to [[spec-driven-development-loop]]
+
+Extracted 2026-04-27 — Session 83 — [[session-83-codifier-ib164-resume-extract-artifacts]] — to [[spec-driven-development-loop]].
 
 ### specification-as-governance-fourth-enforcement-philosophy::rule::spec-and-code-reconcile-bidirectionally
 

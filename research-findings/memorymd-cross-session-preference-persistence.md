@@ -30,6 +30,11 @@ related_findings:
 pipeline_status: "synthesized"
 consumed_by:
   - "session-persistence-and-memory.md"
+  - artifact: agent-must-read-and-update-memory-md-on-startup
+    type: extracted-artifact
+    form: rule
+    date: 2026-04-27
+    session: 83
 ---
 # memory.md: Cross-Session Preference Persistence via Self-Updating File
 
@@ -50,3 +55,7 @@ Periodic memory.md pruning rules (e.g., remove entries older than 90 days that h
 
 ## Potential Failure Modes
 If the agent writes incorrect or hallucinated information to memory.md without user verification, false memories compound over time. Memory files can grow to a size where they themselves cause context bloat (the same problem as oversized CLAUDE.md files). Best practice noted: keep CLAUDE.md under 200 lines.
+
+## Extraction Note — 2026-04-27
+
+Extracted as **rule**: [[agent-must-read-and-update-memory-md-on-startup]] in `extracts/rules/`. Harvested from the G7 (session-persistence-and-memory) queue per IB-164 / DD-101 promotion path.

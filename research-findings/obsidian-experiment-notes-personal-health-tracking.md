@@ -23,6 +23,11 @@ related_findings:
 pipeline_status: synthesized
 consumed_by:
   - "building-agentic-systems.md"
+  - artifact: experiment-note-frontmatter-schema
+    type: extracted-artifact
+    form: template
+    date: 2026-04-27
+    session: 83
 ---
 # Obsidian Experiment Notes as Personal Data Layer for Behavior Change Tracking
 

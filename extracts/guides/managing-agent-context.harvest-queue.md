@@ -7,13 +7,13 @@ Nothing here is auto-extracted; rows feed `/extract-artifacts` only after Nick r
 |---|---|---|---|---|---|
 | 2026-04-26 | extracted | rule | [[catastrophic-context-collapse-risk-during-claudemd]] | "Never ask Claude to compact CLAUDE.md" | extracted to [[never-ask-claude-to-compact-claudemd]] |
 | 2026-04-26 | nick-approved | rule | [[claudemd-context-rot-from-indiscriminate-rule-accu]] | "CLAUDE.md global rule cap" | extract via /extract-artifacts |
-| 2026-04-26 | nick-approved | skill | [[trajectory-engineering-non-linear-session-forking]] | "/re Fork-and-Trim Trajectory Procedure" | extract via /extract-artifacts |
-| 2026-04-26 | nick-approved | template | [[progress-md-session-bridge]] | "PROGRESS.md Session Bridge Template" | extract via /extract-artifacts |
-| 2026-04-26 | nick-approved | template | [[response-format-enum-for-adaptive-verbosity]] | "Tool Response-Format Enum (detailed / concise)" | extract via /extract-artifacts |
+| 2026-04-26 | extracted | skill | [[trajectory-engineering-non-linear-session-forking]] | "/re Fork-and-Trim Trajectory Procedure" | extracted to [[re-fork-and-trim-trajectory-procedure]] |
+| 2026-04-26 | extracted | template | [[progress-md-session-bridge]] | "PROGRESS.md Session Bridge Template" | extracted to [[progressmd-session-bridge-template]] |
+| 2026-04-26 | extracted | template | [[response-format-enum-for-adaptive-verbosity]] | "Tool Response-Format Enum (detailed / concise)" | extracted to [[tool-response-format-enum]] |
 | 2026-04-26 | extracted | rule | [[skills-as-pointers-to-second-brain-files]] | "Skills reference shared context by path, not by copy" | extracted to [[skills-reference-shared-context-by-path]] |
 | 2026-04-26 | nick-approved | rule | [[ace-delta-updates-over-monolithic-rewrites]] | "Evolving context docs use delta updates, never monolithic LLM rewrites" | extract via /extract-artifacts |
-| 2026-04-26 | nick-approved | rule | [[ide-context-streaming-silent-token-tax]] | "Close irrelevant IDE files during agent sessions" | extract via /extract-artifacts |
-| 2026-04-26 | nick-approved | rule | [[model-specific-context-file-sensitivity]] | "Test context strategies against your actual model" | extract via /extract-artifacts |
+| 2026-04-26 | extracted | rule | [[ide-context-streaming-silent-token-tax]] | "Close irrelevant IDE files during agent sessions" | extracted to [[close-irrelevant-ide-files-during-agent-sessions]] |
+| 2026-04-26 | extracted | rule | [[model-specific-context-file-sensitivity]] | "Test context strategies against your actual model" | extracted to [[test-context-strategies-against-actual-model]] |
 | 2026-04-26 | nick-dismissed | template | [[five-context-management-techniques-in-claude-code]] | "Context-Management Technique Selector" | dismiss as inline |
 | 2026-04-26 | nick-dismissed | template | [[cross-platform-context-file-strategy]] | "Multi-Tool Context Mirror Map" | dismiss as inline |
 | 2026-04-26 | nick-dismissed | template | [[self-describing-codebase-structural-semantic-context]] | "Module Manifest Template" | dismiss as inline |
@@ -55,38 +55,44 @@ Pending merge 2026-04-27 — Session 82 — [[session-82-codifier-extract-artifa
 ### trajectory-engineering-non-linear-session-forking::skill::re-fork-and-trim-trajectory-procedure
 
 - **Date queued:** 2026-04-26
-- **Status:** nick-approved
+- **Status:** extracted
 - **Target form:** skill
 - **Source finding:** [[trajectory-engineering-non-linear-session-forking]]
 - **Source excerpt:** "Pressing double-ESC (or using /re) activates a time-travel feature that returns to any prior point in the current session. Trajectory engineers use this not just to retry failed attempts, but proactively: (1) after a bug fix, they trim out the bug-fixing context (now irrelevant) by rewinding to before the bug was spotted, providing a brief summary of what happened and how it was fixed, then continuing from that clean state; (2) when exploring architectural options, they fork from a common starting point, run each option down its trajectory, compare results, and keep the best; (3) they intentionally keep sessions lean by trimming branches back to the trunk after each exploration."
 - **Codifier's reading:** Procedural pattern with three named modes (trim-after-fix, fork-to-compare, trim-back-to-trunk); has clear inputs (current session state), outputs (lean session at chosen rewind point), and step-by-step structure. Fits skill form. Anthropic's 2026 framing promotes this from advanced practice to first-class default with `Esc+Esc` shortcut. Skill candidate would wrap the three modes with decision criteria + companion handoff-summary template.
 - **Suggested headline:** re-fork-and-trim-trajectory-procedure
 - **Recommendation:** extract via /extract-artifacts
-- **Resolution:**
+- **Resolution:** extracted to [[re-fork-and-trim-trajectory-procedure]]
+
+Extracted 2026-04-27 — Session 83 — [[session-83-codifier-ib164-resume-extract-artifacts]] — to [[re-fork-and-trim-trajectory-procedure]].
 
 ### progress-md-session-bridge::template::progressmd-session-bridge-template
 
 - **Date queued:** 2026-04-26
-- **Status:** nick-approved
+- **Status:** extracted
 - **Target form:** template
 - **Source finding:** [[progress-md-session-bridge]]
 - **Source excerpt:** "PROGRESS.md is a structured markdown file that serves as persistent working memory between Claude Code sessions. At session start, the agent reads it to orient itself; at session end, it writes an updated summary covering what was completed, what is in progress, what is blocked, and what comes next."
 - **Codifier's reading:** Structural scaffold meant for rendering — has identifiable sections (Completed / In Progress / Blocked / Next Steps + optional Decisions/Assumptions/Risks), placeholder fields per session entry, structural form. Fits template artifact form. Worth extracting as a starter PROGRESS.md template that consumers can copy-and-fill, distinct from any specific deployment of it. The Anthropic CHANGELOG.md "lab notes" variant could be a sibling template or merged.
 - **Suggested headline:** progressmd-session-bridge-template
 - **Recommendation:** extract via /extract-artifacts
-- **Resolution:**
+- **Resolution:** extracted to [[progressmd-session-bridge-template]]
+
+Extracted 2026-04-27 — Session 83 — [[session-83-codifier-ib164-resume-extract-artifacts]] — to [[progressmd-session-bridge-template]].
 
 ### response-format-enum-for-adaptive-verbosity::template::tool-response-format-enum
 
 - **Date queued:** 2026-04-26
-- **Status:** nick-approved
+- **Status:** extracted
 - **Target form:** template
 - **Source finding:** [[response-format-enum-for-adaptive-verbosity]]
 - **Source excerpt:** "Add a response format parameter to tools that return variable-length results: Detailed (~206 tokens): Full metadata, IDs, and content for operation chaining. Concise (~72 tokens): High-signal summary for scanning and triage. This yields ~65% token reduction when the agent only needs a summary."
 - **Codifier's reading:** Structural scaffold for tool definitions — the closed enum (`detailed | concise`) plus the per-mode token-budget guideline plus the agent-side selection heuristic together form a reusable template that tool authors can drop into any new tool definition. Fits template form. Likely a small artifact (one-page tool-design recipe + JSON schema fragment).
 - **Suggested headline:** tool-response-format-enum
 - **Recommendation:** extract via /extract-artifacts
-- **Resolution:**
+- **Resolution:** extracted to [[tool-response-format-enum]]
+
+Extracted 2026-04-27 — Session 83 — [[session-83-codifier-ib164-resume-extract-artifacts]] — to [[tool-response-format-enum]].
 
 ### skills-as-pointers-to-second-brain-files::rule::skills-reference-shared-context-by-path
 
@@ -114,29 +120,35 @@ Extracted 2026-04-27 — Session 82 — [[session-82-codifier-extract-artifacts-
 - **Recommendation:** extract via /extract-artifacts
 - **Resolution:**
 
+Pending merge 2026-04-27 — Session 83 — [[session-83-codifier-ib164-resume-extract-artifacts]] — DD-97 extension proposal emitted at [[operations/extension-proposals/2026-04-27-evolving-docs-use-delta-updates-extension-proposal]]; primary match [[never-ask-claude-to-compact-claudemd]]. Manual apply per DD-97 v1 (Step 1.7 auto-merge prohibition); after apply, row Status flips to `extracted` and Resolution to `merged into [[never-ask-claude-to-compact-claudemd]]` via manual queue edit (or future skill mode).
+
 ### ide-context-streaming-silent-token-tax::rule::close-irrelevant-ide-files-during-agent-sessions
 
 - **Date queued:** 2026-04-26
-- **Status:** nick-approved
+- **Status:** extracted
 - **Target form:** rule
 - **Source finding:** [[ide-context-streaming-silent-token-tax]]
 - **Source excerpt:** "IDE context streaming silently injects open files and highlighted selections into the window without visual indication... every open file and highlighted selection in VS Code or JetBrains gets silently injected as context tokens. Close irrelevant files during agent sessions."
 - **Codifier's reading:** Imperative practitioner rule; partially machine-enforceable via an IDE extension or pre-session hook that prompts the user to close non-task tabs. Fits rule form. The hidden-cost mechanism (10-20% of total context usage from IDE injection) is the rationale.
 - **Suggested headline:** close-irrelevant-ide-files-during-agent-sessions
 - **Recommendation:** extract via /extract-artifacts
-- **Resolution:**
+- **Resolution:** extracted to [[close-irrelevant-ide-files-during-agent-sessions]]
+
+Extracted 2026-04-27 — Session 83 — [[session-83-codifier-ib164-resume-extract-artifacts]] — to [[close-irrelevant-ide-files-during-agent-sessions]].
 
 ### model-specific-context-file-sensitivity::rule::test-context-strategies-against-actual-model
 
 - **Date queued:** 2026-04-26
-- **Status:** nick-approved
+- **Status:** extracted
 - **Target form:** rule
 - **Source finding:** [[model-specific-context-file-sensitivity]]
 - **Source excerpt:** "Different models respond dramatically differently to the same context files. One-size-fits-all context strategies are empirically wrong — optimize for the model you are actually using... What worked for Codex may not work for Claude Code, and vice versa."
 - **Codifier's reading:** Imperative directive; testable as a contract that every context-file change runs a small eval against the deployment model before merging. Fits rule form. Closely tied to G4 (eval-driven optimization) — the rule names the requirement; G4 covers the eval mechanics.
 - **Suggested headline:** test-context-strategies-against-actual-model
 - **Recommendation:** extract via /extract-artifacts
-- **Resolution:**
+- **Resolution:** extracted to [[test-context-strategies-against-actual-model]]
+
+Extracted 2026-04-27 — Session 83 — [[session-83-codifier-ib164-resume-extract-artifacts]] — to [[test-context-strategies-against-actual-model]].
 
 ### five-context-management-techniques-in-claude-code::template::context-management-technique-selector
 

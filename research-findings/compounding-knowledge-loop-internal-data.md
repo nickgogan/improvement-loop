@@ -30,7 +30,14 @@ related_findings:
 - file: signal-capture-as-byproduct-of-work.md
   rel: same-problem
 pipeline_status: synthesized
-consumed_by: ["patterns/compounding-knowledge-loop.md", "building-agentic-systems.md"]
+consumed_by:
+  - "patterns/compounding-knowledge-loop.md"
+  - "building-agentic-systems.md"
+  - artifact: compounding-loops-must-encode-outcomes
+    type: extracted-artifact
+    form: rule
+    date: 2026-04-27
+    session: 83
 ---
 # Compounding Knowledge Loop (Internal Data)
 

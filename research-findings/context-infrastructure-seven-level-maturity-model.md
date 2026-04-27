@@ -34,6 +34,11 @@ related_findings:
 pipeline_status: synthesized
 consumed_by:
   - "building-agentic-systems.md"
+  - artifact: reach-l6-before-l7
+    type: extracted-artifact
+    form: rule
+    date: 2026-04-27
+    session: 83
 ---
 # Context Infrastructure Seven-Level Maturity Model
 
@@ -58,3 +63,7 @@ Beni (business AI practitioner, 60+ skills across business processes) presented 
 
 ## Potential Failure Modes
 Treating the model as prescriptive rather than descriptive — teams may skip levels that are appropriate for their scale. L7 without L6 foundation creates synchronization complexity before context quality is established. The model doesn't address context quality (what goes in), only context structure (how it's organized and accessed).
+
+## Extraction Note — 2026-04-27
+
+Extracted as **rule**: [[reach-l6-before-l7]] in `extracts/rules/`. Harvested from the G11 (building-agentic-systems) queue per IB-164 / DD-101 promotion path.

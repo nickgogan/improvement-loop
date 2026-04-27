@@ -25,6 +25,11 @@ last_updated: "2026-04-20"
 pipeline_status: synthesized
 consumed_by:
   - "building-agentic-systems.md"
+  - artifact: time-window-proactive-loop
+    type: extracted-artifact
+    form: skill
+    date: 2026-04-27
+    session: 83
 ---
 
 ## What It Is
