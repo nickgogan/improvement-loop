@@ -10,7 +10,11 @@ candidate_headline: "evolving-docs-use-delta-updates"
 candidate_harvest_row: "managing-agent-context.harvest-queue.md::ace-delta-updates-over-monolithic-rewrites::rule::evolving-docs-use-delta-updates"
 primary_match_artifact: "never-ask-claude-to-compact-claudemd.md"
 primary_match_form: "rule"
-status: "proposed"
+status: "applied"
+ruling: "Option A — merge as extension"
+ruling_session: 84
+ruling_session_sl: "session-84-codifier-reconcile-and-dd97-sweep"
+applied_to: "never-ask-claude-to-compact-claudemd"
 governance: "DD-97 (calibration LLM-loose; propose-don't-decide invariant; auto-merge prohibition — Nick rules per proposal; this skill never auto-merges)"
 date: "2026-04-27"
 ---
@@ -104,4 +108,4 @@ If Nick rules **Option C (dismiss)**: invoke `/extract-artifacts --harvest-dismi
 
 ## Status
 
-Pending Nick's ruling. Queue row remains `nick-approved` (per DD-101 Branch C); Resolution remains blank in the queue file pending merge or alternative resolution. This proposal is the audit-trail record of the extension scan.
+**Applied 2026-04-27 (Session 84) — Option A.** Nick ruled Option A (merge as extension) on this proposal as part of the session-84 sweep ruling on three accumulated DD-97 Branch-C proposals. The existing rule [[never-ask-claude-to-compact-claudemd]] was manually amended to: (i) generalize scope from CLAUDE.md/AGENTS.md/system-prompt files to all load-bearing evolving documents (PROGRESS.md, playbooks, accumulated notes); (ii) promote the ACE-style voting curators reference to a fully-specified positive-space delta-update sub-rule (append structured deltas, periodic non-LLM consolidation, grow-and-refine merge logic, multi-epoch refinement); (iii) shift title to "Evolving Load-Bearing Documents: No In-Place LLM Rewrite + Delta-Update Discipline." Frontmatter `last_change_session` bumped to 84; `last_change_sl` set to `session-84-codifier-reconcile-and-dd97-sweep`; `contributing_sources` field added; tags extended with `ace`, `delta-updates`, `evolving-docs`. Queue row `managing-agent-context.harvest-queue.md::ace-delta-updates-over-monolithic-rewrites::rule::evolving-docs-use-delta-updates` flipped from `nick-approved` to `extracted` with Resolution `merged into [[never-ask-claude-to-compact-claudemd]]`. Source finding `consumed_by[]` extended with the merged-into artifact.

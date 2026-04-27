@@ -6,12 +6,12 @@ Nothing here is auto-extracted; rows feed `/extract-artifacts` only after Nick r
 | Date queued | Status | Target form | Source finding | Suggested headline | Recommendation |
 |---|---|---|---|---|---|
 | 2026-04-26 | extracted | rule | [[catastrophic-context-collapse-risk-during-claudemd]] | "Never ask Claude to compact CLAUDE.md" | extracted to [[never-ask-claude-to-compact-claudemd]] |
-| 2026-04-26 | nick-approved | rule | [[claudemd-context-rot-from-indiscriminate-rule-accu]] | "CLAUDE.md global rule cap" | extract via /extract-artifacts |
+| 2026-04-26 | extracted | rule | [[claudemd-context-rot-from-indiscriminate-rule-accu]] | "CLAUDE.md global rule cap" | merged into [[claudemd-minimum-viable-rule-only-add-globally-true-lines]] |
 | 2026-04-26 | extracted | skill | [[trajectory-engineering-non-linear-session-forking]] | "/re Fork-and-Trim Trajectory Procedure" | extracted to [[re-fork-and-trim-trajectory-procedure]] |
 | 2026-04-26 | extracted | template | [[progress-md-session-bridge]] | "PROGRESS.md Session Bridge Template" | extracted to [[progressmd-session-bridge-template]] |
 | 2026-04-26 | extracted | template | [[response-format-enum-for-adaptive-verbosity]] | "Tool Response-Format Enum (detailed / concise)" | extracted to [[tool-response-format-enum]] |
 | 2026-04-26 | extracted | rule | [[skills-as-pointers-to-second-brain-files]] | "Skills reference shared context by path, not by copy" | extracted to [[skills-reference-shared-context-by-path]] |
-| 2026-04-26 | nick-approved | rule | [[ace-delta-updates-over-monolithic-rewrites]] | "Evolving context docs use delta updates, never monolithic LLM rewrites" | extract via /extract-artifacts |
+| 2026-04-26 | extracted | rule | [[ace-delta-updates-over-monolithic-rewrites]] | "Evolving context docs use delta updates, never monolithic LLM rewrites" | merged into [[never-ask-claude-to-compact-claudemd]] |
 | 2026-04-26 | extracted | rule | [[ide-context-streaming-silent-token-tax]] | "Close irrelevant IDE files during agent sessions" | extracted to [[close-irrelevant-ide-files-during-agent-sessions]] |
 | 2026-04-26 | extracted | rule | [[model-specific-context-file-sensitivity]] | "Test context strategies against your actual model" | extracted to [[test-context-strategies-against-actual-model]] |
 | 2026-04-26 | nick-dismissed | template | [[five-context-management-techniques-in-claude-code]] | "Context-Management Technique Selector" | dismiss as inline |
@@ -41,16 +41,18 @@ Extracted 2026-04-27 — Session 82 — [[session-82-codifier-extract-artifacts-
 ### claudemd-context-rot-from-indiscriminate-rule-accu::rule::claudemd-global-rule-cap
 
 - **Date queued:** 2026-04-26
-- **Status:** nick-approved
+- **Status:** extracted
 - **Target form:** rule
 - **Source finding:** [[claudemd-context-rot-from-indiscriminate-rule-accu]]
 - **Source excerpt:** "As users add rules to CLAUDE.md each time something goes wrong, the file grows and loads in full at the start of every session. The accumulation of context noise gradually reduces instruction-following quality and increases hallucination rates... Keep CLAUDE.md to 3-5 globally true, universally relevant lines."
 - **Codifier's reading:** Imperative cap on CLAUDE.md global section; machine-enforceable via line-count check on the global Tier-0 section. Fits rule form. Note: a stricter version restricts to *global rules only*; project-specific rules go to per-project / per-skill files. The 60-80 line benchmark from Step 1 is a softer band; this rule names the harder Tier-0 cap.
 - **Suggested headline:** claudemd-global-rule-cap
 - **Recommendation:** extract via /extract-artifacts
-- **Resolution:**
+- **Resolution:** merged into [[claudemd-minimum-viable-rule-only-add-globally-true-lines]]
 
 Pending merge 2026-04-27 — Session 82 — [[session-82-codifier-extract-artifacts-harvest-promotion-batch]] — DD-97 extension proposal emitted at [[operations/extension-proposals/2026-04-27-claudemd-global-rule-cap-extension-proposal]]; primary match [[claudemd-minimum-viable-rule-only-add-globally-true-lines]]. Status remains `nick-approved` per DD-101 Branch C until Nick rules merge / separate / dismiss; on merge ruling, manually amend the existing rule then re-invoke this row to flip Status → `extracted`, Resolution → `merged into [[claudemd-minimum-viable-rule-only-add-globally-true-lines]]`.
+
+Merged 2026-04-27 — Session 84 — [[session-84-codifier-reconcile-and-dd97-sweep]] — Option A applied per [[operations/extension-proposals/2026-04-27-claudemd-global-rule-cap-extension-proposal]] — into [[claudemd-minimum-viable-rule-only-add-globally-true-lines]]. Volume cap (Tier-0: 3-5 lines; Tier-1: 60-80 line band) integrated as operate-stage backstop alongside existing per-line global-truth test.
 
 ### trajectory-engineering-non-linear-session-forking::skill::re-fork-and-trim-trajectory-procedure
 
@@ -111,16 +113,18 @@ Extracted 2026-04-27 — Session 82 — [[session-82-codifier-extract-artifacts-
 ### ace-delta-updates-over-monolithic-rewrites::rule::evolving-docs-use-delta-updates
 
 - **Date queued:** 2026-04-26
-- **Status:** nick-approved
+- **Status:** extracted
 - **Target form:** rule
 - **Source finding:** [[ace-delta-updates-over-monolithic-rewrites]]
 - **Source excerpt:** "When context documents change over time (playbooks, progress files, accumulated notes), update incrementally — append structured entries, then periodically consolidate. Never rewrite the full document with an LLM, as brevity bias silently drops domain-specific details."
 - **Codifier's reading:** Imperative directive ("never rewrite full document with an LLM"); machine-enforceable via a hook that detects whole-document rewrites of designated long-lived files (CLAUDE.md, PROGRESS.md, playbooks) and warns. Fits rule form. The Delta Update Entry template (already in this guide) is the companion structural artifact.
 - **Suggested headline:** evolving-docs-use-delta-updates
 - **Recommendation:** extract via /extract-artifacts
-- **Resolution:**
+- **Resolution:** merged into [[never-ask-claude-to-compact-claudemd]]
 
 Pending merge 2026-04-27 — Session 83 — [[session-83-codifier-ib164-resume-extract-artifacts]] — DD-97 extension proposal emitted at [[operations/extension-proposals/2026-04-27-evolving-docs-use-delta-updates-extension-proposal]]; primary match [[never-ask-claude-to-compact-claudemd]]. Manual apply per DD-97 v1 (Step 1.7 auto-merge prohibition); after apply, row Status flips to `extracted` and Resolution to `merged into [[never-ask-claude-to-compact-claudemd]]` via manual queue edit (or future skill mode).
+
+Merged 2026-04-27 — Session 84 — [[session-84-codifier-reconcile-and-dd97-sweep]] — Option A applied per [[operations/extension-proposals/2026-04-27-evolving-docs-use-delta-updates-extension-proposal]] — into [[never-ask-claude-to-compact-claudemd]]. Scope generalized from CLAUDE.md/AGENTS.md/system-prompt files to all load-bearing evolving documents (PROGRESS.md, playbooks, accumulated notes); ACE-style voting curators promoted to fully-specified delta-update sub-rule; title shifted to "Evolving Load-Bearing Documents: No In-Place LLM Rewrite + Delta-Update Discipline."
 
 ### ide-context-streaming-silent-token-tax::rule::close-irrelevant-ide-files-during-agent-sessions
 

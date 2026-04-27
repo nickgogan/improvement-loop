@@ -50,6 +50,7 @@ last_updated: '2026-04-19'
 pipeline_status: synthesized
 consumed_by:
 - managing-agent-context.md
+- never-ask-claude-to-compact-claudemd.md
 ---
 ## What It Is
 
@@ -81,3 +82,6 @@ Unbounded growth: without a size budget, accumulated deltas will eventually exce
 
 ## Extraction Note — 2026-04-19
 Extracted as **pattern**: [[delta-updates-over-monolithic-rewrites]] in `extracts/patterns/`
+
+## Extraction Note — 2026-04-27 (Session 84)
+Merged as DD-97 extension into **rule**: [[never-ask-claude-to-compact-claudemd]] in `extracts/rules/`. The delta-update mechanism (append structured deltas, periodic non-LLM consolidation, grow-and-refine merge logic, multi-epoch refinement) was promoted from a passing reference inside the existing rule's "permitted alternatives" to a fully-specified positive-space sub-rule; scope generalized from CLAUDE.md/AGENTS.md/system-prompt files to all load-bearing evolving documents (PROGRESS.md, playbooks, accumulated notes). Title shifted to "Evolving Load-Bearing Documents: No In-Place LLM Rewrite + Delta-Update Discipline." Extension proposal: `operations/extension-proposals/2026-04-27-evolving-docs-use-delta-updates-extension-proposal.md` (Option A applied).

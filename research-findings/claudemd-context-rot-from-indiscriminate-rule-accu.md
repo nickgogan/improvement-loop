@@ -38,6 +38,7 @@ related_findings:
 pipeline_status: synthesized
 consumed_by:
 - managing-agent-context.md
+- claudemd-minimum-viable-rule-only-add-globally-true-lines.md
 ---
 # CLAUDE.md Context Rot from Indiscriminate Rule Accumulation
 
@@ -58,3 +59,6 @@ Tooling that auto-analyzes CLAUDE.md for token cost vs. relevance per session ty
 
 ## Potential Failure Modes
 Users who don't understand context rot continue the cycle indefinitely. Periodic 'compaction' of CLAUDE.md by Claude itself introduces a different risk: catastrophic context collapse.
+
+## Extraction Note — 2026-04-27 (Session 84)
+Merged as DD-97 extension into **rule**: [[claudemd-minimum-viable-rule-only-add-globally-true-lines]] in `extracts/rules/`. The volume-cap mechanism (Tier-0: 3-5 lines; Tier-1: 60-80 line band) was added as an operate-stage backstop to the existing per-line global-truth test. Extension proposal: `operations/extension-proposals/2026-04-27-claudemd-global-rule-cap-extension-proposal.md` (Option A applied).

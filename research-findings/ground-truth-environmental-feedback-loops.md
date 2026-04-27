@@ -24,6 +24,7 @@ last_updated: '2026-04-19'
 pipeline_status: synthesized
 consumed_by:
 - session-persistence-and-memory.md
+- agent-self-reporting-unreliability-independent-eval.md
 ---
 
 ## What It Is
@@ -46,3 +47,6 @@ Anthropic's long-running Claude for scientific computing workflow demonstrates t
 
 ## Extraction Note — 2026-04-19
 Extracted as **pattern**: [[ground-truth-environmental-feedback-loops.md]] in `extracts/patterns/`
+
+## Extraction Note — 2026-04-27 (Session 84)
+Merged as DD-97 extension into **rule**: [[agent-self-reporting-unreliability-independent-eval]] in `extracts/rules/`. The per-step environmental-feedback obligation (consume ground-truth signal at every meaningful decision point during execution) was added as a build-stage mechanism alongside the existing verify-stage post-task gate. Stage shifted to `[build, verify]`; title shifted to "Agent Self-Report Is Insufficient: Environmental Feedback During Execution + Independent Verification at Completion." Extension proposal: `operations/extension-proposals/2026-04-27-verify-with-environmental-feedback-extension-proposal.md` (Option A applied).

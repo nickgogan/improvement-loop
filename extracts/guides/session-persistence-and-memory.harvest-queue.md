@@ -6,7 +6,7 @@ Nothing here is auto-extracted; rows feed `/extract-artifacts` only after Nick r
 | Date queued | Status | Target form | Source finding | Suggested headline | Recommendation |
 |---|---|---|---|---|---|
 | 2026-04-26 | extracted | rule | [[memorymd-cross-session-preference-persistence]] | agent-must-read-and-update-memory-md-on-startup | extracted to [[agent-must-read-and-update-memory-md-on-startup]] |
-| 2026-04-26 | nick-approved | rule | [[ground-truth-environmental-feedback-loops]] | verify-with-environmental-feedback-not-self-assessment | extract via /extract-artifacts |
+| 2026-04-26 | extracted | rule | [[ground-truth-environmental-feedback-loops]] | verify-with-environmental-feedback-not-self-assessment | merged into [[agent-self-reporting-unreliability-independent-eval]] |
 | 2026-04-26 | extracted | skill | [[file-based-task-locking-parallel-agents]] | filesystem-lock-parallel-agent-coordination | extracted to [[filesystem-lock-parallel-agent-coordination]] |
 | 2026-04-26 | extracted | skill | [[structured-fact-extraction-from-conversations]] | structured-fact-extraction-from-agent-turn | extracted to [[structured-fact-extraction-from-agent-turn]] |
 | 2026-04-26 | extracted | rule | [[effort-scaling-rules-embedded-in-orchestrator]] | tier-based-orchestrator-effort-scaling-rules | extracted to [[tier-based-orchestrator-effort-scaling-rules]] |
@@ -34,7 +34,7 @@ Extracted 2026-04-27 — Session 83 — [[session-83-codifier-ib164-resume-extra
 ### ground-truth-environmental-feedback-loops::rule::verify-with-environmental-feedback-not-self-assessment
 
 - **Date queued:** 2026-04-26
-- **Status:** nick-approved
+- **Status:** extracted
 - **Target form:** rule
 - **Source finding:** [[ground-truth-environmental-feedback-loops]]
 - **Source excerpt:**
@@ -42,9 +42,11 @@ Extracted 2026-04-27 — Session 83 — [[session-83-codifier-ib164-resume-extra
 - **Codifier's reading:** Rule-shape — a hard prohibition against self-assessment paired with a positive obligation to obtain environmental signal at each decision point. Machine-enforceable in agent harnesses by detecting decision points without preceding tool calls. Broadly applicable across IL skills (research-loop, identify-artifacts, extract-artifacts, synthesize-guide) and S2/S3 agent work generally.
 - **Suggested headline:** verify-with-environmental-feedback-not-self-assessment
 - **Recommendation:** extract via /extract-artifacts
-- **Resolution:** _(awaiting Nick's ruling)_
+- **Resolution:** merged into [[agent-self-reporting-unreliability-independent-eval]]
 
 Pending merge 2026-04-27 — Session 83 — [[session-83-codifier-ib164-resume-extract-artifacts]] — DD-97 extension proposal emitted at [[operations/extension-proposals/2026-04-27-verify-with-environmental-feedback-extension-proposal]]; primary match [[agent-self-reporting-unreliability-independent-eval]]. Manual apply per DD-97 v1 (Step 1.7 auto-merge prohibition); after apply, row Status flips to `extracted` and Resolution to `merged into [[agent-self-reporting-unreliability-independent-eval]]` via manual queue edit (or future skill mode).
+
+Merged 2026-04-27 — Session 84 — [[session-84-codifier-reconcile-and-dd97-sweep]] — Option A applied per [[operations/extension-proposals/2026-04-27-verify-with-environmental-feedback-extension-proposal]] — into [[agent-self-reporting-unreliability-independent-eval]]. Per-step environmental-feedback obligation integrated as build-stage mechanism alongside existing verify-stage post-task gate; stage shifted to `[build, verify]`; title shifted to "Agent Self-Report Is Insufficient: Environmental Feedback During Execution + Independent Verification at Completion."
 
 ### file-based-task-locking-parallel-agents::skill::filesystem-lock-parallel-agent-coordination
 

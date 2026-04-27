@@ -3,9 +3,11 @@ title: 'CLAUDE.md Minimum Viable Rule: Only Add Globally True Lines'
 type: extracted-artifact
 assigned_form: rule
 source_finding: claudemd-minimum-viable-rule-only-add-globally
+contributing_sources:
+  - claudemd-context-rot-from-indiscriminate-rule-accu
 extraction_date: '2026-04-26'
-last_change_session: 66
-last_change_sl: "session-66-codifier-ib-150-acceptance-test"
+last_change_session: 84
+last_change_sl: "session-84-codifier-reconcile-and-dd97-sweep"
 identification_report: 2026-04-26-identification-report.md
 deployed: false
 deployed_to: null
@@ -28,7 +30,8 @@ contract:
   preconditions: A CLAUDE.md (or equivalent agent context file) exists or is being created. The operator has write access to the file. The operator can reason about the frequency distribution of their sessions
     — what tasks they actually perform, how often.
   invariants: Every line present in CLAUDE.md passes the global-truth test (applicable in nearly every session). The file does not contain rules whose primary justification is handling a single past failure.
-    Per-project or per-session context mechanisms exist as an alternative destination for scoped rules so that removing a line from CLAUDE.md does not mean permanently losing the guidance.
+    Per-project or per-session context mechanisms exist as an alternative destination for scoped rules so that removing a line from CLAUDE.md does not mean permanently losing the guidance. Tier-0 CLAUDE.md
+    (~/.claude/CLAUDE.md) stays within 3-5 lines; Tier-1 (per-project CLAUDE.md) stays within a 60-80 line band — independent of the per-line test result.
   governance: 'Owner: the individual or team responsible for the agent setup. Any person or agent authorized to modify CLAUDE.md must apply this rule before each addition. Audit trigger: if session startup
     context utilization is unexpectedly high, audit CLAUDE.md for lines that fail the global-truth test. No external governance gate required — enforcement is at the point of authorship.'
   recovery: 'If a line is discovered to fail the global-truth test after being added: remove it from CLAUDE.md immediately; if the rule is genuinely useful in specific contexts, migrate it to a per-project
@@ -39,9 +42,10 @@ tags:
 - rule
 ---
 
-# CLAUDE.md Minimum Viable Rule: Only Add Globally True Lines
+# CLAUDE.md Minimum Viable Rule: Only Add Globally True Lines — Per-Line Truth Test + Volume Cap
 
 **Source:** [[claudemd-minimum-viable-rule-only-add-globally]]
+**Contributing source:** [[claudemd-context-rot-from-indiscriminate-rule-accu]] (volume-cap mechanism, session 84)
 **Form:** rule
 **Extraction date:** 2026-04-26
 
@@ -65,6 +69,14 @@ This rule fires on every proposed addition to a CLAUDE.md file. It does not appl
 - Slash commands for session-specific context injection
 - Inline instructions passed at invocation time for one-off behavioral adjustments
 
+**Volume cap (operate-stage backstop):**
+
+Independent of the per-line test, the file's total volume is capped:
+- **Tier-0 (global, `~/.claude/CLAUDE.md`):** 3-5 lines. This is the hard cap for content loaded into every session unconditionally.
+- **Tier-1 (per-project `CLAUDE.md`):** 60-80 line band. Soft band; project-scoped context can be richer than the global tier without becoming dominant.
+
+The cap is a structural backstop, not a replacement for the per-line test. Lines that pass the global-truth test and stay within the cap are the intended steady state. The cap catches the failure mode where the per-line test was misapplied (operator slips, gradual relaxation, group disagreement) and accumulated drift would otherwise go unsignaled.
+
 ## Boundary
 
 Enforced at the moment of authoring: before any edit to a CLAUDE.md file is finalized. Applies equally to human operators and to any agent authorized to modify CLAUDE.md.
@@ -78,6 +90,7 @@ Enforced at the moment of authoring: before any edit to a CLAUDE.md file is fina
   - Line was added in error → remove it; check whether the marginal noise it introduced in irrelevant sessions has caused downstream confusion.
 - **Cannot be self-certified:** The operator must explicitly reason about session frequency before adding each line. Post-hoc audits ("does this CLAUDE.md line apply to most of my actual sessions?") are the primary enforcement mechanism.
 - **Signal for bloat:** If the agent starts a session at significantly higher context utilization than expected before any task context has been loaded, audit CLAUDE.md for lines that fail the global-truth test.
+- **Volume cap (deterministic):** For each tier, evaluate `line_count(file) ≤ tier_cap` (Tier-0: 5; Tier-1: 80). Violations surface as a file-write-time warning or a periodic audit flag. The cap fires regardless of per-line test outcomes — accumulated in-spec lines can still exceed the band.
 
 ## Rationale
 
@@ -87,13 +100,15 @@ The discipline to resist adding rules is non-intuitive: every failed interaction
 
 The corollary: a lean CLAUDE.md (3–5 lines of genuinely universal truth) outperforms a thorough CLAUDE.md (30 lines covering every edge case) on average-session quality, even though the thorough version handles more edge cases when they arise.
 
+The volume cap is a structural backstop to the per-line test. The per-line test fires at the moment of authorship (a specify-stage discipline); the cap fires as an operate-stage observable. In practice, the per-line test alone has been observed to drift — operators relax application over time, edge-case rules get justified one-by-one, and aggregate volume creeps up. The cap is the independent operate-stage signal that catches accumulated drift the per-line test missed. The two mechanisms compose: each line passes the per-line test AND the file passes the volume cap. Either failing means the file is out of compliance.
+
 ## Contract
 
 ### Preconditions
 A CLAUDE.md (or equivalent agent context file) exists or is being created. The operator has write access to the file. The operator can reason about the frequency distribution of their sessions — what tasks they actually perform, how often.
 
 ### Invariants
-Every line present in CLAUDE.md passes the global-truth test (applicable in nearly every session). The file does not contain rules whose primary justification is handling a single past failure. Per-project or per-session context mechanisms exist as an alternative destination for scoped rules so that removing a line from CLAUDE.md does not mean permanently losing the guidance.
+Every line present in CLAUDE.md passes the global-truth test (applicable in nearly every session). The file does not contain rules whose primary justification is handling a single past failure. Per-project or per-session context mechanisms exist as an alternative destination for scoped rules so that removing a line from CLAUDE.md does not mean permanently losing the guidance. Tier-0 CLAUDE.md (`~/.claude/CLAUDE.md`) stays within 3-5 lines; Tier-1 (per-project CLAUDE.md) stays within a 60-80 line band — independent of the per-line test result.
 
 ### Governance
 Owner: the individual or team responsible for the agent setup. Any person or agent authorized to modify CLAUDE.md must apply this rule before each addition. Audit trigger: if session startup context utilization is unexpectedly high, audit CLAUDE.md for lines that fail the global-truth test. No external governance gate required — enforcement is at the point of authorship.

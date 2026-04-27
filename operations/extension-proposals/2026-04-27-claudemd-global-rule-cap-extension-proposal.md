@@ -10,7 +10,11 @@ candidate_headline: "claudemd-global-rule-cap"
 candidate_harvest_row: "managing-agent-context.harvest-queue.md::claudemd-context-rot-from-indiscriminate-rule-accu::rule::claudemd-global-rule-cap"
 primary_match_artifact: "claudemd-minimum-viable-rule-only-add-globally-true-lines.md"
 primary_match_form: "rule"
-status: "proposed"
+status: "applied"
+ruling: "Option A — merge as extension"
+ruling_session: 84
+ruling_session_sl: "session-84-codifier-reconcile-and-dd97-sweep"
+applied_to: "claudemd-minimum-viable-rule-only-add-globally-true-lines"
 governance: "DD-97 (calibration LLM-loose; propose-don't-decide invariant; auto-merge prohibition — Nick rules per proposal; this skill never auto-merges)"
 date: "2026-04-27"
 ---
@@ -94,4 +98,4 @@ If Nick rules **Option C (dismiss)**: invoke `/extract-artifacts --harvest-dismi
 
 ## Status
 
-Pending Nick's ruling. Queue row remains `nick-approved` (per DD-101 Branch C); Resolution remains blank in the queue file pending merge or alternative resolution. This proposal is the audit-trail record of the extension scan.
+**Applied 2026-04-27 (Session 84) — Option A.** Nick ruled Option A (merge as extension) on this proposal as part of the session-84 sweep ruling on three accumulated DD-97 Branch-C proposals. The existing rule [[claudemd-minimum-viable-rule-only-add-globally-true-lines]] was manually amended to add the volume-cap mechanism (Tier-0: 3-5 lines; Tier-1: 60-80 line band) as an operate-stage backstop alongside the per-line global-truth test. Frontmatter `last_change_session` bumped to 84; `last_change_sl` set to `session-84-codifier-reconcile-and-dd97-sweep`; `contributing_sources` field added pointing to the candidate finding. Queue row `managing-agent-context.harvest-queue.md::claudemd-context-rot-from-indiscriminate-rule-accu::rule::claudemd-global-rule-cap` flipped from `nick-approved` to `extracted` with Resolution `merged into [[claudemd-minimum-viable-rule-only-add-globally-true-lines]]`. Source finding `consumed_by[]` extended with the merged-into artifact.

@@ -10,7 +10,11 @@ candidate_headline: "verify-with-environmental-feedback-not-self-assessment"
 candidate_harvest_row: "session-persistence-and-memory.harvest-queue.md::ground-truth-environmental-feedback-loops::rule::verify-with-environmental-feedback-not-self-assessment"
 primary_match_artifact: "agent-self-reporting-unreliability-independent-eval.md"
 primary_match_form: "rule"
-status: "proposed"
+status: "applied"
+ruling: "Option A — merge as extension"
+ruling_session: 84
+ruling_session_sl: "session-84-codifier-reconcile-and-dd97-sweep"
+applied_to: "agent-self-reporting-unreliability-independent-eval"
 governance: "DD-97 (calibration LLM-loose; propose-don't-decide invariant; auto-merge prohibition — Nick rules per proposal; this skill never auto-merges)"
 date: "2026-04-27"
 ---
@@ -95,4 +99,4 @@ If Nick rules **Option C (dismiss)**: invoke `/extract-artifacts --harvest-dismi
 
 ## Status
 
-Pending Nick's ruling. Queue row remains `nick-approved` (per DD-101 Branch C); Resolution remains blank in the queue file pending merge or alternative resolution. This proposal is the audit-trail record of the extension scan.
+**Applied 2026-04-27 (Session 84) — Option A.** Nick ruled Option A (merge as extension) on this proposal as part of the session-84 sweep ruling on three accumulated DD-97 Branch-C proposals. The existing rule [[agent-self-reporting-unreliability-independent-eval]] was manually amended to integrate the per-step environmental-feedback obligation as a build-stage mechanism alongside the existing verify-stage post-task gate. Specifically: (i) Condition broadened to fire at two temporal surfaces (task-completion verify-stage AND per-step build-stage decision points); (ii) new "Required (build stage — per-step environmental feedback)" subsection added enumerating decision points where ground-truth signal must be consumed (after each tool call, before each next-step planning, after each subagent return, before each significant state mutation); (iii) Boundary section extended with "Agent execution loops" surface; (iv) Enforcement section extended with per-step feedback enforcement; (v) Rationale extended with the per-step-vs-post-task distinction and the coding-agent verification-signal evidence; (vi) `stage` field shifted to `[build, verify]`; (vii) title shifted to "Agent Self-Report Is Insufficient: Environmental Feedback During Execution + Independent Verification at Completion." Frontmatter `last_change_session` bumped to 84; `last_change_sl` set to `session-84-codifier-reconcile-and-dd97-sweep`; `contributing_sources` field added; tags extended with `environmental-feedback`, `ground-truth`. Queue row `session-persistence-and-memory.harvest-queue.md::ground-truth-environmental-feedback-loops::rule::verify-with-environmental-feedback-not-self-assessment` flipped from `nick-approved` to `extracted` with Resolution `merged into [[agent-self-reporting-unreliability-independent-eval]]`. Source finding `consumed_by[]` extended with the merged-into artifact.
