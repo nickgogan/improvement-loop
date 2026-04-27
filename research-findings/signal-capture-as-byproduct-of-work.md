@@ -3,7 +3,7 @@ name: Signal Capture as Byproduct of Work
 summary: Organizational knowledge systems only compound if signal capture is a byproduct of doing the work — not a separate documentation act. When feeding the system requires extra effort, the people with
   the most valuable context will strategically withhold it, and the system stagnates.
 implementation_notes: null
-category: Memory Architecture
+category: Agentic Systems
 evidence_strength: Medium (practitioner-documented)
 adoption_status: Not Yet Started
 priority: P2 (Design Required)
@@ -28,7 +28,7 @@ related_findings:
   rel: same-problem
 proposals: null
 date_discovered: '2026-04-20'
-last_updated: '2026-04-20'
+last_updated: '2026-04-27'
 pipeline_status: synthesized
 consumed_by:
   - "session-persistence-and-memory.md"

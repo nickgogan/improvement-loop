@@ -6,7 +6,7 @@ summary: Augment Claude Code's static project memory (e.g., CLAUDE.md) with a lo
 implementation_notes: 'Pattern: add a memory plugin/hook that queries a memory store (semantic) before every prompt and injects top relevant facts into context; after responses, retain every N turns with
   overlap to extract structured decisions/preferences/context. Tune retainEveryNTurns/retainOverlapTurns for cost vs coverage; tune recallBudget/recallMaxTokens for latency/token budget. Add safety: avoid
   permission-bypass modes for remote channels.'
-category: Memory Architecture
+category: Context Engineering
 evidence_strength: Medium (practitioner-documented)
 adoption_status: Not Yet Started
 priority: P2 (Design Required)
@@ -18,7 +18,7 @@ sources:
 - openclaude-build-a-claude-code-agent-with-long-ter.md
 proposals: []
 date_discovered: '2026-04-01'
-last_updated: '2026-04-20'
+last_updated: '2026-04-27'
 related_findings:
 - file: structured-fact-extraction-from-conversations.md
   rel: enables

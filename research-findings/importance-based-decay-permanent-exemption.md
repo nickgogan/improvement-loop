@@ -2,7 +2,7 @@
 name: "Importance-Based Memory Decay with Permanent Exemption"
 summary: "Memongo decays memory relevance by importance score rather than wall-clock TTL, via `computeImportanceDecay()`. Memories flagged as permanent or ongoing are exempt from decay entirely. No time-based expiry: a low-importance memory may persist indefinitely if nothing contends with it, while a high-churn workload naturally crowds out low-signal content through retrieval competition rather than deletion."
 implementation_notes: "Contrasts with TTL-based schemes (Redis-style expiry) and with strict decay-curve models. Easier to tune (one axis: importance threshold) but requires a working importance score that's stable across sessions. The permanent/ongoing tag is a first-class escape hatch — useful for identity facts and long-running project state that should never be subject to decay. Memongo improvement question: what produces the importance score, and how well does it correlate with downstream retrieval utility?"
-category: "Memory Architecture"
+category: "Context Engineering"
 evidence_strength: "Medium (practitioner-documented)"
 adoption_status: "Not Yet Started"
 priority: "P3"
@@ -25,7 +25,7 @@ related_findings:
     rel: same-problem
 proposals: null
 date_discovered: "2026-04-20"
-last_updated: "2026-04-20"
+last_updated: "2026-04-27"
 pipeline_status: classified
 consumed_by: []
 ---

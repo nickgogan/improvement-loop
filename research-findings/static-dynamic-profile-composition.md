@@ -2,7 +2,7 @@
 name: "Static + Dynamic User Profile Composition in One API Call"
 summary: "At write time, each memory is flagged `isStatic: true` (permanent — name, role, preferences) or `isStatic: false` (ephemeral — recent activity, current project). A single profile API call composes both layers into a response shape `{ profile: { static: [...], dynamic: [...] } }` in ~50ms. The split formalizes 'identity context' vs 'state context' at the storage API layer rather than leaving it to consumer code."
 implementation_notes: null
-category: "Memory Architecture"
+category: "Context Engineering"
 evidence_strength: "Medium (practitioner-documented)"
 adoption_status: "Not Yet Started"
 priority: null
@@ -15,7 +15,7 @@ related_findings:
     rel: enables
 proposals: null
 date_discovered: "2026-04-23"
-last_updated: "2026-04-23"
+last_updated: "2026-04-27"
 pipeline_status: raw
 consumed_by: []
 ---

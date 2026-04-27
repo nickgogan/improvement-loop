@@ -4,7 +4,7 @@ summary: Long-term memory systems should support dynamic bank IDs that isolate m
   each other's recall. Hindsight supports bankId configuration and channel-based isolation (HINDSIGHT_CHANNEL_ID, HINDSIGHT_USER_ID) as first-class primitives.
 implementation_notes: If MetaSystem adopts semantic memory, ensure separate memory banks per system boundary (Improvement Loop, Household OS, Claude Build). Cross-system recall should be opt-in, not default.
   This maps directly to the existing system scope boundaries (DD-55, DD-56, DD-59).
-category: Memory Architecture
+category: Context Engineering
 evidence_strength: Medium (practitioner-documented)
 adoption_status: Not Yet Started
 priority: P2
@@ -34,7 +34,7 @@ related_findings:
   rel: same-problem
 proposals: []
 date_discovered: '2026-04-07'
-last_updated: '2026-04-24'
+last_updated: '2026-04-27'
 pipeline_status: synthesized
 consumed_by:
   - "session-persistence-and-memory.md"

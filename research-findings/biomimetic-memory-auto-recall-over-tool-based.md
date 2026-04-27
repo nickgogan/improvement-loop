@@ -4,7 +4,7 @@ summary: Injecting relevant memories into context automatically before every pro
   memory fails because the agent must realize it should check memory -- auto-recall makes memory automatic and invisible to the chat transcript.
 implementation_notes: 'MetaSystem''s current memory approach (CLAUDE.md, PROGRESS.md, MEMORY.md) is static file-based. The next evolution is semantic auto-recall: before each prompt, query a memory store
   for contextually relevant facts and inject them. Hindsight''s Claude Code plugin demonstrates this is now a turnkey integration.'
-category: Memory Architecture
+category: Context Engineering
 evidence_strength: Medium (practitioner-documented)
 adoption_status: Not Yet Started
 priority: P2 (Design Required)
@@ -30,7 +30,7 @@ related_findings:
   rel: same-problem
 proposals: []
 date_discovered: '2026-04-07'
-last_updated: '2026-04-08'
+last_updated: '2026-04-27'
 pipeline_status: synthesized
 consumed_by:
 - session-persistence-and-memory.md

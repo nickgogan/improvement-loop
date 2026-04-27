@@ -2,7 +2,7 @@
 name: "Surprisal Novelty as Memory Write Gate"
 summary: "Memongo includes a `mongodb-novelty.ts` module that computes surprisal-based novelty for incoming memory candidates and uses that score to gate what enters long-term memory. A candidate that closely matches an existing memory is low-novelty and either merged or dropped; high-novelty candidates are written as new memories. This is an upstream write-time filter, complementary to downstream decay."
 implementation_notes: "Surprisal is the information-theoretic complement to importance: importance asks 'does this matter?', surprisal asks 'is this new?'. A mature agent memory system needs both — high-importance-but-redundant signals should merge rather than duplicate, and high-novelty-but-low-importance signals shouldn't clutter the index. Memongo exposes surprisal as a named module, which suggests it's intended to be tunable. For Memongo improvement: pair novelty gating with explicit deduplication and contradiction detection; surprisal alone doesn't catch 'new phrasing of same fact' when the semantic embedding is coarse."
-category: "Memory Architecture"
+category: "Context Engineering"
 evidence_strength: "Medium (practitioner-documented)"
 adoption_status: "Not Yet Started"
 priority: "P2"
@@ -25,7 +25,7 @@ related_findings:
     rel: same-problem
 proposals: null
 date_discovered: "2026-04-20"
-last_updated: "2026-04-20"
+last_updated: "2026-04-27"
 pipeline_status: synthesized
 consumed_by:
   - "session-persistence-and-memory.md"

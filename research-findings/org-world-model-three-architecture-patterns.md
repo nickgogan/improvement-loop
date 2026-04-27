@@ -2,7 +2,7 @@
 name: "Org World-Model Three Architecture Patterns"
 summary: "Three distinct architectures are used to build organizational world models — vector DB (semantic retrieval), structured ontology (schema-bounded reasoning), and signal fidelity (high-quality data exhaust) — each with a characteristic failure mode rooted in how it mishandles the information/judgment boundary."
 implementation_notes: null
-category: "Memory Architecture"
+category: "Agentic Systems"
 evidence_strength: "Medium (practitioner-documented)"
 adoption_status: "Not Yet Started"
 priority: "P2 (Design Required)"
@@ -23,7 +23,7 @@ related_findings:
     rel: related
 proposals: null
 date_discovered: "2026-04-20"
-last_updated: "2026-04-20"
+last_updated: "2026-04-27"
 pipeline_status: synthesized
 consumed_by:
   - "session-persistence-and-memory.md"

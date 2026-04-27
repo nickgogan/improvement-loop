@@ -4,7 +4,7 @@ name: Agent Memory Architecture (Multi-Agent, Layered)
 summary: 'Production multi-agent systems communicate through shared memory layers rather than direct message passing. Key layers: working (PROGRESS.md), episodic (agent-log/), semantic (reference/), procedural
   (skills/). Governance logging should be designed in from day one.'
 implementation_notes: null
-category: Memory Architecture
+category: Context Engineering
 evidence_strength: Medium (practitioner-documented)
 adoption_status: Partially Adopted
 priority: P2
@@ -16,7 +16,7 @@ sources:
 - march-18-agent-memory-architecture-research.md
 proposals: null
 date_discovered: '2026-03-18'
-last_updated: '2026-04-19'
+last_updated: '2026-04-27'
 related_findings:
 - file: memory-cross-layer-promotion-governance.md
   rel: enables

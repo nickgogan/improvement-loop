@@ -2,7 +2,7 @@
 name: "Agentic Search and Memory Retrieval (ASMR) Architecture"
 summary: "A memory-system architecture that replaces vector-similarity retrieval with active LLM-driven reasoning over stored findings, end to end. Ingestion uses parallel reader agents extracting across multiple vectors (personal info, preferences, events, temporal, updates); retrieval uses specialized search agents that reason through the memory rather than nearest-neighbor-query it; answering uses an ensemble of N variant reasoning paths. Trades per-query LLM cost for higher retrieval quality on long-context / cross-session benchmarks. Plain English: instead of 'find the nearest document,' the system runs several small agents that literally reason through the memory and return what they figured out. Expensive but powerful for hard cross-session reasoning questions."
 implementation_notes: "Reference implementation is Supermemory's ASMR sandbox. Explicitly labeled 'highly experimental / not production' by the vendor ([[experimental-sandbox-labeling-discipline]]). Cost/latency disclosures completely absent from the source — production-readiness claims are unsupported."
-category: "Memory Architecture"
+category: "Context Engineering"
 evidence_strength: "Low (single-vendor sandbox, not production-shipped)"
 adoption_status: "Exploratory"
 priority: P3
@@ -26,7 +26,7 @@ related_findings:
     rel: same-problem
 proposals: null
 date_discovered: "2026-04-23"
-last_updated: "2026-04-24"
+last_updated: "2026-04-27"
 pipeline_status: classified
 consumed_by: []
 ---

@@ -4,7 +4,7 @@ summary: 'In multi-layer memory architectures, the most dangerous operation is c
   The pattern: every promotion must be policy-gated with explicit ownership, approval level, and rollback path. Demotion (pruning/compaction) requires garbage collection with importance/recency scoring.'
 implementation_notes: MetaSystem already has informal promotion patterns (findings become proposals, proposals become codified patterns). This finding formalizes the governance required at each transition.
   Applicable to any future memory system design for agents.
-category: Memory Architecture
+category: Context Engineering
 evidence_strength: Medium (practitioner-documented)
 adoption_status: Not Yet Started
 priority: P2 (Design Required)
@@ -31,7 +31,7 @@ related_findings:
   rel: same-problem
 proposals: []
 date_discovered: '2026-04-07'
-last_updated: '2026-04-08'
+last_updated: '2026-04-27'
 pipeline_status: synthesized
 consumed_by:
 - session-persistence-and-memory.md

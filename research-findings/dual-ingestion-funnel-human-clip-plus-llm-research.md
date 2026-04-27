@@ -3,7 +3,7 @@ name: 'Dual Ingestion Funnel: Human Clip + LLM Research'
 summary: 'Two parallel data ingestion paths: human-driven via Web Clipper (user manually clips web pages into raw/ folder) and LLM-driven where Claude Code autonomously conducts web research and creates
   raw markdown files or directly generates wiki articles. The raw/ folder is ''more for you, the human'' while Claude can bypass it.'
 implementation_notes: 'Relevant to MetaSystem''s research-loop: the skill already does LLM-driven research ingestion while human sources come through manual URL submission.'
-category: Memory Architecture
+category: Context Engineering
 evidence_strength: Medium (practitioner-documented)
 adoption_status: Partially Adopted
 priority: P2 (Design Required)
@@ -25,7 +25,7 @@ related_findings:
   rel: enables
 proposals: null
 date_discovered: '2026-04-07'
-last_updated: '2026-04-07'
+last_updated: '2026-04-27'
 pipeline_status: synthesized
 consumed_by:
 - session-persistence-and-memory.md

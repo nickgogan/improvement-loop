@@ -1,7 +1,7 @@
 ---
 name: Research Dimensions
 description: Researcher-side scan topics — dimensions (top-level) and sub-dimensions (second-level) naming what the Researcher scans for in the world. Read by /research-loop at scan start. Not a consumer routing layer; consumer-facing navigation is the Librarian's reference layer.
-last_updated: "2026-04-24 (session 63 — added Sub-dimension 1.B)"
+last_updated: "2026-04-27 (session 80 — IB-153 dimension rebalance: aligned Dim 2-5 names to canonical long forms used in findings)"
 ---
 
 # Research Dimensions
@@ -33,10 +33,10 @@ Dimensions are top-level scan topics. A **sub-dimension** is a second-level scan
 - Dimension 1: Context Engineering
   - Sub-dimension 1.A: Memory Decay, Forgetting, and Compaction *(added 2026-04-24)*
   - Sub-dimension 1.B: Memory Isolation and Topology *(added 2026-04-24)*
-- Dimension 2: Model
-- Dimension 3: Prompt
-- Dimension 4: Tools
-- Dimension 5: Intent
+- Dimension 2: Model Selection
+- Dimension 3: Prompt Craft
+- Dimension 4: Tool Integration
+- Dimension 5: Intent Engineering
 - Dimension 6: Orchestration
 - Dimension 7: Evaluation
 - Dimension 8: Sandboxing
@@ -146,7 +146,7 @@ Dimensions are top-level scan topics. A **sub-dimension** is a second-level scan
 
 ---
 
-## Dimension 2: Model
+## Dimension 2: Model Selection
 
 **What to search for:**
 - New model releases and capability changes relevant to agent tasks
@@ -161,7 +161,7 @@ Dimensions are top-level scan topics. A **sub-dimension** is a second-level scan
 
 ---
 
-## Dimension 3: Prompt
+## Dimension 3: Prompt Craft
 
 **What to search for:**
 - New instruction patterns and structural conventions
@@ -177,7 +177,7 @@ Dimensions are top-level scan topics. A **sub-dimension** is a second-level scan
 
 ---
 
-## Dimension 4: Tools
+## Dimension 4: Tool Integration
 
 **What to search for:**
 - New capabilities in agent platforms (Claude Code, MCP, Notion Custom Agents, etc.)
@@ -193,7 +193,7 @@ Dimensions are top-level scan topics. A **sub-dimension** is a second-level scan
 
 ---
 
-## Dimension 5: Intent (Meta-Dimension)
+## Dimension 5: Intent Engineering (Meta-Dimension)
 
 **What to search for:**
 - Goal encoding and alignment for agents

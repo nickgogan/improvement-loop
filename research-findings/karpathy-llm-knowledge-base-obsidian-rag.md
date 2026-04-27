@@ -4,7 +4,7 @@ summary: 'Andrej Karpathy''s approach: LLM ''compiles'' raw documents into a str
   Four-phase cycle: ingest → compile (index + concepts) → query → enhance. Cole Medin adapts this for Claude Code session logs — self-evolving memory that compounds over time.'
 implementation_notes: MetaSystem IS an Obsidian vault with this exact pattern emerging organically. The explicit compile step (LLM building index + concept pages from raw data) and session-log capture via
   hooks are directly actionable enhancements.
-category: Memory Architecture
+category: Agentic Systems
 evidence_strength: Strong (production-tested)
 adoption_status: Partially Adopted
 priority: P1 (Implement Now)
@@ -18,7 +18,7 @@ sources:
 - karpathy-llm-wiki-local-implementation.md
 proposals: null
 date_discovered: '2026-04-07'
-last_updated: '2026-04-20'
+last_updated: '2026-04-27'
 related_findings:
 - file: claudemd-as-knowledge-base-traversal-guide.md
   rel: same-problem

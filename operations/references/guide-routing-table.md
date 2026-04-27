@@ -71,15 +71,15 @@ Current per-cluster finding counts are not enumerated here — they drift per se
 
 | ID | Guide Title | Question | Stage | Dimensions |
 |----|------------|----------|-------|------------|
-| G1 | Writing Agent Specifications | "How do I specify what my agent should do?" | specify | Intent, Context, Orchestration |
+| G1 | Writing Agent Specifications | "How do I specify what my agent should do?" | specify | Intent Engineering, Context Engineering, Orchestration |
 | G2 | Managing Agent Context | "My agent is losing context or burning tokens" | build | Context Engineering |
-| G3 | Agent Architecture Decisions | "Should I use one agent or many? How do I compose?" | build | Orchestration, Model |
+| G3 | Agent Architecture Decisions | "Should I use one agent or many? How do I compose?" | build | Orchestration, Model Selection |
 | G3b | Agent Workflow and Execution | "How do I run agents in production?" | operate | Orchestration |
 | G4 | Building Agent Evaluation Suites | "How do I verify my agent actually works?" | verify | Evaluation |
-| G5 | Designing Agent Tools | "How do I design tools for agents?" | build | Tools |
+| G5 | Designing Agent Tools | "How do I design tools for agents?" | build | Tool Integration |
 | G6 | Agent Safety and Permissions | "How do I make my agent system safe?" | secure | Sandboxing, Evaluation |
-| G7 | Session Persistence and Memory | "How do I handle memory and session continuity?" | operate | Context, Orchestration, Memory Architecture |
-| G8 | Model-Resilient Prompt Engineering | "How do I write prompts that survive model upgrades?" | build | Prompt, Model |
+| G7 | Session Persistence and Memory | "How do I handle memory and session continuity?" | operate | Context Engineering, Orchestration |
+| G8 | Model-Resilient Prompt Engineering | "How do I write prompts that survive model upgrades?" | build | Prompt Craft, Model Selection |
 | G9 | Agent Governance and Trust | "How do I govern agent autonomy and maintain human oversight?" | secure | Governance |
 | G10 | Agent Design Patterns | "How do I design an individual agent's identity and behavior?" | specify | Agent Design |
 

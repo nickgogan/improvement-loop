@@ -3,7 +3,7 @@ name: 'RAG-Anything: Multimodal Document Processing for Claude Code'
 summary: 'RAG-Anything wraps LightRAG to handle non-text documents (images, charts, equations). Dual-bucket processing: Paddle OCR for text extraction, AI model for image analysis. Creates two knowledge
   graphs (text + image) merged by matching entities into a unified queryable system.'
 implementation_notes: null
-category: Memory Architecture
+category: Context Engineering
 evidence_strength: Medium (practitioner-documented)
 adoption_status: Not Yet Started
 priority: P3 (Monitor)
@@ -14,7 +14,7 @@ sources:
 - claude-code-plus-rag-anything.md
 proposals: null
 date_discovered: '2026-04-07'
-last_updated: '2026-04-07'
+last_updated: '2026-04-27'
 related_findings:
 - file: mineru-local-document-parsing-for-rag.md
   rel: enabled-by

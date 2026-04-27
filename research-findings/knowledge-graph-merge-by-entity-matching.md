@@ -3,7 +3,7 @@ name: Knowledge Graph Merge by Entity Matching
 summary: 'RAG-Anything produces four intermediate stores (two vector DBs + two knowledge graphs from text and image paths) and merges them by matching entities. Two-stage merge: text+image outputs unify
   into a RAG-Anything store, then merge with the existing LightRAG store.'
 implementation_notes: Applicable to any system ingesting knowledge from heterogeneous sources into a unified graph.
-category: Memory Architecture
+category: Context Engineering
 evidence_strength: Medium (practitioner-documented)
 adoption_status: Not Yet Started
 priority: P3 (Monitor)
@@ -17,7 +17,7 @@ related_findings:
   rel: extends
 proposals: null
 date_discovered: '2026-04-07'
-last_updated: '2026-04-08'
+last_updated: '2026-04-27'
 pipeline_status: raw
 consumed_by: []
 ---

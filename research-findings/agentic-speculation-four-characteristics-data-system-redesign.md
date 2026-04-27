@@ -1,8 +1,8 @@
 ---
 name: "Agentic Speculation — Four Characteristics That Redesign Data Systems"
 summary: "UC Berkeley position paper (Parameswaran group + Stoica + Zaharia + Gonzalez + Cheung + Crooks) argues LLM-agent workloads are characterized by 'agentic speculation' — high-throughput exploration and solution formulation — and that four properties demand rethinking of data systems: scale (volume dwarfs traditional workloads), heterogeneity (queries cross modalities/schemas/systems), redundancy (repeated near-duplicate exploration), and steerability (queries redirect mid-flight). Proposes new research directions across query interfaces, query processing, and agentic memory stores."
-implementation_notes: "Not immediately actionable (vision paper, no benchmarks) but a useful lens for MetaSystem: any data-retrieval surface an agent talks to will exhibit these four properties. Particularly relevant: redundancy — agent exploration paths overlap, so caching or dedup at the retrieval layer may pay off more than in human-query workloads. Also relevant: the 'agentic memory stores' research direction aligns with active work on Memongo and the broader Memory Architecture dimension."
-category: "Memory Architecture"
+implementation_notes: "Not immediately actionable (vision paper, no benchmarks) but a useful lens for MetaSystem: any data-retrieval surface an agent talks to will exhibit these four properties. Particularly relevant: redundancy — agent exploration paths overlap, so caching or dedup at the retrieval layer may pay off more than in human-query workloads. Also relevant: the 'agentic memory stores' research direction aligns with active work on Memongo and the broader Context Engineering dimension (Sub-dim 1.A/1.B)."
+category: "Context Engineering"
 evidence_strength: "Weak (theoretical)"
 adoption_status: "Not Yet Started"
 priority: "P3"
@@ -26,7 +26,7 @@ related_findings:
     rel: same-problem
 proposals: null
 date_discovered: "2026-04-20"
-last_updated: "2026-04-20"
+last_updated: "2026-04-27"
 pipeline_status: raw
 consumed_by: []
 ---

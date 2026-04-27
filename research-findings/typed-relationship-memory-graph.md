@@ -2,7 +2,7 @@
 name: "Typed-Relationship Memory Graph (updates/extends/derives)"
 summary: "Three named edge types capture how memories evolve over time: `updates` (new fact supersedes old, old is retained with `isLatest: false`), `extends` (adds context to an existing fact), `derives` (system inferred a new memory from patterns across several). Typed evolution graph, not untyped similarity edges — gives a concrete API shape for 'update without losing history' and for making inferred knowledge auditable."
 implementation_notes: null
-category: "Memory Architecture"
+category: "Context Engineering"
 evidence_strength: "Medium (practitioner-documented)"
 adoption_status: "Not Yet Started"
 priority: null
@@ -22,7 +22,7 @@ related_findings:
     rel: extended-by
 proposals: null
 date_discovered: "2026-04-23"
-last_updated: "2026-04-23"
+last_updated: "2026-04-27"
 pipeline_status: raw
 consumed_by: []
 ---

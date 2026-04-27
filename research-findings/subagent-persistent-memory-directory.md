@@ -2,7 +2,7 @@
 name: "Subagent Persistent Memory Directory with Auto-Curation"
 summary: "A Claude Code subagent can be given a persistent filesystem directory that survives across conversations (~/.claude/agent-memory/{name}/). The subagent's system prompt auto-loads the first 200 lines or 25KB of MEMORY.md from that directory on every invocation and is instructed to curate the file if it exceeds the budget. Plain English: give a specialist subagent a notebook it carries between sessions. The subagent writes what it learns about your codebase, and the next time you invoke it, it remembers."
 implementation_notes: "Requires memory: user|project|local in subagent frontmatter. Read/Write/Edit tools are auto-enabled on the memory directory. For MetaSystem: Librarian's encounter log and design-notes already function like a hand-maintained memory; this pattern could automate the read-side of that."
-category: "Memory Architecture"
+category: "Context Engineering"
 evidence_strength: "Strong (documented, first-party Anthropic canonical spec)"
 adoption_status: "Not Yet Started"
 priority: P2
@@ -23,7 +23,7 @@ related_findings:
     rel: extends
 proposals: null
 date_discovered: "2026-04-23"
-last_updated: "2026-04-24"
+last_updated: "2026-04-27"
 pipeline_status: synthesized
 consumed_by:
   - "session-persistence-and-memory.md"

@@ -3,7 +3,7 @@ name: Concept Graph with Support/Contradiction Detection
 summary: An LLM-maintained knowledge graph that checks each new piece of ingested content against existing concepts to classify whether it supports or contradicts them, then generates actionable daily briefs
   with full attribution chains. Goes beyond wiki compilation by encoding relationships between ideas, not just the ideas themselves.
 implementation_notes: null
-category: Memory Architecture
+category: Context Engineering
 evidence_strength: Medium (practitioner-documented)
 adoption_status: Not Yet Started
 priority: P2 (Design Required)
@@ -26,7 +26,7 @@ related_findings:
   rel: same-problem
 proposals: null
 date_discovered: '2026-04-20'
-last_updated: '2026-04-20'
+last_updated: '2026-04-27'
 pipeline_status: synthesized
 consumed_by:
   - "session-persistence-and-memory.md"

@@ -2,7 +2,7 @@
 name: "Verbatim-Storage Thesis for Long-Term Agent Memory"
 summary: "Store the actual conversation words; don't extract facts. On LongMemEval, a verbatim store with default ChromaDB embeddings and zero LLM calls reaches 96.6% R@5 — matching or beating every extraction-based system measured on the same benchmark. The field's assumption that an LLM must decide what to remember is the load-bearing error. 'The key insight is removal, not addition.'"
 implementation_notes: null
-category: "Memory Architecture"
+category: "Context Engineering"
 evidence_strength: "Medium (practitioner-documented)"
 adoption_status: "Not Yet Started"
 priority: null
@@ -23,7 +23,7 @@ related_findings:
     rel: same-problem
 proposals: null
 date_discovered: "2026-04-23"
-last_updated: "2026-04-23"
+last_updated: "2026-04-27"
 pipeline_status: raw
 consumed_by: []
 ---

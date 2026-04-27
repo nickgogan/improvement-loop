@@ -3,7 +3,7 @@ name: 'Scalpel: Local Parse Then LLM Cost Optimization'
 summary: Use local models as a 'scalpel' to pre-process documents before sending to expensive LLM APIs. MinerU handles layout detection, OCR, and text extraction locally (free), and only entity/relationship
   extraction hits the LLM. Dramatically cheaper than sending entire documents as screenshots to an LLM.
 implementation_notes: 'Generalizable pattern: local/cheap models for structural decomposition, expensive API calls for semantic understanding only.'
-category: Memory Architecture
+category: Context Engineering
 evidence_strength: Medium (practitioner-documented)
 adoption_status: Not Yet Started
 priority: P2 (Design Required)
@@ -24,7 +24,7 @@ related_findings:
   rel: same-problem
 proposals: null
 date_discovered: '2026-04-07'
-last_updated: '2026-04-08'
+last_updated: '2026-04-27'
 pipeline_status: synthesized
 consumed_by:
 - session-persistence-and-memory.md

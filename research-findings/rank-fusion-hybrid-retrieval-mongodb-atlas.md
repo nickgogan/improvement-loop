@@ -2,7 +2,7 @@
 name: "Rank Fusion Hybrid Retrieval on MongoDB Atlas"
 summary: "Memongo uses MongoDB Atlas's `$rankFusion` and `$scoreFusion` aggregation stages to combine `$vectorSearch` (embedding-based, Voyage 4 Large auto-embed) with Atlas `$search` (full-text / lexical) into a single ranked result set. For benchmark runs, `$vectorSearch exact:true` is used so there is zero ANN approximation error — making the benchmark purely a measure of the memory model and retrieval recipe, not index quality. Database-native hybrid retrieval primitive, no external reranker service."
 implementation_notes: "Directly consumable by any Atlas-backed system. Replaces the common pattern of fetching top-K from two systems and reranking in application code. The exact:true benchmark discipline is worth adopting in any retrieval eval where ANN noise could confound results — separates 'my recipe is good' from 'my index is well-tuned.'"
-category: "Memory Architecture"
+category: "Context Engineering"
 evidence_strength: "Medium (practitioner-documented)"
 adoption_status: "Not Yet Started"
 priority: "P2"
@@ -21,7 +21,7 @@ related_findings:
     rel: same-problem
 proposals: null
 date_discovered: "2026-04-20"
-last_updated: "2026-04-20"
+last_updated: "2026-04-27"
 pipeline_status: synthesized
 consumed_by:
   - "session-persistence-and-memory.md"

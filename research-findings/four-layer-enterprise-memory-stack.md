@@ -6,7 +6,7 @@ summary: 'Production memory architecture with four explicit tiers: (1) Working m
   in 2026.'
 implementation_notes: 'Extends the KB''s existing context taxonomy into a full enterprise memory stack. Governance/observability layer (Layer 4) is the new piece. EU AI Act compliance is pushing this into
   design requirements. Source: https://alok-mishra.com/2026/01/07/a-2026-memory-stack-for-enterprise-agents/'
-category: Memory Architecture
+category: Context Engineering
 evidence_strength: Strong (production-tested)
 adoption_status: Not Yet Started
 priority: P2 (Design Required)
@@ -17,7 +17,7 @@ sources:
 - 4-layer-memory-stack-for-2026-enterprise-agents-al.md
 proposals: []
 date_discovered: '2026-04-01'
-last_updated: '2026-04-08'
+last_updated: '2026-04-27'
 related_findings:
 - file: memory-cross-layer-promotion-governance.md
   rel: enables

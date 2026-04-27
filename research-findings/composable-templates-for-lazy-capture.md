@@ -4,7 +4,7 @@ name: Composable Templates for Lazy Capture
 summary: Every note type (meeting, person, book, quote, movie, evergreen) has a dedicated template that pre-populates YAML properties. Templates are designed to be composable — multiple templates can be
   applied to the same note without overlap — enabling flexible multi-type notes without redundancy.
 implementation_notes: null
-category: Memory Architecture
+category: Agentic Systems
 evidence_strength: Strong (production-tested)
 adoption_status: Not Yet Started
 priority: P3
@@ -14,7 +14,7 @@ adopted_in: null
 sources: []
 proposals: null
 date_discovered: '2026-03-22'
-last_updated: '2026-04-20'
+last_updated: '2026-04-27'
 pipeline_status: raw
 consumed_by: []
 related_findings:

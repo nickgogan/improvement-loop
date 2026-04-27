@@ -4,7 +4,7 @@ name: 'RLM Pattern: External Prompt Environment with Dynamic Sub-LLM Search'
 summary: Instead of loading large documents into the context window, an RLM places them in an external environment that the root model can interact with via code (search, chunk, peek). Sub-LLMs process
   retrieved chunks and return answers, keeping the root model's context lean throughout.
 implementation_notes: null
-category: Memory Architecture
+category: Context Engineering
 evidence_strength: Medium (practitioner-documented)
 adoption_status: Not Yet Started
 priority: P3
@@ -14,7 +14,7 @@ adopted_in: null
 sources: []
 proposals: null
 date_discovered: '2026-03-22'
-last_updated: '2026-04-19'
+last_updated: '2026-04-27'
 related_findings:
 - file: biomimetic-memory-auto-recall-over-tool-based.md
   rel: contradicts

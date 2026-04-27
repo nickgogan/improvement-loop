@@ -4,7 +4,7 @@ summary: Memory systems that extract discrete, structured facts (decisions, pref
   facts asynchronously in the background, tagging each with type, timestamp, and entities involved. This enables semantic recall by relevance rather than recency.
 implementation_notes: 'MetaSystem''s current approach stores session notes as prose in PROGRESS.md. Structured fact extraction would convert ''we decided to use fractal pattern'' into a typed fact {type:
   decision, content: ''fractal pattern for system organization'', date: 2026-04-07, involving: [''MetaSystem'', ''DD-52'']}. This enables querying by decision type, entity, or timeframe.'
-category: Memory Architecture
+category: Context Engineering
 evidence_strength: Medium (practitioner-documented)
 adoption_status: Not Yet Started
 priority: P2 (Design Required)
@@ -33,7 +33,7 @@ related_findings:
   rel: same-problem
 proposals: []
 date_discovered: '2026-04-07'
-last_updated: '2026-04-20'
+last_updated: '2026-04-27'
 pipeline_status: synthesized
 consumed_by:
 - session-persistence-and-memory.md

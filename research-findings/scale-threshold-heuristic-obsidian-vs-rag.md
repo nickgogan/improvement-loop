@@ -3,7 +3,7 @@ name: 'Scale Threshold Heuristic: Obsidian Wiki vs True RAG'
 summary: 'A practical decision framework: use Obsidian + Claude Code file traversal for solo devs and small teams under ~1000 documents; migrate to true RAG (vector DB, embeddings) only when scale clearly
   exceeds what markdown navigation can handle. Start simple, upgrade when needed.'
 implementation_notes: MetaSystem operates well under this threshold. The heuristic validates the current approach of using Obsidian + file-based navigation rather than investing in RAG infrastructure.
-category: Memory Architecture
+category: Agentic Systems
 evidence_strength: Medium (practitioner-documented)
 adoption_status: Partially Adopted
 priority: P3 (Monitor)
@@ -14,7 +14,7 @@ adopted_in: []
 sources:
 - karpathys-obsidian-rag-claude-code.md
 date_discovered: '2026-04-07'
-last_updated: '2026-04-19'
+last_updated: '2026-04-27'
 pipeline_status: raw
 consumed_by: []
 related_findings:

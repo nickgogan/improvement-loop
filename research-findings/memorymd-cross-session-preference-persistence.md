@@ -4,7 +4,7 @@ name: 'memory.md: Cross-Session Preference Persistence via Self-Updating File'
 summary: Adding a memory.md file alongside CLAUDE.md and instructing the agent to read it at session start and update it when corrections or new preferences are stated gives agents persistent cross-session
   memory without relying on any built-in harness memory system.
 implementation_notes: null
-category: Memory Architecture
+category: Context Engineering
 evidence_strength: Strong (production-tested)
 adoption_status: Not Yet Started
 priority: P1
@@ -15,7 +15,7 @@ sources:
 - building-ai-agents-that-actually-work-full-course.md
 proposals: []
 date_discovered: '2026-03-22'
-last_updated: '2026-04-19'
+last_updated: '2026-04-27'
 related_findings:
 - file: context-engineering-supersedes-prompt-engineering.md
   rel: enabled-by

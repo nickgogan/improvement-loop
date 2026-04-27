@@ -4,7 +4,7 @@ name: Hybrid Retrieval Pattern (Semantic + Lexical + Graph)
 summary: 'Three complementary retrieval modes used together: Cursor semantic search (embedding-based, 12.5-23.5% accuracy gain), Claude Code lexical search (grep/glob for exact matches), and Obsidian MCP
   graph traversal (wikilink-based, N-level deep for relationship queries).'
 implementation_notes: null
-category: Memory Architecture
+category: Context Engineering
 evidence_strength: Medium (practitioner-documented)
 adoption_status: Not Yet Started
 priority: P2
@@ -16,7 +16,7 @@ sources:
 - sdk-vs-framework-decision-ai-agents.md
 proposals: null
 date_discovered: '2026-03-18'
-last_updated: '2026-04-19'
+last_updated: '2026-04-27'
 related_findings:
 - file: ace-agentic-context-engineering-rag-based.md
   rel: same-problem

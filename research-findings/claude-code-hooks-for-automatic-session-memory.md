@@ -3,7 +3,7 @@ name: Claude Code Hooks for Automatic Session Memory
 summary: Three Claude Code hooks (session_start, pre_compact, session_end) automatically capture conversation summaries into daily logs and promote them to a structured wiki, creating persistent session
   memory without manual intervention.
 implementation_notes: MetaSystem already has PROGRESS.md as a manual bridge. Hooks could automate a similar capture into the Improvement Loop KB. Directly actionable with existing Claude Code infrastructure.
-category: Memory Architecture
+category: Context Engineering
 evidence_strength: Medium (practitioner-documented)
 adoption_status: Not Yet Started
 priority: P1 (Implement Now)
@@ -15,7 +15,7 @@ sources:
 - self-evolving-claude-code-memory.md
 proposals: []
 date_discovered: '2026-04-07'
-last_updated: '2026-04-20'
+last_updated: '2026-04-27'
 related_findings:
 - file: structured-fact-extraction-from-conversations.md
   rel: same-problem

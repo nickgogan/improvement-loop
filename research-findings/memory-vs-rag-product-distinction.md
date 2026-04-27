@@ -2,7 +2,7 @@
 name: "Memory vs RAG as Product Distinction"
 summary: "Explicit teaching-tool framing: RAG retrieves document chunks — stateless, same results for everyone. Memory extracts and tracks *facts about users* over time, so the same query returns different context per user. The distinction is load-bearing for users trying to understand what a memory layer is vs just another retrieval system — and for designers choosing between them (or, as Supermemory does, running both together)."
 implementation_notes: null
-category: "Memory Architecture"
+category: "Context Engineering"
 evidence_strength: "Medium (practitioner-documented)"
 adoption_status: "Partially Adopted"
 priority: null
@@ -15,7 +15,7 @@ related_findings:
     rel: same-problem
 proposals: null
 date_discovered: "2026-04-23"
-last_updated: "2026-04-23"
+last_updated: "2026-04-27"
 pipeline_status: raw
 consumed_by: []
 ---

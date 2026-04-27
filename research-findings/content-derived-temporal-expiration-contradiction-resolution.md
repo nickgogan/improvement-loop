@@ -2,7 +2,7 @@
 name: "Content-Derived Temporal Expiration and Automatic Contradiction Resolution"
 summary: "Third memory-decay strategy in the KB, alongside importance-based decay and surprisal-gated writes. (1) Parse date-references from content at write time ('I have an exam tomorrow' → extracted date + TTL), and auto-expire after the referenced date passes. (2) Detect contradictions between new and existing memories; resolve automatically via the Updates relationship (new memory marked `isLatest: true`; old retained with `isLatest: false`). Together: noise doesn't become permanent memory, and state evolves without manual cleanup."
 implementation_notes: null
-category: "Memory Architecture"
+category: "Context Engineering"
 evidence_strength: "Medium (practitioner-documented)"
 adoption_status: "Not Yet Started"
 priority: P3
@@ -19,7 +19,7 @@ related_findings:
     rel: enables
 proposals: null
 date_discovered: "2026-04-23"
-last_updated: "2026-04-24"
+last_updated: "2026-04-27"
 pipeline_status: classified
 consumed_by: []
 ---

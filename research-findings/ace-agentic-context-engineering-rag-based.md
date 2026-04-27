@@ -4,7 +4,7 @@ name: ACE (Agentic Context Engineering) RAG-Based Playbook
 summary: ACE is a Stanford-paper-described system that replaces monolithic CLAUDE.md with a vector database of if/then behavioral 'bullets', retrieved via semantic search per task, and evolved via a generator/reflector/curator
   agent loop with voting-based retention and pruning.
 implementation_notes: null
-category: Memory Architecture
+category: Context Engineering
 evidence_strength: Medium (practitioner-documented)
 adoption_status: Not Yet Started
 priority: P1
@@ -16,7 +16,7 @@ sources:
 - why-your-coding-agent-keeps-getting-dumber.md
 proposals: []
 date_discovered: '2026-03-22'
-last_updated: '2026-04-19'
+last_updated: '2026-04-27'
 related_findings:
 - file: ace-agentic-context-engineering-evolving-playbook.md
   rel: same-problem

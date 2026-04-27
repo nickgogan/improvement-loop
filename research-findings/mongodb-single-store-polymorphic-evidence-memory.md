@@ -2,7 +2,7 @@
 name: "MongoDB Single-Store Polymorphic Evidence Memory"
 summary: "Memongo stores all agent memory evidence types — conversation turns, session evidence, userfact evidence, QA evidence — in one `chunks` collection using MongoDB's `$jsonSchema` oneOf polymorphic validator. Total surface: 29 collections, 84 standard indexes, 14 search indexes. Explicit architectural claim: 'One database, one collection for all evidence types, one retrieval authority' — counter-stance to multi-store architectures like mem0's vector + graph + SQLite split."
 implementation_notes: "Evaluate for Memongo improvement: does single-collection polymorphism scale beyond the current benchmark? Polymorphic schemas complicate per-type index tuning and migration. The architectural tradeoff is operational simplicity (one backup, one query plane, one consistency boundary) vs. per-type optimization flexibility."
-category: "Memory Architecture"
+category: "Context Engineering"
 evidence_strength: "Medium (practitioner-documented)"
 adoption_status: "Not Yet Started"
 priority: "P2"
@@ -31,7 +31,7 @@ related_findings:
     rel: same-problem
 proposals: null
 date_discovered: "2026-04-20"
-last_updated: "2026-04-20"
+last_updated: "2026-04-27"
 pipeline_status: synthesized
 consumed_by:
   - "session-persistence-and-memory.md"

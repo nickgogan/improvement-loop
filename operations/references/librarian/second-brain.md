@@ -71,7 +71,7 @@ If the query is ambiguous, the Librarian asks one disambiguating question rather
 
 **Definition.** The agent's *own* accumulated knowledge — findings it has written, global learnings it has earned, cross-session state it preserves. The human may have initiated the agent but does not author the brain's contents directly. Examples: a coding-agent's cross-session learnings store; an agent's episodic memory of prior task outcomes; Memongo-style polymorphic evidence memory.
 
-**KB scope.** Well-covered. Sits adjacent to Memory Architecture + Context Engineering + Intent dimensions.
+**KB scope.** Well-covered. Sits within Context Engineering (Sub-dim 1.A decay, 1.B isolation) and adjacent to Intent Engineering.
 
 **Pointers:**
 - **Tier 1 (guides):**

@@ -4,7 +4,7 @@ summary: A self-reinforcing feedback loop where agent session conversations are 
   smarter than the last with zero manual maintenance.
 implementation_notes: MetaSystem's research-loop already implements a version of this for external research. Applying it to internal session data (decisions, lessons, architectural insights) is the natural
   next step.
-category: Memory Architecture
+category: Agentic Systems
 evidence_strength: Medium (practitioner-documented)
 adoption_status: Not Yet Started
 priority: P1 (Implement Now)
@@ -17,7 +17,7 @@ sources:
 - world-models-orgs-three-architectures.md
 proposals: []
 date_discovered: '2026-04-07'
-last_updated: '2026-04-20'
+last_updated: '2026-04-27'
 related_findings:
 - file: memory-bank-isolation-per-agent-per-project.md
   rel: same-problem

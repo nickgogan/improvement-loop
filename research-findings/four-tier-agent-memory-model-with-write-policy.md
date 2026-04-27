@@ -5,7 +5,7 @@ summary: 'Production agents need four distinct memory tiers: working (short-live
   writes.'
 implementation_notes: 'MetaSystem has working memory (PROGRESS.md) and semantic memory (CLAUDE.md, skills). Missing: episodic memory with provenance, user memory with consent, and most critically -- a write
   policy governing what agents can persist and for how long. The existing MEMORY.md is an unstructured append-only store without TTL, confidence scores, or provenance metadata.'
-category: Memory Architecture
+category: Context Engineering
 evidence_strength: Strong (production-tested)
 adoption_status: Not Yet Started
 priority: P2 (Design Required)
@@ -33,7 +33,7 @@ related_findings:
   rel: same-problem
 proposals: []
 date_discovered: '2026-04-07'
-last_updated: 2026-04-08
+last_updated: '2026-04-27'
 pipeline_status: synthesized
 consumed_by:
 - session-persistence-and-memory.md

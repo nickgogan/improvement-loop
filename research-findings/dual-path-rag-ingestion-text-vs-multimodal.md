@@ -4,7 +4,7 @@ summary: 'RAG-Anything implements a dual-path ingestion architecture: text docum
   Claude Code skill). Both paths merge into a single knowledge graph and vector database. The split optimizes cost -- local parsing handles what it can, LLM API calls only for what requires vision.'
 implementation_notes: The pattern of separate ingestion paths merging into a unified store is applicable to any system that handles mixed document types. The skill-wrapping of scripts is a reusable integration
   pattern.
-category: Memory Architecture
+category: Context Engineering
 evidence_strength: Medium (practitioner-documented)
 adoption_status: Not Yet Started
 priority: P3 (Monitor)
@@ -15,7 +15,7 @@ adopted_in: []
 sources:
 - claude-code-plus-rag-anything.md
 date_discovered: '2026-04-07'
-last_updated: '2026-04-07'
+last_updated: '2026-04-27'
 related_findings:
 - file: mineru-local-document-parsing-for-rag.md
   rel: enables

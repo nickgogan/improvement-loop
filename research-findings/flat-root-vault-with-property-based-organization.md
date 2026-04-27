@@ -4,7 +4,7 @@ name: Flat-Root Vault with Property-Based Organization
 summary: Rather than nesting notes in folders by topic, all personal notes live in the vault root and are organized by YAML front-matter properties (categories, tags, date, people, rating), queried via
   Obsidian Bases smart tables. Folders only exist for attachments, templates, references, and daily notes.
 implementation_notes: null
-category: Memory Architecture
+category: Agentic Systems
 evidence_strength: Strong (production-tested)
 adoption_status: Not Yet Started
 priority: Not Flagged
@@ -14,7 +14,7 @@ adopted_in: null
 sources: []
 proposals: null
 date_discovered: '2026-03-22'
-last_updated: '2026-04-19'
+last_updated: '2026-04-27'
 pipeline_status: raw
 consumed_by: []
 ---
