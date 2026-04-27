@@ -66,6 +66,8 @@ Filed items live in `project-management/implementation-backlog/IB-*.md`. Source-
 | Implementation Backlog | `project-management/implementation-backlog/` |
 | Session handoffs | `operations/handoffs/` |
 | System Log | `operations/system-log/` |
+| Extension proposals (DD-97 v1 manual-apply) | `operations/extension-proposals/` |
+| Version-bump proposals (DD-100 manual-apply) | `operations/version-bump-proposals/` |
 | Librarian reference layer | `operations/references/librarian/` |
 | Guide routing table | `operations/references/guide-routing-table.md` |
 | Research dimensions | `operations/references/research-dimensions.md` |

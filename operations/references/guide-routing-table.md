@@ -164,3 +164,11 @@ For agent-driven guide discovery. An agent encountering these terms in a task de
 | agent identity, constitution, soul, prompt layers, agent lifecycle, behavioral patterns, clarification, self-improvement | G10 |
 | workflow, execution, cost, degradation, stall detection, observability, tracing, sprint contract, durable workflow | G3b |
 | vault-as-OS, second brain, personal knowledge management, daily brief, scheduled agent, file-over-app, agentic OS, knowledge store, Obsidian, vault, PKM, context infrastructure | G11 |
+
+---
+
+## Disambiguation Notes
+
+Operational risks where the routing structure is functional but weakened.
+
+**G2 vs G7 (post-IB-153 rebalance).** G2 (Managing Agent Context) and G7 (Session Persistence and Memory) both carry `Context Engineering` in their Dimensions field. The prior discriminator — G7 also carrying `Memory Architecture` — was removed when Memory Architecture was absorbed into Context Engineering. Disambiguation now lives in three weaker signals: stage (G2 `build` vs G7 `operate`), question text, and the trigger-keyword table above. If a future `/identify-artifacts` run mis-routes a finding between G2 and G7 (or queues an ambiguous one), formalize the discriminator — candidate fixes: an explicit `lifecycle: build|operate` field on findings, OR a routing-rubric step that consults trigger keywords before Dimensions when Dimensions overlap. Not urgent until evidence of misrouting.
