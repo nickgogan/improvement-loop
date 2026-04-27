@@ -36,6 +36,7 @@ last_updated: '2026-04-20'
 pipeline_status: synthesized
 consumed_by:
 - agent-governance-and-trust.md
+- ship-only-what-at-least-one-human-comprehended.md
 ---
 # Dark Code as Organizational Capability Problem
 
@@ -77,3 +78,7 @@ Practitioner framing positions this as a competitive differentiator: founders wh
 - Comprehension gate adds review latency and becomes the bottleneck that was supposed to be eliminated
 - Organizations adopt observability and pipelines as a proxy for solving dark code, claiming the problem is addressed without restoring actual comprehension
 - Self-describing codebases require maintenance discipline — manifests and behavioral contracts drift from actual implementation
+
+## Extraction Note — 2026-04-27
+
+Extracted as **rule**: [[ship-only-what-at-least-one-human-comprehended]] in `extracts/rules/`. Harvested from the G9 (agent-governance-and-trust) queue per IB-164 / DD-101 promotion path.

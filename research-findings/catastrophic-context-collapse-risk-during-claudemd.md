@@ -30,6 +30,7 @@ related_findings:
 pipeline_status: synthesized
 consumed_by:
 - managing-agent-context.md
+- never-ask-claude-to-compact-claudemd.md
 ---
 # Catastrophic Context Collapse Risk During CLAUDE.md Compaction
 
@@ -50,3 +51,7 @@ Version-controlled CLAUDE.md with git snapshots before each compaction would all
 
 ## Potential Failure Modes
 If the collapse is not caught and undone within the session, the poisoned CLAUDE.md persists permanently and affects all future sessions.
+
+## Extraction Note — 2026-04-27
+
+Extracted as **rule**: [[never-ask-claude-to-compact-claudemd]] in `extracts/rules/`. Harvested from the G2 (managing-agent-context) queue per IB-164 / DD-101 promotion path.

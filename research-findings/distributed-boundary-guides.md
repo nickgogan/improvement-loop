@@ -24,6 +24,7 @@ last_updated: '2026-04-19'
 pipeline_status: synthesized
 consumed_by:
 - agent-governance-and-trust.md
+- claudemd-symlink-to-agentsmd-at-every-governance-boundary.md
 ---
 ## What It Is
 
@@ -69,3 +70,7 @@ The pattern is used at 4+ subsystem boundaries in a real codebase, indicating it
 - **Symlink maintenance**: Symlinks can break during file moves, renames, or cross-platform operations (Windows symlink support is limited)
 - **Stale subsystem files**: Root rules may be updated while subsystem files lag behind, creating inconsistencies
 - **Discovery difficulty**: New contributors may not realize subsystem AGENTS.md files exist if they only look at the root
+
+## Extraction Note — 2026-04-27
+
+Extracted as **rule**: [[claudemd-symlink-to-agentsmd-at-every-governance-boundary]] in `extracts/rules/`. Harvested from the G9 (agent-governance-and-trust) queue per IB-164 / DD-101 promotion path.

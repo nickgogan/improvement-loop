@@ -27,6 +27,7 @@ last_updated: '2026-04-09'
 pipeline_status: synthesized
 consumed_by:
 - agent-governance-and-trust.md
+- trust-promotion-and-demotion-thresholds.md
 ---
 
 # Trust Calibration via Progressive Autonomy Ramp
@@ -48,3 +49,7 @@ Trust calibration can create a false sense of security -- an agent reliable on r
 
 ## Anthropic Confirmation (April 2026 — Tier 1)
 Anthropic's "Trustworthy agents in practice" validates progressive autonomy through their training approach: on complex tasks, user interruptions rise slightly, but Claude's check-in rate doubles — demonstrating effective calibration where the model asks more when stakes are higher. Anthropic trains for this via scenarios simulating ambiguity, reinforcing pauses over assumptions. Claude's Constitution explicitly trains models to "raise concerns, seek clarification, or decline" rather than assume. This is production evidence that progressive autonomy calibration works at scale and can be trained into models, not just enforced by harnesses.
+
+## Extraction Note — 2026-04-27
+
+Extracted as **rule**: [[trust-promotion-and-demotion-thresholds]] in `extracts/rules/`. Harvested from the G9 (agent-governance-and-trust) queue per IB-164 / DD-101 promotion path. The companion Trust Ledger template row was nick-dismissed as inline (G9 dismissed-templates list).

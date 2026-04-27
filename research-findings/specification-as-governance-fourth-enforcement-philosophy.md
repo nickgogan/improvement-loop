@@ -27,6 +27,7 @@ last_updated: '2026-04-19'
 pipeline_status: synthesized
 consumed_by:
 - agent-governance-and-trust.md
+- spec-and-code-reconcile-bidirectionally.md
 ---
 
 ## What It Is
@@ -83,3 +84,7 @@ No repo currently uses all four.
 - **Over-specification**: Too-detailed specs become brittle and resist legitimate evolution
 - **False confidence**: Passing a conformance test doesn't guarantee correctness — only conformance to what the test checks
 - **Applicability scope**: Works best for interface contracts and architectural decisions; less applicable to behavioral or stylistic governance
+
+## Extraction Note — 2026-04-27
+
+Extracted as **rule**: [[spec-and-code-reconcile-bidirectionally]] in `extracts/rules/`. Harvested from the G9 (agent-governance-and-trust) queue per IB-164 / DD-101 promotion path. The companion skill row (spec-driven-development-loop) sits in the same queue and is queued for the skill-form batch later in the session.

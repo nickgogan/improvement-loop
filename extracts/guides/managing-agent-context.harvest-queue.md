@@ -5,12 +5,12 @@ Nothing here is auto-extracted; rows feed `/extract-artifacts` only after Nick r
 
 | Date queued | Status | Target form | Source finding | Suggested headline | Recommendation |
 |---|---|---|---|---|---|
-| 2026-04-26 | nick-approved | rule | [[catastrophic-context-collapse-risk-during-claudemd]] | "Never ask Claude to compact CLAUDE.md" | extract via /extract-artifacts |
+| 2026-04-26 | extracted | rule | [[catastrophic-context-collapse-risk-during-claudemd]] | "Never ask Claude to compact CLAUDE.md" | extracted to [[never-ask-claude-to-compact-claudemd]] |
 | 2026-04-26 | nick-approved | rule | [[claudemd-context-rot-from-indiscriminate-rule-accu]] | "CLAUDE.md global rule cap" | extract via /extract-artifacts |
 | 2026-04-26 | nick-approved | skill | [[trajectory-engineering-non-linear-session-forking]] | "/re Fork-and-Trim Trajectory Procedure" | extract via /extract-artifacts |
 | 2026-04-26 | nick-approved | template | [[progress-md-session-bridge]] | "PROGRESS.md Session Bridge Template" | extract via /extract-artifacts |
 | 2026-04-26 | nick-approved | template | [[response-format-enum-for-adaptive-verbosity]] | "Tool Response-Format Enum (detailed / concise)" | extract via /extract-artifacts |
-| 2026-04-26 | nick-approved | rule | [[skills-as-pointers-to-second-brain-files]] | "Skills reference shared context by path, not by copy" | extract via /extract-artifacts |
+| 2026-04-26 | extracted | rule | [[skills-as-pointers-to-second-brain-files]] | "Skills reference shared context by path, not by copy" | extracted to [[skills-reference-shared-context-by-path]] |
 | 2026-04-26 | nick-approved | rule | [[ace-delta-updates-over-monolithic-rewrites]] | "Evolving context docs use delta updates, never monolithic LLM rewrites" | extract via /extract-artifacts |
 | 2026-04-26 | nick-approved | rule | [[ide-context-streaming-silent-token-tax]] | "Close irrelevant IDE files during agent sessions" | extract via /extract-artifacts |
 | 2026-04-26 | nick-approved | rule | [[model-specific-context-file-sensitivity]] | "Test context strategies against your actual model" | extract via /extract-artifacts |
@@ -27,14 +27,16 @@ Nothing here is auto-extracted; rows feed `/extract-artifacts` only after Nick r
 ### catastrophic-context-collapse-risk-during-claudemd::rule::never-ask-claude-to-compact-claudemd
 
 - **Date queued:** 2026-04-26
-- **Status:** nick-approved
+- **Status:** extracted
 - **Target form:** rule
 - **Source finding:** [[catastrophic-context-collapse-risk-during-claudemd]]
 - **Source excerpt:** "Each compaction step has a small but fixed probability (e.g., 3%, increasing by 0.25% per additional compaction) of producing a catastrophic rewrite — a context collapse where the entire file is reduced to a thin, unhelpful summary. After collapse, accuracy can drop to around 57% of previous performance, often below the baseline of having no CLAUDE.md at all."
 - **Codifier's reading:** Imperative directive ("never ask Claude to summarize/compact your own CLAUDE.md"); machine-enforceable as a pre-commit hook against `claude /compact CLAUDE.md`-style invocations or a session-start check that detects suspiciously short CLAUDE.md vs git history. Fits rule artifact form per the form-classification rubric — directive + structural enforcement path. Companion artifacts: ACE-style voting curation procedure (separate skill candidate).
 - **Suggested headline:** never-ask-claude-to-compact-claudemd
 - **Recommendation:** extract via /extract-artifacts
-- **Resolution:**
+- **Resolution:** extracted to [[never-ask-claude-to-compact-claudemd]]
+
+Extracted 2026-04-27 — Session 82 — [[session-82-codifier-extract-artifacts-harvest-promotion-batch]] — to [[never-ask-claude-to-compact-claudemd]].
 
 ### claudemd-context-rot-from-indiscriminate-rule-accu::rule::claudemd-global-rule-cap
 
@@ -47,6 +49,8 @@ Nothing here is auto-extracted; rows feed `/extract-artifacts` only after Nick r
 - **Suggested headline:** claudemd-global-rule-cap
 - **Recommendation:** extract via /extract-artifacts
 - **Resolution:**
+
+Pending merge 2026-04-27 — Session 82 — [[session-82-codifier-extract-artifacts-harvest-promotion-batch]] — DD-97 extension proposal emitted at [[operations/extension-proposals/2026-04-27-claudemd-global-rule-cap-extension-proposal]]; primary match [[claudemd-minimum-viable-rule-only-add-globally-true-lines]]. Status remains `nick-approved` per DD-101 Branch C until Nick rules merge / separate / dismiss; on merge ruling, manually amend the existing rule then re-invoke this row to flip Status → `extracted`, Resolution → `merged into [[claudemd-minimum-viable-rule-only-add-globally-true-lines]]`.
 
 ### trajectory-engineering-non-linear-session-forking::skill::re-fork-and-trim-trajectory-procedure
 
@@ -87,14 +91,16 @@ Nothing here is auto-extracted; rows feed `/extract-artifacts` only after Nick r
 ### skills-as-pointers-to-second-brain-files::rule::skills-reference-shared-context-by-path
 
 - **Date queued:** 2026-04-26
-- **Status:** nick-approved
+- **Status:** extracted
 - **Target form:** rule
 - **Source finding:** [[skills-as-pointers-to-second-brain-files]]
 - **Source excerpt:** "When a centralized second brain (Obsidian vault or equivalent) exists, skills should not embed copies of shared context documents inside their own reference folders. Instead, each skill's SKILL.md contains only: 1. The workflow/SOP the agent should follow. 2. File path references to where it should read context from within the second brain."
 - **Codifier's reading:** Imperative directive applicable to skill authoring; machine-enforceable as a skill-audit rule that flags skill `references/` folders containing duplicated shared context. Fits rule form. Companion: the migration playbook (identify duplication → move to vault → replace with path) could be its own skill artifact.
 - **Suggested headline:** skills-reference-shared-context-by-path
 - **Recommendation:** extract via /extract-artifacts
-- **Resolution:**
+- **Resolution:** extracted to [[skills-reference-shared-context-by-path]]
+
+Extracted 2026-04-27 — Session 82 — [[session-82-codifier-extract-artifacts-harvest-promotion-batch]] — to [[skills-reference-shared-context-by-path]].
 
 ### ace-delta-updates-over-monolithic-rewrites::rule::evolving-docs-use-delta-updates
 

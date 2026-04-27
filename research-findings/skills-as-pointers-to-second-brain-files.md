@@ -31,6 +31,7 @@ related_findings:
 pipeline_status: synthesized
 consumed_by:
 - managing-agent-context.md
+- skills-reference-shared-context-by-path.md
 ---
 # Skills as Pointers to Second Brain Files
 
@@ -60,3 +61,7 @@ Skills become dependent on vault file structure — reorganizing the vault break
 Agentic Academy's "Five-Pillar Agentic OS" video independently validates this pattern as "business context" — pillar 5 (the foundation layer). Their implementation: a single `brand-context/` folder containing voice profile, ICP, positioning, and client details. Every skill references this folder. "Update the information once and every skill gets that update when it runs." They explicitly frame this as the #1 thing to build first: "Start with the business brain, not the agents. Every feature gets multiplied by having the solid context foundation layer underneath it."
 
 The adapted Anthropic skill-creator skill enforces context hygiene: SKILL.md kept under 200 lines, all reference context in separate files loaded on-demand. This matches the "pointers over copies" principle — skills reference the brand context folder rather than embedding context.
+
+## Extraction Note — 2026-04-27
+
+Extracted as **rule**: [[skills-reference-shared-context-by-path]] in `extracts/rules/`. Harvested from the G2 (managing-agent-context) queue per IB-164 / DD-101 promotion path.

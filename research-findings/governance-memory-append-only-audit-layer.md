@@ -35,6 +35,7 @@ last_updated: '2026-04-08'
 pipeline_status: synthesized
 consumed_by:
 - agent-governance-and-trust.md
+- audit-log-append-only-never-overwritten.md
 ---
 ## What It Is
 
@@ -77,3 +78,7 @@ Converging pattern across enterprise agents, with both practitioner documentatio
 - **Storage cost explosion:** Append-only governance logs can grow rapidly if not structured with appropriate granularity
 - **False sense of security:** Logging everything does not equal understanding; teams need tooling to query and analyze governance logs effectively
 - **Latency impact:** If governance logging is accidentally placed in the hot path, it degrades agent response times
+
+## Extraction Note — 2026-04-27
+
+Extracted as **rule**: [[audit-log-append-only-never-overwritten]] in `extracts/rules/`. Harvested from the G9 (agent-governance-and-trust) queue per IB-164 / DD-101 promotion path.

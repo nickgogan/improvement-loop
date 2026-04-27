@@ -24,6 +24,7 @@ last_updated: '2026-04-08'
 pipeline_status: synthesized
 consumed_by:
 - agent-governance-and-trust.md
+- every-recurring-review-comment-triages-to-mechanism-or-judgment.md
 ---
 ## What It Is
 
@@ -49,3 +50,7 @@ Not all review comments can be automated away -- judgment calls about architectu
 
 ## Extraction Note — 2026-04-19
 Extracted as **pattern**: [[review-obsolescence-as-design-goal.md]] in `extracts/patterns/`
+
+## Extraction Note — 2026-04-27
+
+Extracted as **rule**: [[every-recurring-review-comment-triages-to-mechanism-or-judgment]] in `extracts/rules/`. Harvested from the G9 (agent-governance-and-trust) queue per IB-164 / DD-101 promotion path. Sibling extraction to the prior pattern; the rule isolates the triage discipline that the pattern describes more broadly.

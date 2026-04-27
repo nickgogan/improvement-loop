@@ -28,6 +28,7 @@ last_updated: '2026-04-20'
 pipeline_status: synthesized
 consumed_by:
 - agent-governance-and-trust.md
+- maximum-unreviewed-depth-policy.md
 ---
 
 # Compound Review Debt from Deferred Inspection
@@ -46,3 +47,7 @@ MetaSystem's phase-based execution model in GSD already supports incremental rev
 
 ## Potential Failure Modes
 Strict atomic review can slow agent throughput to the reviewer's pace, negating the speed advantage of agents. The challenge is finding the right granularity -- too fine and review becomes constant interruption, too coarse and compound debt accumulates. Different task types likely need different review granularity.
+
+## Extraction Note — 2026-04-27
+
+Extracted as **rule**: [[maximum-unreviewed-depth-policy]] in `extracts/rules/`. Harvested from the G9 (agent-governance-and-trust) queue per IB-164 / DD-101 promotion path.

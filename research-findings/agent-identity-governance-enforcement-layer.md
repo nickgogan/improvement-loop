@@ -48,6 +48,7 @@ last_updated: '2026-04-19'
 pipeline_status: synthesized
 consumed_by:
 - agent-governance-and-trust.md
+- no-agent-action-without-identity-record.md
 ---
 
 # Agent Identity Governance as HITL Enforcement Layer
@@ -91,3 +92,7 @@ Adaptive time-boxing: learn optimal decision window duration from historical app
 ## Potential Failure Modes
 
 Over-engineering identity infrastructure for low-risk agent systems. Time-boxed lanes that are too short, causing excessive fail-safe-to-denied events. Challenge-and-response fatigue when humans must acknowledge checklists too frequently. JIT provisioning latency adding overhead to time-sensitive workflows.
+
+## Extraction Note — 2026-04-27
+
+Extracted as **rule**: [[no-agent-action-without-identity-record]] in `extracts/rules/`. Harvested from the G9 (agent-governance-and-trust) queue per IB-164 / DD-101 promotion path.
