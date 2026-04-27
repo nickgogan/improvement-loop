@@ -386,6 +386,7 @@ Not every agent interaction needs a seven-part intent spec, four-field context b
 - **Acceptance criteria → eval assertions:** The acceptance criteria in Step 4 become the binary assertions in *Building Agent Evaluation Suites* (G4), Step 2.
 - **Task contracts → tool registries:** The task contract schema in Step 4b maps to the tool registry design in *Designing Agent Tools* (G5), Step 1.
 - **Intent specification → prompt resilience:** Prompts that reinforce intent should follow the three model-agnostic properties in *Model-Resilient Prompt Engineering* (G8), Step 1.
+- **Subagent specs → memory directives:** A subagent's `memory: user|project|local` declaration and curation directive are specification-level decisions; see *Session Persistence and Memory* (G7), Step 1.4 and the Subagent Memory Directory Setup template for how to declare them in a subagent's contract.
 
 ---
 

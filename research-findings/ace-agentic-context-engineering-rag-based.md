@@ -72,8 +72,9 @@ related_findings:
   rel: contradicts
 - file: fundamental-limits-of-single-vector-embedding-retr.md
   rel: enabled-by
-pipeline_status: "classified"
-consumed_by: []
+pipeline_status: "synthesized"
+consumed_by:
+  - "session-persistence-and-memory.md"
 ---
 # ACE (Agentic Context Engineering) RAG-Based Playbook
 
