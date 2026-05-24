@@ -26,7 +26,7 @@ related_findings:
 proposals: null
 date_discovered: "2026-04-19"
 last_updated: "2026-04-19"
-pipeline_status: "raw"
+pipeline_status: raw
 consumed_by: []
 ---
 # Tiered Review Escalation Strategy

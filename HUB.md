@@ -41,7 +41,7 @@ GROUP BY pipeline_status
 ## Design Decisions
 
 ```dataview
-TABLE decision_id AS "ID", decision AS "Decision", status AS "Status"
+TABLE decision_id AS "ID", title AS "Title", scope_category AS "Category", status AS "Status"
 FROM "systems/improvement-loop/project-management/design-decisions"
 WHERE decision_id != null
 SORT decision_id DESC

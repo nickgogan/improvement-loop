@@ -21,7 +21,7 @@ last_updated: '2026-04-19'
 related_findings:
 - file: mcp-n-plus-m-integration-economics.md
   rel: contradicts
-pipeline_status: "classified"
+pipeline_status: classified
 consumed_by: []
 ---
 # CLI-First Tool Integration: Less Overhead Than MCP for Claude Code

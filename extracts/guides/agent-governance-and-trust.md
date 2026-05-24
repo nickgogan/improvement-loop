@@ -675,6 +675,7 @@ Per-node tool restrictions are valuable for least-privilege at workflow granular
 - **G3 -- Agent Architecture Decisions:** Architecture choices (single-agent vs. multi-agent, planner-executor patterns) determine the governance topology -- how many agents need tiers, who reviews whom, and how identity chains propagate. Per-step tool restrictions (Section 1) presume a workflow-DAG architecture; if no DAG exists, per-step granularity does not apply.
 - **G4 -- Building Agent Evaluation Suites:** Evaluation results provide the evidence for trust calibration -- the data that determines whether an agent has earned promotion to a higher autonomy tier. The "spec becomes the eval" insight (Section 3) is the bridge from specification to evaluation.
 - **G7 -- Session Persistence and Memory:** Memory write policies, novelty gates, and contradiction detection in G7 (Part 5) are the memory-specific instantiation of the governance patterns in this guide. Memory governance and agent governance share the same human-gate / audit-trail / rollback-path structure.
+- **G11 -- [[building-agentic-systems|Building Agentic Systems]]:** Human-gate placement and review workflows from this guide apply to G11's proactive-loop checkpoint discipline (Section 6) — where scheduled autonomous agents need governance rails.
 
 ---
 

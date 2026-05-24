@@ -29,7 +29,7 @@ related_findings:
   rel: same-problem
 - file: bmad-v6-builder-custom-agent-workflow-creation.md
   rel: same-problem
-pipeline_status: "synthesized"
+pipeline_status: synthesized
 consumed_by:
 - guides/agent-architecture-decisions.md
 ---

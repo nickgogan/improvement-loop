@@ -560,6 +560,7 @@ Reading raw conversation logs to debug agent failures is unsustainable. Without 
 - **Sprint contracts -> agent specifications:** The contract negotiation pattern (Step 4) extends the contract design in *Writing Agent Specifications* (G1).
 - **Quality at source -> evaluation:** The quality-at-source strategy (Step 8) connects to the evaluation frameworks in *Building Agent Evaluation Suites* (G4).
 - **Observability -> context engineering:** The tracing and event patterns (Step 5) complement context management strategies in *Managing Agent Context* (G2).
+- **Scheduled tasks and proactive loops:** *[[building-agentic-systems]]* (G11) Sections 4 (Ingestion) and 6 (Proactive Loops) build on G3b's operational primitives — durable workflows, scheduled execution, and observability patterns.
 
 ---
 

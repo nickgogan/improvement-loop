@@ -1106,6 +1106,7 @@ Knowledge systems that require a separate documentation step accumulate the *eas
 - **Retrieval pipeline overlaps with context retrieval:** The hybrid retrieval recipe in Part 2 also serves context-injection use cases in *Managing Agent Context* (G2). Memory and context are different concerns over the same retrieval substrate.
 - **Write policies connect to governance:** The memory write policy in Step 5.1 is the memory-specific instantiation of the governance patterns in *Agent Governance and Trust* (G9).
 - **Subagent memory connects to spec design:** Subagent memory directories (Step 1.4) are a specification-level decision — see *Writing Agent Specifications* (G1) for how to declare them in a subagent's contract.
+- **Vault-as-OS memory substrate:** *[[building-agentic-systems]]* (G11) covers system-shape questions (open-brain, ai-managed-vault, compounding-knowledge-loop) that share findings with G7. G7 covers the substrate-level memory mechanics; G11 covers how those mechanics compose into an agentic OS.
 
 ---
 

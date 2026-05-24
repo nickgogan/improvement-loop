@@ -27,7 +27,7 @@ related_findings:
   rel: same-problem
 - file: archon-yaml-defined-harness-workflows.md
   rel: same-problem
-pipeline_status: "classified"
+pipeline_status: classified
 consumed_by: []
 ---
 # Superpowers Plugin: Spec-Driven Sub-Agent Orchestration

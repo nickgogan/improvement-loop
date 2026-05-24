@@ -22,7 +22,7 @@ related_findings:
     rel: same-problem
 date_discovered: "2026-04-19"
 last_updated: "2026-04-19"
-pipeline_status: "raw"
+pipeline_status: raw
 ---
 
 ## What It Is

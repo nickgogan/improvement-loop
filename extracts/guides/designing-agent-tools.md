@@ -479,6 +479,7 @@ A queryable codebase or domain intelligence store converts O(n) rediscovery into
 - **Think tool prompting -> model-agnostic properties:** Domain-specific think tool prompts in Step 6 should follow the three properties in *Model-Resilient Prompt Engineering* (G8), Step 1.
 - **Tool contract model -> spec writing:** The non-deterministic contract in Step 1 shapes how tool behaviors are specified in *Writing Agent Specifications* (G1).
 - **Skill wrapping -> agent architecture:** Wrapping CLI pipelines as skills (Step 5) interfaces with the delegation model in *Agent Architecture Decisions* (G3), where the orchestrator must decide whether to invoke a skill directly or decompose it.
+- **MCP integration in agentic systems:** *[[building-agentic-systems]]* (G11) Section 5 (Querying) references MCP integration patterns from this guide in the context of vault-native agentic OS toolchains.
 
 ---
 

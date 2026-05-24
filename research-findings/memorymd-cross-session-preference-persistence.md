@@ -27,7 +27,7 @@ related_findings:
   rel: same-problem
 - file: ace-agentic-context-engineering-rag-based.md
   rel: same-problem
-pipeline_status: "synthesized"
+pipeline_status: synthesized
 consumed_by:
   - "session-persistence-and-memory.md"
   - artifact: agent-must-read-and-update-memory-md-on-startup

@@ -24,7 +24,7 @@ related_findings:
   rel: same-problem
 - file: archon-yaml-defined-harness-workflows.md
   rel: same-problem
-pipeline_status: "classified"
+pipeline_status: classified
 consumed_by: []
 ---
 # Orchestrated Execution: One Task Per Sub-Agent with Wiring Verification
