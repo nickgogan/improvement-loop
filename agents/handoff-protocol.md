@@ -8,12 +8,13 @@ tier: "auto"
 reason_codes: ["inter-agent-contract", "pipeline-mediation"]
 co_occurrence: null
 extraction_date: "2026-04-19"
+updated: "2026-05-24"
 identification_report: null
 deployed: false
 deployed_to: null
 contract:
-  preconditions: "All three IL agents (Researcher, Codifier, Librarian) are defined. Pipeline stages 1-4 are operational. pipeline_status and consumed_by fields exist on all findings."
-  invariants: "Handoffs are file-mediated, never direct. Nick triggers every stage transition. pipeline_status transitions are unidirectional (raw → synthesized/extracted). No agent modifies another agent's output files beyond metadata fields."
+  preconditions: "All three pipeline-participating agents (Researcher, Codifier, Librarian) are defined. Owner is the fourth IL agent, out of scope for this protocol. Pipeline stages 1-4 are operational. pipeline_status and consumed_by fields exist on all findings."
+  invariants: "Handoffs are file-mediated, never direct. Nick triggers every stage transition. pipeline_status transitions are unidirectional (raw → classified → extracted, or raw → synthesized). No agent modifies another agent's output files beyond metadata fields."
   governance: "Owner: Improvement Loop system. Protocol changes require DD-level review if they affect stage boundaries or human gates."
   recovery: "If pipeline_status is inconsistent: run audit query (grep for status values), reconcile against identification reports and guide reports."
 tags:
@@ -25,7 +26,7 @@ tags:
 
 # IL Agent Handoff Protocol
 
-How findings flow from Researcher to Codifier, what triggers Codifier work, and how the Librarian consumes the output. This document defines the inter-agent contracts for the three IL agents.
+How findings flow from Researcher to Codifier, what triggers Codifier work, and how the Librarian consumes the output. This document defines the inter-agent contracts for the three pipeline-participating IL agents (Researcher, Codifier, Librarian). The Owner agent is out of scope for this protocol — see `owner/agent.md` for stewardship contracts.
 
 ---
 
@@ -67,15 +68,17 @@ The `pipeline_status` field on findings is the primary interface contract betwee
 
 | Status | Set By | Meaning | Next Valid Transition |
 |--------|--------|---------|----------------------|
-| `raw` | Researcher | Finding created, not yet classified or consumed | `synthesized`, `extracted` |
+| `raw` | Researcher | Finding created, not yet classified or consumed | `classified` (via `/identify-artifacts`) or `synthesized` (via `/synthesize-guide`) |
+| `classified` | Codifier (`/identify-artifacts`) | Finding classified into a form (pattern / skill / rule / template / agent); awaits Gate 2 approval before extraction | `extracted` (via `/extract-artifacts` after Gate 2 approval) |
 | `synthesized` | Codifier (`/synthesize-guide`) | Finding consumed by guide synthesis | Terminal (finding content lives in guide) |
 | `extracted` | Codifier (`/extract-artifacts`) | Finding consumed by artifact extraction | Terminal (finding content lives in artifact) |
 
 **Transition rules:**
-- Transitions are unidirectional — a finding cannot go back to `raw`
-- Only the Codifier sets `synthesized` or `extracted`
+- Transitions are unidirectional — a finding cannot go back to `raw` or to `classified`
+- Only the Codifier sets `classified`, `synthesized`, or `extracted`
 - The Researcher only ever sets `raw`
-- When a finding is consumed, the Codifier also sets the `consumed_by` field to the guide or artifact path
+- When a finding is consumed (synthesized or extracted), the Codifier also sets the `consumed_by` field to the guide or artifact path
+- **Precedence on dual consumption:** if a finding is already `synthesized` and `/extract-artifacts` is later run on it, the Codifier keeps `synthesized` and appends the artifact path to `consumed_by` rather than transitioning to `extracted` (per `extract-artifacts/SKILL.md:648`)
 
 ---
 
@@ -115,10 +118,11 @@ The Librarian is purely reactive — it responds to questions, never proactively
 
 ## Skill-to-Agent Mapping
 
-### Researcher Skills (11)
+### Researcher Skills
 
 | Skill | Category | Boundary Rule |
 |-------|----------|---------------|
+| `/research-query` | Intake (on-demand) | Targeted research with gated persistence per DD-83; writes findings/sources only if user approves |
 | `/research-loop` | Intake | Writes to findings/sources/authorities only |
 | `/source-triage` | Intake | Produces verdicts, no KB writes |
 | `/transcript-fetcher` | Intake | Mechanical fetch, no KB writes |
@@ -131,15 +135,16 @@ The Librarian is purely reactive — it responds to questions, never proactively
 | `/finding-crosslink` | KB Maintenance | Adds cross-links, no content changes |
 | `/dimension-rebalance` | KB Maintenance | Reclassifies findings by dimension |
 
-### Codifier Skills (3)
+### Codifier Skills
 
 | Skill | Category | Boundary Rule |
 |-------|----------|---------------|
-| `/identify-artifacts` | Classification | Reads findings, writes report to operations/ |
-| `/extract-artifacts` | Extraction | Reads approved report + findings, writes to extracts/ |
-| `/synthesize-guide` | Synthesis | Reads findings + routing table, writes to extracts/guides/ |
+| `/identify-artifacts` | Classification | Reads findings, writes report to operations/; sets `pipeline_status: classified` on listed findings |
+| `/extract-artifacts` | Extraction | Reads approved report + findings, writes to extracts/; sets `pipeline_status: extracted` (precedence rule applies if already `synthesized`) |
+| `/synthesize-guide` | Synthesis | Reads findings + routing table, writes to extracts/guides/; sets `pipeline_status: synthesized` |
+| `/reassess-priorities` | Re-evaluation | Reads findings, proposes priority changes based on accumulated evidence; produces report only — no `pipeline_status` writes |
 
-### Librarian Skills (0)
+### Librarian Skills
 
 The Librarian uses Read/Glob/Grep tools directly. No dedicated skills currently.
 

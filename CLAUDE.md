@@ -49,7 +49,7 @@ For Researcher, Codifier, and Librarian dispositions, read the agent definition 
 | `agents/` | Agent definitions — Owner, Researcher, Codifier, Librarian, handoff protocol. Each agent directory may include a `reflections/` subfolder for agent-private self-reflections fed into `/solicit-proposals` rounds. |
 | `project-management/design-notes/` | Deliberative specifications (substrate audits, read contracts, lifecycle specs, acceptance rubrics) — any agent may author; Owner-governed per four-zone architecture |
 | `governance/proposals/` | Owner-authored governance-rule proposals (Proposal-First tier); also the destination for agent-authored proposals emerging from `/solicit-proposals` rounds |
-| `.claude/skills/` | IL-scoped skills (per DD-49) — Researcher (12), Codifier (3), Owner (5) |
+| `.claude/skills/` | IL-scoped skills (per DD-49) — see "Skills That Operate Here" section below for per-agent listings |
 | `feedback/` | Feedback items for improving the IL system |
 | `archive/improvement-proposals/` | Archived — 5 historical proposals from session 6, superseded by DD-80 pipeline |
 | `operations/` | Loop reports, handoff prompts, system log |
@@ -92,7 +92,7 @@ The **Researcher** agent owns stage 1. The **Codifier** agent owns stages 2-3. N
 
 All IL skills live in `.claude/skills/` under this system directory (per DD-49). Cross-system skills (`/prompt-evaluator`, `/prompt-enhancer`, `/governance-audit`, `/session-handoff`) remain at workspace root `.claude/skills/`.
 
-### Researcher Skills (12)
+### Researcher Skills
 
 | Skill | Role |
 |-------|------|
@@ -109,7 +109,7 @@ All IL skills live in `.claude/skills/` under this system directory (per DD-49).
 | `/finding-crosslink` | Detect and create cross-links between related findings |
 | `/dimension-rebalance` | Reclassify findings after dimension changes |
 
-### Codifier Skills (4)
+### Codifier Skills
 
 | Skill | Role |
 |-------|------|
@@ -118,7 +118,7 @@ All IL skills live in `.claude/skills/` under this system directory (per DD-49).
 | `/synthesize-guide` | Guide synthesis from pattern clusters |
 | `/reassess-priorities` | Retroactive priority re-evaluation based on accumulated evidence |
 
-### Owner Skills (6)
+### Owner Skills
 
 | Skill | Role |
 |-------|------|
@@ -129,9 +129,9 @@ All IL skills live in `.claude/skills/` under this system directory (per DD-49).
 | `/system-audit` | Full consistency check — agents, skills, governance, fractal compliance |
 | `/solicit-proposals` | Run a reflection round — per-agent self-reflection → per-agent proposal drafts → Nick gates |
 
-### Librarian Skills (0)
+### Librarian Skills
 
-The Librarian uses Read/Glob/Grep tools directly to navigate the KB. No dedicated skills currently. Invocable as a subagent via `.claude/agents/librarian.md`.
+The Librarian uses Read/Glob/Grep tools directly to navigate the KB. No dedicated skills. Invocable as a subagent via `.claude/agents/librarian.md`.
 
 **Deprecated:** `/research-proposer` — superseded by `/identify-artifacts` + `/extract-artifacts` (DD-80). Retained for reference.
 
