@@ -1,14 +1,14 @@
 # Improvement Loop — Progress
 
-**Last Updated:** 2026-05-25 (session 104)
+**Last Updated:** 2026-05-25 (session 105)
 
 ## Current Focus
 
-Session 104 executed the first guide bifurcation in IL history. G2 (Managing Agent Context, 64 findings) split into G2a (Structuring and Loading Agent Context, 35 findings) and G2b (Defending Against Context Degradation, 30 findings). Both new guides synthesized via parallel Sonnet subagents. Full cross-reference sweep updated 13 librarian reference docs + 2 skill files. G3 and G9 split proposals closed as deferred (both below DD-102 threshold of 45).
+Session 105 completed the post-extraction health check. System verified consistent: 13 active guides confirmed (count corrected from 14), G1 phantom entries removed (11→9), 5 stale G2 cross-refs fixed in G2a/G2b, 32 consumed_by back-annotations repaired, missing changelogs and SL entry created. No guides are critically stale; 19 classified-pending findings remain.
 
-**KB totals:** ~739 findings (~128 synthesized across sessions 97-99), ~179 sources, 31 watched libraries, 30 analysis docs, cross-repo comparison updated (29 repos). 13 active guides (G1:9, G2a:35, G2b:30, G3:42, G3b:20, G4:46, G5:23, G6:5, G7:27, G8:20, G9:38, G10:37, G11:30); G2 deprecated. 0 open split proposals (G2 resolved, G3/G9 deferred).
+**KB totals:** ~739 findings, ~179 sources, 31 watched libraries, 30 analysis docs, cross-repo comparison updated (29 repos). 13 active guides (G1:9, G2a:35, G2b:30, G3:42, G3b:20, G4:46, G5:23, G6:5, G7:27, G8:20, G9:38, G10:37, G11:30); G2 deprecated. 0 open split proposals (G2 resolved, G3/G9 deferred).
 
-**Next session target:** Owner — post-extraction health check. System consistency verification after the largest artifact production period (sessions 102-104: 43 new artifacts + 8 extensions + G2 bifurcation).
+**Next session target:** Owner — build Owner agent skills (logged-for-future item 1). Use Librarian subagent for KB best practices + Perplexity for external research. Check existing coverage first (assess-agent, assess-prompt, assess-skill may overlap).
 
 ---
 
