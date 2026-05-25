@@ -128,6 +128,7 @@ All IL skills live in `.claude/skills/` under this system directory (per DD-49).
 | `/process-feedback` | Read feedback/, triage items, investigate root causes, propose actions |
 | `/system-audit` | Full consistency check — agents, skills, governance, fractal compliance |
 | `/solicit-proposals` | Run a reflection round — per-agent self-reflection → per-agent proposal drafts → Nick gates |
+| `/cleanup-cache` | Monitor and purge temp/cache directories across IL workflows |
 
 ### Librarian Skills
 

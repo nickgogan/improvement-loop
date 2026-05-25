@@ -123,6 +123,7 @@ The Owner activates when:
 | `/system-health` | Drift detection — compare docs vs actual state, flag divergence | Active |
 | `/process-feedback` | Read feedback/, triage, investigate root causes, propose actions | Active |
 | `/system-audit` | Full consistency check — constitutions, contracts, governance compliance | Active |
+| `/cleanup-cache` | Monitor and purge temp/cache directories across IL workflows | Active |
 
 The Owner is also invocable as a subagent from anywhere in the workspace via `.claude/agents/owner.md`.
 
