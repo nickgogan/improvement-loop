@@ -4,7 +4,7 @@ summary: mem0 implements triple storage — vector stores for semantic similarit
   of vector, not a replacement. 78 total providers across 5 categories all following abstract base + factory pattern.
 implementation_notes: null
 category: Context Engineering
-evidence_strength: Medium (practitioner-documented)
+evidence_strength: Strong (production-tested)
 adoption_status: Not Yet Started
 priority: P3
 applicability:
@@ -12,6 +12,7 @@ applicability:
 adopted_in: []
 sources:
 - mem0-analysis.md
+- arxiv-2504-19413-mem0-production-memory.md
 related_findings:
 - file: four-layer-enterprise-memory-stack.md
   rel: same-problem
@@ -25,7 +26,7 @@ related_findings:
   rel: same-problem
 proposals: null
 date_discovered: '2026-04-08'
-last_updated: '2026-04-20'
+last_updated: '2026-05-25'
 pipeline_status: raw
 consumed_by: []
 ---
@@ -48,6 +49,8 @@ The SQLite layer handles the unglamorous but critical work: deduplication, histo
 ## Why People Are Using It
 
 Observed in [mem0](https://github.com/mem0ai/mem0) v1.0.11 — see [[mem0-analysis]] for structural details.
+
+**Academic validation (2025):** The Mem0 team published benchmarks on the LOCOMO dataset (single-hop, temporal, multi-hop, open-domain questions). Results: 26% relative improvement over OpenAI on LLM-as-Judge metric, 91% lower p95 latency, 90%+ token cost savings vs. full-context approaches. The graph-enhanced variant achieves ~2% additional improvement over base Mem0 through complex relationship representation. Source: [[arxiv-2504-19413-mem0-production-memory]].
 
 This is the most flexible memory architecture across all 7 analyzed repos. The optional graph layer on top of vector is a pragmatic design choice — it avoids the complexity of graph storage for teams that don't need it while keeping the upgrade path open. The 78-provider ecosystem means teams can swap infrastructure without rewriting application code.
 

@@ -7,7 +7,7 @@ implementation_notes: null
 category: Evaluation
 evidence_strength: Strong (production-tested)
 adoption_status: Not Yet Started
-priority: P2
+priority: "P3 (Monitor)"
 applicability:
 - S3 (Claude Code Build)
 adopted_in: []
@@ -23,7 +23,7 @@ related_findings:
   rel: same-problem
 - file: cross-model-verification-for-bug-finding.md
   rel: same-problem
-pipeline_status: raw
+pipeline_status: "classified"
 consumed_by: []
 ---
 # SWECI Benchmark: AI Fails at Code Maintenance (75% Break Existing Features)

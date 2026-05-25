@@ -13,6 +13,7 @@ applicability:
 adopted_in: []
 sources:
 - anthropic-managed-agents-decoupling.md
+- anthropic-managed-agents-platform.md
 related_findings:
 - file: tool-gateway-security-boundary.md
   rel: same-problem
@@ -22,8 +23,8 @@ related_findings:
   rel: extends
 proposals: null
 date_discovered: '2026-04-09'
-last_updated: '2026-04-09'
-pipeline_status: raw
+last_updated: '2026-05-25'
+pipeline_status: "classified"
 consumed_by: []
 ---
 

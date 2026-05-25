@@ -13,7 +13,33 @@ Nothing here is auto-extracted; rows feed `/extract-artifacts` only after Nick r
 | 2026-04-27 | extracted | skill | [[time-window-proactive-agent-loop]] | "Time-window proactive agent loop" | extracted to [[time-window-proactive-loop]] |
 | 2026-04-27 | extracted | template | [[obsidian-experiment-notes-personal-health-tracking]] | "Experiment note frontmatter schema" | extracted to [[experiment-note-frontmatter-schema]] |
 
+| 2026-05-24 | extracted | rule | [[five-layer-recursive-ai-loop-architecture]] | "All five layers of a self-improving system must be present and connected" | extracted to [[five-layer-recursive-ai-loop-architecture]] |
+| 2026-05-25 | extracted | rule | [[implementation-is-strategy-for-agentic-systems]] | "Assess implementation feasibility before committing agent architecture" | extracted to [[implementation-is-strategy-for-agentic-systems]] |
+| 2026-05-25 | extracted | rule | [[context-first-build-sequencing-for-agentic-systems]] | "Build context infrastructure before agent capabilities" | merged into [[fix-data-schema-before-automating]] |
+| 2026-05-25 | extracted | rule | [[ai-shepherding-anti-pattern-manual-workflow-sequencing]] | "Manually-sequenced stable workflows must be encoded as harnesses" | extracted to [[encode-stable-manually-sequenced-workflows-as-harnesses]] |
+| 2026-05-25 | extracted | rule | [[context-assembly-cost-as-strategy-blocker]] | "Persistent context layers are viability requirements, not optimizations" | extracted to [[persistent-context-layers-are-viability-requirements]] |
+| 2026-05-25 | extracted | template | [[sdk-to-framework-graduation-path]] | "SDK-to-framework graduation decision checklist" | extracted to [[sdk-to-framework-graduation-decision-checklist]] |
+
+<!-- DD-82 inline note: monitoring-agent-failure-detection-autonomous-repair describes an agent-form candidate (monitoring agent as failure-detection and repair layer). Per DD-82, agent-form candidates are logged inline, never queued. -->
+
 ## Per-row details
+
+### five-layer-recursive-ai-loop-architecture::rule::all-five-layers-must-be-connected
+
+- **Date queued:** 2026-05-24
+- **Status:** extracted
+- **Target form:** rule
+- **Source finding:** [[five-layer-recursive-ai-loop-architecture]]
+- **Source excerpt:**
+  > "System only self-improves if ALL five layers run. Missing any layer breaks the loop."
+- **Codifier's reading:** Imperative architectural invariant: a system implementing any subset of the five layers (sensor, policy, tool, quality gate, learning mechanism) is not self-improving. Falsifiable as a design-time checklist — does the proposed architecture include and connect all five? The "all-or-nothing" framing makes this a strong rule candidate: it cannot be partially satisfied. Fits rule artifact form per the form-classification rubric (must-have, falsifiable, applies as precondition to any self-improving system implementation).
+- **Suggested headline:** all-five-layers-of-self-improving-system-must-be-connected
+- **Recommendation:** extract via /extract-artifacts
+- **Resolution:** extracted to [[five-layer-recursive-ai-loop-architecture]]
+
+Extracted 2026-05-25 — Session 102 — [[session-102-codifier-identify-and-extract-artifacts]] — to [[five-layer-recursive-ai-loop-architecture]].
+
+
 
 ### compounding-knowledge-loop-internal-data::rule::compounding-loops-must-encode-outcomes
 
@@ -130,3 +156,80 @@ Extracted 2026-04-27 — Session 83 — [[session-83-codifier-ib164-resume-extra
 - **Resolution:** extracted to [[experiment-note-frontmatter-schema]]
 
 Extracted 2026-04-27 — Session 83 — [[session-83-codifier-ib164-resume-extract-artifacts]] — to [[experiment-note-frontmatter-schema]].
+
+### implementation-is-strategy-for-agentic-systems::rule::assess-feasibility-before-committing-architecture
+
+- **Date queued:** 2026-05-25
+- **Status:** extracted
+- **Target form:** rule
+- **Source finding:** [[implementation-is-strategy-for-agentic-systems]]
+- **Source excerpt:**
+  > "Four specific tests determine whether a strategy is viable at all: (1) Authentication, (2) Permission model, (3) Context assembly cost, (4) Auditability. None of these are 'implementation details to be worked out later.' Each is sufficient to change the shape of the roadmap."
+- **Codifier's reading:** Four-test viability gate expressed as an imperative: do not commit architecture before passing all four tests. Falsifiable as a design-time checklist. The "implementation IS strategy" inversion is the framing that makes this a rule rather than advisory guidance. Applies as a precondition to any new agent workflow or system integration.
+- **Suggested headline:** assess-feasibility-before-committing-architecture
+- **Recommendation:** extract via /extract-artifacts
+- **Resolution:** extracted to [[implementation-is-strategy-for-agentic-systems]]
+
+Extracted 2026-05-25 — Session 102 — [[session-102-codifier-identify-and-extract-artifacts]] — to [[implementation-is-strategy-for-agentic-systems]].
+
+### context-first-build-sequencing-for-agentic-systems::rule::build-context-before-capabilities
+
+- **Date queued:** 2026-05-25
+- **Status:** extracted
+- **Target form:** rule
+- **Source finding:** [[context-first-build-sequencing-for-agentic-systems]]
+- **Source excerpt:**
+  > "Don't start with the agents. Don't start with the multi-agent orchestration. I made this same mistake." Five-step build order: business brain -> skills referencing it -> interaction layers -> scheduled workflows -> multi-agent orchestration.
+- **Codifier's reading:** Build-ordering directive with a concrete five-step sequence. Falsifiable: at any point in a build, ask "does the context layer exist and is it referenced by the capabilities being built?" If not, the ordering is violated. The three-month practitioner learning cost provides empirical backing. Fits rule artifact form; applies as a sequencing precondition to any agentic system build.
+- **Suggested headline:** build-context-before-capabilities
+- **Recommendation:** extract via /extract-artifacts
+- **Resolution:** merged into [[fix-data-schema-before-automating]]
+
+Pending merge 2026-05-25 — Session 102 — [[session-102-codifier-identify-and-extract-artifacts]] — DD-97 extension proposal emitted at [[operations/extension-proposals/2026-05-25-extension-proposals]]; primary match [[fix-data-schema-before-automating]]. Manual apply per DD-97 v1 (Step 1.7 auto-merge prohibition); after apply, row Status flips to extracted and Resolution to merged into [[fix-data-schema-before-automating]] via manual queue edit (or future skill mode).
+
+Merged 2026-05-25 — Session 103 — [[session-103-codifier-complete-extract-artifacts-write-phase]] — into [[fix-data-schema-before-automating]].
+
+### ai-shepherding-anti-pattern-manual-workflow-sequencing::rule::encode-stable-sequences-as-harnesses
+
+- **Date queued:** 2026-05-25
+- **Status:** extracted
+- **Target form:** rule
+- **Source finding:** [[ai-shepherding-anti-pattern-manual-workflow-sequencing]]
+- **Source excerpt:**
+  > "You have your skills and commands and you're running workflows there, but you still have your entire process where you're running different skills and different commands, and you have to remember what comes next." The alternative: "Define once, run forever, reusable across projects."
+- **Codifier's reading:** Anti-pattern identification with a concrete diagnostic ("are you the orchestrator?") and a threshold heuristic (>3 stable runs -> encode). The naming itself provides diagnostic value. Falsifiable: for each recurring manual sequence, has it been evaluated for harnessing? Fits rule artifact form; applies as a maintenance-time check against any workflow that has run manually more than 3 times with stable steps.
+- **Suggested headline:** encode-stable-sequences-as-harnesses
+- **Recommendation:** extract via /extract-artifacts
+- **Resolution:** extracted to [[encode-stable-manually-sequenced-workflows-as-harnesses]]
+
+Extracted 2026-05-25 — Session 102 — [[session-102-codifier-identify-and-extract-artifacts]] — to [[encode-stable-manually-sequenced-workflows-as-harnesses]].
+
+### context-assembly-cost-as-strategy-blocker::rule::persistent-context-is-viability-requirement
+
+- **Date queued:** 2026-05-25
+- **Status:** extracted
+- **Target form:** rule
+- **Source finding:** [[context-assembly-cost-as-strategy-blocker]]
+- **Source excerpt:**
+  > "If every run reassembles the same business context from scratch and your token bill goes up by 3x, the strategy doesn't work." Persistent context layers are "not optimization — they are viability requirements."
+- **Codifier's reading:** Economic invariant: context assembly cost must amortize across runs, not scale linearly with run count. Falsifiable as a pre-design check: what percentage of tokens per run are spent reassembling unchanged context? If the answer is high and run frequency is high, the strategy is non-viable without a persistent context layer. Fits rule artifact form; applies as a viability precondition to any agent workflow that runs frequently against stable backend data.
+- **Suggested headline:** persistent-context-is-viability-requirement
+- **Recommendation:** extract via /extract-artifacts
+- **Resolution:** extracted to [[persistent-context-layers-are-viability-requirements]]
+
+Extracted 2026-05-25 — Session 102 — [[session-102-codifier-identify-and-extract-artifacts]] — to [[persistent-context-layers-are-viability-requirements]].
+
+### sdk-to-framework-graduation-path::template::graduation-decision-checklist
+
+- **Date queued:** 2026-05-25
+- **Status:** extracted
+- **Target form:** template
+- **Source finding:** [[sdk-to-framework-graduation-path]]
+- **Source excerpt:**
+  > "Graduation triggers: (1) Multi-user deployment, (2) Speed requirements, (3) Cost sensitivity, (4) Observability needs." Skills and MCP servers carry over; agent loop and state management rebuild.
+- **Codifier's reading:** Four concrete graduation triggers with a portable-assets inventory (skills + MCP servers survive; agent loop + state management do not). Template-shaped: a checklist with named triggers, current-state assessment per trigger, and a portability inventory. Fits template artifact form; reusable by any practitioner deciding whether to graduate from SDK to framework.
+- **Suggested headline:** graduation-decision-checklist
+- **Recommendation:** extract via /extract-artifacts
+- **Resolution:** extracted to [[sdk-to-framework-graduation-decision-checklist]]
+
+Extracted 2026-05-25 — Session 102 — [[session-102-codifier-identify-and-extract-artifacts]] — to [[sdk-to-framework-graduation-decision-checklist]].

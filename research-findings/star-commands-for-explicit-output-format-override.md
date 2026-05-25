@@ -21,8 +21,9 @@ related_findings:
   rel: same-problem
 - file: brevity-constraints-reverse-llm-performance.md
   rel: same-problem
-pipeline_status: raw
-consumed_by: []
+pipeline_status: "synthesized"
+consumed_by:
+  - "model-resilient-prompt-engineering.md"
 ---
 # Star Commands for Explicit Output Format Override
 

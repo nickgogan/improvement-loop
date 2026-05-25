@@ -1,5 +1,28 @@
 # Changelog — Managing Agent Context
 
+## 2026-05-25 — Session 104 — guide-split
+
+- Findings: 64 (final; guide deprecated)
+- Structural: Guide bifurcated into G2a (`structuring-agent-context`, 34 findings) and G2b (`defending-agent-context`, 29 findings), plus 1 shared (`bounded-tiered-memory-inference-driven-curation`). Split proposal at `operations/split-proposals/2026-05-24-managing-agent-context-split-proposal.md`. Source guide deprecated; routing table updated to point at G2a + G2b.
+- Preserved: none
+- SL: [[session-104-owner-g2-bifurcation]]
+
+## 2026-05-25 — Session 97 — staleness-threshold
+
+- Findings: 64 (+16, -0 since last synthesis)
+- Added: [[claude-code-context-management-decision-matrix-five-tools]], [[proactive-compaction-before-intelligence-degradation]], [[inline-scoped-mcp-servers-per-subagent]], [[token-economics-as-architecture-driver]], [[agentic-rag-multi-strategy-retrieval-2026]], [[file-search-outperforms-rag-for-small-corpora]], [[hybrid-retrieval-pattern-semantic-lexical-graph]], [[summary-gate-agent-traversal-pattern]], [[personal-knowledge-hoard-as-agent-substrate]], [[ai-as-primary-reader-design-principle]], [[agent-memory-architecture-multi-agent-layered]], [[html-output-as-human-in-the-loop-restorer]], [[format-constrained-improvisation-tax]], [[interactive-explanations-extend-linear-walkthroughs]], [[output-format-token-cost-reframed-by-context-window-size]], [[environment-grounded-context-as-output-quality-multiplier]]
+- Structural: Added Step 9 (Engineer Your Output Format, 4 sub-steps); Step 4e restructured as Anthropic's canonical 5-tool decision matrix; Step 7 expanded with agentic RAG, summary-gate, personal knowledge hoards; Step 8g added multi-agent shared memory architecture; Key Concepts 8-10; Pitfalls 18-20; 1 new template (Output Format Decision).
+- Preserved: none
+- SL: [[session-97-codifier-guide-resynthesis]]
+
+## 2026-05-24 — Session 93 — staleness-threshold
+
+- Findings: 48 (+4, -0 since last synthesis)
+- Added: [[bounded-tiered-memory-inference-driven-curation]], [[session-tree-as-first-class-abstraction]], [[write-time-vs-query-time-synthesis-kb-poisoning]], [[orchestrator-headless-dispatch-context-isolation]]
+- Structural: Added Step 3f (hard ceilings on memory files, hot/warm/cold tiering, Curator step); Step 4g (session-as-tree model, branching/compaction/navigation/labels); Step 5 defense #7 (headless subprocess dispatch for rot prevention at process level, renumbering prior #7 to #8); Step 7a (KB poisoning, query-time vs write-time synthesis, three integrity principles). Added Key Concept #7 (LLM-authored KB contamination). Added Pitfalls #16 (KB re-indexing contamination) and #17 (unbounded memory files). Expanded "When to Use" with 3 new trigger conditions. Context Audit Checklist extended with 4 new Rot Defense checks.
+- Preserved: none
+- SL: [[session-93-codifier-synthesize-guides]]
+
 ## 2026-04-26 — Session 78 — staleness-threshold
 
 - Findings: 44 (+18, -0 since last synthesis)

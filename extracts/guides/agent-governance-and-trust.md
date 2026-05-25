@@ -6,7 +6,7 @@ target_system:
   - "cross-system"
 stage: "draft"
 created: "2026-04-19"
-updated: "2026-04-26"
+updated: "2026-05-25"
 author: "claude"
 source_findings:
   - "review-bandwidth-as-organizational-bottleneck"
@@ -25,6 +25,28 @@ source_findings:
   - "per-node-tool-restrictions-workflow-governance"
   - "specification-as-governance-fourth-enforcement-philosophy"
   - "three-enforcement-pipeline-architectures"
+  - "actor-passport-schema-bound-identity"
+  - "agent-action-reversibility-as-design-requirement"
+  - "capability-restricted-agent-spawning-via-allowlist"
+  - "context-warrant-justified-data-package"
+  - "cross-system-permission-composition-audit-gap"
+  - "dri-rotation-pattern-time-bounded-sensemaking-ownership"
+  - "foreground-vs-background-subagent-permission-models"
+  - "governance-ontology-semantic-foundation"
+  - "governed-dependency-chain-build-order"
+  - "interpretive-boundary-layer-fact-vs-judgment"
+  - "management-unbundling-routing-sensemaking-accountability"
+  - "passport-object-decision-governance-binding"
+  - "pattern-scale-signals-systemic-not-individual-failure"
+  - "permission-compounding-across-agent-delegation-chains"
+  - "policy-as-data-machine-readable-constraints"
+  - "policy-as-data-runtime-governance-pattern"
+  - "runtime-governance-gap-buildtime-to-production"
+  - "runtime-threshold-management-truth-conditions"
+  - "subagent-scope-priority-ladder"
+  - "supervision-debt-anti-pattern"
+  - "tool-access-as-security-boundary-not-feature-toggle"
+  - "tool-model-io-contracts-with-preconditions"
 source_dd:
   - "DD-81"
 tags:
@@ -33,18 +55,21 @@ tags:
   - "trust"
   - "autonomy"
   - "enforcement-architecture"
+  - "permissions"
+  - "auditability"
+  - "runtime-governance"
 contract:
-  preconditions: "Agent system with human oversight requirements; governance model needed; an enforcement architecture is chosen (rules, hooks, middleware, or specification) before policies are written"
-  invariants: "Human retains override authority; audit trail maintained; enforcement-architecture choice is explicit and matches system complexity; rule scope is locality-aware (universal rules central, local rules at the boundary)"
+  preconditions: "Agent system with human oversight requirements; governance model needed; an enforcement architecture is chosen (rules, hooks, middleware, or specification) before policies are written; permission model defined for multi-agent delegation if applicable"
+  invariants: "Human retains override authority; audit trail maintained; enforcement-architecture choice is explicit and matches system complexity; rule scope is locality-aware (universal rules central, local rules at the boundary); permissions narrow monotonically across delegation chains; every agent action is traceable to an identity and a governing policy version"
   governance: "IL-owned draft; Nick deploys to meta-system/knowledge/guides/"
-  recovery: "If trust violations detected, demote agent to lower autonomy tier; if enforcement bypass detected, audit the architecture choice before adjusting policy"
+  recovery: "If trust violations detected, demote agent to lower autonomy tier; if enforcement bypass detected, audit the architecture choice before adjusting policy; if permission compound detected, audit the delegation chain and apply monotonic narrowing; if audit gap found, freeze autonomous operations until the trail is restored"
 ---
 
 # Agent Governance and Trust
 
 How to govern agent autonomy and maintain human oversight as agent output scales beyond human review capacity. This guide addresses the central tension of agentic systems: agents produce at 100x speed, humans review at 3x speed, and the gap between those numbers is where governance either holds or collapses.
 
-The guide covers four concerns: defining autonomy tiers so agents act within calibrated boundaries, evolving review processes so oversight scales with output and the comprehension that justifies it, building governance infrastructure so policies are enforced rather than aspirational, and managing agent identity so oversight is traceable and portable.
+The guide covers seven concerns: defining autonomy tiers so agents act within calibrated boundaries, evolving review processes so oversight scales with output, building governance infrastructure so policies are enforced rather than aspirational, managing agent identity so oversight is traceable and portable, making governance machine-readable and enforceable at runtime, managing permissions across agent delegation chains, and tracing agent decisions for auditability.
 
 ## When to Use This Guide
 
@@ -57,6 +82,11 @@ The guide covers four concerns: defining autonomy tiers so agents act within cal
 - You are choosing between rule-based, hook-based, middleware-based, or specification-based enforcement
 - AI-generated code is shipping faster than humans can read and understand it
 - Your governance rules have outgrown a single root file and need to scope to subsystems
+- You are building multi-agent systems where agents delegate to other agents and permissions compound
+- You need governance rules that are enforced at runtime, not just documented at build time
+- You want every agent decision to carry its own proof of authorization
+- Your agents cross multiple backend systems and you need composed audit trails
+- You are shipping agents to production without a control layer and accumulating supervision debt
 
 ## Key Concepts
 
@@ -73,6 +103,16 @@ The guide covers four concerns: defining autonomy tiers so agents act within cal
 **6. Comprehension is upstream of review.** Review exists because someone has to understand what was produced before it ships. When agents generate code that no human reads, the review step does not become unnecessary -- it becomes structurally impossible. Review obsolescence achieved by automation eliminates mechanical review categories; review obsolescence achieved by skipping comprehension creates "dark code" that passes tests but is owned by no one. Restoring comprehension is the upstream fix; throughput improvements are downstream.
 
 **7. Enforcement is architectured, not just policy.** Two systems can declare identical autonomy tiers, identical trust ramps, and identical audit requirements, yet deliver opposite levels of safety -- because one enforces via static rules at invocation time, the other intercepts every tool call through ordered middleware. The enforcement architecture (rules / hooks / middleware / specification) is itself a design decision with its own tradeoffs in coverage, ordering, latency, and debuggability. Policy without architecture is aspirational; architecture without policy is mechanism without intent.
+
+**8. Governance must be machine-readable and runtime-enforceable.** Prose policies ("agents should not access PII without authorization") are aspirational. Machine-readable policies are enforced -- the runtime checks them and blocks non-compliant events. The gap between build-time governance and production execution is where most agentic systems fail: rules designed at build time are validated at deployment, then left behind as agents execute continuously.
+
+**9. Permissions compound unpredictably across delegation chains.** When Agent A delegates to Agent B, the effective permissions are the compound of A's delegation scope, B's own capabilities, and the target system's access model. This compound is rarely designed explicitly -- it emerges at runtime from the intersection of independently-designed permission systems. Each delegation step must narrow permissions, never expand them.
+
+**10. Every agent decision must carry its own proof of authorization.** Standard telemetry records what happened but not what rule governed the decision. The rule existed in a repository; it did not travel with the event. For governance to be provable rather than aspirational, the governing policy version, permits, evidence, and authority must be fused with the action at execution time.
+
+**11. Reversibility determines governance intensity.** Every agent action sits on a reversibility spectrum. Fully reversible actions (read-only, draft generation) need minimal gating. Practically irreversible actions (sent communications, triggered payments) require human approval. The reversibility classification must account for actual infrastructure, not theoretical possibility of reversal.
+
+**12. Pattern-scale failure signals systemic, not individual problems.** When governance failures appear at scale (11% of endpoints, not 1 of 200), the root cause is organizational and structural. The correct diagnostic is "what process keeps producing this pattern?" and the correct mitigation is architectural defaults, not training.
 
 ---
 
@@ -116,6 +156,19 @@ For each decision type the agent handles, classify by blast radius and reversibi
 | Proposal-First | Proposes action, waits for approval | Reviews proposal, approves/rejects | Cross-system changes, new Design Decisions, API changes |
 | Human-Required | Cannot act, must escalate | Makes the decision directly | Schema migrations, production deploys, data deletion |
 
+### Reversibility-Aware Classification
+
+The autonomy decision tree classifies by blast radius and reversibility in the abstract. In practice, reversibility depends on actual infrastructure:
+
+| Reversibility Category | Examples | Required Gate | Infrastructure Dependency |
+|------------------------|----------|---------------|---------------------------|
+| Fully reversible | Read-only queries, draft generation, local file edits with VCS | Minimal (Full Autonomy) | Version control, local state |
+| Reversible with effort | Database writes with backup, config changes with audit trail | Pre-action confirmation or post-action review window | Backup system, tested restore procedure |
+| Practically irreversible | Sent communications, triggered payments, published content | Human approval required | No reliable undo mechanism |
+| Irreversible | Legal commitments, regulatory filings, physical-world actions | Must not be delegatable to agents | N/A |
+
+A database write is reversible if there is a backup and a tested restore procedure. The same write is irreversible if there is no backup. Classify against actual infrastructure, not theoretical possibility.
+
 ### Algorithmic Guardrails
 
 For HOTL-tier decisions (full autonomy and guarded), define boundaries with explicit thresholds rather than procedures:
@@ -155,8 +208,21 @@ nodes:
 - Tool restrictions need to be edited by workflow authors without modifying the execution engine.
 
 **When not to:**
-- The workflow is short (≤2 steps) or every step has similar trust profile.
+- The workflow is short (<=2 steps) or every step has similar trust profile.
 - Tool restrictions become so finely sliced that a single legitimate action requires whitelisting across many nodes.
+
+### Supervision Debt: Identify Control Points Before Deployment
+
+Teams that wire models to tools without identifying control points accumulate supervision debt: they ship agents, discover what agents are actually doing in production, then retroactively bolt on approval buttons, audit logs, and cancel mechanisms as symptomatic fixes.
+
+The root issue is not the missing UI elements but the failure to identify control points upfront. A control point is a moment where a human needs to observe, approve, edit, deny, or cancel agent work. Map every agent workflow to explicit control points before deployment:
+
+1. **Observation points:** Where must the human see agent state and progress?
+2. **Approval points:** Which actions require pre-execution human sign-off?
+3. **Steering points:** Where can the human correct course mid-task?
+4. **Cancel points:** Where can the human interrupt and roll back?
+
+Uniform gating (gate everything equally) is safer than no gating but is its own form of debt -- excessive approval friction that masks which operations genuinely need human oversight. The correct investment is classifying operations by actual risk tier: auto-approve (read-only), human-approve (mutations), human-initiate (irreversible).
 
 ---
 
@@ -302,6 +368,39 @@ The three-layer response:
 
 The relationship between comprehension and review obsolescence: review obsolescence achieved by *automating mechanical categories* is the goal of the previous sub-section. Review obsolescence achieved by *skipping comprehension* is dark code. Both reduce review volume; only the first reduces review necessity.
 
+### The Interpretive Boundary Layer
+
+Agent outputs that reach human decision-makers must be explicitly classified into two categories:
+
+- **"Act on this"** -- factual, verified, low-risk. Status rollups, dependency flags, metrics that crossed thresholds with clear historical precedent. The system is operating within its competence.
+- **"Interpret this first"** -- judgment calls the system is not equipped to make reliably. Trends that might be noise. Correlations that might not be causal. Prioritizations that might reflect model bias.
+
+Presenting both at the same confidence level is an architectural failure that silently degrades decision quality. Once a team begins treating system output the way they treat a director's analysis, the damage is slow: a degradation of decision quality that looks like bad luck rather than "the system was making editorial choices it was never equipped to make."
+
+This is distinct from a confidence score. It is a binary classification of output type: factual versus inferential. The boundary is never perfect, but it must be explicitly drawn.
+
+### Scaling Oversight as an Organizational Function
+
+The human oversight function bundles three distinct sub-functions:
+
+1. **Routing** (AI-automatable): aggregating signal up from agents and distributing directives down. Synthesizing status, cascading policy changes, monitoring agent output. This is a solved problem for AI.
+2. **Sensemaking** (partially automatable, human-dominant): distinguishing signal from noise. Translating strategy into agent direction. Surfacing meaningful patterns from ground-level data upward. Requires domain context AI cannot replicate reliably.
+3. **Accountability** (human-essential): ownership of outcomes over time. The multi-year attachment a product manager develops toward a domain. Feedback delivery that is timed, contextual, developmentally appropriate.
+
+Flattening oversight (removing human review layers) without explicitly reassigning all three functions produces drift. The DRI rotation pattern addresses this: name a responsible individual per agent domain for a bounded term (e.g., 90 days) with explicit authority to interpret signals, set priority, and make direction calls. Time-bounding prevents territory accumulation; rotation builds cross-domain fluency.
+
+### Systemic Failure Diagnosis
+
+When governance failures appear at pattern-scale (affecting a significant percentage of a system's surface), the correct diagnostic is not "who forgot to follow the checklist?" but "what process keeps producing this pattern?"
+
+**Diagnostic process:**
+1. Count the instances. A single violation is plausibly individual error. Multiple violations (3+) are a pattern.
+2. Identify the process that produces the pattern. "Why wasn't there a default that would have captured this?"
+3. Trace the organizational root cause. Technical defaults are set by organizational priorities.
+4. Target the mitigation at the process. Training fixes individual errors. Architectural defaults fix systematic patterns.
+
+If the failure is at pattern-scale, training is the wrong mitigation. Architectural defaults that apply automatically to every action are the correct response.
+
 ### Review Process Template
 
 ```markdown
@@ -322,10 +421,22 @@ The relationship between comprehension and review obsolescence: review obsolesce
 |---------------------|------------------|---------------|---------------------------|
 | {{COMPONENT}} | {{YES/NO/PARTIAL}} | {{YES/NO}} | {{YES/NO}} |
 
+### Interpretive Boundary
+| Output Type | Classification | Confidence Basis |
+|-------------|---------------|------------------|
+| {{OUTPUT}} | {{ACT_ON_THIS / INTERPRET_FIRST}} | {{BASIS}} |
+
 ### Batch Configuration
 - Batch size: {{N}} artifacts per review cycle
 - Review cadence: {{SCHEDULE}}
 - Backlog threshold (pause production): {{N}} unreviewed items
+
+### Oversight Function Assignment
+| Function | Owner | Term | Authority |
+|----------|-------|------|-----------|
+| Routing | {{AGENT_OR_ROLE}} | Ongoing | N/A (automated) |
+| Sensemaking | {{DRI_NAME}} | {{TERM_LENGTH}} | {{AUTHORITY_SCOPE}} |
+| Accountability | {{ROLE}} | Ongoing | {{AUTHORITY_SCOPE}} |
 
 ### Quality Metrics
 - Downstream failure rate of approved artifacts: {{RATE}}
@@ -363,10 +474,24 @@ The relationship between comprehension and review obsolescence: review obsolesce
 | Codifier agent | YES (agent.md) | PARTIAL | NO |
 | Research findings KB | PARTIAL (frontmatter) | NO | NO |
 
+### Interpretive Boundary
+| Output Type | Classification | Confidence Basis |
+|-------------|---------------|------------------|
+| Finding extraction | ACT_ON_THIS | Schema-validated, source-linked |
+| Priority assessment | INTERPRET_FIRST | LLM judgment, requires Nick gate |
+| Split proposal recommendation | INTERPRET_FIRST | Codifier judgment, heuristic |
+
 ### Batch Configuration
 - Batch size: 15 findings per review cycle
 - Review cadence: End of each research session
 - Backlog threshold: 30 unreviewed findings triggers pipeline pause
+
+### Oversight Function Assignment
+| Function | Owner | Term | Authority |
+|----------|-------|------|-----------|
+| Routing | Researcher agent | Ongoing | Automated pipeline |
+| Sensemaking | Nick | Ongoing | All architectural decisions |
+| Accountability | Nick | Ongoing | System-wide |
 
 ### Quality Metrics
 - Downstream failure rate: Not yet tracked
@@ -377,7 +502,7 @@ The relationship between comprehension and review obsolescence: review obsolesce
 
 ## Section 4: Build Governance Infrastructure
 
-Autonomy tiers and review processes are policy. Without enforcement infrastructure, they are aspirational. This section starts with the meta-decision -- which enforcement architecture to use -- then walks the four infrastructure layers that an architecture-of-choice instantiates.
+Autonomy tiers and review processes are policy. Without enforcement infrastructure, they are aspirational. This section starts with the meta-decision -- which enforcement architecture to use -- then walks the infrastructure layers that an architecture-of-choice instantiates.
 
 ### Choose an Enforcement Architecture
 
@@ -394,7 +519,7 @@ Two systems can declare identical policies and deliver opposite levels of safety
 **Specification-based enforcement is a fourth, complementary philosophy.** The first three are runtime architectures (where checks execute). Specification-based enforcement encodes governance as executable contracts that compliance is *verified against* rather than instructed to follow:
 
 - A conformance test suite that any implementation must pass (the interface owns the tests, not the implementation -- inverts the typical relationship).
-- Spec-driven development where specs are living artifacts kept bidirectionally in sync with code -- read spec → implement → verify alignment → update spec or code.
+- Spec-driven development where specs are living artifacts kept bidirectionally in sync with code -- read spec -> implement -> verify alignment -> update spec or code.
 - Compliance is *verified*, not *instructed*. A conformance test either passes or fails -- there is no "rationalize past the test suite."
 
 This pairs with the runtime architectures: specification-based for *what* compliance means, rules/hooks/middleware for *what runs* when an action is attempted.
@@ -460,6 +585,12 @@ A centralized gateway through which all agent tool calls are routed. Provides al
 
 Without a gateway, each tool manages its own security -- creating an inconsistent, unauditable attack surface. The gateway transforms agents from security liabilities into systems that can be governed, monitored, and audited.
 
+**Tool access is a security boundary, not a feature toggle.** MCP tool enablement in most UIs looks like a feature toggle (enable/disable server), but it is actually a security boundary crossing. MCP was designed for high-trust environments and does not enforce access control at the protocol level. Enabling a tool grants the agent arbitrary code execution and arbitrary data access within that tool's scope. Required mitigations when crossing the boundary:
+1. **Scopes:** Which tools can the agent see in which context?
+2. **Approval flows:** Which operations require human confirmation?
+3. **Audit trails:** What tools were called, with what parameters, producing what results?
+4. **Context-sensitive visibility:** Do not expose tools irrelevant to the current task.
+
 **Credential isolation pattern:** Sensitive credentials (git credentials, signing keys, API tokens) stay outside the agent's sandbox entirely. A credential proxy handles authentication; the agent never sees real tokens.
 
 ### Layer 3: Identity-Aware Orchestration
@@ -501,6 +632,8 @@ project/
 │       └── CLAUDE.md → AGENTS.md
 ```
 
+**Scope priority ladder.** When definitions or rules share the same name across multiple scopes, resolution follows a deterministic priority order: organization-managed (highest) > CLI-session > project > user > plugin (lowest). Higher priority wins with no merging. This ensures organization admins can enforce defaults that developers cannot override, while plugins remain guest-citizens whose contributions are overridable by any higher scope.
+
 **Inheritance semantics must be explicit.** Without explicit override rules, it is unclear whether a subsystem rule supplements or replaces a root rule. Default heuristic: subsystem rules add to root rules; conflicts fail the load with a structured error. Override-by-default semantics are dangerous unless the system has well-tested cascade rules.
 
 **When to reach for distributed scope:**
@@ -513,107 +646,350 @@ project/
 - Rule granularity is finer than subsystem boundaries (use a tagged-rule system instead).
 - File system layout does not cleanly map to governance boundaries (use dynamic context assembly instead).
 
-### Governance Infrastructure Template
+---
+
+## Section 5: Make Governance Machine-Readable
+
+Prose governance ("agents should not access PII without authorization") is aspirational. Machine-readable governance is enforceable. This section covers how to transform policy from documentation into runtime-enforced constraints.
+
+### The Runtime Governance Gap
+
+Traditional compliance tools (policy-as-code, infrastructure-as-code, CI/CD gates) were engineered for a world where systems are built, deployed, and then remain still until the next patch. The deployment gate is the enforcement point. Everything downstream is assumed to be static.
+
+Agents contradict this assumption. When an agentic workload is deployed, it wakes up. Decision nodes fire continuously. The agent allocates resources, routes work, triggers APIs, and spends money between deployments -- it is never still. Oversight that only covers the deployment gate covers only a single moment in a system that never stops acting.
+
+As agents execute, they move progressively further from the original deployment gate. The farther they travel, the larger the gap between "what the agent was authorized to do at deployment" and "what rules are actually governing current decisions." In a multi-agent system, this gap translates to thousands of autonomous actions per hour under potentially outdated, misaligned, or unchecked parameters.
+
+**Diagnostic test:** For any single active decision happening right now, can you name the rule that governs it? The version? The evidence evaluated? The approving authority? If answering those questions requires a log search, a Slack thread, or a developer -- runtime governance does not exist.
+
+### Policy as Data Architecture
+
+Instead of prose documentation, represent governance rules as machine-readable data structures that the runtime evaluates against every event.
+
+**Three categories of policy rules:**
+1. **Boundary rules** -- what the system is and is not permitted to do (scope constraints)
+2. **Authority rules** -- who is permitted to trigger which events (access constraints)
+3. **Data handling rules** -- how data may be accessed, retained, and shared (compliance constraints)
+
+**Runtime binding pattern:** Governance rules are decoupled from application code and stored as independent, version-controlled policy bundles. Each bundle specifies permits granted, denials enforced, obligations that must fire, and specific evidence required before execution is allowed. At runtime, agents query a policy service and bind to a specific bundle version before executing an action.
+
+**Instant update path:** Policy changes are made by promoting a new bundle version. Every agent in scope binds to the new logic instantly, with no pipeline redeployment required. This closes the update-lag failure mode: emergency policy changes take effect at agent speed rather than deployment-pipeline speed.
+
+### The Governed Build Order
+
+Machine-readable governance requires a dependency-ordered construction sequence. Each layer depends on the artifacts of the layer below it:
+
+| Step | Layer | What It Defines |
+|------|-------|----------------|
+| 1 | Ontology + Semantic Model | Core domain nouns; disambiguation rules |
+| 2 | Event Schema | Noun-verb mappings; mandatory fields; state implications |
+| 3 | Policy as Data | Boundary, authority, data-handling rules (machine-readable) |
+| 4 | Actor Model + Passport Schema | Actor classes; role bindings; authority ceilings; trust markers |
+| 5 | Context Warrant | Justified minimum-necessary data assembly; freshness enforcement |
+| 6 | Protocol + State Machines | Allowed action sequences; transition rules; timeouts |
+| 7 | Tool and Model IO Contracts | External effect boundaries; preconditions; rate limits; idempotency |
+| 8 | Provenance + Audit/Replay | Action lineage; policy traces; decision logic; replay capability |
+| 9 | Threshold Management | Live signal monitoring; escalation and containment triggers |
+| 10 | Truth Conditions Framework | Three-level verification: semantic, procedural, historical |
+| 11 | Capability Contracts | Runtime engines with no independent logic; derive authority from chain |
+
+**The dependency chain narrative:** Meaning dictates events. Events are filtered by policy. Policy governs actors. Actors wield context. Context navigates state. State triggers effects. Effects generate proof. Proof is verified by runtime controls. Runtime is operationalized by capability contracts.
+
+**The atomic rule:** One artifact serves exactly one concern. Mixing semantic definitions with runtime thresholds -- or any other cross-layer contamination -- breaks system integrity. This prevents category drift: the failure mode where control, history, trust, and state collapse into an unmanageable blob.
+
+Not every system needs all 11 layers. The correct question is: what is the minimum required depth for your risk profile? A simple single-agent tool with low blast radius may need only layers 1-4. A regulated multi-agent system processing financial transactions needs all 11.
+
+### Runtime Threshold Management
+
+Beyond static preconditions, runtime thresholds respond to live conditions as a "pressure valve" that escalates or contains behaviors:
+
+- **Volume signals:** Is the system processing more events than expected?
+- **Error rate signals:** Are failures accumulating?
+- **Authority signals:** Is an actor approaching its authority ceiling?
+- **Temporal signals:** Has the system been in a state longer than permitted?
+
+When a threshold is crossed, the system either escalates (notifies a human or higher-level orchestrator) or contains (pauses, limits, or terminates the behavior).
+
+**Truth conditions verification** checks whether an action is valid across three independent dimensions:
+1. **Semantically correct** -- does the action conform to the ontology and event schema?
+2. **Procedurally sound** -- is the action permitted given the current state machine position, actor passport, and policy layer?
+3. **Historically accurate** -- is the action consistent with the provenance trail? Does it reference events and states that actually occurred?
+
+Validating all three simultaneously prevents actions that satisfy observable governance checks while relying on fabricated historical context.
+
+### Machine-Readable Governance Template
 
 ```markdown
-## Governance Infrastructure — {{SYSTEM_NAME}}
+## Machine-Readable Governance — {{SYSTEM_NAME}}
 
-### Enforcement Architecture
-- Primary architecture: {{RULES / HOOKS / MIDDLEWARE / MIXED}}
-- Specification-based layer: {{NONE / CONFORMANCE_TESTS / SPEC_DRIVEN_DEV}}
-- Hook events instrumented: {{LIST OR N/A}}
-- Middleware layers (in order): {{LIST OR N/A}}
-- Spec location (if specification-based): {{PATH OR N/A}}
+### Ontology
+- Core nouns: {{LIST_OF_CANONICAL_DOMAIN_TYPES}}
+- Disambiguation rules: {{SEMANTIC_MODEL_LOCATION}}
+- Versioning: {{ONTOLOGY_VERSION_SCHEME}}
 
-### Audit Layer
-- Log format: {{FORMAT}}
-- Fields: episode_id, retrieval_set_id, policy_version, model_version, {{ADDITIONAL_FIELDS}}
-- Retention policy: {{DURATION}}
-- Storage location: {{PATH_OR_SERVICE}}
-- Query interface: {{TOOL}}
+### Policy Bundle Configuration
+- Bundle format: {{JSON_SCHEMA / YAML / OPA_REGO / CEDAR / CUSTOM}}
+- Bundle location: {{PATH_OR_SERVICE}}
+- Bundle versioning: {{SEMVER / SEQUENTIAL / HASH}}
+- Update path: {{PROMOTION_LIFECYCLE: draft → review → active → deprecated}}
+- Binding mechanism: {{QUERY_AT_RUNTIME / EMBED_AT_DEPLOY / HYBRID}}
 
-### Tool Gateway
-- Enforcement point: {{GATEWAY_LOCATION}}
-- Allowlisted tools: {{LIST}}
-- Credential handling: {{PROXY / DIRECT / NONE}}
-- Rate limits: {{LIMITS}}
-- Per-step restrictions: {{YES / NO}} (per-node tool allowlists/denylists active in workflow YAML)
+### Policy Categories
+| Category | Rule Count | Enforcement Point | Update Frequency |
+|----------|-----------|-------------------|-----------------|
+| Boundary rules | {{N}} | {{WHERE}} | {{CADENCE}} |
+| Authority rules | {{N}} | {{WHERE}} | {{CADENCE}} |
+| Data handling rules | {{N}} | {{WHERE}} | {{CADENCE}} |
 
-### Identity
-- Provisioning: {{JIT / STATIC / N_A}}
-- Decision lanes:
-  | Risk Level | Approval Window | Timeout Action |
-  |-----------|----------------|---------------|
-  | {{LEVEL}} | {{DURATION}} | {{DENY / ESCALATE}} |
-- Approval format: {{SIMPLE / CHECKLIST / STRUCTURED_BRIEFING}}
+### Runtime Thresholds
+| Signal | Threshold | Escalation Action | Containment Action |
+|--------|-----------|-------------------|-------------------|
+| {{SIGNAL_TYPE}} | {{VALUE}} | {{ESCALATE_TO}} | {{CONTAIN_HOW}} |
 
-### Distributed Scope
-- Root governance file: {{PATH}}
-- Subsystem boundaries with local files: {{LIST OR N/A}}
-- Multi-tool compatibility: {{SYMLINK / DUPLICATE / NONE}}
-- Inheritance semantics: {{ADD-ONLY / OVERRIDE-ALLOWED / N_A}}
+### Truth Conditions
+- Semantic validation: {{ENABLED / DISABLED}} — checks against layers 1-2
+- Procedural validation: {{ENABLED / DISABLED}} — checks against layers 3-6
+- Historical validation: {{ENABLED / DISABLED}} — checks against layer 8
 
-### Current Gaps
-| Component | Status | Gap |
-|-----------|--------|-----|
-| {{COMPONENT}} | {{IMPLEMENTED / PARTIAL / MISSING}} | {{DESCRIPTION}} |
-```
-
-### Worked Example: MetaSystem Governance Infrastructure
-
-```markdown
-## Governance Infrastructure — MetaSystem
-
-### Enforcement Architecture
-- Primary architecture: HOOKS (Claude Code event hooks)
-- Specification-based layer: NONE (DD set is reference, not conformance-tested)
-- Hook events instrumented: SessionStart, PreCompact, PostToolUse, PreToolUse (read-guard removed 2026-04-23)
-- Middleware layers: N/A (no request-pipeline middleware)
-- Spec location: N/A
-- GAP: No conformance-test layer for cross-system invariants
-
-### Audit Layer
-- Log format: Markdown files (system-log/)
-- Fields: date, category, description, system, related DDs
-- Retention policy: Indefinite (git-tracked)
-- Storage location: {system}/operations/system-log/
-- Query interface: Dataview queries, Glob/Grep
-- GAP: No episode-level capture of tool calls or context window state
-
-### Tool Gateway
-- Enforcement point: Claude Code built-in permission system
-- Allowlisted tools: Bash, Read, Write, Edit, Glob, Grep, MCP tools
-- Credential handling: Direct (no proxy)
-- Rate limits: None
-- Per-step restrictions: NO (no workflow-DAG layer; single-loop architecture)
-- GAP: No centralized gateway; permissions distributed across tool prompts
-
-### Identity
-- Provisioning: N/A (single-agent, single-operator)
-- Decision lanes: None (conversational approval)
-- Approval format: Simple ("agent asks, Nick approves in chat")
-- GAP: No time-boxed lanes, no structured briefings, no JIT identity
-
-### Distributed Scope
-- Root governance file: CLAUDE.md (workspace root)
-- Subsystem boundaries with local files: systems/improvement-loop/CLAUDE.md, systems/meta-system/CLAUDE.md, .claude/rules/governance.md
-- Multi-tool compatibility: NONE (Claude Code only; no AGENTS.md symlinks yet)
-- Inheritance semantics: ADD-ONLY (system files extend root; no override path)
-
-### Current Gaps
-| Component | Status | Gap |
-|-----------|--------|-----|
-| Governance memory | PARTIAL | System-log exists but lacks tool-call-level granularity |
-| Tool gateway | PARTIAL | Built-in permissions, but no centralized audit |
-| Identity governance | MISSING | Conversational only, not policy-driven |
-| Decision lanes | MISSING | No time-boxed approval windows |
-| Specification layer | MISSING | DDs are reference, not conformance-verified |
-| Per-step restrictions | N/A | No workflow-DAG architecture; single-loop agent |
+### Build Order Compliance
+| Layer | Status | Artifact Location |
+|-------|--------|------------------|
+| Ontology | {{COMPLETE / PARTIAL / MISSING}} | {{PATH}} |
+| Event Schema | {{COMPLETE / PARTIAL / MISSING}} | {{PATH}} |
+| Policy as Data | {{COMPLETE / PARTIAL / MISSING}} | {{PATH}} |
+| Actor Model | {{COMPLETE / PARTIAL / MISSING}} | {{PATH}} |
+| Context Warrant | {{COMPLETE / PARTIAL / MISSING}} | {{PATH}} |
+| State Machines | {{COMPLETE / PARTIAL / MISSING}} | {{PATH}} |
+| IO Contracts | {{COMPLETE / PARTIAL / MISSING}} | {{PATH}} |
+| Provenance | {{COMPLETE / PARTIAL / MISSING}} | {{PATH}} |
+| Thresholds | {{COMPLETE / PARTIAL / MISSING}} | {{PATH}} |
+| Truth Conditions | {{COMPLETE / PARTIAL / MISSING}} | {{PATH}} |
+| Capability Contracts | {{COMPLETE / PARTIAL / MISSING}} | {{PATH}} |
 ```
 
 ---
 
-## Section 5: Manage Agent Identity and Portability
+## Section 6: Manage Permissions Across Delegation Chains
+
+When agents delegate to other agents, permissions compound in ways that no single agent's access scope predicts. This section covers how to govern the permission surface that emerges when agents compose.
+
+### Permission Compounding Problem
+
+When Agent A delegates to Agent B, B's effective permissions are the compound of A's delegation scope, B's own capabilities, and the target system's access model. Three compounding patterns:
+
+1. **Inheritance:** Agent B inherits Agent A's credentials and access scope. If A has broad access, B may inherit that entire scope even though B's task requires only a fraction.
+2. **Escalation:** Agent B's own tool capabilities combine with Agent A's delegated access to produce a higher effective privilege than either holds alone.
+3. **Intersection gap:** Each system along the delegation chain has its own permission model. No system checks the composite access -- whether the sequence of legitimate accesses across systems produces an illegitimate composite.
+
+Human delegation naturally bounds permission compounding through screen-mediated access. Agent delegation has no such implicit bound. The compound permission surface grows combinatorially with each delegation step.
+
+### Cross-System Composition Audit
+
+When an agent operates across multiple backends in a single workflow (CRM, support, contracts, wiki), three composition problems emerge:
+
+1. **Permission composition:** System A grants access, System B grants access, System C grants access. But the composite -- reading A's data, correlating with B's data, writing to C -- may violate a policy that no individual system knows about.
+2. **Audit trail composition:** Each system answers for its own portion, but composing audit trails across systems into a coherent narrative does not exist by default.
+3. **Staleness composition:** Agents mix data with different freshness without distinguishing -- stale wiki pages correlated with fresh CRM data produce synthesis that blends stale and fresh information without marking the difference.
+
+**Mitigation:** Cross-system correlation IDs ensure every agent run generates a unique trace ID passed to every system touched. Freshness metadata tags all retrieved data with timestamps and staleness thresholds. A "permission manifest" declares all systems a workflow will touch, reviewed before deployment.
+
+### Spawning Restrictions
+
+For multi-agent orchestration systems, restrict which subagent types a coordinator can spawn:
+
+| Syntax | Effect |
+|--------|--------|
+| `tools: Agent(worker, researcher)` | Allowlist -- can spawn only `worker` and `researcher` |
+| `tools: Agent` | Unrestricted -- can spawn any subagent |
+| `tools: Read, Bash` (no `Agent`) | Denied -- cannot spawn any subagents |
+
+Key properties:
+- **Allowlist, not denylist.** Listing types permits only those; everything else is blocked.
+- **Silent block with visible types.** Attempted spawn of a non-allowed type fails; the agent sees only allowed types.
+- **Scope: main-thread only.** Subagents cannot spawn other subagents regardless -- bounds recursive depth at one level.
+
+### Foreground vs. Background Permission Models
+
+Two distinct permission semantics for two execution modes:
+
+**Foreground** (blocking):
+- Permission prompts pass through to the user in real-time.
+- Clarifying questions are answerable interactively.
+- Risk is bounded by attention span.
+
+**Background** (concurrent):
+- All tool permissions are prompted upfront before launch.
+- Once running, the agent auto-denies anything not pre-approved.
+- Risk is bounded by the correctness of the initial permission inventory.
+
+**Design principle:** Skills that touch destructive operations default to foreground (interactive approval per action). Skills that are strictly read-only default to background (pre-approved limited scope).
+
+### Permission Governance Template
+
+```markdown
+## Permission Governance — {{SYSTEM_NAME}}
+
+### Delegation Chain Policy
+- Monotonic narrowing: {{ENFORCED / NOT_ENFORCED}}
+- Maximum delegation depth: {{N_LEVELS}}
+- Authority ceiling inheritance: {{STRICT_SUBSET / CONFIGURABLE / UNRESTRICTED}}
+
+### Spawning Restrictions
+| Coordinator Agent | Allowed Subagents | Denied Subagents |
+|-------------------|-------------------|------------------|
+| {{AGENT_NAME}} | {{ALLOWLIST}} | {{ALL_OTHERS / SPECIFIC}} |
+
+### Cross-System Permission Manifest
+| Workflow | Systems Touched | Composite Access Review | Correlation ID |
+|----------|----------------|------------------------|----------------|
+| {{WORKFLOW}} | {{SYSTEMS}} | {{REVIEWED_DATE / PENDING}} | {{ID_SCHEME}} |
+
+### Permission Mode Defaults
+| Skill / Agent | Default Mode | Rationale |
+|---------------|-------------|-----------|
+| {{SKILL}} | {{FOREGROUND / BACKGROUND}} | {{RATIONALE}} |
+
+### Scope Priority Ladder
+| Priority | Location | Scope |
+|----------|----------|-------|
+| 1 (highest) | Managed settings | Organization-wide |
+| 2 | CLI flag | Current session |
+| 3 | Project `.claude/agents/` | Current project |
+| 4 | User `~/.claude/agents/` | All user projects |
+| 5 (lowest) | Plugin `agents/` | Where plugin enabled |
+
+### Compound Permission Audit
+| Delegation Chain | Effective Permissions | Designed? | Last Audit |
+|------------------|-----------------------|-----------|------------|
+| {{A → B → C}} | {{COMPOSITE_PERMISSIONS}} | {{YES / EMERGENT}} | {{DATE}} |
+```
+
+---
+
+## Section 7: Trace and Audit Agent Decisions
+
+Every agent action should be self-documenting: the governing policy version, permits, evidence, and authority fused with the action at execution time. This section covers how to build decision traceability into agent architectures.
+
+### The Actor Passport Schema
+
+Every actor in a governed system is wrapped in a passport schema -- a structured identity artifact that the policy layer consults at runtime:
+
+1. **Role bindings** -- which roles the actor holds. Roles determine which events the actor may trigger.
+2. **Authority ceilings** -- the maximum scope of action the actor is permitted, regardless of role. Prevents privilege escalation even if a role temporarily gains broader permissions.
+3. **Trust markers** -- verifiable signals of trustworthiness (authentication source, delegation chain, JIT provisioning timestamp).
+
+The passport transforms anonymous prompts into governed identities. From the actor model forward, every event has a bound identity and a strictly defined authority limit. Before the actor model, agency is implicit (any prompt can claim any role). After it, agency is explicit and verifiable.
+
+**Runtime validation flow:** When an actor triggers an event, the policy layer validates the passport against the event's authority requirements. If the passport does not carry the required role bindings or exceeds its authority ceiling, the event is blocked.
+
+### The Passport Object (Per-Decision Artifact)
+
+A passport object is generated at the moment an agent executes an action. It permanently fuses:
+
+- The action data (what, when, inputs/outputs)
+- The exact policy bundle version bound at execution time
+- The specific permits granted by that bundle
+- The denials enforced
+- The obligations required to fire
+- The evidence required before execution was allowed
+
+The passport is cryptographically bound to the bundle version, creating an immutable, self-contained record. An auditor can answer every regulatory question from the passport alone, without log search or developer query.
+
+This differs from standard telemetry: telemetry records *what happened*; passport objects record *what rule governed the decision*. The rule traveled with the event rather than remaining in a repository.
+
+**Tiered passport variants:** Full passport for high-consequence actions. Summary passport for routine operations. Tiered by action risk level to manage storage growth.
+
+### The Context Warrant
+
+Before any agent decision, the system assembles a context warrant: a formally justified, minimum-necessary data package.
+
+**Key properties:**
+1. **Justified** -- every piece of context has an explicit reason for inclusion. Context without justification is rejected.
+2. **Minimum-necessary** -- pulls exactly what's needed; rejects extraneous assembly.
+3. **Freshness-enforced** -- stale data (outdated policy versions, expired actor states) is rejected, not just flagged.
+4. **Dimension-scoped** -- context organized by dimension (history, policy, actor state, tool state); the warrant specifies which dimensions are required for this specific decision.
+
+Over-context is a governance failure as dangerous as under-context. An agent with excessive context can make decisions that appear plausible but are based on irrelevant signals. The context warrant makes context assembly an auditable, governed step.
+
+### Tool and Model IO Contracts
+
+Every external side effect is governed by a formal IO contract:
+
+1. **Strict preconditions** -- conditions that must be true before execution. Failure to meet preconditions blocks the effect entirely.
+2. **Rate limits** -- bounds on frequency. Violations block execution, not just warn.
+3. **Idempotency rules** -- what happens if the effect is triggered twice. Idempotent effects are safe on retry; non-idempotent effects need explicit deduplication guards.
+
+The precondition-block pattern (rather than precondition-warn) is the critical design choice. Many systems log when preconditions fail but still execute. This produces systems where governance failures are observable in hindsight but not preventable in the moment.
+
+### Decision Traceability Template
+
+```markdown
+## Decision Traceability — {{SYSTEM_NAME}}
+
+### Actor Passport Schema
+```yaml
+actor_passport:
+  actor_id: "{{UNIQUE_ID}}"
+  role_bindings:
+    - role: "{{ROLE}}"
+      scope: "{{SCOPE}}"
+      granted_by: "{{AUTHORITY}}"
+  authority_ceiling:
+    max_blast_radius: "{{LEVEL}}"
+    max_cost_per_action: "{{AMOUNT}}"
+    forbidden_operations: [{{LIST}}]
+  trust_markers:
+    authentication: "{{METHOD}}"
+    delegation_chain: [{{CHAIN}}]
+    provisioned_at: "{{TIMESTAMP}}"
+    expires_at: "{{TIMESTAMP}}"
+```
+
+### Passport Object Schema
+```yaml
+passport_object:
+  action_id: "{{UNIQUE_ID}}"
+  timestamp: "{{ISO_TIMESTAMP}}"
+  actor_passport_ref: "{{ACTOR_ID}}"
+  policy_bundle_version: "{{VERSION}}"
+  permits_granted: [{{LIST}}]
+  denials_enforced: [{{LIST}}]
+  obligations_fired: [{{LIST}}]
+  evidence_evaluated:
+    - type: "{{EVIDENCE_TYPE}}"
+      value: "{{EVIDENCE_VALUE}}"
+      freshness: "{{TIMESTAMP}}"
+  action_data:
+    operation: "{{WHAT}}"
+    inputs: {{INPUTS}}
+    outputs: {{OUTPUTS}}
+  cryptographic_binding: "{{HASH}}"
+```
+
+### Context Warrant Schema
+```yaml
+context_warrant:
+  decision_type: "{{TYPE}}"
+  required_dimensions:
+    - dimension: "{{HISTORY / POLICY / ACTOR_STATE / TOOL_STATE}}"
+      justification: "{{WHY_NEEDED}}"
+      freshness_requirement: "{{MAX_AGE}}"
+      source: "{{WHERE_FROM}}"
+  excluded_dimensions:
+    - "{{DIMENSION_NOT_NEEDED}}"
+  assembled_at: "{{TIMESTAMP}}"
+  warrant_valid_until: "{{EXPIRY}}"
+```
+
+### IO Contract Registry
+| Tool / Effect | Preconditions | Rate Limit | Idempotent? | Failure Mode |
+|---------------|---------------|------------|-------------|--------------|
+| {{TOOL}} | {{CONDITIONS}} | {{LIMIT}} | {{YES/NO}} | {{BLOCK / WARN / RETRY}} |
+```
+
+---
+
+## Section 8: Manage Agent Identity and Portability
 
 ### The Behavioral Lock-In Problem
 
@@ -660,22 +1036,40 @@ The conversation about portability tends to happen after lock-in is already esta
 Twelve-layer middleware pipelines are powerful but expensive: per-request latency on every tool call, ordering bugs that surface only under interaction, and debugging that demands good observability up-front. Most agent harnesses are not at the complexity that justifies middleware. Start with rules; promote to hooks when discrete lifecycle events need interception; only promote to middleware when cross-cutting concerns span tool calls and the simpler architectures cannot intercept what needs enforcing.
 
 ### 10. Specs as governance theater
-Specification-based enforcement only works when specs are kept in sync with the code they specify. A spec that drifts -- ignored when the code is updated, kept around for compliance optics -- becomes a decoration that passes its own conformance tests while failing to reflect actual behavior. Bidirectional sync (read spec → implement → verify alignment → update spec or code) is the discipline; without it, specification-based governance degrades into wishful thinking.
+Specification-based enforcement only works when specs are kept in sync with the code they specify. A spec that drifts -- ignored when the code is updated, kept around for compliance optics -- becomes a decoration that passes its own conformance tests while failing to reflect actual behavior. Bidirectional sync (read spec -> implement -> verify alignment -> update spec or code) is the discipline; without it, specification-based governance degrades into wishful thinking.
 
 ### 11. Per-step over-restriction breaking workflows
 Per-node tool restrictions are valuable for least-privilege at workflow granularity, but they introduce a new failure mode: a node legitimately needs a tool that was denied, and the workflow stalls or fails. Default to inheriting the workflow's broader tool set; narrow only when a specific node's blast radius warrants it; configure clear escalation paths when a node hits a tool-restriction error rather than retrying blindly.
+
+### 12. Shipping agents without a control layer (supervision debt)
+Teams that wire models to tools without identifying control points upfront accumulate supervision debt. Each production surprise triggers another bolt-on control -- approval buttons, logs, cancel mechanisms -- that was not designed into the architecture. Map control points before deployment: observation, approval, steering, and cancel points for every workflow.
+
+### 13. Treating tool enablement as feature configuration
+MCP server enablement looks like a feature toggle but is actually a security boundary crossing. Enabling a server grants arbitrary code execution within that tool's scope. Assess what the agent can do with each enabled tool, not just whether the tool is useful.
+
+### 14. Assuming deployment-gate governance covers production
+Policy-as-code exits the room the moment the agent goes live. Agents execute continuously between deployments. The deployment gate covers a single moment in a system that never stops acting. Runtime-enforceable policy bundles close this gap.
+
+### 15. Permission compounds invisible until breach
+Each system in a delegation chain evaluates access independently. The composite access across all systems is nobody's problem until it produces a breach. Require compound permission audits for multi-agent workflows. Enumerate all systems touched and verify the composite access is intentional.
+
+### 16. Building runtime engines before governance layers
+Most multi-agent systems are built in reverse order: agent personas and prompt protocols first, governance retrofitted after. Post-hoc governance fails because governance requirements should constrain architectural decisions, not be retrofitted around them. Build in dependency order: ontology first, capability contracts last.
+
+### 17. Over-engineering the build order for simple systems
+A 3-agent workflow does not need all 11 governance layers. Applying the full build order to low-complexity systems introduces unnecessary overhead. Match governance depth to risk profile.
 
 ---
 
 ## Related Guides
 
 - **G1 -- Writing Agent Specifications:** Hard constraints from specifications feed directly into autonomy tier boundaries and guardrail definitions. Spec-driven development (Section 3's Comprehension Problem, Layer 1) is the upstream discipline that makes governance specs possible.
-- **G2 -- Managing Agent Context:** Distributed governance scope (Section 4 Layer 4) and distributed context architecture share the same boundary mechanic -- root + subsystem files at the same locations -- but G2 governs context distribution and this guide governs rule distribution. Use both at the same boundary points; the AGENTS.md/CLAUDE.md files often serve both functions.
-- **G6 -- Agent Safety and Permissions:** The permission tiers and sandboxing in G6 are the enforcement layer beneath the governance policies in this guide. G6 covers how to enforce; this guide covers what to enforce, when, and through which architecture.
-- **G3 -- Agent Architecture Decisions:** Architecture choices (single-agent vs. multi-agent, planner-executor patterns) determine the governance topology -- how many agents need tiers, who reviews whom, and how identity chains propagate. Per-step tool restrictions (Section 1) presume a workflow-DAG architecture; if no DAG exists, per-step granularity does not apply.
+- **G2 -- Managing Agent Context:** Distributed governance scope (Section 4 Layer 4) and distributed context architecture share the same boundary mechanic -- root + subsystem files at the same locations -- but G2 governs context distribution and this guide governs rule distribution. Use both at the same boundary points; the AGENTS.md/CLAUDE.md files often serve both functions. Context warrants (Section 7) formalize the context assembly that G2 describes informally.
+- **G6 -- Agent Safety and Permissions:** The permission tiers and sandboxing in G6 are the enforcement layer beneath the governance policies in this guide. G6 covers how to enforce; this guide covers what to enforce, when, and through which architecture. Permission compounding (Section 6) extends G6's single-agent model to multi-agent delegation chains.
+- **G3 -- Agent Architecture Decisions:** Architecture choices (single-agent vs. multi-agent, planner-executor patterns) determine the governance topology -- how many agents need tiers, who reviews whom, and how identity chains propagate. Per-step tool restrictions (Section 1) presume a workflow-DAG architecture; if no DAG exists, per-step granularity does not apply. Spawning restrictions (Section 6) are the governance surface of G3's orchestration patterns.
 - **G4 -- Building Agent Evaluation Suites:** Evaluation results provide the evidence for trust calibration -- the data that determines whether an agent has earned promotion to a higher autonomy tier. The "spec becomes the eval" insight (Section 3) is the bridge from specification to evaluation.
 - **G7 -- Session Persistence and Memory:** Memory write policies, novelty gates, and contradiction detection in G7 (Part 5) are the memory-specific instantiation of the governance patterns in this guide. Memory governance and agent governance share the same human-gate / audit-trail / rollback-path structure.
-- **G11 -- [[building-agentic-systems|Building Agentic Systems]]:** Human-gate placement and review workflows from this guide apply to G11's proactive-loop checkpoint discipline (Section 6) — where scheduled autonomous agents need governance rails.
+- **G11 -- [[building-agentic-systems|Building Agentic Systems]]:** Human-gate placement and review workflows from this guide apply to G11's proactive-loop checkpoint discipline (Section 6) -- where scheduled autonomous agents need governance rails.
 
 ---
 
@@ -687,6 +1081,8 @@ Per-node tool restrictions are valuable for least-privilege at workflow granular
 - A decision taxonomy exists or can be constructed for the domain.
 - The system supports per-decision-type configuration of oversight level.
 - An enforcement architecture is chosen (rules, hooks, middleware, specification, or a deliberate mix) before policies are written -- policy without architecture is aspirational.
+- For multi-agent systems: a permission model is defined that addresses delegation chains and compound access.
+- Reversibility classification exists for each action type the agent can take.
 
 ### Invariants
 - Human retains override authority at all autonomy levels. No tier removes the ability to intervene.
@@ -698,6 +1094,11 @@ Per-node tool restrictions are valuable for least-privilege at workflow granular
 - Comprehension is maintained for shipped work; agent-generated artifacts that no human has read are governance debt, not throughput gains.
 - Enforcement architecture matches system complexity: rules for static constraints, hooks for lifecycle events, middleware for cross-cutting concerns, specification for verified compliance. Promotion to a heavier architecture is justified by what the lighter architecture cannot intercept, not by aesthetic preference.
 - Governance scope is locality-aware: universal rules live in the root file; subsystem-specific rules live at the boundary they constrain; inheritance semantics are explicit.
+- Permissions narrow monotonically across delegation chains. Each delegation step can only reduce permissions, never expand them.
+- Every agent action is traceable to a governing policy version. The rule travels with the decision, not just with the deployment.
+- Agent outputs that reach human decision-makers carry explicit fact-vs-judgment classification.
+- Tool access is treated as a security boundary, not a feature toggle. Connection-level assessment precedes per-call approval.
+- Pattern-scale governance failures trigger process-level architectural fixes, not individual training.
 
 ### Governance
 - Autonomy tier assignments are governed artifacts -- agents cannot modify their own tier.
@@ -708,6 +1109,9 @@ Per-node tool restrictions are valuable for least-privilege at workflow granular
 - Comprehension coverage is tracked alongside test coverage; surfaces lacking self-describing structure or comprehension-gate review are flagged for remediation.
 - Enforcement-architecture choice is reviewed when system complexity grows (subsystem count, tool count, lifecycle event count) -- the chosen architecture may need promotion.
 - Distributed governance file inheritance semantics are documented at the root file and validated on load.
+- Policy bundle versions are immutable once active; changes require new version promotion, not in-place mutation.
+- Permission manifests for cross-system agent workflows are reviewed before deployment and re-audited on workflow change.
+- Spawning allowlists are governed artifacts; changes require governance review.
 - This guide is IL-owned draft; Nick deploys to `meta-system/knowledge/guides/`.
 
 ### Recovery
@@ -717,4 +1121,7 @@ Per-node tool restrictions are valuable for least-privilege at workflow granular
 - **Model regression:** If a model update invalidates previously earned trust (detected via increased failure rates), reset affected task types to proposal-first and re-earn trust from that level.
 - **Enforcement bypass detected:** If an agent acts before approval was obtained, audit the architecture choice before adjusting policy. Static rules cannot intercept ongoing execution -- a bypass under rules-only enforcement may be evidence the architecture needs promotion to hooks or middleware, not just stricter policy.
 - **Comprehension audit reveals dark code:** If a surface ships without any human reading the diff, freeze further automated production on that surface, restore comprehension via spec write-up + review walkthrough, and add the surface to the comprehension-gate roster before resuming.
-- **Specification drift:** If specs and code disagree, halt the affected workflow and reconcile spec → code or code → spec by judgment. Do not let either side run authoritatively while the other is stale; that is the failure mode "specs as governance theater" surfaces.
+- **Specification drift:** If specs and code disagree, halt the affected workflow and reconcile spec -> code or code -> spec by judgment. Do not let either side run authoritatively while the other is stale; that is the failure mode "specs as governance theater" surfaces.
+- **Permission compound detected:** If a delegation chain produces composite permissions that were not designed, freeze the delegation chain. Apply monotonic narrowing: each delegation step must produce a strict subset of the delegator's permissions. Audit the compound and redesign the delegation scopes before re-enabling.
+- **Runtime governance gap detected:** If agents are executing under outdated policy (bundle version drift), immediately promote the current bundle version to all bound agents. If instant promotion is not supported, halt agent execution until the deployment pipeline catches up. Implement runtime binding for future gap prevention.
+- **Cross-system audit failure:** If a regulator or audit requires the full trail of a cross-system agent action and the composed trail cannot be produced, freeze the workflow. Implement correlation IDs and freshness metadata before re-enabling cross-system agent operations.

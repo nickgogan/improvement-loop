@@ -26,7 +26,7 @@ date_discovered: '2026-03-15'
 last_updated: '2026-04-19'
 pipeline_status: synthesized
 consumed_by:
-- managing-agent-context.md
+- defending-agent-context.md
 - artifact: progressmd-session-bridge-template
   type: extracted-artifact
   form: template

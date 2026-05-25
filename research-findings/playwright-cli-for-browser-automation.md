@@ -17,8 +17,9 @@ proposals: []
 date_discovered: '2026-03-15'
 last_updated: '2026-04-19'
 related_findings: []
-pipeline_status: raw
-consumed_by: []
+pipeline_status: "synthesized"
+consumed_by:
+  - "designing-agent-tools.md"
 ---
 # Playwright CLI for Browser Automation
 

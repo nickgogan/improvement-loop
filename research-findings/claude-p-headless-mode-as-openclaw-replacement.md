@@ -13,14 +13,16 @@ applicability:
 adopted_in: null
 sources:
 - claude-codes-leak-changes-everything.md
+- five-agentic-patterns-claude-code.md
 proposals: null
 date_discovered: '2026-03-22'
-last_updated: '2026-04-19'
+last_updated: '2026-05-25'
 related_findings:
 - file: sdk-vs-framework-decision-for-agent-building.md
   rel: same-problem
-pipeline_status: raw
-consumed_by: []
+pipeline_status: "synthesized"
+consumed_by:
+  - "designing-agent-tools.md"
 ---
 # claude -p (Headless Mode) as OpenClaw Replacement
 

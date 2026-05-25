@@ -20,8 +20,9 @@ last_updated: '2026-04-19'
 related_findings:
 - file: advanced-elicitation-techniques-library.md
   rel: same-problem
-pipeline_status: raw
-consumed_by: []
+pipeline_status: "synthesized"
+consumed_by:
+  - "model-resilient-prompt-engineering.md"
 ---
 # Metaprompting / Karpathy Autoresearch for Build Specs
 

@@ -1,32 +1,38 @@
 ---
-name: "Agentic Search and Memory Retrieval (ASMR) Architecture"
-summary: "A memory-system architecture that replaces vector-similarity retrieval with active LLM-driven reasoning over stored findings, end to end. Ingestion uses parallel reader agents extracting across multiple vectors (personal info, preferences, events, temporal, updates); retrieval uses specialized search agents that reason through the memory rather than nearest-neighbor-query it; answering uses an ensemble of N variant reasoning paths. Trades per-query LLM cost for higher retrieval quality on long-context / cross-session benchmarks. Plain English: instead of 'find the nearest document,' the system runs several small agents that literally reason through the memory and return what they figured out. Expensive but powerful for hard cross-session reasoning questions."
-implementation_notes: "Reference implementation is Supermemory's ASMR sandbox. Explicitly labeled 'highly experimental / not production' by the vendor ([[experimental-sandbox-labeling-discipline]]). Cost/latency disclosures completely absent from the source — production-readiness claims are unsupported."
-category: "Context Engineering"
-evidence_strength: "Low (single-vendor sandbox, not production-shipped)"
-adoption_status: "Exploratory"
+name: Agentic Search and Memory Retrieval (ASMR) Architecture
+summary: 'A memory-system architecture that replaces vector-similarity retrieval with active LLM-driven reasoning over stored findings, end to end. Ingestion uses parallel reader agents extracting across
+  multiple vectors (personal info, preferences, events, temporal, updates); retrieval uses specialized search agents that reason through the memory rather than nearest-neighbor-query it; answering uses
+  an ensemble of N variant reasoning paths. Trades per-query LLM cost for higher retrieval quality on long-context / cross-session benchmarks. Plain English: instead of ''find the nearest document,'' the
+  system runs several small agents that literally reason through the memory and return what they figured out. Expensive but powerful for hard cross-session reasoning questions.'
+implementation_notes: Reference implementation is Supermemory's ASMR sandbox. Explicitly labeled 'highly experimental / not production' by the vendor ([[experimental-sandbox-labeling-discipline]]). Cost/latency
+  disclosures completely absent from the source — production-readiness claims are unsupported.
+category: Context Engineering
+evidence_strength: Low (single-vendor sandbox, not production-shipped)
+adoption_status: Exploratory
 priority: P3
 applicability:
-  - "General"
+- General
 adopted_in: []
 sources:
-  - "supermemory-99-sota-blog.md"
+- supermemory-99-sota-blog.md
 related_findings:
-  - file: typed-relationship-memory-graph.md
-    rel: extends
-  - file: verbatim-storage-thesis-for-memory.md
-    rel: contradicts
-  - file: triple-storage-memory-architecture.md
-    rel: same-problem
-  - file: mongodb-single-store-polymorphic-evidence-memory.md
-    rel: same-problem
-  - file: query-decomposition-sub-query-rrf-merge.md
-    rel: extends
-  - file: ensemble-eval-majority-required-for-success.md
-    rel: same-problem
+- file: typed-relationship-memory-graph.md
+  rel: extends
+- file: verbatim-storage-thesis-for-memory.md
+  rel: contradicts
+- file: triple-storage-memory-architecture.md
+  rel: same-problem
+- file: mongodb-single-store-polymorphic-evidence-memory.md
+  rel: same-problem
+- file: query-decomposition-sub-query-rrf-merge.md
+  rel: extends
+- file: ensemble-eval-majority-required-for-success.md
+  rel: same-problem
+- file: write-time-vs-query-time-synthesis-kb-poisoning.md
+  rel: contradicts
 proposals: null
-date_discovered: "2026-04-23"
-last_updated: "2026-04-27"
+date_discovered: '2026-04-23'
+last_updated: '2026-05-24'
 pipeline_status: classified
 consumed_by: []
 ---

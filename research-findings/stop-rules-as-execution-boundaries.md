@@ -27,8 +27,9 @@ related_findings:
 proposals: []
 date_discovered: '2026-04-07'
 last_updated: '2026-04-08'
-pipeline_status: raw
-consumed_by: []
+pipeline_status: synthesized
+consumed_by:
+  - "writing-agent-specifications.md"
 ---
 ## What It Is
 

@@ -14,12 +14,17 @@ adopted_in: []
 sources:
 - anthropic-harness-design-long-running-apps.md
 - anthropic-effective-harnesses-long-running-agents.md
-related_findings: []
+related_findings:
+- file: minimal-agent-harness-skeleton-three-primitives.md
+  rel: same-problem
+- file: agent-harness-distributed-system-mental-model.md
+  rel: same-problem
 proposals: null
 date_discovered: '2026-04-09'
 last_updated: '2026-04-09'
 pipeline_status: synthesized
 consumed_by:
+  - "agent-design-patterns.md"
 - agent-design-patterns.md
 ---
 

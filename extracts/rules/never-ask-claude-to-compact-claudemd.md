@@ -7,8 +7,8 @@ contributing_sources:
   - ace-delta-updates-over-monolithic-rewrites
 identification_report: "managing-agent-context.harvest-queue.md::catastrophic-context-collapse-risk-during-claudemd::rule::never-ask-claude-to-compact-claudemd"
 extraction_date: "2026-04-27"
-last_change_session: 84
-last_change_sl: "session-84-codifier-reconcile-and-dd97-sweep"
+last_change_session: 103
+last_change_sl: "session-103-codifier-complete-extract-artifacts-write-phase"
 deployed: false
 deployed_to: null
 context:
@@ -46,6 +46,7 @@ tags:
 
 **Source:** [[catastrophic-context-collapse-risk-during-claudemd]]
 **Contributing source:** [[ace-delta-updates-over-monolithic-rewrites]] (delta-update mechanism + scope generalization, session 84)
+**Source (additional):** [[write-time-vs-query-time-synthesis-kb-poisoning]]
 **Form:** rule
 **Extraction date:** 2026-04-27
 
@@ -53,7 +54,7 @@ tags:
 
 A project maintains a load-bearing evolving document consumed by an LLM-driven agent — including but not limited to CLAUDE.md, AGENTS.md, system-prompt files, `PROGRESS.md`, playbooks, accumulated session notes, or any other document that accrues operational signal over time. The document accumulates rules, constraints, decisions, or session deltas, each typically added in response to a learned failure, governance need, or session outcome. A team member or skill is contemplating "compacting," "summarizing," or otherwise rewriting the document in place because it has grown — OR is contemplating how to update the document as it continues to accumulate content.
 
-Scope of application: any evolving load-bearing document whose loss-of-content has non-trivial cost. Does not apply to ephemeral session notes, scratchpad memory, or files that are explicitly designed to be rebuilt from sources.
+Scope of application: any evolving load-bearing document whose loss-of-content has non-trivial cost. This explicitly includes **accumulated knowledge indices and search layers** — KB finding files, indexed source catalogs, and retrieval-layer artifacts where LLM-reprocessing introduces write-time synthesis poisoning (see [[write-time-vs-query-time-synthesis-kb-poisoning]]). Does not apply to ephemeral session notes, scratchpad memory, or files that are explicitly designed to be rebuilt from sources.
 
 ## Action
 
@@ -98,6 +99,10 @@ The rule exists because LLM-driven full-document rewrite has TWO failure modes �
 The bounded-failure alternatives change the risk profile. Version-controlled diff review surfaces collapse before commit. ACE-style delta-update curation eliminates LLM-driven merge entirely (the merge logic is deterministic, not LLM-driven). `/clear`-then-rebuild starts from explicit notes, not from the LLM's interpretation of the current file. Human edit has the same risk profile as any human edit. None of these have the unbounded LLM-rewrite failure.
 
 The rule is the positive-space restatement of the LLM-rewrites-evolving-document anti-pattern. Rather than enumerating ways failure manifests (sudden file shrinkage, accuracy drops post-rewrite, silent detail loss across iterations, mysterious agent regression), the positive invariant is "load-bearing evolving documents are written only by bounded-failure mechanisms — the canonical mechanism is delta-update curation; the LLM never rewrites the document in place." One rule, deterministic enforcement, broad scope.
+
+### Additional Evidence
+
+The write-time vs query-time synthesis finding ([[write-time-vs-query-time-synthesis-kb-poisoning]]) extends the no-LLM-reprocessing invariant to knowledge base write-time synthesis poisoning. When LLM-authored content (summaries, concept articles, cross-references) is re-indexed into a KB alongside source documents, unverifiable information enters the retrieval corpus. Subsequent LLM responses reason from prior LLM outputs rather than originals — circular reinforcement disconnected from ground truth. A vendor contract specifying "net 30, 2% discount within 10 days" becomes "standard net-30 terms with early-payment discounts" after write-time synthesis: the specifics are gone and cannot be recovered from the summary. This is the same failure mode as CLAUDE.md brevity-bias detail loss, applied to accumulated knowledge indices and search layers. The three principles the finding establishes — immutable originals, structure over prose, query-time synthesis — are the KB-layer analog of this rule's delta-update discipline: extracted structure (not LLM-authored narrative) serves as the navigation layer; synthesis happens at query time from originals, not at write time from prior LLM responses.
 
 ## Failure Modes
 

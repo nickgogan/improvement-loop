@@ -13,9 +13,10 @@ applicability:
 adopted_in: []
 sources:
 - these-3-frameworks-make-claude-code-unstoppable.md
+- gstack-gsd-superpowers-orchestrator-headless.md
 proposals: null
 date_discovered: '2026-04-07'
-last_updated: 2026-04-08
+last_updated: '2026-05-25'
 related_findings:
 - file: agent-architecture-layer-impermanence.md
   rel: contradicts

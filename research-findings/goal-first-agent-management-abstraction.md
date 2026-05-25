@@ -13,12 +13,15 @@ applicability:
 adopted_in: []
 sources:
 - stop-using-claude-code-in-terminal.md
+- agentic-os-five-pillars-claude-code.md
 proposals: null
 date_discovered: '2026-04-07'
-last_updated: 2026-04-08
+last_updated: "2026-05-25"
 related_findings:
 - file: agent-architecture-layer-impermanence.md
   rel: same-problem
+- file: tiered-interaction-model-quick-ask-vs-supervisor.md
+  rel: extends
 pipeline_status: raw
 consumed_by: []
 ---

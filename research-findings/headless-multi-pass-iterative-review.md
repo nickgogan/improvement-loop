@@ -26,8 +26,9 @@ related_findings:
   rel: same-problem
 - file: orchestrated-competition-n-sub-agents-solve-same.md
   rel: same-problem
-pipeline_status: raw
-consumed_by: []
+pipeline_status: "extracted"
+consumed_by:
+  - "skills/headless-multi-pass-iterative-review.md"
 ---
 ## What It Is
 
@@ -75,3 +76,6 @@ Speaker (ex-Amazon/Microsoft AI engineer) named this their most-used pattern and
 - **Aggregation noise**: N passes on a subjective target will produce N different opinions; aggregation without weighting may produce a confusing "everything is flagged" report
 - **Shell script fragility**: the loop is implemented in bash; failure handling, timeouts, and partial completion are the developer's responsibility
 - **Context freshness degradation**: if the prompt references a PR URL, each pass must re-fetch the PR state — rate limits or API changes can break fresh-context guarantees
+
+## Extraction Note — 2026-05-25
+Extracted as **skill**: [[headless-multi-pass-iterative-review]] in `extracts/skills/`

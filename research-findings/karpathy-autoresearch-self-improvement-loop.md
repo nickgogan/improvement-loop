@@ -24,8 +24,9 @@ related_findings:
   rel: enabled-by
 - file: ace-execution-feedback-no-labels-required.md
   rel: same-problem
-pipeline_status: raw
-consumed_by: []
+pipeline_status: synthesized
+consumed_by:
+  - "building-agent-evaluation-suites.md"
 ---
 # Karpathy Autoresearch Self-Improvement Loop
 

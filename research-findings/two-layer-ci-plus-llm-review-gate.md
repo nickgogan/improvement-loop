@@ -5,7 +5,7 @@ implementation_notes: "MetaSystem uses human review gates but has no automated C
 category: "Governance"
 evidence_strength: "Medium (practitioner-documented)"
 adoption_status: "Not Yet Started"
-priority: P2 (Design Required)
+priority: "P3 (Monitor)"
 applicability:
   - "S3 (Claude Code Build)"
   - "General"
@@ -22,7 +22,7 @@ related_findings:
     rel: "enables"
 date_discovered: "2026-04-20"
 last_updated: "2026-04-20"
-pipeline_status: raw
+pipeline_status: "classified"
 consumed_by: []
 ---
 

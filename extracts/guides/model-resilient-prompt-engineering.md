@@ -6,7 +6,7 @@ target_system:
   - "cross-system"
 stage: "draft"
 created: "2026-04-19"
-updated: "2026-04-19"
+updated: "2026-05-25"
 author: "claude"
 source_findings:
   - "model-agnostic-prompting-three-properties"
@@ -24,6 +24,11 @@ source_findings:
   - "prompt-as-policy-version-control-and-cicd-for-agen"
   - "bmad-outcome-based-skill-rewrite-pattern"
   - "frontier-release-compression-march-2026"
+  - "layered-prompt-assembly-stable-segment-caching"
+  - "bidirectional-prompting-for-spec-creation"
+  - "metaprompting-karpathy-autoresearch-for-build"
+  - "programmatic-snippet-extraction-via-shell-anti-hallucination"
+  - "star-commands-for-explicit-output-format-override"
 source_dd:
   - "DD-81"
 tags:
@@ -32,14 +37,14 @@ tags:
   - "model-resilience"
 contract:
   preconditions: "You are writing or auditing prompts for agent systems that may run on different models or survive model upgrades. You understand the distinction between reasoning models (extended thinking, internalized CoT) and standard models. You have access to test the prompts against acceptance criteria."
-  invariants: "Prompts tell the model what to produce, not how to think. No prescribed reasoning paths in prompts for reasoning models. Constraints are expressed as boundaries (negative) rather than aspirations (positive) for high-priority rules. Model selection is task-based, not provider-based. Prompts are versioned artifacts with testable acceptance criteria."
-  governance: "Prompts are versioned and tested against acceptance criteria after model upgrades. Model routing tables are reviewed when new benchmark data is available. Anti-pattern audits are conducted after major model releases. This guide is owned by Meta-System knowledge layer."
-  recovery: "If a prompt breaks after a model upgrade: audit against the three durability properties and remove prescribed reasoning patterns. If model costs are too high: apply the Advisor-Executor pattern or reroute to cheaper models for bulk work. If prompt performance varies across models: check for violated durability properties first, then check constraint specificity. If brevity constraints degrade complex reasoning: switch to dynamic brevity (verbose for planning, terse for execution)."
+  invariants: "Prompts tell the model what to produce, not how to think. No prescribed reasoning paths in prompts for reasoning models. Constraints are expressed as boundaries (negative) rather than aspirations (positive) for high-priority rules. Model selection is task-based, not provider-based. Prompts are versioned artifacts with testable acceptance criteria. Output format control is explicit and user-overridable, not left to model inference. Code snippets in agent-produced outputs are extracted from source files programmatically, not reconstructed from model memory."
+  governance: "Prompts are versioned and tested against acceptance criteria after model upgrades. Model routing tables are reviewed when new benchmark data is available. Anti-pattern audits are conducted after major model releases. Metaprompt loops include acceptance criteria that resist proxy-metric gaming. This guide is owned by Meta-System knowledge layer."
+  recovery: "If a prompt breaks after a model upgrade: audit against the three durability properties and remove prescribed reasoning patterns. If model costs are too high: apply the Advisor-Executor pattern or reroute to cheaper models for bulk work. If prompt performance varies across models: check for violated durability properties first, then check constraint specificity. If brevity constraints degrade complex reasoning: switch to dynamic brevity (verbose for planning, terse for execution). If cache misses occur on every turn despite stable content: ensure ephemeral state is injected as a separate layer-7 block and not inlined into the cached segment. If stale context persists across turns: move the changing content to the ephemeral layer. If agent-produced outputs contain incorrect code snippets: add a programmatic-extraction rule to the prompt and verify that the agent uses shell tools rather than memory for quoting source code. If output format is wrong despite constraints: add explicit user-overridable format commands (star commands) rather than relying on the model to infer format from context. If spec-implementation misalignment causes cascading bugs: insert a bidirectional prompting phase before implementation begins."
 ---
 
 # Model-Resilient Prompt Engineering
 
-How to write prompts that survive model upgrades, route tasks to the right model, and manage prompts as versioned policy. This guide synthesizes three concerns that are usually treated separately -- prompt durability, model selection, and prompt lifecycle -- because they interact: a prompt that encodes model-specific reasoning patterns breaks on upgrade, costs too much on the wrong model, and cannot be versioned meaningfully if it drifts with every release.
+How to write prompts that survive model upgrades, route tasks to the right model, and manage prompts as versioned policy. This guide synthesizes four concerns that are usually treated separately -- prompt durability, model selection, prompt lifecycle, and output grounding -- because they interact: a prompt that encodes model-specific reasoning patterns breaks on upgrade, costs too much on the wrong model, hallucinates code snippets when quoting from source, and cannot be versioned meaningfully if it drifts with every release.
 
 ## When to Use This Guide
 
@@ -49,6 +54,9 @@ How to write prompts that survive model upgrades, route tasks to the right model
 - Agent costs are too high and you want to optimize model routing
 - You are designing prompt templates for reuse across teams or systems
 - You want to version-control prompts with testable acceptance criteria
+- An agent is producing outputs with incorrect code snippets or stale references
+- You need deterministic control over output format during interactive sessions
+- You are building a spec before implementation and want to align assumptions with the model
 
 ---
 
@@ -70,6 +78,8 @@ How to write prompts that survive model upgrades, route tasks to the right model
 
 **Brevity constraints improve accuracy.** Research across 31 models and 1,500 problems shows that forcing brief responses improves accuracy by up to 26 percentage points. Larger models suffer from "spontaneous scale-dependent verbosity" -- RLHF training rewards thoroughness, which introduces error accumulation through over-elaboration. A conciseness constraint is a quality intervention, not just a token-saving measure.
 
+**Output format should be explicitly overridable, not inferred.** Models default to verbose explanatory prose, and even well-crafted system prompts cannot anticipate every format need across a session. User-defined format commands (e.g., `*brief` for bullet points only, `*dev` for code over explanation, `*plan` for structured step-by-step output) provide deterministic override regardless of context. The principle: domains set autopilot defaults; explicit commands give the user manual override. This is more reliable than restating format preferences on every prompt or relying on CLAUDE.md rules that may not be context-specific enough.
+
 **Design before prompting, evaluate after.** Every prompt interaction has two phases requiring human judgment: a *Design* phase (choosing the lens, prioritizing constraints, curating evidence) and an *Evaluate* phase (judging whether the output matches intent). Skipping the Design phase produces prompts without intentionality. Skipping the Evaluate phase means the human cannot detect when the model's reasoning diverges from their goals.
 
 ### Prompt Architecture
@@ -79,6 +89,14 @@ How to write prompts that survive model upgrades, route tasks to the right model
 **Oneshot prompts beat interactive setup.** For infrastructure and configuration tasks, a single comprehensive prompt containing all decisions, known fixes, and overrides is more reliable than an interactive back-and-forth. Each conversation turn introduces noise. A oneshot prompt also serves as living documentation -- reproducible, reviewable, and shareable.
 
 **Elicitation techniques are a library, not a default.** Eighteen advanced techniques (tree of thought, red team/blue team, critique-and-refine, stakeholder roundtable, etc.) exist for pushing past first-pass quality. The key is selective application based on task type, not applying all techniques everywhere. Overuse wastes tokens and produces analysis paralysis.
+
+**Prompt assembly should be layered, and caching boundaries should be decoupled from structural boundaries.** A well-structured system prompt is built from seven ordered layers: (1) core role/persona, (2) values and soul (SOUL.md), (3) persistent memory and user profile (MEMORY.md/USER.md), (4) skills metadata, (5) project context, (6) provider-specific instructions, (7) ephemeral state. Stable layers (1-6) are assembled by a dedicated module and marked with cache-control markers; ephemeral content (layer 7) is injected as a separate content block so it never invalidates the cached stable portion. The key insight: where you draw the cache boundary is independent of where you draw the logical structure boundary. Benefits apply only in rapid multi-turn sessions (Anthropic's cache TTL is 5 minutes), so this pattern is relevant for interactive agent loops, not one-shot API calls.
+
+### Output Grounding
+
+**Agent-produced code snippets must be extracted programmatically, not reconstructed from memory.** When an agent produces output that quotes code from a codebase (walkthrough documents, PR descriptions, annotated explanations), the prompt should instruct it to extract snippets via shell tools (`sed`, `grep`, `cat`, or equivalent read-only access) rather than typing or reconstructing code from its understanding. Shell-extracted snippets are byte-accurate; hand-typed snippets are reconstructed from the model's working understanding of the file, which diverges from the actual bytes in two ways: direct hallucination (writing code that does not exist in the file) and stale mental model (quoting code as it was before an edit, not as it is now). Both produce plausible-looking output that is subtly wrong -- the class of error that standard review catches least reliably. The mitigation is one sentence of prompt instruction that shifts extraction from inference to filesystem.
+
+**Bidirectional prompting aligns assumptions before implementation.** Instead of dumping a spec and starting implementation, alternate questions between you and the model until both share an identical mental model. The model's questions surface implicit assumptions it would otherwise silently fill from training data; your counter-questions validate that it correctly understands edge cases and architecture constraints. Only when both parties have no more questions does implementation begin. The resulting plan is signed off line by line. This is a Design-phase discipline (see "Design before prompting, evaluate after" above) specifically adapted for spec creation, where undetected assumption misalignment causes cascading bugs during long agentic runs with no opportunity to course-correct.
 
 ### Model Selection
 
@@ -93,6 +111,8 @@ How to write prompts that survive model upgrades, route tasks to the right model
 **Prompts are policy artifacts.** Production prompts should carry explicit ROLE, AUTHORITY, CONSTRAINT, and FAILURE SIGNAL properties. They should be versioned with commit messages, diffed like code, and tested with automated validation before deployment. Treating prompts as informal text that lives in chat history is the prompt equivalent of unversioned infrastructure.
 
 **Planning prompts can be extracted and customized.** Proven multi-agent planning pipelines (e.g., Claude Code's 4-agent deep plan: planner, critic, refiner, finalizer) can be reverse-engineered and run as deterministic custom skills, bypassing vendor A/B randomization and enabling domain-specific critic criteria.
+
+**Metaprompting closes the prompt-improvement loop.** Using an LLM to generate, test, and iteratively improve the prompts that other LLMs execute transforms prompt optimization from one-time authoring to continuous engineering. The Karpathy autoresearch pattern extends this by closing the loop autonomously: a meta-prompt generates a candidate prompt, that prompt is executed and tested against acceptance criteria, results are fed back to the meta-prompt, and the cycle repeats until criteria are met. The critical safeguard: acceptance criteria must resist proxy-metric gaming, or the loop converges on metric-satisfying outputs rather than genuinely useful ones. A prompt-evaluator chained ahead of a prompt-enhancer in an automated loop -- with explicit, machine-checkable acceptance criteria -- is the minimum viable implementation.
 
 ---
 
@@ -139,13 +159,17 @@ Apply these constraint principles in priority order:
 
 5. **Watch for diminishing returns.** Beyond a threshold, additional constraints add cognitive load without improving compliance. If a prompt has more than 8-10 hard constraints, prioritize and cut.
 
-### Step 4: Structure Prompts with Design/Evaluate Phases
+6. **Add programmatic-extraction rules for code-quoting tasks.** For any prompt that produces output containing code snippets from a codebase (walkthroughs, PR descriptions, documentation), add a grounding constraint: "Use `sed`, `grep`, `cat`, or similar to extract code snippets from source files; do not type code from memory or reconstruct it from understanding." This shifts snippet production from inference (hallucination-prone) to filesystem access (byte-accurate).
+
+### Step 4: Structure Prompts with Design/Evaluate Phases and Bidirectional Alignment
 
 Before writing the prompt (Design phase):
 - Choose the interpretive lens (role, persona, expertise domain)
 - Prioritize trade-offs explicitly (format vs. depth, speed vs. thoroughness)
 - Curate what counts as evidence (specific sources, not "use your knowledge")
 - Define what a "good enough" output looks like
+
+**For spec creation and complex implementation tasks,** extend the Design phase with bidirectional prompting: dump your initial thoughts, then alternate questions with the model until both parties have no more questions. The model's questions surface implicit assumptions; your counter-questions validate edge-case understanding. The resulting spec and implementation plan (with checkbox bullet points per task) is signed off line by line before implementation begins. This is especially critical for agentic runs where the human is not in the loop during execution.
 
 After receiving the output (Evaluate phase):
 - Does the model's strategic frame match yours?
@@ -155,7 +179,47 @@ After receiving the output (Evaluate phase):
 
 This is not a one-time checklist -- it is the cognitive discipline that makes prompting work across model boundaries.
 
-### Step 5: Route Models by Task Type
+### Step 5: Assemble System Prompts in Ordered Layers with Cache-Aware Segmentation
+
+For multi-turn agent applications, structure the system prompt as seven ordered layers and manage the cache boundary explicitly:
+
+| Layer | Content | Stability | Cache? |
+|-------|---------|-----------|--------|
+| 1 | Core role / persona | Immutable | Yes |
+| 2 | Values / SOUL.md | Immutable | Yes |
+| 3 | Persistent memory / user profile | Changes infrequently | Yes |
+| 4 | Skills metadata | Changes infrequently | Yes |
+| 5 | Project context | Changes per project | Yes |
+| 6 | Provider-specific instructions | Rarely changes | Yes |
+| 7 | Ephemeral state (current task, session vars) | Changes every turn | No -- inject as separate block |
+
+**Assembly rule:** Build layers 1-6 in a dedicated assembly module that attaches `cache_control` markers at each stable boundary. Inject layer 7 as a separate content block -- never inline it into the cached portion. This prevents ephemeral content from invalidating the cache for the stable layers above it.
+
+**Caching pitfalls:**
+- *Over-caching:* Including fast-changing context in the cached portion causes stale context to persist across turns. If the model is acting on outdated information, check whether project context or session state has migrated up into a cached layer.
+- *Under-caching:* Not marking stable layers means you pay full token cost on every turn. Apply cache markers to every layer that does not change between turns.
+- *TTL mismatch:* Anthropic's cache TTL is 5 minutes. If turns are more than 5 minutes apart (e.g., overnight sessions, batch pipelines), the cache expires between turns and the benefit disappears. This pattern is most valuable for interactive agent loops with rapid turn cycles.
+
+**When NOT to use:** One-shot API calls, batch pipelines with long inter-call gaps, or prompts short enough that caching overhead exceeds savings.
+
+### Step 6: Define Explicit Output Format Controls
+
+For interactive agent sessions, define named format commands that users can invoke to override the model's default output style:
+
+| Command | Behavior | Use Case |
+|---------|----------|----------|
+| `*brief` | Bullet points only, no prose | Quick status checks, summaries |
+| `*dev` | Code over explanation -- show the fix, do not describe it | Mid-session debugging |
+| `*plan` | Explicit step-by-step structured output | Architecture planning, task decomposition |
+| `*verbose` | Full explanation with rationale | Learning, onboarding, review |
+
+**Design principle:** Domains (loaded context, project type) set autopilot defaults for format; star commands give the user manual override. This separates the concern of "what format should be default" from "what format does the user need right now."
+
+**Implementation:** Define the commands in the system prompt or manifest with their mappings. The model applies the format for the duration of the response. If no command is given, the domain default applies.
+
+**When NOT to use:** Non-interactive contexts (batch pipelines, one-shot API calls) where there is no user in the loop to invoke overrides.
+
+### Step 7: Route Models by Task Type
 
 | Task Type | Recommended Model | Evidence | Relative Cost |
 |-----------|------------------|----------|---------------|
@@ -171,7 +235,7 @@ This is not a one-time checklist -- it is the cognitive discipline that makes pr
 
 **Review cadence:** Re-evaluate when any constituent model has a major release. The routing structure (task-based) is durable; the specific model assignments are snapshots.
 
-### Step 6: Implement the Advisor-Executor Pattern (API Applications)
+### Step 8: Implement the Advisor-Executor Pattern (API Applications)
 
 For API-based applications where quality matters but Opus for everything is too expensive:
 
@@ -193,7 +257,7 @@ For API-based applications where quality matters but Opus for everything is too 
 
 **When NOT to use:** Claude Code sessions (not API-based), tasks that are entirely routine (Sonnet alone is sufficient), tasks requiring primarily tool calls with no reasoning decisions.
 
-### Step 7: Version and Test Prompts as Policy
+### Step 9: Version and Test Prompts as Policy
 
 Treat production prompts as versioned artifacts:
 
@@ -204,6 +268,22 @@ Treat production prompts as versioned artifacts:
 3. **Test before deployment:** Define acceptance criteria for each prompt. After a model upgrade, run the prompt against the acceptance criteria before deploying to production.
 
 4. **Extract and customize proven pipelines:** When a vendor feature (like a planning mode) produces good results, extract the underlying prompt as a custom skill so you get deterministic access to the best variant and can add domain-specific criteria.
+
+### Step 10: Apply Metaprompting for Continuous Prompt Improvement
+
+When a prompt is critical enough to justify optimization beyond hand-tuning:
+
+1. **Define machine-checkable acceptance criteria.** Before entering the metaprompt loop, write criteria that test the prompt's actual output quality -- not proxy metrics the loop can game. Examples: "output parses as valid YAML," "all referenced files exist," "no hallucinated function signatures."
+
+2. **Generate candidate prompts with a meta-prompt.** Use an LLM to produce or refine the target prompt. The meta-prompt receives the acceptance criteria and any failure cases from previous iterations.
+
+3. **Execute and evaluate.** Run the candidate prompt against test inputs. Score against the acceptance criteria.
+
+4. **Iterate or accept.** Feed failures back to the meta-prompt for another round. Stop when criteria are met or improvement plateaus.
+
+**Minimum viable implementation:** Chain a prompt-evaluator ahead of a prompt-enhancer, with the evaluator's output feeding the enhancer's next iteration. This is the manual version; full automation closes the loop without human intervention per cycle.
+
+**When NOT to use:** Prompts that are used infrequently (the optimization cost exceeds the benefit), or prompts where acceptance criteria cannot be made machine-checkable (the loop cannot converge).
 
 ---
 
@@ -232,6 +312,10 @@ Produce {{DELIVERABLE_DESCRIPTION}} that satisfies:
 
 ### Output Format
 {{FORMAT_SPECIFICATION — structure, length, sections}}
+
+### Grounding Rules
+- Use `sed`, `grep`, `cat`, or equivalent to extract code snippets from source files. Do not type code from memory or reconstruct from understanding.
+- {{ADDITIONAL_GROUNDING_RULES — e.g., "cite file:line for every claim about code behavior"}}
 
 ### Failure Signal
 If {{FAILURE_CONDITION}}, then {{FAILURE_ACTION — stop, escalate, report}}.
@@ -264,6 +348,10 @@ Existing findings directory: systems/improvement-loop/research-findings/ (filter
 YAML frontmatter per _schema.yaml, followed by markdown body with sections:
 What It Is, Why It Matters, Why People Are Using It, Potential Failure Modes.
 
+### Grounding Rules
+- Use `sed`, `grep`, `cat`, or equivalent to extract code snippets from source files.
+  Do not type code from memory or reconstruct from understanding.
+
 ### Failure Signal
 If the source contains fewer than 2 extractable patterns, report "low-density source"
 and stop. Do not generate filler findings.
@@ -291,6 +379,16 @@ Trigger: {{MODEL_UPGRADE / SCHEDULED_REVIEW / QUALITY_INCIDENT}}
 | Constraint | Type (neg/pos) | Scoped? | Collateral risk? | Action |
 |-----------|----------------|---------|-------------------|--------|
 | {{CONSTRAINT_TEXT}} | {{negative/positive}} | {{yes/no — scope described}} | {{risk if any}} | {{CONVERT_TO_NEGATIVE / ADD_SCOPE / OK}} |
+
+### Grounding Check
+| Prompt | Produces code snippets? | Programmatic extraction rule present? | Action |
+|--------|------------------------|---------------------------------------|--------|
+| {{PROMPT_PATH}} | {{yes/no}} | {{yes/no}} | {{ADD_RULE / OK / N/A}} |
+
+### Output Format Control
+| Prompt | Format overrides defined? | Override mechanism | Action |
+|--------|--------------------------|-------------------|--------|
+| {{PROMPT_PATH}} | {{yes/no}} | {{star commands / inline / none}} | {{ADD_OVERRIDES / OK / N/A}} |
 
 ### Model Routing
 | Agent Role | Current Model | Recommended Model | Rationale |
@@ -328,6 +426,15 @@ CONSTRAINT QUALITY CHECK:
   "Be concise" in CLAUDE.md: positive, unscoped — CONVERT to
     "Do not include filler phrases, hedging language, or restated instructions in output"
   "Never skip the Review Gate": negative, scoped — OK
+
+GROUNDING CHECK:
+  /synthesize-guide: Does not produce code snippets — N/A
+  /identify-artifacts: Does not produce code snippets — N/A
+  Walkthrough-generating skills: Produces code snippets, no extraction rule — ADD RULE
+
+OUTPUT FORMAT CONTROL:
+  Interactive skills: No star commands defined — ADD if user-facing
+  Batch/pipeline skills: N/A (no user in loop)
 
 MODEL ROUTING:
   Orchestrator: Opus — justified (architectural decisions, low volume)
@@ -460,6 +567,67 @@ quality_gate: |
   observable behavior. At least one success metric has a numeric target.
 ```
 
+### Template 5: Bidirectional Prompting Protocol
+
+```markdown
+## {{TASK_NAME}} — Spec Alignment
+
+### Phase 1: Initial Dump
+{{USER_INTENT — unstructured description of what you want built, including
+known constraints, architecture preferences, and non-obvious requirements}}
+
+### Phase 2: Model Questions
+The model asks targeted questions to surface implicit assumptions.
+Do not proceed until you have answered all questions.
+
+### Phase 3: Human Counter-Questions
+Ask the model to confirm its understanding of:
+- {{EDGE_CASE_1 — boundary condition the model might mishandle}}
+- {{EDGE_CASE_2}}
+- {{ARCHITECTURE_CONSTRAINT — e.g., "this must work without network access"}}
+
+### Phase 4: Alignment Check
+Both parties confirm: no more questions.
+
+### Phase 5: Implementation Plan
+Structured checklist with checkbox bullet points per task.
+Human signs off line by line before implementation begins.
+
+### Failure Signal
+If the implementation plan exceeds {{MAX_CONTEXT_TOKENS}} tokens,
+decompose into sub-plans before proceeding.
+```
+
+### Template 6: Metaprompt Loop
+
+```markdown
+## {{TARGET_PROMPT_NAME}} — Metaprompt Optimization
+
+### Acceptance Criteria (machine-checkable)
+- [ ] {{CRITERION_1 — e.g., "output parses as valid YAML"}}
+- [ ] {{CRITERION_2 — e.g., "no hallucinated function signatures"}}
+- [ ] {{CRITERION_3 — e.g., "all referenced files exist in the repo"}}
+
+### Test Inputs
+- {{TEST_INPUT_1 — representative input for the target prompt}}
+- {{TEST_INPUT_2 — edge case input}}
+
+### Meta-Prompt
+Generate a prompt for {{TARGET_TASK}} that, when executed against the test
+inputs above, satisfies all acceptance criteria. If previous iterations
+failed, the failure cases are:
+{{FAILURE_CASES — empty on first iteration, populated on subsequent}}
+
+### Iteration Log
+| Round | Criteria Met | Criteria Failed | Change Made |
+|-------|-------------|-----------------|-------------|
+| {{N}} | {{PASSING}} | {{FAILING}} | {{DELTA}} |
+
+### Stop Condition
+Accept when all criteria pass, or stop after {{MAX_ROUNDS}} rounds
+if improvement has plateaued (last 2 rounds produced no new passes).
+```
+
 ---
 
 ## Pitfalls
@@ -488,14 +656,26 @@ Eighteen advanced elicitation techniques exist, but applying multiple techniques
 ### 8. Unversioned prompt changes
 Changing a production prompt without versioning, testing, or rollback capability is the prompt equivalent of pushing untested code to production. Treat prompt changes like policy changes: diff, test against acceptance criteria, deploy with rollback.
 
+### 9. Conflating prompt structure boundaries with cache boundaries
+The logical layers of a prompt (persona, memory, skills, context) and the cache boundaries (which portions share a cache key) are independent concerns. Inlining ephemeral turn state into a stable cached layer forces a cache miss on every turn, erasing the caching benefit. Conversely, placing slowly-changing context outside the cache means paying full token cost every turn. Keep the assembly module responsible for drawing cache boundaries; keep prompt structure logic separate.
+
+### 10. Letting the model reconstruct code snippets from memory
+When an agent produces walkthroughs, PR descriptions, or documentation that quotes code, it will by default reconstruct snippets from its working understanding of the file rather than reading the actual bytes. This introduces two failure modes: direct hallucination (quoting code that does not exist) and stale mental model (quoting code as it was before a recent edit). Add a programmatic-extraction rule to the prompt. Over-application to trivial references (e.g., a built-in function name) wastes tool calls, so scope the rule to project-specific code, not language primitives.
+
+### 11. Skipping the bidirectional prompting phase for complex specs
+Dumping a spec and immediately starting implementation is faster, but implicit assumptions filled from training data are the root cause of most cascading bugs in long agentic runs. The cost of bidirectional prompting (several minutes of Q&A) is small compared to the cost of unwinding a 30-step implementation built on a misunderstood requirement. The adoption friction is real -- most developers skip after a few exchanges -- but the payoff scales with project complexity.
+
+### 12. Metaprompt loops that optimize for proxy metrics
+When using an LLM to improve prompts for other LLMs, the acceptance criteria determine whether the loop converges on genuinely useful outputs or on metric-satisfying artifacts. Criteria like "output is longer than 500 words" or "uses at least 3 headers" are gameable. Criteria like "output parses as valid YAML" or "all referenced files exist" are not. Design acceptance criteria that test the actual quality you care about, not surface features the loop can learn to produce.
+
 ---
 
 ## Related Guides
 
-- **G1 — Writing Agent Specifications:** The three durability properties (Step 1) depend on clear intent specification. G1 Step 1 covers how to define agent goals and constraints that feed into model-resilient prompts.
-- **G2 — Managing Agent Context:** The Design/Evaluate framework (Step 4) is the prompt-level application of context curation. G2 covers the broader context engineering discipline that determines what the model sees.
-- **G3 — Agent Architecture Decisions:** The Advisor-Executor pattern (Step 6) is one of three orchestration patterns in G3. The model routing table (Step 5) connects to G3's multi-agent architecture guidance.
-- **G10 — Agent Design Patterns:** The five-layer prompt architecture in G10 provides the structural framework for applying the durability properties from this guide at each layer. The agent constitution pattern (G10, Step 1) is where model-resilient identity prompts live.
+- **G1 -- Writing Agent Specifications:** The three durability properties (Step 1) depend on clear intent specification. G1 Step 1 covers how to define agent goals and constraints that feed into model-resilient prompts.
+- **G2 -- Managing Agent Context:** The Design/Evaluate framework (Step 4) is the prompt-level application of context curation. G2 covers the broader context engineering discipline that determines what the model sees.
+- **G3 -- Agent Architecture Decisions:** The Advisor-Executor pattern (Step 8) is one of three orchestration patterns in G3. The model routing table (Step 7) connects to G3's multi-agent architecture guidance.
+- **G10 -- Agent Design Patterns:** The five-layer prompt architecture in G10 provides the structural framework for applying the durability properties from this guide at each layer. The agent constitution pattern (G10, Step 1) is where model-resilient identity prompts live.
 
 ---
 
@@ -515,6 +695,11 @@ Changing a production prompt without versioning, testing, or rollback capability
 - The Advisor-Executor pattern is considered before defaulting to the most expensive model.
 - Prompts carry explicit ROLE, AUTHORITY, CONSTRAINT, and FAILURE SIGNAL properties.
 - Prompt changes are versioned and tested before deployment.
+- For multi-turn agent applications, stable prompt layers are cached separately from ephemeral turn state.
+- Code snippets in agent-produced outputs are extracted programmatically from source files, not reconstructed from model memory.
+- Output format control is explicit and user-overridable where the agent is interactive.
+- Spec creation for complex tasks includes a bidirectional prompting phase before implementation.
+- Metaprompt optimization loops use machine-checkable acceptance criteria that resist proxy-metric gaming.
 
 ### Governance
 - Prompts are versioned and tested against acceptance criteria after model upgrades.
@@ -522,6 +707,7 @@ Changing a production prompt without versioning, testing, or rollback capability
 - Anti-pattern audits are conducted after major model releases.
 - Prompt policy properties (ROLE, AUTHORITY, CONSTRAINT, FAILURE SIGNAL) are checked during skill review.
 - Elicitation technique selection is justified per task type, not applied by default.
+- Metaprompt loops include acceptance criteria that resist proxy-metric gaming; criteria are reviewed when the loop is first established and when failure modes are detected.
 - This guide is owned by Meta-System knowledge layer.
 
 ### Recovery
@@ -531,3 +717,9 @@ Changing a production prompt without versioning, testing, or rollback capability
 - **Brevity constraints degrade output:** Switch to dynamic brevity -- verbose for planning and analysis phases, terse for execution and final output. Do not apply blanket brevity to all prompt types.
 - **Elicitation produces diminishing returns:** Reduce to 1-2 techniques per prompt. The problem is technique overload, not technique failure.
 - **Routing table is stale:** Update specific model assignments; the task-based routing structure remains valid. Set a review trigger on major model releases, not calendar dates.
+- **Cache misses on every turn despite stable content:** Verify that ephemeral turn state is injected as a separate content block and is not inlined into the cached layer 1-6 segment. Check that `cache_control` markers are attached at the correct layer boundaries in the assembly module.
+- **Stale context persisting across turns:** The cached layer includes content that changes between turns (e.g., session variables, current task). Move that content to the ephemeral layer 7 block so it is refreshed each turn.
+- **Agent outputs contain incorrect code snippets:** Add a programmatic-extraction rule ("use `sed`/`grep`/`cat` to extract code; do not type from memory"). If the agent ignores the rule, escalate to a hook or post-hoc verification that diffs quoted snippets against source files.
+- **Output format wrong despite system prompt constraints:** Add explicit user-overridable format commands (star commands). If format conflicts arise between domain defaults and user overrides, the user override takes precedence.
+- **Spec-implementation misalignment causes cascading bugs:** Insert a bidirectional prompting phase before implementation. If the resulting plan exceeds context limits, decompose into sub-plans before proceeding.
+- **Metaprompt loop converges on poor outputs:** Review acceptance criteria for proxy-metric gaming. Replace gameable criteria (word count, header count) with structural validity checks (parseable output, existing file references, correct schema).

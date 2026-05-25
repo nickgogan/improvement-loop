@@ -59,7 +59,7 @@ Stubs only. Deeper per-tier composition iterates as queries arrive.
 
 ### Variant A — Working memory
 
-The current context window plus the policies that shape what stays and what gets compacted. Compaction discipline, delta updates, attention-budget mechanics, and proactive-compaction-before-degradation all fire here. **Primary failure mode:** context rot — see `context-rot.md`. Guide surface: G2. Practitioner pattern: `proactive-compaction-before-intelligence-degradation`.
+The current context window plus the policies that shape what stays and what gets compacted. Compaction discipline, delta updates, attention-budget mechanics, and proactive-compaction-before-degradation all fire here. **Primary failure mode:** context rot — see `context-rot.md`. Guide surface: G2b. Practitioner pattern: `proactive-compaction-before-intelligence-degradation`.
 
 ### Variant B — Episodic memory
 
@@ -71,7 +71,7 @@ Entities, relationships, constraints, policies. Curated. Schema-owned — not ev
 
 ### Variant D — Global-learnings
 
-Cross-session learnings store — the "what did I learn last time" tier. Canonically *auto-recalled* (injected into context before every prompt) rather than tool-looked-up, per G7 Key Concept 4 (line 59): "Auto-recall beats tool-based memory." Without expiry / validation mechanisms the store decays into noise (G2 Step 5, line 242). Guide surface: G7 (primary) + G2 (on the injection-into-context side). Practitioner patterns: `gsd-global-learnings-store-cross-session-persistence`, `claude-code-long-term-memory-via-pre-prompt-recall`, `memorymd-cross-session-preference-persistence`.
+Cross-session learnings store — the "what did I learn last time" tier. Canonically *auto-recalled* (injected into context before every prompt) rather than tool-looked-up, per G7 Key Concept 4 (line 59): "Auto-recall beats tool-based memory." Without expiry / validation mechanisms the store decays into noise (G2b, line 242). Guide surface: G7 (primary) + G2a (on the injection-into-context side). Practitioner patterns: `gsd-global-learnings-store-cross-session-persistence`, `claude-code-long-term-memory-via-pre-prompt-recall`, `memorymd-cross-session-preference-persistence`.
 
 ## Composition
 
@@ -85,14 +85,14 @@ Substrate pointers for the core Librarian operations. Rows that apply to only so
 | Retrieval mechanics (semantic + episodic) | G7 §Part 1 §Step 1.3 | `post-retrieval-reranking-weighted-signal-composition`, `rank-fusion-hybrid-retrieval-mongodb-atlas`, `hybrid-retrieval-pattern-semantic-lexical-graph`, `query-decomposition-sub-query-rrf-merge` | Memongo repo; Letta / MemGPT source |
 | Persistence and recovery | G7 §Part 2 "Implement Session State and Persistence", §Key Concept 3 (persist after events) | `database-as-shared-memory-coordination`, `claude-code-hooks-for-automatic-session-memory` | — |
 | Write-path synthesis (episodic→semantic) | G7 §Part 1 §Step 1.2 (promotion), §Part 4 §Ingestion | `structured-fact-extraction-from-conversations`, `dreaming-memory-consolidation`, `memory-decay-compaction-convergence` | — |
-| Working-tier into context (Variant A) | G2 `managing-agent-context.md` §Step 5 "Defend Against Context Rot", §Contract | `context-rot-attention-budget-depletion`, `proactive-compaction-before-intelligence-degradation` — see `context-rot.md` | — |
+| Working-tier into context (Variant A) | G2b `defending-agent-context.md` §"Detecting Context Degradation", §Contract | `context-rot-attention-budget-depletion`, `proactive-compaction-before-intelligence-degradation` — see `context-rot.md` | — |
 | Cross-session policy / governance | G7 §Part 3 "Manage Session Lifecycle"; G9 §Contract for HITL on semantic writes | `governance-memory-append-only-audit-layer`, `memory-cross-layer-promotion-governance` | — |
 | Single-store vs multi-store debate | — (guides summarize; Tier 2 carries the debate) | `mongodb-single-store-polymorphic-evidence-memory` ↔ `triple-storage-memory-architecture` (typed `contradicts`) | Memongo repo |
 | Decision tree for failure modes | G7 §Decision Tree "What Kind of Memory Problem Do You Have?" (line 533), §Pitfalls (line 567) | — | — |
 
 ## Librarian read rule
 
-**Default (Tier 1).** Resolve the variant from the consumer's phrasing. For single-variant queries, pull the operation's named subsection kind from G7 (+ G2 for Variant A context-window concerns, + G9 for semantic-write governance). For variant-ambiguous queries (UC-1.5 "memory architecture"), read G7 §Key Concepts and §Part 1 wholesale — they are the architecture-level overview.
+**Default (Tier 1).** Resolve the variant from the consumer's phrasing. For single-variant queries, pull the operation's named subsection kind from G7 (+ G2b for Variant A context-window concerns, + G9 for semantic-write governance). For variant-ambiguous queries (UC-1.5 "memory architecture"), read G7 §Key Concepts and §Part 1 wholesale — they are the architecture-level overview.
 
 **Escalate to Tier 2 when:**
 - Consumer is in a design-debate (single-store vs triple-storage) — surface the `contradicts` pair (`mongodb-single-store-polymorphic-evidence-memory` ↔ `triple-storage-memory-architecture`) proactively. This is load-bearing for UC-5.2.

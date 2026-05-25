@@ -14,6 +14,10 @@ sources: []
 related_findings:
 - file: superpowers-plugin-spec-driven-sub-agent-orchestra.md
   rel: extends
+- file: html-mockup-generation-as-brainstorm-artifact.md
+  rel: enables
+- file: external-ticket-as-brainstorm-seed.md
+  rel: enables
 proposals: null
 date_discovered: '2026-04-08'
 last_updated: '2026-04-19'

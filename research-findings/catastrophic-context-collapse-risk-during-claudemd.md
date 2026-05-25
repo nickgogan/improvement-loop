@@ -15,7 +15,7 @@ sources:
 - why-your-coding-agent-keeps-getting-dumber.md
 proposals: []
 date_discovered: '2026-03-22'
-last_updated: '2026-04-19'
+last_updated: '2026-05-24'
 related_findings:
 - file: ace-agentic-context-engineering-evolving-playbook.md
   rel: same-problem
@@ -27,9 +27,11 @@ related_findings:
   rel: same-problem
 - file: context-curation-over-context-stuffing.md
   rel: same-problem
+- file: bounded-tiered-memory-inference-driven-curation.md
+  rel: same-problem
 pipeline_status: synthesized
 consumed_by:
-- managing-agent-context.md
+- defending-agent-context.md
 - never-ask-claude-to-compact-claudemd.md
 ---
 # Catastrophic Context Collapse Risk During CLAUDE.md Compaction

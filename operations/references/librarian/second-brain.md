@@ -76,7 +76,8 @@ If the query is ambiguous, the Librarian asks one disambiguating question rather
 **Pointers:**
 - **Tier 1 (guides):**
   - G7 `session-persistence-and-memory.md` — primary. §Memory tiers, write policies, cross-session persistence mechanics.
-  - G2 `managing-agent-context.md` — how the brain loads into context (delta updates, caching, budget).
+  - G2a `structuring-agent-context.md` — how the brain loads into context (tiering, retrieval, budget).
+  - G2b `defending-agent-context.md` — delta updates, caching, degradation defense.
   - G1 `writing-agent-specifications.md` — intent-layer concerns (what should the agent be expected to remember; acceptance criteria on recall).
 - **Tier 2 (patterns + findings — the Memongo cluster and kin):**
   - `mongodb-single-store-polymorphic-evidence-memory` — single-store design. Note: `contradicts` link to `triple-storage-memory-architecture`; surface the debate when relevant.
@@ -100,7 +101,7 @@ If the query is ambiguous, the Librarian asks one disambiguating question rather
 - **Tier 1 (guides):**
   - G9 `agent-governance-and-trust.md` — primary for the HITL / human-authority-retained aspect. Contract invariants (human override, audit trail, per-decision autonomy, destructive actions gated) all apply.
   - G7 `session-persistence-and-memory.md` — memory mechanics shared with AI variant.
-  - G2 `managing-agent-context.md` — how shared brain content loads.
+  - G2a `structuring-agent-context.md` — how shared brain content loads.
 - **Tier 2 (patterns + findings — Agentic Systems cluster and HITL):**
   - `claude-code-daily-brief-multi-source-inbox-obsidian` — aggregation layer; multi-source ingestion into a curated surface.
   - `ai-managed-vault-separate-from-human-vault` — storage-layer separation so agent write authority doesn't pollute human PKM.

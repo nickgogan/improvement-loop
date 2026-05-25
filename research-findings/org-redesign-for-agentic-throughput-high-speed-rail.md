@@ -6,7 +6,7 @@ implementation_notes: null
 category: Orchestration
 evidence_strength: Medium (practitioner-documented)
 adoption_status: Not Yet Started
-priority: P3 (Monitor)
+priority: P2 (Design Required)
 applicability:
 - General
 adopted_in: []
@@ -15,13 +15,13 @@ sources:
 - every-layer-of-review-makes-you-10x-slower.md
 - unbundling-management-ai-age-routing-sensemaking.md
 date_discovered: '2026-04-07'
-last_updated: '2026-04-20'
+last_updated: '2026-05-24'
 related_findings:
 - file: five-commandments-for-agent-deployment-audit-first.md
   rel: same-problem
 - file: agent-architecture-layer-impermanence.md
   rel: same-problem
-pipeline_status: raw
+pipeline_status: "classified"
 consumed_by: []
 ---
 ## What It Is

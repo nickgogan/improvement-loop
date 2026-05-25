@@ -28,18 +28,20 @@ Tracks when `/synthesize-guide` was last run against each cluster, how many find
 
 | ID | Guide Title | Last Synthesized | Findings at Synthesis | Output Path | Status |
 |----|------------|-----------------|----------------------|-------------|--------|
-| G1 | Writing Agent Specifications | 2026-04-19 | 7 | `extracts/guides/writing-agent-specifications.md` | draft |
-| G2 | Managing Agent Context | 2026-04-26 | 44 | `extracts/guides/managing-agent-context.md` | draft |
-| G3 | Agent Architecture Decisions | 2026-04-26 | 22 | `extracts/guides/agent-architecture-decisions.md` | draft |
+| G1 | Writing Agent Specifications | 2026-05-25 | 9 | `extracts/guides/writing-agent-specifications.md` | draft |
+| G2 | Managing Agent Context | 2026-05-25 | 64 | `extracts/guides/managing-agent-context.md` | deprecated |
+| G2a | Structuring and Loading Agent Context | 2026-05-25 | 35 | `extracts/guides/structuring-agent-context.md` | draft |
+| G2b | Defending Against Context Degradation | 2026-05-25 | 30 | `extracts/guides/defending-agent-context.md` | draft |
+| G3 | Agent Architecture Decisions | 2026-05-25 | 42 | `extracts/guides/agent-architecture-decisions.md` | draft |
 | G3b | Agent Workflow and Execution | 2026-04-19 | 20 | `extracts/guides/agent-workflow-and-execution.md` | draft |
-| G4 | Building Agent Evaluation Suites | 2026-04-26 | 32 | `extracts/guides/building-agent-evaluation-suites.md` | draft |
-| G5 | Designing Agent Tools | 2026-04-19 | 14 | `extracts/guides/designing-agent-tools.md` | draft |
+| G4 | Building Agent Evaluation Suites | 2026-05-25 | 46 | `extracts/guides/building-agent-evaluation-suites.md` | draft |
+| G5 | Designing Agent Tools | 2026-05-25 | 23 | `extracts/guides/designing-agent-tools.md` | draft |
 | G6 | Agent Safety and Permissions | 2026-04-19 | 5 | `extracts/guides/agent-safety-and-permissions.md` | draft |
 | G7 | Session Persistence and Memory | 2026-04-26 | 27 | `extracts/guides/session-persistence-and-memory.md` | draft |
-| G8 | Model-Resilient Prompt Engineering | 2026-04-19 | 15 | `extracts/guides/model-resilient-prompt-engineering.md` | draft |
-| G9 | Agent Governance and Trust | 2026-04-26 | 16 | `extracts/guides/agent-governance-and-trust.md` | draft |
-| G10 | Agent Design Patterns | 2026-04-26 | 12 | `extracts/guides/agent-design-patterns.md` | draft |
-| G11 | Building Agentic Systems | 2026-04-27 | 29 | `extracts/guides/building-agentic-systems.md` | draft |
+| G8 | Model-Resilient Prompt Engineering | 2026-05-25 | 20 | `extracts/guides/model-resilient-prompt-engineering.md` | draft |
+| G9 | Agent Governance and Trust | 2026-05-25 | 38 | `extracts/guides/agent-governance-and-trust.md` | draft |
+| G10 | Agent Design Patterns | 2026-05-25 | 37 | `extracts/guides/agent-design-patterns.md` | draft |
+| G11 | Building Agentic Systems | 2026-05-25 | 30 | `extracts/guides/building-agentic-systems.md` | draft |
 
 **Staleness indicator:** If a cluster's finding count (in the Guide Clusters table below) exceeds "Findings at Synthesis" by 3+, the guide should be re-synthesized to incorporate new material.
 
@@ -49,7 +51,7 @@ Tracks when `/synthesize-guide` was last run against each cluster, how many find
 
 | Research Dimension | Primary Guide | Secondary Guide(s) | Notes |
 |-------------------|--------------|-------------------|-------|
-| Context Engineering | Managing Agent Context | Session Persistence and Memory | Largest dimension; may split further |
+| Context Engineering | Structuring and Loading Agent Context (G2a), Defending Against Context Degradation (G2b) | Session Persistence and Memory | Split from G2 in session 104; G2a covers structuring/loading/retrieval, G2b covers rot prevention/cost control/session discipline |
 | Model | Model-Resilient Prompt Engineering | Agent Architecture Decisions | Model routing → Architecture; model prompting → Prompt Engineering |
 | Prompt | Model-Resilient Prompt Engineering | — | Shares guide with Model; split when mass justifies it |
 | Tools | Designing Agent Tools | — | Clean 1:1 mapping |
@@ -74,7 +76,9 @@ Current per-cluster finding counts are not enumerated here — they drift per se
 | ID | Guide Title | Question | Stage | Dimensions |
 |----|------------|----------|-------|------------|
 | G1 | Writing Agent Specifications | "How do I specify what my agent should do?" | specify | Intent Engineering, Context Engineering, Orchestration |
-| G2 | Managing Agent Context | "My agent is losing context or burning tokens" | build | Context Engineering |
+| G2 | ~~Managing Agent Context~~ | ~~"My agent is losing context or burning tokens"~~ | ~~build~~ | ~~Context Engineering~~ | *(deprecated — split into G2a + G2b, session 104)* |
+| G2a | Structuring and Loading Agent Context | "How do I structure and load context efficiently — what to include, how to tier it, and how to retrieve it?" | build | Context Engineering |
+| G2b | Defending Against Context Degradation | "How do I prevent context degradation, rot, and cost blowout?" | build | Context Engineering |
 | G3 | Agent Architecture Decisions | "Should I use one agent or many? How do I compose?" | build | Orchestration, Model Selection |
 | G3b | Agent Workflow and Execution | "How do I run agents in production?" | operate | Orchestration |
 | G4 | Building Agent Evaluation Suites | "How do I verify my agent actually works?" | verify | Evaluation |
@@ -139,7 +143,7 @@ Secondary navigation axis. Agents can query by stage to get all relevant guides 
 | Stage | Guides | Practitioner Phase |
 |-------|--------|-------------------|
 | **specify** | G1 (Agent Specs), G10 (Agent Design), G11 (Agentic Systems) | Defining what the agent or system should do and how it behaves |
-| **build** | G2 (Context), G3 (Architecture), G5 (Tools), G8 (Prompts) | Implementing the agent system |
+| **build** | G2a (Context Structuring), G2b (Context Defense), G3 (Architecture), G5 (Tools), G8 (Prompts) | Implementing the agent system |
 | **verify** | G4 (Evaluation) | Checking correctness and reliability |
 | **secure** | G6 (Safety), G9 (Governance) | Hardening permissions, boundaries, and oversight |
 | **operate** | G3b (Workflow/Execution), G7 (Session/Memory) | Running in production, maintaining state |
@@ -153,7 +157,8 @@ For agent-driven guide discovery. An agent encountering these terms in a task de
 | Keywords | Guide |
 |----------|-------|
 | intent, objective, disposition, autonomy, stop rules, health metrics, agent spec | G1 |
-| context window, token budget, context rot, CLAUDE.md, sharding, compaction | G2 |
+| context window, token budget, CLAUDE.md, sharding, tiered loading, retrieval, pointers, progressive loading | G2a |
+| context rot, compaction, degradation, session discipline, cost control, token tax, session atomicity | G2b |
 | multi-agent, single agent, orchestration, delegation, subagent, planner-executor | G3 |
 | eval, verification, assertion, grading, benchmark, pass rate, test suite | G4 |
 | tool design, tool definition, MCP, tool registry, poka-yoke | G5 |
@@ -171,4 +176,4 @@ For agent-driven guide discovery. An agent encountering these terms in a task de
 
 Operational risks where the routing structure is functional but weakened.
 
-**G2 vs G7 (post-IB-153 rebalance).** G2 (Managing Agent Context) and G7 (Session Persistence and Memory) both carry `Context Engineering` in their Dimensions field. The prior discriminator — G7 also carrying `Memory Architecture` — was removed when Memory Architecture was absorbed into Context Engineering. Disambiguation now lives in three weaker signals: stage (G2 `build` vs G7 `operate`), question text, and the trigger-keyword table above. If a future `/identify-artifacts` run mis-routes a finding between G2 and G7 (or queues an ambiguous one), formalize the discriminator — candidate fixes: an explicit `lifecycle: build|operate` field on findings, OR a routing-rubric step that consults trigger keywords before Dimensions when Dimensions overlap. Not urgent until evidence of misrouting.
+**G2a/G2b vs G7 (post-split).** G2a (Structuring and Loading Agent Context), G2b (Defending Against Context Degradation), and G7 (Session Persistence and Memory) all carry `Context Engineering` in their Dimensions field. The G2→G2a/G2b split (session 104) sharpens the discriminator: G2a = what to include and how to load it (build-time structuring); G2b = how to prevent degradation over a session (runtime defense); G7 = how to persist state across sessions (operational persistence). The `bounded-tiered-memory-inference-driven-curation` finding is shared between G2a and G2b, with G7 cross-reference for its eviction/persistence aspect. If a future `/identify-artifacts` run mis-routes between G2a/G2b/G7, consult the trigger-keyword table above and the practitioner question text as discriminators.

@@ -21,8 +21,10 @@ related_findings:
   rel: same-problem
 - file: ace-agentic-context-engineering-rag-based.md
   rel: enabled-by
-pipeline_status: raw
-consumed_by: []
+pipeline_status: synthesized
+consumed_by:
+  - "building-agent-evaluation-suites.md"
+  - "rules/production-database-wipeout-agent-context.md"
 ---
 # Production Database Wipeout: Agent Context Blindness Failure Mode
 

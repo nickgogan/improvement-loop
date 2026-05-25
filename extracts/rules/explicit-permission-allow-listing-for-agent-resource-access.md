@@ -4,8 +4,8 @@ type: extracted-artifact
 assigned_form: rule
 source_finding: explicit-permission-allow-listing-for-agent-resou
 extraction_date: '2026-04-26'
-last_change_session: 66
-last_change_sl: "session-66-codifier-ib-150-acceptance-test"
+last_change_session: 103
+last_change_sl: "session-103-codifier-complete-extract-artifacts-write-phase"
 identification_report: 2026-04-26-identification-report.md
 deployed: false
 deployed_to: null
@@ -41,6 +41,7 @@ tags:
 # Explicit Permission Allow-Listing for Agent Resource Access
 
 **Source:** [[explicit-permission-allow-listing-for-agent-resou]]
+**Source (additional):** [[tool-access-as-security-boundary-not-feature-toggle]]
 **Form:** rule
 **Extraction date:** 2026-04-26
 
@@ -79,6 +80,8 @@ Enforced at the tool call layer — the moment before any agentic action that to
 - **Permission fatigue mitigation:** If approval dialogs become so frequent that operators approve reflexively, the allow-list design needs restructuring (broader trust tiers, pre-approved read-only scope, or per-skill permission profiles).
 
 ## Rationale
+
+**Tool access changes are security decisions, not feature decisions.** Most agent platforms present tool enablement as feature configuration — a checkbox that turns on capabilities. The actual security reality is that enabling a tool server crosses a security boundary: the agent gains arbitrary code execution and arbitrary data access within that tool's scope ([[tool-access-as-security-boundary-not-feature-toggle]]). MCP was designed for high-trust environments and does not enforce access control at the protocol level. Per-call approval (as in Claude Code's permission system) is defense-in-depth; it is not a substitute for deciding which servers should be connected at all. The allow-listing rule operates at both levels: which servers are connected (connection-time boundary) and which specific accesses are approved per operation (runtime gate). Tool descriptions also enter agent context as model-readable metadata, making them an injection surface — an additional reason to treat tool access decisions as security boundary crossings rather than feature toggles.
 
 Real-world agentic failures — leaked credentials, deleted data, unsanctioned external actions — share a common root cause: the agent was granted or assumed access to resources beyond what the task required, and no human was in the loop when the boundary was crossed. Explicit allow-listing is the structural enforcement of least-privilege access: the agent can only touch what a human has affirmatively approved.
 

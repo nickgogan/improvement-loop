@@ -14,7 +14,18 @@ url: "https://www.youtube.com/watch?v=gmaHRwijOXs"
 authority:
   - "cole-medin.md"
 findings:
+  - "agent-infrastructure-glue-code-elimination-via-sdk.md"
+  - "agentic-rag-multi-strategy-retrieval-2026.md"
+  - "coding-agent-sdk-as-non-coding-agent-foundation.md"
+  - "file-search-outperforms-rag-for-small-corpora.md"
+  - "hybrid-retrieval-pattern-semantic-lexical-graph.md"
+  - "scale-threshold-heuristic-obsidian-vs-rag.md"
+  - "sdk-to-framework-graduation-path.md"
   - "sdk-vs-framework-decision-for-agent-building.md"
+  - "skills-as-markdown-sop-files-encode-processes.md"
+  - "skills-portability-across-sdk-and-framework-boundaries.md"
+  - "start-simple-migrate-when-forced-pragmatic-architecture.md"
+  - "subscription-tos-single-user-boundary-for-agent-sdks.md"
 date_added: "2026-04-09"
 date_processed: "2026-04-09"
 ---

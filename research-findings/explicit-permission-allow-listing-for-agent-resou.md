@@ -16,7 +16,7 @@ sources:
 - anthropic-claude-code-auto-mode.md
 proposals: null
 date_discovered: '2026-03-22'
-last_updated: '2026-04-19'
+last_updated: '2026-05-24'
 related_findings:
 - file: mcp-session-scoped-authorization.md
   rel: same-problem
@@ -27,6 +27,8 @@ related_findings:
 - file: worktree-isolation-for-parallel-agent-sessions.md
   rel: same-problem
 - file: claude-code-auto-mode-ai-driven-permission-classif.md
+  rel: same-problem
+- file: agui-human-control-layer-not-ui.md
   rel: same-problem
 pipeline_status: extracted
 consumed_by:

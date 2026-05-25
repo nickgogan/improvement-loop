@@ -15,11 +15,13 @@ sources:
 - chatgpt-health-identified-respiratory-failure-then.md
 proposals: []
 date_discovered: '2026-03-22'
-last_updated: '2026-04-19'
+last_updated: '2026-05-24'
 pipeline_status: raw
 consumed_by: []
 related_findings:
 - file: agent-self-reporting-unreliability-independent-eval.md
+  rel: same-problem
+- file: agent-proof-of-work-ui-trust-building.md
   rel: same-problem
 ---
 # Chain-of-Thought Reasoning/Output Divergence

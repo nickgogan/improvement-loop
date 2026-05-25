@@ -6,23 +6,25 @@ implementation_notes: null
 category: Orchestration
 evidence_strength: Medium (practitioner-documented)
 adoption_status: Not Yet Started
-priority: "P2 (Design Required)"
+priority: P2 (Design Required)
 applicability:
 - S3 (Claude Code Build)
 adopted_in: []
 sources:
-  - "gstack-planning-multi-persona-spec-review.md"
+- gstack-planning-multi-persona-spec-review.md
 related_findings:
-  - file: gstack-office-hours-socratic-discovery-pipeline.md
-    rel: feeds-into
-  - file: gstack-spec-team-parallel-research-agents.md
-    rel: feeds-into
-  - file: planning-session-bias-separate-context-windows.md
-    rel: same-problem
+- file: gstack-office-hours-socratic-discovery-pipeline.md
+  rel: feeds-into
+- file: gstack-spec-team-parallel-research-agents.md
+  rel: feeds-into
+- file: planning-session-bias-separate-context-windows.md
+  rel: same-problem
+- file: agui-human-control-layer-not-ui.md
+  rel: same-problem
 proposals: null
 date_discovered: '2026-04-08'
-last_updated: '2026-04-20'
-pipeline_status: raw
+last_updated: '2026-05-24'
+pipeline_status: "classified"
 consumed_by: []
 ---
 

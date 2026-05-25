@@ -16,6 +16,7 @@ adopted_in: []
 sources:
 - anthropics-2-5-billion-leak-12-critical-pieces.md
 - claude-codes-leak-changes-everything.md
+- claude-code-architecture-under-the-hood.md
 proposals: null
 date_discovered: '2026-04-07'
 last_updated: '2026-04-20'

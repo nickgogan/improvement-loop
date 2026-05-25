@@ -1,33 +1,39 @@
 ---
-name: "Advisory-Only Recommendations for Broad-Blast or Persistent Mutations"
-summary: "A concrete autonomy-tier assignment: when the system notices that a particular setting, flag, or configuration change would help, it surfaces a recommendation but refuses to apply it automatically. Applies specifically to actions whose effects persist across the cluster, database, or environment (not just the current session/run) — because a quiet mutation of broadly-scoped, persistent state has a much larger blast radius than any single run's output. Human must apply the change manually and record the rollback command."
-implementation_notes: "Concrete instance of the 'Human-required' tier from the autonomy-gradient framework, pinned to a specific class of action: broad-blast or persistent mutations. For MetaSystem, this is the pattern to apply whenever an agent could modify schema, governance docs, shared config, cross-system rules, or any state that outlives the current session. The benchmark or tool doing the recommending is still autonomous; only the mutation is gated."
-category: "Governance"
-evidence_strength: "Medium (practitioner-documented)"
-adoption_status: "Partially Adopted"
+name: Advisory-Only Recommendations for Broad-Blast or Persistent Mutations
+summary: 'A concrete autonomy-tier assignment: when the system notices that a particular setting, flag, or configuration change would help, it surfaces a recommendation but refuses to apply it automatically.
+  Applies specifically to actions whose effects persist across the cluster, database, or environment (not just the current session/run) — because a quiet mutation of broadly-scoped, persistent state has
+  a much larger blast radius than any single run''s output. Human must apply the change manually and record the rollback command.'
+implementation_notes: 'Concrete instance of the ''Human-required'' tier from the autonomy-gradient framework, pinned to a specific class of action: broad-blast or persistent mutations. For MetaSystem, this
+  is the pattern to apply whenever an agent could modify schema, governance docs, shared config, cross-system rules, or any state that outlives the current session. The benchmark or tool doing the recommending
+  is still autonomous; only the mutation is gated.'
+category: Governance
+evidence_strength: Medium (practitioner-documented)
+adoption_status: Partially Adopted
 priority: null
 applicability:
-  - "General"
+- General
 adopted_in:
-  - "improvement-loop"
+- improvement-loop
 sources: []
 related_findings:
-  - file: autonomy-gradient-not-binary-delegation.md
-    rel: extends
-  - file: human-on-the-loop-hotl-autonomy-tiering-framework.md
-    rel: same-problem
-  - file: budget-governance-with-hard-stop.md
-    rel: same-problem
+- file: autonomy-gradient-not-binary-delegation.md
+  rel: extends
+- file: human-on-the-loop-hotl-autonomy-tiering-framework.md
+  rel: same-problem
+- file: budget-governance-with-hard-stop.md
+  rel: same-problem
+- file: screen-as-permissions-model-agent-bypass-failure.md
+  rel: same-problem
 proposals: null
-date_discovered: "2026-04-23"
-last_updated: "2026-04-23"
+date_discovered: '2026-04-23'
+last_updated: '2026-05-24'
 pipeline_status: raw
 consumed_by: []
 tags:
-  - "governance"
-  - "autonomy-tier"
-  - "human-gate"
-  - "memongo"
+- governance
+- autonomy-tier
+- human-gate
+- memongo
 ---
 
 # Advisory-Only Recommendations for Broad-Blast or Persistent Mutations

@@ -4,9 +4,11 @@ type: "guideline"
 category: "Context Engineering"
 target_system:
   - "cross-system"
-stage: "draft"
+stage: "deprecated"
+deprecated_by: "structuring-agent-context.md, defending-agent-context.md"
+deprecated_session: 104
 created: "2026-04-19"
-updated: "2026-04-26"
+updated: "2026-05-25"
 author: "claude"
 source_findings:
   - "ace-agentic-context-engineering-evolving-playbook"
@@ -53,6 +55,26 @@ source_findings:
   - "progress-md-session-bridge"
   - "skills-as-pointers-to-second-brain-files"
   - "trajectory-engineering-non-linear-session-forking"
+  - "bounded-tiered-memory-inference-driven-curation"
+  - "session-tree-as-first-class-abstraction"
+  - "write-time-vs-query-time-synthesis-kb-poisoning"
+  - "orchestrator-headless-dispatch-context-isolation"
+  - "claude-code-context-management-decision-matrix-five-tools"
+  - "proactive-compaction-before-intelligence-degradation"
+  - "inline-scoped-mcp-servers-per-subagent"
+  - "token-economics-as-architecture-driver"
+  - "agentic-rag-multi-strategy-retrieval-2026"
+  - "file-search-outperforms-rag-for-small-corpora"
+  - "hybrid-retrieval-pattern-semantic-lexical-graph"
+  - "summary-gate-agent-traversal-pattern"
+  - "personal-knowledge-hoard-as-agent-substrate"
+  - "ai-as-primary-reader-design-principle"
+  - "agent-memory-architecture-multi-agent-layered"
+  - "html-output-as-human-in-the-loop-restorer"
+  - "format-constrained-improvisation-tax"
+  - "interactive-explanations-extend-linear-walkthroughs"
+  - "output-format-token-cost-reframed-by-context-window-size"
+  - "environment-grounded-context-as-output-quality-multiplier"
 source_dd:
   - "DD-81"
 tags:
@@ -61,14 +83,14 @@ tags:
   - "context-architecture"
 contract:
   preconditions: "Agent system exists with context files or context injection mechanism"
-  invariants: "Context budget stays within model limits; context freshness maintained; architecture decisions are explicit at the file, tier, tool, and session layers"
+  invariants: "Context budget stays within model limits; context freshness maintained; architecture decisions are explicit at the file, tier, tool, session, and output-format layers"
   governance: "IL-owned draft; Nick deploys to meta-system/knowledge/guides/"
   recovery: "If context rot detected, run context audit procedure from this guide"
 ---
 
 # Managing Agent Context
 
-Your agent is losing context, burning tokens, or drifting from its goals. This guide covers why that happens and what to do about it — from auditing what is in the window, to structuring context for selective loading, defending against silent degradation, choosing the right management technique mid-session, and architecting context across the tools, tiers, and sessions where your agents actually run.
+Your agent is losing context, burning tokens, or drifting from its goals. This guide covers why that happens and what to do about it — from auditing what is in the window, to structuring context for selective loading, defending against silent degradation, choosing the right management technique mid-session, architecting context across the tools, tiers, and sessions where your agents actually run, and engineering your output format so the human gate actually functions.
 
 ## When to Use This Guide
 
@@ -81,6 +103,10 @@ Your agent is losing context, burning tokens, or drifting from its goals. This g
 - You operate across multiple AI tools (Claude Code + Copilot + Cursor + Codex) and need a single set of project conventions all of them can read
 - You are growing into a monorepo and "one CLAUDE.md for everything" is starting to drown package-specific context
 - You manage multiple roles (developer, marketer, EA) with overlapping but distinct skill sets and need scope discipline
+- You manage cross-session memory files that are growing without bound or drifting with stale observations
+- You use an external knowledge base (Obsidian, NotebookLM, RAG pipeline) and need to prevent LLM-authored content from contaminating the source layer
+- You are designing a multi-phase orchestrated workflow and need to prevent context rot from accumulating across phases
+- The human reviewer is skimming or rubber-stamping agent output because the format does not invite engagement
 
 **Do not use for:** defining what the agent should do (see G1: *Writing Agent Specifications*), designing the agent's tool set (see G5: *Designing Agent Tools*), or evaluation suite design (see G4: *Building Agent Evaluation Suites*).
 
@@ -92,11 +118,19 @@ Your agent is losing context, burning tokens, or drifting from its goals. This g
 
 **3. Context rot is the #1 silent killer.** Agents forget constraints, drift from goals, and re-derive nonsensical conclusions over long sessions. The output looks plausible but increasingly deviates from requirements. Standard monitoring (error rates, latency) will not catch it — only explicit state tracking and contract validation detect drift before it compounds.
 
-**4. Structure beats volume.** The difference between effective and wasteful context is not how much you provide but how you organize it: small high-signal files loaded upfront, everything else retrieved just-in-time, evolving documents updated incrementally, and each agent scoped to the minimum it needs.
+**4. Structure beats volume.** The difference between effective and wasteful context is not how much you provide but how you organize it: small high-signal files loaded upfront, everything else retrieved just-in-time, evolving documents updated incrementally, and each agent scoped to the minimum it needs. The same data structured differently can cost 15x more to query (9,000 vs 600 tokens) — structure is not an optimization; it is a first-class architectural constraint.
 
 **5. Context sensitivity is model-specific.** Claude Code (Sonnet-4.5) was the only agent in the ETH Zurich study where even human-written context files failed to improve performance. Different models respond dramatically differently to the same context files. One-size-fits-all context strategies are empirically wrong — optimize for the model you are actually using.
 
-**6. Context architecture spans tools, tiers, and sessions — not just files.** A complete context architecture has decisions at four layers: per-file (what goes inside), per-tier (global vs project vs ephemeral), per-tool (Claude Code vs Copilot vs Cursor vs Codex), and per-session (how state crosses session boundaries). Treating only the first layer leaves the others to accumulate by accident, which is where most "my agent is bad" problems actually live.
+**6. Context architecture spans tools, tiers, sessions, and output format — not just files.** A complete context architecture has decisions at five layers: per-file (what goes inside), per-tier (global vs project vs ephemeral), per-tool (Claude Code vs Copilot vs Cursor vs Codex), per-session (how state crosses session boundaries), and per-output (what format reaches the human reviewer). Treating only the first layer leaves the others to accumulate by accident, which is where most "my agent is bad" problems actually live.
+
+**7. LLM-authored content re-indexed into your KB is a contamination risk.** When agents write summaries or transformed content back into the knowledge base they query, the chain of custody from original source to retrieved fact breaks. Over time, retrieved content is derivative, not authoritative. Prefer query-time synthesis from immutable originals over write-time synthesis that mutates the index. This applies to CLAUDE.md compaction, PROGRESS.md rewrites, and any KB where agents are both readers and writers.
+
+**8. When AI is the primary reader, optimize for machines.** Human-centric knowledge organization (4 folders, untyped links, large documents) is optimized for human working-memory limits. AI agents have no such constraint — they can navigate richer taxonomies (16 node types, 10 edge types) and use that structure for more precise retrieval and traversal pruning. When the primary consumer of a knowledge base is an agent, invest in metadata density, typed relationships, and per-node summaries rather than human-navigable folder hierarchies. The cost of under-structuring is paid in token waste at query time.
+
+**9. Compact proactively, not reactively.** The model is at its least intelligent point when autocompaction fires — context is maximally bloated, attention is spread thinnest. A larger context window (1M tokens) does not reduce this pressure; it defers it, making the eventual compaction worse because there is more to summarize. Compact at stable checkpoints (task boundaries, post-test-pass) while the model is still sharp and direction is clear.
+
+**10. Output format is a governance mechanism.** A format the human will not read is functionally equivalent to no human gate at all. Markdown walls cause reviewers to skim or skip, silently degrading oversight. The output format decision is not cosmetic — it determines whether the human gate functions as designed.
 
 ---
 
@@ -169,6 +203,16 @@ The pointer principle scales to skill definitions. Once a centralized knowledge 
 Instead of `skills/linkedin-writer/references/icp.md` embedding the ideal-customer-profile, the SKILL.md says "read ICP context from `/second-brain/business/icp.md`." Updates to the ICP propagate automatically to every skill that references it. Teams running 30+ skills with embedded shared context experience version drift; the pointer pattern collapses shared context into a single source of truth and eliminates the per-skill maintenance surface.
 
 Migration heuristic: identify reference files duplicated across multiple skills → move the canonical copy to the second brain → replace the in-skill reference with a path. Low-churn, skill-specific content can remain embedded.
+
+### Design for Your Actual Reader
+
+When the primary consumer of a knowledge base is an AI agent, optimize the structure for machine processing rather than human navigability. Humans benefit from simplicity (4 folders) because they are cognitively limited in how much taxonomy they can hold in working memory. AI agents have no such constraint — they navigate richer taxonomies and use that structure for more precise retrieval:
+
+- **More node types are better.** A single "note" type forces the agent to read content to understand what kind of knowledge it is. A typed taxonomy (decision, concept, hypothesis, pattern, source) lets the agent filter by type before reading.
+- **More edge types are better.** Untyped links ("these are related") force the agent to read both endpoints to understand the relationship. Typed edges (supports, contradicts, depends-on) let the agent prune traversal paths without loading documents.
+- **Metadata density should increase.** What feels like "over-engineering" to a human (YAML frontmatter, one-sentence summaries, typed edges) is cheap overhead for an agent that reads metadata faster than prose.
+
+This does not mean abandoning human readability. The solution is dual-layer: rich metadata for agent consumption, with human-friendly views (Obsidian Dataview, generated summaries) rendered from the same underlying data. But when human navigability and agent efficiency conflict, bias toward agent efficiency — the agent is the primary reader and the human can use tooling to compensate.
 
 ### Self-Describing Codebases as a Context Layer
 
@@ -247,7 +291,21 @@ Effective traversal instructions:
 
 Without traversal instructions, agents use expensive tool calls (glob, grep) to discover structure on every query. With a navigation protocol, the agent follows a deterministic 2-3 file read path: master index, section index, target file.
 
-### 3f: Curate Context for Downstream Agents
+### 3f: Enforce Hard Ceilings on Memory Files
+
+When agents maintain user-model memory files (e.g., `MEMORY.md`, `USER.md`), apply hard character ceilings rather than soft recommendations. Soft limits drift; hard ceilings force curation:
+
+- **Hot tier (always injected):** ceiling forces the highest-signal entries to compete. Example: MEMORY.md ≤ 2,200 chars.
+- **Warm tier (FTS5 retrieved on demand):** entries evicted from hot tier land here; retrieved when a conversation pattern matches.
+- **Cold tier (archival JSONL):** timestamped record for auditing and re-promotion; not loaded at runtime.
+
+Writes should be triggered by conversation-pattern inference, not explicit user commands. A Curator step runs on overflow: it reads the current file, invokes the LLM to consolidate/evict low-signal entries, and rewrites the hot-tier file to fit within the ceiling.
+
+**Key insight:** fixed ceilings + inference-driven writes + LLM curation = self-maintaining user model that never silently balloons.
+
+**Risks:** The Curator may evict entries that are low-signal in the current conversation but high-value in future ones. Inference-driven writes may persist observations the user does not consider relevant. Mitigate with cold-tier archival (no entry is permanently lost) and periodic human review of eviction decisions.
+
+### 3g: Curate Context for Downstream Agents
 
 When dispatching work to sub-agents, do not pass your full context window. Produce a self-contained context package with exactly what the sub-agent needs:
 
@@ -256,16 +314,54 @@ When dispatching work to sub-agents, do not pass your full context window. Produ
 - Carry-forward notes from prior steps when dependencies exist
 - Acceptance criteria for the sub-agent's output
 - Purpose, audience, and workflow position (context enrichment)
+- Scoped MCP servers declared inline in the sub-agent's frontmatter (see 3g-MCP below)
 
 The sub-agent should never need to search for information to start working. If it does, the context curation was incomplete. This is the "scrum master" pattern: a curator agent reads multiple sources and produces a context-complete handoff file so the executing agent starts with a focused, complete window.
 
-### 3g: Progressive Skill Loading
+#### 3g-MCP: Scope MCP Servers to Sub-Agents
+
+MCP servers can be defined inline in a sub-agent's frontmatter so the server connects when the sub-agent starts and disconnects when it finishes. The MCP tools and their descriptions never enter the parent conversation's context. If only one sub-agent needs browser-automation tools, install them for that sub-agent only — the parent session does not pay the token cost of tool descriptions it will never use.
+
+```yaml
+---
+name: browser-tester
+description: Tests features in a real browser using Playwright
+mcpServers:
+  # Inline: scoped to this subagent only
+  - playwright:
+      type: stdio
+      command: npx
+      args: ["-y", "@playwright/mcp@latest"]
+  # Reference: reuses the session's already-configured server
+  - github
+---
+```
+
+A typical tool-heavy MCP server (e.g., Playwright with 20+ tools) is 4K-10K tokens of tool descriptions. Scoping it to a sub-agent eliminates that per-turn cost from the parent conversation. This is the tiered-loading principle applied at the MCP layer: load only what the active context needs. It also provides safety-by-default — tools with destructive capabilities live in specialized sub-agents where the parent conversation cannot accidentally invoke them.
+
+Watch for cold-start latency: inline MCP servers connect fresh each invocation, which adds seconds for heavyweight servers. Use reference-mode (sharing the parent's connection) for frequently-used servers where startup cost matters.
+
+### 3h: Progressive Skill Loading
 
 Tiered loading also applies at the skill level. Bulk-loading 16+ skills at boot consumes 8-32k tokens of context before the first user message. The progressive pattern: at boot, scan all enabled skills and inject only their `name` + `description` (~50 tokens each) as `<skill>` XML elements. The full SKILL.md (~500-2000 tokens) is loaded on-demand via `read_file` when a task matches.
 
 DeerFlow implements this against `skills/public/*/SKILL.md`; Claude Code's tool-search pattern is the same shape applied to tools rather than skills; MetaSystem's skill-description tables in CLAUDE.md are a partial implementation. Skills are higher-level than tools (they contain multi-step workflows, references, templates) and therefore even more expensive to load — making progressive loading more valuable, not less.
 
 Tradeoff: agents may not recognize when a skill is relevant if the description is too terse, and `read_file` adds a tool-call round trip. Mitigations: write descriptions for discoverability not just identity; pre-warm skill caches at startup if cold reads are too slow.
+
+### 3i: Use Summary Gates for Inter-Document Navigation
+
+When an agent navigates a large knowledge base, every document it loads is a token investment. The summary-gate pattern adds a cheap filtering layer: each KB node carries a mandatory one-sentence summary (~50 tokens) that the agent reads before deciding whether to load the full document (~500+ tokens). This creates a two-phase retrieval:
+
+1. **Scan:** Agent reads node summaries and edge types from the current node's neighbors.
+2. **Select:** Agent decides which neighbors are relevant to the current query.
+3. **Load:** Agent reads full content of selected nodes only.
+
+This is distinct from progressive content loading (3b), which loads tiers *within* a single document. The summary gate operates at the *inter-document* level, helping the agent decide which documents to visit at all. The pattern generalizes anywhere an agent must choose between multiple documents: file systems, skill registries, API endpoint lists, research finding databases.
+
+Write summaries for agent triage, not human readability. A formulaic summary ("This is about X") is less useful than a discriminating summary ("X differs from Y because Z") that helps the agent differentiate between candidates. Track how often agents load a full document after reading its summary — high load rates suggest summaries are not discriminating enough.
+
+**Risks:** Summary drift (summary not updated when document changes) causes agents to skip relevant documents or load irrelevant ones. For knowledge bases under ~50 nodes, the scan phase may cost more tokens than loading everything directly.
 
 ---
 
@@ -299,25 +395,38 @@ Long conversations accumulate stale context. Use transcript compaction:
 - Track compaction state for session persistence
 - Align compaction boundaries with task boundaries, not arbitrary turn counts
 
+**Compact proactively, not reactively.** Anthropic's explicit recommendation: run `/compact <hint>` before context pressure forces it. The model is at its least intelligent point when autocompaction fires — attention is spread thinnest across the most tokens, and summary quality is at its worst. A 1M context window does not eliminate this pressure; it defers it, making the eventual compaction worse because there is more to summarize.
+
+Proactive compaction protocol:
+1. Pick a stable checkpoint: task boundary, post-test-pass, after a successful file-read sequence.
+2. Invoke `/compact` with a steering hint that describes what matters ("compact everything except the current file and the bug I'm chasing").
+3. Do it while the model is still sharp and direction is clear — a proactive compact at a moment of clarity produces a better summary than an autocompact at an ambiguous midpoint.
+
+**Risks:** Over-compaction loses detail (summary of a summary of a summary). Compacting at what feels like a boundary but actually discards load-bearing context. Hint quality determines summary quality — without a good hint, proactive compact is no better than autocompact.
+
 ### 4d: Reset Context at Natural Boundaries
 
 At each workflow phase boundary, start a fresh context window. Information transfers via document artifacts only — the next agent reads the output files, not the conversation history. This prevents multi-step workflows from accumulating noise, outdated instructions, and conflicting context.
 
 Natural reset points: new sessions, workflow phase transitions, completed milestones, and whenever context utilization exceeds 40-50% of window capacity.
 
-### 4e: Pick Your Context-Management Technique (Preference Order)
+### 4e: Pick Your Context-Management Technique (Decision Matrix)
 
-Mid-session, you have at least five distinct techniques with sharply different cost/quality tradeoffs. Choosing wrong is one of the most common sources of quality degradation. Use the preference order:
+Mid-session, you have five canonical primitives with sharply different cost/quality tradeoffs. Anthropic formalizes this as a decision matrix (April 2026) — the authoritative framework for which technique to reach for when:
 
-| Rank | Technique | Mechanism | Time Cost | Quality | When to Use |
-|------|-----------|-----------|-----------|---------|-------------|
-| **1** | **Sub-agent spawn** | Fresh window for an isolated task | Low | Best (no information loss) | Bounded sub-task with a clear scope and deliverable |
-| **2** | **/handoff + /clear** | User-requested structured handoff doc, then full clear | High (writing the doc) | High (precisely controlled summary) | Major phase transitions; ending a session you'll resume |
-| **3** | **/re (context trimming)** | Selective removal of completed/irrelevant context | Medium | Good (manual selection required) | Mid-session bug fix where the bug-finding context is now noise |
-| **4** | **/clear (destructive reset)** | Complete context wipe | Low | Risky alone — best paired with re-orientation | At a clean break; combine with CLAUDE.md re-read |
-| **5** | **Compaction** | Automatic LLM compression | Lowest | Lowest (significant information loss; black-swan collapse risk) | Last resort when nothing else is appropriate |
+| Situation | Technique | Mechanism | Quality | When to Use |
+|-----------|-----------|-----------|---------|-------------|
+| Same task, relevant context | **Continue** | Keep working | Best (no loss) | Everything in the window is still load-bearing |
+| Wrong path taken | **Rewind** (Esc+Esc) | Time-travel to prior state | High (drops failed attempt, keeps file reads) | Failed attempt is dead weight; correction is not forward-patching |
+| Bloated session, stale debugging | **Compact** `/compact <hint>` | LLM-driven summary | Acceptable (steerable via hint) | Low effort; Claude decides what mattered; direction is clear enough for a good hint |
+| Genuinely new task | **Clear** `/clear` | Full context wipe | High (zero rot) | You control exactly what carries forward; combine with CLAUDE.md re-read |
+| Next step generates excess output | **Sub-agent** | Fresh window for isolated task | Best (no information loss) | Intermediate noise stays in child context; you need only the conclusion |
 
-The default (compaction) is the worst option. Sub-agents and `/handoff + /clear` are dramatically better. Compaction at the wrong moment (mid-implementation) causes irreversible information loss; `/clear` without a handoff loses all implementation context; sub-agents without a clear scope produce fragmented, unwired code.
+Two decisions the matrix crystallizes:
+- **Rewind is the default correction**, not forward-patching. "That didn't work, try X" accumulates both the failed attempt and the correction in context. Rewind drops the failed attempt cleanly.
+- **Sub-agent invocation is governed by a mental test:** "Will I need this tool output again, or just the conclusion?" If only the conclusion, sub-agent.
+
+The previous default (compaction) is the lowest-quality option. Sub-agents and rewind are dramatically better for their respective situations. Compaction at the wrong moment (mid-implementation) causes irreversible information loss; `/clear` without a handoff loses all implementation context; sub-agents without a clear scope produce fragmented, unwired code.
 
 ### 4f: Trajectory Engineering — Fork and Trim
 
@@ -331,9 +440,23 @@ Anthropic's April 2026 framing promotes rewind from "advanced technique" to firs
 
 This requires mental tagging of trunk vs. branch content; trimming load-bearing context by accident is the failure mode. Time-travel is also session-scoped — it cannot restore context from a previous session.
 
-### 4g: Layer Harness and Model-Side Awareness
+### 4g: Model Sessions as Trees, Not Linear Transcripts
+
+The trajectory-engineering techniques in Step 4f assume an implicit model: sessions are trees, not linear transcripts. Making this model explicit unlocks additional context management operations:
+
+- **Branching:** Fork from any prior state to explore an alternative approach. Each branch has its own context trajectory.
+- **Compaction:** Compact a low-value branch (e.g., a dead-end debugging path) while preserving the high-value trunk. The branch summary is a human-authored string, not an LLM-generated compression — preserving fidelity where it matters.
+- **Navigation:** Move between branches using labels. Name branches for their purpose ("auth-refactor", "v2-approach") rather than relying on turn numbers.
+- **Branch summaries:** Attach a human-written summary at each branch point explaining what the branch explored and what was learned — the "lab notes" pattern at the session level.
+
+**Key insight:** context degradation is often branch-level, not session-level. A long session with many branches is less degraded than a long linear session, because pruned branches carry no attention weight. The session-as-tree model is the theoretical underpinning of the `/re` rewind technique — rewind is branch navigation, not undo.
+
+**Risks:** Tree complexity grows exponentially with deep nesting. Keep branch depth shallow (≤3 levels) in practice. Summarization quality determines branch recovery — if a branch summary is too terse, the pruned context cannot be recovered accurately. Evidence from Pi agent harness.
+
+### 4h: Layer Harness and Model-Side Awareness
 
 Window-headroom awareness lives at two layers; combine both for layered defense:
+
 
 - **Harness layer (pre-turn projection).** The harness measures input tokens *before* calling the model and gates the call (compact, summarize, abort). Catches the failure mode where the model is about to overrun without realizing it.
 - **Model-native layer.** Sonnet 4.5, Sonnet 4.6, and Haiku 4.5 track their own remaining headroom internally and can reason about it inline ("I have N tokens left, let me wrap up"). The ACL 2025 "Token-Budget-Aware Reasoning" paper shows that surfacing the budget to the model explicitly compresses the reasoning trace to fit. Anthropic ships this by default on 4.5+ models; no opt-in required.
@@ -360,7 +483,13 @@ Context rot is silent — the agent's output looks plausible but increasingly de
 
 Watch for over-atomization: issues too fine-grained generate more coordination overhead than they save in context overhead. The break-even depends on orchestrator communication cost.
 
-**7. Don't let Claude compact your own CLAUDE.md.** Asking Claude to summarize or compact CLAUDE.md introduces a fixed per-attempt probability (~3%, increasing ~0.25% per additional compaction) of *catastrophic context collapse* — the entire playbook reduces to ~100-200 tokens, accuracy drops to ~57% of previous, often *below* the no-CLAUDE.md baseline. A sparse, inaccurate summary is worse than no summary at all. Users who compact repeatedly are eventually guaranteed to trigger collapse, then continue with a poisoned context, blaming the model.
+**7. Use a thin orchestrator with headless subprocess dispatch.** Instead of accumulating work context in a long-running orchestrator session, dispatch each phase as a separate headless subprocess. Each subprocess gets a fresh context window containing only its phase prompt and any explicit state handed off from prior phases. The orchestrator never accumulates work context — it stays under 10% window utilization even after 100+ sessions because it only tracks phase status, not phase content.
+
+This solves context rot at the process level: the rot cannot build because there is no persistent window to rot in. The constraint is that each phase prompt must be fully self-contained — any dependency on prior-phase outputs must be passed explicitly via structured artifacts, not assumed from shared history.
+
+Tradeoffs: complex phase dependencies require explicit state-passing contracts (more upfront design work); phase prompts must include enough context for the model to operate without access to prior conversation history; debugging cross-phase failures is harder because there is no single transcript.
+
+**8. Don't let Claude compact your own CLAUDE.md.** Asking Claude to summarize or compact CLAUDE.md introduces a fixed per-attempt probability (~3%, increasing ~0.25% per additional compaction) of *catastrophic context collapse* — the entire playbook reduces to ~100-200 tokens, accuracy drops to ~57% of previous, often *below* the no-CLAUDE.md baseline. A sparse, inaccurate summary is worse than no summary at all. Users who compact repeatedly are eventually guaranteed to trigger collapse, then continue with a poisoned context, blaming the model.
 
 Safer alternatives: ACE-style voting curation (multi-shot consensus, not single rewrite), `/clear` + handoff documents at natural break points, and git-snapshot the CLAUDE.md before any compaction so rollback is one command.
 
@@ -373,6 +502,17 @@ After context is curated and structured, apply cost optimizations:
 ### Cache All Stable Context
 
 System prompts, tool definitions, persona instructions, and reference material that does not change between calls should use prompt caching. Cache hits on Claude Opus cost $0.50/M vs $5/M standard — 90% savings. Structure prompts to front-load cacheable content before dynamic content. Any single character change to cached content forces a full-price re-read of the entire block, so stabilize content before enabling caching.
+
+### Token Economics as a First-Class Architectural Constraint
+
+As AI pricing shifts away from free tiers and subsidized pricing toward usage-based token billing, token efficiency becomes a cost center that should drive architectural decisions — not just an optimization applied after the fact. The same underlying data, structured differently, can cost 15x more to query (9,000 vs 600 tokens). At scale (hundreds of queries per day across a team), this difference compounds into significant cost.
+
+Token economics influences three architectural decisions:
+1. **Document granularity.** Atomic notes (50-300 lines) reduce waste from loading irrelevant content that lives in the same large document.
+2. **Metadata density.** Investing tokens in summaries and typed edges upfront saves tokens on unnecessary document loads downstream — the summary-gate pattern (Step 3i) is a direct application.
+3. **Retrieval strategy.** Summary-gate traversal (read summaries first, load documents selectively) is more token-efficient than loading everything. Cost-aware retrieval agents can factor remaining token budget into traversal decisions.
+
+The practical implication: during the subsidized-pricing era (2023-2025), token efficiency was a nice-to-have. As pricing normalizes, knowledge base structure, retrieval strategies, and document granularity are design decisions with direct cost implications. Teams that designed for human convenience (large documents, folder hierarchies, untyped links) will face increasing cost pressure to restructure for token efficiency.
 
 ### Account for Hidden Costs
 
@@ -401,8 +541,44 @@ When your reference material exceeds what fits efficiently in the context window
 - **NotebookLM** for project-specific research, YouTube transcripts, and accumulated reference material. Claude Code queries it on demand, keeping the context window lean while maintaining access to extensive documentation. The "grounded" aspect is critical — NotebookLM only uses sources you provide, eliminating hallucination from the knowledge layer.
 - **Obsidian wiki with index navigation** for internal codebase memory and institutional knowledge. The LLM maintains an `_index.md` and navigates via wiki-links, achieving effective retrieval for under 1000 documents with zero infrastructure overhead. This second-brain pattern compounds when paired with the skills-as-pointers approach (Step 2): one canonical knowledge layer, many skills that read from it.
 - **Context7** (or equivalent) for library documentation, API references, and framework-specific content.
+- **Personal knowledge hoards** for worked examples, solved problems, and domain-specific idioms. A distributed personal corpus — blog posts, small GitHub repos, TIL notes, single-page tools, local code snippets — becomes raw material the agent recombines into new artifacts. The hoard is cheap to maintain (everything is small, hand-authored once) and expensive to replace (your idioms, your frameworks, your worked examples). When the agent fetches from a personal hoard, it gets the author's priors on tap rather than generic model output. The hoard's compounding property: each marginal addition increases the recombinatorial surface, and old artifacts stay useful as recombination material even when they stop being top-of-mind.
 
 The principle: keep task context in the window, keep reference context queryable externally.
+
+### 7a: Choose the Right Retrieval Strategy for Your Corpus
+
+The "RAG vs file search" debate is a false dichotomy — the right strategy depends on corpus size and query type. Three retrieval modes are complementary, not competing:
+
+| Mode | Mechanism | Best For | Weakness |
+|------|-----------|----------|----------|
+| **Lexical search** (grep, glob, file traversal) | Exact text matching, directory navigation | Small corpora (<1000 docs); exact terms, identifiers, error messages | Misses conceptually related content that does not share lexical terms |
+| **Semantic search** (embedding-based vector similarity) | Fuzzy/conceptual queries | Large corpora (thousands of docs); conceptual queries ("how does authentication work?") | Lossy compression inherent in embeddings; under 20% Recall@100 on combinatorial queries |
+| **Graph traversal** (wikilink-based, relationship queries) | Multi-hop relationship exploration | Connected knowledge; "what depends on X?"; N-level-deep traversal | Requires structured graph; over-linked graphs degrade into noisy crawls |
+
+For smaller knowledge bases, file search tools outperform RAG — LlamaIndex confirmed this in 2025, and coding agents (Claude Code, Cursor) stopped using vector databases entirely for code retrieval. No chunking strategy, no embedding model selection, no retrieval threshold tuning — just direct text search. However, the reversal is corpus-size-dependent: past a few thousand documents, semantic search becomes more accurate and cheaper than exhaustive file search.
+
+The emerging pattern is **agentic RAG** — give the agent multiple retrieval tools and let it choose per query. The agent becomes the retrieval orchestrator rather than being locked into a single strategy. A search for "ERROR_CODE_1234" routes to grep. A search for "how does authentication work" routes to semantic search. A search for "what depends on the auth module" routes to graph traversal. The architect provides the retrieval toolkit; the agent picks the right tool per query.
+
+For most teams, the practical path is incremental: start with file search (zero infrastructure), add semantic search when corpus scale demands it, add graph traversal when relationship queries become frequent. Cost-aware routing can prefer cheaper retrieval (file search) when accuracy is comparable.
+
+### 7b: Prevent KB Poisoning — Query-Time vs. Write-Time Synthesis
+
+When agents write LLM-authored content back into the external knowledge base, re-indexed outputs contaminate the source layer. This is the **KB poisoning** risk: the agent's summaries or transformed content get retrieved as if they were original sources, degrading the chain of custody over time.
+
+Two synthesis strategies and their tradeoffs:
+
+| Strategy | When synthesis happens | Trust | Cost |
+|----------|----------------------|-------|------|
+| **Write-time** (Karpathy pattern) | At ingest: LLM authors summaries, notes, or transformed content that are stored alongside originals | Lower (agent-authored text in the index) | Lower per-query (pre-computed) |
+| **Query-time** | At retrieval: LLM synthesizes on demand from raw retrieved content; originals are never mutated | Higher (originals intact; chain of custody preserved) | Higher per-query (synthesis each time) |
+
+Three principles for maintaining KB integrity:
+
+1. **Immutable originals.** Never overwrite or replace source documents with LLM-authored versions. Summaries and transformations go in separate namespaces.
+2. **Structure over prose.** Prefer structured fields (tags, links, dates, excerpts) over LLM-generated prose in index entries — structured fields are verifiable, prose is not.
+3. **Query-time synthesis as the default.** Accept the higher per-query cost to preserve trustworthiness. Reserve write-time synthesis only for cases where latency is genuinely intolerable and the original source remains accessible for re-synthesis.
+
+**Risks:** Query-time synthesis has higher latency and per-query LLM cost. For high-traffic read paths, the cost can become prohibitive. Mitigate by caching synthesis results with explicit TTL and invalidating on source update.
 
 ---
 
@@ -485,6 +661,80 @@ Two evolutions worth knowing:
 - Cloud-scheduled tasks running while the local machine is off cannot read a local PROGRESS.md. If you use cloud-scheduled agents, host the bridge file in the git repo or another cloud-accessible location.
 
 For the deep treatment of memory architecture and persistence patterns (banks, write policy, retrieval pipelines), see G7: *Session Persistence and Memory*.
+
+### 8g: Multi-Agent Shared Memory Architecture
+
+In multi-agent systems, agents communicate through shared memory layers rather than direct message passing. Four layers map to distinct persistence and sharing requirements:
+
+| Layer | Artifact | Purpose | Persistence |
+|-------|----------|---------|-------------|
+| **Working** | PROGRESS.md | Current task state | Session-scoped; bridged across sessions |
+| **Episodic** | agent-log/, system-log/ | History of past runs | Append-only; auditable |
+| **Semantic** | reference/, knowledge/ | Durable domain knowledge | Versioned; rarely changes |
+| **Procedural** | skills/ | Reusable capabilities | Versioned; evolves with the system |
+
+Direct message passing between agents creates tight coupling and makes it impossible to audit what each agent knew and when. Shared layered memory decouples agents, makes state inspectable, and enables governance — you can reconstruct what happened by reading the logs rather than replaying message chains. Design governance logging in from day one; retrofitting it is expensive.
+
+**Risks:** Shared memory without access control allows one agent's noise to pollute another agent's context. A misbehaving agent writing to shared memory can corrupt the working state for all other agents. Mitigate with per-agent write scopes (the IL's Researcher/Codifier/Librarian boundaries are an example).
+
+---
+
+## Step 9: Engineer Your Output Format
+
+Steps 1-8 cover what goes *into* the context window. But context engineering does not end at the input — the output format determines whether the human gate functions, whether the model's knowledge reaches the reader intact, and whether the agent's environment access translates into grounded output.
+
+### 9a: Match Output Format to Information Type
+
+Not all agent output is prose. When the model's internal representation is richer than what the output format can express, the model improvises with lossy workarounds — ASCII bar charts with drifting columns, Unicode color swatches, pipe-and-dash diagrams that break on font change. These workarounds consume tokens for a degraded result. The format is the bottleneck, not the model.
+
+Use this decision rule:
+
+| Information type | Appropriate format | Why |
+|-----------------|-------------------|-----|
+| Prose, status updates, structured data | **Markdown** | Native to toolchains (Obsidian, GitHub); low token cost; universally renderable |
+| Quantitative data, charts, spatial layouts | **HTML + SVG** | Model stops faking the chart and draws it; crisp, correct, renders in any browser |
+| Temporal processes, state machines, algorithms | **Interactive HTML** | Animated step-through documents behavior; linear walkthroughs document structure — complementary, not substitutes |
+| Color, typography, visual design decisions | **HTML + CSS** | Markdown has no color representation; Unicode approximations are misleading |
+| Decision-critical specs, plans, reviews | **HTML with navigation** | Tabs, jump links, and layout make the human more likely to actually read the output |
+
+Markdown carries eight representational primitives (headings, bold, bullets, tables). HTML carries tables, CSS, SVG, code snippets, JavaScript interactions, workflows, spatial data, and images. When the information type exceeds Markdown's primitives, switch formats — the improvisation tax of forcing rich information through a limited format costs more tokens for a worse result.
+
+### 9b: Output Format as a Governance Mechanism
+
+When agents produce Markdown output for specs, plans, and PR write-ups, humans stop reading them. The output becomes a wall of text that the reviewer skims or skips entirely. This means the human is silently delegating all decisions to the agent — losing oversight without realizing it.
+
+Switching agent output to HTML restores the human review gate. HTML documents are navigable (tabs, jump links), visually organized (CSS, color, layout), and engaging enough that the human actually opens them, clicks around, and suggests changes. The key insight: **a format the human won't read is functionally equivalent to no human gate at all.**
+
+This is especially relevant for systems with mandatory human gates (MetaSystem's DD-29). The effectiveness of the gate depends not on its existence in the process but on whether the human actually engages with the output.
+
+Consider a hybrid format policy:
+- **Decision-critical outputs** (specs, architecture reviews, security assessments): HTML with navigation, enabling genuine engagement.
+- **Routine outputs** (status updates, logs, progress reports): Markdown, where lower engagement is acceptable because the stakes are lower.
+- **Behavior documentation** (algorithms, pipelines, state machines): Interactive HTML that lets the reviewer *see* behavior rather than *reading about* behavior. Linear walkthroughs (`walkthrough.md`) document code structure — what is where, how files relate. Interactive explanations (animated HTML tools) document code behavior — what actually happens when the algorithm runs. Use linear when organization is the question; use interactive when behavior in space or time is the question.
+
+### 9c: The Token Cost of Rich Formats
+
+HTML output costs 2-4x more tokens than equivalent Markdown. Pre-1M-token windows, this was a meaningful fraction of the available budget. With 1M token context windows, the extra tokens barely register against the budget — a 2-4x output overhead on a 2K-token output is <1% of a 1M window.
+
+The decision framework shifts from "minimize output tokens" to "maximize human absorption." Token economy for output format is a capacity question (reviewer bandwidth), not a budget question (model tokens). The cost is real, the cost is absorbable, and in exchange you get a document the reviewer will actually read.
+
+**When this does NOT apply:**
+- Small context windows (32K-128K): 2-4x overhead is 6-12% of budget, which matters.
+- Multi-turn sessions with many intermediate outputs: cumulative overhead compounds even with 1M windows.
+- Cost-sensitive deployments: output tokens are priced per-token regardless of window size. The budget argument is about window capacity, not dollar cost.
+- Models with poor HTML generation quality: broken CSS or misaligned SVG replaces the improvisation tax with a debugging tax.
+
+### 9d: Environment Grounding Makes Rich Formats Worth It
+
+The same prompt produces informed output on Claude Code (which can ingest the filesystem, MCP surface, git history, and browser) versus generic output on a chat surface. An HTML spec generated from filesystem + git + MCP context is a useful review artifact. The same HTML spec generated from a bare prompt is a template — visually appealing but substantively empty.
+
+The output quality ceiling is set by the input context quality, not by the output format. Investing in richer output formats is wasted if the agent's context is not rich enough to fill them with project-specific content. Before upgrading output format, verify that the agent has sufficient grounding:
+
+- Has it read the relevant project files, not just the prompt?
+- Does it have access to git history (the "why" behind every line of code)?
+- Are MCP tools providing live project data?
+
+If the answer is yes, rich formats amplify the agent's grounded knowledge. If the answer is no, Markdown is sufficient — and the right investment is in input context, not output format.
 
 ---
 
@@ -585,6 +835,7 @@ For the deep treatment of memory architecture and persistence patterns (banks, w
 - [ ] Navigation instructions present for knowledge base traversal
 - [ ] Module manifests present for major code modules (where applicable)
 - [ ] Behavioral contracts present on key interfaces (where applicable)
+- [ ] KB node summaries are written for agent triage, not human readability
 
 ### Tiering Check
 - [ ] Tier 0 contains only identity, safety, and hard rules (< 20 lines)
@@ -592,6 +843,7 @@ For the deep treatment of memory architecture and persistence patterns (banks, w
 - [ ] Reference material is in Tier 2 (on-demand), not loaded upfront
 - [ ] Tool pool is dynamically assembled, not all-tools-always
 - [ ] Skill pool uses progressive loading (descriptions at boot, full SKILL.md on-demand)
+- [ ] MCP servers scoped to sub-agents where only one agent needs them
 
 ### Curation Check
 - [ ] Each context element has a justifiable reason for being there
@@ -600,6 +852,7 @@ For the deep treatment of memory architecture and persistence patterns (banks, w
 - [ ] Context enrichment present: purpose, audience, workflow position, criteria
 - [ ] Retrieved content uses hybrid retrieval (not embeddings alone)
 - [ ] Skills reference shared context via path, not embedded copies
+- [ ] Knowledge base structured for AI-as-primary-reader (typed nodes, typed edges, metadata-dense)
 
 ### Architecture Check
 - [ ] Vault tiered (global / shared / local) with deliberate scoping
@@ -607,6 +860,7 @@ For the deep treatment of memory architecture and persistence patterns (banks, w
 - [ ] Multi-tool projects have a portability strategy (chain-loader / mirror / duplicate)
 - [ ] Monorepos have a context distribution strategy (per-package / path-scoped / global)
 - [ ] Session bridge file (PROGRESS.md or equivalent) exists and is read at session start
+- [ ] Multi-agent systems use shared memory layers (working / episodic / semantic / procedural)
 
 ### Rot Defense Check
 - [ ] Explicit state object exists for long-running sessions
@@ -616,6 +870,18 @@ For the deep treatment of memory architecture and persistence patterns (banks, w
 - [ ] Cross-session learnings are persisted and injected
 - [ ] Sessions bounded to single atomic issues where workload permits
 - [ ] CLAUDE.md is never sent to Claude for self-compaction
+- [ ] Multi-phase workflows use headless subprocess dispatch (orchestrator stays lean)
+- [ ] Session tree is managed explicitly (branching, compaction, labels) not treated as linear transcript
+- [ ] Memory files (MEMORY.md, USER.md) have hard character ceilings with tiered hot/warm/cold architecture
+- [ ] KB sources are immutable originals; LLM-authored content is in a separate namespace, never re-indexed as source
+- [ ] Compaction is proactive (at stable checkpoints) not reactive (at hard cutoff)
+
+### Output Format Check
+- [ ] Decision-critical outputs use a format the reviewer will actually read
+- [ ] Quantitative data, charts, and spatial layouts use HTML/SVG, not ASCII improvisation
+- [ ] Output format matches the information type (prose → Markdown; visual → HTML; behavioral → interactive)
+- [ ] Rich formats are justified by environment grounding (agent has real project data, not just prompt)
+- [ ] Token cost of rich formats is acceptable given context window size and session length
 
 ### Cost Check
 - [ ] Stable context is cached (system prompt, tool defs, persona)
@@ -624,6 +890,7 @@ For the deep treatment of memory architecture and persistence patterns (banks, w
 - [ ] Cache hit rates are monitored
 - [ ] Hidden context sources (IDE, git status) are accounted for
 - [ ] Reasoning token overhead is estimated (14-22% amplification)
+- [ ] KB structure is token-efficient (atomic documents, summary gates, typed edges)
 
 ### Findings
 | # | Issue | Severity | Fix |
@@ -958,6 +1225,40 @@ None. AGENTS.md is the single source of truth; CLAUDE.md is a one-line pointer.
 
 ---
 
+### Output Format Decision Template
+
+For deciding when to use richer output formats:
+
+```markdown
+## Output Format Decision -- {{SKILL_OR_AGENT_NAME}}
+
+### Information Types Produced
+| Output Section | Information Type | Current Format | Recommended Format | Justification |
+|----------------|-----------------|----------------|-------------------|---------------|
+| {{SECTION_1}} | {{PROSE/QUANTITATIVE/SPATIAL/BEHAVIORAL}} | {{MD/HTML}} | {{MD/HTML/INTERACTIVE}} | {{WHY}} |
+
+### Grounding Assessment
+- [ ] Agent has filesystem access to relevant project files
+- [ ] Agent has git history access
+- [ ] Agent has MCP tool access for live data
+- [ ] Agent has sufficient context to produce project-specific (not generic) output
+
+### Cost Assessment
+- Context window size: {{WINDOW_SIZE}}
+- Estimated output size (Markdown): {{MD_TOKENS}} tokens
+- Estimated output size (HTML): {{HTML_TOKENS}} tokens ({{MULTIPLIER}}x)
+- Output as % of window: {{PCT}}%
+- Multi-turn session? {{YES/NO}} — if yes, cumulative overhead matters
+
+### Decision
+- [ ] Markdown (information is prose; grounding is sparse; window is small)
+- [ ] HTML (information needs visual structure; grounding is rich; window is large)
+- [ ] Interactive HTML (information is behavioral/temporal; viewer needs to explore)
+- [ ] Hybrid (critical sections in HTML; routine sections in Markdown)
+```
+
+---
+
 ## Pitfalls
 
 ### 1. Treating the context window as a bucket
@@ -970,7 +1271,7 @@ ETH Zurich proved these reduce success rates by 3% while increasing cost by 20%.
 Every time an LLM rewrites a full context document, brevity bias silently drops domain-specific details. After a few rewrite cycles, the document retains only generic high-level statements. Use delta updates — append structured entries and consolidate periodically by human review, not LLM summarization.
 
 ### 4. Relying on embeddings for retrieval
-Single-vector embeddings achieve under 20% Recall@100 on combinatorial queries while BM25 achieves 85.7%. For agent context selection, prefer filesystem navigation (glob/grep), index-file traversal, hybrid retrieval (lexical + semantic), or cross-encoder reranking over pure embedding search.
+Single-vector embeddings achieve under 20% Recall@100 on combinatorial queries while BM25 achieves 85.7%. For agent context selection, prefer filesystem navigation (glob/grep), index-file traversal, hybrid retrieval (lexical + semantic), or cross-encoder reranking over pure embedding search. Give the agent multiple retrieval tools and let it choose per query rather than hardcoding a single strategy.
 
 ### 5. Context duplication across layers
 The same constraint stated in the global CLAUDE.md, a system CLAUDE.md, and a skill file consumes 3x the tokens for zero added signal — and may create subtle contradictions when one copy is updated and the others are not.
@@ -1005,6 +1306,21 @@ Running 30+ skills that each embed their own copy of a shared ICP, brand voice, 
 ### 15. Multi-tool context file drift without enforcement
 Maintaining `CLAUDE.md`, `AGENTS.md`, and `.cursorrules` as parallel files works until one is updated and the others aren't. By the time you notice, three tools are operating on three subtly different versions of project conventions. Either pick a chain-loader (one source of truth, others are pointers) or add a CI check that compares mirrored files. Don't rely on discipline.
 
+### 16. Re-indexing LLM-authored content into the knowledge base
+Agent-generated summaries, notes, or transformed content that are re-indexed into the KB alongside originals will be retrieved as if they were source material. Over time the KB fills with derivative content; the chain of custody from original source to retrieved fact is broken; the agent's outputs become increasingly self-referential. Keep LLM-authored content in a separate namespace and never let it overwrite originals. When in doubt, synthesize at query time from the original, not at write time.
+
+### 17. Unbounded memory files without hard ceilings
+Cross-session memory files (MEMORY.md, USER.md, context accumulation files) that have no size limit balloon silently. Each write adds entries; nothing is ever evicted. The file eventually contains outdated facts, superseded preferences, and irrelevant observations — all loaded at the start of every session. Apply hard character ceilings, use tiered architecture (hot/warm/cold), and run a Curator step on overflow. A file with no ceiling is not a memory system — it is an accumulating context tax.
+
+### 18. Waiting for autocompaction instead of compacting proactively
+Deferring `/compact` until the context window is nearly full means the model compacts at its least intelligent moment — attention is spread thinnest, and the resulting summary is lowest quality. A 1M token window does not fix this; it makes it worse by accumulating more content for an even harder summarization task. Compact at stable checkpoints (task boundaries, post-test-pass) while direction is clear and the model is still sharp.
+
+### 19. Forcing rich information through a limited format
+ASCII bar charts, Unicode color swatches, and pipe-and-dash diagrams are the model improvising around Markdown's eight primitives. The workarounds are fragile (break on font change), imprecise (columns drift), and consume tokens for a degraded result. When the information type exceeds what Markdown can express, switch to HTML/SVG. The format is the bottleneck, not the model.
+
+### 20. Rich output format without environment grounding
+HTML output generated from a bare prompt is a template — visually appealing but substantively generic. The same HTML generated from a grounded environment (filesystem, git, MCP tools) is an informed artifact. Before investing in richer output formats, verify that the agent has sufficient project-specific context to fill them. Without grounding, you pay the token overhead of HTML for the information quality of Markdown.
+
 ---
 
 ## Related Guides
@@ -1012,10 +1328,11 @@ Maintaining `CLAUDE.md`, `AGENTS.md`, and `.cursorrules` as parallel files works
 - **Tool definition tokens and deferred loading:** If tool definitions are a major context consumer, see *Designing Agent Tools* (G5) for dynamic tool pool assembly and deferred loading patterns.
 - **Memory architecture and session persistence:** Cross-session persistence stores, memory tiers, retrieval pipelines, and the state object pattern are detailed in *Session Persistence and Memory* (G7). G2 covers the *window* — G7 covers what crosses session boundaries.
 - **Context curation for measurement:** To measure whether removing a context element actually improves output, see *Building Agent Evaluation Suites* (G4) for eval-driven context optimization.
-- **Multi-agent composition and scope:** Step 3f (curating context for downstream agents) and Step 5 defense #6 (atomic session scoping) intersect with single-vs-multi-agent decisions; see *Agent Architecture Decisions* (G3) for composition patterns.
-- **Model-specific context sensitivity:** The model-specific findings (Step 4g, Pitfall #9) tie into prompt-engineering portability across model upgrades; see *Model-Resilient Prompt Engineering* (G8) for the prompt side of model-resilience.
+- **Multi-agent composition and scope:** Step 3g (curating context for downstream agents) and Step 5 defense #6 (atomic session scoping) intersect with single-vs-multi-agent decisions; see *Agent Architecture Decisions* (G3) for composition patterns.
+- **Model-specific context sensitivity:** The model-specific findings (Step 4h, Pitfall #9) tie into prompt-engineering portability across model upgrades; see *Model-Resilient Prompt Engineering* (G8) for the prompt side of model-resilience.
 - **Distributed boundary files for governance:** The AGENTS.md/CLAUDE.md placement at subsystem boundaries (Step 8 cross-platform portability + monorepo distribution) doubles as the governance-distribution layer — same files, two readers. See *Agent Governance and Trust* (G9), Section 4 Layer 4 (Distributed Governance Scope), for the rule-distribution discipline at the same locations: universal rules in the root file, subsystem-specific rules at the boundary, explicit inheritance semantics.
 - **Vault-as-OS and system-shape patterns:** The context primitives here (CLAUDE.md size limits, reference files on demand, context rot mitigations) are assumed by *[[building-agentic-systems]]* (G11), which covers system-shape questions — vault-native agentic OS, proactive loops, ingestion pipelines — built on top of G2's substrate.
+- **Output format and human oversight:** The output-format engineering in Step 9 connects to the human-in-the-loop patterns in *Agent Governance and Trust* (G9) — format is a mechanism for making governance gates effective, not just present.
 
 ---
 
@@ -1034,9 +1351,12 @@ Maintaining `CLAUDE.md`, `AGENTS.md`, and `.cursorrules` as parallel files works
 - Context health is measured, not assumed.
 - Sub-agents receive scoped context appropriate to their task, not the parent's full window.
 - Hidden context sources (IDE injection, git status) are accounted for in the budget.
-- Context architecture is explicit at all four layers: per-file, per-tier (vault), per-tool (cross-platform portability), and per-session (bridge file + scoping).
+- Context architecture is explicit at all five layers: per-file, per-tier (vault), per-tool (cross-platform portability), per-session (bridge file + scoping), and per-output (format matches information type and reviewer needs).
 - CLAUDE.md (and other long-lived context files) are never compacted by Claude itself without git-snapshot rollback.
 - Skills reference shared context via path, not embedded copies (when a second brain exists).
+- Compaction is proactive (at stable checkpoints while the model is sharp), not reactive (at hard cutoff when summary quality is worst).
+- Output format is chosen to maximize human engagement at review gates, not to minimize token cost.
+- Knowledge base structure is optimized for the primary reader (agent or human) with appropriate metadata density.
 
 ### Governance
 - Context file owners audit their files against the signal-to-noise criteria in this guide at least once per milestone.
@@ -1045,13 +1365,15 @@ Maintaining `CLAUDE.md`, `AGENTS.md`, and `.cursorrules` as parallel files works
 - Multi-tool projects run drift detection against mirrored files at the cadence of their CI pipeline, not "when someone notices."
 - Model-specific context strategies are re-validated when the underlying model changes.
 - Module manifests are owned by module owners and updated as part of any breaking-change PR for that module's interfaces.
+- Output format decisions are documented per-skill and revisited when context window size, model capabilities, or review patterns change.
 - This guide is owned by the Improvement Loop and deployed to the Meta-System knowledge layer after review.
 
 ### Recovery
 - If agent output quality degrades: run the context audit checklist first. Context bloat and rot are the most common root causes.
-- If token costs spike: check for cache invalidation (any character change forces full-price re-read), context duplication, reasoning token amplification from unnecessary instructions, hidden IDE context injection, or upfront loading of content that should be JIT.
-- If context rot is suspected: compare current agent state against the explicit state object or contract to detect drift. If no state object exists, the absence of one is the root cause.
+- If token costs spike: check for cache invalidation (any character change forces full-price re-read), context duplication, reasoning token amplification from unnecessary instructions, hidden IDE context injection, or upfront loading of content that should be JIT. Also check whether knowledge base structure is forcing unnecessary document loads (missing summary gates, untyped edges).
+- If context rot is suspected: compare current agent state against the explicit state object or contract to detect drift. If no state object exists, the absence of one is the root cause. Check whether compaction is happening reactively rather than proactively.
 - If a new model performs differently: re-run the context audit with model-specific sensitivity in mind. What worked for Codex may not work for Claude Code, and vice versa.
 - If the agent is using outdated conventions in a multi-tool project: check whether mirrored context files have drifted; restore from the source of truth and add drift detection if it is missing.
 - If CLAUDE.md was compacted and quality dropped: roll back to the pre-compaction git snapshot. If no snapshot exists, restore from the last good version in git history; the compacted file is a write-off.
 - If a monorepo agent loads irrelevant package context: the global file has likely become a kitchen sink — split into per-package or path-scoped rules per Step 8e.
+- If the human reviewer is rubber-stamping agent output: check the output format. Switch decision-critical outputs from Markdown to HTML with navigation. If review quality does not improve, the problem is output volume, not format — reduce the scope of what requires human review.

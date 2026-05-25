@@ -13,16 +13,24 @@ applicability:
 adopted_in: []
 sources:
 - andrej-karpathys-math-proves-agent-skills-will-fai.md
+- problem-with-ai-agents-utori-compound-errors.md
 proposals: []
 date_discovered: '2026-03-22'
-last_updated: '2026-04-19'
+last_updated: '2026-05-25'
 related_findings:
 - file: specialized-harness-engineering-deterministic-rail.md
   rel: enables
 - file: prompt-only-tool-use-ceiling.md
   rel: same-problem
-pipeline_status: raw
-consumed_by: []
+- file: error-aware-backtracking-as-compound-error-mitigation.md
+  rel: same-problem
+- file: anti-slop-reliability-standard-first-try-quality.md
+  rel: same-problem
+- file: finite-training-generalization-via-error-recovery.md
+  rel: same-problem
+pipeline_status: synthesized
+consumed_by:
+  - "building-agent-evaluation-suites.md"
 ---
 # March of Nines: Compounding Reliability Math for Multi-Step Agents
 

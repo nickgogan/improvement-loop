@@ -24,9 +24,11 @@ related_findings:
   rel: enabled-by
 - file: advisor-executor-api-pattern.md
   rel: same-problem
+- file: auxiliary-model-slot-architecture.md
+  rel: same-problem
 proposals: []
 date_discovered: '2026-04-01'
-last_updated: '2026-04-09'
+last_updated: '2026-05-24'
 pipeline_status: synthesized
 consumed_by:
 - agent-architecture-decisions.md

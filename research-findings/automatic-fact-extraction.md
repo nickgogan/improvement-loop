@@ -15,9 +15,11 @@ sources:
 related_findings:
 - file: hook-based-transparent-memory-injection.md
   rel: same-problem
+- file: write-time-vs-query-time-synthesis-kb-poisoning.md
+  rel: contradicts
 proposals: null
 date_discovered: '2026-04-08'
-last_updated: '2026-04-19'
+last_updated: '2026-05-24'
 pipeline_status: raw
 consumed_by: []
 ---

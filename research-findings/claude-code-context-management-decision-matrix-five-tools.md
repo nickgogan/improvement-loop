@@ -1,38 +1,46 @@
 ---
-name: "Claude Code Context Management Decision Matrix — Five Tools"
-summary: "Anthropic's official decision matrix for Claude Code context management: Continue, /rewind (Esc+Esc), /compact <hint>, /clear, Subagents. Each maps to a specific situation — Continue when everything in the window is load-bearing; /rewind when a wrong path was taken and file reads should be kept but the failed attempt dropped; /compact when the session is bloated with stale debugging and low effort is wanted; /clear when the task is genuinely new and the user wants full control over what carries forward; Subagents when the next step will generate excess output. This is the canonical framework as of April 2026."
-implementation_notes: "Adopt this as the anchor framework for any Claude Code usage doc or CLAUDE.md section on context management. The 5-tool vocabulary (Continue / Rewind / Compact / Clear / Subagent) is now Anthropic-canonical and should be used in preference to ad-hoc language. Key rule worth enforcing: rewind is the default correction, not forward-patching with 'that didn't work, try X.'"
-category: "Context Engineering"
-evidence_strength: "Strong (production-tested)"
-adoption_status: "Partially Adopted"
-priority: "P1"
+name: Claude Code Context Management Decision Matrix — Five Tools
+summary: 'Anthropic''s official decision matrix for Claude Code context management: Continue, /rewind (Esc+Esc), /compact <hint>, /clear, Subagents. Each maps to a specific situation — Continue when everything
+  in the window is load-bearing; /rewind when a wrong path was taken and file reads should be kept but the failed attempt dropped; /compact when the session is bloated with stale debugging and low effort
+  is wanted; /clear when the task is genuinely new and the user wants full control over what carries forward; Subagents when the next step will generate excess output. This is the canonical framework as
+  of April 2026.'
+implementation_notes: 'Adopt this as the anchor framework for any Claude Code usage doc or CLAUDE.md section on context management. The 5-tool vocabulary (Continue / Rewind / Compact / Clear / Subagent)
+  is now Anthropic-canonical and should be used in preference to ad-hoc language. Key rule worth enforcing: rewind is the default correction, not forward-patching with ''that didn''t work, try X.'''
+category: Context Engineering
+evidence_strength: Strong (production-tested)
+adoption_status: Partially Adopted
+priority: P1
 applicability:
-  - "S3 (Claude Code Build)"
-  - "General"
+- S3 (Claude Code Build)
+- General
 adopted_in:
-  - "General / Cross-System"
+- General / Cross-System
 sources:
-  - "anthropic-claude-code-session-management-1m-context.md"
+- anthropic-claude-code-session-management-1m-context.md
 related_findings:
-  - file: trajectory-engineering-non-linear-session-forking.md
-    rel: extends
-  - file: five-context-management-techniques-in-claude-code.md
-    rel: extends
-  - file: two-threshold-compaction-strategy.md
-    rel: same-problem
-  - file: context-rot-silent-killer-and-mitigations.md
-    rel: enabled-by
-  - file: fork-subagent-parallel-trajectory-exploration.md
-    rel: same-problem
-  - file: memory-decay-compaction-convergence.md
-    rel: same-problem
-  - file: proactive-compaction-before-intelligence-degradation.md
-    rel: same-problem
+- file: trajectory-engineering-non-linear-session-forking.md
+  rel: extends
+- file: five-context-management-techniques-in-claude-code.md
+  rel: extends
+- file: two-threshold-compaction-strategy.md
+  rel: same-problem
+- file: context-rot-silent-killer-and-mitigations.md
+  rel: enabled-by
+- file: fork-subagent-parallel-trajectory-exploration.md
+  rel: same-problem
+- file: memory-decay-compaction-convergence.md
+  rel: same-problem
+- file: proactive-compaction-before-intelligence-degradation.md
+  rel: same-problem
+- file: bounded-tiered-memory-inference-driven-curation.md
+  rel: same-problem
 proposals: null
-date_discovered: "2026-04-20"
-last_updated: "2026-04-20"
-pipeline_status: classified
-consumed_by: []
+date_discovered: '2026-04-20'
+last_updated: '2026-05-24'
+pipeline_status: "synthesized"
+consumed_by:
+  - "structuring-agent-context.md"
+  - "rules/use-rewind-for-corrections-not-forward-patching.md"
 ---
 
 ## What It Is

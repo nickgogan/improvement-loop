@@ -15,7 +15,17 @@ url: "https://www.youtube.com/watch?v=c2kJ7j3CgUs"
 authority:
   - agentic-academy.md
 findings:
-  - five-pillar-agentic-os-framework.md
+  - "context-first-build-sequencing-for-agentic-systems.md"
+  - "five-pillar-agentic-os-framework.md"
+  - "framework-abstraction-tax-for-agents.md"
+  - "goal-first-agent-management-abstraction.md"
+  - "iterative-turn-based-kanban-for-agent-management.md"
+  - "platform-native-harness-over-agent-frameworks.md"
+  - "scheduled-skill-chaining-with-file-based-activation.md"
+  - "self-evolving-loop-pattern.md"
+  - "shared-context-folder-as-cross-skill-update-multiplier.md"
+  - "skills-as-pointers-to-second-brain-files.md"
+  - "tiered-interaction-model-quick-ask-vs-supervisor.md"
 date_added: "2026-04-20"
 date_processed: "2026-04-20"
 ---

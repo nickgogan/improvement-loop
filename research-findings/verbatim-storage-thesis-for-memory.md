@@ -1,29 +1,32 @@
 ---
-name: "Verbatim-Storage Thesis for Long-Term Agent Memory"
-summary: "Store the actual conversation words; don't extract facts. On LongMemEval, a verbatim store with default ChromaDB embeddings and zero LLM calls reaches 96.6% R@5 — matching or beating every extraction-based system measured on the same benchmark. The field's assumption that an LLM must decide what to remember is the load-bearing error. 'The key insight is removal, not addition.'"
+name: Verbatim-Storage Thesis for Long-Term Agent Memory
+summary: Store the actual conversation words; don't extract facts. On LongMemEval, a verbatim store with default ChromaDB embeddings and zero LLM calls reaches 96.6% R@5 — matching or beating every extraction-based
+  system measured on the same benchmark. The field's assumption that an LLM must decide what to remember is the load-bearing error. 'The key insight is removal, not addition.'
 implementation_notes: null
-category: "Context Engineering"
-evidence_strength: "Medium (practitioner-documented)"
-adoption_status: "Not Yet Started"
+category: Context Engineering
+evidence_strength: Medium (practitioner-documented)
+adoption_status: Not Yet Started
 priority: null
 applicability:
-  - "General"
+- General
 adopted_in: []
 sources: []
 related_findings:
-  - file: mongodb-single-store-polymorphic-evidence-memory.md
-    rel: same-problem
-  - file: triple-storage-memory-architecture.md
-    rel: contradicts
-  - file: typed-relationship-memory-graph.md
-    rel: same-problem
-  - file: agentic-search-memory-retrieval-architecture.md
-    rel: contradicts
-  - file: subagent-persistent-memory-directory.md
-    rel: same-problem
+- file: mongodb-single-store-polymorphic-evidence-memory.md
+  rel: same-problem
+- file: triple-storage-memory-architecture.md
+  rel: contradicts
+- file: typed-relationship-memory-graph.md
+  rel: same-problem
+- file: agentic-search-memory-retrieval-architecture.md
+  rel: contradicts
+- file: subagent-persistent-memory-directory.md
+  rel: same-problem
+- file: bounded-tiered-memory-inference-driven-curation.md
+  rel: contradicts
 proposals: null
-date_discovered: "2026-04-23"
-last_updated: "2026-04-27"
+date_discovered: '2026-04-23'
+last_updated: '2026-05-24'
 pipeline_status: raw
 consumed_by: []
 ---

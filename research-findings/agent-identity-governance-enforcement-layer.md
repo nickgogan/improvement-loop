@@ -15,6 +15,7 @@ adopted_in: []
 sources:
 - hitl-agentic-ai-strataio-2026-guide.md
 - 11-step-governance-build-order-multi-agent-systems.md
+- lilly-incident-agent-security-permissions.md
 related_findings:
 - file: human-on-the-loop-hotl-autonomy-tiering-framework.md
   rel: extends

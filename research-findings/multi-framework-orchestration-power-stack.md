@@ -4,7 +4,7 @@ summary: 'Composite orchestration pattern chaining three frameworks: gstack for 
   (Playwright). Each constrains a different dimension: perspective, environment, process.'
 implementation_notes: P3 — adopt individual frameworks first, revisit composition. Note the Superpowers mega-orchestrator vs GSD fresh-session tension needs resolution.
 category: Orchestration
-evidence_strength: Weak (theoretical)
+evidence_strength: Medium (practitioner-documented)
 adoption_status: Not Yet Started
 priority: P3 (Monitor)
 applicability:
@@ -13,9 +13,10 @@ applicability:
 adopted_in: []
 sources:
 - these-3-frameworks-make-claude-code-unstoppable.md
+- gstack-gsd-superpowers-orchestrator-headless.md
 proposals: null
 date_discovered: '2026-04-07'
-last_updated: '2026-04-19'
+last_updated: '2026-05-25'
 related_findings:
 - file: agent-architecture-layer-impermanence.md
   rel: contradicts
@@ -61,6 +62,7 @@ Each individual framework addresses a different failure mode in long-running age
 - Described as a composite recommendation in source-001 (Eric Tech)
 - Logical composition of three individually-validated frameworks
 - No independent production evidence of the full stack being used as a unified system — this is a proposed combination, not a battle-tested workflow
+- **Update 2026-05-25:** A live demo (Eric Tech) shows the full three-framework stack completing a 16-phase project overnight using autonomous headless dispatch. This upgrades the composition from theoretical to practitioner-demonstrated. The stack was wired as: gstack for spec creation, GSD for phase decomposition, Superpowers for TDD execution per phase, with a custom "build loop" skill orchestrating dispatch via `claude -p`
 
 ## Potential Alternatives
 

@@ -47,18 +47,18 @@ Where in the KB to look when a consumer asks about the harness. Pointers are to 
 | Aspect | Tier 1 (guides, default) | Tier 2 (patterns / findings, on escalation) | Tier 3 (watched-libraries, on explicit ask) |
 |---|---|---|---|
 | Tool registry, deferred tool loading, progressive discovery | G5 `designing-agent-tools.md` §"Step N — Tool Registry" and §"Deferred Loading" | Patterns under Tools dimension; findings on Tool Search, MCP server ecosystems | `anthropic-claude-code/` repo §tool/hooks source; MCP server registry implementations |
-| Context loading, caching, budget management | G2 `managing-agent-context.md` §"Step — Budget", §"Caching", §"Hidden Context" | Patterns `context-rot-attention-budget-depletion`, `ace-delta-updates`; any finding tagged `prompt-caching` | Claude Code caching implementation; Cursor context-composer source |
+| Context loading, caching, budget management | G2a `structuring-agent-context.md` §"Context Budget", §"Retrieval Strategy"; G2b `defending-agent-context.md` §"Compaction Timing" | Patterns `context-rot-attention-budget-depletion`, `ace-delta-updates`; any finding tagged `prompt-caching` | Claude Code caching implementation; Cursor context-composer source |
 | Prompt composition — what the harness prepends, appends, wraps | G8 `model-resilient-prompt-engineering.md` §"Role/Authority/Constraint/Failure Signal" | Patterns on prompt layering, negative constraints | Claude Code system-prompt assembly; Anthropic SDK cookbook prompt-caching examples |
 | Hooks, events, session mechanics, checkpoints | G3b `agent-workflow-and-execution.md` §"State", §"Termination"; G7 `session-persistence-and-memory.md` §"Handoff", §"Crash Recovery" | Patterns on durable workflow state, session handoff; `gsd-global-learnings-store-cross-session-persistence` | Claude Code hook source; Temporal/Prefect repos for workflow-engine comparison |
 | Permissions, sandboxing, blast radius | G6 `agent-safety-and-permissions.md` §Contract (invariants on tiered permissions, structural enforcement) | Patterns on defense-in-depth, prompt-injection mitigation; findings on container sandboxes | Claude Code settings.json permission model; E2B / Daytona sandbox implementations |
-| Observability, traces, cost monitoring | G4 `building-agent-evaluation-suites.md` §Eval harness instrumentation; G2 `managing-agent-context.md` §"Measurement" | Patterns on compounding-reliability, multi-step failure attribution | Claude Code tracing output; OpenTelemetry LLM conventions in tracked repos |
+| Observability, traces, cost monitoring | G4 `building-agent-evaluation-suites.md` §Eval harness instrumentation; G2b `defending-agent-context.md` §"Token Cost Defense" | Patterns on compounding-reliability, multi-step failure attribution | Claude Code tracing output; OpenTelemetry LLM conventions in tracked repos |
 
 ### Cross-guide threads for harness-level queries
 
 When a query is about the harness *as a whole* (e.g., "what should I demand of a production harness?"), the composition stitches together:
 
 1. **Permissions posture** — G6 invariants (tiered, structurally enforced, agent cannot self-modify).
-2. **Context mechanics** — G2 invariants (justified elements, caching, hidden context accounted for).
+2. **Context mechanics** — G2a/G2b invariants (justified elements, caching, hidden context accounted for).
 3. **Tool loading discipline** — G5 invariants (only task-relevant tools, intermediate results kept out of context).
 4. **Workflow mechanics** — G3b invariants (termination conditions, state tracking, cost controls).
 5. **Prompt composition** — G8 invariants (ROLE/AUTHORITY/CONSTRAINT/FAILURE SIGNAL, versioning).
@@ -71,7 +71,7 @@ This list is the default aspect-sweep for harness questions that don't name an a
 **Default (Tier 1):** Start with the composition table above. If the consumer's query names one aspect (e.g., "how does the harness handle context caching?"), read only the relevant row's Tier-1 pointers. If the query is aspect-unspecified (e.g., "audit this harness"), read the cross-guide thread above in order.
 
 **Escalate to Tier 2 when:**
-- Consumer asks for rationale behind a Tier-1 claim ("why does G2 say intermediate results should stay out of context?").
+- Consumer asks for rationale behind a Tier-1 claim ("why does G2b say intermediate results should stay out of context?").
 - Consumer asks about a design debate or contradicting findings (surface `contradicts` typed links).
 - Tier-1 confidence is low because the aspect is sparsely covered in the named guide.
 

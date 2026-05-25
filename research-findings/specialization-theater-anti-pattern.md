@@ -28,9 +28,11 @@ related_findings:
   rel: same-problem
 - file: aios-architecture-folder-per-role-agent.md
   rel: contradicts
+- file: agui-human-control-layer-not-ui.md
+  rel: same-problem
 proposals: []
 date_discovered: '2026-04-07'
-last_updated: '2026-04-08'
+last_updated: '2026-05-24'
 pipeline_status: synthesized
 consumed_by:
 - agent-architecture-decisions.md

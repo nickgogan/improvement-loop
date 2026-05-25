@@ -14,12 +14,15 @@ adopted_in: []
 sources: []
 proposals: []
 date_discovered: '2026-03-22'
-last_updated: '2026-04-19'
+last_updated: '2026-05-24'
 related_findings:
 - file: advanced-elicitation-techniques-library.md
   rel: same-problem
-pipeline_status: raw
-consumed_by: []
+- file: thesis-anchored-multi-question-prompting.md
+  rel: same-problem
+pipeline_status: "synthesized"
+consumed_by:
+  - "model-resilient-prompt-engineering.md"
 ---
 # Bidirectional Prompting for Spec Creation
 

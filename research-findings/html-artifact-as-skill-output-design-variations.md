@@ -11,14 +11,21 @@ applicability:
 adopted_in: []
 sources:
   - "interactive-html-artifacts-claude-code-bun.md"
+  - "markdown-vs-html-claude-code-derrick-anthropic.md"
 related_findings:
   - file: "skills-as-markdown-sop-files-encode-processes.md"
     rel: "enables"
   - file: "meta-skill-for-skill-authorship.md"
     rel: "same-problem"
+  - file: "html-output-as-human-in-the-loop-restorer.md"
+    rel: "extends"
+  - file: "format-constrained-improvisation-tax.md"
+    rel: "same-problem"
+  - file: "html-information-density-eight-primitives-vs-markdown-four.md"
+    rel: "enables"
 proposals: null
 date_discovered: "2026-04-20"
-last_updated: "2026-04-20"
+last_updated: "2026-05-24"
 pipeline_status: classified
 consumed_by: []
 ---

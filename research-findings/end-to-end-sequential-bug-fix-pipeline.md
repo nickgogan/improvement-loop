@@ -27,8 +27,9 @@ related_findings:
   rel: same-problem
 - file: claude-routines-webhook-triggered-pipeline-chaining.md
   rel: same-problem
-pipeline_status: raw
-consumed_by: []
+pipeline_status: "extracted"
+consumed_by:
+  - "skills/end-to-end-sequential-bug-fix-pipeline.md"
 ---
 ## What It Is
 
@@ -79,3 +80,6 @@ Speaker (ex-Amazon/Microsoft AI engineer) demonstrated the `fix-tickets` skill a
 - **Playwright environment coupling**: the pipeline assumes a working Playwright setup; environment drift breaks reproduction and verification stages
 - **Silent failures at handoff**: if a stage produces a misleading success signal, downstream stages act on incorrect state (e.g., a test that passes for the wrong reason)
 - **Jira dependency**: ticket-reading via MCP creates an external dependency; Jira schema changes or MCP failures abort the pipeline at stage 1
+
+## Extraction Note — 2026-05-25
+Extracted as **skill**: [[end-to-end-sequential-bug-fix-pipeline]] in `extracts/skills/`

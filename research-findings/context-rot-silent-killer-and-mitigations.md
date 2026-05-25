@@ -59,7 +59,7 @@ date_discovered: '2026-04-07'
 last_updated: '2026-04-20'
 pipeline_status: synthesized
 consumed_by:
-- managing-agent-context.md
+- defending-agent-context.md
 ---
 # Context Rot: Silent Killer and Mitigations
 

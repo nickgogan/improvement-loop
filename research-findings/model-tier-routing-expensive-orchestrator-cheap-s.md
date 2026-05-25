@@ -15,14 +15,16 @@ sources:
 - andrej-karpathys-math-proves-agent-skills-will-fai.md
 - multi-agent-orchestration-production-playbook-nick.md
 - ai-agents-in-production-2026-nick-gupta-linkedin.md
+- five-agentic-patterns-claude-code.md
 proposals: null
 date_discovered: '2026-03-22'
-last_updated: '2026-04-19'
+last_updated: '2026-05-25'
 related_findings:
 - file: agent-cost-blowup-mitigation-strategies.md
   rel: extended-by
-pipeline_status: classified
-consumed_by: []
+pipeline_status: "synthesized"
+consumed_by:
+  - "agent-architecture-decisions.md"
 ---
 # Model Tier Routing: Expensive Orchestrator, Cheap Sub-Agents
 

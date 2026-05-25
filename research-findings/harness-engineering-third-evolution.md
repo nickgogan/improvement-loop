@@ -20,11 +20,16 @@ related_findings:
   rel: same-problem
 - file: org-chart-hierarchy-as-scalable-claude-code.md
   rel: same-problem
+- file: ai-shepherding-anti-pattern-manual-workflow-sequencing.md
+  rel: extended-by
+- file: pr-acceptance-rate-harness-multiplier-evidence.md
+  rel: extended-by
 proposals: null
 date_discovered: '2026-04-09'
-last_updated: '2026-04-19'
-pipeline_status: raw
-consumed_by: []
+last_updated: '2026-05-25'
+pipeline_status: "synthesized"
+consumed_by:
+  - "agent-architecture-decisions.md"
 ---
 
 ## What It Is

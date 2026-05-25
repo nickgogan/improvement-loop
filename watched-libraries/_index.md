@@ -57,6 +57,18 @@ Structural analyses live in [[watched-library-analyses-index|analysis/]] — pro
 | [[memongo\|Memongo]] | evaluating | latest (2026-04-20) | MongoDB-native memory — single-store polymorphic evidence, $rankFusion hybrid retrieval, query decomposition + RRF, weighted-signal reranking, importance decay, surprisal novelty gate |
 | [[mempalace\|MemPalace]] | evaluating | 3.3.2 (2026-04-23) | Local-first AI memory — verbatim-storage thesis, structured-index + unstructured-retrieval (wings/rooms/drawers + AAAK closets), background-hooks save model, AGENTS.md↔CLAUDE.md symlink, retraction log as governance artifact, tool-enforced dev/held-out split |
 | [[supermemory\|Supermemory]] | evaluating | latest (2026-04-23) | Cloud-capable extraction-based memory — typed-relationship evolution graph (updates/extends/derives), static+dynamic profile composition, memory-vs-RAG framing, content-derived temporal expiration, hierarchical container-tag multi-tenancy, cross-provider benchmarking framework (MemoryBench), SKILL-as-package-export |
+| [[taches-cc-resources\|TÂCHES CC Resources]] | cherry-pick | latest (2026-05-24) | Claude Code harness patterns, context loading, rules |
+| [[deep-tutor\|Deep Tutor]] | monitor | latest (2026-05-24) | Pedagogical agent patterns |
+| [[hermes-agent\|Hermes Agent]] | monitor | latest (2026-05-24) | Agent communication protocols |
+| [[pi-agent\|Pi Agent]] | monitor | latest (2026-05-24) | Personal intelligence agent patterns |
+| [[oz-workspace\|Oz Workspace]] | monitor | latest (2026-05-24) | Workspace management patterns |
+| [[warp\|Warp]] | monitor | latest (2026-05-24) | Terminal AI integration |
+| [[langflow\|Langflow]] | monitor | v1.9.3 (2026-05-25) | Multi-agent orchestration, flow composition, conversation management, component customization |
+| [[adk-python\|ADK-Python]] | cherry-pick | v2.0.0 (2026-05-25) | Agent evaluation framework, tool integration abstractions, agent composition, deployment patterns |
+| [[autogpt\|AutoGPT]] | cherry-pick | v0.5.0 (2026-05-25) | Continuous agent execution, workflow automation, block-based composition, fleet orchestration |
+| [[autogen\|AutoGen]] | monitor | v0.7.5 (2026-05-25) | Multi-agent conversation patterns, group chat orchestration, composable termination, ledger-based orchestration |
+| [[crewai\|CrewAI]] | cherry-pick | v1.14.6 (2026-05-25) | Role-based agent composition, crew orchestration, task delegation, prompt registry, memory primitives |
+| [[letta\|Letta]] | cherry-pick | v0.16.8 (2026-05-25) | Hierarchical memory, self-editing memory, sleeptime pattern, tool rules, provider-adaptive rendering |
 
 ## Dataview Query
 

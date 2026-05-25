@@ -7,7 +7,7 @@ implementation_notes: null
 category: Evaluation
 evidence_strength: Strong (production-tested)
 adoption_status: Already Adopted
-priority: Not Flagged
+priority: P2 (Design Required)
 applicability:
 - General
 adopted_in:
@@ -19,7 +19,7 @@ sources:
 - agentic-os-five-pillars-claude-code.md
 proposals: []
 date_discovered: '2026-03-16'
-last_updated: '2026-04-20'
+last_updated: '2026-05-24'
 related_findings: null
 pipeline_status: raw
 consumed_by: []

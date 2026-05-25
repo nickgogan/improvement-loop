@@ -15,7 +15,7 @@ sources:
 - self-evolving-claude-code-memory.md
 proposals: []
 date_discovered: '2026-04-07'
-last_updated: '2026-04-27'
+last_updated: '2026-05-24'
 related_findings:
 - file: structured-fact-extraction-from-conversations.md
   rel: same-problem
@@ -27,8 +27,11 @@ related_findings:
   rel: same-problem
 - file: background-hooks-as-token-economy.md
   rel: extended-by
+- file: bounded-tiered-memory-inference-driven-curation.md
+  rel: same-problem
 pipeline_status: extracted
-consumed_by: ["patterns/hook-based-automatic-session-memory.md"]
+consumed_by:
+- patterns/hook-based-automatic-session-memory.md
 ---
 # Claude Code Hooks for Automatic Session Memory
 

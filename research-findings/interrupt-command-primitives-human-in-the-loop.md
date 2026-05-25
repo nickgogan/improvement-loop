@@ -16,9 +16,11 @@ related_findings:
   rel: extends
 - file: human-on-the-loop-hotl-autonomy-tiering-framework.md
   rel: same-problem
+- file: agui-human-control-layer-not-ui.md
+  rel: same-problem
 proposals: null
 date_discovered: '2026-04-09'
-last_updated: '2026-04-19'
+last_updated: '2026-05-24'
 pipeline_status: raw
 consumed_by: []
 ---

@@ -14,6 +14,7 @@ applicability:
 adopted_in: []
 sources:
 - anthropic-managed-agents-decoupling.md
+- claude-code-architecture-under-the-hood.md
 related_findings:
 - file: anthropic-managed-agents-platform.md
   rel: extends
@@ -27,6 +28,8 @@ related_findings:
   rel: enables
 - file: acp-spawn-cross-tool-delegation.md
   rel: same-problem
+- file: subagent-as-uniform-tool-interface.md
+  rel: extends
 proposals: null
 date_discovered: '2026-04-09'
 last_updated: '2026-04-09'

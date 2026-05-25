@@ -32,9 +32,19 @@ related_findings:
     rel: extends
   - file: time-window-proactive-agent-loop.md
     rel: extends
+  - file: platform-native-harness-over-agent-frameworks.md
+    rel: enables
+  - file: context-first-build-sequencing-for-agentic-systems.md
+    rel: enables
+  - file: tiered-interaction-model-quick-ask-vs-supervisor.md
+    rel: enables
+  - file: scheduled-skill-chaining-with-file-based-activation.md
+    rel: enables
+  - file: shared-context-folder-as-cross-skill-update-multiplier.md
+    rel: enables
 proposals: null
 date_discovered: "2026-04-20"
-last_updated: "2026-04-20"
+last_updated: "2026-05-25"
 pipeline_status: synthesized
 consumed_by:
   - "building-agentic-systems.md"

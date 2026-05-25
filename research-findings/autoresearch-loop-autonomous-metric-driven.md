@@ -19,8 +19,9 @@ last_updated: '2026-04-19'
 related_findings:
 - file: agent-cost-blowup-mitigation-strategies.md
   rel: same-problem
-pipeline_status: raw
-consumed_by: []
+pipeline_status: "synthesized"
+consumed_by:
+  - "agent-architecture-decisions.md"
 ---
 # Autoresearch Loop: Autonomous Metric-Driven Experiment Cycles
 

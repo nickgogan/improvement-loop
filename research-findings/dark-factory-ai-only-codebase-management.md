@@ -28,10 +28,12 @@ related_findings:
   rel: enabled-by
 - file: github-label-as-workflow-state.md
   rel: enabled-by
+- file: agui-human-control-layer-not-ui.md
+  rel: contradicts
 proposals: null
 date_discovered: '2026-04-19'
-last_updated: '2026-04-20'
-pipeline_status: raw
+last_updated: '2026-05-24'
+pipeline_status: "classified"
 consumed_by: []
 ---
 

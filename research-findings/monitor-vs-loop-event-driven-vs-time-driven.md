@@ -23,7 +23,7 @@ related_findings:
   rel: part-of
 - file: agent-cost-blowup-mitigation-strategies.md
   rel: enabled-by
-pipeline_status: raw
+pipeline_status: "classified"
 consumed_by: []
 ---
 # Monitor vs /loop — Event-Driven vs Time-Driven Background Execution

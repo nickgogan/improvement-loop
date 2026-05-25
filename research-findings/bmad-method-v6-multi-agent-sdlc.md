@@ -17,7 +17,7 @@ sources:
 - bmad-method-masterclass.md
 proposals: null
 date_discovered: '2026-04-07'
-last_updated: '2026-04-09'
+last_updated: '2026-05-24'
 related_findings:
 - file: yaml-template-dual-structure.md
   rel: enables
@@ -36,6 +36,8 @@ related_findings:
 - file: correct-course-mid-project-pivot-command.md
   rel: enables
 - file: archon-yaml-defined-harness-workflows.md
+  rel: same-problem
+- file: oz-multi-agent-room-model.md
   rel: same-problem
 pipeline_status: synthesized
 consumed_by:

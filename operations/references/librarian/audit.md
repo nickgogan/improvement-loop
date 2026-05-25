@@ -29,7 +29,7 @@ Audit is a *consumption* operation: the Librarian reads the artifact the consume
 
 `audit` composes two inputs:
 
-1. **Concept file** for the artifact under audit — provides the composition table (which guides' Contract sections are load-bearing for this artifact type). Examples: `agent.md` concept → {G1, G2, G3, G5, G6, G9, G10}; skill audit → {G1, G3b, G5, G6, G8}; prompt audit → {G1, G2, G5, G8}; harness audit → cross-guide thread in `harness.md`.
+1. **Concept file** for the artifact under audit — provides the composition table (which guides' Contract sections are load-bearing for this artifact type). Examples: `agent.md` concept → {G1, G2a, G2b, G3, G5, G6, G9, G10}; skill audit → {G1, G3b, G5, G6, G8}; prompt audit → {G1, G2a, G2b, G5, G8}; harness audit → cross-guide thread in `harness.md`.
 2. **Contract sections** of the named guides — specifically:
    - `### Preconditions` → used as *applicability gates* (see §Procedure).
    - `### Invariants` → the rubric criteria. Each invariant becomes one audit check.
@@ -43,7 +43,7 @@ Contract invariants function as emergent audit criteria by construction (DD-78's
 
 **(b) Hierarchical overlap annotation.** When invariants are in an umbrella/specialization relationship (e.g., G1.I3 "hard constraints have enforcement outside the prompt layer" ⊃ G6.I2 "safety-critical constraints are enforced structurally"), keep both. Apply the specialization to the scoped aspect first; let the umbrella catch anything the specialization does not reach. Annotate the relationship in the report so the consumer sees why both fired.
 
-**(c) Conditional applicability via Preconditions.** Fire an invariant only if its guide's Contract Preconditions are satisfied by the audit target. A prompt that embeds no context directives does not fire G2 (G2 preconditions require context-affected agent output). A skill that defines no tools does not fire G5 (G5 preconditions require tools). Preconditions were authored as authorial guardrails and double as audit gates — no new authoring required.
+**(c) Conditional applicability via Preconditions.** Fire an invariant only if its guide's Contract Preconditions are satisfied by the audit target. A prompt that embeds no context directives does not fire G2a/G2b (G2a/G2b preconditions require context-affected agent output). A skill that defines no tools does not fire G5 (G5 preconditions require tools). Preconditions were authored as authorial guardrails and double as audit gates — no new authoring required.
 
 **(d) File-verifiable vs system/process-verifiable split.** Each invariant is one of two kinds:
    - **File-verifiable** — inspectable directly from the submitted artifact. Fires a *finding* (violated / missing / satisfied).
@@ -85,7 +85,7 @@ For each **file-verifiable** invariant:
 For each **system/process-verifiable** invariant:
 
 1. Do not attempt to answer from the artifact.
-2. Record a follow-up question the consumer must answer: invariant text, source guide, and a concrete question shape (e.g., G2.I2 "stable context is cached" → "Is your harness applying prompt caching to the stable portion of context? What is the observed cache-hit rate?").
+2. Record a follow-up question the consumer must answer: invariant text, source guide, and a concrete question shape (e.g., G2b.I2 "stable context is cached" → "Is your harness applying prompt caching to the stable portion of context? What is the observed cache-hit rate?").
 
 ### Phase 4 — Assemble report
 
@@ -95,7 +95,7 @@ Produce the audit report in the output shape below.
 
 - Attach **tier** to every finding (Tier 1 for guide-Contract evidence; Tier 2 if the finding was strengthened by a pattern/finding reference; Tier 3 if a watched-library comparison was pulled).
 - Attach **confidence** to each finding: high (direct invariant violation visible in the artifact), medium (invariant violation inferred from absence), low (invariant applies but the artifact's coverage is ambiguous). Low-confidence findings must include the ambiguity reason.
-- If any load-bearing aspect of the artifact's domain went unaudited because its guide's Preconditions were unsatisfied, state that explicitly ("G2 not in scope for this prompt because it embeds no context directives — if it should, re-submit with context included").
+- If any load-bearing aspect of the artifact's domain went unaudited because its guide's Preconditions were unsatisfied, state that explicitly ("G2a/G2b not in scope for this prompt because it embeds no context directives — if it should, re-submit with context included").
 
 ## Consumer input handling
 
@@ -105,10 +105,10 @@ Artifacts may be of these forms:
 
 | Artifact | Noun concept file | Composed guides |
 |---|---|---|
-| `agent.md` | `agent.md` (planned) | G1, G2, G3, G5, G6, G9, G10 (also G3b, G7 if agent delegates or persists) |
-| System prompt / user prompt | `prompt.md` (planned) | G1, G2, G5, G8 |
+| `agent.md` | `agent.md` (planned) | G1, G2a, G2b, G3, G5, G6, G9, G10 (also G3b, G7 if agent delegates or persists) |
+| System prompt / user prompt | `prompt.md` (planned) | G1, G2a, G2b, G5, G8 |
 | `SKILL.md` | `skill.md` (planned) | G1, G3b, G5, G6, G8 (add G9.I6 for safety-critical skills) |
-| Harness config | `harness.md` (this directory) | G2, G3b, G5, G6, G8, G4 cross-guide thread |
+| Harness config | `harness.md` (this directory) | G2a, G2b, G3b, G5, G6, G8, G4 cross-guide thread |
 | Generic code artifact | Reject — audit operation is scoped to agent-system artifacts. Redirect to `/prompt-evaluator` / `/security-review` / language-specific review tools. |
 
 If the consumer submits an artifact type not covered by an existing concept file, the Librarian states this and offers the closest-adjacent composition, explicitly noting the gap.
@@ -133,14 +133,14 @@ If the consumer submits an artifact type not covered by an existing concept file
 
 | # | Invariant | Source | Question | Evidence expected |
 |---|---|---|---|---|
-| a | … | G2.I2 | Is stable context cached? | Cache-hit rate; caching config |
+| a | … | G2b.I2 | Is stable context cached? | Cache-hit rate; caching config |
 | … |
 
 ### Aspects out of scope
 
 | Guide | Why latent |
 |---|---|
-| G2 | Prompt embeds no context directives — G2 Preconditions unsatisfied. |
+| G2a/G2b | Prompt embeds no context directives — G2 Preconditions unsatisfied. |
 
 ### Summary
 

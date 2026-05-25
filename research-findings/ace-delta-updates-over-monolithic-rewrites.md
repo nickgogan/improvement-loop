@@ -44,12 +44,14 @@ related_findings:
   rel: same-problem
 - file: two-threshold-compaction-strategy.md
   rel: same-problem
+- file: bounded-tiered-memory-inference-driven-curation.md
+  rel: same-problem
 proposals: []
 date_discovered: '2026-04-07'
-last_updated: '2026-04-19'
+last_updated: '2026-05-24'
 pipeline_status: synthesized
 consumed_by:
-- managing-agent-context.md
+- defending-agent-context.md
 - never-ask-claude-to-compact-claudemd.md
 ---
 ## What It Is

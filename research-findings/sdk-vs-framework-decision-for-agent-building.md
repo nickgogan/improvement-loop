@@ -17,9 +17,19 @@ sources:
 related_findings:
 - file: claude-p-headless-mode-as-openclaw-replacement.md
   rel: same-problem
+- file: coding-agent-sdk-as-non-coding-agent-foundation.md
+  rel: extended-by
+- file: skills-portability-across-sdk-and-framework-boundaries.md
+  rel: extended-by
+- file: sdk-to-framework-graduation-path.md
+  rel: extended-by
+- file: subscription-tos-single-user-boundary-for-agent-sdks.md
+  rel: extended-by
+- file: agent-infrastructure-glue-code-elimination-via-sdk.md
+  rel: extended-by
 proposals: null
 date_discovered: '2026-04-09'
-last_updated: '2026-04-09'
+last_updated: '2026-05-25'
 pipeline_status: synthesized
 consumed_by:
 - designing-agent-tools.md

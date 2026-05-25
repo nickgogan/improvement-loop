@@ -18,7 +18,7 @@ sources:
 - openclaude-build-a-claude-code-agent-with-long-ter.md
 proposals: []
 date_discovered: '2026-04-01'
-last_updated: '2026-04-27'
+last_updated: '2026-05-24'
 related_findings:
 - file: structured-fact-extraction-from-conversations.md
   rel: enables
@@ -33,6 +33,8 @@ related_findings:
 - file: memory-bank-isolation-per-agent-per-project.md
   rel: same-problem
 - file: signal-capture-as-byproduct-of-work.md
+  rel: same-problem
+- file: bounded-tiered-memory-inference-driven-curation.md
   rel: same-problem
 pipeline_status: synthesized
 consumed_by:

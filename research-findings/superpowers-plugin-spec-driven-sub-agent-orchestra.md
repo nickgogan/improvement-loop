@@ -19,7 +19,7 @@ sources:
 - these-3-frameworks-make-claude-code-unstoppable.md
 proposals: []
 date_discovered: '2026-03-22'
-last_updated: '2026-04-19'
+last_updated: '2026-05-25'
 related_findings:
 - file: agent-architecture-layer-impermanence.md
   rel: contradicts
@@ -27,8 +27,21 @@ related_findings:
   rel: same-problem
 - file: archon-yaml-defined-harness-workflows.md
   rel: same-problem
-pipeline_status: classified
-consumed_by: []
+- file: skill-phase-pipeline-shared-session-orchestrator.md
+  rel: enables
+- file: review-triggered-remediation-dispatch.md
+  rel: enables
+- file: execution-topology-as-runtime-selection.md
+  rel: enables
+- file: html-mockup-generation-as-brainstorm-artifact.md
+  rel: enables
+- file: external-ticket-as-brainstorm-seed.md
+  rel: enables
+- file: tdd-step-ordering-in-plan-tasks.md
+  rel: enables
+pipeline_status: "synthesized"
+consumed_by:
+  - "agent-architecture-decisions.md"
 ---
 # Superpowers Plugin: Spec-Driven Sub-Agent Orchestration
 

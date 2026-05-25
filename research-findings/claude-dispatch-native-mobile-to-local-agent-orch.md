@@ -21,8 +21,9 @@ related_findings:
   rel: same-problem
 - file: claude-routines-webhook-triggered-pipeline-chaining.md
   rel: same-problem
-pipeline_status: raw
-consumed_by: []
+pipeline_status: "synthesized"
+consumed_by:
+  - "agent-architecture-decisions.md"
 ---
 # Claude Dispatch: Native Mobile-to-Local Agent Orchestration
 

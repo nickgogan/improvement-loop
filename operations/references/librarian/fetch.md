@@ -123,7 +123,7 @@ Catalog sub-op emits a flat index instead of a lifted body:
 
 | Name | Source | Kind | One-line summary |
 |---|---|---|---|
-| Context Budget | managing-agent-context.md#context-budget | Template | Tiered token-budget worksheet with cache markers |
+| Context Budget | structuring-agent-context.md#context-budget | Template | Tiered token-budget worksheet with cache markers |
 | Trust Ledger | agent-governance-and-trust.md#trust-ledger | Template | Per-agent autonomy-tier ledger |
 | … |
 ```

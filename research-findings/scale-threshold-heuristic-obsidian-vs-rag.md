@@ -13,8 +13,9 @@ applicability:
 adopted_in: []
 sources:
 - karpathys-obsidian-rag-claude-code.md
+- sdk-vs-framework-decision-ai-agents.md
 date_discovered: '2026-04-07'
-last_updated: '2026-04-27'
+last_updated: '2026-05-25'
 pipeline_status: synthesized
 consumed_by:
   - "building-agentic-systems.md"
@@ -23,6 +24,8 @@ related_findings:
   rel: extended-by
 - file: context-infrastructure-seven-level-maturity-model.md
   rel: enables
+- file: file-search-outperforms-rag-for-small-corpora.md
+  rel: same-problem
 ---
 
 ## What It Is
@@ -54,6 +57,8 @@ RAG infrastructure (vector DBs, embedding pipelines, retrieval tuning) is signif
 ## Why People Are Using It
 
 Karpathy himself uses the lightweight approach despite having the expertise for full RAG. Chase AI frames it as "the perfect middle ground for a solo operator or a small team." The approach has gained traction because it leverages existing Obsidian investments.
+
+**2026 corroboration (LlamaIndex study + coding agent ecosystem):** Cole Medin reports that a LlamaIndex study confirmed file search outperforms RAG for smaller corpora. This is further validated by the coding agent ecosystem shift: Claude Code and other coding agents stopped using vector databases entirely, relying on grep and file search built into their SDKs. The evidence strengthens the heuristic -- the threshold isn't just about Obsidian specifically, but about file-based search as a category outperforming semantic search below a corpus-size boundary.
 
 ## Potential Improvements
 

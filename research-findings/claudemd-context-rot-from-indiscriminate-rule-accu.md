@@ -37,7 +37,7 @@ related_findings:
   rel: same-problem
 pipeline_status: synthesized
 consumed_by:
-- managing-agent-context.md
+- defending-agent-context.md
 - claudemd-minimum-viable-rule-only-add-globally-true-lines.md
 ---
 # CLAUDE.md Context Rot from Indiscriminate Rule Accumulation

@@ -22,8 +22,9 @@ related_findings:
   rel: same-problem
 - file: database-as-shared-memory-coordination.md
   rel: same-problem
-pipeline_status: raw
-consumed_by: []
+pipeline_status: "synthesized"
+consumed_by:
+  - "agent-architecture-decisions.md"
 ---
 # Parallel Claude Code Instances per Workspace
 

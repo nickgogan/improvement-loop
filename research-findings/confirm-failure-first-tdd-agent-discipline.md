@@ -17,6 +17,8 @@ related_findings:
     rel: extends
   - file: agent-self-reporting-unreliability-independent-eval.md
     rel: same-problem
+  - file: tdd-step-ordering-in-plan-tasks.md
+    rel: enables
 proposals: null
 date_discovered: "2026-04-23"
 last_updated: "2026-04-24"

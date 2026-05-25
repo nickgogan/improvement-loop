@@ -13,9 +13,10 @@ applicability:
 adopted_in: []
 sources:
 - these-3-frameworks-make-claude-code-unstoppable.md
+- five-agentic-patterns-claude-code.md
 proposals: []
 date_discovered: '2026-03-22'
-last_updated: '2026-04-19'
+last_updated: '2026-05-25'
 related_findings:
 - file: ralph-wiggum-execution-pattern.md
   rel: extended-by

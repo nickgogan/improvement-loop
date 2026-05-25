@@ -13,6 +13,7 @@ adopted_in: []
 sources:
 - nate-b-jones-videos-feb-mar-2026.md
 - anthropic-claude-code-best-practices.md
+- claude-code-architecture-under-the-hood.md
 proposals: null
 date_discovered: '2026-04-07'
 last_updated: '2026-04-09'

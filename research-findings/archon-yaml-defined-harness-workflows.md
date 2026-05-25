@@ -41,9 +41,23 @@ related_findings:
   rel: same-problem
 - file: claude-routines-webhook-triggered-pipeline-chaining.md
   rel: same-problem
+- file: description-based-workflow-routing-lazy-dispatch.md
+  rel: extended-by
+- file: parallel-independent-workflow-execution-at-scale.md
+  rel: extended-by
+- file: per-node-context-scoping-skills-mcps-commands.md
+  rel: extended-by
+- file: meta-workflow-builder-self-extending-harness.md
+  rel: extended-by
+- file: cross-project-workflow-portability-register-and-run.md
+  rel: extended-by
+- file: multi-adapter-workflow-invocation-cli-web-chat-github.md
+  rel: extended-by
+- file: default-workflow-library-as-adoption-accelerator.md
+  rel: extended-by
 proposals: null
 date_discovered: '2026-04-09'
-last_updated: '2026-04-20'
+last_updated: '2026-05-25'
 pipeline_status: synthesized
 consumed_by:
 - agent-workflow-and-execution.md

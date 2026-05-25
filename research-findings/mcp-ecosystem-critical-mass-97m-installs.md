@@ -20,6 +20,8 @@ related_findings:
   rel: extends
 - file: google-a2a-protocol-agent-to-agent-interoperabilit.md
   rel: enables
+- file: three-layer-core-agent-protocol-stack.md
+  rel: enables
 proposals: []
 date_discovered: '2026-04-07'
 last_updated: '2026-04-08'

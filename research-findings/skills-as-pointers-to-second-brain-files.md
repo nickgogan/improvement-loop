@@ -18,7 +18,7 @@ sources:
 - agentic-os-five-pillars-claude-code.md
 proposals: []
 date_discovered: '2026-04-19'
-last_updated: '2026-04-20'
+last_updated: '2026-05-25'
 related_findings:
 - file: claudemd-as-knowledge-base-traversal-guide.md
   rel: extends
@@ -28,9 +28,11 @@ related_findings:
   rel: part-of
 - file: compounding-knowledge-loop-internal-data.md
   rel: same-problem
+- file: shared-context-folder-as-cross-skill-update-multiplier.md
+  rel: extends
 pipeline_status: synthesized
 consumed_by:
-- managing-agent-context.md
+- structuring-agent-context.md
 - skills-reference-shared-context-by-path.md
 ---
 # Skills as Pointers to Second Brain Files

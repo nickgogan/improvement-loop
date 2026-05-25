@@ -34,6 +34,7 @@ last_updated: '2026-04-08'
 pipeline_status: synthesized
 consumed_by:
 - building-agent-evaluation-suites.md
+- writing-agent-specifications.md
 ---
 # Multidimensional SMART Success Criteria for Evals
 

@@ -22,7 +22,9 @@ related_findings:
     rel: enables
 date_discovered: "2026-04-19"
 last_updated: "2026-04-19"
-pipeline_status: raw
+pipeline_status: synthesized
+consumed_by:
+  - "agent-governance-and-trust.md"
 ---
 
 ## What It Is

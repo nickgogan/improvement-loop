@@ -14,12 +14,17 @@ applicability:
 adopted_in: []
 sources:
 - google-a2a-protocol-guide-digital-applied.md
+- google-io-mcp-a2a-agui-protocol-stack.md
 proposals: []
 date_discovered: '2026-04-01'
-last_updated: '2026-04-08'
+last_updated: '2026-05-25'
 related_findings:
 - file: mcp-ecosystem-critical-mass-97m-installs.md
   rel: enabled-by
+- file: three-layer-core-agent-protocol-stack.md
+  rel: enables
+- file: coordination-cost-vs-flexibility-tradeoff-agent-delegation.md
+  rel: enables
 pipeline_status: synthesized
 consumed_by:
 - agent-architecture-decisions.md

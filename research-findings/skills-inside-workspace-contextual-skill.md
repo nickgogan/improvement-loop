@@ -21,8 +21,10 @@ related_findings:
   rel: enables
 - file: task-to-file-routing-table-in-context-files.md
   rel: same-problem
-pipeline_status: raw
-consumed_by: []
+pipeline_status: "synthesized"
+consumed_by:
+  - "designing-agent-tools.md"
+  - "rules/scope-skills-to-workspace-routing-tables.md"
 ---
 # Skills-Inside-Workspace: Contextual Skill Invocation Rather Than Always-Loaded
 

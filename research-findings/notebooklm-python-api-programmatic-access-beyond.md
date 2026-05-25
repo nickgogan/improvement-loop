@@ -7,7 +7,7 @@ implementation_notes: null
 category: Tool Integration
 evidence_strength: Strong (production-tested)
 adoption_status: Not Yet Started
-priority: P3
+priority: P2 (Design Required)
 applicability:
 - S3 (Claude Code Build)
 adopted_in: null
@@ -18,8 +18,8 @@ sources:
 - notebooklm-claude-code-expert-experiments.md
 proposals: null
 date_discovered: '2026-03-22'
-last_updated: '2026-04-19'
-pipeline_status: raw
+last_updated: '2026-05-24'
+pipeline_status: "classified"
 consumed_by: []
 ---
 # NotebookLM Python API: Programmatic Access Beyond the Web UI

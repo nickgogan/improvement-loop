@@ -18,7 +18,7 @@ date_discovered: '2026-04-07'
 last_updated: '2026-04-07'
 pipeline_status: synthesized
 consumed_by:
-- managing-agent-context.md
+- structuring-agent-context.md
 - templates/one-shot-prd-prompt-for-system-bootstrap.md
 ---
 

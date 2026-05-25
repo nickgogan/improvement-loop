@@ -19,8 +19,10 @@ last_updated: '2026-04-19'
 related_findings:
 - file: agent-architecture-layer-impermanence.md
   rel: same-problem
-pipeline_status: raw
-consumed_by: []
+pipeline_status: "synthesized"
+consumed_by:
+  - "agent-architecture-decisions.md"
+  - "templates/four-zone-agent-specification-template.md"
 ---
 # Four-Zone Agent Architecture Framework
 

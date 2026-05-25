@@ -23,7 +23,7 @@ related_findings:
   rel: same-problem
 - file: mcp-async-task-model.md
   rel: same-problem
-pipeline_status: raw
+pipeline_status: "classified"
 consumed_by: []
 ---
 # Claude Code Monitor Tool — Event-Driven Background Process Monitoring

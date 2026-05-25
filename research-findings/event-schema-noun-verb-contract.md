@@ -22,7 +22,9 @@ related_findings:
     rel: same-problem
 date_discovered: "2026-04-19"
 last_updated: "2026-04-19"
-pipeline_status: raw
+pipeline_status: "extracted"
+consumed_by:
+  - "rules/event-schema-as-noun-verb-contract.md"
 ---
 
 ## What It Is
@@ -64,3 +66,6 @@ Practitioner-documented in the 11-step governance build order video. The pattern
 - **Mandatory fields bypass**: Agents or developers mark fields as optional that should be mandatory to avoid dealing with unknown values
 - **State implication mismatch**: The declared state implications don't match actual system behavior, breaking the dependency between event schema and state machines
 - **Noun-verb mismatch**: Events defined before the ontology is stable will reference nouns that later get renamed or split, requiring retroactive schema updates
+
+## Extraction Note — 2026-05-25
+Extracted as **rule**: [[event-schema-as-noun-verb-contract]] in `extracts/rules/`

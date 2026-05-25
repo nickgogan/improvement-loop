@@ -24,8 +24,9 @@ related_findings:
   rel: same-problem
 - file: tacit-knowledge-as-agent-delegation-barrier.md
   rel: extended-by
-pipeline_status: raw
-consumed_by: []
+pipeline_status: synthesized
+consumed_by:
+  - "writing-agent-specifications.md"
 ---
 # Context Gap: Task vs. Job
 

@@ -26,7 +26,7 @@ related_findings:
   rel: same-problem
 pipeline_status: synthesized
 consumed_by:
-- managing-agent-context.md
+- defending-agent-context.md
 - artifact: re-fork-and-trim-trajectory-procedure
   type: extracted-artifact
   form: skill

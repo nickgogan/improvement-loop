@@ -15,7 +15,13 @@ url: https://www.youtube.com/watch?v=TX91PdBn_IA
 authority:
 - eric-tech.md
 findings:
+- execution-topology-as-runtime-selection.md
+- external-ticket-as-brainstorm-seed.md
+- html-mockup-generation-as-brainstorm-artifact.md
+- review-triggered-remediation-dispatch.md
+- skill-phase-pipeline-shared-session-orchestrator.md
 - superpowers-plugin-spec-driven-sub-agent-orchestra.md
+- tdd-step-ordering-in-plan-tasks.md
 date_added: '2026-04-07'
 date_processed: '2026-04-07'
 ---

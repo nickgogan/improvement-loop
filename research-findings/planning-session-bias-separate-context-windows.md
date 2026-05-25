@@ -29,8 +29,10 @@ related_findings:
 proposals: null
 date_discovered: '2026-04-19'
 last_updated: '2026-04-20'
-pipeline_status: raw
-consumed_by: []
+pipeline_status: "synthesized"
+consumed_by:
+  - "rules/separate-planning-and-implementation-sessions.md"
+  - agent-design-patterns.md
 ---
 
 # Planning Session Bias — Separate Context Windows for Planning vs. Implementation

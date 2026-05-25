@@ -332,7 +332,7 @@ This regression test is the enforcement mechanism for DD-93. It must run on ever
 
 ### Step 4: Write Guide
 
-1. **Generate filename:** kebab-case from the guide title. E.g., `managing-agent-context-budgets.md`.
+1. **Generate filename:** kebab-case from the guide title. E.g., `agent-evaluation-rubric-design.md`.
 2. **Check for collision** in `extracts/guides/`. Append `-2`, `-3` if needed.
 3. **Write the guide file** to `systems/improvement-loop/extracts/guides/`:
 
@@ -523,7 +523,7 @@ Before scanning the absorbed set, compare the prior `source_findings[]` from the
 
 3. **Back-annotate finding files.** For each finding consumed by this guide, update its frontmatter:
    - Set `pipeline_status: "synthesized"`
-   - Add the guide filename to `consumed_by:` (e.g., `"managing-agent-context.md"`)
+   - Add the guide filename to `consumed_by:` (e.g., `"agent-design-patterns.md"`)
    - If the finding already has `consumed_by` entries (e.g., from individual extraction), append rather than replace.
 
 ### Step 6: Summary

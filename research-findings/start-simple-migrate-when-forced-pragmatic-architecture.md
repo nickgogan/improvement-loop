@@ -4,7 +4,7 @@ summary: 'Start with the simplest system that might work and only migrate to mor
   Applied to AI knowledge management: use Obsidian first, migrate to RAG only when scale forces it.'
 implementation_notes: null
 category: Agent Design
-evidence_strength: Weak (theoretical)
+evidence_strength: Medium (practitioner-documented)
 adoption_status: Already Adopted
 priority: P3 (Monitor)
 applicability:
@@ -14,14 +14,17 @@ adopted_in:
 sources:
 - karpathys-obsidian-rag-claude-code.md
 - karpathy-obsidian-rag-markdown-knowledge-base.md
+- sdk-vs-framework-decision-ai-agents.md
 related_findings:
 - file: scale-threshold-heuristic-obsidian-vs-rag.md
   rel: extends
 - file: obsidian-as-transparent-frontend-vs-rag-black-box.md
   rel: same-problem
+- file: sdk-to-framework-graduation-path.md
+  rel: same-problem
 proposals: null
 date_discovered: '2026-04-07'
-last_updated: '2026-04-19'
+last_updated: '2026-05-25'
 pipeline_status: raw
 consumed_by: []
 ---
@@ -35,6 +38,8 @@ Complex systems have higher setup cost, higher maintenance burden, more failure 
 
 ## Why People Are Using It
 Chase AI frames the Obsidian-vs-RAG decision explicitly through this lens: Karpathy uses an Obsidian vault because it works at his current scale, and the advice is to use the same approach until you have concrete evidence that it does not scale. The video positions "which system should I use?" debates as premature optimization.
+
+**2026 corroboration (SDK vs Framework analysis):** Cole Medin independently articulates the same principle for agent infrastructure: "start with the simplest implementation" using batteries-included SDKs, then migrate to frameworks when concrete triggers appear (multi-user deployment, speed requirements, cost sensitivity). He explicitly recommends starting with Claude Agent SDK to "test some tooling through skills or MCP, and then you would transition to a Pydantic AI agent once you need to scale." This extends the heuristic beyond knowledge management into agent architecture itself -- the same start-simple-migrate-when-forced principle applied at the infrastructure layer.
 
 ## Potential Improvements
 The heuristic would benefit from explicit migration triggers — quantified thresholds (e.g., "when query latency exceeds X seconds" or "when document count exceeds Y") that signal when the simple system is reaching its limits. A pre-planned migration path (what to migrate to, how to export data) would reduce the cost of the eventual transition. Periodic scale assessments could prevent the "boiling frog" problem where gradual degradation goes unnoticed.

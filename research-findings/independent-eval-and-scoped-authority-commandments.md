@@ -14,7 +14,7 @@ adopted_in: []
 sources:
 - agent-produces-100x-org-reviews-3x.md
 date_discovered: '2026-04-07'
-last_updated: '2026-04-09'
+last_updated: '2026-05-24'
 related_findings:
 - file: fix-data-schema-before-automating.md
   rel: same-problem

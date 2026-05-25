@@ -21,9 +21,11 @@ related_findings:
   rel: extends
 - file: agent-identity-governance-enforcement-layer.md
   rel: same-problem
+- file: agent-proof-of-work-ui-trust-building.md
+  rel: same-problem
 proposals: null
 date_discovered: '2026-04-07'
-last_updated: '2026-04-09'
+last_updated: '2026-05-24'
 pipeline_status: synthesized
 consumed_by:
 - agent-governance-and-trust.md

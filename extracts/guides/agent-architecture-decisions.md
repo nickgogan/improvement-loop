@@ -6,7 +6,7 @@ target_system:
   - "cross-system"
 stage: "draft"
 created: "2026-04-19"
-updated: "2026-04-26"
+updated: "2026-05-25"
 author: "claude"
 source_findings:
   - "capability-saturation-threshold-45-percent"
@@ -31,6 +31,26 @@ source_findings:
   - "six-layer-agent-infrastructure-stack"
   - "claude-code-12-agent-primitives"
   - "specialized-harness-engineering-deterministic-rail"
+  - "oz-multi-agent-room-model"
+  - "agui-human-control-layer-not-ui"
+  - "model-tier-routing-expensive-orchestrator-cheap-s"
+  - "orchestrated-execution-one-task-per-sub-agent-wit"
+  - "superpowers-plugin-spec-driven-sub-agent-orchestra"
+  - "autoresearch-loop-autonomous-metric-driven"
+  - "claude-dispatch-native-mobile-to-local-agent-orch"
+  - "error-aware-backtracking-as-compound-error-mitigation"
+  - "execution-topology-as-runtime-selection"
+  - "four-zone-agent-architecture-framework"
+  - "gsd-get-shit-done-plugin"
+  - "harness-engineering-third-evolution"
+  - "parallel-claude-code-instances-per-workspace"
+  - "review-triggered-remediation-dispatch"
+  - "skill-phase-pipeline-shared-session-orchestrator"
+  - "skills-as-markdown-sop-files-encode-processes"
+  - "sub-agent-context-isolation-for-parallel-complex"
+  - "subagent-as-uniform-tool-interface"
+  - "subagent-exploration-mode-parallel-codebase-mappi"
+  - "claude-code-max-plan-subsidy-vs-api-cost-tool"
 source_dd:
   - "DD-81"
 tags:
@@ -39,16 +59,16 @@ tags:
   - "architecture"
 contract:
   preconditions: "Agent system design phase; topology not yet committed; harness-spectrum position is a deliberate decision, not a default"
-  invariants: "Architecture choices traceable to task requirements; harness-determinism position (prompt-driven / generic / specialized) is chosen against an explicit reliability requirement; specialized-harness investments are classified as bets (with intended life) or shims (with planned removal trigger)"
+  invariants: "Architecture choices traceable to task requirements; every agent decomposable into four zones (trigger, context, tools, output); harness-determinism position chosen against an explicit reliability requirement; specialized-harness investments classified as bets or shims; sub-agent dispatch treated as a uniform tool interface"
   governance: "IL-owned draft; Nick deploys"
-  recovery: "If architecture shows specialization theater symptoms, revisit single-agent default. If specialized harness brittleness blocks real-world inputs, reconsider spectrum position — the right zone may be one step left (generic harness)."
+  recovery: "If architecture shows specialization theater symptoms, revisit single-agent default. If specialized harness brittleness blocks real-world inputs, reconsider spectrum position. If sub-agent wiring failures accumulate, add post-wave integration verification."
 ---
 
 # Agent Architecture Decisions
 
 Should you use one agent or many? How should they coordinate? Which model should each use? How permanent is the infrastructure you are building?
 
-This guide provides empirically-grounded decision frameworks for agent system topology -- from the single-agent default through legitimate multi-agent domains to composition patterns, model routing, and infrastructure longevity assessment. It covers the "what" of agent architecture: what topology to choose, what boundaries to draw, what models to assign. For the "how" -- running agents in production with workflow engines, observability, cost management, and failure handling -- see *Agent Workflow and Execution* (G3b).
+This guide provides empirically-grounded decision frameworks for agent system topology -- from the single-agent default through legitimate multi-agent domains to composition patterns, sub-agent orchestration primitives, model routing, and infrastructure longevity assessment. It covers the "what" of agent architecture: what topology to choose, what boundaries to draw, what models to assign, and where on the harness-determinism spectrum to position. For the "how" -- running agents in production with workflow engines, observability, cost management, and failure handling -- see *Agent Workflow and Execution* (G3b).
 
 ## When to Use This Guide
 
@@ -57,6 +77,10 @@ This guide provides empirically-grounded decision frameworks for agent system to
 - You are adding a new agent to an existing system and need to decide how to integrate it.
 - You are choosing which model to assign to which agent role.
 - You are auditing existing infrastructure for lock-in risk or layer impermanence.
+- You are evaluating whether your multi-agent system needs a central orchestrator or whether room-based peer-to-peer coordination (Pattern F) is a better fit.
+- You are defining human control points in boundary contracts and need to classify which steps require observe, approve, or cancel semantics (AGUI).
+- You are designing sub-agent dispatch mechanics and need to decide between execution topologies (sub-agent-per-task vs. inline batch).
+- You are positioning on the harness-determinism spectrum and need to evaluate prompt-driven vs. generic vs. specialized.
 
 **Do not use for:** specifying what an agent does (see *Writing Agent Specifications*, G1), managing context within an agent (see *Managing Agent Context*, G2), running agents in production (see *Agent Workflow and Execution*, G3b), or evaluating agent output quality (see *Building Agent Evaluation Suites*, G4).
 
@@ -72,7 +96,17 @@ This guide provides empirically-grounded decision frameworks for agent system to
 
 **5. Infrastructure is impermanent -- plan for it.** Current agent infrastructure layers (retrieval pipelines, heavy prompt scaffolding, verification gates) will be progressively absorbed by model-native capabilities. Classify each dependency as an architectural bet or a transitional shim, and design for easy removal.
 
-**6. Harnesses lie on a determinism spectrum -- choose position deliberately.** Agent systems sit somewhere between "entirely LLM-initiated and driven via just prompts" (a chat with Claude Code, Manus) and "mostly deterministic, where workflows are instantiated and wired together with code" (a specialized Python harness with phase gates, schema validation, state DB, and sub-agent delegation). The position is not a default -- it's a decision. Prompt-driven systems are flexible, cheap to build, and absorb model improvements automatically. Specialized harnesses are reliable, repeatable, and recoverable, but cost real engineering investment and are bets that determinism will still pay off when the model catches up. Topology decisions (single vs multi-agent, Pattern A-E) are *inside* the harness; the harness itself is the wrapper around them. Pick the position that matches your reliability requirement and your tolerance for the corresponding engineering cost.
+**6. Rooms are a coordination boundary, not a UI feature.** In room-based multi-agent systems, the room is the bounded context: agents coordinate peer-to-peer via @mentions without a central orchestrator. This is categorically different from orchestrator→worker delegation (Patterns A-E). The design question is: "What is the natural bounded context for this set of agents?"
+
+**7. Human control points are a contract field, not an afterthought.** The AG-UI protocol (AGUI) encodes where humans must observe, approve, edit, or cancel running agent work. Alongside MCP (agent-to-resource) and A2A (agent-to-agent), AGUI completes the core protocol stack for production systems. Every boundary contract should include a `human_control_points` definition.
+
+**8. Harnesses lie on a determinism spectrum -- choose position deliberately.** Agent systems sit somewhere between "entirely LLM-initiated via prompts" and "mostly deterministic with code-wired workflows." The position is not a default -- it is a decision tied to a reliability requirement.
+
+**9. Every agent is four zones.** Regardless of tool or framework, every agent decomposes into: trigger (what wakes it), context (what is injected per turn), tools (what it can interact with), and output/memory (where work goes and how state persists). Debugging is systematic -- a broken agent has a broken zone. A well-designed spec covers all four zones; an opaque framework hides them.
+
+**10. Sub-agent dispatch is a tool call, not a special mechanism.** Sub-agents should be dispatched through the same interface as any other tool -- same hooks, same logging, same permission checks. Interface homogeneity means hooks work for free, the tool registry is the single source of capabilities, and sub-agent calls can be mocked like any other tool. Frameworks that give delegation its own API surface add complexity that the uniform interface avoids.
+
+**11. Harness engineering is the third evolution.** The progression from prompt engineering (single LLM, single output) to context engineering (single agent, curated context) to harness engineering (multiple agent sessions, orchestrated workflow) represents maturation of AI development. 40% of Claude Code's codebase is harness infrastructure. Each evolution builds on the previous -- harness engineering requires good context engineering at each node.
 
 ---
 
@@ -126,6 +160,10 @@ Is the task parallelizable?
 
 **The agent sprawl test:** Draw the parallel to microservices circa 2018. If you cannot answer these five questions, you are sprawling: (1) Can you list every agent and its scope? (2) Do you have observability over what each agent is doing? (3) Is there coordination infrastructure for parallel agent work? (4) Do you have standard failure/recovery patterns? (5) Do you know cost-per-successful-task for each agent?
 
+**The four-zone audit:** Before deciding on architecture, confirm that each proposed agent's four zones are well-defined. If you cannot specify the trigger, context, tools, and output/memory for an agent, it is under-designed. This audit also exposes framework opacity -- opaque platforms that hide zones from the developer make debugging impossible.
+
+**Error-aware backtracking.** For long-horizon workflows where compound errors are a concern (90% per-step accuracy on 10 steps = 35% overall), design agents that can backtrack to a decision point and try a different branch rather than continuing on a corrupt path. Checkpoint-based backtracking (save state at each decision point) is more practical than undo chains. Confidence-gated progression (don't advance to step N+1 until step N passes a threshold) prevents silent error propagation.
+
 ### Step 3: Choose a Composition Pattern
 
 If multi-agent is justified, select the appropriate pattern based on your coordination needs.
@@ -141,7 +179,7 @@ For independent tasks that can run concurrently without shared context.
 └── Terminal 3: claude -w "task C"  →  worktree C (branch-c)
 ```
 
-**When to use:** 3-5 independent tasks that do not share files or context. Filesystem-level isolation via git worktrees prevents cross-contamination. Human coordinates and merges results.
+**When to use:** 3-5 independent tasks that do not share files or context. Filesystem-level isolation via git worktrees prevents cross-contamination. Human coordinates and merges results. Also works with parallel Claude Code instances in different workspace folders -- each instance reads only its own workspace context, with cross-workspace file transfer done explicitly.
 
 **Limits:** Human attention bottleneck at 5+ sessions. No inter-session communication -- if tasks are actually dependent, the operator must relay context manually. Merge conflicts when worktrees modify overlapping files.
 
@@ -204,6 +242,82 @@ For systems that need independent scaling, failure isolation, or many-to-many to
 
 **Key insight:** The uniform `execute(name, input) -> string` interface means the brain does not care what the hand is -- container, phone, emulator, MCP server, or custom tool.
 
+#### Pattern F: Room-Based Peer-to-Peer Coordination
+
+For multi-agent work where peer-to-peer coordination is preferable to a central orchestrator, and where human observers need real-time visibility into agent work.
+
+```
+[Room: bounded context]
+├── [Agent A] ──@mention──→ [Agent B]
+│   produces: PR          produces: plan
+├── [Agent C] ──@mention──→ [Agent A]
+│   produces: docs         reviews: PR
+└── [Human observer] (real-time SSE stream of agent activity)
+    per-room kanban task board visible to all participants
+```
+
+**When to use:** Complex collaborative tasks where multiple agents need to negotiate directly without routing every message through a central orchestrator. The room defines the bounded context: agents assigned to a room communicate via @mentions over Server-Sent Events (SSE), self-manage a per-room kanban, and produce typed artifacts.
+
+**Key distinction from Pattern D:** Pattern D routes interdependencies through a channel monitored by an orchestrator. Pattern F is structurally orchestrator-free -- agents coordinate as peers within the room boundary.
+
+**Limits:** Room scope must be bounded deliberately; a room that grows too large collapses back into Pattern D dynamics. @mention routing becomes complex when agents within a room form dependencies that span multiple concurrent rooms.
+
+#### Pattern G: Wave-Based Sub-Agent Orchestration
+
+For batch execution of many independent tasks with validation between waves.
+
+```
+[Orchestrator]
+├── Wave 1: [Sub-agent 1] [Sub-agent 2] ... [Sub-agent N]  → Validate
+├── Wave 2: [Sub-agent N+1] ... [Sub-agent 2N]             → Validate
+└── Wave 3: ...                                             → Final check
+```
+
+**When to use:** Processing large backlogs of independent tasks (IB queues, batch analysis, parallel file operations). Each wave launches up to 15 parallel sub-agents with fresh context windows. Between waves, a validation step checks system state before the next wave begins -- preventing compounding errors from cascading.
+
+**Key principles:**
+- **One task per sub-agent.** Fresh context dedicated to a single problem produces dramatically better output than one agent handling many tasks.
+- **Wiring verification after each wave.** Sub-agents frequently complete their task but fail to integrate output with the rest of the system, leaving "isolated islands." Explicit integration checks after each wave catch this.
+- **Context isolation enables model tiering.** The orchestrator uses an expensive model for planning and aggregation; sub-agents use a cheaper model for narrow tasks. In production, this means 7K orchestrator tokens vs 323K total sub-agent tokens -- the harness makes cost control tractable.
+
+**Limits:** Spawning too many parallel agents can overwhelm MCP connections. Without tight validation criteria, waves can proceed on corrupted state. The one-task-per-agent principle means wave count grows linearly with task count.
+
+#### Pattern H: Review-Triggered Remediation Chain
+
+For workflows where an evaluation step automatically chains into fix dispatch.
+
+```
+[Implementation] → [Review Skill] → classify(critical/important/info)
+                                      ├── critical → [Fix Sub-Agent 1] → verify
+                                      ├── important → [Fix Sub-Agent 2] → verify
+                                      └── info → defer to human
+```
+
+**When to use:** When review findings should chain directly into automated remediation rather than sitting in a report for human triage. The review skill identifies issues, classifies severity, and dispatches a fresh fix sub-agent per issue. The fix agent gets only the issue description and relevant code -- minimal context, maximum focus.
+
+**Generalizable composition primitive:** Any evaluation step that produces a structured issue list can chain into a dispatch queue. This applies beyond code review: spec compliance → fix non-compliant sections, security review → fix vulnerabilities, test failure analysis → fix failing tests.
+
+**Limits:** Fix agents may introduce new bugs due to narrow context. Severity misclassification wastes tokens. Parallel fix dispatch on the same file creates conflicts.
+
+### Step 3b: Select Execution Topology
+
+After choosing a composition pattern, decide how the plan executes. This is a runtime parameter, not an architectural constant.
+
+| Topology | When to use | Tradeoff |
+|----------|-------------|----------|
+| **Sub-agent per task** | Complex tasks, context isolation matters, human review between tasks | Higher token cost, slower, better isolation |
+| **Inline batch** | Simple tasks, trust the plan, context from previous tasks helps | Faster, cheaper, context rot risk |
+| **Hybrid** | Mixed complexity plan | Some tasks inline, high-risk tasks via sub-agent |
+
+**The plan should be topology-agnostic.** A well-designed plan specifies WHAT (tasks, acceptance criteria) but not HOW the execution engine dispatches them. The topology is an orthogonal concern selected at runtime based on project shape, risk tolerance, and human availability.
+
+**Shared-session vs. artifact-only handoff.** Two orchestration models exist in tension:
+
+- **Shared-session orchestrator:** A single persistent session carries accumulated context across all phase invocations (brainstorm → plan → execute → review). Conversational context, user preferences, and design rationale persist without serialization. Tradeoff: richness of inter-phase context vs. context rot on long sessions.
+- **Artifact-only handoff:** Each phase gets a fresh context window and reads inter-phase state exclusively from files. Tradeoff: crash-resilient and context-fresh, but conversational nuance and informal design rationale get lost at phase boundaries.
+
+Neither is universally better. Use shared-session for brainstorm-to-plan (where conversational context matters most) and artifact-only for execute-to-review (where fresh context matters more). The critical design decision is where to draw the session boundary.
+
 ### Step 4: Define Contracts at Every Boundary
 
 Every interaction between agents gets an explicit contract:
@@ -216,12 +330,17 @@ Every interaction between agents gets an explicit contract:
 | Cost/latency budgets | Maximum tokens, wall-clock time, API calls |
 | Allowed tools | Explicit allowlist per agent role |
 | Degradation mode | What happens when the agent fails or exceeds budget |
+| `human_control_points` | Observe / approve-before-proceed / cancellable per step |
 
 Without contracts, agents negotiate interfaces in natural language -- introducing ambiguity, drift, and hallucination at every boundary. Validate contracts at runtime, not just in documentation.
 
 **Agent type enforcement:** Consider a formal type system where each role (Explore, Plan, Verify, Execute) has its own allowed tool set and explicit behavioral constraints. An Explore agent that physically cannot edit files eliminates an entire class of errors. Claude Code implements six built-in types; you can define custom types per project.
 
-**Cross-organizational boundaries:** For agents that delegate across organizational boundaries, the A2A protocol (Google, Linux Foundation, 50+ enterprise partners) defines Agent Cards (`/.well-known/agent.json`) with capability declarations, authentication requirements, and a six-state task lifecycle (`submitted -> working -> input-required -> completed -> failed -> cancelled`). MCP handles agent-to-resource; A2A handles agent-to-agent.
+**Sub-agent dispatch as tool call.** Implement sub-agent dispatch as a standard entry in the tool registry -- called identically to bash, file-read, or web-search. This ensures hooks, logging, and permission checks work on sub-agent calls without modification. The tool registry becomes the single source of capabilities. Frameworks that give delegation its own API surface add complexity that the uniform interface avoids.
+
+**Cross-organizational boundaries:** For agents that delegate across organizational boundaries, the A2A protocol (Google, Linux Foundation, 50+ enterprise partners) defines Agent Cards (`/.well-known/agent.json`) with capability declarations, authentication requirements, and a six-state task lifecycle (`submitted -> working -> input-required -> completed -> failed -> cancelled`). MCP handles agent-to-resource; A2A handles agent-to-agent; AGUI handles human-to-agent.
+
+**AGUI supervision debt.** Teams that skip human control point definitions accumulate "supervision debt" -- the aggregate cost of missed human intervention opportunities that compounds into downstream errors and trust failures. When defining each boundary contract, add a `human_control_points` field listing which steps are observe-only, which require approval before proceeding, and which can be cancelled mid-execution.
 
 ### Step 5: Select Models for Each Role
 
@@ -234,18 +353,22 @@ Use task characteristics to route to the appropriate model:
 | Computer use, browser automation | GPT-5.4 | WebArena-Verified 67.3% |
 | Abstract reasoning, long-horizon math | Gemini 3.1 Pro | ARC-AGI-2 77.1% |
 | Extraction, batch processing | Gemini Flash | $0.003/task, 97.1% quality |
+| Orchestrator (planning, aggregation) | Premium model (Opus/Pro) | Orchestration quality justifies cost; sub-agents absorb volume |
+| Sub-agent (narrow, well-defined tasks) | Cheap/fast model (Sonnet/Flash) | Sub-task requirements are within smaller model capability |
 
-**Key cost finding:** Opus costs 3.5x Sonnet with no accuracy premium on most benchmarks. Use the Advisor-Executor pattern (Pattern B) to get Opus reasoning at Sonnet cost rather than running Opus for everything.
+**Model-tier routing principle:** Use a premium model for orchestration (user interaction, planning, aggregation) and a cheaper/faster model for narrow sub-agent tasks. This makes parallel sub-agent architectures economically viable at scale. In production, one harness consumed 7K orchestrator tokens vs. 323K total sub-agent tokens -- model tiering kept the cost tractable.
+
+**Subscription vs. API economics.** Claude Code Max plan ($200/month) provides effectively $2,500-$5,000 in subsidized API-equivalent usage. Any tool that requires bypassing Max (using API credentials directly) faces a 12.5-25x cost headwind. For tool selection decisions, the correct question is "does this tool provide enough incremental value to justify API costs vs. the Max plan subsidy?"
+
+**Per-node model selection:** In YAML-defined workflow DAGs (Archon pattern), assign models per workflow node -- Haiku for classification, Sonnet for implementation, Opus for planning. This prevents the anti-pattern of running the most expensive model for every step.
 
 **Benchmarks are snapshots.** This table reflects March 2026 data. Five major model releases occurred in a 23-day window (March 3-22, 2026), compressing the competitive gap between labs from months to weeks. The routing structure (task-based, not provider-based) remains valid even when specific model recommendations change. Establish a monthly review cadence for model routing tables.
-
-**Per-node model selection:** In YAML-defined workflow DAGs (Archon pattern), assign models per workflow node -- Haiku for classification, Sonnet for implementation, Opus for planning. This prevents the common anti-pattern of running the most expensive model for every step.
 
 ### Step 6: Assess Infrastructure Longevity
 
 Before investing in infrastructure, audit each layer for impermanence and lock-in risk.
 
-**Six infrastructure layers** (from most to least mature):
+**Seven infrastructure layers** (from most to least mature):
 
 | Layer | Examples | Maturity | Risk |
 |-------|----------|----------|------|
@@ -255,6 +378,7 @@ Before investing in infrastructure, audit each layer for impermanence and lock-i
 | 4. Tools & Integration | MCP, Compose.io | Maturing | MCP may absorb managed layers |
 | 5. Provisioning & Billing | Stripe Projects | Emerging | Gaps in agent-native billing |
 | 6. Orchestration & Coordination | Missing | Biggest gap | No standard exists |
+| 7. Human Control Surface | AGUI | Maturing standard | Supervision debt if skipped |
 
 **Reliability compounds across layers.** When an agent depends on five different infrastructure layers, end-to-end reliability is the product of each layer's reliability. Five layers at 99% each = 95% system reliability. Five layers at 97% each = 86%.
 
@@ -273,7 +397,7 @@ Before investing in infrastructure, audit each layer for impermanence and lock-i
 
 **The bitter lesson for agents:** Bigger models demand simplification, not more scaffolding. Teams investing in complex RAG, prompt chains, and verification gates risk building on sand. Safety infrastructure (security, permissions, audit trails) should never be simplified away -- the bitter lesson applies to intelligence tasks, not safety constraints.
 
-**Specialized harnesses are deliberate bets against this lesson.** Step 8 introduces the harness determinism spectrum, where specialized harnesses (phase-gated Python rails, schema-validated transitions) deliver reliability the model alone can't yet provide. The bet is that the reliability gain outweighs the eventual obsolescence of the scaffolding. Both Step 6 and Step 8 can be correct simultaneously: don't over-build scaffolding the model will absorb, *and* if your reliability requirement is unmet, build the scaffolding anyway with a planned review trigger. Make the bet explicit -- classify the harness investment as bet (intended life: N model generations) or shim (planned removal when feature X lands), so the decision is reviewable as model capability evolves.
+**Specialized harnesses are deliberate bets against this lesson.** Step 8 introduces the harness determinism spectrum, where specialized harnesses deliver reliability the model alone can't yet provide. Both Step 6 and Step 8 can be correct simultaneously: don't over-build scaffolding the model will absorb, *and* if your reliability requirement is unmet, build the scaffolding anyway with a planned review trigger.
 
 ### Step 7: Build the Infrastructure Layer
 
@@ -287,6 +411,10 @@ Production agent systems need infrastructure beyond the model. Audit against thi
 
 **Agents are 80% infrastructure, 20% model.** Anthropic's Claude Code invests 80% of its 512K-line TypeScript codebase in infrastructure. Most teams build the model layer and skip the plumbing -- then hit scaling walls when they cannot debug, recover from crashes, or control costs.
 
+**Skills as infrastructure.** Skills are markdown files that encode a complete workflow process -- the steps, tools, format, and preferences from a successful manual run. Once created, invoking the skill by name reproduces the full process without re-explaining it. BMAD Method v6.1.0 migrated all 68 workflows from YAML/XML to skills-as-markdown, achieving a 91% package size reduction (533 to 348 files, 6.2MB to 555KB). Every repeated process in a workflow is a candidate for a skill.
+
+**Remote orchestration infrastructure.** Claude Dispatch creates a communication bridge between a mobile app and a local desktop agent. The user sends commands from their phone; the local machine executes using locally-configured skills and MCP connectors; results report back asynchronously. This enables remote trigger of skills, multi-task parallelism, and asynchronous result delivery without exposing credentials to third-party services.
+
 For detailed guidance on implementing each tier in production -- workflow engines, observability, cost management, and degradation modes -- see *Agent Workflow and Execution* (G3b).
 
 ### Step 8: Position on the Harness Spectrum
@@ -295,38 +423,38 @@ Once topology, contracts, models, and infrastructure tiers are decided, decide *
 
 | Zone | What it looks like | Reliability | Engineering cost | Brittleness | Examples |
 |------|--------------------|-------------|------------------|-------------|----------|
-| **Prompt-driven** | The agent decides phase transitions, output shape, and sub-task routing in the prompt. The "harness" is conversation + tool calls. | Variable -- depends on model capability and prompt quality | Low | Low (model upgrades absorb improvements automatically) | Vanilla chat, Manus, ad-hoc Claude Code sessions |
-| **Generic harness** | Reusable scaffolding (skills, hooks, slash commands, workflow conventions) that runs across many tasks. Phase transitions, tool permissions, and context shape are codified but the agent still decides most steps. | Higher -- conventions catch common failure modes | Medium -- amortized across many tasks | Medium -- conventions can ossify; harness-version drift | Claude Code (the harness), GSD, Cursor's agent mode |
-| **Specialized harness** | Purpose-built code (Python or otherwise) wraps LLM calls with explicit phase gates, structured output schemas, sub-agent delegation, persistent state, and model-tier routing. Each phase is a function with validation; LLM steps are scoped within them. | Highest -- determinism by construction; failure modes are the harness's, not the model's | High -- real engineering project | High -- rigid schemas break on real-world drift; risk of building scaffolding the next model would render unnecessary | Stripe's PR validator (1,300 PRs/week), Karpathy-style contract-review harness, Archon YAML-defined workflow DAGs |
+| **Prompt-driven** | The agent decides phase transitions, output shape, and sub-task routing in the prompt. The "harness" is conversation + tool calls. | Variable | Low | Low (model upgrades absorb improvements) | Vanilla chat, Manus, ad-hoc Claude Code sessions |
+| **Generic harness** | Reusable scaffolding (skills, hooks, slash commands) that runs across many tasks. Phase transitions and tool permissions are codified but the agent still decides most steps. | Higher | Medium (amortized) | Medium | Claude Code (the harness), GSD, Cursor's agent mode |
+| **Specialized harness** | Purpose-built code wraps LLM calls with explicit phase gates, structured output schemas, sub-agent delegation, persistent state, and model-tier routing. Each phase is a function with validation. | Highest (determinism by construction) | High | High (rigid schemas break on real-world drift) | Stripe's PR validator (1,300 PRs/week), contract-review harness, Archon YAML DAGs |
+
+**The harness engineering evolution.** This spectrum reflects a broader maturation: prompt engineering (2022-2024, single LLM output) → context engineering (2024-2025, single agent, curated context window) → harness engineering (2025-2026, multiple agent sessions, orchestrated workflow). Each evolution builds on the previous. Harness engineering requires good context engineering at each node -- a harness that wraps poorly contexted agents just produces bad output faster.
 
 **Specialized-harness primitives** (when you commit to that zone):
 
 - **Phase-gating.** Phase N+1 only proceeds after Phase N output passes validation. State transitions are explicit, not emergent.
 - **Structured output schemas at every phase.** Each phase produces validated JSON or equivalent, not free text. Downstream phases consume by schema, not by parsing.
-- **Sub-agent delegation per unit.** Each independent unit of work (clause, file, hypothesis) gets its own LLM call with fresh context. Prevents context pollution at the unit level.
-- **State management via a database.** A `harness_runs` table (or equivalent) tracks current phase, status, outputs. Crashes restart from the last successful phase, not from scratch.
+- **Sub-agent delegation per unit.** Each independent unit of work gets its own LLM call with fresh context. Prevents context pollution at the unit level.
+- **State management via a database.** A `harness_runs` table tracks current phase, status, outputs. Crashes restart from the last successful phase.
 - **Virtual file system / scratch pad.** Every phase writes its output as a file. The full run is replayable and auditable.
-- **Model tier routing.** Expensive orchestrator model for the main reasoning; cheap fast model for sub-agent extraction. Cost scales with phase importance, not phase count.
+- **Model tier routing.** Expensive orchestrator model for main reasoning; cheap fast model for sub-agent extraction.
 
-The contract-review demo cited in the source material consumed 323K tokens in sub-agent contexts vs. 7K in the orchestrator's main context -- the harness made context isolation tractable at scale.
+**Autonomous execution loops.** At the specialized end of the spectrum, fully autonomous loops run on fixed intervals (e.g., cron-triggered) without human involvement. Each cycle: read prior results → generate challenger variant → deploy both → measure → harvest winner → append learnings. The human sets the initial baseline and metric definition; the loop runs continuously. Requires a clear objective metric as feedback signal. Applies to A/B testing, ad optimization, content generation, pricing experiments, and any domain with a measurable outcome and fast feedback loop.
 
 **When to invest in a specialized harness:**
 
 | Trigger | What it tells you |
 |---------|-------------------|
 | Single-agent baseline below 45% **and** task is repeated production work | You can't fix it with better prompts; the variance has to be engineered out. |
-| Cost-of-failure is high (financial, safety, compliance) | Determinism is a feature buyers pay for. Stripe's 1,300 PRs/week works because the harness gates against 3M tests. |
-| Task structure is genuinely phase-decomposable | If the work has natural phases (research → outline → draft → review → publish), the harness adds clarity. If it's exploratory and emergent, the harness will fight the work. |
+| Cost-of-failure is high (financial, safety, compliance) | Determinism is a feature buyers pay for. |
+| Task structure is genuinely phase-decomposable | If the work has natural phases, the harness adds clarity. If it's exploratory, the harness will fight the work. |
 | You will run this workflow >100 times | Engineering cost amortizes. Below ~100 runs, generic harness is usually enough. |
 
 **When *not* to invest:**
 
 - The task runs <10 times. Generic harness is cheaper end-to-end.
-- The model is improving fast enough that next-model-generation will absorb your scaffolding (Step 6 impermanence audit applies here too).
-- The task is exploratory and the right phase decomposition isn't yet known. Premature schema-locking creates rework.
+- The model is improving fast enough that next-generation will absorb your scaffolding.
+- The task is exploratory and the right phase decomposition isn't yet known.
 - The cost of failure is low. Variance is acceptable; reliability investment isn't.
-
-**Productive tension with Step 6.** Specialized harnesses are *deliberate architectural bets against the bitter lesson*. The `contradicts` link between specialized harness engineering and the layer-impermanence principle is real -- but both are correct depending on where you sit on the spectrum and what your task demands. Step 6 says "don't build scaffolding the model will absorb"; Step 8 says "if your reliability requirement is unmet by the model alone, build the scaffolding anyway and accept that it may be a finite-life investment." The right move is to make the bet *explicit*: classify the harness investment as a bet (with intended life) or a shim (with planned removal trigger), so the decision is reviewable when model capability changes.
 
 **Migration paths between zones:**
 
@@ -350,6 +478,12 @@ The contract-review demo cited in the source material consumed 323K tokens in su
 - Information flow: {{INDEPENDENT/DEPENDENT/MIXED}}
 - Error sensitivity: {{LOW/MED/HIGH}} -- cascading: {{YES/NO}}
 
+### Four-Zone Audit
+| Agent | Trigger | Context | Tools | Output/Memory |
+|-------|---------|---------|-------|---------------|
+| {{AGENT_1}} | {{TRIGGER}} | {{CONTEXT}} | {{TOOLS}} | {{OUTPUT}} |
+| {{AGENT_2}} | {{TRIGGER}} | {{CONTEXT}} | {{TOOLS}} | {{OUTPUT}} |
+
 ### Specialization Theater Check
 - Is decomposition based on task characteristics? {{YES/NO}}
 - Does decomposition mirror org chart roles? {{YES/NO}} -- if yes, STOP
@@ -359,16 +493,25 @@ The contract-review demo cited in the source material consumed 323K tokens in su
 - Architecture: {{SINGLE/MULTI}} agent
 - Justification: {{WHY}} (must reference task characteristics, not roles)
 - If multi-agent:
-  - Pattern: {{PARALLEL_WORKTREE/ADVISOR_EXECUTOR/FAN_OUT_FAN_IN/SHARED_CHANNEL/BRAIN_HANDS/CUSTOM}}
+  - Pattern: {{A_WORKTREE/B_ADVISOR/C_FAN_OUT/D_CHANNEL/E_BRAIN_HANDS/F_ROOM/G_WAVE/H_REVIEW_CHAIN/CUSTOM}}
+  - Execution topology: {{SUB_AGENT_PER_TASK/INLINE_BATCH/HYBRID}}
   - Agent count: {{N}} -- each justified by: {{REASON_PER_AGENT}}
   - Contracts defined: {{YES/NO}}
+  - Sub-agent dispatch via uniform tool interface: {{YES/NO}}
+  - Human control points defined (AGUI): {{YES/NO}}
+  - Room boundaries defined (if Pattern F): {{YES/NO}}
   - Type enforcement: {{YES/NO}} -- tool allowlists per role
 
 ### Model Routing
-| Agent Role | Model | Rationale |
-|------------|-------|-----------|
-| {{ROLE_1}} | {{MODEL}} | {{WHY}} |
-| {{ROLE_2}} | {{MODEL}} | {{WHY}} |
+| Agent Role | Model Tier | Model | Rationale |
+|------------|-----------|-------|-----------|
+| Orchestrator | Premium | {{MODEL}} | {{WHY}} |
+| {{SUB_ROLE}} | Cheap/fast | {{MODEL}} | {{WHY}} |
+
+### Harness Position
+- Zone: {{PROMPT_DRIVEN/GENERIC/SPECIALIZED}}
+- Classification: {{BET/SHIM}} (intended life: {{N}} model generations)
+- Review trigger: {{WHEN_TO_RECONSIDER}}
 
 ### Infrastructure Assessment
 - [ ] Tier 1: Tool registry and permissions defined
@@ -408,11 +551,14 @@ Before adding a new agent to an existing system:
 4. [ ] Information loss at boundary is acceptable? {{YES/NO}}
 5. [ ] Decomposition is based on task characteristics, not roles? {{YES/NO}}
 6. [ ] Contract defined for the new boundary? {{YES/NO}}
-7. [ ] Agent type defined with tool allowlist? {{YES/NO}}
-8. [ ] Model selected based on task-type routing? {{MODEL}}
-9. [ ] Sprawl check passed (scope, observability, cost known)? {{YES/NO}}
-10. [ ] Infrastructure layer dependencies classified (bet vs shim)? {{YES/NO}}
-11. [ ] Fallback plan if new agent degrades system performance? {{PLAN}}
+7. [ ] Four zones defined (trigger/context/tools/output)? {{YES/NO}}
+8. [ ] Sub-agent dispatch via uniform tool interface? {{YES/NO}}
+9. [ ] Agent type defined with tool allowlist? {{YES/NO}}
+10. [ ] Model selected based on task-type and tier routing? {{MODEL_TIER}}: {{MODEL}}
+11. [ ] Sprawl check passed (scope, observability, cost known)? {{YES/NO}}
+12. [ ] Infrastructure layer dependencies classified (bet vs shim)? {{YES/NO}}
+13. [ ] Human control points defined for the new boundary (AGUI)? {{OBSERVE/APPROVE/CANCEL}} at step {{STEP}}
+14. [ ] Fallback plan if new agent degrades system performance? {{PLAN}}
 
 If any answer is NO for items 3-6, do not spawn the agent.
 ```
@@ -431,6 +577,13 @@ If any answer is NO for items 3-6, do not spawn the agent.
 | Tools & Integration | {{SOLUTION}} | {{BET/SHIM}} | {{LOW/MED/HIGH}} | {{MONTHS}} |
 | Provisioning & Billing | {{SOLUTION}} | {{BET/SHIM}} | {{LOW/MED/HIGH}} | {{MONTHS}} |
 | Orchestration & Coordination | {{SOLUTION}} | {{BET/SHIM}} | {{LOW/MED/HIGH}} | {{MONTHS}} |
+| Human Control Surface (AGUI) | {{SOLUTION}} | {{BET/SHIM}} | {{LOW/MED/HIGH}} | {{MONTHS}} |
+
+### Harness Spectrum Position
+- Current zone: {{PROMPT_DRIVEN/GENERIC/SPECIALIZED}}
+- Harness evolution stage: {{PROMPT_ENG/CONTEXT_ENG/HARNESS_ENG}}
+- Classification: {{BET/SHIM}} -- intended life: {{GENERATIONS}} model generations
+- Review trigger: {{CONDITION}}
 
 ### Impermanence Audit
 1. Over-specifying how instead of what/why? {{YES/NO}} -- {{DETAILS}}
@@ -464,21 +617,28 @@ TASK ANALYSIS:
 - Error sensitivity: LOW -- a bad extraction is caught at human
   gate, doesn't cascade
 
+FOUR-ZONE AUDIT:
+| Agent | Trigger | Context | Tools | Output/Memory |
+|-------|---------|---------|-------|---------------|
+| Orchestrator | /research-loop invocation | CLAUDE.md + IL PROGRESS.md + dimension registry | Read, Write, Grep, Glob, Agent | Delta report, PROGRESS.md |
+| Extractor (sub) | Orchestrator dispatch | Source URL + finding template + KB context | Read, Write, WebFetch, Perplexity | Finding files with frontmatter |
+
 SPECIALIZATION THEATER CHECK:
 - Decomposition based on task characteristics? YES -- parallelizable
   independent source processing
-- Mirrors org chart? NO -- not "researcher agent + editor agent +
-  reviewer agent"; it's "N independent extractor agents"
+- Mirrors org chart? NO -- not "researcher + editor + reviewer";
+  it's "N independent extractor sub-agents"
 - Sprawl check: 4-6 parallel extractors, scoped to one source each,
   cost = Sonnet per source
 
 DECISION: Multi-agent (parallel extraction)
-- Pattern: Parallel worktree-style (subagents, not worktrees)
+- Pattern: G (wave-based) -- subagents per batch with validation
+- Execution topology: sub-agent-per-task
 - Agent count: 4-6 parallel Sonnet subagents per batch
 - Justification: Research is a legitimate multi-agent domain --
   parallelizable, lossy-tolerant, independent sources
 - Each subagent gets: one source + finding template + KB context
-- Each subagent produces: structured findings with frontmatter
+- Sub-agent dispatch via uniform tool interface: YES -- Agent tool
 
 SEQUENTIAL STEPS (single agent):
 - /identify-artifacts -- classification requires full KB context,
@@ -487,39 +647,30 @@ SEQUENTIAL STEPS (single agent):
   together. Sequential, context-dependent. SINGLE.
 
 MODEL ROUTING:
-| Role | Model | Rationale |
-|------|-------|-----------|
-| Orchestrator | Opus | Complex reasoning, architecture decisions |
-| Source extractors | Sonnet | Coding/knowledge work, parallelizable |
-| Form classifiers | Sonnet | Pattern matching against rubric |
+| Role | Tier | Model | Rationale |
+|------|------|-------|-----------|
+| Orchestrator | Premium | Opus | Complex reasoning, architecture decisions |
+| Source extractors | Cheap/fast | Sonnet | Coding/knowledge work, parallelizable |
+| Form classifiers | Cheap/fast | Sonnet | Pattern matching against rubric |
 
-INFRASTRUCTURE LONGEVITY:
-- Tools & Integration: MCP (architectural bet -- maturing standard)
-- Memory & State: PROGRESS.md (pragmatic shim -- manual persistence)
-- Orchestration: Human operator (gap -- no automated coordination)
-- Impermanence: CLAUDE.md specs use outcome language, not process
-  prescriptions. Positioned for model capability absorption.
+HARNESS POSITION:
+- Zone: Generic harness (Claude Code + IL skills + slash commands)
+- Classification: Bet (skills + slash commands expected to outlast
+  several model generations). PROGRESS.md as session-persistence is
+  a shim (plan to retire when native session continuity matures).
+- Rationale: Workflow runs ~weekly (well below the >100-run threshold
+  for specialized harness); cost-of-failure is low (Nick gates every
+  output); task structure is exploratory enough that rigid phase
+  schemas would fight the work.
+- Review trigger: if extraction throughput plateaus and Nick's
+  gate-cost becomes the bottleneck, evaluate phase-gating the
+  identify→extract transition with structured-output validation.
 
 INFRASTRUCTURE STATUS:
 - Tier 1: Skills define tool permissions per role ✓
 - Tier 2: PROGRESS.md for session persistence (manual) △
 - Tier 3: Delta reports for observability ✓
   Missing: automated session persistence, budget tracking
-
-HARNESS SPECTRUM POSITION:
-- Zone: Generic harness (Claude Code + IL skills + slash commands)
-- Rationale: Workflow runs ~weekly (well below the >100-run amortization
-  threshold for specialized harness); cost-of-failure is low (Nick gates
-  every output); task structure is exploratory enough that rigid phase
-  schemas would fight the work.
-- Bet vs shim: skills + slash commands are a bet (expected to outlast
-  several model generations). PROGRESS.md as session-persistence is a
-  shim (plan to retire when native session continuity matures).
-- Trigger to reconsider: if extraction throughput plateaus and Nick's
-  gate-cost becomes the bottleneck, evaluate phase-gating the
-  identify→extract transition with structured-output validation —
-  i.e., move that one transition into a specialized-harness shape
-  while keeping the rest generic.
 ```
 
 ---
@@ -542,7 +693,7 @@ If your single agent already achieves 45%+ on the task, adding agents will likel
 Without explicit schemas, quality constraints, and tool permissions, agents negotiate interfaces in natural language. Independent agents amplify errors 17.2x vs. centralized coordination at 4.4x. Validate contracts at runtime, not just in documentation.
 
 ### 6. Opus for everything
-Opus costs 3.5x Sonnet with no accuracy premium on most benchmarks. Use Advisor-Executor for the quality premium at lower cost. Route bulk work to Sonnet or cheaper models based on task type.
+Opus costs 3.5x Sonnet with no accuracy premium on most benchmarks. Use model-tier routing: premium model for orchestration, cheap/fast model for sub-agent tasks. One production harness ran 7K orchestrator tokens vs. 323K sub-agent tokens -- tier routing kept costs tractable.
 
 ### 7. Building on impermanent layers
 Heavy prompt chaining, external RAG pipelines, and human verification gates are candidates for model absorption within 18 months. Block cut 50-60% of agent plumbing by asking "will this still be needed when models 2x?" Safety infrastructure is the exception -- never simplify away security, permissions, or audit trails.
@@ -551,22 +702,34 @@ Heavy prompt chaining, external RAG pipelines, and human verification gates are 
 Every multi-agent architecture should document what happens if it underperforms: "collapse back to single agent" or "reduce to 2 agents" with specific triggers for when to make that call.
 
 ### 9. Framework-as-architecture (26 agents for a solo project)
-Full SDLC frameworks like BMAD (26 agents, 68 workflows) are powerful for team-scale projects but overkill for solo developers or small tasks. Match framework complexity to project complexity. The gstack governance layers add value but also add significant prompt overhead.
+Full SDLC frameworks like BMAD (26 agents, 68 workflows) are powerful for team-scale projects but overkill for solo developers or small tasks. Match framework complexity to project complexity.
 
-### 10. Premature harness engineering
-Building a specialized Python harness with phase gates, schema validation, and a state DB before the prompt-driven or generic-harness baseline has been measured. Symptoms: the team is two months into harness development before any agent has run end-to-end on real inputs; schemas are designed for hypothetical inputs the team hasn't seen yet; harness complexity is mistaken for harness quality. Real-world inputs rarely match clean schemas, and rigid validation breaks where flexible LLM judgment would have absorbed the variance. Also: under-100-run workflows almost never amortize the engineering cost of a specialized harness -- generic harness with conventions is the right zone for low-volume work. Decision rule: only commit to specialized harness when (a) generic-harness baseline has been measured and is insufficient, (b) the workflow will run >100 times, *and* (c) cost-of-failure justifies the brittleness tradeoff. Otherwise, stay one zone left on the spectrum.
+### 10. Supervision debt from missing human control points
+Designing multi-agent systems without defining where humans must observe, approve, edit, or cancel running work. AGUI is a control-surface specification, not a UI-rendering layer. Adding `human_control_points` to the boundary contract is a one-time decision that prevents compounding debt.
+
+### 11. Premature harness engineering
+Building a specialized Python harness with phase gates and schema validation before the prompt-driven or generic-harness baseline has been measured. Real-world inputs rarely match clean schemas; rigid validation breaks where flexible LLM judgment would have absorbed the variance. Under-100-run workflows almost never amortize the engineering cost. Decision rule: only commit to specialized harness when (a) generic baseline is measured and insufficient, (b) >100 runs, *and* (c) cost-of-failure justifies brittleness.
+
+### 12. Ignoring sub-agent wiring verification
+Sub-agents frequently complete their individual task but fail to integrate output with the rest of the system. The most common failure in sub-agent orchestration is "isolated islands" -- modules that build but are unreachable from the application's entry point. Run explicit wiring verification after each wave of sub-agent completion. Automated connectivity checks (is every new module reachable?) catch this before multiple waves compound the problem.
+
+### 13. Context rot from inline execution of large plans
+Choosing inline batch execution for a large plan (10+ tasks) defeats the context-isolation benefit of sub-agent dispatch. Context utilization beyond 40% shows noticeable accuracy degradation; beyond 60-80%, hallucination risk increases significantly. For large plans, use sub-agent-per-task execution or hybrid topology. The framework should warn when inline is selected for plans that will likely exceed context thresholds.
 
 ---
 
 ## Related Guides
 
-- **Architecture decisions -> execution patterns:** The topology and composition chosen here must be implemented with workflow engines, persistence, and observability. See *Agent Workflow and Execution* (G3b) for the production implementation of these architectural choices.
-- **Architecture decisions -> agent specifications:** The autonomy gradient and blast radius classification in *Writing Agent Specifications* (G1) determine whether a decision type justifies a separate agent.
-- **Model routing -> prompt resilience:** The model routing table in Step 5 is expanded with benchmark rationale in *Model-Resilient Prompt Engineering* (G8).
-- **Infrastructure tiers -> session persistence:** The persistence and workflow state infrastructure in Step 7 is detailed in *Session Persistence and Memory* (G7).
-- **Boundary contracts -> tool design:** Risk classification for agent boundaries maps to tool registry design in *Designing Agent Tools* (G5).
-- **Architecture evaluation -> testing:** Validating that architecture choices produce expected outcomes uses the frameworks in *Building Agent Evaluation Suites* (G4).
-- **Per-agent context scope -> context curation:** The "scope each agent's context to the minimum it needs" principle for multi-agent designs is detailed in *Managing Agent Context* (G2), particularly the sub-agent context package pattern (G2 Step 3f) and the atomic-session scoping defense (G2 Step 5 defense #6).
+- **Architecture decisions → execution patterns:** The topology and composition chosen here must be implemented with workflow engines, persistence, and observability. See *Agent Workflow and Execution* (G3b) for the production implementation of these architectural choices.
+- **Architecture decisions → agent specifications:** The autonomy gradient and blast radius classification in *Writing Agent Specifications* (G1) determine whether a decision type justifies a separate agent and where human control points belong in the boundary contract.
+- **Human control points → human-in-the-loop design:** The AGUI `human_control_points` contract field established here maps directly to approval gates and interrupt points in the execution workflow. See *Agent Workflow and Execution* (G3b) for runtime implementation of observe/approve/cancel control surfaces.
+- **Model routing → prompt resilience:** The model routing table in Step 5 is expanded with benchmark rationale in *Model-Resilient Prompt Engineering* (G8).
+- **Infrastructure tiers → session persistence:** The persistence and workflow state infrastructure in Step 7 is detailed in *Session Persistence and Memory* (G7).
+- **Boundary contracts → tool design:** Risk classification for agent boundaries maps to tool registry design in *Designing Agent Tools* (G5).
+- **Architecture evaluation → testing:** Validating that architecture choices produce expected outcomes uses the frameworks in *Building Agent Evaluation Suites* (G4).
+- **Per-agent context scope → context curation:** The "scope each agent's context to the minimum it needs" principle for multi-agent designs is detailed in *Managing Agent Context* (G2), particularly the sub-agent context package pattern and atomic-session scoping defense.
+- **Four-zone anatomy → agent design:** The four-zone agent framework (trigger/context/tools/output) links to individual agent identity and constitution design in *Agent Design Patterns* (G10).
+- **Harness evolution → agentic systems:** The prompt→context→harness engineering evolution in Step 8 connects to the broader system-design principles in *Building Agentic Systems* (G11).
 
 ---
 
@@ -581,24 +744,32 @@ Building a specialized Python harness with phase gates, schema validation, and a
 ### Invariants
 - Architecture decisions are justified by task characteristics (parallelizability, information flow, error sensitivity), not organizational structure or technology trends.
 - Single-agent is the default until empirical evidence justifies multi-agent.
-- Every agent boundary has an explicit contract validated at runtime.
-- Model selection is task-based, not provider-based or prestige-based.
+- Every agent boundary has an explicit contract validated at runtime, including `human_control_points` and uniform tool interface for sub-agent dispatch.
+- Every agent decomposes into four zones (trigger, context, tools, output/memory); zones are specified, not hidden.
+- Room scope (Pattern F) is defined by bounded-context characteristics, not by convenience or org-chart structure.
+- Model selection is task-based and tier-aware, not provider-based or prestige-based.
 - Infrastructure dependencies are classified as architectural bets or transitional shims.
 - Harness-determinism position (prompt-driven / generic / specialized) is a deliberate decision tied to an explicit reliability requirement, not a default.
-- Specialized-harness investments are classified as bets (with intended life across model generations) or shims (with planned removal trigger), so the decision is reviewable as model capability evolves.
+- Specialized-harness investments are classified as bets (with intended life) or shims (with planned removal trigger).
+- Execution topology (sub-agent-per-task / inline batch / hybrid) is a runtime parameter, not an architectural constant.
 
 ### Governance
 - Architecture decisions that affect system boundaries are documented as Design Decisions (DDs).
-- The agent count decision tree is re-evaluated when task scope changes significantly or model capabilities improve (new model releases, context window expansions).
-- Model routing tables are re-evaluated monthly given the compressed release cadence (5 launches in 23 days as of March 2026).
-- Infrastructure longevity audits are performed when new native protocols emerge (A2A, MCP updates, model-native capabilities).
+- The agent count decision tree is re-evaluated when task scope changes significantly or model capabilities improve.
+- Model routing tables are re-evaluated monthly given the compressed release cadence.
+- Infrastructure longevity audits are performed when new native protocols emerge.
 - This guide is owned by the Meta-System knowledge layer and updated when new orchestration findings are integrated.
 
 ### Recovery
 - If a multi-agent system produces worse results than expected: measure single-agent baseline. If single-agent exceeds 45%, collapse back to single agent and invest in improving it.
 - If coordination overhead is the bottleneck: check for missing contracts at agent boundaries. Information loss at undocumented boundaries is the most common cause.
-- If model costs are unexpectedly high: check for Opus overuse. Apply the Advisor-Executor pattern or route bulk work to cheaper models.
-- If the system fails to recover from crashes: implement workflow state separation and session persistence (see G3b, Steps 1-2).
-- If infrastructure feels fragile: run the four-question impermanence audit and the three-question lock-in assessment. Simplify layers that score poorly.
-- If a specialized harness is breaking on real-world inputs (rigid schemas rejecting valid variance, phase gates failing on edge cases the schema didn't anticipate): reconsider the spectrum position. The right zone may be one step left -- generic harness with conventions that flex where the LLM judgment is sound, plus phase-gating only on the highest-cost-of-failure transitions.
-- If specialized-harness scaffolding has been surpassed by model-native capability (a phase gate the model now handles correctly without it): retire that check rather than the whole harness. Keep the harness; shrink its surface.
+- If model costs are unexpectedly high: check for Opus overuse. Apply model-tier routing -- premium orchestrator, cheap sub-agents.
+- If the system fails to recover from crashes: implement workflow state separation and session persistence (see G3b).
+- If infrastructure feels fragile: run the four-question impermanence audit and the three-question lock-in assessment.
+- If a specialized harness is breaking on real-world inputs: reconsider the spectrum position. The right zone may be one step left -- generic harness with conventions that flex where LLM judgment is sound.
+- If specialized-harness scaffolding has been surpassed by model-native capability: retire that check rather than the whole harness. Keep the harness; shrink its surface.
+- If supervision debt is accumulating: audit boundary contracts for missing `human_control_points` definitions. Add AGUI control points at the highest-risk transitions first.
+- If room-based coordination (Pattern F) produces rooms that grow too large: split rooms at natural bounded-context seams.
+- If sub-agent wiring failures accumulate silently: add post-wave integration verification. Check that every new module is reachable from the application's entry point.
+- If context rot degrades inline execution quality: switch to sub-agent-per-task execution topology or introduce session checkpointing at phase boundaries.
+- If error-aware backtracking loops indefinitely: add retry limits and fall back to human escalation after N failed branches.

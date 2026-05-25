@@ -27,7 +27,7 @@ date_discovered: '2026-04-23'
 last_updated: '2026-04-23'
 pipeline_status: synthesized
 consumed_by:
-- managing-agent-context.md
+- defending-agent-context.md
 ---
 
 # Model-Native Context Window Awareness

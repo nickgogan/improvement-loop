@@ -16,7 +16,7 @@ sources:
 - march-18-agent-memory-architecture-research.md
 proposals: null
 date_discovered: '2026-03-18'
-last_updated: '2026-04-27'
+last_updated: '2026-05-24'
 related_findings:
 - file: memory-cross-layer-promotion-governance.md
   rel: enables
@@ -40,8 +40,11 @@ related_findings:
   rel: same-problem
 - file: ace-agentic-context-engineering-rag-based.md
   rel: same-problem
-pipeline_status: raw
-consumed_by: []
+- file: bounded-tiered-memory-inference-driven-curation.md
+  rel: same-problem
+pipeline_status: "synthesized"
+consumed_by:
+  - "structuring-agent-context.md"
 ---
 # Agent Memory Architecture (Multi-Agent, Layered)
 

@@ -16,6 +16,8 @@ related_findings:
   rel: extends
 - file: cross-model-verification-for-bug-finding.md
   rel: same-problem
+- file: review-triggered-remediation-dispatch.md
+  rel: enables
 proposals: null
 date_discovered: '2026-04-08'
 last_updated: '2026-04-19'

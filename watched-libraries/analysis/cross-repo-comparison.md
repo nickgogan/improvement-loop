@@ -6,8 +6,8 @@ category: "upstream-tracking"
 target_system:
   - "cross-system"
 stage: "active"
-created: "2026-04-08"
-updated: "2026-04-20"
+created: "2026-04-09"
+updated: "2026-05-25"
 author: "improvement-loop"
 source_dd:
   - "DD-45"
@@ -32,493 +32,475 @@ repos_compared:
   - "sandbox"
   - "deer-flow"
   - "ob1"
+  - "memongo"
+  - "mempalace"
+  - "supermemory"
+  - "adk-python"
+  - "autogpt"
+  - "autogen"
+  - "crewai"
+  - "letta"
+  - "langflow"
+  - "deep-tutor"
+  - "hermes-agent"
+  - "pi-agent"
+  - "taches-cc-resources"
+  - "warp"
 ---
 
 # Cross-Repo Structural Comparison
 
-Fifteen agentic tooling repos compared across 6 analysis dimensions. Each repo was analyzed at a specific version using the `/repo-analyzer` skill. This document synthesizes patterns, divergences, and findings candidates across all fourteen.
-
-**Repos analyzed:**
-
-| Repo | Version | Spectrum | Type |
-|------|---------|----------|------|
-| GSD | v1.33.0 | wholesale | Workflow framework |
-| Superpowers | v5.0.7 | thin-wrapper | Skill pack (plugin) |
-| BMAD Method | v6.2.2 | cherry-pick | SDLC framework |
-| OpenClaw | v2026.4.5 | cherry-pick | Agent platform (product) |
-| Paperclip | v2026.403.0 | cherry-pick | Agent company (product) |
-| gstack | v0.15.16.0 | cherry-pick | Skill pack (with tooling) |
-| mem0 | v1.0.11 | evaluating | Memory service (library) |
-| Archon | v0.3.2 | cherry-pick | Workflow platform (multi-adapter) |
-| n8n | v2.16.0 | cherry-pick | Workflow automation platform |
-| LangGraph | v1.1.6 | cherry-pick | Agent orchestration framework |
-| Beads | v1.0.2 | cherry-pick | Multi-agent issue tracker (CLI) |
-| OpenViking | latest | cherry-pick | Context database for agents |
-| AIO Sandbox | v1.0.0.150 | evaluating | Agent execution sandbox |
-| DeerFlow | v2.0 | cherry-pick | Super agent harness |
-| OB1 (Open Brain) | latest | cherry-pick | Personal OS platform (community) |
+## Metadata
+- Repos compared: 29
+- Date: 2026-05-25
+- Previous comparison: 2026-04-20 (15 repos)
 
 ---
 
-## 1. Comparison Matrix: Structural Scale
+## 1. Comparison Matrix
 
-| Metric | GSD | SP | BMAD | OC | PC | gs | m0 | Ar | n8n | LG | Beads | OV | Sandbox | DF | OB1 |
-|--------|-----|-----|------|-----|-----|-----|-----|-----|------|-----|-------|-----|---------|-----|-----|
-| Total files | 600 | 142 | 559 | 13K | 1.5K | 413 | 1.9K | 745 | 17K | 531 | 1,545 | 1,941 | 1,036 | 891 | 477 |
-| MD files | 341 | 75 | 418 | 636 | 184 | 90 | 441 | 271 | 220 | 16 | 250 | 176 | 51 | 117 | 142 |
-| MD % | 56.8 | 52.8 | 74.8 | 4.8 | 12.6 | 21.8 | 22.9 | 36.4 | 1.3 | 3.0 | 16.2 | 9.1 | 4.9 | 13.1 | 29.8 |
-| MD:code | 1.64 | 9.4 | 8.5 | 0.05 | 0.18 | 0.49 | 0.08 | 0.78 | 0.02 | 0.05 | 0.24 | 0.13 | 0.07 | 0.20 | 1.87 |
-| Max depth | 5 | 4 | 7 | 12 | 7 | 4 | 8 | 8 | 14 | 9 | 5 | 7 | 9 | 10 | 8 |
-| Primary lang | MD+CJS | MD+Shell | MD+JS | TS | TS | TS | Py | TS+MD | TS+Vue | Py | Go | Py+Rust+C++ | TS+Py | Py+TS | MD+TS |
-| Stars | - | - | - | - | - | - | - | - | - | - | 20.9k | 22.6k | 4.3k | 62.7k | - |
+### Structural Scale
 
-### Four architectural classes (expanded from three)
+Repos grouped by scale to manage table width:
 
-**Markdown-dominant (MD IS the codebase):** GSD (1.64:1), Superpowers (9.4:1), BMAD (8.5:1), OB1 (1.87:1). Prompt-native systems where markdown files define agent behavior. OB1 joins this class — 142 of 477 files are markdown, and skills/recipes/extensions are defined primarily through markdown.
+**Large-scale (3000+ files)**
 
-**Markdown-parity (MD + code co-primary):** Archon (0.78:1), gstack (0.49:1). Markdown is a first-class runtime artifact alongside substantial code.
+| Metric | n8n | OpenClaw | Langflow | Warp | AutoGPT | CrewAI |
+|--------|-----|----------|----------|------|---------|--------|
+| Total files | 17,158 | 13,216 | 6,293 | 5,317 | 3,941 | 3,233 |
+| MD files | 220 | 636 | ~50 | ~15 | 347 | 96 |
+| Code files | 12,536 | 11,328 | 4,205 | 3,299 | 2,889 | 1,188 |
+| MD:code ratio | 0.02 | 0.05 | 0.01 | <0.01 | 0.12 | 0.08 |
+| Max depth | 14 | 12 | ~10 | ~8 | ~10 | ~8 |
+| Primary lang | TS+Vue | TS | Py+TS | Rust | Py+TS | Py |
 
-**Code-dominant with rich context files:** Beads (0.24:1), DeerFlow (0.20:1), Paperclip (0.18:1). Substantial code with significant markdown context investment (CLAUDE.md, AGENTS.md, skills, agent definitions).
+**Medium-scale (1000-3000 files)**
 
-**Code-dominant (MD supports the codebase):** OpenClaw (0.05:1), mem0 (0.08:1), OpenViking (0.13:1), Sandbox (0.07:1), n8n (0.02:1), LangGraph (0.05:1). Production software where markdown is documentation and configuration.
+| Metric | ADK-Python | OpenViking | mem0 | AutoGen | Beads | Paperclip | Letta |
+|--------|------------|------------|------|---------|-------|-----------|-------|
+| Total files | 2,049 | 1,941 | 1,927 | 1,837 | 1,545 | 1,462 | ~1,185 |
+| MD files | 205 | 176 | 441 | 162 | 250 | 184 | ~13 |
+| Code files | 1,497 | 1,386 | 855 | 1,168 | 1,061 | 1,024 | ~878 |
+| MD:code ratio | 0.14 | 0.13 | 0.52 | 0.14 | 0.24 | 0.18 | 0.01 |
+| Max depth | ~6 | 7 | 8 | ~8 | 5 | 7 | ~6 |
+| Primary lang | Py | Py+Rust+C++ | Py+TS | Py+C# | Go | TS | Py |
 
-**New insight from batch 3:** Beads and DeerFlow occupy a middle ground — they're production Go/Python codebases but with deeply invested markdown context systems (Beads: 250 MD files including agent definitions, commands, skills, ADRs; DeerFlow: 117 MD files including 16 public skills with agent personas). This "code-dominant with rich context" class bridges the prompt-native and code-dominant worlds.
+**Small-to-medium (100-1000 files)**
 
----
+| Metric | AIO Sandbox | DeerFlow | Supermemory | Archon | GSD | BMAD | OB1 | gstack |
+|--------|-------------|----------|-------------|--------|-----|------|-----|--------|
+| Total files | 1,036 | 891 | 867 | 745 | 600 | 559 | 477 | 413 |
+| MD files | 51 | 117 | 28 | 271 | 341 | 418 | 142 | 90 |
+| Code files | 769 | 597 | 392 | 348 | 160 | 47 | 76 | 175 |
+| MD:code ratio | 0.07 | 0.20 | 0.07 | 0.78 | 1.64 | 8.5 | 1.87 | 0.49 |
+| Max depth | 9 | 10 | 17 | 8 | 5 | 7 | 8 | 4 |
+| Primary lang | TS+Py | Py+TS | TS | TS+MD | MD+CJS | MD+JS | MD+TS | TS |
 
-## 2. Comparison Matrix: Context Loading Strategies
+**Small / Compact (under 500 files or compact scope)**
 
-| Repo | Mechanism | Model | What loads at startup | How additional context arrives |
-|------|-----------|-------|----------------------|-------------------------------|
-| **GSD** | Chain-loading via `@`-references | Push | Command → workflow → references (pre-assembled chain) | Agent prompts include `<files_to_read>` blocks |
-| **Superpowers** | Hook-injected bootstrap | Pull | SessionStart hook injects ONE skill (`using-superpowers`) | Agent self-activates skills on demand |
-| **BMAD** | Config-driven 3-level progressive disclosure | Hybrid | L1: skill metadata (~100 tokens each). L2: skill body on activation. L3: step files on demand | Step files loaded just-in-time |
-| **OpenClaw** | Distributed boundary guides | Cascade | Root AGENTS.md + subsystem AGENTS.md pairs | Skills loaded on demand; workspace templates |
-| **Paperclip** | Env-var injection + API | Pull | Onboarding assets (SOUL.md, AGENTS.md, HEARTBEAT.md) | PAPERCLIP_TASK_ID, PAPERCLIP_WAKE_REASON env vars |
-| **gstack** | Shell preamble | Push | ~80-line bash preamble on every skill invocation | ETHOS.md injected; learnings searched at start |
-| **mem0** | Library API | None | Root AGENTS.md for contributors only | Not applicable |
-| **Archon** | Three-tier layered + path-scoped rules | Push | CLAUDE.md (780 lines) + 11 domain rules auto-loaded by path | Agents injected when spawned; skills on trigger |
-| **n8n** | Chain-loading with package-scoped distribution | Hybrid | Root CLAUDE.md → `@AGENTS.md` + package-level CLAUDE.md → `@AGENTS.md` | Plugin namespace provides agents, skills, commands |
-| **LangGraph** | Minimal dual-file | None | CLAUDE.md and AGENTS.md at root (~58 lines) | No additional context loading |
-| **Beads** | Layered progressive-disclosure + live CLI injection | Hybrid | Root CLAUDE.md + AGENTS.md → AGENT_INSTRUCTIONS.md + SessionStart hook runs `bd prime` | SKILL.md → 14 resource files loaded on demand |
-| **OpenViking** | Filesystem-as-context-database (L0/L1/L2) | Pull | Workspace files (SOUL/TOOLS/USER/MEMORY/HEARTBEAT) loaded by ContextBuilder | UserPromptSubmit hook auto-recalls memories; Stop hook auto-captures |
-| **AIO Sandbox** | None (infrastructure) | N/A | No context files in repo | External skill mounting via `AIO_SKILLS_PATH` |
-| **DeerFlow** | Demand-driven injection with XML tags | Hybrid | `apply_prompt_template()` injects SOUL.md, memory, skill catalogue (names only) | Agent calls `read_file` for full SKILL.md; `<memory>` tags |
-| **OB1** | Minimal root + on-demand skill loading | Pull | CLAUDE.md (~50 lines: structure + guard rails only) | Skills self-contained; loaded when triggered by user prompt |
+| Metric | Memongo | MemPalace | Superpowers | TACHES | DeepTutor | Hermes | Pi Agent |
+|--------|---------|-----------|-------------|--------|-----------|--------|----------|
+| Total files | 363 | 260 | 142 | ~100 | ~100 | ~80 | ~150 |
+| MD files | 60 | 66 | 75 | ~45 | ~8 | ~5 | ~5 |
+| Code files | 237 | 116 | 37 | ~15 | ~80 | ~60 | ~130 |
+| MD:code ratio | 0.25 | 0.57 | 9.4 | 3.0 | 0.10 | 0.08 | 0.04 |
+| Max depth | ~5 | 4 | 4 | 4 | ~4 | ~3 | ~5 |
+| Primary lang | TS | Py | MD+Shell | MD | Py | Py | TS |
 
-### Context loading taxonomy (updated with 15 repos)
+### Five Architectural Classes (expanded from four)
 
-Eight strategies across 15 repos:
+1. **Markdown-dominant (MD IS the codebase):** GSD (1.64:1), Superpowers (9.4:1), BMAD (8.5:1), OB1 (1.87:1), TACHES (3.0:1). Prompt-native systems where markdown files define agent behavior.
 
-1. **File-chain assembly** (GSD, BMAD, n8n): Context pre-assembled from file references. GSD uses `@`-references; BMAD uses step-file sequential loading; n8n uses CLAUDE.md → `@AGENTS.md` chain-loaders per package.
+2. **Markdown-parity (MD + code co-primary):** Archon (0.78:1), gstack (0.49:1), MemPalace (0.57:1), mem0 (0.52:1). Markdown is a first-class runtime artifact alongside substantial code.
 
-2. **Hook/preamble injection** (Superpowers, gstack, Beads): Context injected via code execution at session/skill start. Superpowers runs a bash hook; gstack runs a bash preamble; Beads runs `bd prime` via SessionStart hook to generate CLI-aware context from the live binary.
+3. **Code-dominant with rich context layer:** Beads (0.24:1), DeerFlow (0.20:1), Paperclip (0.18:1), Memongo (0.25:1), ADK-Python (0.14:1), AutoGen (0.14:1), OpenViking (0.13:1), AutoGPT (0.12:1). Substantial code with significant markdown context investment.
 
-3. **Layered auto-loading** (Archon): Three tiers — massive global CLAUDE.md, domain-scoped rules, and injected specialist agents/skills.
+4. **Code-dominant (MD is documentation):** n8n (0.02:1), OpenClaw (0.05:1), LangGraph (0.05:1), CrewAI (0.08:1), Sandbox (0.07:1), Supermemory (0.07:1), Langflow (0.01:1), Letta (0.01:1), DeepTutor (0.10:1), Hermes (0.08:1), Pi Agent (0.04:1), Warp (<0.01:1). Production software where markdown supports the codebase.
 
-4. **Distributed boundary guides** (OpenClaw): Context scattered across the repo via AGENTS.md/CLAUDE.md symlink pairs at subsystem boundaries.
-
-5. **Runtime context injection** (Paperclip): Context injected via environment variables and API calls at execution time.
-
-6. **Progressive skill loading** (DeerFlow): Skill catalogue (names + descriptions) at boot, full SKILL.md on demand via `read_file`. SOUL.md and memory injected as XML-tagged sections.
-
-7. **Tiered content loading** (OpenViking): Three representation tiers per file/directory (L0 abstract ~100 tokens, L1 overview ~2k, L2 full content). Retrieval traverses tiers progressively.
-
-8. **Minimal root + on-demand** (OB1): Ultra-compact CLAUDE.md (~50 lines) with guard rails only. No persona, no identity, no chain-loading. Individual skills are fully self-contained and loaded on-demand by the AI client's skill system. The `n-agentic-harnesses` skill uses conditional reference loading (reads 2-3 files depending on classified mode) — a form of per-skill context assembly.
-
-9. **Minimal/None** (mem0, LangGraph, AIO Sandbox): Little to no context engineering. These are libraries/frameworks/infrastructure.
-
-**New insight:** Beads' `bd prime` is a novel variant — context generated dynamically from the installed CLI binary, not from static files. This ensures context always matches the current version. OpenViking's L0/L1/L2 is the most sophisticated retrieval-based approach. DeerFlow's XML-tagged injection (`<soul>`, `<memory>`, `<skill>`) provides clean semantic boundaries for different context types.
-
-**Push vs. pull spectrum (updated for 15 repos):**
-
-```
-Push (harness)  ◄─────────────────────────────────────────────────────────────────►  Pull (agent)
- GSD    Archon  gstack  BMAD   n8n    Beads    DeerFlow  OpenClaw  Paperclip  OV   SP    OB1
- (chain)(layered)(preamble)(config)(chain+  (CLI      (XML      (cascade)  (env-var)(hook)(self- (minimal
-                                    plugin)  inject)    inject)                      recall)activate)root)
-```
-
-**OB1 sits at the extreme pull end** — even further than Superpowers. Superpowers injects a bootstrap hook at session start; OB1 loads nothing beyond a 50-line CLAUDE.md. Skills are entirely self-contained and only loaded when triggered.
+5. **Compiled product (Rust/C++ dominant):** Warp (3,299 Rust files), OpenViking (250 C++ headers). Native performance-critical codebases with agent context as a thin layer on top.
 
 ---
 
-## 3. Comparison Matrix: Orchestration
+### Context File Patterns
 
-| Repo | Pattern | Agent count | Coordination | Parallelism |
-|------|---------|-------------|-------------|-------------|
-| **mem0** | Service | 0 | N/A | Async variants |
-| **LangGraph** | Framework (BSP) | 0 (primitives) | Typed channels | Superstep parallelism; Send fan-out |
-| **gstack** | Single-agent, role-switching | 1 + specialists | Specialist dispatch | Review Army (7 parallel) |
-| **Superpowers** | Orchestrator + disposable workers | 1 + 4 subagent types | Main holds state | Per-task subagents |
-| **BMAD** | User-mediated hub | 4 personas + sub-agents | Skill invocation chains | Party Mode (2-4 parallel) |
-| **n8n** | Sequential handoff | 2 agents + plan | File-based (plans, specs) + Linear MCP | Turbo build only |
-| **GSD** | Hub-and-spoke | 24 named agents | Workflow orchestrators | 4x researchers; wave-based |
-| **Archon** | Hub-and-spoke + DAG | 13 specialists + router | DAG `$nodeId.output` variables; worktrees | Topological layer parallelism |
-| **OpenClaw** | Gateway-mediated | Multi-agent (isolated) | Gateway routes; ACP spawn | Multi-agent routing |
-| **Paperclip** | Hierarchical org chart | CEO + reports | API-mediated (issues, comments) | Multi-agent heartbeats |
-| **Beads** | Database-as-shared-memory | N agents (dynamic) | Dolt DB read/write; hash IDs | Fan-out via epic sub-issues; concurrent writers |
-| **OpenViking** | Infrastructure (shared memory) | N agents (consumers) | Namespace isolation (`viking://`) | Parallel vector search |
-| **AIO Sandbox** | Infrastructure (execution env) | N agents (consumers) | Session UUIDs | Concurrent sessions |
-| **DeerFlow** | Orchestrator-worker (batched) | Lead + subagents + ACP | `task` tool calls; ThreadPoolExecutor | 2-4 concurrent subagents; middleware-capped |
-| **OB1** | Hub-and-spoke (DB as hub) | 1 (user's AI client) | Supabase DB (pgvector) | Background evaluators (up to 5) |
+| Repo | Context file count | Primary mechanism | Layering strategy | Key pattern |
+|------|-------------------|-------------------|-------------------|-------------|
+| GSD | ~160 | Chain-loading (`@`-refs) | Command → workflow → agent | Push (pre-assembled chain) |
+| Superpowers | ~37 | Hook-injected bootstrap | SessionStart → self-activate | Pull (agent decides) |
+| BMAD | ~420 | Config-driven progressive | L1 metadata → L2 body → L3 step files | Hybrid (config-driven) |
+| OpenClaw | ~24 pairs | Distributed boundary guides | Root → subsystem AGENTS.md | Cascade (symlink pairs) |
+| Paperclip | ~14 | Env-var + API injection | SOUL.md + wake payload | Pull (API-driven) |
+| gstack | ~41 | Shell preamble + templates | ETHOS.md → skill-specific | Push (shell execution) |
+| mem0 | ~9 | Library API | Root AGENTS.md only | Minimal |
+| Archon | ~67 | Three-tier layered | CLAUDE.md → rules → agents/skills | Push (auto-loaded) |
+| n8n | ~33 | Chain-loading per package | CLAUDE.md → `@AGENTS.md` + plugins | Hybrid (chain + plugin) |
+| LangGraph | 2 | Dual-file identical | CLAUDE.md = AGENTS.md (58 lines) | Minimal |
+| Beads | ~30 | CLI injection + progressive | `bd prime` → SKILL.md → 14 resources | Hybrid (live CLI) |
+| OpenViking | ~10 | Filesystem-as-context | L0/L1/L2 + workspace files | Pull (tiered retrieval) |
+| AIO Sandbox | 0 | External skill mount | `AIO_SKILLS_PATH` env var | None (infrastructure) |
+| DeerFlow | ~60 | Demand-driven XML injection | SOUL.md + skill catalogue → full on demand | Hybrid (XML-tagged) |
+| OB1 | ~27 | Minimal root + on-demand | CLAUDE.md (50 lines) → skills | Pull (self-contained skills) |
+| Memongo | ~5 | Capability x layer matrix | CLAUDE.md + AGENTS.md | Minimal + structured |
+| MemPalace | ~10 | Multi-harness plugin | .claude-plugin/ + .codex-plugin/ | Push (hook-injected) |
+| Supermemory | ~5 | SKILL-as-package-export | SKILL.md + references/ | Minimal |
+| **ADK-Python** | ~140 | Skills + llms.txt | AGENTS.md → .agents/skills/ (7) | Push (skill-routed) |
+| **AutoGPT** | ~21 | Hierarchical CLAUDE.md | Root → platform → backend → subsystem | Push (scope-graduated) |
+| **AutoGen** | ~5 | .github/copilot-instructions | Design docs in docs/design/ | Minimal |
+| **CrewAI** | ~2 | AGENTS.md template | Scaffolded by `crewai create` | Push (version-freshness protocol) |
+| **Letta** | ~15 | System prompt templates | Prompt generator assembles sections | Push (template-composed) |
+| **Langflow** | ~15 | AGENTS.md + docs/agents/ | Topic-specific sub-docs + skills | Push (layered sub-docs) |
+| **DeepTutor** | ~3 | AGENTS.md briefing | Architecture + tool table + CLI | Minimal |
+| **Hermes** | ~5 | Layered prompt assembler | Identity → rules → skills → memory | Push (cache-marker layered) |
+| **Pi Agent** | ~2 | buildSystemPrompt() | Project context files → skills | Push (code-assembled) |
+| **TACHES** | ~45 | Command-as-proxy | Commands → skills → references | Push (thin wrappers) |
+| **Warp** | ~15 | WARP.md + skills | Common-skills lock + local overrides | Push (core/specialized) |
 
-### Orchestration spectrum (updated for 15 repos)
+### Context Loading Taxonomy (11 strategies across 29 repos)
 
-```
-Manual                                                                                           Autonomous
-  │                                                                                                 │
-  OB1   BMAD    gstack   n8n      Superpowers  GSD      Archon   OpenClaw  DeerFlow  Beads  Paperclip
-  (user  (user   (user    (human   (agent       (auto    (AI      (gateway  (lead     (db    (heartbeat
-   +DB)   picks)  picks)   gates)   self-acts)   pipeline) routes)  routes)  dispatches) coords) CEO)
-```
-
-**OB1 is the least orchestrated system with agents.** A single AI client interacts with Supabase via MCP. Background evaluator dispatch (Panning for Gold, up to 5) is the only multi-agent pattern, and it's file-coordinated within a single skill.
-
-**New orchestration patterns from batch 3:**
-
-**Beads introduces database-as-shared-memory coordination.** Unlike file-based (GSD/BMAD) or API-based (Paperclip) coordination, agents coordinate by reading and writing to a shared Dolt database. Hash-based IDs prevent collision without coordination overhead. This is the first database-centric coordination model in the registry.
-
-**DeerFlow introduces middleware-capped batched parallel dispatch.** The lead agent dispatches 2-4 concurrent `task` calls per model response, hard-capped by `SubagentLimitMiddleware`. Subagents are non-recursive, non-interactive, non-presenting — the strictest containment in the registry.
-
-**Three coordination paradigms now clearly emerge:**
-- **File-based** (GSD, BMAD, Superpowers, gstack, n8n): Artifacts as handoff
-- **Database/API-based** (Beads, Paperclip, OpenClaw, Archon): Structured state shared via DB/API
-- **In-process** (DeerFlow, LangGraph): State passed through function calls / graph channels
-
----
-
-## 4. Comparison Matrix: Governance
-
-| Repo | Constitution? | Hard enforcement | Soft enforcement | Budget/resource | Audit |
-|------|--------------|-----------------|-----------------|----------------|-------|
-| **GSD** | `.clinerules` | Tool allowlists; 4-gate taxonomy; revision caps | Scope guardrails; anti-patterns | Model profiles | STATE.md + git |
-| **Superpowers** | SKILL.md | `<HARD-GATE>` XML; Iron Laws | Rationalization prevention | None | Git |
-| **BMAD** | AGENTS.md | 14 deterministic validators | 13 inference validators | None | Artifacts |
-| **OpenClaw** | Root AGENTS.md | Plugin SDK boundary; drift detection (SHA-256) | Subsystem boundary guides | Configurable sandboxing | Activity logs |
-| **Paperclip** | CEO AGENTS.md | Atomic checkout (409); budget hard-stop; approval gates | Chain of command; definition of done | Budget 80/100% | X-Paperclip-Run-Id |
-| **gstack** | ETHOS.md | Freeze/guard; CI validation; E2E evals | ETHOS principles; specialist guides | None | Session markers |
-| **mem0** | Root AGENTS.md | Provider pattern; pre-commit hooks | "Do NOT" list | None | Git |
-| **Archon** | CLAUDE.md (780 lines) | Zod validation; per-node tool allow/deny; hooks | Engineering principles | None | Immutable sessions DB |
-| **n8n** | Root AGENTS.md | ESLint, Biome, strict TS, janitor | Security fix hygiene | None | Git |
-| **LangGraph** | CLAUDE.md | Serialization allowlist; typed channels; conformance tests | Formatting rules | None | Checkpoints |
-| **Beads** | AGENTS.md + AGENT_INSTRUCTIONS.md | Pre-commit hooks; `bd` CLI constraints; gate system | Repetition-as-enforcement (3x) | None | Dolt version history |
-| **OpenViking** | None (infra) | Path locks + RBAC + tenancy isolation; merge_op immutability | Anti-prompt-injection in extraction prompts | None | Transaction redo log |
-| **AIO Sandbox** | None (infra) | Resource caps (Docker); JWT auth (optional) | None | mem: 8g, cpu: 4 | None |
-| **DeerFlow** | None | Bash audit (regex block/warn); guardrails system; subagent containment; loop detection; skill security scanner | Middleware stack ordering | None | JSONL per skill |
-| **OB1** | CLAUDE.md | CI: 15 automated rules (structure, secrets, SQL, scope, links) | LLM admin skill (security deep scan, mission fit, naming) | None | Git + CI logs |
-
-### Six governance philosophies (expanded from five)
-
-1. **Structural enforcement** (GSD, BMAD, OpenClaw, Archon, n8n, LangGraph): Architecture-encoded — tool allowlists, validators, CI checks, typed channels.
-
-2. **Psychological enforcement** (Superpowers): Persuasion-encoded — rationalization prevention, Red Flags, Iron Laws.
-
-3. **Economic enforcement** (Paperclip): Resource-encoded — budget hard-stops, atomic checkout, approval gates.
-
-4. **Specification-as-governance** (LangGraph, n8n): Contract-encoded — conformance tests, spec-driven development.
-
-5. **Middleware-as-enforcement** (DeerFlow): Pipeline-encoded — composable, ordered middleware layers intercept every tool call and model response. 12 layers from error handling through loop detection. Fail-closed defaults. Most sophisticated enforcement pipeline in the registry.
-
-6. **Two-layer split enforcement** (OB1): Deterministic CI layer (15 automated rules that block PRs) + LLM judgment layer (Claude Code admin skill for security deep scan, mission fit, naming). Neither layer alone is sufficient. CI catches mechanical issues instantly; LLM handles judgment that requires understanding. First repo to explicitly separate "what machines check" from "what AI judges" in governance.
-
-**New governance patterns from batch 3:**
-
-- **Repetition-as-enforcement** (Beads): Critical constraints deliberately repeated across 3+ files. Not duplication debt — conscious design choice to ensure coverage regardless of which file an agent reads.
-- **Merge-operation immutability** (OpenViking): Schema-level `merge_op: immutable` on identity fields prevents overwriting. Governance at the data schema level, not the prompt level.
-- **Skill security scanner** (DeerFlow): LLM-based scanner classifies new/modified skills as allow/warn/block. Fail-closed on model failure. First automated skill vetting in the registry.
-- **Two-tier command audit** (DeerFlow): Regex-pattern auditing with severity levels — high-risk (BLOCK) vs medium-risk (WARN + execute). More granular than binary allow/deny.
+1. **File-chain assembly** (GSD, BMAD, n8n, TACHES): Context pre-assembled from file references.
+2. **Hook/preamble injection** (Superpowers, gstack, Beads, MemPalace): Context injected via code execution at session start.
+3. **Layered auto-loading** (Archon, AutoGPT, Langflow): Scope-graduated context per directory level.
+4. **Distributed boundary guides** (OpenClaw): AGENTS.md/CLAUDE.md pairs at subsystem boundaries.
+5. **Runtime context injection** (Paperclip): Env vars and API calls at execution time.
+6. **Progressive skill loading** (DeerFlow, ADK-Python): Skill catalogue at boot, full content on demand.
+7. **Tiered content loading** (OpenViking): L0/L1/L2 representation tiers per file.
+8. **Minimal root + on-demand** (OB1, DeepTutor, AutoGen, LangGraph, Supermemory, Memongo): Ultra-compact root; skills self-contained.
+9. **Template-composed prompt assembly** (Letta, Hermes, Pi Agent, CrewAI): System prompt built programmatically from template sections.
+10. **Core/specialized skill inheritance** (Warp): Lock file + common skills + local overrides.
+11. **Dual-audience `@`-pointer pattern** (AutoGPT, n8n, CrewAI): CLAUDE.md points to AGENTS.md for cross-tool compatibility.
 
 ---
 
-## 5. Comparison Matrix: Agent Design
+### Workflow Comparison
 
-| Repo | Identity pattern | Memory system | Execution model |
-|------|-----------------|---------------|-----------------|
-| **GSD** | YAML + XML sections | STATE.md + git | Spawned per-task |
-| **Superpowers** | SKILL.md instructions | Context window only | Self-activated |
-| **BMAD** | Persona block (named) | Config + artifacts | User-activated, persona persists |
-| **OpenClaw** | 6-file workspace taxonomy | MEMORY.md + daily notes + Dreaming | Continuous agent loop |
-| **Paperclip** | SOUL.md + AGENTS.md + HEARTBEAT.md | PARA + knowledge graph + tacit | Heartbeat cycle |
-| **gstack** | Template-generated SKILL.md | Cross-session learnings (JSONL) | User-invoked |
-| **mem0** | No agent identity | Triple storage (vector + graph + SQLite) | Library API |
-| **Archon** | Frontmatter schema (name, model, tools, hooks) | Immutable sessions DB | Spawned by DAG nodes |
-| **n8n** | Plugin-namespaced + package-scoped | Plans (gitignored) + specs (committed) | Command-triggered |
-| **LangGraph** | Framework primitives | Checkpoints + BaseStore | Graph execution (BSP) |
-| **Beads** | Agent bead (state machine) + role bead | Dolt DB (issue fields persist through compaction) | Autonomous task completion |
-| **OpenViking** | SOUL/TOOLS/USER/MEMORY/HEARTBEAT workspace files | L0/L1/L2 tiered retrieval + session archives | Continuous (ContextBuilder) |
-| **AIO Sandbox** | None (infrastructure) | None (consumer-managed) | Container lifecycle |
-| **DeerFlow** | SOUL.md in `<soul>` tags + 12-middleware stack | MemoryMiddleware → async summarization | LangGraph agent loop |
-| **OB1** | Skill template (frontmatter + Problem/Trigger/Process/Output/Notes) | Supabase (pgvector) — shared brain | User-invoked skills; background evaluators |
-
-### Identity spectrum (expanded for 15 repos)
-
-```
-No identity        Role-based           Self-improving         State machine          Full identity
-   │                  │                     │                     │                      │
-  mem0, LG,        GSD, gstack,         OB1 (lessons log      Beads (formal         OpenClaw (SOUL.md,
-  Sandbox           Archon, n8n          + self-modification)  FSM + Witness)        Dreaming, daily notes)
-  (service/         (functional                                                      Paperclip (SOUL.md,
-   framework/       specialists)         DeerFlow (SOUL.md     BMAD, SP              PARA, voice/tone)
-   infra)                                + middleware stack)    (persona-based)       OpenViking (5-file
-                                                               workspace taxonomy)
-```
-
-**Beads introduces the most formal agent lifecycle.** Agent beads are first-class issue types with a state machine (idle→spawning→running→done/stuck/dead/stopped) and an external Witness monitor. This is the only repo with a named, external liveness monitor that can declare agents dead.
-
-**OpenViking has the richest workspace taxonomy.** Five canonical files (SOUL.md, TOOLS.md, USER.md, MEMORY.md, HEARTBEAT.md) define agent state across identity, capabilities, user context, persistent memory, and periodic tasks. This is the most structured "who is this agent?" specification in the registry.
-
-### Memory architecture comparison (expanded for 14 repos)
-
-| Repo | Persistence | Structure | Consolidation | Scope |
-|------|-------------|-----------|---------------|-------|
-| GSD | STATE.md (session) | Flat file | None | Per-project |
-| Superpowers | None | Context window | None | Per-session |
-| BMAD | Config + artifacts | Flat file | Distillator | Per-project |
-| OpenClaw | MEMORY.md + daily notes | Flat files | Dreaming (Light→Deep→REM) | Per-agent |
-| Paperclip | PARA + knowledge graph | Graph + daily notes + tacit | Weekly synthesis; decay | Per-agent, company |
-| gstack | Learnings JSONL | Append-only log | `/learn` skill | Per-project |
-| mem0 | Vector + Graph + SQLite | Triple storage | Auto LLM extraction | Scoped (user/agent/run) |
-| Archon | SQLite/PostgreSQL | Relational tables | Immutable sessions | Per-conversation |
-| n8n | Plans + specs | Flat files + Linear MCP | None | Per-ticket/feature |
-| LangGraph | Checkpoints + BaseStore | Typed state + key-value | None built-in | Per-execution |
-| Beads | Dolt (SQL + Git) | Relational + versioned | Semantic memory decay | Per-project, cross-repo |
-| OpenViking | L0/L1/L2 abstracts + session archives | Tiered retrieval + typed memories | Two-threshold compaction + auto-extraction | Per-account × user × agent |
-| AIO Sandbox | None | None | None | N/A |
-| DeerFlow | Per-thread/agent store | Summarized conversations | MemoryMiddleware → async updater | Per-thread |
-| OB1 | Supabase (pgvector) | `thoughts` table + vector embeddings | None built-in | Per-user (shared across all AI clients) |
-
-**Memory architecture now spans 6 paradigms:**
-1. **File-based** (GSD, Superpowers, BMAD, gstack, n8n): Flat files or JSONL, git-backed
-2. **Structured database** (Beads: Dolt, Archon: SQLite/PostgreSQL): SQL with version control
-3. **Triple storage** (mem0): Vector + graph + relational, auto-extracted
-4. **Tiered retrieval** (OpenViking): L0/L1/L2 progressive loading with session archiving
-5. **Graph state** (LangGraph): Typed channels with checkpoint-based time-travel
-6. **Shared brain** (OB1): Single Supabase DB with pgvector, accessed by any AI client via MCP. No consolidation — raw `thoughts` with embeddings. Cross-client memory sharing is the primary design goal, not sophistication of storage.
-
-Beads' Dolt memory is unique: SQL queryability + Git-like version control + cell-level merge = agents can use the database as both working memory and coordination substrate. OpenViking's tiered retrieval is the most bandwidth-efficient — only load detail when needed.
+| Repo | Phases/stages | Human gates | Parallelism | Workflow type |
+|------|--------------|-------------|-------------|---------------|
+| GSD | 7 (new→discuss→research→plan→execute→verify→complete) | Yes (every boundary) | 4x researchers; wave-based | Linear pipeline |
+| Superpowers | 3 (brainstorm→implement→verify) | Yes (brainstorm gate) | Per-task subagents | Orchestrator+workers |
+| BMAD | 4 SDLC phases (analysis→plan→solution→implement) | Yes (user-mediated) | Party Mode (2-4) | Linear pipeline |
+| OpenClaw | Continuous (gateway-routed) | No formal gates | Multi-agent gateway | Event-driven |
+| Paperclip | Heartbeat cycle (wake→check→work→exit) | Yes (board approval) | Multi-adapter parallel | Hierarchical org |
+| gstack | 4 (/autoplan: CEO→design→eng→devex) | Yes (taste decisions) | Review Army (7 parallel) | Single-agent role-switch |
+| mem0 | N/A (library) | N/A | Async variants | None |
+| Archon | DAG workflow engine | Yes (approval gates) | Topological layers | DAG |
+| n8n | Sequential handoff | Yes (plan review) | Turbo build | Linear |
+| LangGraph | Superstep-based (BSP) | Yes (interrupt/Command) | Within-superstep | Graph (BSP) |
+| Beads | Task lifecycle (claim→work→land) | Yes (hard landing gate) | Fan-out via epics | Database-coordinated |
+| OpenViking | Continuous (context builder) | No | Parallel vector search | Event-driven |
+| AIO Sandbox | Container lifecycle | No | Concurrent sessions | None |
+| DeerFlow | Orchestrator-worker | Yes (clarification interrupt) | 2-4 concurrent subagents | Orchestrator+workers |
+| OB1 | Skill invocation | Yes (background eval) | Up to 5 background | Single-agent + eval |
+| Memongo | N/A (memory library) | N/A | N/A | None |
+| MemPalace | N/A (memory library) | N/A | N/A | None |
+| Supermemory | N/A (memory service) | N/A | N/A | None |
+| **ADK-Python** | Graph-based (node lifecycle) | Yes (interrupt/resume) | Independent nodes parallel | Graph (DAG) |
+| **AutoGPT** | Graph execution (block-based) | Yes (HumanInTheLoop block) | Topological sort | Graph (visual DAG) |
+| **AutoGen** | Group chat orchestration | Yes (InterventionHandler) | Superstep-parallel | Graph + group chat |
+| **CrewAI** | 2 layers (Crews + Flows) | Yes (human_input, guardrails) | @start parallel; wave-based | Linear + event-driven |
+| **Letta** | Agent loop (receive→rebuild→call→tool→summarize) | Yes (RequiresApproval rule) | Sleeptime background | Agent loop |
+| **Langflow** | DAG execution (vertex scheduling) | No built-in | Concurrent vertex layers | Graph (visual DAG) |
+| **DeepTutor** | Capability stages (2-6 per capability) | No (ask_user tool) | StreamBus fan-out | Pipeline per capability |
+| **Hermes** | Self-improvement loop (N-task cycle) | No | Single agent | Continuous loop |
+| **Pi Agent** | Session tree (branch/compact/navigate) | No | Multi-session concurrent | Interactive loop |
+| **TACHES** | Ralph loop (plan→build→observe) | Yes (observation phase) | Parallel subagent dispatch | Autonomous loop |
+| **Warp** | Feature flag lifecycle (5 stages) | Yes (PR review) | Oz room agents | Multi-agent rooms |
 
 ---
 
-## 6. Comparison Matrix: Sandboxing
+### Governance Comparison
 
-New dedicated section — with AIO Sandbox, DeerFlow's provisioner, and Archon's worktrees, sandboxing now has enough variation for meaningful comparison.
+| Repo | Constitution/rules | Enforcement type | Permission model |
+|------|-------------------|------------------|-----------------|
+| GSD | `.clinerules` | Hard (tool allowlists, 4-gate taxonomy) | Per-agent tool lists |
+| Superpowers | SKILL.md Iron Laws | Psychological (`<HARD-GATE>`, rationalization prevention) | Skill-scoped |
+| BMAD | AGENTS.md rules | Hard (14 deterministic validators) + Soft (13 inference) | Persona-scoped |
+| OpenClaw | Root AGENTS.md | Hard (drift detection SHA-256, plugin SDK boundary) | Plugin boundary |
+| Paperclip | CEO AGENTS.md | Economic (budget hard-stop, atomic checkout) | Chain of command |
+| gstack | ETHOS.md | Hybrid (freeze/guard + principles) | Per-skill allowed-tools |
+| mem0 | Root AGENTS.md | Soft (provider pattern) | Library API |
+| Archon | CLAUDE.md (780 lines) | Hard (Zod validation, per-node tool allow/deny) | Per-node tool lists |
+| n8n | Root AGENTS.md | Hard (ESLint, Biome, strict TS, janitor) | Package-scoped |
+| LangGraph | CLAUDE.md | Hard (serialization allowlist, typed channels) | Tool injection |
+| Beads | AGENTS.md | Hard (pre-commit, CLI constraints, gate system) | Maintainer vs contributor |
+| OpenViking | None (infra) | Hard (RBAC, path locks, merge_op immutability) | Tenancy isolation |
+| AIO Sandbox | None (infra) | Hard (Docker resource caps) | Container-level |
+| DeerFlow | None explicit | Hard (12-layer middleware, bash audit, guardrails) | Middleware-filtered |
+| OB1 | CLAUDE.md | Two-layer (CI deterministic + LLM judgment) | Skill-scoped |
+| Memongo | CLAUDE.md | Soft (guidelines) | None |
+| MemPalace | CLAUDE.md + non-negotiables | Hard (performance budgets, retraction log) | Fork-boundary |
+| Supermemory | CLAUDE.md | Soft (pre-submit gate) | Tenant isolation |
+| **ADK-Python** | API principles doc | Hard (pre-commit hooks, private-by-default naming) | CLA + code review |
+| **AutoGPT** | CODEOWNERS + settings.json | Hard (secret detection, CODEOWNERS, AutoMod) | Recursive permission narrowing |
+| **AutoGen** | TRANSPARENCY_FAQS.md | Soft (InterventionHandler, trusted namespaces) | Message-level control |
+| **CrewAI** | .pre-commit-config | Hard (ruff strict, mypy strict, pip-audit, commitizen) | Per-agent tool lists + delegation flag |
+| **Letta** | AI_POLICY.md | Hard (tool rules engine: init/terminal/child/parent/conditional) | Block read-only + char limits |
+| **Langflow** | 15 frozen contracts | Hard (frozen component surface, AST security scan, pre-commit) | Component-as-contract |
+| **DeepTutor** | None | Soft (pre-commit secrets baseline) | User-toggleable tools |
+| **Hermes** | System rules block | Soft (approval model slot) | Model-slot-based |
+| **Pi Agent** | AGENTS.md | Hard (supply-chain hardening, auto-close new contributors) | Multi-session git rules |
+| **TACHES** | NEVER-modify constraints | Hybrid (audit subagents + heal-skill loop) | Per-command allowed-tools |
+| **Warp** | WARP.md + presubmit | Hard (presubmit pipeline, skills-lock) | Core/specialized inheritance |
 
-| Repo | Sandbox model | Isolation level | Container? | Key mechanism |
-|------|-------------|----------------|-----------|---------------|
-| **GSD** | Git worktrees | Process-level | No | Worktree per execution |
-| **Archon** | IsolationResolver + worktrees | Process-level | No | 7-step worktree resolution; branded types |
-| **OpenClaw** | Configurable sandboxing | Per-agent | Optional | Auth isolation |
-| **Paperclip** | Budget-bounded execution | Economic | No | Budget hard-stop at 100% |
-| **AIO Sandbox** | All-in-one container | Container-level | Yes | Single container; shared filesystem; MCP hub |
-| **DeerFlow** | Three-tier provisioner | Graduated | Yes | Local → Docker pool (LRU) → Kubernetes |
-| **OpenViking** | Shell blocklist + workspace restriction | Process-level | No | Regex command blocklist; `restrictToWorkspace` |
-| **OB1** | RLS (Row Level Security) | Data-level | No | PostgreSQL policies per user; service_role bypasses |
-| **Others** | None or minimal | None | No | — |
+### Seven Governance Philosophies
 
-**Four sandbox architectures:**
-1. **Worktree isolation** (GSD, Archon): Git worktrees provide filesystem isolation without containers. Lightweight but limited to file-level isolation.
-2. **Container isolation** (AIO Sandbox, DeerFlow): Docker containers provide OS-level isolation. AIO Sandbox is monolithic (all services in one container); DeerFlow is graduated (local → Docker → K8s).
-3. **Economic isolation** (Paperclip): No technical sandbox — budget constraints prevent runaway execution.
-4. **Data isolation** (OB1): Row Level Security (RLS) — PostgreSQL policies scope data per user. No execution sandboxing, but multi-user data isolation at the database level. Service role key bypasses RLS for admin operations.
+1. **Structural enforcement** (GSD, BMAD, OpenClaw, Archon, n8n, LangGraph, ADK-Python, CrewAI, Pi Agent): Tool allowlists, validators, CI checks, typed channels.
+2. **Psychological enforcement** (Superpowers): Persuasion-encoded constraints, rationalization prevention.
+3. **Economic enforcement** (Paperclip): Budget hard-stops, approval gates.
+4. **Specification-as-governance** (LangGraph, n8n, Langflow): Conformance tests, frozen contracts, spec-driven development.
+5. **Middleware-as-enforcement** (DeerFlow): Composable pipeline layers intercept every call.
+6. **Two-layer split** (OB1, TACHES): Deterministic checks + LLM judgment.
+7. **Tool-rule engine** (Letta): Declarative constraint system both rendered into prompt AND enforced programmatically. Dual enforcement (soft + hard) from a single rule set.
 
 ---
 
-## 7. Pattern Clusters
+### Cross-Agent Comparison
+
+| Repo | Agent count | Coordination pattern | Handoff mechanism | Shared state |
+|------|-------------|---------------------|-------------------|--------------|
+| GSD | 24 named | Hub-and-spoke | Artifact files + completion markers | .planning/ + git |
+| Superpowers | 1 + 4 subagent types | Orchestrator+workers | Prompt templates | Context window |
+| BMAD | 4 personas + sub | User-mediated hub | Skill invocation chains | Config + artifacts |
+| OpenClaw | Multi (isolated) | Gateway routing | ACP spawn | Workspace files |
+| Paperclip | CEO + reports | Hierarchical org | API (issues, comments) | Supabase + Git |
+| gstack | 1 + specialists | Single + dispatch | Role-switching | Learnings JSONL |
+| mem0 | 0 (service) | N/A | Library API | Triple storage |
+| Archon | 13 specialists | Hub-and-spoke + DAG | `$nodeId.output` vars | Immutable sessions DB |
+| n8n | 2 agents + plan | Sequential handoff | Plans + specs | Linear MCP + git |
+| LangGraph | 0 (primitives) | Graph (BSP) | Typed channels | Checkpoints + store |
+| Beads | N (dynamic) | Database-as-shared-memory | Dolt DB reads/writes | Dolt DB |
+| OpenViking | N (consumers) | Infrastructure | URI scheme (`viking://`) | Tiered retrieval |
+| AIO Sandbox | N (consumers) | Infrastructure | Session UUIDs | Container filesystem |
+| DeerFlow | Lead + subagents | Orchestrator-worker | `task` tool calls | ThreadPoolExecutor |
+| OB1 | 1 (user's client) | Hub-and-spoke (DB) | Supabase MCP | pgvector DB |
+| Memongo | N/A | N/A | N/A | N/A |
+| MemPalace | N (consumers) | Infrastructure | MCP tools / commands | ChromaDB |
+| Supermemory | N (consumers) | Infrastructure | MCP tools | Memory graph |
+| **ADK-Python** | 7 types (composable) | Graph + transfer | Transfer-to-agent, task delegation, A2A | InvocationContext + state |
+| **AutoGPT** | N (fleet via tmux) | Fleet supervisor + graph | Checkpoint protocol + ORCHESTRATOR:DONE | JSON state file + RabbitMQ |
+| **AutoGen** | N (group chat) | 5 patterns (RR, Selector, Swarm, Magentic, DiGraph) | Message routing + handoffs-as-tools | Agent runtime + gRPC |
+| **CrewAI** | User-defined per crew | Sequential + hierarchical + flow | Delegation tool + context chaining + A2A | Memory + event bus |
+| **Letta** | Multi-agent groups | Round-robin, supervisor, dynamic, sleeptime | `send_message_to_agent_and_wait` | Shared memory blocks |
+| **Langflow** | Visual (user-wired) | DAG vertex execution | Graph links (output→input) | Flow state |
+| **DeepTutor** | 1 (orchestrator) | Pipeline (orchestrator→capability) | Capability dispatch + StreamBus | UnifiedContext |
+| **Hermes** | 1 (multi-channel) | Single agent, multi-entry | Channel-specific history | Tiered memory |
+| **Pi Agent** | 1 + extensions | Single + extensions | EventBus + sendMessage() | Session tree |
+| **TACHES** | 1 + 3 auditors | Main + audit subagents | Command→skill delegation | File state (whats-next.md) |
+| **Warp** | N (Oz agents) | Room-based (@mentions) | Tasks + artifacts + notifications | Room state (SSE) |
+
+---
+
+## 2. Pattern Clusters
 
 ### Shared Patterns (3+ repos)
 
 | Pattern | Repos | Count |
 |---------|-------|-------|
-| SKILL.md as standard skill format | GSD, SP, BMAD, OC, PC, gs, m0, Ar, n8n, Beads, OV, DF, OB1 | 13/15 |
-| AGENTS.md / CLAUDE.md as context entry | All 15 except Sandbox | 14/15 |
-| Human gate at critical transitions | GSD, SP, BMAD, PC, gs, Ar, n8n, Beads, DF, OB1 | 10/15 |
-| Multi-AI-platform support | SP, BMAD, OC, gs, Ar, n8n, LG, OB1 | 8/15 |
-| Subagent dispatch for review | GSD, SP, BMAD, gs, Ar, n8n, DF | 7/15 |
-| Pre-implementation design phase | GSD, SP, BMAD, gs, Ar, n8n | 6/15 |
-| Artifact-based handoff | GSD, BMAD, SP, gs, n8n | 5/15 |
-| Git as shared state | GSD, SP, BMAD, gs, Ar | 5/15 |
-| Verification as independent pass | GSD, SP, BMAD, gs, Ar | 5/15 |
-| Kebab-case directories | GSD, SP, BMAD, OC, PC, gs, Ar, n8n, Beads, Sandbox, DF, OB1 | 12/15 |
-| Progressive/tiered context loading | BMAD, OV, DF, Beads | 4/15 |
-| Hook-based lifecycle management | SP, gs, Beads, OV | 4/15 |
-| SOUL.md or equivalent identity file | OC, PC, OV, DF | 4/15 |
-| Memory decay/compaction strategies | Beads, OV, PC, DF | 4/15 |
-| Formal agent lifecycle states | Beads, PC, OC, DF | 4/15 |
-| MCP server integration | Sandbox, DF, OV, OB1 | 4/15 |
-| Template directories per category | GSD, BMAD, OB1 | 3/15 |
-| Self-improving/self-modifying skills | OB1, gs, SP | 3/15 |
-| Monorepo with package-level context | Ar, n8n, LG | 3/15 |
-| Database-backed state management | Beads, Ar, LG, OB1 | 4/15 |
-| Community contribution governance | OB1 | 1/15 |
+| SKILL.md as standard skill format | GSD, SP, BMAD, OC, PC, gs, m0, Ar, n8n, Beads, OV, DF, OB1, ADK, CrewAI, TACHES, Warp, MemPalace, Memongo, Supermemory | 20/29 |
+| AGENTS.md / CLAUDE.md as context entry | 27 of 29 (all except Sandbox, Hermes) | 27/29 |
+| Human gate at critical transitions | GSD, SP, BMAD, PC, gs, Ar, n8n, Beads, DF, OB1, ADK, AutoGPT, AutoGen, CrewAI, Letta, TACHES, Warp | 17/29 |
+| Multi-AI-platform support (CLAUDE.md + AGENTS.md + Copilot etc.) | SP, BMAD, OC, gs, Ar, n8n, LG, OB1, AutoGPT, ADK, MemPalace, Warp | 12/29 |
+| Graph/DAG-based execution model | LG, ADK, AutoGPT, Langflow, AutoGen, Archon | 6/29 |
+| A2A or remote agent protocol | ADK, CrewAI, Warp (Oz), AutoGen (gRPC) | 4/29 |
+| Progressive/tiered context loading | BMAD, OV, DF, Beads, ADK, Hermes | 6/29 |
+| MCP server integration | Sandbox, DF, OV, OB1, ADK, CrewAI, Letta, Langflow, Memongo, MemPalace, Supermemory, Warp | 12/29 |
+| Centralized prompt registry/templates | CrewAI (en.json), Letta (system_prompts/), DeepTutor (prompts/), Hermes (layered assembler) | 4/29 |
+| Memory decay/compaction strategies | Beads, OV, PC, DF, Letta, Hermes, CrewAI | 7/29 |
+| Pre-commit hook enforcement | GSD, BMAD, n8n, ADK, CrewAI, Langflow, AutoGPT, Pi Agent | 8/29 |
+| Subagent dispatch for work | GSD, SP, BMAD, gs, Ar, n8n, DF, AutoGPT, AutoGen, TACHES, Warp | 11/29 |
+| Self-improving/self-modifying capabilities | OB1, gs, SP, Hermes, Pi Agent | 5/29 |
+| Tool rules / tool allowlists per agent | GSD, Archon, DeerFlow, Letta, CrewAI, AutoGPT | 6/29 |
+| Event bus / event-driven observability | CrewAI, Letta, Pi Agent, DeepTutor | 4/29 |
+| Provider-agnostic multi-model support | ADK, CrewAI, Letta, AutoGen, mem0, Hermes | 6/29 |
+| Docker/container sandboxing | Sandbox, DF, AutoGPT, Letta, n8n, CrewAI | 6/29 |
+| Sleeptime / background memory processing | Letta (sleeptime agents), OpenClaw (Dreaming), Hermes (N-task reflection) | 3/29 |
+| Three-tier memory hierarchy | Letta (core/recall/archival), Hermes (hot/warm/cold), mem0 (vector/graph/SQLite) | 3/29 |
+| Version-freshness protocol for context files | CrewAI (AGENTS.md), ADK (llms.txt) | 2/29 |
+| Artifact-based handoff between agents | GSD, BMAD, SP, gs, n8n, TACHES, Warp | 7/29 |
 
-### New Shared Patterns (emerged with batch 3)
+### Unique Patterns (1 repo only -- notable innovations since last comparison)
 
-**Progressive/tiered context loading (4/14):** BMAD (L1/L2/L3 step files), OpenViking (L0/L1/L2 abstracts), DeerFlow (skill catalogue → full SKILL.md), Beads (SKILL.md → 14 resource files). Four independent implementations of "load less first, more on demand." This is emerging as a convention.
+| Pattern | Repo | Why notable |
+|---------|------|-------------|
+| Fleet orchestration via tmux + checkpoint protocol | AutoGPT | Production multi-agent coding without custom infrastructure |
+| Permission narrowing via recursive inheritance | AutoGPT | Sub-agents can only be MORE restrictive -- prevents privilege escalation |
+| Convergence loop with dual clean-poll exit | AutoGPT | Accounts for delayed bot responses creating false "done" signals |
+| Declarative tool-rule engine (dual enforcement) | Letta | Rules rendered into prompt AND enforced programmatically |
+| Git-backed memory versioning | Letta | Full audit trail via git commits on memory blocks |
+| Sleeptime background memory agent (v4) | Letta | Decouples response latency from memory quality |
+| Provider-adaptive prompt rendering | Letta | Anthropic gets line numbers; others get standard rendering |
+| Auxiliary model slot architecture (8 slots) | Hermes | Per-task-type model assignment (main, compression, vision, approval, router, etc.) |
+| Inference-driven memory tier curation | Hermes | Agent itself decides promotion/demotion between memory tiers |
+| Runtime self-modification via extension API | Pi Agent | Agent can register/unregister tools and providers at runtime |
+| Session tree as first-class abstraction | Pi Agent | Sessions branch, compact, navigate like git |
+| Core/specialized skill inheritance | Warp | `specializes` field links to core skill; only overridable categories can change |
+| Skills-lock for portable agent skills | Warp | Lock file prevents silent overwrites; version-pinned common skills |
+| Oz multi-agent room model | Warp | Agents in rooms, @mentions, kanban tasks, typed artifacts |
+| Two-layer plugin model (Tools vs Capabilities) | DeepTutor | Level 1 (single-shot tools) vs Level 2 (multi-stage pipelines) |
+| Context-gated vs user-toggleable tool visibility | DeepTutor | Reduces tool noise by auto-mounting only relevant tools |
+| Intake-and-decision-gate recursive loop | TACHES | Analyze → ask → gate (Start/Ask more/Add context) -- loops until user chooses |
+| Three dedicated audit subagents (skill/command/subagent) | TACHES | Typed specialist auditors for each artifact class |
+| Ralph autonomous loop with backpressure | TACHES | Fresh context per iteration; tests as backpressure signal |
+| Component-as-contract (frozen public surface) | Langflow | Class names and input names immutable once shipped |
+| Policy-guarded tool execution (ToolGuard) | Langflow | Runtime policy enforcement on tool invocation |
+| Ledger-based orchestration with stall detection | AutoGen (MagenticOne) | Fact + plan ledgers; detects stuck agents and replans |
+| Handoffs-as-tools pattern | AutoGen | Agent delegation expressed as tool calls with descriptions |
+| 5 orchestration patterns in one framework | AutoGen | RoundRobin, Selector, Swarm, MagenticOne, DiGraph |
+| Event-driven flow orchestration with @listen/@router | CrewAI | Decorator-based DAG with or_()/and_() trigger composition |
+| Unified Memory with LLM-analyzed encoding | CrewAI | LLM infers scope/categories/importance at write time |
+| Version freshness protocol in AGENTS.md | CrewAI | Instructs AI to check PyPI version before writing code |
+| Plugin system as cross-cutting concern manager | ADK-Python | BasePlugin with ordered execution and short-circuit capability |
+| Private-by-default file naming (enforced) | ADK-Python | New files must start with `_`; public API via explicit `__init__.py` exports |
+| Event-to-LLM context orchestration | ADK-Python | Events as ground truth; LLM context as orchestrated view |
+| `llms.txt` + `llms-full.txt` convention | ADK-Python | Two-tier LLM-consumable project files (11KB / 1.2MB) |
 
-**Memory decay/compaction strategies (4/14):** Beads (semantic decay — summarize closed tasks), OpenViking (two-threshold compaction — 50% archive, 70% force-clear), Paperclip (weekly synthesis + decay rules), DeerFlow (MemoryMiddleware → async summarization). Four approaches to the same problem: how to manage growing context without losing valuable information.
-
-**MCP server integration (3/14):** AIO Sandbox (MCP Hub aggregating 4 sub-servers), DeerFlow (MCP server support in agent runtime), OpenViking (MCP tools in Claude Code plugin). MCP is becoming infrastructure.
-
-### Unique Patterns (1 repo only — batch 3 additions)
-
-| Pattern | Repo | Description | Innovation |
-|---------|------|-------------|------------|
-| Database-as-shared-memory | Beads | Dolt DB as coordination substrate; hash IDs; cell-level merge | High |
-| ZFC (Zero Framework Cognition) | Beads | All cognitive logic in prompts, code is dumb plumbing | High |
-| Agent state machine + Witness | Beads | Formal FSM with external liveness monitor | High |
-| Cross-repo issue routing | Beads | `.beads/routes.jsonl` pattern-based routing across repos | High |
-| Async gate taxonomy | Beads | Typed gates (timer, CI, PR, human) with polling evaluation | Medium |
-| `bd prime` live CLI injection | Beads | Context generated from live binary, not static files | High |
-| L0/L1/L2 tiered retrieval | OpenViking | Three-tier progressive content loading with semantic abstracts | High |
-| Filesystem-as-context-database | OpenViking | `viking://` URI scheme; directories as namespaces | High |
-| 5-file workspace taxonomy | OpenViking | SOUL/TOOLS/USER/MEMORY/HEARTBEAT canonical workspace | Medium |
-| Hook-based transparent memory | OpenViking | Three-hook lifecycle for invisible memory inject/capture | High |
-| Memory merge_op immutability | OpenViking | Schema-level field immutability prevents identity drift | High |
-| Two-threshold compaction | OpenViking | 50% archive (async), 70% force-clear (sync) | High |
-| All-in-one sandbox container | AIO Sandbox | Browser+shell+IDE+MCP in one container, shared filesystem | Medium |
-| MCP Hub aggregation | AIO Sandbox | Single `/mcp` multiplexes named sub-servers | Medium |
-| Auto-generated multi-SDK | AIO Sandbox | Fern generates Python+TS SDKs from OpenAPI spec | Low |
-| 12-layer middleware enforcement | DeerFlow | Composable, ordered middleware for agent governance | High |
-| Batched parallel subagent dispatch | DeerFlow | 2-4 concurrent `task` calls, hard-capped by middleware | High |
-| Three-tier sandbox provisioner | DeerFlow | Local → Docker pool (LRU) → Kubernetes | High |
-| Skill security scanner | DeerFlow | LLM-based skill vetting with fail-closed default | High |
-| Loop detection hash window | DeerFlow | Sliding window of tool call hashes; warn at 3, stop at 5 | High |
-| Progressive skill loading | DeerFlow | Descriptions at boot, full content on-demand via `read_file` | High |
-| Self-improving skill with lessons log | OB1 | Skills update their own file after every use; Phase 4 + Lessons Log table | High |
-| Two-layer CI + LLM review gate | OB1 | 15 deterministic CI rules + LLM admin skill for judgment | High |
-| AGENT_SPEC generator spec | OB1 | Machine-readable spec that lets AI generate all contribution files from one prompt | Medium |
-| Progressive adoption learning path | OB1 | 6 curated extensions that compound (CRM knows thoughts, meal planner checks calendar) | High |
-| Time-window proactive agent loop | OB1 | Date anchor → dedup → time window → external pull → internal enrich → deliver → log | High |
-| Community contributor ladder | OB1 | Member → Contributor → Regular → Maintainer; non-code contributions count | Medium |
-
-### Contradictory Approaches (updated for 15 repos)
+### Contradictory Approaches
 
 | Problem | Approach A | Approach B | Approach C |
 |---------|-----------|-----------|-----------|
-| **Coordination substrate** | Files (GSD, BMAD, SP, gs, n8n) | Database (Beads, Ar, LG, OB1) | API (PC, OC, DF) |
-| **Context loading** | Push everything (GSD, Ar) | Progressive tiers (BMAD, OV, DF, Beads) | Minimal root + pull (OB1, SP, PC) |
-| **Governance enforcement** | Structural (GSD, BMAD, OC, Ar, n8n) | Middleware pipeline (DF) | Two-layer split CI+LLM (OB1) |
-| **Agent identity** | Ephemeral (GSD, SP, Ar) | Self-improving (OB1) | Persistent SOUL (OC, PC, OV, DF) |
-| **Sandbox architecture** | Worktree (GSD, Ar) | All-in-one container (Sandbox) | Data-level RLS (OB1) |
-| **Memory compaction** | Semantic decay (Beads) | Two-threshold (OV) | None — raw accumulation (OB1) |
-| **Multi-agent coordination** | Shared DB (Beads, OB1) | Orchestrator dispatch (DF, GSD) | Infrastructure layer (OV, Sandbox) |
-| **Skill improvement** | Self-modifying (OB1 lessons log) | External learnings (gs JSONL) | Meta-skill (SP writing-skills/) |
+| **Agent coordination** | Files (GSD, BMAD, SP, gs, n8n, TACHES) | Database/API (Beads, PC, OC, Letta, OB1) | In-process/graph (LG, ADK, AutoGen, DF) |
+| **Context loading** | Push all upfront (GSD, Ar, AutoGPT) | Progressive tiers (BMAD, OV, DF, Beads, ADK, Hermes) | Minimal + pull (OB1, SP, LG, DeepTutor) |
+| **Governance enforcement** | Structural (GSD, BMAD, n8n, ADK, CrewAI) | Middleware pipeline (DF) | Dual enforcement prompt+code (Letta) |
+| **Agent identity** | Ephemeral (GSD, SP, Ar) | Persistent SOUL (OC, PC, OV, DF) | Self-improving (OB1, Hermes, Pi) |
+| **Multi-agent orchestration** | Explicit graph (LG, ADK, AutoGPT, Langflow, AutoGen) | Hierarchical org (PC, AutoGPT, CrewAI) | Room/chat-based (AutoGen, Warp, CrewAI) |
+| **Memory persistence** | Context window only (SP, GSD) | Agent self-manages (Letta, Hermes, OC) | External service (mem0, Supermemory, Memongo) |
+| **Tool constraint** | Static allowlists (GSD, Archon, n8n) | Declarative rule engine (Letta) | Middleware interception (DF, ADK) |
+| **Workflow definition** | Visual/GUI (AutoGPT, Langflow, n8n) | Code/decorators (CrewAI, LG, ADK) | Markdown files (GSD, BMAD, TACHES) |
+| **Sandbox model** | Worktree isolation (GSD, Ar) | Container (Sandbox, DF, Letta, n8n) | Economic constraint (PC) |
+| **Prompt management** | Centralized registry (CrewAI, Letta, DeepTutor) | Distributed in agent files (GSD, BMAD, SP) | Code-assembled (ADK, Pi, Hermes) |
 
 ---
 
-## 8. Research Dimension Heat Map
+## 3. Research Dimension Heat Map
 
-| Dimension | GSD | SP | BMAD | OC | PC | gs | m0 | Ar | n8n | LG | Beads | OV | Sand | DF | OB1 |
-|-----------|-----|-----|------|-----|-----|-----|-----|-----|------|-----|-------|-----|------|-----|-----|
-| Context Eng | H | H | H | H | H | H | H | H | H | L | H | **H** | L | **H** | **M** |
-| Model | M | L | L | H | M | M | H | M | L | L | - | L | - | M | **L** |
-| Prompt | H | H | H | M | M | H | L | M | H | L | M | M | - | M | **M** |
-| Tools | M | M | M | H | H | H | H | H | M | H | **H** | M | **H** | **H** | **H** |
-| Intent | H | H | H | M | H | H | L | H | M | H | **H** | L | - | M | **M** |
-| Orchestration | H | H | H | H | H | M | L | H | M | H | **H** | L | L | **H** | **L** |
-| Evaluation | H | H | H | M | M | H | M | H | H | M | M | M | M | **M** | **M** |
-| Sandboxing | M | M | L | H | H | M | L | H | H | M | L | L | **H** | **H** | **L** |
-| Governance | H | H | H | H | H | M | L | M | H | M | **H** | **M** | M | **H** | **H** |
-| Agent Design | H | H | H | H | H | H | M | H | H | H | **H** | **H** | L | **H** | **H** |
-| Agentic OS | - | - | - | - | - | - | - | - | - | - | - | - | - | - | **H** |
+Rows = 11 dimensions. Columns grouped by type to manage width.
 
-**H** = High, **M** = Medium, **L** = Low, **-** = None. Bold = new batch.
+**Agent Frameworks (build agents with these)**
 
-### Cross-dimension observations (updated for 15 repos)
+| Dimension | ADK | AutoGen | CrewAI | LangGraph | Letta | Langflow | DeerFlow |
+|-----------|-----|---------|--------|-----------|-------|----------|----------|
+| Context Eng | H | H | H | L | H | H | H |
+| Model | H | M | H | L | M | M | M |
+| Prompt | M | H | H | L | H | M | M |
+| Tools | H | H | H | H | H | H | H |
+| Intent | M | M | H | H | M | M | M |
+| Orchestration | H | H | H | H | H | H | H |
+| Evaluation | H | M | H | M | L | M | M |
+| Sandboxing | H | H | M | M | H | H | H |
+| Governance | M | L | M | M | M | H | H |
+| Agent Design | H | H | H | H | H | H | H |
+| Agentic Systems | H | H | H | - | H | H | - |
 
-- **Context Engineering remains High for 12/15 repos.** LangGraph, AIO Sandbox, and now OB1 (Medium) are the exceptions. OB1 is deliberately minimal — a 50-line CLAUDE.md at the extreme pull end of the spectrum.
-- **Sandboxing now has 5 High-relevance repos** (OC, PC, Ar, Sandbox, DF) — enough for meaningful comparison. Four distinct architectures (worktree, container, provisioner, data-level RLS) are now observable.
-- **Governance gains OB1 as a sixth governance philosophy.** Two-layer CI+LLM split enforcement is distinct from structural, psychological, economic, specification-as-governance, and middleware approaches. OB1 also adds the only community contribution governance model (contributor ladder, curated vs. open categories).
-- **Agent Design gains OB1's self-improving skill pattern.** The lessons log + Phase 4 self-modification creates a new position on the identity spectrum between role-based and full identity.
-- **Agentic OS dimension now represented.** OB1 is the first repo to score High on Agentic OS — personal/business OS domain coverage (household, maintenance, calendar, meals, CRM, career), proactive scheduled agent (Life Engine), and cross-domain compounding extensions. No other repo in the registry has this focus.
-- **Multi-AI-platform support reaches 8/15.** OB1's "one brain, all AI clients" design makes it the most platform-agnostic system — any AI client that supports MCP can connect.
-- **MCP server integration reaches 4/15** (Sandbox, DF, OV, OB1). OB1's remote MCP via Supabase Edge Functions is the only MCP-as-primary-architecture pattern — other repos use MCP as supplementary.
+**Coding Agent Harnesses (build software with these)**
+
+| Dimension | GSD | SP | BMAD | Archon | n8n | AutoGPT | TACHES | Warp | Pi |
+|-----------|-----|----|------|--------|-----|---------|--------|------|----|
+| Context Eng | H | H | H | H | H | H | H | M | M |
+| Model | M | L | L | M | L | M | L | L | M |
+| Prompt | H | H | H | M | H | H | H | M | L |
+| Tools | M | M | M | H | M | H | H | M | M |
+| Intent | H | H | H | H | M | M | M | M | L |
+| Orchestration | H | H | H | H | M | H | H | M | L |
+| Evaluation | H | H | H | H | H | M | H | M | L |
+| Sandboxing | M | M | L | H | H | H | M | L | L |
+| Governance | H | H | H | M | H | H | M | M | M |
+| Agent Design | H | H | H | H | H | H | H | H | M |
+| Agentic Systems | - | - | - | - | - | H | M | H | L |
+
+**Agent Platforms and Personal OS**
+
+| Dimension | OpenClaw | Paperclip | OB1 | gstack | Beads | Hermes | DeepTutor |
+|-----------|----------|-----------|-----|--------|-------|--------|-----------|
+| Context Eng | H | H | M | H | H | H | L |
+| Model | H | M | L | M | - | H | L |
+| Prompt | M | M | M | H | M | M | L |
+| Tools | H | H | H | H | H | M | H |
+| Intent | M | H | M | H | H | L | L |
+| Orchestration | H | H | L | M | H | L | M |
+| Evaluation | M | M | M | H | M | M | L |
+| Sandboxing | H | H | L | M | L | L | L |
+| Governance | H | H | H | M | H | L | L |
+| Agent Design | H | H | H | H | H | H | M |
+| Agentic Systems | - | - | H | - | - | M | - |
+
+**Memory and Infrastructure**
+
+| Dimension | mem0 | OpenViking | Memongo | MemPalace | Supermemory | AIO Sandbox |
+|-----------|------|------------|---------|-----------|-------------|-------------|
+| Context Eng | H | H | M | H | M | L |
+| Model | H | L | - | - | L | - |
+| Prompt | L | M | - | L | M | - |
+| Tools | H | M | M | M | M | H |
+| Intent | L | L | L | L | L | - |
+| Orchestration | L | L | - | - | - | L |
+| Evaluation | M | M | H | VH | H | M |
+| Sandboxing | L | L | L | L | L | H |
+| Governance | L | M | H | VH | L | M |
+| Agent Design | M | H | L | M | H | L |
+| Agentic Systems | - | - | - | - | - | - |
+
+**H** = High, **M** = Medium, **L** = Low, **VH** = Very High, **-** = None/Not applicable.
 
 ---
 
-## 9. Findings Candidates (Cross-Repo)
+## 4. Findings Candidates
 
-### Previously Promoted (CR-1 through CR-14)
+Cross-repo patterns visible ONLY at the comparison level -- convergences, divergences, or meta-patterns not apparent from any single analysis.
 
-All 14 previous cross-repo findings (CR-1 through CR-14) were promoted in sessions 30-32. See individual finding files for current state. The updates below note how batch 3 affects existing findings.
+### Previously Promoted (CR-1 through CR-23)
 
-**CR-1 (Context loading non-convergence):** Reinforced — batch 3 adds three more distinct strategies (live CLI injection, L0/L1/L2 tiered retrieval, XML-tagged demand injection). Now 10+ strategies across 14 repos.
+All 23 previous cross-repo findings remain valid. Updates from the 14 new repos:
 
-**CR-2 (Push vs. pull tradeoff):** OpenViking's hook-based pull model is the most sophisticated pull variant. DeerFlow's XML-tagged hybrid is a clean middle ground. Beads' live CLI injection is a novel variant of push (dynamic, not static).
+- **CR-1 (Context loading non-convergence):** Reinforced further -- now 11 distinct strategies across 29 repos. Template-composed assembly (Letta, Hermes, Pi) and core/specialized inheritance (Warp) are new variants.
+- **CR-3 (Governance enforcement philosophies):** Now seven philosophies with Letta's dual-enforcement tool-rule engine as the seventh.
+- **CR-8 (Memory architecture spectrum):** Now seven paradigms with Letta's three-tier self-managed hierarchy and Hermes' inference-driven tiered curation as additions.
+- **CR-15 (Progressive/tiered loading convergence):** Strengthened to 6 repos (ADK-Python and Hermes add independent implementations).
+- **CR-16 (Memory decay/compaction convergence):** Strengthened to 7 repos (Letta, Hermes, CrewAI add implementations).
+- **CR-17 (Three sandbox architectures):** Now four -- AutoGPT's fleet approach (tmux worktrees as lightweight containers) adds a distinct pattern.
+- **CR-22 (MCP as primary vs supplementary):** MCP now reaches 12/29 repos. Clearly infrastructure-level adoption.
 
-**CR-3 (Governance enforcement philosophies):** Now five philosophies with DeerFlow's middleware-as-enforcement as the fifth.
+### New Cross-Repo Findings (CR-24 through CR-30)
 
-**CR-4 (Orchestration correlates with product type):** Beads (CLI tool using database coordination) and DeerFlow (agent harness using orchestrator-worker) confirm the pattern. AIO Sandbox (infrastructure with no orchestration) adds the "infrastructure" class.
+### CR-24: Graph-Based Execution Engines Converge on Six Repos
 
-**CR-8 (Memory architecture spectrum):** Now five paradigms (file, database, triple-storage, tiered-retrieval, graph-state). Beads' Dolt adds versioned-SQL. OpenViking adds tiered retrieval.
+**Dimension:** Orchestration
+**Pattern:** Six repos independently implement graph/DAG execution engines: LangGraph (Pregel BSP with typed channels), ADK-Python (Workflow with BaseNode contract + NodeRunner), AutoGPT (visual block-based with topological sort), Langflow (vertex scheduling with cycle support), AutoGen (DiGraph team pattern with conditional edges), Archon (YAML DAG with topological layer execution). All share: nodes as computation units, edges as data/control flow, parallel execution of independent nodes, conditional routing. Yet implementation details diverge significantly -- BSP supersteps vs topological layers vs visual canvas vs YAML definition.
+**Why notable:** Graph execution for agents is clearly converging as a pattern (6/29), but there is no convergence on execution semantics. The BSP model (LangGraph) is theoretically cleanest; the visual model (AutoGPT, Langflow) is most accessible; the YAML model (Archon) is most portable. A complete understanding requires studying all six.
 
-### New Cross-Repo Findings (CR-15 through CR-19)
+### CR-25: Dual-Enforcement Governance (Prompt + Code) Emerges as Best Practice
 
-### CR-15: Progressive/Tiered Context Loading Is Converging
+**Dimension:** Governance, Tool Integration
+**Pattern:** Three repos now enforce constraints both in the prompt (soft, LLM-cooperating) AND in code (hard, programmatic): Letta (tool rules rendered as XML in prompt AND enforced by ToolRulesSolver), DeerFlow (middleware both logs intent in prompt via `<tool_usage_rules>` AND intercepts at runtime), ADK-Python (agent validation at construction + runtime LLM call limits). Single-channel enforcement (prompt-only or code-only) is the majority pattern. Dual enforcement acknowledges that neither channel is sufficient alone -- prompts can be ignored, code can be circumvented by unexpected input.
+**Why notable:** This represents a maturity signal. Early systems rely on prompt compliance (Superpowers, BMAD) or code enforcement (LangGraph, n8n). Production systems that have experienced failures converge on both channels simultaneously.
 
-**Dimension:** Context Engineering
-**Pattern:** Four repos independently implement progressive loading — loading minimal context first, expanding on demand: BMAD (L1 metadata → L2 body → L3 step files), OpenViking (L0 abstract → L1 overview → L2 full content), DeerFlow (skill descriptions at boot → full SKILL.md via `read_file`), Beads (SKILL.md entry point → 14 resource files on demand). Despite different implementations, all converge on the same principle: don't load everything upfront, and provide multiple resolution levels. This is the strongest convergent signal in the batch 3 analysis.
-**Why notable:** Four independent implementations from different orgs (GSD team, ByteDance, Volcengine, Gastown Hall) with no shared ancestry suggests this is a genuine best practice emerging from production experience, not trend-following. Combined with existing findings on tiered-context-injection and deferred-tool-loading, this pattern has 6+ independent implementations across the registry.
-→ Promoted to [[progressive-tiered-context-loading-convergence]] on 2026-04-19
+### CR-26: Provider-Agnostic Multi-Model Architecture Now Standard
 
-### CR-16: Memory Decay/Compaction Is Converging on Multi-Strategy Approaches
+**Dimension:** Model Selection
+**Pattern:** Six repos implement full provider-agnostic multi-model abstractions with adapter/registry patterns: ADK-Python (BaseLlm + LLMRegistry, 5 adapters), CrewAI (crewai.LLM with 6 native providers + LiteLLM), Letta (27 LLM clients with auto-mode selection), AutoGen (ChatCompletionClient with 7 providers), mem0 (24 LLM + 15 embedding providers), Hermes (8 model slots, any provider). All use abstract base + factory pattern. Per-agent model assignment is common (ADK inheritance, CrewAI per-agent, Hermes per-task-type slots). This is no longer innovative -- it is table stakes for agent frameworks.
+**Why notable:** The convergence signal is that this dimension is SOLVED at the framework level. Research value is low for basic multi-model support. The remaining frontier is model-specific optimization (Letta's provider-adaptive rendering, Hermes' task-type slots, CrewAI's separate function_calling_llm).
+
+### CR-27: Background Memory Processing Is a Distinct Architectural Pattern
 
 **Dimension:** Context Engineering, Agent Design
-**Pattern:** Four repos now address context compaction with distinct strategies: Beads (semantic decay — summarize closed tasks, preserve high-impact items), OpenViking (two-threshold — async archive at 50%, forced clear at 70%), Paperclip (weekly synthesis + memory decay rules), DeerFlow (MemoryMiddleware → async summarization per thread). All four go beyond simple truncation — they use semantic understanding to decide what survives compaction. This convergence on "intelligent compaction" (as opposed to FIFO/sliding window) suggests the community has learned that naive compaction loses too much valuable context.
-**Why notable:** Each implementation solves a different aspect: Beads focuses on what to keep (importance scoring), OpenViking on when to compact (dual thresholds), Paperclip on consolidation frequency (weekly), DeerFlow on where to persist (per-thread storage). A complete solution might combine all four approaches.
-→ Promoted to [[memory-decay-compaction-convergence]] on 2026-04-19
+**Pattern:** Three repos implement background/async memory processing where conversation response is decoupled from memory work: Letta (sleeptime agents process memory asynchronously after foreground responds), OpenClaw (Dreaming: Light→Deep→REM runs as background session), Hermes (reflection after N tasks creates/edits skill files). All three solve the same problem: memory management adds latency to conversation. By making it asynchronous, the user gets fast responses while memory quality improves in the background. Letta has evolved this through 4 versions (v1→v4), indicating production refinement.
+**Why notable:** This pattern was only visible as "memory decay/compaction" before (CR-16). Separating it as "background memory processing" distinguishes it from synchronous compaction strategies (OpenViking's two-threshold, DeerFlow's middleware). The key architectural decision is whether memory processing blocks the user turn or runs independently.
 
-### CR-17: Three Sandbox Architectures for Agent Execution
+### CR-28: Event Bus / Observability Layer Is Emerging Infrastructure
 
-**Dimension:** Sandboxing
-**Pattern:** The registry now has three distinct sandbox architectures: (1) **Worktree isolation** (GSD, Archon) — Git worktrees provide filesystem isolation without containers. Lightweight, no Docker dependency, but limited to file-level isolation. (2) **Monolithic container** (AIO Sandbox) — Single Docker container with all services (browser, shell, IDE, MCP). Shared filesystem enables cross-tool workflows. Trade-off: `seccomp:unconfined` required for browser. (3) **Graduated provisioner** (DeerFlow) — Three-tier provider (local → Docker pool → Kubernetes) behind a unified interface. Configuration-driven isolation level. Most flexible but most complex.
-**Why notable:** As agent autonomy increases, sandboxing becomes critical. These three architectures represent different points on the complexity/isolation tradeoff. Worktrees are simplest; containers are most isolated; provisioners are most flexible.
-→ Promoted to [[three-sandbox-architectures-comparison]] on 2026-04-19
+**Dimension:** Evaluation, Orchestration
+**Pattern:** Four repos implement typed event bus systems for agent observability: CrewAI (singleton `crewai_event_bus` with 17+ typed events, OpenTelemetry on top), Letta (events as ground truth, EventActions), Pi Agent (EventBus for inter-extension communication, 30+ event types), DeepTutor (StreamBus with fan-out to all consumers). ADK-Python achieves similar via Plugin system callbacks. All enable external monitoring without modifying core logic. Three approaches: dedicated bus (CrewAI, DeepTutor), event sourcing (Letta, ADK), extension hooks (Pi).
+**Why notable:** Agent observability via events is converging but implementation approaches diverge. The key design tension: bus-based (simple pub/sub) vs event-sourcing (events ARE the state) vs hook-based (extension points). Event sourcing is most powerful (enables replay, time-travel debugging) but most complex.
 
-### CR-18: Middleware vs. Hooks vs. Rules — Three Enforcement Pipelines
+### CR-29: Agent-to-Agent Protocol (A2A) Adoption Is Early but Multi-Vendor
 
-**Dimension:** Governance
-**Pattern:** Three distinct architectures for enforcing governance at runtime: (1) **Middleware pipeline** (DeerFlow) — 12 composable, ordered layers intercept every tool call and model response. Each layer has specific hook points. Ordering matters. (2) **Event-driven hooks** (Archon, Beads, Superpowers) — PostToolUse/SessionStart/PreCompact hooks fire on specific events. No ordering guarantee between hooks. (3) **Rule-based allowlists** (GSD, BMAD, n8n) — Static rules (tool allowlists, validators, lint) evaluated at invocation time. No interception of ongoing execution.
-**Why notable:** These represent increasing sophistication: rules are static, hooks are event-driven, middleware is pipeline-driven. DeerFlow's middleware stack is the most powerful (it can modify, block, or augment any interaction) but also the most complex to reason about (12 layers with ordering dependencies).
-→ Promoted to [[three-enforcement-pipeline-architectures]] on 2026-04-19
+**Dimension:** Agentic Systems
+**Pattern:** Four repos implement cross-system agent communication protocols: ADK-Python (full Google A2A protocol: agent cards, HTTP-based delegation, converters), CrewAI (A2A implementation: polling/push/streaming updates, A2UI extension, auth), AutoGen (gRPC-based distributed runtime with protobuf schemas), Warp (Oz rooms with @mentions, SSE streaming, agent auth). The first two adopt Google's A2A standard; AutoGen uses its own protobuf-defined protocol; Warp uses a custom room-based model. Cross-framework agent interop is still early -- no two frameworks can talk to each other out of the box despite A2A being a "standard."
+**Why notable:** A2A protocol adoption signals that the industry expects multi-framework agent ecosystems. But with 3 different protocols across 4 repos (A2A, gRPC/protobuf, custom), standardization is far from complete. The A2A standard has the most momentum (2 adopters from different orgs).
 
-### CR-19: Agent Lifecycle Formalization Spectrum
+### CR-30: Skills System Design Has Converged on a Common Anatomy
 
-**Dimension:** Agent Design
-**Pattern:** Four repos formalize agent lifecycle beyond simple "running/done": Beads (full state machine: idle→spawning→running→done/stuck/dead/stopped + external Witness monitor), Paperclip (heartbeat cycle: wake→check→work→exit with CEO delegation), OpenClaw (Dreaming phases: Light→Deep→REM for memory consolidation), DeerFlow (middleware lifecycle: SandboxMiddleware acquires/releases per turn + MemoryMiddleware queues/summarizes post-agent). These represent different facets of lifecycle formalization: Beads focuses on liveness monitoring, Paperclip on work cycles, OpenClaw on memory consolidation, DeerFlow on resource management.
-**Why notable:** Most agent systems have binary lifecycle (running or not). These four repos show that production agent systems need richer lifecycle models. The Witness pattern (Beads) is particularly novel — external monitoring that can declare agents dead is a safety mechanism the other repos lack.
-→ Promoted to [[agent-lifecycle-formalization-spectrum]] on 2026-04-19
-
-### New Cross-Repo Findings (CR-20 through CR-23)
-
-### CR-20: Skill Self-Improvement — Three Independent Approaches
-
-**Dimension:** Agent Design
-**Pattern:** Three repos now implement skill-level self-improvement, each with a distinct mechanism: (1) **OB1 — lessons log + self-modification**: Skills include a Phase 4 step and a Lessons Log table. After every invocation, the skill checks for lost work, token waste, and user corrections, then updates its own file. Production-tested with 6 lessons across 13+ sessions. (2) **gstack — external learnings JSONL**: Learnings captured in an append-only JSONL file via `/learn` skill. Searched at session start via shell preamble. Skills themselves don't change. (3) **Superpowers — meta-skill for skill authorship**: A skill that teaches agents how to write skills, applying persuasion principles. Enables framework self-extension, not individual skill improvement.
-**Why notable:** Three different answers to "how should skills get better over time?" — self-modification (OB1), external knowledge base (gstack), and meta-generation (Superpowers). OB1's approach is the most radical (skills directly edit themselves) and the most production-tested. This convergence on "skills should improve" without convergence on mechanism suggests the problem is real but the solution space is open.
-→ Promoted to [[skill-self-improvement-three-approaches]] on 2026-04-20
-
-### CR-21: Six Governance Philosophies — Taxonomy Complete?
-
-**Dimension:** Governance
-**Pattern:** With OB1's addition, the registry now documents six distinct governance enforcement philosophies: (1) **Structural** (GSD, BMAD, OC, Ar, n8n) — tool allowlists, validators, typed channels. (2) **Psychological** (SP) — persuasion-engineered constraints. (3) **Economic** (PC) — budget hard-stops, approval gates. (4) **Specification-as-governance** (LG, n8n) — conformance tests, spec-driven development. (5) **Middleware-as-enforcement** (DF) — composable pipeline layers. (6) **Two-layer split** (OB1) — deterministic CI for mechanical checks + LLM for judgment. Each philosophy reflects its repo's domain: economic governance for a company product (Paperclip), community governance for an open-source project (OB1), middleware for a complex agent harness (DeerFlow).
-**Why notable:** Six philosophies across 15 repos may approach saturation. The question is whether future repos will introduce a 7th or combine existing ones. OB1's CI+LLM split is the first to explicitly separate "what machines can check" from "what requires understanding" — a composable pattern that could layer on top of any other philosophy.
-→ Skipped: updated existing finding [[structural-vs-psychological-vs-economic-governance]] with philosophies 4-6 on 2026-04-20
-
-### CR-22: MCP as Primary Architecture vs. Supplementary Tool
-
-**Dimension:** Tools
-**Pattern:** MCP server integration now reaches 4/15 repos, but with two distinct roles: (1) **MCP as supplementary** (Sandbox, DF, OV) — MCP is one of several integration methods alongside native APIs, CLI tools, and framework primitives. (2) **MCP as primary architecture** (OB1) — MCP is the ONLY way AI clients interact with Open Brain. All extensions deploy as Supabase Edge Functions that expose MCP tools. No local servers, no alternative APIs. This is the first MCP-native architecture in the registry.
-**Why notable:** The "MCP as primary" pattern has implications for portability, governance, and capability design. OB1 enforces this architecturally (CI blocks local server patterns) rather than by convention. Every new capability (extension, recipe) is automatically available to every MCP-compatible AI client. The trade-off: a hard dependency on MCP protocol stability, and no fallback if MCP is unavailable.
-→ Promoted to [[mcp-as-primary-architecture-vs-supplementary]] on 2026-04-20
-
-### CR-23: Personal OS Domain Convergence — First Concrete Implementation
-
-**Dimension:** Agentic OS
-**Pattern:** OB1 is the first repo in the registry focused on personal/business OS domain implementation. While other repos touch adjacent concepts — Paperclip (business context), OpenClaw (personal agent workspace), Superpowers (skill ecosystem) — OB1 provides concrete domain extensions: household knowledge, home maintenance, family calendar, meal planning, professional CRM, job hunt pipeline. The progressive learning path design (6 extensions that compound) and the Life Engine proactive agent loop (time-window briefings, habit tracking, weekly reviews) demonstrate what a working personal OS looks like in practice.
-**Why notable:** "Personal OS" and "second brain" are frequently discussed in the agentic coding community but rarely implemented beyond proof-of-concept. OB1 has a community with active contributors building real domain extensions. The progressive compounding design (CRM reads thoughts, meal planner checks calendar) shows how cross-domain integration creates value that independent tools cannot. This validates the Agentic OS research dimension (DD-87) with the first concrete, community-tested implementation.
-→ Skipped: updated existing finding [[five-pillar-agentic-os-framework]] with OB1 validation evidence on 2026-04-20
+**Dimension:** Agent Design, Context Engineering
+**Pattern:** Across 20 repos using SKILL.md, a common anatomy has emerged: YAML frontmatter (name, description, triggers, allowed-tools) + structured body (instructions, process, output format) + optional references/ directory. Variations: ADK-Python adds full `references/` directories with 11+ docs per skill; Warp adds `specializes` field for inheritance; CrewAI adds progressive disclosure levels (METADATA/INSTRUCTIONS/RESOURCES); BMAD adds step-file decomposition for complex workflows; TACHES adds workflow sub-files. The SKILL.md pattern is now the most widely adopted convention in the agentic ecosystem -- more universal than AGENTS.md (which has more naming variations).
+**Why notable:** With 20/29 repos using SKILL.md, this is effectively a de facto standard. The remaining innovation space is in: inheritance (Warp), progressive disclosure (CrewAI), workflow decomposition (BMAD, TACHES), and self-improvement (OB1, Hermes). The base pattern is settled.
 
 ---
 
@@ -526,7 +508,8 @@ All 14 previous cross-repo findings (CR-1 through CR-14) were promoted in sessio
 
 | Date | Repos | Notes |
 |------|-------|-------|
-| 2026-04-08 | GSD, Superpowers, BMAD, OpenClaw, Paperclip, gstack, mem0 (7) | Initial comparison. 8 cross-repo findings candidates. |
-| 2026-04-09 | + Archon, n8n, LangGraph (10) | Full regeneration. 6 new candidates (CR-9 through CR-14). |
-| 2026-04-19 | + Beads, OpenViking, AIO Sandbox, DeerFlow (14) | Full regeneration. 5 new candidates (CR-15 through CR-19). New architectural class, sandbox comparison matrix, convergence signals on progressive loading and memory decay. |
-| 2026-04-20 | + OB1 (15) | Incremental update. 4 new candidates (CR-20 through CR-23). 6th governance philosophy (two-layer split). New Agentic OS dimension in heat map. Self-improving skills converge across 3 repos. MCP-as-primary-architecture pattern identified. |
+| 2026-04-08 | 7 (GSD, Superpowers, BMAD, OpenClaw, Paperclip, gstack, mem0) | Initial comparison. 8 cross-repo findings. |
+| 2026-04-09 | 10 (+Archon, n8n, LangGraph) | Full regeneration. CR-9 through CR-14. |
+| 2026-04-19 | 14 (+Beads, OpenViking, AIO Sandbox, DeerFlow) | Full regeneration. CR-15 through CR-19. |
+| 2026-04-20 | 15 (+OB1) | Incremental. CR-20 through CR-23. |
+| 2026-05-25 | 29 (+Memongo, MemPalace, Supermemory, ADK-Python, AutoGPT, AutoGen, CrewAI, Letta, Langflow, DeepTutor, Hermes, Pi Agent, TACHES, Warp) | Full regeneration. 7 new findings (CR-24 through CR-30). 7 governance philosophies. 11 context loading strategies. Graph execution convergence (6 repos). SKILL.md anatomy converges (20 repos). MCP adoption reaches 12/29. |

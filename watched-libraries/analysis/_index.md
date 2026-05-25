@@ -46,6 +46,13 @@ Structural analysis docs produced by `/repo-analyzer`. Each entry covers 5 dimen
 | [[memongo-analysis\|Memongo]] | latest | 2026-04-22 | partial — Pass 2 on 3 companion docs (gov + research-dims only) |
 | [[mempalace-analysis\|MemPalace]] | 3.3.2 | 2026-04-23 | full — dimensions 1/2/4/6; dimensions 3 and 5 N/A with rationale |
 | [[supermemory-analysis\|Supermemory]] | latest | 2026-04-23 | full — dimensions 1/2/4/5/6; dimension 3 N/A with rationale |
+| [[taches-cc-resources-analysis\|TÂCHES CC Resources]] | latest (2026-05-24) | 2026-05-24 | all |
+| [[adk-python-analysis\|ADK-Python]] | v2.0.0 | 2026-05-25 | all |
+| [[crewai-analysis\|CrewAI]] | v1.14.6 | 2026-05-25 | all |
+| [[letta-analysis\|Letta]] | v0.16.8 | 2026-05-25 | all |
+| [[langflow-analysis\|Langflow]] | v1.9.3 | 2026-05-25 | all |
+| [[autogpt-analysis\|AutoGPT]] | v0.5.0 | 2026-05-25 | all |
+| [[autogen-analysis\|AutoGen]] | v0.7.5 | 2026-05-25 | all |
 
 ## Cross-Repo Comparison
 

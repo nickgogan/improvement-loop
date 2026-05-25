@@ -31,7 +31,7 @@ Explain is a *consumption* operation: read-only on substrate; the Librarian does
 `explain` composes two inputs:
 
 1. **Concept file** for the topic being explained — provides the composition table pointing to the guide that carries the mechanism and any Tier-2 findings that go one layer deeper.
-2. **Key Concepts subsection(s)** of the named guide(s) — the authoritative mechanism summary. Secondary reads: `### Pitfalls` (when the explanation is "what goes wrong without this"), `### Mechanism` / `### Why this works` subsections (if the guide has them under other names — G2 §Step 5 item 1 explains *why* state objects beat prose, for example).
+2. **Key Concepts subsection(s)** of the named guide(s) — the authoritative mechanism summary. Secondary reads: `### Pitfalls` (when the explanation is "what goes wrong without this"), `### Mechanism` / `### Why this works` subsections (if the guide has them under other names — G2b §Session Discipline explains *why* state objects beat prose, for example).
 
 Key Concepts sections function as emergent mechanism explainers by construction — they were authored to carry the "why" at one level above the procedure. The Librarian reads them; it does not re-derive.
 
@@ -77,7 +77,7 @@ If the consumer asked for depth ("really," "mechanism," "show me the evidence") 
 
 ### Phase 4 — Gap + next-step pass
 
-- If substrate coverage is partial, state it: "G2 Key Concepts covers X but does not unpack Y. If you want Y-specifics, ask and I'll flag it as a KB gap."
+- If substrate coverage is partial, state it: "G2a/G2b Key Concepts covers X but does not unpack Y. If you want Y-specifics, ask and I'll flag it as a KB gap."
 - If the explanation naturally leads to a follow-up operation (design, decide, diagnose), offer one next-step suggestion.
 
 ## Consumer input handling
@@ -88,9 +88,9 @@ No artifact is consumed. Explain operates on substrate, not on consumer-supplied
 
 | Query shape | How to read |
 |---|---|
-| Mechanism (UC-6.1: "why does context rot happen?") | `context-rot.md` → G2 §Key Concepts + §Step 5 mechanism layer + Tier-2 `context-rot-attention-budget-depletion` |
+| Mechanism (UC-6.1: "why does context rot happen?") | `context-rot.md` → G2b §Key Concepts + §Detecting Context Degradation + Tier-2 `context-rot-attention-budget-depletion` |
 | Design rationale (UC-6.2: "why do agent Contracts need Preconditions?") | `agent.md` → G1 §Key Concepts + DD-78 framing note + Contract triple-role rationale |
-| Cost mechanism (UC-6.3: "why does prompt caching reduce cost so dramatically?") | `prompt-caching.md` → G2 §Step 6 mechanism + pricing arithmetic + Anthropic caching docs (Tier 3 if pressed) |
+| Cost mechanism (UC-6.3: "why does prompt caching reduce cost so dramatically?") | `prompt-caching.md` → G2b §Token Cost Defense + pricing arithmetic + Anthropic caching docs (Tier 3 if pressed) |
 
 ## Output shape
 

@@ -13,6 +13,7 @@ adopted_in: []
 sources:
 - pulumi-blog-claude-code-orchestration-frameworks.md
 - medium-ewan-mak-superpowers-gsd-gstack.md
+- gstack-gsd-superpowers-orchestrator-headless.md
 related_findings:
 - file: multi-framework-orchestration-power-stack.md
   rel: same-problem
@@ -26,8 +27,8 @@ related_findings:
   rel: same-problem
 proposals: null
 date_discovered: '2026-04-23'
-last_updated: '2026-04-23'
-pipeline_status: raw
+last_updated: '2026-05-25'
+pipeline_status: "classified"
 consumed_by: []
 ---
 

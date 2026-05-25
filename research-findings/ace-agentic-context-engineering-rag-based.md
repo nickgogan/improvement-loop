@@ -16,7 +16,7 @@ sources:
 - why-your-coding-agent-keeps-getting-dumber.md
 proposals: []
 date_discovered: '2026-03-22'
-last_updated: '2026-04-27'
+last_updated: '2026-05-24'
 related_findings:
 - file: ace-agentic-context-engineering-evolving-playbook.md
   rel: same-problem
@@ -72,9 +72,13 @@ related_findings:
   rel: contradicts
 - file: fundamental-limits-of-single-vector-embedding-retr.md
   rel: enabled-by
+- file: domain-expertise-loadable-context-sub-skill.md
+  rel: same-problem
+- file: bounded-tiered-memory-inference-driven-curation.md
+  rel: same-problem
 pipeline_status: synthesized
 consumed_by:
-  - "session-persistence-and-memory.md"
+- session-persistence-and-memory.md
 ---
 # ACE (Agentic Context Engineering) RAG-Based Playbook
 

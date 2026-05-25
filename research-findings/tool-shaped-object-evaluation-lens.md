@@ -17,7 +17,7 @@ sources:
 - agent-orchestrators-are-bad.md
 proposals: []
 date_discovered: '2026-03-23'
-last_updated: 2026-04-08
+last_updated: '2026-05-24'
 related_findings:
 - file: capability-saturation-threshold-45-percent.md
   rel: same-problem
@@ -26,6 +26,8 @@ related_findings:
 - file: acceptance-criteria-as-verifiable-eval-anchor.md
   rel: same-problem
 - file: ace-execution-feedback-no-labels-required.md
+  rel: same-problem
+- file: agent-proof-of-work-ui-trust-building.md
   rel: same-problem
 pipeline_status: synthesized
 consumed_by:

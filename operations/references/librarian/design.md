@@ -31,7 +31,7 @@ Design and audit are siblings. Audit applies invariants *retroactively* to an ex
 
 `design` composes three inputs:
 
-1. **Concept file** for the artifact (or concept) under design — provides the composition table. For variant-carrying concepts (agent, memory, second-brain), variant selection happens before composition; the variant narrows the guide set (e.g., Variant A of agent pulls {G1, G2, G3, G10}; Variant B adds {G3b, G5, G6}; Variant C adds {G7, G9}).
+1. **Concept file** for the artifact (or concept) under design — provides the composition table. For variant-carrying concepts (agent, memory, second-brain), variant selection happens before composition; the variant narrows the guide set (e.g., Variant A of agent pulls {G1, G2a, G2b, G3, G10}; Variant B adds {G3b, G5, G6}; Variant C adds {G7, G9}).
 2. **Step subsections** of the named guides — specifically:
    - `### Procedure` (or `### Step N` sequences where the guide is step-structured) → the ordered build sequence. This is the spine of the response.
    - `### Preconditions` (from the guide's Contract) → applicability gates. If a Precondition is not satisfied in the consumer's scenario, flag it; if it *cannot* be satisfied, the guide is wrong-tool and the Librarian says so.
@@ -46,10 +46,10 @@ Procedure sections function as emergent build specifications by construction —
 
 **(b) Precondition gating.** Before returning the design, walk the composed guides' Preconditions against the consumer's scenario. For each Precondition:
 - **Already satisfied** — silent; proceed.
-- **Satisfiable but not yet committed** — flag for the consumer ("G2 assumes you've decided on a context-budget ceiling; if you haven't, decide first or the G2 steps will be under-constrained").
+- **Satisfiable but not yet committed** — flag for the consumer ("G2a assumes you've decided on a context-budget ceiling; if you haven't, decide first or the G2a steps will be under-constrained").
 - **Unsatisfiable** — the guide is wrong-tool. State this and suggest the right guide/concept.
 
-**(c) Template and example embedding.** Where the guide has `### Templates` (G1, G2, G3, G3b, G5, G7, G10 all carry them) or `### Worked Examples` (G1, G2, G3, G7 carry these), lift the specific section that matches the consumer's scenario. For agent.md scaffolding, G10's Core Truths / Boundaries / Vibe / Continuity template is canonical; for context files, G2's Tiered CLAUDE.md template is canonical. Do not dump the template wholesale — fill in the variable slots the consumer has committed to and leave `{{REMAINING}}` placeholders visible.
+**(c) Template and example embedding.** Where the guide has `### Templates` (G1, G2a, G2b, G3, G3b, G5, G7, G10 all carry them) or `### Worked Examples` (G1, G2a, G2b, G3, G7 carry these), lift the specific section that matches the consumer's scenario. For agent.md scaffolding, G10's Core Truths / Boundaries / Vibe / Continuity template is canonical; for context files, G2a's Tiered CLAUDE.md template is canonical. Do not dump the template wholesale — fill in the variable slots the consumer has committed to and leave `{{REMAINING}}` placeholders visible.
 
 **(d) Variant overlay.** For variant-carrying concepts, the design composition reads the variant's *specific* guide union — not the full concept-file guide set. A Variant A (prompt-based) agent design does not pull G5 / G6 / G9 unless the consumer's scenario invokes them. This keeps designs scoped; over-inclusion of guides dilutes the step sequence.
 

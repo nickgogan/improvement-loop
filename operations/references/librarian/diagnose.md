@@ -67,7 +67,7 @@ Pool Pitfalls entries from all composed guides. Apply:
 
 1. **Symptom-anchor matching (step a).** Match the consumer's symptom against Pitfalls headings + body text.
 2. **Rank by match strength.** High (headings match nearly verbatim), medium (body text matches), low (keyword-only match — flag the looseness).
-3. **Deduplicate overlapping causes.** When two guides flag the same cause (e.g., "stale context" in G2 and G7), collapse to one row citing both guides.
+3. **Deduplicate overlapping causes.** When two guides flag the same cause (e.g., "stale context" in G2b and G7), collapse to one row citing both guides.
 
 Emit the ranked cause list as the core of the working report.
 
@@ -97,8 +97,8 @@ Inputs expected:
 
 | Symptom domain | Noun concept file | Composed guides |
 |---|---|---|
-| Losing constraints, drifting quality mid-session, degradation after N turns | `context-rot.md` | G2 Pitfalls + Step 5 (recovery) |
-| Forgetting across sessions, re-doing work, losing facts | `memory.md` (Variants B, D) | G7 Pitfalls + Part 1/2 (recovery), G2 §Step 5 item 4 |
+| Losing constraints, drifting quality mid-session, degradation after N turns | `context-rot.md` | G2b Pitfalls + Session Discipline / Compaction Timing (recovery) |
+| Forgetting across sessions, re-doing work, losing facts | `memory.md` (Variants B, D) | G7 Pitfalls + Part 1/2 (recovery), G2b §Memory File Discipline |
 | Erratic tool calls, wrong arguments, wrong sequencing | `agent.md` (tool aspect) | G5 Pitfalls + Procedure (recovery), G8 Pitfalls (prompt-side of tool calling) |
 | Skill not triggered when it should be, skill mis-loaded | `skill.md` | G3b Pitfalls + Procedure (trigger quality is G8 Pitfalls) |
 | Agent autonomy / HITL gap surfaced at runtime | `agent.md` (autonomous variant) | G9 Pitfalls + Sections 1–3 (trust ledger / review process) |
@@ -119,7 +119,7 @@ For symptoms with no concept file match, state the gap and fall back to the guid
 
 | # | Cause | Source Pitfall | Mechanism (1 line, if pulled) | Recovery pointer | Tier | Confidence |
 |---|---|---|---|---|---|---|
-| 1 | … | G2 Pitfalls §"…" | Attention-budget depletion (G2 §Key Concepts, line 65) | G2 §Step 5 item 3 (proactive compaction) | 1 | High |
+| 1 | … | G2b Pitfalls §"…" | Attention-budget depletion (G2b §Key Concepts) | G2b §Compaction Timing (proactive compaction) | 1 | High |
 | 2 | … | G7 Pitfalls §"…" | — | G7 §Part 1 §Step 1.2 | 1 | Medium |
 | … |
 

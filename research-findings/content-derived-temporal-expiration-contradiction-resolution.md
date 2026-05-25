@@ -1,25 +1,29 @@
 ---
-name: "Content-Derived Temporal Expiration and Automatic Contradiction Resolution"
-summary: "Third memory-decay strategy in the KB, alongside importance-based decay and surprisal-gated writes. (1) Parse date-references from content at write time ('I have an exam tomorrow' → extracted date + TTL), and auto-expire after the referenced date passes. (2) Detect contradictions between new and existing memories; resolve automatically via the Updates relationship (new memory marked `isLatest: true`; old retained with `isLatest: false`). Together: noise doesn't become permanent memory, and state evolves without manual cleanup."
+name: Content-Derived Temporal Expiration and Automatic Contradiction Resolution
+summary: 'Third memory-decay strategy in the KB, alongside importance-based decay and surprisal-gated writes. (1) Parse date-references from content at write time (''I have an exam tomorrow'' → extracted
+  date + TTL), and auto-expire after the referenced date passes. (2) Detect contradictions between new and existing memories; resolve automatically via the Updates relationship (new memory marked `isLatest:
+  true`; old retained with `isLatest: false`). Together: noise doesn''t become permanent memory, and state evolves without manual cleanup.'
 implementation_notes: null
-category: "Context Engineering"
-evidence_strength: "Medium (practitioner-documented)"
-adoption_status: "Not Yet Started"
+category: Context Engineering
+evidence_strength: Medium (practitioner-documented)
+adoption_status: Not Yet Started
 priority: P3
 applicability:
-  - "General"
+- General
 adopted_in: []
 sources: []
 related_findings:
-  - file: importance-based-decay-permanent-exemption.md
-    rel: same-problem
-  - file: surprisal-novelty-as-memory-write-gate.md
-    rel: same-problem
-  - file: typed-relationship-memory-graph.md
-    rel: enables
+- file: importance-based-decay-permanent-exemption.md
+  rel: same-problem
+- file: surprisal-novelty-as-memory-write-gate.md
+  rel: same-problem
+- file: typed-relationship-memory-graph.md
+  rel: enables
+- file: bounded-tiered-memory-inference-driven-curation.md
+  rel: same-problem
 proposals: null
-date_discovered: "2026-04-23"
-last_updated: "2026-04-27"
+date_discovered: '2026-04-23'
+last_updated: '2026-05-24'
 pipeline_status: classified
 consumed_by: []
 ---

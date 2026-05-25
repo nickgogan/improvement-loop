@@ -22,7 +22,7 @@ related_findings:
 proposals: []
 date_discovered: '2026-03-22'
 last_updated: '2026-04-19'
-pipeline_status: raw
+pipeline_status: "classified"
 consumed_by: []
 ---
 # Prompt Injection Risk from Trusted vs. Untrusted Web Content

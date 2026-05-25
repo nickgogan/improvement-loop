@@ -1,22 +1,28 @@
 ---
-name: "Background Hooks as Token Economy for Memory Bookkeeping"
-summary: "Move all memory-bookkeeping work (filing, indexing, timestamping, diary entries) out of the chat window into background harness hooks (Stop, PreCompact). Observable change: the founder measured ~$1.13 per session in retransmitted diary blocks when bookkeeping ran in-band; moving it to hooks drops that to $0 because the content never enters the chat. Hooks can also coerce the model into a save turn via `{\"decision\": \"block\", \"reason\": \"...\"}` with a `stop_hook_active` infinite-loop guard."
+name: Background Hooks as Token Economy for Memory Bookkeeping
+summary: 'Move all memory-bookkeeping work (filing, indexing, timestamping, diary entries) out of the chat window into background harness hooks (Stop, PreCompact). Observable change: the founder measured
+  ~$1.13 per session in retransmitted diary blocks when bookkeeping ran in-band; moving it to hooks drops that to $0 because the content never enters the chat. Hooks can also coerce the model into a save
+  turn via `{"decision": "block", "reason": "..."}` with a `stop_hook_active` infinite-loop guard.'
 implementation_notes: null
-category: "Context Engineering"
-evidence_strength: "Medium (practitioner-documented)"
-adoption_status: "Not Yet Started"
+category: Context Engineering
+evidence_strength: Medium (practitioner-documented)
+adoption_status: Not Yet Started
 priority: null
 applicability:
-  - "General"
-  - "S3 (Claude Code Build)"
+- General
+- S3 (Claude Code Build)
 adopted_in: []
 sources: []
 related_findings:
-  - file: claude-code-hooks-for-automatic-session-memory.md
-    rel: extends
+- file: claude-code-hooks-for-automatic-session-memory.md
+  rel: extends
+- file: typed-edge-knowledge-graph-token-reduction.md
+  rel: same-problem
+- file: bounded-tiered-memory-inference-driven-curation.md
+  rel: same-problem
 proposals: null
-date_discovered: "2026-04-23"
-last_updated: "2026-04-23"
+date_discovered: '2026-04-23'
+last_updated: '2026-05-24'
 pipeline_status: raw
 consumed_by: []
 ---

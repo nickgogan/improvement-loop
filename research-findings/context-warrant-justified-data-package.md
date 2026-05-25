@@ -24,7 +24,9 @@ related_findings:
     rel: same-problem
 date_discovered: "2026-04-19"
 last_updated: "2026-04-19"
-pipeline_status: classified
+pipeline_status: synthesized
+consumed_by:
+  - "agent-governance-and-trust.md"
 ---
 
 ## What It Is

@@ -34,12 +34,14 @@ related_findings:
   rel: same-problem
 - file: tiered-context-injection-over-monolithic-files.md
   rel: enables
+- file: bounded-tiered-memory-inference-driven-curation.md
+  rel: same-problem
 proposals: []
 date_discovered: '2026-04-07'
-last_updated: '2026-04-08'
+last_updated: '2026-05-24'
 pipeline_status: synthesized
 consumed_by:
-- managing-agent-context.md
+- structuring-agent-context.md
 ---
 ## What It Is
 

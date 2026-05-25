@@ -24,8 +24,10 @@ related_findings:
   rel: same-problem
 - file: archon-yaml-defined-harness-workflows.md
   rel: same-problem
-pipeline_status: classified
-consumed_by: []
+pipeline_status: "synthesized"
+consumed_by:
+  - "agent-architecture-decisions.md"
+  - "rules/verify-sub-agent-wiring-after-each-wave.md"
 ---
 # Orchestrated Execution: One Task Per Sub-Agent with Wiring Verification
 

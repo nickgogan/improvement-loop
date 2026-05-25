@@ -19,6 +19,12 @@ Nothing here is auto-extracted; rows feed `/extract-artifacts` only after Nick r
 | 2026-04-26 | nick-dismissed | template | [[per-node-tool-restrictions-workflow-governance]] | "Per-Node Tool Restriction YAML" | dismiss as inline |
 | 2026-04-26 | nick-dismissed | template | [[trust-calibration-progressive-autonomy-ramp]] | "Trust Ledger Template" | dismiss as inline |
 | 2026-04-26 | nick-dismissed | template | [[human-on-the-loop-hotl-autonomy-tiering-framework]] | "Four-Level Autonomy Tier Table" | dismiss as inline |
+| 2026-05-25 | extracted | rule | [[permission-compounding-across-agent-delegation-chains]] | "Permissions narrow monotonically across delegation chains" | extracted to [[permission-compounding-across-agent-delegation-chains]] |
+| 2026-05-25 | extracted | rule | [[supervision-debt-anti-pattern]] | "Map control points before agent deployment" | extracted to [[supervision-debt-anti-pattern]] |
+| 2026-05-25 | extracted | rule | [[pattern-scale-signals-systemic-not-individual-failure]] | "Pattern-scale failure triggers process fix not training" | merged into [[every-recurring-review-comment-triages-to-mechanism-or-judgment]] |
+| 2026-05-25 | extracted | rule | [[tool-access-as-security-boundary-not-feature-toggle]] | "Tool enablement is security boundary not feature toggle" | merged into [[explicit-permission-allow-listing-for-agent-resource-access]] |
+| 2026-05-25 | extracted | rule | [[interpretive-boundary-layer-fact-vs-judgment]] | "Label agent outputs as act-on-this vs interpret-first" | extracted to [[interpretive-boundary-layer-fact-vs-judgment]] |
+| 2026-05-25 | extracted | rule | [[policy-as-data-machine-readable-constraints]] | "Governance rules are machine-readable data not prose" | extracted to [[policy-as-data-machine-readable-constraints]] |
 
 ## Per-row details
 
@@ -213,3 +219,97 @@ Extracted 2026-04-27 — Session 82 — [[session-82-codifier-extract-artifacts-
 - **Suggested headline:** four-level-autonomy-tier-table
 - **Recommendation:** dismiss as inline
 - **Resolution:** dismissed
+
+### permission-compounding-across-agent-delegation-chains::rule::permissions-narrow-monotonically
+
+- **Date queued:** 2026-05-25
+- **Status:** extracted
+- **Target form:** rule
+- **Source finding:** [[permission-compounding-across-agent-delegation-chains]]
+- **Source excerpt:**
+  > "Implement monotonic permission narrowing: each delegation step can only reduce permissions, never expand them. Agent B's permissions must be a strict subset of Agent A's delegated scope."
+- **Codifier's reading:** Imperative directive applicable to any multi-agent delegation architecture: each step in a delegation chain produces a strict subset of the delegator's permissions; no escalation path exists. Machine-enforceable at the orchestration layer (delegation request rejected if target scope exceeds source scope). Fits rule artifact form per form-classification rubric — directive + enforcement path + machine-checkable invariant.
+- **Suggested headline:** permissions-narrow-monotonically
+- **Recommendation:** extract via /extract-artifacts
+- **Resolution:** extracted to [[permission-compounding-across-agent-delegation-chains]]
+
+Extracted 2026-05-25 — Session 102 — [[session-102-codifier-identify-and-extract-artifacts]] — to [[permission-compounding-across-agent-delegation-chains]].
+
+### supervision-debt-anti-pattern::rule::map-control-points-before-deployment
+
+- **Date queued:** 2026-05-25
+- **Status:** extracted
+- **Target form:** rule
+- **Source finding:** [[supervision-debt-anti-pattern]]
+- **Source excerpt:**
+  > "Map every agent workflow to explicit control points before deployment, not after. Classify operations by risk tier: auto-approve (read-only), human-approve (mutations), and human-initiate (irreversible)."
+- **Codifier's reading:** Imperative directive applicable to any agent deployment process: every workflow must have its control points (observation, approval, steering, cancel) mapped and classified before production deployment. Machine-checkable as a pre-deployment gate that verifies control-point documentation exists per workflow. Fits rule artifact form — directive + temporal constraint ("before deployment") + enforcement surface (deployment gate).
+- **Suggested headline:** map-control-points-before-deployment
+- **Recommendation:** extract via /extract-artifacts
+- **Resolution:** extracted to [[supervision-debt-anti-pattern]]
+
+Extracted 2026-05-25 — Session 102 — [[session-102-codifier-identify-and-extract-artifacts]] — to [[supervision-debt-anti-pattern]].
+
+### pattern-scale-signals-systemic-not-individual-failure::rule::pattern-scale-triggers-process-fix
+
+- **Date queued:** 2026-05-25
+- **Status:** extracted
+- **Target form:** rule
+- **Source finding:** [[pattern-scale-signals-systemic-not-individual-failure]]
+- **Source excerpt:**
+  > "If the failure is at pattern-scale, training is the wrong mitigation. ... if the same error appears 3+ times, escalate from individual fix to process fix."
+- **Codifier's reading:** Imperative directive with a quantified trigger threshold: governance failures appearing at pattern-scale (3+ instances) require process-level architectural fixes, not individual training or one-off repairs. Machine-trackable as a governance incident counter with automatic escalation when the threshold fires. Fits rule artifact form — imperative + threshold + mitigation target specification.
+- **Suggested headline:** pattern-scale-triggers-process-fix
+- **Recommendation:** extract via /extract-artifacts
+- **Resolution:** merged into [[every-recurring-review-comment-triages-to-mechanism-or-judgment]]
+
+Pending merge 2026-05-25 — Session 102 — [[session-102-codifier-identify-and-extract-artifacts]] — DD-97 extension proposal emitted at [[operations/extension-proposals/2026-05-25-extension-proposals]]; primary match [[every-recurring-review-comment-triages-to-mechanism-or-judgment]]. Manual apply per DD-97 v1 (Step 1.7 auto-merge prohibition); after apply, row Status flips to extracted and Resolution to merged into [[every-recurring-review-comment-triages-to-mechanism-or-judgment]] via manual queue edit (or future skill mode).
+
+Merged 2026-05-25 — Session 103 — [[session-103-codifier-complete-extract-artifacts-write-phase]] — into [[every-recurring-review-comment-triages-to-mechanism-or-judgment]].
+
+### tool-access-as-security-boundary-not-feature-toggle::rule::tool-enablement-is-security-boundary
+
+- **Date queued:** 2026-05-25
+- **Status:** extracted
+- **Target form:** rule
+- **Source finding:** [[tool-access-as-security-boundary-not-feature-toggle]]
+- **Source excerpt:**
+  > "MCP tool access is treated as a feature toggle in most UIs (enable/disable server), but it is actually a security boundary crossing. ... Enabling a tool grants the agent arbitrary code execution and arbitrary data access within that tool's scope."
+- **Codifier's reading:** Imperative directive: tool/MCP server enablement must be assessed as a security boundary crossing, not a feature toggle. Each enablement should include capability assessment (what can the agent now do?) and scope limitation (which tools from this server are exposed?). Machine-enforceable as a pre-enablement checklist or a security-classification gate in server configuration. Fits rule artifact form — reframes a common implicit assumption into an explicit invariant.
+- **Suggested headline:** tool-enablement-is-security-boundary
+- **Recommendation:** extract via /extract-artifacts
+- **Resolution:** merged into [[explicit-permission-allow-listing-for-agent-resource-access]]
+
+Pending merge 2026-05-25 — Session 102 — [[session-102-codifier-identify-and-extract-artifacts]] — DD-97 extension proposal emitted at [[operations/extension-proposals/2026-05-25-extension-proposals]]; primary match [[explicit-permission-allow-listing-for-agent-resource-access]]. Manual apply per DD-97 v1 (Step 1.7 auto-merge prohibition); after apply, row Status flips to extracted and Resolution to merged into [[explicit-permission-allow-listing-for-agent-resource-access]] via manual queue edit (or future skill mode).
+
+Merged 2026-05-25 — Session 103 — [[session-103-codifier-complete-extract-artifacts-write-phase]] — into [[explicit-permission-allow-listing-for-agent-resource-access]].
+
+### interpretive-boundary-layer-fact-vs-judgment::rule::label-outputs-act-vs-interpret
+
+- **Date queued:** 2026-05-25
+- **Status:** extracted
+- **Target form:** rule
+- **Source finding:** [[interpretive-boundary-layer-fact-vs-judgment]]
+- **Source excerpt:**
+  > "Every AI-powered knowledge system that surfaces information to decision-makers must explicitly label outputs as either 'act on this' (factual, verified, low-risk) or 'interpret this first' (judgment call, causal inference, novel pattern) — because presenting both at the same confidence level is an architectural failure."
+- **Codifier's reading:** Imperative directive: all agent outputs reaching human decision-makers must carry an explicit binary classification (factual vs. inferential). Machine-enforceable as a mandatory field on agent output schemas or as a post-processing classification step before human-facing rendering. Fits rule artifact form — imperative + binary classification requirement + explicit failure mode ("presenting both at the same confidence level is an architectural failure").
+- **Suggested headline:** label-outputs-act-vs-interpret
+- **Recommendation:** extract via /extract-artifacts
+- **Resolution:** extracted to [[interpretive-boundary-layer-fact-vs-judgment]]
+
+Extracted 2026-05-25 — Session 102 — [[session-102-codifier-identify-and-extract-artifacts]] — to [[interpretive-boundary-layer-fact-vs-judgment]].
+
+### policy-as-data-machine-readable-constraints::rule::governance-rules-machine-readable
+
+- **Date queued:** 2026-05-25
+- **Status:** extracted
+- **Target form:** rule
+- **Source finding:** [[policy-as-data-machine-readable-constraints]]
+- **Source excerpt:**
+  > "Prose policies ('agents should not access PII without authorization') are aspirational. Machine-readable policies are enforced — the runtime checks them and blocks non-compliant events. This is the distinction between governance-as-documentation and governance-as-enforcement."
+- **Codifier's reading:** Imperative directive: governance rules must be represented as machine-readable data structures that the runtime evaluates against every event, not as prose documentation that agents are instructed to follow. Machine-enforceable as a meta-rule: every policy statement must have a machine-readable encoding; prose-only policies are governance debt that must be converted. Fits rule artifact form — imperative + binary distinction (documentation vs. enforcement) + clear target state (runtime-evaluated data structures).
+- **Suggested headline:** governance-rules-machine-readable
+- **Recommendation:** extract via /extract-artifacts
+- **Resolution:** extracted to [[policy-as-data-machine-readable-constraints]]
+
+Extracted 2026-05-25 — Session 102 — [[session-102-codifier-identify-and-extract-artifacts]] — to [[policy-as-data-machine-readable-constraints]].

@@ -14,16 +14,20 @@ adopted_in: []
 sources:
 - building-ai-agents-that-actually-work-full-course.md
 - bmad-v610-v622-changelog.md
+- sdk-vs-framework-decision-ai-agents.md
 proposals: []
 date_discovered: '2026-03-22'
-last_updated: '2026-04-19'
+last_updated: '2026-05-25'
 related_findings:
 - file: agent-architecture-layer-impermanence.md
   rel: contradicts
 - file: bmad-v6-builder-custom-agent-workflow-creation.md
   rel: same-problem
-pipeline_status: raw
-consumed_by: []
+- file: skills-portability-across-sdk-and-framework-boundaries.md
+  rel: extended-by
+pipeline_status: "synthesized"
+consumed_by:
+  - "agent-architecture-decisions.md"
 ---
 # Skills as Markdown SOP Files: Encode Processes Once, Reuse Forever
 

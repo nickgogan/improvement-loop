@@ -20,8 +20,9 @@ last_updated: '2026-04-19'
 related_findings:
 - file: gpt-54-tool-search-deferred-tool-loading.md
   rel: same-problem
-pipeline_status: raw
-consumed_by: []
+pipeline_status: "synthesized"
+consumed_by:
+  - "designing-agent-tools.md"
 ---
 # Cursor + Claude Code IDE Composition
 

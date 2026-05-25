@@ -39,7 +39,7 @@ Single referent. No variants. The specific topologies (single-agent vs multi-age
 
 ## Why this is a concept, not a dimension
 
-Like `harness.md`, agentic-systems is a *consumer lens* that cross-cuts multiple dimensions — any real question about an agentic system touches architecture (G3), workflow (G3b), context (G2), tool design (G5), safety (G6), memory (G7), and governance (G9) at once. Scan-topic framing would partition-overlap existing dimensions. Consumer-query framing is the right place: this file points into the aspects already scanned.
+Like `harness.md`, agentic-systems is a *consumer lens* that cross-cuts multiple dimensions — any real question about an agentic system touches architecture (G3), workflow (G3b), context (G2a/G2b), tool design (G5), safety (G6), memory (G7), and governance (G9) at once. Scan-topic framing would partition-overlap existing dimensions. Consumer-query framing is the right place: this file points into the aspects already scanned.
 
 ## Architecture baseline — single-agent is the default
 

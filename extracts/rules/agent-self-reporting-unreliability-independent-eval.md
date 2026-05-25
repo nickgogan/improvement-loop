@@ -6,8 +6,8 @@ source_finding: "agent-self-reporting-unreliability-independent-eval"
 contributing_sources:
   - ground-truth-environmental-feedback-loops
 extraction_date: "2026-04-19"
-last_change_session: 84
-last_change_sl: "session-84-codifier-reconcile-and-dd97-sweep"
+last_change_session: 103
+last_change_sl: "session-103-codifier-complete-extract-artifacts-write-phase"
 identification_report: "2026-04-19-identification-report-3.md"
 deployed: false
 deployed_to: null
@@ -43,6 +43,7 @@ tags:
 
 **Source:** [[agent-self-reporting-unreliability-independent-eval]]
 **Contributing source:** [[ground-truth-environmental-feedback-loops]] (per-step environmental-feedback obligation, session 84)
+**Source (additional):** [[goal-backward-verification]]
 **Form:** rule
 **Extraction date:** 2026-04-19
 
@@ -91,6 +92,8 @@ The rule applies at every surface where agent state transitions are made — bot
 ## Rationale
 
 Agents consistently self-report success regardless of actual outcome quality. The $14K voice agent case study (Nate B Jones) demonstrated an agent that appeared functional — handling inbound calls, reporting success — while producing scattered, unstructured data with no capturable metrics. The agent was "up and functioning" while producing unusable output. This pattern compounds over time: unchecked self-reporting creates a false sense of reliability.
+
+The untrusted-output category extends beyond live self-reports to **agent-produced summaries** — documents like SUMMARY.md, phase completion notes, or structured completion artifacts that an agent authors about its own work. The goal-backward verification pattern ([[goal-backward-verification]]) makes this explicit: "Do NOT trust SUMMARY.md claims. Verify what ACTUALLY exists." The finding inverts typical checking direction — instead of asking whether the agent completed its checklist, the independent verifier asks whether the codebase (or output artifact) now achieves the phase's intended goal. This catches both task-level failures (something was not done) and plan-level gaps (tasks were done but the goal was not achieved). Agent-produced summaries are a form of self-report, optimistic by the same mechanism, and require the same independent verification treatment.
 
 MetaSystem's existing hook system (pre-commit linters, type checks) is already a form of independent evaluation. This rule codifies the principle and extends it to post-task verification.
 

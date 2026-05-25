@@ -12,7 +12,15 @@ tags:
   - "memory"
 url: "https://www.youtube.com/watch?v=szaszUEmjfU"
 authority: []
-findings: []
+findings:
+  - "agent-harness-distributed-system-mental-model.md"
+  - "brain-hands-decoupling-architecture.md"
+  - "claude-code-12-agent-primitives.md"
+  - "context-before-loop-initialization-sequence.md"
+  - "framework-abstraction-tax-for-agents.md"
+  - "ide-first-claude-code-with-deterministic-hooks.md"
+  - "minimal-agent-harness-skeleton-three-primitives.md"
+  - "subagent-as-uniform-tool-interface.md"
 date_added: "2026-04-09"
 date_processed: "2026-04-09"
 ---

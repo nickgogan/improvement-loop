@@ -26,7 +26,7 @@ related_findings:
   rel: companion
 pipeline_status: synthesized
 consumed_by:
-- managing-agent-context.md
+- structuring-agent-context.md
 ---
 ## What It Is
 

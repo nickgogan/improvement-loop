@@ -74,7 +74,8 @@ Substrate pointers for the core Librarian operations. Variant overlays noted whe
 |---|---|---|---|
 | Intent / spec | G1 `writing-agent-specifications.md` §Contract, §Key Concepts | — | `anthropic-claude-code/` custom-agent examples |
 | Identity / persona | G10 `agent-design-patterns.md` §Contract, §Pitfalls | Patterns on identity-capability coupling | — |
-| Context management | G2 `managing-agent-context.md` §Contract, §Pitfalls | `context-rot-attention-budget-depletion`, `proactive-compaction-before-intelligence-degradation` | — |
+| Context structuring | G2a `structuring-agent-context.md` §Contract, §Pitfalls | — | — |
+| Context degradation | G2b `defending-agent-context.md` §Contract, §Pitfalls | `context-rot-attention-budget-depletion`, `proactive-compaction-before-intelligence-degradation` | — |
 | Architecture / decomposition | G3 `agent-architecture-decisions.md` §Contract, §Key Concepts | `autonomy-gradient-not-binary-delegation` | — |
 | Workflow / execution (Variants B, C) | G3b `agent-workflow-and-execution.md` §Contract, §State, §Termination | Patterns on durable workflow state | — |
 | Tool design (Variant B or tool-using agents) | G5 `designing-agent-tools.md` §Contract, §Pitfalls | Patterns on tool registry, deferred loading, MCP ecosystems | Anthropic MCP registry, Claude Code tool source |
@@ -83,7 +84,7 @@ Substrate pointers for the core Librarian operations. Variant overlays noted whe
 | Governance / trust (Variant C, HITL-gated Variant B) | G9 `agent-governance-and-trust.md` §Contract — **G9.I6 required for destructive-action agents** | Patterns on HITL gating, trust promotion | — |
 | Model selection | G3.I4 / G8.I4 (merged invariant: task-based, not provider-based) | — | Anthropic model-comparison docs |
 
-**Variant overlays.** Variant A pulls {G1, G2, G3, G10}; typically skips G3b/G5/G6/G7 unless the prompt embeds tool/workflow/safety directives. Variant B adds {G3b, G5, G6} and often G9. Variant C adds {G7, G9} and elevates G9.I6 on any destructive-action path.
+**Variant overlays.** Variant A pulls {G1, G2a, G2b, G3, G10}; typically skips G3b/G5/G6/G7 unless the prompt embeds tool/workflow/safety directives. Variant B adds {G3b, G5, G6} and often G9. Variant C adds {G7, G9} and elevates G9.I6 on any destructive-action path.
 
 ## Librarian read rule
 

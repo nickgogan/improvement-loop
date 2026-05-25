@@ -21,7 +21,7 @@ related_findings:
   rel: enables
 pipeline_status: synthesized
 consumed_by:
-- managing-agent-context.md
+- structuring-agent-context.md
 ---
 
 # Fundamental Limits of Single-Vector Embedding Retrieval

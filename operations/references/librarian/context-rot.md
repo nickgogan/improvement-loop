@@ -41,28 +41,28 @@ Single referent. No variants. The failure looks the same whether the agent is a 
 Two forces compound:
 
 1. **Attention-budget depletion.** Larger contexts mean less effective attention per token. Load-bearing details become indistinguishable from boilerplate. Effect scales nonlinearly: output quality often drops after a characteristic turn count (~50 is a common practitioner report, though the curve varies by model and task shape — `context-rot-attention-budget-depletion`).
-2. **Noise accumulation.** Conversation history, stale files, indiscriminate rules in CLAUDE.md, and IDE-streamed open files accrete into the context over a session. Each individually looks cheap; in aggregate they crowd signal. G2 Step 5 (line 242) names the five production-tested defenses; `claudemd-context-rot-from-indiscriminate-rule-accu` is the worked example for the CLAUDE.md-specific case.
+2. **Noise accumulation.** Conversation history, stale files, indiscriminate rules in CLAUDE.md, and IDE-streamed open files accrete into the context over a session. Each individually looks cheap; in aggregate they crowd signal. G2b Step 5 (line 242) names the five production-tested defenses; `claudemd-context-rot-from-indiscriminate-rule-accu` is the worked example for the CLAUDE.md-specific case.
 
 The two forces reinforce each other — a larger context has both a thinner attention budget *and* a lower signal-to-noise ratio.
 
 ## Composition
 
-Substrate pointers for the core Librarian operations on context rot. Smaller table than variant-carrying concepts because the substrate is tightly clustered around G2.
+Substrate pointers for the core Librarian operations on context rot. Smaller table than variant-carrying concepts because the substrate is tightly clustered around G2b.
 
 | Aspect | Tier 1 (guides, default) | Tier 2 (patterns / findings) | Tier 3 (watched-libraries) |
 |---|---|---|---|
-| Mechanism / "why this happens" | G2 `managing-agent-context.md` §Key Concepts (line 65), §Step 5 "Defend Against Context Rot" (line 242) | `context-rot-attention-budget-depletion`, `context-rot-silent-killer-and-mitigations` | — |
-| Symptoms and failure mode (for diagnose) | G2 §Pitfalls (line 608), §Step 5 | `context-rot-silent-killer-and-mitigations`, `claudemd-context-rot-from-indiscriminate-rule-accu` | — |
-| Defenses — explicit state object, contract validation, delta updates | G2 §Step 5 items 1–3 | `ace-delta-updates`, patterns under Context dimension on structured-state-object discipline | — |
-| Defenses — proactive compaction | G2 §Step 5 item 3 + G2 §Step 4 "Manage Dynamic Context" | `proactive-compaction-before-intelligence-degradation`, `memory-decay-compaction-convergence`, `dynamic-tool-pool-assembly-transcript-compaction` | — |
-| Defenses — cross-session learnings persistence | G2 §Step 5 item 4 | `gsd-global-learnings-store-cross-session-persistence`, `claude-code-long-term-memory-via-pre-prompt-recall` — cross-ref `memory.md` Variant D | — |
-| Defenses — natural reset points | G2 §Step 5 item 5 | — | — |
-| Cost-side amplifier (hidden context tax) | G2 §Step 6 "Optimize for Cost" (line 258), specifically "Account for Hidden Costs" | Patterns on prompt caching and stable-context discipline | Anthropic caching docs |
-| Audit surface — rule accretion in CLAUDE.md / spec files | G2 §Step 5; G1 §Pitfalls | `claudemd-context-rot-from-indiscriminate-rule-accu` | — |
+| Mechanism / "why this happens" | G2b `defending-agent-context.md` §Key Concepts, §"Detecting Context Degradation" | `context-rot-attention-budget-depletion`, `context-rot-silent-killer-and-mitigations` | — |
+| Symptoms and failure mode (for diagnose) | G2b §Pitfalls | `context-rot-silent-killer-and-mitigations`, `claudemd-context-rot-from-indiscriminate-rule-accu` | — |
+| Defenses — explicit state object, contract validation, delta updates | G2b §Session Discipline, §Compaction Timing | `ace-delta-updates`, patterns under Context dimension on structured-state-object discipline | — |
+| Defenses — proactive compaction | G2b §Step 5 item 3 + G2b §Step 4 "Manage Dynamic Context" | `proactive-compaction-before-intelligence-degradation`, `memory-decay-compaction-convergence`, `dynamic-tool-pool-assembly-transcript-compaction` | — |
+| Defenses — cross-session learnings persistence | G2b §Step 5 item 4 | `gsd-global-learnings-store-cross-session-persistence`, `claude-code-long-term-memory-via-pre-prompt-recall` — cross-ref `memory.md` Variant D | — |
+| Defenses — natural reset points | G2b §Step 5 item 5 | — | — |
+| Cost-side amplifier (hidden context tax) | G2b §Step 6 "Optimize for Cost" (line 258), specifically "Account for Hidden Costs" | Patterns on prompt caching and stable-context discipline | Anthropic caching docs |
+| Audit surface — rule accretion in CLAUDE.md / spec files | G2b §Step 5; G1 §Pitfalls | `claudemd-context-rot-from-indiscriminate-rule-accu` | — |
 
 ## Librarian read rule
 
-**Default (Tier 1).** For `(explain, context-rot)` queries (UC-6.1), read G2 §Key Concepts plus §Step 5 — those two sections together carry mechanism + defenses. For `(diagnose, context-rot)` queries (UC-4.1, UC-4.4), read G2 §Pitfalls and §Step 5 (defenses are the recovery pointers). For `(fetch, context-budget-worksheet)` (UC-2.1), point at G2 §Templates (line 294) where the Context Budget template is authored.
+**Default (Tier 1).** For `(explain, context-rot)` queries (UC-6.1), read G2b §Key Concepts plus §Step 5 — those two sections together carry mechanism + defenses. For `(diagnose, context-rot)` queries (UC-4.1, UC-4.4), read G2b §Pitfalls and §Step 5 (defenses are the recovery pointers). For `(fetch, context-budget-worksheet)` (UC-2.1), point at G2b §Templates (line 294) where the Context Budget template is authored.
 
 **Escalate to Tier 2 when:**
 - Consumer asks "why does this happen" and a Tier-1 answer feels mechanistic-but-shallow — pull `context-rot-attention-budget-depletion` for the attention-budget specifics.
@@ -75,7 +75,7 @@ Substrate pointers for the core Librarian operations on context rot. Smaller tab
 
 **Do not:**
 - Conflate context rot with hallucination or intent drift when producing a diagnosis. The recovery paths are different.
-- Skip G2 §Step 5 when authoring a defense plan. The five defenses are load-bearing together; picking one in isolation usually loses signal.
+- Skip G2b §Step 5 when authoring a defense plan. The five defenses are load-bearing together; picking one in isolation usually loses signal.
 
 ## Provenance surfacing
 

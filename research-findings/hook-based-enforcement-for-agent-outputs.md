@@ -22,8 +22,9 @@ related_findings:
 proposals: null
 date_discovered: '2026-04-09'
 last_updated: '2026-04-19'
-pipeline_status: raw
-consumed_by: []
+pipeline_status: "extracted"
+consumed_by:
+  - "rules/hook-based-enforcement-for-agent-outputs.md"
 ---
 
 ## What It Is
@@ -53,3 +54,6 @@ A library of reusable hook validators (label validation, file path validation, A
 ## Potential Failure Modes
 
 Overly strict hooks that block valid agent actions. Hook validation that doesn't cover all invalid states (partial enforcement is sometimes worse than none). Performance overhead from running prompts on every tool call.
+
+## Extraction Note — 2026-05-25
+Extracted as **rule**: [[hook-based-enforcement-for-agent-outputs]] in `extracts/rules/`

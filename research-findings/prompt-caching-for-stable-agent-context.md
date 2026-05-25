@@ -19,7 +19,7 @@ date_discovered: '2026-04-07'
 last_updated: '2026-04-19'
 pipeline_status: synthesized
 consumed_by:
-- managing-agent-context.md
+- defending-agent-context.md
 related_findings:
 - file: prompt-cache-stability-as-correctness.md
   rel: extended-by

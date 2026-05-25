@@ -21,12 +21,16 @@ related_findings:
   rel: enables
 - file: mcp-elicitation-for-user-input.md
   rel: same-problem
+- file: follow-up-question-budget-agent-triage.md
+  rel: same-problem
 proposals: null
 date_discovered: '2026-04-09'
-last_updated: '2026-04-20'
+last_updated: '2026-05-24'
 pipeline_status: synthesized
 consumed_by:
+  - "agent-design-patterns.md"
 - agent-design-patterns.md
+- writing-agent-specifications.md
 ---
 # Agent Clarification Over Assumption Pattern
 

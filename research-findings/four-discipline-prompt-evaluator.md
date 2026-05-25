@@ -27,8 +27,9 @@ related_findings:
   rel: enabled-by
 - file: volume-over-quality-eval-principle.md
   rel: same-problem
-pipeline_status: raw
-consumed_by: []
+pipeline_status: synthesized
+consumed_by:
+- writing-agent-specifications.md
 ---
 # Four-Discipline Prompt Evaluator
 

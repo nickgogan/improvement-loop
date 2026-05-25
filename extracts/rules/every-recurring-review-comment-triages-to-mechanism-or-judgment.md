@@ -5,8 +5,8 @@ assigned_form: "rule"
 source_finding: "review-obsolescence-as-design-goal"
 identification_report: "agent-governance-and-trust.harvest-queue.md::review-obsolescence-as-design-goal::rule::every-recurring-review-comment-triages-to-mechanism-or-judgment"
 extraction_date: "2026-04-27"
-last_change_session: 82
-last_change_sl: "session-82-codifier-extract-artifacts-harvest-promotion-batch"
+last_change_session: 103
+last_change_sl: "session-103-codifier-complete-extract-artifacts-write-phase"
 deployed: false
 deployed_to: null
 context:
@@ -40,6 +40,7 @@ tags:
 # Every Recurring Review Comment Triages to Mechanism or Judgment-Only — Review-Obsolescence Triage Rule
 
 **Source:** [[review-obsolescence-as-design-goal]]
+**Source (additional):** [[pattern-scale-signals-systemic-not-individual-failure]]
 **Form:** rule
 **Extraction date:** 2026-04-27
 
@@ -87,6 +88,10 @@ The rule's structure — triage to mechanism *or* judgment-only — is the posit
 The rule does not demand that all comments become mechanisms. Architectural and design judgment is real and valuable; declaring a class as judgment-only is a first-class triage outcome, not a defeat. The rule's discipline is about being *explicit* about which classes are which — not about eliminating human judgment from review.
 
 The rule respects mechanism-feasibility over time. A class can move from judgment-only to mechanism when new tools become available; the rule accommodates this with re-triage. The audit cost is bounded — only recurring classes trigger the triage; one-off comments and class-specific bugs don't.
+
+### Additional Evidence
+
+The pattern-scale diagnostic framework ([[pattern-scale-signals-systemic-not-individual-failure]]) broadens the application scope of this rule beyond code review to any recurring failure at governance scale. When the same gap appears across multiple governance surfaces — not just PR threads — the diagnostic is the same: a recurring pattern signals a process failure, not individual error. The triage rule applies: the pattern triages to mechanism (a structural default that prevents the gap) or judgment-only (an explicit declaration that the class requires human evaluation). "Count the instances" is the trigger; three or more recurrences of the same governance gap is the threshold for architectural intervention rather than per-instance fixing. Training or per-file remediation is the wrong mitigation at pattern scale; the correct response is the same as for recurring review comments — ship a mechanism or declare judgment-only with reasoning.
 
 ## Failure Modes
 

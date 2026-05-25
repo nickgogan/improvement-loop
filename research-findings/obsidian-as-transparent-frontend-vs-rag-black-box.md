@@ -6,7 +6,7 @@ implementation_notes: Validates MetaSystem's Obsidian vault approach over RAG-ba
 category: Agentic Systems
 evidence_strength: Medium (practitioner-documented)
 adoption_status: Already Adopted
-priority: P3 (Monitor)
+priority: P2 (Design Required)
 applicability:
 - S3 (Claude Code Build)
 adopted_in:
@@ -31,10 +31,11 @@ related_findings:
   rel: same-problem
 proposals: null
 date_discovered: '2026-04-07'
-last_updated: '2026-04-19'
+last_updated: '2026-05-24'
 pipeline_status: synthesized
 consumed_by:
   - "building-agentic-systems.md"
+- building-agentic-systems.md
 ---
 # Obsidian as Transparent Frontend vs RAG Black Box
 

@@ -1,31 +1,38 @@
 ---
-name: "Interpretive Boundary Layer (Fact vs. Judgment)"
-summary: "Every AI-powered knowledge system that surfaces information to decision-makers must explicitly label outputs as either 'act on this' (factual, verified, low-risk) or 'interpret this first' (judgment call, causal inference, novel pattern) — because presenting both at the same confidence level is an architectural failure that silently degrades decision quality."
+name: Interpretive Boundary Layer (Fact vs. Judgment)
+summary: Every AI-powered knowledge system that surfaces information to decision-makers must explicitly label outputs as either 'act on this' (factual, verified, low-risk) or 'interpret this first' (judgment
+  call, causal inference, novel pattern) — because presenting both at the same confidence level is an architectural failure that silently degrades decision quality.
 implementation_notes: null
-category: "Governance"
-evidence_strength: "Medium (practitioner-documented)"
-adoption_status: "Not Yet Started"
-priority: "P1 (Implement Now)"
+category: Governance
+evidence_strength: Medium (practitioner-documented)
+adoption_status: Not Yet Started
+priority: P1 (Implement Now)
 applicability:
-  - "General"
-  - "S3 (Claude Code Build)"
+- General
+- S3 (Claude Code Build)
 adopted_in: []
 sources:
-  - "world-models-orgs-three-architectures.md"
+- world-models-orgs-three-architectures.md
 related_findings:
-  - file: org-world-model-three-architecture-patterns.md
-    rel: part-of
-  - file: governance-ontology-semantic-foundation.md
-    rel: related
-  - file: context-warrant-justified-data-package.md
-    rel: related
-  - file: structural-vs-psychological-vs-economic-governance.md
-    rel: related
+- file: org-world-model-three-architecture-patterns.md
+  rel: part-of
+- file: governance-ontology-semantic-foundation.md
+  rel: related
+- file: context-warrant-justified-data-package.md
+  rel: related
+- file: structural-vs-psychological-vs-economic-governance.md
+  rel: related
+- file: agent-proof-of-work-ui-trust-building.md
+  rel: same-problem
+- file: agui-human-control-layer-not-ui.md
+  rel: same-problem
 proposals: null
-date_discovered: "2026-04-20"
-last_updated: "2026-04-20"
-pipeline_status: classified
-consumed_by: []
+date_discovered: '2026-04-20'
+last_updated: '2026-05-24'
+pipeline_status: synthesized
+consumed_by:
+  - "agent-governance-and-trust.md"
+  - "rules/interpretive-boundary-layer-fact-vs-judgment.md"
 ---
 
 ## What It Is

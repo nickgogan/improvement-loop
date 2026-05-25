@@ -24,8 +24,9 @@ related_findings:
   rel: enables
 - file: bun-hot-reload-interactive-html-artifact-feedback-loop.md
   rel: enables
-pipeline_status: raw
-consumed_by: []
+pipeline_status: "extracted"
+consumed_by:
+  - "skills/claude-code-channels-messaging-apps-as-agent-interface.md"
 ---
 # Claude Code Channels: Telegram/Discord as Agent Interface
 
@@ -49,3 +50,6 @@ Currently requires local machine to stay awake. Integration with additional mess
 
 ## Potential Failure Modes
 Machine sleep/lock stops the agent. Git conflicts if two machines both commit. Security risk if sender allowlist is not properly configured.
+
+## Extraction Note — 2026-05-25
+Extracted as **skill**: [[claude-code-channels-messaging-apps-as-agent-interface]] in `extracts/skills/`

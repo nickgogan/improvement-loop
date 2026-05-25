@@ -16,7 +16,7 @@ sources:
 - prompting-best-practices-nick-gogan.md
 proposals: []
 date_discovered: '2026-04-07'
-last_updated: '2026-04-09'
+last_updated: '2026-05-24'
 related_findings:
 - file: yaml-templates-with-embedded-elicitation-instructions.md
   rel: enables
@@ -60,6 +60,8 @@ related_findings:
   rel: same-problem
 - file: brevity-constraints-reverse-llm-performance.md
   rel: contradicts
+- file: thesis-anchored-multi-question-prompting.md
+  rel: same-problem
 pipeline_status: synthesized
 consumed_by:
 - model-resilient-prompt-engineering.md

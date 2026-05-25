@@ -13,8 +13,19 @@ tags:
 url: "https://www.youtube.com/watch?v=38t5UBCa4OI"
 authority: []
 findings:
-  - "worktree-isolation-for-parallel-agent-sessions.md"
+  - "agent-description-auto-dispatch-routing.md"
+  - "agent-teams-shared-communication-channel.md"
   - "builder-validator-chain-pattern.md"
+  - "built-in-sub-agent-triad-explore-plan-general.md"
+  - "claude-p-headless-mode-as-openclaw-replacement.md"
+  - "five-pattern-complexity-escalation-ladder.md"
+  - "headless-cron-composition-autonomous-scheduled-workflows.md"
+  - "hub-and-spoke-10-agent-ceiling-with-queueing.md"
+  - "model-tier-routing-expensive-orchestrator-cheap-s.md"
+  - "progressive-skill-loading.md"
+  - "ralph-loop-brute-force-security-and-ui-testing.md"
+  - "sub-agent-context-isolation-for-parallel-complex.md"
+  - "worktree-isolation-for-parallel-agent-sessions.md"
 date_added: "2026-04-09"
 date_processed: "2026-04-09"
 ---

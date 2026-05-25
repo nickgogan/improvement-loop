@@ -51,7 +51,7 @@ prose mentions it.
 |------|---------|
 | `systems/improvement-loop/operations/references/librarian/audit.md` | Operation file — procedure and composition rules |
 | `systems/improvement-loop/operations/references/librarian/agent.md` | Concept file — composition table per variant |
-| `systems/improvement-loop/extracts/guides/` | Substrate — Contract subsections for {G1, G2, G3, G3b, G5, G6, G7, G9, G10} |
+| `systems/improvement-loop/extracts/guides/` | Substrate — Contract subsections for {G1, G2a, G2b, G3, G3b, G5, G6, G7, G9, G10} |
 | Consumer-provided path | Artifact under audit |
 
 ## Procedure
@@ -72,9 +72,9 @@ prose mentions it.
    file-verifiable vs system-verifiable split).
 2. `Read` `operations/references/librarian/agent.md` — obtain the composition
    table. Extract the guide set for the selected variant:
-   - Variant A (prompt-based): {G1, G2, G3, G10}
-   - Variant B (harness-based): {G1, G2, G3, G3b, G5, G6, G9, G10}
-   - Variant C (autonomous-vs-supervised): {G1, G2, G3, G7, G9, G10} (+ G3b, G5, G6 if tool/harness-enabled)
+   - Variant A (prompt-based): {G1, G2a, G2b, G3, G10}
+   - Variant B (harness-based): {G1, G2a, G2b, G3, G3b, G5, G6, G9, G10}
+   - Variant C (autonomous-vs-supervised): {G1, G2a, G2b, G3, G7, G9, G10} (+ G3b, G5, G6 if tool/harness-enabled)
 3. `Read` the `### Contract` subsection of each guide in the set. Use
    heading-match (`Grep -n "^### Contract"` then read the line range) until
    the guide section manifest lands.

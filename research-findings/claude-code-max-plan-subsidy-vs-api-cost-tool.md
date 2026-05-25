@@ -16,8 +16,9 @@ sources:
 proposals: []
 date_discovered: '2026-03-22'
 last_updated: '2026-04-19'
-pipeline_status: raw
-consumed_by: []
+pipeline_status: "synthesized"
+consumed_by:
+  - "agent-architecture-decisions.md"
 ---
 # Claude Code Max Plan Subsidy vs. API Cost: Tool Selection Framework
 

@@ -81,7 +81,7 @@ related_findings:
   rel: same-problem
 pipeline_status: synthesized
 consumed_by:
-- managing-agent-context.md
+- structuring-agent-context.md
 ---
 # ACE (Agentic Context Engineering) -- Evolving Playbook
 

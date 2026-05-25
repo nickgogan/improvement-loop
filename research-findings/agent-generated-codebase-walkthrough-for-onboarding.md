@@ -26,8 +26,9 @@ related_findings:
 proposals: null
 date_discovered: "2026-04-20"
 last_updated: "2026-04-20"
-pipeline_status: raw
-consumed_by: []
+pipeline_status: "extracted"
+consumed_by:
+  - "skills/agent-generated-codebase-walkthrough-for-onboarding.md"
 ---
 
 ## What It Is
@@ -82,3 +83,6 @@ Simon is a Tier 1 independent practitioner — co-creator of Django, author of D
 - **Walkthrough rot** — the code changes, the walkthrough doesn't, and readers are actively misled.
 - **Over-broad walkthroughs for large codebases** — the pattern scales poorly beyond 10-20 files; for large codebases, targeted walkthroughs per module beat one monolithic doc.
 - **Dependence on a harness** — Simon uses Showboat; agents without a comparable tool may fall back to manual snippet copying (the failure mode Simon explicitly warns against).
+
+## Extraction Note — 2026-05-25
+Extracted as **skill**: [[agent-generated-codebase-walkthrough-for-onboarding]] in `extracts/skills/`

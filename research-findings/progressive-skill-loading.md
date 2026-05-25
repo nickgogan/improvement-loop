@@ -10,7 +10,8 @@ priority: P2 (Design Required)
 applicability:
 - S3 (Claude Code Build)
 adopted_in: []
-sources: []
+sources:
+- five-agentic-patterns-claude-code.md
 related_findings:
 - file: gpt-54-tool-search-deferred-tool-loading.md
   rel: same-problem
@@ -24,10 +25,10 @@ related_findings:
   rel: same-problem
 proposals: null
 date_discovered: '2026-04-19'
-last_updated: '2026-04-19'
+last_updated: '2026-05-25'
 pipeline_status: synthesized
 consumed_by:
-- managing-agent-context.md
+- structuring-agent-context.md
 ---
 
 ## What It Is

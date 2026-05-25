@@ -2,7 +2,7 @@
 name: assess-prompt
 description: >-
   Extend a /prompt-evaluator run with IL-KB-grounded additions that fire only
-  where the prompt invokes them — G2 Contract specifics if the prompt embeds
+  where the prompt invokes them — G2a/G2b Contract specifics if the prompt embeds
   context, G5 Contract specifics if it embeds tool directives, G1 spec-level
   invariants if it is a spec document, plus Tier-2 IL findings surfaced against
   weak 4-discipline dimensions. Does not duplicate /prompt-evaluator's rubric.
@@ -43,7 +43,7 @@ If the consumer asks for "a prompt audit" without qualification, default to
 
 - Does not duplicate `/prompt-evaluator`'s 4-discipline rubric.
 - Does not rewrite the prompt. Read-only.
-- Does not fire G2 or G5 invariants on prompts whose Preconditions are
+- Does not fire G2a/G2b or G5 invariants on prompts whose Preconditions are
   unsatisfied — precondition gating (audit.md composition rule c) is
   non-negotiable.
 
@@ -61,7 +61,7 @@ rubric could not reach.
 | `.claude/skills/prompt-evaluator/SKILL.md` (workspace root) | Baseline — invoked first |
 | `systems/improvement-loop/operations/references/librarian/audit.md` | Operation file — composition rules, procedure |
 | `systems/improvement-loop/operations/references/librarian/prompt.md` | Concept file — IL-extension composition table |
-| `systems/improvement-loop/extracts/guides/` | Substrate — Contract subsections for {G1, G2, G5} when they fire |
+| `systems/improvement-loop/extracts/guides/` | Substrate — Contract subsections for {G1, G2a, G2b, G5} when they fire |
 | Consumer-provided path | Prompt under audit |
 
 ## Procedure
@@ -103,8 +103,8 @@ scorecard.
 2. `Read` `operations/references/librarian/prompt.md` — IL-extension
    composition table.
 3. For each firing trigger, load the corresponding Contract subsection:
-   - Embeds context → `Read` G2 §Contract (heading-match `^### Contract` in
-     `managing-agent-context.md`).
+   - Embeds context → `Read` G2a §Contract in `structuring-agent-context.md`
+     (structuring) and G2b §Contract in `defending-agent-context.md` (degradation).
    - Embeds tool directives → `Read` G5 §Contract in `designing-agent-tools.md`.
    - Spec document → `Read` G1 §Contract in `writing-agent-specifications.md`.
    - Harness-specific → Tier-2 only; skip Tier-1 load.
@@ -159,7 +159,7 @@ Single integrated report. Not two separate scorecards.
 
 ### IL extensions
 
-#### Context specifics (G2) — <fired | not applicable | exited-no-preconditions>
+#### Context specifics (G2a/G2b) — <fired | not applicable | exited-no-preconditions>
 
 <If fired: table of IL findings with citations, confidence tags, and evidence
 quotes from the prompt. If not fired: one-line statement of why.>

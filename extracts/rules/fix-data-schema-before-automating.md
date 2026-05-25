@@ -4,8 +4,8 @@ type: "extracted-artifact"
 assigned_form: "rule"
 source_finding: "fix-data-schema-before-automating"
 extraction_date: "2026-04-19"
-last_change_session: 44
-last_change_sl: "session-44-codifier-extraction-run"
+last_change_session: 103
+last_change_sl: "session-103-codifier-complete-extract-artifacts-write-phase"
 identification_report: "2026-04-19-identification-report-4.md"
 deployed: false
 deployed_to: null
@@ -36,6 +36,7 @@ tags:
 # Fix Data and Schema Before Automating
 
 **Source:** [[fix-data-schema-before-automating]]
+**Source (additional):** [[context-first-build-sequencing-for-agentic-systems]]
 **Form:** rule
 **Extraction date:** 2026-04-19
 
@@ -69,6 +70,8 @@ Enforced at workflow design gate, before any implementation work begins. Revalid
 ## Rationale
 
 The $14K voice agent failure case study: no schemas specified, records scattered across systems, funnel measurement impossible despite the system being "up and functioning." Schema-first design is the prerequisite that makes agent work sustainable. Day 1 vs. Day 30 degradation compounds when schema violations are never caught at source.
+
+The sequencing principle generalizes beyond data schema to include **context infrastructure** as an equally foundational layer ([[context-first-build-sequencing-for-agentic-systems]]). Before agent capabilities (skills, workflows, orchestration) are built, the context foundation must exist: shared knowledge documents, domain vocabulary, governance boundaries, and the operational context that agents will reference at runtime. Just as automation built on unvalidated data degrades silently, agents built without a context foundation produce generic outputs that require constant manual correction. The correct build order is: (1) context infrastructure and data schema, (2) skills and workflows that reference that foundation, (3) orchestration layers. Building capabilities before the foundation is in place wastes every unit of effort invested in those capabilities — each one will need rework once the foundation is eventually established. The sequencing invariant is: **no capability layer before its foundation layer is validated.**
 
 ## Contract
 

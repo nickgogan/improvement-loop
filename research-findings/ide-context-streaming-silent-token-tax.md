@@ -26,7 +26,7 @@ date_discovered: '2026-04-07'
 last_updated: '2026-04-08'
 pipeline_status: synthesized
 consumed_by:
-- managing-agent-context.md
+- defending-agent-context.md
 - artifact: close-irrelevant-ide-files-during-agent-sessions
   type: extracted-artifact
   form: rule

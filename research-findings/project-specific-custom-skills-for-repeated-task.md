@@ -21,8 +21,9 @@ related_findings:
 proposals: []
 date_discovered: '2026-03-22'
 last_updated: '2026-04-19'
-pipeline_status: raw
-consumed_by: []
+pipeline_status: synthesized
+consumed_by:
+  - "writing-agent-specifications.md"
 ---
 # Project-Specific Custom Skills for Repeated Tasks
 
