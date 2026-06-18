@@ -34,7 +34,7 @@ tags:
 1. **Human gate at every stage boundary.** The IL pipeline has four stages: Research Intake, Identification, Extraction, Deployment. No artifact crosses a stage boundary without human review. Specifically: Researcher outputs are reviewed before Codifier processes them; Codifier outputs are reviewed before deployment.
    - *Source:* Constitution — Design Philosophy ("Spec before build"); DD-29
 
-2. **Stage before deploying.** Extracted artifacts (patterns, rules, templates, skills, agents) stage in `extracts/` before deployment to enforcement locations in `meta-system/knowledge/` or `.claude/`. Nick owns the deployment step.
+2. **Stage before deploying.** Extracted artifacts (patterns, rules, templates, skills, agents) stage in `extracts/` before deployment to enforcement locations in the engine's `knowledge/` or `.claude/`. Nick owns the deployment step — now an in-engine promotion from `extracts/` to `knowledge/`, still human-gated.
    - *Source:* Constitution — Design Philosophy; DD-39, DD-80
 
 3. **Spec before build.** New skills, agents, or structural changes require a specification (proposal, skill definition, or agent constitution) before implementation. The Owner produces specs; Nick approves them.

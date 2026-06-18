@@ -1,0 +1,75 @@
+{
+  "database_id": "64973c22-9383-40a0-b5e7-979a8f0a3ca3",
+  "data_source_url": "collection://69280dc1-5c9e-4eb0-adeb-d1fd6777a3f1",
+  "title": "Implementation Backlog",
+  "properties": {
+    "Name": {
+      "type": "title",
+      "description": ""
+    },
+    "userDefined:ID": {
+      "type": "text",
+      "description": "The IB number like IB-42"
+    },
+    "Source DD": {
+      "type": "text",
+      "description": ""
+    },
+    "Status": {
+      "type": "select",
+      "options": [
+        {"name": "Queued", "color": "default"},
+        {"name": "Active", "color": "blue"},
+        {"name": "Blocked", "color": "red"},
+        {"name": "Done", "color": "green"},
+        {"name": "Needs audit", "color": "yellow"},
+        {"name": "Deferred", "color": "brown"}
+      ]
+    },
+    "Target System": {
+      "type": "select",
+      "options": [
+        {"name": "Household OS", "color": "blue"},
+        {"name": "S3: Claude Code Build", "color": "purple"},
+        {"name": "Improvement Loop", "color": "orange"},
+        {"name": "Cross-System", "color": "green"}
+      ]
+    },
+    "Design Decision": {
+      "type": "relation",
+      "relation_data_source": "collection://987910f5-d89a-454f-af38-ba008268aea8",
+      "description": ""
+    },
+    "Priority": {
+      "type": "select",
+      "options": [
+        {"name": "P1", "color": "red"},
+        {"name": "P2", "color": "orange"},
+        {"name": "P3", "color": "yellow"},
+        {"name": "P4", "color": "gray"}
+      ]
+    },
+    "Notes": {
+      "type": "text",
+      "description": ""
+    },
+    "Milestone": {
+      "type": "select",
+      "options": [
+        {"name": "M1", "color": "green"},
+        {"name": "M2", "color": "blue"},
+        {"name": "M3", "color": "purple"},
+        {"name": "M4", "color": "orange"}
+      ]
+    },
+    "Type": {
+      "type": "select",
+      "options": [
+        {"name": "Build", "color": "blue"},
+        {"name": "Decision", "color": "purple"},
+        {"name": "Migration", "color": "orange"},
+        {"name": "Documentation", "color": "green"}
+      ]
+    }
+  }
+}

@@ -38,7 +38,7 @@ tags:
 
 - NEVER write outside `extracts/`, `operations/`, `project-management/design-notes/` (deliberative specs), and `agents/codifier/reflections/` (agent-private reflections)
 - NEVER modify finding content in `research-findings/` — only update `pipeline_status` and `consumed_by` metadata fields
-- NEVER deploy artifacts to `meta-system/knowledge/`, `.claude/skills/`, `.claude/rules/`, or any enforcement location
+- NEVER deploy artifacts to `knowledge/` (the engine's codified layer), `.claude/skills/`, `.claude/rules/`, or any enforcement location — promotion from `extracts/` is Nick's human-gated act
 - NEVER skip the Form Router rubric — every classification must trace to rubric criteria
 - NEVER produce artifacts without ContractSpec (DD-78)
 - If uncertain about form classification: classify as the more conservative form (pattern over skill, finding over pattern) and flag for human review
@@ -141,7 +141,7 @@ The Codifier owns **Stages 2-3** of the IL pipeline: artifact identification, ar
 
 **Handoff to Librarian:**
 - The Codifier does NOT hand off to the Librarian directly
-- Staged artifacts in `extracts/` and deployed artifacts in `meta-system/knowledge/` are the Librarian's input
+- Staged artifacts in `extracts/` and deployed artifacts in `knowledge/` are the Librarian's input
 - The Librarian reads whatever has been deployed — the Codifier's job ends at staging
 
 ---

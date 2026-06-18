@@ -59,7 +59,7 @@ tags:
 contract:
   preconditions: "Agent role identified; need to design the agent's internal architecture, operational lifecycle, or self-improvement mechanisms"
   invariants: "Agent identity consistent across sessions and surviving compaction; prompt layers maintain separation of concerns; clarification behavior distinguishes resolvable from intent-dependent gaps; subagent variants declare every skill they depend on (no implicit inheritance) and run as flat workflows (no nested spawning); Tools and Capabilities are defined as separate constructs; model slots are declared in config, not chosen at runtime via heuristics; operating surface is specified before model selection; agents obtain environmental ground-truth feedback at every decision point; first-try reliability is the product bar; session boundaries prevent work disavowal; self-improvement mechanisms accumulate operational wisdom at the skill level"
-  governance: "IL-owned draft; Nick deploys to meta-system/knowledge/guides/"
+  governance: "IL-owned draft; Nick deploys to knowledge/guides/"
   recovery: "If agent shows descent-into-madness symptoms, simplify prompt layers and add clarification behavior. If a subagent variant relies on implicit parent state, hoist that state into explicit skill declarations or prompt content. If extension conflicts appear, audit extension registration order and scope isolation. If model routing produces unexpected quality/cost results, review slot assignments against task-type requirements. If agent exhibits work disavowal near context limits, enforce session boundaries and external verification. If skills stagnate, adopt a self-improvement mechanism (lessons log, shared learnings, or meta-generation). If planning bias degrades implementation, separate planning and implementation into distinct sessions with a plan artifact as the only bridge."
 ---
 
@@ -997,7 +997,7 @@ If all voting personas use the same underlying model with similar training, thei
 - Autonomous decision-making uses role-based deliberation for low-stakes decisions and human escalation for high-stakes decisions.
 
 ### Governance
-- This guide is IL-owned draft. Nick deploys to `meta-system/knowledge/guides/`.
+- This guide is IL-owned draft. Nick deploys to `knowledge/guides/`.
 - Agent constitutions are versioned and changes go through human review.
 - Complexity audits are triggered by major model releases.
 - Anti-pattern diagnostics are run when agent behavior degrades.

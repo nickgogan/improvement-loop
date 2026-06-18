@@ -1,0 +1,104 @@
+{
+  "database_id": "e5ab9f0e909c4b2b933317c1b441310f",
+  "data_source_url": "collection://d9698b87-09bf-449f-8ca9-b41f4635f822",
+  "title": "System Log",
+  "properties": {
+    "Log Entry": {
+      "type": "title",
+      "description": ""
+    },
+    "Actor": {
+      "type": "select",
+      "description": "",
+      "options": [
+        { "name": "Nick", "color": "blue" },
+        { "name": "JR", "color": "green" },
+        { "name": "Agent: Claude", "color": "purple" },
+        { "name": "Agent: Slackbot", "color": "orange" },
+        { "name": "System", "color": "gray" }
+      ]
+    },
+    "Area": {
+      "type": "relation",
+      "description": "",
+      "relation_data_source": "collection://2381e08b-9b34-81dc-8957-000be9e2df6b"
+    },
+    "Change Type": {
+      "type": "select",
+      "description": "",
+      "options": [
+        { "name": "Operational Event", "color": "blue" },
+        { "name": "Stewardship Change", "color": "purple" },
+        { "name": "Design Decision", "color": "orange" },
+        { "name": "Implementation", "color": "green" },
+        { "name": "Schema Change", "color": "yellow" },
+        { "name": "System Configuration", "color": "gray" },
+        { "name": "Failure Pattern", "color": "red" },
+        { "name": "Documentation Update", "color": "brown" },
+        { "name": "Operational Learning", "color": "pink" }
+      ]
+    },
+    "Milestone": {
+      "type": "select",
+      "description": "",
+      "options": [
+        { "name": "M1", "color": "blue" },
+        { "name": "M2", "color": "purple" },
+        { "name": "M3", "color": "orange" },
+        { "name": "M4", "color": "green" }
+      ]
+    },
+    "Rationale": {
+      "type": "text",
+      "description": ""
+    },
+    "Source DD": {
+      "type": "relation",
+      "description": "",
+      "relation_data_source": "collection://987910f5-d89a-454f-af38-ba008268aea8"
+    },
+    "Target System": {
+      "type": "select",
+      "description": "",
+      "options": [
+        { "name": "Household OS", "color": "blue" },
+        { "name": "S3: Claude Code Build", "color": "purple" },
+        { "name": "Improvement Loop", "color": "orange" },
+        { "name": "Cross-System", "color": "green" }
+      ]
+    },
+    "Timestamp": {
+      "type": "created_time",
+      "description": ""
+    }
+  },
+  "views": [
+    { "name": "Last Week", "type": "table", "id": "8fcaaea8-448f-4090-9bc4-f8c07fbc4349" },
+    { "name": "Area", "type": "table", "id": "3151e08b-9b34-804d-9eff-000cc7fcbea7" },
+    { "name": "Actor", "type": "table", "id": "3151e08b-9b34-8097-a0c4-000c7d970750" },
+    { "name": "Domain Migrations", "type": "table", "id": "3151e08b-9b34-80ea-94a8-000c796e0da7" },
+    { "name": "Stewardship Changes", "type": "table", "id": "3151e08b-9b34-80a9-acce-000c6a900de8" },
+    { "name": "Implementation Timeline", "type": "table", "id": "3151e08b-9b34-80e4-8633-000c426bd9cb" },
+    { "name": "Failure Patterns", "type": "table", "id": "3151e08b-9b34-8044-9d3e-000cdc96fca5" },
+    { "name": "Design History", "type": "table", "id": "3151e08b-9b34-8028-8ea5-000c8a44e3b1" },
+    { "name": "By Milestone", "type": "table", "id": "3151e08b-9b34-80da-8178-000ccf763412" },
+    { "name": "All", "type": "table", "id": "3151e08b-9b34-80ae-89e3-000c27e132e4" },
+    { "name": "Household OS", "type": "table", "id": "32c1e08b-9b34-81cf-a4ef-000cc8fe584a" },
+    { "name": "S3: Claude Code Build", "type": "table", "id": "32c1e08b-9b34-815b-a021-000c770de78e" },
+    { "name": "Improvement Loop", "type": "table", "id": "32c1e08b-9b34-81cb-a214-000c02538305" },
+    { "name": "Cross-System", "type": "table", "id": "32c1e08b-9b34-815c-9455-000ce057f8bf" }
+  ],
+  "templates": [
+    { "id": "3151e08b-9b34-8027-80f8-fcdc97f66831", "name": "Failure Pattern" },
+    { "id": "3151e08b-9b34-806f-8095-e7eecc51a542", "name": "Documentation Update" },
+    { "id": "3151e08b-9b34-80dd-bea1-d7d36d950d44", "name": "Schema Change" },
+    { "id": "3151e08b-9b34-807e-8b54-e9cf0beda8db", "name": "Stewardship Change" },
+    { "id": "3151e08b-9b34-802e-8692-e30643d28c25", "name": "Design Decision" },
+    { "id": "3151e08b-9b34-8015-8867-fc8742a23766", "name": "Operational Event" },
+    { "id": "3151e08b-9b34-80df-9d7c-d762aaabfe51", "name": "System Configuration" },
+    { "id": "3151e08b-9b34-8082-9709-e6485029758e", "name": "Implementation" },
+    { "id": "32c1e08b-9b34-80ef-ab30-d58268d990d7", "name": "Operational Learning" }
+  ],
+  "row_count": 41,
+  "extracted_at": "2026-04-04"
+}

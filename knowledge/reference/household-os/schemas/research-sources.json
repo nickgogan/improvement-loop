@@ -1,0 +1,56 @@
+{
+  "database_name": "Research Sources",
+  "data_source_url": "collection://14c4081d-0298-4ffd-991e-f3a798f0979c",
+  "properties": {
+    "Name": {
+      "type": "title",
+      "description": ""
+    },
+    "Source Type": {
+      "type": "select",
+      "options": ["Blog Post", "Video", "Research Paper", "Documentation", "Community Post", "Tool Release"]
+    },
+    "Status": {
+      "type": "status",
+      "options": ["Not started", "In progress", "Done"],
+      "groups": {
+        "to_do": ["Not started"],
+        "in_progress": ["In progress"],
+        "complete": ["Done"]
+      }
+    },
+    "Key Takeaways": {
+      "type": "text",
+      "description": "2-3 sentence summary of what is useful from this source"
+    },
+    "Relevance": {
+      "type": "select",
+      "options": ["High", "Medium", "Low"]
+    },
+    "Added By": {
+      "type": "select",
+      "options": ["Nick", "Agent (Scheduled Scan)", "JR"]
+    },
+    "Tags": {
+      "type": "multi_select",
+      "options": ["prompt-engineering", "context-engineering", "mcp", "claude-code", "cursor", "multi-agent", "memory", "tools", "evaluation", "orchestration", "notion-agents", "skills", "session-management", "vault-architecture"]
+    },
+    "userDefined:URL": {
+      "type": "url"
+    },
+    "Authority": {
+      "type": "relation",
+      "related_to": "collection://4be92d39-e166-4e79-8a64-3a29015cf600"
+    },
+    "Findings": {
+      "type": "relation",
+      "related_to": "collection://0f32d9b0-d119-4842-b1ed-e380ca3aec54"
+    },
+    "Date Added": {
+      "type": "date"
+    },
+    "Date Processed": {
+      "type": "date"
+    }
+  }
+}

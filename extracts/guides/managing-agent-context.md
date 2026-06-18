@@ -84,7 +84,7 @@ tags:
 contract:
   preconditions: "Agent system exists with context files or context injection mechanism"
   invariants: "Context budget stays within model limits; context freshness maintained; architecture decisions are explicit at the file, tier, tool, session, and output-format layers"
-  governance: "IL-owned draft; Nick deploys to meta-system/knowledge/guides/"
+  governance: "IL-owned draft; Nick deploys to knowledge/guides/"
   recovery: "If context rot detected, run context audit procedure from this guide"
 ---
 
@@ -1070,13 +1070,13 @@ Step 3 of 4 -- depends on identification report (step 2), feeds into guide synth
 
 ### Required Context
 Finding file: systems/improvement-loop/research-findings/context-rot-silent-killer-and-mitigations.md
-Pattern template: systems/meta-system/knowledge/templates/pattern-template.md
+Pattern template: systems/improvement-loop/knowledge/templates/pattern-template.md
 
 ### Carry-Forward Notes
 Identification report classified this as "pattern" with MED confidence. Co-occurrence with delta-updates finding.
 
 ### Constraints
-- Write to extracts/patterns/, not to meta-system/knowledge/patterns/
+- Write to extracts/patterns/, not to knowledge/patterns/
 - Do not modify the source finding file
 ```
 

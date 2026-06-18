@@ -1,0 +1,37 @@
+{
+  "database_name": "Research Authorities",
+  "data_source_url": "collection://4be92d39-e166-4e79-8a64-3a29015cf600",
+  "properties": {
+    "Name": {
+      "type": "title",
+      "description": ""
+    },
+    "Type": {
+      "type": "select",
+      "options": ["Individual", "YouTube Channel", "Institution", "Company", "Community", "Publication"]
+    },
+    "Credibility": {
+      "type": "select",
+      "options": ["Tier 1 (creator/researcher)", "Tier 2 (experienced practitioner)", "Tier 3 (aggregator/commentator)"]
+    },
+    "Specialty": {
+      "type": "multi_select",
+      "options": ["prompt-engineering", "context-engineering", "claude-code", "cursor", "multi-agent", "memory", "tools", "evaluation", "orchestration", "mcp"]
+    },
+    "Notes": {
+      "type": "text",
+      "description": "Why this authority matters, what they are known for"
+    },
+    "Source Count": {
+      "type": "number",
+      "description": "How many Research Sources reference this authority"
+    },
+    "Sources": {
+      "type": "relation",
+      "related_to": "collection://14c4081d-0298-4ffd-991e-f3a798f0979c"
+    },
+    "userDefined:URL": {
+      "type": "url"
+    }
+  }
+}

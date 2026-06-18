@@ -41,7 +41,7 @@ The Librarian's query resolution workflow. Receive a question, determine mode (T
          Glob for relevant guides and artifacts
          │
          Resolution order:
-         1. Deployed artifacts (meta-system/knowledge/)
+         1. Deployed artifacts (knowledge/)
          2. Staged guides (extracts/guides/)
          3. Raw findings (research-findings/)
          │

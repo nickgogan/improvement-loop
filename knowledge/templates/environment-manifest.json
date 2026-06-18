@@ -1,0 +1,229 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$comment": "Declares the expected environment for a MetaSystem workstation. Used by /preflight to validate readiness.",
+  "mcp_servers": [
+    {
+      "name": "Context7",
+      "match": "Context7",
+      "required": true,
+      "purpose": "Library/framework documentation lookups",
+      "install_hint": "Enable via claude.ai MCP marketplace"
+    },
+    {
+      "name": "Notion",
+      "match": "Notion",
+      "required": true,
+      "purpose": "Household OS operational work (agents, workflows, rituals)",
+      "install_hint": "Enable via claude.ai MCP marketplace"
+    },
+    {
+      "name": "Atlassian",
+      "match": "Atlassian",
+      "required": false,
+      "purpose": "Jira/Confluence integration",
+      "install_hint": "Enable via claude.ai MCP marketplace"
+    },
+    {
+      "name": "Google Calendar",
+      "match": "Google Calendar",
+      "required": false,
+      "purpose": "Calendar operations",
+      "install_hint": "Enable via claude.ai MCP marketplace"
+    },
+    {
+      "name": "Gmail",
+      "match": "Gmail",
+      "required": false,
+      "purpose": "Email operations",
+      "install_hint": "Enable via claude.ai MCP marketplace"
+    }
+  ],
+  "hooks": {
+    "location": "~/.claude/hooks/",
+    "expected": [
+      {
+        "file": "gsd-check-update.js",
+        "event": "SessionStart",
+        "required": false,
+        "purpose": "GSD version check on session start"
+      },
+      {
+        "file": "gsd-context-monitor.js",
+        "event": "PostToolUse",
+        "required": false,
+        "purpose": "GSD context tracking"
+      },
+      {
+        "file": "gsd-prompt-guard.js",
+        "event": "PreToolUse",
+        "required": false,
+        "purpose": "GSD write safety guard"
+      },
+      {
+        "file": "gsd-statusline.js",
+        "event": "statusLine",
+        "required": false,
+        "purpose": "GSD status line display"
+      },
+      {
+        "file": "gsd-workflow-guard.js",
+        "event": "PreToolUse",
+        "required": false,
+        "purpose": "GSD workflow enforcement"
+      }
+    ]
+  },
+  "rules": {
+    "location": ".claude/rules/",
+    "expected": [
+      {
+        "file": "governance.md",
+        "required": true,
+        "purpose": "Constitutional and data access rules for MetaSystem"
+      }
+    ]
+  },
+  "agents": {
+    "project": {
+      "location": ".claude/agents/",
+      "expected": [
+        {
+          "file": "notion-explorer.md",
+          "required": false,
+          "purpose": "Read-only Notion workspace explorer"
+        }
+      ]
+    },
+    "global": {
+      "location": "~/.claude/agents/",
+      "expected_pattern": "gsd-*.md",
+      "min_count": 17,
+      "required": false,
+      "purpose": "GSD workflow agents"
+    }
+  },
+  "skills": {
+    "location": ".claude/skills/",
+    "expected": [
+      {
+        "dir": "bootstrap",
+        "file": "SKILL.md",
+        "required": true,
+        "purpose": "Project scaffolding with fractal pattern"
+      },
+      {
+        "dir": "preflight",
+        "file": "SKILL.md",
+        "required": true,
+        "purpose": "Environment readiness validation"
+      },
+      {
+        "dir": "dd",
+        "file": "SKILL.md",
+        "required": true,
+        "purpose": "Design Decision management"
+      },
+      {
+        "dir": "ib",
+        "file": "SKILL.md",
+        "required": true,
+        "purpose": "Implementation Backlog management"
+      },
+      {
+        "dir": "sl",
+        "file": "SKILL.md",
+        "required": true,
+        "purpose": "System Log management"
+      },
+      {
+        "dir": "track",
+        "file": "SKILL.md",
+        "required": true,
+        "purpose": "Unified governance tracking"
+      }
+    ]
+  },
+  "settings": {
+    "project_settings": ".claude/settings.json",
+    "expected_deny_rules": [
+      "Bash(rm -rf *)",
+      "Bash(sudo *)",
+      "Bash(git push --force *)",
+      "Bash(* .env *)"
+    ]
+  },
+  "cli_tools": [
+    {
+      "name": "Claude Code",
+      "check": "claude --version",
+      "required": true,
+      "purpose": "Core agent runtime",
+      "install_hint": "npm install -g @anthropic-ai/claude-code"
+    },
+    {
+      "name": "GSD",
+      "check": "npx get-shit-done-cc@latest --version",
+      "required": false,
+      "purpose": "Project management workflow engine",
+      "install_hint": "npx get-shit-done-cc@latest"
+    },
+    {
+      "name": "Git",
+      "check": "git --version",
+      "required": true,
+      "purpose": "Version control",
+      "install_hint": "brew install git"
+    }
+  ],
+  "vault": {
+    "obsidian_plugins": {
+      "location": ".obsidian/community-plugins.json",
+      "expected": [
+        {
+          "id": "dataview",
+          "required": true,
+          "purpose": "Structured queries over vault frontmatter"
+        },
+        {
+          "id": "templater-obsidian",
+          "required": true,
+          "purpose": "Template instantiation with logic"
+        }
+      ]
+    },
+    "required_files": [
+      {
+        "path": "_schema.yaml",
+        "purpose": "Vault frontmatter schema"
+      },
+      {
+        "path": "CLAUDE.md",
+        "purpose": "Project-level Claude Code instructions"
+      },
+      {
+        "path": "PROGRESS.md",
+        "purpose": "Session log and work queue"
+      },
+      {
+        "path": "systems/meta-system/governance/constitution.md",
+        "purpose": "System definitions and boundaries"
+      },
+      {
+        "path": "systems/meta-system/governance/fractal-pattern.md",
+        "purpose": "7-folder fractal unit structure"
+      },
+      {
+        "path": "systems/meta-system/governance/values.md",
+        "purpose": "Core values and design philosophy"
+      },
+      {
+        "path": "systems/meta-system/governance/principles.md",
+        "purpose": "Design/Build/Deploy/Operate pipeline"
+      },
+      {
+        "path": "systems/meta-system/governance/vocabulary.md",
+        "purpose": "Cross-system terminology"
+      }
+    ]
+  }
+}

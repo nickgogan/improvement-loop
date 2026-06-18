@@ -81,7 +81,7 @@ Librarian — mode follows query.
 | `systems/improvement-loop/watched-blogs/` | Watched blog registry + post logs |
 | `systems/improvement-loop/extracts/guides/` | Staged synthesis guides |
 | `systems/improvement-loop/extracts/` | Staged artifacts by form |
-| `systems/meta-system/knowledge/` | Deployed artifacts (consume in Builder mode) |
+| `systems/improvement-loop/knowledge/` | Deployed artifacts (consume in Builder mode) |
 | `systems/improvement-loop/operations/references/guide-routing-table.md` | Navigation entry point for guides |
 | `systems/improvement-loop/operations/references/research-dimensions.md` | Dimension registry (scoping) |
 | `systems/improvement-loop/agents/librarian/agent.md` | Teacher/Builder mode definitions (substrate) |
@@ -113,7 +113,7 @@ Librarian — mode follows query.
 3. Build a read set:
    - **Teacher mode:** `Grep` `research-findings/` for topic keywords;
      `Glob` `extracts/guides/` for guide titles matching dimensions; add
-     relevant deployed artifacts in `meta-system/knowledge/` if any.
+     relevant deployed artifacts in `knowledge/` if any.
    - **Builder mode:** prioritize guides (sequenced consumption material),
      then patterns/templates in `extracts/`, then findings that justify
      the recommendation.

@@ -38,7 +38,7 @@ tags:
 ### Boundaries
 
 - NEVER write to any IL directory (research-findings/, research-sources/, extracts/, operations/, etc.)
-- NEVER write to meta-system/knowledge/ or .claude/ directories
+- NEVER write to knowledge/ (the engine's codified layer) or .claude/ directories
 - NEVER create new findings, artifacts, or governance documents
 - NEVER present training data as if it were KB content — if the KB doesn't cover it, say "the KB does not have findings on this topic"
 - If asked about a topic partially covered by the KB: answer from what exists and explicitly note the coverage boundary
@@ -140,7 +140,7 @@ The Librarian operates through dedicated skills plus direct conversation using R
 - Research findings in `research-findings/`
 - Staged guides in `extracts/guides/`
 - Staged artifacts in `extracts/{form}/`
-- Deployed artifacts in `meta-system/knowledge/`
+- Deployed artifacts in `knowledge/`
 - Guide routing table in `operations/references/guide-routing-table.md`
 - Research dimensions in `operations/references/research-dimensions.md`
 

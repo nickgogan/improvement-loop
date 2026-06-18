@@ -1,0 +1,72 @@
+{
+  "database_name": "Improvement Proposals",
+  "data_source_url": "collection://77297278-88d7-4eba-ab77-246320007827",
+  "properties": {
+    "Name": {
+      "type": "title",
+      "description": ""
+    },
+    "Proposal": {
+      "type": "text",
+      "description": "What to change, where, and how"
+    },
+    "Rationale": {
+      "type": "text",
+      "description": "Why this change matters - links back to KB evidence"
+    },
+    "Status": {
+      "type": "status",
+      "options": ["Not started", "In progress", "Done"],
+      "groups": {
+        "to_do": ["Not started"],
+        "in_progress": ["In progress"],
+        "complete": ["Done"]
+      }
+    },
+    "Target System": {
+      "type": "select",
+      "options": ["S2 (Notion Operations)", "S3 (Claude Code Build)", "Perplexity Skills", "General / Cross-System"]
+    },
+    "Priority": {
+      "type": "select",
+      "options": ["P1 (Implement Now)", "P2 (Design Required)", "P3 (Monitor)"]
+    },
+    "Risk Level": {
+      "type": "select",
+      "options": ["Low", "Medium", "High"]
+    },
+    "Implementation Complexity": {
+      "type": "select",
+      "options": ["Low", "Medium", "High"]
+    },
+    "Effort": {
+      "type": "select",
+      "options": ["Low (< 1 hour)", "Medium (1-4 hours)", "High (> 4 hours)"]
+    },
+    "Door Type": {
+      "type": "select",
+      "options": ["One-Way", "Two-Way"]
+    },
+    "Ops Impact": {
+      "type": "select",
+      "options": ["Reduces Ops Burden", "Neutral", "Adds Ops Burden"]
+    },
+    "Conflicts": {
+      "type": "checkbox"
+    },
+    "Conflict Group": {
+      "type": "text",
+      "description": ""
+    },
+    "Findings": {
+      "type": "relation",
+      "related_to": "collection://0f32d9b0-d119-4842-b1ed-e380ca3aec54"
+    },
+    "Date Proposed": {
+      "type": "date"
+    },
+    "Date Resolved": {
+      "type": "date"
+    }
+  }
+}

@@ -61,7 +61,7 @@ tags:
 contract:
   preconditions: "Agent system with human oversight requirements; governance model needed; an enforcement architecture is chosen (rules, hooks, middleware, or specification) before policies are written; permission model defined for multi-agent delegation if applicable"
   invariants: "Human retains override authority; audit trail maintained; enforcement-architecture choice is explicit and matches system complexity; rule scope is locality-aware (universal rules central, local rules at the boundary); permissions narrow monotonically across delegation chains; every agent action is traceable to an identity and a governing policy version"
-  governance: "IL-owned draft; Nick deploys to meta-system/knowledge/guides/"
+  governance: "IL-owned draft; Nick deploys to knowledge/guides/"
   recovery: "If trust violations detected, demote agent to lower autonomy tier; if enforcement bypass detected, audit the architecture choice before adjusting policy; if permission compound detected, audit the delegation chain and apply monotonic narrowing; if audit gap found, freeze autonomous operations until the trail is restored"
 ---
 
@@ -1112,7 +1112,7 @@ A 3-agent workflow does not need all 11 governance layers. Applying the full bui
 - Policy bundle versions are immutable once active; changes require new version promotion, not in-place mutation.
 - Permission manifests for cross-system agent workflows are reviewed before deployment and re-audited on workflow change.
 - Spawning allowlists are governed artifacts; changes require governance review.
-- This guide is IL-owned draft; Nick deploys to `meta-system/knowledge/guides/`.
+- This guide is IL-owned draft; Nick deploys to `knowledge/guides/`.
 
 ### Recovery
 - **Trust violation:** If an agent acts beyond its assigned autonomy level, immediately demote to human-required for that task type. Investigate the enforcement mechanism, not just the agent's behavior. Remediate any damage. Reclassify only after the enforcement gap is closed.

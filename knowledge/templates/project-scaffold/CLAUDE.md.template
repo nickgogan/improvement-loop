@@ -1,0 +1,37 @@
+# {{NAME}}
+
+{{DESCRIPTION}}
+
+## Project Info
+
+| Field | Value |
+|-------|-------|
+| **Type** | {{TYPE}} |
+| **Owner** | {{OWNER}} |
+| **Stage** | Incubation (DD-48) |
+| **Location** | `incubator/{{NAME}}/` |
+
+## Conventions
+
+- **Move fast, document decisions.** Light-touch governance per DD-48.
+- **Spec before build.** For non-trivial changes, write a spec first.
+- **Archive when done.** If this doesn't prove out, move to `archive/` with a note.
+
+## Key Files
+
+| File | Purpose |
+|------|---------|
+| `manifest.json` | Bootstrap manifest — project identity and scaffold definition |
+| `PROGRESS.md` | Session state and progress tracking |
+
+## Dependencies
+
+See `manifest.json` → `identity.depends_on` for system dependencies.
+
+## Promotion Path
+
+This project graduates to `systems/s{N}-{{NAME}}/` when it meets ALL criteria in DD-48:
+1. Proven value — demonstrated ongoing utility
+2. Permanent scope — it's an Area, not a Project
+3. Design Decision — a new DD documenting the system's purpose and boundaries
+4. Nick's approval

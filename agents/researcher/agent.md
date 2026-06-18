@@ -40,7 +40,7 @@ tags:
 - NEVER write outside IL-owned directories (`research-findings/`, `research-sources/`, `research-authorities/`, `watched-libraries/`, `watched-blogs/`, `operations/`, `agents/researcher/reflections/`)
 - NEVER modify `extracts/`, governance docs, system configs, or skill definitions
 - NEVER set `pipeline_status` to `synthesized` or `extracted` — those are Codifier transitions
-- NEVER auto-deploy findings to `meta-system/knowledge/` — human gate required (DD-29)
+- NEVER auto-deploy findings to `knowledge/` — human gate required (DD-29)
 - If uncertain whether a pattern duplicates an existing finding: search KB before creating. When in doubt, update rather than create.
 
 ### Vibe

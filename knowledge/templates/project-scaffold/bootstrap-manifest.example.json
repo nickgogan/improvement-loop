@@ -1,0 +1,58 @@
+{
+  "identity": {
+    "name": "prompt-library",
+    "description": "Curated prompt patterns for different agent tasks — research, build, review, ops. Includes templates and usage guides.",
+    "type": "mixed",
+    "owner": "nick",
+    "created": "2026-04-05",
+    "stage": "incubation",
+    "tags": ["prompts", "agents", "templates", "knowledge-management"],
+    "governing_dds": ["DD-45", "DD-48", "DD-49"],
+    "depends_on": ["meta-system", "claude-build"],
+    "promotion_criteria": [
+      "At least 10 tested prompt patterns in active use",
+      "Consumed by 2+ systems during regular operations",
+      "Nick confirms ongoing utility beyond initial cataloging"
+    ]
+  },
+  "scaffold": {
+    "fractal": true,
+    "directories": [
+      "app/src",
+      "knowledge/patterns/research",
+      "knowledge/patterns/build",
+      "knowledge/patterns/review",
+      "knowledge/patterns/ops"
+    ],
+    "templates": [
+      {
+        "source": "project-scaffold/CLAUDE.md.template",
+        "target": "CLAUDE.md",
+        "variables": {
+          "NAME": "prompt-library",
+          "DESCRIPTION": "Curated prompt patterns for different agent tasks — research, build, review, ops.",
+          "TYPE": "mixed",
+          "OWNER": "nick"
+        }
+      },
+      {
+        "source": "project-scaffold/PROGRESS.md.template",
+        "target": "PROGRESS.md",
+        "variables": {
+          "NAME": "prompt-library",
+          "CREATED": "2026-04-05"
+        }
+      }
+    ],
+    "claude_config": {
+      "rules": [],
+      "skills": [],
+      "agents": [],
+      "settings": {}
+    },
+    "components": {
+      "progress_tracking": true,
+      "claude_engine": true
+    }
+  }
+}

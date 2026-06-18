@@ -86,7 +86,7 @@ Sources  -->  Extract  -->  KB  -->  [human gate]  -->  Identify  -->  [human ga
 | **Research Intake** | `/research-loop` | URLs, web scans, transcripts, arXiv | Findings, Sources, Authorities in IL | Review findings; adjust priorities |
 | **Identification** | `/identify-artifacts` | P1/P2 findings (filtered) | Identification report in `operations/pattern-identification-reports/` | Review classifications, approve/reject |
 | **Extraction** | `/extract-artifacts` | Approved identification report | Staged artifacts in `extracts/` | Review staged artifacts |
-| **Deployment** | Manual | Staged artifacts | Patterns, rules, templates, skills in `meta-system/knowledge/` or `.claude/` | Nick deploys |
+| **Deployment** | Manual | Staged artifacts | Patterns, rules, templates, skills in the engine's `knowledge/` or `.claude/` | Nick deploys |
 
 The **Researcher** agent owns stage 1. The **Codifier** agent owns stages 2-3. Nick owns stage 4. Agents do not communicate directly — handoffs are file-mediated via `pipeline_status` on findings. See `agents/il-agent-handoff-protocol.md`.
 
@@ -193,7 +193,7 @@ The Librarian also uses Read/Glob/Grep directly to navigate the KB for Teacher/B
 | IL Design Decisions | `project-management/design-decisions/` |
 | IL Implementation Backlog | `project-management/implementation-backlog/` |
 | Constitution and system boundaries | `../meta-system/governance/constitution.md` |
-| Research-to-codification pipeline guide | `../meta-system/knowledge/guides/research-to-codification-pipeline.md` |
+| Research-to-codification pipeline guide | `knowledge/guides/research-to-codification-pipeline.md` |
 
 ---
 

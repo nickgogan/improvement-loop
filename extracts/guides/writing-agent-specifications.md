@@ -446,7 +446,7 @@ guidance drifts from frontier practice.
 ### Hard (orchestration-enforced)
 - Never modify files outside systems/improvement-loop/: enforced via CLAUDE.md
   scope rules (aspirational — no filesystem enforcement yet)
-- Never auto-deploy findings to meta-system/knowledge/: enforced via pipeline
+- Never auto-deploy findings to knowledge/: enforced via pipeline
   stage gates (DD-29)
 
 ### Steering (prompt-layer)

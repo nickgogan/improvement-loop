@@ -560,13 +560,13 @@ Step 3 of 4 -- depends on identification report (step 2), feeds into guide synth
 
 ### Required Context
 Finding file: systems/improvement-loop/research-findings/context-rot-silent-killer-and-mitigations.md
-Pattern template: systems/meta-system/knowledge/templates/pattern-template.md
+Pattern template: systems/improvement-loop/knowledge/templates/pattern-template.md
 
 ### Carry-Forward Notes
 Identification report classified this as "pattern" with MED confidence. Co-occurrence with delta-updates finding.
 
 ### Constraints
-- Write to extracts/patterns/, not to meta-system/knowledge/patterns/
+- Write to extracts/patterns/, not to knowledge/patterns/
 - Do not modify the source finding file
 ```
 

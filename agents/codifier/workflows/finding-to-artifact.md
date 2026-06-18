@@ -67,7 +67,7 @@ The Codifier's end-to-end pipeline: classify research findings into forms, draft
          [4] Deployment (Nick's manual action)
               │
               Move approved artifacts from extracts/
-              to meta-system/knowledge/ or .claude/
+              to knowledge/ or .claude/
 ```
 
 ## Decision Points

@@ -1,0 +1,98 @@
+{
+  "database_id": "cffef898-3672-4e29-822e-c894594752bc",
+  "data_source_url": "collection://987910f5-d89a-454f-af38-ba008268aea8",
+  "title": "Design Decisions",
+  "properties": {
+    "Decision ID": {
+      "name": "Decision ID",
+      "type": "title",
+      "description": ""
+    },
+    "Decision": {
+      "name": "Decision",
+      "type": "text",
+      "description": ""
+    },
+    "Status": {
+      "name": "Status",
+      "type": "select",
+      "description": "",
+      "options": [
+        { "name": "Binding", "color": "green" },
+        { "name": "Proposed", "color": "yellow" },
+        { "name": "Superseded", "color": "red" }
+      ]
+    },
+    "Target System": {
+      "name": "Target System",
+      "type": "select",
+      "description": "",
+      "options": [
+        { "name": "Household OS", "color": "blue" },
+        { "name": "S3: Claude Code Build", "color": "purple" },
+        { "name": "Improvement Loop", "color": "orange" },
+        { "name": "Cross-System", "color": "green" }
+      ]
+    },
+    "Scope Category": {
+      "name": "Scope Category",
+      "type": "select",
+      "description": "",
+      "options": [
+        { "name": "Principle", "color": "blue" },
+        { "name": "Component", "color": "purple" },
+        { "name": "Structure", "color": "orange" },
+        { "name": "Domain", "color": "green" },
+        { "name": "Flow", "color": "yellow" }
+      ]
+    },
+    "ICOR Stage": {
+      "name": "ICOR Stage",
+      "type": "select",
+      "description": "",
+      "options": [
+        { "name": "All Stages", "color": "gray" },
+        { "name": "Input", "color": "blue" },
+        { "name": "Control", "color": "purple" },
+        { "name": "Output", "color": "orange" },
+        { "name": "Refine", "color": "green" }
+      ]
+    },
+    "Horizon": {
+      "name": "Horizon",
+      "type": "select",
+      "description": "",
+      "options": [
+        { "name": "Immediate", "color": "green" },
+        { "name": "Near-term", "color": "yellow" },
+        { "name": "Deferred", "color": "gray" }
+      ]
+    },
+    "Workstream": {
+      "name": "Workstream",
+      "type": "select",
+      "description": "",
+      "options": [
+        { "name": "WS1", "color": "blue" },
+        { "name": "WS2", "color": "purple" },
+        { "name": "WS3", "color": "orange" },
+        { "name": "WS4", "color": "green" },
+        { "name": "WS5", "color": "yellow" },
+        { "name": "WS6", "color": "red" }
+      ]
+    },
+    "Date": {
+      "name": "Date",
+      "type": "date",
+      "description": ""
+    },
+    "IB Items": {
+      "name": "IB Items",
+      "type": "relation",
+      "description": "",
+      "relation_target": {
+        "data_source_url": "collection://69280dc1-5c9e-4eb0-adeb-d1fd6777a3f1"
+      }
+    }
+  }
+}

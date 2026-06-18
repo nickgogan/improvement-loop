@@ -24,7 +24,7 @@ Aggregate pattern-classified research findings into end-directed guides with emb
 
 - **Does not classify findings.** That's `/identify-artifacts`'s job.
 - **Does not extract rules/skills/templates/agents.** That's `/extract-artifacts`'s job (DD-81).
-- **Does not deploy guides.** Draft guides stage in `extracts/guides/`. Deployment to `meta-system/knowledge/guides/` is a separate human act.
+- **Does not deploy guides.** Draft guides stage in `extracts/guides/`. Deployment to `knowledge/guides/` is a separate human act.
 
 ## Cognitive Disposition
 
@@ -63,7 +63,7 @@ The Guide Author thinks like a technical writer and practitioner — not a resea
 | `systems/improvement-loop/operations/references/guide-routing-table.md` | Input — dimension→guide mapping, unrouted bucket, trigger keywords |
 | `systems/improvement-loop/extracts/guides/` | Output — staged guide drafts |
 | `systems/improvement-loop/extracts/patterns/` | Reference — pattern artifacts from initial extraction (optional enrichment) |
-| `systems/meta-system/knowledge/guides/` | Reference — existing deployed guides (match format) |
+| `systems/improvement-loop/knowledge/guides/` | Reference — existing deployed guides (match format) |
 
 ---
 
@@ -543,7 +543,7 @@ Written to: extracts/guides/[filename]
 
 Source findings: [list]
 
-Next: Review the staged guide. Deploy to meta-system/knowledge/guides/ when ready.
+Next: Review the staged guide. Deploy to knowledge/guides/ when ready.
 ```
 
 ---
@@ -554,7 +554,7 @@ Next: Review the staged guide. Deploy to meta-system/knowledge/guides/ when read
 2. **Templates are mandatory.** Every guide must include at least one fillable template with `{{VARIABLE}}` placeholders. Guides without templates are descriptions, not tools.
 3. **Examples are mandatory.** Every template must have at least one worked example.
 4. **ContractSpec on every guide** (DD-78). Guides carry the same contract as extracted artifacts.
-5. **Stage, don't deploy.** Write to `extracts/guides/`, not to `meta-system/knowledge/guides/`.
+5. **Stage, don't deploy.** Write to `extracts/guides/`, not to `knowledge/guides/`.
 6. **Respect finding boundaries.** Source only from the confirmed finding set. Don't inject external knowledge not grounded in the KB.
 7. **Minimum finding count.** A guide synthesizing fewer than 3 findings is likely too narrow. Flag to the user and suggest expanding the finding set.
 
@@ -595,7 +595,7 @@ Next: Review the staged guide. Deploy to meta-system/knowledge/guides/ when read
 | DD-81 | Pattern findings route to guide synthesis, not extraction |
 | DD-80 | Pipeline architecture (amended by DD-81 for patterns) |
 | DD-78 | ContractSpec on every artifact, including guides |
-| DD-45 | Knowledge architecture — guides live in meta-system/knowledge/guides/ |
+| DD-45 | Knowledge architecture — guides live in knowledge/guides/ |
 | DD-46 | Pull model — guides are pulled by consuming systems |
 | DD-93 | Preserved sections on guide regen (`## Nick's Annotations` + `<!-- PRESERVE -->` regions); post-regen byte-equality regression test; fail-closed on drift. Steps 0.5 / 3.5 / 3.7. |
 | DD-94 | Companion changelog file per guide at `extracts/guides/changelog/<stem>.changelog.md`; one entry per re-synthesis with closed trigger-tag enum, ~10-line cap (≤10 clean / 11–15 warn / >15 abort), most-recent-first append. Step 4.5. |

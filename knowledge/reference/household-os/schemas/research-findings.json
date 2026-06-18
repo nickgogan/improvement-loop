@@ -1,0 +1,56 @@
+{
+  "database_name": "Research Findings",
+  "data_source_url": "collection://0f32d9b0-d119-4842-b1ed-e380ca3aec54",
+  "properties": {
+    "Name": {
+      "type": "title",
+      "description": ""
+    },
+    "Summary": {
+      "type": "text",
+      "description": "Concise distillation of what this pattern is and why it matters"
+    },
+    "Implementation Notes": {
+      "type": "text",
+      "description": "Brief context for why this finding is flagged and what the architect should consider"
+    },
+    "Category": {
+      "type": "select",
+      "options": ["Context Engineering", "Prompt Craft", "Tool Integration", "Model Selection", "Intent Engineering", "Orchestration", "Memory Architecture", "Evaluation"]
+    },
+    "Evidence Strength": {
+      "type": "select",
+      "options": ["Strong (production-tested)", "Medium (practitioner-documented)", "Weak (theoretical)"]
+    },
+    "Adoption Status": {
+      "type": "select",
+      "options": ["Already Adopted", "Partially Adopted", "Not Yet Started"]
+    },
+    "Proposer Priority": {
+      "type": "select",
+      "options": ["P1 (Implement Now)", "P2 (Design Required)", "P3 (Monitor)", "Not Flagged"]
+    },
+    "Applicability": {
+      "type": "multi_select",
+      "options": ["S2 (Notion Operations)", "S3 (Claude Code Build)", "Perplexity Skills", "General"]
+    },
+    "Adopted In": {
+      "type": "multi_select",
+      "options": ["S2 (Notion Operations)", "S3 (Claude Code Build)", "Perplexity Skills", "Improvement Loop", "General / Cross-System"]
+    },
+    "Sources": {
+      "type": "relation",
+      "related_to": "collection://14c4081d-0298-4ffd-991e-f3a798f0979c"
+    },
+    "Proposals": {
+      "type": "relation",
+      "related_to": "collection://77297278-88d7-4eba-ab77-246320007827"
+    },
+    "Date Discovered": {
+      "type": "date"
+    },
+    "Last Updated": {
+      "type": "date"
+    }
+  }
+}

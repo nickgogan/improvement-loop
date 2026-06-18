@@ -1,0 +1,25 @@
+# {{NAME}} — Progress
+
+**Created:** {{CREATED}}
+**Stage:** Incubation
+
+---
+
+## Current Focus
+
+_Set your current focus here._
+
+## Session Log
+
+| Date | Summary | Outcome |
+|------|---------|---------|
+| {{CREATED}} | Project bootstrapped | Initial scaffold created |
+
+## Open Questions
+
+_Capture unresolved questions here._
+
+## Decisions Made
+
+| Date | Decision | Rationale |
+|------|----------|-----------|

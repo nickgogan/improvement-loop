@@ -29,11 +29,11 @@ Per-form inclusion and exclusion criteria for the (future) Form Router. Produced
 
 | Form | Shape | Lives in |
 |---|---|---|
-| `pattern` | Compositional primitive — reusable design approach | `meta-system/knowledge/patterns/` |
+| `pattern` | Compositional primitive — reusable design approach | `knowledge/patterns/` |
 | `skill` | Procedure with inputs/outputs/steps | `.claude/skills/` or `{system}/.claude/skills/` |
 | `rule` | Binary constraint enforced at a boundary | `.claude/rules/` or `{system}/governance/` |
-| `template` | Scaffold with variables and a body | `meta-system/knowledge/templates/` |
-| `agent` | Persona with cognitive disposition and durable scope | `meta-system/knowledge/templates/agent-templates/` (system instantiations in `{system}/agents/`) |
+| `template` | Scaffold with variables and a body | `knowledge/templates/` |
+| `agent` | Persona with cognitive disposition and durable scope | `knowledge/templates/agent-templates/` (system instantiations in `{system}/agents/`) |
 
 **Out of scope for the Router:** `guide` — produced at synthesis time by `/synthesize-guide` (IB-146) from aggregated patterns. Guides are end-directed; the 5 Router forms are all compositional.
 

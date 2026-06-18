@@ -166,7 +166,7 @@ The Librarian reads from three sources:
 |--------|-----------------|-----------|
 | `research-findings/` | Raw research — individual patterns with evidence | Updated by Researcher |
 | `extracts/guides/` | Synthesized guides — aggregated pattern playbooks | Updated by Codifier |
-| `meta-system/knowledge/` | Deployed artifacts — production patterns, templates | Updated by Nick |
+| `knowledge/` | Deployed artifacts — production patterns, templates | Updated by Nick |
 
 **Resolution order:** When the Librarian encounters information in multiple sources (e.g., a finding AND a guide covering the same topic), it prefers the most processed form:
 1. Deployed artifact (most authoritative — Nick-approved)
