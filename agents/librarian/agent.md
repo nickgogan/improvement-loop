@@ -112,15 +112,20 @@ The Librarian is the **consumption layer** of the IL pipeline — it reads what 
 
 ## Skill Inventory
 
-The Librarian has **no dedicated skills**. It operates through direct conversation using Read, Glob, and Grep tools to navigate the KB.
+The Librarian operates through dedicated skills plus direct conversation using Read, Glob, and Grep tools to navigate the KB for queries that don't fit a skill.
 
-**Future skill candidates:**
-- `/kb-query` — structured query interface over findings, guides, and artifacts (if query volume justifies it)
-- `/gap-report` — produce a structured report of KB coverage gaps for a given topic or system
+| Skill | Role | Operation × Concept |
+|-------|------|---------------------|
+| `/assess-skill` | Audit consumer SKILL.md | `audit.md × skill.md` |
+| `/assess-agent` | Audit consumer agent artifact (variant-aware) | `audit.md × agent.md` |
+| `/assess-prompt` | Extend `/prompt-evaluator` with IL-KB-grounded checks | `audit.md × prompt` |
+| `/design-skill` | Draft new SKILL.md from intent; delegates Phase 5 audit to `/assess-skill` (rule 10) | `design.md × skill.md` |
+| `/design-agent` | Draft new agent artifact from intent (variant-aware); delegates Phase 5 audit to `/assess-agent` (rule 10) | `design.md × agent.md` |
+| `/ask-kb` | Citation-grounded KB query — Teacher/Builder modes selected by query shape | — (read-only; no concept-doc substrate per session 111 rule-11 decision) |
+| `/compare-repos` | Cross-repo synthesis across watched libraries — Builder-mode recommendations on top of `/repo-analyzer` per-repo input | — (no concept-doc substrate per session 111 rule-11 decision) |
+| `/detect-drift` | Source-drift scanner for non-guide extracts | — |
 
-These are noted as potential future work, not commitments. The Librarian operates effectively without dedicated skills in its current form.
-
-**Tools used:**
+**Tools used (for conversational navigation):**
 | Tool | Purpose |
 |------|---------|
 | Read | Read finding files, guides, artifacts, routing table |

@@ -38,7 +38,7 @@ This directory holds governance artifacts that are specific to the IL system —
 |------|---------|--------|
 | `boundary-rules.md` | What IL can/cannot modify, cross-system constraints, artifact placement (four-zone) | Constitution, DD-89 |
 | `pipeline-rules.md` | How IL work flows through DBDO, human gates, stage boundaries, SL telemetry | Constitution, Principles, DD-90 |
-| `agent-rules.md` | Agent boundaries, handoff requirements, agent-as-directory, agent-private reflections, proposal pathways | Constitution, Fractal Pattern, Vocabulary, DD-89, DD-91 |
+| `agent-rules.md` | Agent boundaries, handoff requirements, agent-as-directory, agent-private reflections, proposal pathways, generator-assessor separation, abstractions-must-earn-their-keep, audit-design symmetry | Constitution, Fractal Pattern, Vocabulary, DD-89, DD-91 |
 | `knowledge-rules.md` | KB management, terminology, evidence tracking, structural memory | Constitution, Values, Vocabulary |
 
 ### `proposals/` — agent-authored governance-rule proposals (Proposal-First tier)

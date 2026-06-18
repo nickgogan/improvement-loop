@@ -6,7 +6,7 @@ target_system:
   - "improvement-loop"
 stage: "active"
 created: "2026-04-19"
-updated: "2026-04-22"
+updated: "2026-06-11"
 author: "agent"
 source_governance:
   - "systems/meta-system/governance/constitution.md"
@@ -58,6 +58,21 @@ tags:
 
 9. **Proposals flow to `governance/proposals/` via two pathways.** Agent-initiated proposals originate either from an Owner-run `/solicit-proposals` round (structured) or from an individual agent's own initiative (ad-hoc). Both flow to `governance/proposals/`; both face Nick's review at acceptance time (not mid-flow); both convert to IB items on acceptance. Owner + Nick collaborative governance work bypasses this path and writes DDs directly.
    - *Source:* DD-91 (reflections-to-proposals) — dual proposal pathways; DD-89 (four-zone architecture) — `governance/proposals/` zone definition
+
+10. **Generator-assessor separation.** The agent or skill that generates an artifact must not be the same one that assesses it. Generation and assessment are distinct operations with distinct end-goals, motivations, and dispositions — a generator optimizes for "produce something that satisfies the spec," an assessor optimizes for "find where this fails the criteria." Conflating them collapses the epistemic gap that makes assessment meaningful. Operationally: any constructive skill that includes a quality check must delegate the check to the corresponding assess-* skill invoked as a separate subagent (fresh context, assessor disposition loaded cleanly). This applies symmetrically — an assessor must not also produce the artifact it is checking.
+    - *Examples:* `design-skill` invokes `/assess-skill` as a subagent before presenting its draft; `design-agent` invokes `/assess-agent`; future `/extract-artifacts` runs that include quality verification delegate to the relevant assess-* skill rather than self-checking.
+    - *Source:* Standing rule established session 106 (2026-05-30) during Owner skill design. Elaborates and specializes rule 5 (consumer feedback to producer) for the self-assessment case.
+
+11. **Abstractions must earn their keep.** Every new abstraction or layer proposed within the IL system must be backed by strong evidence that it is needed. This includes new concept docs, agent roles, pipeline stages, composition layers, governance rules, tiers, taxonomies, or shared infrastructure. Abstractions justified only by elegance, symmetry, completeness, or "we might want this later" are rejected. Concrete duplication and one-off patterns are preferred to speculative abstraction — the cost of an unused or wrongly-shaped abstraction is paid every time someone reads the system, not just when it was written.
+    - *What counts as evidence:* a recurring concrete problem observed at least 2–3 times; multiple consumers that demonstrably benefit; an observable cost of *not* having the abstraction (duplication that has actually caused drift, ambiguity that has actually caused mistakes, decisions that have actually been re-litigated).
+    - *Operational guidance for all IL agents:* When proposing any new abstraction, lead with the evidence (occurrences, consumers, cost-of-absence). If evidence is thin, prefer tolerating the concrete duplication and flag for revisit rather than abstracting now. When in doubt: don't abstract.
+    - *Source:* Standing rule established session 106 (2026-05-30). Architectural specialization of the broader minimum-viable-abstraction stance; complements rule 10 by constraining what gets built in the first place, not just how it gets validated.
+
+12. **Audit-design symmetry.** For every artifact type the Librarian operates on (skill, agent, prompt, harness, etc.), the audit operation and the design operation compose against the same concept doc. Audit consumes §Composition (which guides' Contract sections form the rubric); design consumes §Construction (which authoring substrate forms the procedure). The two operations are bilingual readings of one substrate. When one operation is extended for an artifact type — adding a new concept doc, adding a §Construction subsection, adding a §Composition row — the symmetric operation's coverage of that artifact type must be evaluated in the same change.
+    - *Why this matters:* a concept doc with §Composition but no §Construction is auditable-but-not-constructible (the Librarian can find faults but can't help you author); the inverse is constructible-but-not-auditable. Both gaps create asymmetric capability and silently drift the Librarian's coverage map.
+    - *Operational guidance for all IL agents:* When proposing new concept docs or extending existing ones, build §Composition and §Construction together. When extending §Composition (adding a guide to a row, refining a precondition), check whether §Construction's Decision sequence references the same gate; if not, update both. When extending §Construction (adding a step, adding an anti-pattern), check whether §Composition's invariant set names the symmetric audit gate; if not, update both.
+    - *Existing §Construction debt:* As of session 107, only `skill.md` and `agent.md` carry §Construction. Other concept files in `operations/references/librarian/` (`harness.md`, `second-brain.md`, `memory.md`, `context-rot.md`, `agentic-systems.md`, `prompt.md`, others) carry §Composition only and are in §Construction debt — auditable but not constructible. Filing a §Construction pass is tracked as IB work, not a blocker; existing concept docs do not need backfilling before unrelated work proceeds.
+    - *Source:* Structural prerequisite for rule 10 to function correctly at the concept-doc level — audit and design can only achieve generator-assessor separation if both operations read from the same concept doc. Relates to rule 11 (abstractions must earn their keep): a concept doc that supports only one of the two Librarian operations has not fully earned its abstraction cost. Standing rule established session 107 (2026-06-11) during IL Stream 0 step A (design.md spec landing).
 
 ## Applicability Notes
 

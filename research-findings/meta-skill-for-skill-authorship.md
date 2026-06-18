@@ -1,41 +1,90 @@
 ---
 name: Meta-Skill for Skill Authorship
-summary: Superpowers' writing-skills/ directory contains a skill that teaches agents how to write skills — including persuasion principles, Anthropic best practices, testing methodology, and example skills.
-  Self-referential capability development enabling the framework to extend itself.
-implementation_notes: null
+summary: Skills that teach agents how to author other skills — closing the meta-loop on framework self-extension. Anthropic ships skill-creator as the canonical implementation (anthropics/skills/skills/skill-creator, ~485 lines), with operational mechanics including draft → test → grade → improve iteration, eval-viewer with per-test feedback, description-triggering optimization via held-out test set, and blind A/B comparison between skill versions. Superpowers' writing-skills/ is a community-built counterpart. Both demonstrate that skill authorship is itself a workflow worth packaging.
+implementation_notes: "Two production implementations corroborate the pattern. (1) Anthropic's skill-creator (Oct 2025, official, distributed via plugin marketplace at /plugin install example-skills@anthropic-agent-skills) — full iteration loop with eval-viewer, benchmark.json schema, description optimizer (`python -m scripts.run_loop`), packaging via `package_skill.py`. Generator-assessor separation enforced: grader.md, comparator.md, analyzer.md are separate subagent definitions. (2) Superpowers' writing-skills (community, v5.0.7) — persuasion principles, structural templates, testing methodology. The Anthropic implementation is the production reference; the convergent community implementation is independent corroboration. Anthropic's engineering post explicitly names this as the forward trajectory: 'we hope to enable agents to create, edit, and evaluate Skills on their own, letting them codify their own patterns of behavior into reusable capabilities.'"
 category: Agent Design
-evidence_strength: Medium (practitioner-documented)
+evidence_strength: Strong (production-tested)
 adoption_status: Not Yet Started
-priority: Not Flagged
+priority: P1 (Implement Now)
 applicability:
 - S3 (Claude Code Build)
+- General
 adopted_in: []
-sources: []
+sources:
+- "anthropic-equipping-agents-with-agent-skills.md"
+- "anthropic-skills-repo.md"
 related_findings:
 - file: visual-skills-management-and-meta-skill-creator.md
   rel: same-problem
+- file: "skill-description-optimization-loop-held-out-test.md"
+  rel: "extends"
+- file: "generator-assessor-separation-in-skill-iteration.md"
+  rel: "extends"
+- file: "iterate-on-single-task-then-extract-skill.md"
+  rel: "extends"
+- file: "skill-authoring-four-guidelines.md"
+  rel: "extends"
+- file: "skill-authoring-explain-the-why-not-musts.md"
+  rel: "extends"
 proposals: null
 date_discovered: '2026-04-08'
-last_updated: '2026-04-19'
+last_updated: '2026-06-11'
 pipeline_status: raw
 consumed_by: []
 ---
 # Meta-Skill for Skill Authorship
 
 ## What It Is
-Superpowers includes a `writing-skills/` directory containing a skill whose purpose is to teach agents how to write new skills for the framework. This meta-skill includes: persuasion principles to apply (from Meincke et al. 2025), Anthropic best practices for skill structure, testing methodology for validating new skills, and example skills to use as templates. The system that defines skills also has a skill for defining skills — enabling agents to contribute to the framework's own growth.
+
+A skill whose purpose is to help agents and authors create and improve other skills. The pattern closes the meta-loop: the system that defines skills also has a skill for defining skills.
+
+Two production implementations corroborate the pattern:
+
+**Anthropic skill-creator** (`anthropics/skills/skills/skill-creator/SKILL.md`, ~485 lines). Distributed via `/plugin install example-skills@anthropic-agent-skills`. Operational mechanics:
+- **Draft** — interactive interview (capture intent, define success criteria, draft SKILL.md).
+- **Test** — spawn with-skill and baseline subagents in parallel; capture timing data on completion.
+- **Grade** — separate grader subagent reading `agents/grader.md` evaluates assertions against outputs.
+- **Aggregate** — `scripts/aggregate_benchmark.py` produces benchmark.json with pass_rate, time, tokens (mean ± stddev + delta).
+- **Review** — `eval-viewer/generate_review.py` opens an HTML reviewer with Outputs and Benchmark tabs.
+- **Improve** — author iterates on SKILL.md based on transcripts and user feedback; rerun for next iteration.
+- **Description optimization** — `scripts/run_loop.py` runs a 60/40 train/test split with up to 5 iterations, best description by test score.
+- **Blind comparison** — separate comparator + analyzer subagents for A/B between skill versions.
+- **Package** — `scripts/package_skill.py` produces a `.skill` file for distribution.
+
+**Superpowers writing-skills** (community, github.com/obra/superpowers v5.0.7). Includes persuasion principles, structural templates, testing methodology. Less elaborated mechanics than skill-creator but the same architectural pattern.
 
 ## Why It Matters
-Most agent frameworks are human-extended only — when you need a new capability, a human writes the new skill. A meta-skill for skill authorship enables agent-assisted framework extension. The agent can draft new skills following the established patterns, applying the correct persuasion principles, and structuring output to match the framework's conventions. This creates a self-reinforcing loop: the more skills the framework has, the better the meta-skill's examples, the better the agent gets at writing new skills.
+
+Most agent frameworks are human-extended only — when you need a new capability, a human writes it. A meta-skill enables agent-assisted framework extension with rigor. Three properties matter:
+
+1. **Distillation over specification.** Skill authorship is a discovery problem (what context does Claude need?). The meta-skill operationalizes the discovery loop.
+2. **Generator-assessor separation enforced.** skill-creator NEVER both generates and grades the same artifact in the same context. This is exactly IL governance rule 10 — established independently by Anthropic.
+3. **Triggering as a tunable layer.** The description optimization loop makes "does the skill load when it should?" empirically measurable. This is the most consequential layer of skill authoring and historically the hardest to assess.
+
+Anthropic's engineering post explicitly names this trajectory: "we hope to enable agents to create, edit, and evaluate Skills on their own, letting them codify their own patterns of behavior into reusable capabilities."
+
+For Improvement Loop, the existence of two convergent production implementations is the evidence threshold: the pattern earns substrate. The pattern's mechanics inform IL Stream B's `/design-skill` and `/design-agent` skill designs.
 
 ## Why People Are Using It
-Observed in [Superpowers](https://github.com/obra/superpowers) v5.0.7 — see [[superpowers-analysis]] for structural details. No equivalent exists in GSD, BMAD, or other analyzed repos. GSD's skills are authored by the framework maintainer. BMAD's persona definitions are human-written. Superpowers is the only analyzed repo that has formalized skill authorship as itself a skill, closing the meta-loop.
+
+Anthropic's skill-creator is the production reference, distributed via the official plugin marketplace and recommended in the Complete Guide PDF as the path to "a functional skill in a single sitting - often in 15-30 minutes." Community adoption visible in awesome-agent-skills lists and the plugin marketplace ecosystem. Superpowers' independent implementation suggests the pattern arises whenever a framework reaches the point where skill quality matters.
 
 ## Potential Alternatives
-Human-only skill authorship with documentation guides. Template-based scaffolding (generate skill boilerplate, human fills in logic). Copy-paste from existing skills without formalized methodology. External tooling that generates skills from specifications.
+
+Human-only authorship with documentation guides (no rigor floor, doesn't scale). Template-based scaffolding only (no iteration loop). External code-generation tools (decouple from the framework's conventions). Copy-paste from existing skills (no methodology). All of these work for narrow cases; none operationalize the four authoring guidelines or the generator-assessor separation that skill-creator does.
 
 ## Potential Improvements
-Skill testing automation — the meta-skill could include a test harness that validates new skills against behavioral expectations before deployment. Skill quality scoring that evaluates how well a new skill applies the persuasion principles and structural patterns. Skill registry that catalogs all skills with metadata, making it easier for the meta-skill to find relevant examples. Version tracking for skills so changes can be reviewed and rolled back.
+
+Cross-skill grader sharing (many skills could share a common grader rather than each shipping its own). Telemetry from production skill usage feeding back into description optimization. Skill version-control with regression suite — when description changes, automatically check that triggering accuracy on the historical test set didn't degrade. Meta-skill for meta-skills: a pattern for evolving the authorship methodology itself as the surface evolves.
 
 ## Potential Failure Modes
-Quality degradation — agent-written skills may be subtly worse than human-written ones, and the degradation compounds if agent-written skills are used as examples for writing future skills. Consistency drift — without strong validation, each generation of agent-written skills may drift further from the framework's design principles. Over-production of low-value skills that clutter the framework without adding meaningful capability. The meta-skill itself needs maintenance as the framework's conventions evolve.
+
+**Quality degradation through agent-authored examples.** If agent-written skills become the examples that future agents learn from, drift compounds. Anthropic's skill-creator addresses this by including human-curated examples (the document skills, the frontend-design skill); future drift depends on ongoing curation.
+
+**Consistency drift.** Without ongoing validation, each generation of agent-written skills may drift further from the framework's design principles.
+
+**Over-production.** Easy authoring produces many low-value skills. Skill discovery and listing budget pressure (1% of context window) makes this concrete: more skills = less budget per description = degraded triggering for the skills that matter.
+
+**Meta-skill maintenance debt.** The meta-skill itself needs to evolve as the framework evolves. Anthropic's skill-creator has updated through Cowork-specific instructions and Claude.ai-specific adaptations, suggesting ongoing maintenance is needed.
+
+**Generator-assessor erosion.** Under time pressure, authors skip the grader subagent and grade inline (skill-creator explicitly allows this). The separation is the discipline that makes assessment meaningful — collapsing it loses the value.

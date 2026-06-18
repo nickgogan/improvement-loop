@@ -1,14 +1,14 @@
 # Improvement Loop — Progress
 
-**Last Updated:** 2026-05-25 (session 105)
+**Last Updated:** 2026-06-12 (session 112)
 
 ## Current Focus
 
-Session 105 completed the post-extraction health check. System verified consistent: 13 active guides confirmed (count corrected from 14), G1 phantom entries removed (11→9), 5 stale G2 cross-refs fixed in G2a/G2b, 32 consumed_by back-annotations repaired, missing changelogs and SL entry created. No guides are critically stale; 19 classified-pending findings remain.
+Session 112 executed cross-system roadmap step F — MetaSystem Owner instantiated (IB-167), MetaSystem capability roadmap drafted. IL state advanced minimally: no new IL artifacts authored this session, but a harness-discovery probe file was placed at `.claude/agents/test-discovery.md` for empirical resolution next session (to be deleted after). One cross-cutting IB filed in meta-system: IB-168 — MetaSystem Owner operational skill family (per-skill parameterize-vs-equivalent decisions, triggered by recurring evidence; may eventually request IL skill refactors). MetaSystem SL entry: `../meta-system/operations/system-log/owner-instantiated-step-f-roadmap-drafted.md`.
 
-**KB totals:** ~739 findings, ~179 sources, 31 watched libraries, 30 analysis docs, cross-repo comparison updated (29 repos). 13 active guides (G1:9, G2a:35, G2b:30, G3:42, G3b:20, G4:46, G5:23, G6:5, G7:27, G8:20, G9:38, G10:37, G11:30); G2 deprecated. 0 open split proposals (G2 resolved, G3/G9 deferred).
+**Active focus:** Cross-system roadmap step G — build MetaSystem capabilities (`/audit-system`, `/design-harness`) gated on Nick's acceptance of the capability roadmap draft.
 
-**Next session target:** Owner — build Owner agent skills (logged-for-future item 1). Use Librarian subagent for KB best practices + Perplexity for external research. Check existing coverage first (assess-agent, assess-prompt, assess-skill may overlap).
+**Next session target:** Session 113 — resolve harness discovery test, gate the capability roadmap, begin step G.
 
 ---
 

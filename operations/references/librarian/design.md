@@ -3,156 +3,161 @@ operation: design
 type: operation
 target_system:
   - "improvement-loop"
-created: "2026-04-22"
-updated: "2026-04-22"
+created: "2026-06-11"
+updated: "2026-06-11"
 author: "claude"
 stage: "draft"
 tags:
   - "librarian-operation"
   - "design"
-  - "build"
+  - "construct"
 aliases:
   - "Design"
-  - "Build"
-  - "How should I design"
+  - "Construct"
+  - "Author a new artifact"
 ---
 
 # Design
 
 ## Short definition
 
-**Design** produces step-by-step guidance for building an artifact or architecture the consumer hasn't built yet. Input is a design intent — "how should I design my agent's context files," "how should I sequence the tool registry for my harness-based agent," "what should my agent's memory architecture look like." Output is an ordered step list composed from the `### Procedure` / `### Step N` subsections of the relevant guide(s), with templates and examples pulled inline where available, and any preconditions flagged that the consumer has not yet committed to.
+**Design** drafts a new artifact (an `agent.md`, a system prompt, a `SKILL.md`, a harness configuration, etc.) from designer intent plus construction substrate composed from the relevant concept file. It produces a complete draft of the artifact, gated for designer review, and is the constructive peer of the `audit` operation.
 
-Design is a *consumption* operation: read-only on substrate; the Librarian does not author the consumer's artifact, does not write to the KB, and does not propose deploys. Design produces the recipe; the consumer follows it.
+Design is a *construction* operation: the Librarian reads the concept file's §Construction subsections and the substrate they point to, elicits designer intent for unresolved choices, and produces a draft. Design does not deploy the artifact, does not write it to a system's enforcement location, and does not propose changes to the IL's own substrate. The draft is the designer's to accept, modify, or reject.
 
-Design and audit are siblings. Audit applies invariants *retroactively* to an existing artifact; design applies the authored build sequence *prospectively* to an artifact-to-be. The composition table for an artifact type is shared — the same concept file (e.g., `agent.md`) routes both operations to the same guide set; they differ in *which subsection kind* they read (audit reads `### Contract`; design reads `### Procedure` / `### Step N`).
+Per IL rule 10 (generator-assessor separation), `design` does not self-assess the artifact it produces. After producing the draft, it invokes the corresponding assess-* skill (`/assess-skill`, `/assess-agent`, `/assess-prompt`) as a subagent in fresh context, surfaces the audit findings alongside the draft, and lets the designer decide whether to revise.
+
+**Predecessor.** An earlier `design.md` (2026-04-22) operated in *advisor mode* — produced step guidance for the consumer to follow rather than a draft artifact. That shape was authored before §Construction substrate existed in concept docs (sessions A.4a/A.4b, 2026-06-11) and before rule 12 (audit/design symmetry) codified the bilingual-reading model. Author mode (this spec) is the constructive peer audit needs. If advisor-mode guidance is later shown to be a recurring need (rule 11 evidence: 2–3 distinct consumer requests), a separate `advise.md` operation can be drafted.
 
 ## Default composition rule
 
-`design` composes three inputs:
+`design` composes two inputs:
 
-1. **Concept file** for the artifact (or concept) under design — provides the composition table. For variant-carrying concepts (agent, memory, second-brain), variant selection happens before composition; the variant narrows the guide set (e.g., Variant A of agent pulls {G1, G2a, G2b, G3, G10}; Variant B adds {G3b, G5, G6}; Variant C adds {G7, G9}).
-2. **Step subsections** of the named guides — specifically:
-   - `### Procedure` (or `### Step N` sequences where the guide is step-structured) → the ordered build sequence. This is the spine of the response.
-   - `### Preconditions` (from the guide's Contract) → applicability gates. If a Precondition is not satisfied in the consumer's scenario, flag it; if it *cannot* be satisfied, the guide is wrong-tool and the Librarian says so.
-   - `### Templates` and `### Examples` → lifted inline as scaffolds when the consumer's scenario matches a template's variables or an example's shape.
-3. **Cross-concept dependencies (for UC-9.2 cross-concept design)** — when the design spans two concepts (agent + second-brain, memory + harness), load both concept files and surface the aspects where they interact or disagree.
+1. **Concept file** for the artifact under construction — provides §Construction (Decision sequence, Template skeleton, Scoping heuristics, Authoring-time anti-patterns) plus §Composition (the audit-side composition table, read here as a forward-reference to the audit surface the draft will face — see Phase 1).
+2. **Construction substrate** referenced from the concept file:
+   - `### Decision sequence` → ordered authoring steps; structures Phase 2 of the procedure.
+   - `### Template skeleton` → canonical artifact shape; structures Phase 4 output.
+   - `### Scoping heuristics` → consulted during Phase 2 when a step surfaces a split/collapse decision.
+   - `### Authoring-time anti-patterns` → consulted during Phase 3; named in the report's risk surface.
 
-Procedure sections function as emergent build specifications by construction — they were authored as end-directed playbooks. The Librarian re-orders / filters based on the consumer's scenario but does not re-derive the build sequence.
+§Construction functions as design-time substrate by construction (Librarian A.2 audit, session 106). No view-artifact curation required.
 
 ### Composition details
 
-**(a) Aspect scoping.** Most design queries name an aspect ("design the tool registry," "design my context files") rather than the whole artifact. Scope the read to the aspect's Step subsections first — e.g., "tool registry" → G5 §Procedure §Step on tool registry. When the consumer asks at whole-artifact level (UC-1.2: "how should I design my agent?"), read the cross-guide thread across the variant's composed guide set, ordered lifecycle-first (specify → build → verify → secure → operate).
+**(a) Variant-aware composition.** For variant-carrying concepts (`agent.md`), Decision-sequence step 1 selects the variant; subsequent steps' applicability depends on the selection. Carry the variant tag forward into Template skeleton (common core + variant overlay).
 
-**(b) Precondition gating.** Before returning the design, walk the composed guides' Preconditions against the consumer's scenario. For each Precondition:
-- **Already satisfied** — silent; proceed.
-- **Satisfiable but not yet committed** — flag for the consumer ("G2a assumes you've decided on a context-budget ceiling; if you haven't, decide first or the G2a steps will be under-constrained").
-- **Unsatisfiable** — the guide is wrong-tool. State this and suggest the right guide/concept.
+**(b) Hard-gate steps.** Some Decision-sequence steps are hard gates (safety-critical classification for skills; autonomy-envelope sizing for Variant C agents). These cannot be deferred — Phase 2 must reach a concrete decision before proceeding. Soft steps may be skipped with explicit "N/A" annotation.
 
-**(c) Template and example embedding.** Where the guide has `### Templates` (G1, G2a, G2b, G3, G3b, G5, G7, G10 all carry them) or `### Worked Examples` (G1, G2a, G2b, G3, G7 carry these), lift the specific section that matches the consumer's scenario. For agent.md scaffolding, G10's Core Truths / Boundaries / Vibe / Continuity template is canonical; for context files, G2a's Tiered CLAUDE.md template is canonical. Do not dump the template wholesale — fill in the variable slots the consumer has committed to and leave `{{REMAINING}}` placeholders visible.
+**(c) Conditional applicability via §Composition Preconditions.** The same Preconditions that gate audit invariants gate design-time substrate loading: a Variant A agent draft does not load G5/G6 substrate unless authoring surfaces tool directives. If the draft acquires the trigger condition mid-design, re-evaluate variant assignment (variant-drift anti-pattern).
 
-**(d) Variant overlay.** For variant-carrying concepts, the design composition reads the variant's *specific* guide union — not the full concept-file guide set. A Variant A (prompt-based) agent design does not pull G5 / G6 / G9 unless the consumer's scenario invokes them. This keeps designs scoped; over-inclusion of guides dilutes the step sequence.
-
-**(e) Cross-concept dependency surfacing.** For UC-9.2-style cross-concept designs ("agent + hybrid second brain — in what order?"), load both concept files and produce *sequenced* steps, not two parallel lists. Dependency order typically follows: intent → architecture → components → safety → operations. Flag explicitly where one concept's decision constrains another's (e.g., "choose Variant C second-brain before committing to Variant B agent — hybrid curation requires HITL scaffolding in the agent spec").
+**(d) Generator-assessor separation (rule 10).** Design produces; assess-* assesses. Design never internally inspects its own draft against rubric criteria; that work is delegated.
 
 ## Procedure
 
-Four phases. The Librarian executes top-to-bottom and produces a single design response. Do not stream partial steps mid-phase.
+Six phases. The Librarian executes top-to-bottom and produces a single report at the end. Do not stream partial draft sections mid-phase — the designer needs the full draft alongside the audit findings.
 
 ### Phase 0 — Parse the query
 
-Parse verb + noun(s). Verb must be `design` or a synonym ("how should I build," "how do I set up," "recommend an approach for," "architect"). Noun identifies the artifact / concept under design; the aspect (if named) narrows the scope.
+Parse verb + noun(s). Verb must be `design` or a synonym (construct, author, create, draft, build). Noun identifies the artifact type — agent, skill, prompt, harness, or other concept-file noun. If no noun resolves to a concept file, ask the designer one disambiguating question and stop until answered.
 
-If the consumer has not stated at least one constraint (deployment target, team size, existing infrastructure, autonomy envelope), ask *one* qualifying question before composing. Unconstrained design requests produce generic step lists that the consumer must rediscover how to apply.
+### Phase 1 — Load construction substrate
 
-### Phase 1 — Load composition
+Read the concept file for the noun. Read its §Construction subsections in this order: Decision sequence, Template skeleton, Scoping heuristics, Authoring-time anti-patterns. Also read §Composition.
 
-Read the concept file(s) for the noun(s). For variant-carrying concepts, resolve the variant from the consumer's phrasing (re-using the variant selection heuristics in the concept file). Read the `### Procedure` / `### Step N` subsections of each guide named in the concept's composition table's design-relevant rows, plus `### Preconditions` from the Contract, plus the `### Templates` and `### Worked Examples` sections if the consumer's scenario is template-shaped.
+§Composition is read here as a *forward-reference to the audit surface the draft will face* — so the designer can anticipate which guides will fire at audit time. It is **not** design-time input; design's load-bearing substrate is §Construction. A Librarian that confuses §Composition for design substrate would import audit-time rubric criteria into the authoring procedure, collapsing the construction/composition distinction the concept docs were structured to preserve.
 
-Do not read full guide bodies — only the aspect-relevant steps plus preconditions / templates / examples.
+For variant-carrying concepts, do not pre-load all variant overlays. The variant is selected in Phase 2 step 1; only then load the relevant overlay.
 
-### Phase 2 — Scope and gate
+### Phase 2 — Elicit designer intent (Decision sequence walk)
 
-Apply composition steps (a), (b), (d), and (e): aspect-scope the step list; walk Preconditions against the consumer's scenario; apply variant overlay; surface cross-concept dependencies if applicable.
+Walk the §Decision sequence step by step. For each step:
 
-Emit a *scoped* step sequence — not the guide's full procedure, but the subset relevant to the consumer's aspect + scenario. Include the precondition flags as a prelude to the step list.
+1. State the step and its purpose (one line).
+2. Ask the designer the questions the step requires. Defaults are acceptable only when the step explicitly allows N/A.
+3. Record the answer. If the answer surfaces a scoping question (split / collapse / decompose), consult §Scoping heuristics and ask the disambiguating question.
+4. Apply hard gates immediately (a safety-critical-classified skill cannot proceed without a stated HITL gate; a Variant C agent cannot proceed without a sized autonomy envelope).
 
-### Phase 3 — Lift templates and examples
+Phase 2 produces a **Decision record**: the answered Decision sequence, one row per step, including which scoping decisions were made and why.
 
-Walk the step list. For each step that has a `### Templates` or `### Worked Examples` entry in the source guide, lift it inline with the consumer's named variables substituted. Keep the `{{placeholder}}` pattern for slots the consumer has not committed to — explicit placeholders are better than invented defaults.
+### Phase 3 — Surface authoring-time risks
 
-If the consumer's scenario does not match any template or example, proceed without embedding — do not invent templates.
+Compare the Decision record against §Authoring-time anti-patterns. For each anti-pattern the current draft posture could fall into, name it explicitly ("Variant declared A but step 3 surfaced tool directives — variant-drift risk; promoted to Variant B").
 
-### Phase 4 — Tier + provenance + next-step pass
+§Authoring-time anti-patterns is *construction substrate* (part of the concept doc), not an audit rubric. Phase 3 produces forward-looking *warnings* against the in-progress design posture; it does not produce findings, does not assign tier/confidence, and does not substitute for the Phase 5 audit. The audit runs against the completed draft with a fresh-context assessor (rule 10).
 
-- Every step cites its source guide section. Format: `<guide>.md#<anchor>` (heading-match fallback until the section manifest lands). Tier 1 is the default; escalate to Tier 2 patterns only when:
-  - A step's guidance has known design-debate substrate (memory single-store vs triple-storage, single-agent vs multi-agent architecture) — surface the debate via `contradicts` links proactively when the step hinges on the disputed choice.
-  - The step involves the Agentic Systems or Memongo pattern clusters — practitioner patterns there are load-bearing depth beyond guide summary.
-- **Design does not silently escalate to Tier 3.** If the consumer wants a reference-implementation comparison (e.g., "show me how Claude Code does this"), they ask explicitly — then Tier 3 fires per read-contract §Step 5.
-- Attach **next-step suggestions** at the end: audit the built artifact when done (hand off to `audit`); re-design-mode after the first increment if the scenario evolved; planning for multi-phase builds (hand off to `plan`, planned).
+### Phase 4 — Draft the artifact
 
-## Consumer input handling
+Apply the §Template skeleton, filling placeholders from the Decision record. For variant-carrying concepts, compose common core + declared variant's overlay.
 
-The consumer submits a design intent inline. Expected shape:
+The draft must be complete — frontmatter populated, all required sections present, no `<placeholder>` text remaining for required fields. Optional fields may be left empty with an explicit `# optional, omit if unused` comment.
 
-- **What they're building.** Artifact or concept (agent, skill, second-brain, memory architecture, etc.).
-- **Aspect, if any.** Tool registry, context files, workflow, permissions, retrieval strategy, etc.
-- **At least one constraint.** Deployment target (CLI agent vs API agent vs cursor agent), team size, existing infrastructure, autonomy envelope, budget. If none provided, ask one clarifying question before composing.
+Write the draft to the designer's chosen location *only if explicitly approved* in the Output shape (see below). By default, the draft is presented inline for review.
 
-If the consumer provides an existing partial artifact alongside the design question ("here's what I have so far"), treat the artifact as scenario grounding — *not* as input for audit. Design from the artifact's stated intent forward; the consumer can request an audit separately.
+### Phase 5 — Delegate audit (rule 10)
 
-Scoping heuristics:
+Invoke the corresponding assess-* skill as a subagent in fresh context: `/assess-skill` for SKILL.md, `/assess-agent` for agent.md, `/assess-prompt` for prompts. Pass the draft as input. Do not internally inspect the draft against rubric criteria — the assessor must run with fresh context to preserve the epistemic gap.
 
-| Query shape | How to read |
-|---|---|
-| Aspect-named (UC-1.1, UC-1.3: "design my agent's context files / tool registry") | Read the aspect's Step subsection from the single relevant guide; lift template if present. |
-| Whole-artifact, variant-resolvable (UC-1.2: "design my agent" + context that resolves variant) | Cross-guide thread ordered lifecycle-first, pulled from the variant's guide union. |
-| Variant-ambiguous (UC-1.5: "what should my agent's memory architecture look like") | Read concept file's architecture-level overview (G7 §Key Concepts + §Part 1 for memory); ask whether the consumer wants per-tier depth next. |
-| Cross-concept (UC-9.2: "agent + hybrid second brain — in what order") | Load both concept files; produce sequenced steps with dependency flags. |
-| Debate-surfacing (UC-1.4: "hybrid second brain my agent curates" — second-brain Variant C, which carries HITL design debate) | Step list + Tier-2 `contradicts` pair if the debate affects a step's choice. |
+Collect the assess-* report. Attach as a separate report block.
+
+### Phase 6 — Assemble report
+
+Produce the design report in the output shape below. Surface the Decision record, the Authoring-time risk surface, the draft artifact, and the assess-* findings — all four are deliverables to the designer.
+
+## Designer input handling
+
+The designer submits intent inline (what the artifact should do, who consumes it, what's in/out of scope). For under-specified intent, the Librarian asks one clarifying question per Decision-sequence step rather than demanding upfront completeness — the Decision sequence walk *is* the intent-elicitation protocol.
+
+Designers may submit a partial draft they want completed. The Librarian parses the partial against the Template skeleton, identifies missing sections, and runs Phase 2 only for the missing material.
+
+For partial drafts larger than ~500 lines, the Librarian requests scoping clarification before beginning Phase 2 (mirrors `audit.md`'s ~500-line threshold). Designer intent over 500 lines of narrative is rare and usually signals over-scoping — point the designer to §Scoping heuristics in the concept doc before proceeding.
 
 ## Output shape
 
 ```
-## Design — <artifact or concept under design>
+## Design — <artifact type>
 
-**Interpreted as:** (verb: design, noun(s): <n> [variant: <var>], aspect: <aspect or "whole artifact">)
-**Composed guides:** <list; variant-scoped>
-**Precondition check:** <brief — all satisfied | N flagged | wrong-tool redirect>
+**Artifact:** <intended path or summary>
+**Concept:** <noun concept file>
+**Variant (if applicable):** <A / B / C / overlap>
 
-### Preconditions (flagged if not yet committed)
+### Decision record (Phase 2)
 
-<Only the flagged ones. Short — "decide X before Step N"; cite the guide's Precondition line.>
+| Step | Decision | Source / scoping note |
+|---|---|---|
+| 1 | … | … |
+| … |
 
-### Design steps
+### Authoring-time risks surfaced (Phase 3)
 
-1. **<Step title>.** <1-2 lines of guidance.> *Source:* G<N>.md#<anchor>. *Template/example (if lifted):* <inline or pointer>.
-2. …
+| # | Risk (from §Authoring-time anti-patterns) | Why it applies here | Mitigation in draft |
+|---|---|---|---|
+| 1 | … | … | … |
 
-### Design debates surfaced (if any)
+### Draft artifact (Phase 4)
 
-<Tier-2 `contradicts` pair(s) that bear on a step's choice, with a one-line summary of each side. Cite by slug.>
+<full draft, in the artifact's native format — markdown for SKILL.md / agent.md, prompt text for prompts, JSON/YAML for harness config>
 
-### Cross-concept dependencies (if applicable)
+### Audit findings (Phase 5 — delegated to /assess-*)
 
-<Surfaced when the design spans two concepts; order dependencies first.>
+<embedded /assess-* report, including its Findings table, Follow-ups table, Aspects-out-of-scope table, and Summary>
 
-### Next-step suggestions
+### Summary
 
-<Audit after build; hand off to plan for multi-phase builds; re-design-mode after increment 1.>
+<1–3 sentences: what the draft does well, what risks remain, what the audit flagged, what the designer should decide next.>
 ```
 
 ## Governance and boundaries
 
-- Design is **read-only on substrate**. The Librarian does not author the consumer's artifact, does not write to the KB, and does not deploy anything.
-- Design does not apply rubric criteria — that is audit's job. If the consumer blurs the two ("design and evaluate"), produce the design first and offer the audit handoff separately (per read-contract §1.1 on blended verbs).
-- Design does not silently pick variant or aspect when the consumer's phrasing is ambiguous. One clarifying question is allowed; more than that is interrogation.
-- Design does not invent templates or examples. If the guide has none, state it — do not fabricate.
+- Design is **read-only on the KB and on concept docs**. It produces drafts of new artifacts; it does not modify substrate.
+- Design does not deploy the draft. Writing the draft to an enforcement location (`.claude/skills/<name>/SKILL.md`, `agents/<name>/agent.md`) is the designer's decision, not the Librarian's. Default behavior is present inline.
+- Design does not internally assess the draft (rule 10). Delegate to assess-* in fresh context. The assess-* report is surfaced alongside the draft, not substituted for it.
+- If the designer's intent surfaces a gap in IL substrate (the concept doc doesn't cover the requested artifact type, or a Decision-sequence step has no guidance for an emerging variant), it is a *Librarian gap report* — reported to the designer, not fixed by design.
 
 ## Cross-references
 
-- Read-contract (Step 1 verb extraction, §8.5 input handling for design): `project-management/design-notes/2026-04-21-librarian-read-contract.md`.
-- Related operations: `audit.md` (this directory) — sibling composition; `plan.md` (planned) — lifecycle-sequenced version of design for multi-phase builds.
-- Related concepts: `agent.md`, `memory.md`, `context-rot.md`, `skill.md`, `prompt.md`, `harness.md`, `second-brain.md` (this directory).
-- Use-case registry (UC-1.1–1.5): `project-management/design-notes/2026-04-21-librarian-use-case-registry.md`.
-- Governing DDs: DD-78 (Contract triple-role — Procedure as authored build sequence), DD-82 (IL 4-agent architecture).
+- Symmetric audit operation: `audit.md` (this directory) — design is the constructive peer. Rule 12 (audit/design symmetry) governs how the two operations stay aligned at the concept-doc level.
+- Concept files providing §Construction substrate: `skill.md`, `agent.md` (this directory). `prompt.md` adds §Construction when moderate demand becomes strong (currently weak per `consumer-abstractions-map.md`).
+- Concept files with §Construction debt (§Composition only): `harness.md`, `second-brain.md`, `memory.md`, and other concept files in this directory. These remain auditable but not yet constructible; tracked per rule 12 operational guidance.
+- Librarian agent contract: `agents/librarian/agent.md`.
+- Governing rules: IL `agent-rules.md` rule 10 (generator-assessor separation — design delegates assessment), rule 11 (abstractions must earn their keep — design must not invent constraints not in substrate), rule 12 (audit/design symmetry — concept docs must support both operations).
+- Governing DDs: DD-78 (ContractSpec; Construction substrate complements Contract), DD-82 (IL 4-agent architecture; Librarian role).

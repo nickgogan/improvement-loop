@@ -1,6 +1,20 @@
 # Improvement Loop — Research Intelligence Layer
 
-The self-improvement subsystem for MetaSystem. Researches frontier practices in agentic coding and AI agent systems, extracts actionable findings into a structured knowledge base, and produces staged artifacts for human review before deployment. Everything downstream — codified patterns, agent templates, system upgrades — starts here.
+Research engine for agentic-coding practices, with a Librarian advisory layer that exposes the resulting knowledge base as bilingual audit/design substrate over skills, agents, and related abstractions.
+
+---
+
+## Purpose
+
+The Improvement Loop is a standalone research-and-advisory subsystem. It does two things, and both stand on their own:
+
+1. **Research engine.** Scans the agentic-coding frontier — sources, watched libraries, watched blogs, transcripts — and curates a knowledge base of findings, dimensions, and authorities. The KB is consumable directly (queries, cross-repo comparisons) and is the raw material for everything downstream.
+
+2. **Librarian advisory layer.** Exposes that substrate as a bilingual audit/design capability over agentic abstractions (skill, agent, prompt today; harness and others as demand promotes them — see `operations/references/consumer-abstractions-map.md`). The same concept-doc substrate composes bilingually: §Composition drives `/assess-*` (audit mode); §Construction drives `/design-*` (author mode). Rule 12 enforces that an abstraction carrying one but not the other is in debt.
+
+**Consumer relationship.** MetaSystem is IL's primary downstream consumer — it composes IL's audit and design surfaces into whole-system operations (`/audit-system`, `/design-harness`). It is not the sole consumer: the audience commitment covers archetypes 1–5 (Nick-builder, portfolio-presenter, practitioner-friend, builder-friend, employer-evaluator), and `/assess-*` plus KB queries serve any of them directly. IL's governance, pipeline, concept-doc substrate, and rule set (especially rules 10, 11, 12) are IL-owned and IL-stewarded — consumers depend on them but do not author them.
+
+IL invests substrate where consumer demand is concrete and recurring; the consumer-abstractions-map gates promotion. Speculative or single-consumer surfaces stay flagged as future candidates, not committed scope.
 
 ---
 
@@ -30,6 +44,7 @@ The active disposition depends on the agent role. When working within the Improv
 - **Surface drift honestly.** If docs don't match reality, say so. If governance isn't being followed, say so.
 - **Propose with rationale.** When suggesting changes, explain why — what governance principle, what drift detected, what feedback received.
 - **Authority requires auditability.** Every action that modifies the system is logged. If it can't be audited, it shouldn't happen.
+- **Abstractions must earn their keep.** Before proposing any new abstraction or layer (concept doc, agent role, pipeline stage, composition layer, governance rule, tier, taxonomy, shared infrastructure), lead with the evidence: recurring concrete problem observed 2–3+ times, multiple consumers benefiting, observable cost of *not* having it. Elegance, symmetry, and "might want this later" are not evidence. When in doubt: don't abstract. Tolerate concrete duplication; flag for revisit. See `governance/agent-rules.md` rule 11.
 
 For Researcher, Codifier, and Librarian dispositions, read the agent definition files in `agents/`.
 
@@ -132,7 +147,18 @@ All IL skills live in `.claude/skills/` under this system directory (per DD-49).
 
 ### Librarian Skills
 
-The Librarian uses Read/Glob/Grep tools directly to navigate the KB. No dedicated skills. Invocable as a subagent via `.claude/agents/librarian.md`.
+| Skill | Role |
+|-------|------|
+| `/assess-skill` | Audit a consumer SKILL.md — composes `audit.md × skill.md` |
+| `/assess-agent` | Audit a consumer agent artifact — composes `audit.md × agent.md` (variant-aware) |
+| `/assess-prompt` | Extend `/prompt-evaluator` with IL-KB-grounded checks |
+| `/design-skill` | Draft a new SKILL.md from intent — composes `design.md × skill.md`; delegates Phase 5 audit to `/assess-skill` (rule 10) |
+| `/design-agent` | Draft a new agent artifact from intent — composes `design.md × agent.md` (variant-aware); delegates Phase 5 audit to `/assess-agent` (rule 10) |
+| `/ask-kb` | Citation-grounded KB query — Teacher/Builder modes selected by query shape; read-only |
+| `/compare-repos` | Cross-repo synthesis across watched libraries — Builder-mode recommendations on top of `/repo-analyzer` per-repo input |
+| `/detect-drift` | Source-drift scanner for non-guide extracts |
+
+The Librarian also uses Read/Glob/Grep directly to navigate the KB for Teacher/Builder-mode conversations that don't fit a dedicated skill. Invocable as a subagent via `.claude/agents/librarian.md`.
 
 **Deprecated:** `/research-proposer` — superseded by `/identify-artifacts` + `/extract-artifacts` (DD-80). Retained for reference.
 

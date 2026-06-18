@@ -9,7 +9,7 @@ description: >-
   cross-repo comparison report.
 user-invocable: true
 allowed-tools: Read Grep Glob Write Edit Bash WebFetch
-argument-hint: "<library-name|all> [--dimensions dim1,dim2,...] [--compare] [--force]"
+argument-hint: "<library-name|all> [--dimensions dim1,dim2,...] [--force]"
 ---
 
 # Repo Analyzer
@@ -21,13 +21,16 @@ Repeatable structural analysis of GitHub repos in the watched-libraries registry
 - After adding a new watched library entry to the registry
 - After a version bump in a watched library (detected by comparing versions)
 - When the user asks to analyze a specific repo's architecture or patterns
-- When producing a cross-repo comparison of all analyzed libraries
 - Periodically as a refresh pass
 
 Do NOT use this skill for:
 - Running or testing code from external repos
 - Writing research findings (use `/research-loop` for that)
 - Evaluating whether to adopt a library (use the watched-library entry's spectrum rationale)
+- Cross-repo comparison across watched libraries (use `/compare-repos`).
+  The `--compare` mode of this skill was deprecated session 111 — comparison
+  is a Librarian Builder-mode operation; per-repo structural analysis is the
+  Researcher disposition this skill embodies.
 
 ## Cognitive Disposition
 
@@ -69,9 +72,9 @@ The Repo Analyst thinks like a structural cartographer, not a code reviewer.
 |----------|--------|
 | `<library-name>` | Analyze a single watched library by name (kebab-case slug, e.g. `gsd`, `bmad-method`) |
 | `all` | Analyze all watched libraries sequentially |
-| `--compare` | Produce cross-repo comparison from existing analysis docs. Can combine with `all` to analyze then compare. |
 | `--dimensions dim1,dim2` | Only run specified dimensions. Values: `structural-inventory`, `context-file-map`, `workflow-topology`, `governance-model`, `cross-agent-protocol` |
 | `--force` | Re-analyze even if version hasn't changed since last analysis |
+| `--compare` | DEPRECATED (session 111). Redirects to `/compare-repos`. Cross-repo comparison is a Librarian operation, not a Researcher one. |
 
 ---
 
@@ -266,10 +269,9 @@ dimensions_analyzed:
 1. Parse the argument to determine scope:
    - `repo-analyzer gsd` -- analyze one library
    - `repo-analyzer all` -- analyze all libraries
-   - `repo-analyzer all --compare` -- analyze all, then produce comparison
-   - `repo-analyzer --compare` -- produce comparison from existing analyses only (no cloning)
    - `--dimensions structural-inventory,context-file-map` -- only run specified dimensions
    - `--force` -- re-analyze even if version unchanged
+   - `--compare` -- DEPRECATED. If supplied, stop and redirect: "Cross-repo comparison moved to `/compare-repos` (session 111). Run `/repo-analyzer all` first if any repos lack analysis docs, then invoke `/compare-repos`."
 2. Use `Read` to load `systems/improvement-loop/watched-libraries/_index.md` and the target watched-library entry(ies).
 3. For each target library, extract `repo_url`, `last_evaluated_version`, `name`, and `spectrum_position` from the entry.
 4. If not `--force`, check if `systems/improvement-loop/watched-libraries/analysis/{library-name}-analysis.md` exists. If it does, read its `analyzed_version` frontmatter. Skip if it matches `last_evaluated_version`. Report "up to date" to the user.
@@ -385,7 +387,21 @@ dimensions_analyzed:
 
 If `all` was specified, repeat Steps 2-8 for each watched library in the registry. Process sequentially. Write each analysis doc before moving to the next to preserve partial progress.
 
-### Step 10: Cross-Repo Comparison (if `--compare`)
+### Step 10: Cross-Repo Comparison — DEPRECATED (session 111)
+
+Cross-repo comparison was removed from this skill on session 111. It is now
+the dedicated `/compare-repos` skill under Librarian ownership. The split is
+by cognitive disposition: this skill is the Researcher's structural
+cartographer (descriptive, per-repo); `/compare-repos` is the Librarian's
+Builder-mode synthesis (consumer-oriented, cross-repo).
+
+If `--compare` is supplied to this skill, Step 0 redirects to `/compare-repos`
+and stops. The instructions below are retained for reference only and are
+not executed.
+
+---
+
+**Reference only — original Step 10 content (not executed):**
 
 1. Use `Glob` to find all `*-analysis.md` files in `systems/improvement-loop/watched-libraries/analysis/`.
 2. Use `Read` to load each analysis doc.
