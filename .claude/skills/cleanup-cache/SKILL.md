@@ -44,8 +44,8 @@ Known temporary/cache directories in this workspace:
 | Path | Created By | Self-Cleans? |
 |------|-----------|--------------|
 | `systems/improvement-loop/watched-libraries/_tmp/repo-cache/` | `/repo-analyzer` | No — reused across runs |
-| `incubator/claude-build/app/pdf-to-markdown/_downloads/` | `/pdf-to-markdown` | Yes — cleans after each conversion |
-| `incubator/claude-build/app/pdf-to-markdown/output/` | `/pdf-to-markdown` | No — persistent output |
+| `systems/improvement-loop/app/pdf-to-markdown/_downloads/` | `/pdf-to-markdown` | Yes — cleans after each conversion |
+| `systems/improvement-loop/app/pdf-to-markdown/output/` | `/pdf-to-markdown` | No — persistent output |
 
 The repo-cache is the primary cleanup target. The other directories are listed for completeness but rarely need intervention.
 
@@ -77,8 +77,8 @@ Run `du -sh` on each known temp path. Collect:
 ```bash
 du -sh systems/improvement-loop/watched-libraries/_tmp/repo-cache/ 2>/dev/null
 du -sh systems/improvement-loop/watched-libraries/_tmp/repo-cache/*/ 2>/dev/null | sort -rh
-du -sh incubator/claude-build/app/pdf-to-markdown/_downloads/ 2>/dev/null
-du -sh incubator/claude-build/app/pdf-to-markdown/output/ 2>/dev/null
+du -sh systems/improvement-loop/app/pdf-to-markdown/_downloads/ 2>/dev/null
+du -sh systems/improvement-loop/app/pdf-to-markdown/output/ 2>/dev/null
 ```
 
 ### Step 2: Cross-Reference Repo Cache Against Registry

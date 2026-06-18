@@ -195,7 +195,7 @@ Pass 2 is triggered when:
 - A source is triaged as P1 or P2 after Pass 1
 - The source is a long-form video (>15 min) with practitioner demonstrations
 - The user explicitly requests deep extraction
-- A transcript is available locally (check `incubator/claude-build/app/transcript-fetcher/transcripts/`)
+- A transcript is available locally (check `systems/improvement-loop/app/transcript-fetcher/transcripts/`)
 
 To obtain transcripts for Pass 2, use the `/transcript-fetcher` skill (see `.claude/skills/transcript-fetcher/SKILL.md`).
 
@@ -277,7 +277,7 @@ Triggered after Pass 1 identifies high-value sources, or when transcripts are av
 
 ### Step 0: Obtain Transcript
 
-1. Check if a transcript already exists in `incubator/claude-build/app/transcript-fetcher/transcripts/` (files named by video ID, e.g., `5ztI_dbj6ek.md`).
+1. Check if a transcript already exists in `systems/improvement-loop/app/transcript-fetcher/transcripts/` (files named by video ID, e.g., `5ztI_dbj6ek.md`).
 2. If not available, use the `/transcript-fetcher` skill to fetch it. Provide the YouTube URL.
 3. If the transcript cannot be obtained (private video, no captions), skip Pass 2 for this source and note the gap.
 

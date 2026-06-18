@@ -32,12 +32,12 @@ pip install youtube-transcript-api
 
 The fetcher script lives at:
 ```
-incubator/claude-build/app/transcript-fetcher/fetch.py
+systems/improvement-loop/app/transcript-fetcher/fetch.py
 ```
 
 Transcripts are saved to:
 ```
-incubator/claude-build/app/transcript-fetcher/transcripts/
+systems/improvement-loop/app/transcript-fetcher/transcripts/
 ```
 
 Each transcript is named by video ID (e.g., `5ztI_dbj6ek.md`).
@@ -49,7 +49,7 @@ Each transcript is named by video ID (e.g., `5ztI_dbj6ek.md`).
 Before fetching, check if transcripts already exist:
 
 ```bash
-ls incubator/claude-build/app/transcript-fetcher/transcripts/
+ls systems/improvement-loop/app/transcript-fetcher/transcripts/
 ```
 
 If a transcript for the requested video ID already exists, skip fetching and report it as available.
@@ -60,13 +60,13 @@ Use `Bash` to run the fetcher:
 
 ```bash
 # Single URL
-python incubator/claude-build/app/transcript-fetcher/fetch.py --urls "https://www.youtube.com/watch?v=VIDEO_ID"
+python systems/improvement-loop/app/transcript-fetcher/fetch.py --urls "https://www.youtube.com/watch?v=VIDEO_ID"
 
 # Multiple URLs
-python incubator/claude-build/app/transcript-fetcher/fetch.py --urls "URL1" "URL2" "URL3"
+python systems/improvement-loop/app/transcript-fetcher/fetch.py --urls "URL1" "URL2" "URL3"
 
 # From a file containing URLs (one per line)
-python incubator/claude-build/app/transcript-fetcher/fetch.py --input /path/to/urls.txt
+python systems/improvement-loop/app/transcript-fetcher/fetch.py --input /path/to/urls.txt
 ```
 
 The tool accepts various YouTube URL formats:
@@ -80,7 +80,7 @@ The tool accepts various YouTube URL formats:
 After fetching, verify the transcript files were created:
 
 ```bash
-ls -la incubator/claude-build/app/transcript-fetcher/transcripts/
+ls -la systems/improvement-loop/app/transcript-fetcher/transcripts/
 ```
 
 Each transcript file contains:
@@ -94,7 +94,7 @@ If the automated fetch fails (no captions) but the user provides the transcript 
 
 ```bash
 # From an HTML file — video ID inferred from filename or provided explicitly
-python incubator/claude-build/app/transcript-fetcher/fetch.py --from-html /path/to/transcript.html --video-id VIDEO_ID
+python systems/improvement-loop/app/transcript-fetcher/fetch.py --from-html /path/to/transcript.html --video-id VIDEO_ID
 ```
 
 The parser handles both YouTube DOM formats:

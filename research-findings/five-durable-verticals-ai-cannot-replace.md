@@ -56,7 +56,7 @@ For strategic positioning of MetaSystem-derived tools or capabilities: the frame
 
 ## Why People Are Using It
 
-Observed in [Nate B. Jones' video "The 5 Layers AI Cannot Replace"](https://www.youtube.com/watch?v=ib2m9HVX7as) (YouTube, batch-1 deferred source) — see [[nate-jones-five-layers-ai-cannot-replace]] for the source entry and full transcript at `incubator/claude-build/app/transcript-fetcher/transcripts/ib2m9HVX7as.md`. The framework is Nate's synthesis of patterns observed across AI app-builders (Lovable, Vercel v0, Replit, Bolt, Shipper) and the infrastructure / platform / incumbent companies that appear more durable than the rapper layer.
+Observed in [Nate B. Jones' video "The 5 Layers AI Cannot Replace"](https://www.youtube.com/watch?v=ib2m9HVX7as) (YouTube, batch-1 deferred source) — see [[nate-jones-five-layers-ai-cannot-replace]] for the source entry and full transcript at `systems/improvement-loop/app/transcript-fetcher/transcripts/ib2m9HVX7as.md`. The framework is Nate's synthesis of patterns observed across AI app-builders (Lovable, Vercel v0, Replit, Bolt, Shipper) and the infrastructure / platform / incumbent companies that appear more durable than the rapper layer.
 
 Supporting evidence from the video:
 - **Lovable** at $300M ARR is a platform candidate (not pure rapper) because of accumulated user data + distribution.
