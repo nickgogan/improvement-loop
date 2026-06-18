@@ -1,11 +1,12 @@
 ---
 name: translate-governance
 description: >-
-  Read MetaSystem constitution, values, principles, vocabulary, and fractal pattern,
-  then produce or update IL-specific governance rules in governance/. Flags drift
-  between source governance and existing translations. Use when governance source
-  docs change, when bootstrapping a new system's governance, or periodically to
-  detect drift. DD-86 defines this as an Owner agent responsibility.
+  Read the MetaSystem charter, workspace operating law, and engine design-wisdom
+  (fractal pattern, DBDO pipeline, vocabulary), then produce or update IL-specific
+  governance rules in governance/. Flags drift between source governance and existing
+  translations. Use when governance source docs change, when bootstrapping a new
+  system's governance, or periodically to detect drift. DD-86 defines this as an
+  Owner agent responsibility.
 user-invocable: true
 allowed-tools: Read Grep Glob Write Edit
 argument-hint: "[--check-only]"
@@ -13,19 +14,19 @@ argument-hint: "[--check-only]"
 
 # Translate Governance
 
-Read MetaSystem governance source documents and produce IL-specific operational translations. The Owner agent's primary governance maintenance skill.
+Read the MetaSystem charter, workspace operating law, and engine design-wisdom, then produce IL-specific operational translations. The Owner agent's primary governance maintenance skill.
 
 ## When to Use This Skill
 
 - The `governance/` directory is empty or newly created
-- MetaSystem governance docs have been updated (constitution, values, principles, vocabulary)
+- Governance source docs have been updated (the charter, workspace operating law, or the design-wisdom references)
 - A new DD or governance artifact affects IL operations
 - Periodic drift check — are IL-specific rules still aligned with the source?
 - Before running `/system-audit` to ensure governance baseline is current
 
 ## When NOT to Use This Skill
 
-- **Editing MetaSystem governance** — that's cross-system, Human-Required tier
+- **Editing the charter or workspace operating law** — that's Human-Required tier
 - **Creating Design Decisions** — DD creation is Human-Required (DD-44)
 - **Researching governance patterns** — use `/research-query` instead
 - **Auditing system consistency** — use `/system-health` or `/system-audit`
@@ -34,7 +35,7 @@ Read MetaSystem governance source documents and produce IL-specific operational 
 
 | Tool | Purpose |
 |------|---------|
-| `Read` | Read MetaSystem governance source docs and existing IL translations |
+| `Read` | Read the charter, workspace operating law, design-wisdom, and existing IL translations |
 | `Grep` | Search for specific governance references across files |
 | `Glob` | Find governance files by pattern |
 | `Write` | Create new governance translation documents |
@@ -44,10 +45,10 @@ Read MetaSystem governance source documents and produce IL-specific operational 
 
 You are the **Owner** — the system steward translating governance intent into operational rules.
 
-- **Translate, don't copy.** The constitution says "human gate at every stage boundary." The IL translation says "Researcher writes findings; Codifier writes extracts; Nick deploys. No agent crosses these stage boundaries." Same principle, system-specific language.
+- **Translate, don't copy.** The charter says "a human gate stands at every stage boundary." The IL translation says "Researcher writes findings; Codifier writes extracts; Nick deploys. No agent crosses these stage boundaries." Same principle, system-specific language.
 - **Flag drift, don't hide it.** If an existing translation contradicts the current source, report the delta explicitly. Don't silently overwrite — the drift itself is diagnostic information.
 - **Preserve provenance.** Every translated rule traces back to a source document and section. If the source changes, the translation can be updated.
-- **Be opinionated about what matters.** Not every constitution clause needs an IL translation. Translate what constrains IL operations; skip what's irrelevant to this system.
+- **Be opinionated about what matters.** Not every charter or source clause needs an IL translation. Translate what constrains IL operations; skip what's irrelevant to this system.
 
 ---
 
@@ -60,15 +61,13 @@ You are the **Owner** — the system steward translating governance intent into 
 
 ### Step 1: Read Source Governance
 
-Read all MetaSystem governance documents:
+Read the governance source set:
 
-1. `systems/meta-system/governance/constitution.md` — boundary rules, ownership, design philosophy
-2. `systems/meta-system/governance/values.md` — core values and design dimensions
-3. `systems/meta-system/governance/principles.md` — DBDO pipeline, generalization principle
-4. `systems/meta-system/governance/vocabulary.md` — authoritative term definitions
-5. `systems/meta-system/governance/fractal-pattern.md` — structural requirements
-
-Also read `.claude/rules/governance.md` for engine-facing governance rules that may need IL-specific translation.
+1. `CHARTER.md` (workspace root) — vision, values, and trajectory signals (the content of record for what was formerly the constitution + values)
+2. `CLAUDE.md` (workspace root) + `.claude/rules/governance.md` — workspace operating law (human gate, spec-before-build, safety, data-access rules)
+3. `systems/improvement-loop/knowledge/reference/principles.md` — DBDO pipeline, generalization principle (design-wisdom)
+4. `systems/improvement-loop/knowledge/reference/vocabulary.md` — authoritative term definitions (design-wisdom)
+5. `systems/improvement-loop/knowledge/reference/fractal-pattern.md` — structural requirements (design-wisdom)
 
 ### Step 2: Read Existing Translations
 
@@ -81,26 +80,24 @@ Use `Glob` to find all files in `systems/improvement-loop/governance/` (excludin
 
 For each source document, identify clauses that constrain IL operations:
 
-**From Constitution:**
-- Boundary rules (IL cannot modify other systems)
-- Ownership matrix (IL is self-improving, Nick + Agents operate it)
-- Design philosophy principles that apply to IL work
-- Human gate requirements
+**From the Charter:**
+- Values that constrain IL work — "evidence over elegance" (abstractions earn their keep), "spec before build", "start lean, refine later", "knowledge serves expression"
+- Trajectory signals (on-track vs wandering) that the engine should hold itself to
+- "Human at the seams" — the human gate the IL pipeline operationalizes
 
-**From Values:**
-- "Spec before build" — applies to IL proposals and skill creation
-- "Consumer feedback to producer" — applies to agent handoff protocol
-- "Start lean, refine later" — applies to how IL evolves
+**From workspace operating law (`CLAUDE.md`, `.claude/rules/governance.md`):**
+- Human-gate and spec-before-build requirements
+- Data-access and scope-boundary rules that apply to IL operations
 
-**From Principles:**
+**From Principles (design-wisdom):**
 - DBDO pipeline stages — how IL work flows through design/build/deploy/operate
 - Generalization principle — IL should produce portable patterns
 
-**From Vocabulary:**
+**From Vocabulary (design-wisdom):**
 - Terms IL agents must use consistently
 - Definitions that constrain how IL classifies its artifacts
 
-**From Fractal Pattern:**
+**From Fractal Pattern (design-wisdom):**
 - Structural requirements for IL's directory layout
 - Knowledge vault subdirectory expectations
 - Agent-as-directory pattern requirements
@@ -150,10 +147,10 @@ tags:
 
 | Document | Source | Covers |
 |----------|--------|--------|
-| `boundary-rules.md` | Constitution boundary rules | What IL can/cannot modify, cross-system constraints |
-| `pipeline-rules.md` | Constitution + Principles | How IL work flows through DBDO, human gates, stage boundaries |
-| `agent-rules.md` | Constitution + Fractal Pattern | Agent boundaries, handoff requirements, agent-as-directory |
-| `knowledge-rules.md` | Values + Vocabulary | How IL manages its KB, terminology requirements, knowledge lifecycle |
+| `boundary-rules.md` | Operating law + Charter | What IL can/cannot modify, cross-system constraints |
+| `pipeline-rules.md` | Operating law + Principles | How IL work flows through DBDO, human gates, stage boundaries |
+| `agent-rules.md` | Charter + Fractal Pattern | Agent boundaries, handoff requirements, agent-as-directory |
+| `knowledge-rules.md` | Charter + Vocabulary | How IL manages its KB, terminology requirements, knowledge lifecycle |
 
 These are starting recommendations. Adjust based on what the source governance actually says — don't force-fit content into predetermined buckets.
 
@@ -207,7 +204,7 @@ Output a summary to conversation:
 ## Rules
 
 1. **Autonomy tier: Guarded.** Write translations, then report what changed. All writes are git-reversible. Do not wait for approval before writing governance translations — these are operational docs, not DDs.
-2. **Never modify source governance.** Read from `meta-system/governance/` only. If a source error is found, flag it for human action.
+2. **Never modify source governance.** Read from the charter, workspace operating law, and engine design-wisdom; never edit the charter or workspace rules. If a source error is found, flag it for human action.
 3. **Never create DDs.** If a governance gap requires a Design Decision, propose it in the report. DD creation is Human-Required.
 4. **Preserve existing translations.** Update in place via `Edit`. Don't delete and recreate — this loses git history.
 5. **Provenance is mandatory.** Every translated rule must cite its source document and section. If you can't cite a source, the rule doesn't belong here.
@@ -215,5 +212,5 @@ Output a summary to conversation:
 ## Calibration Notes
 
 - The first run on an empty `governance/` directory will create all documents. Subsequent runs will mostly update and drift-check.
-- Some constitution clauses are IL-irrelevant (e.g., JR's Notion access). Skip these in translations — don't create stub rules.
+- Some source clauses are IL-irrelevant (e.g., legacy cross-system notes). Skip these in translations — don't create stub rules.
 - This skill complements `/system-audit`, which checks whether the IL system actually follows its governance. This skill maintains what governance says; `/system-audit` checks whether reality matches.

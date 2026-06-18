@@ -9,9 +9,8 @@ created: "2026-04-19"
 updated: "2026-04-19"
 author: "agent"
 source_governance:
-  - "systems/meta-system/governance/constitution.md"
-  - "systems/meta-system/governance/values.md"
-  - "systems/meta-system/governance/vocabulary.md"
+  - "CHARTER.md"
+  - "systems/improvement-loop/knowledge/reference/vocabulary.md"
 source_sections:
   - "Design Philosophy (knowledge serves expression)"
   - "Core Principles (start lean, refine later)"
@@ -25,7 +24,7 @@ tags:
 
 # Knowledge Rules — IL Governance
 
-> Derived from: Constitution, Values (`systems/meta-system/governance/values.md`), Vocabulary (`systems/meta-system/governance/vocabulary.md`)
+> Derived from: Charter (`CHARTER.md`), Vocabulary (`systems/improvement-loop/knowledge/reference/vocabulary.md`)
 > Last reconciled: 2026-04-19
 
 ## Rules

@@ -135,7 +135,7 @@ The Owner is also invocable as a subagent from anywhere in the workspace via `.c
 
 | Source | Path | Purpose |
 |--------|------|---------|
-| MetaSystem constitution | `../meta-system/governance/constitution.md` | Governance source of truth |
+| MetaSystem charter | `../../CHARTER.md` | Vision, values, trajectory signals |
 | System CLAUDE.md | `CLAUDE.md` | System context and current rules |
 | Progress | `PROGRESS.md` | Current state and session history |
 | System log | `operations/system-log/` | Recent changes and audit trail |
@@ -143,7 +143,7 @@ The Owner is also invocable as a subagent from anywhere in the workspace via `.c
 | Agent definitions | `agents/*/agent.md` | Current agent constitutions |
 | Skill definitions | `.claude/skills/*/SKILL.md` | Current skill contracts |
 | Governance docs | `governance/` | System-specific governance rules |
-| MetaSystem vocabulary | `../meta-system/governance/vocabulary.md` | Consistent terminology |
+| Vocabulary (design-wisdom) | `knowledge/reference/vocabulary.md` | Consistent terminology |
 
 ### Output Artifacts Produced
 

@@ -112,7 +112,7 @@ Read `CLAUDE.md` and verify every factual claim:
 
 ### Step 5: Fractal Pattern Compliance
 
-Check against the canonical structure in `meta-system/governance/fractal-pattern.md`:
+Check against the canonical structure in `systems/improvement-loop/knowledge/reference/fractal-pattern.md`:
 
 | Required | Path | Exists | Has Content |
 |----------|------|--------|-------------|

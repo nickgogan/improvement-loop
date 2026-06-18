@@ -9,8 +9,8 @@ created: "2026-04-19"
 updated: "2026-04-22"
 author: "agent"
 source_governance:
-  - "systems/meta-system/governance/constitution.md"
-  - "systems/meta-system/governance/principles.md"
+  - "CHARTER.md"
+  - "systems/improvement-loop/knowledge/reference/principles.md"
 source_sections:
   - "Design Philosophy"
   - "The Pipeline"
@@ -26,7 +26,7 @@ tags:
 
 # Pipeline Rules — IL Governance
 
-> Derived from: Constitution (`systems/meta-system/governance/constitution.md`), Principles (`systems/meta-system/governance/principles.md`), DD-90 (session telemetry)
+> Derived from: Charter (`CHARTER.md`), Principles (`systems/improvement-loop/knowledge/reference/principles.md`), DD-90 (session telemetry)
 > Last reconciled: 2026-04-22
 
 ## Rules

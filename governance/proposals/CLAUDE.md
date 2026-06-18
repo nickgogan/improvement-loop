@@ -37,7 +37,6 @@ Destination for **agent-initiated** proposals in the Improvement Loop — output
 - **Deliberative specifications** (substrate audits, read contracts, tracking mechanisms, rubrics, lifecycle specs) → `project-management/design-notes/`.
 - **Ratified governance rules** → `governance/` root.
 - **Ratified DDs** → `project-management/design-decisions/`.
-- **MetaSystem-level agent proposals** → `systems/meta-system/governance/proposals/`.
 - **Runtime event output** → `operations/`.
 
 ## Governance

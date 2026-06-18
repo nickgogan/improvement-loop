@@ -36,6 +36,9 @@ Active read-only context material for operating within the Household OS. These a
 |-----------|----------|---------|-------|
 | [[consumer-abstractions-map]] | consumer-abstractions | meta-system | active |
 | [[harness]] | concept (§Construction) | meta-system | draft |
+| [[fractal-pattern]] | design-wisdom | cross-system | active |
+| [[principles]] | design-wisdom (DBDO pipeline) | cross-system | active |
+| [[vocabulary]] | design-wisdom (terminology) | cross-system | active |
 
 ## Dataview Query
 

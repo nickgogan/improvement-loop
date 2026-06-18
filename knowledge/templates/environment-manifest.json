@@ -209,7 +209,7 @@
         "purpose": "System definitions and boundaries"
       },
       {
-        "path": "systems/meta-system/governance/fractal-pattern.md",
+        "path": "systems/improvement-loop/knowledge/reference/fractal-pattern.md",
         "purpose": "7-folder fractal unit structure"
       },
       {
@@ -217,11 +217,11 @@
         "purpose": "Core values and design philosophy"
       },
       {
-        "path": "systems/meta-system/governance/principles.md",
+        "path": "systems/improvement-loop/knowledge/reference/principles.md",
         "purpose": "Design/Build/Deploy/Operate pipeline"
       },
       {
-        "path": "systems/meta-system/governance/vocabulary.md",
+        "path": "systems/improvement-loop/knowledge/reference/vocabulary.md",
         "purpose": "Cross-system terminology"
       }
     ]

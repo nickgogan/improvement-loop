@@ -9,9 +9,9 @@ created: "2026-04-19"
 updated: "2026-06-11"
 author: "agent"
 source_governance:
-  - "systems/meta-system/governance/constitution.md"
-  - "systems/meta-system/governance/fractal-pattern.md"
-  - "systems/meta-system/governance/vocabulary.md"
+  - "CHARTER.md"
+  - "systems/improvement-loop/knowledge/reference/fractal-pattern.md"
+  - "systems/improvement-loop/knowledge/reference/vocabulary.md"
 source_sections:
   - "Design Philosophy (consumer feedback to producer)"
   - "The Agentic Layer"
@@ -27,7 +27,7 @@ tags:
 
 # Agent Rules — IL Governance
 
-> Derived from: Constitution, Fractal Pattern (`systems/meta-system/governance/fractal-pattern.md`), Vocabulary (`systems/meta-system/governance/vocabulary.md`), DD-89 (four-zone architecture), DD-91 (reflections-to-proposals)
+> Derived from: Charter (`CHARTER.md`), Fractal Pattern (`systems/improvement-loop/knowledge/reference/fractal-pattern.md`), Vocabulary (`systems/improvement-loop/knowledge/reference/vocabulary.md`), DD-89 (four-zone architecture), DD-91 (reflections-to-proposals)
 > Last reconciled: 2026-04-22
 
 ## Rules

@@ -177,7 +177,7 @@ The Librarian also uses Read/Glob/Grep directly to navigate the KB for Teacher/B
 | Read IL Design Decisions | `project-management/design-decisions/DD-XX.md` | Read tool |
 | Read IL IB items | `project-management/implementation-backlog/IB-XX.md` | Read tool |
 | Read cross-system DDs | `../meta-system/project-management/design-decisions/` | Read tool |
-| Read constitution | `../meta-system/governance/constitution.md` | Read tool |
+| Read charter | `../../CHARTER.md` | Read tool |
 
 ---
 
@@ -192,7 +192,7 @@ The Librarian also uses Read/Glob/Grep directly to navigate the KB for Teacher/B
 | Frontmatter schema for all entries | `../../_schema.yaml` |
 | IL Design Decisions | `project-management/design-decisions/` |
 | IL Implementation Backlog | `project-management/implementation-backlog/` |
-| Constitution and system boundaries | `../meta-system/governance/constitution.md` |
+| Charter — vision, values, trajectory signals | `../../CHARTER.md` |
 | Research-to-codification pipeline guide | `knowledge/guides/research-to-codification-pipeline.md` |
 
 ---

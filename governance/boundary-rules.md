@@ -9,7 +9,7 @@ created: "2026-04-19"
 updated: "2026-04-22"
 author: "agent"
 source_governance:
-  - "systems/meta-system/governance/constitution.md"
+  - "CHARTER.md"
 source_sections:
   - "Boundary Rules"
   - "Ownership Matrix"
@@ -24,7 +24,7 @@ tags:
 
 # Boundary Rules — IL Governance
 
-> Derived from: Constitution (`systems/meta-system/governance/constitution.md`), DD-89 (four-zone architecture)
+> Derived from: Charter (`CHARTER.md`), DD-89 (four-zone architecture)
 > Last reconciled: 2026-04-22
 
 ## Rules
