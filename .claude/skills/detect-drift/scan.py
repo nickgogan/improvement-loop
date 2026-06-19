@@ -9,7 +9,8 @@ construction) remain in the skill body.
 Read-only: never modifies any artifact, finding, or other file outside the output JSON.
 
 Reads from cwd-relative paths:
-  - extracts/{rules,skills,templates,agents}/*.md
+  - extracts/{rules,skills,templates,agents}/*.md   (scalar source_finding, extraction_date)
+  - knowledge/schematics/*.md                        (array grounded_in, updated — DD-107)
   - research-findings/*.md
 
 Invocation (from systems/improvement-loop/):
@@ -29,8 +30,10 @@ import re
 import sys
 from datetime import date
 
-VALID_FORMS = {"rules", "skills", "templates", "agents"}
-ALL_FORMS = ["rules", "skills", "templates", "agents"]
+VALID_FORMS = {"rules", "skills", "templates", "agents", "schematics"}
+ALL_FORMS = ["rules", "skills", "templates", "agents", "schematics"]
+EXTRACT_FORMS = {"rules", "skills", "templates", "agents"}
+SCHEMATICS_DIR = os.path.join("knowledge", "schematics")
 DATE_RE = re.compile(r"^\d{4}-\d{2}-\d{2}$")
 
 
@@ -76,9 +79,10 @@ def scan(forms: list, invocation_context: str) -> dict:
     records = []
     enumeration_gaps = []
     unresolvable_sources = []
+    findings_with_legacy_updated = []
     quote_styles = {"double": 0, "single": 0, "unquoted": 0}
 
-    for form in forms:
+    for form in (f for f in forms if f in EXTRACT_FORMS):
         form_dir = os.path.join("extracts", form)
         if not os.path.isdir(form_dir):
             continue
@@ -129,7 +133,6 @@ def scan(forms: list, invocation_context: str) -> dict:
 
     drift_hits = []
     clean_count = 0
-    findings_with_legacy_updated = []
 
     for rec in records:
         sf_path = os.path.join("research-findings", rec["source_finding"] + ".md")
@@ -164,8 +167,73 @@ def scan(forms: list, invocation_context: str) -> dict:
         else:
             clean_count += 1
 
+    # Schematics (DD-107): second scan root, array `grounded_in` pointers, `updated` date basis.
+    # A schematic is curated (not extracted) so it has no extraction_date; drift = a grounding
+    # finding's last_updated strictly post-dates the schematic's `updated` (last curation).
+    schematic_records = []
+    schematic_drift_hits = []
+    schematic_clean = 0
+    if "schematics" in forms and os.path.isdir(SCHEMATICS_DIR):
+        for fname in sorted(os.listdir(SCHEMATICS_DIR)):
+            if not fname.endswith(".md") or fname == "_index.md":
+                continue
+            spath = os.path.join(SCHEMATICS_DIR, fname)
+            sstem = fname[:-3]
+            sfm = parse_frontmatter(spath)
+            grounded = sfm.get("grounded_in")
+            updated = sfm.get("updated")
+            if not grounded or not isinstance(grounded, list):
+                enumeration_gaps.append({"path": spath, "stem": sstem, "reason": "missing grounded_in"})
+                continue
+            if not updated:
+                enumeration_gaps.append({"path": spath, "stem": sstem, "reason": "missing updated"})
+                continue
+            if not DATE_RE.match(updated):
+                enumeration_gaps.append({"path": spath, "stem": sstem, "reason": f"malformed updated: {updated!r}"})
+                continue
+            schematic_records.append(sstem)
+            moved = []
+            for finding in grounded:
+                f_path = os.path.join("research-findings", finding + ".md")
+                if not os.path.isfile(f_path):
+                    unresolvable_sources.append({
+                        "path": spath, "stem": sstem, "source": finding,
+                        "reason": "finding-file-not-found",
+                    })
+                    continue
+                f_fm = parse_frontmatter(f_path)
+                lu = f_fm.get("last_updated")
+                if "updated" in f_fm:
+                    findings_with_legacy_updated.append({"finding": finding, "legacy_updated": f_fm.get("updated")})
+                if not lu:
+                    has_legacy = "updated" in f_fm
+                    unresolvable_sources.append({
+                        "path": spath, "stem": sstem, "source": finding,
+                        "reason": f"missing-last-updated (legacy 'updated' present: {has_legacy})",
+                    })
+                    continue
+                if not DATE_RE.match(lu):
+                    unresolvable_sources.append({
+                        "path": spath, "stem": sstem, "source": finding,
+                        "reason": f"malformed last_updated: {lu!r}",
+                    })
+                    continue
+                if lu > updated:
+                    moved.append({"finding": finding, "last_updated": lu})
+            if moved:
+                schematic_drift_hits.append({
+                    "path": spath, "stem": sstem, "form": "schematics",
+                    "schematic_updated": updated,
+                    "moved_groundings": sorted(moved, key=lambda x: x["finding"]),
+                })
+            else:
+                schematic_clean += 1
+
     per_form = {}
     for form in forms:
+        if form == "schematics":
+            per_form[form] = {"scanned": len(schematic_records), "drift_hits": len(schematic_drift_hits)}
+            continue
         form_recs = [r for r in records if r["form"] == form]
         form_hits = [r for r in drift_hits if r["form"] == form]
         per_form[form] = {"scanned": len(form_recs), "drift_hits": len(form_hits)}
@@ -182,9 +250,10 @@ def scan(forms: list, invocation_context: str) -> dict:
         "scan_date": date.today().isoformat(),
         "invocation_context": invocation_context,
         "forms_scanned": forms,
-        "total_scanned": len(records),
+        "total_scanned": len(records) + len(schematic_records),
         "drift_hits": drift_hits,
-        "clean_count": clean_count,
+        "schematic_drift_hits": schematic_drift_hits,
+        "clean_count": clean_count + schematic_clean,
         "enumeration_gaps": enumeration_gaps,
         "unresolvable_sources": unresolvable_sources,
         "per_form": per_form,
