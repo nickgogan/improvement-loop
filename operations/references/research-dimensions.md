@@ -1,7 +1,7 @@
 ---
 name: Research Dimensions
 description: Researcher-side scan topics — dimensions (top-level) and sub-dimensions (second-level) naming what the Researcher scans for in the world. Read by /research-loop at scan start. Not a consumer routing layer; consumer-facing navigation is the Librarian's reference layer.
-last_updated: "2026-04-27 (session 80 — IB-153 dimension rebalance: aligned Dim 2-5 names to canonical long forms used in findings)"
+last_updated: "2026-06-18 (session 122 — D7/D9 downstream-signal notes: scans here route to schematic re-evaluation via /detect-drift, DD-107)"
 ---
 
 # Research Dimensions
@@ -252,6 +252,8 @@ Dimensions are top-level scan topics. A **sub-dimension** is a second-level scan
 - `LLM agent reliability verification`
 - `self-improving AI agent evaluation`
 
+**Downstream signal (not a consumer route):** findings here ground the **Evaluation & feedback layer** of schematics (`knowledge/schematics/`). When a D7 finding's `last_updated` moves, `/detect-drift` re-flags every schematic `grounded_in` it for re-evaluation (DD-107) — this is how a schematic's eval layer stays current.
+
 ---
 
 ## Dimension 8: Sandboxing
@@ -298,6 +300,8 @@ Dimensions are top-level scan topics. A **sub-dimension** is a second-level scan
 - `AI agent governance oversight framework`
 - `autonomous agent accountability audit`
 - `human AI delegation authority boundary`
+
+**Downstream signal (not a consumer route):** findings here ground the **autonomy / authority-boundary** choices in schematics (`knowledge/schematics/`). When a D9 finding's `last_updated` moves, `/detect-drift` re-flags every schematic `grounded_in` it for re-evaluation (DD-107).
 
 ---
 
