@@ -5,11 +5,12 @@ type: "planning"
 category: "roadmap"
 target_system:
   - "improvement-loop"
-stage: "accepted"
+stage: "superseded"
 created: "2026-06-12"
-updated: "2026-06-12"
+updated: "2026-06-19"
 author: "owner"
 source_dd: []
+superseded_by: "DD-103"
 tags:
   - "roadmap"
   - "meta-system"
@@ -21,9 +22,11 @@ aliases:
 
 # MetaSystem Capability Roadmap
 
+> **Superseded by DD-103 (2026-06-19).** This roadmap was written for the two-system world (a separate "MetaSystem" owning whole-system capabilities that compose IL substrate). DD-103 collapsed the federation into one engine; DD-104 replaced the two-system split with a single engine's three altitudes. The surviving content: `/audit-artifacts` (renamed from `/audit-system` per DD-110) shipped as the engine's top-altitude audit capability; `/design-harness` remains a queued future top-altitude capability. The "MetaSystem owns vs IL owns" framing throughout is retired — read it as the engine's **top altitude** (whole-system) composing its **middle altitude** (per-artifact). Preserved as a historical record of the step-G design rationale.
+
 The MetaSystem-side analog of the workspace-level cross-system roadmap in `PROGRESS.md`. This document scopes the **step-G** build targets — the MetaSystem-owned capabilities composing IL substrate.
 
-**Status:** Accepted (session 113). All five acceptance criteria ruled; gates resolved below. Step-G build begins with `/audit-artifacts` research/design phase.
+**Status:** Superseded by DD-103/DD-104 (was: Accepted, session 113). All five acceptance criteria ruled; gates resolved below. Step-G build began with `/audit-artifacts` research/design phase.
 
 ---
 

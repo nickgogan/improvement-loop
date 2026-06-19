@@ -5,13 +5,13 @@ variants: []
 target_system:
   - "improvement-loop"
 created: "2026-06-15"
-updated: "2026-06-15"
+updated: "2026-06-19"
 author: "claude"
 stage: "draft"
 tags:
   - "harness"
   - "construction"
-  - "metasystem-concept"
+  - "top-altitude-concept"
   - "rule-11"
   - "rule-12"
 aliases:
@@ -19,42 +19,42 @@ aliases:
   - "Whole-system harness"
 ---
 
-# Harness (MetaSystem concept)
+# Harness (top-altitude concept)
 
 ## Short definition
 
-A **harness** is the whole-system shape MetaSystem authors and audits: a folder (or set of folders) that composes one or more agentic artifacts (skills, agents, prompts) into a coherent runtime that a consumer points at, deploys into, or runs. The harness is the unit `/audit-artifacts` audits and the unit `/design-harness` constructs.
+A **harness** is the whole-system shape the engine's **top altitude** authors and audits: a folder (or set of folders) that composes one or more agentic artifacts (skills, agents, prompts) into a coherent runtime that a consumer points at, deploys into, or runs. The harness is the unit `/audit-artifacts` audits and the unit `/design-harness` constructs.
 
 Examples in scope: a system following the fractal-unit pattern (DD-52) with `.claude/skills/`, `agents/`, governance docs; a CLI tool packaging skills + agents; the sizing-engine pilot's three-system comparison + forecasting layer.
 
-The harness is the **whole**; skills/agents/prompts are the **parts**. Per the consumer-abstractions-map split: MetaSystem owns the harness shape; IL owns the skill/agent/prompt shapes. This concept doc is MetaSystem's authored substrate for **constructing** harnesses.
+The harness is the **whole**; skills/agents/prompts are the **parts**. Per the consumer-abstractions-map's altitude split: the **top** altitude owns the harness shape; the **middle** altitude owns the skill/agent/prompt shapes (both altitudes of the one engine — there is no separate "MetaSystem", DD-103). This concept doc is the top altitude's authored substrate for **constructing** harnesses.
 
 ## Not to be confused with
 
-| Not (MetaSystem-)harness | What it is instead |
+| Not (top-altitude-)harness | What it is instead |
 |---|---|
-| **IL runtime-harness concept** (`librarian/harness.md`) | The runtime + tooling surface an *agent* operates inside (Claude Code CLI, Cursor, the API). That is the audit-time lens IL maintains. MetaSystem's harness is the authored whole-system; the two senses are adjacent but distinct. See §Composition for how they connect. |
-| **Skill / agent / prompt** | A part of a harness, not a harness. IL owns these. |
+| **Runtime-harness concept** (`librarian/harness.md`) | The runtime + tooling surface an *agent* operates inside (Claude Code CLI, Cursor, the API). That is the middle altitude's audit-time lens. The top-altitude harness is the authored whole-system; the two senses are adjacent but distinct. See §Composition for how they connect. |
+| **Skill / agent / prompt** | A part of a harness, not a harness. The middle altitude owns these. |
 | **System (PARA "Areas")** | A persistent organizational space (e.g., `systems/improvement-loop/`). A system may contain one or many harnesses; a harness is the construction unit, not the organizational unit. |
-| **Composition layer** | The *pattern* whereby a MetaSystem operation composes IL operations. `/audit-artifacts` instantiates the composition layer; the harness is what the composition operates on. |
+| **Composition layer** | The *pattern* whereby a top-altitude operation composes middle-altitude operations. `/audit-artifacts` instantiates the composition layer; the harness is what the composition operates on. |
 | **Codebase** | A harness is the agentic shape; the codebase is what underlies it. `/audit-artifacts` is a harness audit, not a code review (see `/code-review`, `/security-review`). |
 
 ## Composition
 
-This concept doc is **primarily §Construction**. §Composition (the audit-time substrate — which IL guides fire on harness aspects) is maintained by IL in `librarian/harness.md` and is read by `/audit-artifacts` indirectly (via the per-artifact dispatches to `/assess-*`).
+This concept doc is **primarily §Construction**. §Composition (the audit-time substrate — which guides fire on harness aspects) is maintained at the middle altitude in `librarian/harness.md` and is read by `/audit-artifacts` indirectly (via the per-artifact dispatches to `/assess-*`).
 
-| Aspect | Owned by | Where to read |
+| Aspect | Altitude | Where to read |
 |---|---|---|
-| Per-artifact audit substrate (which IL guides apply to each skill/agent/prompt) | IL | `systems/improvement-loop/operations/references/librarian/skill.md`, `agent.md`, `prompt.md` §Composition |
-| Runtime-harness audit substrate (tool loading, context, permissions, hooks) | IL | `systems/improvement-loop/operations/references/librarian/harness.md` §Composition |
-| **Whole-system harness construction** (this doc) | **MetaSystem** | §Construction below |
-| Whole-system harness invariants (what `/audit-artifacts` checks beyond per-artifact dispatch) | MetaSystem | `/audit-artifacts` design contract §"Whole-system invariants" — **empty in v1 per rule 11**; candidates listed there |
+| Per-artifact audit substrate (which guides apply to each skill/agent/prompt) | Middle | `systems/improvement-loop/operations/references/librarian/skill.md`, `agent.md`, `prompt.md` §Composition |
+| Runtime-harness audit substrate (tool loading, context, permissions, hooks) | Middle | `systems/improvement-loop/operations/references/librarian/harness.md` §Composition |
+| **Whole-system harness construction** (this doc) | **Top** | §Construction below |
+| Whole-system harness invariants (what `/audit-artifacts` checks beyond per-artifact dispatch) | Top | `/audit-artifacts` design contract §"Whole-system invariants" — **empty in v1 per rule 11**; candidates listed there |
 
-When a consumer asks "audit this harness" the dispatch is per-artifact (IL `/assess-*`). When a consumer asks "construct a harness" the dispatch is the §Construction Decision sequence below.
+When a consumer asks "audit this harness" the dispatch is per-artifact (`/assess-*`). When a consumer asks "construct a harness" the dispatch is the §Construction Decision sequence below.
 
 ## Construction
 
-Author-time substrate for `/design-harness` (queued — cross-system roadmap step G) and for any operation that constructs a new harness spec. Audit-time operations consume the symmetric gates in inspection mode (see §"Rule-12 audit/design symmetry verification").
+Author-time substrate for `/design-harness` (queued — future top-altitude capability) and for any operation that constructs a new harness spec. Audit-time operations consume the symmetric gates in inspection mode (see §"Rule-12 audit/design symmetry verification").
 
 ### Decision sequence
 
@@ -110,7 +110,7 @@ id: "<harness-name>-design-contract"
 type: "design-note"
 category: "capability-design"
 target_system:
-  - "meta-system"
+  - "improvement-loop"
 stage: "draft"   # draft → stable-after-pilot → stable
 created: "<YYYY-MM-DD>"
 updated: "<YYYY-MM-DD>"
@@ -123,8 +123,8 @@ tags: ["design-note", "<harness-name>", "harness"]
 ## Plain-English purpose
 <One-paragraph "point this at X, get Y" statement. State the bounded operation from Decision sequence step 1.>
 
-## Why MetaSystem owns this (vs. IL)
-<State which whole-system shape this harness composes. Reference the consumer-abstractions-map split.>
+## Why this is a top-altitude capability
+<State which whole-system shape this harness composes. Reference the consumer-abstractions-map's altitude split (top composes middle).>
 
 ## Input contract
 <Table of inputs: required path/args + optional flags + defaults. Mirror /audit-artifacts's shape.>
@@ -220,11 +220,11 @@ Walk every `/audit-artifacts` invariant and confirm §Construction tells the bui
 
 ## Cross-references
 
-- MetaSystem consumer-abstractions-map: `systems/improvement-loop/knowledge/reference/consumer-abstractions-map.md`
+- Consumer-abstractions-map (the harness row is in the top-altitude section): `systems/improvement-loop/operations/references/consumer-abstractions-map.md`
 - `/audit-artifacts` SKILL.md (the audit half of the harness-level pair): `systems/improvement-loop/.claude/skills/audit-artifacts/SKILL.md`
 - `/audit-artifacts` design contract: `systems/improvement-loop/project-management/design-notes/2026-06-12-audit-system-design-contract.md`
 - IL runtime-harness concept (§Composition substrate): `systems/improvement-loop/operations/references/librarian/harness.md`
 - IL skill concept (§Construction reference shape this doc parallels): `systems/improvement-loop/operations/references/librarian/skill.md`
 - IL design operation spec (Phase model for §Construction consumers): `systems/improvement-loop/operations/references/librarian/design.md`
 - IL rules 10/11/12: `systems/improvement-loop/governance/agent-rules.md`
-- Cross-system roadmap step G + sizing-engine pilot (priority-queue items 1, 5): workspace `PROGRESS.md`
+- Three altitudes (DD-104) + sizing-engine pilot: engine `PROGRESS.md`; single-engine collapse: DD-103

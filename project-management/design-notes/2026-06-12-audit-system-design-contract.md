@@ -25,6 +25,8 @@ aliases:
 # `/audit-system` Design Contract
 
 > **Superseded in part by DD-110 (2026-06-19).** The skill was renamed `/audit-system` → **`/audit-artifacts`**, and its on-disk output moved from `<target>/audit-reports/<date>/` to **`<target>/operations/artifact-audits/<date>/`**. This note is preserved as the v1 design record *as of 2026-06-12* (including the historical meta-system smoke-test output paths, now archived) — for current name/paths see DD-110 and `.claude/skills/audit-artifacts/SKILL.md`.
+>
+> The two-system framing below ("Why MetaSystem owns this (vs. IL)") is also retired: DD-103 collapsed the federation into one engine and DD-104 replaced the split with three altitudes. Read "MetaSystem owns whole-system / IL owns per-artifact" as the engine's **top altitude** (whole-system composition) over its **middle altitude** (per-artifact assess/design).
 
 Design substrate for step G's first build target. Drafted session 113 after capability-roadmap acceptance. **This is not a SKILL.md.** It is the design contract that seeds session 114+ implementation.
 
