@@ -7,7 +7,7 @@ change_type: "Implementation"
 milestone: null
 rationale: "Re-synthesized 6 guides with 14 pattern findings from session 92. Classified the full P2 raw backlog (64 findings) to clear pipeline debt. DD-98 split proposal emitted for G2."
 source_dd: "DD-80, DD-81, DD-98"
-target_system: "Improvement Loop"
+target_system: "improvement-loop"
 timestamp: "2026-05-25T00:00:00.000Z"
 ---
 

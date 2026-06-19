@@ -3,7 +3,7 @@ title: "Managing Agent Context"
 type: "guideline"
 category: "Context Engineering"
 target_system:
-  - "cross-system"
+  - "improvement-loop"
 stage: "deprecated"
 deprecated_by: "structuring-agent-context.md, defending-agent-context.md"
 deprecated_session: 104

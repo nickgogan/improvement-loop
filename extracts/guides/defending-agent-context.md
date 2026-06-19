@@ -3,7 +3,7 @@ title: "Defending Against Context Degradation"
 type: "guideline"
 category: "Context Engineering"
 target_system:
-  - "cross-system"
+  - "improvement-loop"
 stage: "draft"
 created: "2026-05-25"
 updated: "2026-05-25"

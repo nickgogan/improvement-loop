@@ -3,7 +3,7 @@ title: "Building Agentic Systems"
 type: "guideline"
 category: "Agentic Systems"
 target_system:
-  - "cross-system"
+  - "improvement-loop"
 stage: "draft"
 created: "2026-04-27"
 updated: "2026-05-25"

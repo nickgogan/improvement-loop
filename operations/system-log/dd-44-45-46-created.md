@@ -6,7 +6,7 @@ change_type: "Design Decision"
 milestone: "M3"
 rationale: "DD-44 establishes the DD lifecycle (Binding/Proposed/Superseded) with traceable supersession chains. DD-45 elevates MetaSystem from governance container to active knowledge layer capturing cross-system patterns (supersedes DD-43). DD-46 defines the knowledge flow pipeline from Research through IL into MetaSystem patterns consumed by per-system agents. Created during the strategic shift session that deprioritized Phase B-D in favor of building out the MetaSystem knowledge layer."
 source_dd: null
-target_system: "Cross-System"
+target_system: "improvement-loop"
 timestamp: "2026-04-04T00:00:00.000Z"
 ---
 

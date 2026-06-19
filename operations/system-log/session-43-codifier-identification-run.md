@@ -7,7 +7,7 @@ change_type: "Implementation"
 milestone: null
 rationale: "Ran /identify-artifacts on 28 new findings from session 42 Batch 2 extraction. Form distribution: 26 pattern (92.9%) / 1 skill / 1 rule / 0 template / 0 agent — matches the 92% P1 calibration baseline. Tier: 21 auto, 7 guided, 0 hitl. 23 pattern findings routed to existing G1–G10 clusters; 2 unrouted under new Agentic OS category (below 5-finding graduation threshold). All 28 findings back-annotated pipeline_status: classified. Awaiting Nick's review before /extract-artifacts. G9 (Governance, +4) and G7 (Memory, +4) exceed the 3-finding staleness threshold and warrant re-synthesis post-extraction."
 source_dd: "DD-77, DD-80, DD-81, DD-86"
-target_system: "Improvement Loop"
+target_system: "improvement-loop"
 timestamp: "2026-04-20T00:00:00.000Z"
 ---
 

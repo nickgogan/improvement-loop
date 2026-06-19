@@ -9,7 +9,7 @@ rationale: "Completed the full three-stage /repo-analyzer pipeline (analyze → 
 source_dd:
   - "DD-45"
   - "DD-46"
-target_system: "Improvement Loop"
+target_system: "improvement-loop"
 timestamp: "2026-04-08T00:00:00.000Z"
 ---
 

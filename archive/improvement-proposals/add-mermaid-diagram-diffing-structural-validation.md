@@ -4,7 +4,7 @@ name: "Add Mermaid diagram diffing as a structural validation layer for high-bla
 proposal: "Introduce canonical Mermaid diagrams as architecture and workflow artifacts within the DD system. Before agent swarm execution on high-blast-radius tasks, snapshot the relevant diagrams. After execution, require a separate agent (or model) to regenerate diagrams from the changed state. Diff the before/after diagrams -- structurally via text diff, and visually via rendered comparison -- to produce a human-readable 'what changed' artifact for Review Gates."
 rationale: "Mermaid's constrained ABNF grammar makes it the most LLM-friendly diagram language (lowest hallucination rates). Plain text representation is token-efficient -- one diagram replaces 10-20 source file reads. Agents demonstrably understand and generate valid Mermaid. The emerging 'spec-driven development' movement in 2026 validates this pattern: generate code from spec, have a different model diagram the result, compare visually. Humans spot visual mismatches faster than code mismatches, making Review Gates dramatically more efficient for structural changes."
 status: "Not started"
-target_system: "General / Cross-System"
+target_system: "improvement-loop"
 priority: "P2 (Design Required)"
 risk_level: "Low"
 implementation_complexity: "Medium"

@@ -7,7 +7,7 @@ change_type: "Design Decision"
 milestone: null
 rationale: "Enforcing boundary isolation between systems. Each system's project-management agent should only access its own IB items. Moved 146 IB items from root implementation-backlog/ to 4 system-scoped project-management/implementation-backlog/ folders. Created DD-56 to formalize. Follows the DD-55 precedent for Design Decision distribution."
 source_dd: "DD-56, DD-55, DD-47, DD-50, DD-42, DD-52"
-target_system: "Cross-System"
+target_system: "improvement-loop"
 timestamp: "2026-04-05T00:00:00.000Z"
 ---
 

@@ -4,7 +4,7 @@ id: "skill-authoring-guide"
 type: "guideline"
 category: "agent-design"
 target_system:
-  - "cross-system"
+  - "improvement-loop"
 stage: "active"
 created: "2026-04-07"
 updated: "2026-04-07"

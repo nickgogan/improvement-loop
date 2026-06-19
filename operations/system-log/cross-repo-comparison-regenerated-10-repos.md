@@ -7,7 +7,7 @@ change_type: "Documentation Update"
 milestone: null
 rationale: "Archon (v0.3.2), n8n (v2.16.0), and LangGraph (v1.1.6) were analyzed in session 16 but the cross-repo comparison still only covered the original 7 repos. Regenerated the full comparison to incorporate all 10, producing 6 new cross-repo findings candidates and updating all comparison matrices."
 source_dd: "DD-45, DD-46"
-target_system: "Improvement Loop"
+target_system: "improvement-loop"
 timestamp: "2026-04-09T00:00:00.000Z"
 ---
 

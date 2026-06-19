@@ -7,7 +7,7 @@ change_type: "Implementation"
 milestone: null
 rationale: "First bulk intake into the research KB. 16 YouTube video source entries created with 13 new findings extracted. 7 watched-library entries created from 11 repos (BMAD, GSD, Superpowers, OpenClaw, Paperclip, gstack, mem0). Transcript fetcher tool built. Established the watched-libraries registry as operational."
 source_dd: null
-target_system: "Improvement Loop"
+target_system: "improvement-loop"
 timestamp: "2026-04-07T00:00:00.000Z"
 ---
 

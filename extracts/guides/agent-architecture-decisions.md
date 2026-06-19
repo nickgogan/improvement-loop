@@ -3,7 +3,7 @@ title: "Agent Architecture Decisions"
 type: "guideline"
 category: "Orchestration"
 target_system:
-  - "cross-system"
+  - "improvement-loop"
 stage: "draft"
 created: "2026-04-19"
 updated: "2026-05-25"

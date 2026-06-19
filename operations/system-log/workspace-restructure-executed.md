@@ -6,7 +6,7 @@ change_type: "Implementation"
 milestone: "M3"
 rationale: "Executed the DD-47 workspace filesystem restructure. Created skeleton directories, promoted governance databases to root, moved shared/ to systems/meta-system/governance/, moved systems into systems/, archived claude-build/reference/, wrote CLAUDE.md files for all new directories, restructured root .claude/ for lean bootstrap-only skills, cleaned up s1-schema after DB promotion, archived claude-build git history, removed nested .git, initialized root-level git repo, and updated root CLAUDE.md with new structure."
 source_dd: "DD-47, DD-48, DD-49, DD-50, DD-51"
-target_system: "Cross-System"
+target_system: "improvement-loop"
 timestamp: "2026-04-04T00:00:00.000Z"
 ---
 

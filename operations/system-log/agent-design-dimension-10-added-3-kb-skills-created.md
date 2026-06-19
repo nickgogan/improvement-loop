@@ -7,7 +7,7 @@ change_type: "Architectural Decision"
 milestone: null
 rationale: "Added Dimension 10 (Agent Design) with 3 reclassifications. Agent identity patterns had no natural home dimension. Created 3 KB maintenance skills: /linkage-repair, /finding-crosslink, /source-triage. Source quality audit found 32/74 sources (43%) with zero linked findings, indicating KB structural health needed automation."
 source_dd: "DD-73"
-target_system: "Improvement Loop"
+target_system: "improvement-loop"
 timestamp: "2026-04-07T00:00:00.000Z"
 ---
 

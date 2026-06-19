@@ -8,7 +8,7 @@ milestone: "M2"
 rationale: "System Log meets all three DD-42 promotion criteria (cross-system scope, active state, high write frequency). System Governance extracted from Architecture to be a peer section under System Documentation. Design Decision Guidelines moved from System Governance to be a peer of Implementation under System Documentation. DD-42 page updated with corrected Promoted Databases table, What Stays table, Three-Layer Model, decision rule commentary, and Resulting Hierarchy."
 source_dd:
   - "https://www.notion.so/32b1e08b9b3481cab43fc07b1b9ecc75"
-target_system: "Cross-System"
+target_system: "improvement-loop"
 timestamp: "2026-03-23T16:46:21.373Z"
 ---
 

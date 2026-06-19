@@ -7,7 +7,7 @@ change_type: "Maintenance"
 milestone: null
 rationale: "Owner disposition session focused on governance hygiene: backfilled DD navigability aids, ran drift sweep across governance docs, and added cross-references between guides. Generated handoff for session 89 (Researcher link intake)."
 source_dd: "DD-86"
-target_system: "Improvement Loop"
+target_system: "improvement-loop"
 timestamp: "2026-05-24T00:00:00.000Z"
 ---
 

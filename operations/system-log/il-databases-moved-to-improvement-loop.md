@@ -6,7 +6,7 @@ change_type: "Implementation"
 milestone: "M3"
 rationale: "Nick identified that the four IL-owned databases (improvement-proposals, research-findings, research-sources, research-authorities) belong with the Improvement Loop, not inside the Notion mirror. Moved to improvement-loop/ at workspace root. s1-schema/databases/ is now empty."
 source_dd: "DD-47"
-target_system: "Improvement Loop"
+target_system: "improvement-loop"
 timestamp: "2026-04-04T00:00:00.000Z"
 ---
 

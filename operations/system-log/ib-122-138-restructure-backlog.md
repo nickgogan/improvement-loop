@@ -6,7 +6,7 @@ change_type: "Implementation"
 milestone: "M3"
 rationale: "Created actionable IB items to execute the DD-47 through DD-51 restructure plus DD-45 content population. Items cover skeleton creation, database promotion, file moves, CLAUDE.md authoring, reference deduplication, git history archival, and pattern/guideline seeding. IB-135 (DD-38 amendment) already completed during this session."
 source_dd: "DD-47, DD-48, DD-49, DD-50, DD-51, DD-45, DD-46"
-target_system: "Cross-System"
+target_system: "improvement-loop"
 timestamp: "2026-04-04T00:00:00.000Z"
 ---
 

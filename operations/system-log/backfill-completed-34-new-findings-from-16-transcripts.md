@@ -7,7 +7,7 @@ change_type: "Implementation"
 milestone: null
 rationale: "4 parallel extraction agents processed 16 video transcripts. 34 new findings created. 12 source entries updated with new finding linkages. KB reached 176 findings. Closed the extraction gap identified by the calibration exercise."
 source_dd: null
-target_system: "Improvement Loop"
+target_system: "improvement-loop"
 timestamp: "2026-04-07T00:00:00.000Z"
 ---
 

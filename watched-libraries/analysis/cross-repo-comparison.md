@@ -4,7 +4,7 @@ id: "cross-repo-comparison"
 type: "analysis"
 category: "upstream-tracking"
 target_system:
-  - "cross-system"
+  - "improvement-loop"
 stage: "active"
 created: "2026-04-09"
 updated: "2026-05-25"

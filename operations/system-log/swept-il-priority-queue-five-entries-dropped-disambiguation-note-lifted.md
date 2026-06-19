@@ -7,7 +7,7 @@ change_type: "Operational Learning"
 milestone: null
 rationale: "Audit pass through 'Nick's Prioritizaton' queue revealed five trigger-gated entries whose substance either duplicated rules already documented at the source of truth, pointed at dead premises, depended on upstream signals that haven't materialized, or was better expressed inside the load-bearing reference doc itself. Each entry was examined against its actual home: rules at research-dimensions.md, gates at agent.md, draft proposals never ratified, encounter-log infrastructure with zero producer-side writes. The exposed pattern: trigger-gated queue items accumulate without triggers ever firing because the trigger description often duplicates mechanisms that fire naturally during normal pipeline operation. The disambiguation note for G2 vs G7 was the one entry carrying genuinely durable signal not captured elsewhere — lifted to guide-routing-table.md's new 'Disambiguation Notes' section so the warning surfaces at read time for /identify-artifacts and /synthesize-guide. Composes with today's earlier dropped-summarize-encounters SL: same audit logic applied at queue scale rather than per-item."
 source_dd: null
-target_system: "Improvement Loop"
+target_system: "improvement-loop"
 timestamp: "2026-04-27T00:00:00.000Z"
 ---
 

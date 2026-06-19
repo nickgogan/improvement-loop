@@ -6,7 +6,7 @@ change_type: "Design Decision"
 milestone: "M3"
 rationale: "Perplexity research synthesized Nx monorepo patterns, OMG meta-model theory, Claude Code best practices, and agentic platform architecture into a workspace restructure proposal. After iterative review, 5 new DDs were created to formalize the three-peer model (meta-system, systems, incubator), governance database promotion to root, incubator lifecycle, skill placement strategy, s1-schema as read-only mirror, and single repository policy."
 source_dd: null
-target_system: "Cross-System"
+target_system: "improvement-loop"
 timestamp: "2026-04-04T00:00:00.000Z"
 ---
 

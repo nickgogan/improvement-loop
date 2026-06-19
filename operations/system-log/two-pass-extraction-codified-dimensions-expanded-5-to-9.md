@@ -7,7 +7,7 @@ change_type: "Architectural Decision"
 milestone: null
 rationale: "Codified Pass 1 (headline triage) / Pass 2 (transcript deep extraction) model in research-loop skill. Added 4 new dimensions: Orchestration, Evaluation, Sandboxing, Governance (5 to 9 total). Executed dimension rebalance with 8 reclassifications and 2 splits. Created transcript-fetcher and dimension-rebalance skills. Calibration proved 46.5% miss rate with single-pass extraction. Orchestration (31.6% of findings) had no home dimension."
 source_dd: "DD-67"
-target_system: "Improvement Loop"
+target_system: "improvement-loop"
 timestamp: "2026-04-07T00:00:00.000Z"
 ---
 

@@ -4,7 +4,7 @@ id: "principles"
 type: "governance"
 category: "governance"
 target_system:
-  - "cross-system"
+  - "improvement-loop"
 stage: "active"
 created: "2026-03-22"
 updated: "2026-04-04"

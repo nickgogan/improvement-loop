@@ -4,7 +4,7 @@ id: "ob1-analysis"
 type: "analysis"
 category: "upstream-tracking"
 target_system:
-  - "cross-system"
+  - "improvement-loop"
 stage: "active"
 created: "2026-04-20"
 updated: "2026-04-20"

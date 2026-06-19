@@ -7,7 +7,7 @@ change_type: "Implementation"
 milestone: null
 rationale: "Extract the 7 non-pattern findings approved in session 93's P2 backlog classification. 5 skills and 2 rules staged to extracts/."
 source_dd: "DD-78, DD-80, DD-92, DD-95, DD-97"
-target_system: "Improvement Loop"
+target_system: "improvement-loop"
 timestamp: "2026-05-25T00:00:00.000Z"
 ---
 

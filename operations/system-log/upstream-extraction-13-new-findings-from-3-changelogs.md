@@ -7,7 +7,7 @@ change_type: "Implementation"
 milestone: null
 rationale: "Extracted findings from GSD (6), BMAD (3), gstack (4) changelogs. 3 source entries created. 3 existing findings updated with upstream evidence. 3 authority entries updated. 3 watched-library entries updated. KB reached 318 findings. Closes the upstream extraction queue from /watch-upstream triage."
 source_dd: null
-target_system: "Improvement Loop"
+target_system: "improvement-loop"
 timestamp: "2026-04-07T00:00:00.000Z"
 ---
 

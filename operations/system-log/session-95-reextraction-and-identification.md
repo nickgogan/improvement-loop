@@ -7,7 +7,7 @@ change_type: "Implementation"
 milestone: null
 rationale: "Session 94 audit identified 15 video sources marked Done with 0-2 findings despite High relevance. Nick mandated re-extraction as top priority. All 15 re-processed via Pass 2 transcript-based deep extraction with framework composition lens. Then ran /identify-artifacts on 90 filtered findings."
 source_dd: null
-target_system: "Improvement Loop"
+target_system: "improvement-loop"
 timestamp: "2026-05-25T00:00:00.000Z"
 ---
 

@@ -7,7 +7,7 @@ change_type: "Design"
 milestone: null
 rationale: "Executed Phases 1–3 of session-48 handoff. Phase 1 produced empirical validation that Option α' (Librarian reference layer + three-tier access) holds: four composition tests passed (three-guide agent slice, seven-guide agent audit, prompt audit, skill audit). Phase 2 reframed the dimensions registry to Researcher-specific scan topics (preamble rewrite) and renamed Agentic OS → Agentic Systems (scope expanded to team/business). Phase 3 built the first three exemplars of the Librarian reference layer — `harness.md` (no variants), `second-brain.md` (three variants), `audit.md` (operation) — plus `_index.md`. Phases 4–6 (use-case registry, read-contract design, assessment skills) deferred to session 49 to keep session coherent and avoid fatigue-driven drift."
 source_dd: "DD-29, DD-77, DD-78, DD-80, DD-81, DD-82, DD-86"
-target_system: "Improvement Loop"
+target_system: "improvement-loop"
 timestamp: "2026-04-21T00:00:00.000Z"
 ---
 

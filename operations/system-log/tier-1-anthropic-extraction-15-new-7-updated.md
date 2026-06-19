@@ -7,7 +7,7 @@ change_type: "Implementation"
 milestone: null
 rationale: "Processed all 6 Tier 1 Anthropic engineering posts through /research-loop. Created 15 new findings (4 at P1, 7 at P2, 2 at P3, 2 Already Adopted), updated 7 existing findings with Anthropic as additional source, created 6 source entries, and updated Anthropic authority to 8 sources."
 source_dd: null
-target_system: "Improvement Loop"
+target_system: "improvement-loop"
 timestamp: "2026-04-09T00:00:00.000Z"
 ---
 

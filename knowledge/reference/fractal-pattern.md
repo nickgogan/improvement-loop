@@ -4,7 +4,7 @@ id: "fractal-pattern"
 type: "governance"
 category: "project-lifecycle"
 target_system:
-  - "cross-system"
+  - "improvement-loop"
 stage: "active"
 created: "2026-04-05"
 updated: "2026-04-05"

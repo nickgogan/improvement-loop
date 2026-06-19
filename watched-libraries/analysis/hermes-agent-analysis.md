@@ -4,7 +4,7 @@ id: "hermes-agent-analysis"
 type: "analysis"
 category: "upstream-tracking"
 target_system:
-  - "cross-system"
+  - "improvement-loop"
 stage: "active"
 created: "2026-05-24"
 updated: "2026-05-24"

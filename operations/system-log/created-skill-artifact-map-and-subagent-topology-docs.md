@@ -7,7 +7,7 @@ change_type: "Documentation Update"
 milestone: null
 rationale: "Resolved PROGRESS.md logged-for-future item 5. Existing session 87 docs covered pipeline flow, state lifecycle, and directory-level ownership but lacked skill-level artifact granularity and subagent spawning visibility. Two new docs fill these gaps: skill-artifact-map shows per-skill C/E/R file paths; subagent-topology identifies 7 subagent-spawning skills with a 3-tier prompt sensitivity ranking for monitoring prioritization."
 source_dd: "DD-86"
-target_system: "Improvement Loop"
+target_system: "improvement-loop"
 timestamp: "2026-05-25T00:00:00.000Z"
 ---
 

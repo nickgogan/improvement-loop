@@ -6,7 +6,7 @@ change_type: "Implementation"
 milestone: "M3"
 rationale: "Nick directed s1-schema to be placed inside systems/ rather than at root level. This treats S1 (Notion Schema) as a graduated system alongside S2 and S3, consistent with the four-system model (DD-32). References in active CLAUDE.md files and governance rules updated to reflect new path."
 source_dd: "DD-47"
-target_system: "Cross-System"
+target_system: "improvement-loop"
 timestamp: "2026-04-04T00:00:00.000Z"
 ---
 

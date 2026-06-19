@@ -3,7 +3,7 @@ term: harness
 type: concept
 variants: []
 target_system:
-  - "meta-system"
+  - "improvement-loop"
 created: "2026-06-15"
 updated: "2026-06-15"
 author: "claude"

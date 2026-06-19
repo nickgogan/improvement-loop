@@ -4,7 +4,6 @@ type: "reference"
 category: "knowledge-management"
 target_system:
   - "improvement-loop"
-  - "cross-system"
 stage: "draft"
 created: "2026-04-11"
 updated: "2026-04-11"

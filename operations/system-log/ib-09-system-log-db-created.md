@@ -7,7 +7,7 @@ change_type: "Implementation"
 milestone: "M2"
 rationale: "DD-11 mandates audit trails as a system primitive. The System Log database implements this with structured entries, templates per change type, and filtered views for different audit perspectives."
 source_dd: null
-target_system: "Cross-System"
+target_system: "improvement-loop"
 timestamp: "2026-03-01T21:00:34.547Z"
 ---
 

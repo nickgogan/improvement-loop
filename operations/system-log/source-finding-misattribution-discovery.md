@@ -7,7 +7,7 @@ change_type: "Operational Learning"
 milestone: null
 rationale: "During transcript re-extraction calibration, discovered that Video 4 ('Stop Using Claude Code in Terminal' by Simon Scrapes) was linked to finding 'ide-first-claude-code-with-deterministic-hooks.md'. The transcript contains neither IDE-first advocacy nor deterministic hooks — the video is about a web dashboard command center. The finding was matched based on the video title, not actual content. This reveals a process vulnerability: summary-based extraction can match the wrong pattern when titles are misleading. The finding now has zero sources and needs re-sourcing."
 source_dd: null
-target_system: "Cross-System"
+target_system: "improvement-loop"
 timestamp: "2026-04-07T00:00:00.000Z"
 ---
 

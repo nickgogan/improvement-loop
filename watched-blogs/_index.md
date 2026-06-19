@@ -4,7 +4,7 @@ id: "watched-blogs-index"
 type: "governance"
 category: "governance"
 target_system:
-  - "cross-system"
+  - "improvement-loop"
 stage: "active"
 created: "2026-04-09"
 updated: "2026-04-09"

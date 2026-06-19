@@ -8,7 +8,7 @@ milestone: "M2"
 rationale: "DD-43 renames the top-level design-time reference container from \"System Documentation\" to \"Meta-System\" and eliminates the dual-location pattern for DD specs. 19 standalone DD spec pages (5 cross-system, 6 S2, 2 S3, 6 IL) migrated into their DD database page bodies. Standalone pages archived. System Governance DD specs section replaced with DB query callout. DD Rollout Checklist amended. Governance Vocabulary updated with Meta-System term and revised Improvement Loop/Design-Time Layer definitions. All workspace references swept."
 source_dd:
   - "https://www.notion.so/32c1e08b9b34815e92d6fb9f90dc9481"
-target_system: "Cross-System"
+target_system: "improvement-loop"
 timestamp: "2026-03-23T18:40:16.940Z"
 ---
 

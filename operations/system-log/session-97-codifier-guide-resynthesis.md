@@ -7,7 +7,7 @@ change_type: "Implementation"
 milestone: null
 rationale: "83 newly classified pattern findings from sessions 95-96 triggered staleness threshold across all guide clusters. Prioritized by finding count delta — largest gaps first. 45 new findings absorbed across 4 guides."
 source_dd: "DD-81, DD-93, DD-94, DD-98, DD-101"
-target_system: "Improvement Loop"
+target_system: "improvement-loop"
 timestamp: "2026-05-25T00:00:00.000Z"
 ---
 

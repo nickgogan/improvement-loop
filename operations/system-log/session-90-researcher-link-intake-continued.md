@@ -7,7 +7,7 @@ change_type: "Implementation"
 milestone: null
 rationale: "Processed 6 new links from LINKS.md. Created 3 new watched-library entries, 4 analysis docs (2 new + 2 session 89 backfill), 12 new findings via /promote-findings gate. Also wrote missing analysis docs for hermes-agent and deep-tutor from session 89."
 source_dd: "DD-80"
-target_system: "Improvement Loop"
+target_system: "improvement-loop"
 timestamp: "2026-05-24T00:00:00.000Z"
 ---
 

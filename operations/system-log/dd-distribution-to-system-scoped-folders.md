@@ -7,7 +7,7 @@ change_type: "Design Decision"
 milestone: null
 rationale: "Enforcing boundary isolation between systems. Each system's project-management agent should only access its own DDs. Moved 54 DDs from root design-decisions/ to 4 system-scoped project-management/design-decisions/ folders. Created DD-55 to formalize."
 source_dd: "DD-55, DD-47, DD-50, DD-42, DD-52"
-target_system: "Cross-System"
+target_system: "improvement-loop"
 timestamp: "2026-04-05T00:00:00.000Z"
 ---
 

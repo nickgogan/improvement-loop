@@ -4,7 +4,7 @@ id: "audit-system-design-contract"
 type: "design-note"
 category: "capability-design"
 target_system:
-  - "meta-system"
+  - "improvement-loop"
 stage: "stable"
 created: "2026-06-12"
 updated: "2026-06-12"

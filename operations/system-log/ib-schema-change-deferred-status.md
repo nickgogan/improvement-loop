@@ -7,7 +7,7 @@ change_type: "Schema Change"
 milestone: "M2"
 rationale: "Nick requested a Deferred status to distinguish intentionally postponed items from queued items, enabling better filtering. IB-48 is the first item to use this status --- Standard concept deferred per DD-20 amendment until Family Meeting Workstream pulse reveals recurring patterns."
 source_dd: null
-target_system: "Cross-System"
+target_system: "improvement-loop"
 timestamp: "2026-03-01T17:37:28.769Z"
 ---
 

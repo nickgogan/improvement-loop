@@ -7,7 +7,7 @@ change_type: "Implementation + Design"
 milestone: null
 rationale: "Two parallel streams. Stream A classified 12 raw findings from session 45's Researcher intake: 11 pattern (7 auto, 4 guided) + 1 rule (auto). 91.7% pattern rate matches calibration baseline. No findings routed to unrouted bucket. G7 staleness grew to +11 findings; G2 to +3. Stream B produced a design proposal answering Nick's session-45 question on artifact lifecycle — merge mechanics, creation triggers, change-log mechanism, and uniform-vs-per-class treatment — with 8 proposed DDs and 7 open questions. G7/G2/G9 re-syntheses explicitly gated on Stream B approval per Nick's direction."
 source_dd: "DD-29, DD-77, DD-78, DD-80, DD-81, DD-82"
-target_system: "Improvement Loop"
+target_system: "improvement-loop"
 timestamp: "2026-04-20T00:00:00.000Z"
 ---
 

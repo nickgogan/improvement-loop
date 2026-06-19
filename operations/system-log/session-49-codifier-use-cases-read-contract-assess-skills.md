@@ -7,7 +7,7 @@ change_type: "Design + Implementation"
 milestone: null
 rationale: "Executed Phases 4–6 of the session-48 plan. Phase 4 canonicalized 35 Librarian use cases under (concept, operation) decomposition; cross-tab revealed `agent.md` as the gravity well (11 of 35 UCs) and produced the authoring backlog. Phase 5 formalized the Librarian read-contract — query parsing, operation-first load order, Tier-1 default shape, Tier-2 graph traversal with 3-hop ceiling, Tier-3 consumer-request-gated reads, confidence disclosure, provenance surfacing with exact links. Phase 6 authored three minimal concept files (`agent.md`, `prompt.md`, `skill.md`) and three IL-scoped assessment skill drafts (`assess-agent`, `assess-prompt`, `assess-skill`); `assess-prompt` reframed mid-session as an *extension* over `/prompt-evaluator` rather than a parallel rubric after Nick pushed back on duplication. Substrate is now exercisable end-to-end for the three assess-* deliverables."
 source_dd: "DD-29, DD-77, DD-78, DD-80, DD-81, DD-82, DD-86"
-target_system: "Improvement Loop"
+target_system: "improvement-loop"
 timestamp: "2026-04-21T00:00:00.000Z"
 ---
 

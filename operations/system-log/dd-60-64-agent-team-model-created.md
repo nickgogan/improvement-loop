@@ -7,7 +7,7 @@ change_type: "Design Decision"
 milestone: null
 rationale: "Derived 5 new DDs from agent-team-design-brief.md (Nick + Perplexity research). Scanned all 59 existing DDs for overlap before creating. Resolved 2 conflicts: communication model (markdown for non-HOS, Notion only for HOS runtime) and human gate stance (mandatory at milestones, free within)."
 source_dd: "DD-60, DD-61, DD-62, DD-63, DD-64"
-target_system: "Cross-System"
+target_system: "improvement-loop"
 timestamp: "2026-04-06T00:00:00.000Z"
 ---
 

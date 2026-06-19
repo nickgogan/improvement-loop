@@ -7,7 +7,7 @@ change_type: "Implementation"
 milestone: null
 rationale: "23 Tier 1/2 sources processed via 5 parallel agents. 59 new findings created, 13 existing updated. Then 155 crosslinks created via /finding-crosslink (57 enables, 14 extends, 81 same-problem, 3 contradicts). 2 reusable KB maintenance scripts saved. KB reached 284 findings across 73 sources. High-value source extraction completed and relationship graph established."
 source_dd: null
-target_system: "Improvement Loop"
+target_system: "improvement-loop"
 timestamp: "2026-04-07T00:00:00.000Z"
 ---
 

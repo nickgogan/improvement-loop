@@ -7,7 +7,7 @@ change_type: "Research Intake"
 milestone: null
 rationale: "Completed extraction of remaining 15 Anthropic blog posts (11 Tier 2 engineering, 4 Tier 3 research) identified by /watch-blogs triage. Combined with prior Tier 1 session, all 21 EXTRACT posts from both Anthropic blogs are now processed into the KB."
 source_dd: null
-target_system: "Improvement Loop"
+target_system: "improvement-loop"
 timestamp: "2026-04-09T00:00:00.000Z"
 ---
 

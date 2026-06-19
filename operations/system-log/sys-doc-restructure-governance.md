@@ -8,7 +8,7 @@ milestone: "M2"
 rationale: "Architecture section was encompassing too much --- governance, methodology, and system designs in one tree. Restructured for token efficiency when agents navigate to specific content. Intention & Trajectory page drafted to capture the meta-vision of the pipeline."
 source_dd:
   - "https://www.notion.so/32b1e08b9b3481cab43fc07b1b9ecc75"
-target_system: "Cross-System"
+target_system: "improvement-loop"
 timestamp: "2026-03-23T16:46:45.354Z"
 ---
 

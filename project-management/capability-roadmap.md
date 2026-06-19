@@ -4,7 +4,7 @@ id: "meta-system-capability-roadmap"
 type: "planning"
 category: "roadmap"
 target_system:
-  - "meta-system"
+  - "improvement-loop"
 stage: "accepted"
 created: "2026-06-12"
 updated: "2026-06-12"

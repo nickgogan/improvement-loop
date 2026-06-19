@@ -7,7 +7,7 @@ change_type: "Schema Change"
 milestone: "M2"
 rationale: "Pipeline-level insights (decomposition strategy, review effectiveness, cross-system patterns) had no structured capture mechanism. Failure Pattern covers technical tool bugs; Operational Learning covers strategic process insights that make future Milestones faster."
 source_dd: null
-target_system: "Cross-System"
+target_system: "improvement-loop"
 timestamp: "2026-03-23T16:51:03.694Z"
 ---
 

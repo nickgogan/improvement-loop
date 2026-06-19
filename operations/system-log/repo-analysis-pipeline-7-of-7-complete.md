@@ -7,7 +7,7 @@ change_type: "Implementation"
 milestone: null
 rationale: "Completed structural analysis of all 7 watched libraries (BMAD, OpenClaw, Paperclip, gstack, mem0 added this session; GSD and Superpowers done prior). Each analysis covers 6 dimensions (structural inventory, context file map, workflow topology, governance model, cross-agent protocol, research dimension mapping). 33 new findings candidates identified across the 5 new analyses. Cross-repo comparison and findings promotion remain as next steps. Completes the per-repo phase of the repo-analyzer pipeline."
 source_dd: "DD-45, DD-46"
-target_system: "Improvement Loop"
+target_system: "improvement-loop"
 timestamp: "2026-04-08T00:00:00.000Z"
 ---
 

@@ -7,7 +7,7 @@ change_type: "Schema Change"
 milestone: "M2"
 rationale: "IB audit found one gap (DD-23 Area Hub views had no IB item -> created IB-92). Added Deferred status for designed-but-postponed items. IB-48 is first Deferred item."
 source_dd: null
-target_system: "Cross-System"
+target_system: "improvement-loop"
 timestamp: "2026-03-01T21:00:34.547Z"
 ---
 

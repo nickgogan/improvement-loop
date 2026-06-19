@@ -7,7 +7,7 @@ change_type: "Operational Learning"
 milestone: null
 rationale: "Post-write validation revealed that subagents evaluating pairs from summaries alone match on category proximity rather than strict problem identity. This produces acceptable precision for contradicts/extends/enables but ~30% false positives on same-problem — the loosest and most common relationship type."
 source_dd: null
-target_system: "Improvement Loop"
+target_system: "improvement-loop"
 timestamp: "2026-04-08T00:00:00.000Z"
 ---
 

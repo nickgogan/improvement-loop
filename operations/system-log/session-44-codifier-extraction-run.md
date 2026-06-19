@@ -7,7 +7,7 @@ change_type: "Implementation"
 milestone: null
 rationale: "Closed the Codifier loop for Batch 2. Ran /reassess-priorities (21 targeted + full-KB cluster scan) and applied 3 approved changes. Ran /extract-artifacts on the 28-finding identification report — 26 patterns filtered to guide synthesis per DD-81, 2 non-patterns (rule + skill) drafted with ContractSpec and staged in extracts/. G9 Governance (+4) and G7 Memory (+4) flagged for guide re-synthesis. Human gates honored at reassessment proposal and extraction gate. No deployment — all artifacts remain in extracts/."
 source_dd: "DD-77, DD-78, DD-80, DD-81"
-target_system: "Improvement Loop"
+target_system: "improvement-loop"
 timestamp: "2026-04-20T00:00:00.000Z"
 ---
 

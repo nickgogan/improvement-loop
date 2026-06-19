@@ -7,7 +7,7 @@ change_type: "Infrastructure"
 milestone: null
 rationale: "MetaSystem initialized as a private GitHub repo with 10 structured commits. Improvement Loop published as a separate private repo via git subtree push for selective sharing with collaborators. Governance snapshot (_governance/) created in IL for standalone reference. DD-84 governs the architecture."
 source_dd: "DD-84"
-target_system: "cross-system"
+target_system: "improvement-loop"
 timestamp: "2026-04-19T00:00:00.000Z"
 ---
 

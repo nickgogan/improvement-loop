@@ -3,7 +3,6 @@ title: "Session 55 — Owner: DD-89 Four-Zone Rule Propagated to Workspace-Root 
 type: "system-log"
 target_system:
   - "improvement-loop"
-  - "cross-system"
 actor: "Claude (Owner disposition)"
 area: "governance-translation"
 change_type: "Governance"

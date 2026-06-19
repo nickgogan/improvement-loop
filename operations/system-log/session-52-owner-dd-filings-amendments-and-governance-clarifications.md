@@ -3,8 +3,6 @@ title: "Session 52 — DD filings, amendments, cleanup, and governance-model cla
 type: "system-log"
 target_system:
   - "improvement-loop"
-  - "meta-system"
-  - "cross-system"
 actor: "Claude (Owner disposition)"
 area: null
 change_type: "Governance"

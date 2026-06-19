@@ -7,7 +7,7 @@ change_type: "Documentation Update"
 milestone: null
 rationale: "PROGRESS.md logged-for-future item 3 asked to codify the sequential-edits-per-file workaround. Investigation found the fix already deployed in /extract-artifacts SKILL.md Step 4.8 (partition-by-queue-file rule, session 85). Only one skill hits the pattern. Audit trail exists in session 83-85 SL entries and Codifier reflection. Closed per tolerate-one-off principle — no general rule warranted until recurrence in additional skills."
 source_dd: null
-target_system: "Improvement Loop"
+target_system: "improvement-loop"
 timestamp: "2026-05-25T00:00:00.000Z"
 ---
 

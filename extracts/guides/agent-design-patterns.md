@@ -3,7 +3,7 @@ title: "Agent Design Patterns"
 type: "guideline"
 category: "Agent Design"
 target_system:
-  - "cross-system"
+  - "improvement-loop"
 stage: "draft"
 created: "2026-04-19"
 updated: "2026-05-25"

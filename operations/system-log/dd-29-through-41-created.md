@@ -7,7 +7,7 @@ change_type: "Design Decision"
 milestone: null
 rationale: "Formalized 17 implicit architectural decisions (from prior sessions) into 13 DDs with full spec pages. Covers IL pipeline design (DD-29-31, 36, 39, 41), S3 vault and skill architecture (DD-33-34), and cross-system governance (DD-32, 35, 37-38, 40). All created with database entries, spec pages under appropriate Architecture container pages, and cross-reference sections."
 source_dd: null
-target_system: "Cross-System"
+target_system: "improvement-loop"
 timestamp: "2026-03-22T20:32:49.108Z"
 ---
 
