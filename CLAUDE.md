@@ -12,9 +12,9 @@ The Improvement Loop is a standalone research-and-advisory subsystem. It does tw
 
 2. **Librarian advisory layer.** Exposes that substrate as a bilingual audit/design capability over agentic abstractions (skill, agent, prompt today; harness and others as demand promotes them — see `operations/references/consumer-abstractions-map.md`). The same concept-doc substrate composes bilingually: §Composition drives `/assess-*` (audit mode); §Construction drives `/design-*` (author mode). Rule 12 enforces that an abstraction carrying one but not the other is in debt.
 
-**Consumer relationship.** MetaSystem is IL's primary downstream consumer — it composes IL's audit and design surfaces into whole-system operations (`/audit-system`, `/design-harness`). It is not the sole consumer: the audience commitment covers archetypes 1–5 (Nick-builder, portfolio-presenter, practitioner-friend, builder-friend, employer-evaluator), and `/assess-*` plus KB queries serve any of them directly. IL's governance, pipeline, concept-doc substrate, and rule set (especially rules 10, 11, 12) are IL-owned and IL-stewarded — consumers depend on them but do not author them.
+**Three altitudes (DD-104).** The advisory layer is the *middle* altitude; the engine composes it into a *top* altitude itself. The engine's own `/audit-system` composes the per-artifact assessors into whole-system operations (the schematic library and `/design-harness` join it in Phase 2). There is no separate "meta-system" above the engine — the federation collapsed (DD-103); the engine is the sole system, with research at the bottom, per-artifact assess/design in the middle, and whole-system composition at the top.
 
-IL invests substrate where consumer demand is concrete and recurring; the consumer-abstractions-map gates promotion. Speculative or single-consumer surfaces stay flagged as future candidates, not committed scope.
+**Consumers.** The audience commitment covers archetypes 1–5 (Nick-builder, portfolio-presenter, practitioner-friend, builder-friend, employer-evaluator); `/assess-*` plus KB queries serve any of them directly. Household OS (now on Notion, DD-106) is a consumer the engine helps design, not a peer. The engine's governance, pipeline, concept-doc substrate, and rule set (especially rules 10, 11, 12) are engine-owned and engine-stewarded — consumers depend on them but do not author them. The engine invests substrate where consumer demand is concrete and recurring (the consumer-abstractions-map gates promotion); speculative or single-consumer surfaces stay flagged as future candidates, not committed scope.
 
 ---
 
@@ -174,9 +174,8 @@ The Librarian also uses Read/Glob/Grep directly to navigate the KB for Teacher/B
 | Read watched libraries | `watched-libraries/*.md` | Read tool |
 | Read proposals (Researcher) | `improvement-proposals/*.md` | Read tool only |
 | Read research dimensions | `operations/references/research-dimensions.md` | Read tool |
-| Read IL Design Decisions | `project-management/design-decisions/DD-XX.md` | Read tool |
-| Read IL IB items | `project-management/implementation-backlog/IB-XX.md` | Read tool |
-| Read cross-system DDs | `../meta-system/project-management/design-decisions/` | Read tool |
+| Read Design Decisions | `project-management/design-decisions/DD-XX.md` | Read tool |
+| Read IB items | `project-management/implementation-backlog/IB-XX.md` | Read tool |
 | Read charter | `../../CHARTER.md` | Read tool |
 
 ---
@@ -199,16 +198,17 @@ The Librarian also uses Read/Glob/Grep directly to navigate the KB for Teacher/B
 
 ## Fractal Compliance
 
-This system follows the fractal unit pattern (DD-52) partially. Current state:
+The engine is now fractal-complete (DD-52) — all 7 folders exist. Current state:
 
 | Folder | Status |
 |--------|--------|
-| `operations/` | Exists — research-reports, pattern-identification-reports, guide-reports, handoff-prompts, system-log, references/ |
-| `project-management/` | Exists — DDs and IB items |
-| `feedback/` | Exists — feedback items for IL system improvement |
+| `app/` | Exists — relocated tools: `transcript-fetcher`, `pdf-to-markdown` (engine-collapse Step 1) |
+| `governance/` | Exists — engine governance, owned by Owner agent (DD-86) |
+| `knowledge/` | Exists — `patterns/`, `guides/`, `templates/`, `reference/` (absorbed from the dissolved meta-system, Step 3) |
 | `agents/` | Exists — Owner, Researcher, Codifier, Librarian, handoff protocol |
-| `governance/` | Exists — system-specific governance, owned by Owner agent (DD-86) |
-| `app/` | Not yet created |
-| `archive/` | Not yet created |
+| `project-management/` | Exists — DDs and IB items (merged with former cross-system data, Step 5) |
+| `operations/` | Exists — research-reports, pattern-identification-reports, guide-reports, handoffs, system-log, references/ |
+| `archive/` | Exists — archived improvement-proposals |
+| `feedback/` | Exists (engine extension) — feedback items for engine improvement |
 
-See IB-138 and IB-139 for fractal completion work items.
+The charter (`../../CHARTER.md`) is the one deliberate exception to the fractal — it scopes the whole workspace, so it sits at the root, not inside this unit (DD-105).

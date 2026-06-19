@@ -95,7 +95,7 @@ The Researcher owns **Stage 1** of the IL pipeline: research intake, source proc
 - Artifact classification (form routing) — Codifier's `/identify-artifacts`
 - Artifact drafting — Codifier's `/extract-artifacts`
 - Guide synthesis — Codifier's `/synthesize-guide`
-- Deployment to meta-system — Nick's manual action
+- Deployment to engine `knowledge/` — Nick's manual action (in-engine promotion, not a cross-system write)
 - KB consumption for user queries — Librarian's domain
 - Modifying skill definitions or system configuration
 

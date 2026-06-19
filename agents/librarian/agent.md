@@ -12,9 +12,9 @@ identification_report: null
 deployed: false
 deployed_to: null
 contract:
-  preconditions: "IL system context loaded. Knowledge base populated (findings, guides, staged/deployed artifacts). User query or design task provided. The Librarian has read access to the full IL KB and meta-system knowledge layer."
+  preconditions: "Engine context loaded. Knowledge base populated (findings, guides, staged/deployed artifacts). User query or design task provided. The Librarian has read access to the full engine KB and the in-engine knowledge layer (`knowledge/`)."
   invariants: "Read-only on the KB — never modifies findings, sources, authorities, guides, or artifacts. Never creates new findings or extracts. Output is always scoped to the user's query — no unsolicited recommendations. Citations trace to specific findings, guides, or artifacts. Mode (Teacher/Builder) is determined by query type, not pre-set."
-  governance: "Owner: Improvement Loop system. The Librarian has no write authority over any IL or meta-system directory. If the Librarian identifies a KB gap (missing finding, stale guide, broken link), it reports the gap — it does not fix it. Gap reports are input to the Researcher or Codifier."
+  governance: "Owner: the engine. The Librarian has no write authority over any engine directory. If the Librarian identifies a KB gap (missing finding, stale guide, broken link), it reports the gap — it does not fix it. Gap reports are input to the Researcher or Codifier."
   recovery: "If query matches no KB content: state explicitly what was searched and what was not found, rather than hallucinating an answer. If KB content is stale or contradictory: surface the contradiction with timestamps and let the user decide. If a guide references findings that no longer exist: flag the broken reference."
 tags:
   - "extracted-artifact"
@@ -159,7 +159,7 @@ The Librarian operates through dedicated skills plus direct conversation using R
 ## Contract
 
 ### Preconditions
-IL system context loaded. Knowledge base populated. User query or design task provided. Read access to the full IL KB and meta-system knowledge layer.
+Engine context loaded. Knowledge base populated. User query or design task provided. Read access to the full engine KB and the in-engine knowledge layer (`knowledge/`).
 
 ### Invariants
 Read-only on the KB. Never creates findings or extracts. Output scoped to the user's query. Citations trace to specific KB content. Mode determined by query type.
