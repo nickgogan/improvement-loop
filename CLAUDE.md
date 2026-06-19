@@ -64,7 +64,7 @@ For Researcher, Codifier, and Librarian dispositions, read the agent definition 
 | `agents/` | Agent definitions — Owner, Researcher, Codifier, Librarian, handoff protocol. Each agent directory may include a `reflections/` subfolder for agent-private self-reflections fed into `/solicit-proposals` rounds. |
 | `project-management/design-notes/` | Deliberative specifications (substrate audits, read contracts, lifecycle specs, acceptance rubrics) — any agent may author; Owner-governed per four-zone architecture |
 | `governance/proposals/` | Owner-authored governance-rule proposals (Proposal-First tier); also the destination for agent-authored proposals emerging from `/solicit-proposals` rounds |
-| `.claude/skills/` | Engine-scoped skills (system-scoped placement is a convention inherited from the retired Claude Build's DD-49, now archived) — see "Skills That Operate Here" below for per-agent listings |
+| `.claude/skills/` | Engine-scoped skills (system-scoped placement per DD-109, originating in archived Claude Build DD-49) — see "Skills That Operate Here" below for per-agent listings |
 | `feedback/` | Feedback items for improving the IL system |
 | `archive/improvement-proposals/` | Archived — historical proposals from session 6, superseded by the DD-80 pipeline |
 | `operations/` | Loop reports, handoff prompts, system log, audit reports (`/system-audit`) |
@@ -107,7 +107,7 @@ The **Researcher** agent owns stage 1. The **Codifier** agent owns stages 2-3. N
 
 ## Skills That Operate Here
 
-All IL skills live in `.claude/skills/` under this system directory (system-scoped placement is a convention inherited from the retired Claude Build's DD-49, now archived). Cross-system skills (`/prompt-evaluator`, `/prompt-enhancer`, `/governance-audit`, `/session-handoff`) remain at workspace root `.claude/skills/`.
+All IL skills live in `.claude/skills/` under this system directory (system-scoped placement per DD-109, originating in archived Claude Build DD-49). Cross-system skills (`/prompt-evaluator`, `/prompt-enhancer`, `/governance-audit`, `/session-handoff`) remain at workspace root `.claude/skills/`.
 
 ### Researcher Skills
 

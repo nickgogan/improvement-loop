@@ -10,7 +10,7 @@ created: "2026-04-05"
 updated: "2026-04-05"
 author: "claude"
 source_dd:
-  - "DD-49"
+  - "DD-109"
 tags:
   - "catalog"
   - "template"
@@ -27,10 +27,10 @@ Scaffolding templates for projects, skills, agents, and prompts. Consumed by the
 
 | Directory | Purpose | DD |
 |-----------|---------|-----|
-| `project-scaffold/` | Bootstrap manifest schema + project templates | DD-48, DD-49 |
-| `agent-templates/` | Agent definition templates | DD-49 |
-| `skill-templates/` | Skill definition templates | DD-49 |
-| `prompt-templates/` | Prompt templates for different task types | DD-49 |
+| `project-scaffold/` | Bootstrap manifest schema + project templates | DD-48, DD-109 |
+| `agent-templates/` | Agent definition templates | DD-109 |
+| `skill-templates/` | Skill definition templates | DD-109 |
+| `prompt-templates/` | Prompt templates for different task types | DD-109 |
 
 ## Project Scaffold Contents
 

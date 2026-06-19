@@ -10,8 +10,7 @@ created: "2026-04-06"
 updated: "2026-04-06"
 author: "claude"
 source_dd:
-  - "DD-34"
-  - "DD-49"
+  - "DD-109"
   - "DD-52"
   - "DD-53"
   - "DD-60"
@@ -98,7 +97,7 @@ Rule of thumb: If the user says "do this now", it's a skill. If the user says "d
 
 Rule of thumb: If the work flows through multiple roles with handoffs, it's a workflow. If one agent can complete it end-to-end, it's a skill.
 
-## Where Each Type Lives (DD-52, DD-49)
+## Where Each Type Lives (DD-52, DD-109)
 
 Per the fractal unit pattern, each system has:
 
@@ -110,7 +109,7 @@ agents/
     hooks/         ← Event triggers
 ```
 
-Per DD-49, Claude Code skills also live in:
+Per DD-109, Claude Code skills also live in:
 
 ```
 .claude/skills/    ← Cross-system or system-specific slash commands
@@ -143,7 +142,7 @@ Write Scope: PRDs, IB items (create only)
 Handoff Artifact: PRD → Architect
 ```
 
-### Skill Specification (DD-34, DD-65)
+### Skill Specification (DD-109, DD-65)
 
 ```yaml
 # In .claude/skills/{name}/SKILL.md

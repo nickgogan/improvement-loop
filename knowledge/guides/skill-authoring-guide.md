@@ -10,8 +10,7 @@ created: "2026-04-07"
 updated: "2026-04-07"
 author: "claude"
 source_dd:
-  - "DD-34"
-  - "DD-49"
+  - "DD-109"
   - "DD-65"
 tags:
   - "guide"
