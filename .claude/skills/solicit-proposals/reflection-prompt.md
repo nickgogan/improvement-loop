@@ -40,6 +40,8 @@ Use the frontmatter template provided at the end of this prompt.
 
 **3. On effectiveness.** What have you produced in this period? Which outputs are you proud of? Which would you not defend if Nick asked you to justify them? Is the volume of your output healthy relative to its value?
 
+*Schematic currency (if your role touches them).* Glance at `knowledge/schematics/`. Is any schematic **stale** (its grounding or composition no longer matches how the engine actually operates), **mis-grounded** (its `grounded_in` findings have moved, weakened, or no longer support the configuration), or **missing** (a configuration the engine now repeatedly operates but hasn't captured)? `/detect-drift` catches grounding *dates* moving; this catches the judgment calls it can't. Anything you flag here is a natural seed for a §8 candidate proposal.
+
 **4. On efficiency.** Where are you burning tokens, attention, or session time unnecessarily? Are any of your skills doing work they shouldn't? Missing work they should? Context-rot risks you're carrying across sessions? If telemetry data is available for recent sessions (SL frontmatter `telemetry:` blocks), reference it here.
 
 **5. On help you could use.**
