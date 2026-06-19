@@ -1,25 +1,23 @@
 # Improvement Loop — Progress
 
-**Last Updated:** 2026-06-18 (session 119)
+**Last Updated:** 2026-06-18 (session 120)
 
 ## Current Focus
 
-**Engine-collapse Phase 1 is COMPLETE and verified** (branch `engine-collapse-phase-1`, not yet merged to main — Nick's call). The three-system federation collapsed into one self-evolving engine: Household OS → Notion, Claude Build retired, the `meta-system` shell dissolved into the engine. The engine is now fractal-complete (all 7 folders) with three altitudes (research → per-artifact assess/design → whole-system composition) and a root-level `CHARTER.md`.
+**Engine-collapse Phase 1 is COMPLETE; post-Phase-1 cleanup and Phase 2 Slice 1 are done** (branch `engine-collapse-phase-1`, not yet merged to main — Nick's call). The federation collapsed into one self-evolving engine (Household OS → Notion, Claude Build retired, `meta-system` shell dissolved). The engine is fractal-complete with three altitudes (research → per-artifact assess/design → whole-system composition) and a root-level `CHARTER.md`.
 
-Phase 1 ran Steps P–8 across sessions 117–119. Session 119 landed Steps 6–8: merged the two Owners (one `name: owner` subagent), dissolved the shell to `archive/meta-system/`, and filed the governance reset — DD-103 (architecture reset; supersedes DD-32/45/46, amends DD-50/52/55/56/59), DD-104 (three-altitude architecture), DD-105 (charter + trajectory signals), DD-106 (Build retired / HOS→Notion). Phase-1-end verification passed: live-config reference-integrity clean, one Owner subagent, `/preflight` green.
+**Phase 2 is underway in small gated slices.** Slice 1 (session 120) defined the engine's top-altitude artifact form — the **schematic** (an evidence-grounded demand→configuration blueprint with a *required* evaluation/feedback layer): `_schema.yaml` registration, a Dataview-cataloged `knowledge/schematics/`, a form-contract template, **DD-107**, and 2 grounded seeds (`research-scanning-agent`, `codebase-audit-workcell`).
 
-**Active focus:** Post-Phase-1 cleanup (next session) — update 6 stale memories, collapse the `target_system` frontmatter vocab, rewrite the `research-to-codification` guide framing, re-sequence the priority queue. Then **Phase 2** (schematics + evaluation/feedback layer) once Nick confirms.
+**Active focus / next session:** **Phase 2 Slice 2** — extend `/detect-drift` to cover schematics (scan `knowledge/schematics/`, read the array `grounded_in`, flag when a grounding finding's `last_updated` moves past the schematic's `updated`). Then the remaining Phase-2 items stay demand-gated (execution-surface axis, Builder-mode matching).
 
-**Next session target:** Session 120 — the cleanup sweep. See `operations/handoffs/handoff-prompt-session-120-post-phase-1-cleanup.md`.
+**Next session target:** Session 121 — Phase 2 Slice 2 (drift integration). See `operations/handoffs/handoff-prompt-session-121-phase-2-slice-2-drift.md`.
 
 ---
 
-## What Changed This Session (119)
+## What Changed This Session (120)
 
-- **Steps 6–8 committed** (`7443d17`, `92d977e`, `84dccfb`) + 2 verification commits (`3392175`, `6c267df`).
-- One Owner subagent; meta-system shell archived; `systems/` holds only the engine.
-- 4 new DDs (103–106) filed; 8 DDs annotated (3 superseded, 5 amended); 1 SL entry.
-- Engine CLAUDE.md identity rewritten (three altitudes; fractal-complete table).
+- **Post-Phase-1 cleanup sweep:** memories reconciled (3 rewritten, 2 deleted as superseded, framing memory updated — memories live outside the repo); `target_system` vocab mass-collapsed to `improvement-loop` across 242 live files (`e59a741`, `archive/meta-system/` left as history); research-to-codification guide reframed to in-engine reality (`dafc99d`); priority queue seeded (`172b8ef`).
+- **Phase 2 Slice 1:** schematic form defined + DD-107 (`d8af4dc`); 2 grounded seeds + SL (`5d9c574`). All 11 `grounded_in` links resolve.
 
 ---
 
@@ -27,9 +25,14 @@ Phase 1 ran Steps P–8 across sessions 117–119. Session 119 landed Steps 6–
 
 Ordered queue. Status markers: `[nick-gate]` waits on Nick's ruling; `[deferred]` held by Nick, re-evaluate on trigger; `[trigger]` waits on external evidence or volume; `[don't-do-yet]` do not reintroduce until a specific upstream condition lands.
 
-1. **`[nick-gate]` Phase 2 — schematics + evaluation/feedback layer.** The new top-altitude content: define the schematic form in `knowledge/schematics/` (demand index → layered configuration → required eval/feedback layer → `grounded_in`/`composed_of` links), add the execution-surface axis to the Librarian concept docs, seed 2–3 cluster archetypes, and wire Librarian Builder mode to match a demand profile to a schematic. Reuse existing self-evolution machinery (`/detect-drift`, `/solicit-proposals`, Dimensions 7 & 9) — don't rebuild. Plan of record: `project-management/design-notes/2026-06-18-engine-collapse-restructure-plan.md` §Phase 2.
-2. **`[nick-gate]` Merge `engine-collapse-phase-1` → main.** After Phase 2 lands and is verified. Phase 1 + the post-Phase-1 cleanup sweep (session 120) are committed on the branch; merge is Nick's call.
-3. **`[optional]` Full `/system-audit`.** Post-collapse whole-system consistency sweep (fractal compliance now incl. `app/`/`knowledge/`, cross-reference integrity, charter references). Run before or after merge at Nick's discretion.
+1. **Phase 2 — schematics + evaluation/feedback layer** (in gated slices; plan of record: `project-management/design-notes/2026-06-18-engine-collapse-restructure-plan.md` §Phase 2).
+   - ✅ **Slice 1 (done, session 120):** schematic form defined — `_schema.yaml`, `knowledge/schematics/` + template + `_index`, DD-107, 2 grounded seeds.
+   - **`[next]` Slice 2:** extend `/detect-drift` to schematics (scan `knowledge/schematics/`, read `grounded_in`, flag on moved grounding). Small, mechanical.
+   - **`[deferred]` Execution-surface Librarian axis** — weak demand per consumer-abstractions-map (Rule 11); revisit at 2–3+ requests.
+   - **`[deferred]` Builder-mode demand→schematic matching** (`/ask-kb`) — needs a fuller schematic library first.
+   - **`[trigger]` More seed schematics** (project-coding-workcell, household-assistant) — when exercising the form against more demand is useful.
+2. **`[nick-gate]` Merge `engine-collapse-phase-1` → main.** Phase 1 + cleanup + Phase 2 Slice 1 are committed on the branch; merge is Nick's call (do not auto-merge).
+3. **`[optional]` Full `/system-audit`.** Post-collapse whole-system consistency sweep (fractal compliance incl. `app/`/`knowledge/`, cross-reference integrity, charter references). Run before or after merge at Nick's discretion.
 
 ---
 
