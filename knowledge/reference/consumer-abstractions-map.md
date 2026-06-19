@@ -89,7 +89,7 @@ Rule 12 (audit/design symmetry) applies at both layers: every harness operation 
 - IL consumer-abstractions-map (parallel map for per-artifact abstractions): `systems/improvement-loop/operations/references/consumer-abstractions-map.md`
 - Harness concept doc (this commit): `systems/improvement-loop/knowledge/reference/harness.md`
 - IL harness concept doc (§Composition substrate): `systems/improvement-loop/operations/references/librarian/harness.md`
-- `/audit-system` SKILL.md: `systems/meta-system/.claude/skills/audit-system/SKILL.md`
-- `/audit-system` design contract: `systems/meta-system/project-management/design-notes/2026-06-12-audit-system-design-contract.md`
+- `/audit-system` SKILL.md: `systems/improvement-loop/.claude/skills/audit-system/SKILL.md`
+- `/audit-system` design contract: `systems/improvement-loop/project-management/design-notes/2026-06-12-audit-system-design-contract.md`
 - IL rules 10/11/12: `systems/improvement-loop/governance/agent-rules.md`
 - Cross-system roadmap and audience archetypes 1–5: workspace `PROGRESS.md`

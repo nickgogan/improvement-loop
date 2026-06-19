@@ -6,7 +6,7 @@ description: "Breakthrough Method for Agile AI-Driven Development — multi-agen
 spectrum_position: "cherry-pick"
 what_we_use: "Agent team model patterns, docs-as-code approach, context sharding techniques, scale-adaptive flow design"
 local_derivations:
-  - "systems/meta-system/knowledge/patterns/capability-type-selection.md"
+  - "systems/improvement-loop/knowledge/patterns/capability-type-selection.md"
 last_evaluated_version: "v6.2.2"
 last_evaluated_date: "2026-04-07"
 maintainer: "bmad-code-org (Brian / bmadcode)"

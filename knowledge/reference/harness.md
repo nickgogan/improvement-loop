@@ -101,7 +101,7 @@ Ordered steps the author works through before drafting. Each step bounds a downs
 
 ### Template skeleton
 
-The minimum valid harness spec shape. Fill in placeholders; do not delete required sections. A harness spec lives as a **design contract** in `systems/meta-system/project-management/design-notes/<date>-<name>-design-contract.md` (current placement; see priority-queue item 6 for the placement-debate gate). The corresponding SKILL.md (if the harness is implemented as a slash command) lives in `.claude/skills/<name>/SKILL.md`.
+The minimum valid harness spec shape. Fill in placeholders; do not delete required sections. A harness spec lives as a **design contract** in `systems/improvement-loop/project-management/design-notes/<date>-<name>-design-contract.md` (current placement; see priority-queue item 6 for the placement-debate gate). The corresponding SKILL.md (if the harness is implemented as a slash command) lives in `.claude/skills/<name>/SKILL.md`.
 
 ```markdown
 ---
@@ -221,8 +221,8 @@ Walk every `/audit-system` invariant and confirm §Construction tells the builde
 ## Cross-references
 
 - MetaSystem consumer-abstractions-map: `systems/improvement-loop/knowledge/reference/consumer-abstractions-map.md`
-- `/audit-system` SKILL.md (the audit half of the harness-level pair): `systems/meta-system/.claude/skills/audit-system/SKILL.md`
-- `/audit-system` design contract: `systems/meta-system/project-management/design-notes/2026-06-12-audit-system-design-contract.md`
+- `/audit-system` SKILL.md (the audit half of the harness-level pair): `systems/improvement-loop/.claude/skills/audit-system/SKILL.md`
+- `/audit-system` design contract: `systems/improvement-loop/project-management/design-notes/2026-06-12-audit-system-design-contract.md`
 - IL runtime-harness concept (§Composition substrate): `systems/improvement-loop/operations/references/librarian/harness.md`
 - IL skill concept (§Construction reference shape this doc parallels): `systems/improvement-loop/operations/references/librarian/skill.md`
 - IL design operation spec (Phase model for §Construction consumers): `systems/improvement-loop/operations/references/librarian/design.md`

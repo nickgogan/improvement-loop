@@ -10,11 +10,11 @@ tags:
 
 # IL Governance
 
-System-specific governance documents for the Improvement Loop. Derived from the MetaSystem constitution and translated into operational rules by the Owner agent.
+System-specific governance documents for the Improvement Loop (the engine). Derived from the charter and workspace operating law, and translated into operational rules by the Owner agent.
 
 ## Purpose
 
-This directory holds governance artifacts that are specific to the IL system — rules, policies, and constraints that operationalize MetaSystem's constitution for the research pipeline context. These are not MetaSystem-level governance (which lives in `systems/meta-system/governance/`), but IL-specific translations.
+This directory holds governance artifacts that are specific to the engine — rules, policies, and constraints that operationalize the charter (`CHARTER.md`) and workspace operating law (`CLAUDE.md`, `.claude/rules/`) for the research-pipeline context.
 
 ## What Belongs Here
 
@@ -25,7 +25,7 @@ This directory holds governance artifacts that are specific to the IL system —
 
 ## What Does NOT Belong Here
 
-- MetaSystem-level governance (constitution, values, principles) → `systems/meta-system/governance/`
+- Vision, values, trajectory signals → `CHARTER.md` (workspace root)
 - Design Decisions → `project-management/design-decisions/`
 - Implementation Backlog items → `project-management/implementation-backlog/`
 - System Log entries → `operations/system-log/`

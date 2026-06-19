@@ -29,11 +29,11 @@ tags:
 
 ## Rules
 
-1. **IL modifies only IL files.** The Improvement Loop's write scope is limited to the `systems/improvement-loop/` directory tree and its engine directories (`.claude/skills/` under IL, `.claude/agents/` subagent definitions). Never modify files in `systems/meta-system/`, `incubator/`, or workspace root configs.
-   - *Source:* Constitution — Boundary Rules, rule 1; Owner Constitution — Boundaries
+1. **The pipeline agents modify only engine files.** The research pipeline's write scope is limited to the `systems/improvement-loop/` directory tree and its engine directories (`.claude/skills/` under the engine, `.claude/agents/` subagent definitions). Never modify files under `archive/` or `incubator/`. Workspace-root config and the charter are Owner-stewarded (proposal-first), not pipeline-agent territory.
+   - *Source:* Charter; Owner Constitution — Boundaries
 
-2. **Research KB is IL-owned.** Findings, sources, authorities, watched-libraries, watched-blogs, and extracts are IL operational data. They do not belong in meta-system or workspace root.
-   - *Source:* Constitution — The Three Systems; DD-41
+2. **Research KB is engine-owned.** Findings, sources, authorities, watched-libraries, watched-blogs, and extracts are engine operational data. They do not belong at workspace root.
+   - *Source:* DD-41
 
 3. **IL does not modify Notion schema or operations.** Schema changes go through Claude Build. Notion operations go through Household OS agents. IL has no Notion write access.
    - *Source:* Constitution — Boundary Rules, rules 1-2

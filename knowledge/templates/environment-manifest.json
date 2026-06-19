@@ -205,16 +205,12 @@
         "purpose": "Session log and work queue"
       },
       {
-        "path": "systems/meta-system/governance/constitution.md",
-        "purpose": "System definitions and boundaries"
+        "path": "CHARTER.md",
+        "purpose": "Vision, mission, purpose, values, trajectory signals"
       },
       {
         "path": "systems/improvement-loop/knowledge/reference/fractal-pattern.md",
         "purpose": "7-folder fractal unit structure"
-      },
-      {
-        "path": "systems/meta-system/governance/values.md",
-        "purpose": "Core values and design philosophy"
       },
       {
         "path": "systems/improvement-loop/knowledge/reference/principles.md",

@@ -159,7 +159,7 @@ agents/, project-management/, operations/, archive/...
 [300 tokens of description]
 
 # Do this:
-See the fractal pattern definition: systems/meta-system/governance/fractal-pattern.md
+See the fractal pattern definition: systems/improvement-loop/knowledge/reference/fractal-pattern.md
 ```
 
 Copies go stale and create contradictions when the source changes but the copy does not. Pointers always read the current state. The exception: project intent, trade-off philosophy, and other information with no canonical file location genuinely belongs inline.
