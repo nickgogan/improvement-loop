@@ -1,14 +1,25 @@
 # Improvement Loop — Progress
 
-**Last Updated:** 2026-06-12 (session 112)
+**Last Updated:** 2026-06-18 (session 119)
 
 ## Current Focus
 
-Session 112 executed cross-system roadmap step F — MetaSystem Owner instantiated (IB-167), MetaSystem capability roadmap drafted. IL state advanced minimally: no new IL artifacts authored this session, but a harness-discovery probe file was placed at `.claude/agents/test-discovery.md` for empirical resolution next session (to be deleted after). One cross-cutting IB filed in meta-system: IB-168 — MetaSystem Owner operational skill family (per-skill parameterize-vs-equivalent decisions, triggered by recurring evidence; may eventually request IL skill refactors). MetaSystem SL entry: `../meta-system/operations/system-log/owner-instantiated-step-f-roadmap-drafted.md`.
+**Engine-collapse Phase 1 is COMPLETE and verified** (branch `engine-collapse-phase-1`, not yet merged to main — Nick's call). The three-system federation collapsed into one self-evolving engine: Household OS → Notion, Claude Build retired, the `meta-system` shell dissolved into the engine. The engine is now fractal-complete (all 7 folders) with three altitudes (research → per-artifact assess/design → whole-system composition) and a root-level `CHARTER.md`.
 
-**Active focus:** Cross-system roadmap step G — build MetaSystem capabilities (`/audit-system`, `/design-harness`) gated on Nick's acceptance of the capability roadmap draft.
+Phase 1 ran Steps P–8 across sessions 117–119. Session 119 landed Steps 6–8: merged the two Owners (one `name: owner` subagent), dissolved the shell to `archive/meta-system/`, and filed the governance reset — DD-103 (architecture reset; supersedes DD-32/45/46, amends DD-50/52/55/56/59), DD-104 (three-altitude architecture), DD-105 (charter + trajectory signals), DD-106 (Build retired / HOS→Notion). Phase-1-end verification passed: live-config reference-integrity clean, one Owner subagent, `/preflight` green.
 
-**Next session target:** Session 113 — resolve harness discovery test, gate the capability roadmap, begin step G.
+**Active focus:** Post-Phase-1 cleanup (next session) — update 6 stale memories, collapse the `target_system` frontmatter vocab, rewrite the `research-to-codification` guide framing, re-sequence the priority queue. Then **Phase 2** (schematics + evaluation/feedback layer) once Nick confirms.
+
+**Next session target:** Session 120 — the cleanup sweep. See `operations/handoffs/handoff-prompt-session-120-post-phase-1-cleanup.md`.
+
+---
+
+## What Changed This Session (119)
+
+- **Steps 6–8 committed** (`7443d17`, `92d977e`, `84dccfb`) + 2 verification commits (`3392175`, `6c267df`).
+- One Owner subagent; meta-system shell archived; `systems/` holds only the engine.
+- 4 new DDs (103–106) filed; 8 DDs annotated (3 superseded, 5 amended); 1 SL entry.
+- Engine CLAUDE.md identity rewritten (three altitudes; fractal-complete table).
 
 ---
 
