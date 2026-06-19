@@ -5,7 +5,7 @@ assigned_form: "agent"
 source_finding: null
 confidence: "HIGH"
 tier: "auto"
-reason_codes: ["durable-scope", "cognitive-disposition", "11-skill-inventory"]
+reason_codes: ["durable-scope", "cognitive-disposition", "12-skill-inventory"]
 co_occurrence: null
 extraction_date: "2026-04-19"
 identification_report: null
@@ -107,6 +107,7 @@ The Researcher owns **Stage 1** of the IL pipeline: research intake, source proc
 
 | Skill | Purpose | Autonomy |
 |-------|---------|----------|
+| `/research-query` | On-demand targeted research for a specific question; persistence gated on Nick's decision (DD-83) | Proposal-First — always reports; writes findings/sources only if approved |
 | `/research-loop` | Primary intake — scan sources, extract findings, produce delta reports | Guarded — acts, then reports via delta report |
 | `/source-triage` | Quick-scan sources for extract/skip/defer verdicts | Full Autonomy — triage verdicts are low-blast-radius |
 | `/transcript-fetcher` | Fetch YouTube transcripts for deep extraction | Full Autonomy — mechanical fetch operation |

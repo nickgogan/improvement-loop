@@ -9,7 +9,7 @@ description: >-
   context (rule 10) and surfaces the audit findings alongside the draft. Does
   not deploy. Composes design.md × skill.md from the Librarian reference layer.
 user-invocable: true
-allowed-tools: Read Grep Glob Write Task
+allowed-tools: Read Grep Glob Write Agent
 argument-hint: "<intent-description> [--target-path <where-to-write>] [--partial <existing-draft-path>]"
 ---
 

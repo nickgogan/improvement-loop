@@ -146,7 +146,18 @@ The Librarian is purely reactive — it responds to questions, never proactively
 
 ### Librarian Skills
 
-The Librarian uses Read/Glob/Grep tools directly. No dedicated skills currently.
+| Skill | Category | Boundary Rule |
+|-------|----------|---------------|
+| `/assess-skill` | Audit | Reads a consumer SKILL.md, produces findings; read-only on the artifact and KB |
+| `/assess-agent` | Audit | Reads a consumer agent artifact, produces findings; read-only |
+| `/assess-prompt` | Audit | IL-KB-grounded extension to `/prompt-evaluator`; read-only |
+| `/design-skill` | Author | Drafts a SKILL.md from intent; delegates Phase 5 audit to `/assess-skill` (rule 10); does not deploy |
+| `/design-agent` | Author | Drafts an agent artifact from intent; delegates Phase 5 audit to `/assess-agent` (rule 10); does not deploy |
+| `/ask-kb` | Query | Citation-grounded KB query (Teacher/Builder modes); read-only |
+| `/compare-repos` | Query | Cross-repo synthesis over watched libraries; writes the comparison report only on approval |
+| `/detect-drift` | Maintenance | Source-drift scanner for extracts + schematics; read-only by contract |
+
+The Librarian also uses Read/Glob/Grep directly for Teacher/Builder-mode conversations that don't fit a dedicated skill.
 
 ### Boundary Conflict Points
 

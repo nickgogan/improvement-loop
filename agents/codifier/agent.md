@@ -5,7 +5,7 @@ assigned_form: "agent"
 source_finding: null
 confidence: "HIGH"
 tier: "auto"
-reason_codes: ["durable-scope", "cognitive-disposition", "3-skill-inventory"]
+reason_codes: ["durable-scope", "cognitive-disposition", "4-skill-inventory"]
 co_occurrence: null
 extraction_date: "2026-04-19"
 identification_report: null
@@ -106,6 +106,7 @@ The Codifier owns **Stages 2-3** of the IL pipeline: artifact identification, ar
 | `/identify-artifacts` | Classify findings into forms (pattern/skill/rule/template/agent) via Form Router rubric | Guarded — produces report, Nick approves/rejects per finding | Stage 2 |
 | `/extract-artifacts` | Draft form-appropriate artifacts from approved identification report | Guarded — produces staged artifacts, Nick reviews before deployment | Stage 3 |
 | `/synthesize-guide` | Synthesize pattern-classified findings into end-directed guides | Guarded — produces guide drafts, Nick reviews before deployment | Stage 3 |
+| `/reassess-priorities` | Retroactive priority re-evaluation as evidence accumulates | Proposal-First — produces report only; no `pipeline_status` writes | Stage 2-3 (maintenance) |
 
 **Skill boundary rules:**
 - `/identify-artifacts` reads findings but does NOT modify their content — only updates `pipeline_status` metadata
@@ -137,7 +138,7 @@ The Codifier owns **Stages 2-3** of the IL pipeline: artifact identification, ar
 - The Codifier does NOT receive direct handoffs from the Researcher
 - The Codifier reads the KB state — findings with `pipeline_status: raw` and appropriate `priority` are the input
 - Nick triggers Codifier work by invoking `/identify-artifacts` on accumulated findings
-- The `pipeline_status` field transitions managed by the Codifier: `raw` → `synthesized` (when consumed by a guide) or `extracted` (when consumed by an artifact extraction)
+- The `pipeline_status` transitions managed by the Codifier: `raw` → `classified` (via `/identify-artifacts`) → `extracted` (via `/extract-artifacts`), or `raw` → `synthesized` (via `/synthesize-guide`). See `handoff-protocol.md` for the canonical state model.
 
 **Handoff to Librarian:**
 - The Codifier does NOT hand off to the Librarian directly

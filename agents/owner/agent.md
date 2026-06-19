@@ -123,12 +123,14 @@ The Owner activates when:
 
 | Skill | Purpose | Status |
 |-------|---------|--------|
-| `/translate-governance` | Read MetaSystem constitution + principles + vocabulary → produce/update system-specific governance rules in `governance/`. Flags drift between source governance and system-specific translations. | Active |
+| `/translate-governance` | Read the charter (`../../CHARTER.md`) + workspace operating law + engine design-wisdom → produce/update engine governance rules in `governance/`. Flags drift between source governance and the engine's translations. | Active |
 | `/maintain-docs` | Update or create system documentation. Two modes: **update** (detect drift, refresh existing docs/diagrams) and **create** (interview the user to produce new docs from scratch when none exist) | Active |
 | `/system-health` | Drift detection — compare docs vs actual state, flag divergence | Active |
 | `/process-feedback` | Read feedback/, triage, investigate root causes, propose actions | Active |
 | `/system-audit` | Full consistency check — constitutions, contracts, governance compliance | Active |
+| `/solicit-proposals` | Run a reflection round — per-agent self-reflection → proposal drafts → Nick gates (DD-86) | Active |
 | `/cleanup-cache` | Monitor and purge temp/cache directories across IL workflows | Active |
+| `/audit-system` | Top-altitude whole-system composition — discover artifacts, dispatch to `/assess-*`, emit manifest + findings + summary (DD-104) | Active |
 
 The Owner is also invocable as a subagent from anywhere in the workspace via `.claude/agents/owner.md`.
 
