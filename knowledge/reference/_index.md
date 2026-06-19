@@ -34,11 +34,11 @@ Active read-only context material for operating within the Household OS. These a
 
 | Reference | Category | Systems | Stage |
 |-----------|----------|---------|-------|
-| [[consumer-abstractions-map]] | consumer-abstractions | meta-system | active |
-| [[harness]] | concept (§Construction) | meta-system | draft |
-| [[fractal-pattern]] | design-wisdom | cross-system | active |
-| [[principles]] | design-wisdom (DBDO pipeline) | cross-system | active |
-| [[vocabulary]] | design-wisdom (terminology) | cross-system | active |
+| [[consumer-abstractions-map]] | consumer-abstractions | improvement-loop | active |
+| [[harness]] | concept (§Construction) | improvement-loop | draft |
+| [[fractal-pattern]] | design-wisdom | improvement-loop | active |
+| [[principles]] | design-wisdom (DBDO pipeline) | improvement-loop | active |
+| [[vocabulary]] | design-wisdom (terminology) | improvement-loop | active |
 
 ## Dataview Query
 

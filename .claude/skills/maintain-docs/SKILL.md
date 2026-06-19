@@ -184,7 +184,7 @@ After approval:
 3. **Never fabricate system state.** If you can't verify something by reading files, say "unable to verify" rather than guessing.
 4. **Don't rewrite docs for style.** Update mode fixes factual errors. It doesn't rewrite prose, add commentary, or reorganize sections unless factual accuracy requires it.
 5. **Preserve document ownership.** Some docs are authored by Nick. Update factual details but don't change voice or intent.
-6. **Cross-system docs are out of scope.** If drift is found in `meta-system/` docs, flag it but don't fix it. That's cross-system, Human-Required tier.
+6. **Workspace-root constitutional docs are out of scope.** If drift is found in workspace-root governance (`CHARTER.md`, root `CLAUDE.md`, `.claude/rules/`), flag it but don't fix it — that's workspace law, Human-Required tier. This skill maintains engine docs under `systems/improvement-loop/`.
 
 ## Calibration Notes
 

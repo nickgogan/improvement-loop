@@ -130,4 +130,4 @@ When an upstream change is detected, the triage question depends on spectrum pos
 ## Related
 
 - [[capability-type-selection]] — Once you decide *what* to bring in, this pattern decides *what form* it takes (agent, skill, workflow, hook, rule)
-- Research-to-Codification Pipeline (guide) — How findings from the IL become codified artifacts in meta-system
+- Research-to-Codification Pipeline (guide) — How research findings become codified artifacts in the engine's `knowledge/` layer

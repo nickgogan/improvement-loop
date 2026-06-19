@@ -65,16 +65,11 @@
           "items": {
             "type": "string",
             "enum": [
-              "s1-schema",
-              "s2-operations",
-              "claude-build",
-              "s4-bootstrap",
-              "improvement-loop",
-              "meta-system"
+              "improvement-loop"
             ]
           },
           "default": [],
-          "description": "Systems this project reads from or depends on."
+          "description": "Systems this project reads from or depends on. Only the engine (improvement-loop) is a live system post-collapse (DD-103); archived systems are not valid dependencies for new projects."
         },
         "promotion_criteria": {
           "type": "array",

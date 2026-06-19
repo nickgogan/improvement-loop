@@ -4,10 +4,10 @@ id: "research-to-codification-pipeline"
 type: "guideline"
 category: "knowledge-management"
 target_system:
-  - "cross-system"
+  - "improvement-loop"
 stage: "active"
 created: "2026-04-07"
-updated: "2026-04-19"
+updated: "2026-06-18"
 author: "nick"
 source_dd:
   - "DD-45"
@@ -15,12 +15,12 @@ source_dd:
   - "DD-29"
   - "DD-65"
   - "DD-80"
+  - "DD-103"
 tags:
   - "guide"
   - "knowledge-management"
   - "improvement-loop"
   - "codification"
-  - "meta-system"
 aliases:
   - "How findings become patterns"
   - "Codification pipeline"
@@ -29,20 +29,20 @@ aliases:
 
 # Research-to-Codification Pipeline
 
-How research findings in the Improvement Loop become actionable artifacts in meta-system's knowledge layer. This is the bridge between "we learned something" and "our systems can use it."
+How research findings in the engine become actionable artifacts in the engine's own `knowledge/` and `.claude/` layers. This is the bridge between "we learned something" and "the engine can use it." Everything happens **in-engine** — there is no separate meta-system layer downstream (DD-103 collapsed the federation; the engine is the sole system).
 
 ## The Pipeline
 
 ```
-Research KB (IL)  -->  Identification Report (IL)  -->  Extracted Artifacts (IL)  -->  Deployed Artifacts
-  findings/             research-reports/                    extracts/           meta-system / .claude/
-       |                        |                                |                           |
-  research-loop          identify-artifacts               extract-artifacts           deployment (manual)
-       |                        |                                |                           |
-  [human gate]            [human gate]                    [human gate]                 [human gate]
+Research KB  -->  Identification Report  -->  Extracted Artifacts  -->  Promoted (deployed) Artifacts
+  findings/         research-reports/              extracts/         knowledge/ or .claude/ (in-engine)
+       |                    |                          |                          |
+  research-loop      identify-artifacts         extract-artifacts         promotion (manual)
+       |                    |                          |                          |
+  [human gate]        [human gate]              [human gate]              [human gate]
 ```
 
-Four stages, four human gates (DD-29). No autonomous deployment — Nick decides what gets deployed, in what form, and where.
+Four stages, four human gates (DD-29). No autonomous deployment — Nick decides what gets promoted, in what form, and where. All four stages and all targets live inside `systems/improvement-loop/`.
 
 **Pipeline simplification (DD-80):** The Proposer stage (`/research-proposer` -> `improvement-proposals/`) was eliminated in session 23. Classification and drafting are split into two skills: `/identify-artifacts` (lightweight, Sonnet-parallelizable) and `/extract-artifacts` (drafts from approved report). See DD-80 for rationale.
 
@@ -141,16 +141,17 @@ If you can't write it to that bar, it's not ready for deployment. Leave it stage
 3. Update the relevant `_index.md` catalogs
 4. If the artifact creates new constraints, consider whether it warrants a DD
 
-## How Systems Consume Deployed Artifacts
+## How the Engine Consumes Promoted Artifacts
 
-Per DD-46: **MetaSystem does not push work to systems — systems pull what's relevant.**
+Promotion is **pull, not push** — a promoted artifact is a reference document that becomes operational when something invokes it (DD-46's pull principle survives the collapse; the consumer is now the engine itself, plus any downstream system the engine helps design, e.g. Household OS on Notion).
 
-- **Nick and JR** browse the knowledge layer in Obsidian (graph view, Dataview queries)
-- **Agents** read files via Glob/Grep/Read; parse frontmatter for filtering
+- **Nick** browses `knowledge/` in Obsidian (graph view, Dataview queries)
+- **Agents** (Owner, Researcher, Codifier, Librarian) read files via Glob/Grep/Read; parse frontmatter for filtering
 - **Skills** reference patterns and guides in their procedures
-- **Bootstrap** uses templates to scaffold new projects
+- **Bootstrap** uses templates to scaffold new incubator projects
+- **The Librarian advisory layer** composes promoted patterns/guides into `/assess-*` and `/design-*` substrate
 
-A pattern in `knowledge/patterns/` is a reference document. It becomes operational when a system creates a skill, agent, or configuration that implements it.
+A pattern in `knowledge/patterns/` is a reference document. It becomes operational when a skill, agent, or configuration implements it.
 
 ## Upstream Dependencies
 
@@ -169,7 +170,7 @@ When a codified artifact derives from an external package (GSD, gstack, BMAT, et
 | Artifact extraction (`/extract-artifacts`) | Skill built, not yet run against KB |
 | Deployment | Manual. Two patterns exist (capability-type-selection, upstream-dependency-spectrum). Templates, guides, and agent-templates directories are empty or near-empty. |
 
-The bottleneck is extraction and deployment. The IL has material; meta-system's knowledge layer needs to be populated from it.
+The bottleneck is extraction and promotion. The engine has material; its `knowledge/` layer needs to be populated from it.
 
 ## Archived: Proposal Stage
 
@@ -180,6 +181,7 @@ The Proposer stage (`/research-proposer` skill, `improvement-proposals/` directo
 - [[upstream-dependency-spectrum]] — How to position external dependencies on the cherry-pick/adopt spectrum
 - [[capability-type-selection]] — How to choose between agent, skill, workflow, hook, and rule
 - DD-45: Knowledge layer architecture
-- DD-46: Knowledge flow pipeline (IL produces, meta-system codifies, systems consume)
+- DD-46: Knowledge flow pipeline — original "IL produces, meta-system codifies, systems consume" framing, **superseded by DD-103** (federation collapsed; the pipeline is now wholly in-engine). The pull-not-push principle survives.
 - DD-29: Human gates in the improvement pipeline
 - DD-80: Pipeline simplification (Proposer stage eliminated)
+- DD-103: Engine-collapse architecture reset (one self-evolving engine)

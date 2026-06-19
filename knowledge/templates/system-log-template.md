@@ -2,7 +2,7 @@
 title: "{Session N — Short descriptive title of what happened}"
 type: "system-log"
 target_system:
-  - "{system-name}"   # improvement-loop | meta-system | household-os | claude-build | cross-system
+  - "{system-name}"   # improvement-loop (sole live system). Archived (historical rows only): household-os | claude-build
 actor: "{Agent: Claude (role disposition) | Nick | Multi-actor: [...]}"
 area: null            # optional subsystem/area tag
 change_type: "{Design | Implementation | Migration | Governance | Bugfix | Cleanup | ...}"

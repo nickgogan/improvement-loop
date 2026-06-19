@@ -8,7 +8,7 @@
     "stage": "incubation",
     "tags": ["prompts", "agents", "templates", "knowledge-management"],
     "governing_dds": ["DD-45", "DD-48", "DD-49"],
-    "depends_on": ["meta-system", "claude-build"],
+    "depends_on": ["improvement-loop"],
     "promotion_criteria": [
       "At least 10 tested prompt patterns in active use",
       "Consumed by 2+ systems during regular operations",
