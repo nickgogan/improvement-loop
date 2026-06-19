@@ -130,7 +130,7 @@ The Owner activates when:
 | `/system-audit` | Full consistency check — constitutions, contracts, governance compliance | Active |
 | `/solicit-proposals` | Run a reflection round — per-agent self-reflection → proposal drafts → Nick gates (DD-86) | Active |
 | `/cleanup-cache` | Monitor and purge temp/cache directories across IL workflows | Active |
-| `/audit-system` | Top-altitude whole-system composition — discover artifacts, dispatch to `/assess-*`, emit manifest + findings + summary (DD-104) | Active |
+| `/audit-artifacts` | Top-altitude whole-system composition — discover artifacts, dispatch to `/assess-*`, emit manifest + findings + summary (DD-104; renamed from `/audit-system` in DD-110) | Active |
 
 The Owner is also invocable as a subagent from anywhere in the workspace via `.claude/agents/owner.md`.
 

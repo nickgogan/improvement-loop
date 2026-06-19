@@ -19,7 +19,7 @@ grounded_in:
   - "independent-eval-and-scoped-authority-commandments"
   - "agent-self-reporting-unreliability-independent-eval"
 composed_of:
-  - "systems/improvement-loop/.claude/skills/audit-system"
+  - "systems/improvement-loop/.claude/skills/audit-artifacts"
   - "systems/improvement-loop/.claude/skills/assess-skill"
   - "systems/improvement-loop/.claude/skills/assess-agent"
   - "systems/improvement-loop/.claude/skills/assess-prompt"
@@ -39,7 +39,7 @@ aliases:
 > independent assessors in isolated contexts, and returns a structured findings report — changing
 > nothing.
 
-This schematic captures the engine's own top-altitude composition (`/audit-system` dispatching the
+This schematic captures the engine's own top-altitude composition (`/audit-artifacts` dispatching the
 per-artifact `/assess-*` skills) as a reusable configuration — the recurring shape of
 "independently evaluate every artifact in a system, in parallel, without trusting any of them to
 grade itself."
@@ -113,7 +113,7 @@ no external runtime, no provider-API hosting.
   - [[agent-self-reporting-unreliability-independent-eval]] — never trust agent self-reports;
     grounds the entire "evaluate from outside" premise.
 - **`composed_of`** — what it's built from:
-  - `/audit-system` — the orchestrator (discover, bin-pack, dispatch, aggregate).
+  - `/audit-artifacts` — the orchestrator (discover, bin-pack, dispatch, aggregate).
   - `/assess-skill`, `/assess-agent`, `/assess-prompt` — the per-artifact independent assessors.
 
 ## Risk & maturity
@@ -123,7 +123,7 @@ no external runtime, no provider-API hosting.
   blind spots — whole-system invariants that no single per-artifact assessor catches (the v1
   workcell is composition-only, empty whole-system invariants per Rule 11); (3) token-ceiling
   mis-packing under-utilizing or overflowing a subagent.
-- **Maturity:** seed — the composition is real and runs (`/audit-system` v1), but it has not been
+- **Maturity:** seed — the composition is real and runs (`/audit-artifacts` v1), but it has not been
   exercised against a *foreign* system at scale, and its whole-system-invariant layer is
   intentionally empty pending demand.
 - **Revisit when:** whole-system invariants earn their keep (a recurring cross-artifact defect class

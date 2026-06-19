@@ -10,6 +10,7 @@ created: "2026-06-12"
 updated: "2026-06-12"
 author: "owner"
 source_dd: []
+superseded_in_part_by: "DD-110"
 tags:
   - "design-note"
   - "audit-system"
@@ -22,6 +23,8 @@ aliases:
 ---
 
 # `/audit-system` Design Contract
+
+> **Superseded in part by DD-110 (2026-06-19).** The skill was renamed `/audit-system` → **`/audit-artifacts`**, and its on-disk output moved from `<target>/audit-reports/<date>/` to **`<target>/operations/artifact-audits/<date>/`**. This note is preserved as the v1 design record *as of 2026-06-12* (including the historical meta-system smoke-test output paths, now archived) — for current name/paths see DD-110 and `.claude/skills/audit-artifacts/SKILL.md`.
 
 Design substrate for step G's first build target. Drafted session 113 after capability-roadmap acceptance. **This is not a SKILL.md.** It is the design contract that seeds session 114+ implementation.
 

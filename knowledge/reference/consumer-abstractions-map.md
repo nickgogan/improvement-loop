@@ -23,9 +23,9 @@ This is the parallel to IL's `systems/improvement-loop/operations/references/con
 
 ## What this map governs
 
-- **Concept docs** in `systems/improvement-loop/knowledge/reference/` — substrate that MetaSystem operations (`/audit-system`, `/design-harness`) compose against.
+- **Concept docs** in `systems/improvement-loop/knowledge/reference/` — substrate that MetaSystem operations (`/audit-artifacts`, `/design-harness`) compose against.
 - **`/audit-*` and `/design-*` skill pairs at the harness level** — consumer-facing skills that wrap the operations.
-- **The MetaSystem–IL split.** IL owns per-artifact `/assess-*` and `/design-*`; MetaSystem owns whole-system `/audit-system` and `/design-harness` that compose IL's assessors and constructors.
+- **The MetaSystem–IL split.** IL owns per-artifact `/assess-*` and `/design-*`; MetaSystem owns whole-system `/audit-artifacts` and `/design-harness` that compose IL's assessors and constructors.
 
 What this map does **not** govern: IL-owned abstractions (skill, agent, prompt) — those live in IL's map. Research output, knowledge vault stewardship, governance source docs — those are MetaSystem-internal but not consumer abstractions.
 
@@ -49,7 +49,7 @@ Tiers:
 
 | Abstraction | Concept doc | §Composition | §Construction | `/audit-*` | `/design-*` | Demand evidence |
 |---|---|---|---|---|---|---|
-| **Harness** | `knowledge/reference/harness.md` (this commit) | pointer → IL `librarian/harness.md` (IL-owned audit-time substrate) | ✅ (this commit — session 116) | `/audit-system` v1 **stable** (sessions 114–115) | `/design-harness` queued (cross-system roadmap step G) | (a) `/audit-system` shipped and ran twice (MetaSystem self-audit + IL second canonical run); (b) `/design-harness` is the rule-10 constructive peer queued for next build; (c) sizing-engine pilot consumer (priority-queue item 5) provides concrete non-self-test demand — two specific §Construction gaps already named (deviation semantics for multi-system comparison; multi-surface composition with forecasting layered on a comparison harness). Multi-archetype: Nick-builder (1) authors harnesses; portfolio-presenter (2) cites them; builder-friend (4) inspects discovery contract; employer-evaluator (5) reads summary. Cost of absence: every new harness gets ad-hoc structure with no whole-system gate. |
+| **Harness** | `knowledge/reference/harness.md` (this commit) | pointer → IL `librarian/harness.md` (IL-owned audit-time substrate) | ✅ (this commit — session 116) | `/audit-artifacts` v1 **stable** (sessions 114–115) | `/design-harness` queued (cross-system roadmap step G) | (a) `/audit-artifacts` shipped and ran twice (MetaSystem self-audit + IL second canonical run); (b) `/design-harness` is the rule-10 constructive peer queued for next build; (c) sizing-engine pilot consumer (priority-queue item 5) provides concrete non-self-test demand — two specific §Construction gaps already named (deviation semantics for multi-system comparison; multi-surface composition with forecasting layered on a comparison harness). Multi-archetype: Nick-builder (1) authors harnesses; portfolio-presenter (2) cites them; builder-friend (4) inspects discovery contract; employer-evaluator (5) reads summary. Cost of absence: every new harness gets ad-hoc structure with no whole-system gate. |
 
 ### Moderate demand — audit only
 
@@ -59,8 +59,8 @@ _None at this commit._ Future candidates listed below are weak.
 
 | Abstraction | Notes |
 |---|---|
-| **System** | "System" as a first-class authored abstraction (distinct from the harness it runs in) has no consumer-facing skill demand today. `/audit-system` treats the audited folder as a system but the construction unit is the harness. Promote if a consumer-facing `/audit-system-of-systems` or cross-harness composition skill surfaces. |
-| **Composition-layer** | The composition layer (whole-system operations composing IL per-artifact operations) is the *pattern* `/audit-system` instantiates. It is substrate, not an authored artifact. Promote if a second composition-layer skill surfaces and the layering pattern itself recurs as a authoring target. |
+| **System** | "System" as a first-class authored abstraction (distinct from the harness it runs in) has no consumer-facing skill demand today. `/audit-artifacts` treats the audited folder as a system but the construction unit is the harness. Promote if a consumer-facing `/audit-system-of-systems` or cross-harness composition skill surfaces. |
+| **Composition-layer** | The composition layer (whole-system operations composing IL per-artifact operations) is the *pattern* `/audit-artifacts` instantiates. It is substrate, not an authored artifact. Promote if a second composition-layer skill surfaces and the layering pattern itself recurs as a authoring target. |
 | **Multi-harness orchestration** | Surface area for orchestrating multiple harnesses with shared state or shared substrate. Sizing-engine pilot may surface this (forecasting + comparison as two harnesses). Promote if pilot demands a standalone orchestration abstraction beyond `/design-harness`. |
 
 ## Promotion rules
@@ -78,9 +78,9 @@ Promotions are Owner-authored proposals (Proposal-First tier).
 | Layer | Maintained by | Abstractions | Operations |
 |---|---|---|---|
 | Per-artifact | IL | skill, agent, prompt | `/assess-*`, `/design-*` |
-| Whole-system / harness | MetaSystem | harness | `/audit-system`, `/design-harness` (queued) |
+| Whole-system / harness | MetaSystem | harness | `/audit-artifacts`, `/design-harness` (queued) |
 
-When `/audit-system` discovers a SKILL.md, it dispatches to IL `/assess-skill`. When `/design-harness` (queued) drafts a new harness that ships a skill, it will dispatch to IL `/design-skill` for the skill draft. MetaSystem composes; IL provides the per-artifact intelligence.
+When `/audit-artifacts` discovers a SKILL.md, it dispatches to IL `/assess-skill`. When `/design-harness` (queued) drafts a new harness that ships a skill, it will dispatch to IL `/design-skill` for the skill draft. MetaSystem composes; IL provides the per-artifact intelligence.
 
 Rule 12 (audit/design symmetry) applies at both layers: every harness operation IL substrate composes against must have audit and design halves. See `harness.md` §"Rule-12 audit/design symmetry verification" for the harness-level walkthrough.
 
@@ -89,7 +89,7 @@ Rule 12 (audit/design symmetry) applies at both layers: every harness operation 
 - IL consumer-abstractions-map (parallel map for per-artifact abstractions): `systems/improvement-loop/operations/references/consumer-abstractions-map.md`
 - Harness concept doc (this commit): `systems/improvement-loop/knowledge/reference/harness.md`
 - IL harness concept doc (§Composition substrate): `systems/improvement-loop/operations/references/librarian/harness.md`
-- `/audit-system` SKILL.md: `systems/improvement-loop/.claude/skills/audit-system/SKILL.md`
-- `/audit-system` design contract: `systems/improvement-loop/project-management/design-notes/2026-06-12-audit-system-design-contract.md`
+- `/audit-artifacts` SKILL.md: `systems/improvement-loop/.claude/skills/audit-artifacts/SKILL.md`
+- `/audit-artifacts` design contract: `systems/improvement-loop/project-management/design-notes/2026-06-12-audit-system-design-contract.md`
 - IL rules 10/11/12: `systems/improvement-loop/governance/agent-rules.md`
 - Cross-system roadmap and audience archetypes 1–5: workspace `PROGRESS.md`

@@ -148,7 +148,7 @@ Read the 10 most recent SL entries in `operations/system-log/`:
 
 ### Step 9: Produce Audit Report
 
-Write the report to `systems/improvement-loop/operations/audit-reports/{date}-system-audit.md`:
+Write the report to `systems/improvement-loop/operations/system-audits/{date}-system-audit.md`:
 
 ```markdown
 ---
@@ -209,7 +209,7 @@ tags:
 {If a previous audit report exists, compare: what was fixed? What's new? What persists?}
 ```
 
-### Step 10: Create `operations/audit-reports/` if Needed
+### Step 10: Create `operations/system-audits/` if Needed
 
 If the directory doesn't exist, create it.
 

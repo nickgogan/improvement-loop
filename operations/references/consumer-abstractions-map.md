@@ -59,7 +59,7 @@ Demand tiers:
 | Abstraction | Concept doc | Demand evidence |
 |---|---|---|
 | **Governance** | — (none yet) | Nick named governance authoring (DDs, rules, constitutions, proposals) as a candidate for systematic Librarian coverage. Demand is currently one-off — DDs are bespoke; governance rules are sparse (12 rules in `agent-rules.md`). Promote when 2–3 distinct "how should I structure a DD" or "how should I write a rule" consumer requests recur, or when MetaSystem's `/translate-governance` analog needs Librarian backing. |
-| **Security** | — (none yet) | Nick named security review surfaces (threat models, secrets handling, permission models, supply-chain checks) as an aspirational consumer-facing axis. Adjacent to G6 §Contract already, but no consumer-facing skill/concept-doc commitment yet. Promote when MetaSystem builds `/audit-system` or `/design-harness` that requires security as a first-class composable axis (cross-system roadmap step G). |
+| **Security** | — (none yet) | Nick named security review surfaces (threat models, secrets handling, permission models, supply-chain checks) as an aspirational consumer-facing axis. Adjacent to G6 §Contract already, but no consumer-facing skill/concept-doc commitment yet. Promote when MetaSystem builds `/audit-artifacts` or `/design-harness` that requires security as a first-class composable axis (cross-system roadmap step G). |
 
 ### Weak demand — future candidates (not committed scope)
 

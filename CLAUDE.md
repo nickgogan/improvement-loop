@@ -12,7 +12,7 @@ The Improvement Loop is a standalone research-and-advisory subsystem. It does tw
 
 2. **Librarian advisory layer.** Exposes that substrate as a bilingual audit/design capability over agentic abstractions (skill, agent, prompt today; harness and others as demand promotes them — see `operations/references/consumer-abstractions-map.md`). The same concept-doc substrate composes bilingually: §Composition drives `/assess-*` (audit mode); §Construction drives `/design-*` (author mode). Rule 12 enforces that an abstraction carrying one but not the other is in debt.
 
-**Three altitudes (DD-104).** The advisory layer is the *middle* altitude; the engine composes it into a *top* altitude itself. The engine's own `/audit-system` composes the per-artifact assessors into whole-system operations (the schematic library and `/design-harness` join it in Phase 2). There is no separate "meta-system" above the engine — the federation collapsed (DD-103); the engine is the sole system, with research at the bottom, per-artifact assess/design in the middle, and whole-system composition at the top.
+**Three altitudes (DD-104).** The advisory layer is the *middle* altitude; the engine composes it into a *top* altitude itself. The engine's own `/audit-artifacts` composes the per-artifact assessors into whole-system operations (the schematic library and `/design-harness` join it in Phase 2). There is no separate "meta-system" above the engine — the federation collapsed (DD-103); the engine is the sole system, with research at the bottom, per-artifact assess/design in the middle, and whole-system composition at the top.
 
 **Consumers.** The audience commitment covers archetypes 1–5 (Nick-builder, portfolio-presenter, practitioner-friend, builder-friend, employer-evaluator); `/assess-*` plus KB queries serve any of them directly. Household OS (now on Notion, DD-106) is a consumer the engine helps design, not a peer. The engine's governance, pipeline, concept-doc substrate, and rule set (especially rules 10, 11, 12) are engine-owned and engine-stewarded — consumers depend on them but do not author them. The engine invests substrate where consumer demand is concrete and recurring (the consumer-abstractions-map gates promotion); speculative or single-consumer surfaces stay flagged as future candidates, not committed scope.
 
@@ -67,11 +67,11 @@ For Researcher, Codifier, and Librarian dispositions, read the agent definition 
 | `.claude/skills/` | Engine-scoped skills (system-scoped placement per DD-109, originating in archived Claude Build DD-49) — see "Skills That Operate Here" below for per-agent listings |
 | `feedback/` | Feedback items for improving the IL system |
 | `archive/improvement-proposals/` | Archived — historical proposals from session 6, superseded by the DD-80 pipeline |
-| `operations/` | Loop reports, handoff prompts, system log, audit reports (`/system-audit`) |
+| `operations/` | Loop reports, handoff prompts, system log, and both audit homes — `system-audits/` (`/system-audit`) and `artifact-audits/` (`/audit-artifacts`) |
 | `operations/references/` | Research dimensions registry (`research-dimensions.md`) |
 | `project-management/` | Design Decisions and Implementation Backlog items |
 | `docs/` | System documentation & architecture diagrams (pipeline trace, ownership map, agent-interaction & subagent topology) |
-| `audit-reports/` | Whole-system audit output from `/audit-system` (top-altitude composition skill) — distinct from `operations/audit-reports/` (`/system-audit`) |
+| `operations/artifact-audits/` | Whole-system audit output from `/audit-artifacts` (top-altitude composition skill) — per-artifact contract conformance; distinct from `operations/system-audits/` (`/system-audit`, system drift/consistency). Two lenses, two homes, one parent (DD-110) |
 
 Selected directories carry an `_index.md` — limited to Dataview-driven live views and load-bearing substrate maps. Governance folders (DDs, IB, findings, sources, authorities) no longer maintain catalog `_index.md` files; filter on frontmatter instead (workspace governance Process Rule 1).
 
@@ -146,7 +146,7 @@ All IL skills live in `.claude/skills/` under this system directory (system-scop
 | `/system-audit` | Full consistency check — agents, skills, governance, fractal compliance |
 | `/solicit-proposals` | Run a reflection round — per-agent self-reflection → per-agent proposal drafts → Nick gates |
 | `/cleanup-cache` | Monitor and purge temp/cache directories across IL workflows |
-| `/audit-system` | Top-altitude whole-system audit — discovers artifacts, dispatches to `/assess-*`, emits manifest + findings + summary (DD-104) |
+| `/audit-artifacts` | Top-altitude whole-system audit — discovers artifacts, dispatches to `/assess-*`, emits manifest + findings + summary (DD-104; renamed from `/audit-system` in DD-110) |
 
 ### Librarian Skills
 
@@ -209,7 +209,7 @@ The engine is now fractal-complete (DD-52) — all 7 folders exist. Current stat
 | `knowledge/` | Exists — `patterns/`, `guides/`, `templates/`, `reference/`, `schematics/` (reference absorbed from the dissolved meta-system in Step 3; `schematics/` added in Phase 2, DD-107) |
 | `agents/` | Exists — Owner, Researcher, Codifier, Librarian, handoff protocol |
 | `project-management/` | Exists — DDs and IB items (merged with former cross-system data, Step 5) |
-| `operations/` | Exists — research-reports, pattern-identification-reports, guide-reports, drift-reports, handoffs, system-log, audit-reports, references/ |
+| `operations/` | Exists — research-reports, pattern-identification-reports, guide-reports, drift-reports, handoffs, system-log, system-audits, artifact-audits, references/ |
 | `archive/` | Exists — archived improvement-proposals |
 | `feedback/` | Exists (engine extension) — feedback items for engine improvement |
 

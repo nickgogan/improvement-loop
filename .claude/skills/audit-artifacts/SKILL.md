@@ -1,5 +1,5 @@
 ---
-name: audit-system
+name: audit-artifacts
 description: >-
   Point at a folder; audit whether the agentic system inside it is well-formed.
   Discovers skills, agents, and prompts via shape-based globs, sizes them,
@@ -14,7 +14,7 @@ allowed-tools: Read Glob Skill Agent Write Bash
 argument-hint: "<path> [--scope <types>] [--variant <hint>] [--exclude <patterns>] [--include-mocs] [--manifest-only] [--write] [--diff <prior>]"
 ---
 
-# Audit System
+# Audit Artifacts
 
 Whole-system audit. Composes IL's `/assess-skill`, `/assess-agent`, and
 `/assess-prompt` over every shape-detectable artifact inside a target folder,
@@ -42,7 +42,7 @@ skill is composition: discovery, sizing, bin-packing, dispatch, aggregation.
 - Consumer wants code-quality, security, or runtime-behavior review — out of
   scope; redirect to `/security-review` or `/code-review`.
 - Consumer wants design proposals or remediation — that's the future
-  `/design-harness` (rule 10 constructive peer). `/audit-system` reports only.
+  `/design-harness` (rule 10 constructive peer). `/audit-artifacts` reports only.
 
 ## What This Skill Does NOT Do
 
@@ -138,7 +138,7 @@ frequency." IL frequency confirmed; heuristic now committed.
 | Path | Purpose |
 |------|---------|
 | `<target>` | Consumer-provided audit root |
-| `<target>/audit-reports/<YYYY-MM-DD>/` | On-disk output destination (if writable) |
+| `<target>/operations/artifact-audits/<YYYY-MM-DD>/` | On-disk output destination (if writable) |
 | `.claude/agents/librarian.md` (workspace root, `name: librarian`) | Subagent invoked per bin |
 | `systems/improvement-loop/.claude/skills/assess-skill/SKILL.md` | Dispatched for skill-shape artifacts |
 | `systems/improvement-loop/.claude/skills/assess-agent/SKILL.md` | Dispatched for agent-shape and CLAUDE.md artifacts |
@@ -165,7 +165,7 @@ frequency." IL frequency confirmed; heuristic now committed.
      dispatched to `/assess-agent`.
    - `--manifest-only` — produce the manifest; skip dispatch + summary.
    - `--write` — persist manifest/findings/summary to
-     `<target>/audit-reports/<date>/`. **Default: off** (conversation-only).
+     `<target>/operations/artifact-audits/<date>/`. **Default: off** (conversation-only).
      This default is the G9.I6 mitigation: writes require explicit consumer
      opt-in.
    - `--diff <prior-manifest-path>` — re-audit mode; surface drift against the
@@ -306,7 +306,7 @@ proved unreliable in session 114 because `/assess-*` reports carry their own
 `##` headings that collide with the orchestrator's path heading):
 
 ```
-You are running a sub-audit on behalf of /audit-system. For each artifact
+You are running a sub-audit on behalf of /audit-artifacts. For each artifact
 below, invoke the named IL skill via the Skill tool and return its full
 assessment report verbatim, wrapped in sentinel delimiters.
 
@@ -377,7 +377,7 @@ output for inspection.
 
    ## Re-audit guidance
    <if --diff <prior> was passed: drift summary. Else: "Re-audit by re-running
-   /audit-system; use --diff <this-manifest-path> for drift detection.">
+   /audit-artifacts; use --diff <this-manifest-path> for drift detection.">
    ```
 
 ### Step 7: Write outputs
@@ -387,11 +387,13 @@ require explicit consumer opt-in via `--write`.
 
 If `--write` was passed:
 1. Check writability of `<audit_target>`. If writable:
-   - Create `audit-reports/<YYYY-MM-DD>/` (mkdir -p).
+   - Create `operations/artifact-audits/<YYYY-MM-DD>/` (mkdir -p). If the target
+     has no `operations/` directory, create it (`mkdir -p`) — all audit output
+     lives under `operations/` by contract (DD-110).
    - Write `manifest.md`, `findings.md`, `summary.md`.
    - If a same-date subdir already exists, suffix with `-<HH-MM>` (e.g.,
      `2026-06-12-14-30/`).
-   - **Append one line** to `<target>/audit-reports/runs.md` (audit-trail
+   - **Append one line** to `<target>/operations/artifact-audits/runs.md` (audit-trail
      log). Format:
      ```
      <YYYY-MM-DD>  session-<NN>  artifacts=<N>  bins=<M>  critical=<K>  missing=<X>  variant=<short-label>
@@ -440,7 +442,7 @@ fronted; findings and summary are markdown.
   also a subagent file under `.claude/agents/`), de-dup by resolved path and
   dispatch only once. Record the multiple-shape match in the manifest's
   ambiguous classifications block.
-- Never write outside `<audit_target>/audit-reports/`. If `<audit_target>` is
+- Never write outside `<audit_target>/operations/artifact-audits/`. If `<audit_target>` is
   read-only or a sibling-system root the user shouldn't be modifying, fall
   back to conversation output.
 

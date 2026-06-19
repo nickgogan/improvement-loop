@@ -23,7 +23,7 @@ aliases:
 
 The MetaSystem-side analog of the workspace-level cross-system roadmap in `PROGRESS.md`. This document scopes the **step-G** build targets — the MetaSystem-owned capabilities composing IL substrate.
 
-**Status:** Accepted (session 113). All five acceptance criteria ruled; gates resolved below. Step-G build begins with `/audit-system` research/design phase.
+**Status:** Accepted (session 113). All five acceptance criteria ruled; gates resolved below. Step-G build begins with `/audit-artifacts` research/design phase.
 
 ---
 
@@ -41,7 +41,7 @@ Step F instantiated the MetaSystem Owner (IB-167). Step G builds (2) and (3).
 
 ## Target capabilities
 
-### `/audit-system`
+### `/audit-artifacts`
 
 **Plain English:** "Point this at a folder; tell me whether the agentic system inside it is well-formed."
 
@@ -54,10 +54,10 @@ Step F instantiated the MetaSystem Owner (IB-167). Step G builds (2) and (3).
 - KB Read-access for citation grounding
 
 **Open design questions for step G:**
-- Discovery contract: how does `/audit-system` decide what to audit? Walks the local path looking for known shapes (`.claude/skills/*/SKILL.md`, `agents/*/agent.md`, etc.)? Or does it require an explicit manifest?
+- Discovery contract: how does `/audit-artifacts` decide what to audit? Walks the local path looking for known shapes (`.claude/skills/*/SKILL.md`, `agents/*/agent.md`, etc.)? Or does it require an explicit manifest?
 - Composition model: does it spawn IL `/assess-*` as subagents (rule 10 generator-assessor separation, inverted — here MetaSystem is the orchestrator, IL skills are the assessors), or invoke them inline?
 - Output shape: per-artifact findings or whole-system score? Both?
-- Whole-system invariants beyond per-artifact checks (cross-references, missing pairs, structural completeness) — does `/audit-system` ADD checks IL `/assess-*` can't see, or is it purely composition?
+- Whole-system invariants beyond per-artifact checks (cross-references, missing pairs, structural completeness) — does `/audit-artifacts` ADD checks IL `/assess-*` can't see, or is it purely composition?
 
 ### `/design-harness`
 
@@ -76,7 +76,7 @@ Step F instantiated the MetaSystem Owner (IB-167). Step G builds (2) and (3).
 - Decision sequence: what does the harness-level Construction sequence look like? Per finding `harness.md` flagged for §Construction backfill (workspace PROGRESS.md priority queue item 2), this substrate is partial.
 - Multi-artifact orchestration: does `/design-harness` invoke `/design-skill` and `/design-agent` per artifact, or compose their templates inline?
 - Staging: where do harness drafts land? `extracts/harnesses/` (new staging area)?
-- Audit hand-off: per rule 10, the constructive skill delegates its quality check to an assessor peer in fresh context. The assessor here is `/audit-system` — does `/design-harness` invoke `/audit-system` against its own staged output before returning?
+- Audit hand-off: per rule 10, the constructive skill delegates its quality check to an assessor peer in fresh context. The assessor here is `/audit-artifacts` — does `/design-harness` invoke `/audit-artifacts` against its own staged output before returning?
 
 ---
 
@@ -101,7 +101,7 @@ Step F instantiated the MetaSystem Owner (IB-167). Step G builds (2) and (3).
 
 ### Out of scope for this roadmap
 
-- Building `/audit-system` or `/design-harness` themselves — those are step G.
+- Building `/audit-artifacts` or `/design-harness` themselves — those are step G.
 - Authoring MetaSystem-specific concept docs (e.g., `harness.md` §Construction backfill). Rule 11 — defer until consumer demand justifies; step G itself is the test.
 - Promoting IL rules 10 and 11 to MetaSystem constitution — Nick deferred until a second cross-system instance surfaces.
 - Touching the cross-system roadmap structure itself (workspace `PROGRESS.md`).
@@ -113,9 +113,9 @@ Step F instantiated the MetaSystem Owner (IB-167). Step G builds (2) and (3).
 
 Surfaced for Nick's gate; do not act on these until step G is approved.
 
-1. **`/audit-system` before `/design-harness`** — symmetry argument from IL rule 10: the constructive skill delegates its quality check to the assessor peer. If `/design-harness` is to delegate to `/audit-system` per rule 10, the assessor must exist first.
+1. **`/audit-artifacts` before `/design-harness`** — symmetry argument from IL rule 10: the constructive skill delegates its quality check to the assessor peer. If `/design-harness` is to delegate to `/audit-artifacts` per rule 10, the assessor must exist first.
 2. **Harness §Construction substrate before `/design-harness`** — if Nick gates item 2 of the workspace priority queue (backfill `harness.md` §Construction from session 109 findings), it lands as substrate before `/design-harness` consumes it. If Nick defers item 2, step G builds `/design-harness` on partial substrate and surfaces gaps as evidence for backfill later.
-3. **Discovery contract for `/audit-system` written first** — what counts as an "auditable artifact in a local path" is the load-bearing decision for the skill; everything else follows.
+3. **Discovery contract for `/audit-artifacts` written first** — what counts as an "auditable artifact in a local path" is the load-bearing decision for the skill; everything else follows.
 
 These are working hypotheses, not commitments. Step G's planning conversation will revisit.
 
@@ -123,10 +123,10 @@ These are working hypotheses, not commitments. Step G's planning conversation wi
 
 ## Risks and open questions
 
-- **Audit/design symmetry at the harness level.** IL rule 12 says concept docs carrying §Composition but not §Construction (or vice versa) are in debt. At the harness level, the analog would be: does `/audit-system` (composition) without `/design-harness` (construction), or vice versa, leave the MetaSystem in debt? My read: yes, by rule 12's reasoning. Step G plans should build both, even if sequenced.
+- **Audit/design symmetry at the harness level.** IL rule 12 says concept docs carrying §Composition but not §Construction (or vice versa) are in debt. At the harness level, the analog would be: does `/audit-artifacts` (composition) without `/design-harness` (construction), or vice versa, leave the MetaSystem in debt? My read: yes, by rule 12's reasoning. Step G plans should build both, even if sequenced.
 - **Multi-artifact staging story is unwritten.** IL's `extracts/` has per-form staging (`agents/`, `skills/`, `rules/`, `templates/`, `patterns/`). For a harness that bundles multiple forms, staging may need a new convention (e.g., `extracts/harnesses/{name}/` containing nested per-form staged artifacts). Decide during step G.
-- **`/audit-system` may demand whole-system invariants IL `/assess-*` can't see.** Cross-reference integrity, missing-pair detection, fractal-pattern compliance per DD-52, governance-source freshness — these are MetaSystem-shaped checks. `/audit-system` may end up authoring its own check set rather than purely composing IL skills. Rule 11 applies: build only what evidence demands.
-- **Audience archetypes affect output shape.** Archetypes 1–5 (Nick-builder, portfolio-presenter, practitioner-friend, builder-friend, employer-evaluator) consume audit/design output differently. `/audit-system`'s report shape and `/design-harness`'s artifact density both depend on which archetypes are primary. Decide before step G.
+- **`/audit-artifacts` may demand whole-system invariants IL `/assess-*` can't see.** Cross-reference integrity, missing-pair detection, fractal-pattern compliance per DD-52, governance-source freshness — these are MetaSystem-shaped checks. `/audit-artifacts` may end up authoring its own check set rather than purely composing IL skills. Rule 11 applies: build only what evidence demands.
+- **Audience archetypes affect output shape.** Archetypes 1–5 (Nick-builder, portfolio-presenter, practitioner-friend, builder-friend, employer-evaluator) consume audit/design output differently. `/audit-artifacts`'s report shape and `/design-harness`'s artifact density both depend on which archetypes are primary. Decide before step G.
 
 ---
 
@@ -134,19 +134,19 @@ These are working hypotheses, not commitments. Step G's planning conversation wi
 
 **Resolved session 113:**
 
-1. ✅ `/audit-system` and `/design-harness` confirmed as step-G targets — no scope changes.
+1. ✅ `/audit-artifacts` and `/design-harness` confirmed as step-G targets — no scope changes.
 2. ✅ Open design questions gated:
-   - **`/audit-system` discovery contract:** auto-detect by known shapes on input; the manifest is part of the *output* (structural inventory deliverable alongside per-artifact findings and whole-system summary). Re-audit pattern: diff new manifest against old, surface drift as first-class signal.
-   - **`/audit-system` composition model:** spawn IL `/assess-*` skills in fresh subagent context (rule-10 inverted — MetaSystem orchestrates; IL Librarian acts as assessor subagent invoking the relevant skill).
-   - **`/audit-system` output shape:** three artifacts — manifest, per-artifact findings, whole-system summary.
-   - **`/audit-system` whole-system invariants:** start as pure composition; add MetaSystem-specific checks only as recurring evidence demands (rule 11).
+   - **`/audit-artifacts` discovery contract:** auto-detect by known shapes on input; the manifest is part of the *output* (structural inventory deliverable alongside per-artifact findings and whole-system summary). Re-audit pattern: diff new manifest against old, surface drift as first-class signal.
+   - **`/audit-artifacts` composition model:** spawn IL `/assess-*` skills in fresh subagent context (rule-10 inverted — MetaSystem orchestrates; IL Librarian acts as assessor subagent invoking the relevant skill).
+   - **`/audit-artifacts` output shape:** three artifacts — manifest, per-artifact findings, whole-system summary.
+   - **`/audit-artifacts` whole-system invariants:** start as pure composition; add MetaSystem-specific checks only as recurring evidence demands (rule 11).
    - **`/design-harness` design questions:** gated when that build begins (session 115+); not pre-gated.
 3. ✅ Soft-prereq decisions:
-   - **Harness `§Construction` backfill:** backfill before `/design-harness` build (priority queue item 3 elevated to side-quest preceding `/design-harness`). `/audit-system` may proceed in parallel — does not depend on this.
+   - **Harness `§Construction` backfill:** backfill before `/design-harness` build (priority queue item 3 elevated to side-quest preceding `/design-harness`). `/audit-artifacts` may proceed in parallel — does not depend on this.
    - **IL Owner skill parameterization (IB-168):** keep deferred; trigger on recurring evidence (rule 11 compliant).
    - **Workspace-root mirror decision:** resolved sub-task 1 — symlink at `.claude/agents/meta-system-owner.md → ../../systems/meta-system/.claude/agents/owner.md`; harness empirically follows symlink and dedupes when both reachable via walk-up.
 4. ✅ Audience archetypes: default 1–5 (Nick-builder, portfolio-presenter, practitioner-friend, builder-friend, employer-evaluator). Archetypes 6 (org-scale) and 7 (machine-callable) explicitly out of scope.
 5. ✅ Sequencing approved as drafted:
-   - `/audit-system` before `/design-harness` (rule-10 symmetry: constructive skill delegates to assessor peer).
-   - Discovery contract (here: input-side auto-detect + output-side manifest) is the load-bearing first decision for `/audit-system`.
+   - `/audit-artifacts` before `/design-harness` (rule-10 symmetry: constructive skill delegates to assessor peer).
+   - Discovery contract (here: input-side auto-detect + output-side manifest) is the load-bearing first decision for `/audit-artifacts`.
    - Harness `§Construction` backfill lands before `/design-harness` build.

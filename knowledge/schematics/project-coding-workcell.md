@@ -22,7 +22,7 @@ grounded_in:
 composed_of:
   - "systems/improvement-loop/.claude/skills/design-agent"
   - "systems/improvement-loop/.claude/skills/assess-agent"
-  - "systems/improvement-loop/.claude/skills/audit-system"
+  - "systems/improvement-loop/.claude/skills/audit-artifacts"
   - "systems/improvement-loop/knowledge/reference/household-os/architecture/s3-claude-code-build/vault-architecture.md"
 source_dd:
   - "DD-107"
@@ -130,7 +130,7 @@ the schematic, not a constraint of the deployment surface.
   not operate it):
   - `/design-agent` — author each SDLC role (analyst, architect, planner, builder, reviewer).
   - `/assess-agent` — gate each authored role against IL guides before deployment.
-  - `/audit-system` — whole-workcell read once the roles exist (the audit-workcell seed evaluating
+  - `/audit-artifacts` — whole-workcell read once the roles exist (the audit-workcell seed evaluating
     this one).
   - `knowledge/reference/household-os/.../vault-architecture.md` — the lifted Claude Build stack
     intent (Python / OpenAPI-first / SOA) the workcell can be parameterized to build.
