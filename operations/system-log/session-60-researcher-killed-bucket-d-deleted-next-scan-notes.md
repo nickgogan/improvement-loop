@@ -9,7 +9,7 @@ change_type: "Deletion"
 milestone: null
 rationale: "Session 60 opened via the piped Bucket D handoff for a MemoryBench LongMemEval head-to-head. Nick questioned the premise: he had never asked for this. Provenance trace showed the task was agent-proposed at session-57 close, never Nick-sanctioned, rolled forward across three handoffs with increasing formalization — including a dedicated-session carve-out citing feedback_sweep_over_piecemeal. Root-cause observation: `operations/next-scan-notes.md` functioned as a filing-discipline release valve where agent-proposed items accumulated weight without gates. Session ended by killing Bucket D, deleting next-scan-notes.md, migrating the one live item (priority reeval candidates) to IB-149, and surgical cleanup of references across 10 active files."
 source_dd: "DD-29, DD-30, DD-41, DD-90"
-timestamp: "2026-04-23T00:00:00Z"
+date: "2026-04-23"
 session: 60
 tags:
   - "system-log"

@@ -9,7 +9,7 @@ change_type: "Update"
 milestone: null
 rationale: "Three-phase Codifier session continuing IB-164's downstream consumption of harvest queues. **Phase A**: 7 G11 (Building Agentic Systems) harvest-queue rows ratified (working-tree `nick-approved` state taken as authoritative per Nick's session-level autonomy directive). **Phase B**: `/extract-artifacts --harvest-row` promotion across consolidated nick-approved pool — 11 rules + 6 skills + 3 templates = 20 rows total (the residual after session-82's 10 already-extracted rows). DD-97 corpus scan for rules/skills + DD-100 corpus scan for templates partitioned: 18 Branch-B drafts written + 2 Branch-C extension proposals (rows 12 + 16 — additional to row-10's session-82 carryover proposal). **Phase C**: row 10 (session 82's pending Branch C) stays deferred — DD-97 §Acceptance Criteria forbids auto-merge without Nick's ruling; preserved for next session's sweep. Per-row drafting via parallel subagents (one row per subagent, full pipeline). Per-row Nick-gate (DD-29 α cadence) waived for this session per Nick's standing 'proceed until done' authorization. Single combined atomic commit at session close."
 source_dd: "DD-29, DD-78, DD-92, DD-95, DD-97, DD-100, DD-101, IB-164"
-timestamp: "2026-04-27T00:00:00Z"
+date: "2026-04-27"
 session: 83
 tags:
   - "system-log"

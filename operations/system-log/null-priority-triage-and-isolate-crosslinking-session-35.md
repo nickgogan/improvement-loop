@@ -8,7 +8,7 @@ milestone: null
 rationale: "Triaged all 192 null-priority findings (42% of KB) across 11 categories using evidence/convergence/applicability rubric. Assigned 14 P1, 50 P2, 89 P3, 39 Not Flagged. Crosslinked isolate findings via two-pass procedure (subagent screen + manual review), writing 47 new links and reducing isolates from 88 to 48."
 source_dd: null
 target_system: improvement-loop
-timestamp: "2026-04-19T00:00:00.000Z"
+date: "2026-04-19"
 ---
 
 ## What Changed

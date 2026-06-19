@@ -8,7 +8,7 @@ milestone: null
 rationale: "The Improvement Loop was the only graduated system without a CLAUDE.md. Created one that establishes the Researcher as the default persona (analytical, evidence-first, neutral-on-implementation), documents the pipeline stages, inlines 6 binding DD constraints (DD-29, 30, 31, 36, 39, 41), and maps the data layout. The Proposer persona is intentionally excluded — it lives in the research-proposer skill definition."
 source_dd: "DD-29, DD-30, DD-31, DD-36, DD-39, DD-41, DD-52"
 target_system: "improvement-loop"
-timestamp: "2026-04-07T00:00:00.000Z"
+date: "2026-04-07"
 ---
 
 ## What Changed

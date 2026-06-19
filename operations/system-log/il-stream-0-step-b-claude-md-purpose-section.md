@@ -8,7 +8,7 @@ milestone: "Cross-system roadmap step B"
 rationale: "Step A landed the bilingual audit/design substrate (rule 12, §Construction in skill.md and agent.md, consumer-abstractions-map). Step B converts that substrate into the durable framing for IL — a standalone research engine + Librarian advisory layer with MetaSystem as primary but not sole downstream consumer. Prior lede ('self-improvement subsystem for MetaSystem') asserted subordination that the post-step-A substrate now contradicts. Rule 12 symmetry, audience-archetype commitment (1–5), and consumer-abstractions-map promotion rules anchor the new framing."
 source_dd: "DD-86"
 target_system: "improvement-loop"
-timestamp: "2026-06-11T00:00:00.000Z"
+date: "2026-06-11"
 ---
 
 ## What Changed

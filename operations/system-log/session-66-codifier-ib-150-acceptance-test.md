@@ -9,7 +9,7 @@ change_type: "Validation"
 milestone: null
 rationale: "Validated session-65 IB-150 contract end-to-end on real findings. Ran `/identify-artifacts P1` then `/extract-artifacts` on the resulting report. All 5 IB-150 acceptance criteria PASS: (1) ContextSpec all 8 fields present in 4/4 artifacts; (2) universal-vocabulary scan zero hits; (3) mechanical-copy guard ran without firing because drafter respected source-applicability prohibition on first attempt — the source values `S3 (Claude Code Build)` and `Perplexity Skills` (both forbidden tokens) were correctly translated to consumer-facing `applies_to` strings rather than pasted; (4) IL classification meta absent from all 4 frontmatters; (5) shape matches reference impl `extracts/rules/confirm-failure-first-tdd.md`. Step 2.5 firing log: 4 validated, 4 passed cleanly, 0 flagged, 0 re-drafts. Bugs surfaced: none. Contract amendments proposed: none. Side fix: 10 stale-status findings (pipeline_status:raw despite existing extracts) back-annotated to extracted with consumed_by populated — single 2026-04-19 batch failure of `/extract-artifacts` Step 5 that pre-dates IB-150. Vocabulary observation: Nick wrote ACCEPTED (10×) where the skill contract reads APPROVED; normalized inline to unblock the test, surfaced for ratification."
 source_dd: "DD-29, DD-77, DD-78, DD-80, DD-81, DD-91, DD-92"
-timestamp: "2026-04-26T00:00:00Z"
+date: "2026-04-26"
 session: 66
 tags:
   - "system-log"

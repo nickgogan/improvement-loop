@@ -9,7 +9,7 @@ change_type: "Update"
 milestone: null
 rationale: "IB-153 closure. The orphan `category: Memory Architecture` (41 findings, not registered as a top-level dimension) was retired by the session-63 introduction of Sub-dim 1.B (Memory Isolation and Topology) under Dimension 1 (Context Engineering); IB-153 carried the cleanup work. Executed `/dimension-rebalance` per its own procedure with human-gated proposal. Default Option A (all 41 → Context Engineering) was approved with 8 borderline re-routes to Agentic Systems (Dim 11) where the primary subject was vault-as-OS / personal-knowledge-store / org-memory-system pattern rather than memory mechanics. Bonus dimension-name alignment included on Nick's request: Dim 2-5 taxonomy block + section headers in research-dimensions.md, plus the Dimensions column in guide-routing-table.md, were aligned to the canonical long forms used in 100% of findings (Model→Model Selection, Prompt→Prompt Craft, Tools→Tool Integration, Intent→Intent Engineering). G7 row's Dimensions field stripped of 'Memory Architecture' per IB-153 acceptance. Two stale prose references to 'Memory Architecture dimension' (in librarian/second-brain.md and one finding's implementation_notes) updated to point at Sub-dim 1.A/1.B and Context Engineering. Final distribution: Context Engineering 132 (was 99, +33), Agentic Systems 29 (was 21, +8), Memory Architecture 0 (was 41). One atomic commit."
 source_dd: null
-timestamp: "2026-04-27T00:00:00Z"
+date: "2026-04-27"
 session: 80
 tags:
   - "system-log"

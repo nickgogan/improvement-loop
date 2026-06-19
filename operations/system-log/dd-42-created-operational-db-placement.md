@@ -8,7 +8,7 @@ milestone: "M3"
 rationale: "DD-42 generalizes the DD-41 pattern (IL operational page as top-level peer) to DD and IB databases. Establishes three-layer model: Operational/Runtime (UB3), Governance Infrastructure (DD, IB, IL), Design-Time Reference (System Documentation). System Documentation hub updated with DD-42 cross-references. IB-112 created for manual page moves."
 source_dd: null
 target_system: "improvement-loop"
-timestamp: "2026-03-22T23:40:53.612Z"
+date: "2026-03-22"
 ---
 
 # DD-42 created: Operational Database Placement --- DD and IB databases promoted to top-level Governance Infrastructure peers

@@ -9,7 +9,7 @@ change_type: "Update"
 milestone: null
 rationale: "Second live exercise of /synthesize-guide's Phase-1 + Phase-3 surfaces on real input. G2 (Managing Agent Context) carried the IL's largest dimension (Context Engineering) and most accumulated drift since 2026-04-19. Re-synthesized atomically with all DD-93 / DD-94 / DD-98 / DD-101 surfaces firing as contracted. No procedural defects; no follow-up IBs filed. Cluster grew 26 → 44 findings; structural restructure added Step 8 (Architect Context Across Tools, Tiers, and Sessions; 6 sub-steps), 2 new templates (Module Manifest; Multi-Tool Context Mirror Map), 4 new pitfalls (#12–15), 5 new sub-steps across Steps 3–4 (content-granularity tiers; progressive skill loading; technique-selector preference order; /re trajectory engineering; harness+model layered awareness), 2 new defenses in Step 5 (atomic session scoping; CLAUDE.md self-compaction prohibition). Companion changelog appended (clean, 6/10 lines); harvest queue file created lazily with 16 candidates (9 extract + 7 dismiss recommendations); routing table synthesis-status row updated; G3 reciprocal cross-ref added (G8 already reciprocal). 18 net-new findings back-annotated synthesized + consumed_by appended."
 source_dd: "DD-78, DD-81, DD-82, DD-92, DD-93, DD-94, DD-98, DD-101"
-timestamp: "2026-04-26T00:00:00Z"
+date: "2026-04-26"
 session: 78
 tags:
   - "system-log"

@@ -8,7 +8,7 @@ milestone: null
 rationale: "Gap surfaced during Librarian test-drive: no pathway for targeted question-driven research with optional KB persistence. Created /research-query skill as second intake pathway alongside /research-loop. User-gated persistence, dimension check routing, reports always written. Researcher skill count updated from 11 to 12."
 source_dd: "DD-83"
 target_system: "improvement-loop"
-timestamp: "2026-04-19T00:00:00.000Z"
+date: "2026-04-19"
 ---
 
 ## What Changed

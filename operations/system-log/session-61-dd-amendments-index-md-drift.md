@@ -8,7 +8,7 @@ milestone: null
 rationale: "The session-61 _index.md cleanup sweep left four Design Decisions and one IB item out of sync with the new reality. Each DD's text said _index.md catalogs existed or had to be maintained; catalogs no longer exist for most governance folders. Per DD-44's 'minor refinement, same scope' amendment path, each was updated in-place with an amendment footnote rather than superseded via a new DD number."
 source_dd: "DD-44"
 target_system: "improvement-loop"
-timestamp: "2026-04-23T00:00:00.000Z"
+date: "2026-04-23"
 ---
 
 ## What Changed

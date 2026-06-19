@@ -9,7 +9,7 @@ change_type: "Implementation"
 milestone: null
 rationale: "Primary: guide-routing check (DD-81) over session-62 P2 pattern findings — 12 P2 patterns routed cleanly to G2/G4/G7/G9/G10; 0 unrouted, 0 candidate guide clusters. Secondary: /extract-artifacts on session-62 APPROVED set — 1 rule extracted (`confirm-failure-first-tdd`) after DD-81 pattern filter (15 patterns filtered to guide synthesis, 2 DEFERRED on evidence). In-session scope expansion (Nick-sanctioned): filed DD-92 (ContextSpec on every extracted artifact) as companion to DD-78; retrofitted the TDD rule as the DD-92 reference implementation; accepted S2 proposal; added Sub-dimension 1.B (Memory Isolation and Topology) to research-dimensions.md."
 source_dd: "DD-29, DD-41, DD-44, DD-78, DD-80, DD-81, DD-82, DD-86, DD-91, DD-92"
-timestamp: "2026-04-24T00:00:00Z"
+date: "2026-04-24"
 session: 63
 tags:
   - "system-log"

@@ -9,7 +9,7 @@ change_type: "Implementation"
 milestone: null
 rationale: "Closed the priority-assignment ownership gap (orphaned across /promote-findings, /identify-artifacts, /reassess-priorities) by formalizing a Researcher-intake / Curator-authoritative model — Option A per Nick's ruling — with 3 skill-contract edits. Backfilled 26 staged extracts with DD-92 ContextSpec (rules 9 + skills 11 + templates 4 + agents 2) via 4 parallel Sonnet subagent batches, universal-vocab compliance verified programmatically post-write. Stripped IL classification meta (confidence/tier/reason_codes/co_occurrence) from all 26 files. Resolved DD-92 direct-filing deviation audit (Option 1 — accept content-gated direct-DD-filing precedent) as first-turn item. In-session cleanup: 10 stale /research-proposer references patched across 6 skill files + /research-loop Triage Rules section header renamed. IB-151 marked Done. Patterns-scope on IB-151 narrowed from literal-all (97 files) to consumer-facing deployables (26 files) — patterns excluded as intermediate enrichment input per extracts/patterns/CLAUDE.md; no clarifying IB filed (existing DD-92 + patterns/CLAUDE.md jointly encode the answer)."
 source_dd: "DD-29, DD-44, DD-80, DD-86, DD-91, DD-92"
-timestamp: "2026-04-24T00:00:00Z"
+date: "2026-04-24"
 session: 64
 tags:
   - "system-log"

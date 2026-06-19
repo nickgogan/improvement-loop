@@ -9,7 +9,7 @@ change_type: "Add"
 milestone: null
 rationale: "Filed the six implementation IBs that translate the Phase-3 lifecycle DDs (DD-98/99/100/101, ratified session 74) into actionable backlog items. Phase 1 (DD-93/94/95) implementation sweep was IB-154/155/156 (session 71); Phase 2 (DD-96/97) implementation sweep was IB-157/158 (session 71); Phase 3's implementation sweep is IB-159 through IB-164 (this session). The IBs are the contract between the DDs (Nick-ratified governance) and the future skill-edit sessions that execute them. No skill modifications in this session — IB filing only, per standing rule and the handoff's explicit out-of-scope list. One IB per DD-bound work item, with multi-touchpoint folding only where the work is structurally inseparable (DD-98's two-skill detection in IB-159; DD-100's schema + backfill in IB-161). Cross-IB consistency check passed inline before commits."
 source_dd: "DD-29, DD-44, DD-77, DD-78, DD-80, DD-81, DD-82, DD-92, DD-93, DD-94, DD-95, DD-96, DD-97, DD-98, DD-99, DD-100, DD-101"
-timestamp: "2026-04-26T00:00:00Z"
+date: "2026-04-26"
 session: 75
 tags:
   - "system-log"

@@ -8,7 +8,7 @@ milestone: null
 rationale: "Full KB health cleanup across 459 findings. Normalized YAML quoting to unquoted convention (457 files), fixed 5 non-standard P3 variants and 2 non-standard evidence_strength values. Added 51 new crosslinks (48 same-problem, 4 extends) reducing isolates from 94 to 88. Reassessed priorities on 8 findings based on convergence evidence: 1 P1, 5 P2, 2 P3 upgrades. 2 adoption_status changes to Partially Adopted."
 source_dd: null
 target_system: improvement-loop
-timestamp: "2026-04-19T00:00:00.000Z"
+date: "2026-04-19"
 ---
 
 ## What Changed

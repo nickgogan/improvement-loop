@@ -8,7 +8,7 @@ milestone: null
 rationale: "The federated model (meta-system governing three peer systems: Household OS, Claude Build, Improvement Loop) dissolved. Household OS moves to Notion (becomes a consumer the engine helps design, not a peer); Claude Build retired (coding-harness market saturated — GSD, BMAD, OpenSpec, Antigravity, Claude Code itself); its opinionated-stack intent (Python/OpenAPI-first/SOA) becomes knowledge artifacts. That leaves Improvement Loop as the only live system, so 'meta-system governing peers' now governs one peer plus itself — overhead failing IL Rule 11 (abstractions must earn their keep). Decision: collapse into one engine = systems/improvement-loop/ with three altitudes (research → per-artifact assess/design → whole-system composition), a small root CHARTER.md, and a new schematic artifact form at the top. Validated against a 2026 agent-taxonomy review (layered config model; sparse design space → capture clusters not grids; evaluation/feedback as load-bearing for self-evolution)."
 source_dd: null
 target_system: "improvement-loop"
-timestamp: "2026-06-18T00:00:00.000Z"
+date: "2026-06-18"
 ---
 
 ## What Changed

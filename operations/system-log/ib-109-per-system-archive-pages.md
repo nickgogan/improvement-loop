@@ -8,7 +8,7 @@ milestone: "M3"
 rationale: "IB-109 (DD-38). Created three per-system Archive child pages under the main Archive page: S2: Notion Operations Archive, S3: Claude Code Build Archive, Improvement Loop Archive. Each has a system-colored agent callout explaining its purpose. Main Archive callout updated to reference per-system pages. Cross-system legacy content stays at the top level."
 source_dd: null
 target_system: "improvement-loop"
-timestamp: "2026-03-23T15:45:32.199Z"
+date: "2026-03-23"
 ---
 
 # IB-109: Created per-system Archive child pages (S2, S3, IL)

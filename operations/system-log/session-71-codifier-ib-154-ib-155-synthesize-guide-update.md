@@ -9,7 +9,7 @@ change_type: "Update"
 milestone: null
 rationale: "Shipped the full Phase-1 + Phase-2 implementation queue across one session — the five IBs (IB-154 through IB-158) ratified in session 70 — plus an in-session DD-96 amendment after Nick direction. Initial handoff scope was IB-154 + IB-155 only; Nick directed mid-session expansion to IB-156/157/158 after the first two committed cleanly (Phase B), then directed in-session amendment of DD-96 after the field-name bug surfaced (Phase C). Six atomic commits — five IBs + DD-96 amendment + the close commits. After this session: `/synthesize-guide` honors DD-93 preservation + DD-94 companion changelog; `/extract-artifacts` honors DD-95 lifecycle pointer + DD-97 corpus-scan extension proposal; new `/detect-drift` skill implements DD-96 source-drift visibility; DD-96 corrected to read `source_finding.last_updated` (live-schema-aligned). G7 / G2 / G9 re-synthesis is unblocked AND non-guide artifact lifecycle is fully wired (writer side, reader side, drift visibility, redundancy avoidance) AND the contract layer is consistent with the live schema."
 source_dd: "DD-29, DD-78, DD-80, DD-81, DD-93, DD-94, DD-95, DD-96, DD-97"
-timestamp: "2026-04-26T00:00:00Z"
+date: "2026-04-26"
 session: 71
 tags:
   - "system-log"

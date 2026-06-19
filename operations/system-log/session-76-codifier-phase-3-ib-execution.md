@@ -9,7 +9,7 @@ change_type: "Update"
 milestone: null
 rationale: "Executed all six Phase-3 implementation IBs filed in session 75 (IB-159 → IB-164) in a single Codifier pass per the handoff's recommended execution order. Phase-3 lifecycle infrastructure (DD-98 guide split / DD-99 theme graduation / DD-100 template-agent versioning / DD-101 co-occurrence harvest queue) is now operative across `/synthesize-guide`, `/extract-artifacts`, `/identify-artifacts`, and `_schema.yaml`. After this session: split-trigger detection live on synthesis + identification routing-table reads; graduation-trigger detection live on identification Unrouted Bucket review; `_schema.yaml` `version: integer` field documented for template/agent extracts with retroactive `version: 1` backfill on all 5 templates + 2 agents (filing-time count of 6+3 corrected; see Bugs Surfaced); `/extract-artifacts` template version-bump path + agent flag-only path live; co-occurrence harvest queue scan + per-guide queue file write live on `/synthesize-guide` absorption phase; queue-row promotion + status-update consumer mode live on `/extract-artifacts`. DD-94's closed trigger-tag enum extended with `guide-split` AND `theme-graduation`. Step 4.5 changelog appender accepts both new tags. The Improvement Loop's full lifecycle infrastructure (Phase 1 + Phase 2 + Phase 3) is now wired end-to-end at the procedure-design layer; live validation is downstream (G7 / G2 / G9 re-synthesis is the natural next-up gate)."
 source_dd: "DD-29, DD-44, DD-77, DD-78, DD-80, DD-81, DD-82, DD-92, DD-93, DD-94, DD-95, DD-96, DD-97, DD-98, DD-99, DD-100, DD-101"
-timestamp: "2026-04-26T00:00:00Z"
+date: "2026-04-26"
 session: 76
 tags:
   - "system-log"

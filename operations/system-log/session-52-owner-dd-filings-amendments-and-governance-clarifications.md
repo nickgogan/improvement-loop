@@ -9,7 +9,7 @@ change_type: "Governance"
 milestone: null
 rationale: "Filed three new DDs (DD-89 four-zone, DD-90 telemetry, DD-91 reflections) and applied amendments to three existing DDs (DD-82, DD-86, DD-52) to reflect session-51 deployment. Along the way, Nick surfaced four standing directives that reshape the governance-execution model: Occam's razor, governance/proposals/ is agent-only, AI executes Nick gates content, and reduce-Nick-as-bottleneck."
 source_dd: "DD-44, DD-52, DD-82, DD-86, DD-89, DD-90, DD-91"
-timestamp: "2026-04-22T14:30:00-04:00"
+date: "2026-04-22"
 session: 52
 tags:
   - "system-log"

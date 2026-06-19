@@ -8,7 +8,7 @@ milestone: null
 rationale: "Classified 19 findings from sessions 89-90 into forms (14 pattern, 3 rule, 2 skill). Extracted 5 non-pattern artifacts to extracts/. 14 pattern findings routed to /synthesize-guide."
 source_dd: "DD-80"
 target_system: "improvement-loop"
-timestamp: "2026-05-24T00:00:00.000Z"
+date: "2026-05-24"
 ---
 
 ## What Changed

@@ -9,7 +9,7 @@ change_type: "Implementation"
 milestone: null
 rationale: "Authored the two P4 reference-layer files that close the session-49 use-case registry authoring backlog — `mcp.md` (concept, cross-cutting consumer lens) and `plan.md` (operation, lifecycle-sequenced). Registry back-filled; `_index.md` catalog updated; Next-entries list closed. All use-case-registry-flagged authoring work is now covered by the reference layer."
 source_dd: "DD-78, DD-82, DD-86, DD-90"
-timestamp: "2026-04-22T21:30:00Z"
+date: "2026-04-22"
 session: 54
 tags:
   - "system-log"

@@ -9,7 +9,7 @@ change_type: "Add"
 milestone: null
 rationale: "Closed the lifecycle-spec design loop by filing the four Phase-3 DDs (DD-98 guide-split, DD-99 theme-graduation, DD-100 template-and-agent versioning, DD-101 co-occurrence harvest queue). Phase 3 sits behind Phase 1 (clobber risk) and Phase 2 (drift/redundancy) as creation/structural lifecycle questions — less time-pressured at the time of Phase-1+2 ratification (session 70), now the natural next batch per Nick's session-73 close direction. Each DD codifies its own procedure or structural pattern; cross-DD consistency was spot-checked before filing. Two of the four DDs amend DD-94's closed trigger-tag enum (DD-98 adds `guide-split`; DD-99 adds `theme-graduation`); the amendments honor DD-94's 'new trigger tags require a DD amendment' rule by being the DDs that amend it. DD-100 is the missing Phase-3 sibling to DD-97 — DD-97 governs rule/skill extension; DD-100 governs template versioning and agent version-bump (with DD-82 invariant: agent bumps require Nick's prior approval). DD-101 makes DD-77's 'co-occurrence resolved at read time by downstream consumers' operational for one specific consumer (`/synthesize-guide`), without contradicting DD-77's negative design decision. Phase-3 implementation IBs are session-75+ work, analogous to session 71's IB-154…158 sweep for Phases 1+2."
 source_dd: "DD-29, DD-44, DD-77, DD-78, DD-80, DD-81, DD-82, DD-92, DD-93, DD-94, DD-95, DD-96, DD-97, DD-98, DD-99, DD-100, DD-101"
-timestamp: "2026-04-26T00:00:00Z"
+date: "2026-04-26"
 session: 74
 tags:
   - "system-log"

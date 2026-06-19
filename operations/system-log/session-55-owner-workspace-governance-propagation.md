@@ -9,7 +9,7 @@ change_type: "Governance"
 milestone: null
 rationale: "Propagated DD-89's four-zone artifact-placement pattern from IL's boundary-rules.md rule 7 up to workspace-root `.claude/rules/governance.md` via `/translate-governance`. The rule now binds every fractal unit (IL, Meta-System, Household OS, Claude Build) uniformly. Flagged a scope-mismatch for Nick: DD-89's frontmatter is IL-scoped, but the workspace-root rule binds MetaSystem-wide — a cross-system DD (or DD-89 scope amendment) is the formally correct grounding."
 source_dd: "DD-52, DD-86, DD-89, DD-90"
-timestamp: "2026-04-22T23:45:00Z"
+date: "2026-04-22"
 session: 55
 tags:
   - "system-log"

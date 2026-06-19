@@ -9,7 +9,7 @@ change_type: "Build"
 milestone: null
 rationale: "Closed IB-152: extended `/assess-skill` and `/assess-agent` with a DD-92 ContextSpec audit dimension (Step 3.5) — three additive checks (presence of all 8 required fields; universal-vocabulary scan against the same forbidden-token set as `/extract-artifacts` Step 2.5; IL classification meta leak check at top-level frontmatter). Composes with — does not replace — the existing Contract-derived audits (G1/G3b/G5/G6/G8 + G9.I6 for `/assess-skill`; variant-aware G1/G2/G3/G3b/G5/G6/G7/G9/G10 for `/assess-agent`). Pure addition per handoff rule; no propose-first cycle required. Acceptance: dry-run table all 5 expected behaviors verified against the DD-92-native reference (TDD rule), the 4 session-66 staged artifacts (regression sanity), and 3 synthetic non-conformant artifacts. Closes the consumer-side leg of DD-92: producer (extract-artifacts, sessions 65-66) writes the contract; consumer (assess-skill / assess-agent, this session) audits it."
 source_dd: "DD-78, DD-82, DD-89, DD-92"
-timestamp: "2026-04-26T00:00:00Z"
+date: "2026-04-26"
 session: 67
 tags:
   - "system-log"

@@ -8,7 +8,7 @@ milestone: "M2"
 rationale: "IB-110 (DD-38). Added Target System select property (S2: Notion Operations, S3: Claude Code Build, Improvement Loop, Cross-System) to System Log DB. Created four filtered table views sorted by Timestamp DESC. Updated System Log documentation page with new property in schema table and new views in views table. Existing entries not backfilled --- property applies going forward."
 source_dd: null
 target_system: "improvement-loop"
-timestamp: "2026-03-23T15:44:37.236Z"
+date: "2026-03-23"
 ---
 
 # IB-110: Added Target System property to System Log DB + created 4 filtered views

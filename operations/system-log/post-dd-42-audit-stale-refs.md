@@ -8,7 +8,7 @@ milestone: "M2"
 rationale: "DD-42 restructuring (DD/IB promotion to top-level peers) left stale references on three pages. This session completed the audit and applied fixes."
 source_dd: null
 target_system: "improvement-loop"
-timestamp: "2026-03-23T15:46:00.046Z"
+date: "2026-03-23"
 ---
 
 # Post-DD-42 audit: Fixed stale references on Implementation page, Four-System Separation Model, and IB docs dependencies map

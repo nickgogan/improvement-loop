@@ -9,7 +9,7 @@ change_type: "Update"
 milestone: null
 rationale: "Dual Codifier task: (1) /identify-artifacts on 15 unprocessed findings (20 scanned, 5 filtered as Already Adopted) — 12 pattern, 2 rule, 1 skill classified. (2) /extract-artifacts harvest-queue batch on 52 nick-approved rows across 8 guide queue files. DD-97 corpus scan for rules/skills; DD-100 corpus scan for templates."
 source_dd: "DD-29, DD-77, DD-78, DD-80, DD-81, DD-92, DD-95, DD-97, DD-100, DD-101"
-timestamp: "2026-05-25T00:00:00Z"
+date: "2026-05-25"
 session: 102
 tags:
   - "system-log"

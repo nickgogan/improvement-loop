@@ -8,7 +8,7 @@ milestone: null
 rationale: "Three agents designed using IL's own guide KB (G1, G3, G9, G10). Agent-as-directory structure per fractal pattern (DD-52). Researcher owns stage 1 (11 skills), Codifier owns stages 2-3 (3 skills), Librarian is consumption-layer (read-only, 0 skills). File-mediated handoff protocol using pipeline_status field. Librarian deployed as engine-facing subagent at .claude/agents/librarian.md."
 source_dd: "DD-82"
 target_system: "improvement-loop"
-timestamp: "2026-04-19T00:00:00.000Z"
+date: "2026-04-19"
 ---
 
 ## What Changed

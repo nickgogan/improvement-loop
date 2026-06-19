@@ -8,7 +8,7 @@ milestone: null
 rationale: "S1-Schema was a read-only Notion extraction mirror. S2-Operations was the running Notion system. Both concerned the same product — the Household Operating System. Merging them into a single system called Household OS reflects reality: the product is the system, not the implementation layer. S-numbers are retired in favor of descriptive names."
 source_dd: "DD-57, DD-58, DD-48"
 target_system: "improvement-loop"
-timestamp: "2026-04-05T00:00:00.000Z"
+date: "2026-04-05"
 ---
 
 ## What Changed

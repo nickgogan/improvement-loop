@@ -8,7 +8,7 @@ milestone: null
 rationale: "Separating state into _index.md catalogs forced per-session maintenance — ledger tables drifted between sessions and catalog rows duplicated frontmatter. Deleting the catalogs where frontmatter already carries the information makes the artifact itself the source of truth and removes the maintenance tax."
 source_dd: null
 target_system: "improvement-loop"
-timestamp: "2026-04-23T00:00:00.000Z"
+date: "2026-04-23"
 ---
 
 ## What Changed

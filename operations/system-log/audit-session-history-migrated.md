@@ -8,7 +8,7 @@ milestone: "M2"
 rationale: "Session History Archive on Handoff Prompt was redundant with System Log database. 10 entries migrated, Archive replaced with 2-line pointer, Operating Rule 16 updated, closing line updated. Handoff Prompt reduced from ~4,435 to ~3,651 words (~18% reduction)."
 source_dd: null
 target_system: "improvement-loop"
-timestamp: "2026-03-08T23:48:37.986Z"
+date: "2026-03-08"
 ---
 
 # Audit: Session History Archive migrated to System Log

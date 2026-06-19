@@ -8,7 +8,7 @@ milestone: null
 rationale: "Bidirectional linkage was structurally broken from Notion migration. 129 files modified. 142 Notion URLs resolved to filenames. 12 asymmetric links fixed. Sources with findings: 16 to 56. Findings with sources: 87 to 168. Notion refs reduced to 0. Repair was prerequisite for crosslink generation."
 source_dd: "DD-69"
 target_system: "improvement-loop"
-timestamp: "2026-04-07T00:00:00.000Z"
+date: "2026-04-07"
 ---
 
 ## What Changed

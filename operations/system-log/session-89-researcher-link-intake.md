@@ -8,7 +8,7 @@ milestone: null
 rationale: "Processed 18 links from LINKS.md: 12 processed (3 repos, 8 videos, 1 article), 6 skipped. Produced 17 new findings, updated 3 existing, 11 new sources, 3 new watched-library entries."
 source_dd: "DD-80"
 target_system: "improvement-loop"
-timestamp: "2026-05-24T00:00:00.000Z"
+date: "2026-05-24"
 ---
 
 ## What Changed

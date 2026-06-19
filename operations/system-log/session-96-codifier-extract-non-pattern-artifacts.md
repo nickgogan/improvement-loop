@@ -8,7 +8,7 @@ milestone: null
 rationale: "Review session 95 identification report guided-tier findings against form classification rubric. 8 findings redirected to pattern (4 rules, 3 skills, 1 template lacked binary/procedural/scaffold center of gravity). Extract remaining 7 non-pattern findings to extracts/."
 source_dd: "DD-78, DD-80, DD-92, DD-95, DD-97"
 target_system: "improvement-loop"
-timestamp: "2026-05-25T00:00:00.000Z"
+date: "2026-05-25"
 ---
 
 ## What Changed

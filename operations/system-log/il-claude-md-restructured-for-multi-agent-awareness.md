@@ -8,7 +8,7 @@ milestone: null
 rationale: "IL CLAUDE.md updated with agent roster, skill-to-agent mapping, handoff protocol reference, directory table entries for agents/ and .claude/skills/. A newcomer can now read IL's CLAUDE.md and understand the system's agents, pipeline, and skill ownership."
 source_dd: "DD-82"
 target_system: "improvement-loop"
-timestamp: "2026-04-19T00:00:00.000Z"
+date: "2026-04-19"
 ---
 
 ## What Changed

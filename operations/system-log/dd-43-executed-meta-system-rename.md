@@ -9,7 +9,7 @@ rationale: "DD-43 renames the top-level design-time reference container from \"S
 source_dd:
   - "https://www.notion.so/32c1e08b9b34815e92d6fb9f90dc9481"
 target_system: "improvement-loop"
-timestamp: "2026-03-23T18:40:16.940Z"
+date: "2026-03-23"
 ---
 
 # DD-43 executed: Renamed System Documentation to Meta-System, consolidated 19 DD spec pages into DB page bodies, updated vocabulary and governance

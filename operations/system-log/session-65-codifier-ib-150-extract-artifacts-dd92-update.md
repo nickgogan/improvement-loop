@@ -9,7 +9,7 @@ change_type: "Implementation"
 milestone: null
 rationale: "Closed IB-150 by applying 8 edits to `.claude/skills/extract-artifacts/SKILL.md` so future extractions generate DD-92-conformant ContextSpec by default (rather than retroactively via session-64 backfill). Edits cover all 5 IB-150 requirements: (1) ContextSpec by default; (2) universal-vocabulary enforcement; (3) mechanical-copy guard; (4) IL classification meta stripped at extraction; (5) reference-implementation pointer. New procedural surface: Step 2.5 Validate Drafts with 3 checks (ContextSpec presence, mechanical-copy guard, forbidden-vocabulary scan) — flagged artifacts are not written. Step 3 write template removes IL classification meta (confidence, tier, reason_codes, co_occurrence) per DD-92 deploy-boundary rule. Propose-first workflow: drafted 8 edit deltas as literal OLD/NEW diffs with coverage matrix; Nick approved as drafted with zero amendments; applied inline. No deviations from DD-91 governance pathway — skill-contract edit is operational mechanics within ratified DD-92 governance."
 source_dd: "DD-29, DD-78, DD-80, DD-91, DD-92"
-timestamp: "2026-04-24T00:00:00Z"
+date: "2026-04-24"
 session: 65
 tags:
   - "system-log"

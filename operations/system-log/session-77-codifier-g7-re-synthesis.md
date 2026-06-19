@@ -9,7 +9,7 @@ change_type: "Update"
 milestone: null
 rationale: "First live exercise of /synthesize-guide's Phase-1 + Phase-3 surfaces on real input. G7 (Session Persistence and Memory) was the most overdue guide (+13 net-new findings since 2026-04-19 initial synthesis). Re-synthesized atomically with all DD-93 / DD-94 / DD-98 / DD-101 surfaces firing as contracted. No procedural defects; no follow-up IBs filed. Cluster grew 14 → 27 findings; structural restructure promoted Retrieval Pipeline to its own Part 2 (was Step 1.3 alone) and Write Governance to its own Part 5 (was template-only treatment); 2 new templates, 1 new worked example, 4 new pitfalls. Companion changelog appended (clean, ≤10 lines); harvest queue file created lazily with 8 candidates (5 extract + 3 dismiss recommendations); routing table synthesis-status row updated; bidirectional cross-refs added to G9 + G1 (G2 + G3 already had them). 13 net-new findings back-annotated synthesized + consumed_by appended."
 source_dd: "DD-78, DD-81, DD-82, DD-92, DD-93, DD-94, DD-98, DD-101"
-timestamp: "2026-04-26T00:00:00Z"
+date: "2026-04-26"
 session: 77
 tags:
   - "system-log"

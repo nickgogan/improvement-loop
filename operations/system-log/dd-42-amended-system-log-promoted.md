@@ -9,7 +9,7 @@ rationale: "System Log meets all three DD-42 promotion criteria (cross-system sc
 source_dd:
   - "https://www.notion.so/32b1e08b9b3481cab43fc07b1b9ecc75"
 target_system: "improvement-loop"
-timestamp: "2026-03-23T16:46:21.373Z"
+date: "2026-03-23"
 ---
 
 # DD-42 amended: System Log added to promoted databases, hierarchy updated for Governance/Architecture split

@@ -9,7 +9,7 @@ change_type: "Update"
 milestone: null
 rationale: "Single-task Codifier session resolving the subagent queue-mutation discipline architectural decision logged-for-future across sessions 83 + 84. Nick ruled Option A (end-to-end subagent mode) plus a partition-by-queue-file concurrency rule. SKILL.md amendments applied to /extract-artifacts: (1) Step 4.8 preamble — End-to-end execution invariant clarifying same-process execution and atomicity from artifact write through queue flip; orchestrators MUST NOT post-batch-write the queue file. (2) New Step-4.8 trailing subsection — Concurrency for parallel harvest-row batches — partition-by-queue-file rule with race-condition rationale (per-process atomic read-modify-write; two concurrent writers to same file race; last-writer-wins). (3) Step 2 preamble — two-subagent-pattern disambiguation table separating drafting subagent (identification-report mode; intra-invocation; JSON output; no file writes; no queue touches) from whole-skill-invocation-as-subagent (harvest-mode parallel batches; full end-to-end pipeline including Step 4.8). IB-164 notes appended with the architectural amendment record (no new IB filed; the decision is a contract clarification of an already-closed work item, not a new work item). PROGRESS.md retargeted: subagent queue-mutation discipline removed from Nick's Prioritizaton; current focus advanced. Single atomic commit at session close."
 source_dd: "DD-29, DD-78, DD-97, DD-101, IB-164"
-timestamp: "2026-04-27T00:00:00Z"
+date: "2026-04-27"
 session: 85
 tags:
   - "system-log"

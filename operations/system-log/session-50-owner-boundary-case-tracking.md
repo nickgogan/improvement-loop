@@ -9,7 +9,7 @@ change_type: "Design + Migration"
 milestone: null
 rationale: "Executed session-50 handoff. Stream A — produced boundary-case tracking mechanism proposal for the Librarian reference layer (13-type encounter taxonomy, per-session encounter log in SL with distinct type tag, feedback routing by encounter type, six Nick-gated Proposal-First items including a new /summarize-encounters archival skill). Stream A-companion — produced DD proposal for design-artifact placement; Nick's mid-session reframe scaled the proposal from Owner-vs-Codifier split to a four-zone fractal architecture (project-management/design-notes/ for deliberative specs, governance/proposals/ for governance-rule proposals, governance/ root for ratified rules, operations/ for runtime events). Full cleanup executed per Nick's gate: seven existing design notes migrated from operations/design-notes/ to project-management/design-notes/, 27 files cross-reference-updated via sed, deprecated folder removed, new index files created, parent indexes updated. Stream B not invoked this session."
 source_dd: "DD-29, DD-44, DD-52, DD-55, DD-56, DD-59, DD-80, DD-82, DD-86"
-timestamp: "2026-04-22T00:00:00.000Z"
+date: "2026-04-22"
 session: 50
 tags:
   - "system-log"

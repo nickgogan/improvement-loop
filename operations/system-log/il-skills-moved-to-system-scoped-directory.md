@@ -8,7 +8,7 @@ milestone: null
 rationale: "15 IL skills (11 Researcher + 3 Codifier + 1 deprecated) moved from root .claude/skills/ to systems/improvement-loop/.claude/skills/. First execution of DD-49's mandate that root skills hold only cross-system utilities. 12 cross-system skills remain at root."
 source_dd: "DD-49"
 target_system: "improvement-loop"
-timestamp: "2026-04-19T00:00:00.000Z"
+date: "2026-04-19"
 ---
 
 ## What Changed

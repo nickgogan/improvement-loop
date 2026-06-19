@@ -9,7 +9,7 @@ change_type: "Update"
 milestone: null
 rationale: "Re-synthesized two pattern guides whose source clusters grew via session-63 inflow: G4 (Building Agent Evaluation Suites) +2 findings (`ensemble-eval-majority-required-for-success`, `production-configuration-baseline-discipline`) and G10 (Agent Design Patterns) +1 finding (`subagent-isolation-contract`). Both deltas are below the 3+ staleness trigger, but Nick carried them as queue items because the inflow is targeted and load-bearing for downstream work. G4 integration is pure addition (TOC unchanged); G10 adds a new Step 7 (subagent design) plus a third template — surfaced to Nick before write and approved. All 3 source findings back-annotated to `pipeline_status: synthesized`. Routing table Synthesis Status rows updated to 2026-04-26."
 source_dd: "DD-29, DD-44, DD-78, DD-80, DD-81, DD-86"
-timestamp: "2026-04-26T00:00:00Z"
+date: "2026-04-26"
 session: 68
 tags:
   - "system-log"

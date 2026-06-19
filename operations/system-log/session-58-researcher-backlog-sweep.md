@@ -9,7 +9,7 @@ change_type: "Implementation"
 milestone: null
 rationale: "Backlog sweep session addressing Buckets A (session-45 carry-forward sources), B (LongMemEval 7-URL cluster), C (Still Deferred locate list), and D (MemoryBench evaluation). Buckets A and B closed cleanly within session budget: 17 findings promoted, 3 authorities added, 14 sources processed, reciprocal links applied across 14 existing findings. Buckets C and D deferred to session 59+ at user-initiated stop (~40% context window). Delta report, next-scan-notes, and session-59 handoff prepared at close. No new frontmatter fields, file types, status enums, or directory conventions introduced — surface-before-shaping discipline honored."
 source_dd: "DD-29, DD-30, DD-41, DD-82, DD-90"
-timestamp: "2026-04-23T00:00:00Z"
+date: "2026-04-23"
 session: 58
 tags:
   - "system-log"

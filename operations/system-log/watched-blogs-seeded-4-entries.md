@@ -8,7 +8,7 @@ milestone: null
 rationale: "Seeded the watched-blogs registry with high-value content sources. All entries have dimension-anchored relevance filters with explicit proposability test: 'could this post produce a finding that leads to a proposal for improving MetaSystem?'"
 source_dd: null
 target_system: "improvement-loop"
-timestamp: "2026-04-09T00:00:00.000Z"
+date: "2026-04-09"
 ---
 
 ## What Changed

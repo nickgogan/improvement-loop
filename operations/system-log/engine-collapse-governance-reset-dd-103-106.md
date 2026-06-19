@@ -8,7 +8,7 @@ milestone: "Engine-collapse Phase 1 complete"
 rationale: "Phase 1 of the engine-collapse restructure (Steps P-8, sessions 117-119) collapsed the three-system federation into one self-evolving engine. Step 8 ratifies it in governance via DD-44 supersession: DD-103 (consolidating architecture reset) supersedes DD-32 (multi-system decomposition), DD-45 (meta-system as separate knowledge layer), DD-46 (per-system-architect pipeline), and amends DD-50 (governance home -> charter), DD-52 (charter is the fractal exception), DD-55/56/59 (Cross-System bucket folds into the engine). Three companion new DDs: DD-104 (single-engine three-altitude architecture), DD-105 (charter concept + trajectory signals), DD-106 (Claude Build retired; Household OS -> Notion). The A-G two-system roadmap is superseded. Filed autonomously per the locked plan (Nick raised the autonomy dial for Steps 6-8)."
 source_dd: "DD-103"
 target_system: "improvement-loop"
-timestamp: "2026-06-18T00:00:00.000Z"
+date: "2026-06-18"
 ---
 
 ## What Changed

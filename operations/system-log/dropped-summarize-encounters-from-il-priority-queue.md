@@ -8,7 +8,7 @@ milestone: null
 rationale: "Brainstorm surfaced zero accumulated librarian-encounter-log files in 27 sessions since the mechanism deployed (session 52, 2026-04-22). Build trigger (~20+ session-logs accumulated) never reached; the consumer-side skill is months early relative to producer-side telemetry actually being emitted. Nick dropped the queue item — broader Librarian/Owner skill-building work later will subsume this surface area if real demand materializes. Encounter-tracking substrate (schema, assess-* skill write contracts, file-type convention from 2026-04-22-librarian-boundary-case-tracking.md) remains deployed and usable; only the consumer skill build line is removed from the active queue."
 source_dd: null
 target_system: "improvement-loop"
-timestamp: "2026-04-27T00:00:00.000Z"
+date: "2026-04-27"
 ---
 
 # Dropped /summarize-encounters from IL prioritization queue

@@ -9,7 +9,7 @@ change_type: "Update"
 milestone: null
 rationale: "DD-107 §\"What this does NOT decide\" deferred bringing schematics into /detect-drift to the next slice; this is that slice (restructure plan §Phase 2 item 2). Schematics differ from extracts on two axes that required a contract choice: (1) location — they live in knowledge/schematics/, not extracts/, so scan.py gained a second scan root; (2) pointer shape + date basis — schematics carry an array grounded_in (not scalar source_finding) and have no extraction_date (curated, not extracted). The contract chosen and implemented: flag drift when any grounding finding's last_updated strictly post-dates the schematic's `updated` (its last-curation date). This is the natural mirror of the extract rule (finding.last_updated > artifact.extraction_date), substituting `updated` for `extraction_date`. No DD amendment needed — DD-107 anticipated this slice; this SL records the implemented date basis as the contract of record."
 source_dd: "DD-29, DD-96, DD-107"
-timestamp: "2026-06-18T00:00:00Z"
+date: "2026-06-18"
 session: 121
 tags:
   - "system-log"

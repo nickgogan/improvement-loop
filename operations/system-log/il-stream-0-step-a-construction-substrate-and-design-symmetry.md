@@ -8,7 +8,7 @@ milestone: "Cross-system roadmap step A"
 rationale: "Completed cross-system roadmap step A from session 106 plan. Substep A.2 (Librarian audit) had landed previously; this session completed the remaining five substeps (A.4a, A.4b, A.3, A.5, A.6) that operationalize the Librarian's audit/design symmetry at the concept-doc level. Skill and agent concept docs now carry §Construction substrate (Decision sequence, Template skeleton, Scoping heuristics, Authoring-time anti-patterns); design.md was rewritten from advisor mode (legacy 2026-04-22) to author mode to align with /design-skill and /design-agent build targets; rule 12 codifies the structural invariant that audit and design read the same substrate; consumer-abstractions-map gates which abstractions earn substrate per rule 11."
 source_dd: "DD-82, DD-86"
 target_system: "improvement-loop"
-timestamp: "2026-06-11T00:00:00.000Z"
+date: "2026-06-11"
 ---
 
 ## What Changed

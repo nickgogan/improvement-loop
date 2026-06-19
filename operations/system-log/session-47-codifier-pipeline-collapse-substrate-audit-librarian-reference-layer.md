@@ -8,7 +8,7 @@ milestone: null
 rationale: "Two streams planned (collapse proposal + Librarian design), reframed mid-session into three streams after Nick's ultrathink challenge on whether the taxonomy chain actually supports Librarian use cases. Produced: (1) pipeline collapse proposal, (2) substrate audit with v2 synthesis introducing Option α' (composition registry + three-tier access) and the Librarian reference layer (concept files + operation files). Dimensions registry reframed to Researcher-specific scan scope (reframe-only, no re-categorization); Agentic OS renamed to Agentic Systems; Harness rejected as dimension (placed in Librarian reference layer as a cross-cutting concept). Stream B.1–B.3 (Librarian use-case registry, read-contract design, assessment skill drafts) deferred to session 48 — this session closed at minimum-coherent state to avoid handing off incoherent docs."
 source_dd: "DD-29, DD-77, DD-78, DD-80, DD-81, DD-82, DD-86"
 target_system: "improvement-loop"
-timestamp: "2026-04-21T00:00:00.000Z"
+date: "2026-04-21"
 ---
 
 # Session 47 — Codifier: Pipeline Collapse Proposal + Substrate Audit + Librarian Reference Layer Design

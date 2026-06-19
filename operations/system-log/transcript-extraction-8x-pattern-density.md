@@ -8,7 +8,7 @@ milestone: null
 rationale: "Calibration of 16 YouTube transcripts against existing KB revealed a 46.5% miss rate from Perplexity-summary-based extraction. Transcript-based re-extraction identified 17.6 patterns per video vs 2.1 from summaries (8.4x increase). Implementation details are the #1 miss category at 31%. This fundamentally changes how the research pipeline should operate — transcript-first extraction is now mandatory for high-value sources."
 source_dd: null
 target_system: "improvement-loop"
-timestamp: "2026-04-07T00:00:00.000Z"
+date: "2026-04-07"
 ---
 
 ## What Changed

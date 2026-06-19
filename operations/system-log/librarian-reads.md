@@ -1,4 +1,5 @@
 ---
+date: "2026-04-23"
 title: "Librarian Tier-3 Read Log"
 type: "system-log"
 target_system:

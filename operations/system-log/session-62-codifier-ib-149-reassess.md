@@ -9,7 +9,7 @@ change_type: "Implementation"
 milestone: null
 rationale: "Executed IB-149 (/reassess-priorities over session-57 flagged candidates). Primary scope closed with 2 priority bumps, 1 skill-rubric-vs-IB-149 hold surfaced to Nick, 1 cluster-judgment held pending decay-design-space prioritization. Nick-directed scope expansion in-session: (a) evolve research-dimensions.md with Memory Decay / Forgetting / Compaction as Sub-dimension 1.A (Nick's Q2 follow-up); (b) run /identify-artifacts over 18 null-priority findings from session-58 drift (Nick's Q3 follow-up — 'do it in the same session'). All 18 classified (17 pattern + 1 rule), 11 × P2 + 7 × P3 priorities applied, 2 deferred on evidence grounds (#6 agentic-search-memory, #17 agent-native-app-store). IB-149 closed."
 source_dd: "DD-29, DD-30, DD-41, DD-44, DD-75, DD-76, DD-77, DD-80, DD-82, DD-86, DD-90"
-timestamp: "2026-04-24T00:00:00Z"
+date: "2026-04-24"
 session: 62
 tags:
   - "system-log"

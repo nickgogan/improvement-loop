@@ -8,7 +8,7 @@ milestone: null
 rationale: "Resolved PROGRESS.md logged-for-future item 4. Investigation revealed no existing tmp monitoring mechanism. Repo-cache at 976MB (14 cloned repos) identified as primary cleanup target. pdf-to-markdown and transcript-fetcher already self-clean. New skill fills the gap with read-only report mode and gated --purge/--purge-stale destructive ops."
 source_dd: "DD-86"
 target_system: "improvement-loop"
-timestamp: "2026-05-25T00:00:00.000Z"
+date: "2026-05-25"
 ---
 
 ## What Changed

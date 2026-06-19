@@ -8,7 +8,7 @@ milestone: null
 rationale: "Session 14 migrated 102 legacy untyped crosslinks. 34 were classified as 'enables' (33% rate vs KB historical 5%). Spot-check of all 34 found only 5 correct (14.7%). The 29 incorrect pairs were either removed (21) or reclassified to same-problem (6) or extends (2). Root cause: migration subagents applied a weaker Q2 threshold ('would B be somewhat less effective?') instead of the strict test ('would B break or degrade significantly?')."
 source_dd: null
 target_system: "improvement-loop"
-timestamp: "2026-04-08T00:00:00.000Z"
+date: "2026-04-08"
 ---
 
 ## What Changed

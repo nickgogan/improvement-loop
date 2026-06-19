@@ -9,7 +9,7 @@ change_type: "Implementation"
 milestone: null
 rationale: "Two Researcher-scope streams from the session 55 priority list. Stream A ran /repo-analyzer against three Memongo companion docs (PRODUCTION-READY, benchmark-operating-contract, self-host) as a targeted Pass 2; six finding candidates surfaced (strongest: the Benchmark Operating Contract pattern), none promoted this session. Stream B located the LongMemEval leaderboard source cluster that Nick flagged as 'Mampalace/Supermemory'; corrected the entity name (MemPalace, not Mampalace), confirmed there is no official leaderboard, and queued a multi-URL research-source entry for future scan. Both carry-forward items in next-scan-notes.md are now resolved."
 source_dd: "DD-29, DD-30, DD-41, DD-82, DD-90"
-timestamp: "2026-04-22T00:00:00Z"
+date: "2026-04-22"
 session: 56
 tags:
   - "system-log"

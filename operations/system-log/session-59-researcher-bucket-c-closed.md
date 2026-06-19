@@ -9,7 +9,7 @@ change_type: "Implementation"
 milestone: null
 rationale: "Continuation of session 58's backlog sweep. Bucket C (13 locate-only items rolled forward across sessions 42-58) swept to completion: 6 items promoted to new findings (+ 1 amendment to existing finding), 3 skip-with-reason, 2 no-fix-needed (bookkeeping lag), 1 located-no-new (substance already in KB). Bucket D (MemoryBench head-to-head evaluation) deferred to session 60 as a standalone session — environment setup and benchmark run justify dedicated scope. 12 new sources and 0 new authorities (existing authorities cover citations). 6 net-new findings promoted at pipeline_status: raw. Delta report, next-scan-notes update, and session-60 handoff written. Mid-session observation surfaced and answered: why items rolled forward so many sessions (priority crowding; under-used skip-with-reason; backlog format rewards addition over closure; bookkeeping lag). No new frontmatter fields, file types, status enums, or directories introduced — surface-before-shaping discipline honored."
 source_dd: "DD-29, DD-30, DD-41, DD-82, DD-90"
-timestamp: "2026-04-23T00:00:00Z"
+date: "2026-04-23"
 session: 59
 tags:
   - "system-log"

@@ -8,7 +8,7 @@ milestone: null
 rationale: "Every crosslink/migration session since session 13 has recreated a YAML-safe frontmatter writer script in /tmp/. The core logic is identical each time: parse frontmatter, modify in memory, dump with yaml.safe_dump, validate round-trip. Adding write_frontmatter() to the shared kb_parser.py module makes this reusable and eliminates the repeated boilerplate."
 source_dd: null
 target_system: "improvement-loop"
-timestamp: "2026-04-08T00:00:00.000Z"
+date: "2026-04-08"
 ---
 
 ## What Changed

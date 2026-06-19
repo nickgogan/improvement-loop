@@ -9,7 +9,7 @@ change_type: "Update"
 milestone: null
 rationale: "Re-synthesized G3 (Agent Architecture Decisions) to fold in the entry-15 reflection from session 66 — Nick's amplification on `specialized-harness-engineering-deterministic-rail` that 'harnesses lie on a spectrum from entirely LLM-initiated & driven via just prompts to mostly deterministic where workflows are instantiated and wired together with code'. Net change: +1 source finding (specialized-harness-engineering), +1 Key Concept (#6 — harness determinism spectrum), +1 Step (8 — Position on the Harness Spectrum), +1 Pitfall (#10 — Premature harness engineering), Step 6 augmented with productive-tension paragraph linking impermanence to the spectrum bet, worked example given a Spectrum Position annotation, contract.invariants/recovery extended. New Step 8 surfaced to Nick before write and approved. Source finding back-annotated (`pipeline_status: synthesized`); routing-table Synthesis Status row bumped (21 → 22, 2026-04-26)."
 source_dd: "DD-29, DD-44, DD-78, DD-80, DD-81, DD-86"
-timestamp: "2026-04-26T00:00:00Z"
+date: "2026-04-26"
 session: 69
 tags:
   - "system-log"

@@ -8,7 +8,7 @@ milestone: null
 rationale: "Two maintenance operations following bulk intake of 29 findings across sessions 89-90: /finding-crosslink to establish relationship graph, /reassess-priorities to evaluate priority changes based on accumulated evidence and fresh links."
 source_dd: null
 target_system: "improvement-loop"
-timestamp: "2026-05-24T00:00:00.000Z"
+date: "2026-05-24"
 ---
 
 ## What Changed

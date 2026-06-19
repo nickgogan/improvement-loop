@@ -9,7 +9,7 @@ change_type: "Update"
 milestone: null
 rationale: "First downstream consumption session of DD-101's harvest-queue backlog. Sessions 77–79's live-validation sweep (G7 + G2 + G9) produced 38 cumulative queue rows; this session walked Nick through all 38 in three batches (rule × 19 → template × 13 → skill × 6) and captured per-row Status + Resolution writes per his rulings. Outcome: 24 nick-approved + 14 nick-dismissed; 0 remaining queued. 100% Codifier-recommendation accuracy across all 38 rows (Nick accepted every reco verbatim). Session also discovered + closed a /synthesize-guide Step 4.7 queue-write template regression: sessions 78/79 emitted slim 3-field per-row blocks instead of DD-101's required 9-field shape (session 77 was conformant). Defect closed by SKILL.md patch (explicit 9-field per-row exemplar added; both-surfaces invariant clarified) plus inline backfill of G2/G9 queue files under Nick override of the standard 'do not inline-fix' rule. IB-165 filed with status Done. Side-effect: DD-101.md's own per-row exemplar surfaced as inconsistent with its field-list text (8 fields rendered, 9 required); accepted as-is per tolerate-one-off discipline (Nick session ruling); revisit if recurs. Downstream unblocked: 24 nick-approved rows are now valid input for /extract-artifacts queue-row promotion (IB-164)."
 source_dd: "DD-29, DD-82, DD-97, DD-100, DD-101"
-timestamp: "2026-04-27T00:00:00Z"
+date: "2026-04-27"
 session: 81
 tags:
   - "system-log"

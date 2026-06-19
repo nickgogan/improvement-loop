@@ -8,7 +8,7 @@ milestone: null
 rationale: "DD-72 governed the finding lifecycle under the Proposer pipeline (Research → Propose → Codify). DD-80 eliminated the Proposer stage but left DD-72's lifecycle orphaned — still Binding on paper, pointing to a deprecated workflow. DD-88 restates the lifecycle under the DD-80 pipeline (/identify-artifacts + /extract-artifacts / /synthesize-guide) and incorporates DD-81's pattern-vs-non-pattern routing. Also codifies the proposer_priority → priority field rename executed earlier in this session."
 source_dd: "DD-88, DD-72, DD-80, DD-81, DD-44"
 target_system: "improvement-loop"
-timestamp: "2026-04-20T00:00:00.000Z"
+date: "2026-04-20"
 ---
 
 # DD-88 Supersedes DD-72 — Lifecycle Aligned to DD-80 Pipeline

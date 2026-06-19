@@ -11,7 +11,7 @@ rationale: "Defined the engine's top-altitude artifact form (the schematic — a
 source_dd:
   - "DD-104"
   - "DD-107"
-timestamp: "2026-06-18"
+date: "2026-06-18"
 session: 120
 tags:
   - "system-log"

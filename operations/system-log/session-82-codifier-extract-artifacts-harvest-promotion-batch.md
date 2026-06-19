@@ -9,7 +9,7 @@ change_type: "Update"
 milestone: null
 rationale: "First downstream execution of IB-164's /extract-artifacts harvest-queue promotion path against the 24 nick-approved rows produced in session 81. Form-grouped traversal: 17 rules → 5 skills → 2 templates. Each invocation processes exactly one row per IB-164's single-row contract. DD-29 per-row Nick gate at drafting step. DD-97 corpus scan fires for rule/skill targets (extension proposals possible → Branch C); DD-100 corpus scan fires for template targets (version-bump proposals possible → Branch D). Step 4.8 Branch B (extracted) flips Status → extracted on each successful artifact write."
 source_dd: "DD-29, DD-82, DD-95, DD-97, DD-100, DD-101"
-timestamp: "2026-04-27T00:00:00Z"
+date: "2026-04-27"
 session: 82
 tags:
   - "system-log"

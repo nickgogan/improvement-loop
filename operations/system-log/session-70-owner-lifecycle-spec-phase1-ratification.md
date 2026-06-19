@@ -9,7 +9,7 @@ change_type: "Add"
 milestone: null
 rationale: "Ratified Phase 1 of the artifact lifecycle spec authored by Codifier on 2026-04-20 (`project-management/design-notes/2026-04-20-artifact-lifecycle-spec.md`) — three DDs that had sat behind a Nick-gate for six sessions. DD-93 codifies guide regeneration's preserved-section contract (canonical `## Nick's Annotations` + `<!-- PRESERVE -->` regions, post-regen regression test). DD-94 codifies guide companion changelog files in `extracts/guides/changelog/` with closed trigger-tag enum, ~10-line cap, most-recent-first append. DD-95 codifies `last_change_session` (int) + `last_change_sl` (validated SL stem) frontmatter on non-guide extracts with guides explicitly excluded. All three DDs accepted as-spec — no amendments. Three implementation IBs queued (IB-154, IB-155, IB-156). Schema (`_schema.yaml`) updated with the two DD-95 fields in a new `Lifecycle Tracking` block. 31-artifact retroactive backfill executed in-session per Nick directive (scope expansion from spec's deferred-IB framing). Phase-1 ratification unblocks G7 / G2 / G9 re-synthesis, the next-largest pending Codifier unit."
 source_dd: "DD-29, DD-44, DD-78, DD-80, DD-81, DD-86, DD-92, DD-93, DD-94, DD-95"
-timestamp: "2026-04-26T00:00:00Z"
+date: "2026-04-26"
 session: 70
 tags:
   - "system-log"

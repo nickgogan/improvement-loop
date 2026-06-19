@@ -8,7 +8,7 @@ milestone: null
 rationale: "Stripped hardcoded counts from 12+ files. CLAUDE.md reduced from 164 to 62 lines. Added 3 governance rules: _index.md updates are not blocking, PROGRESS.md updated once at session end, no hardcoded counts. Every token in context files costs budget on every invocation, and the maintenance burden of keeping counts accurate was unsustainable."
 source_dd: "DD-74"
 target_system: "improvement-loop"
-timestamp: "2026-04-07T00:00:00.000Z"
+date: "2026-04-07"
 ---
 
 ## What Changed

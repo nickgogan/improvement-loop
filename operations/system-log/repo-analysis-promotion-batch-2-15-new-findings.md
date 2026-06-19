@@ -8,7 +8,7 @@ milestone: null
 rationale: "Second promotion batch completing the repo-analysis pipeline. 15 new findings created from remaining candidates (CR-10/12/13/14, 3 Archon, 5 n8n, 3 LangGraph). 12 candidates skipped as duplicates, 1 existing finding (DAG vs BSP) updated with typed channels detail. KB now at ~400 findings."
 source_dd: "DD-45"
 target_system: "improvement-loop"
-timestamp: "2026-04-09T00:00:00.000Z"
+date: "2026-04-09"
 ---
 
 ## What Changed

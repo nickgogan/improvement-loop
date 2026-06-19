@@ -9,7 +9,7 @@ rationale: "Architecture section was encompassing too much --- governance, metho
 source_dd:
   - "https://www.notion.so/32b1e08b9b3481cab43fc07b1b9ecc75"
 target_system: "improvement-loop"
-timestamp: "2026-03-23T16:46:45.354Z"
+date: "2026-03-23"
 ---
 
 # System Documentation restructure: Governance extracted, DDG moved, Architecture hub cleaned, I&T page drafted

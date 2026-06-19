@@ -1,4 +1,5 @@
 ---
+date: "2026-04-19"
 title: "Owner Skills Built — 5 Active"
 type: "system-log"
 target_system:

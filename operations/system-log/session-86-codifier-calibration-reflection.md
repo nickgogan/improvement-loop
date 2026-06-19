@@ -8,7 +8,7 @@ milestone: null
 rationale: "Reviewed cumulative evidence from sessions 81-84 (harvest queue rulings, extract-artifacts promotion, IB-164 resume, reconciliation + DD-97 sweep). Reflected on calibration patterns. Leaned out PROGRESS.md to remove session-history bloat."
 source_dd: null
 target_system: "improvement-loop"
-timestamp: "2026-05-24T00:00:00.000Z"
+date: "2026-05-24"
 ---
 
 ## What Changed

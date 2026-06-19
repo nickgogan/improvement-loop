@@ -8,7 +8,7 @@ milestone: null
 rationale: "Completing the distribution pattern established by DD-55 (DDs) and DD-56 (IB items). All three governance databases now follow the same system-scoped pattern. Root-level system-log/ eliminated."
 source_dd: "DD-59"
 target_system: "improvement-loop"
-timestamp: "2026-04-05T00:00:00.000Z"
+date: "2026-04-05"
 ---
 
 ## What Changed

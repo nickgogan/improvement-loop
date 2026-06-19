@@ -8,7 +8,7 @@ milestone: null
 rationale: "First live test of /watch-blogs skill on both Anthropic blogs. Dry-run mode discovered 24 posts (18 engineering, 6 research), triaged 21 as EXTRACT with ~175 estimated patterns. Engineering blog is exceptionally high-density — 17/18 posts passed the relevance filter. Triage report tiered posts by pattern count for processing priority."
 source_dd: null
 target_system: "improvement-loop"
-timestamp: "2026-04-09T00:00:00.000Z"
+date: "2026-04-09"
 ---
 
 ## What Changed

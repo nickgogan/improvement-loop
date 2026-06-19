@@ -8,7 +8,7 @@ milestone: null
 rationale: "Perplexity deep research confirmed nested Obsidian vaults are unsupported and risk data loss. Single vault with Workspaces plugin, Dataview hub notes, and folder hierarchy formalized as DD-85. Five HUB.md files created with Dataview queries scoped to each system."
 source_dd: "DD-85"
 target_system: "improvement-loop"
-timestamp: "2026-04-19T00:00:00.000Z"
+date: "2026-04-19"
 ---
 
 ## What Changed

@@ -9,7 +9,7 @@ change_type: "Update"
 milestone: null
 rationale: "First end-to-end run of /detect-drift (IB-157, session 71) against the live extracts corpus — the validation gate for the IB-157 read paths. Smoke-test surfaced a quote-style heterogeneity bug in inline LLM-driven YAML parsing (false-clean result on the first pass) and Nick directed mid-session codification of Steps 1-2 as a deterministic helper script. After the smoke-test work closed, Nick redirected scope a second time to pull the Librarian cross-concept subagent template (read-contract Q4) into this session — sufficient context was loaded. Three outcome commits + this close. Original-handoff pre-task gate items (session-72 reports 1+2) were not gated by Nick at session start; skipped per handoff direction."
 source_dd: "DD-29, DD-77, DD-78, DD-80, DD-82, DD-86, DD-95, DD-96"
-timestamp: "2026-04-26T00:00:00Z"
+date: "2026-04-26"
 session: 73
 tags:
   - "system-log"

@@ -8,7 +8,7 @@ milestone: null
 rationale: "The KB had 39% isolated findings (126/323), meaning the Proposer couldn't see dependency chains, enabling relationships, or contradictions between them. A full crosslink pass was needed before the Proposer could generate high-quality proposals."
 source_dd: null
 target_system: "improvement-loop"
-timestamp: "2026-04-08T00:00:00.000Z"
+date: "2026-04-08"
 ---
 
 ## What Changed
