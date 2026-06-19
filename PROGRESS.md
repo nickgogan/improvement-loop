@@ -27,6 +27,10 @@ Phase 1 ran Steps P–8 across sessions 117–119. Session 119 landed Steps 6–
 
 Ordered queue. Status markers: `[nick-gate]` waits on Nick's ruling; `[deferred]` held by Nick, re-evaluate on trigger; `[trigger]` waits on external evidence or volume; `[don't-do-yet]` do not reintroduce until a specific upstream condition lands.
 
+1. **`[nick-gate]` Phase 2 — schematics + evaluation/feedback layer.** The new top-altitude content: define the schematic form in `knowledge/schematics/` (demand index → layered configuration → required eval/feedback layer → `grounded_in`/`composed_of` links), add the execution-surface axis to the Librarian concept docs, seed 2–3 cluster archetypes, and wire Librarian Builder mode to match a demand profile to a schematic. Reuse existing self-evolution machinery (`/detect-drift`, `/solicit-proposals`, Dimensions 7 & 9) — don't rebuild. Plan of record: `project-management/design-notes/2026-06-18-engine-collapse-restructure-plan.md` §Phase 2.
+2. **`[nick-gate]` Merge `engine-collapse-phase-1` → main.** After Phase 2 lands and is verified. Phase 1 + the post-Phase-1 cleanup sweep (session 120) are committed on the branch; merge is Nick's call.
+3. **`[optional]` Full `/system-audit`.** Post-collapse whole-system consistency sweep (fractal compliance now incl. `app/`/`knowledge/`, cross-reference integrity, charter references). Run before or after merge at Nick's discretion.
+
 ---
 
 ## Logged-for-future
