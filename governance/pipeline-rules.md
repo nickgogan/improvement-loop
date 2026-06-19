@@ -41,7 +41,7 @@ tags:
    - *Source:* Constitution — Design Philosophy ("Spec before build"); Principles — DBDO Pipeline steps 3-4
 
 4. **Handoffs are file-mediated.** Agents do not communicate directly in conversation. The Researcher writes findings with `pipeline_status: raw`. The Codifier reads findings with `pipeline_status` indicating readiness. The handoff is the file state, not a message.
-   - *Source:* Principles — DBDO Pipeline; `agents/il-agent-handoff-protocol.md`
+   - *Source:* DBDO Pipeline (design-wisdom, `knowledge/reference/`); `agents/handoff-protocol.md`
 
 5. **System evolution via periodic research, not ad-hoc.** Changes to the IL system flow through the structured pipeline (research → identify → extract → deploy). Exception: on-demand research via `/research-query` (DD-83) and Owner-initiated structural proposals.
    - *Source:* Constitution — Design Philosophy; DD-36

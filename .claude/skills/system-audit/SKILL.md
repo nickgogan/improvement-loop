@@ -128,7 +128,7 @@ Also check knowledge vault subdirectories: `patterns/`, `guides/`, `templates/`,
 
 ### Step 6: Cross-Reference Integrity
 
-1. **Handoff protocol:** Read `agents/handoff-protocol.md` (or `il-agent-handoff-protocol.md`). Verify it references current agents and current artifact paths.
+1. **Handoff protocol:** Read `agents/handoff-protocol.md`. Verify it references current agents and current artifact paths.
 2. **DD references:** `Grep` for `DD-` references across all IL files. Verify each referenced DD exists.
 3. **IB references:** `Grep` for `IB-` references. Verify each exists and note status (open vs. closed).
 4. **Inter-file links:** `Grep` for markdown links (`](`) and wiki-links (`[[`). Spot-check that targets exist.

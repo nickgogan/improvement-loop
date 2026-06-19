@@ -60,18 +60,20 @@ For Researcher, Codifier, and Librarian dispositions, read the agent definition 
 | `watched-libraries/` | Upstream dependency tracking (spectrum position, change logs) |
 | `watched-blogs/` | Content source monitoring (blogs, newsletters, post logs) |
 | `extracts/` | Staged artifacts by form — output of `/extract-artifacts` (DD-80) |
-| `governance/` | System-specific governance docs — derived from MetaSystem constitution by the Owner agent |
+| `governance/` | Engine governance docs — derived from the charter + workspace operating law by the Owner agent |
 | `agents/` | Agent definitions — Owner, Researcher, Codifier, Librarian, handoff protocol. Each agent directory may include a `reflections/` subfolder for agent-private self-reflections fed into `/solicit-proposals` rounds. |
 | `project-management/design-notes/` | Deliberative specifications (substrate audits, read contracts, lifecycle specs, acceptance rubrics) — any agent may author; Owner-governed per four-zone architecture |
 | `governance/proposals/` | Owner-authored governance-rule proposals (Proposal-First tier); also the destination for agent-authored proposals emerging from `/solicit-proposals` rounds |
-| `.claude/skills/` | IL-scoped skills (per DD-49) — see "Skills That Operate Here" section below for per-agent listings |
+| `.claude/skills/` | Engine-scoped skills (system-scoped placement is a convention inherited from the retired Claude Build's DD-49, now archived) — see "Skills That Operate Here" below for per-agent listings |
 | `feedback/` | Feedback items for improving the IL system |
-| `archive/improvement-proposals/` | Archived — 5 historical proposals from session 6, superseded by DD-80 pipeline |
-| `operations/` | Loop reports, handoff prompts, system log |
+| `archive/improvement-proposals/` | Archived — historical proposals from session 6, superseded by the DD-80 pipeline |
+| `operations/` | Loop reports, handoff prompts, system log, audit reports (`/system-audit`) |
 | `operations/references/` | Research dimensions registry (`research-dimensions.md`) |
 | `project-management/` | Design Decisions and Implementation Backlog items |
+| `docs/` | System documentation & architecture diagrams (pipeline trace, ownership map, agent-interaction & subagent topology) |
+| `audit-reports/` | Whole-system audit output from `/audit-system` (top-altitude composition skill) — distinct from `operations/audit-reports/` (`/system-audit`) |
 
-Each directory contains an `_index.md` catalog for Obsidian navigation and agent discovery.
+Selected directories carry an `_index.md` — limited to Dataview-driven live views and load-bearing substrate maps. Governance folders (DDs, IB, findings, sources, authorities) no longer maintain catalog `_index.md` files; filter on frontmatter instead (workspace governance Process Rule 1).
 
 ---
 
@@ -88,7 +90,7 @@ Sources  -->  Extract  -->  KB  -->  [human gate]  -->  Identify  -->  [human ga
 | **Extraction** | `/extract-artifacts` | Approved identification report | Staged artifacts in `extracts/` | Review staged artifacts |
 | **Deployment** | Manual | Staged artifacts | Patterns, rules, templates, skills in the engine's `knowledge/` or `.claude/` | Nick deploys |
 
-The **Researcher** agent owns stage 1. The **Codifier** agent owns stages 2-3. Nick owns stage 4. Agents do not communicate directly — handoffs are file-mediated via `pipeline_status` on findings. See `agents/il-agent-handoff-protocol.md`.
+The **Researcher** agent owns stage 1. The **Codifier** agent owns stages 2-3. Nick owns stage 4. Agents do not communicate directly — handoffs are file-mediated via `pipeline_status` on findings. See `agents/handoff-protocol.md`.
 
 ---
 
@@ -105,7 +107,7 @@ The **Researcher** agent owns stage 1. The **Codifier** agent owns stages 2-3. N
 
 ## Skills That Operate Here
 
-All IL skills live in `.claude/skills/` under this system directory (per DD-49). Cross-system skills (`/prompt-evaluator`, `/prompt-enhancer`, `/governance-audit`, `/session-handoff`) remain at workspace root `.claude/skills/`.
+All IL skills live in `.claude/skills/` under this system directory (system-scoped placement is a convention inherited from the retired Claude Build's DD-49, now archived). Cross-system skills (`/prompt-evaluator`, `/prompt-enhancer`, `/governance-audit`, `/session-handoff`) remain at workspace root `.claude/skills/`.
 
 ### Researcher Skills
 
@@ -137,13 +139,14 @@ All IL skills live in `.claude/skills/` under this system directory (per DD-49).
 
 | Skill | Role |
 |-------|------|
-| `/translate-governance` | Read MetaSystem constitution, produce/update IL governance docs, detect drift |
+| `/translate-governance` | Read the charter + workspace operating law, produce/update engine governance docs, detect drift |
 | `/maintain-docs` | Detect doc drift and fix (`--update`), or interview to create new docs (`--create`) |
 | `/system-health` | Quick drift detection — compare docs vs filesystem state |
 | `/process-feedback` | Read feedback/, triage items, investigate root causes, propose actions |
 | `/system-audit` | Full consistency check — agents, skills, governance, fractal compliance |
 | `/solicit-proposals` | Run a reflection round — per-agent self-reflection → per-agent proposal drafts → Nick gates |
 | `/cleanup-cache` | Monitor and purge temp/cache directories across IL workflows |
+| `/audit-system` | Top-altitude whole-system audit — discovers artifacts, dispatches to `/assess-*`, emits manifest + findings + summary (DD-104) |
 
 ### Librarian Skills
 
@@ -156,7 +159,7 @@ All IL skills live in `.claude/skills/` under this system directory (per DD-49).
 | `/design-agent` | Draft a new agent artifact from intent — composes `design.md × agent.md` (variant-aware); delegates Phase 5 audit to `/assess-agent` (rule 10) |
 | `/ask-kb` | Citation-grounded KB query — Teacher/Builder modes selected by query shape; read-only |
 | `/compare-repos` | Cross-repo synthesis across watched libraries — Builder-mode recommendations on top of `/repo-analyzer` per-repo input |
-| `/detect-drift` | Source-drift scanner for non-guide extracts |
+| `/detect-drift` | Source-drift scanner for non-guide extracts and curated schematics (DD-107) |
 
 The Librarian also uses Read/Glob/Grep directly to navigate the KB for Teacher/Builder-mode conversations that don't fit a dedicated skill. Invocable as a subagent via `.claude/agents/librarian.md`.
 
@@ -172,7 +175,6 @@ The Librarian also uses Read/Glob/Grep directly to navigate the KB for Teacher/B
 | Read/write sources | `research-sources/*.md` | Read/Write/Edit tools |
 | Read/write authorities | `research-authorities/*.md` | Read/Write/Edit tools |
 | Read watched libraries | `watched-libraries/*.md` | Read tool |
-| Read proposals (Researcher) | `improvement-proposals/*.md` | Read tool only |
 | Read research dimensions | `operations/references/research-dimensions.md` | Read tool |
 | Read Design Decisions | `project-management/design-decisions/DD-XX.md` | Read tool |
 | Read IB items | `project-management/implementation-backlog/IB-XX.md` | Read tool |
@@ -204,10 +206,10 @@ The engine is now fractal-complete (DD-52) — all 7 folders exist. Current stat
 |--------|--------|
 | `app/` | Exists — relocated tools: `transcript-fetcher`, `pdf-to-markdown` (engine-collapse Step 1) |
 | `governance/` | Exists — engine governance, owned by Owner agent (DD-86) |
-| `knowledge/` | Exists — `patterns/`, `guides/`, `templates/`, `reference/` (absorbed from the dissolved meta-system, Step 3) |
+| `knowledge/` | Exists — `patterns/`, `guides/`, `templates/`, `reference/`, `schematics/` (reference absorbed from the dissolved meta-system in Step 3; `schematics/` added in Phase 2, DD-107) |
 | `agents/` | Exists — Owner, Researcher, Codifier, Librarian, handoff protocol |
 | `project-management/` | Exists — DDs and IB items (merged with former cross-system data, Step 5) |
-| `operations/` | Exists — research-reports, pattern-identification-reports, guide-reports, handoffs, system-log, references/ |
+| `operations/` | Exists — research-reports, pattern-identification-reports, guide-reports, drift-reports, handoffs, system-log, audit-reports, references/ |
 | `archive/` | Exists — archived improvement-proposals |
 | `feedback/` | Exists (engine extension) — feedback items for engine improvement |
 
