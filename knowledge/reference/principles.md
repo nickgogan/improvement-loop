@@ -70,4 +70,4 @@ The Improvement Loop accelerates this by researching frontier patterns and propo
 
 ---
 
-*Source: Distilled from the Intention & Trajectory page, originally extracted into the former s1-schema/ folder (now archived at `incubator/household-os/archive/s1-extraction/` per DD-58).*
+*Source: Distilled from the Intention & Trajectory page, originally extracted into the former s1-schema/ folder (now archived at `archive/household-os/archive/s1-extraction/` per DD-58).*

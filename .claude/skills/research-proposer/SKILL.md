@@ -61,7 +61,7 @@ This skill enforces strict read/write boundaries:
 | READ | `systems/improvement-loop/research-findings/` | Read-only — search and read findings files, use Grep to filter by `priority` and other frontmatter fields |
 | READ | `systems/improvement-loop/research-sources/` | Read-only — check source evidence |
 | READ | `systems/improvement-loop/research-authorities/` | Read-only — check authority credibility |
-| READ | Current system state: DDs via `Read` from system-scoped `project-management/design-decisions/` folders, architecture docs via `Read` from `incubator/household-os/knowledge/reference/`, vault files via `Read`, skill files via `Read` | Read-only — fetch for diffing |
+| READ | Current system state: DDs via `Read` from system-scoped `project-management/design-decisions/` folders, architecture docs via `Read` from `systems/improvement-loop/knowledge/reference/`, vault files via `Read`, skill files via `Read` | Read-only — fetch for diffing |
 | **WRITE** | **`systems/improvement-loop/improvement-proposals/`** | Full write — create new `.md` files and update existing proposals and `_index.md` |
 
 **CRITICAL:** This skill NEVER writes to Research Sources, Research Findings, or Research Authorities. Those are the research-loop skill's domain.
@@ -72,7 +72,7 @@ This skill enforces strict read/write boundaries:
 - **Research Findings (read-only):** `systems/improvement-loop/research-findings/`
 - **Research Sources (read-only):** `systems/improvement-loop/research-sources/`
 - **Research Authorities (read-only):** `systems/improvement-loop/research-authorities/`
-- **Architecture docs (read-only):** `incubator/household-os/knowledge/reference/`
+- **Architecture docs (read-only):** `systems/improvement-loop/knowledge/reference/`
 
 ## Improvement Proposals DB Properties
 
@@ -132,10 +132,10 @@ The proposer runs as a five-phase pipeline. By default, all phases run in sequen
 
 | Applicability | What to Read |
 |---------------|-------------|
-| S2 (Notion Operations) | Relevant DDs via `Read` from system-scoped `project-management/design-decisions/` folders, architecture docs via `Read` from `incubator/household-os/knowledge/reference/`, relevant Notion agent configs |
+| S2 (Notion Operations) | Relevant DDs via `Read` from system-scoped `project-management/design-decisions/` folders, architecture docs via `Read` from `systems/improvement-loop/knowledge/reference/`, relevant Notion agent configs |
 | S3 (Claude Code Build) | CLAUDE.md sections via `Read` (`/Users/nickgogan/MetaSystem/CLAUDE.md`), applicable vault files via `Read`, build specs |
 | Perplexity Skills | The specific skill file(s) via `Read` from `.claude/skills/<name>/SKILL.md` |
-| General | Cross-reference: which DDs establish the pattern being discussed? Read those from the appropriate system-scoped `project-management/design-decisions/` folder (`systems/meta-system/`, `incubator/household-os/`, `incubator/claude-build/`, `systems/improvement-loop/`). |
+| General | Cross-reference: which DDs establish the pattern being discussed? Read those from `systems/improvement-loop/project-management/design-decisions/` (live DDs); archived-system DD history lives under `archive/{household-os,claude-build,meta-system}/project-management/design-decisions/`. |
 
 **Scoping rules:**
 - Read only the DDs and architecture docs that are directly referenced by or relevant to the findings in this batch. Do NOT read all DDs.
@@ -150,8 +150,8 @@ The proposer runs as a five-phase pipeline. By default, all phases run in sequen
 **Goal:** Build a working understanding of the current state of the scoped system surfaces.
 
 1. Fetch each document identified in the scope map:
-   - **Architecture docs:** Use `Read` tool with paths from `incubator/household-os/knowledge/reference/`
-   - **Design Decisions:** Use `Read` tool with paths from the appropriate system-scoped folder (e.g., `/Users/nickgogan/MetaSystem/systems/meta-system/project-management/design-decisions/`, `/Users/nickgogan/MetaSystem/incubator/household-os/project-management/design-decisions/`, `/Users/nickgogan/MetaSystem/incubator/claude-build/project-management/design-decisions/`, `/Users/nickgogan/MetaSystem/systems/improvement-loop/project-management/design-decisions/`)
+   - **Architecture docs:** Use `Read` tool with paths from `systems/improvement-loop/knowledge/reference/` (Household OS architecture docs were lifted into engine knowledge in the engine-collapse restructure)
+   - **Design Decisions:** Use `Read` tool with paths from `/Users/nickgogan/MetaSystem/systems/improvement-loop/project-management/design-decisions/` (live DDs); archived-system DD history is under `/Users/nickgogan/MetaSystem/archive/{household-os,claude-build,meta-system}/project-management/design-decisions/`
    - **Vault files (CLAUDE.md, rules, specs):** Use `Read` tool with absolute paths from `/Users/nickgogan/MetaSystem/`
    - **Skill files:** Use `Read` tool to read from `/Users/nickgogan/MetaSystem/.claude/skills/<name>/SKILL.md`
 2. For each document, extract:
