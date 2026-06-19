@@ -53,13 +53,13 @@ both route through the same drift scanner:
    (Governance)** scans (`operations/references/research-dimensions.md`). Because every schematic's
    *required* Evaluation & feedback layer — and its autonomy choice — is `grounded_in` such
    findings, a D7/D9 scan that updates one of them routes straight back to schematic re-evaluation
-   through mechanism (1). Today both seeds are grounded in
-   [[agent-self-reporting-unreliability-independent-eval]] (D7); the audit workcell adds
-   [[llm-as-judge-pattern-for-verification-agents]] (D7) and
-   [[independent-eval-and-scoped-authority-commandments]] (registered D7, content spanning
-   authority-scoping — what grounds its observer autonomy choice). No seed is yet `grounded_in` a
-   finding *registered* under D9, so the D9 route is wired-and-ready, not yet exercised: a future
-   autonomy/governance grounding flows through mechanism (1) identically.
+   through mechanism (1). The D7 route is well-exercised: the audit and research seeds ground their
+   eval layers in [[agent-self-reporting-unreliability-independent-eval]] and
+   [[llm-as-judge-pattern-for-verification-agents]] (both D7). The D9 route is exercised too — the
+   coding workcell grounds its autonomy/review layer in [[compound-review-debt-from-deferred-inspection]]
+   (D9) and the operations assistant grounds its autonomy contract in
+   [[advisory-only-for-persistent-mutations]] (D9). So a scan that bumps any of these re-flags the
+   schematic that leans on it.
 
 So `/detect-drift` is the "grounding moved" half and the D7/D9 scan→drift route is the "eval layer
 stays current" half — together they keep the self-evolving promise live, not aspirational.
@@ -69,7 +69,9 @@ stays current" half — together they keep the self-evolving promise live, not a
 | Schematic | Altitude | Maturity | Function |
 |-----------|----------|----------|----------|
 | [[research-scanning-agent\|Research-Scanning Agent]] | middle | seed | research |
+| [[scheduled-operations-assistant\|Scheduled Operations Assistant]] | middle | seed | operations |
 | [[codebase-audit-workcell\|Codebase-Audit Workcell]] | top | seed | audit |
+| [[project-coding-workcell\|Project-Scoped Coding Workcell]] | top | seed | coding |
 
 ## Dataview Query
 
