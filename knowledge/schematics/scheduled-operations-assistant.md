@@ -21,8 +21,8 @@ grounded_in:
   - "five-pillar-agentic-os-framework"
 composed_of:
   - "systems/improvement-loop/.claude/skills/design-agent"
-  - "systems/improvement-loop/knowledge/reference/household-os/architecture"
-  - "systems/improvement-loop/knowledge/reference/household-os/schemas"
+  - "systems/improvement-loop/archive/household-os/architecture"
+  - "systems/improvement-loop/archive/household-os/schemas"
 source_dd:
   - "DD-107"
 tags:
@@ -132,9 +132,9 @@ target and is the thinner-grounded of the two (see maturity).
 - **`composed_of`** — how the engine builds it (designs, does not operate):
   - `/design-agent` — author the assistant (identity, scheduled-job set, triage rules, autonomy
     envelope).
-  - `knowledge/reference/household-os/architecture` — the lifted Household OS architecture docs
+  - `archive/household-os/architecture` — the lifted Household OS architecture docs
     (the operational model the assistant serves).
-  - `knowledge/reference/household-os/schemas` — the 7 Notion schemas; the data contract for the
+  - `archive/household-os/schemas` — the 7 Notion schemas; the data contract for the
     Notion-embedded variant.
 
 ## Risk & maturity

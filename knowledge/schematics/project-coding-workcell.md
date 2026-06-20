@@ -23,7 +23,7 @@ composed_of:
   - "systems/improvement-loop/.claude/skills/design-agent"
   - "systems/improvement-loop/.claude/skills/assess-agent"
   - "systems/improvement-loop/.claude/skills/audit-artifacts"
-  - "systems/improvement-loop/knowledge/reference/household-os/architecture/s3-claude-code-build/vault-architecture.md"
+  - "systems/improvement-loop/archive/household-os/architecture/s3-claude-code-build/vault-architecture.md"
 source_dd:
   - "DD-107"
 tags:
@@ -132,7 +132,7 @@ the schematic, not a constraint of the deployment surface.
   - `/assess-agent` — gate each authored role against IL guides before deployment.
   - `/audit-artifacts` — whole-workcell read once the roles exist (the audit-workcell seed evaluating
     this one).
-  - `knowledge/reference/household-os/.../vault-architecture.md` — the lifted Claude Build stack
+  - `archive/household-os/.../vault-architecture.md` — the lifted Claude Build stack
     intent (Python / OpenAPI-first / SOA) the workcell can be parameterized to build.
 
 ## Risk & maturity
