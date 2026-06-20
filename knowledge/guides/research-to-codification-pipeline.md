@@ -74,7 +74,7 @@ Each classified finding gets:
 - Reason codes and rationale
 - Co-occurrence notes (secondary forms embedded in primary)
 
-**What happens here:** `/identify-artifacts` reads findings and classifies each into one of 5 forms using the rubric (`systems/improvement-loop/operations/knowledge/form-classification-rubric.md`). Classification is parallelized via Sonnet subagent batches. No artifact drafting — output is a structured report.
+**What happens here:** `/identify-artifacts` reads findings and classifies each into one of 5 forms using the rubric (`systems/improvement-loop/operations/references/form-classification-rubric.md`). Classification is parallelized via Sonnet subagent batches. No artifact drafting — output is a structured report.
 
 **Human gate:** Review the identification report. Set Status to APPROVED / REJECTED / REDIRECTED per finding. Redirect allows changing the assigned form before extraction.
 
@@ -138,7 +138,7 @@ If you can't write it to that bar, it's not ready for deployment. Leave it stage
 
 1. Update the artifact's `deployed` flag in `extracts/`
 2. Update the finding's `adoption_status` to "Already Adopted" or "Partially Adopted"
-3. Update the relevant `_index.md` catalogs
+3. No manual catalog upkeep — `knowledge/` folders filter on frontmatter; kept `_index.md` files are Dataview-driven live views (workspace Process Rule 1)
 4. If the artifact creates new constraints, consider whether it warrants a DD
 
 ## How the Engine Consumes Promoted Artifacts
@@ -165,12 +165,12 @@ When a codified artifact derives from an external package (GSD, gstack, BMAT, et
 
 | Layer | Status |
 |-------|--------|
-| Research intake (`/research-loop`) | Working — KB populated (check `_index.md` files for current counts) |
-| Artifact identification (`/identify-artifacts`) | Skill built, not yet run against KB |
-| Artifact extraction (`/extract-artifacts`) | Skill built, not yet run against KB |
-| Deployment | Manual. Two patterns exist (capability-type-selection, upstream-dependency-spectrum). Templates, guides, and agent-templates directories are empty or near-empty. |
+| Research intake (`/research-loop`) | Working — KB populated (filter on frontmatter for current counts) |
+| Artifact identification (`/identify-artifacts`) | Built and run |
+| Artifact extraction (`/extract-artifacts`) | Built and run — `extracts/` is heavily populated (guides, patterns, rules, skills, templates) |
+| Deployment / promotion | Largely unrun. Most extracted artifacts were never promoted to `knowledge/`; meanwhile `extracts/guides/` became the Librarian's live Tier-1 substrate. The staging→deploy model and the `extracts/` ↔ `knowledge/` relationship are under deliberate review (session 124) — see the reconciliation design-note in `project-management/design-notes/`. |
 
-The bottleneck is extraction and promotion. The engine has material; its `knowledge/` layer needs to be populated from it.
+The bottleneck is no longer extraction — it is reconciling what `extracts/` actually is (live substrate vs. un-promoted drafts) against `knowledge/`.
 
 ## Archived: Proposal Stage
 
