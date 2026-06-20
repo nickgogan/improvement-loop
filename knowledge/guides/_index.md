@@ -35,7 +35,7 @@ How-to documentation and playbooks — when and how to use specific tools, techn
 | Guide | Category | Systems | Stage |
 |-------|----------|---------|-------|
 | [[research-to-codification-pipeline|Research-to-Codification Pipeline]] | knowledge-management | cross-system | active |
-| [[skill-authoring-guide|Skill Authoring Best Practices]] | agent-design | cross-system | active |
+| [[skill-authoring-guide|SKILL.md Mechanics Reference]] | agent-design | cross-system | active |
 
 ## Dataview Query
 

@@ -1,5 +1,5 @@
 ---
-title: "Skill Authoring Best Practices"
+title: "SKILL.md Mechanics Reference"
 id: "skill-authoring-guide"
 type: "guideline"
 category: "agent-design"
@@ -7,7 +7,7 @@ target_system:
   - "improvement-loop"
 stage: "active"
 created: "2026-04-07"
-updated: "2026-04-07"
+updated: "2026-06-20"
 author: "claude"
 source_dd:
   - "DD-109"
@@ -15,16 +15,26 @@ source_dd:
 tags:
   - "guide"
   - "skill-design"
-  - "agent-design"
   - "claude-code"
+  - "reference"
 aliases:
-  - "How to write skills"
   - "SKILL.md format"
+  - "SKILL.md frontmatter"
 ---
 
-# Skill Authoring Best Practices
+# SKILL.md Mechanics Reference
 
-Reference for writing skills in MetaSystem. Synthesized from Anthropic's official guide (code.claude.com/docs/en/skills) and research findings (skill-as-new-employee, skills-as-SOPs, skills-2.0-lifecycle, skill-chaining, global-vs-project-scoping).
+Factual reference for the Claude Code SKILL.md format — frontmatter fields, invocation
+control, dynamic context, and variables.
+
+> **Design guidance lives elsewhere.** *How* to scope, name, structure, and gate a skill
+> (the Decision sequence, safety-critical classification, output shape) is owned by the
+> Librarian skill concept doc and the design skill:
+> - `operations/references/librarian/skill.md` §Construction — the authoring Decision sequence.
+> - `/design-skill` — drafts a SKILL.md from intent, then delegates audit to `/assess-skill`.
+>
+> This file is the *syntax cheat-sheet* those consume; it deliberately no longer restates
+> design philosophy (superseded session 124 to avoid duplicating the §Construction substrate).
 
 ## SKILL.md Structure
 
@@ -47,18 +57,10 @@ Markdown instructions here.
 
 All frontmatter fields are optional. Only `description` is recommended.
 
-## Mental Model: New Employee Onboarding
+## Supporting files
 
-Design a skill as if writing an onboarding doc for a new hire:
-1. **Purpose** — what the process accomplishes
-2. **Triggering conditions** — when to invoke it and what context is needed
-3. **Step-by-step execution** — with branching logic
-4. **Policies and constraints** — compliance rules, tone, escalation triggers
-5. **Expected output** — precise format and content
+SKILL.md is the entry point; detailed reference can live beside it and load on demand:
 
-## Key Principles
-
-**Keep SKILL.md under 500 lines.** Move detailed reference to supporting files:
 ```
 my-skill/
 ├── SKILL.md           # Main instructions (required)
@@ -66,13 +68,8 @@ my-skill/
 └── examples/          # Example outputs
 ```
 
-**Description is the routing mechanism.** Claude uses it to decide when to auto-load. Front-load keywords users would naturally say. Don't waste characters on generic phrasing.
-
-**Skills are SOPs, not suggestions.** Encode the complete workflow: steps, tools, format, preferences. A skill perfected once is available forever at near-zero prompting cost.
-
-**Skills are loaded on demand, not every session.** Only the description loads into context. Full content loads when invoked. So skill files can be detailed — they don't cost tokens until used.
-
-**Scope strategically.** Personal skills (`~/.claude/skills/`) apply to all projects. Project skills (`.claude/skills/`) apply to this project only. Don't put project-specific skills at global scope.
+Skills load **on demand, not every session** — only the `description` sits in context; full
+content loads when invoked. So supporting files cost no tokens until used.
 
 ## Invocation Control
 
@@ -97,3 +94,12 @@ Shell commands run before Claude sees the content:
 | `$ARGUMENTS` / `$0`, `$1` | Arguments passed at invocation |
 | `${CLAUDE_SKILL_DIR}` | Directory containing the SKILL.md |
 | `${CLAUDE_SESSION_ID}` | Current session ID |
+
+## Scope (where a SKILL.md lives)
+
+| Scope | Path | Applies to |
+|-------|------|-----------|
+| Personal | `~/.claude/skills/` | All projects |
+| Cross-system | workspace-root `.claude/skills/` | The whole vault |
+| System-specific | `{system}/.claude/skills/` | That system only (DD-109) |
+| Project-scoped | `incubator/{project}/.claude/skills/` | That project only |
