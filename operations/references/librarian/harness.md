@@ -52,6 +52,8 @@ This concept doc is **primarily §Construction**. §Composition (the audit-time 
 
 When a consumer asks "audit this harness" the dispatch is per-artifact (`/assess-*`). When a consumer asks "construct a harness" the dispatch is the §Construction Decision sequence below.
 
+> **Whole-system invariants — confirmed deferred (session 127, 2026-06-21).** The rule-11 evidence test for committing any whole-system invariant — 2–3+ audits surfacing the same drift the per-artifact assessors cannot see — remains unmet: `operations/artifact-audits/runs.md` logs a single audit run (session-115, 2026-06-12); the only other audit (session-114) targeted the since-dissolved MetaSystem (DD-103); none have run since. The §Composition thinness above is therefore **correct per rule 11, not rule-12 debt** — corroborated by the "Rule-12 audit/design symmetry verification" section below ("substantially satisfied"). Revisit when a real audit surfaces a recurring invariant.
+
 ## Construction
 
 Author-time substrate for `/design-harness` (queued — future top-altitude capability) and for any operation that constructs a new harness spec. Audit-time operations consume the symmetric gates in inspection mode (see §"Rule-12 audit/design symmetry verification").
