@@ -1,6 +1,6 @@
 # Improvement Loop — Progress
 
-**Last Updated:** 2026-06-21 (session 125)
+**Last Updated:** 2026-06-21 (session 126)
 
 ## Current Focus
 
@@ -14,23 +14,25 @@
 
 **Session 125 (governance-health + knowledge-caching) landed.** Phase 1: the DD/IB corpus is structurally sound (no contradictions, all 9 supersessions now machine-traceable, all live-era DDs commit-backed). Applied four gated hygiene fixes (stale superseded-list removal from CLAUDE.md; canonical `supersedes` backfill; DD-49→DD-109 annotations; IB-102/IB-145 re-anchor). Phase 2 (propose-only): the caching question resolved decisively — **~88% of DD wisdom is correctly *not* separately cached** (governance fact or operationalized in one owning skill). Delivered a four-part selection test + exclusion rules + anti-redundancy invariant; cached DD-wisdom is Owner-owned; no cache-every-DD mechanism (Rule 11). Reports: `operations/system-audits/2026-06-21-governance-health-audit.md`, `project-management/design-notes/2026-06-21-dd-wisdom-caching-policy.md`.
 
-**Active focus / next session (126):** **knowledge-architecture sweep** (Nick chose "all of these", execution allowed, gate content). Dependency order: (1) execute the caching-policy gates — DD-37's five principles → CLAUDE.md/agent-rules; fix `principles.md` drift (rename → `dbdo-pipeline.md`, re-anchor DD-45→DD-103, de-federate diagram); (2) extracts↔knowledge model choice (1a vs 1b) + promote-or-prune the ~121-file staging residue; (3) IB-170 concept-doc rationalization (follows the substrate decision); (4) held item F (normalize/retire `ib_items` reverse-link). Handoff: `operations/handoffs/handoff-prompt-session-126-knowledge-architecture-sweep.md`.
+**Session 126 (knowledge-architecture sweep) landed (`867e2a7`, pushed).** All four tasks executed: DD-37's five principles cached into `governance/agent-rules.md`; `principles.md` → `dbdo-pipeline.md` (re-anchored DD-45→DD-103, de-federated). **DD-111** recognizes `extracts/guides`+`extracts/patterns` as Librarian substrate (amends DD-39/DD-80, rename-in-place); the residue (`rules/skills/templates/agents`, ~123 files) is designated an explicit **harvest archive** (external best-practice, not engine artifacts; no moves/deletes). **DD-112** + **IB-170 resolved**: concept-doc home rule (`knowledge/reference/` = self-knowledge; `operations/references/` = operational reference incl. all concept docs); `harness.md` relocated to `librarian/`, runtime-sense → `runtime-environment.md`. `ib_items` normalized (YAML list; DD-43's 9 dead URLs → real back-refs).
+
+**Active focus / next session (127):** **sweep-residuals cleanup** (execution allowed, gate content + push). Two judgment-call residuals from session 126: (1) the **Rule-12 §Composition debt** on the whole-system `harness.md` — apply the Rule-11 evidence test (add whole-system invariants only if evidence warrants; "confirm deferred" is a valid outcome); (2) the **`ib_items`/`source_dd` asymmetry** — `source_dd` is scalar and under-captures multi-DD links; decide retire-`ib_items` vs make-`source_dd`-a-list vs leave-as-is. Handoff: `operations/handoffs/handoff-prompt-session-127-sweep-residuals-cleanup.md`.
 
 ---
 
-## What Changed This Session (125)
+## What Changed This Session (126)
 
-A two-phase governance-health + knowledge-caching audit, gate between phases.
+A four-task knowledge-architecture sweep (Nick gated each decision; mechanics ran freely). One commit `867e2a7`, pushed.
 
-- **Phase 1 — governance-health fixes** (`b113c8d`, pushed): DD/IB corpus is structurally sound — no contradictions, no filename/id mismatches, every Superseded DD resolves to a Binding decision, every live-era DD commit-backed. Applied four Nick-approved hygiene fixes: (A) removed the stale "Superseded: DD-35/43/48" hardcoded list from `CLAUDE.md` → status-filter instruction; (B) backfilled the schema-canonical `supersedes` field on DD-45 (→DD-43) and DD-57 (→DD-48), so all 9 supersessions are machine-traceable (DD-65 piecewise per its body); (C) annotated 8 live-DD citations of archived **DD-49** with "→ DD-109" (its re-home); (D) re-pointed IB-102 source_dd DD-35→DD-104 and nulled IB-145's stale DD-45 (kept Queued). Held: F (`ib_items` normalization). Report: `operations/system-audits/2026-06-21-governance-health-audit.md`.
-- **Phase 2 — DD-wisdom caching policy** (`0b6d480`, pushed, propose-only): coverage map + selection criteria + Owner/Librarian wiring. **Headline: ~88% of DD wisdom is correctly NOT separately cached** (governance fact, or operationalized in one owning skill — the remedy there is *the skill cites its source DD*, not a parallel `knowledge/` copy). Four-part selection test (cross-cutting / reference-shaped / engine-self-knowledge / stable) + exclusion rules + anti-redundancy invariant (cached docs must anchor to a **Binding** DD and be the single home). **Cached DD-wisdom is Owner-owned** — no new agent surface. Genuine gap: **DD-37**'s five foundational principles, cached nowhere. Drift found: `knowledge/reference/principles.md` is mislabeled (it's the DBDO pipeline), anchored to **Superseded DD-45**, and still diagrams the dead federation. DD-62/DD-74 = watch, don't act. Note: `project-management/design-notes/2026-06-21-dd-wisdom-caching-policy.md`.
-- **Stale handoff warning corrected:** the session-124 "10 unpushed commits" note was already resolved — `main` was in sync at start; session 125's 2 commits are now also pushed.
+- **Task 1 — DD-37 cached + DBDO-pipeline drift fixed:** folded DD-37's five foundational design principles into `governance/agent-rules.md` as a constitution-altitude preamble; renamed `knowledge/reference/principles.md` → `dbdo-pipeline.md` (it was the DBDO pipeline, mislabeled), re-anchored `source_dd` DD-45(Superseded)→DD-103, de-federated the feedback-loop diagram, repointed live consumers (`pipeline-rules.md`, `translate-governance` SKILL, `_index.md`).
+- **Task 2 — extracts substrate framing (DD-111, rename-in-place):** `extracts/guides`+`extracts/patterns` recognized as the Librarian's substrate library (amends DD-39/DD-80, zero file moves). The staging residue (`rules/skills/templates/agents`, ~123 files) designated an explicit **harvest archive** — distilled external best-practice, not engine artifacts; promotion is per-item Nick-gated (DD-29). No moves, no deletes.
+- **Task 3 — concept-doc home rule (DD-112, resolves IB-170):** `knowledge/reference/` = engine self-knowledge; `operations/references/` = operational reference incl. all concept docs. Relocated `harness.md` → `operations/references/librarian/` (whole-system unit); renamed the runtime-sense doc → `runtime-environment.md`; repointed `consumer-abstractions-map.md` (×4) + both `_index.md` files. Agent-helper-files question: no change (Rule 11).
+- **Task 4 — `ib_items` normalized:** standardized to YAML list; DD-43's 9 dead Notion URLs → real `source_dd` back-refs (IB-113…121); dropped non-existent refs (IB-140/141/143); nulled DD-54/DD-64. *Residual:* the forward(`source_dd` scalar)/reverse(`ib_items`) asymmetry remains by design (Nick chose normalize, not retire).
 
-### Open gates carried forward (Nick's call → session 126 sweep)
-- Caching-policy gates: DD-37 → CLAUDE.md/agent-rules; fix `principles.md` drift (rename → `dbdo-pipeline.md`, re-anchor DD-45→DD-103, de-federate).
-- extracts↔knowledge model: **1a rename-in-place** (recommended) vs **1b relocate**; staging-residue promote-or-prune (~121 files).
-- IB-170 concept-doc placement — follows the substrate decision.
-- Held item F — `ib_items` reverse-link normalization/retirement.
+### Open residuals carried forward (Nick's call → session 127)
+- **Rule-12 §Composition debt** on the whole-system `harness.md` — apply the Rule-11 evidence test; "confirm deferred" is a valid outcome.
+- **`ib_items`/`source_dd` asymmetry** — retire `ib_items` (adopt `source_dd` SSOT) vs make `source_dd` a list vs leave-as-is.
+- Watch-only: DD-62 (Explore/Harden), DD-74 (token budget) — future cache candidates, wait for recurring demand.
 
 ---
 
@@ -38,7 +40,8 @@ A two-phase governance-health + knowledge-caching audit, gate between phases.
 
 Ordered queue. Status markers: `[nick-gate]` waits on Nick's ruling; `[deferred]` held by Nick, re-evaluate on trigger; `[trigger]` waits on external evidence or volume; `[don't-do-yet]` do not reintroduce until a specific upstream condition lands.
 
-1. **`[next]` Knowledge-architecture sweep (session 126).** Nick chose "all of these," dependency order: (a) execute caching-policy gates — DD-37 → CLAUDE.md/agent-rules; fix `principles.md` drift (rename → `dbdo-pipeline.md`, re-anchor DD-45→DD-103, de-federate); (b) extracts↔knowledge 1a/1b + promote-or-prune the ~121-file residue; (c) IB-170 concept-doc rationalization (follows b); (d) held item F (`ib_items` normalization). Handoff: `operations/handoffs/handoff-prompt-session-126-knowledge-architecture-sweep.md`. Inputs: caching-policy note (`2026-06-21-dd-wisdom-caching-policy.md`) + reconciliation note (`2026-06-20-extracts-knowledge-reconciliation.md`).
+1. **`[next]` Sweep-residuals cleanup (session 127).** Two judgment-call residuals from the session-126 sweep (execution allowed, gate content + push): (a) the **Rule-12 §Composition debt** on the whole-system `harness.md` (`operations/references/librarian/harness.md`) — apply the Rule-11 evidence test; adding whole-system invariants only if warranted, "confirm deferred" a valid outcome; (b) the **`ib_items`/`source_dd` asymmetry** — `source_dd` is scalar and under-captures multi-DD links; decide retire-`ib_items` (adopt `source_dd` SSOT) vs make-`source_dd`-a-list vs leave-as-is. Handoff: `operations/handoffs/handoff-prompt-session-127-sweep-residuals-cleanup.md`. Context: DD-111, DD-112 (session 126).
+   - ✅ **Knowledge-architecture sweep (session 126) — DONE:** DD-111, DD-112 filed; IB-170 resolved; DD-37 cached; `dbdo-pipeline.md` drift fixed; `ib_items` normalized (`867e2a7`).
 2. **Phase 2 — schematics + evaluation/feedback layer** (gated slices; plan of record: `project-management/design-notes/2026-06-18-engine-collapse-restructure-plan.md` §Phase 2).
    - ✅ **Slices 1–2 (sessions 120–121):** schematic form (DD-107) + `/detect-drift` integration.
    - ✅ **Item 2 (session 122):** D7/D9 → schematic re-evaluation wiring made explicit; schematics as `/solicit-proposals` input.
