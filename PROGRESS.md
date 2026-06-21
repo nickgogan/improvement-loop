@@ -1,6 +1,6 @@
 # Improvement Loop — Progress
 
-**Last Updated:** 2026-06-20 (session 124)
+**Last Updated:** 2026-06-21 (session 125)
 
 ## Current Focus
 
@@ -12,23 +12,25 @@
 
 **Session 123 (governance hygiene + audit-home disambiguation) landed.** The stale-IB sweep cleared 15 post-collapse items; the open backlog is now small and engine-relevant. IB-169 was resolved by **DD-110** — the two audits (`/audit-artifacts`, renamed from `/audit-system`, and `/system-audit`) were disambiguated, not consolidated, with both homes moved under `operations/`. Post-collapse "MetaSystem vs IL" framing was reconciled to the one-engine three-altitude model and the two consumer-abstractions maps merged into one.
 
-**Active focus / next session (125):** **governance-health audit + knowledge-caching coverage.** Two phases with a gate: (1) read-only diagnostic of DD coherence + DD↔IB↔git mapping (lean on `/governance-audit` and `/system-audit`) → governance-health report → gated hygiene fixes; (2) propose-only knowledge-coverage map (do `knowledge/reference`+guides+patterns represent the DD/IB design wisdom?) + caching-policy recommendation (include/exclude criteria, Owner-vs-Librarian wiring) — no DD/IB/caching writes (Rule 11). See `operations/handoffs/handoff-prompt-session-125-governance-health-caching-audit.md`.
+**Session 125 (governance-health + knowledge-caching) landed.** Phase 1: the DD/IB corpus is structurally sound (no contradictions, all 9 supersessions now machine-traceable, all live-era DDs commit-backed). Applied four gated hygiene fixes (stale superseded-list removal from CLAUDE.md; canonical `supersedes` backfill; DD-49→DD-109 annotations; IB-102/IB-145 re-anchor). Phase 2 (propose-only): the caching question resolved decisively — **~88% of DD wisdom is correctly *not* separately cached** (governance fact or operationalized in one owning skill). Delivered a four-part selection test + exclusion rules + anti-redundancy invariant; cached DD-wisdom is Owner-owned; no cache-every-DD mechanism (Rule 11). Reports: `operations/system-audits/2026-06-21-governance-health-audit.md`, `project-management/design-notes/2026-06-21-dd-wisdom-caching-policy.md`.
+
+**Active focus / next session (126):** **knowledge-architecture sweep** (Nick chose "all of these", execution allowed, gate content). Dependency order: (1) execute the caching-policy gates — DD-37's five principles → CLAUDE.md/agent-rules; fix `principles.md` drift (rename → `dbdo-pipeline.md`, re-anchor DD-45→DD-103, de-federate diagram); (2) extracts↔knowledge model choice (1a vs 1b) + promote-or-prune the ~121-file staging residue; (3) IB-170 concept-doc rationalization (follows the substrate decision); (4) held item F (normalize/retire `ib_items` reverse-link). Handoff: `operations/handoffs/handoff-prompt-session-126-knowledge-architecture-sweep.md`.
 
 ---
 
-## What Changed This Session (124)
+## What Changed This Session (125)
 
-IB-170 was reframed by Nick from "concept-doc placement" to a broader `knowledge/`↔`extracts/` reconciliation. The concept-doc split is now understood as a sub-case.
+A two-phase governance-health + knowledge-caching audit, gate between phases.
 
-- **Household-os archived** (`d19eb1b`): `knowledge/reference/household-os/` → `archive/household-os/` (40 files; git renames, history preserved). Pre-collapse four-system material, retained (not deleted) as design substrate for the planned Notion second-brain + custom-agents work with the Librarian. 2 live schematic `composed_of` pointers updated; `_ARCHIVED.md` breadcrumb added.
-- **Pipeline-guide drift fixed** (`b8e87bf`): `research-to-codification-pipeline.md` — stale form-rubric path, stale Current State, a Process-Rule-1-violating `_index` upkeep step.
-- **`skill-authoring-guide.md` slimmed** (`7d8c933`): reduced to a SKILL.md *mechanics* reference; design content now owned by `librarian/skill.md` §Construction + `/design-skill`.
-- **extracts↔knowledge design-note** (`adba869`): live-vs-orphaned audit → **guides 14/14 live (Tier-1 Librarian substrate, not staging)**, patterns Tier-2 (browsed by dimension, ~10% slug-pinned), rules/skills/templates/agents = staging residue (~5% pinned). Reframes `extracts/` (research substrate) vs `knowledge/` (engine self-knowledge) as two bodies, not two pipeline stages. Recommends recognize-substrate-in-place (1a) + a scoped promote-or-prune of the ~121-file residue. IB-170 updated with session progress + next gate. Note: `2026-06-20-extracts-knowledge-reconciliation.md`.
-- **Not yet pushed:** 10 commits ahead of `origin/main` (the 4 above + 6 prior incl. session-122 close `b1e7585`).
+- **Phase 1 — governance-health fixes** (`b113c8d`, pushed): DD/IB corpus is structurally sound — no contradictions, no filename/id mismatches, every Superseded DD resolves to a Binding decision, every live-era DD commit-backed. Applied four Nick-approved hygiene fixes: (A) removed the stale "Superseded: DD-35/43/48" hardcoded list from `CLAUDE.md` → status-filter instruction; (B) backfilled the schema-canonical `supersedes` field on DD-45 (→DD-43) and DD-57 (→DD-48), so all 9 supersessions are machine-traceable (DD-65 piecewise per its body); (C) annotated 8 live-DD citations of archived **DD-49** with "→ DD-109" (its re-home); (D) re-pointed IB-102 source_dd DD-35→DD-104 and nulled IB-145's stale DD-45 (kept Queued). Held: F (`ib_items` normalization). Report: `operations/system-audits/2026-06-21-governance-health-audit.md`.
+- **Phase 2 — DD-wisdom caching policy** (`0b6d480`, pushed, propose-only): coverage map + selection criteria + Owner/Librarian wiring. **Headline: ~88% of DD wisdom is correctly NOT separately cached** (governance fact, or operationalized in one owning skill — the remedy there is *the skill cites its source DD*, not a parallel `knowledge/` copy). Four-part selection test (cross-cutting / reference-shaped / engine-self-knowledge / stable) + exclusion rules + anti-redundancy invariant (cached docs must anchor to a **Binding** DD and be the single home). **Cached DD-wisdom is Owner-owned** — no new agent surface. Genuine gap: **DD-37**'s five foundational principles, cached nowhere. Drift found: `knowledge/reference/principles.md` is mislabeled (it's the DBDO pipeline), anchored to **Superseded DD-45**, and still diagrams the dead federation. DD-62/DD-74 = watch, don't act. Note: `project-management/design-notes/2026-06-21-dd-wisdom-caching-policy.md`.
+- **Stale handoff warning corrected:** the session-124 "10 unpushed commits" note was already resolved — `main` was in sync at start; session 125's 2 commits are now also pushed.
 
-### Open gates carried forward (Nick's call)
-- extracts↔knowledge model: **1a rename-in-place** (recommended) vs **1b relocate** `guides/`+`patterns/`; staging-residue promote-or-prune.
+### Open gates carried forward (Nick's call → session 126 sweep)
+- Caching-policy gates: DD-37 → CLAUDE.md/agent-rules; fix `principles.md` drift (rename → `dbdo-pipeline.md`, re-anchor DD-45→DD-103, de-federate).
+- extracts↔knowledge model: **1a rename-in-place** (recommended) vs **1b relocate**; staging-residue promote-or-prune (~121 files).
 - IB-170 concept-doc placement — follows the substrate decision.
+- Held item F — `ib_items` reverse-link normalization/retirement.
 
 ---
 
@@ -36,16 +38,15 @@ IB-170 was reframed by Nick from "concept-doc placement" to a broader `knowledge
 
 Ordered queue. Status markers: `[nick-gate]` waits on Nick's ruling; `[deferred]` held by Nick, re-evaluate on trigger; `[trigger]` waits on external evidence or volume; `[don't-do-yet]` do not reintroduce until a specific upstream condition lands.
 
-1. **`[next]` Governance-health audit + knowledge-caching coverage (session 125).** Two phases, gate between: (1) read-only DD coherence + DD↔IB↔git mapping (via `/governance-audit`, `/system-audit`) → governance-health report → gated hygiene fixes; (2) propose-only knowledge-coverage map + caching-policy recommendation (include/exclude criteria, Owner-vs-Librarian wiring; no writes — Rule 11). Handoff: `operations/handoffs/handoff-prompt-session-125-governance-health-caching-audit.md`.
-2. **`[nick-gate]` extracts↔knowledge model + IB-170.** Decide 1a rename-in-place (recommended) vs 1b relocate the substrate (`guides/`+`patterns/`); promote-or-prune the ~121-file staging residue; then the concept-doc placement (IB-170) follows. Design-note: `project-management/design-notes/2026-06-20-extracts-knowledge-reconciliation.md`.
-3. **Phase 2 — schematics + evaluation/feedback layer** (gated slices; plan of record: `project-management/design-notes/2026-06-18-engine-collapse-restructure-plan.md` §Phase 2).
+1. **`[next]` Knowledge-architecture sweep (session 126).** Nick chose "all of these," dependency order: (a) execute caching-policy gates — DD-37 → CLAUDE.md/agent-rules; fix `principles.md` drift (rename → `dbdo-pipeline.md`, re-anchor DD-45→DD-103, de-federate); (b) extracts↔knowledge 1a/1b + promote-or-prune the ~121-file residue; (c) IB-170 concept-doc rationalization (follows b); (d) held item F (`ib_items` normalization). Handoff: `operations/handoffs/handoff-prompt-session-126-knowledge-architecture-sweep.md`. Inputs: caching-policy note (`2026-06-21-dd-wisdom-caching-policy.md`) + reconciliation note (`2026-06-20-extracts-knowledge-reconciliation.md`).
+2. **Phase 2 — schematics + evaluation/feedback layer** (gated slices; plan of record: `project-management/design-notes/2026-06-18-engine-collapse-restructure-plan.md` §Phase 2).
    - ✅ **Slices 1–2 (sessions 120–121):** schematic form (DD-107) + `/detect-drift` integration.
    - ✅ **Item 2 (session 122):** D7/D9 → schematic re-evaluation wiring made explicit; schematics as `/solicit-proposals` input.
    - ✅ **Item 3 (session 122):** 2 seed schematics (`project-coding-workcell`, `scheduled-operations-assistant`).
    - **`[deferred]` Item 4 — Builder-mode demand→schematic matching** (`/ask-kb`) — now more plausible with a 4-seed library; revisit when exercising it is useful.
    - **`[deferred]` Execution-surface Librarian axis** — weak demand per consumer-abstractions-map (Rule 11); revisit at 2–3+ requests.
    - **`[trigger]` More seed schematics** — when exercising the form against more demand is useful.
-4. **`[deferred]` Ready maintenance** — IB-145 (re-analyze GSD for version drift) and IB-148 (build `/session-handoff-review`). Self-contained; pick up when the queue clears.
+3. **`[deferred]` Ready maintenance** — IB-145 (re-analyze GSD for version drift) and IB-148 (build `/session-handoff-review`). Self-contained; pick up when the queue clears.
 
 ---
 
