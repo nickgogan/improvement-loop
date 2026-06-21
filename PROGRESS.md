@@ -1,6 +1,6 @@
 # Improvement Loop — Progress
 
-**Last Updated:** 2026-06-21 (session 126)
+**Last Updated:** 2026-06-21 (session 127)
 
 ## Current Focus
 
@@ -16,22 +16,21 @@
 
 **Session 126 (knowledge-architecture sweep) landed (`867e2a7`, pushed).** All four tasks executed: DD-37's five principles cached into `governance/agent-rules.md`; `principles.md` → `dbdo-pipeline.md` (re-anchored DD-45→DD-103, de-federated). **DD-111** recognizes `extracts/guides`+`extracts/patterns` as Librarian substrate (amends DD-39/DD-80, rename-in-place); the residue (`rules/skills/templates/agents`, ~123 files) is designated an explicit **harvest archive** (external best-practice, not engine artifacts; no moves/deletes). **DD-112** + **IB-170 resolved**: concept-doc home rule (`knowledge/reference/` = self-knowledge; `operations/references/` = operational reference incl. all concept docs); `harness.md` relocated to `librarian/`, runtime-sense → `runtime-environment.md`. `ib_items` normalized (YAML list; DD-43's 9 dead URLs → real back-refs).
 
-**Active focus / next session (127):** **sweep-residuals cleanup** (execution allowed, gate content + push). Two judgment-call residuals from session 126: (1) the **Rule-12 §Composition debt** on the whole-system `harness.md` — apply the Rule-11 evidence test (add whole-system invariants only if evidence warrants; "confirm deferred" is a valid outcome); (2) the **`ib_items`/`source_dd` asymmetry** — `source_dd` is scalar and under-captures multi-DD links; decide retire-`ib_items` vs make-`source_dd`-a-list vs leave-as-is. Handoff: `operations/handoffs/handoff-prompt-session-127-sweep-residuals-cleanup.md`.
+**Session 127 (sweep-residuals cleanup) landed (`011fa8c`, pushed).** Both session-126 residuals closed. (1) **Harness whole-system invariants confirmed deferred** per Rule 11 — evidence test unmet (`operations/artifact-audits/runs.md` logs one audit, none since collapse); dated note added to `harness.md` §Composition, no backfill. (2) **DD-113 filed: DD↔IB linkage is now forward-only via `source_dd`** (option B1) — `source_dd` converted to uniform YAML list across 63 IB files (conforms to existing schema `array[string]`), 4 non-lossy reconciliations folding prior reverse claims forward, `ib_items` removed from 81 DDs, `_schema.yaml` updated, `/dd`+`/track`+`/governance-audit` repointed. Reverse view now query-derived.
+
+**Active focus / next session (128):** **frontmatter / YAML hygiene sweep** (execution allowed, gate content + push). Seed defect: IB-157's `notes` field fails YAML parse (nested unescaped quotes). Session 127 parse-checked only IB+DD; sweep the rest (findings, sources, authorities, SL, design-notes) for parse failures + schema-conformance drift. Handoff: `operations/handoffs/handoff-prompt-session-128-frontmatter-hygiene-sweep.md`.
 
 ---
 
-## What Changed This Session (126)
+## What Changed This Session (127)
 
-A four-task knowledge-architecture sweep (Nick gated each decision; mechanics ran freely). One commit `867e2a7`, pushed.
+Two judgment-call residuals from session 126 closed (Nick gated each decision; mechanics ran freely). Commit `011fa8c` (work) + session-close commit, pushed.
 
-- **Task 1 — DD-37 cached + DBDO-pipeline drift fixed:** folded DD-37's five foundational design principles into `governance/agent-rules.md` as a constitution-altitude preamble; renamed `knowledge/reference/principles.md` → `dbdo-pipeline.md` (it was the DBDO pipeline, mislabeled), re-anchored `source_dd` DD-45(Superseded)→DD-103, de-federated the feedback-loop diagram, repointed live consumers (`pipeline-rules.md`, `translate-governance` SKILL, `_index.md`).
-- **Task 2 — extracts substrate framing (DD-111, rename-in-place):** `extracts/guides`+`extracts/patterns` recognized as the Librarian's substrate library (amends DD-39/DD-80, zero file moves). The staging residue (`rules/skills/templates/agents`, ~123 files) designated an explicit **harvest archive** — distilled external best-practice, not engine artifacts; promotion is per-item Nick-gated (DD-29). No moves, no deletes.
-- **Task 3 — concept-doc home rule (DD-112, resolves IB-170):** `knowledge/reference/` = engine self-knowledge; `operations/references/` = operational reference incl. all concept docs. Relocated `harness.md` → `operations/references/librarian/` (whole-system unit); renamed the runtime-sense doc → `runtime-environment.md`; repointed `consumer-abstractions-map.md` (×4) + both `_index.md` files. Agent-helper-files question: no change (Rule 11).
-- **Task 4 — `ib_items` normalized:** standardized to YAML list; DD-43's 9 dead Notion URLs → real `source_dd` back-refs (IB-113…121); dropped non-existent refs (IB-140/141/143); nulled DD-54/DD-64. *Residual:* the forward(`source_dd` scalar)/reverse(`ib_items`) asymmetry remains by design (Nick chose normalize, not retire).
+- **Task 1 — harness whole-system invariants confirmed deferred (Rule 11):** applied the evidence test (2–3+ audits surfacing the same drift) — unmet. `operations/artifact-audits/runs.md` logs a single audit (session-115); the only other targeted the since-dissolved MetaSystem; none since. The §Composition thinness is correct, not rule-12 debt — `harness.md`'s own rule-12 self-check already reads "substantially satisfied." Added a dated confirmation note to `harness.md` §Composition + SL entry. No backfill.
+- **Task 2 — DD-113: DD↔IB linkage made forward-only via `source_dd` (option B1):** evidence was active divergence (IB-147/146 forward→DD-45 while pipeline DDs claimed them in reverse) + schema drift in both fields. `source_dd` rewritten to uniform YAML list across 63 IB files (conforms to the schema's existing `array[string]`); 4 non-lossy reconciliations (IB-142/146/147/170) folded prior reverse claims into the forward link; `ib_items` removed from 81 DDs; `_schema.yaml` updated (SSOT + do-not-reintroduce note); `/dd`, `/track`, `/governance-audit` repointed. Reverse view now query-derived (`rg DD-X` on IB `source_dd`, or `/ib --dd DD-X`).
 
-### Open residuals carried forward (Nick's call → session 127)
-- **Rule-12 §Composition debt** on the whole-system `harness.md` — apply the Rule-11 evidence test; "confirm deferred" is a valid outcome.
-- **`ib_items`/`source_dd` asymmetry** — retire `ib_items` (adopt `source_dd` SSOT) vs make `source_dd` a list vs leave-as-is.
+### Surfaced this session (carried to session 128)
+- **IB-157 `notes` YAML parse failure** (pre-existing nested-quote bug) — seed defect for the session-128 frontmatter/YAML hygiene sweep. Only IB+DD were parse-checked; the rest of the corpus is unswept.
 - Watch-only: DD-62 (Explore/Harden), DD-74 (token budget) — future cache candidates, wait for recurring demand.
 
 ---
@@ -40,7 +39,8 @@ A four-task knowledge-architecture sweep (Nick gated each decision; mechanics ra
 
 Ordered queue. Status markers: `[nick-gate]` waits on Nick's ruling; `[deferred]` held by Nick, re-evaluate on trigger; `[trigger]` waits on external evidence or volume; `[don't-do-yet]` do not reintroduce until a specific upstream condition lands.
 
-1. **`[next]` Sweep-residuals cleanup (session 127).** Two judgment-call residuals from the session-126 sweep (execution allowed, gate content + push): (a) the **Rule-12 §Composition debt** on the whole-system `harness.md` (`operations/references/librarian/harness.md`) — apply the Rule-11 evidence test; adding whole-system invariants only if warranted, "confirm deferred" a valid outcome; (b) the **`ib_items`/`source_dd` asymmetry** — `source_dd` is scalar and under-captures multi-DD links; decide retire-`ib_items` (adopt `source_dd` SSOT) vs make-`source_dd`-a-list vs leave-as-is. Handoff: `operations/handoffs/handoff-prompt-session-127-sweep-residuals-cleanup.md`. Context: DD-111, DD-112 (session 126).
+1. **`[next]` Frontmatter / YAML hygiene sweep (session 128).** Execution allowed, gate content + push. Seed defect: IB-157's `notes` field fails YAML parse (nested unescaped quotes). Session 127 parse-checked only IB+DD (1 failure of 152); sweep the rest (findings, sources, authorities, SL, design-notes, extracts) for parse failures + schema-conformance drift against `_schema.yaml`. Rule 11 governs schema additions. Handoff: `operations/handoffs/handoff-prompt-session-128-frontmatter-hygiene-sweep.md`.
+   - ✅ **Sweep-residuals cleanup (session 127) — DONE:** harness invariants confirmed deferred (Rule 11, no backfill); DD-113 filed (forward-only DD↔IB linkage via `source_dd`); `ib_items` retired from 81 DDs; `source_dd` made uniform YAML list across 63 IBs (`011fa8c`).
    - ✅ **Knowledge-architecture sweep (session 126) — DONE:** DD-111, DD-112 filed; IB-170 resolved; DD-37 cached; `dbdo-pipeline.md` drift fixed; `ib_items` normalized (`867e2a7`).
 2. **Phase 2 — schematics + evaluation/feedback layer** (gated slices; plan of record: `project-management/design-notes/2026-06-18-engine-collapse-restructure-plan.md` §Phase 2).
    - ✅ **Slices 1–2 (sessions 120–121):** schematic form (DD-107) + `/detect-drift` integration.
