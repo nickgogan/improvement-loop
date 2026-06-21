@@ -77,13 +77,13 @@ Concept docs in `operations/references/librarian/` (`skill.md`, `agent.md`, `pro
 
 ## Top altitude — whole-system abstractions
 
-The top altitude composes the middle. Its abstraction is the **harness** — the whole-system shape the engine audits and (eventually) constructs. Concept doc: `knowledge/reference/harness.md` (§Construction), with §Composition substrate maintained at `operations/references/librarian/harness.md`. Operations are `/audit-artifacts` (audit) and `/design-harness` (construction, future).
+The top altitude composes the middle. Its abstraction is the **harness** — the whole-system shape the engine audits and (eventually) constructs. Concept doc: `operations/references/librarian/harness.md` (§Construction; relocated from `knowledge/reference/` per DD-111/IB-170 so all concept docs share one home), with §Composition substrate maintained at `operations/references/librarian/runtime-environment.md` (the runtime sense of "harness"). Operations are `/audit-artifacts` (audit) and `/design-harness` (construction, future).
 
 ### Strong demand — committed scope
 
 | Abstraction | Concept doc | §Composition | §Construction | `/audit-*` | `/design-*` | Demand evidence |
 |---|---|---|---|---|---|---|
-| **Harness** | `knowledge/reference/harness.md` | pointer → `librarian/harness.md` (audit-time substrate) | ✅ (session 116) | `/audit-artifacts` v1 **stable** (sessions 114–115) | `/design-harness` queued | (a) `/audit-artifacts` shipped and ran twice (smoke-test + IL second canonical run); (b) `/design-harness` is the rule-10 constructive peer queued for next build; (c) sizing-engine pilot consumer provides concrete non-self-test demand — two §Construction gaps named (deviation semantics for multi-system comparison; multi-surface composition with forecasting on a comparison harness). Multi-archetype: Nick-builder (1) authors harnesses; portfolio-presenter (2) cites them; builder-friend (4) inspects discovery contract; employer-evaluator (5) reads summary. Cost of absence: every new harness gets ad-hoc structure with no whole-system gate. |
+| **Harness** | `operations/references/librarian/harness.md` | pointer → `librarian/runtime-environment.md` (audit-time substrate) | ✅ (session 116) | `/audit-artifacts` v1 **stable** (sessions 114–115) | `/design-harness` queued | (a) `/audit-artifacts` shipped and ran twice (smoke-test + IL second canonical run); (b) `/design-harness` is the rule-10 constructive peer queued for next build; (c) sizing-engine pilot consumer provides concrete non-self-test demand — two §Construction gaps named (deviation semantics for multi-system comparison; multi-surface composition with forecasting on a comparison harness). Multi-archetype: Nick-builder (1) authors harnesses; portfolio-presenter (2) cites them; builder-friend (4) inspects discovery contract; employer-evaluator (5) reads summary. Cost of absence: every new harness gets ad-hoc structure with no whole-system gate. |
 
 ### Weak demand — future candidates (not committed scope)
 
@@ -102,7 +102,7 @@ The top altitude composes the middle. Its abstraction is the **harness** — the
 | Top — whole-system | harness | `/audit-artifacts`, `/design-harness` (queued) |
 | Middle — per-artifact | skill, agent, prompt | `/assess-*`, `/design-*` |
 
-When `/audit-artifacts` discovers a SKILL.md, it dispatches to the middle's `/assess-skill`. When `/design-harness` (queued) drafts a new harness that ships a skill, it will dispatch to `/design-skill` for the skill draft. The top composes; the middle provides the per-artifact intelligence. Rule 12 (audit/design symmetry) applies at both altitudes: every operation the substrate composes against must have audit and design halves. See `knowledge/reference/harness.md` §"Rule-12 audit/design symmetry verification" for the harness-level walkthrough.
+When `/audit-artifacts` discovers a SKILL.md, it dispatches to the middle's `/assess-skill`. When `/design-harness` (queued) drafts a new harness that ships a skill, it will dispatch to `/design-skill` for the skill draft. The top composes; the middle provides the per-artifact intelligence. Rule 12 (audit/design symmetry) applies at both altitudes: every operation the substrate composes against must have audit and design halves. See `operations/references/librarian/harness.md` §"Rule-12 audit/design symmetry verification" for the harness-level walkthrough.
 
 ## Promotion rules
 
@@ -121,7 +121,7 @@ Promotions are Owner-authored proposals (Proposal-First tier) — they affect wh
 
 - IL governance rule 11 (abstractions must earn their keep) and rule 12 (audit/design symmetry): `systems/improvement-loop/governance/agent-rules.md`.
 - Per-artifact concept docs: `systems/improvement-loop/operations/references/librarian/`.
-- Harness concept doc (§Construction): `systems/improvement-loop/knowledge/reference/harness.md`; §Composition substrate: `operations/references/librarian/harness.md`.
+- Harness concept doc (§Construction): `systems/improvement-loop/operations/references/librarian/harness.md`; §Composition substrate (runtime sense): `systems/improvement-loop/operations/references/librarian/runtime-environment.md`.
 - Operation specs that compose against per-artifact abstractions: `librarian/audit.md`, `librarian/design.md`.
 - Three altitudes: DD-104. Single-engine collapse: DD-103.
 - Audience archetypes 1–5: workspace `PROGRESS.md`.

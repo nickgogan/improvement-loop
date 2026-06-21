@@ -10,7 +10,7 @@ updated: "2026-04-22"
 author: "agent"
 source_governance:
   - "CHARTER.md"
-  - "systems/improvement-loop/knowledge/reference/principles.md"
+  - "systems/improvement-loop/knowledge/reference/dbdo-pipeline.md"
 source_sections:
   - "Design Philosophy"
   - "The Pipeline"
@@ -26,8 +26,8 @@ tags:
 
 # Pipeline Rules — IL Governance
 
-> Derived from: Charter (`CHARTER.md`), Principles (`systems/improvement-loop/knowledge/reference/principles.md`), DD-90 (session telemetry)
-> Last reconciled: 2026-04-22
+> Derived from: Charter (`CHARTER.md`), DBDO Pipeline (`systems/improvement-loop/knowledge/reference/dbdo-pipeline.md`), DD-90 (session telemetry)
+> Last reconciled: 2026-06-21
 
 ## Rules
 
@@ -38,7 +38,7 @@ tags:
    - *Source:* Constitution — Design Philosophy; DD-39, DD-80
 
 3. **Spec before build.** New skills, agents, or structural changes require a specification (proposal, skill definition, or agent constitution) before implementation. The Owner produces specs; Nick approves them.
-   - *Source:* Constitution — Design Philosophy ("Spec before build"); Principles — DBDO Pipeline steps 3-4
+   - *Source:* Constitution — Design Philosophy ("Spec before build"); DBDO Pipeline steps 3-4
 
 4. **Handoffs are file-mediated.** Agents do not communicate directly in conversation. The Researcher writes findings with `pipeline_status: raw`. The Codifier reads findings with `pipeline_status` indicating readiness. The handoff is the file state, not a message.
    - *Source:* DBDO Pipeline (design-wisdom, `knowledge/reference/`); `agents/handoff-protocol.md`
@@ -47,7 +47,7 @@ tags:
    - *Source:* Constitution — Design Philosophy; DD-36
 
 6. **Learn and improve every cycle.** Every research scan, every audit, every feedback triage produces learnings. SL entries capture events. The Owner detects patterns. The pipeline should get faster and more accurate over time.
-   - *Source:* Principles — DBDO Pipeline step 6 ("Learn and Improve")
+   - *Source:* DBDO Pipeline step 6 ("Learn and Improve")
 
 7. **SL entries carry session telemetry.** Every SL entry written at session close includes a `telemetry:` block with these fields: `model`, `tokens_consumed`, `context_window_size`, `context_window_pct_peak`, `turns`, `tool_calls`, `subagents[]`, `capture_quality` (`measured` / `estimated`), and `harness`. `"unknown"` is a first-class value when a field is neither measurable nor reasonably estimable — entries are not held back waiting for unknown data. Nick is not a telemetry source. When evaluating a harness substitution, the prior harness's capture-layer disclosures become the baseline against which the candidate's observability is judged.
    - *Source:* DD-90 (session telemetry) — requirement layer (harness-portable) + capture layer (harness-specific)

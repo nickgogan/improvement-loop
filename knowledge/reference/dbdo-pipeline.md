@@ -1,16 +1,16 @@
 ---
 title: "Design / Build / Deploy / Operate Pipeline"
-id: "principles"
+id: "dbdo-pipeline"
 type: "governance"
 category: "governance"
 target_system:
   - "improvement-loop"
 stage: "active"
 created: "2026-03-22"
-updated: "2026-04-04"
+updated: "2026-06-21"
 author: "nick"
 source_dd:
-  - "DD-45"
+  - "DD-103"
 tags:
   - "pipeline"
   - "build-process"
@@ -63,11 +63,13 @@ The system is **portable**. Given the right starting points (templates, referenc
 ## The Feedback Loop
 
 ```
-Household OS (operations) → Nick (observes) → IB items → Claude Build (builds schema) → Household OS (consumes updated schema)
+System operations → Nick (observes) → IB items → Build/evolve → System (consumes the change)
 ```
 
-The Improvement Loop accelerates this by researching frontier patterns and proposing changes proactively.
+The cycle is closed within a single system: a system's operations surface needs, Nick observes them, those become IB items, the build/evolve step applies the change, and the system runs on the updated capability. The Improvement Loop accelerates this by researching frontier patterns and proposing changes proactively.
+
+> **Federation note (DD-103, DD-106):** Earlier versions of this loop crossed system boundaries (Household OS → Claude Build → Household OS). That federation collapsed — the engine (`systems/improvement-loop/`) is the sole live system; Household OS moved to Notion as a *consumer* the engine helps design (DD-106), and Claude Build was retired. The loop above is now the engine's own design/build/deploy/operate cycle, and the same shape applies to any single system it bootstraps.
 
 ---
 
-*Source: Distilled from the Intention & Trajectory page, originally extracted into the former s1-schema/ folder (now archived at `archive/household-os/archive/s1-extraction/` per DD-58).*
+*Source: Distilled from the Intention & Trajectory page, originally extracted into the former s1-schema/ folder (now archived at `archive/household-os/archive/s1-extraction/` per DD-58). De-federated and re-anchored DD-45 → DD-103 in session 126.*

@@ -6,8 +6,10 @@ target_system:
   - "improvement-loop"
 stage: "active"
 created: "2026-04-19"
-updated: "2026-06-11"
+updated: "2026-06-21"
 author: "agent"
+source_dd:
+  - "DD-37"
 source_governance:
   - "CHARTER.md"
   - "systems/improvement-loop/knowledge/reference/fractal-pattern.md"
@@ -16,6 +18,7 @@ source_sections:
   - "Design Philosophy (consumer feedback to producer)"
   - "The Agentic Layer"
   - "Agent & Skills vocabulary"
+  - "DD-37 (five foundational design principles)"
   - "DD-91 (reflections-to-proposals pipeline)"
 tags:
   - "governance"
@@ -27,8 +30,18 @@ tags:
 
 # Agent Rules — IL Governance
 
-> Derived from: Charter (`CHARTER.md`), Fractal Pattern (`systems/improvement-loop/knowledge/reference/fractal-pattern.md`), Vocabulary (`systems/improvement-loop/knowledge/reference/vocabulary.md`), DD-89 (four-zone architecture), DD-91 (reflections-to-proposals)
-> Last reconciled: 2026-04-22
+> Derived from: Charter (`CHARTER.md`), Fractal Pattern (`systems/improvement-loop/knowledge/reference/fractal-pattern.md`), Vocabulary (`systems/improvement-loop/knowledge/reference/vocabulary.md`), DD-37 (foundational design principles), DD-89 (four-zone architecture), DD-91 (reflections-to-proposals)
+> Last reconciled: 2026-06-21
+
+## Foundational Design Principles (DD-37)
+
+> Apply these five heuristics **before** consulting any system-specific DD. They are the constitution-altitude design philosophy that governs the engine; the numbered Rules below operationalize agent structure and behavior on top of them. (Cached here per the DD-wisdom caching policy — cross-cutting, reference-shaped, engine self-knowledge, stable; `source_dd: DD-37`.)
+
+1. **Spec before build.** Design the architecture before writing code or configuring anything. A spec precedes every implementation. (If this conflicts with "start lean," the resolution is: write a *lean* spec, then build.)
+2. **Complementary tools, not redundant ones.** Every tool, skill, or abstraction serves a unique purpose; none should duplicate another's primary function. (Generalizes into rule 11 — abstractions earn their keep.)
+3. **Knowledge serves expression.** Knowledge is captured to fuel action, not for its own sake. Every capture should have a plausible path to use.
+4. **Start lean, refine later.** Deploy the simplest version that works; add complexity only when the simple version demonstrably fails.
+5. **Shallow vs. deep thinking distinction.** Match tool/model power to task depth — shallow processing (triage, routing) vs. deep processing (architecture decisions, creative work).
 
 ## Rules
 

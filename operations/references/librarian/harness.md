@@ -4,94 +4,227 @@ type: concept
 variants: []
 target_system:
   - "improvement-loop"
-created: "2026-04-21"
-updated: "2026-04-21"
+created: "2026-06-15"
+updated: "2026-06-19"
 author: "claude"
 stage: "draft"
 tags:
-  - "librarian-concept"
   - "harness"
-  - "cross-cutting"
+  - "construction"
+  - "top-altitude-concept"
+  - "rule-11"
+  - "rule-12"
 aliases:
-  - "Harness"
-  - "Agent harness"
-  - "Runtime harness"
+  - "Harness spec"
+  - "Whole-system harness"
 ---
 
-# Harness
+# Harness (top-altitude concept)
 
 ## Short definition
 
-The **harness** is the runtime + tooling surface an agent operates *inside*: the CLI/IDE/API that loads the agent's prompt, enforces its permissions, invokes its tools, manages its context window, and executes its hooks. The agent is *in* the harness; the harness is not *in* the agent.
+A **harness** is the whole-system shape the engine's **top altitude** authors and audits: a folder (or set of folders) that composes one or more agentic artifacts (skills, agents, prompts) into a coherent runtime that a consumer points at, deploys into, or runs. The harness is the unit `/audit-artifacts` audits and the unit `/design-harness` constructs.
 
-Examples: Claude Code (CLI + IDE + hooks + MCP loader), Cursor (IDE + chat harness + model router), GitHub Copilot (editor harness + completion surface), the Anthropic API (stateless harness — provides tool-use, caching, thinking, batch, but no session state).
+Examples in scope: a system following the fractal-unit pattern (DD-52) with `.claude/skills/`, `agents/`, governance docs; a CLI tool packaging skills + agents; the sizing-engine pilot's three-system comparison + forecasting layer.
+
+The harness is the **whole**; skills/agents/prompts are the **parts**. Per the consumer-abstractions-map's altitude split: the **top** altitude owns the harness shape; the **middle** altitude owns the skill/agent/prompt shapes (both altitudes of the one engine — there is no separate "MetaSystem", DD-103). This concept doc is the top altitude's authored substrate for **constructing** harnesses.
 
 ## Not to be confused with
 
-| Not harness | What it is instead |
+| Not (top-altitude-)harness | What it is instead |
 |---|---|
-| **Prompt / agent spec** | Authored content the harness loads. The harness enforces; the prompt instructs. See `agent.md` (concept, planned) for the agent-spec term. |
-| **Model** | The underlying LLM. A harness invokes a model; a model does not imply a harness. See Dimension 2 (research registry). |
-| **Skill / workflow / pipeline** | Procedural composition on top of the harness. A skill is content the harness runs; it is not the harness itself. |
-| **Agentic system** | A system-level assembly of multiple agents (see `agentic-systems.md`, planned). A harness is the runtime underneath; agentic systems are topologies on top. |
-| **Second brain** | The knowledge surface an agent reads *through* the harness. See `second-brain.md`. |
-
-## Why this is a concept, not a dimension
-
-The Researcher scans for aspects of the world (Context, Tools, Prompt, Orchestration, …). The harness is a *consumer lens* that cross-cuts those aspects — any real question about a harness touches tool loading, context caching, prompt composition, permissions, and session mechanics simultaneously. Scan-topic framing would force the Researcher to invent a "Harness" partition that overlaps every other dimension. Consumer-query framing is the right place for it: this concept file points into the aspects that already exist.
+| **Runtime environment** (`librarian/runtime-environment.md`) | The runtime + tooling surface an *agent* operates inside (Claude Code CLI, Cursor, the API). That is the middle altitude's audit-time lens — the runtime sense of "harness". The top-altitude harness is the authored whole-system; the two senses are adjacent but distinct. See §Composition for how they connect. |
+| **Skill / agent / prompt** | A part of a harness, not a harness. The middle altitude owns these. |
+| **System (PARA "Areas")** | A persistent organizational space (e.g., `systems/improvement-loop/`). A system may contain one or many harnesses; a harness is the construction unit, not the organizational unit. |
+| **Composition layer** | The *pattern* whereby a top-altitude operation composes middle-altitude operations. `/audit-artifacts` instantiates the composition layer; the harness is what the composition operates on. |
+| **Codebase** | A harness is the agentic shape; the codebase is what underlies it. `/audit-artifacts` is a harness audit, not a code review (see `/code-review`, `/security-review`). |
 
 ## Composition
 
-Where in the KB to look when a consumer asks about the harness. Pointers are to guide sections (Tier 1), patterns and findings (Tier 2), and watched-library repos (Tier 3).
+This concept doc is **primarily §Construction**. §Composition (the audit-time substrate — which guides fire on harness/runtime aspects) is maintained at the middle altitude in `librarian/runtime-environment.md` and is read by `/audit-artifacts` indirectly (via the per-artifact dispatches to `/assess-*`).
 
-| Aspect | Tier 1 (guides, default) | Tier 2 (patterns / findings, on escalation) | Tier 3 (watched-libraries, on explicit ask) |
-|---|---|---|---|
-| Tool registry, deferred tool loading, progressive discovery | G5 `designing-agent-tools.md` §"Step N — Tool Registry" and §"Deferred Loading" | Patterns under Tools dimension; findings on Tool Search, MCP server ecosystems | `anthropic-claude-code/` repo §tool/hooks source; MCP server registry implementations |
-| Context loading, caching, budget management | G2a `structuring-agent-context.md` §"Context Budget", §"Retrieval Strategy"; G2b `defending-agent-context.md` §"Compaction Timing" | Patterns `context-rot-attention-budget-depletion`, `ace-delta-updates`; any finding tagged `prompt-caching` | Claude Code caching implementation; Cursor context-composer source |
-| Prompt composition — what the harness prepends, appends, wraps | G8 `model-resilient-prompt-engineering.md` §"Role/Authority/Constraint/Failure Signal" | Patterns on prompt layering, negative constraints | Claude Code system-prompt assembly; Anthropic SDK cookbook prompt-caching examples |
-| Hooks, events, session mechanics, checkpoints | G3b `agent-workflow-and-execution.md` §"State", §"Termination"; G7 `session-persistence-and-memory.md` §"Handoff", §"Crash Recovery" | Patterns on durable workflow state, session handoff; `gsd-global-learnings-store-cross-session-persistence` | Claude Code hook source; Temporal/Prefect repos for workflow-engine comparison |
-| Permissions, sandboxing, blast radius | G6 `agent-safety-and-permissions.md` §Contract (invariants on tiered permissions, structural enforcement) | Patterns on defense-in-depth, prompt-injection mitigation; findings on container sandboxes | Claude Code settings.json permission model; E2B / Daytona sandbox implementations |
-| Observability, traces, cost monitoring | G4 `building-agent-evaluation-suites.md` §Eval harness instrumentation; G2b `defending-agent-context.md` §"Token Cost Defense" | Patterns on compounding-reliability, multi-step failure attribution | Claude Code tracing output; OpenTelemetry LLM conventions in tracked repos |
+| Aspect | Altitude | Where to read |
+|---|---|---|
+| Per-artifact audit substrate (which guides apply to each skill/agent/prompt) | Middle | `systems/improvement-loop/operations/references/librarian/skill.md`, `agent.md`, `prompt.md` §Composition |
+| Runtime-environment audit substrate (tool loading, context, permissions, hooks) | Middle | `systems/improvement-loop/operations/references/librarian/runtime-environment.md` §Composition |
+| **Whole-system harness construction** (this doc) | **Top** | §Construction below |
+| Whole-system harness invariants (what `/audit-artifacts` checks beyond per-artifact dispatch) | Top | `/audit-artifacts` design contract §"Whole-system invariants" — **empty in v1 per rule 11**; candidates listed there |
 
-### Cross-guide threads for harness-level queries
+When a consumer asks "audit this harness" the dispatch is per-artifact (`/assess-*`). When a consumer asks "construct a harness" the dispatch is the §Construction Decision sequence below.
 
-When a query is about the harness *as a whole* (e.g., "what should I demand of a production harness?"), the composition stitches together:
+## Construction
 
-1. **Permissions posture** — G6 invariants (tiered, structurally enforced, agent cannot self-modify).
-2. **Context mechanics** — G2a/G2b invariants (justified elements, caching, hidden context accounted for).
-3. **Tool loading discipline** — G5 invariants (only task-relevant tools, intermediate results kept out of context).
-4. **Workflow mechanics** — G3b invariants (termination conditions, state tracking, cost controls).
-5. **Prompt composition** — G8 invariants (ROLE/AUTHORITY/CONSTRAINT/FAILURE SIGNAL, versioning).
-6. **Observability** — G4 invariants (independent eval; harness must expose enough signal to verify).
+Author-time substrate for `/design-harness` (queued — future top-altitude capability) and for any operation that constructs a new harness spec. Audit-time operations consume the symmetric gates in inspection mode (see §"Rule-12 audit/design symmetry verification").
 
-This list is the default aspect-sweep for harness questions that don't name an aspect.
+### Decision sequence
 
-## Librarian read rule
+Ordered steps the author works through before drafting. Each step bounds a downstream authoring choice — skipping a step does not skip the decision, only the deliberation.
 
-**Default (Tier 1):** Start with the composition table above. If the consumer's query names one aspect (e.g., "how does the harness handle context caching?"), read only the relevant row's Tier-1 pointers. If the query is aspect-unspecified (e.g., "audit this harness"), read the cross-guide thread above in order.
+1. **Name the harness's bounded operation.** A harness packages one whole-system operation. State it as a noun-phrase ("MongoDB sizing comparison engine across SAGE + Excel calculator + consulting tool") or a verb-phrase ("audit an agentic system at a local path"). If you cannot state the operation without naming two end-shapes (e.g., "audits *and* designs"), the scope is two harnesses with rule-10 binding, not one harness — see step 6.
 
-**Escalate to Tier 2 when:**
-- Consumer asks for rationale behind a Tier-1 claim ("why does G2b say intermediate results should stay out of context?").
-- Consumer asks about a design debate or contradicting findings (surface `contradicts` typed links).
-- Tier-1 confidence is low because the aspect is sparsely covered in the named guide.
+2. **Identify the consumer demand and audience archetypes.** Write the concrete consumer phrasings that should invoke this harness. Name which of the audience archetypes 1–5 are served and how. A harness with single-archetype demand and no recurrence is rule-11 weak — defer or scope smaller.
 
-**Escalate to Tier 3 when:**
-- Consumer explicitly asks for a reference-implementation comparison ("how does Claude Code actually do this?").
-- Consumer is auditing *their own* harness design against a canonical example and wants the canonical in view.
-- A Tier-1 or Tier-2 answer names a specific mechanism (hook API, permission config format) and the consumer needs the exact shape.
+3. **Enumerate the owned abstractions.** List which IL-maintained artifacts (skill, agent, prompt) this harness will ship or compose. Each shape adds an audit/design dispatch. Use the consumer-abstractions-map's split as the inventory:
 
-**Do not:**
-- Read the full Claude Code source to answer a definitional question ("what is a harness?"). Definition + disambiguation above suffices.
-- Cite a Tier-2 pattern file as if it were a Tier-1 guide. Attribute tier explicitly in the response.
-- Default to Tier 3 for any harness question — watched-library reads are high-cost and should be gated on clear need.
+   | Artifact | If shipped by this harness | Dispatch (audit) | Dispatch (design) |
+   |---|---|---|---|
+   | SKILL.md | counts in `/audit-artifacts` discovery | `/assess-skill` | `/design-skill` |
+   | agent.md / CLAUDE.md (agent-disposition) | counts | `/assess-agent` (variant inferred or passed) | `/design-agent` |
+   | Standalone prompt | counts | `/assess-prompt` | (no IL `/design-prompt` yet — see IL map weak-demand row) |
+   | CLAUDE.md (MOC / orientation) | discovered, filtered out by MOC pre-filter | n/a | n/a |
+
+   Record the artifact count and shape mix. This is the input to the bin-packing step `/audit-artifacts` will run (see SKILL.md §"Sizing" / §"Bin packing").
+
+4. **Run the Safety-critical classification.** Apply this gate — analogous to the per-skill G9.I6 gate but at the harness level.
+
+   A harness is **safety-critical** if **any** of:
+   - It ships one or more safety-critical skills (any skill with destructive `allowed-tools` or destructive procedure steps — see IL `librarian/skill.md` §"Decision sequence" step 4).
+   - Its whole-system operation performs cross-system writes, deployments, or credential manipulation.
+   - It composes outputs that feed automated downstream actions without human review.
+   - Its `/design-*` peer will instantiate destructive artifacts on consumer systems.
+
+   Per rule-10/G9.I6 at the harness level: a safety-critical harness must encode HITL gating in its composition (confirm-before-act, dry-run mode, conversation-only default with explicit `--write` opt-in). `/audit-artifacts` ships this discipline: `--write` is off by default; safety-critical action requires consumer opt-in. Authoring a safety-critical harness without HITL gating produces a harness that will fail audit on first whole-system inspection.
+
+5. **Specify the assessor binding (rule 10 — generator-assessor separation).** Every harness must have a paired assessor. Two cases:
+   - **This harness is an assessor.** (Example: `/audit-artifacts`.) Then it cannot also be the constructor for the same shape. Its constructive peer is a separate `/design-*` harness (rule 10).
+   - **This harness is a constructor.** (Example: `/design-harness` when shipped.) Then it must delegate quality assessment to a separate assessor in fresh context (rule 10). For `/design-harness` the delegate is `/audit-artifacts`.
+   - **This harness is neither assessor nor constructor** (e.g., a pilot domain harness like the sizing engine). Then rule 10 applies inwardly: any safety-critical skill it ships must have HITL gating; any constructive operation it internally performs must delegate quality assessment per IL rule 10 at the per-artifact level.
+
+6. **Specify the constructive-peer binding (rule 12 — audit/design symmetry).** Per rule 12, an abstraction that supports audit but not construction (or vice versa) is in symmetric debt — auditable-but-not-constructible (or the inverse). At the harness level this means:
+   - If this harness is an assessor (`/audit-artifacts`), its rule-12 peer is `/design-harness`. The peer must exist or be on the committed roadmap.
+   - If this harness is a constructor (`/design-harness`), its rule-12 peer is `/audit-artifacts`. Same.
+   - If this harness is neither, the binding does not apply at the harness level — only at the per-artifact level (skills inside the harness still owe their own audit/design symmetry to IL).
+
+   This step is a **hard gate** for assessor/constructor harnesses. Shipping an assessor without a queued constructor (or vice versa) leaves coverage asymmetric.
+
+7. **Cross-check against §Composition.** Confirm the IL substrate the harness will be audited against matches the surface authored. If the harness ships no skills, `/assess-skill` will never fire — the harness should not advertise skill-aware operation. If the harness ships agents with no embedded tool directives, G5 substrate won't fire (Variant A path). Mismatches mean the Decision record over- or under-specifies the surface.
+
+### Template skeleton
+
+The minimum valid harness spec shape. Fill in placeholders; do not delete required sections. A harness spec lives as a **design contract** in `systems/improvement-loop/project-management/design-notes/<date>-<name>-design-contract.md` (current placement; see priority-queue item 6 for the placement-debate gate). The corresponding SKILL.md (if the harness is implemented as a slash command) lives in `.claude/skills/<name>/SKILL.md`.
+
+```markdown
+---
+title: "<harness-name> Design Contract"
+id: "<harness-name>-design-contract"
+type: "design-note"
+category: "capability-design"
+target_system:
+  - "improvement-loop"
+stage: "draft"   # draft → stable-after-pilot → stable
+created: "<YYYY-MM-DD>"
+updated: "<YYYY-MM-DD>"
+author: "<owner | claude>"
+tags: ["design-note", "<harness-name>", "harness"]
+---
+
+# `<harness-name>` Design Contract
+
+## Plain-English purpose
+<One-paragraph "point this at X, get Y" statement. State the bounded operation from Decision sequence step 1.>
+
+## Why this is a top-altitude capability
+<State which whole-system shape this harness composes. Reference the consumer-abstractions-map's altitude split (top composes middle).>
+
+## Input contract
+<Table of inputs: required path/args + optional flags + defaults. Mirror /audit-artifacts's shape.>
+
+## Discovery / composition contract
+<For audit harnesses: discovery rules + shape table. For design harnesses: substrate-load order + interview surface. For domain harnesses (e.g., sizing engine): the adapter / data-source contract.>
+
+## Owned abstractions
+<List per Decision-sequence step 3: which artifacts ship, what shapes they take, which IL dispatches apply.>
+
+## Safety-critical classification
+<Yes/No per Decision-sequence step 4. If Yes: name the HITL gate.>
+
+## Assessor binding (rule 10)
+<Name the paired assessor (or "this harness IS the assessor; constructive peer is <name>"). Per Decision-sequence step 5.>
+
+## Constructive-peer binding (rule 12)
+<Name the paired constructor (or "this harness IS the constructor; assessor peer is <name>"). Per Decision-sequence step 6. State whether the peer ships, is queued, or is N/A for non-assessor/non-constructor harnesses.>
+
+## Output contract
+<For audit harnesses: three artifacts (manifest, per-artifact findings, summary). For design harnesses: drafted artifact + delegated audit report. For domain harnesses: the consumer-visible deliverables.>
+
+## Boundaries
+<What this harness does NOT do. List adjacent operations explicitly and point to the harness that does them.>
+
+## Whole-system invariants
+<v1 default: empty per rule 11; candidates listed for future commit.>
+
+## Audience archetypes (1–5)
+<Which archetypes consume which outputs, at what depth.>
+
+## Cross-references
+<Pointers to IL substrate composed, related harnesses, and the consumer-abstractions-map row.>
+```
+
+A harness spec missing any of `Plain-English purpose`, `Input contract`, `Owned abstractions`, `Safety-critical classification`, `Assessor binding`, `Constructive-peer binding`, `Output contract`, or `Boundaries` is not a complete harness — `/design-harness` (when shipped) will refuse to consider the spec stable, and `/audit-artifacts` of a folder built from such a spec will surface the gaps as structural-incompleteness findings.
+
+### Scoping heuristics
+
+When in doubt, prefer the smaller harness plus explicit composition over the larger one with internal branching.
+
+- **Split when:** the harness has two distinct whole-system end-shapes (e.g., a single harness that both audits *and* designs the same shape — split per rule-10 precedent). A second sign: the Plain-English purpose statement needs "and" connecting two operations with different output shapes.
+- **Collapse when:** the proposed "harness" is a single skill with no whole-system composition — it should be a SKILL.md inside an existing harness, not a new harness.
+- **Stay one harness when:** the operation has multiple input modes but the same whole-system end-shape (e.g., `/audit-artifacts <path>` vs. `/audit-artifacts <path> --diff <prior>` — same operation, same output shape, one mode-flag).
+- **Layer when:** two operations build on each other and share substrate (sizing-engine evidence: forecasting layered on top of comparison). The layered operation may be a separate harness that takes the underlying harness's output as input — this is the **multi-surface composition** pattern. Author the underlying harness first; layer the second after the first is stable.
+
+### Authoring-time anti-patterns
+
+Mistakes made while writing the harness spec. Distinct from `/audit-artifacts`'s structural findings, which surface at audit time after the harness has artifacts authored.
+
+- **Assessor/constructor conflation.** Authoring a single harness that both produces and assesses the same artifact shape. Rule-10 violation by construction. Split.
+- **Composition without composition cross-check.** Authoring "this harness ships skills" without listing which `/assess-skill` invariants will fire on those skills. Audit-time surprises = construction-time omissions.
+- **Premature whole-system invariants.** Adding harness-level invariants beyond IL `/assess-*` composition before 2–3+ concrete instances surface. Rule-11 violation. v1 default is empty.
+- **Safety-critical classification skipped.** Writing the input/output contract first and leaving safety-critical "for review". Inverts the safety envelope. Run the classification before procedure detail.
+- **Constructive-peer omission.** Shipping an assessor harness without a queued or shipped constructive peer. Leaves rule-12 coverage asymmetric. Either queue the peer or downgrade scope.
+- **Multi-surface composition collapsed.** Authoring a single harness that layers forecasting on comparison rather than separating them. Hides the substrate-sharing contract; obscures the comparison's reusability. Layer instead.
+- **Deviation-semantics omitted (comparison harnesses).** For multi-system comparison harnesses (sizing-engine class), failing to specify the deviation semantics (empirical vs theoretical, surface both with labels, whose value is "ground truth") before procedure detail. The deviation contract is load-bearing for downstream forecasting layers. Specify it in §"Discovery / composition contract."
+
+### Composition cross-check (rule 12 binding)
+
+At Decision-sequence step 7, walk these checks before declaring the spec stable:
+
+1. **For every shape the harness ships, the matching IL substrate exists.** Skills → IL `librarian/skill.md` §Construction + §Composition. Agents → IL `librarian/agent.md`. Prompts → IL `librarian/prompt.md` §Composition (note: §Construction not committed in IL — see IL map "moderate demand" row). If a shape is shipped without IL substrate, file an IB item to IL or scope the harness without that shape.
+2. **Assessor and constructor halves are both committed.** Per rule 12, the abstraction (here: harness) cannot be audit-only or design-only without filing the gap as debt. `/audit-artifacts` shipped (audit half); `/design-harness` queued (design half) — symmetric.
+3. **Whole-system invariants the harness adds are evidence-backed.** Empty v1 is the rule-11 default. Any added invariant must cite ≥2–3 concrete instances of the invariant being needed across audited harnesses.
+
+## Rule-12 audit/design symmetry verification
+
+Walk every `/audit-artifacts` invariant and confirm §Construction tells the builder how to satisfy it. This is the rule-12 self-check; failures surface §Construction gaps to backfill.
+
+| `/audit-artifacts` check (audit-time) | §Construction satisfier (design-time) | Symmetric? |
+|---|---|---|
+| Discovery by shape-based glob (skills, agents, prompts, CLAUDE.md) | Decision-sequence step 3 enumerates the owned abstractions and shape mix; Template skeleton §"Owned abstractions" captures it | ✅ |
+| MOC pre-filter on CLAUDE.md (frontmatter `type: index` OR word count <100) | Implicit: a constructor authoring a CLAUDE.md classifies it at author time as MOC vs agent-disposition. Authoring-time anti-pattern: "MOC drift" (writing an agent-disposition CLAUDE.md that decays to MOC shape) — **gap surfaced; add to Authoring-time anti-patterns in a future commit if recurrence appears** | ⚠ partial |
+| Bin packing under 250k token ceiling | Decision-sequence step 3 records artifact count and shape mix; sizing constants (`{skill: 18k, agent-A: 22k, agent-B: 32k, agent-C: 28k, prompt: 20k}`) are audit-time mechanics, not author-time gates. Author concern: don't ship a single artifact so large it forces an oversized bin. **Soft signal only; no Decision-sequence gate** | ✅ (no design-time obligation; audit-time mechanic) |
+| `/assess-skill` dispatch per discovered skill | Decision-sequence step 3 lists `/assess-skill` as the audit dispatch for ship-shape SKILL.md | ✅ |
+| `/assess-agent` dispatch per discovered agent (variant-aware) | Same — Decision-sequence step 3 names the dispatch and variant inference | ✅ |
+| `/assess-prompt` dispatch per discovered prompt | Same | ✅ |
+| Per-artifact safety-critical classification (G9.I6 firing on destructive skills) | Decision-sequence step 4 runs Safety-critical classification at the harness level; each shipped safety-critical skill inherits the gate via IL substrate | ✅ |
+| Whole-system summary synthesis (at-a-glance + critical findings + common findings + invariants) | Template skeleton §"Output contract" requires the harness to specify output shape; audit harnesses' shape mirrors `/audit-artifacts`'s three artifacts | ✅ |
+| `--write` default-off (G9.I6 mitigation: conversation-only safe default) | Decision-sequence step 4 Safety-critical classification mandates HITL gating; Template skeleton §"Safety-critical classification" names the gate | ✅ |
+| Audit-trail one-line append to `operations/artifact-audits/runs.md` on `--write` | No symmetric design-time gate (mechanic of audit-time writes); construction-time concern is "the harness writes are reversible and audit-trail-emitting" — captured under safety-critical HITL gating | ✅ |
+| Discovery records structural gaps (e.g., `agents/` present but empty) | Decision-sequence step 7 cross-check against §Composition surfaces shape/surface mismatches at design time | ✅ (mostly; the empty-folder case is audit-only signal) |
+| Manifest's `## Ambiguous classifications` block | Author-time concern: CLAUDE.md placement should disambiguate intent (agent-disposition vs MOC). Captured implicitly under Template skeleton §"Owned abstractions"; could be sharpened in a future commit | ⚠ partial |
+| Whole-system invariants (v1: empty; candidates pending recurrence) | §Construction §"Composition cross-check" check 3 enforces rule-11 evidence gating on added invariants | ✅ |
+| Engine subagent discoverability (planned candidate) | No symmetric design-time gate yet — would be added when whole-system invariant is committed | N/A (deferred symmetrically) |
+
+**Verdict:** Rule-12 symmetry is **substantially satisfied** by this §Construction draft. Two partial gaps surfaced (MOC drift anti-pattern; ambiguous-CLAUDE.md author-time disambiguation) — both are speculative recurrence triggers, not committed scope. Per rule 11, defer adding the explicit anti-patterns until 2–3 concrete authoring instances surface MOC drift or CLAUDE.md ambiguity at *design* time. The current substrate is sufficient to seed `/design-harness`.
 
 ## Provenance surfacing
 
-Every claim cites its substrate tier: `G<N>.md#<anchor>` for Tier 1 (anchor IDs stabilize post the collapse-proposal section manifest; until then, section-heading references are acceptable), `finding-id` or `pattern-slug` for Tier 2, `watched-lib/path:line-range` for Tier 3.
+`/design-harness` (when shipped) will cite this concept doc by section anchor and IL substrate by file path. The audit-time substrate composed via `/audit-artifacts` cites IL `librarian/*.md` per IL convention.
 
 ## Cross-references
 
-- Substrate audit §"The Librarian Reference Layer": `project-management/design-notes/2026-04-20-substrate-audit-dimensions-patterns-guides-vs-librarian.md`
-- `_index.md` in this directory.
-- Related concepts (planned): `agent.md`, `mcp.md`, `context-rot.md`.
-- Related operation: `audit.md` — composition of harness audit pulls this file's cross-guide thread.
+- Consumer-abstractions-map (the harness row is in the top-altitude section): `systems/improvement-loop/operations/references/consumer-abstractions-map.md`
+- `/audit-artifacts` SKILL.md (the audit half of the harness-level pair): `systems/improvement-loop/.claude/skills/audit-artifacts/SKILL.md`
+- `/audit-artifacts` design contract: `systems/improvement-loop/project-management/design-notes/2026-06-12-audit-system-design-contract.md`
+- IL runtime-environment concept (§Composition substrate): `systems/improvement-loop/operations/references/librarian/runtime-environment.md`
+- IL skill concept (§Construction reference shape this doc parallels): `systems/improvement-loop/operations/references/librarian/skill.md`
+- IL design operation spec (Phase model for §Construction consumers): `systems/improvement-loop/operations/references/librarian/design.md`
+- IL rules 10/11/12: `systems/improvement-loop/governance/agent-rules.md`
+- Three altitudes (DD-104) + sizing-engine pilot: engine `PROGRESS.md`; single-engine collapse: DD-103

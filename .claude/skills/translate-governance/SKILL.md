@@ -65,7 +65,7 @@ Read the governance source set:
 
 1. `CHARTER.md` (workspace root) — vision, values, and trajectory signals (the content of record for what was formerly the constitution + values)
 2. `CLAUDE.md` (workspace root) + `.claude/rules/governance.md` — workspace operating law (human gate, spec-before-build, safety, data-access rules)
-3. `systems/improvement-loop/knowledge/reference/principles.md` — DBDO pipeline, generalization principle (design-wisdom)
+3. `systems/improvement-loop/knowledge/reference/dbdo-pipeline.md` — DBDO pipeline, generalization principle (design-wisdom)
 4. `systems/improvement-loop/knowledge/reference/vocabulary.md` — authoritative term definitions (design-wisdom)
 5. `systems/improvement-loop/knowledge/reference/fractal-pattern.md` — structural requirements (design-wisdom)
 

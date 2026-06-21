@@ -16,6 +16,7 @@ source_dd:
   - "DD-65"
   - "DD-80"
   - "DD-103"
+  - "DD-111"
 tags:
   - "guide"
   - "knowledge-management"
@@ -168,9 +169,12 @@ When a codified artifact derives from an external package (GSD, gstack, BMAT, et
 | Research intake (`/research-loop`) | Working — KB populated (filter on frontmatter for current counts) |
 | Artifact identification (`/identify-artifacts`) | Built and run |
 | Artifact extraction (`/extract-artifacts`) | Built and run — `extracts/` is heavily populated (guides, patterns, rules, skills, templates) |
-| Deployment / promotion | Largely unrun. Most extracted artifacts were never promoted to `knowledge/`; meanwhile `extracts/guides/` became the Librarian's live Tier-1 substrate. The staging→deploy model and the `extracts/` ↔ `knowledge/` relationship are under deliberate review (session 124) — see the reconciliation design-note in `project-management/design-notes/`. |
+| Deployment / promotion | Resolved framing (DD-111). `extracts/` is **two bodies sharing folder names**, not a single staging bin: `extracts/guides/` (Tier 1) + `extracts/patterns/` (Tier 2) are **live substrate** the Librarian composes; only `extracts/{rules,skills,templates,agents}/` are "staging residue" (un-promoted drafts), still governed by the DD-39/DD-80 stage-before-deploy gate. See `extracts/CLAUDE.md` and the reconciliation design-note. |
 
-The bottleneck is no longer extraction — it is reconciling what `extracts/` actually is (live substrate vs. un-promoted drafts) against `knowledge/`.
+The "staging area" framing applies **only** to the four residue subtrees. `extracts/guides/` and
+`extracts/patterns/` are recognized as the Librarian's research-substrate library (DD-111,
+rename-in-place) — consumed pull-style, not pending deployment. The remaining backlog is the
+promote-or-prune pass over the staging residue.
 
 ## Archived: Proposal Stage
 
