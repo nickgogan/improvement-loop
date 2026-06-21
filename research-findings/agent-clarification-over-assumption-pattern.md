@@ -29,8 +29,7 @@ last_updated: '2026-05-24'
 pipeline_status: synthesized
 consumed_by:
   - "agent-design-patterns.md"
-- agent-design-patterns.md
-- writing-agent-specifications.md
+  - "writing-agent-specifications.md"
 ---
 # Agent Clarification Over Assumption Pattern
 

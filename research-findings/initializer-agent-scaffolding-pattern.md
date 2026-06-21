@@ -25,7 +25,7 @@ last_updated: '2026-04-09'
 pipeline_status: "synthesized"
 consumed_by:
   - "agent-design-patterns.md"
-- agents/initializer-agent-scaffolding.md
+  - "agents/initializer-agent-scaffolding.md"
 ---
 
 ## What It Is

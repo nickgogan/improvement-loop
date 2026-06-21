@@ -24,8 +24,8 @@ last_updated: '2026-04-19'
 pipeline_status: synthesized
 consumed_by:
   - "agent-design-patterns.md"
-- session-persistence-and-memory.md
-- agent-self-reporting-unreliability-independent-eval.md
+  - "session-persistence-and-memory.md"
+  - "agent-self-reporting-unreliability-independent-eval.md"
 ---
 
 ## What It Is

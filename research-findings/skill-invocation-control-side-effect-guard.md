@@ -1,6 +1,7 @@
 ---
 name: Skill Invocation Control — Side-Effect Guard via disable-model-invocation
-summary: Claude Code skills carry two frontmatter flags that gate who can invoke them. `disable-model-invocation: true` blocks Claude from auto-loading the skill (user must type /skill-name); use for side-effect workflows (commit, deploy, send-slack). `user-invocable: false` blocks the skill from the / menu but keeps Claude's auto-invocation; use for background-knowledge skills that aren't meaningful as user commands. Default is both-can-invoke.
+summary: |-
+  Claude Code skills carry two frontmatter flags that gate who can invoke them. `disable-model-invocation: true` blocks Claude from auto-loading the skill (user must type /skill-name); use for side-effect workflows (commit, deploy, send-slack). `user-invocable: false` blocks the skill from the / menu but keeps Claude's auto-invocation; use for background-knowledge skills that aren't meaningful as user commands. Default is both-can-invoke.
 implementation_notes: "Side-effect skills should default to disable-model-invocation: true. Specific cases the docs name: /commit, /deploy, /send-slack-message. Reasoning: 'You don't want Claude deciding to deploy because your code looks ready.' Background-knowledge case: a 'legacy-system-context' skill explains an old system — Claude should know it when relevant but /legacy-system-context isn't a user action. Both flags also affect context loading: disable-model-invocation removes the description from Claude's context entirely; user-invocable: false leaves it in."
 category: Governance
 evidence_strength: Strong (production-tested)

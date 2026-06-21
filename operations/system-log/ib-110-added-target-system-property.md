@@ -5,7 +5,9 @@ actor: "Agent: Claude"
 area: null
 change_type: "Schema Change"
 milestone: "M2"
-rationale: "IB-110 (DD-38). Added Target System select property (S2: Notion Operations, S3: Claude Code Build, Improvement Loop, Cross-System) to System Log DB. Created four filtered table views sorted by Timestamp DESC. Updated System Log documentation page with new property in schema table and new views in views table. Existing entries not backfilled --- property applies going forward."
+rationale: |-
+  "IB-110 (DD-38). Added Target System select property (S2: Notion Operations, S3: Claude Code Build, Improvement Loop, Cross-System) to System Log DB. Created four filtered table views sorted by Timestamp DESC. Updated System Log documentation page with new property in schema table and new views in views table. Existing entries not backfilled
+--- property applies going forward."
 source_dd: null
 target_system: "improvement-loop"
 date: "2026-03-23"

@@ -20,7 +20,7 @@ last_updated: '2026-04-08'
 pipeline_status: "synthesized"
 consumed_by:
   - "agent-design-patterns.md"
-- templates/execution-context-profiles-mode-switching.md
+  - "templates/execution-context-profiles-mode-switching.md"
 ---
 
 ## What It Is

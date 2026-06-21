@@ -25,7 +25,6 @@ related_findings:
 pipeline_status: synthesized
 consumed_by:
   - "agent-design-patterns.md"
-- agent-design-patterns.md
 ---
 # SOUL.md Agent Constitution Pattern
 

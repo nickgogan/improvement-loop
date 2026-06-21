@@ -2,9 +2,8 @@
 name: Claude Code Monitor Tool — Event-Driven Background Process Monitoring
 source_type: Video
 status: Done
-key_takeaways: The Monitor tool is a new Claude Code primitive that enables event-driven background process monitoring, delivering matched events to the main session with zero token cost between events.
-  It contrasts sharply with /loop (time-driven, full API call per iteration) and background shell commands (single notification on exit). Two command patterns: stream filter (log tailing) and poll & diff
-  (threshold-based API polling). Primary use cases are dev server watching, test suite failure streaming, deploy monitoring, and business metric alerting.
+key_takeaways: |-
+  The Monitor tool is a new Claude Code primitive that enables event-driven background process monitoring, delivering matched events to the main session with zero token cost between events. It contrasts sharply with /loop (time-driven, full API call per iteration) and background shell commands (single notification on exit). Two command patterns: stream filter (log tailing) and poll & diff (threshold-based API polling). Primary use cases are dev server watching, test suite failure streaming, deploy monitoring, and business metric alerting.
 relevance: High
 added_by: Nick
 tags:

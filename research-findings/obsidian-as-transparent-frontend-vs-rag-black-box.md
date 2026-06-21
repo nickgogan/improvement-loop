@@ -35,7 +35,6 @@ last_updated: '2026-05-24'
 pipeline_status: synthesized
 consumed_by:
   - "building-agentic-systems.md"
-- building-agentic-systems.md
 ---
 # Obsidian as Transparent Frontend vs RAG Black Box
 

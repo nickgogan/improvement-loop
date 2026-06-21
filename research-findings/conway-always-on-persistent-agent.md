@@ -27,7 +27,6 @@ last_updated: '2026-04-19'
 pipeline_status: synthesized
 consumed_by:
   - "agent-design-patterns.md"
-- agent-design-patterns.md
 ---
 # Conway: Always-On Persistent Agent Environment
 

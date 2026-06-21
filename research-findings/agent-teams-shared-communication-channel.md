@@ -17,8 +17,8 @@ sources:
 - five-agentic-patterns-claude-code.md
 proposals: null
 date_discovered: '2026-04-07'
-last_updated: '2026-05-25'
-devil_advocate_role: 'Explicitly named role in agent team: one agent continuously challenges decisions made by all other sub-agents, acting as a senior/staff engineer. Practical example: review team of 4 specialized reviewers + 1 devil's advocate for PR review.'
+last_updated: |-
+  '2026-05-25' devil_advocate_role: 'Explicitly named role in agent team: one agent continuously challenges decisions made by all other sub-agents, acting as a senior/staff engineer. Practical example: review team of 4 specialized reviewers + 1 devil's advocate for PR review.'
 related_findings:
 - file: competitive-module-development-parallel-teams.md
   rel: same-problem

@@ -1,6 +1,8 @@
 ---
 notion_id: "3161e08b-9b34-813c-841a-fa4b2a8c2981"
-log_entry: "IB-09: System Log database created --- 8 properties, 8 templates, 9 views"
+log_entry: |-
+  "IB-09: System Log database created
+--- 8 properties, 8 templates, 9 views"
 actor: "Agent: Claude"
 area: null
 change_type: "Implementation"

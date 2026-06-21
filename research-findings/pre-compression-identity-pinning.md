@@ -22,7 +22,7 @@ related_findings:
 pipeline_status: "synthesized"
 consumed_by:
   - "agent-design-patterns.md"
-- rules/pre-compression-identity-pinning.md
+  - "rules/pre-compression-identity-pinning.md"
 ---
 # Pre-Compression Identity Pinning (Soul.md Survives Compaction)
 

@@ -29,7 +29,7 @@ last_updated: '2026-04-09'
 pipeline_status: synthesized
 consumed_by:
   - "agent-design-patterns.md"
-- session-persistence-and-memory.md
+  - "session-persistence-and-memory.md"
 ---
 
 ## What It Is

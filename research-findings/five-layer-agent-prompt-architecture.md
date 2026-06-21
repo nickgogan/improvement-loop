@@ -35,7 +35,6 @@ last_updated: '2026-04-08'
 pipeline_status: synthesized
 consumed_by:
   - "agent-design-patterns.md"
-- agent-design-patterns.md
 ---
 ## What It Is
 

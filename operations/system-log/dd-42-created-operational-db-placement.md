@@ -1,6 +1,8 @@
 ---
 notion_id: "32b1e08b-9b34-817c-a920-f97f6a5da4f8"
-log_entry: "DD-42 created: Operational Database Placement --- DD and IB databases promoted to top-level Governance Infrastructure peers"
+log_entry: |-
+  "DD-42 created: Operational Database Placement
+--- DD and IB databases promoted to top-level Governance Infrastructure peers"
 actor: "Agent: Claude"
 area: null
 change_type: "Design Decision"
