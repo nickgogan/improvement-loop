@@ -64,5 +64,5 @@ A recommendation on the agent-vs-skill workflow (and whether that's even the rig
 | tool_calls | ~60 (Read/Bash/Edit/Write; Agent ×2 Explore; perplexity_reason ×1; AskUserQuestion ×7; Skill ×1) |
 | subagents | 2 (Explore — producer trace, knowledge/DD inventory) |
 | commits | 3 (`4ce12d9`, `d799777`, `65339c0`); all pushed to origin/main; mirror pushed (`511b147`) |
-| tokens_consumed / context_pct_peak | unknown — Nick can add from `/status` |
+| tokens_consumed / context_pct_peak | `unknown` (not harness-measurable; not requested from Nick) |
 | capture_quality | estimated |
