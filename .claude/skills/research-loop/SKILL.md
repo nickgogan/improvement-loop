@@ -77,6 +77,7 @@ This skill covers source processing, finding extraction, priority triage, and de
 - **Filename:** kebab-case slug of the entry name + `.md` (e.g., `context-window-compaction.md`)
 - **Discovery is frontmatter-driven.** Research findings, sources, and authorities folders no longer maintain `_index.md` catalogs — filter entries with ripgrep on frontmatter fields instead.
 - **Relations between entries use filenames** (e.g., `sources: ["article-name.md"]`) instead of URLs or IDs
+- **YAML safety (mandatory).** Write prose fields (`summary`, `key_takeaways`, `implementation_notes`, `notes`) as literal block scalars (`|-`), never inline quoted strings — a colon or quote in prose breaks an inline scalar. Lists use uniform 2-space indent, no duplicates. See `_schema.yaml` → "Frontmatter authoring rules". A pre-commit linter blocks invalid frontmatter.
 
 ### Research Sources Frontmatter Schema
 
@@ -85,7 +86,8 @@ This skill covers source processing, finding extraction, priority triage, and de
 name: "Article Title"
 source_type: "Video"  # Blog Post, Video, Research Paper, Documentation, Community Post, Tool Release
 status: "Done"  # Not started, In progress, Done
-key_takeaways: "Summary text"
+key_takeaways: |-
+  Summary text — prose with colons/quotes is safe in a block scalar.
 relevance: "Medium"  # High, Medium, Low
 added_by: "Nick"  # Nick, Agent (Scheduled Scan), JR
 tags:
@@ -103,8 +105,9 @@ date_processed: "2026-03-22"
 ```yaml
 ---
 name: "Finding Name"
-summary: "Summary text"
-implementation_notes: null
+summary: |-
+  Summary text — prose with colons/quotes is safe in a block scalar.
+implementation_notes: null  # when set, use a |- block scalar (see YAML safety convention)
 category: "Context Engineering"  # Context Engineering, Prompt Craft, Tool Integration, Model Selection, Intent Engineering, Orchestration, Evaluation, Sandboxing, Governance, Agent Design, Agentic Systems
 evidence_strength: "Medium (practitioner-documented)"  # Strong (production-tested), Medium (practitioner-documented), Weak (theoretical)
 adoption_status: "Partially Adopted"  # Already Adopted, Partially Adopted, Not Yet Started
@@ -156,7 +159,8 @@ type: "Company"  # Individual, YouTube Channel, Institution, Company, Community,
 credibility: "Tier 1 (creator/researcher)"  # Tier 1 (creator/researcher), Tier 2 (experienced practitioner), Tier 3 (aggregator/commentator)
 specialty:
   - "context-engineering"  # Same tags as Research Sources
-notes: "Description of authority"
+notes: |-
+  Description of authority — prose with colons/quotes is safe in a block scalar.
 source_count: 2
 sources: []  # filenames of source entries
 url: "https://docs.anthropic.com"

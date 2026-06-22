@@ -176,7 +176,7 @@ date: "{YYYY-MM-DD}"
 
 If the user opts for persistence:
 
-1. **Write finding entries** using the standard Research Findings schema:
+1. **Write finding entries** using the standard Research Findings schema (prose fields as `|-` block scalars per `_schema.yaml` "Frontmatter authoring rules"; a pre-commit linter blocks invalid frontmatter):
    - Filename: kebab-case slug + `.md`
    - Set `pipeline_status: raw`
    - Set `priority: null` (not yet triaged)

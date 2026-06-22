@@ -60,11 +60,14 @@ The Promoter thinks like a librarian, not a researcher.
 
 ### Frontmatter
 
+Prose fields use literal block scalars (`|-`), never inline quoted strings — see `_schema.yaml` → "Frontmatter authoring rules". A pre-commit linter blocks invalid frontmatter.
+
 ```yaml
 ---
 name: "Finding Name"
-summary: "Summary text"
-implementation_notes: null
+summary: |-
+  Summary text — prose with colons/quotes is safe in a block scalar.
+implementation_notes: null  # when set, use a |- block scalar
 category: "Context Engineering"  # Context Engineering, Prompt Craft, Tool Integration, Model Selection, Intent Engineering, Orchestration, Evaluation, Sandboxing, Governance, Agent Design, Agentic Systems
 evidence_strength: "Medium (practitioner-documented)"
 adoption_status: "Not Yet Started"  # Already Adopted, Partially Adopted, Not Yet Started

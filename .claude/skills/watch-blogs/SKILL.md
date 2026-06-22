@@ -156,13 +156,13 @@ Save to `systems/improvement-loop/operations/research-reports/{date}-watch-blogs
 
 For each post with EXTRACT verdict:
 
-1. Use `Write` to create a new file in `systems/improvement-loop/research-sources/`:
+1. Use `Write` to create a new file in `systems/improvement-loop/research-sources/`. Write prose fields (`key_takeaways`) as literal block scalars (`|-`) when non-empty, never inline quoted prose — see `_schema.yaml` → "Frontmatter authoring rules" (a pre-commit linter blocks invalid frontmatter):
    ```yaml
    ---
    name: "Post Title"
    source_type: "Blog Post"
    status: "Not started"
-   key_takeaways: ""
+   key_takeaways: ""  # when set, use a |- block scalar
    relevance: ""
    added_by: "Agent (Watch Blogs)"
    tags: [inherited from blog's topics]

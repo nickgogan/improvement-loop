@@ -1,0 +1,12 @@
+#!/bin/sh
+# Frontmatter YAML linter — blocks commits that introduce unparseable frontmatter.
+# Prevents the session-127 defect class at the gate (session 128, option c).
+#
+# This is the TRACKED master copy. Install it into the live hooks dir with:
+#   ln -sf ../../systems/improvement-loop/operations/kb-maintenance-scripts/hooks/pre-commit .git/hooks/pre-commit
+# (or copy it). Bypass a single commit with: git commit --no-verify
+repo_root=$(git rev-parse --show-toplevel)
+scripts="$repo_root/systems/improvement-loop/operations/kb-maintenance-scripts"
+files=$(git diff --cached --name-only --diff-filter=ACM -- '*.md')
+[ -z "$files" ] && exit 0
+printf '%s\n' "$files" | sed "s|^|$repo_root/|" | PYTHONPATH="$scripts" python3 "$scripts/validate_frontmatter.py"
