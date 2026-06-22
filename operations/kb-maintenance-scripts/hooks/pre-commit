@@ -1,12 +1,23 @@
 #!/bin/sh
-# Frontmatter YAML linter — blocks commits that introduce unparseable frontmatter.
-# Prevents the session-127 defect class at the gate (session 128, option c).
+# MetaSystem governance pre-commit hook. Two checks:
+#   1. Frontmatter YAML validity on staged markdown (session 128 / DD-114) — blocks the
+#      session-127 defect class (unparseable frontmatter) at the gate.
+#   2. FOUNDATIONS.md spine map in sync with DD `foundational` flags (DD-115).
 #
 # This is the TRACKED master copy. Install it into the live hooks dir with:
 #   ln -sf ../../systems/improvement-loop/operations/kb-maintenance-scripts/hooks/pre-commit .git/hooks/pre-commit
 # (or copy it). Bypass a single commit with: git commit --no-verify
 repo_root=$(git rev-parse --show-toplevel)
 scripts="$repo_root/systems/improvement-loop/operations/kb-maintenance-scripts"
+status=0
+
+# 1. Frontmatter YAML validity on staged markdown
 files=$(git diff --cached --name-only --diff-filter=ACM -- '*.md')
-[ -z "$files" ] && exit 0
-printf '%s\n' "$files" | sed "s|^|$repo_root/|" | PYTHONPATH="$scripts" python3 "$scripts/validate_frontmatter.py"
+if [ -n "$files" ]; then
+  printf '%s\n' "$files" | sed "s|^|$repo_root/|" | PYTHONPATH="$scripts" python3 "$scripts/validate_frontmatter.py" || status=1
+fi
+
+# 2. FOUNDATIONS.md must reflect the current set of DD `foundational: true` flags
+PYTHONPATH="$scripts" python3 "$scripts/generate_foundations.py" --check || status=1
+
+exit $status

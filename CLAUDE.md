@@ -187,6 +187,7 @@ The Librarian also uses Read/Glob/Grep directly to navigate the KB for Teacher/B
 | Need | Where to look |
 |------|---------------|
 | Current session state and focus | `PROGRESS.md` |
+| The engine's spine — foundational DDs to read first for system/governance work | `governance/FOUNDATIONS.md` (generated from `foundational: true`; DDs are canonical) |
 | Research extraction procedure | `.claude/skills/research-loop/SKILL.md` |
 | Research dimension queries | `operations/references/research-dimensions.md` |
 | Previous delta reports | `operations/research-reports/` |
