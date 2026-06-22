@@ -43,6 +43,7 @@ Sequence (Nick chose "both, in sequence"):
 - **DD-114 — upstream frontmatter/YAML prevention** (`4ce12d9`): block-scalar authoring convention in 7 producers (`research-loop`, `research-query`, `promote-findings`, `watch-blogs`, `/sl`, `/dd`, `/ib`) + `validate_frontmatter.py` + git pre-commit hook. `kb_parser` verified load-bearing (NOT removed).
 - **DD-115 — FOUNDATIONS.md generated spine map** (`d799777`): 20 DDs tagged `foundational: true`; `generate_foundations.py` (+`--check`); CLAUDE.md pointers (referenced, not inlined); pre-commit extended with staleness check. Inclusion/exclusion criteria (C1–C5 / X1–X5 + ~20 displacement cap) codified in DD-115 and the FOUNDATIONS.md header.
 - **The `il-published` mirror** (`nickgogan/improvement-loop`, remote `il-published`) was stale ~2 months; refreshed via `git subtree push --prefix=systems/improvement-loop il-published main` (`7ded114..511b147`). It is a manual mirror (DD-84) — no automation.
+- **PROGRESS consolidation** (`65339c0`): there were two PROGRESS.md files; post-collapse the engine is the sole system, so **`systems/improvement-loop/PROGRESS.md` is the single canonical one** (root went stale since session 118). Migrated still-live carryover up from root (MongoDB sizing-engine pilot, Memongo surfaces, GitHub-collaborators, Obsidian/Dataview plugins, temp-dir cleanup → IL Logged-for-future); reduced root `PROGRESS.md` to a pointer stub; repointed root `CLAUDE.md`; **patched `/session-handoff`** to update `{system-path}/PROGRESS.md` (not root) so this can't recur.
 
 ### Deferred / open
 - **Whether to fold the subtree publish into session-close** (so the mirror stops drifting) — or retire the mirror. Nick's call.
@@ -58,10 +59,10 @@ A recommendation on the agent-vs-skill workflow (and whether that's even the rig
 |---|---|
 | model | `claude-opus-4-8[1m]` |
 | harness | `claude-code-cli-cursor-macos` |
-| session type | execution — DD-114 (YAML prevention) + DD-115 (foundations spine) + mirror refresh |
-| turns | ~8 user↔assistant exchanges |
-| tool_calls | ~45 (Read/Bash/Edit/Write; Agent ×2 Explore; perplexity_reason ×1; AskUserQuestion ×5; Skill ×1) |
+| session type | execution — DD-114 (YAML prevention) + DD-115 (foundations spine) + mirror refresh + PROGRESS consolidation |
+| turns | ~11 user↔assistant exchanges |
+| tool_calls | ~60 (Read/Bash/Edit/Write; Agent ×2 Explore; perplexity_reason ×1; AskUserQuestion ×7; Skill ×1) |
 | subagents | 2 (Explore — producer trace, knowledge/DD inventory) |
-| commits | 2 (`4ce12d9`, `d799777`); both pushed to origin/main; mirror pushed (`511b147`) |
+| commits | 3 (`4ce12d9`, `d799777`, `65339c0`); all pushed to origin/main; mirror pushed (`511b147`) |
 | tokens_consumed / context_pct_peak | unknown — Nick can add from `/status` |
 | capture_quality | estimated |
