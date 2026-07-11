@@ -1,6 +1,6 @@
 # Improvement Loop — Progress
 
-**Last Updated:** 2026-06-22 (session 128 closed → 129 handoff)
+**Last Updated:** 2026-07-11 (session 129 closed — agentic-OS direction set, research taxonomy expanded, model registry live; next: skill-intake protocol)
 
 ## Current Focus
 
@@ -20,23 +20,28 @@
 
 **Session 128 (upstream YAML prevention + foundations spine + PROGRESS consolidation) landed (`4ce12d9`, `d799777`, pushed).** (1) **DD-114** — upstream frontmatter/YAML prevention: block-scalar authoring convention added to the 7 producers that hand-write frontmatter (`research-loop`, `research-query`, `promote-findings`, `watch-blogs`, `/sl`, `/dd`, `/ib`); new `validate_frontmatter.py` + git pre-commit hook (binary YAML-parse check; distinct from the removed heuristic read-guard). Nick chose option a+c; `kb_parser` verified load-bearing (not removed). (2) **DD-115** — `governance/FOUNDATIONS.md`, a generated spine map of the ~20 foundational DDs: tagged `foundational: true`, `generate_foundations.py` (+`--check`), CLAUDE.md pointers (referenced, not inlined — DD-74), pre-commit staleness check; inclusion/exclusion criteria (C1–C5 / X1–X5 + ~20 displacement cap) codified to guard drift. (3) The `il-published` subtree mirror (DD-84) was ~2 months stale; refreshed via `git subtree push` (`511b147`). (4) **PROGRESS consolidation** — the vestigial root `PROGRESS.md` (stale since session 118) reduced to a pointer; this IL file is the single canonical PROGRESS; `/session-handoff` patched to target it unambiguously.
 
-**Active focus / next session (129):** **agent-vs-skill workflow — discuss/design first, gate before building.** Design the create/update-an-agent workflow and the agent-vs-skill-vs-something-else decision (stress-test whether that's the right axis); then reconcile the `knowledge/` "policy masquerading as patterns" docs (seed: `knowledge/patterns/capability-type-selection.md`) and revisit DD-109. Handoff: `operations/handoffs/handoff-prompt-session-129-agent-vs-skill.md`. **Open for Nick:** fold the subtree publish into session-close (mirror keeps drifting) or retire the mirror.
+**Active direction (session 129 — redirected):** The agent-vs-skill thread opened into a larger thesis: **formalize the engine toward an agentic OS** — a system with a formal **harness** layer that helps **audit, specify, and create whole agentic systems, governance-first** (not just per-artifact skill/agent/prompt). This promotes **Logged-for-future #1** (put the engine on a real harness) to the active spine and names its endpoint; it aligns with the DD-108 supervised-autonomy trajectory. Full capture (expanded mission, governance-first creation model, `actors.md`, skill↔model coupling, what+how delivery, research dependencies, open layer-taxonomy questions): `project-management/design-notes/2026-06-22-agentic-os-direction.md`. **The narrow DD-109 fold is on hold** — agent-vs-skill routing is now a sub-question of the larger model.
+
+**Next session (130): design + pilot a lightweight skill-intake protocol for LINKS.md** — classify incoming links (skills, repos, papers, articles), determine fit (add to roster / enhance existing skill / KB-only / reject), pilot on the current 13-link batch, then propose where the protocol lands (new skill vs extension vs reference doc — Nick gates). Handoff: `operations/handoffs/handoff-prompt-session-130-skill-intake-protocol.md`. **The user manual moves to session 131.** **Open for Nick:** the #8 taxonomy/clustering repo name; the "Division, to a degree" garbled fragment in the direction note; the mirror question (automate subtree push or retire); the design-notes category ruling (assessment delivered session 129, paused before ruling).
 
 ---
 
-## What Changed This Session (128)
+## What Changed This Session (129)
 
-Upstream YAML prevention, the foundations spine map, the mirror refresh, and PROGRESS consolidation (Nick gated each decision; mechanics ran freely). Commits `4ce12d9`, `d799777` — pushed; mirror `511b147`; session-close commit local.
+Session 129 spanned a pause (started 2026-06-22, resumed and closed 2026-07-11). It redirected from the planned agent-vs-skill thread into the agentic-OS direction, then expanded the research taxonomy and stood up the model-capability registry. **All session-129 changes are uncommitted at close** (~19 files) — commit early in session 130.
 
-- **DD-114 — upstream frontmatter/YAML prevention:** traced the producers (every active intake/governance skill hand-writes frontmatter with inline quoted prose scalars — the session-127 defect source; `kb_parser.write_frontmatter` uses `yaml.dump` and was never the culprit). Added a block-scalar authoring convention to `_schema.yaml` and the 7 producers; built `validate_frontmatter.py` + a tracked git pre-commit hook (binary YAML-parse check). Nick authorized option a (convention) + c (linter). Verified `kb_parser` is load-bearing (3 importers) and `write_frontmatter` is intentionally retained — no cleanup.
-- **DD-115 — FOUNDATIONS.md generated spine map:** ran a 3-lens Perplexity council (architect/maintainer/skeptic) → generated view over canonical DDs, never a hand-authored digest. Tagged 20 spine DDs `foundational: true`; `generate_foundations.py` (+`--check`) emits `governance/FOUNDATIONS.md`; pointers from both CLAUDE.md files; pre-commit extended with a staleness check. Nick asked for explicit anti-drift criteria → codified the litmus test + C1–C5 include-roles + X1–X5 exclude-rules + the ~20 displacement cap, in DD-115 and the FOUNDATIONS header.
-- **Mirror refresh:** diagnosed the "no updates in 2 months" report — it was the `il-published` mirror (`nickgogan/improvement-loop`, DD-84 manual subtree mirror), not the live `origin`/MetaSystem repo. Refreshed via `git subtree push` (`7ded114..511b147`).
-- **PROGRESS consolidation:** discovered the root `PROGRESS.md` was a stale duplicate (untouched since session 118); this IL file is canonical. Migrated the still-live carryover from root (Logged-for-future items + the MongoDB sizing-engine pilot), reduced root to a pointer, and patched `/session-handoff` to target the system PROGRESS unambiguously.
+- **Agentic-OS direction set (Nick's 14-point brain-dump, verified faithful):** engine formalizes toward a governance-first agentic-system factory with a formal harness layer. Full capture in `project-management/design-notes/2026-06-22-agentic-os-direction.md`; promotes old Logged-for-future #1; DD-109 fold on hold. Later sharpened with the **Databricks Agent Bricks comparison** (unit-of-governance discriminator: second-brain agent / orchestration platform / agentic OS; orchestration is a *subsystem* of an agentic OS; Databricks independently validates the asset-list — folded into the note's open-questions section).
+- **Design-notes category challenged (assessment delivered, ruling paused):** the folder mixes three artifact types — pre-DD deliberations (fold conclusion into DD, archive analysis), mis-filed live specs with ~50 inbound skill refs (belong in `operations/references/` per DD-112), one-time audits (archive). Net: folder would empty and retire. Nick paused before ruling; queued.
+- **Old LINKS.md batch confirmed processed** (6 framework repos: registry + `/repo-analyzer` + 18 findings); Nick replaced LINKS.md with a new 13-link batch (incl. two literal Cursor SKILL.md files) — the input for session 130.
+- **Three research sub-dimensions added** (Nick-gated; `operations/references/research-dimensions.md`): **1.C Memory Systems** (whole-system architectures: Hermes/mem0/OpenClaw/Codex/Letta), **2.A Local & Open-Source Models** (Nick: major topic next few years), **11.A Loop Engineering** (19-finding seed cluster — already past the ≥10 graduation bar; revisit after grounding pass). Verified: harness + second-brain are deliberate Librarian-concept non-dimensions; agent-*kind* typology is a real gap → user-manual agenda.
+- **Model capability registry created** (`operations/references/model-capability-registry.md`): coarse per-model+version profiles, every claim KB-grounded, refresh via D2/2.A scans. **Nick explicitly accepted the maintenance cost** ("periodically and intentionally").
+- **Five model lines profiled via /research-query** (5 findings + 6 sources + report `operations/research-reports/2026-07-11-research-query-model-capability-profiles.md`): Kimi K2.6 ≈ Opus 4.6 at agentic coding at ~1/10 cost **with a measured safety gap**; DeepSeek V4 frontier-parity + 1M context under MIT; Qwen #1 at tool calling (BFCL-V4); Llama fallen behind; **Claude 5 family re-tiers the Claude line** (Sonnet 5 default / Opus 4.8 hard-reasoning value / Fable 5 long-horizon frontier) — partially supersedes the March-2026 routing consensus.
 
-### Surfaced this session (carried to session 129)
-- **Agent-vs-skill workflow** is the next topic; `knowledge/patterns/capability-type-selection.md` is the seed (policy-in-disguise) and DD-109 is revisited there.
-- **Mirror drift** — decide whether to automate the subtree push at session-close or retire the mirror.
-- Watch-only: DD-62 (Explore/Harden), DD-74 (token budget) — future cache candidates, wait for recurring demand.
+### Surfaced this session (carried to session 130+)
+- **Skill-intake protocol** (session 130 focus) — LINKS.md now carries heterogeneous links incl. literal skills; no roster-fit intake path exists (the framework path via watched-libraries works; the skill path is the gap).
+- **Skill↔model coupling is live, not theoretical:** Sonnet 5's new tokenizer (+1.0–1.35×) and effort semantics mean Sonnet-4.6-era skills need re-validation — concrete evidence for the direction note's coupling metadata.
+- Open Nick inputs: #8 taxonomy repo name; garbled direction-note fragment; mirror question; design-notes ruling.
+- Watch-only: DD-62, DD-74 cache candidates (unchanged).
 
 ---
 
@@ -44,20 +49,21 @@ Upstream YAML prevention, the foundations spine map, the mirror refresh, and PRO
 
 Ordered queue. Status markers: `[nick-gate]` waits on Nick's ruling; `[deferred]` held by Nick, re-evaluate on trigger; `[trigger]` waits on external evidence or volume; `[don't-do-yet]` do not reintroduce until a specific upstream condition lands.
 
-1. **`[next]` Agent-vs-skill workflow (session 129) — discuss/design first, gate before building.** Design the create/update-an-agent workflow and the agent-vs-skill-vs-something-else decision; stress-test whether that's even the right axis. Then reconcile the `knowledge/` "policy masquerading as patterns" docs (seed: `knowledge/patterns/capability-type-selection.md`; siblings: `research-to-codification-pipeline.md`, `upstream-dependency-spectrum.md`) and revisit **DD-109**. Handoff: `operations/handoffs/handoff-prompt-session-129-agent-vs-skill.md`.
+1. **`[next]` Skill-intake protocol (session 130).** Design + pilot a lightweight protocol for examining LINKS.md links (esp. skills) for IL fit: add / enhance / KB-only / reject. Pilot on the current 13-link batch; propose landing form (Nick gates). Handoff: `operations/handoffs/handoff-prompt-session-130-skill-intake-protocol.md`.
+2. **User manual (session 131).** Write the system's user manual to crystallize scope/direction for the agentic-OS formalization (see Current Focus + `design-notes/2026-06-22-agentic-os-direction.md`). **Subsumed into that direction (session 129):** the agent-vs-skill workflow and the capability-type-selection / sibling-docs reconciliation + DD-109 revisit are now sub-questions of the larger harness/agentic-OS model — held, not dropped (seed docs: `knowledge/patterns/capability-type-selection.md`, siblings `research-to-codification-pipeline.md`, `upstream-dependency-spectrum.md`). Also queued here: the design-notes category ruling (session-129 assessment awaiting Nick) and the agent-kind typology gap.
    - ✅ **Upstream YAML prevention (session 128) — DONE:** DD-114 (block-scalar convention in 7 producers + `validate_frontmatter.py` + pre-commit hook); `kb_parser` verified load-bearing (`4ce12d9`).
    - ✅ **FOUNDATIONS.md spine map (session 128) — DONE:** DD-115 (20 DDs tagged; `generate_foundations.py`; criteria codified; CLAUDE.md pointers; staleness check) (`d799777`).
    - ✅ **Frontmatter/YAML hygiene sweep (session 127) — DONE:** 40 parse failures fixed corpus-wide; 0 remain (`169ba98`).
    - ✅ **Sweep-residuals cleanup (session 127) — DONE:** DD-113 (forward-only DD↔IB linkage via `source_dd`); `ib_items` retired from 81 DDs (`011fa8c`).
    - ✅ **Knowledge-architecture sweep (session 126) — DONE:** DD-111, DD-112; IB-170 resolved; DD-37 cached (`867e2a7`).
-2. **Phase 2 — schematics + evaluation/feedback layer** (gated slices; plan of record: `project-management/design-notes/2026-06-18-engine-collapse-restructure-plan.md` §Phase 2).
+3. **Phase 2 — schematics + evaluation/feedback layer** (gated slices; plan of record: `project-management/design-notes/2026-06-18-engine-collapse-restructure-plan.md` §Phase 2).
    - ✅ **Slices 1–2 (sessions 120–121):** schematic form (DD-107) + `/detect-drift` integration.
    - ✅ **Item 2 (session 122):** D7/D9 → schematic re-evaluation wiring made explicit; schematics as `/solicit-proposals` input.
    - ✅ **Item 3 (session 122):** 2 seed schematics (`project-coding-workcell`, `scheduled-operations-assistant`).
    - **`[deferred]` Item 4 — Builder-mode demand→schematic matching** (`/ask-kb`) — now more plausible with a 4-seed library; revisit when exercising it is useful.
    - **`[deferred]` Execution-surface Librarian axis** — weak demand per consumer-abstractions-map (Rule 11); revisit at 2–3+ requests.
    - **`[trigger]` More seed schematics** — when exercising the form against more demand is useful.
-3. **`[deferred]` Ready maintenance** — IB-145 (re-analyze GSD for version drift) and IB-148 (build `/session-handoff-review`). Self-contained; pick up when the queue clears.
+4. **`[deferred]` Ready maintenance** — IB-145 (re-analyze GSD for version drift) and IB-148 (build `/session-handoff-review`). Self-contained; pick up when the queue clears.
 
 ---
 
@@ -65,7 +71,7 @@ Ordered queue. Status markers: `[nick-gate]` waits on Nick's ruling; `[deferred]
 
 Trigger-gated carryover. Don't action unless trigger fires.
 
-1. Place the engine on an actual harness, not just relying on the agent to invoke the right skills in the right order every time. (Aligns with the supervised-autonomy trajectory in DD-108 — URLs-in / queries-in under Nick's oversight.)
+1. **`[promoted → active direction, session 129]`** Place the engine on an actual harness, not just relying on the agent to invoke the right skills in the right order every time. (Aligns with the supervised-autonomy trajectory in DD-108 — URLs-in / queries-in under Nick's oversight.) Now the spine of the agentic-OS direction — see `project-management/design-notes/2026-06-22-agentic-os-direction.md`.
 2. **`[deferred]` G3 bifurcation** — Split proposal at `operations/split-proposals/2026-05-25-agent-architecture-decisions-split-proposal.md`. At 42 findings, below DD-102 threshold (45). Codifier rec: defer. Resolution added session 104. Re-evaluate when crossing 45.
 3. **`[deferred]` G9 bifurcation** — Split proposal at `operations/split-proposals/2026-05-25-agent-governance-and-trust-split-proposal.md`. At 38 findings, below DD-102 threshold (45). Codifier rec: defer. Resolution added session 104. Re-evaluate when crossing 45 or enforcement cluster hits 10.
 4. **`[trigger: /design-harness ships]` MongoDB sizing-engine — pilot consumer for `/design-harness`.** Real project: a comparison harness across Excel calculator + SAGE + consulting tool, with forecasting layered on top for sales-leader cost modeling. Architecture validated session 113 via Librarian (Variant B+C; single orchestrating agent + deterministic adapters; forecasting as a separate agent on the comparison output; LLM never does the math). Locked: deviation semantics TBD (Nick to draft a 1-page spec); empirical-vs-theoretical = surface both with labels; forecasting separate; determinism boundary at the adapter layer. Run `/design-harness` against this as the first canonical pilot once it ships. (Migrated from root PROGRESS, session 128.)
