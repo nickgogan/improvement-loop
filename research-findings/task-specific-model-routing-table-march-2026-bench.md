@@ -26,9 +26,17 @@ related_findings:
   rel: same-problem
 - file: auxiliary-model-slot-architecture.md
   rel: same-problem
+- file: claude-5-family-retiers-claude-line.md
+  rel: extended-by
+- file: deepseek-v4-frontier-parity-mit-license.md
+  rel: extended-by
+- file: qwen-bfcl-tool-calling-leadership-efficient-coding.md
+  rel: extended-by
+- file: kimi-k2-line-near-opus-coding-with-safety-gap.md
+  rel: extended-by
 proposals: []
 date_discovered: '2026-04-01'
-last_updated: '2026-05-24'
+last_updated: '2026-07-11'
 pipeline_status: synthesized
 consumed_by:
 - agent-architecture-decisions.md

@@ -22,6 +22,8 @@ related_findings:
   rel: same-problem
 - file: open-source-model-parity-mistral-small-4.md
   rel: extends
+- file: claude-5-family-retiers-claude-line.md
+  rel: extended-by
 proposals: []
 date_discovered: '2026-04-07'
 last_updated: '2026-07-11'

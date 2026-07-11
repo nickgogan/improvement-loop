@@ -1,24 +1,37 @@
 ---
-name: "Kimi K2 Line — Near-Opus Agentic Coding at ~1/10 Cost, With a Measured Safety Gap"
-summary: |-
-  Moonshot's Kimi K2.6 (Apr 2026, open weights, Modified MIT, 1T/32B MoE, 256k context) matches or
+name: Kimi K2 Line — Near-Opus Agentic Coding at ~1/10 Cost, With a Measured Safety Gap
+summary: 'Moonshot''s Kimi K2.6 (Apr 2026, open weights, Modified MIT, 1T/32B MoE, 256k context) matches or
+
   beats Claude Opus 4.6 and GPT-5.4 on production-relevant coding benchmarks — SWE-bench Pro 58.6%
-  (vs Opus 4.6's 53.4%, GPT-5.4's 57.7%), LiveCodeBench v6 89.6%, Terminal-Bench 2.0 66.7% — at
+
+  (vs Opus 4.6''s 53.4%, GPT-5.4''s 57.7%), LiveCodeBench v6 89.6%, Terminal-Bench 2.0 66.7% — at
+
   $0.95/$4.00 per M tokens (~5-10x cheaper). Opus 4.7 re-took the coding lead (64.3% SWE-bench Pro).
+
   Weak axes are measured, not speculative: Splx red-team found raw K2 "unfit for production" without
+
   hardened prompts; the K2.5 arXiv safety audit scored it highest among evaluated models on broken
+
   tool use and harmful-system-prompt compliance; throughput is slow (~38 tok/s) and reasoning-token
+
   usage high. Deep-search benchmarks (DeepSearchQA 92.5% F1, BrowseComp agent-swarm 86.3%) exceed
-  frontier closed models. K2.7 Code (Jun 2026) claims -30% reasoning tokens.
-implementation_notes: |-
-  Registry profile granularity: "K2.6 ≈ Opus 4.6 at agentic coding, leads at deep research, ~1/10
+
+  frontier closed models. K2.7 Code (Jun 2026) claims -30% reasoning tokens.'
+implementation_notes: 'Registry profile granularity: "K2.6 ≈ Opus 4.6 at agentic coding, leads at deep research, ~1/10
+
   cost — but lags frontier closed models on safety, adversarial tool-call robustness, and speed."
+
   Local deployment: INT4 weights ~595GB, ~240GB+ unified memory for 10+ tok/s; 4x H100 runs 300
+
   parallel sub-agents. Practitioner split is a standing caution: Composio found K2 beat Sonnet 4 on
+
   front-end work at 1/10 cost, but Tensorlake found Opus 4.7 "clearly won" real backend tasks over
+
   K2.6 — benchmark parity does not guarantee task parity. If used, external guardrails are mandatory
+
   (hardened system prompts, action constraints, monitoring); K2.6/K2.7 lack independent safety
-  audits comparable to K2.5's.
+
+  audits comparable to K2.5''s.'
 category: Model Selection
 evidence_strength: Strong (production-tested)
 adoption_status: Not Yet Started
@@ -37,6 +50,10 @@ related_findings:
 - file: deepseek-v4-frontier-parity-mit-license.md
   rel: same-problem
 - file: qwen-bfcl-tool-calling-leadership-efficient-coding.md
+  rel: same-problem
+- file: claude-5-family-retiers-claude-line.md
+  rel: same-problem
+- file: llama-fallen-behind-open-weight-agentic-lines.md
   rel: same-problem
 proposals: []
 date_discovered: '2026-07-11'

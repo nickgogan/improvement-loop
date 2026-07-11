@@ -15,10 +15,13 @@ sources:
 - gsd-2-vs-claude-code-a-new-ai-king.md
 proposals: []
 date_discovered: '2026-03-22'
-last_updated: '2026-04-19'
-pipeline_status: "synthesized"
+last_updated: '2026-07-11'
+pipeline_status: synthesized
 consumed_by:
-  - "agent-architecture-decisions.md"
+- agent-architecture-decisions.md
+related_findings:
+- file: claude-5-family-retiers-claude-line.md
+  rel: same-problem
 ---
 # Claude Code Max Plan Subsidy vs. API Cost: Tool Selection Framework
 

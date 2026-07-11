@@ -25,10 +25,12 @@ related_findings:
   rel: same-problem
 - file: worktree-isolation-for-parallel-agent-sessions.md
   rel: same-problem
+- file: typed-shared-memory-handoff-slots.md
+  rel: same-problem
 proposals: null
 date_discovered: '2026-04-19'
-last_updated: '2026-04-19'
-pipeline_status: "classified"
+last_updated: '2026-07-11'
+pipeline_status: classified
 ---
 
 ## What It Is

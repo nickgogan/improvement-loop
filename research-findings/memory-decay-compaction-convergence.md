@@ -1,6 +1,7 @@
 ---
 name: Memory Decay/Compaction Is Converging on Multi-Strategy Approaches
-summary: 'Three repos address context compaction with semantically-aware strategies beyond simple truncation: OpenViking (two-threshold), Paperclip (weekly synthesis + decay), DeerFlow (async summarization). Each solves a different facet of the same problem. Note: Beads was previously listed here as "semantic decay" — Beads is actually an issue-based agent orchestration system, not a compaction strategy.'
+summary: 'Three repos address context compaction with semantically-aware strategies beyond simple truncation: OpenViking (two-threshold), Paperclip (weekly synthesis + decay), DeerFlow (async summarization).
+  Each solves a different facet of the same problem. Note: Beads was previously listed here as "semantic decay" — Beads is actually an issue-based agent orchestration system, not a compaction strategy.'
 implementation_notes: null
 category: Context Engineering
 evidence_strength: Medium (practitioner-documented)
@@ -30,10 +31,12 @@ related_findings:
   rel: same-problem
 - file: dynamic-tool-pool-assembly-transcript-compaction.md
   rel: same-problem
+- file: localized-memory-maintenance-over-global-reorganization.md
+  rel: extended-by
 proposals: null
 date_discovered: '2026-04-19'
-last_updated: '2026-04-20'
-pipeline_status: "classified"
+last_updated: '2026-07-11'
+pipeline_status: classified
 ---
 
 ## What It Is

@@ -1,32 +1,40 @@
 ---
-name: "Four-Module Decomposition of Agent Memory (Representation, Extraction, Retrieval, Maintenance)"
-summary: |-
-  Gives us a neutral frame for comparing any two memory systems — including our own KB — instead of
+name: Four-Module Decomposition of Agent Memory (Representation, Extraction, Retrieval, Maintenance)
+summary: 'Gives us a neutral frame for comparing any two memory systems — including our own KB — instead of
+
   arguing whole-architecture vs whole-architecture. Decomposes every agent memory system into four
+
   modules: representation/storage (what form memories take), extraction (how raw streams become
+
   memory primitives), retrieval/routing (how relevant memory is found), and maintenance (how the
+
   store evolves over time). Each module has a small enumerable design space, so systems become
-  comparable point-by-point.
+
+  comparable point-by-point.'
 implementation_notes: null
-category: "Context Engineering"
-evidence_strength: "Medium (empirical benchmarks)"
-adoption_status: "Not Yet Started"
-priority: "P3 (Monitor)"
+category: Context Engineering
+evidence_strength: Medium (empirical benchmarks)
+adoption_status: Not Yet Started
+priority: P3 (Monitor)
 applicability:
-  - "General"
+- General
 adopted_in: []
 sources:
-  - "arxiv-agent-native-memory-system-survey.md"
+- arxiv-agent-native-memory-system-survey.md
 related_findings:
-  - file: "no-single-memory-architecture-workload-alignment.md"
-    rel: "enables"
-  - file: "converged-memory-substrate-vs-patchwork.md"
-    rel: "same-problem"
-  - file: "production-memory-architecture-spectrum.md"
-    rel: "same-problem"
+- file: no-single-memory-architecture-workload-alignment.md
+  rel: enables
+- file: converged-memory-substrate-vs-patchwork.md
+  rel: same-problem
+- file: production-memory-architecture-spectrum.md
+  rel: same-problem
+- file: no-single-memory-architecture-workload-alignment.md
+  rel: extended-by
+- file: localized-memory-maintenance-over-global-reorganization.md
+  rel: extended-by
 proposals: null
-date_discovered: "2026-07-11"
-last_updated: "2026-07-11"
+date_discovered: '2026-07-11'
+last_updated: '2026-07-11'
 ---
 
 ## What It Is

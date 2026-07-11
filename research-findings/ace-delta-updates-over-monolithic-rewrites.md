@@ -46,9 +46,11 @@ related_findings:
   rel: same-problem
 - file: bounded-tiered-memory-inference-driven-curation.md
   rel: same-problem
+- file: localized-memory-maintenance-over-global-reorganization.md
+  rel: same-problem
 proposals: []
 date_discovered: '2026-04-07'
-last_updated: '2026-05-24'
+last_updated: '2026-07-11'
 pipeline_status: synthesized
 consumed_by:
 - defending-agent-context.md

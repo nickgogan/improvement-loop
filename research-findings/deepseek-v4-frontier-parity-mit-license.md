@@ -1,23 +1,35 @@
 ---
-name: "DeepSeek V4 — Frontier-Parity Agentic Coding and 1M Context Under MIT License"
-summary: |-
-  DeepSeek V4-Pro-Max (early 2026, MIT license, 1.6T/49B MoE) sits within 1-3 points of the best
+name: DeepSeek V4 — Frontier-Parity Agentic Coding and 1M Context Under MIT License
+summary: 'DeepSeek V4-Pro-Max (early 2026, MIT license, 1.6T/49B MoE) sits within 1-3 points of the best
+
   closed models on agentic coding: SWE-bench Verified 80.6% (Opus 4.6-Max: 80.8%), Pro 55.4%,
+
   Multilingual 76.2%, TerminalBench-2.0 67.9% (GPT-5.4-xHigh leads at 75.1%), BrowseComp 83.4%.
+
   1M-token context via hybrid sparse attention (independent RULER testing confirms strength to
-  ~200k), at 27% of V3.2's FLOPs and 10% of its KV cache at 1M. API cost ~$0.28/$1.10 per M tokens —
+
+  ~200k), at 27% of V3.2''s FLOPs and 10% of its KV cache at 1M. API cost ~$0.28/$1.10 per M tokens —
+
   10-13x under GPT-5.5/Opus 4.7. The line spans local-friendly R1 distills (32B distill: 50.8%
+
   SWE-bench Verified, runs on one high-end consumer GPU quantized) up to V4-Pro. V3.2-Speciale took
+
   gold-medal results at IMO/IOI/ICPC 2025. Weak axes: ARC-AGI trails GPT-5.5; no BFCL tool-calling
-  benchmark presence; V4 self-hosting needs serious multi-GPU clusters.
-implementation_notes: |-
-  Registry profile granularity: "V4-Pro-Max ≈ Opus 4.6-class at agentic coding and reasoning, leads
+
+  benchmark presence; V4 self-hosting needs serious multi-GPU clusters.'
+implementation_notes: 'Registry profile granularity: "V4-Pro-Max ≈ Opus 4.6-class at agentic coding and reasoning, leads
+
   open-weight field at long context (1M) and math/olympiad reasoning, ~1/10 API cost — but
+
   tool-calling reliability is undocumented (no BFCL) and terminal-agent work trails GPT-5.4."
+
   Deployment ladder: R1 distills 7B/14B/32B via Ollama/vLLM (Q4_K_M, ~4-20GB files) for local; V4
+
   via API (OpenAI- and Anthropic-compatible endpoints) or heavy self-host. MIT license = zero legal
+
   friction for fine-tuning/embedding in proprietary stacks — the regulated-industry angle from the
-  Mistral Small 4 finding now extends to a frontier-parity model.
+
+  Mistral Small 4 finding now extends to a frontier-parity model.'
 category: Model Selection
 evidence_strength: Strong (production-tested)
 adoption_status: Not Yet Started
@@ -35,6 +47,8 @@ related_findings:
 - file: kimi-k2-line-near-opus-coding-with-safety-gap.md
   rel: same-problem
 - file: qwen-bfcl-tool-calling-leadership-efficient-coding.md
+  rel: same-problem
+- file: llama-fallen-behind-open-weight-agentic-lines.md
   rel: same-problem
 proposals: []
 date_discovered: '2026-07-11'

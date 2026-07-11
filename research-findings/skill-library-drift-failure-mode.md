@@ -1,32 +1,43 @@
 ---
-name: "Skill-Library Drift — Unbounded Accumulation Degrades the Agent"
-summary: |-
-  If an agent system keeps adding skills without ever retiring any, the library itself becomes the problem: retrieval degrades, stale skills get injected as false positives, and performance stagnates or drops below the no-skill baseline. The failure is silent — no error signal fires. Empirical anchor: human-curated skills delivered +16.2pp over baseline while ungoverned LLM-authored skills delivered +0.0pp (SkillsBench, reproduced and diagnosed in arXiv 2605.19576). Directly relevant to our own growing skill roster and extracts pipeline: accumulation without lifecycle management is a named, measured failure mode, not a hypothetical.
-implementation_notes: |-
-  Flagged P2 because the engine's own roster and extracts/ staging accumulate monotonically today —
+name: Skill-Library Drift — Unbounded Accumulation Degrades the Agent
+summary: 'If an agent system keeps adding skills without ever retiring any, the library itself becomes the problem: retrieval degrades, stale skills get injected as false positives, and performance stagnates
+  or drops below the no-skill baseline. The failure is silent — no error signal fires. Empirical anchor: human-curated skills delivered +16.2pp over baseline while ungoverned LLM-authored skills delivered
+  +0.0pp (SkillsBench, reproduced and diagnosed in arXiv 2605.19576). Directly relevant to our own growing skill roster and extracts pipeline: accumulation without lifecycle management is a named, measured
+  failure mode, not a hypothetical.'
+implementation_notes: 'Flagged P2 because the engine''s own roster and extracts/ staging accumulate monotonically today —
+
   nothing retires artifacts based on outcomes. The paper defines drift as accumulated skills pushing
+
   expected performance below the no-skill baseline, via three compounding stages: accumulation
+
   without quality gates, retrieval degradation as the bank grows, and silent injection harm (stale
+
   skills mislead without explicit errors). Design consideration: any skill/extract lifecycle rule
+
   for the engine should include an outcome-linked retirement path, not just an intake gate. Note
+
   the counter-result: overly harsh retirement (evidence floor cut from 100 to 20 trials, threshold
+
   tightened to 0) drove performance BELOW the no-skill baseline — governance itself can cause the
-  harm it targets if the evidence floor is too low.
-category: "Governance"
-evidence_strength: "Medium (empirical benchmarks)"
-adoption_status: "Not Yet Started"
-priority: "P2 (Design Required)"
+
+  harm it targets if the evidence floor is too low.'
+category: Governance
+evidence_strength: Medium (empirical benchmarks)
+adoption_status: Not Yet Started
+priority: P2 (Design Required)
 applicability:
-  - "General"
+- General
 adopted_in: []
 sources:
-  - "arxiv-skill-library-drift-ratchet-recipe.md"
+- arxiv-skill-library-drift-ratchet-recipe.md
 related_findings:
-  - file: "skill-self-improvement-three-approaches.md"
-    rel: "same-problem"
+- file: skill-self-improvement-three-approaches.md
+  rel: same-problem
+- file: ratchet-recipe-skill-retirement.md
+  rel: same-problem
 proposals: null
-date_discovered: "2026-07-11"
-last_updated: "2026-07-11"
+date_discovered: '2026-07-11'
+last_updated: '2026-07-11'
 ---
 
 # Skill-Library Drift — Unbounded Accumulation Degrades the Agent

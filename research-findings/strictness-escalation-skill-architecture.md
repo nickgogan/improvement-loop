@@ -1,29 +1,39 @@
 ---
-name: "Strictness-Escalation Skill Architecture"
-summary: |-
-  When we want a review or audit skill to be genuinely demanding rather than politely suggestive, this is a proven structural recipe: layer a core prompt with numbered non-negotiable standards, per-change review questions, an aggressive-flag list, preferred remedies, tone calibration via literal example phrases, prioritized output ordering, and an explicit approval bar that separates presumptive blockers from waivable concerns. Cursor's shipped thermo-nuclear-code-quality-review skill demonstrates the full stack in one prompt-only SKILL.md. Directly reusable as a design template for our own assess-* and audit-grade skills.
-implementation_notes: |-
-  Flagged P2 because this is a skill-design exemplar for the assess-skill/design-skill substrate,
+name: Strictness-Escalation Skill Architecture
+summary: 'When we want a review or audit skill to be genuinely demanding rather than politely suggestive, this is a proven structural recipe: layer a core prompt with numbered non-negotiable standards,
+  per-change review questions, an aggressive-flag list, preferred remedies, tone calibration via literal example phrases, prioritized output ordering, and an explicit approval bar that separates presumptive
+  blockers from waivable concerns. Cursor''s shipped thermo-nuclear-code-quality-review skill demonstrates the full stack in one prompt-only SKILL.md. Directly reusable as a design template for our own
+  assess-* and audit-grade skills.'
+implementation_notes: 'Flagged P2 because this is a skill-design exemplar for the assess-skill/design-skill substrate,
+
   not a skill to adopt as-is (it overlaps the harness /code-review and targets app-code diffs).
-  Consider folding the eight-layer scaffold into design-skill's Template skeleton as an optional
+
+  Consider folding the eight-layer scaffold into design-skill''s Template skeleton as an optional
+
   "strict-mode overlay": (1) core prompt, (2) numbered non-negotiable standards, (3) per-change
+
   review questions, (4) aggressive-flag list, (5) preferred remedies, (6) tone calibration with
+
   literal example phrases, (7) prioritized output ordering, (8) approval bar with presumptive
+
   blockers vs waivable concerns. The tone-calibration layer (verbatim phrases the reviewer should
-  emit) is the least common and most transferable piece — it pins register without vague adverbs.
-category: "Prompt Craft"
-evidence_strength: "Medium (practitioner-documented)"
-adoption_status: "Not Yet Started"
-priority: "P2 (Design Required)"
+
+  emit) is the least common and most transferable piece — it pins register without vague adverbs.'
+category: Prompt Craft
+evidence_strength: Medium (practitioner-documented)
+adoption_status: Not Yet Started
+priority: P2 (Design Required)
 applicability:
-  - "General"
+- General
 adopted_in: []
 sources:
-  - "cursor-team-kit-thermo-nuclear-review-skill.md"
-related_findings: []
+- cursor-team-kit-thermo-nuclear-review-skill.md
+related_findings:
+- file: code-judo-review-posture.md
+  rel: extended-by
 proposals: null
-date_discovered: "2026-07-11"
-last_updated: "2026-07-11"
+date_discovered: '2026-07-11'
+last_updated: '2026-07-11'
 ---
 
 # Strictness-Escalation Skill Architecture

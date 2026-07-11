@@ -18,9 +18,15 @@ related_findings:
   rel: enables
 - file: frontier-release-compression-march-2026.md
   rel: extended-by
+- file: deepseek-v4-frontier-parity-mit-license.md
+  rel: extended-by
+- file: kimi-k2-line-near-opus-coding-with-safety-gap.md
+  rel: extended-by
+- file: llama-fallen-behind-open-weight-agentic-lines.md
+  rel: extended-by
 proposals: []
 date_discovered: '2026-04-07'
-last_updated: '2026-04-08'
+last_updated: '2026-07-11'
 pipeline_status: raw
 consumed_by: []
 ---

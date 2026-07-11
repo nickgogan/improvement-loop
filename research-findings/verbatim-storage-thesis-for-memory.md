@@ -24,9 +24,13 @@ related_findings:
   rel: same-problem
 - file: bounded-tiered-memory-inference-driven-curation.md
   rel: contradicts
+- file: no-single-memory-architecture-workload-alignment.md
+  rel: extended-by
+- file: typed-shared-memory-handoff-slots.md
+  rel: extended-by
 proposals: null
 date_discovered: '2026-04-23'
-last_updated: '2026-05-24'
+last_updated: '2026-07-11'
 pipeline_status: raw
 consumed_by: []
 ---

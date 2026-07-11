@@ -1,7 +1,7 @@
 ---
 name: Converged Memory Substrate vs Patchwork Anti-Pattern
-summary: All agent memory types (working, semantic, episodic, procedural) should live in one governed database with multiple access patterns (vector, relational, JSON, graph) rather than separate point solutions.
-  The patchwork of specialized stores creates infrastructure sprawl, sync complexity, inconsistent governance, and debugging opacity.
+summary: All agent memory types (working, semantic, episodic, procedural) should live in one governed database with multiple access patterns (vector, relational, JSON, graph) rather than separate point
+  solutions. The patchwork of specialized stores creates infrastructure sprawl, sync complexity, inconsistent governance, and debugging opacity.
 implementation_notes: null
 category: Context Engineering
 evidence_strength: Medium (practitioner-documented)
@@ -21,6 +21,10 @@ related_findings:
 - file: production-memory-architecture-spectrum.md
   rel: extends
 - file: mongodb-single-store-polymorphic-evidence-memory.md
+  rel: same-problem
+- file: four-module-agent-memory-decomposition.md
+  rel: same-problem
+- file: no-single-memory-architecture-workload-alignment.md
   rel: same-problem
 proposals: null
 date_discovered: '2026-05-25'

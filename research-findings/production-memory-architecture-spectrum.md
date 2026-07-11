@@ -20,9 +20,13 @@ related_findings:
   rel: same-problem
 - file: orchestration-correlates-with-product-type.md
   rel: same-problem
+- file: four-module-agent-memory-decomposition.md
+  rel: same-problem
+- file: no-single-memory-architecture-workload-alignment.md
+  rel: extended-by
 proposals: null
 date_discovered: '2026-04-08'
-last_updated: '2026-04-19'
+last_updated: '2026-07-11'
 pipeline_status: raw
 consumed_by: []
 ---

@@ -17,7 +17,7 @@ sources:
 - hermes-agent-nousresearch-analysis.md
 proposals: null
 date_discovered: '2026-05-24'
-last_updated: '2026-05-24'
+last_updated: '2026-07-11'
 related_findings:
 - file: four-tier-agent-memory-model-with-write-policy.md
   rel: extends
@@ -49,12 +49,14 @@ related_findings:
   rel: same-problem
 - file: cross-session-learnings-jsonl.md
   rel: same-problem
-pipeline_status: "synthesized"
+- file: localized-memory-maintenance-over-global-reorganization.md
+  rel: same-problem
+pipeline_status: synthesized
 consumed_by:
-  - "structuring-agent-context.md"
-  - "defending-agent-context.md"
-  - "templates/tiered-memory-file-architecture.md"
-  - "rules/apply-hard-ceilings-to-agent-memory-files.md"
+- structuring-agent-context.md
+- defending-agent-context.md
+- templates/tiered-memory-file-architecture.md
+- rules/apply-hard-ceilings-to-agent-memory-files.md
 tags:
 - context-engineering
 - memory

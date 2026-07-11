@@ -1,30 +1,36 @@
 ---
-name: "Skill Self-Improvement — Three Independent Approaches"
-summary: "Three repos independently implement skill-level self-improvement with distinct mechanisms: OB1 (lessons log + self-modification), gstack (external learnings JSONL), Superpowers (meta-skill for skill authorship). Convergence on 'skills should improve' without convergence on mechanism suggests the problem is real but the solution space is open."
-implementation_notes: "MetaSystem skills don't self-improve. Three approaches to evaluate: (1) OB1-style lessons log per skill (most direct), (2) gstack-style shared learnings store (cross-skill), (3) Superpowers-style meta-generation (framework-level). Consider combining: shared learnings for cross-cutting patterns + per-skill lessons for skill-specific failures."
-category: "Agent Design"
-evidence_strength: "Medium (practitioner-documented)"
-adoption_status: "Not Yet Started"
+name: Skill Self-Improvement — Three Independent Approaches
+summary: 'Three repos independently implement skill-level self-improvement with distinct mechanisms: OB1 (lessons log + self-modification), gstack (external learnings JSONL), Superpowers (meta-skill for
+  skill authorship). Convergence on ''skills should improve'' without convergence on mechanism suggests the problem is real but the solution space is open.'
+implementation_notes: 'MetaSystem skills don''t self-improve. Three approaches to evaluate: (1) OB1-style lessons log per skill (most direct), (2) gstack-style shared learnings store (cross-skill), (3)
+  Superpowers-style meta-generation (framework-level). Consider combining: shared learnings for cross-cutting patterns + per-skill lessons for skill-specific failures.'
+category: Agent Design
+evidence_strength: Medium (practitioner-documented)
+adoption_status: Not Yet Started
 priority: P2 (Design Required)
 applicability:
-  - "S3 (Claude Code Build)"
-  - "General"
+- S3 (Claude Code Build)
+- General
 adopted_in: []
 sources: []
 related_findings:
-  - file: "self-improving-skill-lessons-log.md"
-    rel: "extends"
-  - file: "meta-skill-for-skill-authorship.md"
-    rel: "same-problem"
-  - file: "self-evolving-loop-pattern.md"
-    rel: "same-problem"
-  - file: "gsd-global-learnings-store-cross-session-persistence.md"
-    rel: "same-problem"
-date_discovered: "2026-04-20"
-last_updated: "2026-04-20"
-pipeline_status: "synthesized"
+- file: self-improving-skill-lessons-log.md
+  rel: extends
+- file: meta-skill-for-skill-authorship.md
+  rel: same-problem
+- file: self-evolving-loop-pattern.md
+  rel: same-problem
+- file: gsd-global-learnings-store-cross-session-persistence.md
+  rel: same-problem
+- file: skill-library-drift-failure-mode.md
+  rel: same-problem
+- file: meta-skill-authoring-prior-dominance.md
+  rel: extended-by
+date_discovered: '2026-04-20'
+last_updated: '2026-07-11'
+pipeline_status: synthesized
 consumed_by:
-  - agent-design-patterns.md
+- agent-design-patterns.md
 ---
 
 ## What It Is

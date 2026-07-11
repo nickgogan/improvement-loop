@@ -1,33 +1,47 @@
 ---
-name: "Ratchet Recipe — Outcome-Driven Skill Retirement with Evidence Floor and Capacity Cap"
-summary: |-
-  A minimal three-mechanism governance recipe that keeps a self-evolving skill library healthy: retire a skill only when it has enough trials AND a measurably negative contribution (evidence floor Nmin=100, threshold 0.10), hard-cap the active bank (C=50, evicting the lowest contributor), and constrain skill authoring with a meta-skill prior. Verified: pass@1 0.258 to 0.584 on MBPP+ hard-100 (Claude Opus 4.7, 3 seeds, 100 rounds), at 43% more LLM calls. This is a candidate blueprint for lifecycle rules over our own roster and extracts: outcome-linked retirement plus a bounded active set, with a deliberately conservative evidence bar.
-implementation_notes: |-
-  Flagged P2 as the concrete design input for any engine skill/extract lifecycle rule. Components:
+name: Ratchet Recipe — Outcome-Driven Skill Retirement with Evidence Floor and Capacity Cap
+summary: 'A minimal three-mechanism governance recipe that keeps a self-evolving skill library healthy: retire a skill only when it has enough trials AND a measurably negative contribution (evidence floor
+  Nmin=100, threshold 0.10), hard-cap the active bank (C=50, evicting the lowest contributor), and constrain skill authoring with a meta-skill prior. Verified: pass@1 0.258 to 0.584 on MBPP+ hard-100 (Claude
+  Opus 4.7, 3 seeds, 100 rounds), at 43% more LLM calls. This is a candidate blueprint for lifecycle rules over our own roster and extracts: outcome-linked retirement plus a bounded active set, with a deliberately
+  conservative evidence bar.'
+implementation_notes: 'Flagged P2 as the concrete design input for any engine skill/extract lifecycle rule. Components:
+
   (1) outcome-driven retirement — retire skill s only when trials n(s) >= Nmin AND empirical
+
   contribution c(s) <= -tau; defaults Nmin=100, tau=0.10, calibrated so useful skills survive
+
   stochastic noise (Hoeffding epsilon ~0.20) but harmful ones eventually go; (2) bounded active-skill
+
   cap C=50 with lowest-contribution eviction, which yields a non-divergence guarantee (drift below
+
   the no-skill floor bounded by tau + epsilon + C*delta); (3) meta-skill authoring prior (see the
+
   separate finding — it alone carries 57% of the gain). Costs: 43% more LLM calls, 2.8x wall time.
+
   Doubling the cap to 100 kept the mean but blew up variance (+/-0.110 vs +/-0.018) — the cap buys
+
   stability, not just ceiling. For the engine, trials-based scoring needs a usage-outcome signal we
-  do not currently log; see the contribution-scoring telemetry finding.
-category: "Governance"
-evidence_strength: "Medium (empirical benchmarks)"
-adoption_status: "Not Yet Started"
-priority: "P2 (Design Required)"
+
+  do not currently log; see the contribution-scoring telemetry finding.'
+category: Governance
+evidence_strength: Medium (empirical benchmarks)
+adoption_status: Not Yet Started
+priority: P2 (Design Required)
 applicability:
-  - "General"
+- General
 adopted_in: []
 sources:
-  - "arxiv-skill-library-drift-ratchet-recipe.md"
+- arxiv-skill-library-drift-ratchet-recipe.md
 related_findings:
-  - file: "skill-library-drift-failure-mode.md"
-    rel: "same-problem"
+- file: skill-library-drift-failure-mode.md
+  rel: same-problem
+- file: per-skill-contribution-scoring-telemetry.md
+  rel: enabled-by
+- file: meta-skill-authoring-prior-dominance.md
+  rel: extended-by
 proposals: null
-date_discovered: "2026-07-11"
-last_updated: "2026-07-11"
+date_discovered: '2026-07-11'
+last_updated: '2026-07-11'
 ---
 
 # Ratchet Recipe — Outcome-Driven Skill Retirement with Evidence Floor and Capacity Cap

@@ -1,35 +1,42 @@
 ---
-name: "No Single Memory Architecture Dominates — Align Structure to the Workload Bottleneck"
-summary: |-
-  Ends the "which memory framework is best" question for us: a systematic 12-system benchmark shows
+name: No Single Memory Architecture Dominates — Align Structure to the Workload Bottleneck
+summary: 'Ends the "which memory framework is best" question for us: a systematic 12-system benchmark shows
+
   every architecture wins somewhere and loses somewhere else, so the design question is which
+
   bottleneck your workload has, not which system is best. Trace-preserving stores win
+
   long-conversation QA, graph/temporal stores win cross-session aggregation and knowledge updates,
+
   raw long context wins order-sensitive procedural work but collapses under distractors. Also
+
   corroborates the verbatim thesis: retaining original content beats added abstraction, and heavy
-  structure costs orders of magnitude more without proportional accuracy gains.
+
+  structure costs orders of magnitude more without proportional accuracy gains.'
 implementation_notes: null
-category: "Context Engineering"
-evidence_strength: "Medium (empirical benchmarks)"
-adoption_status: "Not Yet Started"
-priority: "P3 (Monitor)"
+category: Context Engineering
+evidence_strength: Medium (empirical benchmarks)
+adoption_status: Not Yet Started
+priority: P3 (Monitor)
 applicability:
-  - "General"
+- General
 adopted_in: []
 sources:
-  - "arxiv-agent-native-memory-system-survey.md"
+- arxiv-agent-native-memory-system-survey.md
 related_findings:
-  - file: "four-module-agent-memory-decomposition.md"
-    rel: "extends"
-  - file: "verbatim-storage-thesis-for-memory.md"
-    rel: "extends"
-  - file: "converged-memory-substrate-vs-patchwork.md"
-    rel: "same-problem"
-  - file: "production-memory-architecture-spectrum.md"
-    rel: "extends"
+- file: four-module-agent-memory-decomposition.md
+  rel: extends
+- file: verbatim-storage-thesis-for-memory.md
+  rel: extends
+- file: converged-memory-substrate-vs-patchwork.md
+  rel: same-problem
+- file: production-memory-architecture-spectrum.md
+  rel: extends
+- file: four-module-agent-memory-decomposition.md
+  rel: enabled-by
 proposals: null
-date_discovered: "2026-07-11"
-last_updated: "2026-07-11"
+date_discovered: '2026-07-11'
+last_updated: '2026-07-11'
 ---
 
 ## What It Is
