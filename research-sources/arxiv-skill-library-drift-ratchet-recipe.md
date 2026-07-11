@@ -1,7 +1,7 @@
 ---
 name: "arXiv 2605.19576 — Skill-Library Drift in Self-Evolving LLM Agents (Ratchet Recipe)"
 source_type: "Research Paper"
-status: "Not started"
+status: "Done"
 key_takeaways: |-
   Names and reproduces "library drift": unbounded skill accumulation in self-evolving skill
   libraries degrades retrieval and stagnates performance. Headline: human-curated skills gave
@@ -20,10 +20,15 @@ tags:
   - governance
   - evals
 url: "https://arxiv.org/html/2605.19576v2"
-authority: []
-findings: []
+authority:
+  - "library-drift-paper-team.md"
+findings:
+  - "skill-library-drift-failure-mode.md"
+  - "ratchet-recipe-skill-retirement.md"
+  - "meta-skill-authoring-prior-dominance.md"
+  - "per-skill-contribution-scoring-telemetry.md"
 date_added: "2026-07-11"
-date_processed: null
+date_processed: "2026-07-11"
 ---
 
 Queued for `/research-loop` extraction by the 2026-07-11 link-intake triage

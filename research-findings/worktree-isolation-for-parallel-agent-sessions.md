@@ -33,6 +33,8 @@ related_findings:
   rel: same-problem
 - file: all-in-one-sandbox-architecture.md
   rel: same-problem
+- file: index-free-local-code-intelligence-parallel-worktrees.md
+  rel: enabled-by
 - file: database-as-shared-memory-coordination.md
   rel: same-problem
 - file: sub-agent-context-isolation-for-parallel-complex.md

@@ -1,7 +1,7 @@
 ---
 name: "arXiv 2606.24775 — Are We Ready For An Agent-Native Memory System? (12-system evaluation)"
 source_type: "Research Paper"
-status: "Not started"
+status: "Done"
 key_takeaways: |-
   Systematic data-management-perspective evaluation of 12 agent memory systems + 2 baselines
   across 5 workloads / 11 datasets. Decomposes agent memory into four modules: representation/
@@ -18,10 +18,14 @@ tags:
   - context-engineering
   - benchmarks
 url: "https://arxiv.org/abs/2606.24775"
-authority: []
-findings: []
+authority:
+  - "tsinghua-sjtu-agent-memory-benchmark-team.md"
+findings:
+  - "four-module-agent-memory-decomposition.md"
+  - "no-single-memory-architecture-workload-alignment.md"
+  - "localized-memory-maintenance-over-global-reorganization.md"
 date_added: "2026-07-11"
-date_processed: null
+date_processed: "2026-07-11"
 ---
 
 Queued for `/research-loop` extraction by the 2026-07-11 link-intake triage

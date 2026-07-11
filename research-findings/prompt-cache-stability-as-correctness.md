@@ -14,9 +14,11 @@ sources: []
 related_findings:
 - file: prompt-caching-for-stable-agent-context.md
   rel: extends
+- file: append-only-context-updates-system-reminder-injection.md
+  rel: extended-by
 proposals: null
 date_discovered: '2026-04-08'
-last_updated: '2026-04-19'
+last_updated: '2026-07-11'
 pipeline_status: raw
 consumed_by: []
 ---

@@ -1,7 +1,7 @@
 ---
 name: "ast-grep — outline: cheap structural summaries for code agents"
 source_type: "Article"
-status: "Not started"
+status: "Done"
 key_takeaways: |-
   Announces `ast-grep outline`: on-demand compact structural summaries (functions/classes/
   imports/exports with line numbers) for code agents — single file, directory export surface,
@@ -20,10 +20,13 @@ tags:
   - code-navigation
   - token-economy
 url: "https://ast-grep.github.io/blog/ast-grep-outline.html"
-authority: []
-findings: []
+authority:
+  - "ast-grep.md"
+findings:
+  - "structural-outline-before-read-agent-navigation.md"
+  - "index-free-local-code-intelligence-parallel-worktrees.md"
 date_added: "2026-07-11"
-date_processed: null
+date_processed: "2026-07-11"
 ---
 
 Queued for `/research-loop` extraction by the 2026-07-11 link-intake triage

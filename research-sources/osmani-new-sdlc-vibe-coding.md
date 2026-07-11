@@ -1,7 +1,7 @@
 ---
 name: "Addy Osmani — The New SDLC With Vibe Coding (blog extraction of the Google whitepaper)"
 source_type: "Article"
-status: "Not started"
+status: "Done"
 key_takeaways: |-
   One source covering two batch URLs: the Kaggle-hosted Google whitepaper
   (kaggle.com/whitepaper-the-new-SDLC-with-vibe-coding, co-authors Osmani/Saboo/Kartakis)
@@ -24,10 +24,14 @@ tags:
   - context-engineering
   - agentic-os
 url: "https://addyosmani.com/blog/new-sdlc-vibe-coding/"
-authority: []
-findings: []
+authority:
+  - "addy-osmani.md"
+findings:
+  - "context-partition-as-versioned-architectural-decision.md"
+  - "dual-verification-trajectory-vs-output-correctness.md"
+  - "conductor-vs-orchestrator-operating-modes.md"
 date_added: "2026-07-11"
-date_processed: null
+date_processed: "2026-07-11"
 ---
 
 Queued for `/research-loop` extraction by the 2026-07-11 link-intake triage

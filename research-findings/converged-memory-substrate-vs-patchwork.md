@@ -12,6 +12,7 @@ applicability:
 adopted_in: []
 sources:
 - oracle-agent-memory-amnesia-blog.md
+- tjslattery-memorydemo-five-memory-patterns.md
 related_findings:
 - file: triple-storage-memory-architecture.md
   rel: same-problem
@@ -23,7 +24,7 @@ related_findings:
   rel: same-problem
 proposals: null
 date_discovered: '2026-05-25'
-last_updated: '2026-05-25'
+last_updated: '2026-07-11'
 pipeline_status: raw
 consumed_by: []
 ---
@@ -49,6 +50,8 @@ The converged approach treats memory diversity as a **query routing problem** ra
 Observed in Oracle's enterprise AI memory architecture series (2025). Oracle advocates converged database (Oracle AI Database) supporting vector, relational, JSON, and graph models in a single engine. Source: [[oracle-agent-memory-amnesia-blog]].
 
 The pattern also aligns with MongoDB's polymorphic evidence memory approach (single-store with multiple query patterns) — see [[mongodb-single-store-polymorphic-evidence-memory]].
+
+**Reference implementation (weak evidence, added 2026-07-11):** TJSlattery/MemoryDemo implements a five-type variant of this pattern — working (24h TTL), episodic, semantic, procedural (all vector-indexed), plus a fifth **shared** type for inter-agent coordination (session-scoped 1h TTL / project-scoped permanent) — as five collections in a single MongoDB Atlas instance, using TTL policies and vector indexes as the per-type access-pattern mechanism, with all operations funneled through one MemoryManager singleton. A compact single-stack demonstration that memory-type diversity is expressible as collection + TTL + index configuration over one substrate rather than separate stores. Single-author zero-star demo — illustrative, not production evidence. Source: [[tjslattery-memorydemo-five-memory-patterns]]. The shared type's slot design is captured separately in [[typed-shared-memory-handoff-slots]].
 
 ## Potential Alternatives
 

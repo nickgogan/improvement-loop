@@ -1,7 +1,7 @@
 ---
 name: "Cursor team-kit — thermo-nuclear-code-quality-review SKILL.md (skill-design exemplar)"
 source_type: "Documentation"
-status: "Not started"
+status: "Done"
 key_takeaways: |-
   Rejected for roster adoption (overlaps harness /code-review, targets app-code diffs) but
   unusually pattern-dense as a skill-design exemplar for the assess-skill/design-skill
@@ -23,10 +23,14 @@ tags:
   - code-review
   - review-agent-design
 url: "https://github.com/cursor/plugins/blob/main/cursor-team-kit/skills/thermo-nuclear-code-quality-review/SKILL.md"
-authority: []
-findings: []
+authority:
+  - "cursor.md"
+findings:
+  - "strictness-escalation-skill-architecture.md"
+  - "code-judo-review-posture.md"
+  - "skill-invocation-control-side-effect-guard.md"
 date_added: "2026-07-11"
-date_processed: null
+date_processed: "2026-07-11"
 ---
 
 Queued for `/research-loop` extraction by the 2026-07-11 link-intake triage

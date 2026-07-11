@@ -15,9 +15,10 @@ adopted_in: []
 sources:
 - introducing-gpt-54-openai.md
 - anthropic-advanced-tool-use.md
+- claude-code-prompt-caching-is-everything.md
 proposals: []
 date_discovered: '2026-04-01'
-last_updated: '2026-04-19'
+last_updated: '2026-07-11'
 related_findings:
 - file: cursor-claude-code-ide-composition.md
   rel: same-problem
@@ -37,6 +38,9 @@ For agents connected to dozens of MCP servers, tool definition tokens were consu
 
 ## Why People Are Using It
 OpenAI primary source benchmarks; already deployed in production API.
+
+### Claude Code Production Corroboration (2026-07-11)
+The Claude Code team's prompt-caching post (April 2026) confirms the pattern shipped in production: dozens of MCP tools are exposed as `defer_loading` stubs (name only) that stay in the cached prompt prefix, with full schemas loaded on demand when the model selects them via tool search. Beyond token savings, the team frames deferred loading as a prompt-cache-stability mechanism — stubs keep the tool list static across the session, so schema loading never mutates the cached prefix. Three independent instances now: OpenAI API feature, Anthropic API tool-search tool, and Claude Code first-party production usage.
 
 ### Anthropic Tool Search Tool (2026-04-09)
 Anthropic's advanced tool use post introduces their own Tool Search Tool -- confirming cross-vendor convergence on deferred tool loading. Claude searches for relevant tools by query (e.g., "github" loads only `github.createPullRequest` and `github.listIssues`, not 50+ other tools). Best when tool definitions >10K tokens, 10+ tools available, or MCP systems with multiple servers. Less beneficial for small libraries (<10 tools) or when all tools are used frequently per session. This is no longer GPT-5.4 specific -- it is an emerging cross-vendor standard.

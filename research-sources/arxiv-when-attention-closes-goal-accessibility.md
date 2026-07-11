@@ -1,7 +1,7 @@
 ---
 name: "arXiv 2605.12922 — When Attention Closes: How LLMs Lose the Thread in Multi-Turn Interaction"
 source_type: "Research Paper"
-status: "Not started"
+status: "Done"
 key_takeaways: |-
   Mechanistic account of context rot / instruction drift: goal tokens become attention-
   inaccessible while persisting in residual representations — instructions are not gone, they
@@ -18,11 +18,22 @@ tags:
   - context-rot
   - attention
 url: "https://arxiv.org/abs/2605.12922"
-authority: []
-findings: []
+authority:
+  - "uiuc-conversational-ai-adobe-research.md"
+findings:
+  - "attention-closure-goal-accessibility-collapse.md"
+  - "windowed-attention-parametric-failure-timing.md"
 date_added: "2026-07-11"
-date_processed: null
+date_processed: "2026-07-11"
 ---
 
 Queued for `/research-loop` extraction by the 2026-07-11 link-intake triage
 (`operations/research-reports/2026-07-11-link-intake-triage.md`, link #4).
+
+Processed 2026-07-11 (Pass 1). Authors: Dongre, Hsieh, Lai, Yoon, Bui, Hakkani-Tür (UIUC +
+Adobe Research), submitted 2026-05-13. Two findings extracted. IMPORTANT correction to the
+triage takeaway: the paper does NOT demonstrate re-injection as a working countermeasure —
+Appendix H reports periodic user-role goal re-injection as a NEGATIVE result ("repeating or
+retaining text is not equivalent to preserving goal information"). The negative result is
+recorded inside the attention-closure finding rather than as a standalone countermeasure
+finding.

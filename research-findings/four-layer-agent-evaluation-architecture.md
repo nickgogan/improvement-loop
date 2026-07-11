@@ -31,6 +31,8 @@ related_findings:
   rel: enabled-by
 - file: ultra-review-multi-agent-bug-hunting-fleet.md
   rel: same-problem
+- file: dual-verification-trajectory-vs-output-correctness.md
+  rel: same-problem
 pipeline_status: synthesized
 consumed_by:
   - "building-agent-evaluation-suites.md"

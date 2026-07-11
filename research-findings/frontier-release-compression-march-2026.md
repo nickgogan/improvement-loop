@@ -14,6 +14,8 @@ adopted_in: []
 sources:
 - march-2026-ai-roundup-digital-applied.md
 related_findings:
+- file: anthropic-first-party-capability-trend-stats.md
+  rel: same-problem
 - file: task-specific-model-routing-table-march-2026-bench.md
   rel: same-problem
 - file: agent-architecture-layer-impermanence.md
@@ -22,7 +24,7 @@ related_findings:
   rel: extends
 proposals: []
 date_discovered: '2026-04-07'
-last_updated: '2026-04-08'
+last_updated: '2026-07-11'
 pipeline_status: synthesized
 consumed_by:
 - agent-architecture-decisions.md

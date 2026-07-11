@@ -1,7 +1,7 @@
 ---
 name: Model Capability Registry
 description: Coarse per-model+version capability profiles for agent work — what each model is known to be good/bad at, relative to named anchors. Living reference, refreshed intentionally via /research-loop D2/2.A scans. Every claim carries KB provenance.
-last_updated: "2026-07-11 (session 129 — wanted-list profiles added from research-query: Kimi, DeepSeek, Qwen, Llama, Claude 5 family)"
+last_updated: "2026-07-11 (session 131 — cross-cutting capability-trend anchors added from the Anthropic RSI essay narrow intake)"
 refresh_contract: "Refreshed periodically and intentionally (Nick, session 129 — maintenance cost accepted). Refresh trigger: any /research-loop scan of D2 or 2.A that produces new model-capability findings. Each refresh updates per-entry last_reviewed. An entry whose last_reviewed predates two major release cycles for that provider is stale — treat as unverified."
 ---
 
@@ -98,6 +98,7 @@ refresh_contract: "Refreshed periodically and intentionally (Nick, session 129 �
 
 - All models scored **0% on ARC-AGI-3** at the March-2026 evidence date — a shared capability ceiling reminder (`arc-agi-3-zero-percent-abstract-reasoning`).
 - Release compression (`frontier-release-compression-march-2026`) means profiles age fast; trust `as-of` dates over model names. The Kimi↔Opus leapfrogging (K2.6 leads → Opus 4.7 re-leads, weeks apart) is the concrete demonstration.
+- **The staleness clock is first-party quantified** (as of mid-2026; reviewed 2026-07-11): Anthropic reports autonomous task-horizon doubling ~every 4 months (up from ~7) — 4-minute tasks (Mar 2024) → 90-minute (Mar 2025) → 12-hour (Mar 2026) — plus >80% of its merged code Claude-authored (May 2026) and 8× per-engineer merged-code throughput (Q2 2026 vs 2024). A profile written today describes a model class whose task horizon doubles within two review cycles; self-reported and unaudited, so treat as trend context, not a routing input (`anthropic-first-party-capability-trend-stats`).
 - **Benchmark parity ≠ task parity.** Practitioner splits (Composio pro-Kimi vs Tensorlake pro-Opus on the same model pair) recur; treat registry profiles as routing priors, not guarantees.
 
 ---

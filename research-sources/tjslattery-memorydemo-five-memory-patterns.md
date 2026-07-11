@@ -1,7 +1,7 @@
 ---
 name: "TJSlattery/MemoryDemo — five memory types + typed shared-memory handoff slots"
 source_type: "Documentation"
-status: "Not started"
+status: "Done"
 key_takeaways: |-
   Compact working reference implementation of the five-memory-type taxonomy (working/episodic/
   semantic/procedural/shared) in one LangGraph + MongoDB Atlas + Chainlit stack: a multi-agent
@@ -18,10 +18,13 @@ tags:
   - context-engineering
   - multi-agent
 url: "https://github.com/TJSlattery/MemoryDemo"
-authority: []
-findings: []
+authority:
+  - "tj-slattery.md"
+findings:
+  - "typed-shared-memory-handoff-slots.md"
+  - "converged-memory-substrate-vs-patchwork.md"
 date_added: "2026-07-11"
-date_processed: null
+date_processed: "2026-07-11"
 ---
 
 Queued for `/research-loop` extraction by the 2026-07-11 link-intake triage

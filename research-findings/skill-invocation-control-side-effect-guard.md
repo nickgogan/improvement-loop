@@ -1,7 +1,7 @@
 ---
 name: Skill Invocation Control — Side-Effect Guard via disable-model-invocation
 summary: |-
-  Claude Code skills carry two frontmatter flags that gate who can invoke them. `disable-model-invocation: true` blocks Claude from auto-loading the skill (user must type /skill-name); use for side-effect workflows (commit, deploy, send-slack). `user-invocable: false` blocks the skill from the / menu but keeps Claude's auto-invocation; use for background-knowledge skills that aren't meaningful as user commands. Default is both-can-invoke.
+  Claude Code skills carry two frontmatter flags that gate who can invoke them. `disable-model-invocation: true` blocks Claude from auto-loading the skill (user must type /skill-name); use for side-effect workflows (commit, deploy, send-slack) — and, per Cursor's shipped thermo-nuclear review skill, for intentionally harsh modes whose intensity the user should opt into even when no side effects exist. `user-invocable: false` blocks the skill from the / menu but keeps Claude's auto-invocation; use for background-knowledge skills that aren't meaningful as user commands. Default is both-can-invoke.
 implementation_notes: "Side-effect skills should default to disable-model-invocation: true. Specific cases the docs name: /commit, /deploy, /send-slack-message. Reasoning: 'You don't want Claude deciding to deploy because your code looks ready.' Background-knowledge case: a 'legacy-system-context' skill explains an old system — Claude should know it when relevant but /legacy-system-context isn't a user action. Both flags also affect context loading: disable-model-invocation removes the description from Claude's context entirely; user-invocable: false leaves it in."
 category: Governance
 evidence_strength: Strong (production-tested)
@@ -13,6 +13,7 @@ applicability:
 adopted_in: []
 sources:
   - "anthropic-claude-code-skills-docs.md"
+  - "cursor-team-kit-thermo-nuclear-review-skill.md"
 related_findings:
   - file: "claude-code-skill-frontmatter-extensions.md"
     rel: "extends"
@@ -20,7 +21,7 @@ related_findings:
     rel: "extends"
 proposals: null
 date_discovered: '2026-06-11'
-last_updated: '2026-06-11'
+last_updated: '2026-07-11'
 pipeline_status: raw
 consumed_by: []
 ---
@@ -52,6 +53,8 @@ The flag also affects context budget. `disable-model-invocation: true` removes t
 ## Why People Are Using It
 
 Built into Claude Code's skill system from the unified skills+commands release. Named examples in the canonical docs: `/commit`, `/deploy`, `/send-slack-message`. The Skill permissions system (`Skill(name)` / `Skill(name *)` deny rules) is a parallel control point at a different layer — `disable-model-invocation` lives in the skill, deny rules live in the user's permissions.
+
+**Second use case beyond side effects — intentionally harsh modes.** Cursor's shipped `thermo-nuclear-code-quality-review` skill (cursor/plugins, cursor-team-kit) sets `disable-model-invocation: true` on a skill with *no* side effects at all: an extremely strict, blocker-heavy review mode. The rationale generalizes the flag from "Claude must not act without consent" to "Claude must not select an aggressive posture without consent" — a deliberately punishing review triggering on a casual "can you look at my code?" would be a tone/expectation failure, not a safety failure. The flag is the explicit-invocation-only pattern for any mode whose intensity, cost, or register the user should opt into, not just destructive operations.
 
 ## Potential Alternatives
 
