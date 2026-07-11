@@ -1,13 +1,4 @@
-https://medium.com/womenintechnology/semantic-vs-episodic-vs-procedural-memory-in-ai-agents-and-why-you-need-all-three-8479cd1c7ba6
-https://arxiv.org/html/2605.19576v2
-https://arxiv.org/abs/2606.24775
-https://arxiv.org/abs/2605.12922
-https://ast-grep.github.io/blog/ast-grep-outline.html
-https://www.anthropic.com/institute/recursive-self-improvement
-https://www.kaggle.com/whitepaper-the-new-SDLC-with-vibe-coding
-https://addyosmani.com/blog/new-sdlc-vibe-coding/
-https://github.com/cursor/plugins/blob/main/cursor-team-kit/skills/deslop/SKILL.md
-https://github.com/cursor/plugins/blob/main/cursor-team-kit/skills/thermo-nuclear-code-quality-review/SKILL.md
-https://github.com/anomalyco/opencode
-https://github.com/TJSlattery/MemoryDemo
-https://github.com/omnigent-ai/omnigent
+<!-- Rolling link queue. Drop raw URLs here (one per line); they are processed by the
+link-intake triage protocol (operations/references/link-intake-protocol.md).
+Last batch (13 links) processed 2026-07-11 — audit trail:
+operations/research-reports/2026-07-11-link-intake-triage.md -->
