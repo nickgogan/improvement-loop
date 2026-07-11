@@ -20,3 +20,4 @@ Durable reference material for how the Improvement Loop system operates. Not ses
 |------|---------|
 | `research-dimensions.md` | Registry of research dimensions (with sub-dimensions) scoped for IL scanning |
 | `form-classification-rubric.md` | Form Router decision spec — per-form inclusion/exclusion criteria, tier dispatch, calibration findings |
+| `model-capability-registry.md` | Coarse per-model+version capability profiles for agent work — living reference, intentionally refreshed via D2/2.A scans, every claim KB-grounded |

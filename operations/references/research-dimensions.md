@@ -1,7 +1,7 @@
 ---
 name: Research Dimensions
 description: Researcher-side scan topics — dimensions (top-level) and sub-dimensions (second-level) naming what the Researcher scans for in the world. Read by /research-loop at scan start. Not a consumer routing layer; consumer-facing navigation is the Librarian's reference layer.
-last_updated: "2026-06-18 (session 122 — D7/D9 downstream-signal notes: scans here route to schematic re-evaluation via /detect-drift, DD-107)"
+last_updated: "2026-06-22 (session 129 — added sub-dimensions 1.C Memory Systems, 2.A Local and Open-Source Models, 11.A Loop Engineering, per Nick)"
 ---
 
 # Research Dimensions
@@ -33,7 +33,9 @@ Dimensions are top-level scan topics. A **sub-dimension** is a second-level scan
 - Dimension 1: Context Engineering
   - Sub-dimension 1.A: Memory Decay, Forgetting, and Compaction *(added 2026-04-24)*
   - Sub-dimension 1.B: Memory Isolation and Topology *(added 2026-04-24)*
+  - Sub-dimension 1.C: Memory Systems *(added 2026-06-22)*
 - Dimension 2: Model Selection
+  - Sub-dimension 2.A: Local and Open-Source Models *(added 2026-06-22)*
 - Dimension 3: Prompt Craft
 - Dimension 4: Tool Integration
 - Dimension 5: Intent Engineering
@@ -43,6 +45,7 @@ Dimensions are top-level scan topics. A **sub-dimension** is a second-level scan
 - Dimension 9: Governance
 - Dimension 10: Agent Design
 - Dimension 11: Agentic Systems
+  - Sub-dimension 11.A: Loop Engineering *(added 2026-06-22)*
 
 ---
 
@@ -144,6 +147,45 @@ Dimensions are top-level scan topics. A **sub-dimension** is a second-level scan
 
 **Graduation criteria (when to elevate to a top-level dimension):** Same threshold as 1.A — ≥10 findings specifically about isolation/topology mechanics (not decay, not storage medium, not retrieval algorithm), multiple sibling-dimension references to these findings, and an independent Librarian concept file that routes consumer questions here. Until then, keep nested under Dimension 1.
 
+### Sub-dimension 1.C: Memory Systems
+
+**Why this sub-dimension.** 1.A and 1.B track memory *mechanisms* (what gets forgotten; whose memory sees what). This sub-dimension tracks the *whole-system* cut: how complete production memory systems work end-to-end — the architectures powering Hermes, mem0, OpenClaw, Codex, Letta, Memongo, Supermemory, and peers. The unit of analysis is the memory system as a designed product (storage substrate, write path, retrieval path, consolidation loop, API surface), not an individual mechanism. This is the comparative lens: how do different systems compose the mechanisms 1.A/1.B catalog, and what architectural families are emerging? *(Requested by Nick, session 129.)*
+
+**Scope boundary vs siblings:** a finding about one decay function → 1.A; a finding about scoping/tenancy → 1.B; a finding about how a named system's memory architecture fits together, or comparing architectures across systems → 1.C.
+
+**What to search for:**
+- End-to-end memory architectures of named systems (mem0, Letta/MemGPT, Hermes, OpenClaw, Codex, Zep, Memongo, Supermemory, Hindsight, LangMem)
+- Architectural families: converged substrate vs patchwork, tiered/bounded stores, graph vs vector vs relational vs file-based substrates
+- Write pipelines: fact extraction, salience scoring, consolidation/"dreaming" loops, background memory agents
+- Retrieval pipelines: auto-recall vs tool-based recall, agentic search over memory, pre-prompt injection
+- Memory system APIs and integration surfaces (SDKs, MCP memory servers, harness-native memory)
+- Benchmarks and comparisons across memory systems (LoCoMo and successors)
+
+**Web queries:**
+- `agent memory system architecture comparison [current year]`
+- `mem0 letta zep memory architecture production`
+- `LLM agent memory layer end-to-end design [current year]`
+- `background memory consolidation agent architecture`
+- `memory benchmark LoCoMo agent comparison [current year]`
+
+**arXiv queries:**
+- `memory system architecture LLM agent`
+- `long-term memory framework language model agent`
+- `memory augmented agent survey`
+
+**KB cluster (seed findings, 2026-06-22):**
+- `converged-memory-substrate-vs-patchwork`
+- `bounded-tiered-memory-inference-driven-curation`
+- `biomimetic-memory-auto-recall-over-tool-based`
+- `agentic-search-memory-retrieval-architecture`
+- `sleeptime-background-memory-agent` (Letta)
+- `memory-block-labeled-semantic-container` (Letta)
+- `automatic-fact-extraction`
+- `git-backed-memory-versioning`
+- `dreaming-memory-consolidation` (shared with 1.A cluster — consolidation is both mechanism and system loop)
+
+**Graduation criteria (when to elevate to a top-level dimension):** Same threshold as 1.A/1.B — ≥10 findings specifically about whole-system memory architecture (not individual mechanisms), multiple sibling-dimension references, and an independent Librarian concept file. Note the Librarian layer already has `memory.md`; graduation additionally requires that the *systems-comparison* consumer route outgrows it. Until then, keep nested under Dimension 1.
+
 ---
 
 ## Dimension 2: Model Selection
@@ -153,11 +195,51 @@ Dimensions are top-level scan topics. A **sub-dimension** is a second-level scan
 - Benchmark shifts for tool calling, long context, reasoning
 - Cost/performance tradeoffs for different model tiers
 - Model-specific prompting guidance
+- Per-model/per-version capability profiles: what a specific model+version is known to be good/bad at for agent work (tool calling, long-horizon tasks, instruction adherence, skill compatibility) — feeds the skill↔model-coupling metadata in the agentic-OS direction
 
 **Web queries:**
 - `new AI model releases agent capabilities [current year]`
 - `Claude Opus Sonnet comparison agent tasks [current year]`
 - `LLM benchmark tool calling reasoning [current year]`
+- `model version capability regression agent tasks [current year]`
+
+### Sub-dimension 2.A: Local and Open-Source Models
+
+**Why this sub-dimension.** Local and open-weight models are expected to be a major topic over the next few years: OSS parity with frontier closed models keeps compressing (the KB already holds `open-source-model-parity-mistral-small-4`), local inference makes agent workloads private and cost-flat, and model-selection tooling for local deployment is emerging (`llmfit-local-model-selection-optimizer-for`). Dedicated queries keep this from being drowned out by frontier-release news in the parent dimension. *(Requested by Nick, session 129.)*
+
+**Scope boundary vs parent:** frontier/closed-model releases and cross-tier routing → D2 parent; anything specific to open-weight or locally-run models — capabilities, quantization tradeoffs, hardware fit, serving stacks, agent-task viability — → 2.A.
+
+**What to search for:**
+- Open-weight model releases and their agent-task capabilities (Llama, Mistral, Qwen, DeepSeek, Kimi, GLM, gpt-oss, and successors)
+- Closed-vs-open parity tracking: where OSS matches or lags frontier models for tool calling, coding, long context
+- Local inference stacks and serving (Ollama, llama.cpp, vLLM, LM Studio, MLX on Apple silicon)
+- Quantization tradeoffs for agent workloads (quality cliffs in tool calling / instruction following)
+- Hardware sizing: what runs usefully on consumer/prosumer hardware; VRAM/unified-memory fit
+- Local model selection tooling and routing (local-vs-cloud hybrid architectures, privacy-motivated routing)
+- Fine-tuning/distillation of open models for agent-specific tasks
+- License and governance considerations for open-weight models in production
+
+**Web queries:**
+- `open source LLM agent capabilities comparison [current year]`
+- `local LLM tool calling coding agent [current year]`
+- `open weight model frontier parity benchmark [current year]`
+- `ollama vllm local inference agent workloads [current year]`
+- `quantization impact tool calling instruction following`
+- `local vs cloud LLM hybrid routing privacy`
+
+**arXiv queries:**
+- `open source language model agent benchmark`
+- `quantization instruction following degradation`
+- `small language model tool use`
+- `on-device LLM inference agent`
+
+**KB cluster (seed findings, 2026-06-22):**
+- `open-source-model-parity-mistral-small-4`
+- `llmfit-local-model-selection-optimizer-for`
+- `multi-provider-llm-dynamic-registration`
+- `task-specific-model-routing-table-march-2026-bench` (shared with parent — routing spans both)
+
+**Graduation criteria (when to elevate to a top-level dimension):** Same threshold as 1.A/1.B — ≥10 findings specifically about local/open-source model selection and operation, multiple sibling-dimension references (e.g., Sandboxing citing local inference for isolation, Governance citing licensing), and an independent Librarian concept file. Until then, keep nested under Dimension 2.
 
 ---
 
@@ -358,3 +440,56 @@ Dimensions are top-level scan topics. A **sub-dimension** is a second-level scan
 - `AI assistant daily workflow automation`
 - `human AI collaborative knowledge system`
 - `multi-agent team knowledge sharing`
+
+### Sub-dimension 11.A: Loop Engineering
+
+**Why this sub-dimension.** Loops are emerging as a first-class engineered artifact in agentic systems — not incidental control flow but a designed recurring cycle with its own anatomy: initialization, iteration structure, exit/convergence criteria, stall detection, and escalation. The KB has already accumulated a sizable uncatalogued cluster (Ralph loops, autoresearch/self-improvement loops, critic-verifier loops, monitor-vs-loop tradeoffs), and the agentic-OS direction names "loops between harnessed agents" as a component the engine must audit/specify/create. This gives the cluster a registered scan home. *(Requested by Nick, session 129; direction context in `project-management/design-notes/2026-06-22-agentic-os-direction.md`.)*
+
+**Scope boundary vs Dimension 6 (Orchestration):** single-run coordination between agents — delegation topology, fan-out/fan-in, handoff state — → D6. The *recurring cycle as a designed artifact* — a loop that repeatedly drives an agent or system toward a goal across iterations or sessions (improvement loops, scheduled loops, brute-force retry loops, self-evolving loops) — → 11.A. Rule of thumb: D6 asks "who does what in this run?"; 11.A asks "what makes this cycle converge, terminate, or compound?"
+
+**What to search for:**
+- Loop anatomies: init → iterate → evaluate → exit; context loading before loop start; iteration budgets
+- Termination and convergence engineering: exit criteria, dual-condition exits, quality gates, convergence detection
+- Stall and divergence handling: stall detection, loop-detection (hash/sliding-window), revision escalation
+- Brute-force and long-running loops (Ralph-style), overnight/unattended loop operation, safety envelopes
+- Self-improvement and compounding loops: autoresearch, metric-driven optimization, knowledge-compounding cycles
+- Loops between harnessed agents: cross-agent cycles, generator-critic pairs, relay/marathon session chaining
+- Scheduling primitives: cron-style in-session loops, time-window proactive loops, event-driven (monitor) vs time-driven (loop) triggers
+- Human position in the loop: in-the-loop, on-the-loop (HOTL) tiering for recurring cycles
+
+**Web queries:**
+- `agent loop engineering convergence termination [current year]`
+- `ralph loop brute force agent iteration [current year]`
+- `self-improving agent loop metric driven [current year]`
+- `agent stall detection escalation loop`
+- `overnight autonomous agent loop safety [current year]`
+- `critic verifier loop termination LLM`
+
+**arXiv queries:**
+- `iterative refinement loop LLM agent termination`
+- `self-improvement loop language model agent`
+- `convergence criteria autonomous agent iteration`
+- `generator critic loop LLM`
+
+**KB cluster (seed findings, 2026-06-22):**
+- `convergence-loop-dual-clean-poll-exit`
+- `critic-verifier-loop-with-termination`
+- `iterative-refinement-loop-with-quality-gate`
+- `loop-detection-hash-based-sliding-window`
+- `gsd-stall-detection-revision-loop-escalation`
+- `ralph-loop-brute-force-security-and-ui-testing`
+- `self-evolving-loop-pattern`
+- `autoresearch-loop-autonomous-metric-driven`
+- `karpathy-autoresearch-self-improvement-loop`
+- `compounding-knowledge-loop-internal-data`
+- `learn-plan-act-review-loop-closing-the-knowledge-gap`
+- `build-loop-skill-autonomous-phase-driver`
+- `claude-code-loop-in-session-cron-scheduling`
+- `time-window-proactive-agent-loop`
+- `monitor-vs-loop-event-driven-vs-time-driven`
+- `context-before-loop-initialization-sequence`
+- `five-layer-recursive-ai-loop-architecture`
+- `per-function-recursive-loop-composition`
+- `human-on-the-loop-hotl-autonomy-tiering-framework`
+
+**Graduation criteria (when to elevate to a top-level dimension):** Same threshold as the other sub-dimensions — the seed cluster already clears ≥10 findings, so graduation turns on the *other* two tests: multiple sibling-dimension references (e.g., Evaluation citing loop termination, Governance citing loop autonomy envelopes) and an independent Librarian concept file routing consumer questions here. Revisit after the agentic-OS grounding pass.
