@@ -95,9 +95,9 @@ actionable patterns.
 
 1. **Prompt-caching post** → research-source entry + `/research-loop` extraction (joins the
    run-1 extraction queue).
-2. **`heal-skill` ENHANCE candidate** → Nick ruling. Recommendation: **hold** (Rule 11 —
+2. **`heal-skill` ENHANCE candidate** → **Ruled: hold** (Nick, 2026-07-11) per Rule 11 —
    in-session repair is a mechanism addition on first occurrence; revisit when the
-   evals-for-skills thread lands, where a repair half will have concrete recurrence).
+   evals-for-skills thread lands, where a repair half will have concrete recurrence.
 3. **LINKS.md clearance** once verdicts are accepted.
 4. No registry/analysis action for taches-cc-resources (coverage already current; registry
    star-count trivially stale — 1931 vs live 1975; not worth an edit).
