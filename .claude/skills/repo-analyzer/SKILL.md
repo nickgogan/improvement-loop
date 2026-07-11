@@ -46,7 +46,7 @@ The Repo Analyst thinks like a structural cartographer, not a code reviewer.
 
 | Tool | Purpose |
 |------|---------|
-| `Bash` | Clone repos (`git clone --depth 1`), run `find`/`wc`/`tree` for structural stats |
+| `Bash` | Clone repos (`git clone --depth 1`), run `find`/`wc`/`tree` for structural stats; `ast-grep outline` for code-surface summaries (optional dependency — see Rule 11) |
 | `Read` | Read context files, config files, workflow definitions |
 | `Grep` | Search for patterns (agent handoff markers, phase transitions, constraint expressions) |
 | `Glob` | Find files by pattern (all `.md`, all `CLAUDE.md`, all `agents/`) |
@@ -155,6 +155,12 @@ dimensions_analyzed:
 
 ### Top-Level Structure
 [Tree-like representation of the first 2 levels of the directory hierarchy]
+
+### Code Surface Outline (optional — ast-grep)
+[When the ast-grep pass ran (see Step 3.10): per top-level source directory, the exported
+surface — functions/classes/exports with line counts. When the pass was skipped, keep this
+subsection as a single line stating the skip reason: "Skipped — ast-grep unavailable" or
+"Skipped — below size gate (N code files)."]
 
 ### Notable Structural Patterns
 [Anything unusual or distinctive about the file organization]
@@ -311,6 +317,18 @@ dimensions_analyzed:
 7. Calculate MD-to-code ratio from the extension counts.
 8. **Markdown composition breakdown**: Classify each `.md` file by functional purpose (agent definition, command/skill, workflow, reference doc, template, human documentation, other). Use directory location as the primary signal — e.g., files in `agents/` are agent definitions, files in `docs/` are human documentation. Populate the Markdown Composition table.
 9. Note directory naming conventions (kebab-case, camelCase, etc.).
+10. **Code surface outline (optional, ast-grep).** Gate: `command -v ast-grep` succeeds AND
+    the code-file count (total files minus markdown/config counts from steps 1-4) is ≥ 200 —
+    below that, broad reads are cheap and the outline adds little. When the gate passes, run
+    `ast-grep outline <dir>` per top-level source directory to summarize the exported code
+    surface (functions/classes/imports/exports with line numbers — output shape is one line
+    per symbol, e.g. `src/session.ts:42 function resumeSession(id)`), and
+    `ast-grep outline --items imports` where an import/dependency map is useful. Use the
+    outline output instead of broad code-file reads for the structural picture; follow up with
+    targeted `Read`s of specific line ranges only where a pattern needs verification. If
+    ast-grep is unavailable or the repo is below the size gate, skip — the find-based stats
+    above remain the baseline (upstream benchmarks: 35–55% token reduction on large repos,
+    minimal benefit on small ones; source: `research-sources/ast-grep-outline-structural-summaries.md`).
 
 ### Step 4: Context File Map (Dimension 2)
 
@@ -459,3 +477,4 @@ repos_compared: [list of analyzed library names]
 8. **Stale detection is automatic.** On every invocation (unless `--force`), compare `analyzed_version` to `last_evaluated_version`. Report "up to date" and skip if unchanged.
 9. **Handle missing workflows gracefully.** Not every repo has a workflow topology (libraries vs frameworks). Record "No discernible workflow" rather than forcing a topology.
 10. **Cap structural listings.** For very large repos, truncate file listings at 500 entries and note the truncation.
+11. **ast-grep is an optional dependency.** Never fail or block a run because it is missing — check `command -v ast-grep` first, fall back to the find-based inventory, and record in the analysis doc whether the outline pass ran. Do not install it mid-run; if it would have helped, note that in the output.
