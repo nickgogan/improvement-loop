@@ -53,6 +53,8 @@ Structural analysis docs produced by `/repo-analyzer`. Each entry covers 5 dimen
 | [[langflow-analysis\|Langflow]] | v1.9.3 | 2026-05-25 | all |
 | [[autogpt-analysis\|AutoGPT]] | v0.5.0 | 2026-05-25 | all |
 | [[autogen-analysis\|AutoGen]] | v0.7.5 | 2026-05-25 | all |
+| [[omnigent-analysis\|Omnigent]] | alpha v0.6.0.dev0 (2026-07-11 HEAD) | 2026-07-11 | all |
+| [[opencode-analysis\|opencode]] | dev HEAD (2026-07-11) | 2026-07-11 | all |
 
 ## Cross-Repo Comparison
 
