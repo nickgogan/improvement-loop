@@ -13,6 +13,8 @@ applicability:
 adopted_in: []
 sources: []
 related_findings:
+- file: interrupt-command-primitives-human-in-the-loop.md
+  rel: extended-by
 - file: archon-yaml-defined-harness-workflows.md
   rel: extends
 - file: durable-workflow-engine-for-agent-systems.md

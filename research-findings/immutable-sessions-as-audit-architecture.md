@@ -13,6 +13,8 @@ applicability:
 adopted_in: []
 sources: []
 related_findings:
+- file: session-as-append-only-event-log.md
+  rel: same-problem
 - file: five-commandments-for-agent-deployment-audit-first.md
   rel: same-problem
 - file: archon-yaml-defined-harness-workflows.md

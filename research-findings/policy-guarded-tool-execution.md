@@ -11,7 +11,7 @@ applicability:
 adopted_in: []
 sources: []
 related_findings:
-  - file: "hook-based-enforcement-over-convention.md"
+  - file: "hook-based-enforcement-for-agent-outputs.md"
     rel: same-problem
   - file: "middleware-as-enforcement-architecture.md"
     rel: extends

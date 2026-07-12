@@ -13,6 +13,8 @@ applicability:
 adopted_in: []
 sources: []
 related_findings:
+- file: policy-guarded-tool-execution.md
+  rel: same-problem
 - file: ide-first-claude-code-with-deterministic-hooks.md
   rel: extends
 - file: post-session-hooks-autonomous-version-control.md

@@ -17,6 +17,8 @@ sources:
 - ai-agent-prompt-engineering-best-practices-inflect.md
 - prompting-best-practices-nick-gogan.md
 related_findings:
+- file: layered-prompt-assembly-stable-segment-caching.md
+  rel: extended-by
 - file: soul-md-agent-constitution-pattern.md
   rel: same-problem
 - file: advanced-elicitation-techniques-library.md

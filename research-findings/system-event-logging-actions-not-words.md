@@ -17,6 +17,8 @@ proposals: null
 date_discovered: '2026-04-07'
 last_updated: '2026-04-08'
 related_findings:
+- file: session-as-append-only-event-log.md
+  rel: same-problem
 - file: structured-streaming-events-observability.md
   rel: same-problem
 - file: workflow-state-vs-conversation-state.md

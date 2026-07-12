@@ -12,6 +12,8 @@ adopted_in: []
 sources:
 - gsd-v1340-v1342-changelog.md
 related_findings:
+- file: loop-detection-hash-based-sliding-window.md
+  rel: same-problem
 - file: graceful-degradation-modes-for-agent-failure.md
   rel: same-problem
 - file: token-budget-pre-turn-projection.md

@@ -20,6 +20,8 @@ proposals: []
 date_discovered: '2026-04-01'
 last_updated: '2026-04-19'
 related_findings:
+- file: interrupt-command-primitives-human-in-the-loop.md
+  rel: same-problem
 - file: autonomy-gradient-not-binary-delegation.md
   rel: same-problem
 - file: mcp-elicitation-for-user-input.md

@@ -15,6 +15,8 @@ sources:
 - multi-agent-orchestration-production-playbook-nick.md
 - ai-agents-in-production-2026-nick-gupta-linkedin.md
 related_findings:
+- file: monitor-vs-loop-event-driven-vs-time-driven.md
+  rel: enables
 - file: task-contract-pattern-schema-first-agent.md
   rel: same-problem
 - file: planner-executor-deterministic-guardrails.md

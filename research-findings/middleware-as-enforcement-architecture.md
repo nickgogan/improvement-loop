@@ -13,6 +13,8 @@ applicability:
 adopted_in: []
 sources: []
 related_findings:
+- file: policy-guarded-tool-execution.md
+  rel: extended-by
 - file: agent-identity-governance-enforcement-layer.md
   rel: extends
 - file: hook-based-enforcement-for-agent-outputs.md

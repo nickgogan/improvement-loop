@@ -15,6 +15,8 @@ sources:
 - anthropic-code-execution-with-mcp.md
 - tastematter-concept-graph-mcp-ai-signal.md
 related_findings:
+- file: progressive-skill-loading.md
+  rel: same-problem
 - file: dynamic-tool-pool-assembly-transcript-compaction.md
   rel: extends
 - file: gpt-54-tool-search-deferred-tool-loading.md

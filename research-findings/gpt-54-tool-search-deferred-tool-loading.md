@@ -20,6 +20,8 @@ proposals: []
 date_discovered: '2026-04-01'
 last_updated: '2026-07-11'
 related_findings:
+- file: progressive-skill-loading.md
+  rel: same-problem
 - file: cursor-claude-code-ide-composition.md
   rel: same-problem
 - file: search-over-list-tool-design-pattern.md

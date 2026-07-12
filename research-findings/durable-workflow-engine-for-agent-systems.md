@@ -15,6 +15,8 @@ sources:
 - multi-agent-orchestration-production-playbook-nick.md
 - anthropic-managed-agents-decoupling.md
 related_findings:
+- file: session-as-append-only-event-log.md
+  rel: same-problem
 - file: workflow-state-vs-conversation-state.md
   rel: enables
 - file: session-persistence-crash-resilient.md
