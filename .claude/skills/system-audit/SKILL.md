@@ -141,10 +141,10 @@ Also check knowledge vault subdirectories: `patterns/`, `guides/`, `templates/`,
 
 ### Step 8: Recent History
 
-Read the 10 most recent SL entries in `operations/system-log/`:
+Read the newest `HISTORY.md` sessions and `git log --oneline -30` for the engine (`operations/system-log/` is a frozen historical corpus — SL retired as producer per DD-116/DD-59 scope note; do not treat it as recent):
 1. Are there unresolved follow-ups?
 2. Do recent changes correlate with drift found in earlier steps?
-3. Are there SL entries that should have triggered governance updates?
+3. Are there shipped changes that should have triggered governance updates?
 
 ### Step 9: Produce Audit Report
 

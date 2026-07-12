@@ -256,22 +256,23 @@ explicit instruction.
    timestamp warning. Slower-moving topics (governance patterns,
    foundational concepts) do not need the flag.
 
-## Boundary-Case Encounter Logging
+## Boundary-Case Encounter Surfacing
 
 On any deviation from the Tier-1 happy path (the 13-type encounter
 taxonomy: missing concept/operation, ambiguous verb/variant,
 cross-concept, verb-noun-mismatch, oversized-artifact,
 hop-ceiling-hit, tier-3-read, low-confidence, kb-gap, redirect,
-clarification-asked), append a structured record to
-`operations/system-log/session-<N>-librarian-encounters.md` per the
-entry schema. Create the file on the session's first encounter;
-append thereafter. `<N>` matches the session's SL entry number
-(infer from the most recent `session-<N>-*.md` in the folder).
+clarification-asked), surface the encounter in this run's answer or
+report output: encounter type + one-line description.
 
-- Schema, controlled vocabulary, per-encounter body shape, and feedback
-  routing: `systems/improvement-loop/project-management/design-notes/2026-04-22-librarian-boundary-case-tracking.md`
-- Write scope is narrowed to `operations/system-log/` only — do not
-  write elsewhere from this hook.
+Persistent encounter logging is **suspended**: the System Log is retired
+as a producer (DD-116; DD-59 scope note), and the durable destination for
+boundary-case records is Nick-gated via the Phase-2 second-brain proposal
+(substrate audit gate G9). Until that ruling, this skill writes no
+encounter records to disk.
+
+- Taxonomy, per-encounter body shape, and feedback routing:
+  `systems/improvement-loop/operations/references/librarian/boundary-cases.md`
 
 The most common encounter types for `/ask-kb`: `kb-gap` (no findings on
 topic), `low-confidence` (findings exist but evidence_strength weak),

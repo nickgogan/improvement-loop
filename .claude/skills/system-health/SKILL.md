@@ -112,12 +112,14 @@ Compare IL directory structure against the fractal pattern:
 Also check:
 - Are there top-level files that should be in a subdirectory?
 
-### Step 5: Recent SL Entries Check
+### Step 5: Recent Change Check
 
-Read the 5 most recent entries in `operations/system-log/`. Look for:
+Read the newest `HISTORY.md` entries and `git log --oneline -20` for the engine. Look for:
 - Unresolved issues or follow-ups
 - Changes that might have created drift
 - Patterns of recurring problems
+
+(`operations/system-log/` is a frozen historical corpus — SL retired as producer per DD-116/DD-59 scope note. Do not read it for recency signals; its newest entries are June 2026 regardless of when you run.)
 
 ### Step 6: Produce Report
 

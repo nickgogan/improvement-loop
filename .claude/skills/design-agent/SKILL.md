@@ -376,24 +376,27 @@ Per `design.md` §"Output shape":
   `harness.md` concept doc has §Composition only; §Construction is debt
   flagged session 109.
 
-## Boundary-Case Encounter Logging
+## Boundary-Case Encounter Surfacing
 
 On any deviation from the Tier-1 happy path (the 13-type encounter
 taxonomy — missing concept/operation, ambiguous verb/variant, cross-concept,
 verb-noun-mismatch, oversized-artifact, hop-ceiling-hit, tier-3-read,
-low-confidence, kb-gap, redirect, clarification-asked), append a structured
-record to `operations/system-log/session-<N>-librarian-encounters.md` per
-the entry schema. Create the file on the session's first encounter; append
-thereafter. `<N>` matches the session's SL entry number (infer from most
-recent `session-<N>-*.md` in the folder).
+low-confidence, kb-gap, redirect, clarification-asked), surface the
+encounter in this run's report output: encounter type + one-line
+description.
 
 Ambiguous-variant cases (step 1 disambiguating-question fires) are an
-expected encounter type in `/design-agent` — log them so the variant-routing
-hit rate becomes observable over time.
+expected encounter type in `/design-agent` — surface them so the
+variant-routing hit rate stays observable.
 
-- Schema, controlled vocabulary, per-encounter body shape, feedback routing:
-  `systems/improvement-loop/project-management/design-notes/2026-04-22-librarian-boundary-case-tracking.md`
-- Write scope is narrowed to `operations/system-log/` only.
+Persistent encounter logging is **suspended**: the System Log is retired
+as a producer (DD-116; DD-59 scope note), and the durable destination for
+boundary-case records is Nick-gated via the Phase-2 second-brain proposal
+(substrate audit gate G9). Until that ruling, this skill writes no
+encounter records to disk.
+
+- Taxonomy, per-encounter body shape, and feedback routing:
+  `systems/improvement-loop/operations/references/librarian/boundary-cases.md`
 
 ## Cross-References
 

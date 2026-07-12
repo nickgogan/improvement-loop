@@ -145,7 +145,7 @@ The Owner is also invocable as a subagent from anywhere in the workspace via `.c
 | MetaSystem charter | `../../CHARTER.md` | Vision, values, trajectory signals |
 | System CLAUDE.md | `CLAUDE.md` | System context and current rules |
 | Progress | `PROGRESS.md` | Current state and session history |
-| System log | `operations/system-log/` | Recent changes and audit trail |
+| System log (historical, read-only) | `operations/system-log/` | Frozen pre-DD-116 corpus; recent changes live in HISTORY.md + git |
 | Feedback | `feedback/` | Pending improvement items |
 | Agent definitions | `agents/*/agent.md` | Current agent constitutions |
 | Skill definitions | `.claude/skills/*/SKILL.md` | Current skill contracts |
@@ -158,7 +158,6 @@ The Owner is also invocable as a subagent from anywhere in the workspace via `.c
 | Output | Path | Gate |
 |--------|------|------|
 | Drift reports | `governance/` or conversation | Full Autonomy |
-| SL entries | `operations/system-log/` | Guarded |
 | Doc updates | `governance/`, knowledge docs | Guarded |
 | Structural proposals | `governance/proposals/` | Proposal-First |
 | Feedback triage reports | conversation | Guarded |

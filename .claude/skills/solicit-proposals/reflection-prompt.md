@@ -79,7 +79,7 @@ period_covered:
   to: "{YYYY-MM-DD — today}"
 trigger:
   kind: "owner-solicited"   # or "agent-initiated" for outside-round reflections
-  skill_run: "operations/system-log/{date-of-round-SL-entry}.md"
+  skill_run: "governance/proposals/{YYYY-MM-DD}-round-record.md"
 focus_areas: {FOCUS_AREAS_INJECTED_BY_SKILL}   # list or empty
 source_activity:
   sessions: []   # list of session IDs you drew on

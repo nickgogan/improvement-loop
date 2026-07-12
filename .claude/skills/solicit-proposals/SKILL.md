@@ -118,9 +118,9 @@ For each agent with a fresh reflection:
 - `trigger: "owner-solicited"` | `"agent-initiated"`
 - `author: "{agent}"` — which agent produced it
 
-### Step 4: Write round SL entry
+### Step 4: Write round record
 
-Write `operations/system-log/{YYYY-MM-DD}-solicit-proposals-round.md` capturing:
+Write `governance/proposals/{YYYY-MM-DD}-round-record.md` capturing (the System Log is retired as a producer per DD-116/DD-59 scope note — round records live beside the proposals they index):
 
 - Participating agents
 - Focus areas used (or "open")

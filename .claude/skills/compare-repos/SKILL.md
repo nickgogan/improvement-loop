@@ -354,18 +354,23 @@ conversational response without the frontmatter.
 8. **Existing comparison report is preserved via Version Log, not
    overwritten silently.**
 
-## Boundary-Case Encounter Logging
+## Boundary-Case Encounter Surfacing
 
 On any deviation from the Tier-1 happy path (the 13-type encounter
-taxonomy), append a structured record to
-`operations/system-log/session-<N>-librarian-encounters.md`. Most
-common encounter types for this skill: `missing-input` (analysis doc
-absent), `tier-3-read` (oversized analysis doc), `kb-gap` (no findings
-to support a pattern), `low-confidence` (pattern claim from 2-repo
-overlap).
+taxonomy), surface the encounter in this run's report output: encounter
+type + one-line description. Most common encounter types for this skill:
+`missing-input` (analysis doc absent), `tier-3-read` (oversized analysis
+doc), `kb-gap` (no findings to support a pattern), `low-confidence`
+(pattern claim from 2-repo overlap).
 
-- Schema and routing:
-  `systems/improvement-loop/project-management/design-notes/2026-04-22-librarian-boundary-case-tracking.md`
+Persistent encounter logging is **suspended**: the System Log is retired
+as a producer (DD-116; DD-59 scope note), and the durable destination for
+boundary-case records is Nick-gated via the Phase-2 second-brain proposal
+(substrate audit gate G9). Until that ruling, this skill writes no
+encounter records to disk.
+
+- Taxonomy and routing:
+  `systems/improvement-loop/operations/references/librarian/boundary-cases.md`
 
 ## Cross-References
 
