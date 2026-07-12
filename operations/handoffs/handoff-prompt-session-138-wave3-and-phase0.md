@@ -19,8 +19,8 @@ Nick is the architect and the only human gate. He gates content, not mechanics (
 
 In order:
 
-1. **Wave-3 fetch retry** of the 20 blocked videos (LINKS.md). The ≥1-calendar-day embargo lifts 2026-07-13. Plain `fetch.py --input LINKS.md` first; if the 429/IpBlocked persists, use the NEW `--backend browser` rung (Playwright headed Chrome, built + Rule-10 audited in 137, never live-tested — this run is its live verification). If step 4 also fails, stop per the skill's Limitations: the ≥1-day spacing applies to the whole chain. Then `/link-intake` triage (as a subagent) on whatever recovers; honest Blocked update if nothing does.
-2. **Execute restructure-program Phase 0** — session-ops restructure, per `operations/plans/2026-07-12-engine-restructure-program.md` §Phase 0 (read it first; it is the spec). Six items: HISTORY.md backfill; PROGRESS.md → forward-only control surface; `/session-handoff` rewritten as reconcile-in-place (CareerBuddy `ops-session-handoff` adaptation + Rule-10 assess); dated handoffs archived + wake-up idiom in engine CLAUDE.md; Conventional Commits + PROGRESS line-budget pre-commit check; **System Log narrowing — Nick gate** (recommended option (a): SL keeps only learnings; git + HISTORY carry session tracking). DoD: a fresh session cold-starts from PROGRESS.md alone.
+1. **Execute restructure-program Phase 0** — session-ops restructure, per `operations/plans/2026-07-12-engine-restructure-program.md` §Phase 0 (read it first; it is the spec). Six items: HISTORY.md backfill; PROGRESS.md → forward-only control surface; `/session-handoff` rewritten as reconcile-in-place (CareerBuddy `ops-session-handoff` adaptation + Rule-10 assess); dated handoffs archived + wake-up idiom in engine CLAUDE.md; Conventional Commits + PROGRESS line-budget pre-commit check; **System Log narrowing — Nick gate** (recommended option (a): SL keeps only learnings; git + HISTORY carry session tracking). DoD: a fresh session cold-starts from PROGRESS.md alone.
+2. **Wave-3 fetch retry — PARKED ~24h (Nick, session-137 close).** Attempt ONLY if a full ~24 hours have passed since the wave-2 failure (2026-07-12) — i.e., no earlier than well into 2026-07-13; if this session runs before that, leave the backlog untouched and roll wave-3 to the next session. When it does run: plain `fetch.py --input LINKS.md` first; if 429/IpBlocked persists, the NEW `--backend browser` rung (built + Rule-10 audited in 137, never live-tested — that run is its live verification); if that also fails, stop — ≥1-day spacing applies to the whole chain. Then `/link-intake` triage (as a subagent) on recoveries.
 
 ## RULES
 
@@ -52,14 +52,14 @@ Telemetry: model `claude-fable-5`, harness `claude-code-cli-cursor-macos`, 7 use
 - New Nick-approved backlog: IB-172 (layered memory architecture + OKF; Hermes/OpenClaw inspiration), IB-173 (three-bucket gate tiering design).
 
 ### Unresolved (this session's work)
-1. Wave-3 retry + triage.
-2. Phase 0 execution incl. the SL ruling.
+1. Phase 0 execution incl. the SL ruling.
+2. Wave-3 retry + triage (parked ~24h — see task 2's timing guard).
 
 ### Deferred / carried
 - IB-171 (corpus linkage-hygiene sweep — "save for later"); IB-172/IB-173 (design work, not scheduled); wave-2's `/link-intake` escalation-language watch item (Rule 11); meta-skill-author follow-ups A/D/E; the #8 taxonomy-repo name (Nick input, Phase 1); older carried gates in PROGRESS §Nick's Prioritizaton.
 
 ## OUTPUT REQUIREMENTS
 
-1. Wave-3 outcome — recovered transcripts triaged, or an honest Blocked update (include whether the browser rung worked: it is unverified live).
-2. Phase 0 landed per its DoD, committed under the new convention, with the SL ruling obtained and applied.
+1. Phase 0 landed per its DoD, committed under the new convention, with the SL ruling obtained and applied.
+2. Wave-3: either the retry outcome (recovered transcripts triaged, or an honest Blocked update — note whether the browser rung worked, it is unverified live) or an explicit "still parked, rolled forward" line if the 24h window hadn't elapsed.
 3. Close via the (newly rewritten) session-handoff mechanism — Phase 0 item 3 replaces this dated-handoff format; this file should be the LAST dated handoff.
