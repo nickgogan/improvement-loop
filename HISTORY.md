@@ -5,6 +5,16 @@ Newest-first changelog of shipped sessions and milestones for the improvement-lo
 git is the atomic record of what changed, file by file (Conventional Commits from session 133 onward).
 Entries carry dates and commit ranges where known; sessions 1–116 predate this file and are collapsed into era summaries.
 
+## Session 139 — 2026-07-12 — Phase 1 intakes + Phase 2 substrate audit (91d7bd2…dd32524)
+
+**Outcome:** the KB gained both same-class agentic-OS exemplars (CareerBuddy + the anonymized enterprise context-hub), and Phase 2 opened with a full six-class substrate audit awaiting gate execution.
+
+- **CareerBuddy intaken as primary source** (plan §Phase 1 item 2, five parallel Researcher passes): wiring canon, meta-skill-author references, ops-self-improve store model, C1–C16 deterministic battery, and the 5 queued corpus contributions — 5 source entries; dedup treated shared mechanics as production validation (both systems drew on this KB), extending rather than duplicating.
+- **#8 taxonomy/clustering dependency resolved**: the private enterprise context-hub (an agentic Work OS built by one technical account manager, shared org-wide), intaken from an author-shared writeup + role-routing hook. Everything anonymized before write (vault going public — Nick directive); primary materials preserved at `research-sources/raw/context-hub/`; zero identifying strings verified vault-wide. Key yields: the asset-catalog form answer (directory + registry + generated views as one generation pipeline, not a choice), and the prompt-time role-routing hook Nick flagged worth keeping for front-door-less multi-agent systems.
+- **Phase 2 substrate audit filed** (`project-management/design-notes/2026-07-12-substrate-audit.md`, six parallel Owner-disposition auditors, propose-only): DDs split 26 kernel / 59 state; 7 functionally-dead Binding DDs → one consolidating supersession (G1); ~230KB of April design notes fully ratified → archive (G6); `knowledge/guides/` confirmed too shallow, dissolves (G8); IB and concept-doc classes essentially clean; DD-112 survives the kernel model. **Urgent find:** `/extract-artifacts` functionally broken — DD-95 provenance anchor demands a retired SL entry (G5).
+- **Nick rulings this session:** named-deps gap-check skipped for now; Phase 2 opened before Phase 1 close; **door-type delegation** granted (execute two-way doors on best judgment, surface only true tensions/one-way doors) → gates G1–G8 sanctioned for execution, G5 anchor = identification report, G9 folded into the Nick-gated second-brain proposal.
+- Multi-tenancy observation recorded (single-operator exemplars dominate; users-as-data is CareerBuddy's answer) → backlog research-gap candidate.
+
 ## Session 138 — 2026-07-12 — restructure-program Phase 0 shipped (614102c…743499c)
 
 **Outcome:** the engine's session ops run on the three-artifact spine — forward-only PROGRESS.md (the sole cold-start artifact) + this HISTORY.md + Conventional Commits (DD-116).
