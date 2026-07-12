@@ -1,7 +1,10 @@
-# Transcript: X_JsIHUfUjc
+# Transcript: How to Build a Self-Improving Company with AI
 
 **URL:** https://www.youtube.com/watch?v=X_JsIHUfUjc
 **Segments:** 391
+**Channel:** Y Combinator
+**Duration:** 13:28
+**Uploaded:** 2026-05-21
 
 ---
 

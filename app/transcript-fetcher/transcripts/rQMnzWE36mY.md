@@ -1,7 +1,10 @@
-# Transcript: rQMnzWE36mY
+# Transcript: Your Agentic AI is Built on Guesswork. Here is the 11-Step Governed Build Order.
 
 **URL:** https://www.youtube.com/watch?v=rQMnzWE36mY
 **Segments:** 172
+**Channel:** Jesper Lowgren
+**Duration:** 6:41
+**Uploaded:** 2026-04-11
 
 ---
 

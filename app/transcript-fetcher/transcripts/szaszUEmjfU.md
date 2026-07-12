@@ -1,7 +1,10 @@
-# Transcript: szaszUEmjfU
+# Transcript: Claude's Internal Architecture Revealed | How AI Agents Actually Work
 
 **URL:** https://www.youtube.com/watch?v=szaszUEmjfU
 **Segments:** 224
+**Channel:** ByteMonk
+**Duration:** 8:44
+**Uploaded:** 2026-04-08
 
 ---
 

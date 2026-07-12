@@ -1,7 +1,10 @@
-# Transcript: DIHIllggaTw
+# Transcript: Claude Code Works Better With These 5 Agent Patterns
 
 **URL:** https://www.youtube.com/watch?v=DIHIllggaTw
 **Segments:** 501
+**Channel:** Eric Tech
+**Duration:** 14:29
+**Uploaded:** 2026-04-10
 
 ---
 

@@ -1,7 +1,10 @@
-# Transcript: 38t5UBCa4OI
+# Transcript: Every Claude Code Workflow Explained (& When to Use Each)
 
 **URL:** https://www.youtube.com/watch?v=38t5UBCa4OI
 **Segments:** 562
+**Channel:** Simon Scrapes
+**Duration:** 17:49
+**Uploaded:** 2026-04-07
 
 ---
 

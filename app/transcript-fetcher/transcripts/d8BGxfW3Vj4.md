@@ -1,7 +1,10 @@
-# Transcript: d8BGxfW3Vj4
+# Transcript: The Karpathy CLAUDE.md File That 43,000 Developers Installed in 1 Week (Full Breakdown)
 
 **URL:** https://www.youtube.com/watch?v=d8BGxfW3Vj4
 **Segments:** 364
+**Channel:** Jay E | RoboNuggets
+**Duration:** 11:14
+**Uploaded:** 2026-04-16
 
 ---
 

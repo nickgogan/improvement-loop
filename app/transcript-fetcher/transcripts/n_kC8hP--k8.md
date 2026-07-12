@@ -1,7 +1,10 @@
-# Transcript: n_kC8hP--k8
+# Transcript: The NEW way to build a startup
 
 **URL:** https://www.youtube.com/watch?v=n_kC8hP--k8
 **Segments:** 309
+**Channel:** Michia Rohrssen
+**Duration:** 9:49
+**Uploaded:** 2026-04-12
 
 ---
 

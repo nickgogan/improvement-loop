@@ -1,7 +1,10 @@
-# Transcript: qMnClynCAmM
+# Transcript: The Next Evolution of AI Coding Is Harnesses - Here's How to Build Them
 
 **URL:** https://www.youtube.com/watch?v=qMnClynCAmM
 **Segments:** 907
+**Channel:** Cole Medin
+**Duration:** 30:47
+**Uploaded:** 2026-04-09
 
 ---
 

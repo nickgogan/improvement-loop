@@ -1,7 +1,10 @@
-# Transcript: D5bRTv6GhXk
+# Transcript: Claude Code Works Better When You Do This
 
 **URL:** https://www.youtube.com/watch?v=D5bRTv6GhXk
 **Segments:** 521
+**Channel:** Eric Tech
+**Duration:** 15:02
+**Uploaded:** 2026-04-01
 
 ---
 

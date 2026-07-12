@@ -1,7 +1,10 @@
-# Transcript: 647pSnX5H_Y
+# Transcript: You're Wasting 40% Of Your AI Time On Something Fixable
 
 **URL:** https://www.youtube.com/watch?v=647pSnX5H_Y
 **Segments:** 809
+**Channel:** AI News & Strategy Daily | Nate B Jones
+**Duration:** 27:13
+**Uploaded:** 2026-05-09
 
 ---
 

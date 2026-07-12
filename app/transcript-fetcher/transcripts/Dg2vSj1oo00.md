@@ -1,7 +1,10 @@
-# Transcript: Dg2vSj1oo00
+# Transcript: OpenClaw SOUL.md Explained: Build the Perfect AI Personality in 2026
 
 **URL:** https://www.youtube.com/watch?v=Dg2vSj1oo00
 **Segments:** 213
+**Channel:** Flowgrammers
+**Duration:** 8:16
+**Uploaded:** 2026-04-04
 
 ---
 

@@ -1,7 +1,10 @@
-# Transcript: ogTLWGBc3cE
+# Transcript: Opus 4.7 and OpenAI 5.5 Made Your Prompting Style Obsolete.
 
 **URL:** https://www.youtube.com/watch?v=ogTLWGBc3cE
 **Segments:** 652
+**Channel:** AI News & Strategy Daily | Nate B Jones
+**Duration:** 25:03
+**Uploaded:** 2026-05-21
 
 ---
 

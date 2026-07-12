@@ -1,7 +1,10 @@
-# Transcript: B35SWx_4BNM
+# Transcript: Obsidian plus Claude works. I'm the one who said it wouldn't.
 
 **URL:** https://www.youtube.com/watch?v=B35SWx_4BNM
 **Segments:** 480
+**Channel:** ICOR with Tom | AI Productivity
+**Duration:** 24:53
+**Uploaded:** 2026-04-08
 
 ---
 

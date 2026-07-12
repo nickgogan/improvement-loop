@@ -1,7 +1,10 @@
-# Transcript: RtxUdvSTQGc
+# Transcript: Free Fable 5 tokens this weekend? Here's how to max them
 
 **URL:** https://www.youtube.com/watch?v=RtxUdvSTQGc
 **Segments:** 103
+**Channel:** AI News & Strategy Daily | Nate B Jones
+**Duration:** 3:50
+**Uploaded:** 2026-07-04
 
 ---
 

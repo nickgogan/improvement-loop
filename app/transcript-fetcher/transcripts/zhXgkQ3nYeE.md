@@ -1,7 +1,10 @@
-# Transcript: zhXgkQ3nYeE
+# Transcript: I Watched 3 Companies Lay Off Their Managers. All 3 Hit the Same Wall.
 
 **URL:** https://www.youtube.com/watch?v=zhXgkQ3nYeE
 **Segments:** 650
+**Channel:** AI News & Strategy Daily | Nate B Jones
+**Duration:** 32:52
+**Uploaded:** 2026-04-12
 
 ---
 

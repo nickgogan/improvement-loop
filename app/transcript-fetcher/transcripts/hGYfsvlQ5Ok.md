@@ -1,7 +1,10 @@
-# Transcript: hGYfsvlQ5Ok
+# Transcript: Claude's New Advisor Mode: Better Results + CHEAPER
 
 **URL:** https://www.youtube.com/watch?v=hGYfsvlQ5Ok
 **Segments:** 89
+**Channel:** Chase AI
+**Duration:** 3:12
+**Uploaded:** 2026-04-09
 
 ---
 

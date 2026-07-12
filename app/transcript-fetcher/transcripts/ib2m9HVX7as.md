@@ -1,7 +1,10 @@
-# Transcript: ib2m9HVX7as
+# Transcript: There Are Only 5 Safe Places to Build in AI Right Now. Are You in One?
 
 **URL:** https://www.youtube.com/watch?v=ib2m9HVX7as
 **Segments:** 776
+**Channel:** AI News & Strategy Daily | Nate B Jones
+**Duration:** 26:11
+**Uploaded:** 2026-04-10
 
 ---
 

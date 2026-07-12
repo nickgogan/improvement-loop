@@ -1,7 +1,10 @@
-# Transcript: c2kJ7j3CgUs
+# Transcript: This is the Ultimate Claude Code Setup - Beats OpenClaw and Hermes!
 
 **URL:** https://www.youtube.com/watch?v=c2kJ7j3CgUs
 **Segments:** 1266
+**Channel:** Simon Scrapes
+**Duration:** 19:46
+**Uploaded:** 2026-04-18
 
 ---
 

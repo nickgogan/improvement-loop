@@ -1,7 +1,10 @@
-# Transcript: wRDk9_JoIic
+# Transcript: The Problem with AI Agents No One is Talking About | Yutori, Abhishek Das
 
 **URL:** https://www.youtube.com/watch?v=wRDk9_JoIic
 **Segments:** 349
+**Channel:** EO
+**Duration:** 12:21
+**Uploaded:** 2026-05-04
 
 ---
 

@@ -1,7 +1,10 @@
-# Transcript: ro5jpbi5uYc
+# Transcript: I Analyzed 512,000 Lines of Leaked Code. It Shows What's Coming for Your AI Tools.
 
 **URL:** https://www.youtube.com/watch?v=ro5jpbi5uYc
 **Segments:** 703
+**Channel:** AI News & Strategy Daily | Nate B Jones
+**Duration:** 24:34
+**Uploaded:** 2026-04-08
 
 ---
 

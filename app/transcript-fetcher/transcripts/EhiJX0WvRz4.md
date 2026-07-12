@@ -1,7 +1,10 @@
-# Transcript: EhiJX0WvRz4
+# Transcript: Claude Code Ultrareview Is Here: What You Need to Know
 
 **URL:** https://www.youtube.com/watch?v=EhiJX0WvRz4
 **Segments:** 241
+**Channel:** Ray Amjad
+**Duration:** 8:11
+**Uploaded:** 2026-04-09
 
 ---
 

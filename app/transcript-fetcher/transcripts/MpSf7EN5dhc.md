@@ -1,7 +1,10 @@
-# Transcript: MpSf7EN5dhc
+# Transcript: Claude Code just shipped the monitor tool
 
 **URL:** https://www.youtube.com/watch?v=MpSf7EN5dhc
 **Segments:** 96
+**Channel:** Ray Amjad
+**Duration:** 7:52
+**Uploaded:** 2026-04-10
 
 ---
 

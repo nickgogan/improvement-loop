@@ -1,7 +1,10 @@
-# Transcript: zP6TnEiueEc
+# Transcript: Google Spent a Year Stitching MCP, A2A, AG-UI Together. I/O Today.
 
 **URL:** https://www.youtube.com/watch?v=zP6TnEiueEc
 **Segments:** 564
+**Channel:** AI News & Strategy Daily | Nate B Jones
+**Duration:** 20:42
+**Uploaded:** 2026-05-19
 
 ---
 

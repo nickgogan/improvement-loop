@@ -1,7 +1,10 @@
-# Transcript: 725QE_LNXT4
+# Transcript: The Prove-It Economy is Here | And Most Marketers Aren't Ready
 
 **URL:** https://www.youtube.com/watch?v=725QE_LNXT4
 **Segments:** 643
+**Channel:** AI News & Strategy Daily | Nate B Jones
+**Duration:** 22:23
+**Uploaded:** 2026-05-18
 
 ---
 

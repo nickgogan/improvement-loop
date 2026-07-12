@@ -1,7 +1,10 @@
-# Transcript: ZIS_okcwQ-Q
+# Transcript: I Distilled all of AI Engineering Expertise into a single Tool
 
 **URL:** https://www.youtube.com/watch?v=ZIS_okcwQ-Q
 **Segments:** 914
+**Channel:** Jacob Dietle
+**Duration:** 13:27
+**Uploaded:** 2026-04-15
 
 ---
 

@@ -1,7 +1,10 @@
-# Transcript: Sk9tvyRSCgY
+# Transcript: DeepMind’s New AI: A Gift To Humanity
 
 **URL:** https://www.youtube.com/watch?v=Sk9tvyRSCgY
 **Segments:** 102
+**Channel:** Two Minute Papers
+**Duration:** 11:55
+**Uploaded:** 2026-04-16
 
 ---
 

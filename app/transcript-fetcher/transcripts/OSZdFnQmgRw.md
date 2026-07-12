@@ -1,7 +1,10 @@
-# Transcript: OSZdFnQmgRw
+# Transcript: Karpathy's Obsidian RAG + Claude Code = CHEAT CODE
 
 **URL:** https://www.youtube.com/watch?v=OSZdFnQmgRw
 **Segments:** 402
+**Channel:** Chase AI
+**Duration:** 13:57
+**Uploaded:** 2026-04-04
 
 ---
 

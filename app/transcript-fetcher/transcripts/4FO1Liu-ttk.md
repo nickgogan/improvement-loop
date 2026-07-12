@@ -1,7 +1,10 @@
-# Transcript: 4FO1Liu-ttk
+# Transcript: Caveman Claude Code Is the New Meta (Here's the Science)
 
 **URL:** https://www.youtube.com/watch?v=4FO1Liu-ttk
 **Segments:** 307
+**Channel:** Chase AI
+**Duration:** 10:36
+**Uploaded:** 2026-04-07
 
 ---
 

@@ -1,7 +1,10 @@
-# Transcript: fFtZcmXmMaE
+# Transcript: Claude Code's Leak Changes Everything..
 
 **URL:** https://www.youtube.com/watch?v=fFtZcmXmMaE
 **Segments:** 296
+**Channel:** Agentic Lab
+**Duration:** 10:57
+**Uploaded:** 2026-04-02
 
 ---
 

@@ -1,7 +1,10 @@
-# Transcript: pDoBe4qbFPE
+# Transcript: 12 Hidden Settings To Enable In Your Claude Code Setup
 
 **URL:** https://www.youtube.com/watch?v=pDoBe4qbFPE
 **Segments:** 834
+**Channel:** AI LABS
+**Duration:** 13:24
+**Uploaded:** 2026-03-25
 
 ---
 

@@ -1,7 +1,10 @@
-# Transcript: l5Diqeoffa4
+# Transcript: The 7 Levels of Using Claude Context Explained in 24 min
 
 **URL:** https://www.youtube.com/watch?v=l5Diqeoffa4
 **Segments:** 762
+**Channel:** Ben AI
+**Duration:** 24:10
+**Uploaded:** 2026-04-11
 
 ---
 

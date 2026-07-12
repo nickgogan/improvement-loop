@@ -28,6 +28,14 @@ The Python tool requires `youtube-transcript-api`. If not installed:
 pip install youtube-transcript-api
 ```
 
+The `browser` fallback backend (step 4 in the chain) additionally requires Playwright
+plus **Google Chrome** (the backend launches `channel="chrome"` — bundled Chromium does
+not satisfy it). If missing:
+
+```bash
+pip install playwright && playwright install chrome
+```
+
 ## Tool Location
 
 The fetcher script lives at:
@@ -44,15 +52,33 @@ Each transcript is named by video ID (e.g., `5ztI_dbj6ek.md`).
 
 ## Procedure
 
-### Step 1: Check for Existing Transcripts
+### Step 0: Probe the Batch (recommended for 2+ URLs)
 
-Before fetching, check if transcripts already exist:
+Before fetching, probe metadata to size the batch — duration, upload date, and an
+estimated transcript token cost per video:
 
 ```bash
-ls systems/improvement-loop/app/transcript-fetcher/transcripts/
+python systems/improvement-loop/app/transcript-fetcher/fetch.py --probe --urls "URL1" "URL2"
 ```
 
-If a transcript for the requested video ID already exists, skip fetching and report it as available.
+Output includes per-video `[fetched]`/`[new]` status and a batch total (runtime +
+estimated tokens). When invoked from the research-loop's batch gate, this output is
+what gets presented to the user to decide how many videos to process. Add `--json`
+to also write `transcripts/probe.json` for programmatic use.
+
+### Step 1: Deduplication (automatic)
+
+The tool deduplicates for you:
+
+- **URL normalization** — video IDs are extracted via URL parsing, so timestamp
+  (`&t=520s`) and playlist params never produce duplicates. Transcript files always
+  record the canonical `watch?v=ID` URL.
+- **In-batch dedup** — the same video ID appearing twice in one batch is fetched once.
+- **Already-fetched skip** — videos with an existing `transcripts/<id>.md` are skipped
+  and reported as cached. Pass `--force` to re-fetch.
+
+No manual `ls` check is needed, though you can still list
+`systems/improvement-loop/app/transcript-fetcher/transcripts/` to see what exists.
 
 ### Step 2: Fetch Transcripts
 
@@ -87,10 +113,22 @@ Each transcript file contains:
 - Full concatenated text (for quick reading)
 - Timestamped segments (for precise citation)
 
-### Step 3b: Parse from Saved HTML (fallback)
+### Step 3b: Fallback Chain
 
-If the automated fetch fails (no captions) but the user provides the transcript panel HTML
-(copied from YouTube's "Show transcript" panel), parse it directly:
+Transcripts must always be obtained if possible. Work down this chain in order —
+each step only when the previous one failed:
+
+1. **`api` backend** — youtube-transcript-api (fastest; often IP-blocked). Default `--backend auto` tries this first.
+2. **`playwright` backend** — automated browser pull; `--backend auto` falls back to this automatically, or force with `--backend playwright`
+3. **`ytdlp` backend** — subtitle download via `--backend ytdlp` (prefers the Homebrew yt-dlp build; the pip 3.9 build is stale and rejected by YouTube)
+4. **`browser` backend — Playwright browser-assisted HTML pull** — for IP-level blocks (HTTP 429 / IpBlocked) that defeat steps 1–3: `--backend browser` drives a real headed Chrome with a persistent profile (`.playwright/chrome-profile/`, gitignored) via Playwright, opens the transcript panel, captures its HTML, and parses it through the same code path as `--from-html`. On parse failure the captured HTML is saved to `.playwright/html/<id>.html` for manual `--from-html` retry.
+5. **Manual HTML paste** — ask the user to copy the transcript panel HTML themselves, then parse with `--from-html`
+6. **Flag as blocked** — only when steps 1–5 are exhausted (see Step 4)
+
+#### Parse from Saved HTML
+
+If the automated fetch fails (no captions) but transcript panel HTML is available
+(from step 4 or 5 above), parse it directly:
 
 ```bash
 # From an HTML file — video ID inferred from filename or provided explicitly
@@ -103,12 +141,40 @@ The parser handles both YouTube DOM formats:
 
 The `parse_transcript_html(html, video_id)` function is also importable for programmatic use.
 
-### Step 4: Report Results
+### Step 4: Report Results and Flag Blocked Videos
 
 Report which transcripts were fetched successfully and which failed. Common failure reasons:
 - Video has no captions/subtitles
 - Video is private or age-restricted
 - Network connectivity issues
+
+For any video where the full fallback chain (Step 3b) is exhausted:
+
+1. If a research-source entry exists for the video, set its `status` to `"Blocked"` and
+   note the reason in `key_takeaways` (e.g., "Blocked: no captions, HTML pull failed").
+2. If no source entry exists yet, report the URL and failure reason to the caller so the
+   research-loop can record it.
+
+Blocked sources form the retry backlog — find them anytime with (quote-tolerant, since
+existing sources mix quoted and unquoted status values):
+
+```bash
+rg -l 'status: "?Blocked"?' systems/improvement-loop/research-sources/
+```
+
+## Boundary Conditions
+
+- **Safety posture:** This skill is write-capable but low-risk by design. Its writes are
+  (a) additive transcript files in `transcripts/` (never overwritten without `--force`)
+  and (b) the Step 4 `status: "Blocked"` flag on research-source entries. The Blocked
+  flag is applied autonomously — it is additive metadata, reversible via git, inside the
+  Researcher write boundary (DD-30), and always surfaced in the session's delta report
+  under "Blocked" for human review. It never deletes or rewrites source content.
+- **Out of scope:** modifying findings, authorities, system configs, or skill files;
+  audio transcription; downloading video/audio media.
+- **Termination:** the skill ends when every requested video has either a transcript
+  file or a Blocked flag with a recorded reason. Do not loop retrying a backend that
+  has already failed for the same video in the same session.
 
 ## Integration with Research Loop
 
@@ -124,10 +190,13 @@ This skill is called by the research-loop during Pass 2:
 Output files are markdown with this structure:
 
 ```markdown
-# Transcript: VIDEO_ID
+# Transcript: [Video Title, or VIDEO_ID if metadata probe failed]
 
 **URL:** https://www.youtube.com/watch?v=VIDEO_ID
 **Segments:** [count]
+**Channel:** [channel name]
+**Duration:** [H:MM:SS]
+**Uploaded:** [YYYY-MM-DD]
 
 ---
 
@@ -150,4 +219,12 @@ Output files are markdown with this structure:
 
 - Only fetches auto-generated or manual captions — no audio transcription
 - English captions by default (use `--languages` flag for others)
-- No title/metadata enrichment — the video ID is the only identifier in the file
+- Metadata enrichment (title, channel, duration, upload date) requires yt-dlp; when
+  the probe fails the header falls back to the bare video ID. Transcripts fetched
+  before 2026-07-12 predate enrichment and carry ID-only headers.
+- Token estimates are duration-based (~220 tokens/video-minute) — approximate, not a count
+- IP-level YouTube blocks (HTTP 429 / IpBlocked) can span sessions within the same
+  calendar day and are not solved by cookies. During a block, attempt step 4 (browser
+  backend) once — a real browser session may pass where API clients are blocked. If
+  step 4 also fails, stop: the ≥1-calendar-day retry spacing applies to the whole
+  chain, including step 4.

@@ -1,7 +1,10 @@
-# Transcript: EpJ0CjTJSag
+# Transcript: Anthropic And OpenAI Just Admitted The Model Isn't Enough.
 
 **URL:** https://www.youtube.com/watch?v=EpJ0CjTJSag
 **Segments:** 606
+**Channel:** AI News & Strategy Daily | Nate B Jones
+**Duration:** 20:48
+**Uploaded:** 2026-05-10
 
 ---
 

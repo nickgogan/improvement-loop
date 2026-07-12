@@ -1,7 +1,10 @@
-# Transcript: FtCdYhspm7w
+# Transcript: I Broke Down Anthropic's $2.5 Billion Leak. Your Agent Is Missing 12 Critical Pieces.
 
 **URL:** https://www.youtube.com/watch?v=FtCdYhspm7w
 **Segments:** 797
+**Channel:** AI News & Strategy Daily | Nate B Jones
+**Duration:** 26:52
+**Uploaded:** 2026-04-03
 
 ---
 

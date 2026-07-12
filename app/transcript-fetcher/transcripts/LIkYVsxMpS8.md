@@ -1,7 +1,10 @@
-# Transcript: LIkYVsxMpS8
+# Transcript: When to Automate, Build, Buy, Hire, or Wait on AI
 
 **URL:** https://www.youtube.com/watch?v=LIkYVsxMpS8
 **Segments:** 785
+**Channel:** AI News & Strategy Daily | Nate B Jones
+**Duration:** 27:46
+**Uploaded:** 2026-05-17
 
 ---
 

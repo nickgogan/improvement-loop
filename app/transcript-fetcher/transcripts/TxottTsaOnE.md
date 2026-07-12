@@ -1,7 +1,10 @@
-# Transcript: TxottTsaOnE
+# Transcript: Policy as Data Explained: Why Policy as Code Fails for Agentic AI
 
 **URL:** https://www.youtube.com/watch?v=TxottTsaOnE
 **Segments:** 188
+**Channel:** Jesper Lowgren
+**Duration:** 7:12
+**Uploaded:** 2026-04-08
 
 ---
 

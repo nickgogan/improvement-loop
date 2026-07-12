@@ -1,7 +1,10 @@
-# Transcript: 7HP1jFJ9W1c
+# Transcript: The Missing Orchestration Layer Destroying Teams Right Now
 
 **URL:** https://www.youtube.com/watch?v=7HP1jFJ9W1c
 **Segments:** 677
+**Channel:** AI News & Strategy Daily | Nate B Jones
+**Duration:** 22:53
+**Uploaded:** 2026-04-06
 
 ---
 

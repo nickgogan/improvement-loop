@@ -1,7 +1,10 @@
-# Transcript: LorEJPrALcg
+# Transcript: The Official BMad-Method Masterclass (The Complete IDE Workflow)
 
 **URL:** https://www.youtube.com/watch?v=LorEJPrALcg
 **Segments:** 796
+**Channel:** BMad Code
+**Duration:** 1:14:51
+**Uploaded:** 2025-08-02
 
 ---
 

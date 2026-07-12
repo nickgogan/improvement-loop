@@ -1,7 +1,10 @@
-# Transcript: UNhA17l6CWw
+# Transcript: Anthropic Just Dropped Ultra Plan for Claude Code
 
 **URL:** https://www.youtube.com/watch?v=UNhA17l6CWw
 **Segments:** 98
+**Channel:** Ray Amjad
+**Duration:** 7:52
+**Uploaded:** 2026-04-06
 
 ---
 

@@ -1,7 +1,10 @@
-# Transcript: Ob5Vu-gD3mo
+# Transcript: Claude Managed Agents Just Dropped, And It Kills n8n
 
 **URL:** https://www.youtube.com/watch?v=Ob5Vu-gD3mo
 **Segments:** 567
+**Channel:** Nick Saraev
+**Duration:** 16:31
+**Uploaded:** 2026-04-08
 
 ---
 

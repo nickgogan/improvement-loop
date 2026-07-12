@@ -1,7 +1,10 @@
-# Transcript: Xg0tNz9pICI
+# Transcript: Building an AI Dark Factory:  A Codebase That Writes Its Own Code, Live
 
 **URL:** https://www.youtube.com/watch?v=Xg0tNz9pICI
 **Segments:** 1364
+**Channel:** Cole Medin
+**Duration:** 2:23:35
+**Uploaded:** 2026-04-14
 
 ---
 

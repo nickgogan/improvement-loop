@@ -1,7 +1,10 @@
-# Transcript: TX91PdBn_IA
+# Transcript: Claude Code + SUPERPOWERS = The End of Vibe Coding? (Full Tutorial)
 
 **URL:** https://www.youtube.com/watch?v=TX91PdBn_IA
 **Segments:** 512
+**Channel:** Eric Tech
+**Duration:** 14:40
+**Uploaded:** 2026-03-31
 
 ---
 

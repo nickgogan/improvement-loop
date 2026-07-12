@@ -1,7 +1,10 @@
-# Transcript: Sqq5Gsptmhw
+# Transcript: Vibe Coding Is Not Enough. Here's What's Next
 
 **URL:** https://www.youtube.com/watch?v=Sqq5Gsptmhw
 **Segments:** 352
+**Channel:** ByteMonk
+**Duration:** 6:53
+**Uploaded:** 2026-04-14
 
 ---
 

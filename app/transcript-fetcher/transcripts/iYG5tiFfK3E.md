@@ -1,7 +1,10 @@
-# Transcript: iYG5tiFfK3E
+# Transcript: This Claude Skill Watches Videos So You Don't Have To
 
 **URL:** https://www.youtube.com/watch?v=iYG5tiFfK3E
 **Segments:** 102
+**Channel:** Taoufik
+**Duration:** 3:56
+**Uploaded:** 2026-06-12
 
 ---
 

@@ -1,7 +1,10 @@
-# Transcript: 4VPoGSeI2sw
+# Transcript: BMad V6 is Finally Here… /bmad-help, /party-mode... Pure Magic 🔥
 
 **URL:** https://www.youtube.com/watch?v=4VPoGSeI2sw
 **Segments:** 620
+**Channel:** BMad Code
+**Duration:** 24:52
+**Uploaded:** 2026-02-23
 
 ---
 

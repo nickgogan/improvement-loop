@@ -1,7 +1,10 @@
-# Transcript: Y2rpFa43jTo
+# Transcript: Obsidian + Claude Code: The Second Brain Setup That Actually Works
 
 **URL:** https://www.youtube.com/watch?v=Y2rpFa43jTo
 **Segments:** 609
+**Channel:** Eric Tech
+**Duration:** 17:09
+**Uploaded:** 2026-04-06
 
 ---
 

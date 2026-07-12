@@ -1,7 +1,10 @@
-# Transcript: ASAaKhK1B5w
+# Transcript: Even Anthropic Engineers Use This Claude Code Workflow
 
 **URL:** https://www.youtube.com/watch?v=ASAaKhK1B5w
 **Segments:** 304
+**Channel:** Ray Amjad
+**Duration:** 12:30
+**Uploaded:** 2026-04-15
 
 ---
 

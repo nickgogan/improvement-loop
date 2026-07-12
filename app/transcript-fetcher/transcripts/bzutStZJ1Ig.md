@@ -1,7 +1,10 @@
-# Transcript: bzutStZJ1Ig
+# Transcript: These 3 Frameworks Make Claude Code Unstoppable
 
 **URL:** https://www.youtube.com/watch?v=bzutStZJ1Ig
 **Segments:** 410
+**Channel:** Eric Tech
+**Duration:** 12:35
+**Uploaded:** 2026-04-02
 
 ---
 

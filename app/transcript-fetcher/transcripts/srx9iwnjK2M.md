@@ -1,7 +1,10 @@
-# Transcript: srx9iwnjK2M
+# Transcript: Full Archon Guide - Build AI Coding Harnesses That Actually Ship (LIVE)
 
 **URL:** https://www.youtube.com/watch?v=srx9iwnjK2M
 **Segments:** 4435
+**Channel:** Cole Medin
+**Duration:** 2:45:30
+**Uploaded:** 2026-04-11
 
 ---
 

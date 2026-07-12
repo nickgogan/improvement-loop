@@ -1,7 +1,10 @@
-# Transcript: l4EzuMKmeA0
+# Transcript: Build Karpathy’s LLM Wiki using Ollama, Langchain and Obsidian
 
 **URL:** https://www.youtube.com/watch?v=l4EzuMKmeA0
-**Segments:** 97 (manually extracted from HTML)
+**Segments:** 97
+**Channel:** Nariman Codes
+**Duration:** 26:14
+**Uploaded:** 2026-04-19
 
 ---
 

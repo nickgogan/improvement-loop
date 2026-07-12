@@ -1,7 +1,10 @@
-# Transcript: j3aXJNu9804
+# Transcript: Claude Routines Just Dropped, And It's Perfect
 
 **URL:** https://www.youtube.com/watch?v=j3aXJNu9804
 **Segments:** 1194
+**Channel:** Nick Saraev
+**Duration:** 18:07
+**Uploaded:** 2026-04-14
 
 ---
 

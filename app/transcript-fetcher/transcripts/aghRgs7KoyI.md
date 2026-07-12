@@ -1,7 +1,10 @@
-# Transcript: aghRgs7KoyI
+# Transcript: How this app saved me from infinite scrolling
 
 **URL:** https://www.youtube.com/watch?v=aghRgs7KoyI
 **Segments:** 900
+**Channel:** Reysu
+**Duration:** 15:16
+**Uploaded:** 2026-04-11
 
 ---
 

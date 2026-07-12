@@ -1,7 +1,10 @@
-# Transcript: z02Y-1OvWSM
+# Transcript: Don't Use Karpathy's Second Brain (I BUILT SOMETHING BETTER)
 
 **URL:** https://www.youtube.com/watch?v=z02Y-1OvWSM
 **Segments:** 449
+**Channel:** AI Impact
+**Duration:** 12:43
+**Uploaded:** 2026-05-01
 
 ---
 

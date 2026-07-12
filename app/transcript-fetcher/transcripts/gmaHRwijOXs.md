@@ -1,7 +1,10 @@
-# Transcript: gmaHRwijOXs
+# Transcript: Everything You Thought About Building AI Agents is Wrong
 
 **URL:** https://www.youtube.com/watch?v=gmaHRwijOXs
 **Segments:** 446
+**Channel:** Cole Medin
+**Duration:** 15:52
+**Uploaded:** 2026-03-26
 
 ---
 

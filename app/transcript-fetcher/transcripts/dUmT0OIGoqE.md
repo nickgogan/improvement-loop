@@ -1,7 +1,10 @@
-# Transcript: dUmT0OIGoqE
+# Transcript: Scientists Found A Better Language For AI Agents
 
 **URL:** https://www.youtube.com/watch?v=dUmT0OIGoqE
 **Segments:** 160
+**Channel:** Two Minute Papers
+**Duration:** 6:57
+**Uploaded:** 2026-06-19
 
 ---
 

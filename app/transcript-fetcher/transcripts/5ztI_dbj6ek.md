@@ -1,7 +1,10 @@
-# Transcript: 5ztI_dbj6ek
+# Transcript: Your Claude Limit Burns In 90 Minutes Because Of One ChatGPT Habit.
 
 **URL:** https://www.youtube.com/watch?v=5ztI_dbj6ek
 **Segments:** 794
+**Channel:** AI News & Strategy Daily | Nate B Jones
+**Duration:** 26:35
+**Uploaded:** 2026-04-02
 
 ---
 

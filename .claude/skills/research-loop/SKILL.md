@@ -85,7 +85,7 @@ This skill covers source processing, finding extraction, priority triage, and de
 ---
 name: "Article Title"
 source_type: "Video"  # Blog Post, Video, Research Paper, Documentation, Community Post, Tool Release
-status: "Done"  # Not started, In progress, Done
+status: "Done"  # Not started, In progress, Done, Blocked (transcript/content unobtainable — retry backlog)
 key_takeaways: |-
   Summary text — prose with colons/quotes is safe in a block scalar.
 relevance: "Medium"  # High, Medium, Low
@@ -97,6 +97,7 @@ authority: []  # filenames of authority entries
 findings: []  # filenames of finding entries
 date_added: "2026-03-22"
 date_processed: "2026-03-22"
+date_published: null  # original publication/upload date — feeds recency weighting; null if undeterminable
 ---
 ```
 
@@ -185,7 +186,7 @@ Calibration (2026-04-07) proved that single-pass summary-based extraction misses
 
 | Pass | Input | Output | When |
 |------|-------|--------|------|
-| **Pass 1: Headline Triage** | Perplexity summaries, WebFetch | 1-3 findings per source | All sources — this is the default extraction mode |
+| **Pass 1: Headline Triage** | Perplexity summaries, WebFetch (articles); transcript full text (videos — see Pass 1 Step 2) | 1-3 findings per source | All sources — this is the default extraction mode |
 | **Pass 2: Transcript Deep Extraction** | Full transcript text (local `.md` files) | 10-20 additional patterns per source | High-value sources (P1/P2 triage results, videos with rich implementation detail) |
 
 **Miss rates by extraction method:**
@@ -214,6 +215,27 @@ When the user provides URLs to process:
 1. Use `Read` to read `systems/improvement-loop/operations/references/research-dimensions.md` — the active query registry. This tells you the current dimensions, what to search for, and the latest queries.
 2. Use `Read` on the most recent delta report in `systems/improvement-loop/operations/research-reports/` for session-local context. Provided URLs that overlap with prior deferrals should have surfaced as IB items or findings — check there rather than in free-form notes.
 
+### Step 0.5: Video Batch Gate (when 2+ video URLs are provided)
+
+Before creating source entries for a batch of videos, size the batch and let the user
+decide how much to process:
+
+1. **Dedup by video ID.** Video IDs — not raw URLs — are the dedup key; timestamp
+   (`&t=520s`) and playlist params are noise. Check each ID against
+   `research-sources/` frontmatter `url` fields and existing transcripts in
+   `systems/improvement-loop/app/transcript-fetcher/transcripts/`. Report
+   already-processed videos instead of re-processing them.
+2. **Probe the remainder** by invoking `/transcript-fetcher` in probe mode (its Step 0) —
+   that skill owns the `fetch.py --probe` CLI and the Bash permission for it. The probe
+   returns per-video title, duration, upload date, and estimated transcript tokens.
+3. **Present the batch table** — per video: title, duration, upload date, estimated
+   transcript tokens; plus batch totals — and **ask the user how many (and which) to
+   process now.** Recommend an ordering (relevance first, then recency), but the batch
+   size is the user's call. Unprocessed videos stay listed in the session's delta report
+   as deferred, not silently dropped.
+
+Skip this gate for a single URL or when the user has already specified the batch scope.
+
 ### Step 1: Create Source Entries
 
 For each URL:
@@ -223,6 +245,7 @@ For each URL:
    - source_type: detect from URL/content
    - status: `In progress`
    - date_added: today
+   - date_published: original publication/upload date (from the article page or the transcript header's `Uploaded` field); null if undeterminable
    - added_by: `Nick` (unless from scheduled scan)
    - tags: initial guess, refine after reading
    - authority: `[]`
@@ -231,8 +254,13 @@ For each URL:
 ### Step 2: Extract Content
 
 For each source:
-1. Fetch the URL content (use `WebFetch` for articles, `WebFetch` with transcript for videos)
-2. For videos: attempt to get transcript via WebFetch or search for transcript summaries
+1. Fetch the URL content (use `WebFetch` for articles)
+2. For videos: **always work from a transcript.** Use `/transcript-fetcher` (it skips
+   already-fetched videos automatically). If every fallback in its chain fails, set the
+   source's `status` to `"Blocked"` with the reason in `key_takeaways` — blocked sources
+   are the retry backlog (`rg -l 'status: "?Blocked"?' systems/improvement-loop/research-sources/`). Do not
+   substitute WebFetch summaries for a transcript; calibration showed summary-only
+   extraction misses 65-85% of patterns.
 3. Read thoroughly — look for:
    - Specific patterns, techniques, or tools mentioned
    - Evidence of production use (not just theory)
@@ -248,6 +276,13 @@ For each distinct pattern/technique found in the source:
    - Edit the `last_updated` frontmatter field to today's date
    - Add the source filename to the finding's `sources` list
    - Strengthen evidence if this source adds production evidence
+   - **Weight by recency:** when this source is newer than the sources already backing
+     the finding and covers the same ground, its framing leads — rewrite the body around
+     the newer take and keep the older sources as lineage ("previously X, now Y" shows
+     the pattern's evolution, which is itself signal). Older sources are down-weighted,
+     never deleted. If the newer source *contradicts* rather than evolves the finding, or
+     the weighting is genuinely unclear, don't guess — surface both versions to the user
+     and let them decide.
 3. **If no existing finding:**
    - Use `Write` to create a new markdown file in `systems/improvement-loop/research-findings/` with all frontmatter properties
    - Set priority based on evidence strength + applicability (see Triage Rules below)
@@ -282,8 +317,8 @@ Triggered after Pass 1 identifies high-value sources, or when transcripts are av
 ### Step 0: Obtain Transcript
 
 1. Check if a transcript already exists in `systems/improvement-loop/app/transcript-fetcher/transcripts/` (files named by video ID, e.g., `5ztI_dbj6ek.md`).
-2. If not available, use the `/transcript-fetcher` skill to fetch it. Provide the YouTube URL.
-3. If the transcript cannot be obtained (private video, no captions), skip Pass 2 for this source and note the gap.
+2. If not available, use the `/transcript-fetcher` skill to fetch it. Provide the YouTube URL. The skill works down a fallback chain (api → playwright → yt-dlp → browser-assisted HTML → manual HTML paste).
+3. Only if the entire chain fails: set the source entry's `status` to `"Blocked"` with the reason in `key_takeaways`, skip Pass 2 for this source, and list it under a "Blocked" section in the delta report so it lands in the retry backlog.
 
 ### Step 1: Read Full Transcript
 
@@ -432,7 +467,7 @@ For each of the ten dimensions (using queries from the research-dimensions regis
 For each finding, check the Research Findings directory using `Grep`:
 - **Already captured:** Note as "already in KB" — validates existing entries
 - **Gap:** New pattern not in KB — create new entry
-- **Conflict:** Current KB entry contradicts new evidence — flag for update
+- **Conflict:** Current KB entry contradicts new evidence — apply the recency-weighting rule (Pass 1 Step 3): newer evolution leads, but genuine contradiction is surfaced to the user, not silently resolved
 - **Aspirational:** Interesting but not actionable yet — note for future
 
 ### Step 4: Write to Local KB
@@ -459,10 +494,16 @@ Save a local delta report to `systems/improvement-loop/operations/research-repor
 [Table of newly created Research Findings entries with filenames]
 
 ## Updated Findings
-[Table of existing findings that received new evidence]
+[Table of existing findings that received new evidence. Mark any finding whose body was reframed around a newer source (recency weighting) — the reframe is a content change Nick should see, not just a new source link.]
 
 ## Already Captured
 [Brief list of patterns found that were already in the KB]
+
+## Blocked
+[Sources whose content could not be obtained after exhausting fallbacks (`status: "Blocked"`), with reasons. These form the retry backlog. Omit the section if none.]
+
+## Deferred
+[Batch-gate items the user chose not to process this session, so they aren't silently dropped. Omit the section if none.]
 
 ## Recommendations
 
@@ -533,7 +574,7 @@ Not every run needs all ten dimensions:
 - `"Check for Claude Code updates"` → Dimension 4 only, platform-specific
 - `"Full scan"` → All ten dimensions, standard depth
 - `"Run arxiv scan"` / `"Scan papers"` → arXiv academic scan only, no web scan
-- `"Full scan + arxiv"` → All eight web dimensions plus arXiv academic scan
+- `"Full scan + arxiv"` → All web dimensions plus arXiv academic scan
 
 ### Cadence
 - **Monthly (recommended):** Full scan across all ten dimensions
@@ -543,7 +584,7 @@ Not every run needs all ten dimensions:
 
 ## Calibration Notes
 
-- **Recency bias is intentional.** Recent production patterns > older research papers.
+- **Recency bias is intentional.** Recent production patterns > older research papers. Within a finding, newer sources lead the framing and older ones remain as down-weighted evolution signal (see Pass 1 Step 3). Ambiguous or contradictory weighting escalates to the user rather than being silently resolved. Publication/upload dates come from the source entry or the transcript header's `Uploaded` field.
 - **Not every finding is a recommendation.** "Already in KB" validates existing design.
 - **The loop should get faster over time.** Early runs find many gaps; later runs find fewer.
 - **Keep findings concise.** The codification pipeline (`/identify-artifacts` + `/extract-artifacts`) handles implementation-level drafting.

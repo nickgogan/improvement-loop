@@ -1,7 +1,10 @@
-# Transcript: FDkvRl1RlT0
+# Transcript: Anthropic Might Buy Atlassian For $40B. Here's Why It Makes Sense.
 
 **URL:** https://www.youtube.com/watch?v=FDkvRl1RlT0
 **Segments:** 891
+**Channel:** AI News & Strategy Daily | Nate B Jones
+**Duration:** 29:07
+**Uploaded:** 2026-05-02
 
 ---
 

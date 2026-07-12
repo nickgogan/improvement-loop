@@ -1,7 +1,10 @@
-# Transcript: rJCgvnXgOiU
+# Transcript: Claude Code + RAG-Anything = LIMITLESS
 
 **URL:** https://www.youtube.com/watch?v=rJCgvnXgOiU
 **Segments:** 545
+**Channel:** Chase AI
+**Duration:** 19:20
+**Uploaded:** 2026-04-03
 
 ---
 

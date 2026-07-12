@@ -1,7 +1,10 @@
-# Transcript: BlTpG51x94w
+# Transcript: GStack + GSD + Superpowers Workflow Is Insane!
 
 **URL:** https://www.youtube.com/watch?v=BlTpG51x94w
 **Segments:** 408
+**Channel:** Eric Tech
+**Duration:** 12:24
+**Uploaded:** 2026-05-01
 
 ---
 

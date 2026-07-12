@@ -12,18 +12,28 @@ Usage:
     python fetch.py --output ./transcripts       # custom output dir
     python fetch.py --backend playwright         # force Playwright backend
     python fetch.py --backend ytdlp              # force yt-dlp backend
+    python fetch.py --backend browser            # browser-assisted HTML pull (persistent profile)
     python fetch.py --cookies ~/cookies.txt      # use browser cookies (yt-dlp)
+    python fetch.py --probe --urls "URL1"        # metadata + token estimate only, no fetch
+    python fetch.py --force --urls "URL1"        # re-fetch even if transcript exists
 
 Backends:
     api         - youtube-transcript-api (fastest, but IP-blocked by YouTube)
     ytdlp       - yt-dlp subtitle download (needs cookies, also often blocked)
     playwright  - Playwright + system Chrome (most reliable, slower)
+    browser     - Playwright persistent-profile Chrome; captures the transcript
+                  panel HTML and parses it via the --from-html code path.
+                  The rung for IP-level blocks (HTTP 429 / IpBlocked) that
+                  defeat api/ytdlp — presents as a real, returning browser.
     auto        - try api → playwright fallback
 """
+
+from __future__ import annotations
 
 import argparse
 import json
 import re
+import shutil
 import subprocess
 import sys
 import tempfile
@@ -31,6 +41,9 @@ from pathlib import Path
 from urllib.parse import parse_qs, urlparse
 
 from youtube_transcript_api import YouTubeTranscriptApi
+
+# Speech averages ~165 words/min; ~1.33 tokens/word → ~220 tokens per video-minute.
+TOKENS_PER_MINUTE = 220
 
 try:
     from html.parser import HTMLParser
@@ -61,6 +74,61 @@ def extract_video_id(url: str) -> str:
             return parsed.path.split("/")[2]
 
     raise ValueError(f"Could not extract video ID from: {url}")
+
+
+def canonical_url(video_id: str) -> str:
+    """Canonical watch URL — timestamp/playlist params stripped."""
+    return f"https://www.youtube.com/watch?v={video_id}"
+
+
+def ytdlp_bin() -> str | None:
+    """Locate yt-dlp, preferring the Homebrew build.
+
+    The pip-installed yt-dlp is pinned to Python 3.9 and stuck on 2025.10.14,
+    which YouTube's anti-bot check rejects ("The page needs to be reloaded").
+    """
+    brew = Path("/opt/homebrew/bin/yt-dlp")
+    if brew.exists():
+        return str(brew)
+    return shutil.which("yt-dlp")
+
+
+def probe_video(url: str, timeout: int = 30) -> dict:
+    """Fetch video metadata (no transcript) via yt-dlp.
+
+    Returns dict with: video_id, title, channel, duration (sec),
+    upload_date (YYYY-MM-DD or None), est_tokens.
+    Raises RuntimeError if yt-dlp is unavailable or the probe fails.
+    """
+    ytdlp = ytdlp_bin()
+    if not ytdlp:
+        raise RuntimeError("yt-dlp not found — cannot probe metadata")
+
+    video_id = extract_video_id(url)
+    result = subprocess.run(
+        [ytdlp, "-J", "--skip-download", "--no-warnings", canonical_url(video_id)],
+        capture_output=True, text=True, timeout=timeout,
+    )
+    if result.returncode != 0:
+        # Report the last stderr line — the first lines are often
+        # environment warnings, not the actual error.
+        err_lines = [l for l in result.stderr.strip().splitlines() if l.strip()]
+        raise RuntimeError(f"yt-dlp probe failed: {err_lines[-1][:200] if err_lines else 'unknown'}")
+
+    info = json.loads(result.stdout)
+    duration = info.get("duration") or 0
+    raw_date = info.get("upload_date")  # YYYYMMDD
+    upload_date = (
+        f"{raw_date[:4]}-{raw_date[4:6]}-{raw_date[6:]}" if raw_date else None
+    )
+    return {
+        "video_id": video_id,
+        "title": info.get("title"),
+        "channel": info.get("channel") or info.get("uploader"),
+        "duration": duration,
+        "upload_date": upload_date,
+        "est_tokens": int(duration / 60 * TOKENS_PER_MINUTE),
+    }
 
 
 def fetch_transcript(url: str, languages=("en",)):
@@ -134,7 +202,7 @@ def fetch_transcript_ytdlp(url: str, languages=("en",), cookies=None, cookies_fr
     with tempfile.TemporaryDirectory() as tmpdir:
         out_template = str(Path(tmpdir) / "%(id)s")
         cmd = [
-            "yt-dlp",
+            ytdlp_bin() or "yt-dlp",
             "--write-auto-sub",
             "--sub-lang", ",".join(languages),
             "--skip-download",
@@ -378,6 +446,115 @@ def fetch_transcript_playwright(url: str, pw_browser=None):
                 pw_context.stop()
 
 
+def launch_browser_context(pw):
+    """Launch a persistent-profile Chrome context for the 'browser' backend.
+
+    The persistent user-data-dir (gitignored under .playwright/) makes the
+    session present as a real, returning browser — cookies, storage, and
+    fingerprint persist across runs, unlike the throwaway contexts the
+    'playwright' backend uses.
+    """
+    profile_dir = Path(__file__).parent / ".playwright" / "chrome-profile"
+    profile_dir.mkdir(parents=True, exist_ok=True)
+    return pw.chromium.launch_persistent_context(
+        str(profile_dir),
+        channel="chrome",
+        headless=False,
+        viewport={"width": 1280, "height": 900},
+        args=[
+            "--window-position=-2000,-2000",
+            "--disable-blink-features=AutomationControlled",
+        ],
+    )
+
+
+def fetch_transcript_browser(url: str, pw_ctx=None):
+    """Browser-assisted HTML pull: drive a real Chrome session via Playwright,
+    open the transcript panel, capture its HTML, and parse it through
+    parse_transcript_html — the same code path as --from-html.
+
+    Distinct from fetch_transcript_playwright in two ways: (1) persistent
+    profile context (real-browser presentation, for IP-level 429/IpBlocked
+    situations), and (2) HTML-capture-then-parse, so both old and new YouTube
+    DOM formats are handled. On parse failure the captured HTML is saved under
+    .playwright/html/ for manual inspection or --from-html retry.
+
+    If pw_ctx (a persistent BrowserContext) is provided, reuses it for batch
+    efficiency. Otherwise launches and closes its own.
+    """
+    from playwright.sync_api import sync_playwright
+
+    video_id = extract_video_id(url)
+    own_ctx = pw_ctx is None
+
+    pw = None
+    if own_ctx:
+        pw = sync_playwright().start()
+        pw_ctx = launch_browser_context(pw)
+
+    try:
+        page = pw_ctx.new_page()
+        page.add_init_script(
+            "Object.defineProperty(navigator, 'webdriver', {get: () => undefined});"
+        )
+        try:
+            page.goto(canonical_url(video_id), wait_until="networkidle", timeout=30000)
+
+            # Dismiss cookie consent
+            try:
+                page.locator('button:has-text("Accept all")').first.click(timeout=3000)
+                page.wait_for_timeout(2000)
+            except Exception:
+                pass
+
+            page.wait_for_timeout(2000)
+            page.evaluate("window.scrollBy(0, 400)")
+            page.wait_for_timeout(1000)
+
+            # Expand description
+            try:
+                page.locator("tp-yt-paper-button#expand").first.click(timeout=5000)
+            except Exception:
+                pass
+            page.wait_for_timeout(1000)
+
+            # Click Show transcript
+            page.evaluate(
+                'document.querySelector("button[aria-label=\\"Show transcript\\"]")?.click()'
+            )
+            page.wait_for_timeout(5000)
+
+            # Capture the transcript panel HTML (fall back to the full page)
+            html = page.evaluate(
+                """() => {
+                const panel = document.querySelector(
+                    'ytd-engagement-panel-section-list-renderer[target-id="engagement-panel-searchable-transcript"]'
+                );
+                return panel ? panel.outerHTML : document.documentElement.outerHTML;
+            }"""
+            )
+        finally:
+            page.close()
+
+        try:
+            return parse_transcript_html(html, video_id=video_id)
+        except RuntimeError:
+            # Save the captured HTML for manual inspection / --from-html retry
+            html_dir = Path(__file__).parent / ".playwright" / "html"
+            html_dir.mkdir(parents=True, exist_ok=True)
+            html_path = html_dir / f"{video_id}.html"
+            html_path.write_text(html, encoding="utf-8")
+            raise RuntimeError(
+                f"Browser pull got no transcript segments for {video_id}; "
+                f"captured HTML saved to {html_path}"
+            )
+    finally:
+        if own_ctx:
+            pw_ctx.close()
+            if pw:
+                pw.stop()
+
+
 def format_timestamp(seconds: float) -> str:
     """Convert seconds to HH:MM:SS format."""
     h = int(seconds // 3600)
@@ -388,17 +565,32 @@ def format_timestamp(seconds: float) -> str:
     return f"{m}:{s:02d}"
 
 
-def write_transcript_markdown(result: dict, output_dir: Path):
-    """Write a single transcript result as a markdown file."""
+def write_transcript_markdown(result: dict, output_dir: Path, meta: dict = None):
+    """Write a single transcript result as a markdown file.
+
+    If meta (from probe_video) is provided, the header is enriched with
+    title, channel, duration, and upload date — upload date feeds the
+    research-loop's recency weighting.
+    """
     video_id = result["video_id"]
     slug = video_id
     filepath = output_dir / f"{slug}.md"
 
+    title = (meta or {}).get("title") or video_id
     lines = [
-        f"# Transcript: {video_id}",
+        f"# Transcript: {title}",
         "",
-        f"**URL:** https://www.youtube.com/watch?v={video_id}",
+        f"**URL:** {canonical_url(video_id)}",
         f"**Segments:** {len(result['segments'])}",
+    ]
+    if meta:
+        if meta.get("channel"):
+            lines.append(f"**Channel:** {meta['channel']}")
+        if meta.get("duration"):
+            lines.append(f"**Duration:** {format_timestamp(meta['duration'])}")
+        if meta.get("upload_date"):
+            lines.append(f"**Uploaded:** {meta['upload_date']}")
+    lines += [
         "",
         "---",
         "",
@@ -473,9 +665,11 @@ def main():
     )
     parser.add_argument(
         "--backend",
-        choices=["api", "ytdlp", "playwright", "auto"],
+        choices=["api", "ytdlp", "playwright", "browser", "auto"],
         default="auto",
-        help="Backend: 'api' (youtube-transcript-api), 'ytdlp' (yt-dlp), 'playwright' (browser), 'auto' (try api, fall back to playwright)",
+        help="Backend: 'api' (youtube-transcript-api), 'ytdlp' (yt-dlp), "
+        "'playwright' (browser scrape), 'browser' (persistent-profile Chrome "
+        "HTML pull — for IP-level 429 blocks), 'auto' (try api, fall back to playwright)",
     )
     parser.add_argument(
         "--cookies",
@@ -493,12 +687,22 @@ def main():
         type=Path,
         default=None,
         help="Parse transcript from saved YouTube HTML file instead of fetching. "
-        "Requires --video-id to name the output file.",
+        "Video ID is inferred from the filename unless --video-id is given.",
     )
     parser.add_argument(
         "--video-id",
         default=None,
         help="Video ID to use when parsing from HTML (used for output filename)",
+    )
+    parser.add_argument(
+        "--probe",
+        action="store_true",
+        help="Probe metadata only (title, duration, upload date, token estimate) — no transcript fetch",
+    )
+    parser.add_argument(
+        "--force",
+        action="store_true",
+        help="Re-fetch transcripts even if a transcript file already exists",
     )
 
     args = parser.parse_args()
@@ -546,6 +750,53 @@ def main():
     output_dir = args.output or script_dir / "transcripts"
     output_dir.mkdir(parents=True, exist_ok=True)
 
+    # Dedup within the batch by video ID (strips timestamp/playlist params)
+    seen_ids = set()
+    deduped_urls = []
+    for url in urls:
+        try:
+            vid = extract_video_id(url)
+        except ValueError:
+            deduped_urls.append(url)  # let the fetch loop report the bad URL
+            continue
+        if vid in seen_ids:
+            print(f"Skipping duplicate in batch: {url} ({vid})")
+            continue
+        seen_ids.add(vid)
+        deduped_urls.append(url)
+    urls = deduped_urls
+
+    # Probe mode: metadata + token estimates only, no transcript fetch
+    if args.probe:
+        print(f"Probing {len(urls)} videos...\n")
+        total_tokens = 0
+        total_duration = 0
+        rows = []
+        for url in urls:
+            try:
+                meta = probe_video(url)
+                have = (output_dir / f"{meta['video_id']}.md").exists()
+                total_tokens += meta["est_tokens"]
+                total_duration += meta["duration"]
+                rows.append(meta | {"fetched": have})
+                print(
+                    f"  {meta['video_id']}  {format_timestamp(meta['duration']):>8}  "
+                    f"~{meta['est_tokens']:>6,} tok  {meta['upload_date'] or '????-??-??'}  "
+                    f"{'[fetched]' if have else '[new]':>9}  {meta['title']}"
+                )
+            except Exception as exc:
+                rows.append({"url": url, "error": str(exc)})
+                print(f"  PROBE FAILED: {url}: {exc}")
+        print(
+            f"\nTotal: {len(urls)} videos, {format_timestamp(total_duration)} runtime, "
+            f"~{total_tokens:,} estimated transcript tokens"
+        )
+        if args.json:
+            json_path = output_dir / "probe.json"
+            json_path.write_text(json.dumps(rows, indent=2), encoding="utf-8")
+            print(f"JSON results: {json_path}")
+        sys.exit(0)
+
     print(f"Processing {len(urls)} URLs...")
     print(f"Output: {output_dir}")
     print()
@@ -555,10 +806,21 @@ def main():
     failed = 0
     backend = args.backend
 
-    # For playwright backend, launch browser once and reuse across URLs
+    # For playwright/browser backends, launch browser once and reuse across URLs
     pw_context = None
     pw_browser = None
-    if backend in ("playwright", "auto"):
+    pw_persistent = None
+    if backend == "browser":
+        try:
+            from playwright.sync_api import sync_playwright
+
+            pw_context = sync_playwright().start()
+            pw_persistent = launch_browser_context(pw_context)
+            print("Persistent-profile Chrome launched (reusing for all URLs)")
+        except Exception as pw_init_exc:
+            print(f"Browser backend init failed: {pw_init_exc}")
+            sys.exit(1)
+    elif backend in ("playwright", "auto"):
         try:
             from playwright.sync_api import sync_playwright
 
@@ -581,6 +843,20 @@ def main():
         for i, url in enumerate(urls, 1):
             try:
                 video_id = extract_video_id(url)
+
+                existing = output_dir / f"{video_id}.md"
+                if existing.exists() and not args.force:
+                    print(
+                        f"[{i}/{len(urls)}] {video_id} already fetched → {existing.name} "
+                        "(use --force to re-fetch)"
+                    )
+                    results.append(
+                        {"url": url, "ok": True, "backend": "cached",
+                         "video_id": video_id, "skipped": True}
+                    )
+                    succeeded += 1
+                    continue
+
                 print(f"[{i}/{len(urls)}] Fetching {video_id}...", end=" ")
 
                 data = None
@@ -602,6 +878,10 @@ def main():
                     data = fetch_transcript_playwright(url, pw_browser=pw_browser)
                     used_backend = "playwright"
 
+                if data is None and backend == "browser":
+                    data = fetch_transcript_browser(url, pw_ctx=pw_persistent)
+                    used_backend = "browser"
+
                 if data is None and backend in ("ytdlp",):
                     data = fetch_transcript_ytdlp(
                         url,
@@ -611,7 +891,14 @@ def main():
                     )
                     used_backend = "ytdlp"
 
-                filepath = write_transcript_markdown(data, output_dir)
+                # Best-effort metadata enrichment (title/duration/upload date)
+                meta = None
+                try:
+                    meta = probe_video(url)
+                except Exception:
+                    pass
+
+                filepath = write_transcript_markdown(data, output_dir, meta=meta)
                 print(
                     f"OK via {used_backend} ({len(data['segments'])} segments) → {filepath.name}"
                 )
@@ -626,6 +913,8 @@ def main():
     finally:
         if pw_browser:
             pw_browser.close()
+        if pw_persistent:
+            pw_persistent.close()
         if pw_context:
             pw_context.stop()
 
@@ -646,7 +935,7 @@ def main():
         json_results = []
         for r in results:
             entry = {k: v for k, v in r.items() if k != "segments"}
-            if r.get("ok"):
+            if r.get("ok") and "segments" in r:
                 entry["segment_count"] = len(r["segments"])
             json_results.append(entry)
         json_path.write_text(

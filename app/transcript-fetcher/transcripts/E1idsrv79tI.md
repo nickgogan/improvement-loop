@@ -1,7 +1,10 @@
-# Transcript: E1idsrv79tI
+# Transcript: I Looked At Amazon After They Fired 16,000 Engineers. Their AI Broke Everything.
 
 **URL:** https://www.youtube.com/watch?v=E1idsrv79tI
 **Segments:** 1112
+**Channel:** AI News & Strategy Daily | Nate B Jones
+**Duration:** 18:41
+**Uploaded:** 2026-04-13
 
 ---
 

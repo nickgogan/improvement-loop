@@ -1,7 +1,10 @@
-# Transcript: jwtpMSRAPAQ
+# Transcript: The Trillion Dollar Agentic Workflow Opportunity Is Here
 
 **URL:** https://www.youtube.com/watch?v=jwtpMSRAPAQ
 **Segments:** 727
+**Channel:** AI News & Strategy Daily | Nate B Jones
+**Duration:** 25:52
+**Uploaded:** 2026-05-14
 
 ---
 

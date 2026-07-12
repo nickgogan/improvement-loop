@@ -1,7 +1,10 @@
-# Transcript: -iSLQe_imrE
+# Transcript: Markdown vs HTML: Why Anthropic's Claude Code Team Chose Wrong First? Or Not?
 
 **URL:** https://www.youtube.com/watch?v=-iSLQe_imrE
 **Segments:** 249
+**Channel:** DIY Smart Code
+**Duration:** 8:55
+**Uploaded:** 2026-05-09
 
 ---
 

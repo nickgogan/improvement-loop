@@ -1,7 +1,10 @@
-# Transcript: 6kM27uGP4n4
+# Transcript: This GStack Skill Saves Weeks of Development
 
 **URL:** https://www.youtube.com/watch?v=6kM27uGP4n4
 **Segments:** 620
+**Channel:** Eric Tech
+**Duration:** 30:58
+**Uploaded:** 2026-04-17
 
 ---
 

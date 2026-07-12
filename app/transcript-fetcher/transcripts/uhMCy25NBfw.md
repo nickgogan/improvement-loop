@@ -1,7 +1,10 @@
-# Transcript: uhMCy25NBfw
+# Transcript: Stop Using Claude Code in Terminal (It’s Holding You Back)
 
 **URL:** https://www.youtube.com/watch?v=uhMCy25NBfw
 **Segments:** 518
+**Channel:** Simon Scrapes
+**Duration:** 16:32
+**Uploaded:** 2026-04-02
 
 ---
 

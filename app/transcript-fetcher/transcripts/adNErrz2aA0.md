@@ -1,7 +1,10 @@
-# Transcript: adNErrz2aA0
+# Transcript: Your SaaS Bill Just Got a Second Meter. You're About to Pay It.
 
 **URL:** https://www.youtube.com/watch?v=adNErrz2aA0
 **Segments:** 475
+**Channel:** AI News & Strategy Daily | Nate B Jones
+**Duration:** 16:23
+**Uploaded:** 2026-05-15
 
 ---
 

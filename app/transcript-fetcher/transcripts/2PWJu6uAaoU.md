@@ -1,7 +1,10 @@
-# Transcript: 2PWJu6uAaoU
+# Transcript: The Real Problem With AI Agents Nobody's Talking About
 
 **URL:** https://www.youtube.com/watch?v=2PWJu6uAaoU
 **Segments:** 748
+**Channel:** AI News & Strategy Daily | Nate B Jones
+**Duration:** 37:38
+**Uploaded:** 2026-04-15
 
 ---
 

@@ -1,7 +1,10 @@
-# Transcript: fm6mYqFAM5c
+# Transcript: Block Laid Off Half Its Company for AI. AI Can't Do the Job.
 
 **URL:** https://www.youtube.com/watch?v=fm6mYqFAM5c
 **Segments:** 163
+**Channel:** AI News & Strategy Daily | Nate B Jones
+**Duration:** 20:21
+**Uploaded:** 2026-04-19
 
 ---
 

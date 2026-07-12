@@ -1,7 +1,10 @@
-# Transcript: KRpZSvtMiTI
+# Transcript: I Learn Faster Than 99% of People. NotebookLM + Claude Code + Obsidian
 
 **URL:** https://www.youtube.com/watch?v=KRpZSvtMiTI
 **Segments:** 466
+**Channel:** Artem Zhutov
+**Duration:** 18:26
+**Uploaded:** 2026-04-05
 
 ---
 

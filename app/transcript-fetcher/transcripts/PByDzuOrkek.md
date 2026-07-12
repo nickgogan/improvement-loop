@@ -1,7 +1,10 @@
-# Transcript: PByDzuOrkek
+# Transcript: Embeddings, Vector database Agent,, RAG & MCP: How Modern AI Systems Actually Work
 
 **URL:** https://www.youtube.com/watch?v=PByDzuOrkek
 **Segments:** 263
+**Channel:** ByteMonk
+**Duration:** 10:03
+**Uploaded:** 2026-04-11
 
 ---
 

@@ -1,7 +1,10 @@
-# Transcript: 7huCP6RkcY4
+# Transcript: I Built Self-Evolving Claude Code Memory w/ Karpathy's LLM Knowledge Bases
 
 **URL:** https://www.youtube.com/watch?v=7huCP6RkcY4
 **Segments:** 566
+**Channel:** Cole Medin
+**Duration:** 19:23
+**Uploaded:** 2026-04-06
 
 ---
 

@@ -1,7 +1,10 @@
-# Transcript: kVPVmz0qJvY
+# Transcript: Your Agent Produces at 100x. Your Org Reviews at 3x. That's the Problem.
 
 **URL:** https://www.youtube.com/watch?v=kVPVmz0qJvY
 **Segments:** 625
+**Channel:** AI News & Strategy Daily | Nate B Jones
+**Duration:** 21:13
+**Uploaded:** 2026-04-05
 
 ---
 
