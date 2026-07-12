@@ -18,5 +18,6 @@ findings:
 - ace-execution-feedback-no-labels-required.md
 date_added: '2026-04-01'
 date_processed: '2026-04-07'
+date_published: "2026-04-24"
 ---
 # Agentic Context Engineering (ACE) -- ICLR 2026 Poster

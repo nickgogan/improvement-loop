@@ -21,6 +21,7 @@ findings:
   - "visible-quality-as-trust-proxy-for-invisible-work.md"
 date_added: "2026-05-24"
 date_processed: "2026-05-24"
+date_published: "2026-05-04"
 ---
 
 # The Problem with AI Agents No One is Talking About

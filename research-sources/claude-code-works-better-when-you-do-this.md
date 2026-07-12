@@ -31,4 +31,5 @@ findings:
 - trajectory-engineering-non-linear-session-forking.md
 date_added: '2026-04-07'
 date_processed: '2026-04-07'
+date_published: "2026-04-01"
 ---

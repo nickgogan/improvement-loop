@@ -17,7 +17,7 @@ sources:
 - seven-levels-context-infrastructure-ai-agents.md
 proposals: []
 date_discovered: '2026-04-19'
-last_updated: '2026-04-20'
+last_updated: '2026-07-12'
 related_findings:
 - file: claudemd-as-knowledge-base-traversal-guide.md
   rel: extends
@@ -31,14 +31,18 @@ related_findings:
   rel: extends
 - file: obsidian-relay-plugin-for-team-context-sync.md
   rel: extends
+- file: per-folder-heterogeneous-retrieval-levels.md
+  rel: same-problem
+- file: scale-threshold-heuristic-obsidian-vs-rag.md
+  rel: enabled-by
 pipeline_status: synthesized
 consumed_by:
-  - "building-agentic-systems.md"
-  - artifact: reach-l6-before-l7
-    type: extracted-artifact
-    form: rule
-    date: 2026-04-27
-    session: 83
+- building-agentic-systems.md
+- artifact: reach-l6-before-l7
+  type: extracted-artifact
+  form: rule
+  date: 2026-04-27
+  session: 83
 ---
 # Context Infrastructure Seven-Level Maturity Model
 

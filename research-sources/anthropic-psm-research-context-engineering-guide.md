@@ -9,10 +9,12 @@ added_by: Nick
 tags:
 - prompt-engineering
 url: https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering
-authority: []
+authority:
+- anthropic.md
 findings:
 - self-evolving-loop-pattern.md
 date_added: '2026-03-15'
 date_processed: '2026-03-22'
+date_published: null
 ---
 # Anthropic PSM Research / Context Engineering Guide

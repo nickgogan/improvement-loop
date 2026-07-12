@@ -14,6 +14,7 @@ authority: []
 findings: []
 date_added: "2026-05-24"
 date_processed: "2026-05-24"
+date_published: "2026-04-29"
 ---
 
 # Pragmatic Engineer: Building Pi and What Makes Self-Modifying Agents

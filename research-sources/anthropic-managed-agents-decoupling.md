@@ -22,4 +22,5 @@ findings:
   - "tool-gateway-security-boundary.md"
 date_added: "2026-04-09"
 date_processed: "2026-04-09"
+date_published: "2026-04-08"
 ---

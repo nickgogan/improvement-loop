@@ -18,5 +18,6 @@ findings:
 - superpowers-plugin-spec-driven-sub-agent-orchestra.md
 date_added: '2026-03-28'
 date_processed: '2026-03-28'
+date_published: "2025-10-09"
 ---
 # obra/superpowers: Agentic Skills Framework & Dev Methodology

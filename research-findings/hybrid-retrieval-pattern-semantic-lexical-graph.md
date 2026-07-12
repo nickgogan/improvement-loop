@@ -16,7 +16,7 @@ sources:
 - sdk-vs-framework-decision-ai-agents.md
 proposals: null
 date_discovered: '2026-03-18'
-last_updated: '2026-05-25'
+last_updated: '2026-07-12'
 related_findings:
 - file: ace-agentic-context-engineering-rag-based.md
   rel: same-problem
@@ -30,9 +30,15 @@ related_findings:
   rel: extended-by
 - file: file-search-outperforms-rag-for-small-corpora.md
   rel: same-problem
-pipeline_status: "synthesized"
+- file: curated-spine-plus-rag-hybrid-query-router.md
+  rel: same-problem
+- file: markdown-git-system-of-record-derived-disposable-db.md
+  rel: enabled-by
+- file: per-folder-heterogeneous-retrieval-levels.md
+  rel: same-problem
+pipeline_status: synthesized
 consumed_by:
-  - "structuring-agent-context.md"
+- structuring-agent-context.md
 ---
 # Hybrid Retrieval Pattern (Semantic + Lexical + Graph)
 

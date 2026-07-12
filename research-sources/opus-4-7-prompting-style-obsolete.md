@@ -14,6 +14,7 @@ findings:
   - "thesis-anchored-multi-question-prompting.md"
 date_added: "2026-05-24"
 date_processed: "2026-05-24"
+date_published: "2026-05-21"
 ---
 
 # Opus 4.7 and OpenAI 5.5 Made Your Prompting Style Obsolete

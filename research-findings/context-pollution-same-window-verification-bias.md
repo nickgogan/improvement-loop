@@ -27,9 +27,13 @@ related_findings:
   rel: same-problem
 - file: ultra-review-multi-agent-bug-hunting-fleet.md
   rel: same-problem
+- file: cross-vendor-adversarial-build-attack-loop.md
+  rel: same-problem
+- file: no-mistakes-post-implementation-validation-pipeline.md
+  rel: extended-by
 proposals: null
 date_discovered: '2026-04-07'
-last_updated: '2026-04-09'
+last_updated: '2026-07-12'
 pipeline_status: synthesized
 consumed_by:
 - building-agent-evaluation-suites.md

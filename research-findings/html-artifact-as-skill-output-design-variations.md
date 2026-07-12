@@ -1,31 +1,34 @@
 ---
-name: "HTML Artifact as Rich Skill Output for Visual Decision-Making"
-summary: "Generating single-file HTML artifacts as the output format for skills enables visual decision-making over multiple distinct alternatives — particularly for design variations, content previews, and concept exploration — where the human knows the right answer on sight but cannot describe it upfront."
+name: HTML Artifact as Rich Skill Output for Visual Decision-Making
+summary: Generating single-file HTML artifacts as the output format for skills enables visual decision-making over multiple distinct alternatives — particularly for design variations, content previews,
+  and concept exploration — where the human knows the right answer on sight but cannot describe it upfront.
 implementation_notes: null
-category: "Tool Integration"
-evidence_strength: "Medium (practitioner-documented)"
-adoption_status: "Not Yet Started"
-priority: "P2 (Strong / needs design)"
+category: Tool Integration
+evidence_strength: Medium (practitioner-documented)
+adoption_status: Not Yet Started
+priority: P2 (Strong / needs design)
 applicability:
-  - "S3 (Claude Code Build)"
+- S3 (Claude Code Build)
 adopted_in: []
 sources:
-  - "interactive-html-artifacts-claude-code-bun.md"
-  - "markdown-vs-html-claude-code-derrick-anthropic.md"
+- interactive-html-artifacts-claude-code-bun.md
+- markdown-vs-html-claude-code-derrick-anthropic.md
 related_findings:
-  - file: "skills-as-markdown-sop-files-encode-processes.md"
-    rel: "enables"
-  - file: "meta-skill-for-skill-authorship.md"
-    rel: "same-problem"
-  - file: "html-output-as-human-in-the-loop-restorer.md"
-    rel: "extends"
-  - file: "format-constrained-improvisation-tax.md"
-    rel: "same-problem"
-  - file: "html-information-density-eight-primitives-vs-markdown-four.md"
-    rel: "enables"
+- file: skills-as-markdown-sop-files-encode-processes.md
+  rel: enables
+- file: meta-skill-for-skill-authorship.md
+  rel: same-problem
+- file: html-output-as-human-in-the-loop-restorer.md
+  rel: extends
+- file: format-constrained-improvisation-tax.md
+  rel: same-problem
+- file: html-information-density-eight-primitives-vs-markdown-four.md
+  rel: enables
+- file: throwaway-html-editor-structured-input-surface.md
+  rel: extended-by
 proposals: null
-date_discovered: "2026-04-20"
-last_updated: "2026-05-24"
+date_discovered: '2026-04-20'
+last_updated: '2026-07-12'
 pipeline_status: classified
 consumed_by: []
 ---

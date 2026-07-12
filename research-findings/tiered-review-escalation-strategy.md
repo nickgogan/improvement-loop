@@ -1,34 +1,37 @@
 ---
-name: "Tiered Review Escalation Strategy"
-summary: "Match review depth to PR importance: quick single-pass /review for routine PRs, add cross-model verification for more coverage, escalate to full multi-agent fleet review (Ultra Review) only for critical or large features. Cost scales with risk."
+name: Tiered Review Escalation Strategy
+summary: 'Match review depth to PR importance: quick single-pass /review for routine PRs, add cross-model verification for more coverage, escalate to full multi-agent fleet review (Ultra Review) only for
+  critical or large features. Cost scales with risk.'
 implementation_notes: null
-category: "Evaluation"
-evidence_strength: "Medium (practitioner-documented)"
-adoption_status: "Not Yet Started"
-priority: "P2 (Design Required)"
+category: Evaluation
+evidence_strength: Medium (practitioner-documented)
+adoption_status: Not Yet Started
+priority: P2 (Design Required)
 applicability:
-  - "S3 (Claude Code Build)"
-  - "General / Cross-System"
+- S3 (Claude Code Build)
+- General / Cross-System
 adopted_in: []
 sources:
-  - "claude-code-ultra-review-multi-agent-verification.md"
+- claude-code-ultra-review-multi-agent-verification.md
 related_findings:
-  - file: ultra-review-multi-agent-bug-hunting-fleet.md
-    rel: extends
-  - file: cross-model-verification-for-bug-finding.md
-    rel: extends
-  - file: task-complexity-tiering-quick-campaign-deep-build.md
-    rel: same-problem
-  - file: two-stage-sequential-review.md
-    rel: same-problem
-  - file: gstack-review-army-parallel-specialist-dispatch.md
-    rel: same-problem
+- file: ultra-review-multi-agent-bug-hunting-fleet.md
+  rel: extends
+- file: cross-model-verification-for-bug-finding.md
+  rel: extends
+- file: task-complexity-tiering-quick-campaign-deep-build.md
+  rel: same-problem
+- file: two-stage-sequential-review.md
+  rel: same-problem
+- file: gstack-review-army-parallel-specialist-dispatch.md
+  rel: same-problem
+- file: no-mistakes-post-implementation-validation-pipeline.md
+  rel: same-problem
 proposals: null
-date_discovered: "2026-04-19"
-last_updated: "2026-04-19"
+date_discovered: '2026-04-19'
+last_updated: '2026-07-12'
 pipeline_status: synthesized
 consumed_by:
-  - "building-agent-evaluation-suites.md"
+- building-agent-evaluation-suites.md
 ---
 # Tiered Review Escalation Strategy
 

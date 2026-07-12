@@ -21,4 +21,5 @@ findings:
   - "declarative-goal-driven-agent-prompting.md"
 date_added: "2026-04-20"
 date_processed: "2026-04-20"
+date_published: "2026-04-16"
 ---

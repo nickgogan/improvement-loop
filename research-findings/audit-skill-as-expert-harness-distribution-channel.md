@@ -1,8 +1,10 @@
 ---
 name: Audit-Skill as Expert Harness Distribution Channel
-summary: |-
-  Nate B. Jones distributes his "12 agent primitives" expertise as a free installable Claude Code skill package that runs a gap-analysis audit against the user's own codebase and reports which of the 12 primitives are missing. A parallel example is Supermemory's MemoryBench, distributed as `npx skills add supermemoryai/memorybench` — install turns the expert's mental model into a runnable diagnostic against your code. This is a new expert-distribution pattern: replace "read my blog / buy my course" with "install my skill and get a customized report."
-implementation_notes: MetaSystem could mirror this pattern once IL is mature — package consumer-facing audits (assess-agent, assess-prompt, assess-skill) as installable skills distributable outside the workspace. Not an adoption goal for this session; pattern worth monitoring.
+summary: 'Nate B. Jones distributes his "12 agent primitives" expertise as a free installable Claude Code skill package that runs a gap-analysis audit against the user''s own codebase and reports which
+  of the 12 primitives are missing. A parallel example is Supermemory''s MemoryBench, distributed as `npx skills add supermemoryai/memorybench` — install turns the expert''s mental model into a runnable
+  diagnostic against your code. This is a new expert-distribution pattern: replace "read my blog / buy my course" with "install my skill and get a customized report."'
+implementation_notes: MetaSystem could mirror this pattern once IL is mature — package consumer-facing audits (assess-agent, assess-prompt, assess-skill) as installable skills distributable outside the
+  workspace. Not an adoption goal for this session; pattern worth monitoring.
 category: Tool Integration
 evidence_strength: Medium (practitioner-documented)
 adoption_status: Not Yet Started
@@ -22,9 +24,11 @@ related_findings:
   rel: same-problem
 - file: template-generated-skills-multi-host.md
   rel: enables
+- file: distribution-as-floor-raising-one-click-skill-buttons.md
+  rel: same-problem
 proposals: null
 date_discovered: '2026-04-23'
-last_updated: '2026-04-23'
+last_updated: '2026-07-12'
 pipeline_status: raw
 consumed_by: []
 ---

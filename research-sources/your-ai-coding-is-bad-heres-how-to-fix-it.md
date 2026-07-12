@@ -20,5 +20,6 @@ findings:
 - test-driven-development-as-counterweight-to-agenti.md
 date_added: '2026-03-22'
 date_processed: '2026-03-22'
+date_published: "2026-01-16"
 ---
 # Your AI Coding is BAD. Here's How to Fix It.

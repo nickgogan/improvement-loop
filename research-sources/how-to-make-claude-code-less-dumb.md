@@ -20,5 +20,6 @@ findings:
 - warp-terminal-for-multi-instance-claude-code-manag.md
 date_added: '2026-03-22'
 date_processed: '2026-03-22'
+date_published: "2026-03-15"
 ---
 # How to make Claude Code less dumb

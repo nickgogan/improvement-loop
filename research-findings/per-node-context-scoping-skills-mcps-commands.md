@@ -1,33 +1,37 @@
 ---
-name: "Per-Node Context Scoping (Skills, MCPs, and Commands)"
-summary: "Archon allows specifying which skills, MCP servers, and commands are available at each workflow node. A validation node might load a linting skill, a planning node might connect an MCP server for documentation, while an implementation node loads a different skill set. Context is scoped to the step, not the workflow — preventing irrelevant tool/skill context from bloating nodes that do not need it."
+name: Per-Node Context Scoping (Skills, MCPs, and Commands)
+summary: Archon allows specifying which skills, MCP servers, and commands are available at each workflow node. A validation node might load a linting skill, a planning node might connect an MCP server for
+  documentation, while an implementation node loads a different skill set. Context is scoped to the step, not the workflow — preventing irrelevant tool/skill context from bloating nodes that do not need
+  it.
 implementation_notes: null
-category: "Context Engineering"
-evidence_strength: "Medium (practitioner-documented)"
-adoption_status: "Not Yet Started"
-priority: "P2 (Design Required)"
+category: Context Engineering
+evidence_strength: Medium (practitioner-documented)
+adoption_status: Not Yet Started
+priority: P2 (Design Required)
 applicability:
-  - "S3 (Claude Code Build)"
-  - "General"
+- S3 (Claude Code Build)
+- General
 adopted_in: []
 sources:
-  - "archon-open-source-harness-builder.md"
+- archon-open-source-harness-builder.md
 related_findings:
-  - file: "archon-yaml-defined-harness-workflows.md"
-    rel: "extends"
-  - file: "per-node-tool-restrictions-workflow-governance.md"
-    rel: "extends"
-  - file: "tiered-context-injection-over-monolithic-files.md"
-    rel: "same-problem"
-  - file: "new-chat-per-agent-step-context-hygiene.md"
-    rel: "same-problem"
+- file: archon-yaml-defined-harness-workflows.md
+  rel: extends
+- file: per-node-tool-restrictions-workflow-governance.md
+  rel: extends
+- file: tiered-context-injection-over-monolithic-files.md
+  rel: same-problem
+- file: new-chat-per-agent-step-context-hygiene.md
+  rel: same-problem
+- file: on-demand-vs-always-on-skill-activation.md
+  rel: same-problem
 proposals: null
-date_discovered: "2026-05-25"
-last_updated: "2026-05-25"
-pipeline_status: "classified"
+date_discovered: '2026-05-25'
+last_updated: '2026-07-12'
+pipeline_status: classified
 consumed_by: []
 tags:
-  - "session-95-reextract"
+- session-95-reextract
 ---
 
 ## What It Is

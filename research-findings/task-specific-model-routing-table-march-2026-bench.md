@@ -34,9 +34,17 @@ related_findings:
   rel: extended-by
 - file: kimi-k2-line-near-opus-coding-with-safety-gap.md
   rel: extended-by
+- file: center-vs-edge-of-distribution-task-classification.md
+  rel: enabled-by
+- file: data-normalization-as-cheap-model-enabler.md
+  rel: same-problem
+- file: effort-level-tuning-as-first-order-cost-lever.md
+  rel: same-problem
+- file: prototype-at-frontier-then-downshift.md
+  rel: enabled-by
 proposals: []
 date_discovered: '2026-04-01'
-last_updated: '2026-07-11'
+last_updated: '2026-07-12'
 pipeline_status: synthesized
 consumed_by:
 - agent-architecture-decisions.md

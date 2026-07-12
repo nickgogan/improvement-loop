@@ -17,6 +17,7 @@ findings:
   - "metacognitive-self-modification-hyperagents.md"
 date_added: "2026-03-16"
 date_processed: "2026-04-07"
+date_published: "2025-11-04"
 ---
 
 # OpenAI Self-Evolving Agents Cookbook

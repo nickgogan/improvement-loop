@@ -14,6 +14,7 @@ findings:
   - "task-specific-model-routing-table-march-2026-bench.md"
 date_added: "2026-04-01"
 date_processed: "2026-04-07"
+date_published: "2026-03-30"
 ---
 
 # Gemini vs GPT vs Claude Benchmark Comparison -- Lorka AI

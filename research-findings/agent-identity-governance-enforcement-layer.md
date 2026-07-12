@@ -43,9 +43,11 @@ related_findings:
   rel: same-problem
 - file: actor-passport-schema-bound-identity.md
   rel: same-problem
+- file: agent-owner-card-human-facing-registry.md
+  rel: same-problem
 proposals: []
 date_discovered: '2026-04-07'
-last_updated: '2026-04-19'
+last_updated: '2026-07-12'
 pipeline_status: synthesized
 consumed_by:
 - agent-governance-and-trust.md

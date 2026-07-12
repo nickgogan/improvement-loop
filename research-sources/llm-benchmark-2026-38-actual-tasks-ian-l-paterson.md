@@ -15,5 +15,6 @@ findings:
 - task-specific-model-routing-table-march-2026-bench.md
 date_added: '2026-04-01'
 date_processed: '2026-04-01'
+date_published: "2026-03-08"
 ---
 # LLM Benchmark 2026: 38 Actual Tasks -- Ian L. Paterson

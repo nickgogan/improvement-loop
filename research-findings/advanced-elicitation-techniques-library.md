@@ -16,7 +16,7 @@ sources:
 - prompting-best-practices-nick-gogan.md
 proposals: []
 date_discovered: '2026-04-07'
-last_updated: '2026-05-24'
+last_updated: '2026-07-12'
 related_findings:
 - file: yaml-templates-with-embedded-elicitation-instructions.md
   rel: enables
@@ -61,6 +61,10 @@ related_findings:
 - file: brevity-constraints-reverse-llm-performance.md
   rel: contradicts
 - file: thesis-anchored-multi-question-prompting.md
+  rel: same-problem
+- file: frontier-model-as-unknown-unknown-elicitor.md
+  rel: same-problem
+- file: unknowns-reduction-phase-anchored-technique-set.md
   rel: same-problem
 pipeline_status: synthesized
 consumed_by:

@@ -1,30 +1,38 @@
 ---
 name: Skill Description Optimization Loop with Held-Out Test Set
-summary: |-
-  Anthropic's skill-creator skill ships a description-optimization loop that treats skill triggering as a model-evaluated classification problem. Author generates 20 eval queries (8-10 should-trigger, 8-10 should-not-trigger, focusing on near-misses), the loop splits 60/40 into train/test, runs each query 3 times for reliable trigger rate, asks Claude to propose description improvements based on failures, re-evaluates, iterates up to 5 times. Best description selected by TEST score (not train score) to avoid overfitting. Implementation: `python -m scripts.run_loop --eval-set <path> --skill-path <path> --model <id> --max-iterations 5`.
-implementation_notes: "Eval-set design rules from skill-creator: queries must be realistic and specific (file paths, personal context, company names, casual speech). 'Format this data' is BAD. 'ok so my boss just sent me this xlsx file (its in my downloads, called something like \"Q4 sales final FINAL v2.xlsx\") and she wants me to add a column for profit margin' is GOOD. For should-not-trigger queries, the most valuable ones are near-misses sharing keywords but needing something different — NOT obviously irrelevant. 'Write a fibonacci function' for a PDF skill is too easy and tests nothing. Use the model ID from your current session so triggering test matches user experience. Triggering mechanism note: Claude only consults skills for tasks it can't handle on its own — simple single-step queries may not trigger a skill even with perfect description match. Substantive multi-step queries reliably trigger."
+summary: 'Anthropic''s skill-creator skill ships a description-optimization loop that treats skill triggering as a model-evaluated classification problem. Author generates 20 eval queries (8-10 should-trigger,
+  8-10 should-not-trigger, focusing on near-misses), the loop splits 60/40 into train/test, runs each query 3 times for reliable trigger rate, asks Claude to propose description improvements based on failures,
+  re-evaluates, iterates up to 5 times. Best description selected by TEST score (not train score) to avoid overfitting. Implementation: `python -m scripts.run_loop --eval-set <path> --skill-path <path>
+  --model <id> --max-iterations 5`.'
+implementation_notes: 'Eval-set design rules from skill-creator: queries must be realistic and specific (file paths, personal context, company names, casual speech). ''Format this data'' is BAD. ''ok so
+  my boss just sent me this xlsx file (its in my downloads, called something like "Q4 sales final FINAL v2.xlsx") and she wants me to add a column for profit margin'' is GOOD. For should-not-trigger queries,
+  the most valuable ones are near-misses sharing keywords but needing something different — NOT obviously irrelevant. ''Write a fibonacci function'' for a PDF skill is too easy and tests nothing. Use the
+  model ID from your current session so triggering test matches user experience. Triggering mechanism note: Claude only consults skills for tasks it can''t handle on its own — simple single-step queries
+  may not trigger a skill even with perfect description match. Substantive multi-step queries reliably trigger.'
 category: Evaluation
 evidence_strength: Strong (production-tested)
 adoption_status: Not Yet Started
 priority: P1 (Implement Now)
 applicability:
-  - "S3 (Claude Code Build)"
-  - "General"
+- S3 (Claude Code Build)
+- General
 adopted_in: []
 sources:
-  - "anthropic-skills-repo.md"
+- anthropic-skills-repo.md
 related_findings:
-  - file: "skill-md-frontmatter-as-discovery-trigger-primitive.md"
-    rel: "extends"
-  - file: "skill-description-budget-context-overflow.md"
-    rel: "same-problem"
-  - file: "machine-framework-for-agentic-coding-skill-asses.md"
-    rel: "same-problem"
-  - file: "generator-assessor-separation-in-skill-iteration.md"
-    rel: "enabled-by"
+- file: skill-md-frontmatter-as-discovery-trigger-primitive.md
+  rel: extends
+- file: skill-description-budget-context-overflow.md
+  rel: same-problem
+- file: machine-framework-for-agentic-coding-skill-asses.md
+  rel: same-problem
+- file: generator-assessor-separation-in-skill-iteration.md
+  rel: enabled-by
+- file: meta-skill-for-skill-authorship.md
+  rel: extended-by
 proposals: null
 date_discovered: '2026-06-11'
-last_updated: '2026-06-11'
+last_updated: '2026-07-12'
 pipeline_status: raw
 consumed_by: []
 ---

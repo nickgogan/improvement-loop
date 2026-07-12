@@ -1,38 +1,41 @@
 ---
-name: "HTML Output as Human-in-the-Loop Restorer"
-summary: "Markdown walls of text cause humans to stop reading agent output, silently degrading oversight to zero. Switching to HTML restores the human review gate because the format is navigable, visual, and engaging enough that the human actually reads, clicks, and suggests changes. The output format is not cosmetic — it is a governance mechanism."
+name: HTML Output as Human-in-the-Loop Restorer
+summary: Markdown walls of text cause humans to stop reading agent output, silently degrading oversight to zero. Switching to HTML restores the human review gate because the format is navigable, visual,
+  and engaging enough that the human actually reads, clicks, and suggests changes. The output format is not cosmetic — it is a governance mechanism.
 implementation_notes: null
-category: "Context Engineering"
-evidence_strength: "Medium (practitioner-documented)"
-adoption_status: "Not Yet Started"
-priority: "P1"
+category: Context Engineering
+evidence_strength: Medium (practitioner-documented)
+adoption_status: Not Yet Started
+priority: P1
 applicability:
-  - "S3 (Claude Code Build)"
-  - "General"
+- S3 (Claude Code Build)
+- General
 adopted_in: []
 sources:
-  - "markdown-vs-html-claude-code-derrick-anthropic.md"
+- markdown-vs-html-claude-code-derrick-anthropic.md
 related_findings:
-  - file: "compound-review-debt-from-deferred-inspection.md"
-    rel: "same-problem"
-  - file: "staged-delivery-for-review-digestibility.md"
-    rel: "same-problem"
-  - file: "agui-human-control-layer-not-ui.md"
-    rel: "same-problem"
-  - file: "human-on-the-loop-hotl-autonomy-tiering-framework.md"
-    rel: "same-problem"
-  - file: "html-artifact-as-skill-output-design-variations.md"
-    rel: "enables"
-  - file: "throwaway-html-editor-structured-input-surface.md"
-    rel: "enables"
+- file: compound-review-debt-from-deferred-inspection.md
+  rel: same-problem
+- file: staged-delivery-for-review-digestibility.md
+  rel: same-problem
+- file: agui-human-control-layer-not-ui.md
+  rel: same-problem
+- file: human-on-the-loop-hotl-autonomy-tiering-framework.md
+  rel: same-problem
+- file: html-artifact-as-skill-output-design-variations.md
+  rel: enables
+- file: throwaway-html-editor-structured-input-surface.md
+  rel: enables
+- file: distribution-as-floor-raising-one-click-skill-buttons.md
+  rel: same-problem
 proposals: null
-date_discovered: "2026-05-25"
-last_updated: "2026-05-25"
-pipeline_status: "synthesized"
+date_discovered: '2026-05-25'
+last_updated: '2026-07-12'
+pipeline_status: synthesized
 consumed_by:
-  - "defending-agent-context.md"
+- defending-agent-context.md
 tags:
-  - "session-95-reextract"
+- session-95-reextract
 ---
 
 # HTML Output as Human-in-the-Loop Restorer

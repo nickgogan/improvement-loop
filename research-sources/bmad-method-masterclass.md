@@ -27,4 +27,5 @@ findings:
   - "qa-agent-independent-compliance-review.md"
 date_added: "2026-04-07"
 date_processed: "2026-04-07"
+date_published: "2025-08-02"
 ---

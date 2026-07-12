@@ -15,5 +15,6 @@ findings:
 - org-chart-hierarchy-as-scalable-claude-code.md
 date_added: '2026-03-22'
 date_processed: '2026-03-22'
+date_published: "2026-03-15"
 ---
 # Claude Code, Paperclip, & The Rise of "AI Agent Companies"

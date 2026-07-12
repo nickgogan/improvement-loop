@@ -27,6 +27,7 @@ findings:
   - "three-tier-orchestration-hierarchy-scheduler-worker-framework.md"
 date_added: "2026-05-24"
 date_processed: "2026-05-24"
+date_published: "2026-05-01"
 ---
 
 # GStack + GSD + Superpowers Workflow Is Insane!

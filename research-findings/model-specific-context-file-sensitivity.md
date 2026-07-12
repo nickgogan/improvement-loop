@@ -13,14 +13,19 @@ applicability:
 adopted_in: []
 sources:
 - eth-zurich-context-files-paper-march-2026.md
+- glm-5-2-is-free-and-beats-claude-on-most-work.md
 related_findings:
 - file: context-file-instruction-bloat-eth-zurich.md
   rel: extends
 - file: pointers-over-copies-in-context-files.md
   rel: same-problem
+- file: harness-non-portability-across-model-families.md
+  rel: extended-by
+- file: provider-adaptive-prompt-rendering.md
+  rel: extended-by
 proposals: []
 date_discovered: '2026-04-07'
-last_updated: '2026-04-07'
+last_updated: '2026-07-12'
 pipeline_status: synthesized
 consumed_by:
 - structuring-agent-context.md
@@ -58,6 +63,15 @@ Model-specific context profiles: maintain different context file strategies per 
 ## Potential Failure Modes
 
 Model-specific findings expire quickly as models are updated. Claude Code's context management may change with new releases, potentially making context files more or less effective. The study tested specific model versions — generalization to future versions is uncertain.
+
+## Corroboration Note — 2026-07-12
+
+Production-scale corroboration from the Lindy migration (Nate B Jones, GLM 5.2 video —
+see harness-non-portability-across-model-families): moving from Claude to a DeepSeek
+architecture required rewriting not just context files but the memory architecture,
+prompts, and tool-call handling. The ETH Zurich lab result (context strategy is
+model-specific in kind, not degree) now has its strongest practitioner counterpart at
+whole-harness scope.
 
 ## Extraction Note — 2026-04-27
 

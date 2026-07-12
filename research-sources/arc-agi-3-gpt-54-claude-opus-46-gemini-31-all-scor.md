@@ -16,6 +16,7 @@ findings:
 - benchmark-signal-mismatch-optimization-gap.md
 date_added: "2026-04-01"
 date_processed: "2026-04-01"
+date_published: "2026-03-30"
 ---
 
 # ARC-AGI-3: GPT-5.4, Claude Opus 4.6, Gemini 3.1 All Score 0%

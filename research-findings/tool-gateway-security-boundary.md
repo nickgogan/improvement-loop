@@ -31,9 +31,11 @@ related_findings:
   rel: enabled-by
 - file: explicit-permission-allow-listing-for-agent-resou.md
   rel: enabled-by
+- file: ai-gateway-model-traffic-layer.md
+  rel: same-problem
 proposals: []
 date_discovered: '2026-04-07'
-last_updated: '2026-04-09'
+last_updated: '2026-07-12'
 pipeline_status: synthesized
 consumed_by:
 - agent-governance-and-trust.md

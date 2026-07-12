@@ -18,6 +18,7 @@ findings:
   - "agentic-speculation-four-characteristics-data-system-redesign.md"
 date_added: "2026-04-20"
 date_processed: "2026-04-20"
+date_published: "2025-08-31"
 ---
 
 # Supporting Our AI Overlords: Redesigning Data Systems to be Agent-First

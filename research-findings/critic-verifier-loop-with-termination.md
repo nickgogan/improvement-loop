@@ -24,12 +24,14 @@ related_findings:
   rel: contradicts
 - file: verification-agent-seven-prompt-patterns.md
   rel: enabled-by
+- file: harness-composition-six-pattern-taxonomy.md
+  rel: same-problem
 proposals: []
 date_discovered: '2026-04-07'
-last_updated: '2026-04-08'
+last_updated: '2026-07-12'
 pipeline_status: synthesized
 consumed_by:
-  - "agent-design-patterns.md"
+- agent-design-patterns.md
 ---
 
 # Critic/Verifier Loop with Termination Conditions

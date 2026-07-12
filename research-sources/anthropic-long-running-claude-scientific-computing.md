@@ -16,4 +16,5 @@ findings:
   - "multi-day-autonomous-scientific-computing-workflow.md"
 date_added: "2026-04-09"
 date_processed: "2026-04-09"
+date_published: "2026-03-23"
 ---

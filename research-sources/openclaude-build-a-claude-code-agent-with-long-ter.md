@@ -20,6 +20,7 @@ findings:
 - structured-fact-extraction-from-conversations.md
 date_added: '2026-04-01'
 date_processed: '2026-04-07'
+date_published: "2026-03-23"
 ---
 # OpenClaude: Build a Claude Code Agent with Long-Term Memory (Hindsight)
 

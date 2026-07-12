@@ -16,9 +16,11 @@ adopted_in: []
 sources:
 - seven-levels-context-infrastructure-ai-agents.md
 - agentic-os-five-pillars-claude-code.md
+- the-folder-structure-that-makes-ai-build-better-software.md
+- the-agentic-os-setup-that-will-10x-claude-code.md
 proposals: []
 date_discovered: '2026-04-19'
-last_updated: '2026-05-25'
+last_updated: '2026-07-12'
 related_findings:
 - file: claudemd-as-knowledge-base-traversal-guide.md
   rel: extends
@@ -63,6 +65,20 @@ Skills become dependent on vault file structure — reorganizing the vault break
 Agentic Academy's "Five-Pillar Agentic OS" video independently validates this pattern as "business context" — pillar 5 (the foundation layer). Their implementation: a single `brand-context/` folder containing voice profile, ICP, positioning, and client details. Every skill references this folder. "Update the information once and every skill gets that update when it runs." They explicitly frame this as the #1 thing to build first: "Start with the business brain, not the agents. Every feature gets multiplied by having the solid context foundation layer underneath it."
 
 The adapted Anthropic skill-creator skill enforces context hygiene: SKILL.md kept under 200 lines, all reference context in separate files loaded on-demand. This matches the "pointers over copies" principle — skills reference the brand context folder rather than embedding context.
+
+## Additional Evidence — 2026-07-12
+
+Two more independent channels corroborate the pointers-over-copies principle. AI Code
+That Works applies it at the root-file altitude — the router "routes, it does not
+contain... its job is to point, not to hold," with all detail living in the pointed-to
+files (the same single-source-of-truth argument, one level up). Chase AI's agentic-OS
+breakdown shows the operational payoff of skills sharing one vault: skill and
+automation outputs are written back into the same vault the skills read from, "logged
+in a way that makes sense for loop engineering — the loop should be able to see what
+past runs it's done so it can make future improvements." Pointer-coupled skills get
+read-your-own-history loops for free; embedded-context skills don't. The pattern now
+spans root-router, skill-context, and loop-state applications across independent
+channels.
 
 ## Extraction Note — 2026-04-27
 

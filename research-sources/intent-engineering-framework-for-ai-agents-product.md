@@ -19,5 +19,6 @@ findings:
 - stop-rules-as-execution-boundaries.md
 date_added: '2026-04-01'
 date_processed: '2026-04-07'
+date_published: "2026-01-13"
 ---
 # Intent Engineering Framework for AI Agents -- Product Compass

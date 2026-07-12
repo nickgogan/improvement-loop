@@ -26,9 +26,11 @@ related_findings:
   rel: same-problem
 - file: no-single-memory-architecture-workload-alignment.md
   rel: same-problem
+- file: markdown-git-system-of-record-derived-disposable-db.md
+  rel: same-problem
 proposals: null
 date_discovered: '2026-05-25'
-last_updated: '2026-07-11'
+last_updated: '2026-07-12'
 pipeline_status: raw
 consumed_by: []
 ---

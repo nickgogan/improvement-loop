@@ -24,6 +24,7 @@ findings:
   - "secure-by-default-posture-as-organizational-invariant.md"
 date_added: "2026-05-24"
 date_processed: "2026-05-24"
+date_published: "2026-05-10"
 ---
 
 # Anthropic And OpenAI Just Admitted The Model Isn't Enough

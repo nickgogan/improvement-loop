@@ -32,4 +32,5 @@ findings:
   - "ultra-review-multi-agent-bug-hunting-fleet.md"
 date_added: "2026-04-09"
 date_processed: "2026-04-09"
+date_published: "2026-04-08"
 ---

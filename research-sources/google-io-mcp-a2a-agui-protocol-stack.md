@@ -25,6 +25,7 @@ findings:
   - "tool-access-as-security-boundary-not-feature-toggle.md"
 date_added: "2026-05-24"
 date_processed: "2026-05-24"
+date_published: "2026-05-19"
 ---
 
 # Google Spent a Year Stitching MCP, A2A, AG-UI Together. I/O Today.

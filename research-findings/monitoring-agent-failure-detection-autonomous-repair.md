@@ -1,34 +1,37 @@
 ---
-name: "Monitoring Agent as Failure-Detection and Autonomous Repair Layer"
-summary: "Add a monitoring agent that observes every query/interaction with a primary agent, detects failures, diagnoses root causes (missing tools, outdated skills files, missing database indexes), writes code fixes, opens PRs, has a second agent review and merge. Demonstrated live at YC: failures detected overnight, fixes deployed before humans arrive next morning."
+name: Monitoring Agent as Failure-Detection and Autonomous Repair Layer
+summary: 'Add a monitoring agent that observes every query/interaction with a primary agent, detects failures, diagnoses root causes (missing tools, outdated skills files, missing database indexes), writes
+  code fixes, opens PRs, has a second agent review and merge. Demonstrated live at YC: failures detected overnight, fixes deployed before humans arrive next morning.'
 implementation_notes: null
-category: "Agentic Systems"
-evidence_strength: "Medium (practitioner-documented)"
-adoption_status: "Not Yet Started"
-priority: "P2 (Design Required)"
+category: Agentic Systems
+evidence_strength: Medium (practitioner-documented)
+adoption_status: Not Yet Started
+priority: P2 (Design Required)
 applicability:
-  - "S3 (Claude Code Build)"
-  - "General"
+- S3 (Claude Code Build)
+- General
 adopted_in: []
 sources:
-  - "self-improving-company-yc-five-layer-loop.md"
+- self-improving-company-yc-five-layer-loop.md
 related_findings:
-  - file: "five-layer-recursive-ai-loop-architecture.md"
-    rel: "extends"
-  - file: "self-improving-agent-prompt-tool-diagnosis.md"
-    rel: "same-problem"
-  - file: "karpathy-autoresearch-self-improvement-loop.md"
-    rel: "same-problem"
-  - file: "skill-self-improvement-three-approaches.md"
-    rel: "same-problem"
+- file: five-layer-recursive-ai-loop-architecture.md
+  rel: extends
+- file: self-improving-agent-prompt-tool-diagnosis.md
+  rel: same-problem
+- file: karpathy-autoresearch-self-improvement-loop.md
+  rel: same-problem
+- file: skill-self-improvement-three-approaches.md
+  rel: same-problem
+- file: ecosystem-monitoring-meta-loop.md
+  rel: same-problem
 proposals: null
-date_discovered: "2026-05-25"
-last_updated: "2026-05-25"
-pipeline_status: "synthesized"
+date_discovered: '2026-05-25'
+last_updated: '2026-07-12'
+pipeline_status: synthesized
 consumed_by:
-  - building-agentic-systems.md
+- building-agentic-systems.md
 tags:
-  - "session-95-reextract"
+- session-95-reextract
 ---
 
 # Monitoring Agent as Failure-Detection and Autonomous Repair Layer

@@ -15,9 +15,11 @@ adopted_in: []
 sources:
 - your-claude-limit-burns-in-90-minutes.md
 date_discovered: '2026-04-07'
-last_updated: 2026-04-08
+last_updated: '2026-07-12'
 related_findings:
 - file: agent-context-kiss-commandments-minimum-viable.md
+  rel: same-problem
+- file: seven-rung-minimal-code-decision-ladder.md
   rel: same-problem
 pipeline_status: extracted
 consumed_by:

@@ -19,7 +19,7 @@ sources:
 - claude-code-architecture-under-the-hood.md
 proposals: null
 date_discovered: '2026-04-07'
-last_updated: '2026-04-20'
+last_updated: '2026-07-12'
 related_findings:
 - file: tiered-permission-system-bash-safety.md
   rel: extends
@@ -31,6 +31,8 @@ related_findings:
   rel: same-problem
 - file: gstack-spec-team-parallel-research-agents.md
   rel: enables
+- file: nine-primitive-document-agent-skeleton.md
+  rel: same-problem
 pipeline_status: synthesized
 consumed_by:
 - agent-architecture-decisions.md

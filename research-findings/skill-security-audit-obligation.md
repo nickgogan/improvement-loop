@@ -1,31 +1,38 @@
 ---
 name: Skill Security Audit Obligation (Trust Boundary at Install Time)
-summary: |-
-  Anthropic's skill documentation puts the trust boundary at install time, not run time. Skills are powerful precisely because they can invoke tools and execute code; that same property makes them a privileged-code surface. The recommended discipline: install only from trusted sources; audit the SKILL.md, scripts, and bundled resources before use; pay particular attention to instructions that fetch external content (which may carry injected instructions) and to code dependencies. The 'Principle of Lack of Surprise' from skill-creator: a skill's contents should not surprise the user in their intent if described.
-implementation_notes: "Three distinct attack surfaces identified across sources: (1) instructions in SKILL.md that direct Claude to take harmful action (loaded into context, visible at audit time); (2) bundled scripts that execute with the user's environment privileges (filesystem, network, etc.); (3) instructions that fetch external content which may carry injected instructions (dynamic — not visible at audit time). Defensive features in the harness: workspace trust dialog for project-level skills with allowed-tools; reserved-word ban on 'anthropic'/'claude' to prevent impersonation; disableSkillShellExecution setting for managed environments; XML-tag ban in frontmatter. None of these substitute for human audit."
+summary: 'Anthropic''s skill documentation puts the trust boundary at install time, not run time. Skills are powerful precisely because they can invoke tools and execute code; that same property makes them
+  a privileged-code surface. The recommended discipline: install only from trusted sources; audit the SKILL.md, scripts, and bundled resources before use; pay particular attention to instructions that fetch
+  external content (which may carry injected instructions) and to code dependencies. The ''Principle of Lack of Surprise'' from skill-creator: a skill''s contents should not surprise the user in their intent
+  if described.'
+implementation_notes: 'Three distinct attack surfaces identified across sources: (1) instructions in SKILL.md that direct Claude to take harmful action (loaded into context, visible at audit time); (2)
+  bundled scripts that execute with the user''s environment privileges (filesystem, network, etc.); (3) instructions that fetch external content which may carry injected instructions (dynamic — not visible
+  at audit time). Defensive features in the harness: workspace trust dialog for project-level skills with allowed-tools; reserved-word ban on ''anthropic''/''claude'' to prevent impersonation; disableSkillShellExecution
+  setting for managed environments; XML-tag ban in frontmatter. None of these substitute for human audit.'
 category: Governance
 evidence_strength: Strong (production-tested)
 adoption_status: Not Yet Started
 priority: P2 (Design Required)
 applicability:
-  - "S3 (Claude Code Build)"
-  - "General"
+- S3 (Claude Code Build)
+- General
 adopted_in: []
 sources:
-  - "anthropic-equipping-agents-with-agent-skills.md"
-  - "anthropic-agent-skills-overview-docs.md"
-  - "anthropic-claude-code-skills-docs.md"
-  - "anthropic-skills-repo.md"
+- anthropic-equipping-agents-with-agent-skills.md
+- anthropic-agent-skills-overview-docs.md
+- anthropic-claude-code-skills-docs.md
+- anthropic-skills-repo.md
 related_findings:
-  - file: "code-as-deterministic-tool-inside-skills.md"
-    rel: "same-problem"
-  - file: "skill-invocation-control-side-effect-guard.md"
-    rel: "same-problem"
-  - file: "skill-dynamic-context-injection-shell-prerender.md"
-    rel: "same-problem"
+- file: code-as-deterministic-tool-inside-skills.md
+  rel: same-problem
+- file: skill-invocation-control-side-effect-guard.md
+  rel: same-problem
+- file: skill-dynamic-context-injection-shell-prerender.md
+  rel: same-problem
+- file: skill-popularity-vs-measured-efficacy.md
+  rel: same-problem
 proposals: null
 date_discovered: '2026-06-11'
-last_updated: '2026-06-11'
+last_updated: '2026-07-12'
 pipeline_status: raw
 consumed_by: []
 ---

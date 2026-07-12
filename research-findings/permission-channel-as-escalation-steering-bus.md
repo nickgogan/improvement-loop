@@ -1,34 +1,42 @@
 ---
-name: "Permission Channel as a Universal Escalation and Steering Bus"
-summary: |-
-  Two independent production harnesses converge on the same move: whatever pipe already
+name: Permission Channel as a Universal Escalation and Steering Bus
+summary: 'Two independent production harnesses converge on the same move: whatever pipe already
+
   carries permission asks to the human becomes the general-purpose channel for everything
+
   that needs a human mid-run. omnigent escalates every ASK to the server that owns the
+
   elicitation channel (runners only fast-path local ALLOW/DENY); opencode routes doom-loop
+
   detection into a permission ask instead of an error, and lets a rejection carry feedback
+
   text that is injected back as steering. Anomaly escalation, approval, and course-correction
+
   all ride one bus. For us: design the human gate once, as infrastructure, and route every
-  human-in-the-loop need through it instead of building per-feature interaction channels.
+
+  human-in-the-loop need through it instead of building per-feature interaction channels.'
 implementation_notes: null
-category: "Governance"
-evidence_strength: "Medium (practitioner-documented)"
-adoption_status: "Not Yet Started"
-priority: "P3 (Monitor)"
+category: Governance
+evidence_strength: Medium (practitioner-documented)
+adoption_status: Not Yet Started
+priority: P3 (Monitor)
 applicability:
-  - "Improvement Loop"
-  - "General"
+- Improvement Loop
+- General
 adopted_in: []
 sources: []
 related_findings:
-  - file: "mcp-elicitation-for-user-input.md"
-    rel: "extends"
-  - file: "interrupt-command-primitives-human-in-the-loop.md"
-    rel: "same-problem"
-  - file: "loop-detection-hash-based-sliding-window.md"
-    rel: "enables"
+- file: mcp-elicitation-for-user-input.md
+  rel: extends
+- file: interrupt-command-primitives-human-in-the-loop.md
+  rel: same-problem
+- file: loop-detection-hash-based-sliding-window.md
+  rel: enables
+- file: three-bucket-change-approval-tiering.md
+  rel: same-problem
 proposals: null
-date_discovered: "2026-07-12"
-last_updated: "2026-07-12"
+date_discovered: '2026-07-12'
+last_updated: '2026-07-12'
 ---
 
 ## What It Is

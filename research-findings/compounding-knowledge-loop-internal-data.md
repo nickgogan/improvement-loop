@@ -17,7 +17,7 @@ sources:
 - world-models-orgs-three-architectures.md
 proposals: []
 date_discovered: '2026-04-07'
-last_updated: '2026-04-27'
+last_updated: '2026-07-12'
 related_findings:
 - file: memory-bank-isolation-per-agent-per-project.md
   rel: same-problem
@@ -29,15 +29,17 @@ related_findings:
   rel: same-problem
 - file: signal-capture-as-byproduct-of-work.md
   rel: same-problem
+- file: skills-as-pointers-to-second-brain-files.md
+  rel: same-problem
 pipeline_status: synthesized
 consumed_by:
-  - "patterns/compounding-knowledge-loop.md"
-  - "building-agentic-systems.md"
-  - artifact: compounding-loops-must-encode-outcomes
-    type: extracted-artifact
-    form: rule
-    date: 2026-04-27
-    session: 83
+- patterns/compounding-knowledge-loop.md
+- building-agentic-systems.md
+- artifact: compounding-loops-must-encode-outcomes
+  type: extracted-artifact
+  form: rule
+  date: 2026-04-27
+  session: 83
 ---
 # Compounding Knowledge Loop (Internal Data)
 

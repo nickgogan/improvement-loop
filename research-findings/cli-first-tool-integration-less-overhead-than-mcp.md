@@ -17,14 +17,16 @@ sources:
 - anthropic-code-execution-with-mcp.md
 proposals: []
 date_discovered: '2026-03-22'
-last_updated: '2026-04-19'
+last_updated: '2026-07-12'
 related_findings:
 - file: mcp-n-plus-m-integration-economics.md
   rel: contradicts
-pipeline_status: "synthesized"
+- file: stateful-mcp-subprocess-vs-cli-shell-out.md
+  rel: extended-by
+pipeline_status: synthesized
 consumed_by:
-  - "designing-agent-tools.md"
-  - "rules/prefer-cli-over-mcp-when-both-exist-for-the-same-tool.md"
+- designing-agent-tools.md
+- rules/prefer-cli-over-mcp-when-both-exist-for-the-same-tool.md
 ---
 # CLI-First Tool Integration: Less Overhead Than MCP for Claude Code
 

@@ -3,7 +3,17 @@ name: Advisor-Executor API Pattern (Opus Advises, Sonnet Executes)
 summary: 'Anthropic''s Advisor Strategy pairs Opus as a reasoning-only advisor with Sonnet or Haiku as the tool-calling executor. Unlike plan-then-execute (one-shot), the advisor relationship is dynamic
   — Sonnet consults Opus whenever it hits a decision it can''t solve. Opus retains full shared context but never makes tool calls. Benchmarks: SWE-Bench 74.8 (with advisor) vs 72.1 (Sonnet alone), at lower
   cost ($0.96 vs $1.89 per task).'
-implementation_notes: 'This is an API feature, not a Claude Code feature. Set type: ''advisor'' and max_uses in API calls. Relevant for any web application using Anthropic APIs.'
+implementation_notes: 'Two surfaces now. API: set type: ''advisor'' and max_uses in API calls — relevant for any
+
+  web application using Anthropic APIs. Claude Code CLI (newer, 2026-07): the session
+
+  model is the EXECUTOR; /advisor <model> sets the advisor (e.g., model set to Opus, then
+
+  "/advisor fable" makes Fable 5 the advisor). Supersedes this finding''s original "API
+
+  feature, not a Claude Code feature" caveat. Advisor-tier extension to Fable 5 has no
+
+  official benchmark numbers yet — the Opus/Sonnet 4.6 numbers are the measured base.'
 category: Model Selection
 evidence_strength: Strong (production-tested)
 adoption_status: Not Yet Started
@@ -13,6 +23,7 @@ applicability:
 adopted_in: []
 sources:
 - anthropic-advisor-strategy-api.md
+- make-fable-5-80-percent-cheaper.md
 related_findings:
 - file: multimodel-routing-architecture-specialized.md
   rel: same-problem
@@ -20,9 +31,13 @@ related_findings:
   rel: same-problem
 - file: task-specific-model-routing-table-march-2026-bench.md
   rel: same-problem
+- file: effort-level-tuning-as-first-order-cost-lever.md
+  rel: same-problem
+- file: prototype-at-frontier-then-downshift.md
+  rel: same-problem
 proposals: null
 date_discovered: '2026-04-09'
-last_updated: '2026-04-09'
+last_updated: '2026-07-12'
 pipeline_status: synthesized
 consumed_by:
 - agent-architecture-decisions.md
@@ -56,3 +71,20 @@ API developers building web applications report it as a "no-brainer" — better 
 
 ## Extraction Note — 2026-04-19
 Extracted as **pattern**: [[advisor-executor-api-pattern]] in `extracts/patterns/`
+
+## Update — 2026-07-12 (session 136, recency weighting)
+
+The pattern has moved from API-only to a Claude Code CLI surface, and up a model tier
+(`make-fable-5-80-percent-cheaper.md`, 2026-07-03):
+
+- **CLI mechanics:** the session model is the executor; `/advisor <model>` names the
+  advisor. To run Fable 5 as advisor over an Opus executor: set model to Opus, then
+  `/advisor fable`. The original "this is an API feature, not a Claude Code feature"
+  caveat is superseded (kept above as lineage).
+- **Frontier-tier advisor:** practitioners are extending the measured Opus-advises-Sonnet
+  pairing to Fable-5-advises-Opus/Sonnet as a cost lever ("Fable purely as the architect,
+  the conductor"). No official benchmarks published for Fable-as-advisor yet — the
+  Opus/Sonnet 4.6 numbers remain the only measured base; treat the frontier-tier extension
+  as plausible-but-unquantified.
+- Composes with effort-level tuning (`effort-level-tuning-as-first-order-cost-lever.md`)
+  as the two first-order Fable-5 cost levers named in that source.

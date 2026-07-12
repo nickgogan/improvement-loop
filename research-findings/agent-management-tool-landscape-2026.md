@@ -39,9 +39,11 @@ related_findings:
   rel: same-problem
 - file: agui-human-control-layer-not-ui.md
   rel: same-problem
+- file: agent-owner-card-human-facing-registry.md
+  rel: same-problem
 proposals: null
 date_discovered: '2026-04-07'
-last_updated: '2026-05-24'
+last_updated: '2026-07-12'
 pipeline_status: raw
 consumed_by: []
 ---

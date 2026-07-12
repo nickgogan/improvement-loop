@@ -1,30 +1,33 @@
 ---
-name: "Surgical Change Constraint — Agents Must Touch Only What Was Asked"
-summary: "A CLAUDE.md rule encoding the principle that agents should make the minimum diff required: no refactoring unrelated code, no removing comments, no reorganizing structure outside the task scope. Prevents the 'productivity theater' failure mode where agents look helpful but silently degrade codebases."
+name: Surgical Change Constraint — Agents Must Touch Only What Was Asked
+summary: 'A CLAUDE.md rule encoding the principle that agents should make the minimum diff required: no refactoring unrelated code, no removing comments, no reorganizing structure outside the task scope.
+  Prevents the ''productivity theater'' failure mode where agents look helpful but silently degrade codebases.'
 implementation_notes: null
-category: "Prompt Craft"
-evidence_strength: "Medium (practitioner-documented)"
-adoption_status: "Not Yet Started"
-priority: "P2 (Design Required)"
+category: Prompt Craft
+evidence_strength: Medium (practitioner-documented)
+adoption_status: Not Yet Started
+priority: P2 (Design Required)
 applicability:
-  - "S3 (Claude Code Build)"
-  - "General / Cross-System"
+- S3 (Claude Code Build)
+- General / Cross-System
 adopted_in: []
 sources:
-  - "karpathy-skills-claudemd-four-principles.md"
+- karpathy-skills-claudemd-four-principles.md
 related_findings:
-  - file: "agent-clarification-over-assumption-pattern.md"
-    rel: "same-problem"
-  - file: "agent-context-kiss-commandments-minimum-viable.md"
-    rel: "same-problem"
-  - file: "bmad-outcome-based-skill-rewrite-pattern.md"
-    rel: "same-problem"
+- file: agent-clarification-over-assumption-pattern.md
+  rel: same-problem
+- file: agent-context-kiss-commandments-minimum-viable.md
+  rel: same-problem
+- file: bmad-outcome-based-skill-rewrite-pattern.md
+  rel: same-problem
+- file: seven-rung-minimal-code-decision-ladder.md
+  rel: same-problem
 proposals: null
-date_discovered: "2026-04-20"
-last_updated: "2026-04-20"
+date_discovered: '2026-04-20'
+last_updated: '2026-07-12'
 pipeline_status: extracted
 consumed_by:
-  - rules/surgical-change-agent-scope.md
+- rules/surgical-change-agent-scope.md
 ---
 
 ## What It Is

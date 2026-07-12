@@ -19,6 +19,7 @@ findings:
 - emergent-tool-strategy-optimization.md
 date_added: "2026-04-01"
 date_processed: "2026-04-01"
+date_published: "2026-03-19"
 ---
 
 # HyperAgents -- arXiv 2603.19461

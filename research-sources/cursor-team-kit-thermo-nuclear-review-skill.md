@@ -31,6 +31,7 @@ findings:
   - "skill-invocation-control-side-effect-guard.md"
 date_added: "2026-07-11"
 date_processed: "2026-07-11"
+date_published: "2026-05-21"
 ---
 
 Queued for `/research-loop` extraction by the 2026-07-11 link-intake triage

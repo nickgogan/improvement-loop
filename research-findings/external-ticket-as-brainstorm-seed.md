@@ -1,33 +1,36 @@
 ---
-name: "External Ticket as Brainstorm Seed Input"
-summary: "Pasting a Jira/Linear/GitHub ticket URL into the brainstorm skill provides structured scope (context, UX decisions, edge cases, acceptance criteria) as the seed for design exploration. The external ticket replaces freeform human description with pre-structured intent, and the brainstorm skill reads the ticket to extract scope, UX requirements, and edge cases before asking questions."
+name: External Ticket as Brainstorm Seed Input
+summary: Pasting a Jira/Linear/GitHub ticket URL into the brainstorm skill provides structured scope (context, UX decisions, edge cases, acceptance criteria) as the seed for design exploration. The external
+  ticket replaces freeform human description with pre-structured intent, and the brainstorm skill reads the ticket to extract scope, UX requirements, and edge cases before asking questions.
 implementation_notes: null
-category: "Intent Engineering"
-evidence_strength: "Medium (practitioner-documented)"
-adoption_status: "Not Yet Started"
+category: Intent Engineering
+evidence_strength: Medium (practitioner-documented)
+adoption_status: Not Yet Started
 priority: P3
 applicability:
-  - "S3 (Claude Code Build)"
-  - "General"
+- S3 (Claude Code Build)
+- General
 sources:
-  - "claude-code-plus-superpowers-tutorial.md"
+- claude-code-plus-superpowers-tutorial.md
 related_findings:
-  - file: "brainstorming-as-mandatory-design-gate.md"
-    rel: "extends"
-  - file: "superpowers-plugin-spec-driven-sub-agent-orchestra.md"
-    rel: "extends"
-  - file: "business-analyst-upstream-quality-gate.md"
-    rel: "same-problem"
-  - file: "spec-first-agent-briefs-prompt-craft-context-inten.md"
-    rel: "same-problem"
+- file: brainstorming-as-mandatory-design-gate.md
+  rel: extends
+- file: superpowers-plugin-spec-driven-sub-agent-orchestra.md
+  rel: extends
+- file: business-analyst-upstream-quality-gate.md
+  rel: same-problem
+- file: spec-first-agent-briefs-prompt-craft-context-inten.md
+  rel: same-problem
+- file: wayfinder-issue-tracker-decision-map.md
+  rel: same-problem
 adopted_in: []
 proposals: null
-date_discovered: "2026-05-25"
-last_updated: "2026-05-25"
-pipeline_status: "classified"
+date_discovered: '2026-05-25'
+last_updated: '2026-07-12'
+pipeline_status: classified
 consumed_by: []
 tags:
-  - "session-95-reextract"
+- session-95-reextract
 ---
 
 # External Ticket as Brainstorm Seed Input

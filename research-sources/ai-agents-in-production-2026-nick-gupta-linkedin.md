@@ -22,6 +22,7 @@ findings:
   - "model-tier-routing-expensive-orchestrator-cheap-s.md"
 date_added: "2026-04-01"
 date_processed: "2026-04-07"
+date_published: "2026-03-09"
 ---
 
 # AI Agents in Production 2026 -- Nick Gupta (LinkedIn)

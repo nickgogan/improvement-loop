@@ -14,4 +14,5 @@ findings:
   - "factorial-design-eval-systematic-context-variati.md"
 date_added: "2026-04-09"
 date_processed: "2026-04-09"
+date_published: "2026-02-05"
 ---

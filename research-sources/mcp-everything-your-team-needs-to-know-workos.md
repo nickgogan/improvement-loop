@@ -19,6 +19,7 @@ findings:
   - "mcp-server-cards-discovery.md"
 date_added: "2026-04-01"
 date_processed: "2026-04-07"
+date_published: "2026-03-26"
 ---
 
 # MCP: Everything Your Team Needs to Know -- WorkOS

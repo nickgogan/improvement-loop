@@ -28,17 +28,19 @@ related_findings:
   rel: same-problem
 - file: karpathy-llm-knowledge-base-obsidian-rag.md
   rel: same-problem
+- file: ai-as-primary-reader-design-principle.md
+  rel: same-problem
 proposals: null
 date_discovered: '2026-04-20'
-last_updated: '2026-04-20'
+last_updated: '2026-07-12'
 pipeline_status: synthesized
 consumed_by:
-  - "building-agentic-systems.md"
-  - artifact: ai-and-human-vaults-must-be-separate
-    type: extracted-artifact
-    form: rule
-    date: 2026-04-27
-    session: 83
+- building-agentic-systems.md
+- artifact: ai-and-human-vaults-must-be-separate
+  type: extracted-artifact
+  form: rule
+  date: 2026-04-27
+  session: 83
 ---
 # AI-Managed Vault Separate from Human Vault
 

@@ -26,6 +26,7 @@ findings:
   - "skills-as-open-portable-standard.md"
 date_added: "2026-06-11"
 date_processed: "2026-06-11"
+date_published: "2026-01-26"
 ---
 
 # The Complete Guide to Building Skills for Claude (PDF)

@@ -26,9 +26,11 @@ related_findings:
   rel: same-problem
 - file: atomic-checkout-with-409-exclusion.md
   rel: same-problem
+- file: work-ticket-contract-prompt-mode-vs-work-mode.md
+  rel: same-problem
 proposals: null
 date_discovered: '2026-04-20'
-last_updated: '2026-04-20'
+last_updated: '2026-07-12'
 pipeline_status: classified
 consumed_by: []
 ---

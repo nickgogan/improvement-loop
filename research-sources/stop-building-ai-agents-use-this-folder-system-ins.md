@@ -20,5 +20,6 @@ findings:
 - three-layer-folder-as-workspace-architecture.md
 date_added: '2026-03-22'
 date_processed: '2026-03-22'
+date_published: "2026-03-10"
 ---
 # Stop Building AI Agents. Use This Folder System Instead.

@@ -45,8 +45,16 @@ related_findings:
   rel: same-problem
 - file: holdout-validation-pattern-blind-regression.md
   rel: same-problem
+- file: measured-delta-and-staging-clone-for-ai-refactors.md
+  rel: same-problem
+- file: no-mistakes-post-implementation-validation-pipeline.md
+  rel: same-problem
+- file: receipt-artifact-as-agent-trust-mechanism.md
+  rel: same-problem
+- file: work-ticket-contract-prompt-mode-vs-work-mode.md
+  rel: same-problem
 date_discovered: '2026-04-07'
-last_updated: '2026-04-20'
+last_updated: '2026-07-12'
 pipeline_status: synthesized
 consumed_by:
 - building-agent-evaluation-suites.md

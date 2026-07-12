@@ -20,5 +20,6 @@ findings:
 - star-commands-for-explicit-output-format-override.md
 date_added: '2026-03-22'
 date_processed: '2026-03-22'
+date_published: "2026-01-10"
 ---
 # Why your coding agent keeps getting DUMBER.

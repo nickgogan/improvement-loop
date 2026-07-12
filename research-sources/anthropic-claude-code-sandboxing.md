@@ -15,4 +15,5 @@ findings:
   - "claude-code-auto-mode-ai-driven-permission-classif.md"
 date_added: "2026-04-09"
 date_processed: "2026-04-09"
+date_published: "2025-10-20"
 ---

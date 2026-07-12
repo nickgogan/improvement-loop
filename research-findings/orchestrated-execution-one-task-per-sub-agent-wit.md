@@ -16,7 +16,7 @@ sources:
 - anthropic-multi-agent-research-system.md
 proposals: null
 date_discovered: '2026-03-22'
-last_updated: '2026-04-19'
+last_updated: '2026-07-12'
 related_findings:
 - file: task-contract-pattern-schema-first-agent.md
   rel: enables
@@ -24,10 +24,12 @@ related_findings:
   rel: same-problem
 - file: archon-yaml-defined-harness-workflows.md
   rel: same-problem
-pipeline_status: "synthesized"
+- file: issue-based-agent-orchestration-replacing-markdown-plans.md
+  rel: same-problem
+pipeline_status: synthesized
 consumed_by:
-  - "agent-architecture-decisions.md"
-  - "rules/verify-sub-agent-wiring-after-each-wave.md"
+- agent-architecture-decisions.md
+- rules/verify-sub-agent-wiring-after-each-wave.md
 ---
 # Orchestrated Execution: One Task Per Sub-Agent with Wiring Verification
 

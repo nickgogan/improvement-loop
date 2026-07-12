@@ -19,5 +19,6 @@ findings:
 - sub-agent-context-isolation-for-parallel-complex.md
 date_added: '2026-03-22'
 date_processed: '2026-03-22'
+date_published: "2026-03-21"
 ---
 # Andrej Karpathy's Math Proves Agent Skills Will Fail. Here's What to Build Instead.

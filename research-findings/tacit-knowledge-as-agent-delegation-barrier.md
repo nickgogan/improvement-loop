@@ -1,33 +1,36 @@
 ---
-name: "Tacit Knowledge as the Root Barrier to Agent Delegation"
-summary: "Expertise compresses from explicit processes to automatic judgment over time, making senior knowledge workers' most valuable work invisible — even to themselves. This is the structural reason agent cold starts fail: the people who most need delegation are least able to articulate what to delegate."
+name: Tacit Knowledge as the Root Barrier to Agent Delegation
+summary: 'Expertise compresses from explicit processes to automatic judgment over time, making senior knowledge workers'' most valuable work invisible — even to themselves. This is the structural reason
+  agent cold starts fail: the people who most need delegation are least able to articulate what to delegate.'
 implementation_notes: null
-category: "Agent Design"
-evidence_strength: "Medium (practitioner-documented)"
-adoption_status: "Not Yet Started"
-priority: "P2 (Design Required)"
+category: Agent Design
+evidence_strength: Medium (practitioner-documented)
+adoption_status: Not Yet Started
+priority: P2 (Design Required)
 applicability:
-  - "S3 (Claude Code Build)"
-  - "General"
+- S3 (Claude Code Build)
+- General
 adopted_in: []
 sources:
-  - "agent-cold-start-tacit-knowledge-elicitation.md"
+- agent-cold-start-tacit-knowledge-elicitation.md
 related_findings:
-  - file: context-gap-task-vs-job.md
-    rel: same-problem
-  - file: agent-onboarding-via-interview-style-context.md
-    rel: same-problem
-  - file: advanced-elicitation-techniques-library.md
-    rel: enables
-  - file: soul-md-agent-constitution-pattern.md
-    rel: same-problem
+- file: context-gap-task-vs-job.md
+  rel: same-problem
+- file: agent-onboarding-via-interview-style-context.md
+  rel: same-problem
+- file: advanced-elicitation-techniques-library.md
+  rel: enables
+- file: soul-md-agent-constitution-pattern.md
+  rel: same-problem
+- file: frontier-model-as-unknown-unknown-elicitor.md
+  rel: same-problem
 proposals: null
-date_discovered: "2026-04-20"
-last_updated: "2026-04-20"
-pipeline_status: "synthesized"
+date_discovered: '2026-04-20'
+last_updated: '2026-07-12'
+pipeline_status: synthesized
 consumed_by:
-  - "templates/tacit-knowledge-elicitation-template.md"
-  - agent-design-patterns.md
+- templates/tacit-knowledge-elicitation-template.md
+- agent-design-patterns.md
 ---
 # Tacit Knowledge as the Root Barrier to Agent Delegation
 

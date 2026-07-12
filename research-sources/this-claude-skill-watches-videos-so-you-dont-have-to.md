@@ -23,6 +23,7 @@ findings:
   - "scene-detection-frame-sampling-for-agent-video-watching.md"
 date_added: "2026-07-12"
 date_processed: "2026-07-12"
+date_published: "2026-06-12"
 ---
 
 In-chat batch from Nick, 2026-07-12 (restructure program Phase 1 — second-brain/harness

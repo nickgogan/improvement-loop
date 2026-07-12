@@ -1,38 +1,43 @@
 ---
-name: "Token Economics as Architecture Driver"
-summary: "As AI pricing shifts away from free tiers and generous subsidies toward usage-based token billing, token efficiency becomes a first-class architectural constraint. Knowledge base structure, retrieval strategies, and document granularity are now design decisions with direct cost implications. The same data structured differently can cost 15x more to query (9,000 vs 600 tokens)."
+name: Token Economics as Architecture Driver
+summary: As AI pricing shifts away from free tiers and generous subsidies toward usage-based token billing, token efficiency becomes a first-class architectural constraint. Knowledge base structure, retrieval
+  strategies, and document granularity are now design decisions with direct cost implications. The same data structured differently can cost 15x more to query (9,000 vs 600 tokens).
 implementation_notes: null
-category: "Context Engineering"
-evidence_strength: "Medium (practitioner-documented)"
-adoption_status: "Partially Adopted"
+category: Context Engineering
+evidence_strength: Medium (practitioner-documented)
+adoption_status: Partially Adopted
 priority: P2
 applicability:
-  - "S3 (Claude Code Build)"
-  - "General"
+- S3 (Claude Code Build)
+- General
 adopted_in: []
 sources:
-  - "karpathy-second-brain-typed-edge-alternative.md"
+- karpathy-second-brain-typed-edge-alternative.md
 related_findings:
-  - file: typed-edge-knowledge-graph-token-reduction.md
-    rel: enables
-  - file: agent-cost-blowup-mitigation-strategies.md
-    rel: same-problem
-  - file: background-hooks-as-token-economy.md
-    rel: same-problem
-  - file: token-waste-taxonomy-and-two-mode-workflow.md
-    rel: same-problem
-  - file: agent-context-kiss-commandments-minimum-viable.md
-    rel: same-problem
-  - file: budget-governance-with-hard-stop.md
-    rel: same-problem
+- file: typed-edge-knowledge-graph-token-reduction.md
+  rel: enables
+- file: agent-cost-blowup-mitigation-strategies.md
+  rel: same-problem
+- file: background-hooks-as-token-economy.md
+  rel: same-problem
+- file: token-waste-taxonomy-and-two-mode-workflow.md
+  rel: same-problem
+- file: agent-context-kiss-commandments-minimum-viable.md
+  rel: same-problem
+- file: budget-governance-with-hard-stop.md
+  rel: same-problem
+- file: effort-level-tuning-as-first-order-cost-lever.md
+  rel: same-problem
+- file: seven-rung-minimal-code-decision-ladder.md
+  rel: same-problem
 proposals: null
-date_discovered: "2026-05-25"
-last_updated: "2026-05-25"
-pipeline_status: "synthesized"
+date_discovered: '2026-05-25'
+last_updated: '2026-07-12'
+pipeline_status: synthesized
 consumed_by:
-  - "defending-agent-context.md"
+- defending-agent-context.md
 tags:
-  - "session-95-reextract"
+- session-95-reextract
 ---
 
 # Token Economics as Architecture Driver

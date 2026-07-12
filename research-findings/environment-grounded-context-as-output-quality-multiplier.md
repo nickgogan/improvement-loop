@@ -1,36 +1,39 @@
 ---
-name: "Environment-Grounded Context as Output Quality Multiplier"
-summary: "The same prompt produces informed output on Claude Code (which can ingest the filesystem, MCP surface, Git history, and browser) vs. generic output on a chat surface. The agent's environment access is what makes rich output formats worth generating — without grounding in real project data, HTML output is 'pretty maybe, but generic.'"
+name: Environment-Grounded Context as Output Quality Multiplier
+summary: The same prompt produces informed output on Claude Code (which can ingest the filesystem, MCP surface, Git history, and browser) vs. generic output on a chat surface. The agent's environment access
+  is what makes rich output formats worth generating — without grounding in real project data, HTML output is 'pretty maybe, but generic.'
 implementation_notes: null
-category: "Context Engineering"
-evidence_strength: "Medium (practitioner-documented)"
-adoption_status: "Not Yet Started"
-priority: "P2"
+category: Context Engineering
+evidence_strength: Medium (practitioner-documented)
+adoption_status: Not Yet Started
+priority: P2
 applicability:
-  - "S3 (Claude Code Build)"
-  - "General"
+- S3 (Claude Code Build)
+- General
 adopted_in: []
 sources:
-  - "markdown-vs-html-claude-code-derrick-anthropic.md"
+- markdown-vs-html-claude-code-derrick-anthropic.md
 related_findings:
-  - file: "context-curation-over-context-stuffing.md"
-    rel: "same-problem"
-  - file: "html-output-as-human-in-the-loop-restorer.md"
-    rel: "enables"
-  - file: "self-describing-codebase-structural-semantic-context.md"
-    rel: "same-problem"
-  - file: "personal-knowledge-hoard-as-agent-substrate.md"
-    rel: "same-problem"
-  - file: "ide-context-streaming-silent-token-tax.md"
-    rel: "same-problem"
+- file: context-curation-over-context-stuffing.md
+  rel: same-problem
+- file: html-output-as-human-in-the-loop-restorer.md
+  rel: enables
+- file: self-describing-codebase-structural-semantic-context.md
+  rel: same-problem
+- file: personal-knowledge-hoard-as-agent-substrate.md
+  rel: same-problem
+- file: ide-context-streaming-silent-token-tax.md
+  rel: same-problem
+- file: throwaway-html-editor-structured-input-surface.md
+  rel: extended-by
 proposals: null
-date_discovered: "2026-05-25"
-last_updated: "2026-05-25"
-pipeline_status: "synthesized"
+date_discovered: '2026-05-25'
+last_updated: '2026-07-12'
+pipeline_status: synthesized
 consumed_by:
-  - structuring-agent-context.md
+- structuring-agent-context.md
 tags:
-  - "session-95-reextract"
+- session-95-reextract
 ---
 
 # Environment-Grounded Context as Output Quality Multiplier

@@ -20,4 +20,5 @@ findings:
 - soul-md-agent-constitution-pattern.md
 date_added: '2026-04-07'
 date_processed: '2026-04-07'
+date_published: "2026-04-04"
 ---

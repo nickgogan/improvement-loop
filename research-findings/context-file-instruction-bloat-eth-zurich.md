@@ -36,9 +36,17 @@ related_findings:
   rel: enables
 - file: bounded-tiered-memory-inference-driven-curation.md
   rel: same-problem
+- file: model-specific-context-file-sensitivity.md
+  rel: extended-by
+- file: on-demand-vs-always-on-skill-activation.md
+  rel: same-problem
+- file: root-context-file-edit-guard.md
+  rel: same-problem
+- file: skill-pruning-failure-modes-noop-deletion-test.md
+  rel: same-problem
 proposals: []
 date_discovered: '2026-04-07'
-last_updated: '2026-05-24'
+last_updated: '2026-07-12'
 pipeline_status: synthesized
 consumed_by:
 - structuring-agent-context.md

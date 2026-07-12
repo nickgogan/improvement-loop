@@ -18,6 +18,7 @@ findings:
   - "layered-prompt-assembly-stable-segment-caching.md"
 date_added: "2026-05-24"
 date_processed: "2026-05-24"
+date_published: "2025-07-22"
 ---
 
 # NousResearch hermes-agent Structural Analysis

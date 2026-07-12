@@ -1,21 +1,25 @@
 ---
-name: "Memory vs RAG as Product Distinction"
-summary: "Explicit teaching-tool framing: RAG retrieves document chunks — stateless, same results for everyone. Memory extracts and tracks *facts about users* over time, so the same query returns different context per user. The distinction is load-bearing for users trying to understand what a memory layer is vs just another retrieval system — and for designers choosing between them (or, as Supermemory does, running both together)."
+name: Memory vs RAG as Product Distinction
+summary: 'Explicit teaching-tool framing: RAG retrieves document chunks — stateless, same results for everyone. Memory extracts and tracks *facts about users* over time, so the same query returns different
+  context per user. The distinction is load-bearing for users trying to understand what a memory layer is vs just another retrieval system — and for designers choosing between them (or, as Supermemory does,
+  running both together).'
 implementation_notes: null
-category: "Context Engineering"
-evidence_strength: "Medium (practitioner-documented)"
-adoption_status: "Partially Adopted"
+category: Context Engineering
+evidence_strength: Medium (practitioner-documented)
+adoption_status: Partially Adopted
 priority: null
 applicability:
-  - "General"
+- General
 adopted_in: []
 sources: []
 related_findings:
-  - file: typed-relationship-memory-graph.md
-    rel: same-problem
+- file: typed-relationship-memory-graph.md
+  rel: same-problem
+- file: memory-wiki-world-kb-trichotomy.md
+  rel: same-problem
 proposals: null
-date_discovered: "2026-04-23"
-last_updated: "2026-04-27"
+date_discovered: '2026-04-23'
+last_updated: '2026-07-12'
 pipeline_status: raw
 consumed_by: []
 ---

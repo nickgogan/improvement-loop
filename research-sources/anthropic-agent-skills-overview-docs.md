@@ -22,6 +22,7 @@ findings:
   - "skill-security-audit-obligation.md"
 date_added: "2026-06-11"
 date_processed: "2026-06-11"
+date_published: null
 ---
 
 # Agent Skills — Overview (Claude API Docs)

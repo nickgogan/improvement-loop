@@ -16,5 +16,6 @@ findings:
 - video-transcript-driven-voice-skill-generation.md
 date_added: '2026-03-22'
 date_processed: '2026-03-22'
+date_published: "2026-03-19"
 ---
 # Claude Skills vs Projects [how I use them]

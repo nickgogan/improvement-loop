@@ -25,6 +25,7 @@ findings:
   - "unified-tracing-opentelemetry-for-agents.md"
 date_added: "2026-04-01"
 date_processed: "2026-04-07"
+date_published: "2026-02-11"
 ---
 
 # Multi-Agent Orchestration Production Playbook -- Nick Gupta (LinkedIn)

@@ -46,9 +46,11 @@ related_findings:
   rel: same-problem
 - file: session-atomicity-single-issue-scope-quadratic-cost-reduction.md
   rel: same-problem
+- file: data-normalization-as-cheap-model-enabler.md
+  rel: same-problem
 proposals: []
 date_discovered: '2026-04-07'
-last_updated: '2026-04-20'
+last_updated: '2026-07-12'
 pipeline_status: synthesized
 consumed_by:
 - structuring-agent-context.md

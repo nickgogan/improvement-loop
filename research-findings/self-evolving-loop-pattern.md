@@ -19,8 +19,14 @@ sources:
 - agentic-os-five-pillars-claude-code.md
 proposals: []
 date_discovered: '2026-03-16'
-last_updated: '2026-05-24'
-related_findings: null
+last_updated: '2026-07-12'
+related_findings:
+- file: dark-factory-ai-only-codebase-management.md
+  rel: same-problem
+- file: process-optimizer-agent-loop-improvement.md
+  rel: same-problem
+- file: self-improving-skill-lessons-log.md
+  rel: extended-by
 pipeline_status: raw
 consumed_by: []
 ---

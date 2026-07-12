@@ -25,6 +25,7 @@ findings:
   - "meta-skill-for-skill-authorship.md"
 date_added: "2026-06-11"
 date_processed: "2026-06-11"
+date_published: "2025-10-16"
 ---
 
 # Equipping agents for the real world with Agent Skills

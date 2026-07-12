@@ -1,7 +1,7 @@
 ---
 name: Skill Invocation Control — Side-Effect Guard via disable-model-invocation
 summary: |-
-  Claude Code skills carry two frontmatter flags that gate who can invoke them. `disable-model-invocation: true` blocks Claude from auto-loading the skill (user must type /skill-name); use for side-effect workflows (commit, deploy, send-slack) — and, per Cursor's shipped thermo-nuclear review skill, for intentionally harsh modes whose intensity the user should opt into even when no side effects exist. `user-invocable: false` blocks the skill from the / menu but keeps Claude's auto-invocation; use for background-knowledge skills that aren't meaningful as user commands. Default is both-can-invoke.
+  Claude Code skills carry two frontmatter flags that gate who can invoke them. `disable-model-invocation: true` blocks Claude from auto-loading the skill (user must type /skill-name); use for side-effect workflows (commit, deploy, send-slack) — and, per Cursor's shipped thermo-nuclear review skill, for intentionally harsh modes whose intensity the user should opt into even when no side effects exist. `user-invocable: false` blocks the skill from the / menu but keeps Claude's auto-invocation; use for background-knowledge skills that aren't meaningful as user commands. Default is both-can-invoke. Matt Pocock (missing-manual talk, 06-29) adds a third rationale that turns the flag into a fleet-level design triad: every model-invocable skill costs context load (its description on every request, one more thing to think about) and buys unpredictability (a context pointer the model may simply not follow — forcing triggering evals); user-invoked skills trade that for cognitive load on the user. His repo defaults to user-invoked to delete the triggering-eval problem class entirely.
 implementation_notes: "Side-effect skills should default to disable-model-invocation: true. Specific cases the docs name: /commit, /deploy, /send-slack-message. Reasoning: 'You don't want Claude deciding to deploy because your code looks ready.' Background-knowledge case: a 'legacy-system-context' skill explains an old system — Claude should know it when relevant but /legacy-system-context isn't a user action. Both flags also affect context loading: disable-model-invocation removes the description from Claude's context entirely; user-invocable: false leaves it in."
 category: Governance
 evidence_strength: Strong (production-tested)
@@ -14,6 +14,7 @@ adopted_in: []
 sources:
   - "anthropic-claude-code-skills-docs.md"
   - "cursor-team-kit-thermo-nuclear-review-skill.md"
+  - "building-great-agent-skills-the-missing-manual.md"
 related_findings:
   - file: "claude-code-skill-frontmatter-extensions.md"
     rel: "extends"
@@ -21,7 +22,7 @@ related_findings:
     rel: "extends"
 proposals: null
 date_discovered: '2026-06-11'
-last_updated: '2026-07-11'
+last_updated: '2026-07-12'
 pipeline_status: raw
 consumed_by: []
 ---
@@ -55,6 +56,14 @@ The flag also affects context budget. `disable-model-invocation: true` removes t
 Built into Claude Code's skill system from the unified skills+commands release. Named examples in the canonical docs: `/commit`, `/deploy`, `/send-slack-message`. The Skill permissions system (`Skill(name)` / `Skill(name *)` deny rules) is a parallel control point at a different layer — `disable-model-invocation` lives in the skill, deny rules live in the user's permissions.
 
 **Second use case beyond side effects — intentionally harsh modes.** Cursor's shipped `thermo-nuclear-code-quality-review` skill (cursor/plugins, cursor-team-kit) sets `disable-model-invocation: true` on a skill with *no* side effects at all: an extremely strict, blocker-heavy review mode. The rationale generalizes the flag from "Claude must not act without consent" to "Claude must not select an aggressive posture without consent" — a deliberately punishing review triggering on a casual "can you look at my code?" would be a tone/expectation failure, not a safety failure. The flag is the explicit-invocation-only pattern for any mode whose intensity, cost, or register the user should opt into, not just destructive operations.
+
+**Third rationale — predictability and context-load economics (Matt Pocock, missing-manual talk, 06-29).** The invocation-mode choice is a fleet-level cost triad, not a per-skill safety toggle:
+
+- **Context load** — every model-invocable skill puts its description in the agent's context on every request; 100 model-invoked skills = 100 descriptions the agent must pay for and think about.
+- **Unpredictability** — a description is a context pointer, and "the model may just choose not to follow it," even when the skill is perfect for the task. Living with model invocation means eval-ing your skills' triggering — "which is really nasty."
+- **Cognitive load** — the user-invoked alternative shifts the burden to the pilot, who must know the skill roster deeply to deploy it.
+
+Pocock's repo (contrasted with Superpowers, which is primarily model-invoked) defaults to user-invoked specifically to remove the triggering-unpredictability problem class — accepting higher pilot skill as the price. His framing: neither mode is better; both have real costs, and the trigger decision is checklist item #1 when auditing any skill.
 
 ## Potential Alternatives
 

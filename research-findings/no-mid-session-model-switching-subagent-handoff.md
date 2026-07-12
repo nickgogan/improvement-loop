@@ -1,33 +1,46 @@
 ---
-name: "Never Switch Models Mid-Session — Hand Off to a Subagent Instead"
-summary: |-
-  Prompt caches are model-specific, so switching models mid-session (e.g., Opus to Haiku for an
+name: Never Switch Models Mid-Session — Hand Off to a Subagent Instead
+summary: 'Prompt caches are model-specific, so switching models mid-session (e.g., Opus to Haiku for an
+
   "easy" stretch) invalidates the entire cache and can cost more than staying on the expensive
-  model. The Claude Code team's rule: keep the session on one model and delegate cheap subtasks
+
+  model. The Claude Code team''s rule: keep the session on one model and delegate cheap subtasks
+
   to a subagent on the cheaper model via an explicit hand-off message. For us this is a hard
+
   constraint on skill-to-model coupling — model choice is a session-boundary decision, not a
-  mid-session dial.
-implementation_notes: |-
-  Feeds directly into our skill/model coupling guidance and /design-agent variant B (harness-
+
+  mid-session dial.'
+implementation_notes: 'Feeds directly into our skill/model coupling guidance and /design-agent variant B (harness-
+
   based agents): (1) a skill or agent definition should pin its model at spawn time and never
+
   recommend switching within a running session; (2) where a workflow has a cheap phase, the
+
   design should spawn a subagent on the cheaper model with a prepared hand-off message rather
+
   than downshifting the parent; (3) our model-capability registry guidance should note that
-  per-session model pinning is also a cost rule, not just a capability rule.
-category: "Model Selection"
-evidence_strength: "Strong (production-tested, first-party)"
-adoption_status: "Not Yet Started"
-priority: "P2 (Design Required)"
+
+  per-session model pinning is also a cost rule, not just a capability rule.'
+category: Model Selection
+evidence_strength: Strong (production-tested, first-party)
+adoption_status: Not Yet Started
+priority: P2 (Design Required)
 applicability:
-  - "Improvement Loop"
-  - "General"
+- Improvement Loop
+- General
 adopted_in: []
 sources:
-  - "claude-code-prompt-caching-is-everything.md"
-related_findings: []
+- claude-code-prompt-caching-is-everything.md
+- glm-5-2-is-free-and-beats-claude-on-most-work.md
+related_findings:
+- file: harness-non-portability-across-model-families.md
+  rel: extended-by
+- file: smart-model-routing-catch-22.md
+  rel: same-problem
 proposals: null
-date_discovered: "2026-07-11"
-last_updated: "2026-07-11"
+date_discovered: '2026-07-11'
+last_updated: '2026-07-12'
 ---
 
 ## What It Is
@@ -60,3 +73,13 @@ First-party production practice in Claude Code; the subagent hand-off pattern is
 - **Hand-off information loss:** the subagent only knows what the hand-off message carries; a thin hand-off produces wrong work at any price
 - **Over-delegation:** spawning subagents for trivial subtasks adds latency and orchestration overhead exceeding the model-cost savings
 - **False economy on short sessions:** with little accumulated context, a direct switch may actually be cheaper than orchestrating a hand-off
+
+## Corroboration Note — 2026-07-12
+
+The Lindy harness-rewrite evidence (Nate B Jones, GLM 5.2 video — see
+harness-non-portability-across-model-families) is the strongest practitioner
+corroboration yet for the coupling stance this finding takes at session granularity:
+Lindy could not lift-and-shift prompts, memory handling, or tool calls when moving off
+Claude — the same model↔system coupling, one level up. Model choice binds at the session
+(this finding, cache economics) and at the architecture (Lindy, harness engineering);
+neither is a mid-flight dial.

@@ -18,7 +18,7 @@ sources:
 - hidden-flaw-karpathy-llm-wiki.md
 proposals: null
 date_discovered: '2026-05-24'
-last_updated: '2026-05-24'
+last_updated: '2026-07-12'
 related_findings:
 - file: karpathy-llm-knowledge-base-obsidian-rag.md
   rel: contradicts
@@ -30,10 +30,14 @@ related_findings:
   rel: contradicts
 - file: automatic-fact-extraction.md
   rel: contradicts
-pipeline_status: "synthesized"
+- file: evergreen-vs-volatile-ingestion-rule.md
+  rel: same-problem
+- file: okf-open-knowledge-format-curated-bundle-spec.md
+  rel: same-problem
+pipeline_status: synthesized
 consumed_by:
-  - "structuring-agent-context.md"
-  - "rules/never-ask-claude-to-compact-claudemd.md"
+- structuring-agent-context.md
+- rules/never-ask-claude-to-compact-claudemd.md
 tags:
 - context-engineering
 - memory

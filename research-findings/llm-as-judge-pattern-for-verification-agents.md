@@ -32,9 +32,15 @@ related_findings:
   rel: extended-by
 - file: ultra-review-multi-agent-bug-hunting-fleet.md
   rel: enables
+- file: enumerate-dont-fix-hostile-reviewer-prompt.md
+  rel: same-problem
+- file: harness-composition-six-pattern-taxonomy.md
+  rel: same-problem
+- file: pairwise-tournament-judging-over-absolute-scoring.md
+  rel: extended-by
 proposals: null
 date_discovered: '2026-04-07'
-last_updated: '2026-04-09'
+last_updated: '2026-07-12'
 pipeline_status: synthesized
 consumed_by:
 - building-agent-evaluation-suites.md

@@ -11,7 +11,8 @@ applicability:
 - S3 (Claude Code Build)
 - General
 adopted_in: []
-sources: []
+sources:
+- l8-principals-agentic-engineering-workflow.md
 related_findings:
 - file: worktree-isolation-for-parallel-agent-sessions.md
   rel: extends
@@ -21,7 +22,7 @@ related_findings:
   rel: same-problem
 proposals: null
 date_discovered: '2026-04-09'
-last_updated: '2026-04-19'
+last_updated: '2026-07-12'
 pipeline_status: raw
 consumed_by: []
 ---
@@ -49,6 +50,21 @@ Archon's 7-step algorithm is the most concrete worktree lifecycle policy observe
 ## Why People Are Using It
 
 Observed in [Archon](https://github.com/coleam00/archon) v0.3.2 — see [[archon-analysis]] for structural details. Archon runs multiple workflows in parallel via separate git worktrees, each with auto-allocated ports for self-testing. The IsolationResolver is the decision engine that manages this pool.
+
+## Independent Convergence — Treehouse Pooling (Kun Chen, June 2026)
+
+A second, independently built implementation of the same lifecycle problem, from the
+interactive-terminal side rather than the workflow-engine side. Chen's diagnosis of raw
+`git worktree`: each worktree "becomes a debt in your head" — naming it, remembering what
+was running in it, remembering to remove it. His Treehouse tool pools instead: `treehouse`
+drops you into a fresh worktree with zero naming/setup; `treehouse status` lists which
+worktrees are in use vs idle; closing the tmux tab signals done, and the worktree is
+reclaimed for reuse — the next request reuses an idle worktree rather than creating a new
+one. Same core moves as Archon's algorithm (reuse-before-create, automatic cleanup,
+limit awareness) arrived at independently, which strengthens the underlying claim:
+worktree *lifecycle management*, not worktree creation, is the real pattern. Convergent
+delta vs Archon: Treehouse binds lifecycle to terminal-session lifetime (tab close =
+release) instead of workflow/issue identity.
 
 ## Potential Alternatives
 

@@ -18,5 +18,6 @@ findings:
 - skill-as-new-employee-mental-model.md
 date_added: '2026-03-22'
 date_processed: '2026-03-22'
+date_published: "2026-03-15"
 ---
 # Most People Build Claude Skills Wrong (Here's What Works)

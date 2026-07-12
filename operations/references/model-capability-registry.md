@@ -1,7 +1,7 @@
 ---
 name: Model Capability Registry
 description: Coarse per-model+version capability profiles for agent work — what each model is known to be good/bad at, relative to named anchors. Living reference, refreshed intentionally via /research-loop D2/2.A scans. Every claim carries KB provenance.
-last_updated: "2026-07-11 (session 131 — cross-cutting capability-trend anchors added from the Anthropic RSI essay narrow intake)"
+last_updated: "2026-07-12 (session 136 — link-intake wave-2 refresh bundle: GLM 5.2 first profile, Hashimoto three-tier anchors on Fable 5, effort-level economics cross-cutting entry; GPT-5.6 availability note skipped — no KB grounding written at intake)"
 refresh_contract: "Refreshed periodically and intentionally (Nick, session 129 — maintenance cost accepted). Refresh trigger: any /research-loop scan of D2 or 2.A that produces new model-capability findings. Each refresh updates per-entry last_reviewed. An entry whose last_reviewed predates two major release cycles for that provider is stale — treat as unverified."
 ---
 
@@ -17,16 +17,16 @@ refresh_contract: "Refreshed periodically and intentionally (Nick, session 129 �
 
 ---
 
-## Anthropic / Claude line (as of Jun–Jul 2026; reviewed 2026-07-11)
+## Anthropic / Claude line (as of Jun–Jul 2026; reviewed 2026-07-12)
 
 > The March-2026 consensus entries for Claude (below, kept for history) are **superseded** by the
 > Claude 5 / Sonnet 5 re-tiering. Coarse routing now: **Sonnet 5 = default agent workhorse; Opus 4.8
 > = hard-reasoning value point; Fable 5 = long-horizon frontier at 2× Opus.**
 
 ### Claude Fable 5 / Mythos 5 — Anthropic *(new frontier tier above Opus)*
-- **Strong:** frontier coding (SWE-Bench Pro ~11 points over Opus 4.8; #1 FrontierCode); **long-horizon agentic work is the differentiator** — 3× Opus improvement with file-based memory, multi-week engineering jobs compressed to a day (Stripe 50M-line migration); 1M default context / 128k output.
-- **Weak:** cost — $10/$50 per M, 2× Opus 4.8, 3–5× Sonnet; practitioners keep it off default paths and reserve it for long-horizon jobs. Mythos 5 = same model, restricted access (not plannable-for). Benchmark set still announcement-adjacent.
-- **Grounding:** `claude-5-family-retiers-claude-line`
+- **Strong:** frontier coding (SWE-Bench Pro ~11 points over Opus 4.8; #1 FrontierCode); **long-horizon agentic work is the differentiator** — 3× Opus improvement with file-based memory, multi-week engineering jobs compressed to a day (Stripe 50M-line migration); 1M default context / 128k output. **Uniquely capable at edge-of-distribution tasks** — Hashimoto's launch-week edge task (optimizing gnarly systems code he wrote himself): $40, 2 hours, beyond what he could do himself; cheap models "couldn't touch it at all".
+- **Weak:** cost — $10/$50 per M, 2× Opus 4.8, 3–5× Sonnet; practitioners keep it off default paths and reserve it for long-horizon jobs — though effort tuning cuts >80% of per-task cost while still beating Opus 4.8 at max effort (see cross-cutting effort-lever entry). **No quality premium on center-of-distribution work** — Hashimoto three-tier experiment: on ordinary "implement this feature" work, Fable 5 ($9, 40 min) tied GLM 5.2 (<$1, minutes) and GPT 5.5 (~$1.50) — 9× cost for parity. Mythos 5 = same model, restricted access (not plannable-for). Benchmark set still announcement-adjacent.
+- **Grounding:** `claude-5-family-retiers-claude-line`, `center-vs-edge-of-distribution-task-classification`, `effort-level-tuning-as-first-order-cost-lever`
 
 ### Claude Sonnet 5 — Anthropic *(new mid-tier default)*
 - **Strong:** near-Opus 4.8 on agentic benchmarks (terminal, computer use, coding) at Sonnet pricing ($3/$15; intro $2/$10 to Aug 31 2026); "most agentic Sonnet yet"; improved agentic safety profile over Sonnet 4.6.
@@ -82,6 +82,11 @@ refresh_contract: "Refreshed periodically and intentionally (Nick, session 129 �
 - **Weak:** ~10 points below V4-Pro-Max/Opus-class on hardest coding; 32k–128k practical context; top-end reasoning thinly documented; no published safety audit.
 - **Grounding:** `qwen-bfcl-tool-calling-leadership-efficient-coding`
 
+### GLM 5.2 — Zhipu/Z.ai *(first profile evidence; as of Jun–Jul 2026; reviewed 2026-07-12)*
+- **Strong:** **center-of-distribution work at the cost floor** — in Hashimoto's three-tier launch-week experiment, tied GPT 5.5 (~$1.50) and Fable 5 ($9, 40 min) on ordinary feature work at <$1 in minutes; ~98% cheaper than Claude, free self-hosted; Jones frames it as best-in-class at center tasks, especially where front-end taste matters (analyst opinion, not benchmark); ships its own Codex-clone harness.
+- **Weak:** **edge-of-distribution** — on Hashimoto's hard systems-code task, cheap models incl. GLM "couldn't touch it at all" where Fable 5 succeeded; profile rests on one engineer's quantified experiment plus analyst commentary — no dedicated benchmark rows in the KB yet; no safety-audit evidence (shared open-weight caveat above applies).
+- **Grounding:** `center-vs-edge-of-distribution-task-classification`, `harness-non-portability-across-model-families`
+
 ### Meta Llama (custom license) — Meta
 - **Strong:** ecosystem breadth, tooling familiarity, serviceable general baseline.
 - **Weak:** **absent from the top of every agentic leaderboard checked** (SWE-bench, BFCL-V4, TerminalBench); custom license (registration, no-training-competitors) adds legal overhead MIT/Apache alternatives don't have. Not a competitive agent backbone in 2026. (Absence-of-evidence basis — re-check at refresh.)
@@ -100,6 +105,7 @@ refresh_contract: "Refreshed periodically and intentionally (Nick, session 129 �
 - Release compression (`frontier-release-compression-march-2026`) means profiles age fast; trust `as-of` dates over model names. The Kimi↔Opus leapfrogging (K2.6 leads → Opus 4.7 re-leads, weeks apart) is the concrete demonstration.
 - **The staleness clock is first-party quantified** (as of mid-2026; reviewed 2026-07-11): Anthropic reports autonomous task-horizon doubling ~every 4 months (up from ~7) — 4-minute tasks (Mar 2024) → 90-minute (Mar 2025) → 12-hour (Mar 2026) — plus >80% of its merged code Claude-authored (May 2026) and 8× per-engineer merged-code throughput (Q2 2026 vs 2024). A profile written today describes a model class whose task horizon doubles within two review cycles; self-reported and unaudited, so treat as trend context, not a routing input (`anthropic-first-party-capability-trend-stats`).
 - **Benchmark parity ≠ task parity.** Practitioner splits (Composio pro-Kimi vs Tensorlake pro-Opus on the same model pair) recur; treat registry profiles as routing priors, not guarantees.
+- **Effort level is a first-order cost lever, not a footnote** (as of Jul 2026; reviewed 2026-07-12): within one frontier model the effort dial moves cost more than the model picker — Deep Sweet long-horizon agentic benchmark: Fable 5 at low effort scores 60% at $3.76/task, beating Opus 4.8 at MAX effort (59%, $13/task) at ~29% of its cost; Fable curve low 60% / medium 65% / high 69% / extra-high 70%, with max (~70%, $22/task) adding ~nothing over extra-high. Anthropic's own accuracy-vs-cost chart corroborates the shape (Fable low ~$5 ≈ Opus 4.8 max ~$11). Default effort (high) overpays on most tasks — match effort to task complexity before reaching for a tier downshift. Provenance caveat: Deep Sweet numbers are practitioner-reported; the corroborating chart is announcement-adjacent (`effort-level-tuning-as-first-order-cost-lever`).
 
 ---
 
@@ -107,7 +113,7 @@ refresh_contract: "Refreshed periodically and intentionally (Nick, session 129 �
 
 | Model | Why wanted | Requested |
 |---|---|---|
-| GLM line (4.7/5.x) | Recurs in mid-2026 comparison rows near the frontier (SWE-bench Pro 58.4, τ²-Bench 99.1) but has no dedicated profile evidence | session 129 research pass |
-| GPT-5.5 / 5.6 | Appears as anchor in Claude/Kimi comparisons; no dedicated profile | session 129 research pass |
+| GLM line — benchmark depth | First profile added 2026-07-12 (session 136) from Hashimoto/Jones evidence, but it rests on one experiment + analyst commentary; dedicated benchmark rows (SWE-bench Pro 58.4, τ²-Bench 99.1 seen in comparison rows) still lack a KB finding | session 129 research pass; partial session 136 |
+| GPT-5.5 / 5.6 | Appears as anchor in Claude/Kimi comparisons (and as the mid tier in Hashimoto's three-tier experiment); no dedicated profile. A GPT-5.6 availability note was itemized at session-136 intake but no KB finding was written — skipped rather than front-run the KB | session 129 research pass |
 
 Adding a profile requires a KB finding first (research-loop or /research-query with persistence) — the registry never front-runs the KB.

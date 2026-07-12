@@ -15,7 +15,7 @@ sources:
 - most-people-build-claude-skills-wrong-heres-what-w.md
 proposals: []
 date_discovered: '2026-03-22'
-last_updated: '2026-04-19'
+last_updated: '2026-07-12'
 related_findings:
 - file: eval-driven-development-autonomous-quality.md
   rel: same-problem
@@ -30,6 +30,10 @@ related_findings:
 - file: planner-executor-deterministic-guardrails.md
   rel: same-problem
 - file: builder-validator-chain-pattern.md
+  rel: same-problem
+- file: cross-vendor-adversarial-build-attack-loop.md
+  rel: same-problem
+- file: job-diet-boundaries-review-loop-operating-framework.md
   rel: same-problem
 pipeline_status: extracted
 consumed_by:

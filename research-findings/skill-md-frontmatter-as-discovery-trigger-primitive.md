@@ -1,39 +1,46 @@
 ---
 name: SKILL.md Frontmatter as Discovery & Triggering Primitive
-summary: A skill's YAML frontmatter — primarily `name` (≤64 chars, lowercase + hyphens + digits) and `description` (≤1024 chars, what + when) — is the only thing Claude sees at agent startup. It is simultaneously the discovery surface (Claude knows what skills exist) and the triggering primitive (Claude decides whether to load a skill based on description match). Authoring quality at this level dominates skill effectiveness — every other layer is downstream.
-implementation_notes: "The description should include BOTH what the skill does AND when to use it; Anthropic's skill-creator guidance pushes authors toward 'a little bit pushy' description language to combat Claude's tendency to undertrigger. Validation rules: name max 64 chars, lowercase alphanumeric + hyphens only, no consecutive hyphens, no leading/trailing hyphens, must match parent directory; description max 1024 chars, non-empty, no XML tags. Reserved words 'anthropic' and 'claude' cannot appear in names. Frontmatter is what appears in Claude's system prompt — malicious content here could inject instructions, hence validation strictness."
+summary: A skill's YAML frontmatter — primarily `name` (≤64 chars, lowercase + hyphens + digits) and `description` (≤1024 chars, what + when) — is the only thing Claude sees at agent startup. It is simultaneously
+  the discovery surface (Claude knows what skills exist) and the triggering primitive (Claude decides whether to load a skill based on description match). Authoring quality at this level dominates skill
+  effectiveness — every other layer is downstream.
+implementation_notes: 'The description should include BOTH what the skill does AND when to use it; Anthropic''s skill-creator guidance pushes authors toward ''a little bit pushy'' description language to
+  combat Claude''s tendency to undertrigger. Validation rules: name max 64 chars, lowercase alphanumeric + hyphens only, no consecutive hyphens, no leading/trailing hyphens, must match parent directory;
+  description max 1024 chars, non-empty, no XML tags. Reserved words ''anthropic'' and ''claude'' cannot appear in names. Frontmatter is what appears in Claude''s system prompt — malicious content here
+  could inject instructions, hence validation strictness.'
 category: Agent Design
 evidence_strength: Strong (production-tested)
 adoption_status: Partially Adopted
 priority: P1 (Implement Now)
 applicability:
-  - "S3 (Claude Code Build)"
-  - "General"
+- S3 (Claude Code Build)
+- General
 adopted_in:
-  - "Improvement Loop"
-  - "General / Cross-System"
+- Improvement Loop
+- General / Cross-System
 sources:
-  - "anthropic-equipping-agents-with-agent-skills.md"
-  - "anthropic-agent-skills-overview-docs.md"
-  - "anthropic-claude-code-skills-docs.md"
-  - "agentskills-open-standard.md"
-  - "anthropic-complete-guide-building-skills-pdf.md"
+- anthropic-equipping-agents-with-agent-skills.md
+- anthropic-agent-skills-overview-docs.md
+- anthropic-claude-code-skills-docs.md
+- agentskills-open-standard.md
+- anthropic-complete-guide-building-skills-pdf.md
 related_findings:
-  - file: "skill-as-directory-progressive-disclosure-three-levels.md"
-    rel: "enabled-by"
-  - file: "skill-frontmatter-validation-rules.md"
-    rel: "extended-by"
-  - file: "skill-description-structure-what-when-capabilities.md"
-    rel: "extends"
-  - file: "skill-description-optimization-loop-held-out-test.md"
-    rel: "extended-by"
-  - file: "agent-description-auto-dispatch-routing.md"
-    rel: "same-problem"
-  - file: "description-based-workflow-routing-lazy-dispatch.md"
-    rel: "same-problem"
+- file: skill-as-directory-progressive-disclosure-three-levels.md
+  rel: enabled-by
+- file: skill-frontmatter-validation-rules.md
+  rel: extended-by
+- file: skill-description-structure-what-when-capabilities.md
+  rel: extends
+- file: skill-description-optimization-loop-held-out-test.md
+  rel: extended-by
+- file: agent-description-auto-dispatch-routing.md
+  rel: same-problem
+- file: description-based-workflow-routing-lazy-dispatch.md
+  rel: same-problem
+- file: skill-invocation-control-side-effect-guard.md
+  rel: extended-by
 proposals: null
 date_discovered: '2026-06-11'
-last_updated: '2026-06-11'
+last_updated: '2026-07-12'
 pipeline_status: raw
 consumed_by: []
 ---

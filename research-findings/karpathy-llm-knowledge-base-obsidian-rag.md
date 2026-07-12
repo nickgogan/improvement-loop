@@ -16,10 +16,15 @@ sources:
 - karpathys-obsidian-rag-claude-code.md
 - self-evolving-claude-code-memory.md
 - karpathy-llm-wiki-local-implementation.md
+- open-standard-for-the-karpathy-llm-wiki.md
 proposals: null
 date_discovered: '2026-04-07'
-last_updated: '2026-04-27'
+last_updated: '2026-07-12'
 related_findings:
+- file: okf-open-knowledge-format-curated-bundle-spec.md
+  rel: extended-by
+- file: knowledge-substrate-standardization-cross-agent-interop.md
+  rel: extended-by
 - file: claudemd-as-knowledge-base-traversal-guide.md
   rel: same-problem
 - file: ace-agentic-context-engineering-rag-based.md
@@ -28,8 +33,14 @@ related_findings:
   rel: extends
 - file: ai-managed-vault-separate-from-human-vault.md
   rel: same-problem
+- file: markdown-git-system-of-record-derived-disposable-db.md
+  rel: extended-by
+- file: memory-wiki-world-kb-trichotomy.md
+  rel: extended-by
 pipeline_status: synthesized
-consumed_by: ["patterns/llm-compiled-knowledge-base-over-vector-rag.md", "building-agentic-systems.md"]
+consumed_by:
+- patterns/llm-compiled-knowledge-base-over-vector-rag.md
+- building-agentic-systems.md
 ---
 # Karpathy LLM Knowledge Base (Obsidian RAG Alternative)
 
@@ -68,6 +79,20 @@ Wiki quality degrades if LLM compilation isn't periodically supervised. Index ca
 - **Limitation:** Implementation is static (full regeneration each run), not incremental as Karpathy envisioned. Author notes incremental update is straightforward to add.
 
 This corroborates the pattern's applicability: even a minimal local model (Gemma 4B) can power the wiki compilation step, validating Karpathy's claim that the LLM work is "basic — any LLM can do it."
+
+## Standardization Update — 2026-07-12
+
+The pattern's missing piece surfaced as its main critique: the Karpathy gist (40,000
+stars) tells everyone to build a wiki but not how to structure it, so every wiki comes
+out different — divergent metadata fields (`tags` vs `categories`), folder layouts, and
+linking conventions mean nobody's agent can consume anybody else's wiki. Google Cloud's
+OKF (June 2026) is the open-standard layer on top: it standardizes exactly the two
+things the gist leaves open (information organization and metadata fields) so wikis
+become shareable and cross-agent navigable. Cole Medin, whose adaptations anchor this
+finding, is migrating his own wikis to it. See
+okf-open-knowledge-format-curated-bundle-spec.md (the spec) and
+knowledge-substrate-standardization-cross-agent-interop.md (the interop argument and
+adoption mechanics).
 
 ## Extraction Note — 2026-04-19
 Extracted as **pattern**: [[llm-compiled-knowledge-base-over-vector-rag.md]] in `extracts/patterns/`

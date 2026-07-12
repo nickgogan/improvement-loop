@@ -16,5 +16,6 @@ findings:
 - test-input-coverage-design-15-30-sweet-spot.md
 date_added: '2026-04-01'
 date_processed: '2026-04-01'
+date_published: "2026-03-15"
 ---
 # How to Build Self-Improving AI Skills with Binary Evals -- MindStudio

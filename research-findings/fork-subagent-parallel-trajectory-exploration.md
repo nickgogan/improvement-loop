@@ -13,6 +13,7 @@ applicability:
 adopted_in: []
 sources:
 - claude-codes-leak-changes-everything.md
+- anthropic-claude-code-session-management-1m-context.md
 related_findings:
 - file: cloud-plan-parallel-multitasking-pattern.md
   rel: same-problem
@@ -20,8 +21,12 @@ related_findings:
   rel: same-problem
 - file: worktree-isolation-for-parallel-agent-sessions.md
   rel: same-problem
+- file: harness-composition-six-pattern-taxonomy.md
+  rel: same-problem
+- file: pairwise-tournament-judging-over-absolute-scoring.md
+  rel: enabled-by
 date_discovered: '2026-04-07'
-last_updated: '2026-04-09'
+last_updated: '2026-07-12'
 pipeline_status: raw
 consumed_by: []
 ---

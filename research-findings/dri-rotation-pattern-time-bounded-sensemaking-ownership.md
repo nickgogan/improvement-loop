@@ -1,32 +1,35 @@
 ---
-name: "DRI Rotation Pattern: Time-Bounded Sensemaking Ownership"
-summary: "Directly Responsible Individuals (DRIs) own a specific cross-cutting problem for a fixed term (e.g., 90 days) with full authority to pull resources, interpret data, and make direction calls within that domain. The expiration date prevents accumulation of middle management; rotation across domains builds cross-functional fluency. Block's proposed replacement for permanent middle management."
+name: 'DRI Rotation Pattern: Time-Bounded Sensemaking Ownership'
+summary: Directly Responsible Individuals (DRIs) own a specific cross-cutting problem for a fixed term (e.g., 90 days) with full authority to pull resources, interpret data, and make direction calls within
+  that domain. The expiration date prevents accumulation of middle management; rotation across domains builds cross-functional fluency. Block's proposed replacement for permanent middle management.
 implementation_notes: null
-category: "Governance"
-evidence_strength: "Medium (practitioner-documented)"
-adoption_status: "Not Yet Started"
-priority: "P2 (Design Required)"
+category: Governance
+evidence_strength: Medium (practitioner-documented)
+adoption_status: Not Yet Started
+priority: P2 (Design Required)
 applicability:
-  - "General"
-  - "S3 (Claude Code Build)"
+- General
+- S3 (Claude Code Build)
 adopted_in: []
 sources:
-  - "unbundling-management-ai-age-routing-sensemaking.md"
+- unbundling-management-ai-age-routing-sensemaking.md
 related_findings:
-  - file: management-unbundling-routing-sensemaking-accountability.md
-    rel: same-problem
-  - file: ceo-mandatory-delegation-pattern.md
-    rel: same-problem
-  - file: autonomy-gradient-not-binary-delegation.md
-    rel: same-problem
-  - file: five-persistent-human-skills-agent-era-framework.md
-    rel: same-problem
+- file: management-unbundling-routing-sensemaking-accountability.md
+  rel: same-problem
+- file: ceo-mandatory-delegation-pattern.md
+  rel: same-problem
+- file: autonomy-gradient-not-binary-delegation.md
+  rel: same-problem
+- file: five-persistent-human-skills-agent-era-framework.md
+  rel: same-problem
+- file: agent-owner-card-human-facing-registry.md
+  rel: same-problem
 proposals: null
-date_discovered: "2026-04-20"
-last_updated: "2026-04-20"
+date_discovered: '2026-04-20'
+last_updated: '2026-07-12'
 pipeline_status: synthesized
 consumed_by:
-  - "agent-governance-and-trust.md"
+- agent-governance-and-trust.md
 ---
 
 ## What It Is

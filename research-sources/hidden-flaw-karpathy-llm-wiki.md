@@ -14,6 +14,7 @@ findings:
   - "write-time-vs-query-time-synthesis-kb-poisoning.md"
 date_added: "2026-05-24"
 date_processed: "2026-05-24"
+date_published: "2026-04-17"
 ---
 
 # The Hidden Flaw in Karpathy's LLM Wiki

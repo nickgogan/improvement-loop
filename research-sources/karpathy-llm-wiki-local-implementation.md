@@ -17,6 +17,7 @@ findings:
   - dual-ingestion-funnel-human-clip-plus-llm-research.md
 date_added: "2026-04-20"
 date_processed: "2026-04-20"
+date_published: "2026-04-19"
 ---
 # Local LLM Wiki with Obsidian (Karpathy Implementation)
 

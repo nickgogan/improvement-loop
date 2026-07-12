@@ -1,7 +1,9 @@
 ---
 name: Headless Multi-Pass Iterative Review
-summary: Run N review iterations using `claude -p` (headless mode), each spawning 5-7 fresh-context sub-agents on the same target. Each pass produces independent findings; all passes aggregate into a single final report. Combines `/loop` for iteration control with headless execution for fresh context per pass.
-implementation_notes: 'Implemented as a shell script: a prompt stored in an .md file is passed to `claude -p` N times. Each invocation spins up sub-agents (split-and-merge within each pass). Results are aggregated by the orchestrator after all passes complete.'
+summary: Run N review iterations using `claude -p` (headless mode), each spawning 5-7 fresh-context sub-agents on the same target. Each pass produces independent findings; all passes aggregate into a single
+  final report. Combines `/loop` for iteration control with headless execution for fresh context per pass.
+implementation_notes: 'Implemented as a shell script: a prompt stored in an .md file is passed to `claude -p` N times. Each invocation spins up sub-agents (split-and-merge within each pass). Results are
+  aggregated by the orchestrator after all passes complete.'
 category: Orchestration
 evidence_strength: Medium (practitioner-documented)
 adoption_status: Not Yet Started
@@ -14,7 +16,7 @@ sources:
 - five-claude-code-agent-patterns.md
 proposals: null
 date_discovered: '2026-04-19'
-last_updated: '2026-04-19'
+last_updated: '2026-07-12'
 related_findings:
 - file: iterative-refinement-loop-with-quality-gate.md
   rel: same-problem
@@ -26,9 +28,11 @@ related_findings:
   rel: same-problem
 - file: orchestrated-competition-n-sub-agents-solve-same.md
   rel: same-problem
-pipeline_status: "extracted"
+- file: two-axis-parallel-code-review-standards-vs-spec.md
+  rel: same-problem
+pipeline_status: extracted
 consumed_by:
-  - "skills/headless-multi-pass-iterative-review.md"
+- skills/headless-multi-pass-iterative-review.md
 ---
 ## What It Is
 

@@ -1,35 +1,39 @@
 ---
-name: "Skill-Phase Pipeline with Shared-Session Orchestrator"
-summary: "A development lifecycle encoded as a sequence of skill invocations within a single persistent orchestrator session. Each skill defines one phase boundary (brainstorm, plan, execute, review, finish). The orchestrator session persists across all skill invocations, carrying design decisions, user preferences, and accumulated context forward — unlike artifact-only handoff where inter-phase state is limited to files."
+name: Skill-Phase Pipeline with Shared-Session Orchestrator
+summary: A development lifecycle encoded as a sequence of skill invocations within a single persistent orchestrator session. Each skill defines one phase boundary (brainstorm, plan, execute, review, finish).
+  The orchestrator session persists across all skill invocations, carrying design decisions, user preferences, and accumulated context forward — unlike artifact-only handoff where inter-phase state is limited
+  to files.
 implementation_notes: null
-category: "Orchestration"
-evidence_strength: "Medium (practitioner-documented)"
-adoption_status: "Not Yet Started"
+category: Orchestration
+evidence_strength: Medium (practitioner-documented)
+adoption_status: Not Yet Started
 priority: P2
 applicability:
-  - "S3 (Claude Code Build)"
+- S3 (Claude Code Build)
 sources:
-  - "claude-code-plus-superpowers-tutorial.md"
+- claude-code-plus-superpowers-tutorial.md
 related_findings:
-  - file: "superpowers-plugin-spec-driven-sub-agent-orchestra.md"
-    rel: "extends"
-  - file: "artifact-as-contract-pattern.md"
-    rel: "same-problem"
-  - file: "skill-chaining-composing-workflows-from-modular-s.md"
-    rel: "extends"
-  - file: "orchestrator-headless-dispatch-context-isolation.md"
-    rel: "contradicts"
-  - file: "framework-tension-taxonomy-superpowers-gsd-gstack.md"
-    rel: "extends"
+- file: superpowers-plugin-spec-driven-sub-agent-orchestra.md
+  rel: extends
+- file: artifact-as-contract-pattern.md
+  rel: same-problem
+- file: skill-chaining-composing-workflows-from-modular-s.md
+  rel: extends
+- file: orchestrator-headless-dispatch-context-isolation.md
+  rel: contradicts
+- file: framework-tension-taxonomy-superpowers-gsd-gstack.md
+  rel: extends
+- file: leg-work-amplification-hiding-future-steps.md
+  rel: same-problem
 adopted_in: []
 proposals: null
-date_discovered: "2026-05-25"
-last_updated: "2026-05-25"
-pipeline_status: "synthesized"
+date_discovered: '2026-05-25'
+last_updated: '2026-07-12'
+pipeline_status: synthesized
 consumed_by:
-  - "agent-architecture-decisions.md"
+- agent-architecture-decisions.md
 tags:
-  - "session-95-reextract"
+- session-95-reextract
 ---
 
 # Skill-Phase Pipeline with Shared-Session Orchestrator

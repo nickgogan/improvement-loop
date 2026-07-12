@@ -15,6 +15,7 @@ findings:
   - "two-layer-plugin-model-tools-vs-capabilities.md"
 date_added: "2026-05-24"
 date_processed: "2026-05-24"
+date_published: "2025-12-28"
 ---
 
 # HKUDS DeepTutor Structural Analysis

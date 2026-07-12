@@ -1,33 +1,38 @@
 ---
-name: "File Search Outperforms RAG for Small Corpora"
-summary: "For smaller knowledge bases, file search tools (grep, glob, file traversal) outperform traditional RAG (vector databases, semantic search, embedding pipelines). LlamaIndex study and coding agent ecosystem shift (Claude Code, Cursor) confirmed this in 2025. Semantic search remains superior for larger knowledge bases with thousands of documents where it is more accurate and cheaper at scale."
+name: File Search Outperforms RAG for Small Corpora
+summary: For smaller knowledge bases, file search tools (grep, glob, file traversal) outperform traditional RAG (vector databases, semantic search, embedding pipelines). LlamaIndex study and coding agent
+  ecosystem shift (Claude Code, Cursor) confirmed this in 2025. Semantic search remains superior for larger knowledge bases with thousands of documents where it is more accurate and cheaper at scale.
 implementation_notes: null
-category: "Context Engineering"
-evidence_strength: "Medium (practitioner-documented)"
-adoption_status: "Partially Adopted"
+category: Context Engineering
+evidence_strength: Medium (practitioner-documented)
+adoption_status: Partially Adopted
 priority: P2
 applicability:
-  - "S3 (Claude Code Build)"
-  - "General"
+- S3 (Claude Code Build)
+- General
 adopted_in: []
 sources:
-  - "sdk-vs-framework-decision-ai-agents.md"
+- sdk-vs-framework-decision-ai-agents.md
 related_findings:
-  - file: scale-threshold-heuristic-obsidian-vs-rag.md
-    rel: same-problem
-  - file: hybrid-retrieval-pattern-semantic-lexical-graph.md
-    rel: same-problem
-  - file: ace-agentic-context-engineering-rag-based.md
-    rel: contradicts
+- file: scale-threshold-heuristic-obsidian-vs-rag.md
+  rel: same-problem
+- file: hybrid-retrieval-pattern-semantic-lexical-graph.md
+  rel: same-problem
+- file: ace-agentic-context-engineering-rag-based.md
+  rel: contradicts
+- file: curated-spine-plus-rag-hybrid-query-router.md
+  rel: same-problem
+- file: structure-addressed-retrieval-for-cited-document-domains.md
+  rel: extended-by
 proposals: null
-date_discovered: "2026-05-25"
-last_updated: "2026-05-25"
-pipeline_status: "synthesized"
+date_discovered: '2026-05-25'
+last_updated: '2026-07-12'
+pipeline_status: synthesized
 consumed_by:
-  - "structuring-agent-context.md"
-  - "rules/default-to-file-search-before-rag.md"
+- structuring-agent-context.md
+- rules/default-to-file-search-before-rag.md
 tags:
-  - "session-95-reextract"
+- session-95-reextract
 ---
 
 ## What It Is

@@ -24,6 +24,7 @@ findings:
   - "surprisal-novelty-as-memory-write-gate.md"
 date_added: "2026-04-20"
 date_processed: "2026-04-20"
+date_published: "2026-03-24"
 ---
 
 # Memongo — MongoDB-Native Long-Term Memory for AI Agents

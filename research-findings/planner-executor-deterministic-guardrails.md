@@ -41,9 +41,11 @@ related_findings:
   rel: same-problem
 - file: archon-yaml-defined-harness-workflows.md
   rel: same-problem
+- file: war-game-plan-format-for-executor-handoff.md
+  rel: same-problem
 proposals: []
 date_discovered: '2026-04-07'
-last_updated: '2026-04-09'
+last_updated: '2026-07-12'
 pipeline_status: synthesized
 consumed_by:
 - agent-workflow-and-execution.md

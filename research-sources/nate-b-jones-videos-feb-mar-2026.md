@@ -17,5 +17,6 @@ findings:
 - the-four-discipline-prompting-stack-nate-b-jones.md
 date_added: '2026-03-09'
 date_processed: '2026-03-22'
+date_published: "2026-03"
 ---
 # Nate B. Jones Videos (Feb-Mar 2026)

@@ -25,6 +25,7 @@ findings:
 - morning-routine-skill-active-experiment-check-in.md
 date_added: '2026-04-19'
 date_processed: '2026-04-19'
+date_published: "2026-04-05"
 ---
 # NotebookLM + Claude Code: Expert Knowledge → Personal Experiments
 

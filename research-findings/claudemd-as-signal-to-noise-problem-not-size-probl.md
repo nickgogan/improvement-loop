@@ -14,13 +14,15 @@ adopted_in: []
 sources: []
 proposals: []
 date_discovered: '2026-03-22'
-last_updated: '2026-04-19'
+last_updated: '2026-07-12'
 related_findings:
 - file: context-file-instruction-bloat-eth-zurich.md
   rel: same-problem
 - file: context-rot-silent-killer-and-mitigations.md
   rel: same-problem
 - file: tiered-context-injection-over-monolithic-files.md
+  rel: same-problem
+- file: skill-pruning-failure-modes-noop-deletion-test.md
   rel: same-problem
 pipeline_status: raw
 consumed_by: []

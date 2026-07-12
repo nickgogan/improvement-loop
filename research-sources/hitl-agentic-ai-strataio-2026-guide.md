@@ -16,6 +16,7 @@ findings:
   - "autonomy-gradient-not-binary-delegation.md"
 date_added: "2026-04-01"
 date_processed: "2026-04-07"
+date_published: null
 ---
 
 # HITL Agentic AI -- Strata.io 2026 Guide

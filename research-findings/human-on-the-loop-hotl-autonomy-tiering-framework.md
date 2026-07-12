@@ -16,9 +16,10 @@ sources:
 - human-on-the-loop-ai-hotl-torry-harris.md
 - hitl-agentic-ai-strataio-2026-guide.md
 - anthropic-trustworthy-agents-in-practice.md
+- the-best-ai-coding-setup-isnt-the-most-autonomous-one.md
 proposals: []
 date_discovered: '2026-04-01'
-last_updated: '2026-04-19'
+last_updated: '2026-07-12'
 related_findings:
 - file: interrupt-command-primitives-human-in-the-loop.md
   rel: same-problem
@@ -30,6 +31,22 @@ related_findings:
   rel: same-problem
 - file: claude-code-auto-mode-ai-driven-permission-classif.md
   rel: same-problem
+- file: autonomy-progression-gated-by-maturity.md
+  rel: same-problem
+- file: critical-call-checkpoint-gate-placement-heuristic.md
+  rel: same-problem
+- file: job-diet-boundaries-review-loop-operating-framework.md
+  rel: same-problem
+- file: nine-primitive-document-agent-skeleton.md
+  rel: same-problem
+- file: receipt-artifact-as-agent-trust-mechanism.md
+  rel: extended-by
+- file: task-risk-gradient-for-verification-depth.md
+  rel: same-problem
+- file: three-bucket-change-approval-tiering.md
+  rel: same-problem
+- file: trust-calibration-progressive-autonomy-ramp.md
+  rel: extended-by
 pipeline_status: synthesized
 consumed_by:
 - agent-governance-and-trust.md
@@ -60,3 +77,15 @@ Convergence across multiple 2026 sources. Regulatory pressure is making governan
 
 ## Potential Failure Modes
 HOTL relies on guardrails being correctly set. Post-Action Review requires humans to actually review the audit trail.
+
+## Independent Corroboration — Cole Medin (July 2026)
+
+Medin's five-level walkthrough maps cleanly onto the HITL→HOTL transition and corroborates
+the "start supervised, tier up" recommendation from coding-agent practice: level 3
+(human in planning + validation around full delegation) is HITL per task; level 4
+(direction up front, validation at the end, human "sleeping for long periods") is HOTL —
+and he reports reliability "really starts to tank" at level 4 for teams that tier up
+before their system is mature. Matches this framework's "start at Tier 3 (Operational) to
+build trust" guidance. See [[autonomy-progression-gated-by-maturity]]. Multi-source
+corroboration in the DD-108 supervised-autonomy lane noted for /reassess-priorities — no
+priority change made here.

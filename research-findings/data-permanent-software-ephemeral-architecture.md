@@ -1,33 +1,37 @@
 ---
-name: "Data-Permanent Software-Ephemeral Knowledge Architecture"
-summary: "Treat domain knowledge artifacts (skills files, context documents, distilled summaries) as the durable, precious layer — never discard them. Treat generated software/dashboards/tooling as ephemeral and regenerable. As models improve, throw away generated code and regenerate from original instructions + preserved context. Inverts the typical engineering instinct to protect code and discard notes."
-implementation_notes: "MetaSystem already follows this directionally: KB findings are permanent, tooling is versioned. The explicit framing — throw away the software, keep the instructions — could formalize this as a design principle when reviewing artifact preservation policies."
-category: "Context Engineering"
-evidence_strength: "Anecdotal"
-adoption_status: "Partially Adopted"
-priority: "P3 (Monitor)"
+name: Data-Permanent Software-Ephemeral Knowledge Architecture
+summary: Treat domain knowledge artifacts (skills files, context documents, distilled summaries) as the durable, precious layer — never discard them. Treat generated software/dashboards/tooling as ephemeral
+  and regenerable. As models improve, throw away generated code and regenerate from original instructions + preserved context. Inverts the typical engineering instinct to protect code and discard notes.
+implementation_notes: 'MetaSystem already follows this directionally: KB findings are permanent, tooling is versioned. The explicit framing — throw away the software, keep the instructions — could formalize
+  this as a design principle when reviewing artifact preservation policies.'
+category: Context Engineering
+evidence_strength: Anecdotal
+adoption_status: Partially Adopted
+priority: P3 (Monitor)
 applicability:
-  - "S3 (Claude Code Build)"
-  - "General"
+- S3 (Claude Code Build)
+- General
 adopted_in: []
 sources:
-  - "self-improving-company-yc-five-layer-loop.md"
+- self-improving-company-yc-five-layer-loop.md
 proposals: null
-date_discovered: "2026-05-24"
-last_updated: "2026-05-25"
+date_discovered: '2026-05-24'
+last_updated: '2026-07-12'
 related_findings:
-  - file: "agent-architecture-layer-impermanence.md"
-    rel: "extends"
-  - file: "self-improving-knowledge-artifact-living-document.md"
-    rel: "extends"
-  - file: "progressive-diorization-pipeline-raw-to-breadcrumb.md"
-    rel: "enables"
-  - file: "total-organizational-legibility-as-ai-prerequisite.md"
-    rel: "enables"
-pipeline_status: "raw"
+- file: agent-architecture-layer-impermanence.md
+  rel: extends
+- file: self-improving-knowledge-artifact-living-document.md
+  rel: extends
+- file: progressive-diorization-pipeline-raw-to-breadcrumb.md
+  rel: enables
+- file: total-organizational-legibility-as-ai-prerequisite.md
+  rel: enables
+- file: data-normalization-as-cheap-model-enabler.md
+  rel: same-problem
+pipeline_status: raw
 tags:
-  - "context-engineering"
-  - "knowledge-management"
+- context-engineering
+- knowledge-management
 ---
 
 # Data-Permanent Software-Ephemeral Knowledge Architecture

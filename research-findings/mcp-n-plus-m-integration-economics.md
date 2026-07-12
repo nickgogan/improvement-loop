@@ -28,9 +28,11 @@ related_findings:
   rel: same-problem
 - file: mcp-integration-for-memory-as-service.md
   rel: same-problem
+- file: stateful-mcp-subprocess-vs-cli-shell-out.md
+  rel: same-problem
 proposals: []
 date_discovered: '2026-04-07'
-last_updated: '2026-04-19'
+last_updated: '2026-07-12'
 pipeline_status: raw
 consumed_by: []
 ---

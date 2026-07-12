@@ -28,6 +28,7 @@ findings:
   - "anthropic-first-party-capability-trend-stats.md"
 date_added: "2026-07-11"
 date_processed: "2026-07-11"
+date_published: "2026-06-04"
 ---
 
 Narrow intake executed session 131 per the triage flag: capability-trend stats only, as

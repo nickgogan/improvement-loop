@@ -15,6 +15,7 @@ sources:
 - intent-engineering-framework-for-ai-agents-product.md
 - hitl-agentic-ai-strataio-2026-guide.md
 - anthropic-trustworthy-agents-in-practice.md
+- the-best-ai-coding-setup-isnt-the-most-autonomous-one.md
 related_findings:
 - file: human-on-the-loop-hotl-autonomy-tiering-framework.md
   rel: same-problem
@@ -30,9 +31,11 @@ related_findings:
   rel: enabled-by
 - file: health-metrics-vs-hard-constraints-distinction.md
   rel: same-problem
+- file: autonomy-progression-gated-by-maturity.md
+  rel: same-problem
 proposals: []
 date_discovered: '2026-04-07'
-last_updated: '2026-04-09'
+last_updated: '2026-07-12'
 pipeline_status: synthesized
 consumed_by:
 - writing-agent-specifications.md
@@ -71,6 +74,18 @@ Misclassification of blast radius leads to under- or over-gating. Agents may not
 
 ## Anthropic Implementation (April 2026 — Tier 1)
 Anthropic's "Trustworthy agents in practice" confirms this pattern in production across Claude.ai, Claude Desktop, and Claude Code. Their implementation maps directly to the autonomy gradient: users select per-tool permission tiers (always allow / needs approval / block). Example: auto-read calendar but require approval for sending email invites. Claude Code's Plan Mode shifts oversight from individual steps to strategy-level review — the agent shows its full intended plan upfront for review/edit/approval, reducing friction from repeated per-action prompts. This is the "Proposal-first" tier from Huryn's framework, implemented at Anthropic scale. Subagents (parallel Claudes for task parts) introduce coordination complexity that Anthropic is actively exploring for oversight patterns.
+
+## Independent Corroboration — Cole Medin / Dan Shapiro Ladder (July 2026)
+
+Further independent convergence on autonomy-as-gradient: Medin's walkthrough of Dan
+Shapiro's five-level ladder (spicy autocomplete → coding intern → junior developer →
+developer → engineering team → dark factory) rejects binary delegation from a different
+axis — the gradient is traversed over *time as system maturity grows*, per workflow,
+rather than assigned per decision type up front. Complementary to Huryn's blast-radius 2x2:
+the 2x2 sets the level for a decision class; Medin/Shapiro govern when a class is allowed
+to move down a gate. See [[autonomy-progression-gated-by-maturity]]. Multi-source
+corroboration in the DD-108 supervised-autonomy lane noted for /reassess-priorities — no
+priority change made here.
 
 ## Extraction Note — 2026-04-19
 Extracted as **pattern**: [[autonomy-gradient-not-binary-delegation]] in `extracts/patterns/`

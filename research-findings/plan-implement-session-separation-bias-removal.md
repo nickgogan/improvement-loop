@@ -1,33 +1,37 @@
 ---
-name: "Plan-Implement Session Separation for Bias Removal"
-summary: "A specific harness engineering principle: planning and implementation must occur in different coding agent sessions with a fresh context window boundary between them. The planning node writes to an artifact directory; the implementation node reads from it in a clean session. This prevents 'planning bias' — where the implementation session is unconsciously influenced by the planning conversation's reasoning path rather than the plan artifact itself."
+name: Plan-Implement Session Separation for Bias Removal
+summary: 'A specific harness engineering principle: planning and implementation must occur in different coding agent sessions with a fresh context window boundary between them. The planning node writes
+  to an artifact directory; the implementation node reads from it in a clean session. This prevents ''planning bias'' — where the implementation session is unconsciously influenced by the planning conversation''s
+  reasoning path rather than the plan artifact itself.'
 implementation_notes: null
-category: "Context Engineering"
-evidence_strength: "Medium (practitioner-documented)"
-adoption_status: "Not Yet Started"
-priority: "P2 (Design Required)"
+category: Context Engineering
+evidence_strength: Medium (practitioner-documented)
+adoption_status: Not Yet Started
+priority: P2 (Design Required)
 applicability:
-  - "S3 (Claude Code Build)"
-  - "General"
+- S3 (Claude Code Build)
+- General
 adopted_in: []
 sources:
-  - "archon-open-source-harness-builder.md"
+- archon-open-source-harness-builder.md
 related_findings:
-  - file: "new-chat-per-agent-step-context-hygiene.md"
-    rel: "extends"
-  - file: "orchestrator-headless-dispatch-context-isolation.md"
-    rel: "same-problem"
-  - file: "boris-chernys-explore-plan-implement-commit-workf.md"
-    rel: "extends"
-  - file: "planner-executor-deterministic-guardrails.md"
-    rel: "extends"
+- file: new-chat-per-agent-step-context-hygiene.md
+  rel: extends
+- file: orchestrator-headless-dispatch-context-isolation.md
+  rel: same-problem
+- file: boris-chernys-explore-plan-implement-commit-workf.md
+  rel: extends
+- file: planner-executor-deterministic-guardrails.md
+  rel: extends
+- file: war-game-plan-format-for-executor-handoff.md
+  rel: same-problem
 proposals: null
-date_discovered: "2026-05-25"
-last_updated: "2026-05-25"
-pipeline_status: "classified"
+date_discovered: '2026-05-25'
+last_updated: '2026-07-12'
+pipeline_status: classified
 consumed_by: []
 tags:
-  - "session-95-reextract"
+- session-95-reextract
 ---
 
 ## What It Is

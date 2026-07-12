@@ -17,5 +17,6 @@ findings:
 - phase-task-hierarchical-plan-decomposition.md
 date_added: '2026-03-22'
 date_processed: '2026-03-22'
+date_published: "2026-03-17"
 ---
 # GSD 2 vs Claude Code: A New AI King?

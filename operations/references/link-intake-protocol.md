@@ -6,9 +6,19 @@ description: >-
   four verdicts (ADD / ENHANCE / KB-ONLY / REJECT) in a single gated report.
   Composes existing skills; builds nothing new. Landed as a reference doc per
   Rule 11 (n=1 recurrence); promotion trigger below.
-status: "active (Nick-gated 2026-07-11, session 130; piloted same session)"
+status: >-
+  superseded (promotion trigger fired at run 3, 2026-07-12, session 135;
+  Nick-gated option 1 — promoted to the /link-intake skill at
+  .claude/skills/link-intake/SKILL.md, which is now canonical; this doc is
+  retained as history)
 pilot_report: "operations/research-reports/2026-07-11-link-intake-triage.md"
 ---
+
+> **SUPERSEDED 2026-07-12.** This protocol was promoted to the `/link-intake`
+> orchestrator skill (`systems/improvement-loop/.claude/skills/link-intake/SKILL.md`)
+> after its third stable-shape run. The skill is canonical and additionally encodes the
+> run-3 learnings (recency-weighting, measured-experiment heuristic, fetch-before-probe
+> rate-limit lesson, defer/Blocked retry queue). Do not execute this document.
 
 # Link-Intake Triage Protocol
 

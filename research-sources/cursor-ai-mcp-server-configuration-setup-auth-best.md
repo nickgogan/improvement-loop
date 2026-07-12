@@ -18,6 +18,7 @@ findings:
   - "mcp-session-scoped-authorization.md"
 date_added: "2026-04-01"
 date_processed: "2026-04-07"
+date_published: "2026-04-22"
 ---
 
 # Cursor AI MCP Server Configuration: Setup + Auth + Best Practices (TrueFoundry)

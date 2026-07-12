@@ -16,5 +16,6 @@ findings:
 - metaprompting-karpathy-autoresearch-for-build.md
 date_added: '2026-03-15'
 date_processed: '2026-03-22'
+date_published: "2026-03-13"
 ---
 # Karpathy Autoresearch Video

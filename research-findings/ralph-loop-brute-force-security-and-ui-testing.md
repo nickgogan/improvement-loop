@@ -16,11 +16,13 @@ sources:
 - five-agentic-patterns-claude-code.md
 proposals: []
 date_discovered: '2026-03-22'
-last_updated: '2026-05-25'
+last_updated: '2026-07-12'
 related_findings:
 - file: ralph-wiggum-execution-pattern.md
   rel: extended-by
 - file: cross-model-verification-for-bug-finding.md
+  rel: same-problem
+- file: cross-vendor-adversarial-build-attack-loop.md
   rel: same-problem
 pipeline_status: raw
 consumed_by: []

@@ -21,6 +21,7 @@ findings:
   - "untyped-links-as-token-waste-anti-pattern.md"
 date_added: "2026-05-24"
 date_processed: "2026-05-24"
+date_published: "2026-05-01"
 ---
 
 # Don't Use Karpathy's Second Brain (I BUILT SOMETHING BETTER)

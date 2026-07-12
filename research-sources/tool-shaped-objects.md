@@ -14,5 +14,6 @@ findings:
 - tool-shaped-object-evaluation-lens.md
 date_added: '2026-03-23'
 date_processed: '2026-03-23'
+date_published: "2026-02-11"
 ---
 # Tool Shaped Objects

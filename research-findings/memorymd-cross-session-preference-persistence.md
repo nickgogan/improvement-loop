@@ -15,7 +15,7 @@ sources:
 - building-ai-agents-that-actually-work-full-course.md
 proposals: []
 date_discovered: '2026-03-22'
-last_updated: '2026-04-27'
+last_updated: '2026-07-12'
 related_findings:
 - file: context-engineering-supersedes-prompt-engineering.md
   rel: enabled-by
@@ -27,14 +27,16 @@ related_findings:
   rel: same-problem
 - file: ace-agentic-context-engineering-rag-based.md
   rel: same-problem
+- file: memory-file-to-skill-migration.md
+  rel: same-problem
 pipeline_status: synthesized
 consumed_by:
-  - "session-persistence-and-memory.md"
-  - artifact: agent-must-read-and-update-memory-md-on-startup
-    type: extracted-artifact
-    form: rule
-    date: 2026-04-27
-    session: 83
+- session-persistence-and-memory.md
+- artifact: agent-must-read-and-update-memory-md-on-startup
+  type: extracted-artifact
+  form: rule
+  date: 2026-04-27
+  session: 83
 ---
 # memory.md: Cross-Session Preference Persistence via Self-Updating File
 

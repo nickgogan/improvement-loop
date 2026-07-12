@@ -17,6 +17,7 @@ findings:
 - agentic-infrastructure-pilot-to-production.md
 date_added: "2026-04-01"
 date_processed: "2026-04-01"
+date_published: "2026-03-26"
 ---
 
 # March 2026 AI Roundup -- Digital Applied

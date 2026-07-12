@@ -23,13 +23,15 @@ related_findings:
   rel: same-problem
 - file: context-rot-silent-killer-and-mitigations.md
   rel: same-problem
+- file: issue-based-agent-orchestration-replacing-markdown-plans.md
+  rel: same-problem
 proposals: null
 date_discovered: '2026-04-09'
-last_updated: '2026-04-09'
+last_updated: '2026-07-12'
 pipeline_status: synthesized
 consumed_by:
-  - "agent-design-patterns.md"
-  - "session-persistence-and-memory.md"
+- agent-design-patterns.md
+- session-persistence-and-memory.md
 ---
 
 ## What It Is

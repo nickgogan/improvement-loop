@@ -1,28 +1,35 @@
 ---
-name: "anthropics/skills — Official skill examples + skill-creator"
-source_type: "Documentation"
-status: "Done"
-key_takeaways: "Anthropic's official skills repository — 17 reference skill directories (algorithmic-art, brand-guidelines, claude-api, doc-coauthoring, docx, frontend-design, internal-comms, mcp-builder, pdf, pptx, skill-creator, slack-gif-creator, theme-factory, web-artifacts-builder, webapp-testing, xlsx), a minimal template-skill (SKILL.md only), and a spec/agent-skills-spec.md that points to agentskills.io. The skill-creator skill is the meta-skill of record: codifies the full authorship loop including draft-test-review-improve iteration, eval-viewer with per-test feedback, quantitative benchmark.json schema, description-triggering optimization with held-out test set, blind A/B comparison, and Claude.ai/Cowork-specific adaptations. Distribution model: `/plugin marketplace add anthropics/skills` then install document-skills or example-skills plugin."
-relevance: "High"
-added_by: "Nick"
+name: anthropics/skills — Official skill examples + skill-creator
+source_type: Documentation
+status: Done
+key_takeaways: 'Anthropic''s official skills repository — 17 reference skill directories (algorithmic-art, brand-guidelines, claude-api, doc-coauthoring, docx, frontend-design, internal-comms, mcp-builder,
+  pdf, pptx, skill-creator, slack-gif-creator, theme-factory, web-artifacts-builder, webapp-testing, xlsx), a minimal template-skill (SKILL.md only), and a spec/agent-skills-spec.md that points to agentskills.io.
+  The skill-creator skill is the meta-skill of record: codifies the full authorship loop including draft-test-review-improve iteration, eval-viewer with per-test feedback, quantitative benchmark.json schema,
+  description-triggering optimization with held-out test set, blind A/B comparison, and Claude.ai/Cowork-specific adaptations. Distribution model: `/plugin marketplace add anthropics/skills` then install
+  document-skills or example-skills plugin.'
+relevance: High
+added_by: Nick
 tags:
-  - "skills"
-  - "agent-design"
-  - "evaluation"
-  - "tools"
-  - "claude-code"
-url: "https://github.com/anthropics/skills"
+- skills
+- agent-design
+- evaluation
+- tools
+- claude-code
+url: https://github.com/anthropics/skills
 authority:
-  - "anthropic.md"
+- anthropic.md
 findings:
-  - "meta-skill-for-skill-authorship.md"
-  - "skill-description-optimization-loop-held-out-test.md"
-  - "iterate-on-single-task-then-extract-skill.md"
-  - "skill-authoring-explain-the-why-not-musts.md"
-  - "generator-assessor-separation-in-skill-iteration.md"
-  - "skill-plugin-marketplace-distribution.md"
-date_added: "2026-06-11"
-date_processed: "2026-06-11"
+- generator-assessor-separation-in-skill-iteration.md
+- iterate-on-single-task-then-extract-skill.md
+- meta-skill-for-skill-authorship.md
+- skill-as-directory-progressive-disclosure-three-levels.md
+- skill-authoring-explain-the-why-not-musts.md
+- skill-description-optimization-loop-held-out-test.md
+- skill-plugin-marketplace-distribution.md
+- skill-security-audit-obligation.md
+date_added: '2026-06-11'
+date_processed: '2026-06-11'
+date_published: '2025-09-22'
 ---
 
 # anthropics/skills

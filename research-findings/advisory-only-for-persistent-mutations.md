@@ -24,9 +24,13 @@ related_findings:
   rel: same-problem
 - file: screen-as-permissions-model-agent-bypass-failure.md
   rel: same-problem
+- file: nine-primitive-document-agent-skeleton.md
+  rel: same-problem
+- file: task-risk-gradient-for-verification-depth.md
+  rel: same-problem
 proposals: null
 date_discovered: '2026-04-23'
-last_updated: '2026-05-24'
+last_updated: '2026-07-12'
 pipeline_status: raw
 consumed_by: []
 tags:

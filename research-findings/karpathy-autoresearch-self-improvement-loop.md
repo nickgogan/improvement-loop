@@ -16,7 +16,7 @@ sources:
 - openai-self-evolving-agents-cookbook.md
 proposals: []
 date_discovered: '2026-03-15'
-last_updated: '2026-04-19'
+last_updated: '2026-07-12'
 related_findings:
 - file: volume-over-quality-eval-principle.md
   rel: enabled-by
@@ -24,9 +24,11 @@ related_findings:
   rel: enabled-by
 - file: ace-execution-feedback-no-labels-required.md
   rel: same-problem
+- file: process-optimizer-agent-loop-improvement.md
+  rel: same-problem
 pipeline_status: synthesized
 consumed_by:
-  - "building-agent-evaluation-suites.md"
+- building-agent-evaluation-suites.md
 ---
 # Karpathy Autoresearch Self-Improvement Loop
 

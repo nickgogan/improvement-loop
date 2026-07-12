@@ -14,6 +14,7 @@ applicability:
 adopted_in: []
 sources:
 - steve-yegge-beads-coding-agent-memory.md
+- i-was-the-only-thing-connecting-claude-chatgpt-codex.md
 related_findings:
 - file: incremental-one-feature-per-session-pattern.md
   rel: same-problem
@@ -27,9 +28,11 @@ related_findings:
   rel: same-problem
 - file: agent-sprawl-anti-pattern-microservices-redux.md
   rel: same-problem
+- file: work-ticket-contract-prompt-mode-vs-work-mode.md
+  rel: extended-by
 proposals: null
 date_discovered: '2026-04-20'
-last_updated: '2026-04-20'
+last_updated: '2026-07-12'
 pipeline_status: classified
 consumed_by: []
 ---
@@ -49,6 +52,19 @@ The pattern also solves the "dementia problem": agents in 10-minute sessions los
 ## Why People Are Using It
 
 Yegge tested on a decade-old Wyvern project — agents spontaneously switched from markdown plans to issue-centric workflows within 30 minutes of Beads being available. The system filed 128 issues from legacy TODOs in ~30 seconds and generated a 5-sub-epic dependency graph autonomously. With 5+ concurrent agents, each working a single issue, the system produced coherent multi-epic progress without agent-to-agent communication.
+
+## Independent Corroboration — Open Engine (Nate B Jones, June 2026)
+
+Second independent arrival at the queue-as-coordination-substrate pattern, from the
+mixed-human/multi-vendor side rather than the single-codebase side: Jones's Open Engine
+uses a Linear queue (Jira or homegrown boards equally valid — "as long as it's a queue an
+agent can write to and you can read") to coordinate Claude, Codex, ChatGPT, and
+OpenClaw/Hermes agents plus human teammates, with agents claim-locking issues, working on
+heartbeats, and cross-vendor delegation happening entirely through self-contained issues
+("the ticket becomes the place they talk"). Same rejection of chat/markdown as state
+("a chat box is a terrible way to manage state — and I'm sorry, but so is Slack"). Jones
+adds a contract layer on the queue item — extracted separately as
+[[work-ticket-contract-prompt-mode-vs-work-mode]].
 
 ## Potential Improvements
 

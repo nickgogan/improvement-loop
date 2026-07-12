@@ -13,7 +13,6 @@ adopted_in:
 - General / Cross-System
 sources:
 - karpathys-obsidian-rag-claude-code.md
-- karpathy-obsidian-rag-markdown-knowledge-base.md
 - claude-code-obsidian-second-brain-project-onboarding.md
 - obsidian-claude-code-setup-terminal-integration.md
 related_findings:
@@ -29,12 +28,14 @@ related_findings:
   rel: same-problem
 - file: start-simple-migrate-when-forced-pragmatic-architecture.md
   rel: same-problem
+- file: ai-as-primary-reader-design-principle.md
+  rel: same-problem
 proposals: null
 date_discovered: '2026-04-07'
-last_updated: '2026-05-24'
+last_updated: '2026-07-12'
 pipeline_status: synthesized
 consumed_by:
-  - "building-agentic-systems.md"
+- building-agentic-systems.md
 ---
 # Obsidian as Transparent Frontend vs RAG Black Box
 

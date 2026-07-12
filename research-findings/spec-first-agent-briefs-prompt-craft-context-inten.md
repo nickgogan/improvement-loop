@@ -19,10 +19,12 @@ sources:
 - prompting-after-feb-2026-prompt-craft-context-inten.md
 proposals: []
 date_discovered: '2026-04-01'
-last_updated: '2026-04-07'
+last_updated: '2026-07-12'
 related_findings:
 - file: acceptance-criteria-as-verifiable-eval-anchor.md
   rel: extends
+- file: autonomy-gradient-not-binary-delegation.md
+  rel: same-problem
 pipeline_status: synthesized
 consumed_by:
 - writing-agent-specifications.md

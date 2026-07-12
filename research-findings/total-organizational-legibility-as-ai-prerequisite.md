@@ -1,35 +1,38 @@
 ---
-name: "Total Organizational Legibility as AI Prerequisite"
-summary: "If it is recorded, it happened to the AI. If it did not get recorded, it did not happen to your intelligence. Every interaction — emails, Slack messages, DMs, office hours, hallway conversations — must be captured and stored as a prerequisite for any AI-native organization. Legibility is the substrate; without it, no self-improving loop can operate."
+name: Total Organizational Legibility as AI Prerequisite
+summary: If it is recorded, it happened to the AI. If it did not get recorded, it did not happen to your intelligence. Every interaction — emails, Slack messages, DMs, office hours, hallway conversations
+  — must be captured and stored as a prerequisite for any AI-native organization. Legibility is the substrate; without it, no self-improving loop can operate.
 implementation_notes: null
-category: "Context Engineering"
-evidence_strength: "Medium (practitioner-documented)"
-adoption_status: "Partially Adopted"
-priority: "P3 (Monitor)"
+category: Context Engineering
+evidence_strength: Medium (practitioner-documented)
+adoption_status: Partially Adopted
+priority: P3 (Monitor)
 applicability:
-  - "S3 (Claude Code Build)"
-  - "General"
+- S3 (Claude Code Build)
+- General
 adopted_in: []
 sources:
-  - "self-improving-company-yc-five-layer-loop.md"
+- self-improving-company-yc-five-layer-loop.md
 related_findings:
-  - file: "five-layer-recursive-ai-loop-architecture.md"
-    rel: "enables"
-  - file: "context-first-build-sequencing-for-agentic-systems.md"
-    rel: "same-problem"
-  - file: "domain-specific-intelligence-from-historical-busi.md"
-    rel: "extends"
-  - file: "tacit-knowledge-as-agent-delegation-barrier.md"
-    rel: "same-problem"
-  - file: "self-describing-codebase-structural-semantic-context.md"
-    rel: "same-problem"
+- file: five-layer-recursive-ai-loop-architecture.md
+  rel: enables
+- file: context-first-build-sequencing-for-agentic-systems.md
+  rel: same-problem
+- file: domain-specific-intelligence-from-historical-busi.md
+  rel: extends
+- file: tacit-knowledge-as-agent-delegation-barrier.md
+  rel: same-problem
+- file: self-describing-codebase-structural-semantic-context.md
+  rel: same-problem
+- file: legible-executable-verifiable-agent-readiness-triad.md
+  rel: extended-by
 proposals: null
-date_discovered: "2026-05-25"
-last_updated: "2026-05-25"
-pipeline_status: "classified"
+date_discovered: '2026-05-25'
+last_updated: '2026-07-12'
+pipeline_status: classified
 consumed_by: []
 tags:
-  - "session-95-reextract"
+- session-95-reextract
 ---
 
 # Total Organizational Legibility as AI Prerequisite

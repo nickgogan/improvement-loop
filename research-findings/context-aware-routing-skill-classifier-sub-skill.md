@@ -15,13 +15,17 @@ sources:
 - most-people-build-claude-skills-wrong-heres-what-w.md
 proposals: []
 date_discovered: '2026-03-22'
-last_updated: '2026-05-24'
+last_updated: '2026-07-12'
 related_findings:
 - file: tiered-context-injection-over-monolithic-files.md
   rel: same-problem
 - file: skill-chaining-composing-workflows-from-modular-s.md
   rel: same-problem
 - file: auxiliary-model-slot-architecture.md
+  rel: same-problem
+- file: harness-composition-six-pattern-taxonomy.md
+  rel: same-problem
+- file: intent-based-meta-routing-skill.md
   rel: same-problem
 pipeline_status: raw
 consumed_by: []

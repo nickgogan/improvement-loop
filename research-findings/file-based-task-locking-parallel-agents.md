@@ -21,9 +21,11 @@ related_findings:
   rel: same-problem
 - file: database-as-shared-memory-coordination.md
   rel: same-problem
+- file: issue-based-agent-orchestration-replacing-markdown-plans.md
+  rel: same-problem
 proposals: null
 date_discovered: '2026-04-09'
-last_updated: '2026-04-19'
+last_updated: '2026-07-12'
 pipeline_status: synthesized
 consumed_by:
 - session-persistence-and-memory.md

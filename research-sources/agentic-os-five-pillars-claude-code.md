@@ -28,6 +28,7 @@ findings:
   - "tiered-interaction-model-quick-ask-vs-supervisor.md"
 date_added: "2026-04-20"
 date_processed: "2026-04-20"
+date_published: "2026-04-18"
 ---
 # 5 Features That Actually Matter (Agentic OS on Claude Code)
 

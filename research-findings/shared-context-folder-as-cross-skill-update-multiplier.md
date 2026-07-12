@@ -1,36 +1,40 @@
 ---
-name: "Shared Context Folder as Cross-Skill Update Multiplier"
-summary: "A single shared folder containing business context (brand voice, ICP, positioning, client details) that all skills reference by path. Update the folder once and every skill gets the update automatically on next execution. This is the update-propagation argument for centralized context — distinct from the pointer-vs-copy argument (which is about avoiding duplication) and distinct from the context-first ordering argument (which is about build sequencing)."
+name: Shared Context Folder as Cross-Skill Update Multiplier
+summary: A single shared folder containing business context (brand voice, ICP, positioning, client details) that all skills reference by path. Update the folder once and every skill gets the update automatically
+  on next execution. This is the update-propagation argument for centralized context — distinct from the pointer-vs-copy argument (which is about avoiding duplication) and distinct from the context-first
+  ordering argument (which is about build sequencing).
 implementation_notes: null
-category: "Context Engineering"
-evidence_strength: "Medium (practitioner-documented)"
-adoption_status: "Partially Adopted"
+category: Context Engineering
+evidence_strength: Medium (practitioner-documented)
+adoption_status: Partially Adopted
 priority: P2 (Design Required)
 applicability:
-  - "S3 (Claude Code Build)"
-  - "General"
+- S3 (Claude Code Build)
+- General
 adopted_in:
-  - "Improvement Loop"
+- Improvement Loop
 sources:
-  - "agentic-os-five-pillars-claude-code.md"
+- agentic-os-five-pillars-claude-code.md
 related_findings:
-  - file: skills-as-pointers-to-second-brain-files.md
-    rel: extends
-  - file: five-pillar-agentic-os-framework.md
-    rel: enables
-  - file: multi-client-context-isolation-with-shared-skills.md
-    rel: same-problem
-  - file: tiered-context-injection-over-monolithic-files.md
-    rel: enables
-  - file: context-infrastructure-seven-level-maturity-model.md
-    rel: enables
+- file: skills-as-pointers-to-second-brain-files.md
+  rel: extends
+- file: five-pillar-agentic-os-framework.md
+  rel: enables
+- file: multi-client-context-isolation-with-shared-skills.md
+  rel: same-problem
+- file: tiered-context-injection-over-monolithic-files.md
+  rel: enables
+- file: context-infrastructure-seven-level-maturity-model.md
+  rel: enables
+- file: ecosystem-monitoring-meta-loop.md
+  rel: same-problem
 proposals: null
-date_discovered: "2026-05-25"
-last_updated: "2026-05-25"
-pipeline_status: "classified"
+date_discovered: '2026-05-25'
+last_updated: '2026-07-12'
+pipeline_status: classified
 consumed_by: []
 tags:
-  - "session-95-reextract"
+- session-95-reextract
 ---
 # Shared Context Folder as Cross-Skill Update Multiplier
 

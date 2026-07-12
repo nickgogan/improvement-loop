@@ -15,11 +15,13 @@ sources:
 - stop-building-ai-agents-use-this-folder-system-ins.md
 proposals: []
 date_discovered: '2026-03-22'
-last_updated: '2026-05-24'
+last_updated: '2026-07-12'
 related_findings:
 - file: agent-context-kiss-commandments-minimum-viable.md
   rel: same-problem
 - file: typed-edge-knowledge-graph-token-reduction.md
+  rel: same-problem
+- file: ai-as-primary-reader-design-principle.md
   rel: same-problem
 pipeline_status: raw
 consumed_by: []

@@ -24,6 +24,7 @@ findings:
   - "total-organizational-legibility-as-ai-prerequisite.md"
 date_added: "2026-05-24"
 date_processed: "2026-05-24"
+date_published: "2026-05-21"
 ---
 
 # How to Build a Self-Improving Company with AI

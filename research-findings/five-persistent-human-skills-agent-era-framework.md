@@ -16,9 +16,12 @@ sources:
 - unbundling-management-ai-age-routing-sensemaking.md
 proposals: []
 date_discovered: '2026-03-09'
-last_updated: '2026-04-20'
+last_updated: '2026-07-12'
 pipeline_status: raw
 consumed_by: []
+related_findings:
+- file: frontier-capability-probing-scouting.md
+  rel: same-problem
 ---
 # Five Persistent Human Skills (Agent-Era Framework)
 

@@ -6,7 +6,7 @@ credibility: "Tier 2 (experienced practitioner)"
 specialty:
   - "claude-code"
 notes: "Runs Chase A+ community with Claude Code Masterclass. Provides balanced, skeptical analysis of AI agent tools. Tests tools hands-on rather than just reviewing marketing."
-source_count: 7
+source_count: 9
 sources:
   - "https://www.notion.so/32b1e08b9b3481ca9907fe7c33904fa5"
   - "https://www.notion.so/32b1e08b9b348196920cc7460fb4392b"
@@ -15,6 +15,8 @@ sources:
   - "claude-code-plus-rag-anything.md"
   - "caveman-brevity-constraints-llm-performance.md"
   - "anthropic-advisor-strategy-api.md"
+  - "the-agentic-os-setup-that-will-10x-claude-code.md"
+  - "make-fable-5-80-percent-cheaper.md"
 url: "https://www.youtube.com/@chaseai"
 ---
 

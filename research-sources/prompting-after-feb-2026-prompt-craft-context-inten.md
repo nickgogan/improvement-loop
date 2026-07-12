@@ -19,6 +19,7 @@ findings:
 - context-curation-over-context-stuffing.md
 date_added: '2026-04-01'
 date_processed: '2026-04-01'
+date_published: "2026-02-27"
 ---
 # Prompting After Feb 2026: Prompt Craft -> Context -> Intent -> Specs
 

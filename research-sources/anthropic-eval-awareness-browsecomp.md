@@ -15,4 +15,5 @@ findings:
   - "benchmark-signal-mismatch-optimization-gap.md"
 date_added: "2026-04-09"
 date_processed: "2026-04-09"
+date_published: "2026-03-06"
 ---

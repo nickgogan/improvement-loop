@@ -17,6 +17,7 @@ findings:
   - "data-agent-benchmark-dab-cross-dbms-pipeline-eval.md"
 date_added: "2026-04-20"
 date_processed: "2026-04-20"
+date_published: "2026-03-21"
 ---
 
 # Can AI Agents Answer Your Data Questions? A Benchmark for Data Agents

@@ -29,9 +29,11 @@ related_findings:
   rel: enabled-by
 - file: ace-agentic-context-engineering-rag-based.md
   rel: same-problem
+- file: write-back-discipline-memory-is-not-the-brain.md
+  rel: same-problem
 proposals: []
 date_discovered: '2026-04-07'
-last_updated: '2026-04-27'
+last_updated: '2026-07-12'
 pipeline_status: synthesized
 consumed_by:
 - session-persistence-and-memory.md

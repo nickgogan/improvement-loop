@@ -20,6 +20,7 @@ findings:
   - "skills-as-open-portable-standard.md"
 date_added: "2026-06-11"
 date_processed: "2026-06-11"
+date_published: "2025-12-16"
 ---
 
 # Agent Skills Open Standard

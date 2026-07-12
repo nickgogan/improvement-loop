@@ -20,9 +20,11 @@ related_findings:
   rel: same-problem
 - file: star-commands-for-explicit-output-format-override.md
   rel: same-problem
+- file: seven-rung-minimal-code-decision-ladder.md
+  rel: same-problem
 proposals: null
 date_discovered: '2026-04-09'
-last_updated: '2026-04-09'
+last_updated: '2026-07-12'
 pipeline_status: synthesized
 consumed_by:
 - model-resilient-prompt-engineering.md

@@ -1,24 +1,27 @@
 ---
-name: "Bun Hot-Reload Interactive HTML Artifact Feedback Loop"
-summary: "Running a Claude Code-generated HTML artifact through a local Bun server enables in-place annotation (click to pin comments) and hot-reload on file save, creating a tight visual feedback loop where users annotate decisions directly in the rendered UI and export them as structured JSON for Claude Code to action."
+name: Bun Hot-Reload Interactive HTML Artifact Feedback Loop
+summary: Running a Claude Code-generated HTML artifact through a local Bun server enables in-place annotation (click to pin comments) and hot-reload on file save, creating a tight visual feedback loop where
+  users annotate decisions directly in the rendered UI and export them as structured JSON for Claude Code to action.
 implementation_notes: null
-category: "Tool Integration"
-evidence_strength: "Medium (practitioner-documented)"
-adoption_status: "Not Yet Started"
-priority: "P2 (Strong / needs design)"
+category: Tool Integration
+evidence_strength: Medium (practitioner-documented)
+adoption_status: Not Yet Started
+priority: P2 (Strong / needs design)
 applicability:
-  - "S3 (Claude Code Build)"
+- S3 (Claude Code Build)
 adopted_in: []
 sources:
-  - "interactive-html-artifacts-claude-code-bun.md"
+- interactive-html-artifacts-claude-code-bun.md
 related_findings:
-  - file: "html-artifact-as-skill-output-design-variations.md"
-    rel: "enables"
-  - file: "claude-code-channels-telegramdiscord-as-agent-inte.md"
-    rel: "same-problem"
+- file: html-artifact-as-skill-output-design-variations.md
+  rel: enables
+- file: claude-code-channels-telegramdiscord-as-agent-inte.md
+  rel: same-problem
+- file: throwaway-html-editor-structured-input-surface.md
+  rel: extended-by
 proposals: null
-date_discovered: "2026-04-20"
-last_updated: "2026-04-20"
+date_discovered: '2026-04-20'
+last_updated: '2026-07-12'
 pipeline_status: classified
 consumed_by: []
 ---

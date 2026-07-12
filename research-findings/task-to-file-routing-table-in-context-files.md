@@ -15,11 +15,13 @@ sources:
 - stop-building-ai-agents-use-this-folder-system-ins.md
 proposals: []
 date_discovered: '2026-03-22'
-last_updated: '2026-04-19'
+last_updated: '2026-07-12'
 related_findings:
 - file: skills-inside-workspace-contextual-skill.md
   rel: same-problem
 - file: agent-context-kiss-commandments-minimum-viable.md
+  rel: same-problem
+- file: intent-based-meta-routing-skill.md
   rel: same-problem
 pipeline_status: extracted
 consumed_by:

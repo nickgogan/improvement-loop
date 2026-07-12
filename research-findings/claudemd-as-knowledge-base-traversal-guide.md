@@ -14,8 +14,10 @@ applicability:
 adopted_in: []
 sources:
 - karpathys-obsidian-rag-claude-code.md
+- every-level-of-a-claude-second-brain-explained.md
+- the-folder-structure-that-makes-ai-build-better-software.md
 date_discovered: '2026-04-07'
-last_updated: '2026-04-20'
+last_updated: '2026-07-12'
 related_findings:
 - file: karpathy-llm-knowledge-base-obsidian-rag.md
   rel: same-problem
@@ -29,6 +31,14 @@ related_findings:
   rel: enables
 - file: self-describing-codebase-structural-semantic-context.md
   rel: same-problem
+- file: docs-split-by-lifespan-not-topic.md
+  rel: extended-by
+- file: escalating-search-order-routing.md
+  rel: extended-by
+- file: intent-based-meta-routing-skill.md
+  rel: same-problem
+- file: root-context-file-edit-guard.md
+  rel: extended-by
 pipeline_status: synthesized
 consumed_by:
 - structuring-agent-context.md
@@ -57,6 +67,24 @@ Without traversal instructions, Claude Code will use expensive tool calls (glob,
 ## Why People Are Using It
 
 Chase AI provides a CLAUDE.md template for this pattern. The approach works because Obsidian's wiki-link format creates a natural graph structure that Claude Code can follow without vector search or embeddings.
+
+## Additional Evidence — 2026-07-12
+
+Two more independent channels corroborate and sharpen the pattern. AI Code That Works
+("The Folder Structure That Makes AI Build Better Software") states the discipline as
+a hard rule: the root file "routes, it does not contain" — a task-to-file table, kept
+under ~200 lines, with all detail in the pointed-to layers (rules / knowledge / docs).
+It also names the failure duals precisely: the *drowning problem* (root file becomes a
+knowledge dump the AI half-reads and the system "quietly and quickly degrades") and
+*over-fragmentation* ("400 tiny files and now the AI can't find anything — the
+drowning problem wearing a different hat"); the target is a small number of clear,
+well-named files, each with one obvious home. And it adds the activation caveat: "a
+structure nobody routes to is just a pile of folders" — the value fires only if the
+first move every session is read-the-router-then-the-file-it-sends-you-to. Nate Herk
+("Every Level of a Claude Second Brain Explained") confirms from the second-brain
+side: routing rules in CLAUDE.md are what separate "can your agent find it again?"
+from re-explaining context every session, and missing routing — not model quality —
+is why agents ask for information that already sits on disk.
 
 ## Potential Improvements
 

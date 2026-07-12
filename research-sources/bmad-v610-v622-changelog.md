@@ -19,6 +19,7 @@ findings:
   - "skills-as-markdown-sop-files-encode-processes.md"
 date_added: "2026-04-07"
 date_processed: "2026-04-07"
+date_published: "2026-03-26"
 ---
 
 ## Source Notes

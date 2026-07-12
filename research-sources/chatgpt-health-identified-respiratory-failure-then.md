@@ -11,7 +11,7 @@ tags:
 - evaluation
 url: https://www.youtube.com/watch?v=4HeS_C02yAE
 authority:
-- ai-news-strategy-daily-nate-b-jones.md
+- nate-b-jones.md
 findings:
 - chain-of-thought-reasoning-output-divergence.md
 - factorial-design-eval-systematic-context-variati.md
@@ -20,5 +20,6 @@ findings:
 - surface-pattern-guardrails-vs-risk-taxonomy-guard.md
 date_added: '2026-03-22'
 date_processed: '2026-03-22'
+date_published: '2026-03-18'
 ---
 # ChatGPT Health Identified Respiratory Failure. Then It Said Wait.

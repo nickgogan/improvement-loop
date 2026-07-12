@@ -22,6 +22,7 @@ findings:
   - "eval-driven-development-autonomous-quality.md"
 date_added: "2026-04-20"
 date_processed: "2026-04-20"
+date_published: "2026-04-13"
 ---
 
 # Dark Code — Spec-Driven Dev, Comprehension Gates, Context Eng for Legibility

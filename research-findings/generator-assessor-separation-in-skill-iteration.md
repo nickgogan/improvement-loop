@@ -1,29 +1,53 @@
 ---
 name: Generator-Assessor Separation in Skill Iteration (Anthropic Skill-Creator)
-summary: Anthropic's skill-creator skill operationalizes a strict separation between generation and assessment in the skill-development loop. The skill-creator drafts/iterates skills; a separate grader subagent (instructed via agents/grader.md) evaluates assertions against outputs; a separate comparator (agents/comparator.md) does blind A/B between skill versions; a separate analyzer (agents/analyzer.md) explains why one version won. This is direct external corroboration of IL governance rule 10 (generator-assessor separation), arrived at independently by Anthropic in production skill authoring.
-implementation_notes: "Verbatim from skill-creator: 'Grade each run — spawn a grader subagent (or grade inline) that reads agents/grader.md and evaluates each assertion against the outputs.' For blind comparison: 'give two outputs to an independent agent without telling it which is which, and let it judge quality. Then analyze why the winner won.' The pattern is consistent across the loop: draft (skill-creator) → run tests (with-skill + baseline subagents) → grade (grader subagent) → if comparing versions (comparator + analyzer subagents). The skill-creator never both generates AND evaluates the same artifact. This is exactly rule 10 in MetaSystem's IL governance — established independently."
+summary: Anthropic's skill-creator skill operationalizes a strict separation between generation and assessment in the skill-development loop. The skill-creator drafts/iterates skills; a separate grader
+  subagent (instructed via agents/grader.md) evaluates assertions against outputs; a separate comparator (agents/comparator.md) does blind A/B between skill versions; a separate analyzer (agents/analyzer.md)
+  explains why one version won. This is direct external corroboration of IL governance rule 10 (generator-assessor separation), arrived at independently by Anthropic in production skill authoring.
+implementation_notes: 'Verbatim from skill-creator: ''Grade each run — spawn a grader subagent (or grade inline) that reads agents/grader.md and evaluates each assertion against the outputs.'' For blind
+  comparison: ''give two outputs to an independent agent without telling it which is which, and let it judge quality. Then analyze why the winner won.'' The pattern is consistent across the loop: draft
+  (skill-creator) → run tests (with-skill + baseline subagents) → grade (grader subagent) → if comparing versions (comparator + analyzer subagents). The skill-creator never both generates AND evaluates
+  the same artifact. This is exactly rule 10 in MetaSystem''s IL governance — established independently.'
 category: Evaluation
 evidence_strength: Strong (production-tested)
 adoption_status: Already Adopted
 priority: P2 (Design Required)
 applicability:
-  - "S3 (Claude Code Build)"
-  - "General"
+- S3 (Claude Code Build)
+- General
 adopted_in:
-  - "Improvement Loop"
-  - "General / Cross-System"
+- Improvement Loop
+- General / Cross-System
 sources:
-  - "anthropic-skills-repo.md"
+- anthropic-skills-repo.md
+- i-built-a-deck-with-ai-then-made-a-second-ai-attack-it.md
 related_findings:
-  - file: "skill-description-optimization-loop-held-out-test.md"
-    rel: "enables"
-  - file: "machine-framework-for-agentic-coding-skill-asses.md"
-    rel: "same-problem"
-  - file: "meta-skill-for-skill-authorship.md"
-    rel: "same-problem"
+- file: skill-description-optimization-loop-held-out-test.md
+  rel: enables
+- file: machine-framework-for-agentic-coding-skill-asses.md
+  rel: same-problem
+- file: meta-skill-for-skill-authorship.md
+  rel: same-problem
+- file: enumerate-dont-fix-hostile-reviewer-prompt.md
+  rel: extended-by
+- file: cross-vendor-adversarial-build-attack-loop.md
+  rel: extended-by
+- file: task-risk-gradient-for-verification-depth.md
+  rel: extended-by
+- file: closed-loop-floor-open-exploration.md
+  rel: same-problem
+- file: multi-perspective-review-council.md
+  rel: extended-by
+- file: no-mistakes-post-implementation-validation-pipeline.md
+  rel: same-problem
+- file: persona-clone-review-board.md
+  rel: extended-by
+- file: two-axis-parallel-code-review-standards-vs-spec.md
+  rel: same-problem
+- file: with-without-skill-ab-baseline-measurement.md
+  rel: same-problem
 proposals: null
 date_discovered: '2026-06-11'
-last_updated: '2026-06-11'
+last_updated: '2026-07-12'
 pipeline_status: raw
 consumed_by: []
 ---
@@ -80,3 +104,23 @@ Cross-skill grader sharing — many skills could share `agents/grader.md` rather
 **Analyzer post-hoc rationalization.** Asking the analyzer "why did X win" can produce coherent narratives that don't reflect the real causal driver. The pattern is useful for human consumption but should be discounted as direct evidence.
 
 **Convenience erosion.** Under deadline pressure, authors skip the grader subagent and "grade inline" (skill-creator explicitly allows this). This collapses the separation under exactly the conditions where the discipline matters most.
+
+## Corroboration Log
+
+**2026-07-12 (session 136) — third independent corroboration.** Nate B Jones's production
+office-document workflow (`i-built-a-deck-with-ai-then-made-a-second-ai-attack-it.md`)
+arrives at the same architecture independently of both Anthropic's skill-creator and the
+engine's rule 10: one model builds (Codex), a separate model attacks (Opus 4.7
+hostile review), looped to convergence. This makes three independent origins for the
+separation pattern — a /reassess-priorities evidence-strength candidate. Three genuine
+deltas from this source are extracted as their own findings (linked `extended-by` above):
+
+1. **Enumerate-don't-fix task flip** — the mechanism underneath the separation, and its
+   cheapest form (works even same-model): `enumerate-dont-fix-hostile-reviewer-prompt.md`.
+2. **Cross-vendor pairing + terminal language-polish pass** — decorrelating blind spots by
+   training lineage, and sequencing polish after substance:
+   `cross-vendor-adversarial-build-attack-loop.md`.
+3. **Task risk gradient** — calibrating how much assessor/human depth each artifact class
+   gets: `task-risk-gradient-for-verification-depth.md`.
+
+Annotation only — priority unchanged pending the gated /reassess-priorities pass.

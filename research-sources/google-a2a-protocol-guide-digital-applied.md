@@ -15,5 +15,6 @@ findings:
 - google-a2a-protocol-agent-to-agent-interoperabilit.md
 date_added: '2026-04-01'
 date_processed: '2026-04-01'
+date_published: "2026-03-11"
 ---
 # Google A2A Protocol Guide -- Digital Applied

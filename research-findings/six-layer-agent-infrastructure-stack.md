@@ -15,7 +15,7 @@ sources:
 - building-agents-on-layers-that-wont-exist.md
 proposals: []
 date_discovered: '2026-04-07'
-last_updated: 2026-04-08
+last_updated: '2026-07-12'
 related_findings:
 - file: agent-architecture-layer-impermanence.md
   rel: extended-by
@@ -23,6 +23,8 @@ related_findings:
   rel: same-problem
 - file: five-durable-verticals-ai-cannot-replace.md
   rel: same-problem
+- file: ai-gateway-model-traffic-layer.md
+  rel: extended-by
 pipeline_status: synthesized
 consumed_by:
 - agent-architecture-decisions.md

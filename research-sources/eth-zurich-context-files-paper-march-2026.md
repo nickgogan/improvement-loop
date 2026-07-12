@@ -19,6 +19,7 @@ findings:
   - "model-specific-context-file-sensitivity.md"
 date_added: "2026-03-15"
 date_processed: "2026-04-07"
+date_published: "2026-02-12"
 ---
 
 # ETH Zurich Context Files Paper (March 2026)

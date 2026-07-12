@@ -16,5 +16,6 @@ findings:
 - governance-memory-append-only-audit-layer.md
 date_added: '2026-04-01'
 date_processed: '2026-04-01'
+date_published: "2026-01-07"
 ---
 # 4-Layer Memory Stack for 2026 Enterprise Agents -- Alok Mishra

@@ -24,5 +24,6 @@ findings:
 - vercel-cli-github-cli-terminal-cicd-pipeline-for.md
 date_added: '2026-03-22'
 date_processed: '2026-03-22'
+date_published: "2026-03-21"
 ---
 # 10 CLI Tools That Make Claude Code UNSTOPPABLE

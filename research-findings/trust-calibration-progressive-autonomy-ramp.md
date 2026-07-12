@@ -4,7 +4,7 @@ summary: Start agents with minimal autonomy and progressively expand permissions
   not global -- an agent trusted for documentation may not be trusted for infrastructure changes.
 implementation_notes: MetaSystem's DD-29 human gate model is static. A progressive ramp could reduce review burden for proven task types.
 category: Governance
-evidence_strength: Medium (practitioner-documented)
+evidence_strength: Strong (production-tested)
 adoption_status: Not Yet Started
 priority: P2 (Design Required)
 applicability:
@@ -14,6 +14,7 @@ adopted_in: []
 sources:
 - agent-produces-100x-org-reviews-3x.md
 - anthropic-trustworthy-agents-in-practice.md
+- the-best-ai-coding-setup-isnt-the-most-autonomous-one.md
 related_findings:
 - file: human-on-the-loop-hotl-autonomy-tiering-framework.md
   rel: extends
@@ -23,9 +24,13 @@ related_findings:
   rel: same-problem
 - file: agent-proof-of-work-ui-trust-building.md
   rel: same-problem
+- file: autonomy-progression-gated-by-maturity.md
+  rel: extended-by
+- file: job-diet-boundaries-review-loop-operating-framework.md
+  rel: same-problem
 proposals: null
 date_discovered: '2026-04-07'
-last_updated: '2026-05-24'
+last_updated: '2026-07-12'
 pipeline_status: synthesized
 consumed_by:
 - agent-governance-and-trust.md
@@ -51,6 +56,18 @@ Trust calibration can create a false sense of security -- an agent reliable on r
 
 ## Anthropic Confirmation (April 2026 — Tier 1)
 Anthropic's "Trustworthy agents in practice" validates progressive autonomy through their training approach: on complex tasks, user interruptions rise slightly, but Claude's check-in rate doubles — demonstrating effective calibration where the model asks more when stakes are higher. Anthropic trains for this via scenarios simulating ambiguity, reinforcing pauses over assumptions. Claude's Constitution explicitly trains models to "raise concerns, seek clarification, or decline" rather than assume. This is production evidence that progressive autonomy calibration works at scale and can be trained into models, not just enforced by harnesses.
+
+## Independent Corroboration — Cole Medin (July 2026)
+
+Third distinct source for the progressive-ramp position, from a practitioner who built his
+own dark-factory experiment and still argues for the supervised tier: autonomy progression
+works by "building the trust muscle" — evolve a supervised system until a specific
+workflow reliably needs no plan iteration or validation beyond spot checks, *then* remove
+the human from that workflow. Never add autonomy first. Matches this finding's per-task-type
+ramp (trust is per-workflow, not global) and adds the subtractive framing: promotion means
+removing an existing human touchpoint from an already-trusted loop. Detailed in
+[[autonomy-progression-gated-by-maturity]]. Multi-source corroboration (3 distinct source
+sets) noted for the next /reassess-priorities pass — no priority change made here.
 
 ## Extraction Note — 2026-04-27
 

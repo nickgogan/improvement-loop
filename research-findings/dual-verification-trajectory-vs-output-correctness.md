@@ -1,34 +1,44 @@
 ---
-name: "Dual Verification: Trajectory Correctness as a Distinct Eval Axis from Output Correctness"
-summary: |-
-  An agent's answer can look right while the path to it was unsound — skipped checks, wrong tool
+name: 'Dual Verification: Trajectory Correctness as a Distinct Eval Axis from Output Correctness'
+summary: 'An agent''s answer can look right while the path to it was unsound — skipped checks, wrong tool
+
   calls, lucky guesses — and that failure is invisible if we only grade outputs. This finding
+
   names trajectory evaluation (was the sequence of tool calls and reasoning sound?) as a separate,
-  co-equal axis alongside output evaluation (is the final result correct?). The authors' framing:
-  "an answer that looks right but skipped its checks is more dangerous than one that's obviously
-  broken."
-implementation_notes: |-
-  Applies wherever the engine grades agent work: /assess-* skills and /audit-artifacts currently
+
+  co-equal axis alongside output evaluation (is the final result correct?). The authors'' framing:
+
+  "an answer that looks right but skipped its checks is more dangerous than one that''s obviously
+
+  broken."'
+implementation_notes: 'Applies wherever the engine grades agent work: /assess-* skills and /audit-artifacts currently
+
   judge artifacts (outputs); a trajectory axis would additionally ask whether the producing run
+
   followed its declared procedure (e.g., did /design-skill actually delegate its Phase 5 audit
+
   per rule 10, did a research pass actually dedup-grep before writing). Cheapest first step:
+
   add a "procedure followed?" checklist item to existing assessments rather than building
-  trace-capture infrastructure.
-category: "Evaluation"
-evidence_strength: "Medium (practitioner-documented)"
-adoption_status: "Not Yet Started"
-priority: "P2 (Design Required)"
+
+  trace-capture infrastructure.'
+category: Evaluation
+evidence_strength: Medium (practitioner-documented)
+adoption_status: Not Yet Started
+priority: P2 (Design Required)
 applicability:
-  - "General"
+- General
 adopted_in: []
 sources:
-  - "osmani-new-sdlc-vibe-coding.md"
+- osmani-new-sdlc-vibe-coding.md
 related_findings:
-  - file: "four-layer-agent-evaluation-architecture.md"
-    rel: "same-problem"
+- file: four-layer-agent-evaluation-architecture.md
+  rel: same-problem
+- file: measured-delta-and-staging-clone-for-ai-refactors.md
+  rel: same-problem
 proposals: null
-date_discovered: "2026-07-11"
-last_updated: "2026-07-11"
+date_discovered: '2026-07-11'
+last_updated: '2026-07-12'
 ---
 
 ## What It Is

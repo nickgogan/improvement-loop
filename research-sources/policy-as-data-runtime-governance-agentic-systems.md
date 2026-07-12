@@ -19,4 +19,5 @@ findings:
   - "runtime-governance-gap-buildtime-to-production.md"
 date_added: "2026-04-19"
 date_processed: "2026-04-19"
+date_published: "2026-04-08"
 ---

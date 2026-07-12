@@ -11,10 +11,12 @@ applicability:
 - S3 (Claude Code Build)
 adopted_in: []
 sources: []
-related_findings: []
+related_findings:
+- file: on-policy-vs-naive-trace-distillation.md
+  rel: same-problem
 proposals: null
 date_discovered: '2026-04-08'
-last_updated: '2026-04-19'
+last_updated: '2026-07-12'
 pipeline_status: raw
 consumed_by: []
 ---

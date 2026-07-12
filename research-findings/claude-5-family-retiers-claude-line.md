@@ -1,26 +1,41 @@
 ---
-name: "Claude 5 Family (Fable/Mythos) + Sonnet 5 Re-Tier the Claude Line"
-summary: |-
-  Anthropic's 2026 releases restructure Claude model routing, superseding the March-2026 consensus
+name: Claude 5 Family (Fable/Mythos) + Sonnet 5 Re-Tier the Claude Line
+summary: 'Anthropic''s 2026 releases restructure Claude model routing, superseding the March-2026 consensus
+
   for the Claude entries. Claude Fable 5 (GA; Mythos 5 = same model, restricted release) is a new
-  tier above Opus: SWE-Bench Pro 80.3% vs Opus 4.8's 69.2% and GPT-5.5's 58.6%; #1 on FrontierCode;
+
+  tier above Opus: SWE-Bench Pro 80.3% vs Opus 4.8''s 69.2% and GPT-5.5''s 58.6%; #1 on FrontierCode;
+
   distinctive long-horizon gains (3x Opus improvement in file-memory game harness; Stripe: 50M-line
+
   codebase migration in a day; Hex analytics >90% vs ~80%); 1M default context, 128k output; priced
-  $10/$50 per M — 2x Opus 4.8's $5/$25. Meanwhile Sonnet 5 (Jun 30, 2026) nearly closes the gap to
+
+  $10/$50 per M — 2x Opus 4.8''s $5/$25. Meanwhile Sonnet 5 (Jun 30, 2026) nearly closes the gap to
+
   Opus 4.8 on agentic benchmarks (Terminal-Bench 2.1: 80.4 vs 82.7; OSWorld-Verified: 81.2 vs 83.4;
+
   SWE-Bench Pro 63.2) at $3/$15 (intro $2/$10 through Aug 31). Net coarse routing: Sonnet 5 =
+
   default agent workhorse; Opus 4.8 = hard-reasoning value point; Fable 5 = long-horizon frontier
-  at 2x Opus cost.
-implementation_notes: |-
-  Registry impact: replaces the "Opus by default is a cost mistake, route to Sonnet 4.6" guidance
-  from task-specific-model-routing-table-march-2026-bench for the Claude line (that finding's
+
+  at 2x Opus cost.'
+implementation_notes: 'Registry impact: replaces the "Opus by default is a cost mistake, route to Sonnet 4.6" guidance
+
+  from task-specific-model-routing-table-march-2026-bench for the Claude line (that finding''s
+
   non-Claude rows stand). Caveats for routing: (1) community reports Sonnet 5 at max effort can be
+
   worse AND costlier than Opus 4.8 at low/medium effort — effort-level tuning matters more than tier
-  choice at the margin; (2) Sonnet 5's new tokenizer inflates token counts 1.0-1.35x, so nominal
+
+  choice at the margin; (2) Sonnet 5''s new tokenizer inflates token counts 1.0-1.35x, so nominal
+
   price parity with Sonnet 4.6 is not effective-cost parity; (3) Fable 5 benchmark set is
+
   announcement-adjacent and should be re-anchored when independent numbers accumulate; (4)
-  CodeRabbit: Fable 5's "price and limited access kept it off our default review path" — practitioner
-  default remains Opus/Sonnet with Fable for long-horizon jobs specifically.
+
+  CodeRabbit: Fable 5''s "price and limited access kept it off our default review path" — practitioner
+
+  default remains Opus/Sonnet with Fable for long-horizon jobs specifically.'
 category: Model Selection
 evidence_strength: Strong (production-tested)
 adoption_status: Not Yet Started
@@ -39,9 +54,13 @@ related_findings:
   rel: same-problem
 - file: kimi-k2-line-near-opus-coding-with-safety-gap.md
   rel: same-problem
+- file: center-vs-edge-of-distribution-task-classification.md
+  rel: same-problem
+- file: effort-level-tuning-as-first-order-cost-lever.md
+  rel: extended-by
 proposals: []
 date_discovered: '2026-07-11'
-last_updated: '2026-07-11'
+last_updated: '2026-07-12'
 pipeline_status: raw
 consumed_by: []
 ---

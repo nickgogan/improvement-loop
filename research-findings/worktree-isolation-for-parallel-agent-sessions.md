@@ -41,9 +41,15 @@ related_findings:
   rel: same-problem
 - file: acp-spawn-cross-tool-delegation.md
   rel: same-problem
+- file: dark-factory-ai-only-codebase-management.md
+  rel: enables
+- file: isolation-resolver-worktree-lifecycle-algorithm.md
+  rel: extended-by
+- file: no-mistakes-post-implementation-validation-pipeline.md
+  rel: enables
 proposals: null
 date_discovered: '2026-04-09'
-last_updated: '2026-04-19'
+last_updated: '2026-07-12'
 pipeline_status: synthesized
 consumed_by:
 - agent-architecture-decisions.md

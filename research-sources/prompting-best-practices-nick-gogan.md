@@ -18,5 +18,6 @@ findings:
 - advanced-elicitation-techniques-library.md
 date_added: '2026-03-23'
 date_processed: '2026-04-07'
+date_published: null
 ---
 # Prompting Best Practices (Nick Gogan)

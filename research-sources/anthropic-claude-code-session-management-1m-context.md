@@ -20,6 +20,7 @@ findings:
   - "fork-subagent-parallel-trajectory-exploration.md"
 date_added: "2026-04-20"
 date_processed: "2026-04-20"
+date_published: "2026-04-15"
 ---
 
 # Using Claude Code: Session Management and 1M Context

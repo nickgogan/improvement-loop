@@ -1,35 +1,43 @@
 ---
 name: Skill-as-Directory with Three-Level Progressive Disclosure
-summary: Agent Skills are filesystem directories containing a required SKILL.md plus optional scripts/, references/, assets/ subdirectories. Content loads progressively in three levels — metadata always in system prompt (~100 tokens), full SKILL.md on activation (<5K tokens recommended), bundled files on demand (effectively unbounded). The filesystem model is what makes progressive disclosure mechanically possible — Claude reads files via bash only when needed.
-implementation_notes: "Canonical Anthropic primitive as of Oct 2025; open standard at agentskills.io since Dec 2025. The three-level model is the most-cited skill design principle. Token cost per level is explicit: ~100 / <5K / unbounded. The 'unbounded' tier is enabled by Claude reading bundled files via bash — file contents enter context only when read, and scripts can execute without their code ever entering context. This is the architectural primitive every other skill pattern composes on top of."
+summary: Agent Skills are filesystem directories containing a required SKILL.md plus optional scripts/, references/, assets/ subdirectories. Content loads progressively in three levels — metadata always
+  in system prompt (~100 tokens), full SKILL.md on activation (<5K tokens recommended), bundled files on demand (effectively unbounded). The filesystem model is what makes progressive disclosure mechanically
+  possible — Claude reads files via bash only when needed.
+implementation_notes: 'Canonical Anthropic primitive as of Oct 2025; open standard at agentskills.io since Dec 2025. The three-level model is the most-cited skill design principle. Token cost per level
+  is explicit: ~100 / <5K / unbounded. The ''unbounded'' tier is enabled by Claude reading bundled files via bash — file contents enter context only when read, and scripts can execute without their code
+  ever entering context. This is the architectural primitive every other skill pattern composes on top of.'
 category: Context Engineering
 evidence_strength: Strong (production-tested)
 adoption_status: Partially Adopted
 priority: P1 (Implement Now)
 applicability:
-  - "S3 (Claude Code Build)"
-  - "General"
+- S3 (Claude Code Build)
+- General
 adopted_in:
-  - "Improvement Loop"
-  - "General / Cross-System"
+- Improvement Loop
+- General / Cross-System
 sources:
-  - "anthropic-equipping-agents-with-agent-skills.md"
-  - "anthropic-agent-skills-overview-docs.md"
-  - "anthropic-skills-repo.md"
-  - "agentskills-open-standard.md"
-  - "anthropic-complete-guide-building-skills-pdf.md"
+- anthropic-equipping-agents-with-agent-skills.md
+- anthropic-agent-skills-overview-docs.md
+- anthropic-skills-repo.md
+- agentskills-open-standard.md
+- anthropic-complete-guide-building-skills-pdf.md
 related_findings:
-  - file: "mcp-as-code-api-progressive-tool-discovery.md"
-    rel: "same-problem"
-  - file: "skill-md-frontmatter-as-discovery-trigger-primitive.md"
-    rel: "enables"
-  - file: "code-as-deterministic-tool-inside-skills.md"
-    rel: "enables"
-  - file: "skill-content-lifecycle-context-budget.md"
-    rel: "extended-by"
+- file: mcp-as-code-api-progressive-tool-discovery.md
+  rel: same-problem
+- file: skill-md-frontmatter-as-discovery-trigger-primitive.md
+  rel: enables
+- file: code-as-deterministic-tool-inside-skills.md
+  rel: enables
+- file: skill-content-lifecycle-context-budget.md
+  rel: extended-by
+- file: branch-analysis-externalization-rule-skill-reference.md
+  rel: extended-by
+- file: memory-file-to-skill-migration.md
+  rel: enables
 proposals: null
 date_discovered: '2026-06-11'
-last_updated: '2026-06-11'
+last_updated: '2026-07-12'
 pipeline_status: raw
 consumed_by: []
 ---

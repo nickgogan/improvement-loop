@@ -11,7 +11,7 @@ tags:
 - tools
 url: https://www.youtube.com/watch?v=QT7W_uHjqWE
 authority:
-- ai-news-strategy-daily-nate-b-jones.md
+- nate-b-jones.md
 findings:
 - boris-chernys-explore-plan-implement-commit-workf.md
 - playwright-cli-for-browser-automation.md
@@ -19,5 +19,6 @@ findings:
 - workflow-decomposition-skill-for-browser-agents.md
 date_added: '2026-03-22'
 date_processed: '2026-03-22'
+date_published: '2026-03-17'
 ---
 # Anthropic Didn't Build a New Browser. They Did Something Smarter.

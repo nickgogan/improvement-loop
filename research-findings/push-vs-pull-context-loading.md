@@ -14,9 +14,13 @@ sources: []
 related_findings:
 - file: three-layer-context-chain-loading.md
   rel: same-problem
+- file: memory-file-to-skill-migration.md
+  rel: extended-by
+- file: two-axis-parallel-code-review-standards-vs-spec.md
+  rel: extended-by
 proposals: null
 date_discovered: '2026-04-08'
-last_updated: '2026-04-19'
+last_updated: '2026-07-12'
 pipeline_status: raw
 consumed_by: []
 ---

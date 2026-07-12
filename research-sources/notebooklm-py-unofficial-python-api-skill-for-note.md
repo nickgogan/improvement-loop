@@ -15,5 +15,6 @@ findings:
 - notebooklm-python-api-programmatic-access-beyond.md
 date_added: '2026-03-28'
 date_processed: '2026-03-28'
+date_published: "2026-01-07"
 ---
 # notebooklm-py: Unofficial Python API & Skill for NotebookLM

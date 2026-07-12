@@ -23,5 +23,6 @@ findings:
 - skills-as-markdown-sop-files-encode-processes.md
 date_added: '2026-03-22'
 date_processed: '2026-03-22'
+date_published: "2026-03-17"
 ---
 # Building AI Agents that actually work (Full Course)

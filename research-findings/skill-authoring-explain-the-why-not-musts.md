@@ -1,28 +1,37 @@
 ---
 name: Skill Authoring — Explain the Why, Don't Bludgeon With MUSTs
-summary: |-
-  Anthropic's skill-creator guidance treats ALL-CAPS MUST/NEVER and rigid structural constraints as yellow flags in skill authoring. Recommended pattern: explain WHY behind every instruction. Modern Claude has good theory of mind; when given the reasoning, the model can extend behavior to unanticipated edge cases. Prescriptive rules without reasoning produce brittle compliance and worse generalization. Yellow flag: 'If you find yourself writing ALWAYS or NEVER in all caps, or using super rigid structures, that's a yellow flag — if possible, reframe and explain the reasoning so that the model understands why the thing you're asking for is important.'
-implementation_notes: "Verbatim from skill-creator: 'Try hard to explain the **why** behind everything you're asking the model to do. Today's LLMs are *smart*. They have good theory of mind and when given a good harness can go beyond rote instructions and really make things happen.' Counter-pattern from skill-creator: 'Even if the feedback from the user is terse or frustrated, try to actually understand the task and why the user is writing what they wrote, and what they actually wrote, and then transmit this understanding into the instructions.' The advice is about prompt craft inside skills specifically, but generalizes to all instruction-shaped LLM context."
+summary: 'Anthropic''s skill-creator guidance treats ALL-CAPS MUST/NEVER and rigid structural constraints as yellow flags in skill authoring. Recommended pattern: explain WHY behind every instruction. Modern
+  Claude has good theory of mind; when given the reasoning, the model can extend behavior to unanticipated edge cases. Prescriptive rules without reasoning produce brittle compliance and worse generalization.
+  Yellow flag: ''If you find yourself writing ALWAYS or NEVER in all caps, or using super rigid structures, that''s a yellow flag — if possible, reframe and explain the reasoning so that the model understands
+  why the thing you''re asking for is important.'''
+implementation_notes: 'Verbatim from skill-creator: ''Try hard to explain the **why** behind everything you''re asking the model to do. Today''s LLMs are *smart*. They have good theory of mind and when
+  given a good harness can go beyond rote instructions and really make things happen.'' Counter-pattern from skill-creator: ''Even if the feedback from the user is terse or frustrated, try to actually understand
+  the task and why the user is writing what they wrote, and what they actually wrote, and then transmit this understanding into the instructions.'' The advice is about prompt craft inside skills specifically,
+  but generalizes to all instruction-shaped LLM context.'
 category: Prompt Craft
 evidence_strength: Strong (production-tested)
 adoption_status: Not Yet Started
 priority: P1 (Implement Now)
 applicability:
-  - "S3 (Claude Code Build)"
-  - "General"
+- S3 (Claude Code Build)
+- General
 adopted_in: []
 sources:
-  - "anthropic-skills-repo.md"
+- anthropic-skills-repo.md
 related_findings:
-  - file: "skill-authoring-four-guidelines.md"
-    rel: "same-problem"
-  - file: "iterate-on-single-task-then-extract-skill.md"
-    rel: "same-problem"
-  - file: "agent-context-kiss-commandments-minimum-viable.md"
-    rel: "same-problem"
+- file: skill-authoring-four-guidelines.md
+  rel: same-problem
+- file: iterate-on-single-task-then-extract-skill.md
+  rel: same-problem
+- file: agent-context-kiss-commandments-minimum-viable.md
+  rel: same-problem
+- file: leading-words-lexical-steering-reasoning-trace-verification.md
+  rel: same-problem
+- file: meta-skill-for-skill-authorship.md
+  rel: extended-by
 proposals: null
 date_discovered: '2026-06-11'
-last_updated: '2026-06-11'
+last_updated: '2026-07-12'
 pipeline_status: raw
 consumed_by: []
 ---

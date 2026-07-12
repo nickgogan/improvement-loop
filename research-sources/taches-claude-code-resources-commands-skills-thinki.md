@@ -20,5 +20,6 @@ findings:
 - thinking-models-mental-framework-commands-for-codi.md
 date_added: '2026-03-28'
 date_processed: '2026-03-28'
+date_published: "2025-11-13"
 ---
 # TACHES Claude Code Resources: Commands, Skills & Thinking Models

@@ -27,6 +27,7 @@ findings:
   - "index-free-local-code-intelligence-parallel-worktrees.md"
 date_added: "2026-07-11"
 date_processed: "2026-07-11"
+date_published: "2026-06-22"
 ---
 
 Queued for `/research-loop` extraction by the 2026-07-11 link-intake triage

@@ -18,9 +18,11 @@ sources:
 - taches-claude-code-resources-commands-skills-thinki.md
 proposals: []
 date_discovered: '2026-03-28'
-last_updated: '2026-04-09'
+last_updated: '2026-07-12'
 related_findings:
 - file: advanced-elicitation-techniques-library.md
+  rel: same-problem
+- file: enumerate-dont-fix-hostile-reviewer-prompt.md
   rel: same-problem
 pipeline_status: raw
 consumed_by: []

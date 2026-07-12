@@ -18,13 +18,19 @@ sources:
 - five-agentic-patterns-claude-code.md
 proposals: null
 date_discovered: '2026-03-22'
-last_updated: '2026-05-25'
+last_updated: '2026-07-12'
 related_findings:
 - file: agent-cost-blowup-mitigation-strategies.md
   rel: extended-by
-pipeline_status: "synthesized"
+- file: center-vs-edge-of-distribution-task-classification.md
+  rel: same-problem
+- file: prototype-at-frontier-then-downshift.md
+  rel: same-problem
+- file: smart-model-routing-catch-22.md
+  rel: same-problem
+pipeline_status: synthesized
 consumed_by:
-  - "agent-architecture-decisions.md"
+- agent-architecture-decisions.md
 ---
 # Model Tier Routing: Expensive Orchestrator, Cheap Sub-Agents
 

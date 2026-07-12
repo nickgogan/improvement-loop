@@ -14,8 +14,10 @@ specialty:
   - "governance"
   - "skills"
 notes: "Creator of Claude and Claude Code. Primary source for context engineering, tool design, evaluation frameworks, and agent architecture patterns. Engineering blog is the highest-density source in the KB for actionable agent patterns. Originated the Agent Skills format and published it as an open standard at agentskills.io (Dec 2025); maintains canonical skill-authoring substrate (skill-creator, Complete Guide PDF, anthropics/skills repo)."
-source_count: 32
+source_count: 34
 sources:
+  - "a-harness-for-every-task-dynamic-workflows-in-claude-code.md"
+  - "a-field-guide-to-claude-fable-finding-your-unknowns.md"
   - "anthropic-writing-effective-tools-for-agents.md"
   - "anthropic-demystifying-evals-for-ai-agents.md"
   - "anthropic-effective-context-engineering.md"

@@ -1,24 +1,26 @@
 ---
-title: "Agent Memory: Why Your AI Has Amnesia and How to Fix It"
-type: "research-source"
-url: "https://blogs.oracle.com/developers/agent-memory-why-your-ai-has-amnesia-and-how-to-fix-it"
-source_type: "blog-post"
+title: 'Agent Memory: Why Your AI Has Amnesia and How to Fix It'
+type: research-source
+url: https://blogs.oracle.com/developers/agent-memory-why-your-ai-has-amnesia-and-how-to-fix-it
+source_type: blog-post
 authors:
-  - "Oracle Developers"
-date_published: "2025"
-date_processed: "2026-05-25"
-extraction_status: "processed"
-quality_tier: "medium"
+- Oracle Developers
+date_published: '2025'
+date_processed: '2026-05-25'
+extraction_status: processed
+quality_tier: medium
 relevance_dimensions:
-  - "Context Engineering"
+- Context Engineering
 tags:
-  - "memory-architecture"
-  - "unified-memory"
-  - "enterprise"
-  - "oracle"
-  - "four-type-taxonomy"
+- memory-architecture
+- unified-memory
+- enterprise
+- oracle
+- four-type-taxonomy
 findings_extracted: []
 related_watched_libraries: []
+findings:
+- converged-memory-substrate-vs-patchwork.md
 ---
 
 ## Summary

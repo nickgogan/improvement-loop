@@ -1,29 +1,36 @@
 ---
 name: Skill Content Lifecycle — One-Shot Render, Sticky Across Turns, 5K/25K Post-Compaction Budget
-summary: When a skill is invoked in Claude Code, its rendered SKILL.md enters the conversation as a single message and stays there for the rest of the session. Claude Code does not re-read the skill file on subsequent turns. Auto-compaction preserves the most recent invocation of each skill — first 5K tokens per skill, capped at a 25K combined budget across all preserved skills, with the oldest invocations dropped first when over budget. This creates a durable but fixed-budget skill memory inside an active session.
-implementation_notes: "Practical implications: (1) Skill body should be written as standing instructions, not one-time setup steps, because Claude re-reads it across turns from context, not from disk. (2) If a skill 'stops influencing behavior' after the first response, the content is usually still present — the model is choosing other tools/approaches. Strengthen description/instructions, or use hooks for deterministic enforcement. (3) After compaction, re-invoke a skill to restore its full content if you need everything beyond the first 5K tokens preserved. (4) Designing skills to fit comfortably within 5K post-compaction tokens means the lead-most-important guidance must come first in SKILL.md."
+summary: When a skill is invoked in Claude Code, its rendered SKILL.md enters the conversation as a single message and stays there for the rest of the session. Claude Code does not re-read the skill file
+  on subsequent turns. Auto-compaction preserves the most recent invocation of each skill — first 5K tokens per skill, capped at a 25K combined budget across all preserved skills, with the oldest invocations
+  dropped first when over budget. This creates a durable but fixed-budget skill memory inside an active session.
+implementation_notes: 'Practical implications: (1) Skill body should be written as standing instructions, not one-time setup steps, because Claude re-reads it across turns from context, not from disk. (2)
+  If a skill ''stops influencing behavior'' after the first response, the content is usually still present — the model is choosing other tools/approaches. Strengthen description/instructions, or use hooks
+  for deterministic enforcement. (3) After compaction, re-invoke a skill to restore its full content if you need everything beyond the first 5K tokens preserved. (4) Designing skills to fit comfortably
+  within 5K post-compaction tokens means the lead-most-important guidance must come first in SKILL.md.'
 category: Context Engineering
 evidence_strength: Strong (production-tested)
 adoption_status: Not Yet Started
 priority: P1 (Implement Now)
 applicability:
-  - "S3 (Claude Code Build)"
-  - "General"
+- S3 (Claude Code Build)
+- General
 adopted_in: []
 sources:
-  - "anthropic-claude-code-skills-docs.md"
+- anthropic-claude-code-skills-docs.md
 related_findings:
-  - file: "skill-as-directory-progressive-disclosure-three-levels.md"
-    rel: "extends"
-  - file: "skill-description-budget-context-overflow.md"
-    rel: "same-problem"
-  - file: "two-threshold-compaction-strategy.md"
-    rel: "same-problem"
-  - file: "proactive-compaction-before-intelligence-degradation.md"
-    rel: "same-problem"
+- file: skill-as-directory-progressive-disclosure-three-levels.md
+  rel: extends
+- file: skill-description-budget-context-overflow.md
+  rel: same-problem
+- file: two-threshold-compaction-strategy.md
+  rel: same-problem
+- file: proactive-compaction-before-intelligence-degradation.md
+  rel: same-problem
+- file: reference-only-skill-shape-for-afk-agents.md
+  rel: same-problem
 proposals: null
 date_discovered: '2026-06-11'
-last_updated: '2026-06-11'
+last_updated: '2026-07-12'
 pipeline_status: raw
 consumed_by: []
 ---

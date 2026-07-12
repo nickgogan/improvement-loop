@@ -1,29 +1,36 @@
 ---
-name: "Self-Improving Skill with Lessons Log"
-summary: "Individual skills include a self-improvement phase and a Lessons Log table. After every use, the skill checks for lost work, token waste, and user corrections, then updates its own file. Creates a production-tested feedback loop within individual skills without requiring a separate eval framework."
-implementation_notes: "MetaSystem skills don't currently self-modify. The IL's self-evolving loop operates at system level. OB1's approach pushes the improvement loop down to individual skill granularity — each skill carries its own operational history."
-category: "Agent Design"
-evidence_strength: "Medium (practitioner-documented)"
-adoption_status: "Not Yet Started"
+name: Self-Improving Skill with Lessons Log
+summary: Individual skills include a self-improvement phase and a Lessons Log table. After every use, the skill checks for lost work, token waste, and user corrections, then updates its own file. Creates
+  a production-tested feedback loop within individual skills without requiring a separate eval framework.
+implementation_notes: MetaSystem skills don't currently self-modify. The IL's self-evolving loop operates at system level. OB1's approach pushes the improvement loop down to individual skill granularity
+  — each skill carries its own operational history.
+category: Agent Design
+evidence_strength: Medium (practitioner-documented)
+adoption_status: Not Yet Started
 priority: P2 (Design Required)
 applicability:
-  - "S3 (Claude Code Build)"
-  - "General"
+- S3 (Claude Code Build)
+- General
 adopted_in: []
-sources: []
+sources:
+- 5-insane-claude-loops.md
 related_findings:
-  - file: "self-evolving-loop-pattern.md"
-    rel: "extends"
-  - file: "meta-skill-for-skill-authorship.md"
-    rel: "same-problem"
-  - file: "eval-driven-tool-iteration-loop.md"
-    rel: "same-problem"
-date_discovered: "2026-04-20"
-last_updated: "2026-04-20"
-pipeline_status: "synthesized"
+- file: self-evolving-loop-pattern.md
+  rel: extends
+- file: meta-skill-for-skill-authorship.md
+  rel: same-problem
+- file: eval-driven-tool-iteration-loop.md
+  rel: same-problem
+- file: with-without-skill-ab-baseline-measurement.md
+  rel: enabled-by
+- file: session-history-mining-for-skill-discovery.md
+  rel: same-problem
+date_discovered: '2026-04-20'
+last_updated: '2026-07-12'
+pipeline_status: synthesized
 consumed_by:
-  - "templates/skill-self-improvement-lessons-log-template.md"
-  - agent-design-patterns.md
+- templates/skill-self-improvement-lessons-log-template.md
+- agent-design-patterns.md
 ---
 
 ## What It Is
@@ -36,6 +43,8 @@ System-level improvement loops (like MetaSystem's IL) operate on a scan-report-d
 
 ## Why People Are Using It
 Observed in [OB1 (Open Brain)](https://github.com/NateBJones-Projects/OB1) — see [[ob1-analysis]] for structural details. The Panning for Gold skill (v2.0.0) has been through 13+ sessions of iterative refinement. Six of its rules were added after production failures, including a complete Phase 0.5 (Speaker Consolidation) that was added after a lunch meeting transcript misattributed 40+ threads due to auto-generated speaker labels.
+
+**Second independent implementation (2026-07-09, AI LABS):** their "learning loop" keeps a `learning.md` improvement journal *inside the skill* — "basically an improvement journal that documents everything the agent learns in a structured format": what was tried, the result both with the skill and without it, and lessons accumulated across improvement rounds. Two deltas over the OB1 variant: the journal is written by a dedicated skill-improver agent in a driven improvement loop (not by the skill self-modifying after ordinary use), and its entries are grounded in with/without baseline comparisons rather than in-session observations (see `with-without-skill-ab-baseline-measurement.md`). Independent convergence on the same primitive — a persistent per-skill lessons file — from a second practitioner strengthens the pattern.
 
 ## Potential Alternatives
 - **System-level eval loops** (MetaSystem's self-evolving loop, OpenAI's self-evolving agents pattern): Operate at system scope, not skill scope. Better for cross-cutting concerns but miss skill-specific failure modes.

@@ -17,5 +17,6 @@ findings:
 - success-rate-eval-over-binary-pass-fail.md
 date_added: '2026-04-01'
 date_processed: '2026-04-01'
+date_published: "2026-03-27"
 ---
 # AI Agent Prompt Engineering Best Practices -- Inflectra

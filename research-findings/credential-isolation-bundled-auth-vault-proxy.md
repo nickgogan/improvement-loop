@@ -21,10 +21,12 @@ related_findings:
   rel: same-problem
 - file: anthropic-managed-agents-platform.md
   rel: extends
+- file: ai-gateway-model-traffic-layer.md
+  rel: same-problem
 proposals: null
 date_discovered: '2026-04-09'
-last_updated: '2026-05-25'
-pipeline_status: "classified"
+last_updated: '2026-07-12'
+pipeline_status: classified
 consumed_by: []
 ---
 

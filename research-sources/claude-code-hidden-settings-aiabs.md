@@ -14,6 +14,7 @@ authority: []
 findings: []
 date_added: "2026-05-24"
 date_processed: "2026-05-24"
+date_published: "2026-03-25"
 ---
 
 # Claude Code Hidden Settings and Flags (AIABS)

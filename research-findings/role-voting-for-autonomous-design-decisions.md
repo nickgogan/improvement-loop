@@ -1,33 +1,37 @@
 ---
-name: "Role-Based Voting for Autonomous Design Decisions During Headless Execution"
-summary: "When a headless execution session encounters a design question it cannot resolve alone, it delegates the question to a gstack role-voting subprocess. Multiple specialist personas (CEO, engineer manager, designer) evaluate the options independently and vote. The majority vote is adopted automatically, and execution resumes without human intervention. This removes the human bottleneck from overnight autonomous builds by substituting multi-perspective AI deliberation for human judgment."
+name: Role-Based Voting for Autonomous Design Decisions During Headless Execution
+summary: When a headless execution session encounters a design question it cannot resolve alone, it delegates the question to a gstack role-voting subprocess. Multiple specialist personas (CEO, engineer
+  manager, designer) evaluate the options independently and vote. The majority vote is adopted automatically, and execution resumes without human intervention. This removes the human bottleneck from overnight
+  autonomous builds by substituting multi-perspective AI deliberation for human judgment.
 implementation_notes: null
-category: "Agent Design"
-evidence_strength: "Anecdotal"
-adoption_status: "Not Yet Started"
-priority: "P2 (Design Required)"
+category: Agent Design
+evidence_strength: Anecdotal
+adoption_status: Not Yet Started
+priority: P2 (Design Required)
 applicability:
-  - "S3 (Claude Code Build)"
+- S3 (Claude Code Build)
 adopted_in: []
 sources:
-  - "gstack-gsd-superpowers-orchestrator-headless.md"
+- gstack-gsd-superpowers-orchestrator-headless.md
 related_findings:
-  - file: "autoplan-auto-decision-pipeline.md"
-    rel: "extends"
-  - file: "gstack-specialist-role-architecture.md"
-    rel: "enables"
-  - file: "deep-plan-multi-agent-exploration-pattern.md"
-    rel: "same-problem"
-  - file: "ensemble-eval-majority-required-for-success.md"
-    rel: "same-problem"
+- file: autoplan-auto-decision-pipeline.md
+  rel: extends
+- file: gstack-specialist-role-architecture.md
+  rel: enables
+- file: deep-plan-multi-agent-exploration-pattern.md
+  rel: same-problem
+- file: ensemble-eval-majority-required-for-success.md
+  rel: same-problem
+- file: multi-perspective-review-council.md
+  rel: same-problem
 proposals: null
-date_discovered: "2026-05-25"
-last_updated: "2026-05-25"
-pipeline_status: "synthesized"
+date_discovered: '2026-05-25'
+last_updated: '2026-07-12'
+pipeline_status: synthesized
 consumed_by:
-  - agent-design-patterns.md
+- agent-design-patterns.md
 tags:
-  - "session-95-reextract"
+- session-95-reextract
 ---
 
 # Role-Based Voting for Autonomous Design Decisions During Headless Execution

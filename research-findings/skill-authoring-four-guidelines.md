@@ -1,31 +1,38 @@
 ---
 name: Skill Authoring Four Guidelines (Anthropic Engineering Canon)
-summary: |-
-  Anthropic's engineering post on Agent Skills lists four canonical authoring guidelines: (1) Start with evaluation — identify capability gaps on representative tasks before building. (2) Structure for scale — split SKILL.md when unwieldy; code can serve as both tool and reference. (3) Think from Claude's perspective — monitor real use; tune name and description for triggering accuracy. (4) Iterate with Claude — capture successful approaches and common mistakes into the skill during real work; ask Claude to self-reflect on what went wrong. These are first-principles, not rules; the skill-creator skill operationalizes them.
-implementation_notes: "Guideline 4 — 'Iterate with Claude' — is the most novel. It frames skill authoring as a process of capturing in-context patterns: 'As you work on a task with Claude, ask Claude to capture its successful approaches and common mistakes into reusable context and code within a skill. If it goes off track when using a skill to complete a task, ask it to self-reflect on what went wrong.' This positions skill development as continuous distillation from real usage, rather than upfront design. Pair with the 'iterate on a single task before expanding' pro tip from the Complete Guide PDF for a tight loop."
+summary: 'Anthropic''s engineering post on Agent Skills lists four canonical authoring guidelines: (1) Start with evaluation — identify capability gaps on representative tasks before building. (2) Structure
+  for scale — split SKILL.md when unwieldy; code can serve as both tool and reference. (3) Think from Claude''s perspective — monitor real use; tune name and description for triggering accuracy. (4) Iterate
+  with Claude — capture successful approaches and common mistakes into the skill during real work; ask Claude to self-reflect on what went wrong. These are first-principles, not rules; the skill-creator
+  skill operationalizes them.'
+implementation_notes: 'Guideline 4 — ''Iterate with Claude'' — is the most novel. It frames skill authoring as a process of capturing in-context patterns: ''As you work on a task with Claude, ask Claude
+  to capture its successful approaches and common mistakes into reusable context and code within a skill. If it goes off track when using a skill to complete a task, ask it to self-reflect on what went
+  wrong.'' This positions skill development as continuous distillation from real usage, rather than upfront design. Pair with the ''iterate on a single task before expanding'' pro tip from the Complete
+  Guide PDF for a tight loop.'
 category: Agent Design
 evidence_strength: Strong (production-tested)
 adoption_status: Not Yet Started
 priority: P1 (Implement Now)
 applicability:
-  - "S3 (Claude Code Build)"
-  - "General"
+- S3 (Claude Code Build)
+- General
 adopted_in: []
 sources:
-  - "anthropic-equipping-agents-with-agent-skills.md"
-  - "anthropic-complete-guide-building-skills-pdf.md"
+- anthropic-equipping-agents-with-agent-skills.md
+- anthropic-complete-guide-building-skills-pdf.md
 related_findings:
-  - file: "skill-md-frontmatter-as-discovery-trigger-primitive.md"
-    rel: "extends"
-  - file: "iterate-on-single-task-then-extract-skill.md"
-    rel: "extends"
-  - file: "skill-authoring-explain-the-why-not-musts.md"
-    rel: "same-problem"
-  - file: "meta-skill-for-skill-authorship.md"
-    rel: "extended-by"
+- file: skill-md-frontmatter-as-discovery-trigger-primitive.md
+  rel: extends
+- file: iterate-on-single-task-then-extract-skill.md
+  rel: extends
+- file: skill-authoring-explain-the-why-not-musts.md
+  rel: same-problem
+- file: meta-skill-for-skill-authorship.md
+  rel: extended-by
+- file: branch-analysis-externalization-rule-skill-reference.md
+  rel: extended-by
 proposals: null
 date_discovered: '2026-06-11'
-last_updated: '2026-06-11'
+last_updated: '2026-07-12'
 pipeline_status: raw
 consumed_by: []
 ---

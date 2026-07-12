@@ -15,9 +15,11 @@ sources:
 - gsd-2-vs-claude-code-a-new-ai-king.md
 proposals: null
 date_discovered: '2026-03-22'
-last_updated: '2026-04-19'
+last_updated: '2026-07-12'
 related_findings:
 - file: archon-yaml-defined-harness-workflows.md
+  rel: same-problem
+- file: issue-based-agent-orchestration-replacing-markdown-plans.md
   rel: same-problem
 pipeline_status: raw
 consumed_by: []

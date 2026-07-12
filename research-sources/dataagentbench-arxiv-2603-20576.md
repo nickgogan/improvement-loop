@@ -14,6 +14,7 @@ authority: []
 findings: []
 date_added: "2026-05-24"
 date_processed: "2026-05-24"
+date_published: "2026-03-21"
 ---
 
 # DataAgentBench: A Benchmark for Data Agents

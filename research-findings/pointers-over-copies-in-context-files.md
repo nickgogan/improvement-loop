@@ -28,9 +28,11 @@ related_findings:
   rel: extended-by
 - file: index-file-navigation-as-rag-replacement.md
   rel: same-problem
+- file: model-specific-context-file-sensitivity.md
+  rel: same-problem
 proposals: []
 date_discovered: '2026-04-07'
-last_updated: '2026-04-08'
+last_updated: '2026-07-12'
 pipeline_status: synthesized
 consumed_by:
 - structuring-agent-context.md

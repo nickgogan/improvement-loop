@@ -14,9 +14,11 @@ adopted_in: []
 sources:
 - bmad-v6-is-finally-here.md
 date_discovered: '2026-04-07'
-last_updated: 2026-04-08
+last_updated: '2026-07-12'
 related_findings:
 - file: agent-context-kiss-commandments-minimum-viable.md
+  rel: same-problem
+- file: docs-split-by-lifespan-not-topic.md
   rel: same-problem
 pipeline_status: raw
 consumed_by: []

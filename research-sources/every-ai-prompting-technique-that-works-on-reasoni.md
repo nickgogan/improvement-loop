@@ -18,5 +18,6 @@ findings:
 - model-agnostic-prompting-three-properties.md
 date_added: '2026-04-01'
 date_processed: '2026-04-01'
+date_published: "2026-03-26"
 ---
 # Every AI Prompting Technique That Works on Reasoning Models -- Product with Attitude

@@ -15,7 +15,7 @@ sources:
 - your-ai-coding-is-bad-heres-how-to-fix-it.md
 proposals: []
 date_discovered: '2026-03-22'
-last_updated: '2026-05-24'
+last_updated: '2026-07-12'
 related_findings:
 - file: ace-execution-feedback-no-labels-required.md
   rel: same-problem
@@ -25,9 +25,11 @@ related_findings:
   rel: same-problem
 - file: agent-proof-of-work-ui-trust-building.md
   rel: same-problem
+- file: measured-delta-and-staging-clone-for-ai-refactors.md
+  rel: extended-by
 pipeline_status: synthesized
 consumed_by:
-  - "building-agent-evaluation-suites.md"
+- building-agent-evaluation-suites.md
 ---
 # Test-Driven Development as Counterweight to Agentic Randomness
 

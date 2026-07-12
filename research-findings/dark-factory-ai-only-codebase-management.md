@@ -15,6 +15,7 @@ adopted_in: []
 sources:
 - archon-live-stream-agent-workflows-dark-factory.md
 - dark-factory-archon-autonomous-coding.md
+- the-best-ai-coding-setup-isnt-the-most-autonomous-one.md
 related_findings:
 - file: archon-yaml-defined-harness-workflows.md
   rel: enabled-by
@@ -30,10 +31,12 @@ related_findings:
   rel: enabled-by
 - file: agui-human-control-layer-not-ui.md
   rel: contradicts
+- file: autonomy-progression-gated-by-maturity.md
+  rel: extended-by
 proposals: null
 date_discovered: '2026-04-19'
-last_updated: '2026-05-24'
-pipeline_status: "classified"
+last_updated: '2026-07-12'
+pipeline_status: classified
 consumed_by: []
 ---
 
@@ -76,3 +79,24 @@ Cole Medin framed this as a "build in public" experiment — a live demonstratio
 - Unchecked token spending if issue volume spikes or workflows loop
 - Quality drift — successive AI-authored changes build on previous AI choices, compounding suboptimal patterns
 - Security vulnerabilities introduced without human security review
+
+## Author's Retrospective — Medin, July 2026 (recency-weighted update)
+
+Medin's follow-up take after running his own dark factory experiment tempers the pattern:
+"it was a lot of work and there were still a million things I needed to do to truly make
+it reliable." His revised recommendation is explicitly *against* reaching for level 5 —
+stay at supervised level 3 until per-workflow trust is earned, then subtract oversight
+(see [[autonomy-progression-gated-by-maturity]]). New specifics from that retrospective:
+
+- **Failure-mode taxonomy:** cascading failures; agents stalled waiting on handoffs from
+  crashed agents ("inputs that are never going to arrive"); evaluation gaming; agents
+  veering off spec into nonsense task fan-out; and one spec error or wrong assumption
+  amplifying into "dozens of shipped deployments" — all with low visibility *by design*,
+  because the whole point is that no one is watching.
+- **The orchestration layer is a separate engineering effort** on top of an
+  already-reliable system: spec→task splitting, handoff management, duplicate-work and
+  stall detection. Reliability of the base system is necessary but not sufficient.
+- **Deterministic vs agentic nodes:** steps that don't need reasoning (formatting, lint,
+  triggering deploys) should be plain code, not LLM calls — reliability by subtraction.
+- **Adoption signal update:** StrongDM remains the documented production example;
+  undocumented deployments rumored in banking. Still "the dream," not the recommendation.

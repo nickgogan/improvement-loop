@@ -14,9 +14,11 @@ adopted_in: []
 sources:
 - stop-using-claude-code-in-terminal.md
 date_discovered: '2026-04-07'
-last_updated: 2026-04-08
+last_updated: '2026-07-12'
 related_findings:
 - file: agent-architecture-layer-impermanence.md
+  rel: same-problem
+- file: task-risk-gradient-for-verification-depth.md
   rel: same-problem
 pipeline_status: synthesized
 consumed_by:

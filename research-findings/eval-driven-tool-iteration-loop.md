@@ -16,9 +16,11 @@ sources:
 related_findings:
 - file: eval-driven-development-autonomous-quality.md
   rel: same-problem
+- file: self-improving-skill-lessons-log.md
+  rel: same-problem
 proposals: null
 date_discovered: '2026-04-09'
-last_updated: '2026-04-19'
+last_updated: '2026-07-12'
 pipeline_status: extracted
 consumed_by:
 - skills/eval-driven-tool-iteration-loop.md

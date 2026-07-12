@@ -16,4 +16,5 @@ findings:
   - kimi-k2-line-near-opus-coding-with-safety-gap.md
 date_added: "2026-07-11"
 date_processed: "2026-07-11"
+date_published: "2026-04-20"
 ---

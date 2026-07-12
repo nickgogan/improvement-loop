@@ -1,36 +1,40 @@
 ---
-name: "AI-as-Primary-Reader Design Principle"
-summary: "When AI is the primary consumer of a knowledge base, the optimal structure differs fundamentally from human-centric design. Humans need simplicity (4 folders); AI tolerates and benefits from higher structural complexity (16 node types, 10 edge types) because it can process taxonomic richness that overwhelms human navigation. Design for the reader, not the author."
+name: AI-as-Primary-Reader Design Principle
+summary: When AI is the primary consumer of a knowledge base, the optimal structure differs fundamentally from human-centric design. Humans need simplicity (4 folders); AI tolerates and benefits from higher
+  structural complexity (16 node types, 10 edge types) because it can process taxonomic richness that overwhelms human navigation. Design for the reader, not the author.
 implementation_notes: null
-category: "Context Engineering"
-evidence_strength: "Medium (practitioner-documented)"
-adoption_status: "Not Yet Started"
+category: Context Engineering
+evidence_strength: Medium (practitioner-documented)
+adoption_status: Not Yet Started
 priority: P2
 applicability:
-  - "S3 (Claude Code Build)"
-  - "General"
+- S3 (Claude Code Build)
+- General
 adopted_in: []
 sources:
-  - "karpathy-second-brain-typed-edge-alternative.md"
+- karpathy-second-brain-typed-edge-alternative.md
+- google-okf-vs-rag-confusion-finally-cleared-up.md
 related_findings:
-  - file: typed-edge-knowledge-graph-token-reduction.md
-    rel: enables
-  - file: self-describing-codebase-structural-semantic-context.md
-    rel: same-problem
-  - file: ai-readable-naming-conventions-as-a-navigation.md
-    rel: same-problem
-  - file: obsidian-as-transparent-frontend-vs-rag-black-box.md
-    rel: same-problem
-  - file: ai-managed-vault-separate-from-human-vault.md
-    rel: same-problem
+- file: typed-edge-knowledge-graph-token-reduction.md
+  rel: enables
+- file: self-describing-codebase-structural-semantic-context.md
+  rel: same-problem
+- file: ai-readable-naming-conventions-as-a-navigation.md
+  rel: same-problem
+- file: obsidian-as-transparent-frontend-vs-rag-black-box.md
+  rel: same-problem
+- file: ai-managed-vault-separate-from-human-vault.md
+  rel: same-problem
+- file: query-shape-first-storage-design.md
+  rel: same-problem
 proposals: null
-date_discovered: "2026-05-25"
-last_updated: "2026-05-25"
-pipeline_status: "synthesized"
+date_discovered: '2026-05-25'
+last_updated: '2026-07-12'
+pipeline_status: synthesized
 consumed_by:
-  - "structuring-agent-context.md"
+- structuring-agent-context.md
 tags:
-  - "session-95-reextract"
+- session-95-reextract
 ---
 
 # AI-as-Primary-Reader Design Principle
@@ -68,3 +72,17 @@ The practitioner rebuilt their knowledge base from a PARA structure (4 folders, 
 - **Human abandonment** — if the structure becomes unnavigable for humans, the human-in-the-loop quality assurance degrades, and errors accumulate unchecked
 - **Premature optimization** — restructuring for AI before having enough content to benefit from the structural overhead. Small knowledge bases (< 50 nodes) may not benefit.
 - **Model-specific optimization** — structures optimized for current model capabilities may become suboptimal as models improve at handling unstructured content
+
+## Ecosystem Corroboration — 2026-07-12
+
+The principle is now visible as a convention lineage, not just individual practice: a
+clear drift of plain structured files whose entire intended audience is a model, not a
+person — llms.txt → agents.md → claude.md → and now Google Cloud's OKF (June 2026),
+which standardizes whole folder-of-markdown knowledge bundles authored for agent
+consumption (see okf-open-knowledge-format-curated-bundle-spec.md). Each step widens
+scope: from a single docs endpoint, to per-repo agent instructions, to a full curated
+knowledge substrate. OKF's design choices echo this finding directly — YAML metadata
+density, typed concepts (`type` is the only required field), and explicit link
+structure are cheap overhead for a machine reader; the human-facing affordance
+(Google's HTML graph visualizer) is generated from the same data, matching the
+dual-layer improvement suggested above.

@@ -1,33 +1,40 @@
 ---
-name: "Extend Claude with skills — Claude Code Docs"
-source_type: "Documentation"
-status: "Done"
-key_takeaways: "Canonical Claude Code-specific skills documentation. Documents Claude Code's extensions to the Agent Skills open standard: invocation control (disable-model-invocation, user-invocable), subagent execution (context: fork + agent:), dynamic context injection (`!`backtick shell pre-rendering), and an expanded frontmatter set (when_to_use, argument-hint, arguments, allowed-tools, disallowed-tools, model, effort, hooks, paths, shell). Specifies the skill hierarchy (enterprise > personal > project; plugin separate namespace), live change detection, automatic discovery from parent and nested directories, and skill descriptions budgeted at 1% of context window with 1536-char cap. Documents skill content lifecycle: rendered SKILL.md enters as a single message and stays; auto-compaction preserves first 5K tokens per skill within a 25K combined budget. Documents permission model: Skill(name) and Skill(name *) syntax, skillOverrides settings with on/name-only/user-invocable-only/off states. 'Custom commands have been merged into skills' — slash commands and skills are now one primitive."
-relevance: "High"
-added_by: "Nick"
+name: Extend Claude with skills — Claude Code Docs
+source_type: Documentation
+status: Done
+key_takeaways: 'Canonical Claude Code-specific skills documentation. Documents Claude Code''s extensions to the Agent Skills open standard: invocation control (disable-model-invocation, user-invocable),
+  subagent execution (context: fork + agent:), dynamic context injection (`!`backtick shell pre-rendering), and an expanded frontmatter set (when_to_use, argument-hint, arguments, allowed-tools, disallowed-tools,
+  model, effort, hooks, paths, shell). Specifies the skill hierarchy (enterprise > personal > project; plugin separate namespace), live change detection, automatic discovery from parent and nested directories,
+  and skill descriptions budgeted at 1% of context window with 1536-char cap. Documents skill content lifecycle: rendered SKILL.md enters as a single message and stays; auto-compaction preserves first 5K
+  tokens per skill within a 25K combined budget. Documents permission model: Skill(name) and Skill(name *) syntax, skillOverrides settings with on/name-only/user-invocable-only/off states. ''Custom commands
+  have been merged into skills'' — slash commands and skills are now one primitive.'
+relevance: High
+added_by: Nick
 tags:
-  - "skills"
-  - "claude-code"
-  - "context-engineering"
-  - "agent-design"
-  - "tools"
-  - "session-management"
-url: "https://code.claude.com/docs/en/skills"
+- skills
+- claude-code
+- context-engineering
+- agent-design
+- tools
+- session-management
+url: https://code.claude.com/docs/en/skills
 authority:
-  - "anthropic.md"
+- anthropic.md
 findings:
-  - "skill-md-frontmatter-as-discovery-trigger-primitive.md"
-  - "claude-code-skill-frontmatter-extensions.md"
-  - "skill-content-lifecycle-context-budget.md"
-  - "skill-description-budget-context-overflow.md"
-  - "skill-invocation-control-side-effect-guard.md"
-  - "skill-forked-subagent-execution.md"
-  - "skill-dynamic-context-injection-shell-prerender.md"
-  - "skill-hierarchy-enterprise-personal-project-plugin.md"
-  - "slash-commands-merged-into-skills.md"
-  - "skill-live-change-detection-hot-reload.md"
-date_added: "2026-06-11"
-date_processed: "2026-06-11"
+- claude-code-skill-frontmatter-extensions.md
+- skill-content-lifecycle-context-budget.md
+- skill-description-budget-context-overflow.md
+- skill-dynamic-context-injection-shell-prerender.md
+- skill-forked-subagent-execution.md
+- skill-hierarchy-enterprise-personal-project-plugin.md
+- skill-invocation-control-side-effect-guard.md
+- skill-live-change-detection-hot-reload.md
+- skill-md-frontmatter-as-discovery-trigger-primitive.md
+- skill-security-audit-obligation.md
+- slash-commands-merged-into-skills.md
+date_added: '2026-06-11'
+date_processed: '2026-06-11'
+date_published: null
 ---
 
 # Extend Claude with skills (Claude Code Docs)

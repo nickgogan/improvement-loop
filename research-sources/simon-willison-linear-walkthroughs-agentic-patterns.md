@@ -19,6 +19,7 @@ findings:
   - "programmatic-snippet-extraction-via-shell-anti-hallucination.md"
 date_added: "2026-04-20"
 date_processed: "2026-04-20"
+date_published: "2026-02-25"
 ---
 
 # Linear Walkthroughs — Simon Willison

@@ -1,35 +1,38 @@
 ---
-name: "Open Brain: Personal Knowledge Store as Agent Memory Layer"
-summary: "A lightweight, MCP-accessible personal knowledge store (~10 cents/month) that stores structured outputs from expertise elicitation interviews and makes them searchable by any agent. Functions as a persistent, durable 'second brain' that bridges across agent systems via MCP."
+name: 'Open Brain: Personal Knowledge Store as Agent Memory Layer'
+summary: A lightweight, MCP-accessible personal knowledge store (~10 cents/month) that stores structured outputs from expertise elicitation interviews and makes them searchable by any agent. Functions as
+  a persistent, durable 'second brain' that bridges across agent systems via MCP.
 implementation_notes: null
-category: "Agentic Systems"
-evidence_strength: "Medium (practitioner-documented)"
-adoption_status: "Not Yet Started"
-priority: "P2 (Design Required)"
+category: Agentic Systems
+evidence_strength: Medium (practitioner-documented)
+adoption_status: Not Yet Started
+priority: P2 (Design Required)
 applicability:
-  - "S3 (Claude Code Build)"
-  - "General"
+- S3 (Claude Code Build)
+- General
 adopted_in: []
 sources:
-  - "agent-cold-start-tacit-knowledge-elicitation.md"
+- agent-cold-start-tacit-knowledge-elicitation.md
 related_findings:
-  - file: five-pillar-agentic-os-framework.md
-    rel: same-problem
-  - file: agent-memory-architecture-multi-agent-layered.md
-    rel: same-problem
-  - file: tacit-knowledge-as-agent-delegation-barrier.md
-    rel: enables
-  - file: context-gap-task-vs-job.md
-    rel: same-problem
-  - file: karpathy-llm-knowledge-base-obsidian-rag.md
-    rel: same-problem
+- file: five-pillar-agentic-os-framework.md
+  rel: same-problem
+- file: agent-memory-architecture-multi-agent-layered.md
+  rel: same-problem
+- file: tacit-knowledge-as-agent-delegation-barrier.md
+  rel: enables
+- file: context-gap-task-vs-job.md
+  rel: same-problem
+- file: karpathy-llm-knowledge-base-obsidian-rag.md
+  rel: same-problem
+- file: memory-wiki-world-kb-trichotomy.md
+  rel: same-problem
 proposals: null
-date_discovered: "2026-04-20"
-last_updated: "2026-04-27"
+date_discovered: '2026-04-20'
+last_updated: '2026-07-12'
 pipeline_status: synthesized
 consumed_by:
-  - "session-persistence-and-memory.md"
-  - "building-agentic-systems.md"
+- session-persistence-and-memory.md
+- building-agentic-systems.md
 ---
 # Open Brain: Personal Knowledge Store as Agent Memory Layer
 

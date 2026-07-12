@@ -1,34 +1,37 @@
 ---
-name: "Finite Training Set Generalization via Error Recovery"
-summary: "Agents will always encounter environments they were not trained on. Rather than trying to pre-train on every possible domain, the durable investment is training agents to recognize when they are in unfamiliar territory and recover gracefully -- the same way humans navigate unfamiliar websites by trial, error detection, and correction."
+name: Finite Training Set Generalization via Error Recovery
+summary: Agents will always encounter environments they were not trained on. Rather than trying to pre-train on every possible domain, the durable investment is training agents to recognize when they are
+  in unfamiliar territory and recover gracefully -- the same way humans navigate unfamiliar websites by trial, error detection, and correction.
 implementation_notes: null
-category: "Agent Design"
-evidence_strength: "Medium (practitioner-documented)"
-adoption_status: "Not Yet Started"
+category: Agent Design
+evidence_strength: Medium (practitioner-documented)
+adoption_status: Not Yet Started
 priority: P2
 applicability:
-  - "S3 (Claude Code Build)"
-  - "General"
+- S3 (Claude Code Build)
+- General
 adopted_in: []
 sources:
-  - "problem-with-ai-agents-utori-compound-errors.md"
+- problem-with-ai-agents-utori-compound-errors.md
 related_findings:
-  - file: "error-aware-backtracking-as-compound-error-mitigation.md"
-    rel: "enables"
-  - file: "graceful-degradation-modes-for-agent-failure.md"
-    rel: "same-problem"
-  - file: "march-of-nines-compounding-reliability-math-for-m.md"
-    rel: "same-problem"
-  - file: "harness-simplification-as-models-improve.md"
-    rel: "contradicts"
+- file: error-aware-backtracking-as-compound-error-mitigation.md
+  rel: enables
+- file: graceful-degradation-modes-for-agent-failure.md
+  rel: same-problem
+- file: march-of-nines-compounding-reliability-math-for-m.md
+  rel: same-problem
+- file: harness-simplification-as-models-improve.md
+  rel: contradicts
+- file: on-policy-vs-naive-trace-distillation.md
+  rel: same-problem
 proposals: null
-date_discovered: "2026-05-25"
-last_updated: "2026-05-25"
+date_discovered: '2026-05-25'
+last_updated: '2026-07-12'
 tags:
-  - "session-95-reextract"
-pipeline_status: "synthesized"
+- session-95-reextract
+pipeline_status: synthesized
 consumed_by:
-  - "agent-design-patterns.md"
+- agent-design-patterns.md
 ---
 
 # Finite Training Set Generalization via Error Recovery

@@ -1,29 +1,37 @@
 ---
 name: Skills as Open Portable Standard (agentskills.io)
-summary: Anthropic published Agent Skills as an open standard at agentskills.io on December 18, 2025, with the goal of cross-platform skill portability — the same skill folder works whether you're using Claude or another AI platform. The spec lives at github.com/agentskills/agentskills (Apache 2.0 code, CC-BY-4.0 docs), is open to community contributions, and is adopted by a growing list of clients (see agentskills.io/clients). Skills that target a specific platform's capabilities can declare so in the `compatibility` field.
-implementation_notes: "Standard-track frontmatter is intentionally minimal: name, description, license, compatibility, metadata, allowed-tools (experimental). All other Claude Code frontmatter fields (disable-model-invocation, user-invocable, context: fork, agent, paths, hooks, etc.) are Claude Code extensions. The compatibility field is the spec-level escape hatch for skills that need a specific surface. Practitioner guidance from the Complete Guide: 'authors can note this in the skill's compatibility field.' Validator: skills-ref CLI from github.com/agentskills/agentskills/tree/main/skills-ref."
+summary: Anthropic published Agent Skills as an open standard at agentskills.io on December 18, 2025, with the goal of cross-platform skill portability — the same skill folder works whether you're using
+  Claude or another AI platform. The spec lives at github.com/agentskills/agentskills (Apache 2.0 code, CC-BY-4.0 docs), is open to community contributions, and is adopted by a growing list of clients (see
+  agentskills.io/clients). Skills that target a specific platform's capabilities can declare so in the `compatibility` field.
+implementation_notes: 'Standard-track frontmatter is intentionally minimal: name, description, license, compatibility, metadata, allowed-tools (experimental). All other Claude Code frontmatter fields (disable-model-invocation,
+  user-invocable, context: fork, agent, paths, hooks, etc.) are Claude Code extensions. The compatibility field is the spec-level escape hatch for skills that need a specific surface. Practitioner guidance
+  from the Complete Guide: ''authors can note this in the skill''s compatibility field.'' Validator: skills-ref CLI from github.com/agentskills/agentskills/tree/main/skills-ref.'
 category: Agent Design
 evidence_strength: Strong (production-tested)
 adoption_status: Not Yet Started
 priority: P2 (Design Required)
 applicability:
-  - "S3 (Claude Code Build)"
-  - "General"
+- S3 (Claude Code Build)
+- General
 adopted_in: []
 sources:
-  - "anthropic-equipping-agents-with-agent-skills.md"
-  - "agentskills-open-standard.md"
-  - "anthropic-complete-guide-building-skills-pdf.md"
+- anthropic-equipping-agents-with-agent-skills.md
+- agentskills-open-standard.md
+- anthropic-complete-guide-building-skills-pdf.md
 related_findings:
-  - file: "skill-as-directory-progressive-disclosure-three-levels.md"
-    rel: "enabled-by"
-  - file: "skill-frontmatter-validation-rules.md"
-    rel: "extends"
-  - file: "skill-cross-surface-portability-with-constraints.md"
-    rel: "extends"
+- file: skill-as-directory-progressive-disclosure-three-levels.md
+  rel: enabled-by
+- file: skill-frontmatter-validation-rules.md
+  rel: extends
+- file: skill-cross-surface-portability-with-constraints.md
+  rel: extends
+- file: harness-non-portability-across-model-families.md
+  rel: same-problem
+- file: knowledge-substrate-standardization-cross-agent-interop.md
+  rel: same-problem
 proposals: null
 date_discovered: '2026-06-11'
-last_updated: '2026-06-11'
+last_updated: '2026-07-12'
 pipeline_status: raw
 consumed_by: []
 ---

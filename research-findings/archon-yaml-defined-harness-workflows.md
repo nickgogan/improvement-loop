@@ -55,9 +55,15 @@ related_findings:
   rel: extended-by
 - file: default-workflow-library-as-adoption-accelerator.md
   rel: extended-by
+- file: dark-factory-ai-only-codebase-management.md
+  rel: enables
+- file: intent-based-meta-routing-skill.md
+  rel: extended-by
+- file: isolation-resolver-worktree-lifecycle-algorithm.md
+  rel: extended-by
 proposals: null
 date_discovered: '2026-04-09'
-last_updated: '2026-05-25'
+last_updated: '2026-07-12'
 pipeline_status: synthesized
 consumed_by:
 - agent-workflow-and-execution.md

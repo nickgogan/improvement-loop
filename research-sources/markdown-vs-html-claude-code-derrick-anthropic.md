@@ -22,6 +22,7 @@ findings:
   - "throwaway-html-editor-structured-input-surface.md"
 date_added: "2026-05-24"
 date_processed: "2026-05-24"
+date_published: "2026-05-09"
 ---
 
 # Markdown vs HTML: Why Anthropic's Claude Code Team Chose Wrong First? Or Not?

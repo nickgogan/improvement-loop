@@ -21,4 +21,4 @@ Durable reference material for how the Improvement Loop system operates. Not ses
 | `research-dimensions.md` | Registry of research dimensions (with sub-dimensions) scoped for IL scanning |
 | `form-classification-rubric.md` | Form Router decision spec — per-form inclusion/exclusion criteria, tier dispatch, calibration findings |
 | `model-capability-registry.md` | Coarse per-model+version capability profiles for agent work — living reference, intentionally refreshed via D2/2.A scans, every claim KB-grounded |
-| `link-intake-protocol.md` | Triage procedure for LINKS.md batches — classify → roster/KB fit → ADD/ENHANCE/KB-ONLY/REJECT verdicts; landed as reference doc per Rule 11 with a promotion trigger |
+| `link-intake-protocol.md` | SUPERSEDED (2026-07-12) — promoted to the `/link-intake` skill after the third stable-shape run; retained as history |

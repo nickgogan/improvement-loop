@@ -18,5 +18,6 @@ findings:
 - emergent-agentic-behaviors-from-outcome-rl.md
 date_added: '2026-03-23'
 date_processed: '2026-03-23'
+date_published: "2025-04-28"
 ---
 # ARTIST: Agentic Reasoning and Tool Integration via RL

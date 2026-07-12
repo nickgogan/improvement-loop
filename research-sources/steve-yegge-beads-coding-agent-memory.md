@@ -20,6 +20,7 @@ findings:
   - "session-atomicity-single-issue-scope-quadratic-cost-reduction.md"
 date_added: "2026-04-20"
 date_processed: "2026-04-20"
+date_published: "2025-10-13"
 ---
 
 # Introducing Beads: A Coding Agent Memory System

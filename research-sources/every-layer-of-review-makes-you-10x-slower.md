@@ -20,6 +20,7 @@ findings:
   - "competitive-module-development-parallel-teams.md"
 date_added: "2026-03-23"
 date_processed: "2026-04-07"
+date_published: "2026-03-16"
 ---
 
 # Every Layer of Review Makes You 10x Slower

@@ -10,13 +10,16 @@ applicability:
 - S3 (Claude Code Build)
 - General
 adopted_in: []
-sources: []
+sources:
+- glm-5-2-is-free-and-beats-claude-on-most-work.md
 proposals: null
 date_discovered: '2026-05-25'
-last_updated: '2026-05-25'
+last_updated: '2026-07-12'
 related_findings:
 - file: model-specific-context-file-sensitivity.md
   rel: extends
+- file: harness-non-portability-across-model-families.md
+  rel: same-problem
 pipeline_status: raw
 ---
 
@@ -45,3 +48,12 @@ Automated format discovery through eval-driven optimization rather than manual o
 ## Potential Failure Modes
 
 Format assumptions become stale as models are updated (e.g., a future Claude version might not benefit from line numbers). Maintaining multiple rendering paths increases testing surface area. Provider detection logic can misroute if model identifiers change or new models are added. Over-optimization for one provider's quirks creates brittleness if that provider's API changes.
+
+## Corroboration Note — 2026-07-12
+
+The Lindy migration (Nate B Jones, GLM 5.2 video — see
+harness-non-portability-across-model-families) corroborates the premise from the
+production side: prompts, memory handling, and tool calls all had to be rebuilt to move
+from Claude to DeepSeek. It also bounds this pattern — Lindy's experience suggests
+model-family coupling extends beyond what a rendering adapter layer can confine
+(memory architecture and tool-call semantics, not just prompt formatting).

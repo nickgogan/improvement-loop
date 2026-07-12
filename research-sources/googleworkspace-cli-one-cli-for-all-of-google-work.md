@@ -16,5 +16,6 @@ findings:
 - gws-cli-full-google-workspace-control-from.md
 date_added: '2026-03-28'
 date_processed: '2026-03-28'
+date_published: "2026-03-02"
 ---
 # googleworkspace/cli: One CLI for All of Google Workspace
