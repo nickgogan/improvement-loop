@@ -13,6 +13,7 @@ applicability:
 adopted_in: []
 sources:
 - hyperagents-arxiv-260319461.md
+- careerbuddy-ops-self-improve.md
 related_findings:
 - file: metacognitive-self-modification-hyperagents.md
   rel: enabled-by
@@ -20,7 +21,7 @@ related_findings:
   rel: enabled-by
 proposals: []
 date_discovered: '2026-04-07'
-last_updated: '2026-04-08'
+last_updated: '2026-07-12'
 pipeline_status: raw
 consumed_by: []
 ---
@@ -54,6 +55,17 @@ Part of the ICLR 2026-accepted HyperAgents paper (Meta FAIR, UBC, Vector Institu
 ## Potential Improvements
 
 Adaptive significance thresholds: as the system matures and modifications become smaller, the p < 0.05 threshold may reject genuinely beneficial micro-improvements. Bayesian approaches could replace frequentist significance testing for more nuanced modification acceptance.
+
+## Downstream Production Adoption (2026-07-12): CareerBuddy shadow sandbox
+
+CareerBuddy's `ops-self-improve` skill cites this finding by slug and implements a lightweight, markdown-native variant for its human-gated promotion pipeline — evidence the pattern scales *down* from statistical eval regimes to file-based control surfaces:
+
+1. Copy the owning surface (file or package) to a gitignored scratch dir (`ops/tmp/self-improve-shadow/`).
+2. Apply the draft edit to the shadow copy only.
+3. Run the surface's *own* validators against the shadow — skills get the skill validator, docs get their audit C-check, scripts get their tests or a smoke run. No statistical gate; per-surface deterministic validators replace p < 0.05, which fits changes to prose/config surfaces where "performance" is not a scalar.
+4. **Fail-closed:** validators fail → the proposal never reaches the human gate; the failure is recorded on the originating lesson and the run stops.
+
+The versioned audit log also carries over: every promotion outcome (applied or declined) lands in an append-only `proposal-log.md` with a one-line grade and the applying commit sha, and rollback is `git revert` plus a new log row. Where a shadow copy fit poorly (script edits), the log records substituted deterministic verification — regenerate outputs from the original seed and diff (its P-12) — preserving the validated-before-commit invariant while swapping the mechanism. Sixteen proposals traversed this pipeline in ~5 days of production sessions with zero recorded post-apply regressions (one deliberate near-miss class: doc-surface edits occasionally validated post-apply, flagged as such in the log).
 
 ## Potential Failure Modes
 

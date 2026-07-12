@@ -12,7 +12,8 @@ applicability:
 - S3 (Claude Code Build)
 - General
 adopted_in: []
-sources: []
+sources:
+- careerbuddy-ops-self-improve.md
 related_findings:
 - file: self-improving-skill-lessons-log.md
   rel: extends
@@ -27,7 +28,7 @@ related_findings:
 - file: meta-skill-authoring-prior-dominance.md
   rel: extended-by
 date_discovered: '2026-04-20'
-last_updated: '2026-07-11'
+last_updated: '2026-07-12'
 pipeline_status: synthesized
 consumed_by:
 - agent-design-patterns.md
@@ -56,6 +57,16 @@ Observed across three independent repos: [OB1](https://github.com/NateBJones-Pro
 - **Hybrid approach**: Shared learnings store for cross-cutting patterns (gstack-style) + per-skill lessons log for skill-specific failures (OB1-style) + meta-skill for generating new skills from accumulated learnings (Superpowers-style).
 - **Automated lesson promotion**: When a lesson appears in 3+ skills' logs, promote it to a shared rule.
 - **Regression detection**: Check whether previously-learned lessons are being violated.
+
+## Production Convergence (2026-07-12): CareerBuddy implements the hybrid
+
+The open solution space now has a production implementation that deliberately combines the three approaches. CareerBuddy's `ops-self-improve` skill describes itself as "the corpus-converged hybrid of central learnings store + per-surface promotion + routing to the meta layer," citing this finding by slug — i.e., a downstream system read this KB and built the hybrid this finding's Potential Improvements section proposed:
+
+- **Central store** (gstack-style, but structured markdown rather than JSONL): append-only `ops/self/lessons.md` keyed by (owning surface, failure pattern), with occurrence-append dedup and a status lifecycle — see `append-only-lesson-store-owning-surface-identity.md`.
+- **Per-surface promotion** (the OB1 concern, made safe): lessons at a recurrence threshold become minimal proposed edits against the surface that owns them — but skills never self-modify. Every change runs shadow-sandbox validation, separate-context grading, and a per-proposal human gate — see `per-proposal-human-gate-promotion-pipeline.md`.
+- **Meta-layer routing** (Superpowers-style): large rewrites and eval-set authoring dispatch to a `meta-skill-author` skill; the loop owns raw material, never the method — see `self-improvement-dispatch-table-route-never-reimplement.md`.
+
+Live store evidence: 20 lessons and 16 gated proposals accumulated in ~5 days of sessions (2026-07-06 → 07-11), including lessons about — and gated fixes to — the store's own schema. The "automated lesson promotion" improvement suggested above shipped there as an explicit threshold rule (N=2 normal / 1 high severity, human gate intact).
 
 ## Potential Failure Modes
 - Self-modifying skills can introduce errors (OB1 risk)

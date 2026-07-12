@@ -15,9 +15,10 @@ adopted_in:
 sources:
 - nate-b-jones-videos-feb-mar-2026.md
 - anthropic-prompt-evaluation-framework.md
+- careerbuddy-meta-skill-author-references.md
 proposals: []
 date_discovered: '2026-03-16'
-last_updated: '2026-04-19'
+last_updated: '2026-07-12'
 related_findings:
 - file: the-four-discipline-prompting-stack-nate-b-jones.md
   rel: extends
@@ -47,3 +48,13 @@ Could add domain-specific sub-criteria — for example, household prompts might 
 
 ## Potential Failure Modes
 High rubric scores do not guarantee good agent behavior in practice. A prompt can score well on all four dimensions and still fail at runtime due to model behavior, tool limitations, or context not captured in the prompt itself.
+
+## Extension — Operationalization as a Skill-Audit Gate (CareerBuddy meta-skill-author, 2026-07-12)
+
+CareerBuddy's `audit-rubric.md` hardens the evaluator from a scorecard into a promotion gate, adding three production mechanics:
+
+1. **Per-dimension minimum deploy thresholds.** Prompt Craft becomes six pass/fail elements (Role, Task clarity, Output format, Constraints, Success criteria, Self-check — self-check being the most commonly missing); the other three disciplines are scored 1–5 across four dimensions each, with explicit floors to deploy (e.g. Context source-scoping and signal-to-noise ≥ 4; Intent stop-rules ≥ 4; Spec acceptance-criteria ≥ 4; decomposition and eval-design ≥ 3). Any single dimension below floor blocks promotion — no cross-dimension trade-offs.
+2. **A structured Enhancement Handoff Block format** as the Grader→Generator protocol: audit result, per-discipline scores with named bottleneck dimension, priority fixes in dependency order with quoted evidence from the artifact, a "What Not to Change" section preserving elements that scored well, eval coverage gaps, and checkbox clearance conditions for re-submission.
+3. **A grader-context signature requirement:** the handoff block must record it was produced in a context distinct from the authoring session — governance evidence for generator-assessor separation ("the skill-creator NEVER both generates and assesses the same artifact in the same context"), designed against convenience erosion under deadline pressure.
+
+Calibration notes carried with it: score in dependency order but author iteratively (a Specification change often reopens Prompt Craft); domain weighting shifts what a "5" means (coding skills weight Spec precision, conversational skills weight Intent) without changing the dimensions; and rubric pass remains the authoring-time gate only — behavioral verification is the separate deployment-time gate.

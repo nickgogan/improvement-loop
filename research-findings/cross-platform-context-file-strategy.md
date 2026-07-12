@@ -11,7 +11,8 @@ applicability:
 - S3 (Claude Code Build)
 - General
 adopted_in: []
-sources: []
+sources:
+- careerbuddy-meta-skill-author-references.md
 related_findings:
 - file: seven-context-loading-mechanisms-no-convergence.md
   rel: extends
@@ -25,7 +26,7 @@ related_findings:
   rel: extended-by
 proposals: null
 date_discovered: '2026-04-09'
-last_updated: '2026-04-24'
+last_updated: '2026-07-12'
 pipeline_status: synthesized
 consumed_by:
 - defending-agent-context.md
@@ -64,3 +65,17 @@ A canonical "source" file with tool-specific pointer/adapter files generated aut
 ## Potential Failure Modes
 
 Content drift between copies (mirroring and duplication strategies). Chain-loader syntax not supported by all tools (n8n's `@` reference is Claude Code-specific). Over-engineering for repos that only use one AI tool.
+
+## Extension — Adapter-Strategy Selection Table (CareerBuddy meta-skill-author, 2026-07-12)
+
+CareerBuddy's meta-skill-author reference layer (`platform-matrix.md`) expands the original three strategies to five and — the new contribution — maps each to the situation where it wins:
+
+| Situation | Strategy |
+|-----------|----------|
+| Two platforms with identical context-loading mechanism | Symlink (`AGENTS.md -> CLAUDE.md`) — zero drift; Windows needs `mklink /D`; breaks in tarball/zip distribution |
+| Two platforms with different command/skill formats | Plugin wrapper + runtime delegation (MemPalace: harness-agnostic `instructions/` source; per-harness wrappers < 40 lines carrying only packaging metadata, never instruction prose) |
+| 3–8 platforms, stable skill schema | Template generation (gstack: `.tmpl` sources + build step generate platform-specific SKILL.md files as build artifacts; 38 templates → 41 skills across 8 hosts) |
+| Small skill count, maximum per-platform fidelity | Platform-specific mirroring (Archon) |
+| Lowest setup effort, highest drift risk | Content duplication (LangGraph) — "not recommended at scale" |
+
+This resolves the "Potential Alternatives" above: both the build-step and symlink alternatives are now production-observed. Two new failure modes come with the added strategies: manually editing a generated file bypasses the template (drift), and a forgotten build step deploys stale SKILL.md; wrapper delegation fails confusingly when the delegated CLI isn't on PATH. Plus a standing "false portability" warning: content ports, but effectiveness may depend on platform features (file watching, subagent spawning) absent on the target.

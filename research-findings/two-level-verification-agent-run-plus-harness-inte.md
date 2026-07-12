@@ -13,8 +13,9 @@ applicability:
 adopted_in: []
 sources:
 - anthropics-2-5-billion-leak-12-critical-pieces.md
+- careerbuddy-meta-skill-author-references.md
 date_discovered: '2026-04-07'
-last_updated: '2026-04-09'
+last_updated: '2026-07-12'
 related_findings:
 - file: agent-type-system-six-roles.md
   rel: enabled-by
@@ -66,3 +67,19 @@ A standard suite of harness smoke tests could be defined as a skill or hook that
 
 ## Extraction Note — 2026-04-19
 Extracted as **pattern**: [[two-level-verification-agent-run-plus-harness-integrity.md]] in `extracts/patterns/`
+
+## Extension — Three-Stage Sequencing in a Skill-Audit Pipeline (CareerBuddy meta-skill-author, 2026-07-12)
+
+CareerBuddy's `audit-rubric.md` composes this finding into an ordered verification ladder for skill artifacts, adding a deterministic stage *below* both levels:
+
+```
+Level 1:  Deterministic structural validation (skills-ref validate / BMAD-style 19-rule
+          CI validator: naming, variable usage, path references, invocation syntax,
+          sequence correctness, encapsulation) — zero inference cost; must pass first
+Level 2a: Agent-run verification — four-discipline rubric applied by a separate Grader
+          context against acceptance criteria (this finding's Level 1)
+Level 2b: Harness integrity verification — regression checks on guardrails whenever
+          CLAUDE.md, hooks, skills, or settings change (this finding's Level 2)
+```
+
+Each stage gates the next: structural failure short-circuits before any LLM evaluation is spent; 2a failure emits a structured enhancement handoff; 2b failure means revert the config change or fix the regression. The explicit limit is preserved: "deterministic rules cannot catch semantic errors — a file passing all 19 structural rules may still produce incorrect behavior," so Level 1 passing is necessary but never sufficient. This answers the "Potential Improvements" note above with a production shape: the harness smoke-test suite runs as 2b, conditioned on config-touching changes only, which also bounds the over-testing failure mode.
