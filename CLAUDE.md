@@ -163,6 +163,12 @@ All IL skills live in `.claude/skills/` under this system directory (system-scop
 
 The Librarian also uses Read/Glob/Grep directly to navigate the KB for Teacher/Builder-mode conversations that don't fit a dedicated skill. Invocable as a subagent via `.claude/agents/librarian.md`.
 
+### Imported Toolchain (upstream: CareerBuddy)
+
+| Skill | Role |
+|-------|------|
+| `/meta-skill-author` | Design/Eval/Improve/Port toolchain for cross-platform skills — imported 2026-07-12; engine overlay + overlap flag vs `/design-skill`+`/assess-skill` in its `ADAPTATION.md`; owner assignment pending the restructure program's Phase 2 audit |
+
 **Deprecated:** `/research-proposer` — superseded by `/identify-artifacts` + `/extract-artifacts` (DD-80). Retained for reference.
 
 ---
