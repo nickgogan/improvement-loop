@@ -28,9 +28,11 @@ sources:
 related_findings:
   - file: "prompt-cache-stability-as-correctness.md"
     rel: "extends"
+  - file: "layered-prompt-assembly-stable-segment-caching.md"
+    rel: "same-problem"
 proposals: null
 date_discovered: "2026-07-11"
-last_updated: "2026-07-11"
+last_updated: "2026-07-12"
 ---
 
 ## What It Is
@@ -53,6 +55,8 @@ Any mutation of the prefix invalidates the cache from that point forward, forcin
 ## Why People Are Using It
 
 First-party production practice in Claude Code. The team attributes their ability to offer "more generous rate limits" for subscription plans partly to the resulting cache hit rates. The post also reports fragility lessons learned: non-deterministic tool ordering, timestamps embedded in static prompts, and tool parameter changes all silently broke caching until eliminated.
+
+**Independent cross-harness implementation (opencode, 2026-07-12):** opencode's v2 session design formalizes the identical discipline as named domain concepts — the **Context Epoch** is the immutable baseline system context kept stable for provider-cache hits, mid-run context changes are admitted only at safe provider-turn boundaries as chronological **Mid-Conversation System Messages**, and compaction rolls a new epoch rather than mutating the old one (`CONTEXT.md` §Relationships — see [[opencode-analysis]]). A second production harness independently converging on append-only-prefix-plus-injected-updates, and naming it as architecture rather than treating it as an optimization, upgrades this from one team's practice to an emerging ecosystem invariant.
 
 ## Potential Alternatives
 

@@ -18,6 +18,8 @@ related_findings:
   rel: same-problem
 - file: agui-human-control-layer-not-ui.md
   rel: same-problem
+- file: permission-channel-as-escalation-steering-bus.md
+  rel: same-problem
 proposals: null
 date_discovered: '2026-04-09'
 last_updated: '2026-05-24'

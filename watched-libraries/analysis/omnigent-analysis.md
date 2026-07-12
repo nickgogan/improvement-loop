@@ -7,7 +7,7 @@ target_system:
   - "cross-system"
 stage: "active"
 created: "2026-07-11"
-updated: "2026-07-11"
+updated: "2026-07-12"
 author: "improvement-loop"
 source_dd:
   - "DD-45"
@@ -393,21 +393,37 @@ prompt: |
 Aggregated from the three dimension passes (governance / harness-abstraction / context-workflow). Promotion requires `/promote-findings` + Nick's gate.
 
 1. **Phase-asymmetric fail-closed policy defaults** (Governance) — pre-execution phases DENY on policy-server unreachability, post-execution phases fail open; one shared constant across two enforcement sites. `omnigent/policies/types.py:42-61`.
+   → Skipped: single-source; partial existing coverage ([[skill-security-scanner-fail-closed]]) on 2026-07-12
 2. **Natural-language policies inside a hardened framework envelope** (Governance) — author writes intent; framework owns JSON-schema envelope, injection guard, fail-closed error path. `omnigent/policies/builtins/prompt.py`.
+   → Promoted to [[natural-language-policies-hardened-framework-envelope]] (extends [[policy-guarded-tool-execution]]) on 2026-07-12
 3. **Label taint-tracking as composable policy state** (Governance) — schema'd labels + `condition:` gates + no-side-effects-on-denied-ASK invariant. `omnigent/spec/types.py:1221-1241`, `omnigent/runtime/policies/approval.py`.
+   → Promoted to [[label-taint-tracking-composable-policy-state]] on 2026-07-12
 4. **Registry-as-allowlist against callable injection** (Governance) — policy handlers must be pre-registered; arbitrary dotted paths rejected at untrusted entry points. `omnigent/policies/registry.py:156-191`.
+   → Skipped: single-source; partial existing coverage ([[explicit-permission-allow-listing-for-agent-resou]]) on 2026-07-12
 5. **Three-scope cost governance with hard-cap-as-model-downgrade** (Governance) — session/user-daily/subagent-subtree budgets; hard DENY can target only expensive model tiers; spawn-tree-wide approval memory. `omnigent/policies/builtins/cost.py`.
+   → Skipped: single-source; partial existing coverage ([[budget-governance-with-hard-stop]]) on 2026-07-12
 6. **Orchestration-surface guardrails** (Governance × Orchestration) — spawn caps, mandatory spawn purpose declaration, worktree write containment: governance of the fan-out surface itself. `omnigent/policies/builtins/orchestration.py`.
+   → Skipped: single-source; partial existing coverage ([[capability-restricted-agent-spawning-via-allowlist]]) on 2026-07-12
 7. **Declared-then-bench-verified harness capability flags** (Evaluation × Tools) — 9-axis frozen dataclass; boolean claims flipped only on live bench evidence, with epistemics recorded in comments. `omnigent/harness_capabilities.py`, `harness_plugins.py`.
+   → Promoted to [[bench-verified-harness-capability-flags]] on 2026-07-12
 8. **Injection/observation split (bridge + forwarder)** (Agentic Systems × Tools) — turn injection decoupled from output observation, meeting at a filesystem rendezvous; executor yields TurnComplete, forwarder streams. `omnigent/native_server_harness.py`, `claude_native_bridge.py`.
+   → Promoted to [[injection-observation-split-bridge-forwarder]] on 2026-07-12
 9. **Inbox-over-polling + dispatch-then-end-turn fanout** (Orchestration) — batch dispatch, terminate turn, wake on completion signal; polling explicitly forbidden; dispatch cap enforced by policy, not prompt honor. `omnigent/tools/builtins/async_inbox.py`, `examples/polly/skills/fanout/SKILL.md`.
+   → Skipped: single-source; partial existing coverage ([[monitor-vs-loop-event-driven-vs-time-driven]]); O9↔C6 cross-repo same-problem link added to [[session-as-append-only-event-log]] on 2026-07-12
 10. **Different-vendor cross-review as structural rule** (Orchestration × Evaluation) — reviewer must be a different model vendor than implementer; gets diff + acceptance contract only; never fixes. `examples/polly/skills/cross-review/SKILL.md`.
+   → Skipped: single-source; partial existing coverage ([[cross-model-verification-for-bug-finding]]) on 2026-07-12
 11. **Dual-evaluation approval channel** (Governance × Orchestration) — runner fast-paths ALLOW/DENY locally; ASK re-escalates to the server that owns the elicitation channel. `omnigent/runner/policy.py`.
+   → Promoted (synthesized with C7+C12 per the convergence note) into [[permission-channel-as-escalation-steering-bus]] on 2026-07-12
 12. **Client-vs-server state placement doctrine** (Agentic Systems) — per-fact reasoning (privacy, layering, migration cost) about where multi-device agent state lives. `omnigent/claude_native_state.py` docstring.
+   → Skipped: single-source; partial existing coverage ([[brain-hands-decoupling-architecture]]) on 2026-07-12
 13. **Harness-neutral context-file resolution, first-found-wins** (Context Engineering) — `AGENTS.md → CLAUDE.md → .cursorrules`, no merge; a tested answer to context-file fragmentation. `omnigent/spec/parser.py:57`.
+   → Skipped: single-source; partial existing coverage ([[cross-platform-context-file-strategy]]) on 2026-07-12
 14. **Conditional skill-menu injection keyed on tool presence** (Context Engineering) — skill list enters the prompt only when a `load_skill` tool exists; native-skill harnesses get no duplicate hint. `omnigent/runtime/prompt.py:50-57`.
+   → Skipped: single-source; partial existing coverage ([[progressive-skill-loading]]); O14↔C13 cross-repo same-problem link added to [[deny-shrinks-toolset]] on 2026-07-12
 15. **Verifiability-as-protocol dev skills** (Evaluation) — before→fix→after runs with machine-readable SUMMARY lines; a fix counts only if a concrete check flips. `.claude/skills/cli-setup-verify/SKILL.md`.
+   → Skipped: single-source; partial existing coverage ([[confirm-failure-first-tdd-agent-discipline]]) on 2026-07-12
 16. **Intent-based authorization** (Intent Engineering) — session's first message recorded as intent; every tool call gated against declared intent by an LLM classifier. `omnigent/policies/builtins/routing.py`.
+   → Skipped: single-source; partial existing coverage ([[claude-code-auto-mode-ai-driven-permission-classif]]) on 2026-07-12
 
 ---
 

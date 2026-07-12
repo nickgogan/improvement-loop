@@ -23,10 +23,12 @@ applicability:
 adopted_in: []
 sources:
   - "claude-code-prompt-caching-is-everything.md"
-related_findings: []
+related_findings:
+  - file: "deny-shrinks-toolset.md"
+    rel: "contradicts"
 proposals: null
 date_discovered: "2026-07-11"
-last_updated: "2026-07-11"
+last_updated: "2026-07-12"
 ---
 
 ## What It Is
@@ -40,6 +42,8 @@ Mode-as-toolset-swap is the obvious implementation and it silently destroys cach
 ## Why People Are Using It
 
 First-party production design in Claude Code's Plan Mode. The same post pairs this with `defer_loading` stubs for large MCP tool inventories: rarely-used tools stay in the prefix as name-only stubs and their full schemas load on demand via tool search, so neither cost pressure nor mode changes ever force the tool list to mutate.
+
+**Independent cross-harness corroboration (opencode, 2026-07-12):** opencode implements the same mode-as-tool architecture from the opposite starting point — an agent there *is* a named permission ruleset (plan mode denies all edits except plan-file globs), and the transitions are the always-present `plan_enter`/`plan_exit` tools whose effect is asking the user to switch, with a `<system-reminder>` (`build-switch.txt`) stating the new permission reality after the switch (`packages/opencode/src/agent/agent.ts` — see [[opencode-analysis]]). Both harnesses agree that mode transitions are callable tools + injected instructions with enforcement in the permission layer; they diverge on whether denied tools stay advertised — opencode shrinks the visible toolset per mode (see the contradicts link), Claude Code keeps it static for cache stability.
 
 ## Potential Alternatives
 

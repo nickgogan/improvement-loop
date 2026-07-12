@@ -15,6 +15,8 @@ related_findings:
     rel: same-problem
   - file: "middleware-as-enforcement-architecture.md"
     rel: extends
+  - file: "natural-language-policies-hardened-framework-envelope.md"
+    rel: extended-by
 proposals: null
 date_discovered: "2026-05-25"
 last_updated: "2026-05-25"

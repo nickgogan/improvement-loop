@@ -23,6 +23,8 @@ related_findings:
   rel: same-problem
 - file: dynamic-tool-pool-assembly-transcript-compaction.md
   rel: same-problem
+- file: deny-shrinks-toolset.md
+  rel: same-problem
 proposals: null
 date_discovered: '2026-04-19'
 last_updated: '2026-05-25'

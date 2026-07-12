@@ -23,6 +23,8 @@ related_findings:
   rel: part-of
 - file: agent-cost-blowup-mitigation-strategies.md
   rel: enabled-by
+- file: session-as-append-only-event-log.md
+  rel: same-problem
 pipeline_status: "classified"
 consumed_by: []
 ---

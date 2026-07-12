@@ -1,7 +1,11 @@
 ---
-name: Loop Detection with Hash-Based Sliding Window
-summary: 'Sliding window of last 20 tool call hashes per thread for loop detection. Warn at 3 identical consecutive calls (inject system message). Hard-stop at 5 (strip tool_calls, force terminal answer).
-  Tool-frequency limit: 50 calls to same tool type per session.'
+name: "Loop Detection with Hash-Based Sliding Window"
+summary: |-
+  Sliding window of last 20 tool call hashes per thread for loop detection. Warn at 3 identical
+  consecutive calls (inject system message). Hard-stop at 5 (strip tool_calls, force terminal
+  answer). Tool-frequency limit: 50 calls to same tool type per session. Three response
+  strategies now documented across repos: warn-then-strip (DeerFlow), trajectory escalation
+  (GSD), and escalate-to-permission-ask (opencode's doom_loop).
 implementation_notes: null
 category: Evaluation
 evidence_strength: Medium (practitioner-documented)
@@ -18,9 +22,11 @@ related_findings:
   rel: same-problem
 - file: agent-self-reporting-unreliability-independent-eval.md
   rel: same-problem
+- file: permission-channel-as-escalation-steering-bus.md
+  rel: enabled-by
 proposals: null
 date_discovered: '2026-04-19'
-last_updated: '2026-04-19'
+last_updated: '2026-07-12'
 pipeline_status: "classified"
 ---
 
@@ -35,6 +41,8 @@ The existing KB covers stall detection via trajectory monitoring (GSD's revision
 ## Why People Are Using It
 
 Observed in [DeerFlow](https://github.com/bytedance/deer-flow) v2.0 — see [[deer-flow-analysis]] for structural details. DeerFlow implements this in `loop_detection_middleware.py` as part of its 12-layer middleware stack. The 50-call per-tool-type limit is a separate safety net for loops that vary slightly (different args, same tool).
+
+**Third response-strategy variant (opencode, 2026-07-12):** opencode detects the same signal — 3 consecutive identical tool calls (same name, JSON-identical input) — but responds by escalating to `permission.ask("doom_loop")` instead of warning or stripping: the pathological loop becomes a human gate, answerable allow/deny like any other permission and configurable per ruleset (`packages/opencode/src/session/processor.ts:356-380` — see [[opencode-analysis]]). The detection mechanism (identical-call counting) is now corroborated across two production harnesses; the response axis spans warn-then-force-stop (DeerFlow), trajectory escalation (GSD), and escalate-to-human (opencode).
 
 ## Potential Alternatives
 

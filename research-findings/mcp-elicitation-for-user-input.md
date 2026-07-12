@@ -16,6 +16,8 @@ sources:
 related_findings:
 - file: human-on-the-loop-hotl-autonomy-tiering-framework.md
   rel: enables
+- file: permission-channel-as-escalation-steering-bus.md
+  rel: extended-by
 proposals: []
 date_discovered: '2026-04-07'
 last_updated: '2026-04-08'

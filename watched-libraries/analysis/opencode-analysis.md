@@ -7,7 +7,7 @@ target_system:
   - "cross-system"
 stage: "active"
 created: "2026-07-11"
-updated: "2026-07-11"
+updated: "2026-07-12"
 author: "improvement-loop"
 source_dd:
   - "DD-45"
@@ -402,20 +402,35 @@ Everything is client/server: `packages/opencode/src/server/` exposes an Effect `
 Aggregated from the three dimension passes (context-workflow / harness-loop / governance). Promotion requires `/promote-findings` + Nick's gate.
 
 1. **Read-triggered chain-loading of nested AGENTS.md** (Context Engineering) — instruction files attach lazily when the agent reads a file in their subtree, triple-deduped; scope-local rules cost nothing until relevant. `packages/opencode/src/session/instruction.ts:179-221`.
+   → Skipped: single-source; partial existing coverage ([[monorepo-context-distribution-three-strategies]]) on 2026-07-12
 2. **`/learn` as the memory write-path** (Context Engineering) — session learnings distilled into the *deepest applicable* AGENTS.md, 1–3 lines, hard include/exclude criteria; paired with (1), a complete file-based memory loop with zero new infrastructure. `.opencode/command/learn.md`.
+   → Skipped: single-source; partial existing coverage ([[gsd-global-learnings-store-cross-session-persistence]]) on 2026-07-12
 3. **Ubiquitous-language glossary with explicit anti-terms** (Context Engineering × Prompt) — ~30 domain terms each with `_Avoid_:` alternatives + ~110 relationship invariants keeping agent/human vocabulary converged during a rewrite. `CONTEXT.md`.
+   → Promoted to [[ubiquitous-language-glossary-with-anti-terms]] on 2026-07-12
 4. **Mode = agent = permission ruleset, with tool-mediated user-gated transitions** (Agent Design × Governance) — plan mode is an agent whose ruleset denies all edits except plan-file globs; `plan_enter`/`plan_exit` are tools that ask the user; enforcement backs the prose. `packages/opencode/src/agent/agent.ts:140-265`.
+   → Folded into [[static-tool-set-mode-changes-as-callable-tools]] as independent cross-harness corroboration on 2026-07-12
 5. **Context Epoch / Mid-Conversation System Message model** (Context Engineering) — immutable baseline system context for provider-cache stability; context changes admitted only at safe boundaries as chronological system messages. `CONTEXT.md` §Relationships.
+   → Folded into [[append-only-context-updates-system-reminder-injection]] as named independent implementation on 2026-07-12
 6. **Transcript-as-state-machine** (Agentic Systems × Orchestration) — compaction and subtask directives stored as message parts and popped as tasks each loop iteration; the durable DB transcript is the loop's control flow, resumable by construction. `packages/opencode/src/session/prompt.ts:1142-1168`.
+   → Skipped: single-source; partial existing coverage ([[session-as-append-only-event-log]]); O9↔C6 cross-repo same-problem link added to [[monitor-vs-loop-event-driven-vs-time-driven]] on 2026-07-12
 7. **Doom-loop breaker as a permission, not an error** (Governance × Evaluation) — 3 identical consecutive tool calls escalate to `permission.ask("doom_loop")`; pathological loops become a human gate. `packages/opencode/src/session/processor.ts:356-380`.
+   → Folded into [[loop-detection-hash-based-sliding-window]] as third response-strategy variant; also synthesized into [[permission-channel-as-escalation-steering-bus]] on 2026-07-12
 8. **Default-on prompt-cache policy with documented breakpoint math** (Model Selection × Context) — cache hints auto-placed at last tool def / last system part / latest user message; cost math cited in comments. `packages/llm/src/cache-policy.ts`.
+   → Folded into [[layered-prompt-assembly-stable-segment-caching]] (breakpoint heuristic + cost math; cross-linked to the 2026-07-11 caching cluster) on 2026-07-12
 9. **Plugins are SDK clients** (Tool Integration) — plugins receive the same generated HTTP client as the TUI; every extension surface shares one wire-protocol seam. `packages/plugin/src/index.ts:56-75`.
+   → Promoted to [[plugins-as-sdk-clients]] on 2026-07-12
 10. **Two-tier tool contracts as complexity firewall** (Tool Integration) — internal Effect-Schema contract with typed repair-prompt errors vs deliberately minimal zod/Promise contract for user tools. `packages/opencode/src/tool/tool.ts` vs `packages/plugin/src/tool.ts`.
+   → Promoted to [[two-tier-tool-contracts-complexity-firewall]] on 2026-07-12
 11. **LLM-generated arity dictionary for bash permission generalization** (Governance) — "always allow" generalizes to the human-meaningful command family (`git checkout`, not `git checkout main`); generating prompt checked in as provenance. `packages/opencode/src/permission/arity.ts`.
+   → Skipped: single-source; partial existing coverage ([[tiered-permission-system-bash-safety]]) on 2026-07-12
 12. **Rejection-with-feedback as a first-class permission verdict** (Governance × Intent) — `CorrectedError` delivers the human's rejection message to the model as course-correction, unifying the permission gate and the steering channel. `packages/core/src/v1/permission.ts:13-19`.
+   → Promoted (synthesized with O11+C7 per the convergence note) into [[permission-channel-as-escalation-steering-bus]] on 2026-07-12
 13. **Deny-shrinks-toolset** (Governance) — blanket-denied tools removed from the advertised tool list; denied subagents filtered from task options; governance shapes the perceived capability surface. `packages/opencode/src/permission/index.ts:204-219`.
+   → Promoted to [[deny-shrinks-toolset]] with `contradicts` link to [[static-tool-set-mode-changes-as-callable-tools]] (the batch's key tension) and O14↔C13 same-problem link to [[progressive-skill-loading]] on 2026-07-12
 14. **Asymmetric subagent permission inheritance** (Governance × Orchestration) — denies and external-directory rules flow parent→child, allows do not; recursion denied by default. `packages/opencode/src/agent/subagent-permissions.ts`.
+   → Skipped: single-source; partial existing coverage ([[permission-compounding-across-agent-delegation-chains]]) on 2026-07-12
 15. **Time-boxed automated PR compliance** (Governance, repo-level) — bot labels non-compliant PRs; a 30-min cron closes them after a 2-hour window; team exemption via checked-in file. `.github/workflows/pr-standards.yml`, `compliance-close.yml`.
+   → Promoted to [[time-boxed-automated-pr-compliance]] on 2026-07-12
 
 ---
 
