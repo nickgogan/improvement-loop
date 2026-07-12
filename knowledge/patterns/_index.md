@@ -7,7 +7,7 @@ target_system:
   - "improvement-loop"
 stage: "active"
 created: "2026-04-05"
-updated: "2026-04-07"
+updated: "2026-07-12"
 author: "claude"
 source_dd:
   - "DD-45"
@@ -25,18 +25,11 @@ Cross-system patterns distilled from operational experience and the [[improvemen
 
 ## How Patterns Get Here
 
-1. **Improvement Loop** researches and proposes patterns (DD-46)
+1. **Pipeline extraction** — pattern-classified findings route to guide synthesis (DD-81); deployed patterns land here via the Nick-gated deploy stage
 2. **Nick** observes operations and codifies patterns directly
-3. **Agents** extract patterns from build sessions
+3. **Governance re-homes** — methodology content distilled out of DDs (e.g., DD-120)
 
-## Catalog
-
-| Pattern | Category | Systems | Stage |
-|---------|----------|---------|-------|
-| [[capability-type-selection|Capability Type Selection]] | agent-design | cross-system | active |
-| [[upstream-dependency-spectrum|Upstream Dependency Spectrum]] | system-design | cross-system | active |
-
-## Dataview Query
+## Catalog (live view)
 
 ```dataview
 TABLE category, target_system, stage
