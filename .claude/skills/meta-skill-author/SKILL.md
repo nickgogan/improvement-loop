@@ -15,6 +15,7 @@ description: >
   "create a SKILL.md", "audit this skill", "port this skill", "make this skill
   generic", "improve this skill", "optimize description", "evaluate skill quality".
 license: MIT
+user-invocable: true
 compatibility: >-
   Requires an interactive human-approval channel (the spec-first gate is the
   method; unattended runs need a pre-approved spec). Works best with script

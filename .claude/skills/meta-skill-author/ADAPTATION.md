@@ -57,6 +57,30 @@ eval/port tooling; Librarian pair owns KB-grounded design/audit; Design-mode dra
 a `/assess-skill` pass). Do not merge or retire either side without Nick's gate.
 Plan of record: `operations/plans/2026-07-12-engine-restructure-program.md`.
 
+## Rule-10 assess pass (2026-07-12) — finding dispositions
+
+`/assess-skill` ran in a separate Librarian context same-day (verdict: content strong
+and self-consistent; 12/12 spot-checked citation slugs resolve in this KB; all 34
+bundled files present). Dispositions:
+
+- **#1 not in Skill-tool listing / #2 missing `user-invocable`** — #2 fixed (field
+  added for sibling parity; harness default is `true`, so this was parity not cause).
+  #1's actual cause: new top-level skill directories require session restart
+  (per `adapters/claude.md` hot-reload rule). Registers next session.
+- **#3 prompt-layer-only side-effect guard + follow-ups A/D/E** (structural gate for
+  commit/push, Improve-mode local auto-commit vs DD-29, self-modification guard) —
+  **Nick's call**; queued as gates. Interim posture: this harness's permission prompts
+  + the workspace push-gate stand in front of the prose guard.
+- **#4 tool over-grant / #5 `Bash(python*)` no-colon syntax + follow-up B** — runtime
+  verification pending (does the prefix form actually enforce scoping in this Claude
+  Code version?). Do not narrow grants until B is answered; record outcome here.
+- **#6–#10 [upstream-convention]** (topic-mode section structure, folded-scalar
+  description, bare-slug citations, no `argument-hint`) — **accepted, no rewrite**:
+  the upstream-diffable-body principle outranks engine cosmetic parity for imported
+  packages. Revisit only if the Phase 2 audit rules otherwise.
+- **#7 no cost ceiling on Improve-mode fan-out** — real gap, upstream-inheritable;
+  candidate upstream contribution alongside the two already queued.
+
 ## First acceptance target
 
 Redesign/improve the YouTube-intake capability (`/transcript-fetcher`, and its seam
