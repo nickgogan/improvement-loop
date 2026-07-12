@@ -12,14 +12,19 @@ applicability:
 adopted_in: []
 sources:
   - "anthropic-claude-code-skills-docs.md"
+  - "hub-and-spoke-context-hub.md"
 related_findings:
   - file: "skill-md-frontmatter-as-discovery-trigger-primitive.md"
     rel: "extends"
   - file: "skill-content-lifecycle-context-budget.md"
     rel: "same-problem"
+  - file: "hub-and-spoke-two-tier-skill-taxonomy.md"
+    rel: "same-problem"
+  - file: "trigger-skip-grammar-peer-deferral-graph.md"
+    rel: "extended-by"
 proposals: null
 date_discovered: '2026-06-11'
-last_updated: '2026-06-11'
+last_updated: '2026-07-12'
 pipeline_status: raw
 consumed_by: []
 ---
@@ -60,6 +65,29 @@ Unlimited description budget (worse for short-context models). Names-only listin
 ## Potential Improvements
 
 Per-project skill prioritization (this project leans on these 3 skills; preserve their descriptions). Skill clustering so related skills share a description budget. Compressed/condensed description rendering when budget is tight. A standardized description schema with a forced "trigger keywords" suffix that gets preserved even on truncation.
+
+## Field Corroboration — Enterprise Context-Hub Two-Tier Caps (added 2026-07-12)
+
+A private enterprise context-hub system (production skill library at a large enterprise;
+author-shared writeup, repo private) independently converges on the same 1,536-char
+number as a **hard authoring cap**, enforced by its whole-tree audit tooling on a
+two-tier scale:
+
+| Tier | Threshold | Severity | Rationale |
+|---|---|---|---|
+| Soft | > 1000 chars | Medium finding | Description is getting expensive (also an export/index cap in their stack) |
+| Hard | > 1536 chars | High finding | Harness truncation risk — the router text may be cut |
+
+Their sharpened version of the truncation failure mode: descriptions there end with
+`SKIP: <case> → <sibling-id>` peer-deferral clauses, and truncation cuts the *tail* — so
+what silently dies first is exactly the collision protection. That is why exceeding 1536
+is treated as High severity rather than a style nit, and why their generated-artifact
+contract requires new descriptions to fit ≤1000 chars at creation time.
+
+Notably, the "skill clustering so related skills share a description budget" idea listed
+under Potential Improvements above is exactly what that system ships as its hub-and-spoke
+taxonomy (see `hub-and-spoke-two-tier-skill-taxonomy.md`): families of ≥8 skills
+consolidate behind one hub description, and spokes are never indexed at all.
 
 ## Potential Failure Modes
 
