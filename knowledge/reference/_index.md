@@ -7,7 +7,7 @@ target_system:
   - "improvement-loop"
 stage: "active"
 created: "2026-04-05"
-updated: "2026-04-05"
+updated: "2026-07-12"
 author: "claude"
 source_dd:
   - "DD-45"
@@ -22,28 +22,13 @@ aliases:
 
 # Reference
 
-Active read-only context material for operating within the Household OS. These are reference documents — not governance (see [[governance]]) or reusable patterns (see [[patterns]]).
-
-## How Reference Material Gets Here
-
-1. **Improvement Loop** produces distilled reference from research findings
-2. **Nick** captures reference material from operational experience
-3. **Build sessions** produce context docs worth preserving
-
-## Catalog
-
-| Reference | Category | Systems | Stage |
-|-----------|----------|---------|-------|
-| [[consumer-abstractions-map]] | consumer-abstractions | improvement-loop | active |
-| [[fractal-pattern]] | design-wisdom | improvement-loop | active |
-| [[dbdo-pipeline]] | design-wisdom (DBDO pipeline) | improvement-loop | active |
-| [[vocabulary]] | design-wisdom (terminology) | improvement-loop | active |
+Active read-only context material for operating the engine — design-wisdom (fractal pattern, DBDO pipeline, vocabulary) and distilled reference from research findings. These are reference documents — not governance (see [[governance]]) or reusable patterns (see [[patterns]]).
 
 ## Dataview Query
 
 ```dataview
 TABLE category, target_system, stage
 FROM "systems/improvement-loop/knowledge/reference"
-WHERE type = "resource"
+WHERE file.name != "_index"
 SORT updated DESC
 ```

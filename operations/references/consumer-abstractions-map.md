@@ -69,7 +69,7 @@ Concept docs in `operations/references/librarian/` (`skill.md`, `agent.md`, `pro
 | **Hook** | Harness mechanism; not a standalone author-target today. Promote if Variant B agent design surfaces hook authoring as a recurring scoped task. |
 | **Workflow** | Composition of skills. Out of scope until the pipeline itself becomes a consumer (durable workflow state is a recurring symptom in G3b but not yet a build target). |
 | **Tool** | Tool design is covered as an aspect of agent design (Variant B) via G5; no demand for a standalone `/design-tool` operation. |
-| **Eval-suite** | Aspirational. Building agent evaluation suites is a guide topic (`extracts/guides/building-agent-evaluation-suites.harvest-queue.md`) but no consumer-facing skill demand yet. |
+| **Eval-suite** | Aspirational. Building agent evaluation suites is a guide topic (`extracts/guides/building-agent-evaluation-suites.md`) but no consumer-facing skill demand yet. |
 | **Subagent** | Subagents are agents with an invocation contract — covered by `agent.md` (Variant B with delegation); no separate concept doc warranted until coordination contracts become a recurring authoring topic. |
 | **Context structure** | Aspect of agent design (G2a §Contract); not a standalone author-target. Promote if context-files design recurs as a scoped authoring task distinct from agent design. |
 

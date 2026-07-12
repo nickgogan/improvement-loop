@@ -29,7 +29,7 @@ Tracks when `/synthesize-guide` was last run against each cluster, how many find
 | ID | Guide Title | Last Synthesized | Findings at Synthesis | Output Path | Status |
 |----|------------|-----------------|----------------------|-------------|--------|
 | G1 | Writing Agent Specifications | 2026-05-25 | 9 | `extracts/guides/writing-agent-specifications.md` | draft |
-| G2 | Managing Agent Context | 2026-05-25 | 64 | `extracts/guides/managing-agent-context.md` | deprecated |
+| G2 | Managing Agent Context | 2026-05-25 | 64 | `archive/guides/managing-agent-context.md` | deprecated (archived) |
 | G2a | Structuring and Loading Agent Context | 2026-05-25 | 35 | `extracts/guides/structuring-agent-context.md` | draft |
 | G2b | Defending Against Context Degradation | 2026-05-25 | 30 | `extracts/guides/defending-agent-context.md` | draft |
 | G3 | Agent Architecture Decisions | 2026-05-25 | 42 | `extracts/guides/agent-architecture-decisions.md` | draft |

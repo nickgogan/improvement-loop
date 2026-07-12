@@ -7,7 +7,7 @@ target_system:
   - "improvement-loop"
 stage: "active"
 created: "2026-04-07"
-updated: "2026-06-18"
+updated: "2026-07-12"
 author: "nick"
 source_dd:
   - "DD-45"
@@ -22,6 +22,7 @@ tags:
   - "knowledge-management"
   - "improvement-loop"
   - "codification"
+  - "dd-cache"
 aliases:
   - "How findings become patterns"
   - "Codification pipeline"
@@ -29,6 +30,12 @@ aliases:
 ---
 
 # Research-to-Codification Pipeline
+
+> **DD cache (DD-121).** This guide caches the DD-80 cluster (see `source_dd`) — it restates
+> decisions whose canonical homes are the DDs and the four SKILL.md files. Destined to fold into
+> the kernel's *how-it-works* doc when the restructure program's Phase 4/5 defines it (substrate
+> audit, gate G8); until then this file is the agent-readable cache, kept status-free — current
+> state lives in PROGRESS.md, never here.
 
 How research findings in the engine become actionable artifacts in the engine's own `knowledge/` and `.claude/` layers. This is the bridge between "we learned something" and "the engine can use it." Everything happens **in-engine** — there is no separate meta-system layer downstream (DD-103 collapsed the federation; the engine is the sole system).
 
@@ -162,19 +169,13 @@ When a codified artifact derives from an external package (GSD, gstack, BMAT, et
 - Track the upstream project in the watched-libraries registry
 - When upstream changes, triage based on spectrum position (cherry-pick / thin-wrapper / wholesale)
 
-## Current State
+## Two Bodies, Not One Staging Bin (DD-111)
 
-| Layer | Status |
-|-------|--------|
-| Research intake (`/research-loop`) | Working — KB populated (filter on frontmatter for current counts) |
-| Artifact identification (`/identify-artifacts`) | Built and run |
-| Artifact extraction (`/extract-artifacts`) | Built and run — `extracts/` is heavily populated (guides, patterns, rules, skills, templates) |
-| Deployment / promotion | Resolved framing (DD-111). `extracts/` is **two bodies sharing folder names**, not a single staging bin: `extracts/guides/` (Tier 1) + `extracts/patterns/` (Tier 2) are **live substrate** the Librarian composes; only `extracts/{rules,skills,templates,agents}/` are "staging residue" (un-promoted drafts), still governed by the DD-39/DD-80 stage-before-deploy gate. See `extracts/CLAUDE.md` and the reconciliation design-note. |
-
-The "staging area" framing applies **only** to the four residue subtrees. `extracts/guides/` and
-`extracts/patterns/` are recognized as the Librarian's research-substrate library (DD-111,
-rename-in-place) — consumed pull-style, not pending deployment. The remaining backlog is the
-promote-or-prune pass over the staging residue.
+`extracts/` is **two bodies sharing folder names**: `extracts/guides/` (Tier 1) and
+`extracts/patterns/` (Tier 2) are **live substrate** the Librarian composes pull-style — not
+pending deployment. Only `extracts/{rules,skills,templates,agents}/` are staging residue
+(un-promoted drafts), still governed by the DD-39/DD-80 stage-before-deploy gate. See
+`extracts/CLAUDE.md`.
 
 ## Archived: Proposal Stage
 

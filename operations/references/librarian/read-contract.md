@@ -278,7 +278,7 @@ Every claim cites its substrate. Citation format per tier:
 
 | Tier | Format | Example |
 |---|---|---|
-| 1 | `<guide-file>#<anchor>` (or heading-match fallback) | `managing-agent-context.md#step-2-budget` |
+| 1 | `<guide-file>#<anchor>` (or heading-match fallback) | `structuring-agent-context.md#step-2-budget` |
 | 2 | `<finding-slug>` or `<pattern-slug>` | `context-rot-attention-budget-depletion` |
 | 3 | `<watched-lib>/<path>:<line-start>-<line-end>` | `anthropic-claude-code/src/hooks/registry.ts:42-78` |
 
