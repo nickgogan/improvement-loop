@@ -5,6 +5,17 @@ Newest-first changelog of shipped sessions and milestones for the improvement-lo
 git is the atomic record of what changed, file by file (Conventional Commits from session 133 onward).
 Entries carry dates and commit ranges where known; sessions 1–116 predate this file and are collapsed into era summaries.
 
+## Session 138 — 2026-07-12 — restructure-program Phase 0 shipped (614102c…743499c)
+
+**Outcome:** the engine's session ops run on the three-artifact spine — forward-only PROGRESS.md (the sole cold-start artifact) + this HISTORY.md + Conventional Commits (DD-116).
+
+- This file created and backfilled (sessions 117–137 detailed, earlier eras collapsed); PROGRESS.md restructured to the control-surface shape, well under the 150-line soft cap.
+- `/session-handoff` rewritten reconcile-in-place (first CareerBuddy import: `ops-session-handoff` @0.9.0; dual-scope/ledger apparatus dropped; ADAPTATION.md records provenance). Fresh-context Rule-10 `/assess-skill`: PASS — 3 Low findings fixed pre-commit. This close was its first end-to-end run.
+- All dated handoffs archived to `archive/handoffs/`; wake-up idiom + Session Ops section registered in engine CLAUDE.md; PROGRESS line-budget check (warn >150 / block >250) added to the pre-commit hook beside the DD-114/DD-115 checks.
+- **System Log retired as producer** (Nick ruling — stronger than the plan's option (a)), grounded in a Librarian KB pass over Omnigent/Hermes/OpenClaw session models: none routes learnings through a session store; all distill into a curated layer. Learnings now route decision→DD, pattern→`knowledge/`, work→IB; historical corpus kept as IB-172 feedstock. Recorded as DD-116; producer surfaces (`/sl`, `/track`, `/governance-audit`) carry retirement notes.
+- Nick's **single-implicit-agent** vision refinement captured in plan §2 (one agent = the system itself; the kernel is that agent's full description) — Phase 4 interview input.
+- Wave-3 retry correctly rolled forward untouched (same-day-plus as wave-2's IP block; window opens 2026-07-13).
+
 ## Session 137 — 2026-07-12 — gate rulings + hygiene + commit clearance (f88cfd2…6c44ea9)
 
 - All session-136 checkpoint items ruled and executed: 3 watched libraries added (gbrain, mattpocock-skills, ponytail — Ponytail flagged by Nick as future Reviewer/Gate agent), 3 authorities created (Nate Herk, Tonbi's AI Garage, Austin Marchese), model-capability registry refreshed (GPT-5.6 skipped — no KB grounding).

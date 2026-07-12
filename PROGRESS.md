@@ -1,9 +1,9 @@
 # Improvement Loop — Progress
 
-Updated: 2026-07-12 (session 138 — restructure-program Phase 0 in flight: HISTORY.md
-backfilled, this file restructured forward-only, `/session-handoff` rewritten
-reconcile-in-place, dated handoffs archived, Conventional Commits + line-budget hook
-adopted; SL-narrowing ruling pending at close. Wave-3 retry still parked — 24h window.)
+Updated: 2026-07-12 (session 138 — **Phase 0 shipped**: session-ops spine live (this
+file + HISTORY.md + Conventional Commits, DD-116), `/session-handoff` reconcile-in-place
+(Rule-10 PASS), System Log retired as producer per Nick's ruling. Phase 1 now current;
+wave-3 retry parked until ≥2026-07-13.)
 
 ## Start here
 
@@ -30,9 +30,9 @@ Research remains the substrate: the KB grounds every design move. Full capture:
 **Engine restructure & harness program** — plan of record:
 `operations/plans/2026-07-12-engine-restructure-program.md`.
 
-- `[>]` **Phase 0 — session-ops restructure** — landing this session (138, 2026-07-12)
-- `[ ]` **Phase 1 — research grounding** — wave-3 video backlog, Nick's second-brain/harness
-  links, CareerBuddy as primary source, named research dependencies → plan checkpoint #1
+- `[x]` **Phase 0 — session-ops restructure** — shipped 2026-07-12 (session 138) · [HISTORY.md](HISTORY.md)
+- `[>]` **Phase 1 — research grounding** — DoD: wave-3 backlog + Nick's second-brain/harness
+  links + CareerBuddy-as-primary-source in the KB; delta report → plan checkpoint #1
 - `[ ]` **Phase 2 — substrate audit & second-brain design** — kernel-vs-state verdicts per
   class (DDs, IB, design notes, SL, guides, concept docs); ops second-brain sized per Rule 11
 - `[ ]` **Phase 3 — user manual** — Nick gates whether/when; audience/altitude locked
@@ -48,19 +48,23 @@ schematics. Revisit on demand signals, not on a schedule.
 
 ## Current milestone
 
-**Phase 0 — session-ops restructure.** DoD: a fresh session cold-starts from this file
-alone; no dated handoff is authored; commit convention + line-budget check live; Nick has
-ruled on the System Log's narrowed role.
+**Phase 1 — research grounding** (plan §Phase 1). DoD: wave-3 backlog resolved (recovered
+or honestly closed), Nick's second-brain/harness links and CareerBuddy-as-primary-source
+extracted into the KB, named research dependencies intaken; delta report written → plan
+checkpoint #1 (revisit the plan).
 
-Hill: HISTORY backfill, PROGRESS restructure, `/session-handoff` rewrite, handoff
-archive + wake-up idiom, commit convention + hook — **over the top, landing** · SL
-ruling — **up the hill, gated at session close**.
+Scopes (hill):
+- `wave-3-retry` — 20-video LINKS.md backlog — **uphill, time-gated**: parked until
+  ≥2026-07-13 (full ~24h after wave-2's 2026-07-12 IP block). Chain: plain
+  `fetch.py --input LINKS.md` → `--backend browser` rung (live-unverified) →
+  `/link-intake` triage on recoveries; if the whole chain fails, stop and respace ≥1 day.
+- `careerbuddy-source-intake` — wiring canon, meta-skill-author refs, ops-self-improve
+  store schema, C1–C16 battery, 5 queued corpus contributions — **uphill, not started**.
+- `named-deps` — BMAD, superpowers, Archon, Jones' open-skills framework, #8 repo —
+  **uphill**; #8 name blocked on Nick (see Blockers).
 
-**Next unit of work:** finish Phase 0 (SL ruling at close), then open **Phase 1** with
-the wave-3 retry — parked until ≥2026-07-13 (full ~24h from wave-2's 2026-07-12 IP
-block); chain: plain `fetch.py --input LINKS.md` → `--backend browser` rung
-(live-unverified) → `/link-intake` triage on recoveries; if the whole chain fails, stop
-and respace ≥1 day. Then CareerBuddy primary-source intake (plan §Phase 1 item 2).
+**Next unit of work:** wave-3 retry once the date allows; if a session runs before
+2026-07-13, start `careerbuddy-source-intake` instead.
 
 ## Backlog / Icebox
 
@@ -84,8 +88,6 @@ noted where promotion is event-gated.
 
 ## Blockers / gates (Nick)
 
-- **SL-narrowing ruling** (Phase 0 item 6; recommended option (a): git + HISTORY carry
-  session tracking, SL keeps only learnings) — presented at session-138 close
 - **#8 taxonomy/clustering repo name** — Phase 1 input
 - **Design-mode video-intake spec** — is a formal `/meta-skill-author` spec still wanted?
 - **Verbatim-storage finding null→P3** — session-132 reassessment, unruled
