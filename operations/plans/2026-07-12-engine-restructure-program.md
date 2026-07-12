@@ -78,6 +78,15 @@ the **governance-as-portable-kernel** model on top:
 - **Upstream/downstream flow:** instance use → learnings update generalized governance
   files → push upstream → other instances pull downstream. A package-manager model for
   agentic systems; the engine is the registry steward.
+- **Single-implicit-agent model (Nick, 2026-07-12, session 138 — Phase 4 interview
+  input):** unlike OpenClaw's everything-is-an-agent topology, most of Nick's systems
+  have **one agent, and it is the system itself** — CareerBuddy is the exemplar: one
+  implicit agent fully described by its `onboarding/` docs so it can be moved and
+  instantiated onto different harnesses (given comparable capabilities). Under the
+  kernel litmus this strengthens the model: the portable kernel **is** the full
+  description of the one agent. Session/state stores then scope to the system-agent
+  (OpenClaw's per-agent session keeping, applied at system granularity) — which is what
+  git + HISTORY.md now are.
 
 End state: the engine itself is **harnessed** (a formal harness layer, not
 agent-remembers-to-invoke-skills) and **generalized** (its own governance/ is a portable
@@ -112,9 +121,17 @@ litmus, so nothing here can be invalidated by later phases.
    SL stops carrying session tracking (git + HISTORY carry it) and keeps only
    architectural/operational learnings that fit no DD. No DD supersession needed, scope
    note only.
+   > **Ruled 2026-07-12 (session 138): retired entirely as a producer** — stronger than
+   > option (a), grounded in a KB pass over Omnigent/Hermes/OpenClaw session models (none
+   > routes learnings through a session store; all distill into a curated layer). No new
+   > SL entries; learnings route decision→DD, pattern→`knowledge/`, work→IB. Historical
+   > corpus stays in place as read-only feedstock for the IB-172 layered-memory design.
+   > DD-59's scope note lands in the Phase-2 substrate audit.
 
 **DoD:** a fresh session cold-starts from PROGRESS.md alone; no dated handoff is
 authored; commit conventions + line-budget check live; Nick has ruled on SL.
+**✅ Shipped 2026-07-12 (session 138).** All six items landed; `/session-handoff`
+Rule-10 assessed (PASS, 3 Low findings fixed).
 
 ### Phase 1 — Research grounding *(the very next thing after Phase 0)*
 
@@ -213,7 +230,8 @@ Every import/adaptation gets a Rule-10 assess pass (`/assess-skill`) after landi
 2. #8 taxonomy/clustering repo name (Nick input, → Phase 1).
 3. The garbled "Division, to a degree" direction-note fragment (→ Phase 4 interview).
 4. Manual home + length; manual-as-kernel-layer question (→ Phase 3).
-5. System Log narrowed role (→ Phase 0, Nick gate).
+5. ~~System Log narrowed role~~ — **resolved 2026-07-12: retired as producer** (see
+   §Phase 0 item 6).
 6. Pre-existing carried gates: verbatim null→P3 reassessment; re-injection correction
    disposition; push of unpushed local commits; mirror question (subtree push vs
    retire); design-notes category ruling (now subsumed by the Phase 2 audit).

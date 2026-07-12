@@ -205,8 +205,10 @@ The engine runs a three-artifact session-ops spine (restructure-program Phase 0,
 
 Session close = `/session-handoff` (reconcile-in-place; it owns the PROGRESS.md write per
 workspace Process Rule 2). Dated handoff files are retired — historical ones live in
-`archive/handoffs/`. The System Log does not carry session tracking; it keeps only
-architectural/operational learnings that fit no DD.
+`archive/handoffs/`. The System Log is **retired as a producer** (Nick ruling, session
+138): no new entries; learnings route to a DD (decision-shaped), `knowledge/`
+(pattern-shaped), or an IB item (work-shaped). The historical SL corpus stays in place as
+read-only feedstock for the IB-172 layered-memory design.
 
 ## Reference System
 
