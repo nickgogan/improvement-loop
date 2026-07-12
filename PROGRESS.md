@@ -1,111 +1,94 @@
 # Improvement Loop — Progress
 
-**Last Updated:** 2026-07-12 (session 137 closed — all session-136 checkpoint rulings executed; hygiene passes done; duplicate pairs merged; sessions 129–137 committed AND pushed, tree clean; IB-171/172/173 filed; next: wave-3 retry (embargo lifts 2026-07-13, new browser rung) + restructure-program Phase 0)
+Updated: 2026-07-12 (session 138 — restructure-program Phase 0 in flight: HISTORY.md
+backfilled, this file restructured forward-only, `/session-handoff` rewritten
+reconcile-in-place, dated handoffs archived, Conventional Commits + line-budget hook
+adopted; SL-narrowing ruling pending at close. Wave-3 retry still parked — 24h window.)
 
-## Current Focus
+## Start here
 
-**The engine collapse is fully landed on `main`.** The `engine-collapse-phase-1` branch was merged (`--no-ff`, `199a6ee`), pushed to `origin/main`, and deleted — **`main` is now the live line.** The federation collapsed into one self-evolving engine (Household OS → Notion, Claude Build retired, `meta-system` shell dissolved); the engine is fractal-complete with three altitudes (research → per-artifact assess/design → whole-system composition) and a root-level `CHARTER.md`.
+New session? This file is the only cold-start artifact — read it top to bottom, then act.
+"PROGRESS" / "continue" from Nick = proceed with the **next unit of work** under Current
+milestone, no recital. Orientation lives in `CLAUDE.md` (engine) and `../../CHARTER.md`
+(vision); the foundational-DD spine is `governance/FOUNDATIONS.md`. Shipped work lives in
+[HISTORY.md](HISTORY.md) (newest-first, commit ranges); git carries the atomic log
+(Conventional Commits). Session close = `/session-handoff` (reconcile-in-place; never a
+dated handoff file). Every line here must pass route-then-compact: history → HISTORY.md,
+decisions → DDs, work items → IB, research → KB.
 
-**Phase 2 progress.** Slices 1–2 (sessions 120–121) defined the **schematic** form (DD-107) and brought it into `/detect-drift`. Session 122 finished **§Phase 2 item 2** (made the Dimension 7/9 → schematic re-evaluation wiring explicit; added schematics as a `/solicit-proposals` reflection input) and **item 3** (two consumer-facing seed schematics — `project-coding-workcell`, `scheduled-operations-assistant`; the library now spans research/operations/audit/coding, 4 seeds, `/detect-drift` clean). Remaining Phase-2 items stay demand-gated (execution-surface axis, Builder-mode matching).
+## North Star
 
-**First `/system-audit` (session 122)** ran post-collapse: 0 Critical, structurally sound. All findings remediated this session — **DD-108** (Owner files DDs as mechanics; Nick gates content), **DD-109** (re-home system-scoped-skills / skills-as-atomic-unit into live governance), agent + skill contract fixes, post-collapse framing fixes, and all 148 system-log entries normalized to canonical `date:`. Report: `operations/audit-reports/2026-06-18-system-audit.md`.
+Formalize the engine into an **agentic OS**: a harnessed system (a formal harness layer,
+not agent-remembers-to-invoke-skills) whose `governance/` becomes a **portable kernel** —
+the export unit any downstream agentic system pulls (PRD · constitution · generalized
+asset forms · YAML descriptor), with harness materializations compiled per target.
+Research remains the substrate: the KB grounds every design move. Full capture:
+`project-management/design-notes/2026-06-22-agentic-os-direction.md` + plan §2.
 
-**Session 123 (governance hygiene + audit-home disambiguation) landed.** The stale-IB sweep cleared 15 post-collapse items; the open backlog is now small and engine-relevant. IB-169 was resolved by **DD-110** — the two audits (`/audit-artifacts`, renamed from `/audit-system`, and `/system-audit`) were disambiguated, not consolidated, with both homes moved under `operations/`. Post-collapse "MetaSystem vs IL" framing was reconciled to the one-engine three-altitude model and the two consumer-abstractions maps merged into one.
+## Roadmap
 
-**Session 125 (governance-health + knowledge-caching) landed.** Phase 1: the DD/IB corpus is structurally sound (no contradictions, all 9 supersessions now machine-traceable, all live-era DDs commit-backed). Applied four gated hygiene fixes (stale superseded-list removal from CLAUDE.md; canonical `supersedes` backfill; DD-49→DD-109 annotations; IB-102/IB-145 re-anchor). Phase 2 (propose-only): the caching question resolved decisively — **~88% of DD wisdom is correctly *not* separately cached** (governance fact or operationalized in one owning skill). Delivered a four-part selection test + exclusion rules + anti-redundancy invariant; cached DD-wisdom is Owner-owned; no cache-every-DD mechanism (Rule 11). Reports: `operations/system-audits/2026-06-21-governance-health-audit.md`, `project-management/design-notes/2026-06-21-dd-wisdom-caching-policy.md`.
+**Engine restructure & harness program** — plan of record:
+`operations/plans/2026-07-12-engine-restructure-program.md`.
 
-**Session 126 (knowledge-architecture sweep) landed (`867e2a7`, pushed).** All four tasks executed: DD-37's five principles cached into `governance/agent-rules.md`; `principles.md` → `dbdo-pipeline.md` (re-anchored DD-45→DD-103, de-federated). **DD-111** recognizes `extracts/guides`+`extracts/patterns` as Librarian substrate (amends DD-39/DD-80, rename-in-place); the residue (`rules/skills/templates/agents`, ~123 files) is designated an explicit **harvest archive** (external best-practice, not engine artifacts; no moves/deletes). **DD-112** + **IB-170 resolved**: concept-doc home rule (`knowledge/reference/` = self-knowledge; `operations/references/` = operational reference incl. all concept docs); `harness.md` relocated to `librarian/`, runtime-sense → `runtime-environment.md`. `ib_items` normalized (YAML list; DD-43's 9 dead URLs → real back-refs).
+- `[>]` **Phase 0 — session-ops restructure** — landing this session (138, 2026-07-12)
+- `[ ]` **Phase 1 — research grounding** — wave-3 video backlog, Nick's second-brain/harness
+  links, CareerBuddy as primary source, named research dependencies → plan checkpoint #1
+- `[ ]` **Phase 2 — substrate audit & second-brain design** — kernel-vs-state verdicts per
+  class (DDs, IB, design notes, SL, guides, concept docs); ops second-brain sized per Rule 11
+- `[ ]` **Phase 3 — user manual** — Nick gates whether/when; audience/altitude locked
+  (Nick-builder; both, direction-bounded); manual-as-kernel-layer question open
+- `[ ]` **Phase 4 — structured interview** → engine PRD/constitution/actors; decide
+  generalize-first vs harness-first → plan checkpoint #2
+- `[ ]` **Phase 5 — harness + generalize** (order per Phase 4)
 
-**Session 127 (sweep-residuals + in-round YAML hygiene sweep) landed (`011fa8c`, `574f0f7`, `169ba98`, pushed).** Both session-126 residuals closed, then the frontmatter/YAML hygiene sweep was pulled forward and run in-round. (1) **Harness whole-system invariants confirmed deferred** per Rule 11 — evidence test unmet; dated note in `harness.md` §Composition, no backfill. (2) **DD-113: DD↔IB linkage forward-only via `source_dd`** (option B1) — uniform YAML list across 63 IBs, 4 non-lossy reconciliations, `ib_items` removed from 81 DDs, `_schema.yaml` + `/dd`/`/track`/`/governance-audit` repointed, reverse view query-derived. (3) **Frontmatter/YAML hygiene sweep** — full-corpus PyYAML scan found **40 parse failures** (3 classes: unquoted prose scalars with `: `, mixed-indent lists, multi-line scalars with colon-in-continuation); a field-aware fixer rewrote only the offending field per file (block scalars / normalized lists, content verbatim); 0 failures remain; 4 findings backfilled `pipeline_status: raw`; schema-conformance otherwise clean.
+**Engine-collapse Phase 2 leftovers** (older plan:
+`project-management/design-notes/2026-06-18-engine-collapse-restructure-plan.md`) — all
+demand-gated: Builder-mode schematic matching, execution-surface axis, more seed
+schematics. Revisit on demand signals, not on a schedule.
 
-**Session 128 (upstream YAML prevention + foundations spine + PROGRESS consolidation) landed (`4ce12d9`, `d799777`, pushed).** (1) **DD-114** — upstream frontmatter/YAML prevention: block-scalar authoring convention added to the 7 producers that hand-write frontmatter (`research-loop`, `research-query`, `promote-findings`, `watch-blogs`, `/sl`, `/dd`, `/ib`); new `validate_frontmatter.py` + git pre-commit hook (binary YAML-parse check; distinct from the removed heuristic read-guard). Nick chose option a+c; `kb_parser` verified load-bearing (not removed). (2) **DD-115** — `governance/FOUNDATIONS.md`, a generated spine map of the ~20 foundational DDs: tagged `foundational: true`, `generate_foundations.py` (+`--check`), CLAUDE.md pointers (referenced, not inlined — DD-74), pre-commit staleness check; inclusion/exclusion criteria (C1–C5 / X1–X5 + ~20 displacement cap) codified to guard drift. (3) The `il-published` subtree mirror (DD-84) was ~2 months stale; refreshed via `git subtree push` (`511b147`). (4) **PROGRESS consolidation** — the vestigial root `PROGRESS.md` (stale since session 118) reduced to a pointer; this IL file is the single canonical PROGRESS; `/session-handoff` patched to target it unambiguously.
+## Current milestone
 
-**Active direction (session 129 — redirected):** The agent-vs-skill thread opened into a larger thesis: **formalize the engine toward an agentic OS** — a system with a formal **harness** layer that helps **audit, specify, and create whole agentic systems, governance-first** (not just per-artifact skill/agent/prompt). This promotes **Logged-for-future #1** (put the engine on a real harness) to the active spine and names its endpoint; it aligns with the DD-108 supervised-autonomy trajectory. Full capture (expanded mission, governance-first creation model, `actors.md`, skill↔model coupling, what+how delivery, research dependencies, open layer-taxonomy questions): `project-management/design-notes/2026-06-22-agentic-os-direction.md`. **The narrow DD-109 fold is on hold** — agent-vs-skill routing is now a sub-question of the larger model.
+**Phase 0 — session-ops restructure.** DoD: a fresh session cold-starts from this file
+alone; no dated handoff is authored; commit convention + line-budget check live; Nick has
+ruled on the System Log's narrowed role.
 
-**Session 130 landed: the link-intake triage protocol** — designed, Nick-gated, piloted on the 13-link batch, then run again same-day on a fresh 7-link batch (20 links: 0 ADD / 1 ENHANCE / 11 KB-ONLY / 8 REJECT). Landed as a reference doc (`operations/references/link-intake-protocol.md`) per Rule 11; promotion trigger fires at a third stable-shape batch. The one ENHANCE (`ast-grep outline` → `/repo-analyzer`) was applied, Rule-10 re-audited, and defect-fixed same session. Standouts: omnigent confirmed as the Databricks meta-harness; five of run-2's seven links resolved by dedup alone.
+Hill: HISTORY backfill, PROGRESS restructure, `/session-handoff` rewrite, handoff
+archive + wake-up idiom, commit convention + hook — **over the top, landing** · SL
+ruling — **up the hill, gated at session close**.
 
-**Session 131 landed: the research sweep** — the entire triage follow-up queue cleared in one session (4 commits, `9f7dd6d` → `08d3070`): omnigent + opencode structural analyses (omnigent verified as governance-without-constitution — exactly the gap our agentic-OS model occupies), an 8-source extraction pass (23 new findings incl. the first-party prompt-caching playbook and the skill-library-drift cluster), the model-capability-registry refresh (KB-grounded via narrow RSI-essay intake), and linkage repair. Notable: the attention-closure paper **refutes** the periodic-re-injection remedy the triage expected (Appendix H negative result) — flagged for Nick. Promotion gate resolved 2026-07-12: **adopt Promoter recs as-is** (report: `operations/research-reports/2026-07-11-promotion-candidates.md`).
+**Next unit of work:** finish Phase 0 (SL ruling at close), then open **Phase 1** with
+the wave-3 retry — parked until ≥2026-07-13 (full ~24h from wave-2's 2026-07-12 IP
+block); chain: plain `fetch.py --input LINKS.md` → `--backend browser` rung
+(live-unverified) → `/link-intake` triage on recoveries; if the whole chain fails, stop
+and respace ≥1 day. Then CareerBuddy primary-source intake (plan §Phase 1 item 2).
 
-**Session 132 landed: the sweep follow-ups** — the pre-decided promotion gate executed in full (3 commits, `06baab9` → `bdfdb97`): 10 findings promoted (7 New + O2-as-extends + C13-with-contradicts + the O11+C7+C12 cross-repo synthesis `permission-channel-as-escalation-steering-bus`), C4/C5/C7/C8 folded as cross-harness corroboration, all 31 candidates annotated in both analysis docs. Batch reciprocity clean (plus 14 pre-existing one-way links repaired, 1 misnamed ref fixed). Scoped `/reassess-priorities`: no threshold crossings; one gate for Nick (verbatim-storage null→P3). LINKS.md was empty — triage run 3 didn't fire. Re-injection premise correction delivered in-chat.
+## Backlog / Icebox
 
-**Session 133 landed: the restructure pivot.** The user manual was parked mid-contract (audience/altitude locked: Nick-builder; both, direction-bounded); Nick redirected to the **engine restructure & harness program** — plan of record `operations/plans/2026-07-12-engine-restructure-program.md` (6 phases: session-ops restructure → research grounding → substrate audit/second-brain → manual → structured interview → harness+generalize; Phase 0 greenlit, not executed). Inputs: full CareerBuddy ops-model analysis (forward-only PROGRESS + HISTORY + reconcile-in-place handoff; per-skill import verdicts) and Nick's **governance-as-portable-kernel** vision (governance/ = the portable export unit; harness materializations derived; kernel litmus = "downstream would pull it"). Executed same-session: `meta-skill-author` imported from CareerBuddy @1.15.0 (adapted, Level-1 PASS, Rule-10 assessed; registers after restart; 2 upstream bugs found) and a 3-video KB intake (kept on Nick's ruling — the scene-detection P2 finding is the video-redesign design input). The LINKS.md batch (~70 links) landed but is **parked — do not process** (Nick: not enough context); 61 transcripts cached untracked.
+Unscheduled — promote into a milestone when ready. Work items carry IB numbers; triggers
+noted where promotion is event-gated.
 
-**Session 134 landed: video-intake tooling rebuilt inline.** The session-134 mandate's *audit* half was executed as direct improvements at Nick's inline direction (no `/meta-skill-author` Design-mode spec was run — whether a formal spec is still wanted is an open Nick call): `fetch.py` gained `--probe` (title/duration/upload-date/token-estimate), automatic video-ID dedup, and metadata-enriched headers; transcript-fetcher SKILL.md gained the 6-step fallback chain + `status: "Blocked"` retry-backlog convention; research-loop SKILL.md gained the Video Batch Gate (Step 0.5), transcript-first rule, and recency-weighting rule (newer framing leads; contradictions escalate). The yt-dlp bot-check fragility was fixed (Homebrew build 2026.07.04, script auto-prefers it). `date_published` added to the source schema and backfilled across **all** sources via 6-subagent fan-out; **all** transcript headers enriched with zero probe failures. Both modified skills passed independent Rule-10 `/assess-skill` audits.
+- **IB-172** — layered memory architecture + OKF design (approved direction; Hermes/OpenClaw inspiration)
+- **IB-173** — three-bucket gate tiering, DD-29 refinement (approved direction)
+- **IB-171** — corpus-wide linkage-hygiene sweep (Nick: "save for later")
+- **IB-145** — GSD version-drift re-analysis; **IB-148** — handoff-review skill (likely
+  mooted by Phase 0's `/session-handoff` rewrite — resolve or close next maintenance pass)
+- meta-skill-author assess follow-ups A/D/E
+- `/link-intake` escalation-language watch item (Rule 11)
+- Governance visualization (boil DDs/architecture into a human-visualizable form)
+- G3 / G9 guide bifurcation — trigger: DD-102 threshold (45 findings)
+- MongoDB sizing-engine pilot — trigger: `/design-harness` ships
+- Memongo improvement surfaces — `watched-libraries/memongo.md`
+- GitHub collaborators for `il-published` — trigger: usernames from Nick
+- Obsidian Workspaces config + Dataview install — trigger: Obsidian UI session
+- Temp-directory cleanup — `/cleanup-cache` covers; run opportunistically
 
-**Session 135 landed: the LINKS.md triage sweep + `/link-intake` promotion.** The full 83-video sweep triaged (28 KB-ONLY / 33 content-REJECT / 2 already-ingested / 20 defer-blocked on a YouTube 429); Nick accepted all verdicts same-session and LINKS.md now holds only the 20-video retry backlog. The fired promotion trigger was ruled **option 1**: the protocol became the `/link-intake` orchestrator skill (via `/design-skill` + Rule-10 audit; protocol doc superseded). Nick also ruled global `bypassPermissions` (no permission prompts; set in `~/.claude/settings.json`, effective at session start).
+## Blockers / gates (Nick)
 
-**Session 136 landed: the Pass 2 extraction sweep.** All 28 Nick-accepted KB-ONLY sources extracted via 8 topical subagent clusters (65 new findings — 33 P2, 0 P1; 24 existing findings updated; pairing instructions honored; corpus-wide linter clean). Both flagged Anthropic primaries ingested — the dynamic-workflows post upgraded `frontier-model-as-harness-designer` and the six-pattern taxonomy to Strong (Bun Zig→Rust case study; "adversarial verification" naming correction), and the Fable field guide landed as the phase-anchored unknowns-reduction technique set. Authority pass: 5 updated, 8 new entries. The wave-2 retry of the 20 blocked videos failed same-day (IP-level 429 outlasts an hours-scale cooldown — addendum revises retry guidance to ≥1 calendar day). `/link-intake` first skill run: no transcription defects. Reports: `operations/research-reports/2026-07-12-delta-report.md`, `2026-07-12-link-intake-triage-wave2.md`.
-
-**Session 137 landed: gate rulings + hygiene + full commit clearance.** Every session-136 checkpoint item was ruled and executed same-session: 3 watched libraries added (Nick expects **Ponytail as the Reviewer/Gate agent** in a future standard coding-agent loop), 3 authorities created, registry refreshed (GPT-5.6 skipped — no KB grounding), Playwright browser rung built into `/transcript-fetcher` (Rule-10 PASS, 3 findings fixed pre-commit; live test = wave-3), reassessment applied (scale-threshold P3→P2, frontier-harness-designer P3→P2, trust-calibration → Strong), both duplicate pairs merged. Hygiene: 193 batch reciprocal links + 30 linkage repairs (corpus-wide debt parked as **IB-171**). Nick approved two design directions: **IB-172** layered memory architecture (semantic index + graph for findings, OKF as curated layer above, traversal policies; Hermes/OpenClaw as inspiration) and **IB-173** three-bucket gate tiering (DD-29 refinement). The 129–137 commit/push gate cleared — origin/main current, tree clean. Wave-3 was correctly NOT attempted (same calendar day as wave-2's failure). Standing rule added: skill/corpus passes run as subagents. Reports: `priority-reassessment-2026-07-12-session-137.md`, `2026-07-12-crosslink-reciprocity-session-137.md`, `2026-07-12-linkage-repair-session-137.md`.
-
-**Next session (138): restructure-program Phase 0; wave-3 parked ~24h (Nick's call, 137 close)** — execute Phase 0 per the plan (HISTORY.md, forward-only PROGRESS, reconcile-in-place `/session-handoff`, handoff archive + wake-up idiom, Conventional Commits + line-budget check, **SL-narrowing Nick gate**). Wave-3 retry only if a full ~24h have passed since the 2026-07-12 wave-2 failure (plain chain → new `--backend browser` rung, unverified live → `/link-intake` triage); otherwise it rolls forward untouched. Handoff: `operations/handoffs/handoff-prompt-session-138-wave3-and-phase0.md` (intended as the last dated handoff). **Open for Nick:** SL narrowing (Phase 0 item 6); meta-skill-author assess follow-ups A/D/E; the #8 taxonomy/clustering repo name (Phase 1); Design-mode video-intake spec question; carried: re-injection correction next step, the "Division, to a degree" garbled fragment, the mirror question (automate subtree push or retire). Still open (unruled in 137's checkpoint): verbatim-storage null→P3 (session-132 reassessment report). Resolved this session: duplicate merges, commit/push.
-
----
-
-## What Changed This Session (137)
-
-Session 137 executed Nick's checkpoint rulings inline (7 user turns; 5 subagents ≈369k tokens). All work committed and pushed same-session — the 129–137 gate is cleared.
-
-- **Rulings executed:** watched libraries gbrain / mattpocock-skills / ponytail added (Ponytail flagged by Nick as future Reviewer/Gate agent); authorities Nate Herk / Tonbi's AI Garage / Austin Marchese created (Tier 2, sources back-linked); model-capability registry refreshed with 3 of 4 datapoints (GPT-5.6 skipped — zero KB grounding, registry rule 1); Playwright `--backend browser` rung replaced the Chrome-extension rung in `/transcript-fetcher` (fresh-context `/assess-skill`: PASS; wrong-install-remedy, retry-spacing-ambiguity, and machine-claim findings fixed pre-commit; live verification deferred to wave-3).
-- **Reassessment applied (approved):** `scale-threshold-heuristic-obsidian-vs-rag` P3→P2; `frontier-model-as-harness-designer` P3→P2; `trust-calibration-progressive-autonomy-ramp` evidence → Strong. Report: `priority-reassessment-2026-07-12-session-137.md`.
-- **Hygiene passes:** 193 session-136 one-way `related_findings` links reciprocated (131 files, script-detected, 0 failures); 21 source→authority backfills + 9 source↔finding asymmetry fixes; karpathy duplicate-source pair and Nate B Jones duplicate-authority pair merged (17 referrers repointed). Corpus-wide pre-existing link debt (≈992 one-ways, 205 typed mismatches, 53 vocabulary strays, orphans/hubs) parked as **IB-171** on Nick's "save for later."
-- **New approved design directions:** **IB-172** layered memory architecture — per-layer storage/retrieval, semantic index + graph for findings, OKF as curated layer above, traversal/placement policies; Hermes + OpenClaw named as architectural inspiration. **IB-173** three-bucket gate tiering — auto-apply-with-changelog / sign-off / more-context, DD-29 refinement on the DD-108 trajectory.
-- **Process rulings:** manual stays Phase 3 in sequence; **Phase 0 is next** (after wave-3). Standing rule saved to memory: corpus/skill passes run as subagents; main thread receives report paths + short summaries only (context-burn lesson from this session's inline skill runs).
-- **Wave-3 not attempted** — same calendar day as wave-2's failure; the ≥1-day spacing now also documented in the skill's Limitations.
-
-## What Changed This Session (136)
-
-Session 136 executed the full extraction-sweep handoff autonomously (one user turn; 8 extraction subagents ≈1.37M tokens). Work uncommitted at close (Nick's gate; spans 130→136).
-
-- **Wave-2 retry — honest miss:** 0/20 recovered. Chain exhausted again: api IpBlocked → playwright no-segments → ytdlp 429 (with and without Chrome cookies) → browser rung unavailable (extension still not connected). Root-cause revision: sessions 135 and 136 ran the same calendar day — the IP block outlasts an hours-scale cooldown; retry ≥1 calendar day. All 20 stay deferred in LINKS.md. Addendum: `operations/research-reports/2026-07-12-link-intake-triage-wave2.md` (includes `/link-intake` first-skill-run observations: no transcription defects; escalation-trigger vs handoff pre-authorization logged as a Rule-11 watch item).
-- **Pass 2 extraction complete** (8 topical subagent clusters over the 28 accepted sources): 65 new findings (33 P2; richest clusters: Fable-usage 14, loops 12, second-brain 11), 24 existing findings updated, all four pairing instructions honored (OKF spec-conventions and Marchese three-bucket each written once, multi-sourced). Corpus-wide `validate_frontmatter.py` exit 0. Delta report: `operations/research-reports/2026-07-12-delta-report.md`.
-- **Anthropic primaries ingested + first-party upgrades:** `frontier-model-as-harness-designer` and `harness-composition-six-pattern-taxonomy` → Strong (production-tested) on the dynamic-workflows post (Bun Zig→Rust case study; shipped /deep-research; digest's "worker-critic" corrected to first-party "adversarial verification"); the Fable field guide → new `unknowns-reduction-phase-anchored-technique-set` + first-party upgrade of the unknown-unknown-elicitor finding.
-- **Authority pass:** 5 existing entries updated (source lists + counts; fixed a count/list drift in the Jones entry), 8 new entries created as Step-5 mechanics (Cloud Codes, Matt Pocock T1, Mark Kashef, Kun Chen, Devsplainers, AI LABS, AI Code That Works, Prompt Engineering). The 3 triage-flagged candidates (Nate Herk, Tonbi's AI Garage, Austin Marchese) held for the gate.
-- **/reassess-priorities inputs staged in-file** (priorities untouched): thin-router/scale-threshold (4+ channels), generator-assessor rule-10 (3rd corroboration), DD-108 autonomy set (3 source sets), frontier-harness-designer hub (3 extending sources + first-party), three-bucket tiering (3 sources).
-- **Batched Nick-gate checkpoint presented at close:** watched-lib candidates (Gbrain, mattpocock/skills, Ponytail), authority candidates (3), registry refresh bundle (GLM 5.2, Hashimoto tiers, effort-level economics, GPT-5.6 note), Playwright-CLI ENHANCE, plus two new session-136 surfacing items — the OKF-conformance architecture question and the three-bucket approval pattern (DD-29-adjacent).
-
----
-
-## Nick's Prioritizaton
-
-Ordered queue. Status markers: `[nick-gate]` waits on Nick's ruling; `[deferred]` held by Nick, re-evaluate on trigger; `[trigger]` waits on external evidence or volume; `[don't-do-yet]` do not reintroduce until a specific upstream condition lands.
-
-1. **`[next]` Restructure-program Phase 0 (session 138); wave-3 parked ~24h.** Phase 0 per `operations/plans/2026-07-12-engine-restructure-program.md` §Phase 0 (incl. the SL-narrowing Nick gate) leads. Wave-3 retry only after a full ~24h from the 2026-07-12 wave-2 failure (plain chain → new browser rung → `/link-intake` triage); rolls forward if the window hasn't elapsed. Handoff: `operations/handoffs/handoff-prompt-session-138-wave3-and-phase0.md`.
-   - ✅ **Session 137:** all 136-checkpoint rulings executed (3 watched libs, 3 authorities, registry refresh, Playwright rung + Rule-10 audit, reassessment applied, duplicate merges); 193 reciprocals + 30 linkage repairs; IB-171/172/173 filed; **129–137 committed and pushed, tree clean**; wave-3 correctly embargoed (same calendar day).
-   - ✅ **Session 136:** Pass 2 extraction sweep complete (28 sources / 65 new findings / 24 updated; pairings honored; linter clean); Anthropic primaries ingested + Strong upgrades; authority pass (5+8); wave-2 retry failed same-day (429 persists — retry ≥1 calendar day); checkpoint presented.
-   - ✅ **Session 135:** full triage sweep (28 KB-ONLY / 55 REJECT; verdicts accepted; LINKS.md → 20-video retry backlog); `/link-intake` skill promoted (option 1, Rule-10 audited); protocol doc superseded; global bypassPermissions set.
-   - ✅ **Session 134:** video-intake tooling rebuilt inline (probe/dedup/fallback-chain/batch-gate/recency-weighting; yt-dlp fixed; full metadata backfill). The `[nick-gate]` residue of the original video-intake item: whether a formal `/meta-skill-author` Design-mode spec is still wanted.
-2. **Engine restructure & harness program** — plan of record: `operations/plans/2026-07-12-engine-restructure-program.md`. Phase 0 (session-ops restructure) greenlit, not executed; Phases 1–5 sequenced there. **Subsumes:** the user manual (Phase 3; audience/altitude contract locked), the agent-vs-skill workflow + capability-type-selection/DD-109 questions (Phase 4 interview; seed docs: `knowledge/patterns/capability-type-selection.md`, `research-to-codification-pipeline.md`, `upstream-dependency-spectrum.md`), the design-notes category ruling and agent-kind typology gap (Phase 2 audit).
-   - ✅ **Session 133:** plan created; CareerBuddy analyzed; kernel vision captured; meta-skill-author imported + assessed (`7c253d0`→`3557651`).
-   - ✅ **Sweep follow-ups (session 132) — DONE:** promotion gate executed (10 promoted incl. the permission-channel synthesis; 4 folds; 31/31 annotations); batch reciprocity clean + 14 legacy reciprocals repaired; scoped reassessment (1 gate for Nick); triage run 3 didn't fire (LINKS.md empty) (`06baab9`→`bdfdb97`).
-   - ✅ **Research sweep (session 131) — DONE:** omnigent + opencode analyses; 8-source extraction (23 new findings); registry refresh (KB-grounded); linkage repair (32 reciprocals); promotion-candidates report (`9f7dd6d`→`08d3070`).
-   - ✅ **Skill-intake protocol (session 130) — DONE:** designed, piloted (13 links) + run 2 (7 links); landed as `operations/references/link-intake-protocol.md` (Rule 11; skill promotion at third batch); `/repo-analyzer` ast-grep ENHANCE applied + re-audited (`769ea22`→`db254b9`).
-   - ✅ **Upstream YAML prevention (session 128) — DONE:** DD-114 (block-scalar convention in 7 producers + `validate_frontmatter.py` + pre-commit hook); `kb_parser` verified load-bearing (`4ce12d9`).
-   - ✅ **FOUNDATIONS.md spine map (session 128) — DONE:** DD-115 (20 DDs tagged; `generate_foundations.py`; criteria codified; CLAUDE.md pointers; staleness check) (`d799777`).
-   - ✅ **Frontmatter/YAML hygiene sweep (session 127) — DONE:** 40 parse failures fixed corpus-wide; 0 remain (`169ba98`).
-   - ✅ **Sweep-residuals cleanup (session 127) — DONE:** DD-113 (forward-only DD↔IB linkage via `source_dd`); `ib_items` retired from 81 DDs (`011fa8c`).
-   - ✅ **Knowledge-architecture sweep (session 126) — DONE:** DD-111, DD-112; IB-170 resolved; DD-37 cached (`867e2a7`).
-3. **Engine-collapse Phase 2 — schematics + evaluation/feedback layer** (gated slices; plan: `project-management/design-notes/2026-06-18-engine-collapse-restructure-plan.md` §Phase 2 — distinct from the restructure program's phases).
-   - ✅ **Slices 1–2 (sessions 120–121):** schematic form (DD-107) + `/detect-drift` integration.
-   - ✅ **Item 2 (session 122):** D7/D9 → schematic re-evaluation wiring made explicit; schematics as `/solicit-proposals` input.
-   - ✅ **Item 3 (session 122):** 2 seed schematics (`project-coding-workcell`, `scheduled-operations-assistant`).
-   - **`[deferred]` Item 4 — Builder-mode demand→schematic matching** (`/ask-kb`) — now more plausible with a 4-seed library; revisit when exercising it is useful.
-   - **`[deferred]` Execution-surface Librarian axis** — weak demand per consumer-abstractions-map (Rule 11); revisit at 2–3+ requests.
-   - **`[trigger]` More seed schematics** — when exercising the form against more demand is useful.
-4. **`[deferred]` Ready maintenance** — IB-145 (re-analyze GSD for version drift) and IB-148 (build `/session-handoff-review`). Self-contained; pick up when the queue clears. (IB-148 likely mooted by the program's Phase-0 handoff rewrite — resolve there.)
-
----
-
-## Logged-for-future
-
-Trigger-gated carryover. Don't action unless trigger fires.
-
-1. **`[promoted → active direction, session 129]`** Place the engine on an actual harness, not just relying on the agent to invoke the right skills in the right order every time. (Aligns with the supervised-autonomy trajectory in DD-108 — URLs-in / queries-in under Nick's oversight.) Now the spine of the agentic-OS direction — see `project-management/design-notes/2026-06-22-agentic-os-direction.md`.
-2. **`[deferred]` G3 bifurcation** — Split proposal at `operations/split-proposals/2026-05-25-agent-architecture-decisions-split-proposal.md`. At 42 findings, below DD-102 threshold (45). Codifier rec: defer. Resolution added session 104. Re-evaluate when crossing 45.
-3. **`[deferred]` G9 bifurcation** — Split proposal at `operations/split-proposals/2026-05-25-agent-governance-and-trust-split-proposal.md`. At 38 findings, below DD-102 threshold (45). Codifier rec: defer. Resolution added session 104. Re-evaluate when crossing 45 or enforcement cluster hits 10.
-4. **`[trigger: /design-harness ships]` MongoDB sizing-engine — pilot consumer for `/design-harness`.** Real project: a comparison harness across Excel calculator + SAGE + consulting tool, with forecasting layered on top for sales-leader cost modeling. Architecture validated session 113 via Librarian (Variant B+C; single orchestrating agent + deterministic adapters; forecasting as a separate agent on the comparison output; LLM never does the math). Locked: deviation semantics TBD (Nick to draft a 1-page spec); empirical-vs-theoretical = surface both with labels; forecasting separate; determinism boundary at the adapter layer. Run `/design-harness` against this as the first canonical pilot once it ships. (Migrated from root PROGRESS, session 128.)
-5. **Six Memongo improvement surfaces** — captured in `watched-libraries/memongo.md`; forward-looking work for Nick's own code. (Migrated from root PROGRESS.)
-6. **Add JR and a colleague as GitHub collaborators** — `[trigger]` needs usernames. Relevant to sharing the `il-published` mirror. (Migrated from root PROGRESS.)
-7. **Obsidian Workspaces plugin configuration** — `[trigger]` requires Obsidian UI. (Migrated from root PROGRESS.)
-8. **Dataview plugin installation** — `[trigger]` requires Obsidian UI; enables the live-view `_index.md` files governance Process Rule 1 permits. (Migrated from root PROGRESS.)
-9. **Temp directory cleanup** — `/tmp/metasystem-repo-cache/` (and `watched-libraries/_tmp/repo-cache/`); `/cleanup-cache` covers the latter. (Migrated from root PROGRESS.)
+- **SL-narrowing ruling** (Phase 0 item 6; recommended option (a): git + HISTORY carry
+  session tracking, SL keeps only learnings) — presented at session-138 close
+- **#8 taxonomy/clustering repo name** — Phase 1 input
+- **Design-mode video-intake spec** — is a formal `/meta-skill-author` spec still wanted?
+- **Verbatim-storage finding null→P3** — session-132 reassessment, unruled
+- **Re-injection correction** — next step unchosen (KB updated; remedy refuted upstream)
+- **"Division, to a degree" garbled fragment** — resolve in the Phase 4 interview
+- **Mirror question** — automate `il-published` subtree push, or retire it
