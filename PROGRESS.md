@@ -1,6 +1,6 @@
 # Improvement Loop — Progress
 
-**Last Updated:** 2026-07-12 (session 132 closed — sweep follow-ups executed: promotion gate, hygiene, scoped reassessment; next: the user manual)
+**Last Updated:** 2026-07-12 (session 133 closed — pivot: user manual parked; engine restructure & harness program planned; meta-skill-author imported; next: video-intake audit+design)
 
 ## Current Focus
 
@@ -28,26 +28,28 @@
 
 **Session 132 landed: the sweep follow-ups** — the pre-decided promotion gate executed in full (3 commits, `06baab9` → `bdfdb97`): 10 findings promoted (7 New + O2-as-extends + C13-with-contradicts + the O11+C7+C12 cross-repo synthesis `permission-channel-as-escalation-steering-bus`), C4/C5/C7/C8 folded as cross-harness corroboration, all 31 candidates annotated in both analysis docs. Batch reciprocity clean (plus 14 pre-existing one-way links repaired, 1 misnamed ref fixed). Scoped `/reassess-priorities`: no threshold crossings; one gate for Nick (verbatim-storage null→P3). LINKS.md was empty — triage run 3 didn't fire. Re-injection premise correction delivered in-chat.
 
-**Next session (133): the user manual** — crystallize scope/direction for the agentic-OS formalization, drafted with Nick inline (content is his). Handoff: `operations/handoffs/handoff-prompt-session-133-user-manual.md`. **Open for Nick:** verbatim null→P3 gate (reassessment report); re-injection correction next step; push of the unpushed session-130/131/132 commits; the #8 taxonomy/clustering repo name; the "Division, to a degree" garbled fragment in the direction note; the mirror question (automate subtree push or retire); the design-notes category ruling (assessment delivered session 129, paused before ruling).
+**Session 133 landed: the restructure pivot.** The user manual was parked mid-contract (audience/altitude locked: Nick-builder; both, direction-bounded); Nick redirected to the **engine restructure & harness program** — plan of record `operations/plans/2026-07-12-engine-restructure-program.md` (6 phases: session-ops restructure → research grounding → substrate audit/second-brain → manual → structured interview → harness+generalize; Phase 0 greenlit, not executed). Inputs: full CareerBuddy ops-model analysis (forward-only PROGRESS + HISTORY + reconcile-in-place handoff; per-skill import verdicts) and Nick's **governance-as-portable-kernel** vision (governance/ = the portable export unit; harness materializations derived; kernel litmus = "downstream would pull it"). Executed same-session: `meta-skill-author` imported from CareerBuddy @1.15.0 (adapted, Level-1 PASS, Rule-10 assessed; registers after restart; 2 upstream bugs found) and a 3-video KB intake (kept on Nick's ruling — the scene-detection P2 finding is the video-redesign design input). The LINKS.md batch (~70 links) landed but is **parked — do not process** (Nick: not enough context); 61 transcripts cached untracked.
+
+**Next session (134): video-intake audit + design** — examine how we process YouTube links: audit the as-is (`/transcript-fetcher` → research-loop Pass 2 seam; yt-dlp bot-check fragility), then spec the target via `/meta-skill-author` Design mode (spec-first, Nick gates; scene-detection finding + its upstream repo as design inputs; rule on the fired `/link-intake` promotion trigger). Handoff: `operations/handoffs/handoff-prompt-session-134-video-intake.md`. **Open for Nick:** meta-skill-author assess follow-ups A/D/E (its `ADAPTATION.md`); System Log narrowing (program Phase 0, DD-59); push of the unpushed session-130→133 commits; LINKS.md processing timing; carried from 129–132: verbatim null→P3 gate, re-injection correction next step, the #8 taxonomy/clustering repo name, the "Division, to a degree" garbled fragment, the mirror question (automate subtree push or retire), the design-notes category ruling (folded into program Phase 2).
 
 ---
 
-## What Changed This Session (132)
+## What Changed This Session (133)
 
-Session 132 executed the sweep follow-ups, all inline (no subagents). Three commits (`06baab9` → `bdfdb97`); tree clean at close; **push still Nick-gated (session-130/131/132 commits are local-only)**.
+Session 133 pivoted on Nick's direction: the user manual parked, the **engine restructure & harness program** planned and started. Six commits (`7c253d0` → `3557651` + the session-close commit); **push still Nick-gated (sessions 130→133 local-only)**.
 
-- **Promotion gate (pre-decided — adopt Promoter recs as-is):** 10 findings written. 7 New: `label-taint-tracking-composable-policy-state`, `bench-verified-harness-capability-flags`, `injection-observation-split-bridge-forwarder`, `ubiquitous-language-glossary-with-anti-terms`, `plugins-as-sdk-clients`, `two-tier-tool-contracts-complexity-firewall`, `time-boxed-automated-pr-compliance`. 2 judgment promotes: `natural-language-policies-hardened-framework-envelope` (`extends` policy-guarded-tool-execution), `deny-shrinks-toolset` (`contradicts` static-tool-set — the batch's key tension, both directions of the shape-the-surface vs gate-the-calls axis now in the KB). Judgment call taken: the O11+C7+C12 convergence became **one** synthesized cross-repo finding, `permission-channel-as-escalation-steering-bus` (2 repos, 3 mechanisms), instead of thin separates.
-- **Folds (C4/C5/C7/C8):** opencode corroboration routed into `static-tool-set-mode-changes-as-callable-tools` (mode=agent=permission-ruleset as independent cross-harness implementation), `append-only-context-updates-system-reminder-injection` (Context Epoch / Mid-Conversation System Message as the named independent implementation), `loop-detection-hash-based-sliding-window` (doom-loop-as-permission = third response-strategy variant), `layered-prompt-assembly-stable-segment-caching` (breakpoint-placement heuristic + 1.25×/0.1× cost math; cross-linked to the caching cluster).
-- **Annotations complete:** every candidate in both analysis docs carries a `→` line (16/16 omnigent, 15/15 opencode); O9↔C6 and O14↔C13 cross-repo links added between the corresponding existing/new findings.
-- **Hygiene:** batch reciprocity check clean (session-132 links, zero gaps). The sweep surfaced 14 pre-existing one-way links (Apr/May vintage) in touched files — reciprocals added with correct inverse rels — plus one dangling ref fixed (`hook-based-enforcement-over-convention.md` → `hook-based-enforcement-for-agent-outputs.md`).
-- **Scoped `/reassess-priorities`** (report: `operations/research-reports/priority-reassessment-2026-07-12.md`): 6 findings scanned, no evidence thresholds crossed. One proposal for Nick: `verbatim-storage-thesis-for-memory` `priority: null` → P3 (triage normalization, single-source). Watch item: the permission-channel synthesis sits one independent repo short of the 3-source P2 bar.
-- **LINKS.md was empty** — link-intake triage run 3 did not fire; `/link-intake` skill promotion stays parked until a third batch.
-- **Re-injection premise correction delivered in-chat** (assessment only; Nick's call on next step).
+- **CareerBuddy analyzed** (private repo, cloned to session scratchpad): ops model (forward-only PROGRESS + HISTORY changelog + Conventional Commits + reconcile-in-place handoff, zero dated handoff files), governance-files registry, ops/ lifecycle classes, C1–C16 deterministic audit battery, six meta/ops skill packages surveyed. Adaptation proposal delivered; Phase-0 adoption greenlit by Nick (execution deferred).
+- **Governance-as-portable-kernel vision captured** (Nick's, plan §2): governance/ as the portable export unit of any agentic system — PRD, constitution, generalized asset forms (markdown + adaptation commentary), one YAML descriptor; harness materializations derived; upstream/downstream learning flow.
+- **Plan of record created** (`operations/plans/2026-07-12-engine-restructure-program.md`): 6 phases, 2 revisit checkpoints, per-skill CareerBuddy import verdicts, locked decisions (audit scope = ops+knowledge; per-skill import-vs-pattern-lift; Phase 0 before research; plan home = `operations/plans/`).
+- **`meta-skill-author` imported** (`837a80a`, `9e662f9`): upstream @1.15.0, full-package adoption via its own Port model; 3 surgical changes; Level-1 validator PASS; Rule-10 `/assess-skill` pass (separate Librarian context) — content strong; dispositions in `ADAPTATION.md`; registered in engine CLAUDE.md ("Imported Toolchain"); registers with the Skill tool after restart. Two upstream bugs logged for the next exchange (missing `Bash(bash*)` grant; version-field drift).
+- **3-video KB intake** (`ff745ba`, in-chat links — Nick later ruled the links a mistake but **keep the intake**): `scene-detection-frame-sampling-for-agent-video-watching` (P2, video-redesign design input), `cross-agent-latent-state-transfer` (P3), `frontier-model-as-harness-designer` (P3); 3 source entries; reciprocal links into ffmpeg-cli / dual-path-rag / l-d-hypothesis findings.
+- **LINKS.md batch (~70 unique) parked on Nick's stop** — do not process (not enough context); background fetch killed at 61/70 transcripts (cached untracked in `app/transcript-fetcher/transcripts/`); the third-batch `/link-intake` promotion trigger has **fired** — disposition due in session 134.
+- **Memory updated:** restructure program is the active focus; agent-vs-skill next-topic memory marked superseded (subsumed into program Phase 4).
 
-### Surfaced this session (carried to 133+)
-- **Nick gates pending:** verbatim null→P3; re-injection correction disposition; push gate for sessions 130–132.
-- Open Nick inputs (unchanged from 129): #8 taxonomy repo name; garbled direction-note fragment; mirror question; design-notes ruling.
-- Watch-only: DD-62, DD-74 cache candidates (unchanged); permission-channel synthesis third-repo watch.
+### Surfaced this session (carried to 134+)
+- **New Nick gates:** meta-skill-author assess follow-ups A/D/E; System Log narrowing (Phase 0); LINKS.md processing timing; push gate now spans 130→133.
+- Carried unchanged from 129–132: verbatim null→P3; re-injection disposition; #8 taxonomy repo name; garbled direction-note fragment; mirror question; design-notes ruling (folded into program Phase 2).
+- Watch-only: DD-62/DD-74 cache candidates; permission-channel synthesis third-repo watch; yt-dlp metadata bot-check fragility (design input for 134).
 
 ---
 
@@ -55,7 +57,9 @@ Session 132 executed the sweep follow-ups, all inline (no subagents). Three comm
 
 Ordered queue. Status markers: `[nick-gate]` waits on Nick's ruling; `[deferred]` held by Nick, re-evaluate on trigger; `[trigger]` waits on external evidence or volume; `[don't-do-yet]` do not reintroduce until a specific upstream condition lands.
 
-1. **`[next]` User manual (session 133).** Write the system's user manual to crystallize scope/direction for the agentic-OS formalization (see Current Focus + `design-notes/2026-06-22-agentic-os-direction.md`); drafted with Nick inline. Handoff: `operations/handoffs/handoff-prompt-session-133-user-manual.md`. **Subsumed into that direction (session 129):** the agent-vs-skill workflow and the capability-type-selection / sibling-docs reconciliation + DD-109 revisit are now sub-questions of the larger harness/agentic-OS model — held, not dropped (seed docs: `knowledge/patterns/capability-type-selection.md`, siblings `research-to-codification-pipeline.md`, `upstream-dependency-spectrum.md`). Also queued here: the design-notes category ruling (session-129 assessment awaiting Nick) and the agent-kind typology gap.
+1. **`[next]` Video-intake audit + design (session 134).** Examine how we process YouTube links — as-is audit, then `/meta-skill-author` Design-mode spec (Nick gates). Handoff: `operations/handoffs/handoff-prompt-session-134-video-intake.md`.
+2. **Engine restructure & harness program** — plan of record: `operations/plans/2026-07-12-engine-restructure-program.md`. Phase 0 (session-ops restructure) greenlit, not executed; Phases 1–5 sequenced there. **Subsumes:** the user manual (Phase 3; audience/altitude contract locked), the agent-vs-skill workflow + capability-type-selection/DD-109 questions (Phase 4 interview; seed docs: `knowledge/patterns/capability-type-selection.md`, `research-to-codification-pipeline.md`, `upstream-dependency-spectrum.md`), the design-notes category ruling and agent-kind typology gap (Phase 2 audit).
+   - ✅ **Session 133:** plan created; CareerBuddy analyzed; kernel vision captured; meta-skill-author imported + assessed (`7c253d0`→`3557651`).
    - ✅ **Sweep follow-ups (session 132) — DONE:** promotion gate executed (10 promoted incl. the permission-channel synthesis; 4 folds; 31/31 annotations); batch reciprocity clean + 14 legacy reciprocals repaired; scoped reassessment (1 gate for Nick); triage run 3 didn't fire (LINKS.md empty) (`06baab9`→`bdfdb97`).
    - ✅ **Research sweep (session 131) — DONE:** omnigent + opencode analyses; 8-source extraction (23 new findings); registry refresh (KB-grounded); linkage repair (32 reciprocals); promotion-candidates report (`9f7dd6d`→`08d3070`).
    - ✅ **Skill-intake protocol (session 130) — DONE:** designed, piloted (13 links) + run 2 (7 links); landed as `operations/references/link-intake-protocol.md` (Rule 11; skill promotion at third batch); `/repo-analyzer` ast-grep ENHANCE applied + re-audited (`769ea22`→`db254b9`).
@@ -64,14 +68,14 @@ Ordered queue. Status markers: `[nick-gate]` waits on Nick's ruling; `[deferred]
    - ✅ **Frontmatter/YAML hygiene sweep (session 127) — DONE:** 40 parse failures fixed corpus-wide; 0 remain (`169ba98`).
    - ✅ **Sweep-residuals cleanup (session 127) — DONE:** DD-113 (forward-only DD↔IB linkage via `source_dd`); `ib_items` retired from 81 DDs (`011fa8c`).
    - ✅ **Knowledge-architecture sweep (session 126) — DONE:** DD-111, DD-112; IB-170 resolved; DD-37 cached (`867e2a7`).
-2. **Phase 2 — schematics + evaluation/feedback layer** (gated slices; plan of record: `project-management/design-notes/2026-06-18-engine-collapse-restructure-plan.md` §Phase 2).
+3. **Engine-collapse Phase 2 — schematics + evaluation/feedback layer** (gated slices; plan: `project-management/design-notes/2026-06-18-engine-collapse-restructure-plan.md` §Phase 2 — distinct from the restructure program's phases).
    - ✅ **Slices 1–2 (sessions 120–121):** schematic form (DD-107) + `/detect-drift` integration.
    - ✅ **Item 2 (session 122):** D7/D9 → schematic re-evaluation wiring made explicit; schematics as `/solicit-proposals` input.
    - ✅ **Item 3 (session 122):** 2 seed schematics (`project-coding-workcell`, `scheduled-operations-assistant`).
    - **`[deferred]` Item 4 — Builder-mode demand→schematic matching** (`/ask-kb`) — now more plausible with a 4-seed library; revisit when exercising it is useful.
    - **`[deferred]` Execution-surface Librarian axis** — weak demand per consumer-abstractions-map (Rule 11); revisit at 2–3+ requests.
    - **`[trigger]` More seed schematics** — when exercising the form against more demand is useful.
-3. **`[deferred]` Ready maintenance** — IB-145 (re-analyze GSD for version drift) and IB-148 (build `/session-handoff-review`). Self-contained; pick up when the queue clears.
+4. **`[deferred]` Ready maintenance** — IB-145 (re-analyze GSD for version drift) and IB-148 (build `/session-handoff-review`). Self-contained; pick up when the queue clears. (IB-148 likely mooted by the program's Phase-0 handoff rewrite — resolve there.)
 
 ---
 
