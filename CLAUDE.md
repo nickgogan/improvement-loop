@@ -116,6 +116,7 @@ All IL skills live in `.claude/skills/` under this system directory (system-scop
 | `/research-query` | On-demand targeted research with optional KB persistence (DD-83) |
 | `/research-loop` | Research intake, finding extraction, delta reports |
 | `/source-triage` | Quick-scan sources for extract/skip/defer verdicts |
+| `/link-intake` | Triage a LINKS.md batch into gated per-link verdicts (ADD/ENHANCE/KB-ONLY/REJECT) — promoted from the link-intake protocol, session 135 |
 | `/watch-upstream` | Monitor watched libraries for upstream changes |
 | `/watch-blogs` | Monitor watched blogs for new posts |
 | `/transcript-fetcher` | Fetch YouTube transcripts for Pass 2 extraction |
