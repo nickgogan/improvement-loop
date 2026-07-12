@@ -1,9 +1,8 @@
 # Improvement Loop — Progress
 
-Updated: 2026-07-12 (session 139 — Phase 1 nearly closed: CareerBuddy + #8 context-hub
-intaken to the KB (anonymized). Phase 2 opened early per Nick: substrate audit filed with
-gates G1–G9; Nick granted door-type delegation — G1–G8 sanctioned, G9 folds into the
-second-brain proposal.)
+Updated: 2026-07-12 (session 140 — gate execution G1–G7 shipped: `/extract-artifacts`
+repaired via DD-117; DD-118–DD-121 filed; design-note sweep + IB hygiene done. Session
+cut by Nick after G7 — G8 + no-gate follow-ups remain in scope.)
 
 ## Start here
 
@@ -54,17 +53,19 @@ Scopes (hill):
   `/link-intake` triage; whole-chain failure = stop, respace ≥1 day. Then named-deps
   gap-check (BMAD/superpowers/Archon/Jones vs direction-note asks — existing KB coverage
   unverified, skipped session 139) → delta report → checkpoint #1.
-- `gate-execution` — **downhill, sanctioned**: execute substrate-audit gates G1–G8 per
-  the door-type delegation (G5 anchor ruling: identification report). Includes the
-  urgent `/extract-artifacts` repair (broken by SL retirement — fix first), IB hygiene,
-  design-note archive sweep, no-gate `/maintain-docs` follow-ups.
+- `gate-execution` — **downhill, G1–G7 done (session 140)**. Remaining: **G8** guides
+  dissolution (mark pipeline guide DD-cache + drop its Current State table; trim/delete
+  `knowledge/guides/_index.md`; archive 10 harvest-queue files + deprecated G2
+  `managing-agent-context.md` + `system-log-template.md`; fix `extracts/guides/CLAUDE.md`
+  deployment-target line) + **no-gate follow-ups** (`knowledge/reference/_index.md`
+  Household-OS framing; DD-66 missing `title`). Audit §Gates has full specs.
 - `second-brain-proposal` — **uphill, Nick gates the mechanism** (Rule 11): size against
   the audit's drop-inventory (§System Log distill candidates — dominant pattern:
   stranded calibration data; §IB closure-note overflow). G9 (boundary-case routing
   destination) folds into this proposal, not decided ad hoc.
 
-**Next unit of work:** `wave-3-retry` if the date allows (≥07-13), else start
-`gate-execution` with the `/extract-artifacts` repair.
+**Next unit of work:** finish `gate-execution` (G8 + no-gate follow-ups — small,
+mechanical); then `wave-3-retry` if the date allows (≥07-13).
 
 ## Backlog / Icebox
 
@@ -77,8 +78,8 @@ noted where promotion is event-gated.
   IB-103 per gate G7)
 - **IB-171** — corpus-wide linkage-hygiene sweep (Nick: "save for later")
 - **IB-145** — GSD version-drift re-analysis
-- meta-skill-author assess follow-ups A/D/E + governance visualization — get IB numbers
-  during gate-execution (G7)
+- **IB-174** — meta-skill-author assess follow-ups A/D/E (Nick-gated guard rulings)
+- **IB-175** — governance visualization (DD corpus + architecture in glanceable form)
 - Multi-tenant agentic-system design — named research-gap candidate (session 139
   observation: single-operator exemplars dominate the corpus); Nick gates promotion
 - `/link-intake` escalation-language watch item (Rule 11)

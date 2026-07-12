@@ -5,6 +5,19 @@ Newest-first changelog of shipped sessions and milestones for the improvement-lo
 git is the atomic record of what changed, file by file (Conventional Commits from session 133 onward).
 Entries carry dates and commit ranges where known; sessions 1–116 predate this file and are collapsed into era summaries.
 
+## Session 140 — 2026-07-12 — substrate-audit gate execution, G1–G7 (309b4b7…d5473e2)
+
+**Outcome:** seven of the eight sanctioned gates executed under the door-type delegation — the broken pipeline stage repaired, the DD corpus cleaned (5 new DDs; 12 stale DDs formally superseded), the design-notes folder reduced to genuine deliberation, IB hygiene done. G8 (guides dissolution) + the no-gate `/maintain-docs` follow-ups remain.
+
+- **G5 first (urgent):** DD-117 supersedes DD-95 — the lifecycle pointer re-anchors from the retired SL (`last_change_sl`) to the run's authorizing input (`last_change_report`: identification-report / harvest-queue stem, derived not passed; `--sl` argument and its abort paths deleted). `/extract-artifacts` non-guide writes work again; `_schema.yaml` updated; legacy pointers stay frozen-valid, no backfill.
+- **G4 + second-order SL sweep:** DD-59 carries the scope note verbatim. Seven Librarian skills' encounter logging suspended pending G9 (encounters surface in run reports instead); the 13-type taxonomy/schema/routing distilled to `operations/references/librarian/boundary-cases.md`; `/solicit-proposals` round record re-routed to `governance/proposals/`; `/system-audit` + `/system-health` recency reads re-pointed to HISTORY + git; `librarian-reads.md` re-homed out of the frozen folder; Owner path maps annotated read-only.
+- **G1:** DD-118 closes DD-31/38/40/42/50/58/90 in one consolidating supersession with per-DD successor pointers; pipeline-rules rules 6–7 re-sourced to DD-116 (telemetry rule retired); engine CLAUDE.md drops the DD-31 hard constraint.
+- **G2:** DD-119 (foundational) restates the stage-before-deploy, workspace-shape, and milestone-gate invariants post-collapse; DD-39/47/61 superseded; FOUNDATIONS regenerated (DD-47 out, DD-119 in).
+- **G3:** DD-120 re-homes DD-60/DD-62 as `knowledge/patterns/composable-agent-teams.md` + `explore-then-harden.md`; patterns `_index` hardcoded catalog trimmed to the Dataview view.
+- **G6:** `archive/design-notes/` created — 10 ratified notes + 2 distilled sources archived, filenames preserved, no stubs; read-contract + use-case-registry re-homed to `operations/references/librarian/` with live pointers in 22 files rewritten *before* the move; DD-121 files the DD-wisdom caching policy (was live law anchored to a draft note); design-notes `_index` scope now excludes living reference material.
+- **G7:** IB-148 cancelled (mooted by Phase 0), IB-102 cancelled (superseded by harness-materialization), IB-103 merged into IB-173 with its track-record prerequisites carried; IB-174 (meta-skill-author follow-ups A/D/E) and IB-175 (governance visualization) filed.
+- Session cut by Nick after G7; G8 + no-gate follow-ups roll to the next session inside the same scope.
+
 ## Session 139 — 2026-07-12 — Phase 1 intakes + Phase 2 substrate audit (91d7bd2…dd32524)
 
 **Outcome:** the KB gained both same-class agentic-OS exemplars (CareerBuddy + the anonymized enterprise context-hub), and Phase 2 opened with a full six-class substrate audit awaiting gate execution.
