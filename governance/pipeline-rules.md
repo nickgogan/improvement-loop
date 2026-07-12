@@ -6,7 +6,7 @@ target_system:
   - "improvement-loop"
 stage: "active"
 created: "2026-04-19"
-updated: "2026-04-22"
+updated: "2026-07-12"
 author: "agent"
 source_governance:
   - "CHARTER.md"
@@ -15,7 +15,7 @@ source_sections:
   - "Design Philosophy"
   - "The Pipeline"
   - "The Feedback Loop"
-  - "DD-90 (session telemetry)"
+  - "DD-116 (session-ops spine)"
 tags:
   - "governance"
   - "improvement-loop"
@@ -26,8 +26,8 @@ tags:
 
 # Pipeline Rules — IL Governance
 
-> Derived from: Charter (`CHARTER.md`), DBDO Pipeline (`systems/improvement-loop/knowledge/reference/dbdo-pipeline.md`), DD-90 (session telemetry)
-> Last reconciled: 2026-06-21
+> Derived from: Charter (`CHARTER.md`), DBDO Pipeline (`systems/improvement-loop/knowledge/reference/dbdo-pipeline.md`), DD-116 (session-ops spine)
+> Last reconciled: 2026-07-12
 
 ## Rules
 
@@ -46,12 +46,12 @@ tags:
 5. **System evolution via periodic research, not ad-hoc.** Changes to the IL system flow through the structured pipeline (research → identify → extract → deploy). Exception: on-demand research via `/research-query` (DD-83) and Owner-initiated structural proposals.
    - *Source:* Constitution — Design Philosophy; DD-36
 
-6. **Learn and improve every cycle.** Every research scan, every audit, every feedback triage produces learnings. SL entries capture events. The Owner detects patterns. The pipeline should get faster and more accurate over time.
-   - *Source:* DBDO Pipeline step 6 ("Learn and Improve")
+6. **Learn and improve every cycle.** Every research scan, every audit, every feedback triage produces learnings. Learnings route by shape (DD-116): decision-shaped → a DD, pattern-shaped → `knowledge/`, work-shaped → an IB item; git + `HISTORY.md` carry the event record. The Owner detects patterns. The pipeline should get faster and more accurate over time.
+   - *Source:* DBDO Pipeline step 6 ("Learn and Improve"); DD-116
 
-7. **SL entries carry session telemetry.** Every SL entry written at session close includes a `telemetry:` block with these fields: `model`, `tokens_consumed`, `context_window_size`, `context_window_pct_peak`, `turns`, `tool_calls`, `subagents[]`, `capture_quality` (`measured` / `estimated`), and `harness`. `"unknown"` is a first-class value when a field is neither measurable nor reasonably estimable — entries are not held back waiting for unknown data. Nick is not a telemetry source. When evaluating a harness substitution, the prior harness's capture-layer disclosures become the baseline against which the candidate's observability is judged.
-   - *Source:* DD-90 (session telemetry) — requirement layer (harness-portable) + capture layer (harness-specific)
+7. **Session tracking rides the three-artifact spine.** Sessions are recorded by git (Conventional Commits with a `Refs:` scope footer) + `HISTORY.md` (Keep-a-Changelog, newest-first); `PROGRESS.md` is the sole forward control surface, reconciled by `/session-handoff`. The former per-entry SL telemetry block (DD-90) retired with the SL producer — its harness-portable requirement layer remains Phase-4 feedstock (DD-118).
+   - *Source:* DD-116 (session-ops spine); DD-118 (DD-90 closure)
 
 ## Applicability Notes
 
-These rules govern the flow of work through the IL system. The Researcher owns Stage 1, the Codifier owns Stages 2-3, and Nick owns Stage 4. The Owner oversees pipeline health but does not execute pipeline stages — the Owner is a steward, not a participant in the research pipeline. Rule 7 (telemetry) applies to every agent disposition at session close — whoever is authoring the SL entry populates the `telemetry:` block.
+These rules govern the flow of work through the IL system. The Researcher owns Stage 1, the Codifier owns Stages 2-3, and Nick owns Stage 4. The Owner oversees pipeline health but does not execute pipeline stages — the Owner is a steward, not a participant in the research pipeline.
