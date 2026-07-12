@@ -67,7 +67,7 @@ For Researcher, Codifier, and Librarian dispositions, read the agent definition 
 | `.claude/skills/` | Engine-scoped skills (system-scoped placement per DD-109, originating in archived Claude Build DD-49) — see "Skills That Operate Here" below for per-agent listings |
 | `feedback/` | Feedback items for improving the IL system |
 | `archive/improvement-proposals/` | Archived — historical proposals from session 6, superseded by the DD-80 pipeline |
-| `operations/` | Loop reports, handoff prompts, system log, and both audit homes — `system-audits/` (`/system-audit`) and `artifact-audits/` (`/audit-artifacts`) |
+| `operations/` | Loop reports, plans, system log, and both audit homes — `system-audits/` (`/system-audit`) and `artifact-audits/` (`/audit-artifacts`) |
 | `operations/references/` | Research dimensions registry (`research-dimensions.md`) |
 | `project-management/` | Design Decisions and Implementation Backlog items |
 | `docs/` | System documentation & architecture diagrams (pipeline trace, ownership map, agent-interaction & subagent topology) |
@@ -189,6 +189,25 @@ The Librarian also uses Read/Glob/Grep directly to navigate the KB for Teacher/B
 
 ---
 
+## Session Ops
+
+The engine runs a three-artifact session-ops spine (restructure-program Phase 0, 2026-07-12):
+
+- **`PROGRESS.md`** — the forward-only control surface and the *only* cold-start artifact.
+  **Wake-up idiom:** when Nick says "PROGRESS" or "continue" in a fresh session, read
+  `PROGRESS.md` and proceed with the next unit of work — no recital, no summary back.
+- **`HISTORY.md`** — Keep-a-Changelog of shipped sessions/milestones, newest-first, with
+  commit ranges. Shipped work routes here, never accumulates in PROGRESS.
+- **git** — Conventional Commits (`type(scope): subject` + a `Refs: <scope-slug>` footer
+  naming the roadmap scope the commit advances). The pre-commit hook enforces frontmatter
+  validity, FOUNDATIONS sync, and the PROGRESS line budget (warn >150, block >250) —
+  the remedy is route-then-compact, never raising the cap.
+
+Session close = `/session-handoff` (reconcile-in-place; it owns the PROGRESS.md write per
+workspace Process Rule 2). Dated handoff files are retired — historical ones live in
+`archive/handoffs/`. The System Log does not carry session tracking; it keeps only
+architectural/operational learnings that fit no DD.
+
 ## Reference System
 
 | Need | Where to look |
@@ -217,7 +236,7 @@ The engine is now fractal-complete (DD-52) — all 7 folders exist. Current stat
 | `knowledge/` | Exists — `patterns/`, `guides/`, `templates/`, `reference/`, `schematics/` (reference absorbed from the dissolved meta-system in Step 3; `schematics/` added in Phase 2, DD-107) |
 | `agents/` | Exists — Owner, Researcher, Codifier, Librarian, handoff protocol |
 | `project-management/` | Exists — DDs and IB items (merged with former cross-system data, Step 5) |
-| `operations/` | Exists — research-reports, pattern-identification-reports, guide-reports, drift-reports, handoffs, system-log, system-audits, artifact-audits, references/ |
+| `operations/` | Exists — research-reports, pattern-identification-reports, guide-reports, drift-reports, plans, system-log, system-audits, artifact-audits, references/ |
 | `archive/` | Exists — archived improvement-proposals |
 | `feedback/` | Exists (engine extension) — feedback items for engine improvement |
 
