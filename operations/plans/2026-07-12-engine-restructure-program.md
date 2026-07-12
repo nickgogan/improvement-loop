@@ -191,7 +191,7 @@ this plan accordingly.
 |---|---|---|---|
 | `ops-session-handoff` | **Import + adapt** | Phase 0 | Exportable; ships ports + contract; direct replacement for dated-handoff model |
 | `ops-vision-to-plan` | **Import + adapt** | Phase 4 | Exportable; the structured-interviewing engine for PRD/constitution |
-| `meta-skill-author` | **Import + adapt** | Phase 5 | Exportable; authoring/eval/improve/port toolchain; richest package |
+| `meta-skill-author` | **Import + adapt** | ✅ Done 2026-07-12 (pulled forward on Nick's directive; `837a80a`) — first acceptance target: the YouTube-intake skill | Exportable; authoring/eval/improve/port toolchain; richest package |
 | `ops-self-improve` | **Pattern-lift** | Phase 2 | Internal, topology-bound; its store/promotion model is the second-brain prototype |
 | `ops-doc-sync` | **Pattern-lift** | Phases 2/5 | Internal; C1–C16 deterministic-audit pattern generalizes, checks don't |
 | `meta-harness-author` | **Pattern-lift** | Phase 5 | Internal; generalize→adapt→install→verify arc = the kernel compiler model |
