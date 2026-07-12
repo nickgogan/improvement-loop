@@ -13,6 +13,9 @@ applicability:
 adopted_in: null
 sources:
 - 10-cli-tools-that-make-claude-code-unstoppable.md
+related_findings:
+- file: scene-detection-frame-sampling-for-agent-video-watching.md
+  rel: extended-by
 proposals: null
 date_discovered: '2026-03-22'
 last_updated: '2026-04-19'

@@ -21,6 +21,8 @@ related_findings:
   rel: enables
 - file: scalpel-local-parse-then-llm-cost-optimization.md
   rel: same-problem
+- file: scene-detection-frame-sampling-for-agent-video-watching.md
+  rel: same-problem
 pipeline_status: raw
 consumed_by: []
 ---
