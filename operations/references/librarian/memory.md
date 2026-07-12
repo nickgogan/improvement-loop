@@ -116,5 +116,5 @@ Tier-1 citations: `<guide>.md#<anchor>` with line-range appendix until the secti
 
 - Related concepts: `context-rot.md`, `second-brain.md`, `agent.md` (this directory).
 - Related operations: `audit.md`, `diagnose.md`, `design.md`, `decide.md` (planned) — all compose this file for memory-aspect queries.
-- Use-case registry (UC-1.5, UC-4.3, UC-5.2, UC-7.1, UC-8.3): `project-management/design-notes/2026-04-21-librarian-use-case-registry.md`.
+- Use-case registry (UC-1.5, UC-4.3, UC-5.2, UC-7.1, UC-8.3): `operations/references/librarian/use-case-registry.md`.
 - Governing DDs: DD-78 (Contract triple-role), DD-82 (IL 4-agent architecture).

@@ -35,7 +35,7 @@ tags:
 
 ## Foundational Design Principles (DD-37)
 
-> Apply these five heuristics **before** consulting any system-specific DD. They are the constitution-altitude design philosophy that governs the engine; the numbered Rules below operationalize agent structure and behavior on top of them. (Cached here per the DD-wisdom caching policy — cross-cutting, reference-shaped, engine self-knowledge, stable; `source_dd: DD-37`.)
+> Apply these five heuristics **before** consulting any system-specific DD. They are the constitution-altitude design philosophy that governs the engine; the numbered Rules below operationalize agent structure and behavior on top of them. (Cached here per the DD-wisdom caching policy, DD-121 — cross-cutting, reference-shaped, engine self-knowledge, stable; `source_dd: DD-37`.)
 
 1. **Spec before build.** Design the architecture before writing code or configuring anything. A spec precedes every implementation. (If this conflicts with "start lean," the resolution is: write a *lean* spec, then build.)
 2. **Complementary tools, not redundant ones.** Every tool, skill, or abstraction serves a unique purpose; none should duplicate another's primary function. (Generalizes into rule 11 — abstractions earn their keep.)

@@ -99,7 +99,7 @@ Every claim cites its substrate tier: `G<N>.md#<anchor>` for Tier 1 (anchor IDs 
 
 ## Cross-references
 
-- Substrate audit §"The Librarian Reference Layer": `project-management/design-notes/2026-04-20-substrate-audit-dimensions-patterns-guides-vs-librarian.md`
+- Substrate audit §"The Librarian Reference Layer": `archive/design-notes/2026-04-20-substrate-audit-dimensions-patterns-guides-vs-librarian.md`
 - `_index.md` in this directory.
 - Related concepts (planned): `agent.md`, `mcp.md`, `context-rot.md`.
 - Related operation: `audit.md` — composition of harness audit pulls this file's cross-guide thread.

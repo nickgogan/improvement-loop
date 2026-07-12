@@ -235,5 +235,5 @@ Tier-1 citations point to `<guide>.md#<anchor>` (heading-match fallback until th
 
 - Audit composition and procedure: `audit.md` (this directory).
 - Related concepts: `harness.md`, `second-brain.md`, `prompt.md` (this directory), `skill.md` (this directory).
-- Use-case registry (UC-1.1–1.3, UC-3.1, UC-4.2, UC-5.1, UC-5.4, UC-6.2, UC-9.1, UC-9.2): `project-management/design-notes/2026-04-21-librarian-use-case-registry.md`.
+- Use-case registry (UC-1.1–1.3, UC-3.1, UC-4.2, UC-5.1, UC-5.4, UC-6.2, UC-9.1, UC-9.2): `operations/references/librarian/use-case-registry.md`.
 - Governing DDs: DD-78 (Contract triple-role), DD-82 (IL 4-agent architecture).

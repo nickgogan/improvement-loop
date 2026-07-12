@@ -7,9 +7,9 @@ agent: "librarian"
 created: "2026-04-26"
 updated: "2026-04-26"
 source_design:
-  - "project-management/design-notes/2026-04-21-librarian-read-contract.md (§1.4, §9.5, Q4)"
-  - "project-management/design-notes/2026-04-21-librarian-use-case-registry.md (UC-9.2)"
-  - "project-management/design-notes/2026-04-22-librarian-boundary-case-tracking.md (cross-concept encounter)"
+  - "operations/references/librarian/read-contract.md (§1.4, §9.5, Q4)"
+  - "operations/references/librarian/use-case-registry.md (UC-9.2)"
+  - "archive/design-notes/2026-04-22-librarian-boundary-case-tracking.md (cross-concept encounter)"
 tags:
   - "workflow"
   - "librarian"
@@ -348,9 +348,9 @@ Phase 4 — Build (agent) [M]
 
 ## Cross-References
 
-- **Read-contract** (governing protocol): `project-management/design-notes/2026-04-21-librarian-read-contract.md` — §1.4 cross-concept query case, §9.5 boundary handling, Q4 design intent.
-- **Use-case registry** (UC-9.2 worked example): `project-management/design-notes/2026-04-21-librarian-use-case-registry.md`.
-- **Boundary-case tracking** (cross-concept encounter type, §"cross-concept" → Subagent template work): `project-management/design-notes/2026-04-22-librarian-boundary-case-tracking.md`.
+- **Read-contract** (governing protocol): `operations/references/librarian/read-contract.md` — §1.4 cross-concept query case, §9.5 boundary handling, Q4 design intent.
+- **Use-case registry** (UC-9.2 worked example): `operations/references/librarian/use-case-registry.md`.
+- **Boundary-case tracking** (cross-concept encounter type, §"cross-concept" → Subagent template work): `archive/design-notes/2026-04-22-librarian-boundary-case-tracking.md`.
 - **Reference layer** (operation + concept files): `operations/references/librarian/`.
 - **Librarian agent definition** (governance carry-through): `agents/librarian/agent.md`.
 - **Sibling workflow** (single-concept queries): `agents/librarian/workflows/kb-query.md`.

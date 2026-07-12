@@ -91,5 +91,5 @@ Tier-1 citations: `<guide>.md#<anchor>` with line-range appendix until the secti
 
 - Related concepts: `agent.md` (the unit), `harness.md` (the runtime), `memory.md` (shared state tier), `second-brain.md` (shared knowledge tier).
 - Related operations: `audit.md`, `design.md`, `coverage.md` (UC-8.2 "which guides discuss multi-agent orchestration"), `decide.md` (planned — single vs multi-agent is canonical decide query).
-- Use-case registry (UC-3.6 audit agentic-system; UC-8.2 coverage multi-agent orchestration): `project-management/design-notes/2026-04-21-librarian-use-case-registry.md`.
+- Use-case registry (UC-3.6 audit agentic-system; UC-8.2 coverage multi-agent orchestration): `operations/references/librarian/use-case-registry.md`.
 - Governing DDs: DD-78 (Contract triple-role), DD-82 (IL 4-agent architecture — the IL itself is an agentic system).

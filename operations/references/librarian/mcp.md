@@ -85,5 +85,5 @@ Tier-1 citations: `<guide>.md#<anchor>` with line-range appendix until the secti
 
 - Related concepts: `harness.md` (MCP is a protocol the harness loads), `skill.md` (skills may wrap MCP tools), `agent.md` (agents consume MCP tool definitions — MCP-adjacent aspects surface through `agent.md`'s composition when a query names MCP).
 - Related operations: `audit.md` (MCP allowlisting and token cost are two audit aspects); `decide.md` (MCP vs SDK-native vs CLI-wrapper is a canonical tradeoff); `explain.md` (mechanism questions about MCP).
-- Use-case registry (no flagged UCs at registry time; author-promoted on first MCP-nouned query): `project-management/design-notes/2026-04-21-librarian-use-case-registry.md`.
+- Use-case registry (no flagged UCs at registry time; author-promoted on first MCP-nouned query): `operations/references/librarian/use-case-registry.md`.
 - Governing DDs: DD-78 (Contract triple-role — G5 tool-integration Contract invariants fire as emergent audit criteria for any MCP-using agent), DD-82 (IL 4-agent architecture).

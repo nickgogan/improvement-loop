@@ -1,10 +1,10 @@
 ---
 title: "Librarian Use-Case Registry — (Concept, Operation) Decomposition"
-type: "design-note"
+type: "operational-reference"
 target_system:
   - "improvement-loop"
 created: "2026-04-21"
-updated: "2026-04-22"
+updated: "2026-07-12"
 author: "claude"
 stage: "draft"
 source_dd:
@@ -26,6 +26,8 @@ aliases:
 ---
 
 # Librarian Use-Case Registry — (Concept, Operation) Decomposition
+
+> **Re-homed 2026-07-12** (substrate-audit gate G6): authored as a design note but live — ~14 concept docs cite UC anchors here, and `librarian/_index.md` names the registry-update process as the prioritization protocol for future authoring. Now lives in the reference layer it serves, per the DD-112 home rule.
 
 **Status:** Design note. Phase 4 of the session-49 plan. Produces the authoring backlog that drives concept-file and operation-file prioritization. Nick gates any DD filing.
 
@@ -290,8 +292,8 @@ Long-tail (~20% combined) — five categories that are valuable but per-query in
 
 ## Cross-References
 
-- Substrate audit (9 categories + rationale): `project-management/design-notes/2026-04-20-substrate-audit-dimensions-patterns-guides-vs-librarian.md`
-- Contract-section spot check (G9.I6 gate for safety-critical skills): `project-management/design-notes/2026-04-21-contract-section-spotcheck-agent-audit.md`
+- Substrate audit (9 categories + rationale): `archive/design-notes/2026-04-20-substrate-audit-dimensions-patterns-guides-vs-librarian.md`
+- Contract-section spot check (G9.I6 gate for safety-critical skills): `archive/design-notes/2026-04-21-contract-section-spotcheck-agent-audit.md`
 - Librarian reference layer exemplars: `operations/references/librarian/_index.md`, `harness.md`, `second-brain.md`, `audit.md`
 - Guide routing table: `operations/references/guide-routing-table.md`
 - Research dimensions registry: `operations/references/research-dimensions.md`

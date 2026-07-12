@@ -1,12 +1,12 @@
 ---
 title: "Librarian Read-Contract — Query Execution Protocol"
-type: "design-note"
+type: "operational-reference"
 target_system:
   - "improvement-loop"
 created: "2026-04-21"
-updated: "2026-04-21"
+updated: "2026-07-12"
 author: "claude"
-stage: "draft"
+stage: "active"
 source_dd:
   - "DD-77"
   - "DD-78"
@@ -26,7 +26,9 @@ aliases:
 
 # Librarian Read-Contract — Query Execution Protocol
 
-**Status:** Design note. Phase 5 of the session-49 plan. Formalizes how the Librarian turns a consumer query into substrate reads, escalates across tiers, surfaces confidence and provenance, and handles consumer-submitted inputs. Complements the Librarian agent definition (`agents/librarian/agent.md`) — the agent file states *what* the Librarian is; this note states *how* it executes under Option α' (concept + operation reference layer, three-tier access).
+> **Re-homed 2026-07-12** (substrate-audit gate G6): this file was authored as a design note (`project-management/design-notes/2026-04-21-librarian-read-contract.md`) but became the Librarian's live query-execution protocol — 9+ concept docs delegate governing sections to it by path. It now lives in the reference layer it governs, per the DD-112 home rule.
+
+**Status:** Living operational reference (originally the Phase-5 design note). Phase 5 of the session-49 plan. Formalizes how the Librarian turns a consumer query into substrate reads, escalates across tiers, surfaces confidence and provenance, and handles consumer-submitted inputs. Complements the Librarian agent definition (`agents/librarian/agent.md`) — the agent file states *what* the Librarian is; this note states *how* it executes under Option α' (concept + operation reference layer, three-tier access).
 
 Nick gates any DD filing. No execution this session — this is the protocol spec; Phase 6 skills implement a narrow slice of it.
 
@@ -439,9 +441,9 @@ The two documents are complementary. If the agent definition ever absorbs this p
 
 - Librarian agent definition: `agents/librarian/agent.md`
 - Use-case registry (Phase 4 output this builds on): `project-management/design-notes/2026-04-21-librarian-use-case-registry.md`
-- Substrate audit (Option α', three-tier access model): `project-management/design-notes/2026-04-20-substrate-audit-dimensions-patterns-guides-vs-librarian.md`
-- Contract-section spot check (audit composition mechanism): `project-management/design-notes/2026-04-21-contract-section-spotcheck-agent-audit.md`
-- Pipeline collapse proposal (`sections[]` manifest, anchor stability): `project-management/design-notes/2026-04-20-pipeline-collapse-proposal.md`
+- Substrate audit (Option α', three-tier access model): `archive/design-notes/2026-04-20-substrate-audit-dimensions-patterns-guides-vs-librarian.md`
+- Contract-section spot check (audit composition mechanism): `archive/design-notes/2026-04-21-contract-section-spotcheck-agent-audit.md`
+- Pipeline collapse proposal (`sections[]` manifest, anchor stability): `archive/design-notes/2026-04-20-pipeline-collapse-proposal.md`
 - Reference layer: `operations/references/librarian/` (`_index.md`, `harness.md`, `second-brain.md`, `audit.md`)
 - Guide routing table: `operations/references/guide-routing-table.md`
 - Research dimensions registry: `operations/references/research-dimensions.md`

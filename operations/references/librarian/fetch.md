@@ -141,8 +141,8 @@ Per read-contract §Token-budget awareness: fetch consolidates three sub-ops int
 
 ## Cross-references
 
-- Read-contract (§8.5 input handling for fetch): `project-management/design-notes/2026-04-21-librarian-read-contract.md`.
+- Read-contract (§8.5 input handling for fetch): `operations/references/librarian/read-contract.md`.
 - Related operations: `audit.md`, `design.md` (design often lifts templates inline — the mechanism shared with fetch-template is the same anchor-lifting primitive).
 - Related concepts: all concept files — any of them can route a fetch query to its source-guide templates/rules.
-- Use-case registry (UC-2.1–2.4): `project-management/design-notes/2026-04-21-librarian-use-case-registry.md`.
+- Use-case registry (UC-2.1–2.4): `operations/references/librarian/use-case-registry.md`.
 - Governing DDs: DD-78 (Contract triple-role — rules / templates / examples are three of the four subsection kinds DD-78 standardizes), DD-82 (IL 4-agent architecture).

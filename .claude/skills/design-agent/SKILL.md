@@ -404,8 +404,8 @@ encounter records to disk.
 - Concept file: `systems/improvement-loop/operations/references/librarian/agent.md`
 - Symmetric audit skill: `systems/improvement-loop/.claude/skills/assess-agent/SKILL.md`
 - Sibling design skill: `systems/improvement-loop/.claude/skills/design-skill/SKILL.md`
-- Read-contract: `systems/improvement-loop/project-management/design-notes/2026-04-21-librarian-read-contract.md`
-- Boundary-case tracking: `systems/improvement-loop/project-management/design-notes/2026-04-22-librarian-boundary-case-tracking.md`
+- Read-contract: `systems/improvement-loop/operations/references/librarian/read-contract.md`
+- Boundary-case tracking: `systems/improvement-loop/archive/design-notes/2026-04-22-librarian-boundary-case-tracking.md`
 - Librarian agent definition: `systems/improvement-loop/agents/librarian/agent.md`
 - Governing rules: IL `agent-rules.md` rule 10 (generator-assessor separation), rule 11 (abstractions must earn their keep), rule 12 (audit/design symmetry)
 - Governing DDs: DD-78, DD-82, DD-89, DD-92

@@ -85,5 +85,5 @@ Tier-1 citations: `<guide>.md#<anchor>` with line-range appendix until the secti
 
 - Related concepts: `memory.md` (Variant A cross-refs context-rot as the working-tier failure mode), `agent.md`, `harness.md`.
 - Related operations: `diagnose.md`, `explain.md` (planned), `fetch.md` (planned for UC-2.1 context-budget template), `audit.md`.
-- Use-case registry (UC-2.1, UC-4.1, UC-4.4, UC-6.1): `project-management/design-notes/2026-04-21-librarian-use-case-registry.md`.
+- Use-case registry (UC-2.1, UC-4.1, UC-4.4, UC-6.1): `operations/references/librarian/use-case-registry.md`.
 - Governing DDs: DD-78 (Contract triple-role), DD-82 (IL 4-agent architecture).

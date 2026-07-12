@@ -286,7 +286,7 @@ underspecified for Builder mode).
 - Guide routing table: `systems/improvement-loop/operations/references/guide-routing-table.md`
 - Research dimensions registry: `systems/improvement-loop/operations/references/research-dimensions.md`
 - Peer cross-repo skill: `systems/improvement-loop/.claude/skills/compare-repos/SKILL.md`
-- Boundary-case tracking spec: `systems/improvement-loop/project-management/design-notes/2026-04-22-librarian-boundary-case-tracking.md`
+- Boundary-case tracking spec: `systems/improvement-loop/archive/design-notes/2026-04-22-librarian-boundary-case-tracking.md`
 - Governing rules: IL `agent-rules.md` rule 11 (this skill earns its keep
   by operationalizing recurring conversational KB navigation as a
   callable surface), rule 10 (non-applicable — read-only, no spec)

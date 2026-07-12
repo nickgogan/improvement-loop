@@ -128,9 +128,9 @@ Expected input: concept / dimension / variant scope + `since` date. If date is o
 
 ## Cross-references
 
-- Read-contract (Step 1 verb extraction, §8.3 input handling for whats-new): `project-management/design-notes/2026-04-21-librarian-read-contract.md`.
+- Read-contract (Step 1 verb extraction, §8.3 input handling for whats-new): `operations/references/librarian/read-contract.md`.
 - Related operations: `coverage.md` (this directory) — coverage lists what exists; whats-new lists what crossed a date threshold.
 - Related concepts: all concept files — whats-new can scope to any concept.
 - Relevant workflow: `/watch-upstream` handles Tier 3 watched-library deltas; `whats-new` does not overlap.
-- Use-case registry (UC-7.1–7.3): `project-management/design-notes/2026-04-21-librarian-use-case-registry.md`.
+- Use-case registry (UC-7.1–7.3): `operations/references/librarian/use-case-registry.md`.
 - Governing DDs: DD-82 (IL 4-agent architecture), DD-90 (telemetry — `whats-new` answers may reference SL-entry dates but does not itself emit telemetry).

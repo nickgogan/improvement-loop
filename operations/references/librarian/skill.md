@@ -150,7 +150,7 @@ Tier-1 citations: `<guide>.md#<anchor>` with line-range appendix until the secti
 ## Cross-references
 
 - Audit composition and procedure: `audit.md` (this directory) — see Phase 2 §"Build rubric" for how G9.I6 is added for safety-critical skills.
-- Contract-section spot check §Test 4 (where the G9.I6 refinement was validated): `project-management/design-notes/2026-04-21-contract-section-spotcheck-agent-audit.md`.
+- Contract-section spot check §Test 4 (where the G9.I6 refinement was validated): `archive/design-notes/2026-04-21-contract-section-spotcheck-agent-audit.md`.
 - Related concepts: `agent.md`, `prompt.md` (this directory).
-- Use-case registry (UC-3.3, UC-4.5): `project-management/design-notes/2026-04-21-librarian-use-case-registry.md`.
+- Use-case registry (UC-3.3, UC-4.5): `operations/references/librarian/use-case-registry.md`.
 - Governing DDs: DD-78 (Contract triple-role), DD-82 (IL 4-agent architecture).

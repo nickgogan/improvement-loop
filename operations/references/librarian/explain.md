@@ -129,8 +129,8 @@ No artifact is consumed. Explain operates on substrate, not on consumer-supplied
 
 ## Cross-references
 
-- Read-contract (Step 1 verb extraction, §8.5 input handling for explain): `project-management/design-notes/2026-04-21-librarian-read-contract.md`.
+- Read-contract (Step 1 verb extraction, §8.5 input handling for explain): `operations/references/librarian/read-contract.md`.
 - Related operations: `decide.md` (explain often precedes decide), `diagnose.md` (diagnose's optional mechanism layering is a narrower version of explain).
 - Related concepts: `context-rot.md`, `prompt-caching.md`, `agent.md`, `memory.md`, `agentic-systems.md` (this directory) — any concept file can route an explain query to its Key Concepts substrate.
-- Use-case registry (UC-6.1–6.3): `project-management/design-notes/2026-04-21-librarian-use-case-registry.md`.
+- Use-case registry (UC-6.1–6.3): `operations/references/librarian/use-case-registry.md`.
 - Governing DDs: DD-78 (Contract triple-role — Key Concepts as emergent mechanism explainers), DD-82 (IL 4-agent architecture).

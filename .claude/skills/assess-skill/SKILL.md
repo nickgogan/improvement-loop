@@ -193,7 +193,7 @@ Persistent encounter logging is **suspended**: the System Log is retired as a pr
 - Operation file: `systems/improvement-loop/operations/references/librarian/audit.md`
 - Concept file: `systems/improvement-loop/operations/references/librarian/skill.md`
 - Session-48 Test 4 (where the G9.I6 gate was validated):
-  `systems/improvement-loop/project-management/design-notes/2026-04-21-contract-section-spotcheck-agent-audit.md`
-- Read-contract: `systems/improvement-loop/project-management/design-notes/2026-04-21-librarian-read-contract.md`
-- Boundary-case tracking: `systems/improvement-loop/project-management/design-notes/2026-04-22-librarian-boundary-case-tracking.md`
+  `systems/improvement-loop/archive/design-notes/2026-04-21-contract-section-spotcheck-agent-audit.md`
+- Read-contract: `systems/improvement-loop/operations/references/librarian/read-contract.md`
+- Boundary-case tracking: `systems/improvement-loop/archive/design-notes/2026-04-22-librarian-boundary-case-tracking.md`
 - Governing DDs: DD-78, DD-82, DD-89, DD-92

@@ -80,5 +80,5 @@ Tier-1 citations: `<guide>.md#<anchor>` with line-range appendix until the secti
 
 - Related concepts: `context-rot.md` (stabilizing content is the authoring discipline that makes caching pay off), `harness.md` (caching is harness-implemented), `memory.md` (what caching is *not*).
 - Related operations: `explain.md` (primary consumer — UC-6.3), `audit.md` (G2b Contract item "Stable context is cached" fires as an audit check for any prompt that embeds stable context).
-- Use-case registry (UC-6.3): `project-management/design-notes/2026-04-21-librarian-use-case-registry.md`.
+- Use-case registry (UC-6.3): `operations/references/librarian/use-case-registry.md`.
 - Governing DDs: DD-78 (Contract triple-role — G2b Contract's caching invariant is an emergent audit criterion).

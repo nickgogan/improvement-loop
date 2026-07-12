@@ -46,4 +46,4 @@ own deployment target per DD-81 *if and when* Nick adopts it.
 ---
 
 *Framing set by DD-111 (rename-in-place); spec input:
-`project-management/design-notes/2026-06-20-extracts-knowledge-reconciliation.md`.*
+`archive/design-notes/2026-06-20-extracts-knowledge-reconciliation.md`.*

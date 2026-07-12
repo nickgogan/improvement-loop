@@ -136,9 +136,9 @@ Expected input: scope (dimension / concept / pattern class) + optional filter. I
 
 ## Cross-references
 
-- Read-contract (Step 1 verb extraction, §8.4 input handling for meta / coverage): `project-management/design-notes/2026-04-21-librarian-read-contract.md`.
+- Read-contract (Step 1 verb extraction, §8.4 input handling for meta / coverage): `operations/references/librarian/read-contract.md`.
 - Related operations: `whats-new.md` (date-filtered version of coverage), `fetch.md` (body-level follow-up to coverage), `explain.md` (mechanism follow-up).
 - Related concepts: all concept files and `*` meta — coverage can scope to any.
 - Key substrate: `operations/references/research-dimensions.md` (dimension partitions), `operations/references/guide-routing-table.md` (dimension → guide routing — note: currently outside `librarian/` subdirectory).
-- Use-case registry (UC-8.1–8.3): `project-management/design-notes/2026-04-21-librarian-use-case-registry.md`.
+- Use-case registry (UC-8.1–8.3): `operations/references/librarian/use-case-registry.md`.
 - Governing DDs: DD-82 (IL 4-agent architecture).

@@ -7,7 +7,7 @@ target_system:
   - "improvement-loop"
 stage: "active"
 created: "2026-04-22"
-updated: "2026-04-23"
+updated: "2026-07-12"
 author: "owner"
 source_dd:
   - "DD-52"
@@ -27,17 +27,18 @@ Deliberative specifications for IL pipeline mechanics, substrate architecture, r
 
 ## What belongs here
 
-- **Substrate audits** — how dimensions, patterns, guides, and the Librarian relate.
-- **Read contracts** — query-execution protocols for agents.
-- **Use-case registries** — canonical enumerations of consumer demand (e.g., Librarian use cases).
-- **Classification rubrics** — decision specs (Form Router, artifact acceptance).
-- **Lifecycle specs** — artifact-state transition specifications.
+**Deliberation in progress or awaiting its gate** — and nothing that anything live delegates to by path:
+
+- **Substrate audits** — per-class verdict proposals awaiting/under gate execution.
+- **Classification rubrics and lifecycle specs** — while being decided.
 - **Pipeline-mechanics proposals** — structural-change proposals (e.g., pipeline collapse).
-- **Spot-check reports** — empirical validation of proposed mechanisms.
+- **Direction notes** — living North-Star capture (e.g., agentic-os-direction) until a later phase pins scope.
 
 ## What does NOT belong here
 
-- **Runtime event output** (SL entries, handoffs, research-reports, loop-reports, identification reports) → `operations/`.
+- **Living operational reference** — anything skills, concept docs, or workflows delegate to by path (read contracts, use-case registries, boundary-case taxonomies, spot-check evidence) → `operations/references/` (DD-112 home rule). This folder held several of those until 2026-07-12; they were re-homed or distilled by the substrate-audit sweep (gate G6).
+- **Fully-ratified deliberation** — once every surviving decision lives in DDs or shipped artifacts, the note is provenance and moves to `archive/design-notes/` (filenames preserved, no stubs; DD/HISTORY citations keep resolving at the archive path).
+- **Runtime event output** (research-reports, loop-reports, identification reports) → `operations/`.
 - **Ratified governance rules** (boundary, pipeline, agent, knowledge rules) → `governance/`.
 - **Owner-authored governance-rule proposals** (tracking mechanisms, DD proposals, amendments) → `governance/proposals/`.
 - **Tracked work items** → `project-management/implementation-backlog/`.

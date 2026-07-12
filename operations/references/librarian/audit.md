@@ -155,7 +155,7 @@ If the consumer submits an artifact type not covered by an existing concept file
 
 ## Cross-references
 
-- Contract-section spot check (validation for this operation's composition mechanism): `project-management/design-notes/2026-04-21-contract-section-spotcheck-agent-audit.md`.
+- Contract-section spot check (validation for this operation's composition mechanism): `archive/design-notes/2026-04-21-contract-section-spotcheck-agent-audit.md`.
 - Substrate audit §"The Librarian Reference Layer" + §"Three-Tier Access Model".
 - Related concept files: `harness.md`, `second-brain.md` (in this directory); `agent.md`, `prompt.md`, `skill.md` (planned).
 - Librarian agent contract: `agents/librarian/agent.md`.

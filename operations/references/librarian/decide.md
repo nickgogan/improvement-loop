@@ -132,8 +132,8 @@ If the consumer's options are a *variant* comparison within a single concept (me
 
 ## Cross-references
 
-- Read-contract (Step 1 verb extraction, §8.5 input handling for decide): `project-management/design-notes/2026-04-21-librarian-read-contract.md`.
+- Read-contract (Step 1 verb extraction, §8.5 input handling for decide): `operations/references/librarian/read-contract.md`.
 - Related operations: `audit.md`, `design.md`, `explain.md` (this directory) — explain often precedes decide when the consumer doesn't yet understand the mechanism behind the tradeoff.
 - Related concepts: `agent.md`, `agentic-systems.md`, `harness.md`, `memory.md`, `second-brain.md` (this directory).
-- Use-case registry (UC-5.1–5.4): `project-management/design-notes/2026-04-21-librarian-use-case-registry.md`.
+- Use-case registry (UC-5.1–5.4): `operations/references/librarian/use-case-registry.md`.
 - Governing DDs: DD-78 (Contract triple-role — Key Concepts as emergent tradeoff rubrics), DD-82 (IL 4-agent architecture).

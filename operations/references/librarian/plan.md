@@ -173,9 +173,9 @@ Scoping heuristics:
 
 ## Cross-references
 
-- Read-contract (§Step 3.1 names plan's subsection kinds; §8.5 input handling for plan): `project-management/design-notes/2026-04-21-librarian-read-contract.md`.
+- Read-contract (§Step 3.1 names plan's subsection kinds; §8.5 input handling for plan): `operations/references/librarian/read-contract.md`.
 - Guide routing table (lifecycle axis source): `operations/references/guide-routing-table.md`.
 - Related operations: `design.md` (within-phase deep-dive — plan's primary handoff); `audit.md` (post-phase and post-build verification); `decide.md` (for design debates flagged during planning) (this directory).
 - Related concepts: `agent.md`, `memory.md`, `second-brain.md`, `harness.md`, `skill.md`, `prompt.md`, `mcp.md` (this directory) — any concept file can anchor a plan.
-- Use-case registry (UC-9.1, UC-9.2): `project-management/design-notes/2026-04-21-librarian-use-case-registry.md`.
+- Use-case registry (UC-9.1, UC-9.2): `operations/references/librarian/use-case-registry.md`.
 - Governing DDs: DD-78 (Contract triple-role — Procedure as authored build sequence; Preconditions as handoff gates), DD-82 (IL 4-agent architecture).

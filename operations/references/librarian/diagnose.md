@@ -141,8 +141,8 @@ For symptoms with no concept file match, state the gap and fall back to the guid
 
 ## Cross-references
 
-- Read-contract (Step 1 verb extraction, §8.2 input handling): `project-management/design-notes/2026-04-21-librarian-read-contract.md`.
+- Read-contract (Step 1 verb extraction, §8.2 input handling): `operations/references/librarian/read-contract.md`.
 - Related operation: `audit.md` (this directory) — similar procedure shape; audit fires Invariants as criteria, diagnose fires Pitfalls as criteria.
 - Related concepts: `memory.md`, `context-rot.md`, `agent.md`, `skill.md`, `harness.md` (this directory).
-- Use-case registry (UC-4.1–4.5): `project-management/design-notes/2026-04-21-librarian-use-case-registry.md`.
+- Use-case registry (UC-4.1–4.5): `operations/references/librarian/use-case-registry.md`.
 - Governing DDs: DD-78 (Contract triple-role; Pitfalls as emergent diagnostic criteria — same mechanism as Invariants-as-audit-criteria), DD-82 (IL 4-agent architecture).

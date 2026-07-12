@@ -62,7 +62,7 @@ Flat. Concept and operation files live side by side; `type:` distinguishes them.
 
 ## Next entries (planned, not yet authored)
 
-Authoring backlog from the session-49 use-case registry is **closed** as of session 54 — all P1–P4 concept and operation files are authored. Further entries will be added on demand when new consumer queries or use cases arrive that the current reference layer does not cover; prioritization then follows the registry-update process in `project-management/design-notes/2026-04-21-librarian-use-case-registry.md`.
+Authoring backlog from the session-49 use-case registry is **closed** as of session 54 — all P1–P4 concept and operation files are authored. Further entries will be added on demand when new consumer queries or use cases arrive that the current reference layer does not cover; prioritization then follows the registry-update process in `operations/references/librarian/use-case-registry.md`.
 
 Iterative depth is expected on some files (notably `agent.md` variant stubs — see use-case registry §Variant-authoring hotspots). Per Nick's session-49 guidance, variant stubs distinguish referents; deeper per-variant composition iterates per query rather than pre-covering hypothetical variants.
 
@@ -72,8 +72,8 @@ Composition pointers must resolve to actual guide sections, findings, or watched
 
 ## Cross-references
 
-- Substrate audit: `project-management/design-notes/2026-04-20-substrate-audit-dimensions-patterns-guides-vs-librarian.md`
-- Contract-section spot check: `project-management/design-notes/2026-04-21-contract-section-spotcheck-agent-audit.md`
+- Substrate audit: `archive/design-notes/2026-04-20-substrate-audit-dimensions-patterns-guides-vs-librarian.md`
+- Contract-section spot check: `archive/design-notes/2026-04-21-contract-section-spotcheck-agent-audit.md`
 - Guide routing table (primary substrate Tier 1): `operations/references/guide-routing-table.md`
 - Librarian agent definition: `agents/librarian/agent.md`
 - Governing DDs: DD-78 (ContractSpec), DD-82 (IL 4-agent architecture)

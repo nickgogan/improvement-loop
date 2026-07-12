@@ -90,5 +90,5 @@ Tier-1 citations: `<guide>.md#<anchor>` with line-range appendix until the secti
 - Audit composition and procedure: `audit.md` (this directory).
 - Related concepts: `agent.md`, `skill.md` (this directory).
 - Coordination target: `.claude/skills/prompt-evaluator/SKILL.md` (workspace root).
-- Use-case registry (UC-3.2, UC-2.3): `project-management/design-notes/2026-04-21-librarian-use-case-registry.md`.
+- Use-case registry (UC-3.2, UC-2.3): `operations/references/librarian/use-case-registry.md`.
 - Governing DDs: DD-78 (Contract triple-role).
