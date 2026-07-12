@@ -35,7 +35,7 @@ tags:
    - *Source:* Constitution — Design Philosophy ("Spec before build"); DD-29
 
 2. **Stage before deploying.** Extracted artifacts (patterns, rules, templates, skills, agents) stage in `extracts/` before deployment to enforcement locations in the engine's `knowledge/` or `.claude/`. Nick owns the deployment step — now an in-engine promotion from `extracts/` to `knowledge/`, still human-gated.
-   - *Source:* Constitution — Design Philosophy; DD-39, DD-80
+   - *Source:* Constitution — Design Philosophy; DD-119 (originally DD-39), DD-80
 
 3. **Spec before build.** New skills, agents, or structural changes require a specification (proposal, skill definition, or agent constitution) before implementation. The Owner produces specs; Nick approves them.
    - *Source:* Constitution — Design Philosophy ("Spec before build"); DBDO Pipeline steps 3-4

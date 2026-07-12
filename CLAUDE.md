@@ -99,7 +99,7 @@ The **Researcher** agent owns stage 1. The **Codifier** agent owns stages 2-3. N
 1. **Human gate at every stage boundary.** No autonomous modification of live systems. IL produces recommendations; Nick makes deployment decisions. — DD-29
 2. **Read/write boundaries are strict.** Researcher writes to Findings, Sources, and Authorities only. Identifier writes reports to `operations/pattern-identification-reports/`. Extractor writes to `extracts/` only. None modify system configs, skills, or governance docs. — DD-30, DD-80
 3. **System evolution via periodic research, not ad-hoc.** Changes flow through the structured pipeline, not reactive one-offs. — DD-36
-4. **Stage before deploying.** Extracted artifacts stage in `extracts/` before deployment to enforcement locations. — DD-39, DD-80
+4. **Stage before deploying.** Extracted artifacts stage in `extracts/` before deployment to enforcement locations. — DD-119, DD-80
 5. **Research KB is IL-owned.** Findings, sources, authorities, and proposals are IL operational data — not meta-system data, not workspace-root data. — DD-41
 
 ---

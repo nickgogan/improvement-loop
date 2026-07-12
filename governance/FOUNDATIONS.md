@@ -45,7 +45,6 @@ Past ~20, the test has gone loose; re-tighten rather than expand.
 | DD-37 | Five foundational design philosophy principles | Principle | `systems/improvement-loop/project-management/design-decisions/DD-37.md` |
 | DD-41 | Research KB is IL-owned operational data | Structure | `systems/improvement-loop/project-management/design-decisions/DD-41.md` |
 | DD-44 | DD lifecycle: Binding, Proposed, Superseded | Principle | `systems/improvement-loop/project-management/design-decisions/DD-44.md` |
-| DD-47 | Three-peer workspace directory organization | Structure | `systems/improvement-loop/project-management/design-decisions/DD-47.md` |
 | DD-52 | Seven-folder fractal unit structure | Structure | `systems/improvement-loop/project-management/design-decisions/DD-52.md` |
 | DD-53 | Agents as primary work interface | Principle | `systems/improvement-loop/project-management/design-decisions/DD-53.md` |
 | DD-54 | Single Obsidian vault with YAML frontmatter | Structure | `systems/improvement-loop/project-management/design-decisions/DD-54.md` |
@@ -60,5 +59,6 @@ Past ~20, the test has gone loose; re-tighten rather than expand.
 | DD-104 | Single-engine, three-altitude architecture | Structure | `systems/improvement-loop/project-management/design-decisions/DD-104.md` |
 | DD-105 | The charter: a root-level vision doc with explicit trajectory signals | Principle | `systems/improvement-loop/project-management/design-decisions/DD-105.md` |
 | DD-108 | Owner autonomy: files DDs as mechanics; Nick gates decision content | Governance | `systems/improvement-loop/project-management/design-decisions/DD-108.md` |
+| DD-119 | Post-collapse restatement: staging, workspace shape, milestone gates | Principle | `systems/improvement-loop/project-management/design-decisions/DD-119.md` |
 
 _Spine: 20 foundational DDs._
