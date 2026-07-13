@@ -3,18 +3,20 @@
 Embedded artifact candidates surfaced during `/synthesize-guide` runs. Per DD-101.
 Nothing here is auto-extracted; rows feed `/extract-artifacts` only after Nick rules.
 
+> Ruled 2026-07-13 (session 146) under Nick's delegated-judgment grant; per-row statuses set accordingly.
+
 | Date queued | Status | Target form | Source finding | Suggested headline | Recommendation |
 |---|---|---|---|---|---|
-| 2026-07-13 | queued | template | [[capability-as-agent-composition-primitive]] | "composition-unit-bundle-scaffold" | extract via /extract-artifacts |
-| 2026-07-13 | queued | rule | [[disclosure-granularity-decision-rubric]] | "eager-prompt-whitelist" | extract via /extract-artifacts |
-| 2026-07-13 | queued | rule | [[cache-stable-progressive-disclosure-catalog]] | "byte-stable-disclosure-catalog" | extract via /extract-artifacts |
+| 2026-07-13 | nick-approved | template | [[capability-as-agent-composition-primitive]] | "composition-unit-bundle-scaffold" | extract via /extract-artifacts |
+| 2026-07-13 | nick-approved | rule | [[disclosure-granularity-decision-rubric]] | "eager-prompt-whitelist" | extract via /extract-artifacts |
+| 2026-07-13 | nick-approved | rule | [[cache-stable-progressive-disclosure-catalog]] | "byte-stable-disclosure-catalog" | extract via /extract-artifacts |
 
 ## Per-row details
 
 ### capability-as-agent-composition-primitive::template::composition-unit-bundle-scaffold
 
 - **Date queued:** 2026-07-13
-- **Status:** queued
+- **Status:** nick-approved
 - **Target form:** template
 - **Source finding:** [[capability-as-agent-composition-primitive]]
 - **Source excerpt:**
@@ -32,7 +34,7 @@ Nothing here is auto-extracted; rows feed `/extract-artifacts` only after Nick r
 ### disclosure-granularity-decision-rubric::rule::eager-prompt-whitelist
 
 - **Date queued:** 2026-07-13
-- **Status:** queued
+- **Status:** nick-approved
 - **Target form:** rule
 - **Source finding:** [[disclosure-granularity-decision-rubric]]
 - **Source excerpt:**
@@ -47,7 +49,7 @@ Nothing here is auto-extracted; rows feed `/extract-artifacts` only after Nick r
 ### cache-stable-progressive-disclosure-catalog::rule::byte-stable-disclosure-catalog
 
 - **Date queued:** 2026-07-13
-- **Status:** queued
+- **Status:** nick-approved
 - **Target form:** rule
 - **Source finding:** [[cache-stable-progressive-disclosure-catalog]]
 - **Source excerpt:**

@@ -3,12 +3,14 @@
 Embedded artifact candidates surfaced during `/synthesize-guide` runs. Per DD-101.
 Nothing here is auto-extracted; rows feed `/extract-artifacts` only after Nick rules.
 
+> Ruled 2026-07-13 (session 146) under Nick's delegated-judgment grant; per-row statuses set accordingly.
+
 | Date queued | Status | Target form | Source finding | Suggested headline | Recommendation |
 |---|---|---|---|---|---|
-| 2026-07-13 | queued | rule | [[append-only-run-log-as-working-memory]] | "append-only-no-edit-delete-log-invariant" | extract via /extract-artifacts |
-| 2026-07-13 | queued | template | [[append-only-lesson-store-owning-surface-identity]] | "lesson-store-entry-schema" | extract via /extract-artifacts |
-| 2026-07-13 | queued | rule | [[append-only-lesson-store-owning-surface-identity]] | "pruning-is-status-change-never-deletion" | extract via /extract-artifacts |
-| 2026-07-13 | queued | rule | [[derive-dont-edit-artifacts-as-log-renders]] | "one-writer-per-artifact-derive-dont-edit" | extract via /extract-artifacts |
+| 2026-07-13 | nick-approved | rule | [[append-only-run-log-as-working-memory]] | "append-only-no-edit-delete-log-invariant" | extract via /extract-artifacts |
+| 2026-07-13 | nick-approved | template | [[append-only-lesson-store-owning-surface-identity]] | "lesson-store-entry-schema" | extract via /extract-artifacts |
+| 2026-07-13 | nick-approved | rule | [[append-only-lesson-store-owning-surface-identity]] | "pruning-is-status-change-never-deletion" | extract via /extract-artifacts |
+| 2026-07-13 | nick-approved | rule | [[derive-dont-edit-artifacts-as-log-renders]] | "one-writer-per-artifact-derive-dont-edit" | extract via /extract-artifacts |
 | 2026-07-13 | queued | template | [[memory-system-evaluation-triad-storage-injection-recall]] | "memory-system-triad-scorecard" | dismiss as inline |
 
 ## Per-row details
@@ -16,7 +18,7 @@ Nothing here is auto-extracted; rows feed `/extract-artifacts` only after Nick r
 ### append-only-run-log-as-working-memory::rule::append-only-no-edit-delete-log-invariant
 
 - **Date queued:** 2026-07-13
-- **Status:** queued
+- **Status:** nick-approved
 - **Target form:** rule
 - **Source finding:** [[append-only-run-log-as-working-memory]]
 - **Source excerpt:**
@@ -31,7 +33,7 @@ Nothing here is auto-extracted; rows feed `/extract-artifacts` only after Nick r
 ### append-only-lesson-store-owning-surface-identity::template::lesson-store-entry-schema
 
 - **Date queued:** 2026-07-13
-- **Status:** queued
+- **Status:** nick-approved
 - **Target form:** template
 - **Source finding:** [[append-only-lesson-store-owning-surface-identity]]
 - **Source excerpt:**
@@ -47,7 +49,7 @@ Nothing here is auto-extracted; rows feed `/extract-artifacts` only after Nick r
 ### append-only-lesson-store-owning-surface-identity::rule::pruning-is-status-change-never-deletion
 
 - **Date queued:** 2026-07-13
-- **Status:** queued
+- **Status:** nick-approved
 - **Target form:** rule
 - **Source finding:** [[append-only-lesson-store-owning-surface-identity]]
 - **Source excerpt:**
@@ -62,7 +64,7 @@ Nothing here is auto-extracted; rows feed `/extract-artifacts` only after Nick r
 ### derive-dont-edit-artifacts-as-log-renders::rule::one-writer-per-artifact-derive-dont-edit
 
 - **Date queued:** 2026-07-13
-- **Status:** queued
+- **Status:** nick-approved
 - **Target form:** rule
 - **Source finding:** [[derive-dont-edit-artifacts-as-log-renders]]
 - **Source excerpt:**

@@ -3,11 +3,13 @@
 Embedded artifact candidates surfaced during `/synthesize-guide` runs. Per DD-101.
 Nothing here is auto-extracted; rows feed `/extract-artifacts` only after Nick rules.
 
+> Ruled 2026-07-13 (session 146) under Nick's delegated-judgment grant; per-row statuses set accordingly.
+
 | Date queued | Status | Target form | Source finding | Suggested headline | Recommendation |
 |---|---|---|---|---|---|
-| 2026-07-13 | queued | template | [[plans-that-carry-their-own-contract]] | "plan-carried-contract-blocks" | extract via /extract-artifacts |
-| 2026-07-13 | queued | template | [[war-game-plan-format-for-executor-handoff]] | "war-game-plan-scaffold" | extract via /extract-artifacts |
-| 2026-07-13 | queued | skill | [[human-ai-seam-identification-three-question-rubric]] | "seam-map-delegation-rubric" | extract via /extract-artifacts |
+| 2026-07-13 | nick-approved | template | [[plans-that-carry-their-own-contract]] | "plan-carried-contract-blocks" | extract via /extract-artifacts |
+| 2026-07-13 | nick-approved | template | [[war-game-plan-format-for-executor-handoff]] | "war-game-plan-scaffold" | extract via /extract-artifacts |
+| 2026-07-13 | nick-approved | skill | [[human-ai-seam-identification-three-question-rubric]] | "seam-map-delegation-rubric" | extract via /extract-artifacts |
 | 2026-07-13 | queued | rule | [[role-registry-prompt-hook-routing-backstop]] | "fail-open-routing-hook-invariants" | dismiss as inline |
 
 ## Per-row details
@@ -15,7 +17,7 @@ Nothing here is auto-extracted; rows feed `/extract-artifacts` only after Nick r
 ### plans-that-carry-their-own-contract::template::plan-carried-contract-blocks
 
 - **Date queued:** 2026-07-13
-- **Status:** queued
+- **Status:** nick-approved
 - **Target form:** template
 - **Source finding:** [[plans-that-carry-their-own-contract]]
 - **Source excerpt:**
@@ -30,7 +32,7 @@ Nothing here is auto-extracted; rows feed `/extract-artifacts` only after Nick r
 ### war-game-plan-format-for-executor-handoff::template::war-game-plan-scaffold
 
 - **Date queued:** 2026-07-13
-- **Status:** queued
+- **Status:** nick-approved
 - **Target form:** template
 - **Source finding:** [[war-game-plan-format-for-executor-handoff]]
 - **Source excerpt:**
@@ -43,7 +45,7 @@ Nothing here is auto-extracted; rows feed `/extract-artifacts` only after Nick r
 ### human-ai-seam-identification-three-question-rubric::skill::seam-map-delegation-rubric
 
 - **Date queued:** 2026-07-13
-- **Status:** queued
+- **Status:** nick-approved
 - **Target form:** skill
 - **Source finding:** [[human-ai-seam-identification-three-question-rubric]]
 - **Source excerpt:**

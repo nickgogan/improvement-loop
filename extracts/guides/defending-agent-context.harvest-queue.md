@@ -3,21 +3,23 @@
 Embedded artifact candidates surfaced during `/synthesize-guide` runs. Per DD-101.
 Nothing here is auto-extracted; rows feed `/extract-artifacts` only after Nick rules.
 
+> Ruled 2026-07-13 (session 146) under Nick's delegated-judgment grant; per-row statuses set accordingly.
+
 | Date queued | Status | Target form | Source finding | Suggested headline | Recommendation |
 |---|---|---|---|---|---|
-| 2026-07-13 | queued | skill | [[file-mediated-subagent-handoff-workspace]] | "sdd-handoff-workspace-scripts" | extract via /extract-artifacts |
-| 2026-07-13 | queued | rule | [[append-only-context-updates-system-reminder-injection]] | "never-mutate-cached-prompt-prefix" | extract via /extract-artifacts |
-| 2026-07-13 | queued | template | [[append-only-context-updates-system-reminder-injection]] | "static-first-prompt-layering-stack" | extract via /extract-artifacts |
-| 2026-07-13 | queued | rule | [[derive-dont-edit-artifacts-as-log-renders]] | "derived-artifacts-single-writer-rule" | extract via /extract-artifacts |
-| 2026-07-13 | queued | skill | [[memory-file-to-skill-migration]] | "memory-file-to-skill-migration-pass" | extract via /extract-artifacts |
-| 2026-07-13 | queued | rule | [[skill-pruning-failure-modes-noop-deletion-test]] | "deletion-test-for-no-op-instructions" | extract via /extract-artifacts |
+| 2026-07-13 | nick-approved | skill | [[file-mediated-subagent-handoff-workspace]] | "sdd-handoff-workspace-scripts" | extract via /extract-artifacts |
+| 2026-07-13 | nick-approved | rule | [[append-only-context-updates-system-reminder-injection]] | "never-mutate-cached-prompt-prefix" | extract via /extract-artifacts |
+| 2026-07-13 | nick-approved | template | [[append-only-context-updates-system-reminder-injection]] | "static-first-prompt-layering-stack" | extract via /extract-artifacts |
+| 2026-07-13 | nick-approved | rule | [[derive-dont-edit-artifacts-as-log-renders]] | "derived-artifacts-single-writer-rule" | extract via /extract-artifacts |
+| 2026-07-13 | nick-approved | skill | [[memory-file-to-skill-migration]] | "memory-file-to-skill-migration-pass" | extract via /extract-artifacts |
+| 2026-07-13 | nick-approved | rule | [[skill-pruning-failure-modes-noop-deletion-test]] | "deletion-test-for-no-op-instructions" | extract via /extract-artifacts |
 
 ## Per-row details
 
 ### file-mediated-subagent-handoff-workspace::skill::sdd-handoff-workspace-scripts
 
 - **Date queued:** 2026-07-13
-- **Status:** queued
+- **Status:** nick-approved
 - **Target form:** skill
 - **Source finding:** [[file-mediated-subagent-handoff-workspace]]
 - **Source excerpt:**
@@ -34,7 +36,7 @@ Nothing here is auto-extracted; rows feed `/extract-artifacts` only after Nick r
 ### append-only-context-updates-system-reminder-injection::rule::never-mutate-cached-prompt-prefix
 
 - **Date queued:** 2026-07-13
-- **Status:** queued
+- **Status:** nick-approved
 - **Target form:** rule
 - **Source finding:** [[append-only-context-updates-system-reminder-injection]]
 - **Source excerpt:**
@@ -50,7 +52,7 @@ Nothing here is auto-extracted; rows feed `/extract-artifacts` only after Nick r
 ### append-only-context-updates-system-reminder-injection::template::static-first-prompt-layering-stack
 
 - **Date queued:** 2026-07-13
-- **Status:** queued
+- **Status:** nick-approved
 - **Target form:** template
 - **Source finding:** [[append-only-context-updates-system-reminder-injection]]
 - **Source excerpt:**
@@ -66,7 +68,7 @@ Nothing here is auto-extracted; rows feed `/extract-artifacts` only after Nick r
 ### derive-dont-edit-artifacts-as-log-renders::rule::derived-artifacts-single-writer-rule
 
 - **Date queued:** 2026-07-13
-- **Status:** queued
+- **Status:** nick-approved
 - **Target form:** rule
 - **Source finding:** [[derive-dont-edit-artifacts-as-log-renders]]
 - **Source excerpt:**
@@ -81,7 +83,7 @@ Nothing here is auto-extracted; rows feed `/extract-artifacts` only after Nick r
 ### memory-file-to-skill-migration::skill::memory-file-to-skill-migration-pass
 
 - **Date queued:** 2026-07-13
-- **Status:** queued
+- **Status:** nick-approved
 - **Target form:** skill
 - **Source finding:** [[memory-file-to-skill-migration]]
 - **Source excerpt:**
@@ -97,7 +99,7 @@ Nothing here is auto-extracted; rows feed `/extract-artifacts` only after Nick r
 ### skill-pruning-failure-modes-noop-deletion-test::rule::deletion-test-for-no-op-instructions
 
 - **Date queued:** 2026-07-13
-- **Status:** queued
+- **Status:** nick-approved
 - **Target form:** rule
 - **Source finding:** [[skill-pruning-failure-modes-noop-deletion-test]]
 - **Source excerpt:**
