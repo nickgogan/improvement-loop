@@ -1,5 +1,5 @@
 #!/bin/sh
-# MetaSystem governance pre-commit hook. Three checks:
+# MetaSystem governance pre-commit hook. Four checks:
 #   1. Frontmatter YAML validity on staged markdown (session 128 / DD-114) — blocks the
 #      session-127 defect class (unparseable frontmatter) at the gate.
 #   2. FOUNDATIONS.md spine map in sync with DD `foundational` flags (DD-115).
@@ -7,6 +7,9 @@
 #      forward-only control surface stays on the cold-start critical path: warn past the
 #      soft cap, block past the hard cap. Remedy is /session-handoff route-then-compact,
 #      never raising the cap.
+#   4. Self-improvement store schema (IB-176) — store_check.py over operations/self/
+#      when any of its files are staged; schema violations block, PROMOTE/growth
+#      signals are advisory.
 #
 # This is the TRACKED master copy. Install it into the live hooks dir with:
 #   ln -sf ../../systems/improvement-loop/operations/kb-maintenance-scripts/hooks/pre-commit .git/hooks/pre-commit
@@ -36,6 +39,11 @@ if git diff --cached --name-only --diff-filter=ACM | grep -qx "$progress"; then
   elif [ "$n" -gt "$soft_cap" ]; then
     echo "warning: PROGRESS.md exceeds the soft cap ($n > $soft_cap lines) — route non-critical-path content to HISTORY.md / plans / DDs / IB." >&2
   fi
+fi
+
+# 4. Self-improvement store schema (checked only when operations/self/ files are staged)
+if git diff --cached --name-only --diff-filter=ACM | grep -q "^systems/improvement-loop/operations/self/"; then
+  python3 "$scripts/store_check.py" || status=1
 fi
 
 exit $status

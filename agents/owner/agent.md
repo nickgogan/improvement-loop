@@ -126,7 +126,8 @@ The Owner activates when:
 | `/translate-governance` | Read the charter (`../../CHARTER.md`) + workspace operating law + engine design-wisdom → produce/update engine governance rules in `governance/`. Flags drift between source governance and the engine's translations. | Active |
 | `/maintain-docs` | Update or create system documentation. Two modes: **update** (detect drift, refresh existing docs/diagrams) and **create** (interview the user to produce new docs from scratch when none exist) | Active |
 | `/system-health` | Drift detection — compare docs vs actual state, flag divergence | Active |
-| `/process-feedback` | Read feedback/, triage, investigate root causes, propose actions | Active |
+| `/self-improve` | Memory-backed improvement loop (IB-176) — lesson/query capture, scan-mode retro (absorbs the retired `/process-feedback`; reads feedback/ as a scan source), gated promotion pipeline, store status | Active |
+| `/process-feedback` | Read feedback/, triage, investigate root causes, propose actions | Deprecated — folded into `/self-improve` scan mode (IB-176) |
 | `/system-audit` | Full consistency check — constitutions, contracts, governance compliance | Active |
 | `/solicit-proposals` | Run a reflection round — per-agent self-reflection → proposal drafts → Nick gates (DD-86) | Active |
 | `/cleanup-cache` | Monitor and purge temp/cache directories across IL workflows | Active |

@@ -142,7 +142,7 @@ All IL skills live in `.claude/skills/` under this system directory (system-scop
 | `/translate-governance` | Read the charter + workspace operating law, produce/update engine governance docs, detect drift |
 | `/maintain-docs` | Detect doc drift and fix (`--update`), or interview to create new docs (`--create`) |
 | `/system-health` | Quick drift detection — compare docs vs filesystem state |
-| `/process-feedback` | Read feedback/, triage items, investigate root causes, propose actions |
+| `/self-improve` | Memory-backed improvement loop (IB-176) — capture lessons/queries, scan-mode retro over `operations/self/` + feedback/, gated promotion pipeline, store status |
 | `/system-audit` | Full consistency check — agents, skills, governance, fractal compliance |
 | `/solicit-proposals` | Run a reflection round — per-agent self-reflection → per-agent proposal drafts → Nick gates |
 | `/cleanup-cache` | Monitor and purge temp/cache directories across IL workflows |
@@ -169,7 +169,7 @@ The Librarian also uses Read/Glob/Grep directly to navigate the KB for Teacher/B
 |-------|------|
 | `/meta-skill-author` | Design/Eval/Improve/Port toolchain for cross-platform skills — imported 2026-07-12; engine overlay + overlap flag vs `/design-skill`+`/assess-skill` in its `ADAPTATION.md`; owner assignment pending the restructure program's Phase 2 audit |
 
-**Deprecated:** `/research-proposer` — superseded by `/identify-artifacts` + `/extract-artifacts` (DD-80). Retained for reference.
+**Deprecated:** `/research-proposer` — superseded by `/identify-artifacts` + `/extract-artifacts` (DD-80). `/process-feedback` — folded into `/self-improve` scan mode (IB-176). Both retained for reference.
 
 ---
 

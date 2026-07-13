@@ -43,10 +43,10 @@ End-to-end system review: quick health check, feedback processing, optional deep
          │                                │
          └──────────┬─────────────────────┘
                     │
-         [3] /process-feedback
+         [3] /self-improve scan
                     │
-              Feedback triaged
-              Actions proposed
+              Buffer distilled, feedback triaged,
+              lessons swept, PROMOTE flags emitted
                     │
          [4] Remediation
               │

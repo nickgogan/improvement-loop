@@ -1,11 +1,12 @@
 ---
 name: process-feedback
 description: >-
-  Read the feedback/ folder, triage items by blast radius and urgency, investigate
-  root causes, and propose actions with autonomy tier classification. For each
-  feedback class, asks whether a linter, hook, or schema could prevent recurrence.
-  Produces a triage report with proposed next steps. DD-86 Owner responsibility.
-user-invocable: true
+  DEPRECATED (IB-176, 2026-07-13) — Folded into /self-improve scan mode, which reads
+  feedback/ as one of its retro sources. Do not invoke; run "/self-improve scan"
+  instead. Retained for reference only. Original purpose: read the feedback/ folder,
+  triage items by blast radius and urgency, investigate root causes, and propose
+  actions with autonomy tier classification.
+user-invocable: false
 allowed-tools: Read Grep Glob Write Edit
 argument-hint: "[feedback-file.md]"
 ---
