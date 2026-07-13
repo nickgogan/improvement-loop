@@ -4,7 +4,7 @@ https://www.youtube.com/watch?v=9CiOwbmOKdU
 https://www.youtube.com/watch?v=eozCDUxwU8k
 https://www.youtube.com/watch?v=Pi-m8R068r4
 https://www.youtube.com/watch?v=Q-3fgVdmuVw&t=2s
-https://www.youtube.com/watch?v=7HwhLOPeYh8&t=8s
+https://www.youtube.com/watch?v=7HwhLOPeYh8
 https://www.youtube.com/watch?v=PxuMqeIqCEo&t=2s
 https://www.youtube.com/watch?v=PRqiGS6fnIM&t=339s
 https://www.youtube.com/watch?v=NE0aBuQF0HA&t=126s
@@ -18,3 +18,12 @@ https://www.youtube.com/watch?v=glAoiBWVkmU&t=4s
 https://www.youtube.com/watch?v=Gq0l4IYRIIU&t=4s
 https://www.youtube.com/watch?v=R2-Y1Hjwx2U
 https://www.youtube.com/watch?v=Rl7rvHbDqGk&t=185s
+https://www.youtube.com/watch?v=1njjOIiA8Kc
+https://www.youtube.com/watch?v=4JBp4Wp36Lw
+https://www.youtube.com/watch?v=n32qq7Kwzh0
+https://www.youtube.com/watch?v=EuzYhzB0vbI
+https://www.youtube.com/watch?v=iQyg-KypKAA&t=2s
+https://www.youtube.com/watch?v=r5iBG1s_MDk&t=1s
+https://www.youtube.com/watch?v=HRw-vP0j8OM&t=11s
+https://www.youtube.com/watch?v=Q-3fgVdmuVw&t=8s&pp=0gcJCU8LAYcqIYzv
+https://www.youtube.com/watch?v=deeOA6YVfqw
