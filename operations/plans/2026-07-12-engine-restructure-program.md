@@ -153,6 +153,22 @@ Rule-10 assessed (PASS, 3 Low findings fixed).
 
 **DoD:** findings in the KB; delta report. → **Plan checkpoint #1: revisit this plan.**
 
+**Checkpoint #1 outcome (2026-07-13, session 144 — Nick-accepted):** Phase 1 complete —
+delta report `operations/research-reports/2026-07-13-phase1-research-grounding-delta.md`;
+gap-check 6 grounded / 1 partial / 1 gap (neither blocking). Plan revisions adopted:
+(a) **Phase 5 gains named design inputs** — capability-as-composition-unit (pydantic-ai
+2.0 + Archon v0.5.0 tiered registry, independent convergence on the engine's harness
+vocabulary) — and its DoD extends with a **harness maintenance/fitness deliverable**
+(Jones bidirectional-breakage evidence); carry Archon's rules-layer-collapse as a
+counter-signal against over-layering. (b) **IB-176 ship order unchanged** — Phase 1
+independently corroborated the ruled memory design; build proceeds next. (c) **Bulk
+video intake is closed as a phase instrument** (two consecutive zero-ADD/ENHANCE triage
+runs); future research spend = targeted `/research-query` + primary sources. The
+pre-Phase-4/5 hygiene residuals were executed same-session (KB currency sweep, commits
+`651a0c8..9d2f5dd`): pydantic-ai onboarded as a watched library (Nick-accepted), BMAD
+v6.10.0 + superpowers v6.1.1 re-analyzed, all candidate promotions and linkage debt
+cleared. Still open from the gap-check: the "attachés" clarification (§6 item 7).
+
 ### Phase 2 — Substrate audit & second-brain design *(scope: ops + knowledge layer)*
 
 Audit everything that governs/remembers how the engine operates; the research KB
@@ -227,7 +243,7 @@ Every import/adaptation gets a Rule-10 assess pass (`/assess-skill`) after landi
 ## 6. Open questions (carried, not blocking Phase 0)
 
 1. Generalize-first vs harness-first (→ Phase 4).
-2. #8 taxonomy/clustering repo name (Nick input, → Phase 1).
+2. ~~#8 taxonomy/clustering repo name~~ — resolved (context-hub intake, session 143).
 3. The garbled "Division, to a degree" direction-note fragment (→ Phase 4 interview).
 4. Manual home + length; manual-as-kernel-layer question (→ Phase 3).
 5. ~~System Log narrowed role~~ — **resolved 2026-07-12: retired as producer** (see
@@ -235,6 +251,9 @@ Every import/adaptation gets a Rule-10 assess pass (`/assess-skill`) after landi
 6. Pre-existing carried gates: verbatim null→P3 reassessment; re-injection correction
    disposition; push of unpushed local commits; mirror question (subtree push vs
    retire); design-notes category ruling (now subsumed by the Phase 2 audit).
+7. The direction note's "attachés" term (superpowers ask) appears nowhere in the KB —
+   likely a transcription artifact; needs a one-line Nick clarification (carried from
+   the 2026-07-13 gap-check).
 
 ## 7. Plan maintenance
 
