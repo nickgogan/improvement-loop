@@ -1,9 +1,9 @@
 # Improvement Loop — Progress
 
-Updated: 2026-07-13 (session 146 — gate-clearance rulings all cleared under Nick's
-delegated-judgment grant [L-1/L-2/L-4 promotions applied; harvest + drift recs ruled];
-Phase 4 interview structure drafted. 15 already-ruled re-/extractions deferred mid-wave
-by a Fable-5 spend limit; partial state salvaged consistent + committed.)
+Updated: 2026-07-13 (session 146 — gate-clearance COMPLETE under Nick's delegated-judgment
+grant: L-1/L-2/L-4 promotions applied, all 18 harvest rows resolved [14 extracted incl. a
+DD-100 v2 + a DD-97 extend + 2 create-new, 2 merged, 2 dismissed], 11 drift re-extractions
++ 3 schematic re-evals done. Phase 4 interview structure drafted. Next: Nick gates.)
 
 ## Start here
 
@@ -51,20 +51,19 @@ checkpoint #2). Nick-present by nature. Phase 3 (user manual) stays Nick-gated a
 interleave if he opens it.
 
 Scopes (hill):
-- `gate-clearance` — **rulings done; execution remainder downhill**: every Nick-gated
-  ruling cleared under the delegated-judgment grant (session 146) — promotions L-1/L-2/L-4
-  applied (proposal-log `P-1..P-3`); harvest rows ruled per queue; schematic + drift
-  re-run recs accepted. **Mechanical remainder** (ruled, deferrable, no Nick input needed
-  to execute): the still-`nick-approved` rows in `extracts/guides/*.harvest-queue.md`
-  (incl. the `derive-dont-edit` cross-queue duplicate → DD-97 merge) and the un-done
-  `re-run /extract-artifacts` recs in `operations/drift-reports/2026-07-13-source-drift.md`.
+- `gate-clearance` — **done**: promotions L-1/L-2/L-4 applied (proposal-log `P-1..P-3`);
+  all 18 harvest rows across 4 queues resolved; 11/11 drift re-extractions + 3 schematic
+  re-evals done. Five corpus-scan gates (DD-97/DD-100) ruled inline under the delegated
+  grant — all two-way doors, listed in HISTORY for Nick's review/override: byte-stable
+  catalog → extend; static-first → seven-layer v2; lesson-store-entry-schema + pruning →
+  create-new; derive-dont-edit twin → merged.
 - `phase4-interview` — **cresting**: structure drafted
   (`project-management/design-notes/2026-07-13-phase4-interview-structure.md`, adapts
   CareerBuddy `ops-vision-to-plan`); awaits Nick's gate on its §5 open questions before running.
 
-**Next unit of work:** finish `gate-clearance`'s mechanical remainder (relaunching the
-multi-agent extraction wave is a spend decision for Nick — a Fable-5 spend limit aborted
-it mid-wave), then Nick gates the `phase4-interview` structure.
+**Next unit of work:** Nick gates the `phase4-interview` structure (§5 open questions),
+then the interview runs. Optional Nick review: the five DD-97/DD-100 consolidation calls
+in HISTORY (any can be reverted/re-split — all git-reversible).
 
 ## Backlog / Icebox
 
@@ -96,11 +95,10 @@ noted where promotion is event-gated.
 ## Blockers / gates (Nick)
 
 - **Phase 4 interview structure gate** — the drafted structure's §5 open questions
-  (sitting count; kernel-doc naming/homes; whether Block E absorbs any leftover
-  gate-clearance execution) need a ruling before the interview runs
-- **Extraction-wave spend decision** — the ruled `gate-clearance` mechanical remainder
-  is deferrable; relaunching the multi-agent extraction wave after the mid-wave Fable-5
-  spend limit is Nick's call
+  (sitting count; kernel-doc naming/homes) need a ruling before the interview runs
+- **Five gate-clearance consolidation calls (optional review)** — the DD-97/DD-100
+  extend/version-bump/create-new/merge rulings (HISTORY session 146) were made under the
+  delegated grant; all git-reversible if Nick wants a different granularity
 - **"Attachés" clarification** — likely transcription artifact (plan open-question 7);
   resolve in the Phase 4 interview (now Block 0 of the drafted structure)
 - **Design-mode video-intake spec** — is a formal `/meta-skill-author` spec still wanted?
