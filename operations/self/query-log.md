@@ -20,3 +20,4 @@ the future implicit-routing harness.
 
 | Seq | Date | Query gist | Route | Why | Outcome |
 |---|---|---|---|---|---|
+| Q-1 | 2026-07-13 | "continue" — proceed with next unit of work | PROGRESS.md wake-up idiom → IB-176 build | session cold-start; hook not yet active to capture it | served |
