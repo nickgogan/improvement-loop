@@ -24,9 +24,13 @@ related_findings:
   rel: same-problem
 - file: effort-level-tuning-as-first-order-cost-lever.md
   rel: same-problem
+- file: four-estimate-agent-routing-test.md
+  rel: same-problem
+- file: repeated-sampling-scaling-law-and-verifier-ceiling.md
+  rel: same-problem
 proposals: null
 date_discovered: '2026-04-09'
-last_updated: '2026-07-12'
+last_updated: '2026-07-13'
 pipeline_status: synthesized
 consumed_by:
 - session-persistence-and-memory.md

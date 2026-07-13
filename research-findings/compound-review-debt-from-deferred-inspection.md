@@ -22,9 +22,11 @@ related_findings:
   rel: same-problem
 - file: dark-code-organizational-capability-problem.md
   rel: same-problem
+- file: visual-recap-post-execution-mirror-artifact.md
+  rel: same-problem
 proposals: null
 date_discovered: '2026-04-07'
-last_updated: '2026-04-20'
+last_updated: '2026-07-13'
 pipeline_status: synthesized
 consumed_by:
 - agent-governance-and-trust.md

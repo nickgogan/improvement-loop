@@ -15,12 +15,14 @@ sources:
 - your-ai-agent-fails-975-of-real-work-the-fix-isnt.md
 proposals: []
 date_discovered: '2026-03-22'
-last_updated: '2026-04-19'
+last_updated: '2026-07-13'
 related_findings:
 - file: context-gap-task-vs-job.md
   rel: same-problem
 - file: ace-agentic-context-engineering-rag-based.md
   rel: enabled-by
+- file: three-layer-reversible-state-single-undo-surface.md
+  rel: same-problem
 pipeline_status: synthesized
 consumed_by:
   - "building-agent-evaluation-suites.md"

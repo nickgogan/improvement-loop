@@ -39,9 +39,9 @@ Structural analyses live in [[watched-library-analyses-index|analysis/]] — pro
 
 | Library | Spectrum Position | Last Evaluated | What We Use |
 |---------|-------------------|----------------|-------------|
-| [[bmad-method\|BMAD Method]] | cherry-pick | v6.2.2 (2026-04-07) | Agent team patterns, docs-as-code, context sharding |
+| [[bmad-method\|BMAD Method]] | cherry-pick | v6.10.0 (2026-07-13) | Agent team patterns, docs-as-code, context sharding |
 | [[gsd\|GSD]] | wholesale | v1.34.2 (2026-04-07) | Primary build orchestration — spec-driven phases, context management |
-| [[superpowers\|Superpowers]] | thin-wrapper | v5.0.7 (2026-04-07) | TDD enforcement, skill auto-activation, subagent orchestration |
+| [[superpowers\|Superpowers]] | thin-wrapper | v6.1.1 (2026-07-13) | TDD enforcement, skill auto-activation, subagent orchestration |
 | [[openclaw\|OpenClaw]] | cherry-pick | v2026.4.5 (2026-04-07) | SOUL.md constitution pattern, memory file taxonomy |
 | [[paperclip\|Paperclip]] | cherry-pick | v2026.403.0 (2026-04-07) | Multi-agent governance — goal ancestry, approval gates, budget tracking |
 | [[gstack\|gstack]] | cherry-pick | v0.15.16.0 (2026-04-07) | Role-based specialist tools, Conductor parallel sessions |

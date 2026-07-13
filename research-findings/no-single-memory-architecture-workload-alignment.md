@@ -34,9 +34,11 @@ related_findings:
   rel: extends
 - file: four-module-agent-memory-decomposition.md
   rel: enabled-by
+- file: memory-system-evaluation-triad-storage-injection-recall.md
+  rel: same-problem
 proposals: null
 date_discovered: '2026-07-11'
-last_updated: '2026-07-11'
+last_updated: '2026-07-13'
 ---
 
 ## What It Is

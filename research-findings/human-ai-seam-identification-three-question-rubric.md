@@ -32,6 +32,8 @@ related_findings:
     rel: "extends"
   - file: "tacit-knowledge-as-agent-delegation-barrier.md"
     rel: "same-problem"
+  - file: "four-estimate-agent-routing-test.md"
+    rel: "same-problem"
 proposals: null
 date_discovered: "2026-07-13"
 last_updated: "2026-07-13"

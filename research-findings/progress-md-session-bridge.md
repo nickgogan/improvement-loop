@@ -16,6 +16,7 @@ sources:
 - anthropic-long-running-claude-scientific-computing.md
 - anthropic-effective-harnesses-long-running-agents.md
 - anthropic-building-c-compiler.md
+- every-claude-code-update-from-march-2026.md
 related_findings:
 - file: gsd-global-learnings-store-cross-session-persistence.md
   rel: extended-by
@@ -23,7 +24,7 @@ related_findings:
   rel: extended-by
 proposals: null
 date_discovered: '2026-03-15'
-last_updated: '2026-04-19'
+last_updated: '2026-07-13'
 pipeline_status: synthesized
 consumed_by:
 - defending-agent-context.md

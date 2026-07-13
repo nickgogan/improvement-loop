@@ -25,9 +25,13 @@ related_findings:
   rel: extends
 - file: agent-infrastructure-glue-code-elimination-via-sdk.md
   rel: same-problem
+- file: harness-depth-as-maintenance-ownership.md
+  rel: same-problem
+- file: lean-core-vs-harness-two-lane-framework-layering.md
+  rel: same-problem
 proposals: null
 date_discovered: '2026-04-09'
-last_updated: '2026-05-25'
+last_updated: '2026-07-13'
 pipeline_status: raw
 consumed_by: []
 ---

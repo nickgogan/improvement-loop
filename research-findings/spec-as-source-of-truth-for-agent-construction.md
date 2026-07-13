@@ -15,7 +15,7 @@ sources:
 - dark-code-spec-driven-comprehension-gates.md
 proposals: null
 date_discovered: '2026-03-22'
-last_updated: '2026-04-20'
+last_updated: '2026-07-13'
 related_findings:
 - file: acceptance-criteria-as-verifiable-eval-anchor.md
   rel: same-problem
@@ -25,6 +25,8 @@ related_findings:
   rel: same-problem
 - file: eval-driven-development-autonomous-quality.md
   rel: enables
+- file: plan-level-as-engineering-reasoning-abstraction.md
+  rel: same-problem
 pipeline_status: raw
 consumed_by: []
 ---

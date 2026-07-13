@@ -29,8 +29,8 @@ Structural analysis docs produced by `/repo-analyzer`. Each entry covers 5 dimen
 | Library | Version Analyzed | Date | Dimensions |
 |---------|-----------------|------|------------|
 | [[gsd-analysis\|GSD]] | v1.33.0 | 2026-04-07 | all |
-| [[superpowers-analysis\|Superpowers]] | v5.0.7 | 2026-04-08 | all |
-| [[bmad-method-analysis\|BMAD Method]] | v6.2.2 | 2026-04-08 | all |
+| [[superpowers-analysis\|Superpowers]] | v6.1.1 | 2026-07-13 | all |
+| [[bmad-method-analysis\|BMAD Method]] | v6.10.0 | 2026-07-13 | all |
 | [[openclaw-analysis\|OpenClaw]] | v2026.4.5 | 2026-04-08 | all |
 | [[paperclip-analysis\|Paperclip]] | v2026.403.0 | 2026-04-08 | all |
 | [[gstack-analysis\|gstack]] | v0.15.16.0 | 2026-04-08 | all |
@@ -55,6 +55,7 @@ Structural analysis docs produced by `/repo-analyzer`. Each entry covers 5 dimen
 | [[autogen-analysis\|AutoGen]] | v0.7.5 | 2026-05-25 | all |
 | [[omnigent-analysis\|Omnigent]] | alpha v0.6.0.dev0 (2026-07-11 HEAD) | 2026-07-11 | all |
 | [[opencode-analysis\|opencode]] | dev HEAD (2026-07-11) | 2026-07-11 | all |
+| [[pydantic-ai-analysis\|Pydantic AI]] | v2.9.0 | 2026-07-13 | all |
 
 ## Cross-Repo Comparison
 

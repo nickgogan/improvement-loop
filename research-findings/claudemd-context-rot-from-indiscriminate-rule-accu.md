@@ -15,7 +15,7 @@ sources:
 - why-your-coding-agent-keeps-getting-dumber.md
 proposals: []
 date_discovered: '2026-03-22'
-last_updated: '2026-04-19'
+last_updated: '2026-07-13'
 related_findings:
 - file: context-file-instruction-bloat-eth-zurich.md
   rel: same-problem
@@ -34,6 +34,8 @@ related_findings:
 - file: agent-context-kiss-commandments-minimum-viable.md
   rel: same-problem
 - file: ace-agentic-context-engineering-rag-based.md
+  rel: same-problem
+- file: tool-pruning-as-harness-maintenance.md
   rel: same-problem
 pipeline_status: synthesized
 consumed_by:

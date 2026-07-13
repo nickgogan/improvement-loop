@@ -17,6 +17,7 @@ notes: |-
   their claims. Triage note: default-fetch his releases — short runtime, high yield.
 source_count: 2
 sources:
+  - "every-claude-code-update-from-march-2026.md"
   - "introducing-visual-plan-rich-plans-for-claude-code-codex.md"
 url: "https://www.builder.io/blog"
 ---

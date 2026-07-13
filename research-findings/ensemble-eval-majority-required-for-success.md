@@ -18,9 +18,11 @@ related_findings:
     rel: same-problem
   - file: production-configuration-baseline-discipline.md
     rel: same-problem
+  - file: repeated-sampling-scaling-law-and-verifier-ceiling.md
+    rel: same-problem
 proposals: null
 date_discovered: "2026-04-23"
-last_updated: "2026-04-26"
+last_updated: "2026-07-13"
 pipeline_status: synthesized
 consumed_by:
   - "guides/building-agent-evaluation-suites.md"

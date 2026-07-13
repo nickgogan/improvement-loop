@@ -21,9 +21,11 @@ related_findings:
     rel: "same-problem"
   - file: "parallel-claude-code-instances-per-workspace.md"
     rel: "same-problem"
+  - file: "reversible-forks-enable-parallel-sampling.md"
+    rel: "same-problem"
 proposals: null
 date_discovered: "2026-05-25"
-last_updated: "2026-05-25"
+last_updated: "2026-07-13"
 pipeline_status: "classified"
 consumed_by: []
 tags:

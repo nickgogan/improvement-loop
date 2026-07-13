@@ -14,9 +14,11 @@ sources: []
 related_findings:
 - file: bmad-method-v6-multi-agent-sdlc.md
   rel: extends
+- file: capability-as-agent-composition-primitive.md
+  rel: same-problem
 proposals: null
 date_discovered: '2026-04-08'
-last_updated: '2026-04-19'
+last_updated: '2026-07-13'
 pipeline_status: raw
 consumed_by: []
 ---

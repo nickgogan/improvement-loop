@@ -34,9 +34,11 @@ related_findings:
     rel: "enables"
   - file: "self-improving-skill-lessons-log.md"
     rel: "same-problem"
+  - file: "session-history-import-as-memory-bootstrap.md"
+    rel: "extended-by"
 proposals: null
 date_discovered: "2026-07-12"
-last_updated: "2026-07-12"
+last_updated: "2026-07-13"
 pipeline_status: "raw"
 ---
 

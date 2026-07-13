@@ -32,6 +32,10 @@ related_findings:
     rel: "same-problem"
   - file: "memory-wiki-world-kb-trichotomy.md"
     rel: "same-problem"
+  - file: "memory-recall-ladder-staged-deepening-with-citation-and-abstention.md"
+    rel: "same-problem"
+  - file: "session-history-import-as-memory-bootstrap.md"
+    rel: "same-problem"
 proposals: null
 date_discovered: "2026-07-13"
 last_updated: "2026-07-13"

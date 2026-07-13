@@ -34,6 +34,8 @@ related_findings:
     rel: "same-problem"
   - file: "five-point-agent-health-checklist.md"
     rel: "extended-by"
+  - file: "harness-depth-as-maintenance-ownership.md"
+    rel: "enables"
 proposals: null
 date_discovered: "2026-07-13"
 last_updated: "2026-07-13"

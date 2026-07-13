@@ -16,7 +16,7 @@ sources:
 - sdk-vs-framework-decision-ai-agents.md
 proposals: null
 date_discovered: '2026-03-18'
-last_updated: '2026-07-12'
+last_updated: '2026-07-13'
 related_findings:
 - file: ace-agentic-context-engineering-rag-based.md
   rel: same-problem
@@ -36,6 +36,8 @@ related_findings:
   rel: enabled-by
 - file: per-folder-heterogeneous-retrieval-levels.md
   rel: same-problem
+- file: memory-recall-ladder-staged-deepening-with-citation-and-abstention.md
+  rel: extended-by
 pipeline_status: synthesized
 consumed_by:
 - structuring-agent-context.md

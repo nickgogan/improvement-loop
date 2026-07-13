@@ -14,7 +14,9 @@ notes: |-
   query-shape-first storage design, evergreen-vs-volatile ingestion rule, escalating
   search-order routing, and per-folder heterogeneous retrieval levels upgraded only on
   felt pain. High extraction hit-rate on the second-brain/memory dimension; claims are
-  grounded in his own running system rather than secondhand digests.
+  grounded in his own running system rather than secondhand digests. Scope note
+  (wave-3 calibration, 2026-07-13): strong on first-hand system walkthroughs, weak on
+  explainers/sales.
 source_count: 1
 sources:
   - "every-level-of-a-claude-second-brain-explained.md"

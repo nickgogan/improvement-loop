@@ -16,7 +16,7 @@ sources:
 - agent-cold-start-tacit-knowledge-elicitation.md
 proposals: []
 date_discovered: '2026-03-22'
-last_updated: '2026-04-20'
+last_updated: '2026-07-13'
 related_findings:
 - file: ace-agentic-context-engineering-rag-based.md
   rel: same-problem
@@ -25,6 +25,10 @@ related_findings:
 - file: open-brain-personal-knowledge-store-pattern.md
   rel: enables
 - file: spec-as-generator-agent-spec-pattern.md
+  rel: same-problem
+- file: build-from-observed-workflow.md
+  rel: same-problem
+- file: chief-of-staff-home-base-thread.md
   rel: same-problem
 pipeline_status: raw
 consumed_by: []

@@ -33,6 +33,8 @@ related_findings:
     rel: "same-problem"
   - file: "claudemd-context-rot-from-indiscriminate-rule-accu.md"
     rel: "same-problem"
+  - file: "build-from-observed-workflow.md"
+    rel: "enabled-by"
 proposals: null
 date_discovered: "2026-07-13"
 last_updated: "2026-07-13"

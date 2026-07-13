@@ -19,7 +19,7 @@ sources:
 - these-3-frameworks-make-claude-code-unstoppable.md
 proposals: []
 date_discovered: '2026-03-22'
-last_updated: '2026-05-25'
+last_updated: '2026-07-13'
 related_findings:
 - file: agent-architecture-layer-impermanence.md
   rel: contradicts
@@ -44,6 +44,8 @@ consumed_by:
   - "agent-architecture-decisions.md"
 ---
 # Superpowers Plugin: Spec-Driven Sub-Agent Orchestration
+
+> **Upstream supersession note (added 2026-07-13).** Superpowers v6.0.0 (released 2026-06-16) replaced the two-stage review architecture this finding describes. The two sequential per-task reviewers (spec-compliance reviewer, then code-quality reviewer) were collapsed into a **single unified task reviewer** that reads the task's diff once and returns both verdicts (spec compliance + code quality) in one pass, with a new "cannot verify from diff" verdict routed back to the controller. Per-task review became a narrow task-scoped gate, with one **whole-branch review at the end** on the most capable model. Handoffs became file-mediated: task briefs, implementer reports, and review diffs move as files in a self-ignoring `.superpowers/sdd/` workspace (v6.0.3) instead of pasted text. Plans now carry a Global Constraints block and per-task Interfaces blocks; every dispatch must name its model explicitly; reviews are read-only and the controller may not suppress or pre-rate findings. Upstream evals: similar quality, ~2x faster, ~50% fewer tokens vs the v5.x flow. The workflow description below (two-stage review, v5.0.7-era details, star counts) is preserved as a historical record of the v5 architecture. Current structure: `watched-libraries/analysis/superpowers-analysis.md` (v6.1.1, 2026-07-13); registry delta: `watched-libraries/superpowers.md` §Upstream Delta.
 
 ## What It Is
 Superpowers is a composable skills framework and software development methodology for coding agents (120k GitHub stars, 9.7k forks). It enforces a seven-step workflow: (1) brainstorming with hard-gate preventing code before approval; (2) git worktrees; (3) writing plans with 2-5 min chunks; (4) subagent-driven development with two-stage review; (5) RED-GREEN-REFACTOR TDD; (6) code review; (7) branch finishing.

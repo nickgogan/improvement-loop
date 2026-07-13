@@ -38,6 +38,8 @@ related_findings:
     rel: "same-problem"
   - file: "two-constraint-decomposition-memory-vs-eval.md"
     rel: "extended-by"
+  - file: "four-estimate-agent-routing-test.md"
+    rel: "enables"
 proposals: null
 date_discovered: "2026-07-13"
 last_updated: "2026-07-13"

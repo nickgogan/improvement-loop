@@ -31,7 +31,7 @@ related_findings:
   - file: "agent-onboarding-via-interview-style-context.md"
     rel: "same-problem"
   - file: "planning-thread-vs-execution-thread-subagent-fleets.md"
-    rel: "extended-by"
+    rel: "same-problem"
   - file: "work-ticket-contract-prompt-mode-vs-work-mode.md"
     rel: "same-problem"
 proposals: null

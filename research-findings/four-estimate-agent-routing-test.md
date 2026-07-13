@@ -33,6 +33,8 @@ related_findings:
     rel: "same-problem"
   - file: "effort-scaling-rules-embedded-in-orchestrator.md"
     rel: "same-problem"
+  - file: "human-ai-seam-identification-three-question-rubric.md"
+    rel: "same-problem"
 proposals: null
 date_discovered: "2026-07-13"
 last_updated: "2026-07-13"

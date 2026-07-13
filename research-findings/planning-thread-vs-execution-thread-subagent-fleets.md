@@ -26,7 +26,7 @@ related_findings:
   - file: "plan-implement-session-separation-bias-removal.md"
     rel: "extends"
   - file: "chief-of-staff-home-base-thread.md"
-    rel: "enabled-by"
+    rel: "same-problem"
 proposals: null
 date_discovered: "2026-07-13"
 last_updated: "2026-07-13"

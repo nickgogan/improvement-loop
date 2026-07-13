@@ -27,9 +27,11 @@ related_findings:
     rel: "same-problem"
   - file: "evergreen-vs-volatile-ingestion-rule.md"
     rel: "same-problem"
+  - file: "memory-recall-ladder-staged-deepening-with-citation-and-abstention.md"
+    rel: "same-problem"
 proposals: null
 date_discovered: "2026-07-12"
-last_updated: "2026-07-12"
+last_updated: "2026-07-13"
 pipeline_status: "raw"
 ---
 

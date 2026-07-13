@@ -21,9 +21,11 @@ related_findings:
     rel: same-problem
   - file: sdk-vs-framework-decision-for-agent-building.md
     rel: enables
+  - file: capability-as-agent-composition-primitive.md
+    rel: extended-by
 proposals: null
 date_discovered: "2026-05-25"
-last_updated: "2026-05-25"
+last_updated: "2026-07-13"
 pipeline_status: "synthesized"
 consumed_by:
   - "designing-agent-tools.md"

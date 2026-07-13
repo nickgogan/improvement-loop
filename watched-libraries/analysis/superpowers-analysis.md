@@ -7,7 +7,7 @@ target_system:
   - "improvement-loop"
 stage: "active"
 created: "2026-04-08"
-updated: "2026-04-08"
+updated: "2026-07-13"
 author: "improvement-loop"
 source_dd:
   - "DD-45"
@@ -16,8 +16,8 @@ tags:
   - "repo-analysis"
   - "watched-library"
   - "superpowers"
-analyzed_version: "v5.0.7"
-analyzed_date: "2026-04-08"
+analyzed_version: "v6.1.1"
+analyzed_date: "2026-07-13"
 repo_url: "https://github.com/obra/superpowers"
 dimensions_analyzed:
   - "structural-inventory"
@@ -32,93 +32,99 @@ dimensions_analyzed:
 
 ## Metadata
 - **Repo:** https://github.com/obra/superpowers
-- **Version analyzed:** v5.0.7
-- **Date:** 2026-04-08
+- **Version analyzed:** v6.1.1 (commit d884ae0, 2026-07-02)
+- **Date:** 2026-07-13
 - **Spectrum position:** thin-wrapper
+- **Supersedes:** v5.0.7 analysis (2026-04-08). Re-run triggered by /watch-upstream registry refresh (registry Upstream Delta v5.0.7 → v6.1.1); primary driver is the v6.0.0 Subagent-Driven Development rewrite.
+
+## What Superpowers Now Demonstrates That It Didn't at v5.0.7
+
+Written for the restructure-program Phase 4/5 consumer. Six capabilities are new or fundamentally reshaped since the prior analysis:
+
+1. **Unified single-reviewer with dual verdicts (v6.0.0).** The two-stage review — spec-compliance reviewer, then code-quality reviewer, each a fresh subagent — is gone. One `task-reviewer-prompt.md` reads the task's diff once and returns BOTH a spec-compliance verdict and a quality verdict, plus a new "⚠️ cannot verify from diff" verdict for requirements living in untouched code (the controller resolves those itself). One fix pass clears both verdicts. Upstream's evals: roughly 2x faster and ~50% fewer tokens vs v5.x at similar quality. Our v5 analysis and the KB finding that recorded "two-stage review" describe a superseded architecture.
+2. **File-mediated subagent handoffs.** v5 said "paste the full text of the task — don't make the subagent read the file." v6 inverts this: three shell scripts (`task-brief`, `review-package`, `sdd-workspace`) write task briefs, implementer reports, and review diffs to a self-ignoring `.superpowers/sdd/` working-tree workspace (moved out of `.git/` in v6.0.3 because Claude Code write-protects `.git/`); the dispatch prompt carries file paths, not content. Rationale is context economy: "everything you paste into a dispatch prompt stays resident in your context for the rest of the session." Implementer return messages are capped under 15 lines — detail lives in the report file. This strongly corroborates our own file-mediated handoff protocol.
+3. **Plans that carry their own contract (v6.0.0).** `writing-plans` now mandates a **Global Constraints** header block (project-wide requirements copied verbatim from the spec so they actually reach implementers and reviewers) and a per-task **Interfaces** block (Consumes/Produces with exact signatures, so an implementer who sees only its own task knows its neighbors' contracts), plus task right-sizing guidance ("the smallest unit that carries its own test cycle and is worth a fresh reviewer's gate"). The structure downstream agents used to re-derive on every dispatch is now authored once into the plan.
+4. **Controller de-authorization.** v6 removes judgment calls the controller was gaming in real runs: every dispatch MUST name a model explicitly (an omitted model silently inherits the session's most expensive one — one observed run put all 26 reviewers on the top tier); the controller may not tell a reviewer what not to flag or pre-rate severity ("if the prompt you are writing contains 'do not flag'... stop"); a defect the plan itself mandates is reported as a finding for the human to adjudicate, never waved through; reviews are read-only on the checkout (a reviewer running `git checkout` had orphaned commits); and implementer rationales ("left it per YAGNI") never downgrade a finding.
+5. **Whole-branch end review + durable progress ledger.** Per-task review is now a task-scoped gate; ONE broad whole-branch review runs at the end on the most capable model, fed a `review-package` for the full branch range. A progress ledger at `.superpowers/sdd/progress.md` survives compaction — controllers that lost context had re-dispatched entire completed task sequences, "the single most expensive failure observed."
+6. **Vendor-neutral skill language + per-harness tool maps (v6.0.0/v6.1.0).** Skills no longer speak Claude Code's dialect: "use the Task tool" became "dispatch a subagent," "CLAUDE.md" became "your instructions file," "Claude" became "your agent," and "Claude Search Optimization" was renamed "Skill Discovery Optimization." Harness-specific detail moved to per-harness reference files under `skills/using-superpowers/references/` (now trimmed to codex/pi/antigravity — files with nothing harness-specific left were deleted in v6.1.0's bootstrap-compression pass). Three harnesses added (Kimi Code, Pi, Antigravity); Gemini CLI removed (Google EOL 2026-06-18). Behavior evals moved to a separate `superpowers-evals` repo using a "drill" framework that runs real harness sessions and judges them with an LLM.
+
+**What has NOT changed (direction-note confirmation, verified against the clone):**
+- The **brainstorming HARD-GATE is verbatim identical** to v5.0.7: "Do NOT invoke any implementation skill, write any code, scaffold any project, or take any implementation action until you have presented a design and the user has approved it. This applies to EVERY project regardless of perceived simplicity." The "This Is Too Simple To Need A Design" anti-pattern section is likewise unchanged. Additions around it are incremental: a spec self-review checklist, an explicit user-review gate on the written spec file, and just-in-time (not upfront) offering of the visual companion.
+- **No thinking skills were added or removed.** The skill roster is the same 14 directories as v5.0.7. `systematic-debugging` keeps its 4-phase structure; its only change is a bug fix — one bullet accidentally contained the exact keyword Claude Code scans for to trigger extended thinking, silently forcing it on every session; a hyphen now breaks the keyword. The `using-superpowers` "1% chance → invoke" mandate and full Red Flags rationalization table survive the v6.1.0 bootstrap compression intact.
+- TDD's Iron Law ("NO PRODUCTION CODE WITHOUT A FAILING TEST FIRST"), verification-before-completion's Iron Law, rationalization-prevention tables, persuasion principles, and "human partner" framing are all unchanged.
 
 ---
 
 ## 1. Structural Inventory
 
 ### File Tree Statistics
-| Metric | Value |
-|--------|-------|
-| Total files | 142 |
-| Total directories | 48 |
-| Markdown files | 75 (52.8%) |
-| Shell scripts (`.sh`) | 26 (18.3%) |
-| Text files (`.txt`) | 15 (10.6%) |
-| JSON files | 10 (7.0%) |
-| JavaScript (`.js`, `.cjs`) | 6 (4.2%) |
-| Config (`.yml`) | 2 |
-| Other (`.ts`, `.py`, `.html`, `.dot`, `.cmd`) | 5 |
-| MD-to-code ratio | **9.4:1** (overwhelmingly MD) |
-| Max directory depth | 4 |
+| Metric | Value (v6.1.1) | v5.0.7 |
+|--------|-------|--------|
+| Total files | 171 | 142 |
+| Total directories | 55 | 48 |
+| Markdown files | 82 (48.0%) | 75 (52.8%) |
+| Shell scripts (`.sh` + extensionless SDD scripts) | 39 | 26 |
+| JSON files | 13 | 10 |
+| JavaScript (`.js`, `.mjs`, `.cjs`) | 13 | 6 |
+| Text files (`.txt`, test fixtures) | 9 | 15 |
+| TypeScript (`.ts`) | 2 | — |
+| Config (`.yml`, `.yaml`) | 3 | 2 |
+| Other (`.py`, `.html`, `.dot`, `.cmd`, `.svg`, `.png`) | 6 | 5 |
+| MD-to-code ratio (md : js/ts/py, v5 basis) | ~5.1:1 | 9.4:1 |
+| Max directory depth | 4 | 4 |
+
+The falling MD-to-code ratio reflects growth in glue code (brainstorm-server JS, Pi TypeScript extension, SDD shell scripts, packaging scripts), not a shift away from markdown-as-codebase — the behavioral core is still the 14 skills.
 
 ### Markdown Composition
 | Purpose | Count | Directory |
 |---------|-------|-----------|
 | Skill definitions (SKILL.md) | 14 | `skills/*/SKILL.md` |
-| Skill supporting docs | 23 | `skills/*/` (non-SKILL.md) |
-| Agent definitions | 1 | `agents/` |
-| Commands (deprecated) | 3 | `commands/` |
-| Human documentation | 16 | `docs/` |
-| Platform integration | 2 | `.codex/`, `.opencode/` |
-| Root-level (README, CLAUDE, AGENTS, GEMINI, etc.) | 7 | root |
-| Test fixtures | 5 | `tests/` |
-| Other (CHANGELOG, RELEASE-NOTES, CODE_OF_CONDUCT) | 4 | root |
-| **Total** | **75** | |
+| Skill supporting docs (prompt templates, references, examples) | 22 | `skills/*/` (non-SKILL.md) |
+| Human documentation | 34 | `docs/` (incl. 24 dogfooded specs/plans under `docs/superpowers/` and `docs/plans/`) |
+| Root-level (README, CLAUDE, GEMINI, RELEASE-NOTES, CODE_OF_CONDUCT, AGENTS→CLAUDE symlink) | 6 | root |
+| GitHub templates (PR + 3 issue templates) | 4 | `.github/` |
+| Platform integration | 1 | `.opencode/INSTALL.md` |
+| Test docs | 1 | `tests/claude-code/README.md` |
+| **Total** | **82** | |
 
-**Key insight**: Of 75 markdown files, **38 are functional** (14 SKILL.md + 23 supporting skill docs + 1 agent). This is an even more extreme "markdown IS the codebase" ratio than GSD — the 26 shell scripts are mostly installer/hook glue, and the 15 `.txt` files are test fixtures. The entire framework is essentially 14 skill definitions with supporting prompts.
+**Key insight**: The functional core is still 36 markdown files (14 SKILL.md + 22 supporting). Two v5 categories vanished: `agents/` (the sole named agent, code-reviewer, was merged into `skills/requesting-code-review/code-reviewer.md` as a dispatch template in v5.1.0) and `commands/` (the 3 deprecated command stubs were deleted in v5.1.0). The repo now has **zero named agents and zero commands** — everything behavioral is a skill or a prompt template owned by a skill. Notably, `docs/superpowers/specs+plans` is the project dogfooding its own workflow: 24 spec/plan documents produced by its own brainstorming/writing-plans skills, including the specs for the v6.0.0 SDD rewrite itself (`2026-06-10-strict-cost-sdd-design.md`, `2026-06-09-sdd-task-scoped-review-dispatch-design.md`).
 
 ### Directory Naming Conventions
 
-Kebab-case throughout. Directories are **capability-named** (named by what they teach the agent to do):
-
-- `skills/brainstorming/` -- not `skills/design/` or `skills/ideation/`
-- `skills/test-driven-development/` -- not `skills/tdd/`
-- `skills/verification-before-completion/` -- not `skills/verification/`
-- `skills/finishing-a-development-branch/` -- full phrases, not abbreviations
+Unchanged: kebab-case throughout; skill directories are capability-named full phrases (`finishing-a-development-branch`, not `finish`). New harness-integration dirs follow dot-prefixed harness naming (`.kimi-plugin/`, `.pi/`, `.codex-plugin/`, `.agents/plugins/` for the Codex marketplace manifest).
 
 ### Top-Level Structure
 
 ```
 .
+├── .agents/plugins/       # Codex marketplace manifest (v6.1.0)
 ├── .claude-plugin/        # Claude Code marketplace integration
-├── .codex/                # OpenAI Codex integration
+├── .codex-plugin/         # OpenAI Codex plugin (was .codex/)
 ├── .cursor-plugin/        # Cursor IDE integration
+├── .kimi-plugin/          # Kimi Code integration (v6.0.0)
 ├── .opencode/             # OpenCode integration
-├── agents/                # 1 agent definition (code-reviewer)
-├── commands/              # 3 deprecated commands (→ skills)
-├── docs/                  # Human docs + plans + design specs
-├── hooks/                 # SessionStart hook + runner
-├── scripts/               # Install/release scripts
-├── skills/                # 14 skill directories (the core)
-│   ├── brainstorming/
-│   ├── dispatching-parallel-agents/
-│   ├── executing-plans/
-│   ├── finishing-a-development-branch/
-│   ├── receiving-code-review/
-│   ├── requesting-code-review/
-│   ├── subagent-driven-development/
-│   ├── systematic-debugging/
-│   ├── test-driven-development/
-│   ├── using-git-worktrees/
-│   ├── using-superpowers/
-│   ├── verification-before-completion/
-│   ├── writing-plans/
-│   └── writing-skills/
-└── tests/                 # Test fixtures for skill behavior
+├── .pi/extensions/        # Pi session-start extension, TypeScript (v6.0.0)
+├── assets/                # icons
+├── docs/                  # Human docs + dogfooded specs/plans + porting guide
+├── hooks/                 # SessionStart hook (Claude Code/Cursor/Copilot variants)
+├── scripts/               # Install/release/packaging scripts
+├── skills/                # 14 skill directories (the core; same set as v5.0.7)
+└── tests/                 # Plugin-infrastructure tests (11 suites incl. per-harness)
 ```
+
+Six harness plugin surfaces (Claude Code, Codex, Cursor, Kimi, OpenCode, Pi) plus Antigravity via direct install. Gemini support removed in v6.1.0 (Google EOLed the CLI), though a stale root `GEMINI.md` chain-loader remains (see Dimension 2).
+
+### Code Surface Outline (optional — ast-grep)
+
+Skipped — below size gate (~55 code files; gate is ≥ 200).
 
 ### Notable Structural Patterns
 
-1. **Plugin-first architecture**: Four platform integration directories (`.claude-plugin/`, `.cursor-plugin/`, `.codex/`, `.opencode/`) — designed as a cross-platform plugin from day one, not a single-harness tool.
-2. **Skills-as-directories**: Each skill is a directory containing `SKILL.md` plus supporting files (subagent prompts, reference docs, visual companions). This is richer than GSD's flat agent files.
-3. **No workflow layer**: Unlike GSD's three-layer hierarchy (commands -> workflows -> agents), Superpowers has only skills + 1 agent. Skills chain to each other directly.
-4. **Deprecated commands**: `commands/` contains stubs pointing users to skills — indicates a migration from command-based to skill-based activation.
-5. **Test fixtures as `.txt` files**: 15 text files in `tests/` — adversarial test scenarios for skill behavior verification.
-6. **Meta-skill**: `writing-skills/` is a skill for writing skills — self-referential development methodology.
+1. **Skills as the only behavioral abstraction.** With `agents/` and `commands/` deleted, every behavior is either a SKILL.md or a prompt-template file owned by a skill. Reviewer personas that were named agents are now inline dispatch templates (`skills/requesting-code-review/code-reviewer.md`).
+2. **Runtime scratch workspace convention.** `.superpowers/sdd/` (created at runtime by `sdd-workspace`, self-ignoring via its own `.gitignore`) holds task briefs, implementer reports, review packages, and the progress ledger — per-worktree, out of `git status`, out of commits, and deliberately outside `.git/` because harnesses write-protect it.
+3. **Executable helpers shipped inside a skill directory.** `skills/subagent-driven-development/scripts/` is the first skill to carry its own shell tooling — the skill's prose instructs the controller to run them rather than reproduce their output through its own context.
+4. **Eval externalization.** Skill-behavior tests moved to a separate `superpowers-evals` repo ("drill" framework: real tmux sessions of Claude Code/Codex judged by an LLM verifier); in-tree `tests/` retains only plugin-infrastructure tests. The split is documented in `docs/testing.md`. The evals submodule was briefly shipped in v6.0.0 and removed in v6.0.2 because it broke plugin installs.
+5. **Self-dogfooding artifact trail.** The specs and plans for Superpowers' own major changes live in `docs/superpowers/`, written by its own brainstorming/writing-plans workflow — a browsable audit trail of design → plan → release.
 
 ---
 
@@ -126,47 +132,46 @@ Kebab-case throughout. Directories are **capability-named** (named by what they 
 
 | File Path | Audience | Scope | Mechanism | Content Type | Summary |
 |-----------|----------|-------|-----------|--------------|---------|
-| `CLAUDE.md` | LLM | Global | Auto-loaded | Constraints/Rules | Contributor guidelines: 94% PR rejection rate, quality gates, anti-slop rules |
-| `AGENTS.md` | LLM | Global | Auto-loaded | Constraints/Rules | Identical to CLAUDE.md (cross-platform compatibility) |
-| `GEMINI.md` | LLM | Global | Chain-loader | Constraints/Rules | @-references using-superpowers SKILL.md and gemini-tools.md |
-| `skills/using-superpowers/SKILL.md` | LLM | Global | Injected (via SessionStart hook) | Workflow/Process + Constraints/Rules | Master skill: priority hierarchy, skill invocation rules, rationalization prevention |
-| `skills/brainstorming/SKILL.md` | LLM | Task | Injected | Workflow/Process | Design-first process: explore context, ask questions, propose approaches, write spec |
-| `skills/writing-plans/SKILL.md` | LLM | Task | Injected | Workflow/Process | Plan creation: bite-sized tasks, TDD, file structure mapping |
-| `skills/subagent-driven-development/SKILL.md` | LLM | Task | Injected | Workflow/Process | Subagent orchestration: implementer per task + two-stage review |
-| `skills/test-driven-development/SKILL.md` | LLM | Task | Injected | Constraints/Rules | TDD enforcement: delete pre-test code, Red-Green-Refactor |
-| `skills/verification-before-completion/SKILL.md` | LLM | Task | Injected | Constraints/Rules | Verification: evidence before claims, rationalization prevention |
-| `skills/systematic-debugging/SKILL.md` | LLM | Task | Injected | Workflow/Process | 4-phase debugging: root cause first, no guessing |
-| `skills/executing-plans/SKILL.md` | LLM | Task | Injected | Workflow/Process | Sequential plan execution (alternative to subagent-driven) |
-| `skills/dispatching-parallel-agents/SKILL.md` | LLM | Task | Injected | Workflow/Process | Parallel agent dispatching |
-| `skills/finishing-a-development-branch/SKILL.md` | LLM | Task | Injected | Workflow/Process | Branch cleanup and completion |
-| `skills/receiving-code-review/SKILL.md` | LLM | Task | Injected | Workflow/Process | Handling review feedback |
-| `skills/requesting-code-review/SKILL.md` | LLM | Task | Injected | Workflow/Process | Initiating code review |
-| `skills/using-git-worktrees/SKILL.md` | LLM | Tool | Injected | Tool Usage | Git worktree patterns |
-| `skills/writing-skills/SKILL.md` | LLM | Tool | Injected | Workflow/Process | Meta-skill: how to write effective skills |
-| `skills/writing-skills/persuasion-principles.md` | LLM | Global | Referenced | Constraints/Rules | 7 persuasion principles for skill design (based on Meincke et al. 2025) |
-| `skills/subagent-driven-development/implementer-prompt.md` | LLM | Task | Referenced | Identity/Persona | Template for implementer subagent prompt |
-| `skills/subagent-driven-development/spec-reviewer-prompt.md` | LLM | Task | Referenced | Identity/Persona | Template for spec compliance reviewer |
-| `skills/subagent-driven-development/code-quality-reviewer-prompt.md` | LLM | Task | Referenced | Identity/Persona | Template for code quality reviewer |
-| `skills/brainstorming/visual-companion.md` | LLM | Task | Referenced | Tool Usage | Browser-based visual mockup companion |
-| `skills/brainstorming/spec-document-reviewer-prompt.md` | LLM | Task | Referenced | Identity/Persona | Spec review subagent template |
-| `agents/code-reviewer.md` | LLM | Task | Injected | Identity/Persona | Senior Code Reviewer persona for post-step review |
-| `hooks/session-start` | LLM | Global | Auto-loaded (hook) | Memory/State | SessionStart hook: injects using-superpowers as context |
-| `hooks/hooks.json` | System | Global | Auto-loaded (config) | Tool Usage | Hook configuration for SessionStart |
-| `README.md` | Human | Global | Referenced | Identity/Persona | Project overview, install, philosophy |
+| `CLAUDE.md` | LLM | Global | Auto-loaded | Constraints/Rules | Contributor guidelines, heavily expanded: "If You Are an AI Agent" pre-submission checklist, disclosure mandate (model/harness/plugins per PR), dev-branch targeting, will-not-accept list |
+| `AGENTS.md` | LLM | Global | Auto-loaded | Constraints/Rules | Now a **symlink** to CLAUDE.md (was a duplicate copy at v5.0.7) |
+| `GEMINI.md` | LLM | Global | Chain-loader (stale) | Constraints/Rules | @-references `using-superpowers/SKILL.md` and `references/gemini-tools.md` — the latter was **deleted** in v6.1.0 (Gemini EOL); orphaned entry point |
+| `skills/using-superpowers/SKILL.md` | LLM | Global | Hook-injected (SessionStart) | Workflow/Process + Constraints/Rules | Bootstrap skill, compressed in v6.1.0 (3.1k): 1%-chance invocation mandate, Red Flags table, skill priority (process before implementation), platform-adaptation pointers. New `<SUBAGENT-STOP>` guard tells dispatched subagents to ignore it |
+| `skills/using-superpowers/references/{codex,pi,antigravity}-tools.md` | LLM | Tool | Referenced | Tool Usage | Per-harness tool maps: action → harness tool (e.g. Codex `spawn_agent`/`wait_agent`/`close_agent`), environment detection, sandbox caveats. claude-code/copilot/gemini variants deleted in v6.1.0 |
+| `skills/brainstorming/SKILL.md` | LLM | Task | Injected | Workflow/Process | Design-first process; HARD-GATE verbatim unchanged from v5.0.7; adds spec self-review, user spec-review gate, just-in-time visual-companion offer |
+| `skills/writing-plans/SKILL.md` | LLM | Task | Injected | Workflow/Process | Plan creation; new mandatory Global Constraints header block, per-task Interfaces block, task right-sizing, No Placeholders list, plan self-review |
+| `skills/subagent-driven-development/SKILL.md` | LLM | Task | Injected | Workflow/Process | SDD controller procedure (22k, ~3x its v5 size): pre-flight plan review, model selection rules, four-status handling, reviewer-prompt construction rules, file handoffs, durable progress ledger |
+| `skills/subagent-driven-development/implementer-prompt.md` | LLM | Task | Referenced | Identity/Persona | Implementer dispatch template; reads task brief file; writes report file; returns <15 lines; four statuses; TDD red/green evidence |
+| `skills/subagent-driven-development/task-reviewer-prompt.md` | LLM | Task | Referenced | Identity/Persona | **New in v6.0.0** — unified reviewer: spec compliance + code quality in one pass; replaces deleted `spec-reviewer-prompt.md` and `code-quality-reviewer-prompt.md`; read-only; "Do Not Trust the Report" skepticism; ⚠️ cannot-verify verdict; calibrated severity |
+| `skills/requesting-code-review/code-reviewer.md` | LLM | Task | Referenced | Identity/Persona | Self-contained Senior Code Reviewer dispatch template (absorbed the deleted `agents/code-reviewer.md` in v5.1.0); used for the final whole-branch review; read-only mandate |
+| `skills/test-driven-development/SKILL.md` (+ `testing-anti-patterns.md`) | LLM | Task | Injected | Constraints/Rules | Iron Law unchanged; now links the anti-patterns reference |
+| `skills/verification-before-completion/SKILL.md` | LLM | Task | Injected | Constraints/Rules | Iron Law + gate function unchanged |
+| `skills/systematic-debugging/SKILL.md` (+ 4 reference docs) | LLM | Task | Injected | Workflow/Process | 4-phase debugging unchanged; extended-thinking keyword defused (v6.0.0 fix) |
+| `skills/executing-plans/SKILL.md` | LLM | Task | Injected | Workflow/Process | Inline alternative to SDD; now explicitly steers toward SDD when subagents are available |
+| `skills/dispatching-parallel-agents/SKILL.md` | LLM | Task | Injected | Workflow/Process | Vendor-neutral "dispatch" vocabulary; same-response dispatches = parallel |
+| `skills/using-git-worktrees/SKILL.md` | LLM | Tool | Injected | Tool Usage | Rewritten (v5.1.0/v6.0.0): environment detection, consent before creation, project-local `.worktrees/` default (global `~/.config/superpowers/worktrees/` removed) |
+| `skills/finishing-a-development-branch/SKILL.md` | LLM | Task | Injected | Workflow/Process | Forge-neutral (no hardcoded `gh pr create`); provenance-based worktree cleanup |
+| `skills/writing-skills/SKILL.md` (+ 3 references, examples) | LLM | Tool | Injected | Workflow/Process | Meta-skill; adds "Match the Form to the Failure" table and "Micro-Test Wording" method; "Claude Search Optimization" renamed "Skill Discovery Optimization" |
+| `skills/writing-skills/persuasion-principles.md` | LLM | Global | Referenced | Constraints/Rules | Unchanged: 7 persuasion principles (Meincke et al. 2025) |
+| `skills/brainstorming/visual-companion.md` (+ `scripts/`) | LLM | Task | Referenced | Tool Usage | Browser companion; v6.0.0 security model: per-session auth key, sandboxed file server, 4h idle timeout, restart survival |
+| `hooks/session-start` | LLM | Global | Auto-loaded (hook) | Memory/State | Injects using-superpowers wrapped in `<EXTREMELY_IMPORTANT>`; emits platform-specific JSON (Cursor snake_case / Claude Code nested / Copilot+SDK top-level) |
+| `hooks/hooks.json`, `hooks/hooks-cursor.json` | System | Global | Auto-loaded (config) | Tool Usage | Hook wiring; Codex hook removed in v6.1.0 (Codex triggers skills natively); v6.1.1 sets explicit `hooks: {}` in the Codex manifest to suppress auto-discovery |
+| `.superpowers/sdd/*` (runtime) | LLM | Task | Referenced | Memory/State | Runtime-generated context files: task briefs, implementer reports, review packages, progress ledger — the file-mediated handoff substrate |
+| `docs/porting-to-a-new-harness.md` | Human | Global | Referenced | Workflow/Process | 51k porting guide; the one rule: load the bootstrap at session start |
+| `README.md` | Human | Global | Referenced | Identity/Persona | Overview, per-harness install |
+
+### Sampling Notes
+
+Read in full: `using-superpowers`, `brainstorming`, `writing-plans`, `subagent-driven-development` (+ both prompt templates and all 3 scripts), `executing-plans`, `verification-before-completion` (first 40 lines), `codex-tools.md`, `session-start` hook, `CLAUDE.md`, `GEMINI.md`, RELEASE-NOTES v5.1.0–v6.1.1. Classified by pattern + release-note deltas: the remaining 8 SKILL.md files and supporting docs (grep-verified for Iron Laws, HARD-GATE, phase structure, and rename markers).
 
 ### Context Loading Strategy
 
-**Hook-injected bootstrap + on-demand skill activation:**
+The v5 pull-model architecture is intact — SessionStart hook injects ONE bootstrap skill; all other skills self-activate on demand via the Skill tool — with three refinements:
 
-1. **SessionStart hook** (`hooks/session-start`): On every session/clear/compact, a bash script runs that reads `using-superpowers/SKILL.md` and injects it as `additionalContext` wrapped in `<EXTREMELY_IMPORTANT>` tags. This is the ONLY skill loaded automatically — all others are on-demand.
+1. **Bootstrap is now cost-managed.** v6.1.0 explicitly treats the injected bootstrap as a per-session tax and compressed it (graphviz diagram → prose, merged sections, trimmed platform pointers) without touching the behavior-shaping Red Flags content. The per-harness references were pruned on the same principle; reference files with nothing harness-specific left were deleted outright.
+2. **Subagent context is file-assembled, not pasted.** The controller curates a dispatch of file paths (brief, report, review package) plus a thin prose frame (scene-setting, interfaces from earlier tasks, global constraints). Explicit anti-pattern: "a real session's dispatch hit 42k chars of which 99% was pasted history."
+3. **Subagents opt out of the bootstrap.** The new `<SUBAGENT-STOP>` block at the top of `using-superpowers` prevents the skill-invocation mandate from recursing into dispatched workers.
 
-2. **Skill invocation**: The `using-superpowers` skill instructs the agent to invoke skills via the `Skill` tool whenever there's "even a 1% chance a skill might apply." Skills are NOT `@`-referenced or chain-loaded — they're loaded on demand by the harness when the agent calls the Skill tool.
-
-3. **Intra-skill references**: Skills reference supporting docs within their own directory (e.g., `brainstorming/visual-companion.md`, `subagent-driven-development/implementer-prompt.md`). These are read by the agent during skill execution, not pre-loaded.
-
-4. **Cross-platform adaptation**: `GEMINI.md` uses `@` references, `AGENTS.md` duplicates `CLAUDE.md`, and platform-specific tool mapping docs exist in `skills/using-superpowers/references/`. The hook script detects platform (Cursor, Claude Code, Copilot CLI, Codex) and emits the appropriate JSON format.
-
-**Key contrast with GSD**: GSD pre-loads context via `@`-reference chains (command -> workflow -> references). Superpowers loads ONE skill at session start and relies on the agent to self-activate other skills on demand. This is a pull model (agent decides what to load) vs. GSD's push model (harness assembles what the agent sees).
+One drift artifact: root `GEMINI.md` still chain-loads a reference file deleted in v6.1.0 — a dangling entry point for a harness that no longer exists.
 
 ---
 
@@ -176,57 +181,68 @@ Kebab-case throughout. Directories are **capability-named** (named by what they 
 
 | Phase | Entry Trigger | Exit Condition | Human Gate? |
 |-------|--------------|----------------|-------------|
-| **Brainstorm** | Any creative/implementation request | Spec written, committed, and user-approved | Yes -- user approves design after each section |
-| **Write Plan** | Spec approved | Plan written with bite-sized tasks | No (auto from brainstorm) |
-| **Execute** | Plan exists | All tasks implemented and reviewed | Checkpoints per task |
-| **Review** | Step completed | Code reviewer approves | Yes -- two-stage review |
-| **Verify** | About to claim completion | Fresh verification evidence exists | Hard gate -- no claims without evidence |
-| **Finish** | All tasks done | Branch cleaned up, ready for merge | Yes -- human reviews final diff |
+| **Brainstorm** | Any creative/implementation request | Spec written, self-reviewed, committed, user-approved | Yes -- per-section design approval AND written-spec review gate |
+| **Write Plan** | Spec approved | Plan with Global Constraints block, per-task Interfaces, bite-sized steps; self-reviewed | Execution-mode choice (subagent-driven vs inline) |
+| **Pre-Flight Plan Review** (new v6.0.0) | Before Task 1 dispatch | Plan conflicts surfaced as one batched question, or clean scan | Yes, if conflicts found -- human adjudicates plan-vs-rubric contradictions |
+| **Execute (per task)** | Plan exists | Implementer DONE + task reviewer approves both verdicts | No -- continuous execution, explicitly no between-task check-ins |
+| **Task Review (per task)** | Implementer reports DONE | Spec ✅ + quality Approved (fix subagent loop until clean) | No (controller-mediated; plan-mandated defects escalate to human) |
+| **Final Whole-Branch Review** (new v6.0.0) | All tasks complete | Final reviewer approves; one fix subagent for the full findings list | No (findings triage; Minor items via ledger) |
+| **Verify** | About to claim completion | Fresh verification evidence | Hard gate -- unchanged Iron Law |
+| **Finish** | All tasks done, reviews clean | Branch merged/PR'd/kept per user choice; provenance-based worktree cleanup | Yes -- human chooses disposition |
 
 ### Flow Diagram (ASCII)
 
 ```
 ┌───────────────────┐
-│   BRAINSTORM      │──── Human: approves design sections
-│  (spec document)  │──── Hard gate: NO implementation without approved spec
+│   BRAINSTORM      │── Human: approves design per section
+│  (spec document)  │── HARD-GATE: no implementation before approval (verbatim v5)
+│                   │── NEW: spec self-review + user reviews written spec file
 └────────┬──────────┘
-         │
 ┌────────▼──────────┐
-│   WRITE PLAN      │──── Auto-transition from brainstorm
-│ (bite-sized tasks) │──── Scope check: decompose if too large
+│   WRITE PLAN      │── NEW: Global Constraints block (verbatim spec values)
+│ (bite-sized tasks)│── NEW: per-task Interfaces block (Consumes/Produces)
+└────────┬──────────┘── NEW: task right-sizing (one test cycle per reviewer gate)
+┌────────▼──────────┐
+│ PRE-FLIGHT REVIEW │── NEW: scan plan for conflicts & plan-mandated defects;
+│  (controller)     │        one batched question to human, else proceed
 └────────┬──────────┘
-         │
+┌────────▼────────────────────────────────────────────────┐
+│  EXECUTE — per task, continuous (no between-task pauses) │
+│   task-brief script ──► brief file                       │
+│   dispatch implementer (explicit model) ──► report file  │
+│   review-package script ──► diff file                    │
+│   dispatch task reviewer (read-only)                     │
+│     ├── spec verdict ✅/❌/⚠️  ── one reviewer,           │
+│     └── quality verdict        ── two verdicts           │
+│   ❌/Needs fixes ──► fix subagent ──► re-review          │
+│   clean ──► append to progress ledger, next task         │
+└────────┬────────────────────────────────────────────────┘
 ┌────────▼──────────┐
-│   EXECUTE          │──── Per-task subagent dispatch
-│  (per task):       │     ┌─────────────────────────┐
-│  implement →       │     │ Implementer subagent     │
-│  spec review →     │     │ Spec reviewer subagent   │
-│  quality review    │     │ Quality reviewer subagent│
-└────────┬──────────┘     └─────────────────────────┘
-         │
+│ FINAL BRANCH      │── NEW: one whole-branch review, most capable model,
+│ REVIEW            │        review-package(MERGE_BASE, HEAD); ONE fix
+└────────┬──────────┘        subagent for the complete findings list
 ┌────────▼──────────┐
-│   VERIFY           │──── Hard gate: evidence before claims
-│ (fresh evidence)   │──── No "should work", no "probably"
+│   VERIFY          │── Iron Law unchanged: evidence before claims
 └────────┬──────────┘
-         │
 ┌────────▼──────────┐
-│   FINISH           │──── Human reviews final diff
-│ (branch cleanup)   │
+│   FINISH          │── forge-neutral; provenance-based worktree cleanup
 └───────────────────┘
 ```
 
 ### Transition Mechanisms
 
-- **Skill chaining**: Each skill names the next skill to invoke. Brainstorming explicitly says "The ONLY skill you invoke after brainstorming is writing-plans." Writing-plans says to use `subagent-driven-development` or `executing-plans`.
-- **Hard gates in skill text**: `<HARD-GATE>` XML tags block progression. Brainstorming's gate: "Do NOT invoke any implementation skill, write any code, scaffold any project, or take any implementation action until you have presented a design and the user has approved it."
-- **Checklist-driven**: Skills with checklists require TodoWrite items per step. Progress is tracked by checking off items.
-- **Self-activation**: The `using-superpowers` skill instructs the agent to activate skills whenever there's "even a 1% chance" one applies — the agent drives transitions, not the harness.
+Unchanged in kind: skill chaining by explicit next-skill naming ("The ONLY skill you invoke after brainstorming is writing-plans"), `<HARD-GATE>` tags, checklist-driven todos, self-activation via the bootstrap mandate. Changed in degree:
+
+- **Script-mediated transitions.** Task → review transitions now pass through shell scripts (`task-brief`, `review-package`) whose printed file paths are the handoff tokens.
+- **Status-protocol transitions.** Implementer statuses (DONE / DONE_WITH_CONCERNS / BLOCKED / NEEDS_CONTEXT) each have a prescribed controller response, including an escalation ladder: more context → more capable model → decompose task → escalate to human.
+- **Ledger-mediated resume.** After compaction, the progress ledger + `git log` — not conversation memory — determine where execution resumes.
 
 ### Parallelism
 
-- **Subagent-driven development**: Fresh subagent per task within a plan. Tasks are sequential by default but `dispatching-parallel-agents` skill enables parallel execution.
-- **Two-stage review**: Spec compliance review and code quality review run sequentially per task (not parallelized).
-- **Worktree isolation**: `using-git-worktrees` skill enables parallel work on different branches via git worktrees.
+- Sequential-by-default task execution is unchanged; parallel implementation dispatches remain explicitly forbidden within SDD ("conflicts").
+- `dispatching-parallel-agents` still covers independent parallel work (same-response dispatches run in parallel).
+- The two-stage sequential review per task is gone — replaced by one reviewer pass, which is where most of the claimed 2x speedup comes from.
+- Worktree isolation is now project-local (`.worktrees/`) with environment detection and consent, replacing the global worktree directory.
 
 ---
 
@@ -236,32 +252,38 @@ Kebab-case throughout. Directories are **capability-named** (named by what they 
 
 | Mechanism | Location | Enforcement | Example |
 |-----------|----------|-------------|---------|
-| `<HARD-GATE>` XML tags | Skill files (inline) | Hard | "Do NOT invoke any implementation skill until design approved" |
-| `<EXTREMELY_IMPORTANT>` tags | SessionStart hook injection | Hard | Skill invocation mandate |
-| Iron Laws | Skill files (inline) | Hard | "NO PRODUCTION CODE WITHOUT A FAILING TEST FIRST" |
-| Red Flags tables | Skill files (inline) | Soft | "Using 'should', 'probably', 'seems to'" = STOP |
-| Rationalization Prevention tables | Skill files (inline) | Soft | "I'm confident" → "Confidence ≠ evidence" |
-| Anti-Pattern sections | Skill files (inline) | Soft | "This Is Too Simple To Need A Design" |
-| Persuasion principles | `writing-skills/persuasion-principles.md` | Meta (design guidance) | 7 principles for designing effective constraints |
-| Contributor guidelines | `CLAUDE.md`, `AGENTS.md` | Hard | 94% PR rejection rate, anti-slop rules |
-| Instruction priority hierarchy | `using-superpowers/SKILL.md` | Hard | User instructions > Superpowers skills > System prompt |
+| `<HARD-GATE>` XML tags | `brainstorming/SKILL.md` | Hard | Verbatim unchanged from v5.0.7 |
+| `<EXTREMELY_IMPORTANT>` injection | SessionStart hook | Hard | Skill invocation mandate |
+| `<SUBAGENT-STOP>` guard | `using-superpowers/SKILL.md` | Hard | New — bootstrap self-exempts dispatched subagents |
+| Iron Laws | TDD, verification skills | Hard | Unchanged |
+| Red Flags tables | Skill files (inline) | Soft | Unchanged in bootstrap; SDD adds 18-item Never list |
+| Rationalization prevention tables | Skill files (inline) | Soft | Unchanged; scope tightened to discipline failures (v6.0.0) |
+| Controller prohibition rules | `subagent-driven-development/SKILL.md` | Hard | New — no "do not flag," no severity pre-rating, mandatory model naming |
+| Reviewer read-only mandate | Both reviewer templates | Hard | New — "Do not mutate the working tree, the index, HEAD, or branch state" |
+| Reviewer skepticism rule | `task-reviewer-prompt.md` | Hard | New — "Do Not Trust the Report"; rationales never downgrade severity |
+| Plan structure contract | `writing-plans/SKILL.md` | Hard | New — Global Constraints + Interfaces blocks; "No Placeholders" list framed as plan failures |
+| Persuasion principles | `writing-skills/persuasion-principles.md` | Meta | Unchanged (Meincke et al. 2025) |
+| Contributor guidelines | `CLAUDE.md` (AGENTS.md symlink) | Hard | Expanded — agent-addressed checklist, disclosure mandate, dev-branch rule |
+| Eval-gated skill changes | `CLAUDE.md` + external `superpowers-evals` repo | Hard (process) | Skill-content PRs need before/after eval evidence; "skills are code that shapes agent behavior" |
+| Instruction priority hierarchy | `using-superpowers/SKILL.md` | Hard | Unchanged: user instructions > skills > default behavior |
 
 ### Guardrail Patterns
 
-1. **Persuasion-engineered constraints**: Skills explicitly use persuasion psychology (authority, commitment, scarcity, social proof, reciprocity, liking, unity) based on Meincke et al. 2025 research showing 33%→72% compliance improvement. This is documented and deliberate, not accidental.
-2. **Rationalization prevention**: Every discipline-enforcing skill (TDD, verification, debugging) includes a table of common rationalizations with rebuttals. "Just this once" → "No exceptions." "I'm confident" → "Confidence ≠ evidence."
-3. **Hard gates via XML tags**: `<HARD-GATE>` and `<EXTREMELY_IMPORTANT>` tags serve as structural enforcement — positioned where the agent is most likely to skip a step.
-4. **Iron Laws as anchors**: Single-line imperatives ("NO PRODUCTION CODE WITHOUT A FAILING TEST FIRST") serve as memorable, non-negotiable rules. Placed prominently in each skill.
-5. **Red Flags as detection patterns**: Tables of "thoughts that mean STOP" help the agent self-detect when it's about to rationalize skipping a rule.
-6. **"Human partner" language**: Deliberate terminology choice — not "user" but "human partner" — frames the relationship as collaborative. Documented as a design decision that should not be changed.
-7. **Explicit priority hierarchy**: User instructions > Superpowers skills > System prompt. Skills are powerful but the user always wins.
+All seven v5 patterns persist (persuasion-engineered constraints, rationalization prevention, XML hard gates, Iron Laws, Red Flags, "human partner" language, explicit priority hierarchy). New at v6:
+
+1. **De-authorizing the orchestrator.** The most distinctive v6 governance move: constraints aimed at the *controller*, not the workers. Real-run evidence showed controllers gaming their own review process (coaching reviewers to skip findings, pre-rating severity, omitting model choices); v6 bans each observed evasion explicitly and moves the judgment into templates and scripts.
+2. **Independence of review as an invariant.** Reviewers are read-only, skeptical-by-instruction, and shielded from controller influence; plan-mandated defects route to the human rather than being self-adjudicated ("the plan's authorship does not grade its own work").
+3. **Evidence chains.** Findings require file:line citations; implementer reports carry TDD red/green command output; fix reports must name covering tests, command, and output before re-review dispatches.
+4. **Failure-mode-derived rules.** Nearly every new rule cites its motivating incident inline (the 26-top-tier-reviewers run, the 42k-char dispatch, the orphaned-commits checkout, the re-dispatched completed tasks). Governance grows by post-mortem, and the rules carry their own rationale.
+5. **Contributor-facing agent governance.** `CLAUDE.md` now opens with a section addressed directly to AI agents ("Stop. Read this section before doing anything."), a 6-step pre-submission checklist, and a mandatory authoring-environment disclosure — governance of agents *outside* the session, at the project boundary.
+6. **Form-matching meta-governance.** "Match the Form to the Failure" (v6.0.0) codifies when prohibition-based bulletproofing works (discipline slips) vs backfires (wrong-shaped output → use worked examples), plus "Micro-Test Wording" for cheap A/B validation of phrasing against a no-guidance control.
 
 ### Permission Model
 
-- **No per-agent tool restrictions**: Unlike GSD, Superpowers does not restrict tools per skill. Any skill can use any tool available in the session.
-- **Instruction priority**: User's CLAUDE.md/AGENTS.md/GEMINI.md > Superpowers skills > default system prompt.
-- **Zero-dependency design**: No external packages, no MCP servers, no API calls. Pure markdown + hooks.
-- **Plugin-scoped**: Skills operate within the session context. No persistent state beyond git.
+- Still no per-skill tool restrictions and still zero-dependency (no packages, no MCP servers).
+- New read/write boundaries by role: reviewers read-only on the checkout; implementers write code + their own report file; the controller writes dispatches, the ledger, and runs the handoff scripts.
+- Model selection is now a governed resource: dispatches must name a model; guidance maps task complexity to model tier; "turn count beats token price" (cheapest models take 2-3x the turns on multi-step work).
+- Visual companion gained a real security model (v6.0.0): per-session auth key on every request/WebSocket, sandboxed file server (no symlinks/dotfiles/path escape), owner-only key files, 4h idle timeout.
 
 ---
 
@@ -271,37 +293,34 @@ Kebab-case throughout. Directories are **capability-named** (named by what they 
 
 | Agent/Role | Defined In | Capabilities | Communicates With |
 |------------|-----------|--------------|-------------------|
-| Main agent (orchestrator) | Session context | All tools | Subagents via Task tool |
-| Implementer subagent | `subagent-driven-development/implementer-prompt.md` | Task tool (general-purpose) | Main agent (results) |
-| Spec reviewer subagent | `subagent-driven-development/spec-reviewer-prompt.md` | Task tool (general-purpose) | Main agent (pass/fail) |
-| Code quality reviewer subagent | `subagent-driven-development/code-quality-reviewer-prompt.md` | Task tool (general-purpose) | Main agent (pass/fail) |
-| Spec document reviewer subagent | `brainstorming/spec-document-reviewer-prompt.md` | Task tool (general-purpose) | Main agent (feedback) |
-| Plan document reviewer subagent | `writing-plans/plan-document-reviewer-prompt.md` | Task tool (general-purpose) | Main agent (feedback) |
-| Code reviewer agent | `agents/code-reviewer.md` | Dedicated agent definition | Main agent (review report) |
+| Controller (main agent) | Session context + SDD SKILL.md | All tools; runs handoff scripts; explicitly de-authorized from review influence | All subagents via dispatch |
+| Implementer subagent | `subagent-driven-development/implementer-prompt.md` | Code + tests + commits; writes report file | Controller (4-status protocol, <15-line return) |
+| Task reviewer subagent | `subagent-driven-development/task-reviewer-prompt.md` | Read-only; dual verdicts (spec + quality) | Controller (structured report, file:line evidence) |
+| Fix subagent | Dispatched ad hoc per findings | Fixes Critical/Important findings; appends to report file; re-runs covering tests | Controller |
+| Final whole-branch reviewer | `requesting-code-review/code-reviewer.md` | Read-only; most capable model; full-branch package | Controller |
+| Spec document reviewer | `brainstorming/spec-document-reviewer-prompt.md` | Spec critique | Controller |
+| Plan document reviewer | `writing-plans/plan-document-reviewer-prompt.md` | Plan critique | Controller |
+
+The v5 roster's named `code-reviewer` agent and the separate spec-reviewer/code-quality-reviewer pair are gone. Everything is `general-purpose` + prompt template + explicit model.
 
 ### Handoff Mechanisms
 
-1. **Prompt-template based dispatch**: The main agent reads a prompt template file (e.g., `implementer-prompt.md`), fills in task-specific context, and dispatches a subagent via the Task tool. The template IS the handoff protocol.
-2. **Full text embedding**: "Paste the full text of the task from the plan — don't make the subagent read the file." Context is embedded in the prompt, not referenced.
-3. **Two-stage review loop**: After each task: implementer → spec reviewer → (fix if needed) → code quality reviewer → (fix if needed) → complete. Each reviewer is a fresh subagent.
-4. **Skill chaining**: Skills name the next skill to invoke. This is a verbal handoff protocol — skills tell the agent what to do next in prose.
+1. **File-mediated artifact exchange (the headline change).** Task text, implementer reports, and review diffs travel as files in `.superpowers/sdd/`: `task-brief PLAN N` → `task-N-brief.md`; implementer writes `task-N-report.md`; `review-package BASE HEAD` → `review-<base7>..<head7>.diff` (commit list + stat + `-U10` diff in one Read). The v5 doctrine — "paste the full text of the task, don't make the subagent read the file" — is explicitly inverted; briefs are extracted per task so no subagent ever reads the whole plan.
+2. **Thin dispatch prompts over fat files.** A dispatch carries: one line of scene-setting, the brief path ("read this first — it is your requirements"), interfaces/decisions from earlier tasks, ambiguity resolutions, and the report-file path + contract. Exact values live only in the brief. Anti-pattern documented: pasting accumulated prior-task summaries.
+3. **Structured status protocol.** DONE / DONE_WITH_CONCERNS / BLOCKED / NEEDS_CONTEXT, each with a prescribed controller response and an escalation ladder ending at the human.
+4. **Review loop with evidence contract.** Fix dispatches carry the complete findings list (one fixer per review, not per finding — a per-finding fix wave "cost more than all its tasks combined"); fix reports must show covering tests + command + output before re-review.
+5. **Skill chaining** remains the inter-phase handoff (prose naming of the next skill), now in vendor-neutral vocabulary.
 
 ### Shared State
 
-- **Git**: All agents operate on the same repo. Commits are the shared state mechanism.
-- **TodoWrite**: Main agent tracks task progress via checklist items. Subagents don't see this.
-- **Spec and plan files**: Written to `docs/superpowers/specs/` and `docs/superpowers/plans/`. These are the shared artifacts between brainstorming, planning, and execution.
-- **No persistent state file**: Unlike GSD's STATE.md, Superpowers has no central state tracker. The main agent maintains state in its context window.
+- **`.superpowers/sdd/` workspace** — briefs, reports, review packages, progress ledger; per-worktree; self-ignoring; survives compaction but not `git clean -fdx` (documented, with `git log` as the recovery source).
+- **Progress ledger** (`progress.md`) — one line per completed task with commit range; the controller's post-compaction recovery map, explicitly trusted over its own recollection.
+- **Git** — commits remain the durable state; BASE SHAs recorded per task (never `HEAD~1`, which truncates multi-commit tasks).
+- **TodoWrite** — still controller-only, now explicitly backed by the ledger because "conversation memory does not survive compaction."
 
 ### Coordination Patterns
 
-**Orchestrator-with-disposable-workers.** The main agent (session orchestrator) dispatches fresh subagents for implementation, review, and quality checks. Subagents are single-use: they do one task, return a result, and are discarded. The main agent maintains all coordination state in its context window.
-
-Key differences from GSD's hub-and-spoke:
-- **No workflow layer**: The main agent IS the orchestrator. GSD has separate workflow files.
-- **Disposable subagents**: Subagents are generic (general-purpose Task tool), not named specialized agents. GSD has 24 named agent types.
-- **Two-stage review per task**: Spec compliance then quality — more granular than GSD's single plan-checker.
-- **No persistent state**: GSD writes STATE.md. Superpowers relies on context window + git.
+**Orchestrator-with-disposable-workers, hardened into a constrained controller.** The v5 pattern survives, but v6 redistributes authority: judgment calls that v5 left to the orchestrator (model choice, review scope, severity, what to relay) are now fixed by templates, scripts, and prohibitions. The orchestrator becomes a logistics role — extract brief, record BASE, dispatch with model, package diff, route findings, keep the ledger — while quality judgment sits with independent read-only reviewers and conflict adjudication sits with the human. Cost architecture is explicit: per-task review is scoped narrow and cheap; breadth is concentrated in one end-of-branch review on the most capable model.
 
 ---
 
@@ -309,39 +328,32 @@ Key differences from GSD's hub-and-spoke:
 
 | Dimension | Relevance | Key Patterns Observed |
 |-----------|-----------|----------------------|
-| Context Engineering | **High** | Hook-based bootstrap injection (SessionStart → using-superpowers). Pull model: agent self-activates skills on demand vs. GSD's push model. Full-text embedding in subagent prompts ("don't make subagent read the file"). Platform-adaptive context injection (Cursor/Claude Code/Copilot/Codex/Gemini detection). |
-| Model | Low | `model: inherit` on code-reviewer agent. No model-specific configuration or profiling. |
-| Prompt | **High** | Persuasion-engineered skill design based on academic research (Meincke et al. 2025). Iron Laws as non-negotiable anchors. Red Flags tables for self-detection of rationalization. `<HARD-GATE>` and `<EXTREMELY_IMPORTANT>` XML tags for structural enforcement. "Violating the letter of this rule is violating the spirit" pattern. Graphviz `.dot` diagrams embedded in skill files for process visualization. |
-| Tools | Medium | Cross-platform plugin architecture (Claude Code, Cursor, Codex, OpenCode, Copilot, Gemini). Skill tool as primary skill-activation mechanism. Visual companion (browser-based mockup tool) in brainstorming. |
-| Intent | **High** | Brainstorming as mandatory pre-implementation gate: "EVERY project regardless of perceived simplicity." One question at a time. YAGNI ruthlessly. Scope decomposition for large projects. "Human partner" framing (not "user"). Explicit instruction priority hierarchy (user > skills > system). |
-| Orchestration | **High** | Orchestrator-with-disposable-workers pattern. Two-stage review (spec compliance then quality) per task. Skill chaining via explicit next-skill naming. Self-activation ("1% chance → invoke skill"). No workflow layer — main agent orchestrates directly. |
-| Evaluation | **High** | Verification-before-completion as Iron Law ("evidence before claims"). Red-Green-Refactor TDD enforcement with code deletion for violations. Two-stage review per task. Rationalization prevention tables. "Claiming work is complete without verification is dishonesty." |
-| Sandboxing | Medium | Git worktree isolation for parallel development branches. No container/VM sandboxing. |
-| Governance | **High** | Persuasion principles as explicit design methodology. XML-tag enforcement (`<HARD-GATE>`, `<EXTREMELY_IMPORTANT>`). Rationalization prevention (anticipating and blocking common evasion patterns). "94% PR rejection rate" as social proof. Instruction priority hierarchy. "Human partner" terminology as deliberate framing choice. |
-| Agent Design | **High** | Skills-as-directories pattern (SKILL.md + supporting docs). Hook-injected bootstrap skill. Self-activation model ("1% chance → invoke"). Meta-skill (writing-skills for writing skills). Disposable subagents with prompt templates. Cross-platform agent identity (same skills, different harnesses). |
+| Context Engineering | **High** | File-mediated handoffs as context economy (dispatch carries paths, not content; "everything you paste stays resident"); bootstrap compression as per-session token-cost management (v6.1.0); brief extraction so subagents never read whole plans; review packages read in one call; `<SUBAGENT-STOP>` scoping of injected context; durable progress ledger as compaction-surviving memory |
+| Model Selection | **High** (was Low) | Mandatory explicit model per dispatch (silent inheritance of the most expensive model named as the failure); task-complexity → model-tier mapping; "turn count beats token price" heuristic; final review pinned to the most capable model; review-model scaled to diff size/risk |
+| Prompt Craft | **High** | Persuasion principles unchanged; "Match the Form to the Failure" (prohibitions for discipline slips, worked examples for shape failures); "Micro-Test Wording" (sample phrasings vs no-guidance control); accidental extended-thinking keyword trigger defused by a hyphen; reviewer templates carrying process rules so per-dispatch prompts stay thin |
+| Tool Integration | **High** (was Medium) | Vendor-neutral action vocabulary ("dispatch a subagent") + per-harness tool maps as the portability layer; 7-harness support with per-harness bootstrap mechanisms (hook / native / extension); skill-owned shell scripts as controller tools; forge-neutral finishing; `hooks: {}` vs absent-field semantics (v6.1.1) as harness-config subtlety |
+| Intent Engineering | **High** | Brainstorming HARD-GATE unchanged; spec self-review + user review gate on the written spec; Global Constraints block carrying verbatim spec values downstream; per-task Interfaces block as cross-task contract; pre-flight plan review batching conflicts into one human question |
+| Orchestration | **High** | Unified single-reviewer with dual verdicts replacing two-stage review (~50% fewer tokens, ~2x faster per upstream evals); whole-branch end review; controller de-authorization; 4-status protocol with escalation ladder; one-fixer-per-review-wave rule; continuous execution (no between-task check-ins) |
+| Evaluation | **High** | Reviewer independence invariants (read-only, skepticism, no controller coaching); ⚠️ cannot-verify-from-diff verdict; evidence chains (file:line, red/green output, covering tests before re-review); external eval repo with "drill" (real harness sessions + LLM judging); eval-gated skill-content changes; calibrated severity rubric with plan-mandated-defect escalation |
+| Sandboxing | Medium | Read-only review as a checkout-level constraint; `.superpowers/sdd/` isolation outside `.git/` (harness write-protection); visual-companion security model (per-session key, sandboxed file server, idle timeout); project-local worktrees with consent |
+| Governance | **High** | Failure-mode-derived rules citing their motivating incidents; de-authorization of the orchestrator; contributor-facing agent governance (agent-addressed CLAUDE.md, authoring-environment disclosure, acceptance-test transcript for new harnesses); positive-instruction redesign (dogfooded spec `2026-06-10-positive-instruction-redesign-design.md`); eval evidence as the bar for behavior-content changes |
+| Agent Design | **High** | Skills as the sole behavioral abstraction (named agent + commands deleted); prompt-template-owned personas; skill-owned executable helpers; Skill Discovery Optimization (renamed from Claude Search Optimization); meta-skill additions for skill authors; "human partner" framing unchanged |
+| Agentic Systems | Low | Single-project development workflow, not an operational multi-agent system; no scheduled loops or cross-session system assembly. (11.A Loop Engineering: the SDD review loop is single-run orchestration → D6, not a designed recurring cycle) |
 
 ### Findings Candidates
 
-1. **Persuasion-engineered skill design** (Prompt, Governance) — Superpowers explicitly applies 7 persuasion principles from academic research (Meincke et al. 2025, N=28,000) to skill design. Documents show 33%→72% compliance improvement. This is the most rigorous, research-backed approach to "how to write prompts that agents actually follow" in any repo we've analyzed. Potentially a standalone finding.
-→ Promoted to [[persuasion-engineered-skill-design]] on 2026-04-08
+Suggestions only — promotion requires `/promote-findings` or `/research-loop`. Not promoted here.
 
-2. **Rationalization prevention pattern** (Governance, Evaluation) — Every discipline-enforcing skill includes a table of rationalizations with rebuttals and a "Red Flags" table of thoughts that mean STOP. This anticipates and blocks the specific ways LLMs evade constraints. Distinct from GSD's gate taxonomy (which focuses on structural enforcement, not psychological).
-→ Promoted to [[rationalization-prevention-pattern]] on 2026-04-08
-
-3. **Pull-model context loading vs. push-model** (Context Engineering, Agent Design) — Superpowers injects ONE bootstrap skill and relies on the agent to self-activate others ("1% chance → invoke"). GSD pre-assembles context via `@`-reference chains. Fundamental architectural difference with tradeoffs worth analyzing.
-→ Promoted to [[push-vs-pull-context-loading]] on 2026-04-08
-
-4. **Brainstorming as mandatory design-first gate** (Intent, Evaluation) — Every project, regardless of perceived simplicity, must go through brainstorming before implementation. The `<HARD-GATE>` prevents any implementation skill from running before spec approval. Compare to GSD's discuss-phase (which is per-phase, not per-project, and focuses on implementation decisions rather than design exploration). This is the thinking/critical-thinking skill Nick flagged.
-→ Promoted to [[brainstorming-as-mandatory-design-gate]] on 2026-04-08
-
-5. **Two-stage review per task** (Evaluation, Orchestration) — Spec compliance review THEN code quality review, each by a fresh subagent. More granular than GSD's plan-checker (which reviews plans, not task outputs). Worth comparing to BMAD's review patterns.
-→ Promoted to [[two-stage-sequential-review]] on 2026-04-08
-
-6. **"Human partner" framing** (Agent Design, Governance) — Deliberate terminology: not "user" but "human partner." Documented as a design decision that should not be changed. Frames the agent-human relationship as collaborative rather than service-oriented. Subtle but affects agent behavior.
-→ Promoted to [[human-partner-framing]] on 2026-04-08
-
-7. **Meta-skill for skill authorship** (Agent Design, Prompt) — `writing-skills/` contains persuasion principles, Anthropic best practices, testing methodology, and examples. A skill that teaches agents how to write skills — self-referential capability development. No equivalent in GSD.
-→ Promoted to [[meta-skill-for-skill-authorship]] on 2026-04-08
+1. **Unified dual-verdict reviewer supersedes two-stage review** (Orchestration, Evaluation) — v6.0.0 collapsed spec-reviewer + quality-reviewer into one `task-reviewer-prompt.md` returning both verdicts from one diff read, with a third ⚠️ cannot-verify verdict routing unverifiable requirements back to the controller. Upstream evals: similar quality, ~2x faster, ~50% fewer tokens. Directly supersedes our KB finding `two-stage-sequential-review` (promoted 2026-04-08) and the review architecture recorded in `superpowers-plugin-spec-driven-sub-agent-orchestra.md` — the KB needs a supersession pass, and DD-62's citation of two-stage review is stale (flagged in the watch-upstream report for Nick; DDs immutable).
+2. **File-mediated subagent handoff workspace** (Context Engineering, Orchestration) — task briefs, implementer reports, and review diffs move as files in a self-ignoring `.superpowers/sdd/` working-tree workspace created by shared scripts (`task-brief`, `review-package`, `sdd-workspace`); dispatch prompts carry paths + thin framing; implementer returns capped under 15 lines. Inverts the v5 "paste full text" doctrine on context-economy grounds. Strong corroboration of IL's own file-mediated handoff protocol (`agents/handoff-protocol.md`) from an independent, eval-backed source.
+3. **Controller de-authorization / reviewer independence invariants** (Governance, Evaluation) — bans on coaching reviewers ("do not flag"), pre-rating severity, and skipping model choice; read-only reviews; implementer rationales never downgrade findings; plan-mandated defects escalate to the human ("the plan's authorship does not grade its own work"). Each rule cites the real failure that motivated it. A rare worked example of generator-assessor separation enforced against the *orchestrator* — resonates with our generator-assessor standing rule.
+4. **Mandatory explicit model-per-dispatch with tiering heuristics** (Model Selection) — omitted models silently inherit the session's most expensive one (observed: all 26 reviewers on top tier); templates hard-require a model; complexity→tier mapping plus "turn count beats token price" (cheap models take 2-3x turns on multi-step work, costing more). Candidate input for the model capability registry's delegation guidance.
+5. **Plans that carry their own contract: Global Constraints + per-task Interfaces blocks** (Intent Engineering, Orchestration) — project-wide requirements copied verbatim into a plan header and per-task Consumes/Produces signatures, so context-isolated implementers and reviewers receive binding constraints without re-derivation. Upstream testing: structured plans needed one fix round vs two-to-four for control (which also shipped a real bug).
+6. **Durable progress ledger for compaction recovery** (Context Engineering) — one appended line per completed task (commit range + review status) in the scratch workspace; on resume, the ledger and `git log` outrank the agent's own recollection. Motivated by "the single most expensive failure observed": controllers re-dispatching entire completed task sequences after context loss.
+7. **Vendor-neutral skill vocabulary with per-harness tool maps** (Tool Integration, Agent Design) — skills rewritten to action language ("dispatch a subagent," "your instructions file"), with harness-specific mappings isolated in per-harness reference files that are deleted when they carry nothing harness-specific. The portability layer that let one skill set add Kimi/Pi/Antigravity and drop Gemini without touching skill bodies. Relevant to `/meta-skill-author`'s porting concern and the DD-92 universal-vocabulary requirement.
+8. **Behavior evals externalized to real-session LLM-judged harness ("drill")** (Evaluation) — skill-behavior tests moved to a separate repo that drives real tmux sessions of multiple harnesses and judges compliance with an LLM verifier; in-tree tests retained only for plugin infrastructure; skill-content PRs require before/after eval evidence. A concrete architecture for "prompts are code, so eval them like code."
+9. **Bootstrap compression as recurring token-cost maintenance** (Context Engineering) — v6.1.0 treats the always-injected bootstrap as a standing per-session tax and shrinks it (diagram→prose, section merges, reference pruning) while explicitly preserving behavior-shaping content. Same economic reasoning as our token-economy standing rule, applied to hook-injected context.
+10. **Extended-thinking keyword as accidental context trigger** (Prompt Craft, minor) — a skill bullet containing the exact keyword Claude Code scans for silently forced extended thinking on every session that loaded the skill; fixed by hyphenating the word. A concrete instance of harness keyword-scanning interacting destructively with instruction prose — cheap, memorable defect class for skill authors.
 
 ---
 
@@ -350,3 +362,4 @@ Key differences from GSD's hub-and-spoke:
 | Date | Version | Dimensions | Notes |
 |------|---------|------------|-------|
 | 2026-04-08 | v5.0.7 | all | Initial analysis. 142 files, 75 MD, 14 skills, 1 agent. Persuasion-engineered constraints, pull-model context loading. |
+| 2026-07-13 | v6.1.1 | all | Re-run after v6.0.0 SDD rewrite (registry Upstream Delta). 171 files, 82 MD, same 14 skills, 0 named agents/commands. Unified dual-verdict reviewer replaces two-stage review; file-mediated handoffs in `.superpowers/sdd/`; Global Constraints + Interfaces plan blocks; whole-branch end review; controller de-authorization; vendor-neutral skill language + per-harness tool maps; brainstorming HARD-GATE and thinking-skill surfaces confirmed unchanged. 10 finding candidates (not promoted). |

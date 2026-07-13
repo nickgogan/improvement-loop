@@ -24,9 +24,11 @@ related_findings:
   rel: same-problem
 - file: frontier-model-as-unknown-unknown-elicitor.md
   rel: same-problem
+- file: human-ai-seam-identification-three-question-rubric.md
+  rel: same-problem
 proposals: null
 date_discovered: '2026-04-20'
-last_updated: '2026-07-12'
+last_updated: '2026-07-13'
 pipeline_status: synthesized
 consumed_by:
 - templates/tacit-knowledge-elicitation-template.md

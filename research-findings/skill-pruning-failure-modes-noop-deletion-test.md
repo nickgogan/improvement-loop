@@ -33,9 +33,11 @@ related_findings:
     rel: "same-problem"
   - file: "branch-analysis-externalization-rule-skill-reference.md"
     rel: "extends"
+  - file: "tool-pruning-as-harness-maintenance.md"
+    rel: "same-problem"
 proposals: null
 date_discovered: "2026-07-12"
-last_updated: "2026-07-12"
+last_updated: "2026-07-13"
 pipeline_status: "raw"
 ---
 

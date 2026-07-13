@@ -23,9 +23,11 @@ related_findings:
     rel: "same-problem"
   - file: "sandbox-first-modification-validation.md"
     rel: "extends"
+  - file: "three-layer-reversible-state-single-undo-surface.md"
+    rel: "extended-by"
 proposals: null
 date_discovered: "2026-05-25"
-last_updated: "2026-05-25"
+last_updated: "2026-07-13"
 pipeline_status: synthesized
 consumed_by:
   - "agent-governance-and-trust.md"

@@ -22,9 +22,15 @@ related_findings:
     rel: same-problem
   - file: context-infrastructure-seven-level-maturity-model.md
     rel: enables
+  - file: harness-depth-as-maintenance-ownership.md
+    rel: same-problem
+  - file: human-tool-surface-for-agents.md
+    rel: same-problem
+  - file: lean-core-vs-harness-two-lane-framework-layering.md
+    rel: same-problem
 proposals: null
 date_discovered: "2026-05-25"
-last_updated: "2026-05-25"
+last_updated: "2026-07-13"
 pipeline_status: "raw"
 tags:
   - "session-95-reextract"

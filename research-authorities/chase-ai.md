@@ -5,7 +5,12 @@ type: "YouTube Channel"
 credibility: "Tier 2 (experienced practitioner)"
 specialty:
   - "claude-code"
-notes: "Runs Chase A+ community with Claude Code Masterclass. Provides balanced, skeptical analysis of AI agent tools. Tests tools hands-on rather than just reviewing marketing."
+notes: |-
+  Runs Chase A+ community with Claude Code Masterclass. Provides balanced, skeptical
+  analysis of AI agent tools. Tests tools hands-on rather than just reviewing
+  marketing. Triage-priority note (wave-3 calibration, 2026-07-13): dedup against his
+  own corpus before fetching; only newest synthesis per construct — he iterates one
+  construct across many videos, so older videos on the same construct are dedup kills.
 source_count: 9
 sources:
   - "https://www.notion.so/32b1e08b9b3481ca9907fe7c33904fa5"

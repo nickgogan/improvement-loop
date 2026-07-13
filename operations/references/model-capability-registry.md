@@ -1,7 +1,7 @@
 ---
 name: Model Capability Registry
 description: Coarse per-model+version capability profiles for agent work — what each model is known to be good/bad at, relative to named anchors. Living reference, refreshed intentionally via /research-loop D2/2.A scans. Every claim carries KB provenance.
-last_updated: "2026-07-12 (session 136 — link-intake wave-2 refresh bundle: GLM 5.2 first profile, Hashimoto three-tier anchors on Fable 5, effort-level economics cross-cutting entry; GPT-5.6 availability note skipped — no KB grounding written at intake)"
+last_updated: "2026-07-13 (KB-hygiene sweep — GPT-5.6 Soul first profile from the wave-3 Simmons one-shot head-to-head; closes the session-136 'no KB grounding' skip. Anecdotal/medium, n=1 per task — evidence caveat carried in the entry)"
 refresh_contract: "Refreshed periodically and intentionally (Nick, session 129 — maintenance cost accepted). Refresh trigger: any /research-loop scan of D2 or 2.A that produces new model-capability findings. Each refresh updates per-entry last_reviewed. An entry whose last_reviewed predates two major release cycles for that provider is stale — treat as unverified."
 ---
 
@@ -49,6 +49,12 @@ refresh_contract: "Refreshed periodically and intentionally (Nick, session 129 �
 ### GPT-5.4 — OpenAI
 - **Strong:** computer use, browser automation, orchestration (WebArena-Verified leader at evidence date); terminal-agent work (TerminalBench-2.0 75.1% still tops the mid-2026 comparison rows).
 - **Grounding:** `task-specific-model-routing-table-march-2026-bench`, `deepseek-v4-frontier-parity-mit-license`
+
+### GPT-5.6 Soul — OpenAI *(first profile evidence; as of Jul 2026; reviewed 2026-07-13)*
+- **Strong:** **one-shot thoroughness and design/pixel fidelity** — won all three same-prompt, one-shot, deploy-live builds vs Fable 5 in the only KB head-to-head (near-pixel Shots.so clone with working exports/presets/animator vs Fable's sparse approximation); **literal staged-procedure compliance** — given a skill with explicit gates, it paused at each gate and waited where Fable 5 ran the same skill straight through. Sample-implied routing shape: one-shot, fidelity-critical, low-supervision builds favored Soul; fast iterative loops favored Fable.
+- **Weak:** wall-clock — 3–6× slower than Fable 5 on the heavyweight task; literal gate-compliance cuts both ways (higher fidelity, much higher latency and babysitting). Cost figures from the comparison are unreliable — self-flagged buggy harness readouts on both sides (see the companion cost-observability finding).
+- **Evidence caveat (do not over-weight):** one practitioner head-to-head (Pat Simmons), n=1 per task, run in each model's native harness (Codex vs Claude Code — model+harness confound), anecdotal/medium. Capability *shape*, not capability *ranking* — NOT a benchmark.
+- **Grounding:** `gpt-56-soul-vs-fable-5-one-shot-head-to-head`
 
 ### Gemini 3.1 Pro — Google
 - **Strong:** abstract reasoning and long-horizon math (ARC-AGI-2 leader at evidence date); agentic browsing (BrowseComp leader in mid-2026 comparison rows).
@@ -114,6 +120,6 @@ refresh_contract: "Refreshed periodically and intentionally (Nick, session 129 �
 | Model | Why wanted | Requested |
 |---|---|---|
 | GLM line — benchmark depth | First profile added 2026-07-12 (session 136) from Hashimoto/Jones evidence, but it rests on one experiment + analyst commentary; dedicated benchmark rows (SWE-bench Pro 58.4, τ²-Bench 99.1 seen in comparison rows) still lack a KB finding | session 129 research pass; partial session 136 |
-| GPT-5.5 / 5.6 | Appears as anchor in Claude/Kimi comparisons (and as the mid tier in Hashimoto's three-tier experiment); no dedicated profile. A GPT-5.6 availability note was itemized at session-136 intake but no KB finding was written — skipped rather than front-run the KB | session 129 research pass |
+| GPT-5.5 | Appears as anchor in Claude/Kimi comparisons (and as the mid tier in Hashimoto's three-tier experiment); no dedicated profile. (GPT-5.6 Soul got its first profile 2026-07-13 from the Simmons head-to-head — thin n=1 evidence; benchmark-grade rows still wanted for both) | session 129 research pass |
 
 Adding a profile requires a KB finding first (research-loop or /research-query with persistence) — the registry never front-runs the KB.

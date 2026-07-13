@@ -17,10 +17,12 @@ related_findings:
     rel: "extends"
   - file: "agent-proof-of-work-ui-trust-building.md"
     rel: "same-problem"
+  - file: "mdx-visual-plans-with-reusable-components.md"
+    rel: "same-problem"
 adopted_in: []
 proposals: null
 date_discovered: "2026-05-25"
-last_updated: "2026-05-25"
+last_updated: "2026-07-13"
 pipeline_status: "classified"
 consumed_by: []
 tags:

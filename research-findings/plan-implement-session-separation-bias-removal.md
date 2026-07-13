@@ -27,9 +27,11 @@ related_findings:
   rel: same-problem
 - file: planning-thread-vs-execution-thread-subagent-fleets.md
   rel: extended-by
+- file: two-constraint-decomposition-memory-vs-eval.md
+  rel: same-problem
 proposals: null
 date_discovered: '2026-05-25'
-last_updated: '2026-07-12'
+last_updated: '2026-07-13'
 pipeline_status: classified
 consumed_by: []
 tags:

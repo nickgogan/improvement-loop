@@ -10,9 +10,10 @@ summary: |-
   practitioner head-to-head, useful as capability-profile signal only.
 implementation_notes: |-
   Fills the model-capability registry's GPT-5.6 grounding gap — registry claims must be
-  KB-grounded, and the GPT-5.6 line currently has no KB citation; the registry should
-  cite this source (registry itself not edited in this pass). Treat cost figures as
-  unreliable per the companion cost-observability finding.
+  KB-grounded, and the GPT-5.6 line had no KB citation. Closed 2026-07-13 (KB-hygiene
+  sweep): the registry's GPT-5.6 Soul entry now cites this finding, with the n=1
+  evidence caveat carried in the entry. Treat cost figures as unreliable per the
+  companion cost-observability finding.
 category: "Model Selection"
 evidence_strength: "Medium (practitioner-documented)"
 adoption_status: "Not Yet Started"
