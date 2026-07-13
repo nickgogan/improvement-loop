@@ -352,22 +352,26 @@ Suggestions only — promotion requires a separate `/promote-findings` invocatio
    redundant loads bounce via `ModelRetry`. A disclosure mechanism designed *around*
    cache economics — directly relevant to any engine skill-catalog design.
    (`capabilities/_deferred_capability_loader.py`)
+   → Promoted to [[cache-stable-progressive-disclosure-catalog]] on 2026-07-13
 2. **Middleware-semantics capability composition with declared ordering constraints**
    (Orchestration / Agent Design) — `CapabilityOrdering(position, wraps, wrapped_by,
    requires)` topologically sorted by `CombinedCapability`, user order as tiebreaker;
    composition order as a first-class, declarable property rather than list-position
    convention. (`capabilities/abstract.py`, `combined.py`)
+   → Promoted to [[capability-composition-declared-ordering-constraints]] on 2026-07-13
 3. **Guardrails as hook-lattice capabilities, not a separate primitive** (Agent Design /
    Tools) — 7 hook families × before/after/wrap/on-error with typed per-hook Protocols;
    PII redaction, approval, cost budgets all land as capabilities. Positive-space
    evidence that one interception lattice can carry the whole guardrail taxonomy.
    (`capabilities/hooks.py`, `docs/capabilities.md` §Guardrail)
+   → Promoted to [[guardrails-as-hook-lattice-capabilities]] on 2026-07-13
 4. **Core-vs-harness as an inter-repo graduation pipeline** (Governance) — extends
    existing finding `lean-core-vs-harness-two-lane-framework-layering` with the
    implementation detail the video didn't show: the harness is a *separate repo* with
    looser compat requirements, an explicit incubation→graduation path (code mode named),
    a membership test ("provider-coupled or fundamental" for core), contribution routing,
    and a `harness-compat` CI contract. (`docs/harness/overview.md`)
+   → EXTEND-DEFERRED: extends [[lean-core-vs-harness-two-lane-framework-layering]] — new-files-only constraint this run; graduation-pipeline detail (separate repo, membership test, harness-compat CI) queued for an EXTEND pass on 2026-07-13
 5. **Skill-in-the-package distribution** (Context Engineering / Tools) — the framework
    ships its consumer-facing coding-agent skill *inside the wheel*
    (`pydantic_ai_slim/pydantic_ai/.agents/skills/`), release-gated by CLAUDE.md ("update
@@ -375,31 +379,37 @@ Suggestions only — promotion requires a separate `/promote-findings` invocatio
    library-skills.io / Claude plugin marketplace / agentskills.io. Docs-as-dependency:
    the skill version always matches the installed library version.
    (`docs/coding-agent-skills.md`)
+   → Promoted to [[skill-shipped-inside-the-package-wheel]] on 2026-07-13
 6. **PR-review-mined rules corpus with per-rule provenance** (Context Engineering /
    Governance) — `agent_docs/` guidelines are "extracted from PR review patterns," each
    tagged `<!-- rule:NNN -->`; review history compiled into agent-loadable rules rather
    than hand-curated style docs. (`agent_docs/index.md`)
+   → Promoted to [[pr-review-mined-rules-corpus-with-provenance]] on 2026-07-13
 7. **Agentic repo-maintenance fleet with typed safe-outputs** (Governance /
    Orchestration) — 10 scheduled gh-aw agents (bug-hunter, docs-drift,
    regression-detector, 3 provider sweeps, ui-security-review, stale-issues-finder,
    pr-review) with read-only permissions and structurally-capped write paths
    (`create-issue: max 1, expires 7d`), sharing prompt fragments (adversarial-review,
    rigor) via `imports:`. (`.github/workflows/`)
+   → Promoted to [[agentic-maintenance-fleet-typed-safe-outputs]] on 2026-07-13
 8. **AGENTS.md-canonical with CLAUDE.md symlinks + directory-scoped rules** (Context
    Engineering) — 13 AGENTS.md, 8 CLAUDE.md symlinks, root chain-loader; corroborates
    the MemPalace `AGENTS.md↔CLAUDE.md` symlink observation at larger scale and adds
    the scoped-per-directory layer. (root + package AGENTS.md files)
+   → EXTEND-DEFERRED: duplicate-in-kind of [[universal-harness-context-via-symlink]]; larger-scale corroboration + directory-scoped layer queued for an EXTEND pass on 2026-07-13
 9. **Declarative AgentSpec with serialization-name registry** (Intent / Agent Design) —
    agents constructible from YAML/JSON; capability types opt in via
    `get_serialization_name()`, and non-round-trippable capabilities explicitly return
    `None`. Agent-as-configuration with a typed escape hatch. (`_spec.py`,
    `agent/spec.py`, `docs/agent-spec.md`)
+   → Promoted to [[declarative-agent-spec-with-serialization-registry]] on 2026-07-13
 10. **Opinionated disclosure design rules** (Context Engineering) — the packaged skill
     instructs consumer agents to treat `defer_loading=True` as a design question for
     *every* capability, keep the eager prompt to identity/boundaries/safety/routing, and
     choose capability-on-demand (bundles with shared instructions) vs tool search (flat
     catalogs) by shape. A shipped decision rubric for the disclosure-granularity
     question. (`.agents/skills/building-pydantic-ai-agents/references/ON-DEMAND-CAPABILITIES.md`)
+    → Promoted to [[disclosure-granularity-decision-rubric]] on 2026-07-13
 
 ---
 

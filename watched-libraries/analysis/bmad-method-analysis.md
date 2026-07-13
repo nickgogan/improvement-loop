@@ -432,12 +432,14 @@ below supersedes-in-part one of them.
    mutable frontmatter — "a resume learns the state by reading the last entries, the
    same way it learns everything else"). Atomic temp+fsync+rename writes. Directly
    relevant to the engine's IB-172 layered-memory design and PROGRESS/HISTORY spine.
+   → Promoted to [[append-only-run-log-as-working-memory]] (cross-repo merge with superpowers candidate 6, the durable progress ledger) on 2026-07-13
 2. **Derive-don't-edit: artifacts as renders of a decision log** (Context Engineering,
    Orchestration) — SPEC.md, ARCHITECTURE-SPINE.md, and PRD are distilled from the
    memlog at finalize, never hand-patched; each has a single writer; hand-edits are
    overwritten on next derive. Stated payoff: surrounding stages (PRD, UX, architecture,
    epics) can run in any order against the same spec "without merge drift: the log only
    accumulates, the artifact is re-rendered."
+   → Promoted to [[derive-dont-edit-artifacts-as-log-renders]] on 2026-07-13
 3. **Four-layer TOML config + per-skill customization sidecar** (Governance, Tools) —
    Installer-owned vs human-authored x team vs personal, merged by a stdlib-only script
    with typed structural rules (scalars override, tables deep-merge, code/id-keyed
@@ -445,6 +447,7 @@ below supersedes-in-part one of them.
    exposing activation hooks, persistent_facts, reviewer rosters, and on_complete —
    behavior extension without forking skill prose. The prose fallback (skill re-derives
    the merge manually if the script fails) makes the mechanism degradation-tolerant.
+   → Promoted to [[four-layer-config-merge-with-customization-sidecar]] on 2026-07-13
 4. **Anti-consensus decision room** (Agent Design, Orchestration) — A persona party
    built from four structural dissent roles (Wildcard/option-generator,
    Level/claim-checker, Killjoy/loop-stopper, Splinter/consensus-challenger) whose scene
@@ -453,6 +456,7 @@ below supersedes-in-part one of them.
    one shared context will make every voice agree too quickly" — context isolation
    deployed as a debiasing mechanism. Ships `memory = false` so decision rooms start
    fresh.
+   → Promoted to [[anti-consensus-decision-room-structural-dissent-roles]] on 2026-07-13
 5. **Socratic idea-forge with kill-as-success exit taxonomy** (Intent Engineering,
    Prompt Craft) — Pressure-testing "while changing your mind is still cheap"; three
    valid exits (Hardened/Killed/Clearer) with artifact production optional and explicit
@@ -460,12 +464,14 @@ below supersedes-in-part one of them.
    two-voice mechanics (one installed persona + one generated outside voice, varied to
    prevent dominance); memlog vocabulary includes `crack`, `kill`, and `lock` entry
    types. Adjacent to the engine's /solicit-proposals and gate-preparation needs.
+   → Promoted to [[socratic-idea-forge-kill-as-success-exit]] on 2026-07-13
 6. **Five-field spec kernel with companions and preservation validation** (Intent
    Engineering, Context Engineering) — Any input shape distilled to Problem/Capabilities/
    Constraints/Non-goals/Success-signal; load-bearing test routes overflow to
    content-typed companions (spec-authored vs adopted, with ownership rules); eight-rule
    Spec Law; two-pass self-validate where pass 2 walks the source claim-by-claim and
    logs "wrapper-only content" drops so omissions are on the record, not silent.
+   → Promoted to [[five-field-spec-kernel-with-typed-companions]] on 2026-07-13
 7. **Architecture spine: invariants vs seed, with a divergence test** (Intent
    Engineering, Governance) — The spine fixes only what keeps independently-built units
    from diverging; admission test: "If two units one level down built this independently,
@@ -473,6 +479,7 @@ below supersedes-in-part one of them.
    Everything structural is "seed: true at cold-start, owned by the code once it exists."
    AD-n entries carry Binds/Prevents/Rule; child spines inherit parent ADs as binding
    read-only constraints; conflicts surface rather than override.
+   → Promoted to [[architecture-spine-invariants-vs-seed-divergence-test]] on 2026-07-13
 8. **Review triage with admissible scope authority and parent-owned severity**
    (Evaluation) — Findings routed to exactly one of intent_gap/bad_spec/patch/defer/
    reject; only the verbatim intent may authorize out-of-scope routing (spec language,
@@ -480,6 +487,7 @@ below supersedes-in-part one of them.
    evidence of intent_gap/bad_spec); the parent discards reviewer-assigned severity
    because reviewers operate under "by-design information asymmetry"; severity is judged
    by consequence for the artifact's main consumer after reading surrounding source.
+   → Promoted to [[review-triage-admissible-scope-authority]] on 2026-07-13
 9. **Add-then-retire abstraction lifecycle at framework scale** (Governance) — Within
    eight minor versions BMAD retired bmad-investigate ("reached the same conclusions as
    plain investigation at higher cost; the case-file artifact didn't justify the
@@ -488,6 +496,7 @@ below supersedes-in-part one of them.
    bmad-automator (superseded by bmad-loop) — each with a stated cost rationale and a
    migration path (shims, installer cleanup). Upstream corroboration for the engine's
    "abstractions must earn their keep" rule, with a worked deprecation mechanic.
+   → Promoted to [[add-then-retire-lifecycle-at-framework-scale]] on 2026-07-13
 10. **Spec-frontmatter state machine for unattended dev loops** (Agentic Systems 11.A) —
     dev-auto runs one iteration entirely off `status:` in the story spec's frontmatter
     so any orchestrator can poll it; HALT protocol writes terminal status + blocking
@@ -496,6 +505,7 @@ below supersedes-in-part one of them.
     `final_revision` recorded at exit as "the only link back from an out-of-tree spec to
     its in-tree commits"; subagents must be invoked synchronously because "there is no
     event loop to resume a yielded turn."
+    → Promoted to [[spec-frontmatter-state-machine-unattended-dev-loop]] on 2026-07-13
 11. **Skill flattening: retreat from step-file micro-architecture** (Context
     Engineering, Agent Design) — Partial supersession signal for the existing KB finding
     [[step-file-micro-architecture]]: BMAD cut workflow.md orchestrators 22→1 and step
@@ -503,11 +513,13 @@ below supersedes-in-part one of them.
     with intent-scoped references/ and deterministic side-rails. Step files survive only
     in mechanical execution skills — an empirical boundary for where sequencing
     enforcement pays vs where it fights model judgment.
+    → Promoted to [[skill-flattening-outcome-prose-over-step-files]] (carries a contradicts-link to [[step-file-micro-architecture]]; the pre-existing finding is untouched per the new-files-only constraint) on 2026-07-13
 12. **Measured guardrail ROI** (Evaluation) — v6.10.0 reports the edge-case hunter's
     named-set generalization pass as "catch-rate improvement of 50% to 100% on a real
     regression, at a 19% token cost per run" — an example of pricing a review layer in
     catch-rate-per-token instead of adopting it on principle. Small but rare: guardrail
     changes shipped with measured cost/benefit.
+    → Skipped: weak signal / single quantified anecdote on 2026-07-13
 
 ---
 
