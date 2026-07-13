@@ -30,13 +30,13 @@ by `store_check.py` in the pre-commit hook.
 
 ## Entries
 
-## L-1 · 2026-07-13 · high · open
+## L-1 · 2026-07-13 · high · promoted
 - **Lesson:** Skills shipped with autonomous-write defaults violating G9.I6 (`promote-findings --auto` to live KB, `translate-governance` act-then-report on governance files, `research-loop` finding writes, `watch-upstream` auto-Edit) — every skill write path needs a default-off flag or an explicit in-procedure gate; the 2026-06-12 audit filed remediation but it was never confirmed applied.
 - **Owning surface:** `systems/improvement-loop/.claude/skills/{promote-findings,translate-governance,research-loop,watch-upstream}/SKILL.md`
 - **Source:** SL `audit-system-il-second-canonical-run.md` + `audit-system-skill-shipped-metasystem-smoke-test.md` (2026-06-12); SL distill 2026-07-13
 - **Occurrences:** 2026-06-12
 
-## L-2 · 2026-07-13 · high · open
+## L-2 · 2026-07-13 · high · promoted
 - **Lesson:** WebFetch-first repo location let a malware/impostor domain (mempalace.tech) and a parody repo nearly enter the KB — locate repos via `gh search repos` / `gh api` first, WebFetch second; never let an unverified domain into durable artifacts. Rule not yet in the skill's locate phase.
 - **Owning surface:** `systems/improvement-loop/.claude/skills/repo-analyzer/SKILL.md`
 - **Source:** SL `session-57-researcher-mempalace-supermemory.md` (2026-04-23; mis-reference originated s56)
@@ -48,7 +48,7 @@ by `store_check.py` in the pre-commit hook.
 - **Source:** SL `audit-system-il-second-canonical-run.md` (2026-06-12); grants re-verified in SL distill 2026-07-13
 - **Occurrences:** 2026-06-12
 
-## L-4 · 2026-07-13 · normal · open
+## L-4 · 2026-07-13 · normal · promoted
 - **Lesson:** Report summary tallies serialized from memory rather than recomputed from the authoritative enumeration block miscount — compute tallies from the enumeration at write time; filter by marker, not by count.
 - **Owning surface:** `systems/improvement-loop/.claude/skills/identify-artifacts/SKILL.md` (report-assembly step; same rule for any report-emitting skill)
 - **Source:** SL `session-62-codifier-ib-149-reassess.md` (2026-04-24), `session-76-codifier-phase-3-ib-execution.md` (2026-04-26)
