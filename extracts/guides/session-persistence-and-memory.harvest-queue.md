@@ -11,7 +11,7 @@ Nothing here is auto-extracted; rows feed `/extract-artifacts` only after Nick r
 | 2026-07-13 | nick-approved | template | [[append-only-lesson-store-owning-surface-identity]] | "lesson-store-entry-schema" | extract via /extract-artifacts |
 | 2026-07-13 | nick-approved | rule | [[append-only-lesson-store-owning-surface-identity]] | "pruning-is-status-change-never-deletion" | extract via /extract-artifacts |
 | 2026-07-13 | nick-approved | rule | [[derive-dont-edit-artifacts-as-log-renders]] | "one-writer-per-artifact-derive-dont-edit" | extract via /extract-artifacts |
-| 2026-07-13 | queued | template | [[memory-system-evaluation-triad-storage-injection-recall]] | "memory-system-triad-scorecard" | dismiss as inline |
+| 2026-07-13 | nick-dismissed | template | [[memory-system-evaluation-triad-storage-injection-recall]] | "memory-system-triad-scorecard" | dismissed |
 
 ## Per-row details
 
@@ -81,7 +81,7 @@ Extracted 2026-07-13 — Session 146 — [[session-persistence-and-memory.harves
 ### memory-system-evaluation-triad-storage-injection-recall::template::memory-system-triad-scorecard
 
 - **Date queued:** 2026-07-13
-- **Status:** queued
+- **Status:** nick-dismissed
 - **Target form:** template
 - **Source finding:** [[memory-system-evaluation-triad-storage-injection-recall]]
 - **Source excerpt:**
@@ -91,4 +91,4 @@ Extracted 2026-07-13 — Session 146 — [[session-persistence-and-memory.harves
 - **Codifier's reading:** The three-question rubric could render as a per-axis scorecard scaffold; but the finding notes a per-axis scoring rubric is a *potential improvement*, not yet defined — thin as a standalone template today. Guide Step 1.7 already carries the usable form inline.
 - **Suggested headline:** memory-system-triad-scorecard
 - **Recommendation:** dismiss as inline
-- **Resolution:**
+- **Resolution:** dismissed

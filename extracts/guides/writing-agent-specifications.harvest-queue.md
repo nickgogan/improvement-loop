@@ -10,7 +10,7 @@ Nothing here is auto-extracted; rows feed `/extract-artifacts` only after Nick r
 | 2026-07-13 | extracted | template | [[plans-that-carry-their-own-contract]] | "plan-carried-contract-blocks" | extracted to [[plan-carried-contract-blocks]] |
 | 2026-07-13 | extracted | template | [[war-game-plan-format-for-executor-handoff]] | "war-game-plan-scaffold" | extracted to [[war-game-plan-scaffold]] |
 | 2026-07-13 | nick-approved | skill | [[human-ai-seam-identification-three-question-rubric]] | "seam-map-delegation-rubric" | extract via /extract-artifacts |
-| 2026-07-13 | queued | rule | [[role-registry-prompt-hook-routing-backstop]] | "fail-open-routing-hook-invariants" | dismiss as inline |
+| 2026-07-13 | nick-dismissed | rule | [[role-registry-prompt-hook-routing-backstop]] | "fail-open-routing-hook-invariants" | dismissed |
 
 ## Per-row details
 
@@ -59,7 +59,7 @@ Extracted 2026-07-13 — Session 146 — [[writing-agent-specifications.harvest-
 ### role-registry-prompt-hook-routing-backstop::rule::fail-open-routing-hook-invariants
 
 - **Date queued:** 2026-07-13
-- **Status:** queued
+- **Status:** nick-dismissed
 - **Target form:** rule
 - **Source finding:** [[role-registry-prompt-hook-routing-backstop]]
 - **Source excerpt:**
@@ -67,4 +67,4 @@ Extracted 2026-07-13 — Session 146 — [[writing-agent-specifications.harvest-
 - **Codifier's reading:** Three imperative, machine-enforceable directives ("always exit 0", "never block a prompt", "inject only above threshold") — rule shape. Recommended dismiss-as-inline because the invariants only bind once the engine adopts a routing hook (P2 Design Required; no enforcement surface exists yet); re-queue at adoption time.
 - **Suggested headline:** fail-open-routing-hook-invariants
 - **Recommendation:** dismiss as inline
-- **Resolution:**
+- **Resolution:** dismissed
