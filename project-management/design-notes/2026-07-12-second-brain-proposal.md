@@ -33,6 +33,24 @@ tags:
 > consults, two web sweeps). §§1–5 below stand as the residue-triage *input* to that
 > design (the drop-inventory sizing and question table remain valid evidence); P1–P3
 > are NOT adopted as rulings.
+>
+> **REFINEMENT (Nick, session 141 close):**
+> 1. **Vector search on `research-findings/` is designed in, not trigger-gated.** The
+>    corpus grows by construction and is about to cross ~1000 files anyway; "not having
+>    vector search there is bad." Derived-disposable discipline still applies (markdown
+>    canonical, index rebuildable) — but semantic retrieval is a component of the design,
+>    not a someday upgrade.
+> 2. **If no general memory architecture exists out there, decompose by the engine's own
+>    subsystems** rather than forcing a generic layer model:
+>    - **Task processing** — DDs + IB. Audit for cruft ("a bunch of just crap in the DDs
+>      and IBs that we just don't need") and for how tightly DDs couple to IB items.
+>      Study **BMAD's project structure** and **superpowers + GSD task-queue setup** as
+>      reference implementations for this side (converges with the queued Phase-1
+>      named-deps gap-check).
+>    - **Knowledge management** — the research KB + retrieval (incl. #1).
+>    - **Agent layer** — on top of both.
+>    - Maybe **documentation + portability/onboarding** — the CareerBuddy `onboarding/`
+>      pattern; ties to the portable-kernel North Star.
 
 **Plain English.** After the System Log retired, learnings route by shape (decision → DD,
 pattern → knowledge/, work → IB). The substrate audit found what that routing drops:

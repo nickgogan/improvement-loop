@@ -48,20 +48,20 @@ named-deps verified against the direction-note asks, delta report → checkpoint
 Phase 2 DoD: audit gates executed (done), memory-system design proposed and Nick-ruled.
 
 Scopes (hill):
-- `memory-system-design` — **uphill; Nick direction set (session 141), design open.**
+- `memory-system-design` — **uphill; Nick direction set + refined (session 141).**
   Build an actual memory system: Hermes-style external memory wired to self-improvement;
-  OpenClaw + GBrain as references; **IL loop = one big agent** framing (consistent with
-  single-implicit-agent). Must answer: **existing-corpus disposition** ("what to do with
-  all of it") + **archiving policy**; G9 (boundary-case destination) folds in.
-  Self-improvement exemplar: **CareerBuddy `ops-self-improve`** — pattern-lift it
-  (`gh repo clone nickgogan/CareerBuddy`; its `ops/self/improve-backlog.md` queues 5
-  contributions). Inputs: ruling atop
-  `project-management/design-notes/2026-07-12-second-brain-proposal.md` (its residue
-  triage + question table remain valid evidence; P1–P3 not adopted) + 4 reports in
-  `operations/research-reports/` (2026-07-12/13: Librarian residue consult, Librarian
-  architecture consult, web question-sweep, web OKF/Obsidian/RAG/lifecycle deep-dive).
-  Key measured fact: findings corpus = **907 files**, at the KB's ~1000-doc traversal
-  ceiling — KB prescribes hierarchical index reinforcement before RAG. Absorbs IB-172.
+  OpenClaw + GBrain references; **IL loop = one big agent**. Decompose by the engine's
+  own subsystems: **task processing** (DDs + IB — audit for cruft + DD↔IB coupling;
+  study BMAD project structure + superpowers/GSD task queues, converging with the
+  named-deps gap-check), **knowledge management** (KB + retrieval — **vector search on
+  `research-findings/` is designed in, not trigger-gated**: 907 files and growing past
+  ~1000 by construction; markdown stays canonical, index derived-disposable), **agent
+  layer**, maybe **docs/portability** (CareerBuddy `onboarding/`; portable-kernel tie).
+  Must answer: existing-corpus disposition + archiving policy; G9 folds in.
+  Self-improvement exemplar: **CareerBuddy `ops-self-improve`** — pattern-lift
+  (`gh repo clone nickgogan/CareerBuddy`). Inputs: ruling + refinement atop
+  `project-management/design-notes/2026-07-12-second-brain-proposal.md` and 4 reports
+  in `operations/research-reports/` (2026-07-12/13). Absorbs IB-172.
 - `wave-3-retry` — 20-video LINKS.md backlog — **uphill, now unblocked (≥2026-07-13).**
   Chain: plain `fetch.py --input LINKS.md` → `--backend browser` rung (live-unverified) →
   `/link-intake` triage; whole-chain failure = stop, respace ≥1 day. Then named-deps
