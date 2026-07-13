@@ -1,8 +1,9 @@
 # Improvement Loop — Progress
 
-Updated: 2026-07-13 (session 143 — wave-3 transcripts fully resolved: 28/28 cached via
-kome.ai fallback after a hard YouTube IP block killed every direct route; browser backend
-hardened; transcript format slimmed to full-text-only. Next: /link-intake triage.)
+Updated: 2026-07-13 (session 144 — Phase 1 shipped: wave-3 triaged + extracted, named
+deps grounded, delta report → checkpoint #1 recorded in the plan; KB currency sweep
+re-analyzed 4 repos, onboarded pydantic-ai, applied the Nick-accepted priority
+reassessment (2 new P1s). Next: Codifier pipeline over the new crop.)
 
 ## Start here
 
@@ -27,40 +28,41 @@ Research remains the substrate: the KB grounds every design move. Full capture:
 ## Roadmap
 
 **Engine restructure & harness program** — plan of record:
-`operations/plans/2026-07-12-engine-restructure-program.md`.
+`operations/plans/2026-07-12-engine-restructure-program.md` (checkpoint #1 outcome
+recorded there, incl. Phase 5 revisions).
 
 - `[x]` **Phase 0 — session-ops restructure** — shipped 2026-07-12 (session 138) · [HISTORY.md](HISTORY.md)
-- `[>]` **Phase 1 — research grounding** — cresting: CareerBuddy + #8 done; wave-3
-  transcripts all cached; remaining = /link-intake triage + named-deps gap-check +
-  delta report → plan checkpoint #1
+- `[x]` **Phase 1 — research grounding** — shipped 2026-07-13 (session 144): wave-3
+  triaged + extracted, named-deps gap-check grounded, delta report → checkpoint #1;
+  bulk video intake closed as a phase instrument · [HISTORY.md](HISTORY.md)
 - `[x]` **Phase 2 — substrate audit & memory-system design** — shipped 2026-07-13
-  (session 142): gates G1–G8 executed; design ruled →
+  (session 142): gates G1–G8; design ruled →
   `project-management/design-notes/2026-07-13-memory-system-design.md`; build = IB-176 · [HISTORY.md](HISTORY.md)
 - `[ ]` **Phase 3 — user manual** — Nick gates whether/when; audience/altitude locked
   (Nick-builder; both, direction-bounded); manual-as-kernel-layer question open
 - `[ ]` **Phase 4 — structured interview** → engine PRD/constitution/actors; decide
   generalize-first vs harness-first → plan checkpoint #2
-- `[ ]` **Phase 5 — harness + generalize** (order per Phase 4)
+- `[ ]` **Phase 5 — harness + generalize** (order per Phase 4; checkpoint-#1 revisions:
+  capability-as-composition-unit named input; maintenance/fitness DoD added)
 
 ## Current milestone
 
-**Phase 1 wrap + memory-system v1 build.** Phase 1 DoD: wave-3 triaged or honestly
-closed, named-deps gap-check verified against the direction-note asks, delta report →
-checkpoint #1. Build DoD: IB-176 ship-order steps 1–2 (self-improve loop + demand
-ledger live; SL distilled and closed).
+**KB codification + memory-system v1 build.** Codification DoD: Codifier pipeline run
+over the post-sweep P1/P2 crop — `/identify-artifacts` → gated report →
+`/extract-artifacts` → gated staging (Nick ruled this next, session 144). Build DoD:
+IB-176 ship-order steps 1–2 (self-improve loop + demand ledger live; SL distilled and
+closed).
 
 Scopes (hill):
-- `wave-3-intake` — /link-intake triage of the cached 28-video batch (transcripts all
-  on disk as of session 143; LINKS.md empty) — **downhill.** Then named-deps gap-check
-  (BMAD/superpowers/Archon/Jones vs direction-note asks — also feeds the deferred DD/IB
-  task-queue study, design note §6) → delta report → checkpoint #1.
-- `memory-system-build` — IB-176 — **uphill, queued after wave-3.** Design ruled
-  (session 142): `operations/self/` store + 4-mode skill + UserPromptSubmit capture
-  hook + store checker in pre-commit + `/session-handoff` lessons-check;
-  `/process-feedback` folds into scan mode; first scan run = SL distill-then-close.
-  Spec: `project-management/design-notes/2026-07-13-memory-system-design.md`.
+- `codifier-run` — `/identify-artifacts` over the new P1/P2 crop (2 new P1s incl.
+  ralph-wiggum + append-only-run-log; 4 new P2s), then `/extract-artifacts` on the
+  approved report — **downhill** (procedure known; both gates are Nick's).
+- `memory-system-build` — IB-176 — **uphill, queued after codifier-run.** Design ruled
+  (session 142); today's Pass 2 independently corroborated it (memory triad, session-
+  history bootstrap ⇒ SL distill-then-close). Spec:
+  `project-management/design-notes/2026-07-13-memory-system-design.md`.
 
-**Next unit of work:** `wave-3-intake`.
+**Next unit of work:** `codifier-run`.
 
 ## Backlog / Icebox
 
@@ -69,16 +71,18 @@ noted where promotion is event-gated.
 
 - **IB-173** — three-bucket gate tiering, DD-29 refinement (approved direction; absorbs
   IB-103 per gate G7)
-- **IB-171** — corpus-wide linkage-hygiene sweep (Nick: "save for later")
+- **IB-171** — corpus-wide linkage-hygiene sweep (~87 legacy asymmetries measured
+  session 144; Nick: "save for later")
 - **IB-145** — GSD version-drift re-analysis
 - **IB-174** — meta-skill-author assess follow-ups A/D/E (Nick-gated guard rulings)
-- **IB-175** — governance visualization (DD corpus + architecture in glanceable form)
+- **IB-175** — governance visualization (strongest input now in KB:
+  `mdx-visual-plans-with-reusable-components` + visual-recap findings, session 144)
 - Findings hybrid search (FTS5 + local embeddings under `app/`) — designed-in component
   (design note §6); implementation shape parked by Nick (session 142)
 - kome.ai fallback backend for transcript-fetcher — trigger: next YouTube IP block
   (technique in agent memory; fetch.py browser rung already hardened, session 143)
-- Multi-tenant agentic-system design — named research-gap candidate (session 139
-  observation: single-operator exemplars dominate the corpus); Nick gates promotion
+- Multi-tenant agentic-system design — named research-gap candidate; asker-scoped
+  team-memory datapoint landed session 144; Nick gates promotion
 - `/link-intake` escalation-language watch item (Rule 11)
 - G3 / G9 guide bifurcation — trigger: DD-102 threshold (45 findings)
 - MongoDB sizing-engine pilot — trigger: `/design-harness` ships
@@ -89,6 +93,8 @@ noted where promotion is event-gated.
 
 ## Blockers / gates (Nick)
 
+- **"Attachés" clarification** — direction-note superpowers ask; likely transcription
+  artifact (gap-check 2026-07-13; plan open-question 7) — one-liner from Nick
 - **Design-mode video-intake spec** — is a formal `/meta-skill-author` spec still wanted?
 - **Verbatim-storage finding null→P3** — session-132 reassessment, unruled
 - **Re-injection correction** — next step unchosen (KB updated; remedy refuted upstream)
