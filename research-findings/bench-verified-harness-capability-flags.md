@@ -18,10 +18,12 @@ applicability:
   - "General"
 adopted_in: []
 sources: []
-related_findings: []
+related_findings:
+- file: tiered-capability-registry-engine-behavior-branching.md
+  rel: extended-by
 proposals: null
 date_discovered: "2026-07-12"
-last_updated: "2026-07-12"
+last_updated: "2026-07-13"
 ---
 
 ## What It Is

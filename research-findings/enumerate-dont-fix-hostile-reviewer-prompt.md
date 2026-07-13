@@ -46,9 +46,13 @@ related_findings:
   rel: same-problem
 - file: cross-vendor-adversarial-build-attack-loop.md
   rel: enables
+- file: controller-deauthorization-reviewer-independence.md
+  rel: same-problem
+- file: review-triage-admissible-scope-authority.md
+  rel: same-problem
 proposals: null
 date_discovered: '2026-07-12'
-last_updated: '2026-07-12'
+last_updated: '2026-07-13'
 pipeline_status: raw
 ---
 

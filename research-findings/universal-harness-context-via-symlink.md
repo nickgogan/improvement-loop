@@ -20,7 +20,7 @@ related_findings:
     rel: same-problem
 proposals: null
 date_discovered: "2026-04-23"
-last_updated: "2026-04-23"
+last_updated: "2026-07-13"
 pipeline_status: raw
 consumed_by: []
 ---
@@ -72,3 +72,7 @@ Observed in [MemPalace](https://github.com/MemPalace/mempalace) 3.3.2 — see [[
 - **Windows without symlink support** — older Git-for-Windows or non-developer-mode Windows may check out `AGENTS.md` as a plain text file containing the literal string `CLAUDE.md`. Harnesses then read broken content.
 - **Tarball/zip distribution** — some archive formats don't preserve symlinks; downstream consumers who extract get one real file and one broken pointer.
 - **Index-and-search tools** — full-text search tools that follow symlinks will index the content twice, inflating hit counts.
+
+## Corroboration at Scale — pydantic-ai v2.9.0 (2026-07-13)
+
+pydantic-ai runs the symlink pattern at 13-file scale with the canonical direction **reversed**: `AGENTS.md` is the authored canonical file and `CLAUDE.md` symlinks to it (`CLAUDE.md -> AGENTS.md` at root, 8 CLAUDE.md symlinks across 13 AGENTS.md files) — reflecting AGENTS.md's emergence as the vendor-neutral convention, where the MemPalace original treated CLAUDE.md as canonical. It also adds a layer the single-file MemPalace observation didn't have: **directory-scoped rules** — 12 directory-level AGENTS.md files carrying per-directory constraints (e.g. `capabilities/`: "prefer a capability over an Agent constructor kwarg"), chain-loaded from the root constitution file when an agent works in that directory. The symlink handles harness compatibility; the directory scoping handles context relevance — two orthogonal moves composed. See [[pydantic-ai-analysis]] for structural details.

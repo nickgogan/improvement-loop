@@ -22,6 +22,8 @@ related_findings:
   rel: extended-by
 - file: ace-agentic-context-engineering-evolving-playbook.md
   rel: extended-by
+- file: append-only-run-log-as-working-memory.md
+  rel: same-problem
 proposals: null
 date_discovered: '2026-03-15'
 last_updated: '2026-07-13'

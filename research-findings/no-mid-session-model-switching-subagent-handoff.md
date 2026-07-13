@@ -38,9 +38,11 @@ related_findings:
   rel: extended-by
 - file: smart-model-routing-catch-22.md
   rel: same-problem
+- file: mandatory-explicit-model-per-dispatch.md
+  rel: same-problem
 proposals: null
 date_discovered: '2026-07-11'
-last_updated: '2026-07-12'
+last_updated: '2026-07-13'
 ---
 
 ## What It Is

@@ -23,6 +23,8 @@ sources: []
 related_findings:
   - file: "capability-as-agent-composition-primitive.md"
     rel: "extends"
+  - file: "guardrails-as-hook-lattice-capabilities.md"
+    rel: "same-problem"
 proposals: null
 date_discovered: "2026-07-13"
 last_updated: "2026-07-13"

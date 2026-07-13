@@ -13,7 +13,7 @@ sources:
 - hub-and-spoke-context-hub.md
 proposals: null
 date_discovered: '2026-07-12'
-last_updated: '2026-07-12'
+last_updated: '2026-07-13'
 related_findings:
 - file: skill-description-budget-context-overflow.md
   rel: same-problem
@@ -24,6 +24,8 @@ related_findings:
 - file: skill-as-directory-progressive-disclosure-three-levels.md
   rel: extends
 - file: always-on-context-minimalism-pointer-only-entry.md
+  rel: same-problem
+- file: cache-stable-progressive-disclosure-catalog.md
   rel: same-problem
 pipeline_status: raw
 consumed_by: []

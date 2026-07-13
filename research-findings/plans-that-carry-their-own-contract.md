@@ -31,6 +31,8 @@ related_findings:
     rel: "same-problem"
   - file: "l-d-hypothesis-information-loss-across-agent-bound.md"
     rel: "extends"
+  - file: "task-contract-pattern-schema-first-agent.md"
+    rel: "same-problem"
 proposals: null
 date_discovered: "2026-07-13"
 last_updated: "2026-07-13"

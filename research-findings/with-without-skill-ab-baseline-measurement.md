@@ -29,9 +29,11 @@ related_findings:
     rel: "same-problem"
   - file: "self-improving-skill-lessons-log.md"
     rel: "enables"
+  - file: "externalized-real-session-behavior-evals.md"
+    rel: "same-problem"
 proposals: null
 date_discovered: "2026-07-12"
-last_updated: "2026-07-12"
+last_updated: "2026-07-13"
 pipeline_status: "raw"
 ---
 

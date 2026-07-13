@@ -18,9 +18,11 @@ related_findings:
     rel: same-problem
   - file: benchmark-operating-contract.md
     rel: same-problem
+  - file: add-then-retire-lifecycle-at-framework-scale.md
+    rel: same-problem
 proposals: null
 date_discovered: "2026-04-23"
-last_updated: "2026-04-24"
+last_updated: "2026-07-13"
 pipeline_status: classified
 consumed_by: []
 ---

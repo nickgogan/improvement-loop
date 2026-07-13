@@ -41,6 +41,12 @@ related_findings:
     rel: "same-problem"
   - file: "cross-session-learnings-jsonl.md"
     rel: "same-problem"
+  - file: "derive-dont-edit-artifacts-as-log-renders.md"
+    rel: "enables"
+  - file: "socratic-idea-forge-kill-as-success-exit.md"
+    rel: "extended-by"
+  - file: "progress-md-session-bridge.md"
+    rel: "same-problem"
 proposals: null
 date_discovered: "2026-07-13"
 last_updated: "2026-07-13"

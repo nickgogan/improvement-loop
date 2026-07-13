@@ -24,9 +24,13 @@ related_findings:
   rel: same-problem
 - file: universal-harness-context-via-symlink.md
   rel: extended-by
+- file: rules-layer-collapse-monolithic-context-counter-signal.md
+  rel: extended-by
+- file: vendor-neutral-skill-vocabulary-per-harness-tool-maps.md
+  rel: same-problem
 proposals: null
 date_discovered: '2026-04-09'
-last_updated: '2026-07-12'
+last_updated: '2026-07-13'
 pipeline_status: synthesized
 consumed_by:
 - defending-agent-context.md

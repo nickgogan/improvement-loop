@@ -39,6 +39,12 @@ related_findings:
   rel: enables
 - file: tdd-step-ordering-in-plan-tasks.md
   rel: enables
+- file: file-mediated-subagent-handoff-workspace.md
+  rel: extended-by
+- file: unified-dual-verdict-reviewer.md
+  rel: extended-by
+- file: controller-deauthorization-reviewer-independence.md
+  rel: enables
 pipeline_status: "synthesized"
 consumed_by:
   - "agent-architecture-decisions.md"

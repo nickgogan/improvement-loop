@@ -23,10 +23,12 @@ applicability:
 adopted_in: []
 sources:
   - "osmani-new-sdlc-vibe-coding.md"
-related_findings: []
+related_findings:
+  - file: "architecture-spine-invariants-vs-seed-divergence-test.md"
+    rel: "same-problem"
 proposals: null
 date_discovered: "2026-07-11"
-last_updated: "2026-07-11"
+last_updated: "2026-07-13"
 ---
 
 ## What It Is

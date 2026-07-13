@@ -17,7 +17,7 @@ sources:
 - multi-agent-orchestration-production-playbook-nick.md
 proposals: []
 date_discovered: '2026-03-23'
-last_updated: '2026-04-09'
+last_updated: '2026-07-13'
 related_findings:
 - file: context-rot-silent-killer-and-mitigations.md
   rel: same-problem
@@ -29,6 +29,8 @@ related_findings:
   rel: same-problem
 - file: cross-agent-latent-state-transfer.md
   rel: same-problem
+- file: plans-that-carry-their-own-contract.md
+  rel: extended-by
 pipeline_status: synthesized
 consumed_by:
 - agent-architecture-decisions.md

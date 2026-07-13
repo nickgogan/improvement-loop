@@ -23,6 +23,8 @@ related_findings:
     rel: "same-problem"
   - file: "archon-yaml-defined-harness-workflows.md"
     rel: "extends"
+  - file: "file-mediated-subagent-handoff-workspace.md"
+    rel: "same-problem"
 proposals: null
 date_discovered: "2026-07-13"
 last_updated: "2026-07-13"

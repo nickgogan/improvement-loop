@@ -27,9 +27,11 @@ related_findings:
   rel: enables
 - file: distribution-as-floor-raising-one-click-skill-buttons.md
   rel: extended-by
+- file: agentic-maintenance-fleet-typed-safe-outputs.md
+  rel: same-problem
 proposals: null
 date_discovered: '2026-05-25'
-last_updated: '2026-07-12'
+last_updated: '2026-07-13'
 pipeline_status: classified
 consumed_by: []
 tags:

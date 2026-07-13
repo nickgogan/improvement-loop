@@ -18,9 +18,11 @@ related_findings:
   rel: same-problem
 - file: env-var-context-injection.md
   rel: same-problem
+- file: spec-frontmatter-state-machine-unattended-dev-loop.md
+  rel: same-problem
 proposals: null
 date_discovered: '2026-04-08'
-last_updated: '2026-04-19'
+last_updated: '2026-07-13'
 pipeline_status: raw
 consumed_by: []
 ---

@@ -14,9 +14,17 @@ sources: []
 related_findings:
 - file: spec-as-source-of-truth-for-agent-construction.md
   rel: same-problem
+- file: derive-dont-edit-artifacts-as-log-renders.md
+  rel: same-problem
+- file: five-field-spec-kernel-with-typed-companions.md
+  rel: same-problem
+- file: plans-that-carry-their-own-contract.md
+  rel: extended-by
+- file: typed-node-output-sidecars-by-type-artifact-discovery.md
+  rel: same-problem
 proposals: null
 date_discovered: '2026-04-08'
-last_updated: '2026-04-19'
+last_updated: '2026-07-13'
 pipeline_status: raw
 consumed_by: []
 ---

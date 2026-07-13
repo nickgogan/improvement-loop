@@ -16,7 +16,7 @@ sources:
 - five-claude-code-agent-patterns.md
 proposals: null
 date_discovered: '2026-04-19'
-last_updated: '2026-07-12'
+last_updated: '2026-07-13'
 related_findings:
 - file: iterative-refinement-loop-with-quality-gate.md
   rel: same-problem
@@ -29,6 +29,8 @@ related_findings:
 - file: orchestrated-competition-n-sub-agents-solve-same.md
   rel: same-problem
 - file: two-axis-parallel-code-review-standards-vs-spec.md
+  rel: same-problem
+- file: unified-dual-verdict-reviewer.md
   rel: same-problem
 pipeline_status: extracted
 consumed_by:

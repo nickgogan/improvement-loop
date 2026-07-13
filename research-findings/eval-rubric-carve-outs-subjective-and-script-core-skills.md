@@ -13,8 +13,10 @@ sources:
 - careerbuddy-meta-skill-author-references.md
 proposals: null
 date_discovered: '2026-07-12'
-last_updated: '2026-07-12'
-related_findings: []
+last_updated: '2026-07-13'
+related_findings:
+- file: externalized-real-session-behavior-evals.md
+  rel: same-problem
 pipeline_status: raw
 consumed_by: []
 tags:

@@ -29,6 +29,10 @@ related_findings:
   rel: same-problem
 - file: smart-model-routing-catch-22.md
   rel: same-problem
+- file: mandatory-explicit-model-per-dispatch.md
+  rel: extended-by
+- file: model-tiers-aliases-cross-provider-indirection.md
+  rel: extended-by
 pipeline_status: synthesized
 consumed_by:
 - agent-architecture-decisions.md

@@ -49,9 +49,11 @@ related_findings:
   rel: same-problem
 - file: advisor-executor-api-pattern.md
   rel: same-problem
+- file: model-tiers-aliases-cross-provider-indirection.md
+  rel: same-problem
 proposals: null
 date_discovered: '2026-07-12'
-last_updated: '2026-07-12'
+last_updated: '2026-07-13'
 pipeline_status: raw
 ---
 

@@ -23,7 +23,7 @@ related_findings:
     rel: "same-problem"
 proposals: null
 date_discovered: '2026-06-11'
-last_updated: '2026-06-11'
+last_updated: '2026-07-13'
 pipeline_status: raw
 consumed_by: []
 ---
@@ -91,3 +91,7 @@ Per-invocation tool subsets (the agent provides defaults, the skill could augmen
 **Custom agent name mismatch.** A skill referencing `agent: my-custom-reviewer` fails silently if the subagent is renamed or absent in this project.
 
 **CLAUDE.md skipped on Explore/Plan.** Built-in Explore and Plan agents skip CLAUDE.md to keep their context small. A skill that assumes the project's CLAUDE.md conventions are loaded will misbehave on those agents.
+
+## In-the-Wild Corroboration — Archon v0.5.0 (2026-07-13)
+
+First production usage observed in the watched-library set beyond Anthropic's own docs: Archon v0.5.0's repo skills `rulecheck` and `triage` declare `agent:` + `context: fork` — the skill is the trigger/argument surface, the referenced `.claude/agents/` definition supplies persona and constraints, and the fork isolates the run from the main conversation. The same skill set exercises the adjacent frontmatter surface this pattern composes with: skill-level `hooks:` (a Stop-hook prompt evaluator in `save-task-list`), `disable-model-invocation` (human-trigger-only skills), and `allowed-tools` scoping (`Bash(gh *)` in `triage`). Archon's skills doubled 7 → 14 in one release with these mechanisms carrying the new review/triage automation. See [[archon-analysis]] for structural details.

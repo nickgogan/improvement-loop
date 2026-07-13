@@ -13,8 +13,12 @@ sources:
 - careerbuddy-wiring-canon.md
 proposals: null
 date_discovered: '2026-07-12'
-last_updated: '2026-07-12'
-related_findings: []
+last_updated: '2026-07-13'
+related_findings:
+- file: guardrails-as-hook-lattice-capabilities.md
+  rel: same-problem
+- file: rules-layer-collapse-monolithic-context-counter-signal.md
+  rel: contradicts
 pipeline_status: raw
 consumed_by: []
 tags:

@@ -17,10 +17,12 @@ applicability:
   - "General"
 adopted_in: []
 sources: []
-related_findings: []
+related_findings:
+- file: direction-md-committed-triage-constitution.md
+  rel: same-problem
 proposals: null
 date_discovered: "2026-07-12"
-last_updated: "2026-07-12"
+last_updated: "2026-07-13"
 ---
 
 ## What It Is

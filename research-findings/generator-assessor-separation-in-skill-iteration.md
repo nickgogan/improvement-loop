@@ -45,9 +45,11 @@ related_findings:
   rel: same-problem
 - file: with-without-skill-ab-baseline-measurement.md
   rel: same-problem
+- file: controller-deauthorization-reviewer-independence.md
+  rel: same-problem
 proposals: null
 date_discovered: '2026-06-11'
-last_updated: '2026-07-12'
+last_updated: '2026-07-13'
 pipeline_status: raw
 consumed_by: []
 ---

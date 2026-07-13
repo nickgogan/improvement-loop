@@ -15,7 +15,7 @@ sources:
 - andrej-karpathys-math-proves-agent-skills-will-fai.md
 proposals: []
 date_discovered: '2026-03-22'
-last_updated: '2026-07-12'
+last_updated: '2026-07-13'
 related_findings:
 - file: march-of-nines-compounding-reliability-math-for-m.md
   rel: enabled-by
@@ -31,6 +31,8 @@ related_findings:
   rel: same-problem
 - file: dark-factory-ai-only-codebase-management.md
   rel: enables
+- file: skill-flattening-outcome-prose-over-step-files.md
+  rel: same-problem
 pipeline_status: synthesized
 consumed_by:
 - guides/agent-architecture-decisions.md

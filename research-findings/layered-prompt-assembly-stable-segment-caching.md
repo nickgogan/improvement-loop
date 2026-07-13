@@ -25,11 +25,13 @@ sources:
   - "hermes-agent-nousresearch-analysis.md"
 proposals: null
 date_discovered: "2026-05-24"
-last_updated: "2026-07-12"
+last_updated: "2026-07-13"
 related_findings:
   - file: "five-layer-agent-prompt-architecture.md"
     rel: "extends"
   - file: "append-only-context-updates-system-reminder-injection.md"
+    rel: "same-problem"
+  - file: "cache-stable-progressive-disclosure-catalog.md"
     rel: "same-problem"
 pipeline_status: "synthesized"
 consumed_by:

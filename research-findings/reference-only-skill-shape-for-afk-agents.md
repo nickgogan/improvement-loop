@@ -34,9 +34,11 @@ related_findings:
     rel: "same-problem"
   - file: "leg-work-amplification-hiding-future-steps.md"
     rel: "same-problem"
+  - file: "skill-flattening-outcome-prose-over-step-files.md"
+    rel: "same-problem"
 proposals: null
 date_discovered: "2026-07-12"
-last_updated: "2026-07-12"
+last_updated: "2026-07-13"
 pipeline_status: "raw"
 ---
 

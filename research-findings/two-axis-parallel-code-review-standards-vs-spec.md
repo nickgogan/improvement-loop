@@ -38,9 +38,11 @@ related_findings:
   rel: extends
 - file: fowler-code-smell-names-as-prior-invocation.md
   rel: enabled-by
+- file: unified-dual-verdict-reviewer.md
+  rel: contradicts
 proposals: null
 date_discovered: '2026-07-12'
-last_updated: '2026-07-12'
+last_updated: '2026-07-13'
 pipeline_status: raw
 ---
 

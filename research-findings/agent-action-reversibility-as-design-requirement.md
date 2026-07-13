@@ -25,6 +25,8 @@ related_findings:
     rel: "extends"
   - file: "three-layer-reversible-state-single-undo-surface.md"
     rel: "extended-by"
+  - file: "agentic-maintenance-fleet-typed-safe-outputs.md"
+    rel: "extended-by"
 proposals: null
 date_discovered: "2026-05-25"
 last_updated: "2026-07-13"

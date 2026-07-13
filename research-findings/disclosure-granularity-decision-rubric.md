@@ -29,6 +29,10 @@ related_findings:
     rel: "same-problem"
   - file: "cache-stable-progressive-disclosure-catalog.md"
     rel: "same-problem"
+  - file: "on-demand-vs-always-on-skill-activation.md"
+    rel: "same-problem"
+  - file: "branch-analysis-externalization-rule-skill-reference.md"
+    rel: "same-problem"
 proposals: null
 date_discovered: "2026-07-13"
 last_updated: "2026-07-13"

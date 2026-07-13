@@ -27,6 +27,8 @@ related_findings:
     rel: "same-problem"
   - file: "unified-dual-verdict-reviewer.md"
     rel: "enables"
+  - file: "with-without-skill-ab-baseline-measurement.md"
+    rel: "same-problem"
 proposals: null
 date_discovered: "2026-07-13"
 last_updated: "2026-07-13"

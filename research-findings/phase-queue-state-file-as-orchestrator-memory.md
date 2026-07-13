@@ -20,9 +20,13 @@ related_findings:
     rel: "same-problem"
   - file: "phase-task-hierarchical-plan-decomposition.md"
     rel: "enables"
+  - file: "append-only-run-log-as-working-memory.md"
+    rel: "same-problem"
+  - file: "spec-frontmatter-state-machine-unattended-dev-loop.md"
+    rel: "same-problem"
 proposals: null
 date_discovered: "2026-05-25"
-last_updated: "2026-05-25"
+last_updated: "2026-07-13"
 pipeline_status: "classified"
 consumed_by: []
 tags:

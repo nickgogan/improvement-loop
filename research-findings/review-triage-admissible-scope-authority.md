@@ -28,6 +28,10 @@ related_findings:
     rel: "same-problem"
   - file: "agent-self-reporting-unreliability-independent-eval.md"
     rel: "extends"
+  - file: "direction-md-committed-triage-constitution.md"
+    rel: "same-problem"
+  - file: "unified-dual-verdict-reviewer.md"
+    rel: "same-problem"
 proposals: null
 date_discovered: "2026-07-13"
 last_updated: "2026-07-13"

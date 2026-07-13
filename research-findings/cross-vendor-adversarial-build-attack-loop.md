@@ -34,7 +34,7 @@ related_findings:
     rel: "same-problem"
 proposals: null
 date_discovered: "2026-07-12"
-last_updated: "2026-07-12"
+last_updated: "2026-07-13"
 pipeline_status: "raw"
 ---
 
@@ -84,3 +84,16 @@ attacker can oscillate on style disagreements; needs a round cap. The attacker t
 context grows stale/polluted over many rounds. Vendor-strength assignments (who builds,
 who attacks) are empirical and shift with every model release. Polish-last discipline
 erodes under deadline pressure — running the polish early recreates the trust problem.
+
+## Corroboration — Archon's Shipped Adversarial Workflow (2026-07-13)
+
+Archon v0.5.0 ships the build/attack loop as a default product workflow:
+`archon-adversarial-dev.yaml` (15k) runs a Planner, then a state-machine loop
+alternating a **Generator** and an **Evaluator** whose explicit job is to break the
+generator's work; any evaluation criterion scoring below **7/10** returns the sprint to
+the generator with the adversarial feedback, under bounded retries. The workflow cites
+Anthropic's harness-design article as its design source. This is a single-workflow,
+single-vendor variant — it corroborates the loop's core shape (adversarial
+generator/evaluator separation with an explicit numeric convergence gate and a round
+cap) while dropping this finding's distinguishing cross-vendor decorrelation lever and
+terminal polish pass. See [[archon-analysis]] for structural details.

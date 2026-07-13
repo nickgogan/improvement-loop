@@ -24,9 +24,11 @@ related_findings:
   rel: same-problem
 - file: issue-based-agent-orchestration-replacing-markdown-plans.md
   rel: same-problem
+- file: append-only-run-log-as-working-memory.md
+  rel: same-problem
 proposals: null
 date_discovered: '2026-04-08'
-last_updated: '2026-07-12'
+last_updated: '2026-07-13'
 pipeline_status: raw
 consumed_by: []
 ---

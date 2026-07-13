@@ -27,9 +27,11 @@ related_findings:
     rel: "same-problem"
   - file: "context-file-instruction-bloat-eth-zurich.md"
     rel: "same-problem"
+  - file: "disclosure-granularity-decision-rubric.md"
+    rel: "same-problem"
 proposals: null
 date_discovered: "2026-07-12"
-last_updated: "2026-07-12"
+last_updated: "2026-07-13"
 pipeline_status: "raw"
 ---
 

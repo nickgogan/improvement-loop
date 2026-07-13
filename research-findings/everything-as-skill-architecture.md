@@ -16,6 +16,10 @@ related_findings:
   rel: extends
 - file: capability-as-agent-composition-primitive.md
   rel: same-problem
+- file: four-layer-config-merge-with-customization-sidecar.md
+  rel: extended-by
+- file: skill-flattening-outcome-prose-over-step-files.md
+  rel: extended-by
 proposals: null
 date_discovered: '2026-04-08'
 last_updated: '2026-07-13'

@@ -15,9 +15,11 @@ related_findings:
     rel: same-problem
   - file: universal-harness-context-via-symlink.md
     rel: same-problem
+  - file: skill-shipped-inside-the-package-wheel.md
+    rel: extended-by
 proposals: null
 date_discovered: "2026-04-23"
-last_updated: "2026-04-23"
+last_updated: "2026-07-13"
 pipeline_status: raw
 consumed_by: []
 ---

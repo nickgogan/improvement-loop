@@ -27,6 +27,8 @@ related_findings:
     rel: "same-problem"
   - file: "north-star-drift-loop-trajectory-extrapolation.md"
     rel: "same-problem"
+  - file: "review-triage-admissible-scope-authority.md"
+    rel: "same-problem"
 proposals: null
 date_discovered: "2026-07-13"
 last_updated: "2026-07-13"

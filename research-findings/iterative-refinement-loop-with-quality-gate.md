@@ -15,7 +15,7 @@ sources:
 - most-people-build-claude-skills-wrong-heres-what-w.md
 proposals: []
 date_discovered: '2026-03-22'
-last_updated: '2026-07-12'
+last_updated: '2026-07-13'
 related_findings:
 - file: eval-driven-development-autonomous-quality.md
   rel: same-problem
@@ -58,6 +58,8 @@ Logging scores and failure reasons per iteration creates an audit trail and can 
 
 ## Potential Failure Modes
 Self-evaluation by the same model that generated the output has known limitations — the model may be consistently biased toward rating its own outputs highly. Max 3 loops may be insufficient for complex outputs.
+
+**Updated 2026-07-13 (Archon v0.5.0 shipped-workflow corroboration):** Archon ships this pattern as a default product workflow — `archon-adversarial-dev.yaml` runs a Planner, then a state-machine loop alternating a Generator and an Evaluator with explicit numeric criteria: any criterion below 7/10 sends the work back to the generator with the evaluator's feedback, under bounded retries. It also addresses this finding's main failure mode (self-evaluation bias) structurally — the scorer is a separate adversarial role whose job is to break the generator's work, not the generating agent re-reading its own output. See [[archon-analysis]] for structural details.
 
 ## Extraction Note — 2026-04-26
 Extracted as **skill**: [[iterative-refinement-loop-with-quality-gate]] in `extracts/skills/`

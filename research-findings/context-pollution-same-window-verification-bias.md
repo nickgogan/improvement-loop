@@ -31,9 +31,11 @@ related_findings:
   rel: same-problem
 - file: no-mistakes-post-implementation-validation-pipeline.md
   rel: extended-by
+- file: controller-deauthorization-reviewer-independence.md
+  rel: same-problem
 proposals: null
 date_discovered: '2026-04-07'
-last_updated: '2026-07-12'
+last_updated: '2026-07-13'
 pipeline_status: synthesized
 consumed_by:
 - building-agent-evaluation-suites.md

@@ -16,9 +16,11 @@ related_findings:
     rel: "extends"
   - file: "domain-expertise-as-loadable-context-sub-skill.md"
     rel: "same-problem"
+  - file: "four-layer-config-merge-with-customization-sidecar.md"
+    rel: "same-problem"
 proposals: null
 date_discovered: "2026-05-24"
-last_updated: "2026-05-24"
+last_updated: "2026-07-13"
 pipeline_status: "synthesized"
 consumed_by:
   - "agent-design-patterns.md"

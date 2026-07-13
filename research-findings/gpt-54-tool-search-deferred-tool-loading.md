@@ -18,13 +18,17 @@ sources:
 - claude-code-prompt-caching-is-everything.md
 proposals: []
 date_discovered: '2026-04-01'
-last_updated: '2026-07-11'
+last_updated: '2026-07-13'
 related_findings:
 - file: progressive-skill-loading.md
   rel: same-problem
 - file: cursor-claude-code-ide-composition.md
   rel: same-problem
 - file: search-over-list-tool-design-pattern.md
+  rel: same-problem
+- file: cache-stable-progressive-disclosure-catalog.md
+  rel: same-problem
+- file: disclosure-granularity-decision-rubric.md
   rel: same-problem
 pipeline_status: synthesized
 consumed_by:

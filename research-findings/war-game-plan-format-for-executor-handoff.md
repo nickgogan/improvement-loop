@@ -51,9 +51,11 @@ related_findings:
   rel: same-problem
 - file: unknowns-reduction-phase-anchored-technique-set.md
   rel: same-problem
+- file: plans-that-carry-their-own-contract.md
+  rel: same-problem
 proposals: null
 date_discovered: '2026-07-12'
-last_updated: '2026-07-12'
+last_updated: '2026-07-13'
 pipeline_status: raw
 ---
 

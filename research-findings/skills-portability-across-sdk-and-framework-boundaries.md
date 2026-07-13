@@ -23,6 +23,8 @@ related_findings:
     rel: enables
   - file: capability-as-agent-composition-primitive.md
     rel: extended-by
+  - file: vendor-neutral-skill-vocabulary-per-harness-tool-maps.md
+    rel: extended-by
 proposals: null
 date_discovered: "2026-05-25"
 last_updated: "2026-07-13"

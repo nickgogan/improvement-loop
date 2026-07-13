@@ -35,9 +35,11 @@ related_findings:
     rel: "enabled-by"
   - file: "memorymd-cross-session-preference-persistence.md"
     rel: "same-problem"
+  - file: "rules-layer-collapse-monolithic-context-counter-signal.md"
+    rel: "contradicts"
 proposals: null
 date_discovered: "2026-07-12"
-last_updated: "2026-07-12"
+last_updated: "2026-07-13"
 pipeline_status: "raw"
 ---
 

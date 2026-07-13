@@ -27,9 +27,11 @@ sources:
 related_findings:
   - file: "session-history-mining-for-skill-discovery.md"
     rel: "enabled-by"
+  - file: "direction-md-committed-triage-constitution.md"
+    rel: "same-problem"
 proposals: null
 date_discovered: "2026-07-12"
-last_updated: "2026-07-12"
+last_updated: "2026-07-13"
 pipeline_status: "raw"
 ---
 

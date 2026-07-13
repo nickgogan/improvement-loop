@@ -19,12 +19,14 @@ sources:
 - gstack-gsd-superpowers-orchestrator-headless.md
 proposals: null
 date_discovered: '2026-03-15'
-last_updated: '2026-05-25'
+last_updated: '2026-07-13'
 related_findings:
 - file: stop-rules-as-execution-boundaries.md
   rel: enabled-by
 - file: ralph-loop-brute-force-security-and-ui-testing.md
   rel: extends
+- file: loop-node-anatomy-schema-enforced-ralph-primitive.md
+  rel: extended-by
 pipeline_status: "extracted"
 consumed_by:
   - "skills/ralph-wiggum-execution-pattern.md"
@@ -53,6 +55,8 @@ If pass/fail criteria in plan.md are ambiguous or under-specified, the bash loop
 **Updated 2026-03-22:** Additional failure modes confirmed in production: a bad spec cascades errors across all iterations because each loop builds on the previous one's output — a bug introduced early poisons later loops. Tests written by the model may be biased toward passing rather than truly testing correctness. Not token-efficient for parallel runs — cost scales super-linearly. Critically: the Anthropic-published Ralph Wiggum plugin runs within the same session (causing context rot) — avoid it in favor of the bash `claude -p` implementation. Source: [You're Using Ralph Wiggum Loops WRONG](https://www.youtube.com/watch?v=I7azCAgoUHc)
 
 **Updated 2026-04-09 (Anthropic Tier 1 evidence):** Anthropic's "Long-running Claude for scientific computing" blog post confirms the Ralph loop as a key orchestration pattern for multi-day autonomous work. Anthropic describes it as scaffolding to combat "agentic laziness" — the tendency of models to make excuses to pause on complex tasks. The Ralph loop provides capability uplift via minimal prompt engineering, RAG, or context stuffing, and is expected to become less necessary as models improve. The scientific computing workflow used the Ralph loop to drive a cosmological Boltzmann solver reimplementation over multiple days, achieving sub-percent accuracy against a reference implementation. This is the strongest production evidence for the Ralph loop pattern to date — Anthropic themselves deploying it for sustained autonomous execution. Evidence strength upgraded from Medium to Strong.
+
+**Updated 2026-07-13 (Archon v0.5.0 — Ralph as a schema-enforced engine primitive):** Archon promotes the Ralph loop from a bash/prompt idiom to a first-class `loop:` workflow-engine node whose config schema covers the full loop anatomy — signal-string `until` plus deterministic `until_bash` completion checks, a required `max_iterations` budget, `fresh_context: true` per-iteration session reset with `$LOOP_PREV_OUTPUT` bridging the prior iteration's cleaned output, optional per-iteration human gates, and iteration-level events/metrics. The primitive is exercised in production by the shipped `archon-ralph-dag.yaml` default workflow (PRD-driven, one story per fresh-context iteration, then PR). This corroborates the pattern's core moves (fresh context per pass, state externalized to plan/spec artifacts, pass/fail verification per iteration) and hardens them into load-time schema validation. Details in [[loop-node-anatomy-schema-enforced-ralph-primitive]]; structural analysis in [[archon-analysis]].
 
 ## Extraction Note — 2026-05-25
 Extracted as **skill**: [[ralph-wiggum-execution-pattern]] in `extracts/skills/`

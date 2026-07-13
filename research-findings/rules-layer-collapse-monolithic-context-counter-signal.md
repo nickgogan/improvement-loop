@@ -31,6 +31,10 @@ related_findings:
     rel: "contradicts"
   - file: "cross-platform-context-file-strategy.md"
     rel: "extends"
+  - file: "skill-flattening-outcome-prose-over-step-files.md"
+    rel: "same-problem"
+  - file: "memory-file-to-skill-migration.md"
+    rel: "contradicts"
 proposals: null
 date_discovered: "2026-07-13"
 last_updated: "2026-07-13"

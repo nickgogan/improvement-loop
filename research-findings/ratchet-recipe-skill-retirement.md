@@ -39,9 +39,11 @@ related_findings:
   rel: enabled-by
 - file: meta-skill-authoring-prior-dominance.md
   rel: extended-by
+- file: add-then-retire-lifecycle-at-framework-scale.md
+  rel: same-problem
 proposals: null
 date_discovered: '2026-07-11'
-last_updated: '2026-07-11'
+last_updated: '2026-07-13'
 ---
 
 # Ratchet Recipe — Outcome-Driven Skill Retirement with Evidence Floor and Capacity Cap

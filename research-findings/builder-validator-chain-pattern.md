@@ -47,9 +47,11 @@ related_findings:
   rel: extended-by
 - file: verification-agent-seven-prompt-patterns.md
   rel: same-problem
+- file: controller-deauthorization-reviewer-independence.md
+  rel: enables
 proposals: null
 date_discovered: '2026-04-09'
-last_updated: '2026-04-19'
+last_updated: '2026-07-13'
 pipeline_status: synthesized
 consumed_by:
   - "building-agent-evaluation-suites.md"

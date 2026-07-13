@@ -45,9 +45,11 @@ related_findings:
   rel: extended-by
 - file: skill-pruning-failure-modes-noop-deletion-test.md
   rel: extended-by
+- file: disclosure-granularity-decision-rubric.md
+  rel: same-problem
 proposals: null
 date_discovered: '2026-07-12'
-last_updated: '2026-07-12'
+last_updated: '2026-07-13'
 pipeline_status: raw
 ---
 

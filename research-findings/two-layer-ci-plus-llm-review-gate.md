@@ -23,8 +23,10 @@ related_findings:
     rel: "enables"
   - file: "skill-security-scanner-fail-closed.md"
     rel: "enables"
+  - file: "externalized-real-session-behavior-evals.md"
+    rel: "same-problem"
 date_discovered: "2026-04-20"
-last_updated: "2026-07-12"
+last_updated: "2026-07-13"
 pipeline_status: "classified"
 consumed_by: []
 ---

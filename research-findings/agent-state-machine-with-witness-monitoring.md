@@ -27,9 +27,11 @@ related_findings:
   rel: same-problem
 - file: work-disavowal-failure-mode-context-limit-cheating.md
   rel: same-problem
+- file: no-autonomous-lifecycle-mutation-principle.md
+  rel: contradicts
 proposals: null
 date_discovered: '2026-04-19'
-last_updated: '2026-04-20'
+last_updated: '2026-07-13'
 pipeline_status: synthesized
 consumed_by:
   - agent-design-patterns.md

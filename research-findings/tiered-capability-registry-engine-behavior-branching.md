@@ -34,6 +34,10 @@ related_findings:
     rel: "same-problem"
   - file: "receiver-relative-tier-semantics.md"
     rel: "same-problem"
+  - file: "model-tiers-aliases-cross-provider-indirection.md"
+    rel: "same-problem"
+  - file: "vendor-neutral-skill-vocabulary-per-harness-tool-maps.md"
+    rel: "same-problem"
 proposals: null
 date_discovered: "2026-07-13"
 last_updated: "2026-07-13"

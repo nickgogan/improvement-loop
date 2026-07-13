@@ -15,7 +15,7 @@ sources:
 - anthropics-2-5-billion-leak-12-critical-pieces.md
 proposals: null
 date_discovered: '2026-04-07'
-last_updated: '2026-04-19'
+last_updated: '2026-07-13'
 related_findings:
 - file: session-as-append-only-event-log.md
   rel: extended-by
@@ -27,6 +27,10 @@ related_findings:
   rel: same-problem
 - file: agent-state-machine-with-witness-monitoring.md
   rel: same-problem
+- file: append-only-run-log-as-working-memory.md
+  rel: same-problem
+- file: spec-frontmatter-state-machine-unattended-dev-loop.md
+  rel: extended-by
 pipeline_status: synthesized
 consumed_by:
 - agent-workflow-and-execution.md

@@ -20,9 +20,11 @@ related_findings:
   rel: same-problem
 - file: context-curation-over-context-stuffing.md
   rel: same-problem
+- file: skill-flattening-outcome-prose-over-step-files.md
+  rel: extended-by
 proposals: null
 date_discovered: '2026-04-07'
-last_updated: 2026-04-08
+last_updated: 2026-07-13
 pipeline_status: synthesized
 consumed_by:
 - model-resilient-prompt-engineering.md

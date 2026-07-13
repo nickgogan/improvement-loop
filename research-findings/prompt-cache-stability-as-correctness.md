@@ -16,9 +16,11 @@ related_findings:
   rel: extends
 - file: append-only-context-updates-system-reminder-injection.md
   rel: extended-by
+- file: cache-stable-progressive-disclosure-catalog.md
+  rel: extended-by
 proposals: null
 date_discovered: '2026-04-08'
-last_updated: '2026-07-11'
+last_updated: '2026-07-13'
 pipeline_status: raw
 consumed_by: []
 ---

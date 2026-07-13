@@ -29,6 +29,8 @@ related_findings:
     rel: "same-problem"
   - file: "derive-dont-edit-artifacts-as-log-renders.md"
     rel: "extends"
+  - file: "architecture-spine-invariants-vs-seed-divergence-test.md"
+    rel: "same-problem"
 proposals: null
 date_discovered: "2026-07-13"
 last_updated: "2026-07-13"

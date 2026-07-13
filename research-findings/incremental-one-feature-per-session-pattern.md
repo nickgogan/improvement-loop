@@ -25,9 +25,13 @@ related_findings:
   rel: same-problem
 - file: issue-based-agent-orchestration-replacing-markdown-plans.md
   rel: same-problem
+- file: loop-node-anatomy-schema-enforced-ralph-primitive.md
+  rel: same-problem
+- file: spec-frontmatter-state-machine-unattended-dev-loop.md
+  rel: same-problem
 proposals: null
 date_discovered: '2026-04-09'
-last_updated: '2026-07-12'
+last_updated: '2026-07-13'
 pipeline_status: synthesized
 consumed_by:
 - agent-design-patterns.md
@@ -53,6 +57,10 @@ Automatic feature selection based on dependency ordering rather than agent judgm
 ## Potential Failure Modes
 
 Feature selection bias -- agents may repeatedly pick easy features, leaving hard ones for later where they compound. The "clean state" definition may be too vague without concrete verification criteria. Single-feature constraint may be too restrictive for tightly coupled features that must be implemented together.
+
+## Production Corroboration — Archon Ralph-as-DAG (2026-07-13)
+
+Archon v0.5.0 ships this pattern as a default workflow rather than a prompt discipline: `archon-ralph-dag.yaml` (28k) classifies the input with a small model, generates a PRD artifact pair (`prd.md` + `prd.json`), validates it, then runs a schema-enforced loop that starts a fresh context per iteration and implements **exactly one story per iteration** before opening a PR. The PRD artifact plays the progress-file role (stories are the feature list; iteration state is externalized to artifacts, not the context window), and the one-story constraint is enforced by the workflow engine's loop node rather than by prompting — see [[loop-node-anatomy-schema-enforced-ralph-primitive]] for the loop schema and [[archon-analysis]] for structural details. Second independent production implementation of the one-feature-per-fresh-context-session shape after Anthropic's harness write-up.
 
 ## Extraction Note — 2026-04-19
 Extracted as **pattern**: [[one-feature-per-session.md]] in `extracts/patterns/`

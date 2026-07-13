@@ -35,6 +35,8 @@ related_findings:
     rel: "extends"
   - file: "tool-pruning-as-harness-maintenance.md"
     rel: "same-problem"
+  - file: "skill-flattening-outcome-prose-over-step-files.md"
+    rel: "same-problem"
 proposals: null
 date_discovered: "2026-07-12"
 last_updated: "2026-07-13"

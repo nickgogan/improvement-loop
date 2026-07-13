@@ -35,6 +35,8 @@ related_findings:
     rel: "same-problem"
   - file: "build-from-observed-workflow.md"
     rel: "enabled-by"
+  - file: "add-then-retire-lifecycle-at-framework-scale.md"
+    rel: "same-problem"
 proposals: null
 date_discovered: "2026-07-13"
 last_updated: "2026-07-13"

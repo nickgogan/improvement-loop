@@ -29,9 +29,11 @@ related_findings:
   rel: enables
 - file: sprint-contract-negotiation-pattern.md
   rel: extended-by
+- file: plans-that-carry-their-own-contract.md
+  rel: same-problem
 proposals: []
 date_discovered: '2026-04-07'
-last_updated: '2026-04-19'
+last_updated: '2026-07-13'
 pipeline_status: synthesized
 consumed_by:
 - agent-architecture-decisions.md

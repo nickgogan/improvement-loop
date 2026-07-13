@@ -35,9 +35,11 @@ related_findings:
   rel: same-problem
 - file: ratchet-recipe-skill-retirement.md
   rel: same-problem
+- file: add-then-retire-lifecycle-at-framework-scale.md
+  rel: same-problem
 proposals: null
 date_discovered: '2026-07-11'
-last_updated: '2026-07-11'
+last_updated: '2026-07-13'
 ---
 
 # Skill-Library Drift — Unbounded Accumulation Degrades the Agent

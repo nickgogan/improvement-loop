@@ -13,10 +13,12 @@ sources:
 - careerbuddy-improve-backlog-corpus-contributions.md
 proposals: null
 date_discovered: '2026-07-12'
-last_updated: '2026-07-12'
+last_updated: '2026-07-13'
 related_findings:
 - file: machine-readable-system-contract-with-wiring-rows.md
   rel: extends
+- file: tiered-capability-registry-engine-behavior-branching.md
+  rel: same-problem
 pipeline_status: raw
 consumed_by: []
 tags:

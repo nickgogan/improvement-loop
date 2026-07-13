@@ -17,7 +17,7 @@ sources:
 - five-agentic-patterns-claude-code.md
 proposals: null
 date_discovered: '2026-03-22'
-last_updated: '2026-05-25'
+last_updated: '2026-07-13'
 pipeline_status: "synthesized"
 consumed_by:
   - "agent-architecture-decisions.md"
@@ -26,6 +26,8 @@ related_findings:
   rel: same-problem
 - file: cloud-plan-parallel-multitasking-pattern.md
   rel: same-problem
+- file: file-mediated-subagent-handoff-workspace.md
+  rel: extended-by
 ---
 # Sub-Agent Context Isolation for Parallel Complex Analysis
 

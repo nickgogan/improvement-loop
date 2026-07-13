@@ -53,8 +53,14 @@ related_findings:
   rel: same-problem
 - file: work-ticket-contract-prompt-mode-vs-work-mode.md
   rel: same-problem
+- file: anti-consensus-decision-room-structural-dissent-roles.md
+  rel: same-problem
+- file: controller-deauthorization-reviewer-independence.md
+  rel: extended-by
+- file: review-triage-admissible-scope-authority.md
+  rel: extended-by
 date_discovered: '2026-04-07'
-last_updated: '2026-07-12'
+last_updated: '2026-07-13'
 pipeline_status: synthesized
 consumed_by:
 - building-agent-evaluation-suites.md

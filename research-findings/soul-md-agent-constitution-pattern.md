@@ -16,12 +16,14 @@ sources:
 - openclaw-soul-md-explained.md
 proposals: null
 date_discovered: '2026-04-07'
-last_updated: '2026-04-07'
+last_updated: '2026-07-13'
 related_findings:
 - file: five-layer-agent-prompt-architecture.md
   rel: same-problem
 - file: context-file-taxonomy-claudemd-soulmd-agentsmd.md
   rel: extends
+- file: direction-md-committed-triage-constitution.md
+  rel: same-problem
 pipeline_status: synthesized
 consumed_by:
   - "agent-design-patterns.md"

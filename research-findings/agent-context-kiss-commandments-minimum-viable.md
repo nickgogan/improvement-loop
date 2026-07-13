@@ -15,7 +15,7 @@ sources:
 - your-claude-limit-burns-in-90-minutes.md
 - karpathy-skills-claudemd-four-principles.md
 date_discovered: '2026-04-07'
-last_updated: '2026-05-24'
+last_updated: '2026-07-13'
 related_findings:
 - file: ace-agentic-context-engineering-evolving-playbook.md
   rel: same-problem
@@ -100,6 +100,8 @@ related_findings:
 - file: domain-expertise-loadable-context-sub-skill.md
   rel: same-problem
 - file: typed-edge-knowledge-graph-token-reduction.md
+  rel: same-problem
+- file: disclosure-granularity-decision-rubric.md
   rel: same-problem
 pipeline_status: synthesized
 consumed_by:

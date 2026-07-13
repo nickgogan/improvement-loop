@@ -36,6 +36,8 @@ related_findings:
     rel: "same-problem"
   - file: "session-history-import-as-memory-bootstrap.md"
     rel: "extended-by"
+  - file: "pr-review-mined-rules-corpus-with-provenance.md"
+    rel: "same-problem"
 proposals: null
 date_discovered: "2026-07-12"
 last_updated: "2026-07-13"

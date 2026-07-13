@@ -31,6 +31,12 @@ related_findings:
     rel: "extends"
   - file: "specialized-harness-engineering-deterministic-rail.md"
     rel: "same-problem"
+  - file: "bmad-outcome-based-skill-rewrite-pattern.md"
+    rel: "extends"
+  - file: "reference-only-skill-shape-for-afk-agents.md"
+    rel: "same-problem"
+  - file: "skill-pruning-failure-modes-noop-deletion-test.md"
+    rel: "same-problem"
 proposals: null
 date_discovered: "2026-07-13"
 last_updated: "2026-07-13"

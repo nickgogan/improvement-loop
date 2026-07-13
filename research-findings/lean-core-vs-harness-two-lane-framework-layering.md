@@ -105,3 +105,32 @@ source that names the boundary inside a single framework.
 - **Terminology collision** — "harness" here is a framework lane; in engine/industry
   usage it can mean the whole operational wrapper around an agent. Cross-source reads
   must disambiguate before treating claims as commensurable.
+
+## Extension — Repo-Verified Graduation Pipeline (2026-07-13)
+
+The v2.9.0 structural analysis ([[pydantic-ai-analysis]]) adds the implementation
+detail the launch material didn't show — the two lanes are an **inter-repo graduation
+pipeline**, not just a packaging split:
+
+- **The harness is a separate repository/package** (`pydantic-ai-harness`), explicitly
+  the *incubation lane*: looser backward-compatibility requirements and faster
+  iteration than core, with a graduation path into core once a capability "proves
+  itself broadly essential."
+- **The core membership test is named**: only capabilities that are (a)
+  provider-native/model-coupled (must ship with model code) or (b) "fundamental to the
+  agent experience" (thinking, web search, tool search) live in core. Everything else —
+  memory, guardrails, context management, multi-agent orchestration, code mode — is
+  harness-lane.
+- **Contribution routing is structural**: capability contributions are redirected to
+  the harness repo ("the capabilities abstraction gives contributions clear
+  boundaries").
+- **A `harness-compat.yml` CI job enforces the cross-repo contract** — the lane split
+  is machine-checked, not conventional.
+- **Code mode is the first named graduation candidate** — agent-written code executing
+  in Monty, Pydantic's Rust-based sandboxed Python interpreter — with the "fall up"
+  pattern (local model-agnostic implementation first, provider-native auto-switch
+  later) already live for WebSearch/WebFetch/ImageGeneration via `NativeOrLocalTool`.
+
+This answers the finding's "Potential Improvements" ask directly: the
+promotion/demotion criteria between lanes exist and are published (membership test +
+proves-itself-broadly-essential graduation), and the lane boundary is CI-enforced.

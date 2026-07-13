@@ -28,6 +28,8 @@ related_findings:
     rel: "same-problem"
   - file: "skill-library-drift-failure-mode.md"
     rel: "same-problem"
+  - file: "tool-pruning-as-harness-maintenance.md"
+    rel: "same-problem"
 proposals: null
 date_discovered: "2026-07-13"
 last_updated: "2026-07-13"

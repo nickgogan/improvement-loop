@@ -61,9 +61,15 @@ related_findings:
   rel: extended-by
 - file: isolation-resolver-worktree-lifecycle-algorithm.md
   rel: extended-by
+- file: declarative-agent-spec-with-serialization-registry.md
+  rel: same-problem
+- file: loop-node-anatomy-schema-enforced-ralph-primitive.md
+  rel: extended-by
+- file: typed-node-output-sidecars-by-type-artifact-discovery.md
+  rel: extended-by
 proposals: null
 date_discovered: '2026-04-09'
-last_updated: '2026-07-12'
+last_updated: '2026-07-13'
 pipeline_status: synthesized
 consumed_by:
 - agent-workflow-and-execution.md

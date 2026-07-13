@@ -32,6 +32,8 @@ related_findings:
     rel: "extends"
   - file: "incremental-one-feature-per-session-pattern.md"
     rel: "same-problem"
+  - file: "heartbeat-execution-model.md"
+    rel: "same-problem"
 proposals: null
 date_discovered: "2026-07-13"
 last_updated: "2026-07-13"

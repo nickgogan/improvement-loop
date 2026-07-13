@@ -26,9 +26,11 @@ related_findings:
   rel: enables
 - file: harness-composition-six-pattern-taxonomy.md
   rel: same-problem
+- file: loop-node-anatomy-schema-enforced-ralph-primitive.md
+  rel: extended-by
 proposals: []
 date_discovered: '2026-04-07'
-last_updated: '2026-07-12'
+last_updated: '2026-07-13'
 pipeline_status: synthesized
 consumed_by:
 - writing-agent-specifications.md

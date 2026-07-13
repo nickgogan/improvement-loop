@@ -18,9 +18,11 @@ related_findings:
   rel: same-problem
 - file: three-enforcement-pipeline-architectures.md
   rel: extended-by
+- file: rules-layer-collapse-monolithic-context-counter-signal.md
+  rel: contradicts
 proposals: null
 date_discovered: '2026-04-08'
-last_updated: '2026-04-19'
+last_updated: '2026-07-13'
 pipeline_status: synthesized
 consumed_by:
 - agent-governance-and-trust.md

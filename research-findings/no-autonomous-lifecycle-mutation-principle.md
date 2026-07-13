@@ -25,6 +25,8 @@ related_findings:
     rel: "same-problem"
   - file: "agent-clarification-over-assumption-pattern.md"
     rel: "extends"
+  - file: "agent-state-machine-with-witness-monitoring.md"
+    rel: "contradicts"
 proposals: null
 date_discovered: "2026-07-13"
 last_updated: "2026-07-13"

@@ -25,6 +25,8 @@ related_findings:
     rel: "same-problem"
   - file: "tool-pruning-as-harness-maintenance.md"
     rel: "enables"
+  - file: "pr-review-mined-rules-corpus-with-provenance.md"
+    rel: "same-problem"
 proposals: null
 date_discovered: "2026-07-13"
 last_updated: "2026-07-13"

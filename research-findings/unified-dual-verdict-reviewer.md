@@ -27,6 +27,12 @@ related_findings:
     rel: "extends"
   - file: "headless-multi-pass-iterative-review.md"
     rel: "same-problem"
+  - file: "externalized-real-session-behavior-evals.md"
+    rel: "enabled-by"
+  - file: "review-triage-admissible-scope-authority.md"
+    rel: "same-problem"
+  - file: "two-axis-parallel-code-review-standards-vs-spec.md"
+    rel: "contradicts"
 proposals: null
 date_discovered: "2026-07-13"
 last_updated: "2026-07-13"

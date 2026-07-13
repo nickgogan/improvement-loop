@@ -37,6 +37,8 @@ related_findings:
   rel: same-problem
 - file: tool-pruning-as-harness-maintenance.md
   rel: same-problem
+- file: pr-review-mined-rules-corpus-with-provenance.md
+  rel: same-problem
 pipeline_status: synthesized
 consumed_by:
 - defending-agent-context.md

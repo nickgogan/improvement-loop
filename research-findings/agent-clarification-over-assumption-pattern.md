@@ -23,9 +23,11 @@ related_findings:
   rel: same-problem
 - file: follow-up-question-budget-agent-triage.md
   rel: same-problem
+- file: no-autonomous-lifecycle-mutation-principle.md
+  rel: extended-by
 proposals: null
 date_discovered: '2026-04-09'
-last_updated: '2026-05-24'
+last_updated: '2026-07-13'
 pipeline_status: synthesized
 consumed_by:
   - "agent-design-patterns.md"

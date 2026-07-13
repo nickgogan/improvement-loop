@@ -11,10 +11,14 @@ applicability:
 - S3 (Claude Code Build)
 adopted_in: []
 sources: []
-related_findings: []
+related_findings:
+- file: anti-consensus-decision-room-structural-dissent-roles.md
+  rel: same-problem
+- file: socratic-idea-forge-kill-as-success-exit.md
+  rel: same-problem
 proposals: null
 date_discovered: '2026-04-08'
-last_updated: '2026-04-19'
+last_updated: '2026-07-13'
 pipeline_status: raw
 consumed_by: []
 ---

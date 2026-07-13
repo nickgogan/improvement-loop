@@ -13,9 +13,13 @@ adopted_in: []
 sources: []
 proposals: []
 date_discovered: "2026-05-25"
-last_updated: "2026-05-25"
+last_updated: "2026-07-13"
 related_findings:
   - file: immutable-system-log-with-append-only-entries.md
+    rel: same-problem
+  - file: controller-deauthorization-reviewer-independence.md
+    rel: same-problem
+  - file: pr-review-mined-rules-corpus-with-provenance.md
     rel: same-problem
 pipeline_status: raw
 consumed_by: []

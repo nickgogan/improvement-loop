@@ -26,6 +26,8 @@ related_findings:
     rel: "same-problem"
   - file: "tiered-capability-registry-engine-behavior-branching.md"
     rel: "same-problem"
+  - file: "mandatory-explicit-model-per-dispatch.md"
+    rel: "same-problem"
 proposals: null
 date_discovered: "2026-07-13"
 last_updated: "2026-07-13"

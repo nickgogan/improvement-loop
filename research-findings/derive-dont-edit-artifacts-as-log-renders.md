@@ -27,9 +27,11 @@ adopted_in: []
 sources: []
 related_findings:
   - file: "append-only-run-log-as-working-memory.md"
-    rel: "extends"
+    rel: "enabled-by"
   - file: "artifact-as-contract-pattern.md"
     rel: "same-problem"
+  - file: "five-field-spec-kernel-with-typed-companions.md"
+    rel: "extended-by"
 proposals: null
 date_discovered: "2026-07-13"
 last_updated: "2026-07-13"
