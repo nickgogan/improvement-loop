@@ -5,8 +5,8 @@ assigned_form: "rule"
 source_finding: "skills-as-pointers-to-second-brain-files"
 identification_report: "managing-agent-context.harvest-queue.md::skills-as-pointers-to-second-brain-files::rule::skills-reference-shared-context-by-path"
 extraction_date: "2026-04-27"
-last_change_session: 82
-last_change_sl: "session-82-codifier-extract-artifacts-harvest-promotion-batch"
+last_change_session: 146
+last_change_report: "2026-07-13-source-drift"
 deployed: false
 deployed_to: null
 context:
@@ -14,6 +14,8 @@ context:
     - "skill-based agent architectures (Claude Code skills, Cursor commands, equivalent SKILL.md-style artifacts) that consume context"
     - "deployments with multiple skills sharing common reference context (brand voice, ICP, project conventions, vocabulary, governance)"
     - "any second-brain or vault setup where context can be centralized and referenced from multiple consumer artifacts"
+    - "root-level agent context files (routers) whose job is to point to detail files rather than contain the detail themselves"
+    - "automation loops whose run outputs are written back into the same store the skills read from, so future runs can read their own history"
   platform_coupling: "agnostic"
   autonomy: "all"
   stage: "build"
@@ -22,10 +24,10 @@ context:
   evidence_strength: "Medium"
   adoption:
     status: "Not Yet Started"
-    notes: "Practitioner-documented at scale (Beni: 60+ skills across business processes; Agentic Academy's Five-Pillar Agentic OS video independently validates the same pattern). Anthropic's adapted skill-creator skill enforces a related discipline (SKILL.md ≤200 lines, reference context in separate files loaded on-demand)."
+    notes: "Practitioner-documented at scale across four independent channels: Beni (60+ skills across business processes), Agentic Academy's Five-Pillar Agentic OS (brand-context folder every skill references), AI Code That Works (the same principle at root-router altitude — 'its job is to point, not to hold'), and Chase AI (skill outputs written back into the shared vault, giving loops read-your-own-history for free). Anthropic's adapted skill-creator skill enforces a related discipline (SKILL.md ≤200 lines, reference context in separate files loaded on-demand)."
 contract:
   preconditions: "A skill-based architecture exists (SKILL.md-style artifacts that the agent loads when invoked). A centralized context store (Obsidian vault, second-brain folder, repository convention, or equivalent) is available and accessible to the runtime where the skills execute. Multiple skills share at least one piece of common context — brand voice, ICP, project conventions, governance, vocabulary, or similar."
-  invariants: "Each skill's SKILL.md (or equivalent definition) carries only (a) the workflow/SOP the agent should follow and (b) file path references to where shared context lives in the central store. Shared context is never embedded as a copy inside a skill's own reference folder. The same shared context is never copied into multiple skills' reference folders. Path references are validated — at skill creation time, at periodic audit, or both — to ensure they resolve to existing files at runtime."
+  invariants: "Each skill's SKILL.md (or equivalent definition) carries only (a) the workflow/SOP the agent should follow and (b) file path references to where shared context lives in the central store. Shared context is never embedded as a copy inside a skill's own reference folder. The same shared context is never copied into multiple skills' reference folders. Root-level context files that route to skills point to detail files rather than containing the detail. Path references are validated — at skill creation time, at periodic audit, or both — to ensure they resolve to existing files at runtime."
   governance: "Owner: any policy or skill-authoring tool that defines or audits skills. The rule must be embedded in skill-authoring guidance and in skill-audit tooling. The audit reads each skill's reference folder, identifies content that duplicates content elsewhere in the skill set, and flags the duplication. Migration playbook (identify duplication → move to vault → replace with path) is the standard remediation. Exemptions: low-churn, skill-specific context that is genuinely unique to one skill may remain embedded."
   recovery: "If a skill is discovered with embedded shared context: identify the canonical home in the central store; if the canonical does not exist, create it (single source of truth); replace the skill's embedded copy with a path reference to the canonical; verify the path resolves at runtime. If multiple skills carry divergent copies of the same content (drift): pick the most-correct version, reconcile into the canonical, replace each skill's copy with the path reference; investigate which copies were stale and why. If runtime context lacks vault access (skill executes in an isolated environment without the central store): the skill's deployment context must include the referenced files, OR the rule's exemption applies if the context is genuinely skill-specific. Path references that fail to resolve at runtime are violations regardless of cause."
 tags:
@@ -49,7 +51,7 @@ A skill-based architecture exists where skills (SKILL.md-style artifacts, Cursor
 
 A new skill is being authored, OR an existing skill is being audited or refactored.
 
-Scope of application: any artifact where context could plausibly be either embedded or referenced. Out of scope: skill-specific context that is genuinely unique to one skill and never shared.
+Scope of application: any artifact where context could plausibly be either embedded or referenced. The same condition fires one altitude up — at the root-level context file that routes into skills — and one altitude down — at the loop-state layer, where automation outputs could either be discarded or written back into the shared store. Out of scope: skill-specific context that is genuinely unique to one skill and never shared.
 
 ## Action
 
@@ -57,11 +59,15 @@ Scope of application: any artifact where context could plausibly be either embed
 
 When a skill needs context that is or could be shared with other skills, place the canonical content in the central store and reference it by path from the skill. Periodic audit detects content duplication across skills and flags it for migration.
 
+**Required at the router altitude:** Root-level context files that dispatch to skills route rather than contain — their job is to point to the detail files, with all detail living in the pointed-to files.
+
+**Encouraged at the loop-state altitude:** Skill and automation outputs are written back into the same central store the skills read from, logged so a loop can see what past runs it has done. Pointer-coupled skills gain read-your-own-history loops for free; embedded-context skills do not.
+
 **Forbidden:** Embedding copies of shared context inside a skill's own reference folder when a central store exists. Maintaining multiple skills with their own copies of the same content. Path references that are not validated for runtime resolution. Treating "I'll keep them in sync manually" as a sustainable practice.
 
 ## Boundary
 
-Enforced at skill authorship time (rule fires when a new skill is created or an existing skill is edited) and at periodic audit (a tool scans the skill set for content duplication). Applies to any context that is shared, or plausibly shareable, across skills.
+Enforced at skill authorship time (rule fires when a new skill is created or an existing skill is edited) and at periodic audit (a tool scans the skill set for content duplication). Applies to any context that is shared, or plausibly shareable, across skills — including the root-level router file above the skills and the loop-state records their runs produce.
 
 Out of scope: context that is genuinely unique to one skill (no other skill consumes it, no other skill plausibly will). Such context may remain embedded; the rule does not require everything to move to the central store. Out of scope as well: deployment environments where central-store access is impossible (the deployment context must include the referenced files, or the rule's exemption applies for genuinely skill-specific content).
 
@@ -84,6 +90,8 @@ The single-source-of-truth invariant collapses the maintenance surface to one. U
 
 The rule is symmetric to broader DRY discipline applied at the context-infrastructure layer. Where DRY in code prevents logic drift, this rule prevents context drift across skill files. The mechanisms are different (skills aren't compiled together), but the rationale is the same: duplicate stores diverge by default; single sources do not.
 
+The pattern now has multi-channel corroboration across three altitudes of the same architecture. At the skill-context altitude, two independent practitioner systems (a 60+-skill business-process deployment and a five-pillar agentic-OS build with a single brand-context folder every skill references) converged on "update the information once and every skill gets that update when it runs." One altitude up, an independent channel applies the identical principle to the root context file: the router "routes, it does not contain... its job is to point, not to hold." One altitude down, a fourth channel shows the operational payoff at the loop-state layer: when skill and automation outputs are written back into the same vault the skills read from, "the loop should be able to see what past runs it's done so it can make future improvements" — pointer-coupled skills get read-your-own-history loops for free, while embedded-context skills get nothing back. The same single-source-of-truth argument recurs at every level.
+
 The rule respects skill-specific context. Genuine uniqueness — a skill that needs context no other skill will ever consume — is allowed to remain embedded. The rule's discipline applies to *shared* context; the central store is for content that has more than one consumer.
 
 The rule is the positive-space restatement of the embedded-copies anti-pattern. Rather than enumerating ways drift accumulates (manual sync misses, partial updates, version-mismatched skills, "did I update all 60?"), the positive invariant is "shared context lives in one place; skills reference it by path." One rule, deterministic enforcement.
@@ -95,6 +103,7 @@ The rule is the positive-space restatement of the embedded-copies anti-pattern. 
 - **Runtime without vault access.** A skill is invoked in an isolated environment that lacks the central store. Mitigation: deployment context includes the referenced files (the skill carries its dependencies); for genuinely-isolated environments, the rule's exemption applies and the skill embeds the necessary content with a stated rationale.
 - **Premature migration.** A skill's context is flagged as shareable based on superficial similarity but is in fact distinct. Mitigation: migration is a deliberate decision per flagged duplication, not automatic; the audit surfaces candidates; humans confirm.
 - **Central-store granularity drift.** The central store accumulates over-consolidated documents (one big "context" file) or under-consolidated fragments. Mitigation: central-store organization is its own concern with its own discipline; this rule does not prescribe the central store's internal structure, only that shared content lives there.
+- **Router file that accumulates content.** The root context file starts as a pointer table and gradually absorbs the detail it points to, recreating the embedded-copy problem one level up. Mitigation: the router altitude is in the audit's scope; detail found in the router migrates to the pointed-to files.
 - **"I'll keep them in sync manually" theater.** An author opts out of the rule with a promise of manual sync. Mitigation: manual sync is the failure mode the rule prevents; opt-out without migration is a violation, not a deferral.
 
 ## Contract
@@ -103,7 +112,7 @@ The rule is the positive-space restatement of the embedded-copies anti-pattern. 
 A skill-based architecture exists (SKILL.md-style artifacts that the agent loads when invoked). A centralized context store (Obsidian vault, second-brain folder, repository convention, or equivalent) is available and accessible to the runtime where the skills execute. Multiple skills share at least one piece of common context — brand voice, ICP, project conventions, governance, vocabulary, or similar.
 
 ### Invariants
-Each skill's SKILL.md (or equivalent definition) carries only (a) the workflow/SOP the agent should follow and (b) file path references to where shared context lives in the central store. Shared context is never embedded as a copy inside a skill's own reference folder. The same shared context is never copied into multiple skills' reference folders. Path references are validated — at skill creation time, at periodic audit, or both — to ensure they resolve to existing files at runtime.
+Each skill's SKILL.md (or equivalent definition) carries only (a) the workflow/SOP the agent should follow and (b) file path references to where shared context lives in the central store. Shared context is never embedded as a copy inside a skill's own reference folder. The same shared context is never copied into multiple skills' reference folders. Root-level context files that route to skills point to detail files rather than containing the detail. Path references are validated — at skill creation time, at periodic audit, or both — to ensure they resolve to existing files at runtime.
 
 ### Governance
 Owner: any policy or skill-authoring tool that defines or audits skills. The rule must be embedded in skill-authoring guidance and in skill-audit tooling. The audit reads each skill's reference folder, identifies content that duplicates content elsewhere in the skill set, and flags the duplication. Migration playbook (identify duplication → move to vault → replace with path) is the standard remediation. Exemptions: low-churn, skill-specific context that is genuinely unique to one skill may remain embedded.
