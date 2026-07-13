@@ -73,6 +73,17 @@ Evidence is first-party and production-tested, with independent convergence: one
 
 **Distinction from [[never-inline-ephemeral-into-cached-layers]]:** that rule governs *assembly-time block composition* — which segments may share a cache-marked block when the prompt is constructed. This rule governs the *mid-session mutation path* — once the prefix is established, it is never rewritten; updates travel through the message channel. A system can satisfy either while violating the other; adopt both.
 
+## Special Case: Byte-Stable Disclosure Catalogs
+
+A progressive-disclosure catalog — an always-injected list of skills, tools, or deferred capabilities the agent may load on demand — sits inside the prefix, so this rule applies to it directly: the catalog must render byte-identical every turn. The failure mode is specific and tempting: as the agent loads an item, the naive move is to *remove* it from the catalog (it is loaded now, why re-list it?). That shrinks the prefix and busts the cache on every load — the agent pays a full re-process each time it learns something.
+
+The catalog-stable tactic:
+- **Re-list, don't shrink.** Render every catalog entry every turn regardless of load state; the rendered surface stays byte-identical as items load.
+- **Bounce redundant loads.** Reject a re-load of an already-loaded item with a cheap retry rather than mutating the catalog — one wasted retry is far cheaper than busting the prefix cache on every load.
+- **Persist load state in the message history**, not the catalog, so a resumed run recovers what is loaded without any catalog mutation.
+
+**Source:** [[cache-stable-progressive-disclosure-catalog]] (Medium / practitioner-documented). Pydantic AI v2.9.0's deferred-capability loader renders its `load_capability` catalog as a dynamic instruction that lists *every* deferred capability every turn — including already-loaded ones — and bounces redundant loads with a `ModelRetry`; in-code rationale: "one occasional wasted retry is far cheaper than busting the prefix cache on every load." A production instance of this parent rule's "static tool sets" clause, extended to a *growing-knowledge* catalog surface. Merged here via DD-97 extension (session 146) rather than drafted as a standalone rule.
+
 ## Failure Modes
 
 - **Reminder blindness:** corrections appended late in a long conversation compete with the (stale) cached statement; the model may keep trusting the prefix. Mitigate by making reminders explicit contradictions ("X previously stated in context is no longer true") rather than bare new facts.

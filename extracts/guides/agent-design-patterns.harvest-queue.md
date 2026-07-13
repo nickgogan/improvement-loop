@@ -9,7 +9,7 @@ Nothing here is auto-extracted; rows feed `/extract-artifacts` only after Nick r
 |---|---|---|---|---|---|
 | 2026-07-13 | extracted | template | [[capability-as-agent-composition-primitive]] | "composition-unit-bundle-scaffold" | extracted to [[composition-unit-bundle-scaffold]] |
 | 2026-07-13 | extracted | rule | [[disclosure-granularity-decision-rubric]] | "eager-prompt-whitelist" | extracted to [[eager-prompt-whitelist]] |
-| 2026-07-13 | nick-approved | rule | [[cache-stable-progressive-disclosure-catalog]] | "byte-stable-disclosure-catalog" | extract via /extract-artifacts |
+| 2026-07-13 | extracted | rule | [[cache-stable-progressive-disclosure-catalog]] | "byte-stable-disclosure-catalog" | merged into [[never-mutate-cached-prompt-prefix]] |
 
 ## Per-row details
 
@@ -50,7 +50,7 @@ Extracted 2026-07-13 — Session 146 — [[agent-design-patterns.harvest-queue]]
 ### cache-stable-progressive-disclosure-catalog::rule::byte-stable-disclosure-catalog
 
 - **Date queued:** 2026-07-13
-- **Status:** nick-approved
+- **Status:** extracted
 - **Target form:** rule
 - **Source finding:** [[cache-stable-progressive-disclosure-catalog]]
 - **Source excerpt:**
@@ -60,4 +60,5 @@ Extracted 2026-07-13 — Session 146 — [[agent-design-patterns.harvest-queue]]
 - **Codifier's reading:** Imperative directive with a byte-equality check ("catalog rendering must be byte-identical across turns") — deterministic and enforceable on any always-injected catalog surface. Rule shape; the pattern rationale stays in the finding/guide.
 - **Suggested headline:** byte-stable-disclosure-catalog
 - **Recommendation:** extract via /extract-artifacts
-- **Resolution:**
+- **Resolution:** merged into [[never-mutate-cached-prompt-prefix]]
+Merge applied 2026-07-13 (session 146, delegated-judgment grant): DD-97 extension ruled `extend existing` per the DD's extension-first thesis and the Codifier's primary recommendation; the byte-stable-catalog tactic is now a Special Case section on [[never-mutate-cached-prompt-prefix]]. Nick may override to a standalone catalog-scoped rule if he prefers finer granularity — two-way door.

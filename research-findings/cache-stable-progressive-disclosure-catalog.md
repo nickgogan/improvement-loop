@@ -44,6 +44,7 @@ last_updated: "2026-07-13"
 pipeline_status: "synthesized"
 consumed_by:
   - "agent-design-patterns.md"
+  - "rules/never-mutate-cached-prompt-prefix.md"
 tags:
   - "context-engineering"
   - "prompt-caching"
@@ -109,3 +110,6 @@ v2.9.0 — see [[pydantic-ai-analysis]] for structural details.
   entries still pay their description cost every turn.
 - **Provider variance** — the win assumes prefix caching semantics; providers without
   prefix caches get the redundancy without the discount.
+
+## Extraction Note — 2026-07-13
+Extracted as a **rule** via DD-97 extension: merged into [[never-mutate-cached-prompt-prefix]] as its Byte-Stable Disclosure Catalogs special case (harvest-queue promotion, DD-101; not a standalone artifact).
