@@ -20,7 +20,7 @@ tags:
 
 # Second-Brain Proposal — Minimum Mechanism for the DD-116 Routing Residue
 
-> **RULING (Nick, session 142, 2026-07-13): minimal scoping REJECTED — direction is an
+> **RULING (Nick, session 141, 2026-07-13): minimal scoping REJECTED — direction is an
 > actual memory system.** This note's residue-triage framing under-shot the ask. Nick's
 > direction: build a real memory system in the spirit of **Hermes' external-memory +
 > self-improvement loop**, drawing on **OpenClaw** and **GBrain**; treat the **IL loop as
@@ -172,5 +172,5 @@ aimed at one of these.
 ---
 
 *Deliberation inputs: Librarian Builder-mode consult (KB citations above) and web
-question-sweep (18 questions, convergence patterns, 5 failure stories) — session-142
+question-sweep (18 questions, convergence patterns, 5 failure stories) — session-141
 working artifacts; the distilled content is carried in full here.*

@@ -1,8 +1,8 @@
 # Improvement Loop — Progress
 
-Updated: 2026-07-12 (session 140 — gate execution G1–G7 shipped: `/extract-artifacts`
-repaired via DD-117; DD-118–DD-121 filed; design-note sweep + IB hygiene done. Session
-cut by Nick after G7 — G8 + no-gate follow-ups remain in scope.)
+Updated: 2026-07-13 (session 141 — gate-execution closed (G8 + follow-ups). Second-brain
+proposal drafted at residue-triage scope; Nick REJECTED that scoping and re-set the
+direction: build an actual memory system. Four research reports persisted as design input.)
 
 ## Start here
 
@@ -31,10 +31,10 @@ Research remains the substrate: the KB grounds every design move. Full capture:
 
 - `[x]` **Phase 0 — session-ops restructure** — shipped 2026-07-12 (session 138) · [HISTORY.md](HISTORY.md)
 - `[>]` **Phase 1 — research grounding** — cresting: CareerBuddy + #8 done; remaining =
-  wave-3 chain (≥07-13) + named-deps gap-check + delta report → plan checkpoint #1
-- `[>]` **Phase 2 — substrate audit & second-brain design** — audit filed
-  (`project-management/design-notes/2026-07-12-substrate-audit.md`); gate execution +
-  second-brain proposal remain
+  wave-3 chain (unblocked ≥07-13) + named-deps gap-check + delta report → plan checkpoint #1
+- `[>]` **Phase 2 — substrate audit & memory-system design** — audit gates all executed
+  (G1–G8); remaining = the memory-system design (absorbs IB-172; Nick direction set
+  session 141), proposed and Nick-ruled
 - `[ ]` **Phase 3 — user manual** — Nick gates whether/when; audience/altitude locked
   (Nick-builder; both, direction-bounded); manual-as-kernel-layer question open
 - `[ ]` **Phase 4 — structured interview** → engine PRD/constitution/actors; decide
@@ -45,35 +45,39 @@ Research remains the substrate: the KB grounds every design move. Full capture:
 
 **Phase 1 wrap + Phase 2 execution.** Phase 1 DoD: wave-3 resolved or honestly closed,
 named-deps verified against the direction-note asks, delta report → checkpoint #1.
-Phase 2 DoD: audit gates executed, second-brain design proposed and Nick-ruled.
+Phase 2 DoD: audit gates executed (done), memory-system design proposed and Nick-ruled.
 
 Scopes (hill):
-- `wave-3-retry` — 20-video LINKS.md backlog — **uphill, unblocks ≥2026-07-13**. Chain:
-  plain `fetch.py --input LINKS.md` → `--backend browser` rung (live-unverified) →
+- `memory-system-design` — **uphill; Nick direction set (session 141), design open.**
+  Build an actual memory system: Hermes-style external memory wired to self-improvement;
+  OpenClaw + GBrain as references; **IL loop = one big agent** framing (consistent with
+  single-implicit-agent). Must answer: **existing-corpus disposition** ("what to do with
+  all of it") + **archiving policy**; G9 (boundary-case destination) folds in.
+  Self-improvement exemplar: **CareerBuddy `ops-self-improve`** — pattern-lift it
+  (`gh repo clone nickgogan/CareerBuddy`; its `ops/self/improve-backlog.md` queues 5
+  contributions). Inputs: ruling atop
+  `project-management/design-notes/2026-07-12-second-brain-proposal.md` (its residue
+  triage + question table remain valid evidence; P1–P3 not adopted) + 4 reports in
+  `operations/research-reports/` (2026-07-12/13: Librarian residue consult, Librarian
+  architecture consult, web question-sweep, web OKF/Obsidian/RAG/lifecycle deep-dive).
+  Key measured fact: findings corpus = **907 files**, at the KB's ~1000-doc traversal
+  ceiling — KB prescribes hierarchical index reinforcement before RAG. Absorbs IB-172.
+- `wave-3-retry` — 20-video LINKS.md backlog — **uphill, now unblocked (≥2026-07-13).**
+  Chain: plain `fetch.py --input LINKS.md` → `--backend browser` rung (live-unverified) →
   `/link-intake` triage; whole-chain failure = stop, respace ≥1 day. Then named-deps
-  gap-check (BMAD/superpowers/Archon/Jones vs direction-note asks — existing KB coverage
-  unverified, skipped session 139) → delta report → checkpoint #1.
-- `gate-execution` — **downhill, G1–G7 done (session 140)**. Remaining: **G8** guides
-  dissolution (mark pipeline guide DD-cache + drop its Current State table; trim/delete
-  `knowledge/guides/_index.md`; archive 10 harvest-queue files + deprecated G2
-  `managing-agent-context.md` + `system-log-template.md`; fix `extracts/guides/CLAUDE.md`
-  deployment-target line) + **no-gate follow-ups** (`knowledge/reference/_index.md`
-  Household-OS framing; DD-66 missing `title`). Audit §Gates has full specs.
-- `second-brain-proposal` — **uphill, Nick gates the mechanism** (Rule 11): size against
-  the audit's drop-inventory (§System Log distill candidates — dominant pattern:
-  stranded calibration data; §IB closure-note overflow). G9 (boundary-case routing
-  destination) folds into this proposal, not decided ad hoc.
+  gap-check (BMAD/superpowers/Archon/Jones vs direction-note asks) → delta report →
+  checkpoint #1.
+- `gate-execution` — **done (session 141)** · [HISTORY.md](HISTORY.md)
 
-**Next unit of work:** finish `gate-execution` (G8 + no-gate follow-ups — small,
-mechanical); then `wave-3-retry` if the date allows (≥07-13).
+**Next unit of work:** `memory-system-design` brainstorm with Nick inline — start from
+the four research reports + the design-note ruling; frame options for corpus disposition,
+archiving, and the self-improvement write-back loop. Then `wave-3-retry`.
 
 ## Backlog / Icebox
 
 Unscheduled — promote into a milestone when ready. Work items carry IB numbers; triggers
 noted where promotion is event-gated.
 
-- **IB-172** — layered memory architecture + OKF design (approved direction; SL corpus is
-  feedstock; second-brain proposal is the near-term slice)
 - **IB-173** — three-bucket gate tiering, DD-29 refinement (approved direction; absorbs
   IB-103 per gate G7)
 - **IB-171** — corpus-wide linkage-hygiene sweep (Nick: "save for later")
@@ -92,7 +96,6 @@ noted where promotion is event-gated.
 
 ## Blockers / gates (Nick)
 
-- **Second-brain mechanism** — Rule 11 gate on the upcoming proposal (G9 folded in)
 - **Design-mode video-intake spec** — is a formal `/meta-skill-author` spec still wanted?
 - **Verbatim-storage finding null→P3** — session-132 reassessment, unruled
 - **Re-injection correction** — next step unchosen (KB updated; remedy refuted upstream)
