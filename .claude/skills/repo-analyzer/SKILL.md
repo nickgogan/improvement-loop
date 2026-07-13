@@ -279,7 +279,7 @@ subsection as a single line stating the skip reason: "Skipped — ast-grep unava
    - `--force` -- re-analyze even if version unchanged
    - `--compare` -- DEPRECATED. If supplied, stop and redirect: "Cross-repo comparison moved to `/compare-repos` (session 111). Run `/repo-analyzer all` first if any repos lack analysis docs, then invoke `/compare-repos`."
 2. Use `Read` to load `systems/improvement-loop/watched-libraries/_index.md` and the target watched-library entry(ies).
-3. For each target library, extract `repo_url`, `last_evaluated_version`, `name`, and `spectrum_position` from the entry.
+3. For each target library, extract `repo_url`, `last_evaluated_version`, `name`, and `spectrum_position` from the entry. If `repo_url` is missing or was supplied ad hoc in conversation, locate the repo `gh`-first — `gh search repos <name>` / `gh api repos/{owner}/{repo}` — and verify owner, description, and stars match the library's identity before any WebFetch; never let an unverified domain into a registry entry, analysis doc, or any other durable artifact (mempalace.tech impostor incident, 2026-04-22/23).
 4. If not `--force`, check if `systems/improvement-loop/watched-libraries/analysis/{library-name}-analysis.md` exists. If it does, read its `analyzed_version` frontmatter. Skip if it matches `last_evaluated_version`. Report "up to date" to the user.
 
 ### Step 1: Ensure Analysis Directory
