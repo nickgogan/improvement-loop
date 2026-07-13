@@ -1,5 +1,13 @@
 # Changelog — Agent Design Patterns
 
+## 2026-07-13 — Session 145 — staleness-threshold
+
+- Findings: 44 (+7, -0 since last synthesis)
+- Added: [[capability-as-agent-composition-primitive]], [[framework-abstraction-tax-for-agents]], [[cache-stable-progressive-disclosure-catalog]], [[capability-composition-declared-ordering-constraints]], [[declarative-agent-spec-with-serialization-registry]], [[disclosure-granularity-decision-rubric]], [[guardrails-as-hook-lattice-capabilities]]
+- Structural: New Step 5 (Package Responsibilities as Composition Units — bundle shape, progressive-disclosure rules, declared ordering, hook-lattice guardrails, declarative-spec boundary, framework transparency check); old Steps 5-18 renumbered 6-19; 2 new Part I Key Concepts (composition unit, framework abstraction tax); new Composition Unit Spec template + Example 8; Pitfalls 21-24; Related Guides G2 entry updated to G2a/G2b.
+- Preserved: none
+- SL: none — System Log retired as producer (session-138 ruling); session record in HISTORY.md + git
+
 ## 2026-05-25 — Session 99 — staleness-threshold
 
 - Findings: 37 (+21, -0 since last synthesis)

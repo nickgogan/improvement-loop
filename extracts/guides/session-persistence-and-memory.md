@@ -6,7 +6,7 @@ target_system:
   - "improvement-loop"
 stage: "draft"
 created: "2026-04-19"
-updated: "2026-04-26"
+updated: "2026-07-13"
 author: "claude"
 source_findings:
   - "session-persistence-crash-resilient"
@@ -36,6 +36,14 @@ source_findings:
   - "signal-capture-as-byproduct-of-work"
   - "subagent-persistent-memory-directory"
   - "surprisal-novelty-as-memory-write-gate"
+  - "append-only-run-log-as-working-memory"
+  - "append-only-lesson-store-owning-surface-identity"
+  - "derive-dont-edit-artifacts-as-log-renders"
+  - "phase-queue-state-file-as-orchestrator-memory"
+  - "memory-wiki-world-kb-trichotomy"
+  - "memory-system-evaluation-triad-storage-injection-recall"
+  - "session-history-import-as-memory-bootstrap"
+  - "memory-file-to-skill-migration"
 source_dd:
   - "DD-81"
 tags:
@@ -43,11 +51,12 @@ tags:
   - "memory"
   - "session-persistence"
   - "retrieval"
+  - "state-management"
 contract:
   preconditions: "You have an agent system that persists beyond a single prompt-response cycle. You can write to a filesystem or database. You understand the difference between what was said (conversation) and what was done (workflow state)."
-  invariants: "Memory is layered with explicit tiers, not a flat persistence target. Workflow state is tracked separately from conversation state. Sessions leave the system in a clean, resumable state. Memory writes are policy-governed and novelty-gated -- agents do not freely append to long-term stores. Memory banks are scoped (per-agent, per-project, per-session) with cross-bank queries opt-in. Environmental feedback, not self-assessment, drives decisions. Retrieval pipelines are debuggable -- ranked outputs decompose into inspectable signals."
-  governance: "Memory tier boundaries, promotion policies, retention rules, and isolation scopes are documented per system. Session boundary conventions are enforced by handoff prompts. Retrieval recipe (decomposition, fusion, reranking) is versioned as a contract. This guide is owned by Meta-System knowledge layer."
-  recovery: "If an agent crashes mid-task: load the last persisted workflow checkpoint and resume from the last completed step. If session handoff loses context: read the progress file and last handoff prompt. If memory is corrupted: fall back to the last known-good tier and reconstruct. If parallel agents conflict: check the lock directory for abandoned locks. If retrieval quality degrades: decompose the rerank score into per-signal contributions to identify the failing stage. If memory is poisoned by bad writes: roll back to a known-good corpus snapshot, re-run the novelty + contradiction filters, audit promotion logs."
+  invariants: "Memory is layered with explicit tiers, not a flat persistence target. Workflow state is tracked separately from conversation state. Long-running workflows keep an append-only run log as durable working memory; on resume the log outranks conversation recollection. Derived artifacts are re-rendered from their log, never hand-patched. Sessions leave the system in a clean, resumable state. Memory writes are policy-governed and novelty-gated -- agents do not freely append to long-term stores. Recurring lessons accrete on one identified entry, never as duplicates. Memory banks are scoped (per-agent, per-project, per-session) with cross-bank queries opt-in. Environmental feedback, not self-assessment, drives decisions. Retrieval pipelines are debuggable -- ranked outputs decompose into inspectable signals."
+  governance: "Memory tier boundaries, promotion policies, retention rules, and isolation scopes are documented per system. Session boundary conventions are enforced by handoff prompts. Run-log and derived-artifact write discipline (single writer per artifact, append-only log) is documented per workflow. Retrieval recipe (decomposition, fusion, reranking) is versioned as a contract. This guide is owned by the Improvement Loop engine (Codifier synthesizes; Nick gates deployment)."
+  recovery: "If an agent crashes mid-task: load the last persisted workflow checkpoint and resume from the last completed step. If compaction wipes working context: read the tail of the append-only run log and git log -- trust them over conversation recollection. If a derived artifact drifts from its decision log: re-render it from the log; do not reconcile by hand. If session handoff loses context: read the progress file and last handoff prompt. If memory is corrupted: fall back to the last known-good tier and reconstruct. If parallel agents conflict: check the lock directory for abandoned locks. If retrieval quality degrades: decompose the rerank score into per-signal contributions to identify the failing stage. If memory is poisoned by bad writes: roll back to a known-good corpus snapshot, re-run the novelty + contradiction filters, audit promotion logs."
 ---
 
 # Session Persistence and Memory
@@ -64,6 +73,9 @@ How to build agent memory that survives crashes, scales across sessions, and doe
 - You want to control what agents write to persistent memory and at what quality bar
 - You are choosing between single-store and multi-store memory backends
 - You need to scope and isolate memory across agents, projects, or sessions
+- Your orchestrator or long-running workflow needs working memory that survives compaction and crashes
+- You cannot tell whether a datum belongs in agent memory, a domain knowledge base, or a world model
+- You are standing up a new memory system and want it useful from day one, not empty
 
 ## Key Concepts
 
@@ -82,6 +94,10 @@ How to build agent memory that survives crashes, scales across sessions, and doe
 **7. Ground truth beats self-assessment.** Agents should obtain concrete environmental feedback (test results, tool outputs, API responses) at each decision point. Self-assessment is unreliable because the same model that made the mistake evaluates whether a mistake was made.
 
 **8. Memory architectures are not interchangeable.** Vector DB, structured ontology, signal-fidelity, and single-store-polymorphic each have a characteristic failure mode rooted in how they mishandle the information/judgment boundary. Choose by org scale, signal type, and judgment density -- not by deployment speed.
+
+**9. The append-only run log is durable working memory.** Long runs die two deaths: compaction (state evaporates) and state mutation (the artifact and the history disagree). One append-only log per run -- written as decisions happen, never edited, read only on resume -- answers both. On resume, the log and git history outrank the agent's own recollection. Polished artifacts are derived views re-rendered from the log, never hand-patched.
+
+**10. Memory, wikis, and world-KBs are three different stores.** Agent memory remembers your conversations (only what passed through the agent). A domain wiki knows one domain (curated concept pages). A world-KB knows your world (typed pages for people, projects, decisions -- including what never touched any chat). Most "my agent forgot X" complaints are category errors: asking one store a question that belongs to another. The stores compose; they do not compete.
 
 ---
 
@@ -183,6 +199,41 @@ For team or organizational memory (not just per-agent), three architectural patt
 | Knowledge-work company (docs + conversations) | Vector DB first, but plan migration to structured before 10K documents |
 
 **These architectures are not interchangeable.** Teams that treat them as such copy the architecture without understanding which failure mode they import. Architectural choice determines which risks become systemic and invisible vs. loud and diagnosable.
+
+### Step 1.6: Know Which Store You Are Building — Memory vs. Wiki vs. World-KB
+
+Before sizing tiers and substrates, name the store. Three knowledge stores get lumped together as "the agent's brain," and each has a different ingestion path and a different failure mode when asked the wrong question:
+
+| Store | What It Knows | Ingestion Path | Fails When Asked |
+|-------|--------------|----------------|------------------|
+| **Agent memory** | Your conversations — what was said, decided, and inferred *inside the agent* | Automatic capture from sessions | Anything that never passed through the agent ("what did the client say in the meeting I wasn't in?") |
+| **Domain wiki / LLM KB** | One domain — curated concept and entity pages | Compiled pipeline with human gates | Anything outside its domain, or conversation-specific facts |
+| **World-KB** | Your world — typed pages for people, companies, projects, meetings, decisions | Deliberate ingestion of external sources (notes folders, vaults, meeting write-ups) | Nothing structurally — but only knows what you deliberately fed it |
+
+The one-line compression: **memory remembers our conversations, wikis know domains, the world-KB knows our world.**
+
+Agent memory's hard limit is architectural, not a bug: every memory layer only remembers what passed through the agent. Full-text search over every conversation still returns zero for a meeting the agent never saw. Bolting on more memory providers never fixes that class of failure — it needs a world-KB.
+
+**Design implications:**
+- Use the trichotomy as a routing rule at write time: a decision made in-chat is memory by origin but world-KB by nature — without a write-back discipline it lands in the wrong store and becomes unfindable.
+- The stores compose: memory stays the lean curator layer in every prompt; the world-KB is the catalog the agent searches for people/projects/decisions; the wiki answers "how does X work."
+- Running all three multiplies curation surfaces. A solo operator may only have budget to keep one healthy — pick deliberately rather than letting all three decay.
+
+### Step 1.7: Evaluate Any Memory System on Storage / Injection / Recall
+
+Whether building or buying, score a memory system on three axes. "X has better memory" usually means X is better on exactly one of them:
+
+| Axis | Question | Weak Answer Looks Like |
+|------|----------|----------------------|
+| **Storage** | When something matters, how and where does it get saved — and who decides (user command vs. agent inference)? | Sparse auto-saves to an index file; important decisions never captured |
+| **Injection** | At session start, what loads automatically as short-term context, and how is its size bounded? | Near-empty session start, or unbounded snapshot bloat |
+| **Recall** | When you ask about something old, what mechanism finds it — and does it find it by meaning, not just exact keyword? | Keyword-only trawl over raw session files; paraphrased queries miss |
+
+The triad turns a vibes comparison into a per-axis one and localizes weaknesses: a system can win on storage + injection defaults while its recall stays mediocre — and the ecosystem forms bolt-on products around exactly the weak axis.
+
+**A fourth axis is arguably missing: curation/forgetting** — what removes or supersedes stale memories. The triad treats storage as write-only; the promotion, demotion, and supersession policies from Step 1.3 live on this missing axis. Score it separately.
+
+**Caveat:** the axes are not orthogonal in implementation. An aggressive storage policy degrades injection (snapshot bloat) unless a cap and curation step mediate. And the rubric says nothing about provenance/trust — whether a recalled memory should be *believed* is a separate property (memory is a hint, not an authority).
 
 ---
 
@@ -371,6 +422,47 @@ The simplest viable cross-session memory: a plain `memory.md` file the agent rea
 
 **Tradeoffs vs. opaque cloud memory:** `memory.md` is fully user-visible and portable; opaque memory systems (OpenClaw auto-memory, Manis built-in, Claude project memory) are easier to set up but the user can't see or audit what's stored.
 
+**Lifecycle: migrate conditional content out to skills.** Memory files load into every session whether the session needs them or not — anything only *conditionally* useful in there is a standing token tax. Treat push-loaded memory and pull-loaded skills as lifecycle stages of the same content, not an architectural either/or:
+
+1. **Global memory stays minimal** — only genuinely universal preferences and bias corrections (a few dozen lines). Everything in it enters every session's system prompt.
+2. **Project memory accumulates by correction** — each time the agent errs, store the fix as a learning. The file bloats by design; that is the cheap capture stage.
+3. **Conditional content migrates to skills** — periodically extract sections only needed for some session types (testing procedures, deployment steps) into skills, whose progressive disclosure loads a one-line description until invoked. Delegate the migration to the agent itself; review the diff like any other change.
+
+The test for each memory-file section: *is this needed by every session, or only conditionally?* Conditional content migrates. Watch for over-migration — content the agent needs every session hidden behind a skill description it fails to invoke is a worse tax (missed context) than the token cost — and for skill sprawl (many micro-skills with overlapping descriptions degrade skill selection).
+
+### Step 3.5: Keep an Append-Only Run Log as Durable Working Memory
+
+For any long-running workflow — an orchestrated build, an unattended loop, a multi-hour session — give the run one append-only log file it writes decisions and completions into *as they happen*. Two independent framework lineages converged on this primitive from opposite directions (decision auditability on one side; compaction recovery after "the single most expensive failure observed" — a controller re-dispatching entire completed task sequences after compaction — on the other). The convergence is the signal.
+
+**Three designed invariants:**
+
+1. **Append-only chronological.** No edit or delete operation exists — enforce the discipline by the tool's shape, not by prose. Writes are atomic (temp file + fsync + rename).
+2. **Write-only / blind during the session.** Each log call echoes the resulting state back (e.g., as one JSON line) so the writing agent never re-reads its own history mid-run. The file is read only on resume.
+3. **No lifecycle status field.** Completions, kills, and overrides are *event entries* in the stream, not mutable frontmatter that can drift out of sync with the log. A resume learns state by reading the last entries — the same way it learns everything else.
+
+**The trust rule is the point:** after a crash or compaction, the run log and `git log` — not the agent's recollection — determine where execution resumes. Log every decision, assumption, override, and terminal event; end the run with a log audit walked with the user.
+
+**Failure modes:**
+- **Log bloat on long runs** — append-only never shrinks; very long sessions pay a growing resume-read cost. Session-scope the log; promote durable content to long-term stores (Step 5.4) rather than letting one log serve as archive.
+- **Blind-write drift** — if the echoed state is ignored, the agent's mental state and the log diverge until resume exposes it.
+- **Trust-rule erosion** — the pattern only works if resume *actually* reads the tail instead of trusting residual conversation memory. That discipline is prose-enforced; drill it into the resume procedure.
+
+### Step 3.6: Derive Artifacts from the Log — Never Hand-Edit Them
+
+Once the run log is canonical truth, invert the relationship between log and polished artifacts (spec, architecture doc, progress dashboard): the artifact becomes a *derived view re-rendered from the log*, never patched in place.
+
+**The rule pair:**
+
+1. **Artifacts are derived, not edited.** The canonical record is the append-only log; the artifact is distilled from it at finalize. A hand-edit is not merged — it is overwritten on the next derive.
+2. **One writer per artifact.** Exactly one skill/agent renders each artifact. Everyone else contributes by appending to the shared log, and the writer derives without merge drift.
+
+**What this buys:** multi-stage pipelines usually serialize because each stage edits the shared artifact and edits conflict. With truth in an accumulate-only log, contributions append in any order, and the artifact is just the latest render — order-independent stages, cheap resumes (re-render, don't reconcile), and an automatic audit trail: the artifact can always be explained by the log that produced it. This is event-sourcing applied to agent-produced documents.
+
+**Failure modes:**
+- **Silent hand-edit loss** — the overwrite-on-derive rule destroys human edits made in the artifact. Contributors must know the log is the only writable surface.
+- **Render nondeterminism** — LLM-performed derives can render the same log differently; the "same truth" guarantee is only as stable as the derive procedure. A drift lint (does the artifact match a fresh derive of its log?) catches divergence.
+- **Log-quality ceiling** — artifacts can only be as good as what was logged. Decisions made but not logged vanish from every future render.
+
 ---
 
 ## Part 4: Manage Session Lifecycle
@@ -424,6 +516,27 @@ shared/
 5. Remove the lock file
 
 No orchestrator, no inter-agent messaging, no central coordinator. Git history shows lock-taking as a natural audit trail. Scales linearly.
+
+### Step 4.4: Externalize Orchestrator State to a Phase-Queue File
+
+When one orchestrator dispatches many worker sessions, do not let it accumulate state in its own context window. Externalize all orchestrator state into a single flat file — one entry per phase, each carrying: a self-contained phase prompt, a completion status flag, and optionally a summary of the phase's output. The orchestrator's entire control loop becomes:
+
+1. Read the state file
+2. Find the first incomplete phase
+3. Dispatch it as a headless subprocess with the phase prompt
+4. Receive the summary on completion
+5. Mark the phase complete in the state file
+6. Loop
+
+**The state file IS the orchestrator's memory.** The orchestrator session carries zero accumulated work context — it only reads and writes the state file. Demonstrated result: a 16-phase overnight autonomous build across 100+ dispatched sessions with the orchestrator staying under 10% context utilization. Because the orchestrator re-reads the state file on every iteration, it is crash-recoverable: if the orchestrator dies, a fresh session reads the same file and continues from the last completed phase. The file doubles as a progress dashboard.
+
+**Hardening moves:**
+- Declare inter-phase dependencies in the state file so the orchestrator can detect when a phase depends on a failed predecessor (a flat queue otherwise executes Phase 5 even if Phase 3 failed).
+- Store phase summaries so the next dispatch prompt can carry relevant prior-phase context — but treat the summary as a lossy compression boundary.
+- Write the state file atomically (or journal it); a crash mid-write otherwise leaves it inconsistent.
+- Add a per-phase retry counter to detect infinite-retry loops on stuck phases.
+
+**Precondition:** phase prompts must be fully self-contained. If a phase implicitly depends on context from a prior phase's *execution* (not just its output artifacts), the headless session will lack it. This step composes with Step 3.5: the phase queue holds the orchestrator's dispatch state; the run log holds the within-run decision stream.
 
 ---
 
@@ -493,6 +606,25 @@ Synthesis output gives every signal:
 
 **Pair novelty + contradiction detection.** Surprisal alone admits contradictions as "new" without flagging them. Contradiction detection alone admits redundant agreements as "consistent" without filtering them. Both gates are needed.
 
+### Step 5.4: Give Lessons One Identity and One Lifecycle — the Append-Only Lesson Store
+
+Agent systems repeat the same operational mistakes because observations die with the session. The long-term complement to the run log (Step 3.5) is a central, markdown-native, append-only store of operational lessons where **each entry's identity is the pair (owning surface, failure pattern)**:
+
+- **Owning surface** = the workspace path that, if edited, prevents recurrence (a skill description, a memory file, a config).
+- **Recurrence appends a date to the existing entry's Occurrences list — never a second entry.** The system can then tell "seen once" from "seen ten times" mechanically, and a recurring failure accrues *stronger evidence on one entry* instead of scattered duplicates. (Live production evidence: a single lesson carrying 10 occurrence dates for one recurring invocation idiom.)
+
+**Entry schema (all fields required):** sequence header with date, severity (`high`/`normal`), and status; a one-line **Lesson** (what went wrong and the rule that prevents it); **Owning surface**; **Source** (session ref, commit sha, or artifact path — at least one); **Occurrences**. An untraceable lesson is invention and gets no entry.
+
+**Rules with teeth:**
+- Sequence numbers increment monotonically and are never reused, even after pruning.
+- Severity may be raised on recurrence, never silently lowered.
+- Status transitions only: `open → promoted | declined`, `open|declined → pruned`. Resolved entries stay in the file as the durable record — **pruning is a status change, never a deletion**; git is the archive.
+- Growth bound: trigger a pruning pass when open lessons exceed a threshold (~50), targeting surfaces that no longer exist, lessons superseded elsewhere, and stale singletons.
+
+This is the storage half of a self-improvement loop — the promotion half reads it and proposes fixes to the owning surfaces, through the same human gates as any other semantic-tier write (Step 5.1). A well-run store even captures lessons about itself and fixes them through its own gated path.
+
+**Failure modes:** without the identity rule, one recurring idiom becomes N near-identical entries. Append-only files still grow — the pruning trigger is load-bearing, not optional. And owning-surface misidentification sends the fix to the wrong file; treat a declined promotion as a signal the surface was misidentified.
+
 ---
 
 ## Part 6: Design Ingestion Pipelines
@@ -534,6 +666,22 @@ Organizational knowledge systems only compound if signal capture is a byproduct 
 - Tool lock-in: optimizing for passive capture in one tool stack makes migration painful.
 - Privacy: automatic capture may create compliance issues in regulated industries.
 - The model accumulates a skewed picture if only certain types of work are naturally logged (code commits but not architecture discussions). Layer in explicit capture for under-represented signal types.
+
+### Step 6.4: Bootstrap New Memory from Existing Session History
+
+When installing or migrating a memory system, do not start from an empty store — the cold-start problem is the silent tax of every migration (a system that imports settings and skills but not conversations loses months of context on day one). Import existing session history and distill it into memory at setup time:
+
+1. **Enumerate available sources** (harnesses typically keep a rolling window of local session history — e.g., ~30 days) and let the operator choose import scope (current workspace vs. everything).
+2. **Summarize each conversation with a cheap model** — the bulk pass does not need frontier quality.
+3. **Embed the summaries into long-term memory** so they are searchable from day one.
+4. **Preserve complete transcripts in a compact archive** so recall can later expand from summary to exact conversation for citation-grade answers. Distill, but never discard the raw corpus.
+
+The same move applies to any historical corpus, not just chat logs: mine a frozen log archive once into its distilled successors (calibration data, lesson entries), then close the archive read-only.
+
+**Failure modes:**
+- **Garbage in at scale:** bulk import carries stale decisions and abandoned directions as confidently as good ones. Attach dated provenance per entry so bootstrapped memories cannot outrank current reality.
+- **Cheap-model distillation loss:** the summarizer's omissions are invisible unless the raw transcript archive is preserved and reachable from recall.
+- **Retention windows:** the bootstrap can only recover what the harness kept — history hygiene has to precede the import decision.
 
 ---
 
@@ -705,6 +853,85 @@ constraints_active:
   - "max 10 findings per session"
   - "P1 priority sources first"
 progress_summary: "2/5 sources processed, 2 findings extracted. Next: source 2 (Anthropic blog post on agent memory)."
+```
+
+### Run Log and Derived Artifacts Specification
+
+| Variable | Type | Description | Required |
+|----------|------|-------------|----------|
+| `{{WORKFLOW_NAME}}` | string | The long-running workflow this log serves | yes |
+| `{{LOG_PATH}}` | path | Location of the append-only run log | yes |
+| `{{ENTRY_TYPES}}` | list | Closed set of event types the log accepts | yes |
+| `{{ECHO_FORMAT}}` | string | What each write echoes back to the writer | yes |
+| `{{RESUME_RULE}}` | string | What a resume reads, and what it outranks | yes |
+| `{{DERIVED_ARTIFACTS}}` | table | Artifacts rendered from the log, each with its single writer | optional |
+
+```yaml
+# Run Log Spec — {{WORKFLOW_NAME}}
+workflow: "{{WORKFLOW_NAME}}"
+log_path: "{{LOG_PATH}}"
+
+invariants:
+  append_only: true            # no edit/delete operation exists
+  atomic_writes: "{{temp+fsync+rename / journal}}"
+  blind_write: true            # writer never re-reads mid-run
+  echo_format: "{{ECHO_FORMAT — e.g., one JSON line of resulting state}}"
+  status_field: none           # completion is an event entry, not mutable frontmatter
+
+entry_types:
+  - "{{decision}}"
+  - "{{assumption}}"
+  - "{{override}}"
+  - "{{completion / terminal event}}"
+
+resume_rule: "{{RESUME_RULE — e.g., read log tail + git log; both outrank conversation recollection}}"
+
+derived_artifacts:
+  - artifact: "{{ARTIFACT_PATH}}"
+    single_writer: "{{SKILL_OR_AGENT}}"
+    derive_trigger: "{{finalize / on-demand}}"
+    hand_edit_policy: "overwritten on next derive"
+
+scope: "per-run"               # session-scoped; durable content promotes to long-term stores
+promotion_path: "{{where durable lessons/decisions go — e.g., lesson store, changelog}}"
+```
+
+#### Worked Example: Autonomous Build Run Log
+
+```yaml
+# Run Log Spec — overnight-feature-build
+workflow: "overnight-feature-build"
+log_path: ".build/run-2026-07-13.memlog.md"
+
+invariants:
+  append_only: true
+  atomic_writes: "temp+fsync+rename"
+  blind_write: true
+  echo_format: "one JSON line: {seq, type, ts, ok}"
+  status_field: none
+
+entry_types:
+  - "decision"        # design choices made mid-run
+  - "assumption"      # unverified premises, logged for the finalize audit
+  - "override"        # human or policy interventions
+  - "task-complete"   # one entry per finished task, with commit range
+  - "kill"            # abandoned paths and why
+
+resume_rule: "Read the last task-complete entries + git log; they outrank conversation
+  recollection. Never re-dispatch a task whose completion entry exists."
+
+derived_artifacts:
+  - artifact: "SPEC.md"
+    single_writer: "spec-renderer"
+    derive_trigger: "finalize"
+    hand_edit_policy: "overwritten on next derive"
+  - artifact: "PROGRESS-DASHBOARD.md"
+    single_writer: "orchestrator"
+    derive_trigger: "on-demand"
+    hand_edit_policy: "overwritten on next derive"
+
+scope: "per-run"
+promotion_path: "recurring failures -> lesson store (Step 5.4); shipped work -> changelog"
 ```
 
 ### Memory Write Policy
@@ -912,13 +1139,16 @@ on_completion: "Save what you learned to your memory directory."
 ## Worked Example: MetaSystem Current State and Gaps
 
 ```
-Session Management — MetaSystem (April 2026)
+Session Management — MetaSystem (July 2026)
 
 MEMORY TIERS (implicit, not designed):
   Working:  CLAUDE.md files + PROGRESS.md injection at session start  [exists]
   Episodic: MEMORY.md (auto-memory, append-only, unstructured)       [exists, no provenance]
+            HISTORY.md (Keep-a-Changelog of shipped sessions)        [exists, single writer]
   Semantic: CLAUDE.md, skills, rules                                 [exists, human-gated]
-  Governance: git history + system-log entries (DD-59 distributed)   [exists, append-only]
+  Governance: git history (Conventional Commits)                     [exists, append-only]
+              (system-log corpus frozen — retired as producer;
+               read-only feedstock for the layered-memory build)
 
 STORAGE TOPOLOGY:
   Flat-file markdown                                                 [intentional — small corpus, debuggability]
@@ -990,9 +1220,17 @@ GAPS IDENTIFIED:
      -> Nick's preferences/corrections currently propagate via auto-MEMORY.md only
      -> APPLY: Step 3.4; consider adding session-scoped memory.md alongside MEMORY.md
 
- 11. Active-documentation requirement for DDs/IBs/SL
+ 11. Active-documentation requirement for DDs/IBs
      -> Acceptable for governance (deliberate friction), but capture-as-byproduct should expand for non-governance signal
      -> APPLY: Step 6.3; consider hooks for automatic session-event capture
+
+ 12. PROGRESS.md is hand-maintained truth, not a derived view
+     -> reconciled-in-place by a single writer (/session-handoff), but it is the substrate, not a render
+     -> APPLY: Step 3.5 + Step 3.6; evaluate whether session-ops artifacts should render from an append-only run log
+
+ 13. Frozen system-log corpus not yet distilled
+     -> historical lessons sit in a read-only archive, unreachable from any recall path
+     -> APPLY: Step 6.4 (distill-then-close bootstrap) + Step 5.4 (lesson store as the distillation target)
 ```
 
 ---
@@ -1010,6 +1248,17 @@ START: What is failing?
   +-- "Agent crashes and loses all progress"
   |     -> Step 3.1: Separate workflow state from conversation state
   |     -> Step 3.2: Implement crash-resilient persistence
+  |     -> Step 3.5: Append-only run log; resume by reading the tail
+  |
+  +-- "Compaction wipes progress; completed work gets re-dispatched"
+  |     -> Step 3.5: Run log + git log outrank conversation recollection on resume
+  |     -> Step 4.4: Externalize orchestrator state to a phase-queue file
+  |
+  +-- "Shared docs drift from decisions; hand-edits keep getting lost or conflicting"
+  |     -> Step 3.6: Make the log canonical; derive artifacts, one writer each
+  |
+  +-- "The same operational mistake recurs across sessions"
+  |     -> Step 5.4: Append-only lesson store keyed by (owning surface, failure pattern)
   |
   +-- "Agent's memory is full of noise / contradictions"
   |     -> Step 1.3: Define promotion and demotion policies
@@ -1053,6 +1302,18 @@ START: What is failing?
   |
   +-- "Knowledge system isn't accumulating valuable signal"
   |     -> Step 6.3: Make capture a byproduct of work, not a separate doc act
+  |
+  +-- "Agent can't answer questions about things it never saw in chat"
+  |     -> Step 1.6: That's a world-KB question, not a memory question — build the right store
+  |
+  +-- "New memory system starts empty; months of history unremembered"
+  |     -> Step 6.4: Bootstrap from existing session history (distill, keep the raw corpus)
+  |
+  +-- "Memory file loads a token tax into every session"
+  |     -> Step 3.4 (lifecycle): migrate conditional content out to skills
+  |
+  +-- "Two memory systems — which is better?"
+  |     -> Step 1.7: Score both on storage / injection / recall (plus curation)
 ```
 
 ---
@@ -1095,6 +1356,18 @@ Memory banks shared across agents, projects, or users pollute each other's recal
 ### 12. Active-documentation requirement
 Knowledge systems that require a separate documentation step accumulate the *easy-to-document* signal and miss the *judgment-rich* signal that would make them valuable. The people with the most valuable context are the most strategic about withholding it. Capture must be a byproduct of doing the work (Step 6.3): commit messages over doc files, ticket updates over status emails, decisions made *in* the system rather than *about* the system.
 
+### 13. Trusting conversation recollection over the ledger on resume
+The most expensive observed failure in long orchestrated runs: a controller re-dispatching entire completed task sequences after compaction because it trusted its (wiped) conversational sense of progress. The run log, the phase-queue file, and `git log` are the authorities on what is done (Steps 3.5, 4.4). The trust rule is prose-enforced — bake "read the tail first" into every resume procedure, or it erodes.
+
+### 14. Mutable state files as working memory
+STATE.md-style files with status frontmatter are simpler to read, but state and history can disagree, and concurrent or interrupted writes corrupt silently. Prefer the append-only log with completion-as-event (Step 3.5): the last entries *are* the state, and there is no mutable field to drift out of sync with the record.
+
+### 15. Duplicate lessons with no identity rule
+Without keying lessons by (owning surface, failure pattern), one recurring idiom becomes N near-identical entries — retrieval precision drops and the system cannot distinguish "seen once" from "seen ten times." Recurrence must append evidence to the existing entry (Step 5.4), never create a sibling. The same discipline applies to any long-term store, not just lessons.
+
+### 16. Cold-starting a memory system empty
+Installing a memory system with an empty store throws away the history you already paid to produce — and the system is useless for weeks while it re-accumulates. Bootstrap from existing session history at setup (Step 6.4). But bulk import without dated provenance lets stale decisions outrank current reality; distill with a cheap model and keep the raw corpus reachable for citation.
+
 ---
 
 ## Related Guides
@@ -1106,6 +1379,7 @@ Knowledge systems that require a separate documentation step accumulate the *eas
 - **Retrieval pipeline overlaps with context retrieval:** The hybrid retrieval recipe in Part 2 also serves context-injection use cases in *Managing Agent Context* (G2). Memory and context are different concerns over the same retrieval substrate.
 - **Write policies connect to governance:** The memory write policy in Step 5.1 is the memory-specific instantiation of the governance patterns in *Agent Governance and Trust* (G9).
 - **Subagent memory connects to spec design:** Subagent memory directories (Step 1.4) are a specification-level decision — see *Writing Agent Specifications* (G1) for how to declare them in a subagent's contract.
+- **Orchestrator state connects to workflow execution:** The phase-queue state file (Step 4.4) and run log (Step 3.5) are the persistence half of the orchestration and durable-workflow patterns in *Agent Workflow and Execution* (G3b) — G3b covers how to run the loop; G7 covers what survives its crashes.
 - **Vault-as-OS memory substrate:** *[[building-agentic-systems]]* (G11) covers system-shape questions (open-brain, ai-managed-vault, compounding-knowledge-loop) that share findings with G7. G7 covers the substrate-level memory mechanics; G11 covers how those mechanics compose into an agentic OS.
 
 ---
@@ -1121,8 +1395,11 @@ Knowledge systems that require a separate documentation step accumulate the *eas
 - Memory is organized into explicit tiers with defined read/write policies per tier.
 - Storage topology (single-store / multi-store / flat-file) is chosen against documented criteria, not by deployment speed.
 - Workflow state is tracked separately from conversation state and is the authoritative record of progress.
+- Long-running workflows keep an append-only run log; on resume, the log and git history outrank conversation recollection.
+- Derived artifacts are re-rendered from their canonical log by a single writer; hand-edits to derived artifacts do not survive.
 - Sessions leave the system in a clean, resumable state verified by automated checks.
 - Memory writes are policy-governed AND novelty-gated AND contradiction-checked — agents do not freely append to long-term stores without provenance, classification, and authorization.
+- Recurring lessons accrete evidence on one identified entry (owning surface + failure pattern); pruning is a status change, never a deletion.
 - Memory banks are scoped (per-agent, per-project, per-user, or per-session); cross-bank queries are opt-in.
 - Environmental feedback, not self-assessment, drives agent decisions at every state-modifying step.
 - Promotion across tier boundaries is the highest-risk operation and is explicitly governed.
@@ -1132,12 +1409,15 @@ Knowledge systems that require a separate documentation step accumulate the *eas
 - Memory tier boundaries, promotion policies, retention rules, and isolation scopes are documented per system.
 - Storage topology rationale is documented (why single-store vs. multi-store; what would trigger migration).
 - Session boundary conventions (one-feature, clean-state, progress-update) are enforced by handoff prompts.
+- Run-log invariants (append-only, blind-write, no status field) and per-artifact single-writer assignments are documented per workflow.
 - Write policies specify which agent roles can write to which tiers, and what novelty / contradiction gates apply.
 - Retrieval recipes (decomposition prompt, fusion configuration, rerank weights) are versioned as ContractSpecs; changes go through review.
-- This guide is owned by Meta-System knowledge layer.
+- This guide is owned by the Improvement Loop engine — the Codifier synthesizes it; Nick gates deployment.
 
 ### Recovery
 - If an agent crashes mid-task: load the last persisted workflow checkpoint, identify completed side effects, resume from the next incomplete step. Do not replay the conversation.
+- If compaction wipes working context mid-run: read the tail of the append-only run log and git log; never re-dispatch work whose completion entry exists.
+- If a derived artifact drifts from its decision log (hand-edit, render nondeterminism): re-render from the log; recover lost hand-edits by appending them to the log as entries, then re-derive.
 - If session handoff loses context: read PROGRESS.md and the handoff prompt from the prior session.
 - If memory is corrupted at a tier: fall back to the last known-good state at that tier and reconstruct. Governance tier (git history) is the ultimate fallback.
 - If parallel agents conflict: check the lock directory for abandoned locks; resolve via git merge or human review.

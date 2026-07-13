@@ -34,7 +34,10 @@ related_findings:
     rel: "extended-by"
 proposals: null
 date_discovered: "2026-07-11"
-last_updated: "2026-07-11"
+last_updated: "2026-07-13"
+pipeline_status: "synthesized"
+consumed_by:
+  - "defending-agent-context.md"
 ---
 
 ## What It Is

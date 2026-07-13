@@ -1,5 +1,13 @@
 # Changelog — Session Persistence and Memory
 
+## 2026-07-13 — Session 145 — staleness-threshold
+
+- Findings: 35 (+8, -0 since last synthesis)
+- Added: [[append-only-run-log-as-working-memory]], [[append-only-lesson-store-owning-surface-identity]], [[derive-dont-edit-artifacts-as-log-renders]], [[phase-queue-state-file-as-orchestrator-memory]], [[memory-wiki-world-kb-trichotomy]], [[memory-system-evaluation-triad-storage-injection-recall]], [[session-history-import-as-memory-bootstrap]], [[memory-file-to-skill-migration]]
+- Structural: Added Steps 1.6 (store trichotomy), 1.7 (storage/injection/recall triad), 3.5 (append-only run log), 3.6 (derive-don't-edit), 4.4 (phase-queue orchestrator state), 5.4 (lesson store), 6.4 (session-history bootstrap); extended Step 3.4 (memory-file→skill migration); 1 new template + worked example (Run Log Spec); 4 new pitfalls (#13–16); MetaSystem worked example refreshed to July 2026 (SL retirement, gaps 12–13); ownership line updated to the engine.
+- Preserved: none
+- SL: none — System Log retired as producer (session-138 ruling); session record lives in HISTORY.md + git
+
 ## 2026-04-26 — Session 77 — staleness-threshold
 
 - Findings: 27 (+13, -0 since last synthesis)

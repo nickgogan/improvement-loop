@@ -21,8 +21,9 @@ related_findings:
   rel: same-problem
 - file: mcp-hub-skill-pack-serving-telemetry-middleware.md
   rel: extends
-pipeline_status: raw
-consumed_by: []
+pipeline_status: synthesized
+consumed_by:
+- writing-agent-specifications.md
 tags:
 - userpromptsubmit-hook
 - role-registry

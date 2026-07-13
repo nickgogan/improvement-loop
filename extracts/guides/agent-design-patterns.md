@@ -6,7 +6,7 @@ target_system:
   - "improvement-loop"
 stage: "draft"
 created: "2026-04-19"
-updated: "2026-05-25"
+updated: "2026-07-13"
 author: "claude"
 source_findings:
   - "agent-aware-api-surface-design"
@@ -19,13 +19,20 @@ source_findings:
   - "anti-slop-reliability-standard-first-try-quality"
   - "auxiliary-model-slot-architecture"
   - "built-in-sub-agent-triad-explore-plan-general"
+  - "cache-stable-progressive-disclosure-catalog"
+  - "capability-as-agent-composition-primitive"
+  - "capability-composition-declared-ordering-constraints"
   - "conway-always-on-persistent-agent"
   - "core-specialized-skill-inheritance-pattern"
   - "critic-verifier-loop-with-termination"
+  - "declarative-agent-spec-with-serialization-registry"
+  - "disclosure-granularity-decision-rubric"
   - "emergent-agentic-behaviors-from-outcome-rl"
   - "finite-training-generalization-via-error-recovery"
   - "five-layer-agent-prompt-architecture"
+  - "framework-abstraction-tax-for-agents"
   - "ground-truth-environmental-feedback-loops"
+  - "guardrails-as-hook-lattice-capabilities"
   - "gsd-execution-context-profiles-mode-switching"
   - "harness-simplification-as-models-improve"
   - "incremental-one-feature-per-session-pattern"
@@ -56,16 +63,17 @@ tags:
   - "lifecycle"
   - "self-improvement"
   - "reliability"
+  - "composition"
 contract:
   preconditions: "Agent role identified; need to design the agent's internal architecture, operational lifecycle, or self-improvement mechanisms"
-  invariants: "Agent identity consistent across sessions and surviving compaction; prompt layers maintain separation of concerns; clarification behavior distinguishes resolvable from intent-dependent gaps; subagent variants declare every skill they depend on (no implicit inheritance) and run as flat workflows (no nested spawning); Tools and Capabilities are defined as separate constructs; model slots are declared in config, not chosen at runtime via heuristics; operating surface is specified before model selection; agents obtain environmental ground-truth feedback at every decision point; first-try reliability is the product bar; session boundaries prevent work disavowal; self-improvement mechanisms accumulate operational wisdom at the skill level"
+  invariants: "Agent identity consistent across sessions and surviving compaction; prompt layers maintain separation of concerns; clarification behavior distinguishes resolvable from intent-dependent gaps; subagent variants declare every skill they depend on (no implicit inheritance) and run as flat workflows (no nested spawning); Tools and Capabilities are defined as separate constructs; responsibilities shared across agents are packaged as declared composition units (instructions + tools + guards + settings together), not scattered across the prompt; every layer between the developer and the model preserves prompt/response transparency; on-demand catalogs stay byte-stable across turns; model slots are declared in config, not chosen at runtime via heuristics; operating surface is specified before model selection; agents obtain environmental ground-truth feedback at every decision point; first-try reliability is the product bar; session boundaries prevent work disavowal; self-improvement mechanisms accumulate operational wisdom at the skill level"
   governance: "IL-owned draft; Nick deploys to knowledge/guides/"
-  recovery: "If agent shows descent-into-madness symptoms, simplify prompt layers and add clarification behavior. If a subagent variant relies on implicit parent state, hoist that state into explicit skill declarations or prompt content. If extension conflicts appear, audit extension registration order and scope isolation. If model routing produces unexpected quality/cost results, review slot assignments against task-type requirements. If agent exhibits work disavowal near context limits, enforce session boundaries and external verification. If skills stagnate, adopt a self-improvement mechanism (lessons log, shared learnings, or meta-generation). If planning bias degrades implementation, separate planning and implementation into distinct sessions with a plan artifact as the only bridge."
+  recovery: "If agent shows descent-into-madness symptoms, simplify prompt layers and add clarification behavior. If a subagent variant relies on implicit parent state, hoist that state into explicit skill declarations or prompt content. If extension conflicts appear, audit extension registration order and scope isolation. If model routing produces unexpected quality/cost results, review slot assignments against task-type requirements. If agent exhibits work disavowal near context limits, enforce session boundaries and external verification. If skills stagnate, adopt a self-improvement mechanism (lessons log, shared learnings, or meta-generation). If planning bias degrades implementation, separate planning and implementation into distinct sessions with a plan artifact as the only bridge. If debugging is blocked because a framework hides the exact prompts and responses, strip abstraction layers until the model boundary is inspectable. If a shared composition unit misbehaves when mounted by a second agent, audit it for hidden global-state assumptions."
 ---
 
 # Agent Design Patterns
 
-How to design an individual agent's identity, prompts, behavior, operational lifecycle, and self-improvement mechanisms. This guide covers the full span of a single agent — from its constitution (who it is) through its prompt layers (how it receives instructions) to its behavioral patterns (how it acts under uncertainty) to its operational lifecycle (how it stays reliable over time and improves from experience). It does not cover multi-agent orchestration or inter-agent communication — those belong in G3 (Agent Architecture Decisions).
+How to design an individual agent's identity, prompts, behavior, operational lifecycle, and self-improvement mechanisms. This guide covers the full span of a single agent — from its constitution (who it is) through its prompt layers (how it receives instructions) and its composition (how responsibilities package into reusable units) to its behavioral patterns (how it acts under uncertainty) and its operational lifecycle (how it stays reliable over time and improves from experience). It does not cover multi-agent orchestration or inter-agent communication — those belong in G3 (Agent Architecture Decisions).
 
 ## When to Use This Guide
 
@@ -76,6 +84,8 @@ How to design an individual agent's identity, prompts, behavior, operational lif
 - You are moving an agent from prototype to production and need to harden its design
 - You need to configure how different subtasks within the same agent route to different models
 - You need to decide whether a capability belongs in a single-shot tool or a multi-stage pipeline
+- You need to choose the unit of reuse for responsibilities shared across agents, and decide what loads eagerly versus on demand
+- You are choosing between an agent framework and simple platform-native composition, and need to weigh the abstraction cost
 - An agent's skills are not improving from experience and you want to add self-improvement mechanisms
 - You are designing session boundaries to prevent context-limit failure modes
 - You need to create a new agent from scratch using a natural-language-to-spec workflow
@@ -104,6 +114,10 @@ How to design an individual agent's identity, prompts, behavior, operational lif
 **8. The operating surface matters more than the model.** Teams that invest in model selection while leaving the operating surface underspecified — tool access, permission model, approval flow, coordination contracts — build agents that demo well and fail in production. A mediocre model with a well-specified operating surface will be governable and improvable; a frontier model with an underspecified surface will not.
 
 **9. Tacit knowledge is the root barrier to agent delegation.** The people with the most to gain from delegation carry the highest ratio of tacit-to-explicit knowledge. Their expertise has compiled from explicit processes into automatic judgment — invisible even to themselves. Agent cold starts fail hardest for senior experts because the necessary context has never been articulated. Structured elicitation before agent provisioning addresses this.
+
+**10. The unit of agent composition is the responsibility bundle.** Every agent system answers a composition question somewhere: what is the unit of reuse? The industry is converging on bundling everything one responsibility needs — its instructions, its tools, its lifecycle hooks and guardrails, its model settings — into a single shareable unit, so that an agent definition collapses to "a model plus a set of bundles." A knowledge-base bundle or an escalation bundle moves between agents intact; improving it upgrades every agent that mounts it. Kept separate (prompt text here, tools there, hooks elsewhere), the same responsibility fragments across surfaces and cannot be reused or reasoned about as one thing.
+
+**11. Framework abstraction is a tax paid in debugging opacity.** Frameworks add layers between the developer and the actual prompts and responses exchanged with the model. Debugging agent failures requires inspecting exactly those prompts and responses; abstractions that hide them make root-cause analysis significantly harder. The most successful implementations use simple, composable patterns rather than complex frameworks. The criterion is transparency, not total framework avoidance — a thin orchestration layer that preserves visibility into the model boundary is fine; an opaque stack is not.
 
 ---
 
@@ -218,7 +232,42 @@ Before wiring up any action surface, classify each unit of functionality using t
 
 **Anti-pattern:** Implementing a multi-stage Capability as a fat Tool that manages its own stages internally. This hides the pipeline structure from observability tooling and makes error handling opaque.
 
-#### Step 5: Specify the Operating Surface
+#### Step 5: Package Responsibilities as Composition Units
+
+Once functions are classified (Step 4), decide the unit of reuse. A composition unit — some frameworks call it a "capability," in the composition-bundle sense, distinct from Step 4's Tool-vs-Capability execution split — packages everything one responsibility needs into a single shareable piece:
+
+| Component | What it carries |
+|-----------|----------------|
+| **Instructions** | The system-prompt fragment for this responsibility |
+| **Tools / toolsets** | The functions this responsibility invokes (including MCP servers) |
+| **Hooks and guardrails** | Deterministic interception at lifecycle edges — validation, redaction, approval, budgets |
+| **Settings** | Model settings scoped to this responsibility |
+
+The agent definition then collapses to `model + [units]`. Two agents that mount the same knowledge-base unit share one implementation; improving it upgrades both.
+
+**Choosing your composition unit — decision criteria:**
+
+- **Separate skills + tool bundles + hooks, composed by harness convention** — the platform-native default. Same ingredients, no typed primitive; composition discipline lives in your conventions. Lowest abstraction tax; reuse relies on your own packaging discipline.
+- **Typed responsibility bundle (framework capability)** — first-class seams per responsibility; best reuse granularity across agents. Inherits the framework's abstraction tax (see the transparency check below).
+- **Subagent as the unit** — package the responsibility as a whole agent. Strongest isolation, heaviest weight, worst reuse granularity. Reserve for responsibilities that need their own context window (Step 8).
+
+Whichever unit you choose, keep the seams aligned with responsibilities: a unit that quietly assumes global agent state (shared memory, implicit ordering) breaks the composability promise and fails the moment a second agent mounts it.
+
+**Progressive disclosure of units.** Bundles make catalogs practical: the agent holds a catalog of one-line unit descriptions and loads a unit's full instructions only when needed. Three rules keep this disciplined:
+
+1. **The eager-prompt whitelist.** The always-loaded prompt is bounded to four things: identity, task boundaries, global safety, and routing. Everything else must earn eager status or load on demand — treat "defer this?" as a design question asked of every unit, not an afterthought.
+2. **Granularity by shape.** Defer at *unit* granularity when tools come in bundles with shared instructions (the instructions justify loading together). Use *tool-level* search/deferral when the surface is a large flat catalog of independent tools.
+3. **Keep the catalog byte-stable.** Render the catalog identically every turn — including entries already loaded — so the provider's prompt cache never breaks. Bounce a redundant load with a cheap retry rather than mutating the catalog; an occasional wasted retry is far cheaper than busting the prefix cache on every load. This rule generalizes to any always-injected catalog surface: skill tables, tool indexes, deferred-tool lists.
+
+**Composition ordering is a declared property, not a list convention.** When units wrap the agent (middleware semantics), order matters: guardrails must wrap tools, instrumentation must observe everything, loaders must resolve before consumers. Encode each unit's ordering constraints in the unit itself (outermost/innermost pins, wraps/wrapped-by relations, hard dependencies) and let the composer sort them — "list X first" documentation silently breaks the first time someone reorders.
+
+**Cross-cutting concerns belong on the hook lattice, not in new primitives.** Resist inventing dedicated abstractions for guardrails, policies, or interceptors. Enumerate the lifecycle edges once and completely (run, node, model-request, tool-validate, tool-execute, output-validate, output-process — each with before/after/wrap/on-error phases), and implement every guardrail-shaped concern as an ordinary unit on that lattice: PII redaction wraps the model response, human approval wraps tool execution, cost budgets observe usage. Fewer primitives means ordering, packaging, and reuse machinery is built once and everything inherits it. Caveat: with no named "guardrail" type, security review must trace hook implementations to know what protections exist — keep an audit view of which units intercept which edges.
+
+**Declarative agent specs need an honest boundary.** Config-defined agents (YAML/JSON naming a model plus units) are diffable, storable, and generateable — but only if the spec is honest about what config can express. Give every unit a stable serialization name in a registry (so specs survive renames), and let units that hold live code explicitly opt out of spec construction rather than pretending to round-trip. A spec that loads is still not an agent that behaves — declarative construction does not replace behavioral evals.
+
+**The framework transparency check.** Before adopting any framework's composition primitive, verify you can still inspect the exact prompts and responses crossing the model boundary. Framework abstraction is a tax paid at debugging time: teams that start with direct API calls and simple composable patterns develop deeper understanding of model behavior, and the most successful production implementations stay framework-light. "No framework" is not the rule — reinventing wheels has its own cost — the rule is that every layer you accept must preserve visibility. If you standardize on a framework's bundle type, you also inherit its abstraction tax; price that in.
+
+#### Step 6: Specify the Operating Surface
 
 Before writing any agent code, answer three questions that define the operating surface:
 
@@ -237,7 +286,7 @@ Before writing any agent code, answer three questions that define the operating 
 
 A well-specified operating surface turns an underspecified "smart agent" into a governable system component. Teams that lead with model selection while deferring operating-surface questions to "implementation phase" are building production failures.
 
-#### Step 6: Configure Model Slots
+#### Step 7: Configure Model Slots
 
 Different subtasks within the same agent have different quality and cost requirements. Declare named model slots in the agent's configuration rather than choosing models at runtime via prompt-level heuristics.
 
@@ -264,7 +313,7 @@ Different subtasks within the same agent have different quality and cost require
 
 **The over-splitting trap.** Not every subtask needs its own slot. Start with 2-3 slots and add only when a clear cost/quality differential exists.
 
-#### Step 7: Design Subagent Variants with Explicit Isolation
+#### Step 8: Design Subagent Variants with Explicit Isolation
 
 When the agent will be invoked as a subagent (a separate context spawned by a parent conversation), the design pattern shifts. The parent's accumulated context, active skills, and conversation history do not carry across the boundary.
 
@@ -310,7 +359,7 @@ When skills evolve across multiple agents or repositories, a two-layer inheritan
 3. When the core skill changes, audit all specialized variants for compatibility.
 4. If a specialized skill consistently overrides the same slot across all variants, the core's default is probably wrong — update the core.
 
-#### Step 8: Govern Runtime Extensions
+#### Step 9: Govern Runtime Extensions
 
 Modern agent harnesses expose a typed extension API that allows runtime registration of tools, providers, commands, keyboard shortcuts, and message renderers. Extensions can subscribe to lifecycle events, making the agent genuinely self-modifying within a governed surface.
 
@@ -331,25 +380,25 @@ Modern agent harnesses expose a typed extension API that allows runtime registra
 
 ### Key Concepts
 
-**10. Harness complexity should decrease as models improve.** Agent scaffolding co-evolves with model capabilities. Scaffolding that was necessary for one model generation becomes overhead for the next. Periodic audits prevent accumulated cruft.
+**12. Harness complexity should decrease as models improve.** Agent scaffolding co-evolves with model capabilities. Scaffolding that was necessary for one model generation becomes overhead for the next. Periodic audits prevent accumulated cruft. The same audit covers framework layers: an abstraction that once earned its keep may now be pure debugging tax (Key Concept 11).
 
-**11. First-try reliability is the product bar, not eventual success.** "Usually works" (3-5 out of 10 tries) should not be an acceptable standard. Design for first-try success through scope constraint, guardrails, and error recovery. Agents that demo well but fail in production erode trust in the entire category.
+**13. First-try reliability is the product bar, not eventual success.** "Usually works" (3-5 out of 10 tries) should not be an acceptable standard. Design for first-try success through scope constraint, guardrails, and error recovery. Agents that demo well but fail in production erode trust in the entire category.
 
-**12. Environmental ground truth drives reliable decisions, not self-assessment.** At each decision point, agents should obtain concrete environmental feedback (tool results, test output, API responses) rather than relying on self-assessment. LLMs confabulate about their own progress. Environmental ground truth provides the objective anchor — this is why coding agents (with test feedback) outperform agents in domains lacking verification signals.
+**14. Environmental ground truth drives reliable decisions, not self-assessment.** At each decision point, agents should obtain concrete environmental feedback (tool results, test output, API responses) rather than relying on self-assessment. LLMs confabulate about their own progress. Environmental ground truth provides the objective anchor — this is why coding agents (with test feedback) outperform agents in domains lacking verification signals.
 
-**13. Work disavowal is a predictable failure mode at context limits.** As agents approach context window limits, they exhibit destructive completion bias — deleting tests, disabling validation, commenting out failing code — to present a "done" state. Session boundary enforcement and external verification are the primary mitigations.
+**15. Work disavowal is a predictable failure mode at context limits.** As agents approach context window limits, they exhibit destructive completion bias — deleting tests, disabling validation, commenting out failing code — to present a "done" state. Session boundary enforcement and external verification are the primary mitigations.
 
-**14. Planning and implementation belong in separate sessions.** Running both in the same session causes "planning bias" — the agent anchors to its own earlier reasoning and defends decisions rather than executing cleanly. A fresh implementation session reads the plan neutrally, without the weight of having generated it.
+**16. Planning and implementation belong in separate sessions.** Running both in the same session causes "planning bias" — the agent anchors to its own earlier reasoning and defends decisions rather than executing cleanly. A fresh implementation session reads the plan neutrally, without the weight of having generated it.
 
-**15. Agent lifecycle extends beyond running/done.** Production agents need formal lifecycle states (idle, spawning, running, stuck, dead, stopped) with external monitoring. An agent cannot declare itself dead — only an external witness can, via heartbeat timeout detection. This separation of execution from monitoring prevents silent hangs.
+**17. Agent lifecycle extends beyond running/done.** Production agents need formal lifecycle states (idle, spawning, running, stuck, dead, stopped) with external monitoring. An agent cannot declare itself dead — only an external witness can, via heartbeat timeout detection. This separation of execution from monitoring prevents silent hangs.
 
-**16. Skills should improve from experience.** Three independent approaches to skill self-improvement have emerged: self-modification with lessons logs (fastest feedback), external learnings stores (broadest applicability), and meta-skills for skill generation (highest leverage). The convergence on the problem without convergence on mechanism confirms this is a genuine unmet need.
+**18. Skills should improve from experience.** Three independent approaches to skill self-improvement have emerged: self-modification with lessons logs (fastest feedback), external learnings stores (broadest applicability), and meta-skills for skill generation (highest leverage). The convergence on the problem without convergence on mechanism confirms this is a genuine unmet need.
 
 ---
 
 ### Procedure: Operating the Agent
 
-#### Step 9: Elicit Tacit Knowledge Before Provisioning
+#### Step 10: Elicit Tacit Knowledge Before Provisioning
 
 The most valuable work is often invisible — expertise compresses from explicit processes to automatic judgment, making it impossible for senior knowledge workers to articulate what to delegate. Address this before writing any spec.
 
@@ -363,7 +412,7 @@ The most valuable work is often invisible — expertise compresses from explicit
 
 This takes approximately 45 minutes but produces structured data that can provision constitution files and feed a knowledge store. Without it, the agent spec will capture the explicit process but miss the judgment that makes the work valuable.
 
-#### Step 10: Create Agents from Natural Language (NL-to-Spec Loop)
+#### Step 11: Create Agents from Natural Language (NL-to-Spec Loop)
 
 For rapid agent creation, use a structured loop that goes from intent to deployed agent:
 
@@ -377,7 +426,7 @@ For rapid agent creation, use a structured loop that goes from intent to deploye
 
 The spec (system prompt + tool configuration + environment permissions) is the durable artifact that survives iteration. Everything else exists to support iteration on the spec.
 
-#### Step 11: Enforce Session Boundaries
+#### Step 12: Enforce Session Boundaries
 
 Scope each session to a single focused objective with explicit completion criteria.
 
@@ -398,7 +447,7 @@ Context is fully reset between sessions. This prevents context anxiety (prematur
 
 Produce a plan artifact in one session, end that session, and start a fresh implementation session that reads only the plan file. The plan artifact — not the conversation history — is the bridge. This eliminates planning bias where the agent defends its own prior reasoning rather than executing against a spec.
 
-#### Step 12: Configure Execution Context Profiles
+#### Step 13: Configure Execution Context Profiles
 
 A single agent prompted identically for implementation and research tasks produces muddled output. Define context profiles that shape output per mode:
 
@@ -410,7 +459,7 @@ A single agent prompted identically for implementation and research tasks produc
 
 Profiles are configured per-project and are lighter-weight than maintaining separate specialist agents for each concern. Mode mismatches degrade output silently — an agent in dev mode asked to do research produces shallow analysis that looks like implementation.
 
-#### Step 13: Design the Lifecycle State Machine
+#### Step 14: Design the Lifecycle State Machine
 
 For production agents that run autonomously, formalize lifecycle beyond binary (running/not running):
 
@@ -431,7 +480,7 @@ The critical design decision: agents can set most states but **cannot** declare 
 - **Memory consolidation** — idle-time phases for processing and compressing accumulated context
 - **Resource management** — per-turn middleware that acquires and releases resources cleanly
 
-#### Step 14: Plan for Production Hardening
+#### Step 15: Plan for Production Hardening
 
 Agents moving from pilot to production need different design considerations:
 
@@ -449,9 +498,9 @@ Agents moving from pilot to production need different design considerations:
 - Prompt injection via tool outputs (top agentic failure mode)
 - Scope creep — agent gradually expanding what it considers "in scope"
 - Miscalibrated confidence — agent proceeding confidently on uncertain ground
-- Work disavowal — destructive shortcuts near context limits (Step 11 mitigates)
+- Work disavowal — destructive shortcuts near context limits (Step 12 mitigates)
 
-#### Step 15: Schedule Complexity Audits
+#### Step 16: Schedule Complexity Audits
 
 Harness complexity co-evolves with model capabilities. Schedule periodic audits:
 
@@ -462,7 +511,7 @@ Harness complexity co-evolves with model capabilities. Schedule periodic audits:
 
 Example: Sprint decomposition was essential with Sonnet 4.5 (context anxiety). With Opus 4.6, removing it yielded 38% cost reduction and 36% time reduction. The scaffolding went from necessary to overhead in one model generation.
 
-#### Step 16: Build Self-Improvement Mechanisms
+#### Step 17: Build Self-Improvement Mechanisms
 
 Static skills — written once and only changed when a human edits them — miss failure modes that occur between human reviews. Three approaches to skill-level self-improvement, each addressing a different concern:
 
@@ -479,7 +528,7 @@ A dedicated skill teaches agents how to write skills, applying best practices an
 
 **Prompt and tool self-diagnosis.** Give the agent its own prompt plus failure traces and ask it to diagnose the issue. Models identify root causes humans miss ("the prompt doesn't tell me to stop searching after finding sufficient results"). For tool descriptions: a dedicated testing agent uses a flawed tool dozens of times, catalogs failure modes, and rewrites the description — yielding 40% improvement in task completion time.
 
-#### Step 17: Design Autonomous Decision-Making
+#### Step 18: Design Autonomous Decision-Making
 
 For headless execution sessions (overnight builds, unattended runs), design a mechanism to handle decision points that would otherwise block on human input.
 
@@ -497,7 +546,7 @@ This replaces human judgment with multi-perspective AI deliberation for low-stak
 - Select voters relevant to the question domain — not all questions need all personas
 - Track which role-voted decisions turned out wrong on review; refine the roster
 
-#### Step 18: Check for the Descent-into-Madness Anti-Pattern
+#### Step 19: Check for the Descent-into-Madness Anti-Pattern
 
 Before finalizing your design, run this diagnostic:
 
@@ -709,6 +758,43 @@ model_slots:
 | 1 | {{STAGE_NAME}} | {{INPUT}} | {{OUTPUT}} | {{FAIL_BEHAVIOR}} |
 ```
 
+### Composition Unit (Responsibility Bundle) Spec
+
+```markdown
+## Composition Unit — {{UNIT_NAME}}
+
+**Responsibility:** {{ONE_LINE_RESPONSIBILITY}} (one responsibility per unit — if you need "and", split it)
+**Catalog description:** {{ONE_LINE_SHOWN_IN_CATALOG}} (always visible; keep byte-stable)
+**Disclosure:** {{EAGER/DEFERRED}} — eager only if it is identity, task boundaries, global safety, or routing
+
+### Instructions
+{{SYSTEM_PROMPT_FRAGMENT_FOR_THIS_RESPONSIBILITY}}
+
+### Tools
+| Tool | Purpose | Source |
+|------|---------|--------|
+| {{TOOL_1}} | {{PURPOSE}} | {{NATIVE/MCP/SKILL}} |
+
+### Hooks & Guardrails
+| Lifecycle edge | Hook | Behavior |
+|---------------|------|----------|
+| {{EDGE — e.g., before_tool_execute}} | {{HOOK_NAME}} | {{OBSERVE/BLOCK/TRANSFORM}} |
+
+### Settings
+- Model settings scoped to this unit: {{SETTINGS_OR_NONE}}
+
+### Ordering Constraints
+- Position: {{OUTERMOST/INNERMOST/UNCONSTRAINED}}
+- Wraps: {{UNIT_TYPES_THIS_MUST_WRAP_OR_NONE}}
+- Wrapped by: {{UNIT_TYPES_THAT_MUST_WRAP_THIS_OR_NONE}}
+- Requires: {{HARD_DEPENDENCIES_OR_NONE}}
+
+### Composability Contract
+- Global state assumed: {{NONE — or list and justify; hidden global state breaks reuse}}
+- Spec-constructible: {{YES / NO — holds live code; opts out of declarative construction}}
+- Mounted by: {{AGENT_1}}, {{AGENT_2}} (shared units need dependency-grade change discipline)
+```
+
 ### Session Boundary Design Template
 
 ```markdown
@@ -892,6 +978,48 @@ No cross-agent delegation needed. Single-agent workflow.
 
 **Planning-implementation separation**: Feature 47 ("add OAuth flow") requires architectural decisions. Planning session produces `plans/oauth-architecture.md`. Implementation session reads only that file — no planning conversation history carries over. The implementation agent reads the plan neutrally rather than defending decisions it made.
 
+### Example 8: Packaging a Knowledge-Base Composition Unit
+
+Two agents — a support agent and a research agent — both need the same knowledge-base access.
+
+```markdown
+## Composition Unit — kb-lookup
+
+**Responsibility:** Answer questions from the internal knowledge base with citations
+**Catalog description:** "Search and cite the internal KB. Load when a question needs grounded internal facts."
+**Disclosure:** DEFERRED — not identity, boundaries, safety, or routing
+
+### Instructions
+When a claim needs internal grounding, search the KB before answering. Every KB-derived
+statement carries a citation to its source entry. If the KB has no entry, say so — do not fill from prior knowledge.
+
+### Tools
+| Tool | Purpose | Source |
+|------|---------|--------|
+| kb_search | Semantic search over KB entries | MCP |
+| kb_read | Fetch full entry by ID | MCP |
+
+### Hooks & Guardrails
+| Lifecycle edge | Hook | Behavior |
+|---------------|------|----------|
+| output-validate | citation_check | BLOCK — reject responses with uncited KB claims |
+
+### Settings
+- Model settings scoped to this unit: none (inherits agent default)
+
+### Ordering Constraints
+- Position: UNCONSTRAINED
+- Wrapped by: instrumentation (all KB reads must be observable)
+- Requires: none
+
+### Composability Contract
+- Global state assumed: NONE
+- Spec-constructible: YES
+- Mounted by: support-agent, research-agent
+```
+
+**Payoff observed:** when the citation-check hook was tightened, both agents inherited the fix in one change. The catalog line stays byte-identical every turn — the support agent loads the unit only on grounded-question turns, and the prompt cache stays warm across the session.
+
 ---
 
 ## Pitfalls
@@ -956,17 +1084,29 @@ Self-modifying skills that accumulate lessons without pruning grow unbounded. Le
 ### 20. Role-vote echo chambers
 If all voting personas use the same underlying model with similar training, their "independent" votes converge on the same biases. Majority voting tends toward safe, conventional choices — novel solutions that one persona strongly advocates get voted down. Use role voting for low-stakes decisions; escalate high-stakes and creative decisions to a human.
 
+### 21. Opaque framework stacks
+Adopting a framework whose abstractions hide the exact prompts and responses exchanged with the model. Root-cause analysis of agent failures happens at that boundary; if you cannot inspect it, you cannot debug it. The failure is symmetric: "no framework" leads to reinventing wheels. The criterion is transparency — accept only layers that preserve visibility, and log at the framework seam if the layer will not.
+
+### 22. Capability sprawl
+Mounting hundreds of composition units because progressive disclosure makes it cheap in tokens. Disclosure mitigates context cost, not decision quality — a hundred-entry catalog recreates the tool-overload problem one level up. Curate the catalog like a tool inventory; retire units that are never loaded.
+
+### 23. Leaky bundles
+A composition unit that quietly assumes global agent state — shared memory, implicit ordering, sibling-unit side effects — works in the agent it was written for and breaks the composability promise the first time another agent mounts it. Declare ordering constraints in the unit and audit shared units for hidden state before reuse.
+
+### 24. Cache-busting disclosure catalogs
+Mutating the on-demand catalog as items load (dropping loaded entries to "save tokens") rewrites the prompt prefix and invalidates the provider cache on every load. Keep the catalog byte-identical every turn and bounce redundant loads with a cheap retry — an occasional wasted retry costs far less than a per-load cache bust.
+
 ---
 
 ## Related Guides
 
 - **G1 — Writing Agent Specifications:** Covers the intent and acceptance criteria that feed into Layer 2 (Instructions/Constraints) of the prompt stack. Design the specification before designing the agent.
 - **G3 — Agent Architecture Decisions:** Covers multi-agent orchestration, communication patterns, and when to split one agent into many. This guide handles the individual agent (including subagent variants); G3 handles the ensemble.
-- **G2 — Managing Agent Context:** Covers context engineering (what goes into the agent's context window and how). Layers 3-4 of the prompt stack depend on good context management.
-- **G7 — Session Persistence and Memory:** Covers the Continuity section of the agent constitution — how state persists across sessions. Session boundary design (Step 11) connects directly to G7's persistence patterns.
-- **G4 — Building Agent Evaluation Suites:** Covers how to evaluate whether the agent behaviors designed in this guide actually work. First-try reliability targets (Step 14) become eval success criteria in G4.
-- **G5 — Designing Agent Tools:** Covers tool interface design. The tool-vs-capability classification (Step 4) connects to G5's tool description quality principles.
-- **G6 — Agent Governance and Trust:** Covers trust calibration and autonomy gradients. The operating surface specification (Step 5) and human-gate decisions connect to G6's governance framework.
+- **G2a — Structuring and Loading Agent Context / G2b — Defending Against Context Degradation:** Cover context engineering (what goes into the agent's context window, how it loads, and how it degrades). Layers 3-4 of the prompt stack depend on good context management, and Step 5's progressive-disclosure rules (eager whitelist, cache-stable catalogs) are the agent-design face of G2a's loading discipline.
+- **G7 — Session Persistence and Memory:** Covers the Continuity section of the agent constitution — how state persists across sessions. Session boundary design (Step 12) connects directly to G7's persistence patterns.
+- **G4 — Building Agent Evaluation Suites:** Covers how to evaluate whether the agent behaviors designed in this guide actually work. First-try reliability targets (Step 15) become eval success criteria in G4.
+- **G5 — Designing Agent Tools:** Covers tool interface design. The tool-vs-capability classification (Step 4) and composition-unit packaging (Step 5) connect to G5's tool description quality principles.
+- **G6 — Agent Governance and Trust:** Covers trust calibration and autonomy gradients. The operating surface specification (Step 6) and human-gate decisions connect to G6's governance framework.
 
 ---
 
@@ -986,6 +1126,9 @@ If all voting personas use the same underlying model with similar training, thei
 - Subagent variants honor isolation by default — every dependency is explicit in the frontmatter or the prompt body, never inherited implicitly.
 - Subagent workflows are flat — no nested spawning; nested delegation is flattened into Skills or main-thread chains.
 - Tools and Capabilities are defined as separate constructs with different execution models, error handling, and cost profiles.
+- Responsibilities shared across agents are packaged as declared composition units — instructions, tools, hooks/guardrails, and settings together — with ordering constraints declared in the unit, not in list-position convention.
+- Every layer between the developer and the model preserves prompt/response transparency; opaque abstraction is not accepted at any layer.
+- The always-loaded prompt is bounded to identity, task boundaries, global safety, and routing; everything else loads on demand, and on-demand catalogs stay byte-stable across turns.
 - Model slots are declared in configuration, not chosen at runtime via prompt-level heuristics.
 - Runtime extensions are governed: logged, trust-classified, and subject to the same human-gate pattern as any other self-modification.
 - The operating surface (tools, permissions, approval flows, coordination) is specified before model selection.
@@ -1007,15 +1150,18 @@ If all voting personas use the same underlying model with similar training, thei
 - If agent over-asks (too many clarification pauses): review gap classification — some "intent" gaps may actually be resolvable.
 - If agent over-assumes (makes wrong decisions silently): add clarification behavior and increase check-in triggers for high-blast-radius actions.
 - If prompt changes break behavior: audit against the five-layer architecture — changes in one layer may have violated assumptions in another.
-- If costs spike after design changes: run the complexity audit (Step 15) — removed scaffolding may have been re-added.
-- If a subagent variant behaves inconsistently: check the isolation contract (Step 7) — each spawn is a fresh context. Hoist missing knowledge into a skill or prompt body.
+- If costs spike after design changes: run the complexity audit (Step 16) — removed scaffolding may have been re-added.
+- If a subagent variant behaves inconsistently: check the isolation contract (Step 8) — each spawn is a fresh context. Hoist missing knowledge into a skill or prompt body.
 - If a subagent fails because a needed skill is unavailable: confirm the skill is declared in the subagent's `skills:` frontmatter.
 - If a workflow needs nested subagents: flatten — return to the main thread and chain, or hoist the inner step into a Skill.
-- If model routing produces unexpected quality or cost results: review slot assignments using the Model Slot Worksheet (Step 6).
-- If extension conflicts appear: audit extension registration order and conflict resolution policy (Step 8).
+- If model routing produces unexpected quality or cost results: review slot assignments using the Model Slot Worksheet (Step 7).
+- If extension conflicts appear: audit extension registration order and conflict resolution policy (Step 9).
 - If specialized skill variants drift from the core: run a slot compatibility audit and update core defaults.
-- If agent exhibits work disavowal near context limits: enforce session boundaries (Step 11), add post-session coverage checks, and define "done" as passing a specific test suite rather than agent self-report.
-- If planning bias degrades implementation: separate planning and implementation into distinct sessions with a plan artifact as the only bridge (Step 11).
-- If skills stagnate without improving: adopt a self-improvement mechanism — lessons log for skill-specific failures, shared learnings store for cross-cutting patterns (Step 16).
-- If overnight builds stall at decision points: implement role-based voting for low-stakes decisions; keep human escalation for high-stakes decisions (Step 17).
+- If agent exhibits work disavowal near context limits: enforce session boundaries (Step 12), add post-session coverage checks, and define "done" as passing a specific test suite rather than agent self-report.
+- If planning bias degrades implementation: separate planning and implementation into distinct sessions with a plan artifact as the only bridge (Step 12).
+- If skills stagnate without improving: adopt a self-improvement mechanism — lessons log for skill-specific failures, shared learnings store for cross-cutting patterns (Step 17).
+- If overnight builds stall at decision points: implement role-based voting for low-stakes decisions; keep human escalation for high-stakes decisions (Step 18).
+- If debugging is blocked because a framework hides the exact prompts and responses crossing the model boundary: strip abstraction layers until the boundary is inspectable, or add full prompt/response logging at the framework seam (Step 5).
+- If a shared composition unit misbehaves when a second agent mounts it: audit the unit for hidden global-state assumptions (shared memory, implicit ordering) and encode its ordering constraints explicitly (Step 5).
+- If the always-loaded prompt keeps regrowing: re-apply the eager whitelist — identity, task boundaries, global safety, routing — and defer everything else (Step 5).
 - If agent fails in novel environments: invest in error recognition and recovery rather than domain coverage — the agent needs to detect unfamiliar territory and ask for help, not handle every edge case in advance.

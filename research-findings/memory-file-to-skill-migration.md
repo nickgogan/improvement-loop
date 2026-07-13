@@ -45,7 +45,10 @@ related_findings:
 proposals: null
 date_discovered: "2026-07-12"
 last_updated: "2026-07-13"
-pipeline_status: "raw"
+pipeline_status: "synthesized"
+consumed_by:
+  - "defending-agent-context.md"
+  - "session-persistence-and-memory.md"
 ---
 
 ## What It Is

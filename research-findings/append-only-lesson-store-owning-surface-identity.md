@@ -17,8 +17,9 @@ last_updated: '2026-07-13'
 related_findings:
 - file: append-only-run-log-as-working-memory.md
   rel: same-problem
-pipeline_status: raw
-consumed_by: []
+pipeline_status: synthesized
+consumed_by:
+  - "session-persistence-and-memory.md"
 tags:
 - lesson-store
 - append-only
