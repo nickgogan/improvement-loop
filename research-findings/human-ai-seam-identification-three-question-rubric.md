@@ -40,6 +40,7 @@ last_updated: "2026-07-13"
 pipeline_status: "synthesized"
 consumed_by:
   - "writing-agent-specifications.md"
+  - "skills/seam-map-delegation-rubric.md"
 ---
 
 # Human/AI Seam Identification via Three-Question Delegation Rubric
@@ -99,3 +100,6 @@ one practitioner's procedure plus a taught cohort, hence Medium and not stronger
   static partition goes stale.
 - **North-Star question degenerates** into justifying whatever the operator already
   wanted to automate.
+
+## Extraction Note — 2026-07-13
+Extracted as **skill**: [[seam-map-delegation-rubric]] in `extracts/skills/`

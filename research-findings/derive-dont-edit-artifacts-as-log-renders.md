@@ -39,6 +39,7 @@ pipeline_status: "synthesized"
 consumed_by:
   - "defending-agent-context.md"
   - "session-persistence-and-memory.md"
+  - "rules/derived-artifacts-single-writer-rule.md"
 tags:
   - "context-engineering"
   - "orchestration"
@@ -104,3 +105,6 @@ pipeline. Source: Observed in
   differently; the "same truth" guarantee is only as stable as the derive procedure.
 - **Log-quality ceiling** — artifacts can only be as good as what was logged; decisions
   made but not logged vanish from every future render.
+
+## Extraction Note — 2026-07-13
+Extracted as **rule**: [[derived-artifacts-single-writer-rule]] in `extracts/rules/` (harvest-queue promotion, DD-101)

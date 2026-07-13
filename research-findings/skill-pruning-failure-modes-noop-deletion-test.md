@@ -43,6 +43,7 @@ last_updated: "2026-07-13"
 pipeline_status: "synthesized"
 consumed_by:
   - "defending-agent-context.md"
+  - "rules/deletion-test-for-no-op-instructions.md"
 ---
 
 # Skill Pruning Failure Modes — No-Op Deletion Test, Sediment, Duplication
@@ -106,3 +107,6 @@ sections untouched since N versions ago for review.
   edge case arrives.
 - **Sediment courage without governance**: "kill it dead" needs ownership rules on shared
   skills, or pruning wars replace sediment.
+
+## Extraction Note — 2026-07-13
+Extracted as **rule**: [[deletion-test-for-no-op-instructions]] in `extracts/rules/` (harvest-queue promotion, DD-101)

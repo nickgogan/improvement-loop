@@ -49,6 +49,7 @@ pipeline_status: "synthesized"
 consumed_by:
   - "defending-agent-context.md"
   - "session-persistence-and-memory.md"
+  - "skills/memory-file-to-skill-migration-pass.md"
 ---
 
 ## What It Is
@@ -107,3 +108,6 @@ harnesses that don't natively know how to author skills.
 - Skill sprawl: many micro-skills with overlapping descriptions degrade skill selection
 - The agent-performed migration can drop nuance from the original learning; the diff
   needs review like any other change
+
+## Extraction Note — 2026-07-13
+Extracted as **skill**: [[memory-file-to-skill-migration-pass]] in `extracts/skills/` (harvest-queue promotion, DD-101)

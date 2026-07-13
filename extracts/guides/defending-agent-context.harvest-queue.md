@@ -10,9 +10,9 @@ Nothing here is auto-extracted; rows feed `/extract-artifacts` only after Nick r
 | 2026-07-13 | extracted | skill | [[file-mediated-subagent-handoff-workspace]] | "sdd-handoff-workspace-scripts" | extracted to [[sdd-handoff-workspace-scripts]] |
 | 2026-07-13 | extracted | rule | [[append-only-context-updates-system-reminder-injection]] | "never-mutate-cached-prompt-prefix" | extracted to [[never-mutate-cached-prompt-prefix]] |
 | 2026-07-13 | nick-approved | template | [[append-only-context-updates-system-reminder-injection]] | "static-first-prompt-layering-stack" | extract via /extract-artifacts |
-| 2026-07-13 | nick-approved | rule | [[derive-dont-edit-artifacts-as-log-renders]] | "derived-artifacts-single-writer-rule" | extract via /extract-artifacts |
-| 2026-07-13 | nick-approved | skill | [[memory-file-to-skill-migration]] | "memory-file-to-skill-migration-pass" | extract via /extract-artifacts |
-| 2026-07-13 | nick-approved | rule | [[skill-pruning-failure-modes-noop-deletion-test]] | "deletion-test-for-no-op-instructions" | extract via /extract-artifacts |
+| 2026-07-13 | extracted | rule | [[derive-dont-edit-artifacts-as-log-renders]] | "derived-artifacts-single-writer-rule" | extracted to [[derived-artifacts-single-writer-rule]] |
+| 2026-07-13 | extracted | skill | [[memory-file-to-skill-migration]] | "memory-file-to-skill-migration-pass" | extracted to [[memory-file-to-skill-migration-pass]] |
+| 2026-07-13 | extracted | rule | [[skill-pruning-failure-modes-noop-deletion-test]] | "deletion-test-for-no-op-instructions" | extracted to [[deletion-test-for-no-op-instructions]] |
 
 ## Per-row details
 
@@ -62,11 +62,12 @@ Nothing here is auto-extracted; rows feed `/extract-artifacts` only after Nick r
 - **Suggested headline:** static-first-prompt-layering-stack
 - **Recommendation:** extract via /extract-artifacts
 - **Resolution:**
+- Pending version-bump 2026-07-13 — Session 146 — [[defending-agent-context.harvest-queue]] — DD-100 version-bump proposal emitted at [[operations/version-bump-proposals/2026-07-13-version-bump-proposals]]; primary match [[seven-layer-prompt-assembly-with-cache-control]] (current version v1); proposed filename `seven-layer-prompt-assembly-with-cache-control-v2.md`. On Nick ruling: re-invoke `/extract-artifacts --harvest-row append-only-context-updates-system-reminder-injection::template::static-first-prompt-layering-stack` AFTER updating the existing template (or with the proposal applied as instruction) — Step 1.8 Branch A match-disambiguation then routes to the version-bump write path; row Status flips to `extracted` and Resolution to `version-bumped to [[seven-layer-prompt-assembly-with-cache-control-v2]]` post-write.
 
 ### derive-dont-edit-artifacts-as-log-renders::rule::derived-artifacts-single-writer-rule
 
 - **Date queued:** 2026-07-13
-- **Status:** nick-approved
+- **Status:** extracted
 - **Target form:** rule
 - **Source finding:** [[derive-dont-edit-artifacts-as-log-renders]]
 - **Source excerpt:**
@@ -76,7 +77,8 @@ Nothing here is auto-extracted; rows feed `/extract-artifacts` only after Nick r
 - **Codifier's reading:** The finding's own body names it "a write-discipline rule pair" — imperative, binary-testable (was the artifact written by its single writer? was it hand-edited?), enforceable structurally via overwrite-on-derive.
 - **Suggested headline:** derived-artifacts-single-writer-rule
 - **Recommendation:** extract via /extract-artifacts
-- **Resolution:**
+- **Resolution:** extracted to [[derived-artifacts-single-writer-rule]]
+- Extracted 2026-07-13 — Session 146 — [[defending-agent-context.harvest-queue]] — to [[derived-artifacts-single-writer-rule]]. DD-97 corpus scan of `extracts/rules/` found no match (the `append-only-no-edit-delete-log-invariant` rule governs the log's own immutability; this rule governs derived-artifact write discipline + single-writer — distinct, complementary claims), so drafted as a new rule. Canonical extraction of a cross-guide duplicate: the twin `one-writer-per-artifact-derive-dont-edit` (session-persistence-and-memory.harvest-queue) is to be merged into this artifact by a later agent per DD-97; both directives (derive-don't-edit AND one-writer-per-artifact) are already captured here.
 
 ### memory-file-to-skill-migration::skill::memory-file-to-skill-migration-pass
 
@@ -92,7 +94,8 @@ Nothing here is auto-extracted; rows feed `/extract-artifacts` only after Nick r
 - **Codifier's reading:** An ordered, delegable procedure with input (memory-file section failing the always-loaded test), output (new skill + slimmed memory file), and a review step — skill-shaped per the rubric. Complements the engine's /simplify-context, per the finding's implementation notes.
 - **Suggested headline:** memory-file-to-skill-migration-pass
 - **Recommendation:** extract via /extract-artifacts
-- **Resolution:**
+- **Resolution:** extracted to [[memory-file-to-skill-migration-pass]]
+- Extracted 2026-07-13 — Session 146 — [[defending-agent-context.harvest-queue]] — to [[memory-file-to-skill-migration-pass]]. DD-97 corpus scan of `extracts/skills/` found no match.
 
 ### skill-pruning-failure-modes-noop-deletion-test::rule::deletion-test-for-no-op-instructions
 
@@ -107,4 +110,5 @@ Nothing here is auto-extracted; rows feed `/extract-artifacts` only after Nick r
 - **Codifier's reading:** A binary-testable audit check ("would behavior change if deleted? if not, remove") applicable per-paragraph to any context artifact — rule-shaped; the finding's implementation notes already flag it as an /assess-skill pruning axis. Caveat for the gate: safety text can false-positive as a no-op.
 - **Suggested headline:** deletion-test-for-no-op-instructions
 - **Recommendation:** extract via /extract-artifacts
-- **Resolution:**
+- **Resolution:** extracted to [[deletion-test-for-no-op-instructions]]
+- Extracted 2026-07-13 — Session 146 — [[defending-agent-context.harvest-queue]] — to [[deletion-test-for-no-op-instructions]]. DD-97 corpus scan of `extracts/rules/` found no match (the `claudemd-minimum-viable-rule` is an authorship-side global-truth gate on additions; the deletion test is a distinct audit-side no-op-detection primitive).

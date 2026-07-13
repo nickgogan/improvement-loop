@@ -9,7 +9,7 @@ Nothing here is auto-extracted; rows feed `/extract-artifacts` only after Nick r
 |---|---|---|---|---|---|
 | 2026-07-13 | extracted | template | [[plans-that-carry-their-own-contract]] | "plan-carried-contract-blocks" | extracted to [[plan-carried-contract-blocks]] |
 | 2026-07-13 | extracted | template | [[war-game-plan-format-for-executor-handoff]] | "war-game-plan-scaffold" | extracted to [[war-game-plan-scaffold]] |
-| 2026-07-13 | nick-approved | skill | [[human-ai-seam-identification-three-question-rubric]] | "seam-map-delegation-rubric" | extract via /extract-artifacts |
+| 2026-07-13 | extracted | skill | [[human-ai-seam-identification-three-question-rubric]] | "seam-map-delegation-rubric" | extracted to [[seam-map-delegation-rubric]] |
 | 2026-07-13 | nick-dismissed | rule | [[role-registry-prompt-hook-routing-backstop]] | "fail-open-routing-hook-invariants" | dismissed |
 
 ## Per-row details
@@ -46,7 +46,7 @@ Extracted 2026-07-13 — Session 146 — [[writing-agent-specifications.harvest-
 ### human-ai-seam-identification-three-question-rubric::skill::seam-map-delegation-rubric
 
 - **Date queued:** 2026-07-13
-- **Status:** nick-approved
+- **Status:** extracted
 - **Target form:** skill
 - **Source finding:** [[human-ai-seam-identification-three-question-rubric]]
 - **Source excerpt:**
@@ -54,7 +54,9 @@ Extracted 2026-07-13 — Session 146 — [[writing-agent-specifications.harvest-
 - **Codifier's reading:** Defined input (candidate workflow), ordered question procedure, defined output (seam map) — skill shape. The finding's implementation_notes carry Nick's ruled framing that this becomes a Librarian advisory capability, i.e., a procedure to fold into design-mode intake, not just guide prose.
 - **Suggested headline:** seam-map-delegation-rubric
 - **Recommendation:** extract via /extract-artifacts
-- **Resolution:**
+- **Resolution:** extracted to [[seam-map-delegation-rubric]]
+
+Extracted 2026-07-13 — Session 146 — [[writing-agent-specifications.harvest-queue]] — to [[seam-map-delegation-rubric]].
 
 ### role-registry-prompt-hook-routing-backstop::rule::fail-open-routing-hook-invariants
 
