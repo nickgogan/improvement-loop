@@ -1,8 +1,8 @@
 # Improvement Loop — Progress
 
-Updated: 2026-07-13 (session 141 — gate-execution closed (G8 + follow-ups). Second-brain
-proposal drafted at residue-triage scope; Nick REJECTED that scoping and re-set the
-direction: build an actual memory system. Four research reports persisted as design input.)
+Updated: 2026-07-13 (session 142 — memory-system design brainstormed and ruled inline;
+demand ledger (query/intent log) added to the CareerBuddy-lift loop. Design note filed,
+build = IB-176, IB-172 closed. Next: wave-3 retry — Nick added 9 new links to LINKS.md.)
 
 ## Start here
 
@@ -32,9 +32,9 @@ Research remains the substrate: the KB grounds every design move. Full capture:
 - `[x]` **Phase 0 — session-ops restructure** — shipped 2026-07-12 (session 138) · [HISTORY.md](HISTORY.md)
 - `[>]` **Phase 1 — research grounding** — cresting: CareerBuddy + #8 done; remaining =
   wave-3 chain (unblocked ≥07-13) + named-deps gap-check + delta report → plan checkpoint #1
-- `[>]` **Phase 2 — substrate audit & memory-system design** — audit gates all executed
-  (G1–G8); remaining = the memory-system design (absorbs IB-172; Nick direction set
-  session 141), proposed and Nick-ruled
+- `[x]` **Phase 2 — substrate audit & memory-system design** — shipped 2026-07-13
+  (session 142): gates G1–G8 executed; design ruled →
+  `project-management/design-notes/2026-07-13-memory-system-design.md`; build = IB-176 · [HISTORY.md](HISTORY.md)
 - `[ ]` **Phase 3 — user manual** — Nick gates whether/when; audience/altitude locked
   (Nick-builder; both, direction-bounded); manual-as-kernel-layer question open
 - `[ ]` **Phase 4 — structured interview** → engine PRD/constitution/actors; decide
@@ -43,35 +43,25 @@ Research remains the substrate: the KB grounds every design move. Full capture:
 
 ## Current milestone
 
-**Phase 1 wrap + Phase 2 execution.** Phase 1 DoD: wave-3 resolved or honestly closed,
-named-deps verified against the direction-note asks, delta report → checkpoint #1.
-Phase 2 DoD: audit gates executed (done), memory-system design proposed and Nick-ruled.
+**Phase 1 wrap + memory-system v1 build.** Phase 1 DoD: wave-3 resolved or honestly
+closed, named-deps gap-check verified against the direction-note asks, delta report →
+checkpoint #1. Build DoD: IB-176 ship-order steps 1–2 (self-improve loop + demand
+ledger live; SL distilled and closed).
 
 Scopes (hill):
-- `memory-system-design` — **uphill; Nick direction set + refined (session 141).**
-  Build an actual memory system: Hermes-style external memory wired to self-improvement;
-  OpenClaw + GBrain references; **IL loop = one big agent**. Decompose by the engine's
-  own subsystems: **task processing** (DDs + IB — audit for cruft + DD↔IB coupling;
-  study BMAD project structure + superpowers/GSD task queues, converging with the
-  named-deps gap-check), **knowledge management** (KB + retrieval — **vector search on
-  `research-findings/` is designed in, not trigger-gated**: 907 files and growing past
-  ~1000 by construction; markdown stays canonical, index derived-disposable), **agent
-  layer**, maybe **docs/portability** (CareerBuddy `onboarding/`; portable-kernel tie).
-  Must answer: existing-corpus disposition + archiving policy; G9 folds in.
-  Self-improvement exemplar: **CareerBuddy `ops-self-improve`** — pattern-lift
-  (`gh repo clone nickgogan/CareerBuddy`). Inputs: ruling + refinement atop
-  `project-management/design-notes/2026-07-12-second-brain-proposal.md` and 4 reports
-  in `operations/research-reports/` (2026-07-12/13). Absorbs IB-172.
-- `wave-3-retry` — 20-video LINKS.md backlog — **uphill, now unblocked (≥2026-07-13).**
-  Chain: plain `fetch.py --input LINKS.md` → `--backend browser` rung (live-unverified) →
-  `/link-intake` triage; whole-chain failure = stop, respace ≥1 day. Then named-deps
-  gap-check (BMAD/superpowers/Archon/Jones vs direction-note asks) → delta report →
-  checkpoint #1.
-- `gate-execution` — **done (session 141)** · [HISTORY.md](HISTORY.md)
+- `wave-3-retry` — LINKS.md backlog (20 retry videos + 9 new links from Nick, one dup) —
+  **uphill, unblocked (≥2026-07-13).** Chain: plain `fetch.py --input LINKS.md` →
+  `--backend browser` rung (live-unverified) → `/link-intake` triage; whole-chain
+  failure = stop, respace ≥1 day. Then named-deps gap-check (BMAD/superpowers/Archon/
+  Jones vs direction-note asks — also feeds the deferred DD/IB task-queue study, design
+  note §6) → delta report → checkpoint #1.
+- `memory-system-build` — IB-176 — **uphill, queued after wave-3.** Design ruled
+  (session 142): `operations/self/` store + 4-mode skill + UserPromptSubmit capture
+  hook + store checker in pre-commit + `/session-handoff` lessons-check;
+  `/process-feedback` folds into scan mode; first scan run = SL distill-then-close.
+  Spec: `project-management/design-notes/2026-07-13-memory-system-design.md`.
 
-**Next unit of work:** `memory-system-design` brainstorm with Nick inline — start from
-the four research reports + the design-note ruling; frame options for corpus disposition,
-archiving, and the self-improvement write-back loop. Then `wave-3-retry`.
+**Next unit of work:** `wave-3-retry`.
 
 ## Backlog / Icebox
 
@@ -84,6 +74,8 @@ noted where promotion is event-gated.
 - **IB-145** — GSD version-drift re-analysis
 - **IB-174** — meta-skill-author assess follow-ups A/D/E (Nick-gated guard rulings)
 - **IB-175** — governance visualization (DD corpus + architecture in glanceable form)
+- Findings hybrid search (FTS5 + local embeddings under `app/`) — designed-in component
+  (design note §6); implementation shape parked by Nick (session 142)
 - Multi-tenant agentic-system design — named research-gap candidate (session 139
   observation: single-operator exemplars dominate the corpus); Nick gates promotion
 - `/link-intake` escalation-language watch item (Rule 11)
