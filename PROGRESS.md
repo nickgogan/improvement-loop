@@ -1,9 +1,9 @@
 # Improvement Loop — Progress
 
-Updated: 2026-07-13 (session 144 — Phase 1 shipped: wave-3 triaged + extracted, named
-deps grounded, delta report → checkpoint #1 recorded in the plan; KB currency sweep
-re-analyzed 4 repos, onboarded pydantic-ai, applied the Nick-accepted priority
-reassessment (2 new P1s). Next: Codifier pipeline over the new crop.)
+Updated: 2026-07-13 (session 145 — milestone shipped: codifier-run executed over the
+post-sweep crop (4 guide re-syntheses) and memory-system v1 built end-to-end (IB-176
+steps 1–2: /self-improve loop + demand ledger live, SL distilled and closed). Next:
+Nick-gated clearance of the promote/harvest/drift ruling queues.)
 
 ## Start here
 
@@ -14,7 +14,8 @@ milestone, no recital. Orientation lives in `CLAUDE.md` (engine) and `../../CHAR
 [HISTORY.md](HISTORY.md) (newest-first, commit ranges); git carries the atomic log
 (Conventional Commits). Session close = `/session-handoff` (reconcile-in-place; never a
 dated handoff file). Every line here must pass route-then-compact: history → HISTORY.md,
-decisions → DDs, work items → IB, research → KB.
+decisions → DDs, work items → IB, research → KB. Operational lessons + demand rows live
+in `operations/self/` (`/self-improve`; capture hook + store checker are harness-wired).
 
 ## North Star
 
@@ -32,37 +33,34 @@ Research remains the substrate: the KB grounds every design move. Full capture:
 recorded there, incl. Phase 5 revisions).
 
 - `[x]` **Phase 0 — session-ops restructure** — shipped 2026-07-12 (session 138) · [HISTORY.md](HISTORY.md)
-- `[x]` **Phase 1 — research grounding** — shipped 2026-07-13 (session 144): wave-3
-  triaged + extracted, named-deps gap-check grounded, delta report → checkpoint #1;
-  bulk video intake closed as a phase instrument · [HISTORY.md](HISTORY.md)
+- `[x]` **Phase 1 — research grounding** — shipped 2026-07-13 (session 144) · [HISTORY.md](HISTORY.md)
 - `[x]` **Phase 2 — substrate audit & memory-system design** — shipped 2026-07-13
-  (session 142): gates G1–G8; design ruled →
-  `project-management/design-notes/2026-07-13-memory-system-design.md`; build = IB-176 · [HISTORY.md](HISTORY.md)
+  (session 142); design note ruled; **build (IB-176) shipped session 145** —
+  `/self-improve` loop, demand ledger, calibration registry, SL closed · [HISTORY.md](HISTORY.md)
 - `[ ]` **Phase 3 — user manual** — Nick gates whether/when; audience/altitude locked
   (Nick-builder; both, direction-bounded); manual-as-kernel-layer question open
-- `[ ]` **Phase 4 — structured interview** → engine PRD/constitution/actors; decide
+- `[>]` **Phase 4 — structured interview** → engine PRD/constitution/actors; decide
   generalize-first vs harness-first → plan checkpoint #2
 - `[ ]` **Phase 5 — harness + generalize** (order per Phase 4; checkpoint-#1 revisions:
   capability-as-composition-unit named input; maintenance/fitness DoD added)
 
 ## Current milestone
 
-**KB codification + memory-system v1 build.** Codification DoD: Codifier pipeline run
-over the post-sweep P1/P2 crop — `/identify-artifacts` → gated report →
-`/extract-artifacts` → gated staging (Nick ruled this next, session 144). Build DoD:
-IB-176 ship-order steps 1–2 (self-improve loop + demand ledger live; SL distilled and
-closed).
+**Phase 4 — structured interview** (engine PRD/constitution/actors; ends at plan
+checkpoint #2). Nick-present by nature. Phase 3 (user manual) stays Nick-gated and can
+interleave if he opens it.
 
 Scopes (hill):
-- `codifier-run` — `/identify-artifacts` over the new P1/P2 crop (2 new P1s incl.
-  ralph-wiggum + append-only-run-log; 4 new P2s), then `/extract-artifacts` on the
-  approved report — **downhill** (procedure known; both gates are Nick's).
-- `memory-system-build` — IB-176 — **uphill, queued after codifier-run.** Design ruled
-  (session 142); today's Pass 2 independently corroborated it (memory triad, session-
-  history bootstrap ⇒ SL distill-then-close). Spec:
-  `project-management/design-notes/2026-07-13-memory-system-design.md`.
+- `gate-clearance` — pre-step, **downhill, all-Nick rulings in one sitting**: (a)
+  `/self-improve promote` over the PROMOTE flags in `operations/self/retro-latest.md`
+  (two high-severity, per-proposal gates); (b) harvest-queue rows across the four
+  re-synthesized guides (`extracts/guides/*.harvest-queue.md`); (c) drift-report
+  re-run/re-evaluate recommendations (`operations/drift-reports/2026-07-13-source-drift.md`).
+- `phase4-interview` — **uphill**: interview structure not yet designed; plan
+  open-questions (incl. "attachés", "division, to a degree" fragments) resolve inside it.
 
-**Next unit of work:** `codifier-run`.
+**Next unit of work:** `gate-clearance` (needs Nick live; an autonomous session should
+instead prep `phase4-interview` — draft the interview structure from the plan's §Phase 4).
 
 ## Backlog / Icebox
 
@@ -93,8 +91,10 @@ noted where promotion is event-gated.
 
 ## Blockers / gates (Nick)
 
-- **"Attachés" clarification** — direction-note superpowers ask; likely transcription
-  artifact (gap-check 2026-07-13; plan open-question 7) — one-liner from Nick
+- **Gate-clearance queues** (the next unit of work): PROMOTE proposals (retro-latest),
+  harvest-queue rows, drift-report re-runs — all per-item rulings
+- **"Attachés" clarification** — likely transcription artifact (plan open-question 7);
+  resolve in the Phase 4 interview
 - **Design-mode video-intake spec** — is a formal `/meta-skill-author` spec still wanted?
 - **Verbatim-storage finding null→P3** — session-132 reassessment, unruled
 - **Re-injection correction** — next step unchosen (KB updated; remedy refuted upstream)
