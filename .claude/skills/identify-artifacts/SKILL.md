@@ -247,6 +247,7 @@ If no revision is warranted, omit the revision block — the finding stays at Re
 2. Parse JSON results. Flag any malformed outputs for manual review.
 3. Sort by tier: `hitl` first, then `guided`, then `auto`.
 4. Within each tier, group by `assigned_form`.
+5. Compute the Summary-table tallies and header counts (`{N}`, `{M}`, `{C}`, per-form/per-tier counts) from the assembled enumeration itself at write time — count rows/markers in the Candidates and Details blocks, never serialize tallies from memory of the batch. Downstream consumers filter by marker (Status, tier), not by count.
 
 **Write the identification report** to `systems/improvement-loop/operations/pattern-identification-reports/{date}-identification-report.md`:
 
