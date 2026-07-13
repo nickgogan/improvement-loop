@@ -7,7 +7,7 @@ target_system:
   - "improvement-loop"
 stage: "draft"
 created: "2026-06-18"
-updated: "2026-06-18"
+updated: "2026-07-13"
 author: "claude"
 altitude: "top"
 maturity: "seed"
@@ -86,7 +86,11 @@ It runs each phase autonomously but defers at phase boundaries: design, plan, an
 **proposal-first** gates because they are high-blast-radius and not easily reversed
 ([[autonomy-gradient-not-binary-delegation]]). Within a phase, low-blast reversible actions (write
 a task, run a test, draft a doc) are fully autonomous. "Supervised" here means *gated at the seams*,
-not *watched at every keystroke*.
+not *watched at every keystroke*. The gradient also has a **time axis**: the blast-radius 2x2 sets
+the starting level for each decision class, but a gate is not fixed forever — as the workcell builds
+a track record on a phase, that phase's decision class may be allowed to move down a gate (e.g.
+plan-approval relaxing from proposal-first to guarded), per workflow, as maturity grows
+([[autonomy-gradient-not-binary-delegation]], Medin/Shapiro maturity-ladder corroboration).
 
 ### Deployment surface
 

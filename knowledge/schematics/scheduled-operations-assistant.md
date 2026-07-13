@@ -7,7 +7,7 @@ target_system:
   - "improvement-loop"
 stage: "draft"
 created: "2026-06-18"
-updated: "2026-06-18"
+updated: "2026-07-13"
 author: "claude"
 altitude: "middle"
 maturity: "seed"
@@ -87,7 +87,11 @@ low-blast reversible actions* (archive cold email, draft/overwrite today's brief
 and **advisory-only on persistent or broad-blast mutations** — settings, schema, anything that
 outlives the run is recommended with a rollback note and applied by the human
 ([[advisory-only-for-persistent-mutations]]). It operates; it does not reconfigure itself or its
-world.
+world. The gradient is also **traversed over time, per workflow**: the blast-radius 2x2 sets each
+decision class's starting level, and a class earns promotion (e.g. a well-corrected triage rule
+moving from advisory to autonomous) only as owner-observed track record accrues — maturity-gated
+progression, not a one-time assignment ([[autonomy-gradient-not-binary-delegation]], Medin/Shapiro
+maturity-ladder corroboration).
 
 ### Deployment surface
 

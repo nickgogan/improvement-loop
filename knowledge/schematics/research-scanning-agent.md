@@ -7,7 +7,7 @@ target_system:
   - "improvement-loop"
 stage: "draft"
 created: "2026-06-18"
-updated: "2026-06-18"
+updated: "2026-07-13"
 author: "claude"
 altitude: "middle"
 maturity: "seed"
@@ -117,7 +117,10 @@ Obsidian vault. No external runtime; no provider-API hosting.
 
 - **Known risks / failure modes:** (1) duplicate findings if the one-canonical-finding discipline
   slips; (2) KB rot if the internal re-curation feedback isn't run on cadence; (3) a stale
-  dimension registry biasing the scan toward yesterday's questions.
+  dimension registry biasing the scan toward yesterday's questions; (4) curation itself destroying
+  signal — practitioner-rebuild evidence in [[bounded-tiered-memory-inference-driven-curation]]
+  (self-rewriting curation loops overwriting good entries; hard caps compressing away standing
+  instructions) shows the human gate must cover re-curation writes, not only new findings.
 - **Maturity:** seed — the configuration is the engine's lived operation, so the *shape* is real,
   but it has not yet been instantiated for a *second* domain, which is the test of the reusable core.
 - **Revisit when:** a second research-scanning instance is stood up (validates the core), or any
