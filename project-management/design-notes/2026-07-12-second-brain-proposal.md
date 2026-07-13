@@ -20,6 +20,20 @@ tags:
 
 # Second-Brain Proposal — Minimum Mechanism for the DD-116 Routing Residue
 
+> **RULING (Nick, session 142, 2026-07-13): minimal scoping REJECTED — direction is an
+> actual memory system.** This note's residue-triage framing under-shot the ask. Nick's
+> direction: build a real memory system in the spirit of **Hermes' external-memory +
+> self-improvement loop**, drawing on **OpenClaw** and **GBrain**; treat the **IL loop as
+> one big agent** (consistent with the single-implicit-agent vision). Two must-answer
+> questions: **disposition of the existing corpus** ("what to do with all of it") and
+> **an archiving policy**. For the self-improvement loop, the best exemplar so far is
+> **CareerBuddy's `ops-self-improve`** — pattern-lift it. This effectively pulls the full
+> IB-172 design forward. The brainstorm continues next session; deliberation inputs are
+> the four reports in `operations/research-reports/` (2026-07-12/13: two Librarian
+> consults, two web sweeps). §§1–5 below stand as the residue-triage *input* to that
+> design (the drop-inventory sizing and question table remain valid evidence); P1–P3
+> are NOT adopted as rulings.
+
 **Plain English.** After the System Log retired, learnings route by shape (decision → DD,
 pattern → knowledge/, work → IB). The substrate audit found what that routing drops:
 measurement numbers that would ground future recalibration, and (potentially) the
