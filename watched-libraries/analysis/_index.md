@@ -35,7 +35,7 @@ Structural analysis docs produced by `/repo-analyzer`. Each entry covers 5 dimen
 | [[paperclip-analysis\|Paperclip]] | v2026.403.0 | 2026-04-08 | all |
 | [[gstack-analysis\|gstack]] | v0.15.16.0 | 2026-04-08 | all |
 | [[mem0-analysis\|mem0]] | v1.0.11 | 2026-04-08 | all |
-| [[archon-analysis\|Archon]] | v0.3.2 | 2026-04-09 | all |
+| [[archon-analysis\|Archon]] | v0.5.0 | 2026-07-13 | all |
 | [[n8n-analysis\|n8n]] | v2.16.0 | 2026-04-09 | all |
 | [[langgraph-analysis\|LangGraph]] | v1.1.6 | 2026-04-09 | all |
 | [[beads-analysis\|Beads]] | v1.0.2 | 2026-04-19 | all |
