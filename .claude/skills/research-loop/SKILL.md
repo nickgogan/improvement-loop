@@ -269,6 +269,8 @@ For each source:
 
 ### Step 3: Extract Findings
 
+**Findings write gate (G9.I6):** before creating or updating any finding, present the extraction batch (finding name, new-vs-update, category, priority) and get explicit approval — one approval covers the batch. In unattended runs, stop here and record the batch as proposals in the delta report instead of writing. Source and authority entries are bookkeeping derivatives of the user-supplied URL list (that submission is their authorization); findings are the judgment-bearing writes and take this gate. Pass 2 Step 4 and arXiv Step 3 reuse this procedure and inherit the gate.
+
 For each distinct pattern/technique found in the source:
 1. Use `Grep` to search `systems/improvement-loop/research-findings/` for existing entries covering this pattern
 2. **If a finding already exists:**
@@ -471,6 +473,8 @@ For each finding, check the Research Findings directory using `Grep`:
 - **Aspirational:** Interesting but not actionable yet — note for future
 
 ### Step 4: Write to Local KB
+
+**Findings write gate (G9.I6):** web-scan URLs are agent-discovered, not user-supplied, so the gate covers sources here too — present the write batch (sources to create; findings to create/update, with name, new-vs-update, category, priority) and get explicit approval before any Write/Edit. In unattended runs, stop and record the batch as proposals in the delta report instead of writing.
 
 - Use `Write` to create new Research Sources entries in `systems/improvement-loop/research-sources/` for all web articles reviewed
 - Use `Write` or `Edit` to create or update Research Findings entries in `systems/improvement-loop/research-findings/` for gaps and conflicts

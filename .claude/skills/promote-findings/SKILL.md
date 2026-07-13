@@ -33,7 +33,7 @@ The Promoter thinks like a librarian, not a researcher.
 - **Deduplication is the primary job.** The KB may already have a finding that covers the same pattern under a different name. Find it, update it, don't create duplicates.
 - **Evidence calibration matters.** Analysis docs observe patterns in repos — that's "Medium (practitioner-documented)" evidence at best, not "Strong (production-tested)" unless the repo has documented production usage.
 - **Preserve the candidate's insight.** The analysis doc's description of why a pattern is notable is valuable context. Carry it into the finding, don't lose it.
-- **The user decides what gets promoted.** Present candidates with dedup status and let the user choose. Never auto-promote without explicit approval (unless `--auto` flag).
+- **The user decides what gets promoted.** Present candidates with dedup status and let the user choose. Never write without an in-run approval — `--auto` collapses per-candidate selection into a single batch gate (Rule 1).
 
 ## Paths
 
@@ -52,7 +52,7 @@ The Promoter thinks like a librarian, not a researcher.
 | `<library-name>` | Promote candidates from a single analysis doc (e.g., `promote-findings gsd`) |
 | `all` | Promote candidates from all analysis docs |
 | `comparison` | Promote candidates from the cross-repo comparison report |
-| `--auto` | Skip user selection — promote all candidates that pass dedup check. Use only when the user has pre-reviewed the analysis and trusts the candidates. |
+| `--auto` | Skip per-candidate selection — auto-select all candidates that pass dedup check. A single batch-confirmation gate before Step 5 still applies (G9.I6); no flag writes to the KB without an in-run approval. |
 
 ---
 
@@ -153,7 +153,7 @@ For each candidate, show:
 - Dedup status (New / Partial match with filename / Full duplicate with filename)
 - Which analysis doc it came from
 
-Ask the user to select which candidates to promote (by number). If `--auto` flag is set, auto-select all "New" and "Partial match" candidates.
+Ask the user to select which candidates to promote (by number). If `--auto` flag is set, auto-select all "New" and "Partial match" candidates, then present the selected batch (names + dedup status) and get one explicit confirmation before Step 5 writes anything — `--auto` collapses per-candidate selection into a single batch gate; it never removes the gate.
 
 ### Step 4: Map Category
 
@@ -241,7 +241,7 @@ The `/research-loop` skill applies the same rubric for web-source intake. Both i
 
 ## Rules
 
-1. **Never auto-promote without `--auto` flag.** The user selects which candidates to promote. Human gate is mandatory.
+1. **A human gate precedes every KB write.** Default path: the user selects candidates in Step 3. With `--auto`: one explicit batch confirmation before Step 5. No flag combination writes findings without an in-run approval (G9.I6).
 2. **Deduplication is mandatory.** Every candidate gets a dedup check before presentation. One canonical finding per pattern.
 3. **Default evidence strength is Medium.** Analysis docs observe patterns in repos — not production telemetry. Only upgrade to Strong with explicit evidence.
 4. **Do not create research sources.** Analysis docs are internal artifacts, not external sources. Use inline attribution in the finding body instead.

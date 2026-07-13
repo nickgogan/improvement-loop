@@ -141,6 +141,8 @@ Save to `systems/improvement-loop/operations/research-reports/{date}-watch-upstr
 
 ### Step 4: Update Watched-Library Entries
 
+**Gate (G9.I6):** present the Step 3 Action Queue and get explicit approval before editing any entry. Without approval, stop after the report — identical behavior to `--dry-run`.
+
 For each library with action `update-entry` or `update-and-extract`:
 
 1. Use `Edit` to update frontmatter:

@@ -104,7 +104,7 @@ For each source document, identify clauses that constrain IL operations:
 
 ### Step 4: Produce Translations
 
-For each governance domain, write a translation document to `systems/improvement-loop/governance/`. Use this template:
+For each governance domain, propose a translation document for `systems/improvement-loop/governance/`. Present the planned document set (and, for updates, the rule-level deltas) and get explicit approval before any Write/Edit (Rule 1). Then use this template:
 
 ```markdown
 ---
@@ -203,7 +203,7 @@ Output a summary to conversation:
 
 ## Rules
 
-1. **Autonomy tier: Guarded.** Write translations, then report what changed. All writes are git-reversible. Do not wait for approval before writing governance translations — these are operational docs, not DDs.
+1. **Autonomy tier: Proposal-first.** Present the planned changes (documents to create, rule-level deltas for updates, drift corrections) and get explicit in-turn approval before writing. Writes are git-reversible, but governance files get HITL *before* the write — never act-then-report (G9.I6; 2026-06-12 audit).
 2. **Never modify source governance.** Read from the charter, workspace operating law, and engine design-wisdom; never edit the charter or workspace rules. If a source error is found, flag it for human action.
 3. **Never create DDs.** If a governance gap requires a Design Decision, propose it in the report. DD creation is Human-Required.
 4. **Preserve existing translations.** Update in place via `Edit`. Don't delete and recreate — this loses git history.
