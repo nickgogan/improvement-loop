@@ -5,6 +5,15 @@ Newest-first changelog of shipped sessions and milestones for the improvement-lo
 git is the atomic record of what changed, file by file (Conventional Commits from session 133 onward).
 Entries carry dates and commit ranges where known; sessions 1–116 predate this file and are collapsed into era summaries.
 
+## Session 143 — 2026-07-13 — wave-3 transcripts resolved 28/28 via fallback lane (bac87bb…724bb52)
+
+**Outcome:** the wave-3 transcript backlog is fully resolved — all 28 unique videos (20 retries + 9 Nick-added, 1 dup) cached as full-text markdown, LINKS.md emptied — clearing the path to `/link-intake` triage and the rest of the Phase 1 wrap.
+
+- **Browser rung verified, then defeated:** three real bugs fixed in `fetch.py`'s browser backend with Nick debugging alongside (fixed-sleep captured the transcript panel's spinner → wait on segment selectors; JS `.click()` is untrusted and silently no-ops on YouTube's components → real Playwright clicks + hard error when the button is missing; Chapters→Transcript chip toggle added for YouTube's stuck-spinner bug). Two clean end-to-end fetches proved the rung — then ~26 rapid sequential fetches tripped a hard IP block on caption endpoints (even previously-working videos began failing; page HTML kept serving).
+- **Every direct lane confirmed dead under the block:** transcript API, playwright scrape, persistent-profile browser pull, yt-dlp with and without real-Chrome cookies (429 is IP-level, not account-level), in-page player-session fetch (the player's own caption URL 429s), Invidious mirrors (caption-dead ecosystem-wide), and cloud egress (YouTube blocks datacenter IPs wholesale; probed via remote agent).
+- **Winning lane (Nick's "whatever it takes" mandate, change-nothing constraint):** kome.ai's server-side transcript API — their infra fetches YouTube; our IP never touches a caption endpoint — plus watch-page `ytInitialPlayerResponse` for metadata. Scratchpad script only; technique preserved in agent memory (`kome-transcript-fallback`); codification as a fetch.py backend left as a Backlog trigger item. 23-video batch ran 23/23 with 6–12s pacing.
+- **Transcript format ruled full-text-only:** the Timestamped Segments section dropped from the writer and stripped from all 133 pre-existing cached files (6.9 MB → 3.0 MB, 57%) — zero findings or sources ever cited a video timestamp; SKILL.md contract updated to match. Coarse anchors can return if a citation need ever materializes.
+
 ## Session 142 — 2026-07-13 — memory-system design ruled; Phase 2 shipped (b277a4d…cc15e92)
 
 **Outcome:** Phase 2's remaining half is done — the memory-system design was brainstormed and ruled inline with Nick: a CareerBuddy-lift self-improvement loop plus a Nick-originated demand ledger (query/intent log). Build filed as IB-176 (Approved, P1); IB-172 closed as delivered.
