@@ -16,9 +16,10 @@ sources:
 - multi-agent-orchestration-production-playbook-nick.md
 - ai-agents-in-production-2026-nick-gupta-linkedin.md
 - five-agentic-patterns-claude-code.md
+- 1-6m-agents-registered-for-openclaw-and-did-nothing.md
 proposals: null
 date_discovered: '2026-03-22'
-last_updated: '2026-07-12'
+last_updated: '2026-07-13'
 related_findings:
 - file: agent-cost-blowup-mitigation-strategies.md
   rel: extended-by
@@ -51,3 +52,17 @@ Dynamic model selection: the orchestrator evaluates task complexity at runtime a
 
 ## Potential Failure Modes
 Smaller models may fail on tasks that appear narrow but have hidden complexity. Model API availability differs across providers — a harness depending on a specific sub-agent model may fail if that model is unavailable. Cost assumptions break if sub-agent task complexity is higher than expected.
+
+## Corroboration — Ringer harness (Nate B Jones, 2026-07-10)
+
+A second quantified production instance, demonstrated on camera in a personal-scale
+harness ("Ringer"): Fable 5 acts as the brains — it writes each task's spec once
+(then never touches the work again), makes judgment calls, and judges results — while
+much cheaper worker agents burn the execution tokens. Reported result: roughly **10x
+reduction in Fable 5 costs while keeping Fable 5-level judgment**, with setup under an
+hour. The run's trust layer is mechanical rather than model-judged: every finished task
+gets a mechanical check (source must be attached and match, or the entry is rejected —
+"the agent's opinion of its own work is not evidence"), failed tasks retry with the
+failure included, and every result feeds a running scorecard. This extends the pattern
+one level up — the expensive model authors the spec and evaluates, not merely
+orchestrates — converging with the frontier-model-as-harness-designer lane.

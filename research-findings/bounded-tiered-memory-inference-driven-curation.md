@@ -15,9 +15,10 @@ applicability:
 adopted_in: []
 sources:
 - hermes-agent-nousresearch-analysis.md
+- rebuilt-hermes-memory-in-claude-code.md
 proposals: null
 date_discovered: '2026-05-24'
-last_updated: '2026-07-11'
+last_updated: '2026-07-13'
 related_findings:
 - file: four-tier-agent-memory-model-with-write-policy.md
   rel: extends
@@ -76,6 +77,24 @@ A memory architecture with three tiers and hard boundaries:
 ## Why It Matters
 
 The key innovations are: (1) hard character ceilings on always-loaded memory, preventing unbounded growth; (2) inference-driven writes — the agent decides what to persist based on conversation patterns, not just explicit "remember this" commands; (3) a Curator step that consolidates and evicts entries when ceilings are exceeded, resolving conflicts in favor of most-recent high-confidence facts. This produces a self-maintaining user model that degrades gracefully.
+
+## Practitioner Rebuild in Claude Code (2026-07)
+
+Simon Scrapes rebuilt the pattern inside Claude Code as portable local markdown
+(`rebuilt-hermes-memory-in-claude-code.md`), confirming the architecture transfers off
+the Hermes runtime: a size-capped curated snapshot (memory.md, max 2,500 chars, silently
+injected every session alongside profile and today's memories), inference-driven writes
+via a **post-turn hook** that decides after every turn whether anything is worth
+promoting as a durable fact (decisions, price changes, preferences), dedup-then-replace
+favoring most-recent/most-relevant on overflow, and — his addition — **user-editable
+promotion rules** in a readable "meta memory-write skill," so the curation policy is
+owned by the operator rather than baked into the loop. He also surfaces the failure
+evidence for unbounded curation: Hermes' self-rewriting loop has multiple reports of the
+agent overwriting good information when editing its own memory/skills, and its hard
+caps compressing away standing instructions (one user built a plugin solely to stop his
+instructions being forgotten). Corroborates the ruled IB-176 memory design
+(`project-management/design-notes/2026-07-13-memory-system-design.md` §1) point-for-point:
+append-only capture + size-capped curated distillate, gated promotion, files-over-runtime.
 
 ## How It Could Fail
 

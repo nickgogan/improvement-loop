@@ -22,6 +22,7 @@ sources:
 - anthropic-skills-repo.md
 - agentskills-open-standard.md
 - anthropic-complete-guide-building-skills-pdf.md
+- pydantic-ai-2-0-composing-capabilities.md
 related_findings:
 - file: mcp-as-code-api-progressive-tool-discovery.md
   rel: same-problem
@@ -35,9 +36,11 @@ related_findings:
   rel: extended-by
 - file: memory-file-to-skill-migration.md
   rel: enables
+- file: capability-as-agent-composition-primitive.md
+  rel: extended-by
 proposals: null
 date_discovered: '2026-06-11'
-last_updated: '2026-07-12'
+last_updated: '2026-07-13'
 pipeline_status: raw
 consumed_by: []
 ---
@@ -61,6 +64,12 @@ This is the architectural primitive every other Anthropic skill pattern composes
 The model decouples *capability presence* (cheap, Level 1) from *capability detail* (paid only when invoked, Level 2) from *capability execution* (decoupled entirely from context for scripts, Level 3). An agent can carry dozens of skills with the system-prompt cost of a short paragraph each.
 
 ## Why People Are Using It
+
+The pattern has now migrated up the stack into framework primitives: Pydantic AI 2.0
+capabilities implement the same catalog/full-load split at capability granularity —
+brief descriptions always visible, full instructions loaded only when the agent decides
+it needs that capability (`pydantic-ai-2-0-composing-capabilities.md`, 2026-07). Cross-
+platform corroboration that the three-level economics generalize beyond SKILL.md files.
 
 Documented as the core design principle in Anthropic's engineering post (Oct 2025) and reiterated across all canonical sources — the platform.claude.com overview, the Claude Code docs, the anthropics/skills repo, the open standard at agentskills.io, and the Complete Guide PDF. Adopted across Claude.ai, Claude Code, the Claude Agent SDK, and the Claude Developer Platform. Open standard published December 2025 with adopters listed at agentskills.io/clients. Used at scale internally for Claude's document-editing capabilities (docx, pdf, pptx, xlsx skills).
 

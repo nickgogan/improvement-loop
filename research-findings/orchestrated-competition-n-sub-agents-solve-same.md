@@ -21,6 +21,8 @@ related_findings:
   rel: extends
 - file: archon-yaml-defined-harness-workflows.md
   rel: same-problem
+- file: repeated-sampling-scaling-law-and-verifier-ceiling.md
+  rel: extended-by
 pipeline_status: raw
 consumed_by: []
 ---

@@ -58,9 +58,11 @@ related_findings:
   rel: same-problem
 - file: effort-level-tuning-as-first-order-cost-lever.md
   rel: extended-by
+- file: gpt-56-soul-vs-fable-5-one-shot-head-to-head.md
+  rel: extended-by
 proposals: []
 date_discovered: '2026-07-11'
-last_updated: '2026-07-12'
+last_updated: '2026-07-13'
 pipeline_status: raw
 consumed_by: []
 ---

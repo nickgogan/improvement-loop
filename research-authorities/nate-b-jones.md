@@ -8,12 +8,17 @@ specialty:
 - evaluation
 - org-design
 - management
-notes: 'Creator of the Four-Discipline Prompting Stack (Prompt Craft -> Context Engineering -> Intent Engineering -> Specification Engineering). Known for the Klarna intent case study and Five Persistent
+- orchestration
+- multi-agent
+notes: |-
+  Creator of the Four-Discipline Prompting Stack (Prompt Craft -> Context Engineering -> Intent Engineering -> Specification Engineering). Known for the Klarna intent case study and Five Persistent
   Human Skills framework. Also created HeyPresto prompt expander. Primary influence on our prompt-evaluator skill design. Released agentic harness assessment skill based on Claude Code leak analysis. Identified
   Conway (always-on persistent agent) in the leak and analyzed behavioral context portability as new lock-in vector. Channel: AI News & Strategy Daily. Former marketing analyst turned AI strategy content
   creator. Tests Claude browser extension hands-on and maintains a Substack with additional examples. Provides balanced analysis including limitations and security risks. Also covers organizational design
-  and management unbundling in the AI era, with case studies from Kimi, Block, and Meta. (Merged 2026-07-12, session 137: duplicate channel entry ai-news-strategy-daily-nate-b-jones.md folded in.)'
-source_count: 17
+  and management unbundling in the AI era, with case studies from Kimi, Block, and Meta. (Merged 2026-07-12, session 137: duplicate channel entry ai-news-strategy-daily-nate-b-jones.md folded in.)
+  Specialty note (2026-07-13, wave-3 triage): harness maintenance + delegation loops is now a distinct strong lane — 4/6 keep rate in the wave-3 batch, trending above his Tier-2 rating on that lane
+  (harness fitness reviews, delegation contracts, eval ceilings as binding constraint on multi-agent scale). Weakest when doing interface-ergonomics commentary without measurement (the wave-3 rejects).
+source_count: 20
 sources:
 - your-claude-limit-burns-in-90-minutes.md
 - anthropics-2-5-billion-leak-12-critical-pieces.md
@@ -32,6 +37,9 @@ sources:
 - i-pointed-my-agent-at-the-bills.md
 - i-built-a-deck-with-ai-then-made-a-second-ai-attack-it.md
 - i-was-the-only-thing-connecting-claude-chatgpt-codex.md
+- 1-6m-agents-registered-for-openclaw-and-did-nothing.md
+- codex-your-first-personal-ai-agent-delegation-loop.md
+- dont-build-more-ai-agents-until-you-watch-this.md
 url: https://www.youtube.com/@NateBJones
 ---
 

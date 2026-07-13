@@ -25,6 +25,8 @@ related_findings:
   rel: extends
 - file: war-game-plan-format-for-executor-handoff.md
   rel: same-problem
+- file: planning-thread-vs-execution-thread-subagent-fleets.md
+  rel: extended-by
 proposals: null
 date_discovered: '2026-05-25'
 last_updated: '2026-07-12'

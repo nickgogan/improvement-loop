@@ -19,6 +19,8 @@ related_findings:
   rel: same-problem
 - file: agent-harness-distributed-system-mental-model.md
   rel: same-problem
+- file: bidirectional-agent-breakage-world-drift-model-improvement.md
+  rel: extended-by
 proposals: null
 date_discovered: '2026-04-09'
 last_updated: '2026-04-09'

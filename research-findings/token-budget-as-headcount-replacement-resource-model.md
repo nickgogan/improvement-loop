@@ -12,6 +12,8 @@ adopted_in: []
 sources:
   - "self-improving-company-yc-five-layer-loop.md"
 related_findings:
+  - file: "token-burn-telemetry-as-delegation-metric.md"
+    rel: "extended-by"
   - file: "agent-cost-blowup-mitigation-strategies.md"
     rel: "same-problem"
   - file: "background-hooks-as-token-economy.md"

@@ -31,7 +31,10 @@ applicability:
 adopted_in: []
 sources:
   - "i-was-the-only-thing-connecting-claude-chatgpt-codex.md"
+  - "codex-your-first-personal-ai-agent-delegation-loop.md"
 related_findings:
+  - file: "chief-of-staff-home-base-thread.md"
+    rel: "same-problem"
   - file: "issue-based-agent-orchestration-replacing-markdown-plans.md"
     rel: "extends"
   - file: "agent-self-reporting-unreliability-independent-eval.md"
@@ -40,7 +43,7 @@ related_findings:
     rel: "same-problem"
 proposals: null
 date_discovered: "2026-07-12"
-last_updated: "2026-07-12"
+last_updated: "2026-07-13"
 pipeline_status: "raw"
 ---
 
@@ -110,3 +113,16 @@ pattern is vendor-neutral by construction — the ticket is where unintegrated a
   unless the queue is actively reviewed
 - The ticket carries context by copy — stale sources if upstream material changes while
   the ticket waits
+
+## Lineage — five-element assignment contract (2026-06-12)
+
+Jones's earlier Codex delegation-loop video carries the simpler ancestor of this
+contract: give the agent five things — **a goal, sources, a standard, a permission
+boundary, and the proof that it's done**. "That's the most basic way to set up a loop.
+It's not a fancy prompt... a real assignment with real sources and a way to check the
+results." The work-ticket (2026-07) is the same contract matured into a transferable
+queue object — outcome/owner map to goal, scope limits to permission boundary,
+definition-of-done + receipt to standard + proof — adding the lifecycle mechanics
+(claim-lock, needs-input) that only matter once multiple agents share the queue. Newer
+framing leads per the recency rule; the five-element version remains the right
+starting shape for single-operator loops.

@@ -24,9 +24,11 @@ related_findings:
     rel: "same-problem"
   - file: "bun-hot-reload-interactive-html-artifact-feedback-loop.md"
     rel: "extends"
+  - file: "visual-recap-post-execution-mirror-artifact.md"
+    rel: "same-problem"
 proposals: null
 date_discovered: "2026-05-25"
-last_updated: "2026-05-25"
+last_updated: "2026-07-13"
 pipeline_status: "synthesized"
 consumed_by:
   - "templates/html-pr-explainer-with-margin-annotations.md"

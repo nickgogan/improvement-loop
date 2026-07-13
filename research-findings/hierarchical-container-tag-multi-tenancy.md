@@ -9,7 +9,8 @@ priority: null
 applicability:
   - "General"
 adopted_in: []
-sources: []
+sources:
+  - "rebuilt-hermes-memory-in-claude-code.md"
 related_findings:
   - file: scoped-memory-model.md
     rel: same-problem
@@ -17,7 +18,7 @@ related_findings:
     rel: same-problem
 proposals: null
 date_discovered: "2026-04-23"
-last_updated: "2026-04-23"
+last_updated: "2026-07-13"
 pipeline_status: raw
 consumed_by: []
 ---
@@ -68,6 +69,15 @@ Directly applicable to two MetaSystem contexts:
 Also relevant to [[typed-relationship-memory-graph]] (Supermemory's companion pattern — both features ship together). Together: typed evolutionary graph + hierarchical scoping = multi-tenant memory infrastructure with minimal schema.
 
 ## Why People Are Using It
+
+New datapoint (2026-07, `rebuilt-hermes-memory-in-claude-code.md`): Simon Scrapes'
+"TeamOS" — asker-scoped team memory inside a Claude Code local-markdown stack: one
+shared brain, every memory tagged by owner/project, every query filtered by who's
+asking, so a teammate or client sees only memories for projects they belong to
+(inspired by Garry Tan's Gbrain, extended to multi-member use). Released as a beta in
+his community, explicitly still being tested for limitations — evidence the pattern is
+reaching file-based/local practitioner stacks, and that multi-tenant memory scoping
+remains an open research gap rather than a solved default.
 
 Observed in [Supermemory](https://github.com/supermemoryai/supermemory) latest — see [[supermemory-analysis]] for structural details. Documented in `skills/supermemory/references/architecture.md` §"Container Tag Isolation" and `skills/supermemory/references/use-cases.md` §7 ("Multi-Tenant SaaS Application") with full TypeScript implementation. Production-deployed in Supermemory's SaaS backend; MCP server exposes `containerTag` as a tool parameter on `memory` and `recall`. Used by all four plugin repos (`claude-supermemory`, `openclaw-supermemory`, `opencode-supermemory`, `hermes-agent`).
 

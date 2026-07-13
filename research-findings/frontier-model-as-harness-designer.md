@@ -46,6 +46,7 @@ sources:
 - free-fable-5-tokens-heres-how-to-max-them.md
 - claude-can-now-build-its-own-harness.md
 - a-harness-for-every-task-dynamic-workflows-in-claude-code.md
+- dont-build-more-ai-agents-until-you-watch-this.md
 related_findings:
 - file: harness-composition-six-pattern-taxonomy.md
   rel: extended-by
@@ -61,7 +62,7 @@ related_findings:
   rel: extended-by
 proposals: null
 date_discovered: '2026-07-12'
-last_updated: '2026-07-12'
+last_updated: '2026-07-13'
 pipeline_status: raw
 ---
 
@@ -136,6 +137,22 @@ hub finding — three new sources in a single batch extend it (this runtime-auth
 digest, plus war-gamed executor-tailored plans and frontier-designs/cheap-executes
 material in adjacent lanes). Flagged as a /reassess-priorities candidate; priority is
 deliberately left at P3 here.
+
+## Strategy tier — the harness flywheel (Nate B Jones, 2026-06-17)
+
+A second Jones source adds the vendor-strategy reading of the same pattern: the
+frontier labs' implicit bet is not only that models improve, but that **better models
+let them ship and evolve the harness faster** — "if the model can help you ship the
+harness and test the harness and refactor the harness and observe the harness...
+capability gain is going to start to compound": better agents build better harnesses,
+better harnesses make agents touch more real work, more real work pressures the
+harness to improve again. He names exactly two teams executing this well (Anthropic
+with Claude Code, OpenAI with Codex) and reads Codex's surface (terminal, desktop,
+IDE, browser, computer use, plugins, memory, automations, approvals, sandboxing,
+logs) as a continuously maintained workbench, not a chatbox. Consequence for
+harness-owners: the self-designing loop this finding describes is also the reason
+custom harness depth is a maintenance-ownership decision (see
+`harness-depth-as-maintenance-ownership.md`).
 
 ## Caveats
 

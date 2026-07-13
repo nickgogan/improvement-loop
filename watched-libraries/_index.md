@@ -46,8 +46,8 @@ Structural analyses live in [[watched-library-analyses-index|analysis/]] — pro
 | [[paperclip\|Paperclip]] | cherry-pick | v2026.403.0 (2026-04-07) | Multi-agent governance — goal ancestry, approval gates, budget tracking |
 | [[gstack\|gstack]] | cherry-pick | v0.15.16.0 (2026-04-07) | Role-based specialist tools, Conductor parallel sessions |
 | [[mem0\|mem0]] | evaluating | v1.0.11 (2026-04-07) | Memory architecture — auto-extraction, triple storage, scoped memory |
-| [[archon\|Archon]] | cherry-pick | v0.3.2 (2026-04-09) | DAG workflow engine, YAML workflows, worktree isolation, multi-platform adapters |
-| [[n8n\|n8n]] | cherry-pick | v2.16.0 (2026-04-09) | Context file architecture (CLAUDE.md→AGENTS.md chain-loading), plugin namespacing, spec-driven development |
+| [[archon\|Archon]] | cherry-pick | v0.5.0 (2026-07-13) | DAG workflow engine, YAML workflows, worktree isolation, multi-platform adapters |
+| [[n8n\|n8n]] | cherry-pick | v2.29.10 (2026-07-13) | Context file architecture (CLAUDE.md→AGENTS.md chain-loading), plugin namespacing, spec-driven development |
 | [[langgraph\|LangGraph]] | cherry-pick | v1.1.6 (2026-04-09) | Pregel BSP orchestration, typed channels, interrupt/Command primitives, threat model pattern |
 | [[beads\|Beads]] | cherry-pick | v1.0.2 (2026-04-19) | Hash-based collision avoidance, dependency graph links, semantic memory decay, agent state machine |
 | [[openviking\|OpenViking]] | cherry-pick | latest (2026-04-19) | L0/L1/L2 tiered context loading, filesystem-as-context paradigm, workspace file taxonomy |

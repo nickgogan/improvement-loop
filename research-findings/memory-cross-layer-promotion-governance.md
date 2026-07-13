@@ -14,6 +14,7 @@ applicability:
 adopted_in: []
 sources:
 - 4-layer-memory-stack-for-2026-enterprise-agents-al.md
+- rebuilt-hermes-memory-in-claude-code.md
 related_findings:
 - file: four-layer-enterprise-memory-stack.md
   rel: enabled-by
@@ -33,7 +34,7 @@ related_findings:
   rel: same-problem
 proposals: []
 date_discovered: '2026-04-07'
-last_updated: '2026-07-12'
+last_updated: '2026-07-13'
 pipeline_status: synthesized
 consumed_by:
 - session-persistence-and-memory.md
@@ -68,6 +69,18 @@ Most agent memory failures happen at layer boundaries, not within a single stora
 ## Why People Are Using It
 
 Documented in Alok Mishra's enterprise memory stack and validated by multiple academic papers (arXiv 2603.17787 "Governed Memory," arXiv 2603.29194 multi-layer memory evaluation). The pattern is converging across Redis Agent Memory Server, LangGraph, and enterprise deployments.
+
+**Field evidence for the gating requirement (2026-07,
+`rebuilt-hermes-memory-in-claude-code.md`):** Hermes' self-rewriting loop — its
+best-known feature — is also its most reported failure: the agent overestimates the
+quality of its own edits and overwrites good information (including operator-written
+content) when curating its own memory and skills. Users responded by bolting on exactly
+this pattern after the fact: approval gates and rollback. Simon Scrapes' Claude Code
+rebuild bakes the governance in up-front via user-editable promotion rules (the operator
+owns the promotion policy; the agent executes it) — an instance of the "who owns the
+promotion policy" boundary question, and independent corroboration of the engine's
+generator-assessor separation and per-proposal gating in the ruled IB-176 promotion
+pipeline.
 
 ## Potential Failure Modes
 

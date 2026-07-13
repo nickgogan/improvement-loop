@@ -28,9 +28,13 @@ related_findings:
   rel: enables
 - file: distribution-as-floor-raising-one-click-skill-buttons.md
   rel: same-problem
+- file: mdx-visual-plans-with-reusable-components.md
+  rel: extended-by
+- file: visual-recap-post-execution-mirror-artifact.md
+  rel: extended-by
 proposals: null
 date_discovered: '2026-05-25'
-last_updated: '2026-07-12'
+last_updated: '2026-07-13'
 pipeline_status: synthesized
 consumed_by:
 - defending-agent-context.md

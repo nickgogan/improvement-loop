@@ -14,6 +14,7 @@ applicability:
 adopted_in: []
 sources:
 - careerbuddy-ops-self-improve.md
+- codex-your-first-personal-ai-agent-delegation-loop.md
 related_findings:
 - file: self-improving-skill-lessons-log.md
   rel: extends
@@ -28,7 +29,7 @@ related_findings:
 - file: meta-skill-authoring-prior-dominance.md
   rel: extended-by
 date_discovered: '2026-04-20'
-last_updated: '2026-07-12'
+last_updated: '2026-07-13'
 pipeline_status: synthesized
 consumed_by:
 - agent-design-patterns.md
@@ -67,6 +68,18 @@ The open solution space now has a production implementation that deliberately co
 - **Meta-layer routing** (Superpowers-style): large rewrites and eval-set authoring dispatch to a `meta-skill-author` skill; the loop owns raw material, never the method — see `self-improvement-dispatch-table-route-never-reimplement.md`.
 
 Live store evidence: 20 lessons and 16 gated proposals accumulated in ~5 days of sessions (2026-07-06 → 07-11), including lessons about — and gated fixes to — the store's own schema. The "automated lesson promotion" improvement suggested above shipped there as an explicit threshold rule (N=2 normal / 1 high severity, human gate intact).
+
+## Practitioner corroboration — corrections-to-skill compounding test (Nate B Jones, 2026-06-12)
+
+An independent operator-level statement of the promotion trigger: "If I correct Codex
+once, that's just a chat that I had. If I turn the correction into a skill, into a
+checklist, into a reusable instruction, the work begins to compound." His scan rule —
+every time you find yourself giving the same correction, writing the same setup note,
+or asking for the same kind of review, ask whether it should become a skill, a standing
+workflow, an automation, or a memory — matches CareerBuddy's shipped N=2 recurrence
+threshold from the human-behavior side. Flagged at the 2026-07-13 triage gate as a
+**Phase 4 interview / IB-176 design input** (the correction stream is raw material for
+the layered-memory design's promotion path), not a new mechanism.
 
 ## Potential Failure Modes
 - Self-modifying skills can introduce errors (OB1 risk)
