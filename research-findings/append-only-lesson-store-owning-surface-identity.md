@@ -20,6 +20,8 @@ related_findings:
 pipeline_status: synthesized
 consumed_by:
   - "session-persistence-and-memory.md"
+  - "templates/lesson-store-entry-schema.md"
+  - "rules/pruning-is-status-change-never-deletion.md"
 tags:
 - lesson-store
 - append-only
@@ -64,3 +66,7 @@ CareerBuddy's `ops-self-improve` skill maintains a central store at `ops/self/` 
 - Without the identity rule, one recurring idiom becomes N near-identical entries (CareerBuddy hit exactly this in `eval-candidates.md` before adding a dedup rule as L-19/P-15).
 - Append-only files still grow; the ~50-open pruning trigger and section compaction are load-bearing, not optional.
 - Owning-surface misidentification sends the fix to the wrong file — CareerBuddy treats a declined proposal as signal the surface was misidentified.
+
+## Extraction Note — 2026-07-13
+Extracted as **template**: [[lesson-store-entry-schema]] in `extracts/templates/` (DD-100 create-new, false-positive override — distinct object from the per-skill [[skill-self-improvement-lessons-log-template]]).
+Extracted as **rule**: [[pruning-is-status-change-never-deletion]] in `extracts/rules/` (DD-97 create-new, false-positive override — the matched [[append-only-no-edit-delete-log-invariant]] governs run logs and forbids a mutable status field; this rule governs a lesson store and requires one).

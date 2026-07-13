@@ -9,7 +9,7 @@ Nothing here is auto-extracted; rows feed `/extract-artifacts` only after Nick r
 |---|---|---|---|---|---|
 | 2026-07-13 | extracted | skill | [[file-mediated-subagent-handoff-workspace]] | "sdd-handoff-workspace-scripts" | extracted to [[sdd-handoff-workspace-scripts]] |
 | 2026-07-13 | extracted | rule | [[append-only-context-updates-system-reminder-injection]] | "never-mutate-cached-prompt-prefix" | extracted to [[never-mutate-cached-prompt-prefix]] |
-| 2026-07-13 | nick-approved | template | [[append-only-context-updates-system-reminder-injection]] | "static-first-prompt-layering-stack" | extract via /extract-artifacts |
+| 2026-07-13 | extracted | template | [[append-only-context-updates-system-reminder-injection]] | "static-first-prompt-layering-stack" | extracted to [[seven-layer-prompt-assembly-with-cache-control-v2]] |
 | 2026-07-13 | extracted | rule | [[derive-dont-edit-artifacts-as-log-renders]] | "derived-artifacts-single-writer-rule" | extracted to [[derived-artifacts-single-writer-rule]] |
 | 2026-07-13 | extracted | skill | [[memory-file-to-skill-migration]] | "memory-file-to-skill-migration-pass" | extracted to [[memory-file-to-skill-migration-pass]] |
 | 2026-07-13 | extracted | rule | [[skill-pruning-failure-modes-noop-deletion-test]] | "deletion-test-for-no-op-instructions" | extracted to [[deletion-test-for-no-op-instructions]] |
@@ -50,7 +50,7 @@ Nothing here is auto-extracted; rows feed `/extract-artifacts` only after Nick r
 ### append-only-context-updates-system-reminder-injection::template::static-first-prompt-layering-stack
 
 - **Date queued:** 2026-07-13
-- **Status:** nick-approved
+- **Status:** extracted
 - **Target form:** template
 - **Source finding:** [[append-only-context-updates-system-reminder-injection]]
 - **Source excerpt:**
@@ -61,8 +61,8 @@ Nothing here is auto-extracted; rows feed `/extract-artifacts` only after Nick r
 - **Codifier's reading:** A structural scaffold meant for rendering — a fixed four-layer ordering with named slots for harness/subagent prompt assembly. The finding itself proposes codifying it as a template ("Codify the four-layer static-first stack as a template for our subagent prompt assembly").
 - **Suggested headline:** static-first-prompt-layering-stack
 - **Recommendation:** extract via /extract-artifacts
-- **Resolution:**
-- Pending version-bump 2026-07-13 — Session 146 — [[defending-agent-context.harvest-queue]] — DD-100 version-bump proposal emitted at [[operations/version-bump-proposals/2026-07-13-version-bump-proposals]]; primary match [[seven-layer-prompt-assembly-with-cache-control]] (current version v1); proposed filename `seven-layer-prompt-assembly-with-cache-control-v2.md`. On Nick ruling: re-invoke `/extract-artifacts --harvest-row append-only-context-updates-system-reminder-injection::template::static-first-prompt-layering-stack` AFTER updating the existing template (or with the proposal applied as instruction) — Step 1.8 Branch A match-disambiguation then routes to the version-bump write path; row Status flips to `extracted` and Resolution to `version-bumped to [[seven-layer-prompt-assembly-with-cache-control-v2]]` post-write.
+- **Resolution:** extracted to [[seven-layer-prompt-assembly-with-cache-control-v2]]
+- Extracted 2026-07-13 — Session 146 — [[defending-agent-context.harvest-queue]] — DD-100 version-bump (RULED session 146) folded this finding into the existing template [[seven-layer-prompt-assembly-with-cache-control]] (v1) as v2 [[seven-layer-prompt-assembly-with-cache-control-v2]], evolving it along three axes: harness-scope cache-tier column, append-only update-discipline section + invariant (cross-linked [[never-mutate-cached-prompt-prefix]]), and a provider-agnostic four-layer variation-axis default. v1 left byte-untouched per DD-100.
 
 ### derive-dont-edit-artifacts-as-log-renders::rule::derived-artifacts-single-writer-rule
 

@@ -4,9 +4,9 @@ target_system:
   - "improvement-loop"
 generated_by: "/extract-artifacts"
 date: "2026-07-13"
-identification_report: "agent-design-patterns.harvest-queue"
-total_rule_skill_candidates: 1
-proposals_emitted: 1
+identification_report: "agent-design-patterns.harvest-queue; session-persistence-and-memory.harvest-queue"
+total_rule_skill_candidates: 2
+proposals_emitted: 2
 no_match_passthrough: 0
 forms_scanned:
   - "rules"
@@ -14,9 +14,30 @@ forms_scanned:
 
 # Extension Proposals — 2026-07-13
 
-One rule candidate scanned (harvest-queue promotion mode, DD-101, single row). The DD-97 corpus scan over `extracts/rules/` found a strong semantic match against the existing cache-stability rule family; one extension proposal is emitted and zero findings pass through to drafting. Source: `agent-design-patterns.harvest-queue.md` row `cache-stable-progressive-disclosure-catalog::rule::byte-stable-disclosure-catalog` (Status `nick-approved`). Forms scanned: rules. Per DD-97 §Rules #3 this report proposes only — no existing artifact is modified here; Nick rules the merge target.
+Two rule candidates scanned across two harvest-queue promotion runs (DD-101, session 146). The DD-97 corpus scan over `extracts/rules/` found a semantic match for each; two extension proposals are emitted and zero findings pass through to drafting. Sources: `agent-design-patterns.harvest-queue.md` (row `cache-stable-progressive-disclosure-catalog::rule::byte-stable-disclosure-catalog`) and `session-persistence-and-memory.harvest-queue.md` (row `append-only-lesson-store-owning-surface-identity::rule::pruning-is-status-change-never-deletion`), both Status `nick-approved`. Forms scanned: rules. Per DD-97 §Rules #3 this report proposes only — no existing artifact is modified here; Nick rules the merge target. Blocks are in candidate-stem alphabetical order.
 
 ## Proposals
+
+### append-only-lesson-store-owning-surface-identity
+
+**Form:** rule
+**Existing artifact (primary match):** [[append-only-no-edit-delete-log-invariant]]
+**Secondary matches:** [[audit-log-append-only-never-overwritten]]
+
+**Codifier recommendation:** create new (false positive)
+
+**Why this match:** All three rules sit in the append-only / never-delete family: the store only grows, and removal-of-information is forbidden and replaced by a status-or-event change rather than a hard delete. The candidate ("resolved lesson entries stay in the file as the durable record; pruning is an operator-approved status change, never a deletion; status transitions are a closed enum `open → promoted|declined`, `open|declined → pruned`") shares that core invariant with `append-only-no-edit-delete-log-invariant` (no edit/delete op on the store) and with `audit-log-append-only-never-overwritten` (entries never modified or deleted). The DD-97 loose scan flags the family overlap.
+
+**Diff sketch (recommendation is create-new, so this is the merge sketch only if Nick overrides):**
+
+If Nick ruled *extend* on the primary match, the appended Evidence row on `append-only-no-edit-delete-log-invariant` would cite the lesson-store finding as a second convergence point for never-delete discipline. **However, the honest recommendation is create-new**, because the candidate is in genuine tension with the primary match's enforcement model:
+
+- `append-only-no-edit-delete-log-invariant` governs *run logs / working memory* and its scope note **explicitly excludes lesson stores** ("long-term memory stores (lesson stores, changelogs) are downstream promotion targets, not run logs"). It also *forbids a mutable status field* ("lifecycle state is recorded as event entries in the stream, never as a mutable status field").
+- The candidate governs a *lesson store* and *requires a mutable status field* that transitions in place (`open → promoted|declined|pruned`). That is the opposite enforcement primitive — status-transition-on-a-field vs append-only-event-stream — over a different object that the primary match already carved out of its own scope.
+
+So a dedicated rule (`pruning-is-status-change-never-deletion`, scoped to promotion-lifecycle lesson/knowledge stores) is the coherent home for the candidate; it is a sibling in the never-delete family, not an extension of either existing rule.
+
+**Notes:** Recommendation **create new (false positive)**. The two existing rules are legitimate corpus neighbors (shared never-delete invariant) but govern different objects with a different enforcement primitive (append-only event stream vs closed status-transition enum on a mutable field), and the primary match explicitly scopes lesson stores out. Surfaced per DD-97's loose calibration rather than silently drafting a third never-delete rule without flagging the family. If Nick concurs, re-invoke `/extract-artifacts --harvest-row append-only-lesson-store-owning-surface-identity::rule::pruning-is-status-change-never-deletion` to write the new rule. Per DD-97 v1 no artifact is created or modified here.
 
 ### cache-stable-progressive-disclosure-catalog
 

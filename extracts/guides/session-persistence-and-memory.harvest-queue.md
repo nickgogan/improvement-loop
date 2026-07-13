@@ -8,9 +8,9 @@ Nothing here is auto-extracted; rows feed `/extract-artifacts` only after Nick r
 | Date queued | Status | Target form | Source finding | Suggested headline | Recommendation |
 |---|---|---|---|---|---|
 | 2026-07-13 | extracted | rule | [[append-only-run-log-as-working-memory]] | "append-only-no-edit-delete-log-invariant" | extracted to [[append-only-no-edit-delete-log-invariant]] |
-| 2026-07-13 | nick-approved | template | [[append-only-lesson-store-owning-surface-identity]] | "lesson-store-entry-schema" | extract via /extract-artifacts |
-| 2026-07-13 | nick-approved | rule | [[append-only-lesson-store-owning-surface-identity]] | "pruning-is-status-change-never-deletion" | extract via /extract-artifacts |
-| 2026-07-13 | nick-approved | rule | [[derive-dont-edit-artifacts-as-log-renders]] | "one-writer-per-artifact-derive-dont-edit" | extract via /extract-artifacts |
+| 2026-07-13 | extracted | template | [[append-only-lesson-store-owning-surface-identity]] | "lesson-store-entry-schema" | extracted to [[lesson-store-entry-schema]] |
+| 2026-07-13 | extracted | rule | [[append-only-lesson-store-owning-surface-identity]] | "pruning-is-status-change-never-deletion" | extracted to [[pruning-is-status-change-never-deletion]] |
+| 2026-07-13 | extracted | rule | [[derive-dont-edit-artifacts-as-log-renders]] | "one-writer-per-artifact-derive-dont-edit" | merged into [[derived-artifacts-single-writer-rule]] |
 | 2026-07-13 | nick-dismissed | template | [[memory-system-evaluation-triad-storage-injection-recall]] | "memory-system-triad-scorecard" | dismissed |
 
 ## Per-row details
@@ -35,7 +35,7 @@ Extracted 2026-07-13 — Session 146 — [[session-persistence-and-memory.harves
 ### append-only-lesson-store-owning-surface-identity::template::lesson-store-entry-schema
 
 - **Date queued:** 2026-07-13
-- **Status:** nick-approved
+- **Status:** extracted
 - **Target form:** template
 - **Source finding:** [[append-only-lesson-store-owning-surface-identity]]
 - **Source excerpt:**
@@ -46,12 +46,14 @@ Extracted 2026-07-13 — Session 146 — [[session-persistence-and-memory.harves
 - **Codifier's reading:** A structural scaffold with named required fields and a closed status enum — directly renderable as a fillable lesson-entry template; relevant to the IB-172/IB-176 lessons.md design.
 - **Suggested headline:** lesson-store-entry-schema
 - **Recommendation:** extract via /extract-artifacts
-- **Resolution:**
+- **Resolution:** extracted to [[lesson-store-entry-schema]]
+
+Extracted 2026-07-13 — Session 146 — [[session-persistence-and-memory.harvest-queue]] — to [[lesson-store-entry-schema]]. DD-100 create-new ruled (false-positive override): distinct object from the per-skill [[skill-self-improvement-lessons-log-template]] — a central cross-cutting lesson STORE keyed by (owning surface, failure pattern) with occurrence-dedup and a closed status lifecycle, not the per-skill co-located LOG. New baseline template written; no version bump.
 
 ### append-only-lesson-store-owning-surface-identity::rule::pruning-is-status-change-never-deletion
 
 - **Date queued:** 2026-07-13
-- **Status:** nick-approved
+- **Status:** extracted
 - **Target form:** rule
 - **Source finding:** [[append-only-lesson-store-owning-surface-identity]]
 - **Source excerpt:**
@@ -61,12 +63,14 @@ Extracted 2026-07-13 — Session 146 — [[session-persistence-and-memory.harves
 - **Codifier's reading:** Imperative, binary-checkable directive (entries never deleted; only enumerated status transitions permitted) — machine-enforceable over any lesson-store file.
 - **Suggested headline:** pruning-is-status-change-never-deletion
 - **Recommendation:** extract via /extract-artifacts
-- **Resolution:**
+- **Resolution:** extracted to [[pruning-is-status-change-never-deletion]]
+
+Extracted 2026-07-13 — Session 146 — [[session-persistence-and-memory.harvest-queue]] — to [[pruning-is-status-change-never-deletion]]. DD-97 create-new ruled (false-positive override): the matched [[append-only-no-edit-delete-log-invariant]] governs run logs, explicitly scopes lesson stores OUT, and forbids a mutable status field — the candidate governs a lesson store and REQUIRES a status-transition-on-a-field primitive (opposite primitives, distinct object). New rule written; no merge.
 
 ### derive-dont-edit-artifacts-as-log-renders::rule::one-writer-per-artifact-derive-dont-edit
 
 - **Date queued:** 2026-07-13
-- **Status:** nick-approved
+- **Status:** extracted
 - **Target form:** rule
 - **Source finding:** [[derive-dont-edit-artifacts-as-log-renders]]
 - **Source excerpt:**
@@ -76,7 +80,7 @@ Extracted 2026-07-13 — Session 146 — [[session-persistence-and-memory.harves
 - **Codifier's reading:** The finding itself names this "a write-discipline rule pair" — imperative directives (never hand-edit derived artifacts; exactly one writer per artifact) with a structural enforcement path (overwrite-on-derive).
 - **Suggested headline:** one-writer-per-artifact-derive-dont-edit
 - **Recommendation:** extract via /extract-artifacts
-- **Resolution:**
+- **Resolution:** merged into [[derived-artifacts-single-writer-rule]]
 
 ### memory-system-evaluation-triad-storage-injection-recall::template::memory-system-triad-scorecard
 

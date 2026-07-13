@@ -37,6 +37,7 @@ pipeline_status: "synthesized"
 consumed_by:
   - "defending-agent-context.md"
   - "rules/never-mutate-cached-prompt-prefix.md"
+  - "extracts/templates/seven-layer-prompt-assembly-with-cache-control-v2.md"
 ---
 
 ## What It Is
@@ -84,3 +85,4 @@ First-party production practice in Claude Code. The team attributes their abilit
 
 ## Extraction Note — 2026-07-13
 Extracted as **rule**: [[never-mutate-cached-prompt-prefix]] in `extracts/rules/` (harvest-queue promotion, DD-101)
+Folded as **template v2** via DD-100 version-bump (RULED session 146): [[seven-layer-prompt-assembly-with-cache-control-v2]] in `extracts/templates/`, evolving v1 [[seven-layer-prompt-assembly-with-cache-control]] along three axes (cache-tier column, append-only update discipline, provider-agnostic four-layer default). v1 left byte-untouched.
