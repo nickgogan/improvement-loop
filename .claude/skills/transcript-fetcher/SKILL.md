@@ -1,7 +1,7 @@
 ---
 name: transcript-fetcher
 description: >-
-  Fetch YouTube video transcripts as timestamped markdown files for research-loop
+  Fetch YouTube video transcripts as full-text markdown files for research-loop
   Pass 2 deep extraction. Wraps the Python transcript fetcher tool. Use when the
   research-loop needs full transcript text for a high-value video source, or when
   the user provides YouTube URLs and wants transcripts fetched.
@@ -12,7 +12,7 @@ argument-hint: "<url1> [url2] [url3] ..."
 
 # Transcript Fetcher
 
-Fetch YouTube video transcripts and save them as timestamped markdown files for downstream research-loop processing.
+Fetch YouTube video transcripts and save them as full-text markdown files for downstream research-loop processing.
 
 ## When to Use This Skill
 
@@ -110,8 +110,8 @@ ls -la systems/improvement-loop/app/transcript-fetcher/transcripts/
 ```
 
 Each transcript file contains:
-- Full concatenated text (for quick reading)
-- Timestamped segments (for precise citation)
+- A metadata header (title, channel, duration, upload date, segment count)
+- Full concatenated text
 
 ### Step 3b: Fallback Chain
 
@@ -203,17 +203,12 @@ Output files are markdown with this structure:
 ## Full Text
 
 [Complete concatenated transcript text]
-
----
-
-## Timestamped Segments
-
-**[0:00]** First segment text
-
-**[0:15]** Next segment text
-
-...
 ```
+
+Full text only — no timestamped-segments section. Downstream consumers read for
+content; no finding has ever cited a timestamp, and the section tripled file
+size (ruled 2026-07-13). Timestamps remain available at fetch time if a
+citation need ever materializes.
 
 ## Limitations
 

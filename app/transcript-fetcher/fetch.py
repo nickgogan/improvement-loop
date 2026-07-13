@@ -518,11 +518,65 @@ def fetch_transcript_browser(url: str, pw_ctx=None):
                 pass
             page.wait_for_timeout(1000)
 
-            # Click Show transcript
-            page.evaluate(
-                'document.querySelector("button[aria-label=\\"Show transcript\\"]")?.click()'
+            # Click Show transcript — must be a real (trusted) click; JS
+            # .click() silently no-ops when the button isn't rendered yet
+            opened = False
+            for sel in (
+                'button[aria-label="Show transcript"]',
+                "ytd-video-description-transcript-section-renderer button",
+            ):
+                try:
+                    btn = page.locator(sel).first
+                    btn.scroll_into_view_if_needed(timeout=4000)
+                    btn.click(timeout=4000)
+                    opened = True
+                    break
+                except Exception:
+                    continue
+            if not opened:
+                raise RuntimeError(
+                    f"Could not find a 'Show transcript' button for {video_id}"
+                )
+            # Segments load via a continuation request after the panel opens —
+            # a fixed pause captures the spinner instead of the segments, so
+            # wait for either DOM format to actually render
+            SEGMENT_SEL = "ytd-transcript-segment-renderer, transcript-segment-view-model"
+            PANEL_SEL = (
+                "ytd-engagement-panel-section-list-renderer"
+                '[target-id="engagement-panel-searchable-transcript"]'
             )
-            page.wait_for_timeout(5000)
+
+            def segments_present(timeout_ms):
+                try:
+                    page.wait_for_selector(SEGMENT_SEL, timeout=timeout_ms)
+                    return True
+                except Exception:
+                    return False
+
+            if not segments_present(8000):
+                # YT bug: the panel spinner can spin indefinitely on first
+                # open. Workaround (per Nick): toggle Chapters -> Transcript
+                # to re-issue the continuation request. JS .click() is
+                # ignored by the chip components — use real Playwright
+                # clicks (trusted mouse events).
+                panel = page.locator(PANEL_SEL)
+                for _ in range(3):
+                    try:
+                        panel.locator('button[aria-label="Chapters"]').first.click(
+                            timeout=3000
+                        )
+                        page.wait_for_timeout(1500)
+                        panel.locator('button[aria-label="Transcript"]').first.click(
+                            timeout=3000
+                        )
+                    except Exception:
+                        pass  # chips absent (e.g. no chapters) — keep waiting
+                    if segments_present(8000):
+                        break
+
+            # No scrolling needed: once rendered, the segment list holds the
+            # entire transcript in the DOM (confirmed by inspection)
+            page.wait_for_timeout(500)
 
             # Capture the transcript panel HTML (fall back to the full page)
             html = page.evaluate(
@@ -590,6 +644,9 @@ def write_transcript_markdown(result: dict, output_dir: Path, meta: dict = None)
             lines.append(f"**Duration:** {format_timestamp(meta['duration'])}")
         if meta.get("upload_date"):
             lines.append(f"**Uploaded:** {meta['upload_date']}")
+    # Full text only — no timestamped-segments section. Downstream consumers
+    # (link-intake triage, Pass 2 extraction) read for content; no finding has
+    # ever cited a timestamp, and the section tripled file size (ruled 2026-07-13).
     lines += [
         "",
         "---",
@@ -598,16 +655,7 @@ def write_transcript_markdown(result: dict, output_dir: Path, meta: dict = None)
         "",
         result["text"],
         "",
-        "---",
-        "",
-        "## Timestamped Segments",
-        "",
     ]
-
-    for seg in result["segments"]:
-        ts = format_timestamp(seg["start"])
-        lines.append(f"**[{ts}]** {seg['text']}")
-        lines.append("")
 
     filepath.write_text("\n".join(lines), encoding="utf-8")
     return filepath
