@@ -7,8 +7,8 @@ Nothing here is auto-extracted; rows feed `/extract-artifacts` only after Nick r
 
 | Date queued | Status | Target form | Source finding | Suggested headline | Recommendation |
 |---|---|---|---|---|---|
-| 2026-07-13 | nick-approved | template | [[plans-that-carry-their-own-contract]] | "plan-carried-contract-blocks" | extract via /extract-artifacts |
-| 2026-07-13 | nick-approved | template | [[war-game-plan-format-for-executor-handoff]] | "war-game-plan-scaffold" | extract via /extract-artifacts |
+| 2026-07-13 | extracted | template | [[plans-that-carry-their-own-contract]] | "plan-carried-contract-blocks" | extracted to [[plan-carried-contract-blocks]] |
+| 2026-07-13 | extracted | template | [[war-game-plan-format-for-executor-handoff]] | "war-game-plan-scaffold" | extracted to [[war-game-plan-scaffold]] |
 | 2026-07-13 | nick-approved | skill | [[human-ai-seam-identification-three-question-rubric]] | "seam-map-delegation-rubric" | extract via /extract-artifacts |
 | 2026-07-13 | queued | rule | [[role-registry-prompt-hook-routing-backstop]] | "fail-open-routing-hook-invariants" | dismiss as inline |
 
@@ -17,7 +17,7 @@ Nothing here is auto-extracted; rows feed `/extract-artifacts` only after Nick r
 ### plans-that-carry-their-own-contract::template::plan-carried-contract-blocks
 
 - **Date queued:** 2026-07-13
-- **Status:** nick-approved
+- **Status:** extracted
 - **Target form:** template
 - **Source finding:** [[plans-that-carry-their-own-contract]]
 - **Source excerpt:**
@@ -27,12 +27,14 @@ Nothing here is auto-extracted; rows feed `/extract-artifacts` only after Nick r
 - **Codifier's reading:** The Global Constraints header, Interfaces block, and sealed-frontmatter manifest are structural scaffolds meant for rendering with fillable slots — template form per the rubric (structural form, placeholder fields). This is the exact co-occurrence flagged in the 2026-07-13 identification report (candidate #4).
 - **Suggested headline:** plan-carried-contract-blocks
 - **Recommendation:** extract via /extract-artifacts
-- **Resolution:**
+- **Resolution:** extracted to [[plan-carried-contract-blocks]]
+
+Extracted 2026-07-13 — Session 146 — [[writing-agent-specifications.harvest-queue]] — to [[plan-carried-contract-blocks]].
 
 ### war-game-plan-format-for-executor-handoff::template::war-game-plan-scaffold
 
 - **Date queued:** 2026-07-13
-- **Status:** nick-approved
+- **Status:** extracted
 - **Target form:** template
 - **Source finding:** [[war-game-plan-format-for-executor-handoff]]
 - **Source excerpt:**
@@ -40,8 +42,7 @@ Nothing here is auto-extracted; rows feed `/extract-artifacts` only after Nick r
 - **Codifier's reading:** A fixed per-move field set plus mandatory ledger and abort-condition sections is a structural scaffold with named slots — template form. The finding's own Potential Improvements says "standardize the ledger/abort-condition sections as a template." (This guide's Plan Handoff Contract template absorbs a merged variant; a standalone war-game template with the authoring prompt is the residual candidate.)
 - **Suggested headline:** war-game-plan-scaffold
 - **Recommendation:** extract via /extract-artifacts
-- **Resolution:**
-
+- **Resolution:** extracted to [[war-game-plan-scaffold]]
 ### human-ai-seam-identification-three-question-rubric::skill::seam-map-delegation-rubric
 
 - **Date queued:** 2026-07-13

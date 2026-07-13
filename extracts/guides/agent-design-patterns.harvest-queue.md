@@ -7,8 +7,8 @@ Nothing here is auto-extracted; rows feed `/extract-artifacts` only after Nick r
 
 | Date queued | Status | Target form | Source finding | Suggested headline | Recommendation |
 |---|---|---|---|---|---|
-| 2026-07-13 | nick-approved | template | [[capability-as-agent-composition-primitive]] | "composition-unit-bundle-scaffold" | extract via /extract-artifacts |
-| 2026-07-13 | nick-approved | rule | [[disclosure-granularity-decision-rubric]] | "eager-prompt-whitelist" | extract via /extract-artifacts |
+| 2026-07-13 | extracted | template | [[capability-as-agent-composition-primitive]] | "composition-unit-bundle-scaffold" | extracted to [[composition-unit-bundle-scaffold]] |
+| 2026-07-13 | extracted | rule | [[disclosure-granularity-decision-rubric]] | "eager-prompt-whitelist" | extracted to [[eager-prompt-whitelist]] |
 | 2026-07-13 | nick-approved | rule | [[cache-stable-progressive-disclosure-catalog]] | "byte-stable-disclosure-catalog" | extract via /extract-artifacts |
 
 ## Per-row details
@@ -16,7 +16,7 @@ Nothing here is auto-extracted; rows feed `/extract-artifacts` only after Nick r
 ### capability-as-agent-composition-primitive::template::composition-unit-bundle-scaffold
 
 - **Date queued:** 2026-07-13
-- **Status:** nick-approved
+- **Status:** extracted
 - **Target form:** template
 - **Source finding:** [[capability-as-agent-composition-primitive]]
 - **Source excerpt:**
@@ -29,12 +29,14 @@ Nothing here is auto-extracted; rows feed `/extract-artifacts` only after Nick r
 - **Codifier's reading:** The bundle enumeration is a structural scaffold with named slots (instructions / tools / hooks / guardrails / settings) meant for rendering per responsibility — template shape per the form rubric. The 2026-07-13 identification report independently flagged this template co-occurrence.
 - **Suggested headline:** composition-unit-bundle-scaffold
 - **Recommendation:** extract via /extract-artifacts
-- **Resolution:**
+- **Resolution:** extracted to [[composition-unit-bundle-scaffold]]
+
+Extracted 2026-07-13 — Session 146 — [[agent-design-patterns.harvest-queue]] — to [[composition-unit-bundle-scaffold]].
 
 ### disclosure-granularity-decision-rubric::rule::eager-prompt-whitelist
 
 - **Date queued:** 2026-07-13
-- **Status:** nick-approved
+- **Status:** extracted
 - **Target form:** rule
 - **Source finding:** [[disclosure-granularity-decision-rubric]]
 - **Source excerpt:**
@@ -44,8 +46,7 @@ Nothing here is auto-extracted; rows feed `/extract-artifacts` only after Nick r
 - **Codifier's reading:** A closed positive-space boundary ("eager content must be one of four categories") — machine-checkable and lintable; the finding itself proposes lint integration. Rule shape per the form rubric's deterministic-enforceable criterion.
 - **Suggested headline:** eager-prompt-whitelist
 - **Recommendation:** extract via /extract-artifacts
-- **Resolution:**
-
+- **Resolution:** extracted to [[eager-prompt-whitelist]]
 ### cache-stable-progressive-disclosure-catalog::rule::byte-stable-disclosure-catalog
 
 - **Date queued:** 2026-07-13

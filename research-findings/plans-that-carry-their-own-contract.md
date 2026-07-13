@@ -44,6 +44,7 @@ last_updated: "2026-07-13"
 pipeline_status: "synthesized"
 consumed_by:
   - "writing-agent-specifications.md"
+  - "templates/plan-carried-contract-blocks.md"
 tags:
   - "intent-engineering"
   - "plan-contracts"
@@ -119,3 +120,6 @@ v6.10.0 — see [[bmad-method-analysis]].
   freeze design decisions an implementer would legitimately revise.
 - **Plan bloat** — carried contracts grow plans; right-sizing guidance is the
   counterweight that keeps per-task briefs extractable.
+
+## Extraction Note — 2026-07-13
+Extracted as **template**: [[plan-carried-contract-blocks]] in `extracts/templates/`

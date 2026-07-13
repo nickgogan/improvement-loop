@@ -7,8 +7,8 @@ Nothing here is auto-extracted; rows feed `/extract-artifacts` only after Nick r
 
 | Date queued | Status | Target form | Source finding | Suggested headline | Recommendation |
 |---|---|---|---|---|---|
-| 2026-07-13 | nick-approved | skill | [[file-mediated-subagent-handoff-workspace]] | "sdd-handoff-workspace-scripts" | extract via /extract-artifacts |
-| 2026-07-13 | nick-approved | rule | [[append-only-context-updates-system-reminder-injection]] | "never-mutate-cached-prompt-prefix" | extract via /extract-artifacts |
+| 2026-07-13 | extracted | skill | [[file-mediated-subagent-handoff-workspace]] | "sdd-handoff-workspace-scripts" | extracted to [[sdd-handoff-workspace-scripts]] |
+| 2026-07-13 | extracted | rule | [[append-only-context-updates-system-reminder-injection]] | "never-mutate-cached-prompt-prefix" | extracted to [[never-mutate-cached-prompt-prefix]] |
 | 2026-07-13 | nick-approved | template | [[append-only-context-updates-system-reminder-injection]] | "static-first-prompt-layering-stack" | extract via /extract-artifacts |
 | 2026-07-13 | nick-approved | rule | [[derive-dont-edit-artifacts-as-log-renders]] | "derived-artifacts-single-writer-rule" | extract via /extract-artifacts |
 | 2026-07-13 | nick-approved | skill | [[memory-file-to-skill-migration]] | "memory-file-to-skill-migration-pass" | extract via /extract-artifacts |
@@ -19,7 +19,7 @@ Nothing here is auto-extracted; rows feed `/extract-artifacts` only after Nick r
 ### file-mediated-subagent-handoff-workspace::skill::sdd-handoff-workspace-scripts
 
 - **Date queued:** 2026-07-13
-- **Status:** nick-approved
+- **Status:** extracted
 - **Target form:** skill
 - **Source finding:** [[file-mediated-subagent-handoff-workspace]]
 - **Source excerpt:**
@@ -31,12 +31,11 @@ Nothing here is auto-extracted; rows feed `/extract-artifacts` only after Nick r
 - **Codifier's reading:** Procedures with defined inputs/outputs and an invocation contract (task-brief PLAN N; review-package BASE HEAD) — ordered, callable, stateless steps instantiating the pattern; matches the form rubric's skill criteria. Flagged as skill co-occurrence in the 2026-07-13 identification report.
 - **Suggested headline:** sdd-handoff-workspace-scripts
 - **Recommendation:** extract via /extract-artifacts
-- **Resolution:**
-
+- **Resolution:** extracted to [[sdd-handoff-workspace-scripts]]
 ### append-only-context-updates-system-reminder-injection::rule::never-mutate-cached-prompt-prefix
 
 - **Date queued:** 2026-07-13
-- **Status:** nick-approved
+- **Status:** extracted
 - **Target form:** rule
 - **Source finding:** [[append-only-context-updates-system-reminder-injection]]
 - **Source excerpt:**
@@ -47,8 +46,7 @@ Nothing here is auto-extracted; rows feed `/extract-artifacts` only after Nick r
 - **Codifier's reading:** Imperative directive ("never mutate the prefix; append instead") with a machine-checkable boundary — prefix byte-identity across turns is lintable. Rule-shaped per the form rubric's deterministic-enforceability criterion.
 - **Suggested headline:** never-mutate-cached-prompt-prefix
 - **Recommendation:** extract via /extract-artifacts
-- **Resolution:**
-
+- **Resolution:** extracted to [[never-mutate-cached-prompt-prefix]]
 ### append-only-context-updates-system-reminder-injection::template::static-first-prompt-layering-stack
 
 - **Date queued:** 2026-07-13

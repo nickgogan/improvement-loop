@@ -36,6 +36,7 @@ last_updated: "2026-07-13"
 pipeline_status: "synthesized"
 consumed_by:
   - "defending-agent-context.md"
+  - "rules/never-mutate-cached-prompt-prefix.md"
 ---
 
 ## What It Is
@@ -80,3 +81,6 @@ First-party production practice in Claude Code. The team attributes their abilit
 - **Reminder blindness:** corrections appended late in a long conversation compete with the (stale) prefix; the model may keep trusting the cached statement
 - **Reminder accumulation:** repeated system-reminders bloat the message log, spending the tokens the cache saved
 - **Stale-prefix hazards:** genuinely wrong prefix content (e.g., a deleted file still described as present) can only be countermanded, never removed, until compaction
+
+## Extraction Note — 2026-07-13
+Extracted as **rule**: [[never-mutate-cached-prompt-prefix]] in `extracts/rules/` (harvest-queue promotion, DD-101)

@@ -57,6 +57,7 @@ last_updated: "2026-07-13"
 pipeline_status: "synthesized"
 consumed_by:
   - "agent-design-patterns.md"
+  - "templates/composition-unit-bundle-scaffold.md"
 tags:
   - "agent-design"
   - "skills"
@@ -127,3 +128,6 @@ the capability is the framework-native version of the same collapse.
 - **Framework lock-in of the unit itself** — the capability is Pydantic-AI-shaped; teams
   standardizing on it inherit the framework's abstraction tax (see
   `framework-abstraction-tax-for-agents`).
+
+## Extraction Note — 2026-07-13
+Extracted as **template**: [[composition-unit-bundle-scaffold]] in `extracts/templates/` (harvest-queue promotion, DD-101)

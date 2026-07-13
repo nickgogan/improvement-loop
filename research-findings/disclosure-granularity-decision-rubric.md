@@ -39,6 +39,7 @@ last_updated: "2026-07-13"
 pipeline_status: "synthesized"
 consumed_by:
   - "agent-design-patterns.md"
+  - "rules/eager-prompt-whitelist.md"
 tags:
   - "context-engineering"
   - "progressive-disclosure"
@@ -105,3 +106,6 @@ discipline. Source: Observed in
   pay catalog cost without the coherence benefit.
 - **Rubric fossilization** — as models get better at tool search, the shape boundary
   moves; a shipped rubric needs a revision owner.
+
+## Extraction Note — 2026-07-13
+Extracted as **rule**: [[eager-prompt-whitelist]] in `extracts/rules/` (harvest-queue promotion, DD-101)

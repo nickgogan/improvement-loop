@@ -47,6 +47,7 @@ last_updated: "2026-07-13"
 pipeline_status: "synthesized"
 consumed_by:
   - "defending-agent-context.md"
+  - "skills/sdd-handoff-workspace-scripts.md"
 tags:
   - "context-engineering"
   - "subagent-handoffs"
@@ -120,3 +121,6 @@ v6.10.0 — see [[bmad-method-analysis]].
   log is the recovery source).
 - **Convention drift across components** — file-name/section contracts between
   separately-installed modules (BMAD's loop/worker) version independently and can skew.
+
+## Extraction Note — 2026-07-13
+Extracted as **skill**: [[sdd-handoff-workspace-scripts]] in `extracts/skills/` (harvest-queue promotion, DD-101)

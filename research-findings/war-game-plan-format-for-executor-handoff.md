@@ -59,6 +59,7 @@ last_updated: '2026-07-13'
 pipeline_status: synthesized
 consumed_by:
 - writing-agent-specifications.md
+- templates/war-game-plan-scaffold.md
 ---
 
 # War-Game Plan Format for Executor Handoff
@@ -114,3 +115,6 @@ depth. Simulated failures reflect the model's priors, not the actual environment
 real failures still fall outside the tree. Stale war-games drift as the codebase changes.
 Executor-tailoring is only as good as the public documentation of the executor model. A
 war-game that is 90% boilerplate branches can bury the few decision-relevant forks.
+
+## Extraction Note — 2026-07-13
+Extracted as **template**: [[war-game-plan-scaffold]] in `extracts/templates/` (harvest-queue promotion, DD-101)

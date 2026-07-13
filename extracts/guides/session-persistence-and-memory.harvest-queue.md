@@ -7,7 +7,7 @@ Nothing here is auto-extracted; rows feed `/extract-artifacts` only after Nick r
 
 | Date queued | Status | Target form | Source finding | Suggested headline | Recommendation |
 |---|---|---|---|---|---|
-| 2026-07-13 | nick-approved | rule | [[append-only-run-log-as-working-memory]] | "append-only-no-edit-delete-log-invariant" | extract via /extract-artifacts |
+| 2026-07-13 | extracted | rule | [[append-only-run-log-as-working-memory]] | "append-only-no-edit-delete-log-invariant" | extracted to [[append-only-no-edit-delete-log-invariant]] |
 | 2026-07-13 | nick-approved | template | [[append-only-lesson-store-owning-surface-identity]] | "lesson-store-entry-schema" | extract via /extract-artifacts |
 | 2026-07-13 | nick-approved | rule | [[append-only-lesson-store-owning-surface-identity]] | "pruning-is-status-change-never-deletion" | extract via /extract-artifacts |
 | 2026-07-13 | nick-approved | rule | [[derive-dont-edit-artifacts-as-log-renders]] | "one-writer-per-artifact-derive-dont-edit" | extract via /extract-artifacts |
@@ -18,7 +18,7 @@ Nothing here is auto-extracted; rows feed `/extract-artifacts` only after Nick r
 ### append-only-run-log-as-working-memory::rule::append-only-no-edit-delete-log-invariant
 
 - **Date queued:** 2026-07-13
-- **Status:** nick-approved
+- **Status:** extracted
 - **Target form:** rule
 - **Source finding:** [[append-only-run-log-as-working-memory]]
 - **Source excerpt:**
@@ -28,7 +28,9 @@ Nothing here is auto-extracted; rows feed `/extract-artifacts` only after Nick r
 - **Codifier's reading:** Deterministic, machine-enforceable boundary ("no edit/delete operation may exist on a run log") instantiating the pattern's invariant set — flagged as rule co-occurrence in the 2026-07-13 identification report.
 - **Suggested headline:** append-only-no-edit-delete-log-invariant
 - **Recommendation:** extract via /extract-artifacts
-- **Resolution:**
+- **Resolution:** extracted to [[append-only-no-edit-delete-log-invariant]]
+
+Extracted 2026-07-13 — Session 146 — [[session-persistence-and-memory.harvest-queue]] — to [[append-only-no-edit-delete-log-invariant]].
 
 ### append-only-lesson-store-owning-surface-identity::template::lesson-store-entry-schema
 
