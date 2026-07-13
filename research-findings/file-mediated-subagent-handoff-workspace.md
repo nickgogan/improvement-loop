@@ -21,10 +21,13 @@ implementation_notes: |-
   creation (deterministic tooling writes the files, not the orchestrator's prose),
   per-task brief extraction (subagents never see the whole plan), and the documented
   anti-pattern evidence (a 42k-char dispatch that was 99% pasted history).
+  Priority upgraded P3 → P2 (reassessment 2026-07-13, Nick-accepted): C4 three-way
+  independent convergence (superpowers, BMAD, Archon sidecars) + C3 — the engine's
+  handoff-protocol.md and session-137 path+summary ruling are a live adopted variant.
 category: "Context Engineering"
 evidence_strength: "Medium (practitioner-documented)"
 adoption_status: "Partially Adopted"
-priority: "P3 (Monitor)"
+priority: "P2 (Design Required)"
 applicability:
   - "General"
 adopted_in: []

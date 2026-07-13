@@ -1,11 +1,17 @@
 ---
 name: "Platform-Native Harness Over Agent Frameworks"
 summary: "Building an agentic system directly on Claude Code (or equivalent platform) beats dedicated agent frameworks (Hermes, OpenClaw) on three axes: transparency (full visibility into agent behavior), cost (subscription vs. API pricing), and context depth (deep business context integration that frameworks cannot match). The five core capabilities — memory, skills, interaction, scheduling, business context — are identical across all frameworks; the differentiator is the context layer underneath."
-implementation_notes: null
+implementation_notes: |-
+  Priority upgraded Not Flagged → P3 (reassessment 2026-07-13, Nick-accepted): C4
+  one-tier bump on convergence — today's sweep linked it into the pydantic-ai two-lane
+  layering and Archon harness findings; together with
+  framework-abstraction-tax-for-agents it anchors the position the North Star is built
+  on. "Not Flagged" was a bookkeeping artifact of early intake; Already Adopted, so
+  Monitor suffices.
 category: "Agentic Systems"
 evidence_strength: "Medium (practitioner-documented)"
 adoption_status: "Already Adopted"
-priority: "Not Flagged"
+priority: "P3 (Monitor)"
 applicability:
   - "S3 (Claude Code Build)"
   - "General"

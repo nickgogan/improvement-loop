@@ -19,7 +19,12 @@ summary: 'Plain English: a code review answers two different questions — "is t
   implementation loop (his TDD loop dropped to red-green, with refactor moved to review)
 
   so implementation isn''t overloaded.'
-implementation_notes: null
+implementation_notes: |-
+  Caveat (reassessment 2026-07-13, Nick-accepted; P3 kept): contradicted by
+  unified-dual-verdict-reviewer (superpowers measured ~2x faster / ~50% cheaper for
+  the unified shape); unlike two-stage-sequential-review, this is an independent live
+  practice (Pocock v1.1) not deprecated by its originator, so the contradiction is an
+  open trade (parallel-axis separation vs single-read economy), not a supersession.
 category: Evaluation
 evidence_strength: Medium (practitioner-documented)
 adoption_status: Not Yet Started

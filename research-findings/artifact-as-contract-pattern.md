@@ -2,10 +2,16 @@
 name: Artifact-as-Contract Pattern
 summary: In GSD, templates define artifact schemas (PLAN.md, SUMMARY.md, VERIFICATION.md) that serve as inter-phase communication contracts — each artifact is both the output of one phase and the input
   contract for the next, eliminating the need for inter-agent messaging infrastructure.
-implementation_notes: null
+implementation_notes: |-
+  Adoption corrected to Partially Adopted (reassessment 2026-07-13, Nick-accepted; C3
+  mechanical trigger): the engine ships ContractSpec on every staged extract (DD-78)
+  and ContextSpec (DD-92) — a live variant of exactly this pattern; 15 total links
+  (10 inbound) after plans-that-carry-their-own-contract extended it. Flagged for
+  priority review: the extending child now sits at P2, so parent/child parity is the
+  open question for a future pass.
 category: Orchestration
 evidence_strength: Medium (practitioner-documented)
-adoption_status: Not Yet Started
+adoption_status: Partially Adopted
 priority: P3
 applicability:
 - S3 (Claude Code Build)

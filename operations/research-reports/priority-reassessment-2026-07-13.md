@@ -26,6 +26,15 @@ capability/harness-layering findings carry a strategic premium. Checkpoint #1 pe
 
 **This report is proposal-only. No finding was modified. Nick gates every change.**
 
+> **Gate outcome (2026-07-13):** Nick accepted ALL proposals as-is. All changes applied
+> 2026-07-13 (per-proposal Applied markers below). One gate-sourced addition rode along
+> on proposal 1: a dated Nick gate note on `ralph-wiggum-execution-pattern.md` recording
+> that the engine's corpus carries essentially the same shape as Ralph in the PIV loop
+> (plan→implement→verify — Archon's shipped plan-to-PR workflow); Ralph and PIV are
+> treated as sibling loop variants, with a symmetric same-problem crosslink added to
+> `archon-yaml-defined-harness-workflows.md`. Section D judgment flags carry no file
+> changes per acceptance of the report as-is.
+
 ## Summary
 
 - Findings scanned: 176 (60 added, 116 modified today)
@@ -53,6 +62,9 @@ capability/harness-layering findings carry a strategic premium. Checkpoint #1 pe
 - **Rationale:** the pattern crossed from prompt idiom to *shipped engine primitive with
   a checkable schema* — a qualitatively different evidence class. Directly feeds the
   North Star harness layer and the IB-176 self-improve loop.
+- **Status: Applied 2026-07-13** (P1; body Priority Note + Nick gate note re Ralph/PIV
+  sibling variants; symmetric same-problem crosslink with
+  `archon-yaml-defined-harness-workflows.md`)
 
 ### 2. Append-Only Run Log as Working Memory (`append-only-run-log-as-working-memory.md`)
 - **Current priority:** P2 (Design Required) · Medium · Partially Adopted
@@ -67,6 +79,7 @@ capability/harness-layering findings carry a strategic premium. Checkpoint #1 pe
   is explicitly a "direct input" to) is the next unit of work after wave-3. P1 = Implement
   Now, and implementation is literally now. Flagged as a judgment call: on raw source
   count alone (2 frameworks + engine) it sits at the P2/P1 boundary.
+- **Status: Applied 2026-07-13** (P1)
 
 ### 3. File-Mediated Subagent Handoff Workspace (`file-mediated-subagent-handoff-workspace.md`)
 - **Current priority:** P3 (Monitor) · Medium · Partially Adopted
@@ -82,6 +95,7 @@ capability/harness-layering findings carry a strategic premium. Checkpoint #1 pe
   the three-way convergence. The deltas the finding documents (scripted workspace
   creation, per-task brief extraction) are concrete upgrades to a protocol the engine
   already runs — design-required is the right tier.
+- **Status: Applied 2026-07-13** (P2)
 
 ### 4. Plans That Carry Their Own Contract (`plans-that-carry-their-own-contract.md`)
 - **Current priority:** P3 (Monitor) · Medium · Not Yet Started
@@ -96,6 +110,7 @@ capability/harness-layering findings carry a strategic premium. Checkpoint #1 pe
 - **Rationale:** the cluster's older members already sit at P1/P2; this finding is the
   most complete statement of the pattern and extends `artifact-as-contract-pattern`
   (see D.12). Feeds harness-formalization dispatch design.
+- **Status: Applied 2026-07-13** (P2)
 
 ### 5. Capability as the Single Agent-Composition Primitive (`capability-as-agent-composition-primitive.md`)
 - **Current priority:** P3 (Monitor) · Medium · Not Yet Started
@@ -111,6 +126,7 @@ capability/harness-layering findings carry a strategic premium. Checkpoint #1 pe
   datapoint for the portable-kernel / single-implicit-agent direction — the North Star.
   A P3 on the hub of a 9-link harness-relevant cluster understates it; its P2 children
   would outrank their own parent.
+- **Status: Applied 2026-07-13** (P2)
 
 ### 6. Framework Abstraction Tax for Agent Development (`framework-abstraction-tax-for-agents.md`)
 - **Current priority:** P3 (Monitor) · Strong (production-tested) · Already Adopted
@@ -123,6 +139,7 @@ capability/harness-layering findings carry a strategic premium. Checkpoint #1 pe
 - **Rationale:** Already Adopted means the bump buys codification, not implementation —
   this is the evidence spine for the engine's platform-native-harness stance and belongs
   in the harness-formalization argument at P2, not in the P3 monitor pool.
+- **Status: Applied 2026-07-13** (P2)
 
 ### 7. Platform-Native Harness Over Agent Frameworks (`platform-native-harness-over-agent-frameworks.md`)
 - **Current priority:** Not Flagged · Medium · Already Adopted
@@ -134,6 +151,7 @@ capability/harness-layering findings carry a strategic premium. Checkpoint #1 pe
 - **Rationale:** "Not Flagged" on a finding that states the engine's own architectural
   stance is a bookkeeping artifact of early intake. Minimum correction only — it is
   Already Adopted, so Monitor suffices.
+- **Status: Applied 2026-07-13** (P3)
 
 ---
 
@@ -155,6 +173,8 @@ pairs. One pair crosses the bar:
 - **Note:** the finding stays in the KB as history; the contradicts link preserves the
   supersession trail. If preferred, an `implementation_notes` supersession caveat (as
   in section C) is the softer alternative to a tier drop.
+- **Status: Applied 2026-07-13** (Not Flagged; documented cause recorded in
+  `implementation_notes`)
 
 ---
 
@@ -173,6 +193,8 @@ Contradiction pairs where the old finding should carry a frontmatter caveat
 - **Rationale:** the finding as written presents step files as unqualified "principled
   context window management"; the originator's own boundary (mechanical vs judgment
   work) is the durable lesson.
+- **Status: Applied 2026-07-13** (scope caveat in `implementation_notes`; priority
+  unchanged)
 
 ### 10. Two-Axis Parallel Code Review (`two-axis-parallel-code-review-standards-vs-spec.md`)
 - **Current:** P3 (Monitor) — keep
@@ -183,6 +205,7 @@ Contradiction pairs where the old finding should carry a frontmatter caveat
   open trade (parallel-axis separation vs single-read economy), not a supersession.*
 - **Rationale:** distinguishes it from finding 8; P3 remains correct while the trade is
   unresolved.
+- **Status: Applied 2026-07-13** (caveat in `implementation_notes`; P3 kept)
 
 ### 11. Memory-File-to-Skill Migration (`memory-file-to-skill-migration.md`)
 - **Current:** P2 (Design Required) — **keep P2, no drop**
@@ -193,6 +216,7 @@ Contradiction pairs where the old finding should carry a frontmatter caveat
 - **Rationale:** the counter-example partially undermines itself (the drift it exhibits
   is the failure mode migration-to-skills avoids), and the finding feeds the IB-176
   memory build now — dropping P2 would be wrong on both counts.
+- **Status: Applied 2026-07-13** (caveat appended to `implementation_notes`; P2 kept)
 
 ### 12. Artifact-as-Contract Pattern (`artifact-as-contract-pattern.md`)
 - **Current:** P3 · adoption_status "Not Yet Started"
@@ -203,6 +227,9 @@ Contradiction pairs where the old finding should carry a frontmatter caveat
   (10 inbound).
 - **Rationale:** C3 is the mechanical trigger (codebase now uses a variant); tier is
   left to Nick — if proposal 4 is accepted, parent and child would reasonably both be P2.
+- **Status: Applied 2026-07-13** (`adoption_status` → Partially Adopted; DD-78
+  ContractSpec + DD-92 ContextSpec recorded as the live variant; priority-review flag
+  noted in `implementation_notes`, tier left at P3)
 
 ---
 
@@ -211,6 +238,9 @@ Contradiction pairs where the old finding should carry a frontmatter caveat
 Per criterion 5, link clusters get human judgment, not automatic bumps. All four were
 *created today* with priorities set at intake, so retroactive machinery has weaker
 standing — listed because their clusters formed within hours of triage:
+
+**Status: No action (2026-07-13)** — judgment flags only; Nick's acceptance of the
+report as-is means no file changes for this section.
 
 | Finding | Priority | Cluster signal | Why it might matter now |
 |---|---|---|---|

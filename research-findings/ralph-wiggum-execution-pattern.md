@@ -6,7 +6,7 @@ implementation_notes: null
 category: Orchestration
 evidence_strength: Strong (production-tested)
 adoption_status: Partially Adopted
-priority: P2
+priority: P1 (Implement Now)
 applicability:
 - S3 (Claude Code Build)
 adopted_in:
@@ -27,6 +27,8 @@ related_findings:
   rel: extends
 - file: loop-node-anatomy-schema-enforced-ralph-primitive.md
   rel: extended-by
+- file: archon-yaml-defined-harness-workflows.md
+  rel: same-problem
 pipeline_status: "extracted"
 consumed_by:
   - "skills/ralph-wiggum-execution-pattern.md"
@@ -60,3 +62,8 @@ If pass/fail criteria in plan.md are ambiguous or under-specified, the bash loop
 
 ## Extraction Note — 2026-05-25
 Extracted as **skill**: [[ralph-wiggum-execution-pattern]] in `extracts/skills/`
+
+## Priority Note — 2026-07-13
+Priority upgraded P2 → P1 (reassessment 2026-07-13, Nick-accepted) — criteria C1/C4/C5: 5 independent orgs now implement the loop with production evidence (AI Automators, Anthropic, gstack/GSD, Archon, plus a same-problem sibling), the pattern crossed from prompt idiom to shipped engine primitive with a checkable schema, and it carries 8 inbound links.
+
+**Updated 2026-07-13 (Nick gate note):** Nick observed at the acceptance gate that the engine's corpus carries essentially the same shape as Ralph in the **PIV loop** (plan→implement→verify) — Archon's shipped plan-to-PR workflow, see [[archon-yaml-defined-harness-workflows]]. Treat Ralph and PIV as sibling loop variants: both drive long-running autonomous implementation through iterated fresh-context passes with per-pass verification, differing in loop topology (Ralph iterates one item to convergence; PIV stages plan→implement→verify once per unit).

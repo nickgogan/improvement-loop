@@ -24,10 +24,13 @@ implementation_notes: |-
   echo instead of mid-run re-reads) and the no-status-field rule are the two moves
   worth evaluating for the engine's layered-memory design; the Superpowers ledger shows
   the same primitive is what compaction recovery needs.
+  Priority upgraded P2 → P1 (reassessment 2026-07-13, Nick-accepted): C4 independent
+  convergence (BMAD memlog + superpowers ledger) + 7 typed links + IB-176 timing premium
+  — the memory build this finding is a direct input to is the next unit of work.
 category: "Context Engineering"
 evidence_strength: "Medium (practitioner-documented)"
 adoption_status: "Partially Adopted"
-priority: "P2 (Design Required)"
+priority: "P1 (Implement Now)"
 applicability:
   - "General"
 adopted_in: []

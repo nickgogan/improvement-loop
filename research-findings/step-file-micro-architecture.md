@@ -2,7 +2,12 @@
 name: Step-File Micro-Architecture
 summary: BMAD decomposes complex workflows into numbered step files (step-01 through step-12), loading only the current step. Forward-loading is forbidden (validator rule STEP-05). Sequential enforcement
   is mandatory (SEQ-01). Principled context window management.
-implementation_notes: null
+implementation_notes: |-
+  Scope caveat (reassessment 2026-07-13, Nick-accepted; priority unchanged — already
+  at floor): partially superseded by skill-flattening-outcome-prose-over-step-files
+  (2026-07-13) — BMAD, the originating framework, retreated from step files for all
+  judgment-heavy work (112→35 step files, 22→1 orchestrators); the pattern's validated
+  scope is now mechanical execution skills only.
 category: Context Engineering
 evidence_strength: Medium (practitioner-documented)
 adoption_status: Not Yet Started

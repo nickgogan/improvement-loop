@@ -13,11 +13,16 @@ summary: |-
   on every dispatch is authored once into the plan. BMAD v6.10.0 converges with sealed
   file contracts: SPEC.md frontmatter lists what downstream MUST read and must NOT
   re-read, with stable IDs surviving updates.
-implementation_notes: null
+implementation_notes: |-
+  Priority upgraded P3 → P2 (reassessment 2026-07-13, Nick-accepted): C4 — four
+  independent orgs (superpowers, BMAD, Nick Gupta's task-contract playbook, war-game
+  plan format) converged on carried-contract handoffs; the cluster's older members
+  already sit at P1/P2 and this finding is the most complete statement of the pattern.
+  Feeds harness-formalization dispatch design.
 category: "Intent Engineering"
 evidence_strength: "Medium (practitioner-documented)"
 adoption_status: "Not Yet Started"
-priority: "P3 (Monitor)"
+priority: "P2 (Design Required)"
 applicability:
   - "General"
 adopted_in: []

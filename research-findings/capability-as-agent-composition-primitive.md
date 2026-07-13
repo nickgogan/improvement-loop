@@ -19,10 +19,14 @@ implementation_notes: |-
   like as a framework primitive. pydantic/pydantic-ai is flagged as a watched-library
   candidate (Nick's call, wave-3 triage follow-up 3) — dependency-grade tracking would
   route through that registry, not through this finding.
+  Priority upgraded P3 → P2 (reassessment 2026-07-13, Nick-accepted): C5 — hub of the
+  sweep's largest new cluster (9 typed links, 7 extends/enables, five pydantic-ai
+  children) + C4 cross-framework convergence on capability/skill-as-unit; North Star
+  (portable-kernel / single-implicit-agent) strategic premium.
 category: "Agent Design"
 evidence_strength: "Medium (practitioner-documented)"
 adoption_status: "Not Yet Started"
-priority: "P3 (Monitor)"
+priority: "P2 (Design Required)"
 applicability:
   - "General"
 adopted_in: []

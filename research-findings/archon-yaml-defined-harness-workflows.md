@@ -67,6 +67,8 @@ related_findings:
   rel: extended-by
 - file: typed-node-output-sidecars-by-type-artifact-discovery.md
   rel: extended-by
+- file: ralph-wiggum-execution-pattern.md
+  rel: same-problem
 proposals: null
 date_discovered: '2026-04-09'
 last_updated: '2026-07-13'

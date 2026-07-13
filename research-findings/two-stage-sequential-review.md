@@ -2,11 +2,17 @@
 name: Two-Stage Sequential Review
 summary: 'After each task in Superpowers'' subagent workflow, two sequential review stages run by fresh subagents: (1) spec compliance — does the implementation match the spec? (2) code quality — is the
   code well-written? Sequential ordering ensures you cannot have high-quality code that does not match the spec.'
-implementation_notes: null
+implementation_notes: |-
+  Priority downgraded P3 → Not Flagged (reassessment 2026-07-13, Nick-accepted;
+  rule-4 exception with documented cause): pattern deprecated by its own originator.
+  Superpowers v6.0.0 collapsed the two sequential per-task reviewers into one
+  dual-verdict reviewer (see contradicts link to unified-dual-verdict-reviewer.md)
+  with upstream eval data — similar quality, ~2x faster, ~50% fewer tokens. Retained
+  in the KB as history; the contradicts link preserves the supersession trail.
 category: Evaluation
 evidence_strength: Medium (practitioner-documented)
 adoption_status: Not Yet Started
-priority: P3
+priority: Not Flagged
 applicability:
 - S3 (Claude Code Build)
 adopted_in: []

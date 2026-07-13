@@ -18,6 +18,11 @@ implementation_notes: |-
   session, or only conditionally?" — conditional content migrates to a skill. Companion
   mechanic worth noting for agent-agnosticism: CLAUDE.md and AGENTS.md as symlinks to one
   file, so the same memory serves every harness.
+  Caveat (reassessment 2026-07-13, Nick-accepted; P2 kept, no drop): Archon v0.5.0's
+  rules-layer collapse (rules-layer-collapse-monolithic-context-counter-signal) is a
+  live counter-signal; note however that its two monolithic mirror files have already
+  observably drifted, which is evidence for, not against, this finding's discipline —
+  and the finding feeds the IB-176 memory build now.
 category: "Context Engineering"
 evidence_strength: "Medium (practitioner-documented)"
 adoption_status: "Partially Adopted"

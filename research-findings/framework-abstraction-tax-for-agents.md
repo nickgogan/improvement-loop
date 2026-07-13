@@ -2,11 +2,17 @@
 name: Framework Abstraction Tax for Agent Development
 summary: Agent frameworks add abstraction layers that obscure prompts and responses, making debugging harder. Anthropic found the most successful implementations used simple, composable patterns rather
   than complex frameworks.
-implementation_notes: null
+implementation_notes: |-
+  Priority upgraded P3 → P2 (reassessment 2026-07-13, Nick-accepted): C1 mechanical
+  trigger (3 independent orgs + Strong evidence at P3) + C5 (14 links, 5
+  extends/enables; pydantic-ai's lean-core two-lane layering is fresh corroboration).
+  Already Adopted — the bump buys codification, not implementation: this is the
+  evidence spine for the engine's platform-native-harness stance and belongs in the
+  harness-formalization argument.
 category: Agent Design
 evidence_strength: Strong (production-tested)
 adoption_status: Already Adopted
-priority: P3 (Monitor)
+priority: P2 (Design Required)
 applicability:
 - S3 (Claude Code Build)
 - General / Cross-System
