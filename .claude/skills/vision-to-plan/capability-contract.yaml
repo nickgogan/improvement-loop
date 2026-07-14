@@ -1,0 +1,21 @@
+schema-version: 1
+skill:
+  name: ops-vision-to-plan
+  version: "0.3.0"
+capabilities:
+  - id: human-approval-channel
+    tier: required
+    purpose: Present one section at a time and receive explicit approval/rejection before proceeding
+    degradation: inert - do not install without an interactive approval channel; the section gate is the method
+  - id: durable-document-store
+    tier: optional
+    purpose: Create and rewrite the planning artifacts (brief, PRD, architecture doc) at the doc root
+    degradation: Agent outputs full artifact text per section for the human to save; never claims to have saved anything it didn't
+  - id: reference-bundle-attachment
+    tier: optional
+    purpose: Attach the three elicitation templates (brief, PRD, architecture) with per-section embedded instructions
+    degradation: Reconstruct each section's outline from the artifact definitions in the body and state that template fidelity is reduced
+  - id: versioned-checkpoints
+    tier: optional
+    purpose: Change history with revert so superseded artifact versions are recoverable
+    degradation: Amendments must quote the superseded text inline in a change note before rewriting it

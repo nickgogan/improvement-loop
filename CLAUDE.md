@@ -168,6 +168,7 @@ The Librarian also uses Read/Glob/Grep directly to navigate the KB for Teacher/B
 | Skill | Role |
 |-------|------|
 | `/meta-skill-author` | Design/Eval/Improve/Port toolchain for cross-platform skills — imported 2026-07-12; engine overlay + overlap flag vs `/design-skill`+`/assess-skill` in its `ADAPTATION.md`; owner assignment pending the restructure program's Phase 2 audit |
+| `/vision-to-plan` | Socratic vision → kernel docs (constitution → PRD → actors) with per-section human gates; imported + adapted 2026-07-13 (restructure-program Phase 4). Engine artifact chain, template deltas, and overlap flag vs `/design-agent`+`/translate-governance` in its `ADAPTATION.md`. The reusable capability behind the Phase 4 interview (run-spec: the interview-structure design note) and the Phase 5 kernel compiler |
 
 **Deprecated:** `/research-proposer` — superseded by `/identify-artifacts` + `/extract-artifacts` (DD-80). `/process-feedback` — folded into `/self-improve` scan mode (IB-176). Both retained for reference.
 
