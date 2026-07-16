@@ -89,3 +89,9 @@ by `store_check.py` in the pre-commit hook.
 - **Owning surface:** `systems/improvement-loop/.claude/skills/detect-drift/SKILL.md`
 - **Source:** session 147 (2026-07-16); drift report `operations/drift-reports/2026-07-13-source-drift.md` vs session-146 re-extractions (commits 242700e, b986afd)
 - **Occurrences:** 2026-07-16
+
+## L-11 · 2026-07-16 · normal · open
+- **Lesson:** Presenting a kernel-doc section for gate approval as chat-only text failed — Nick reviews in the IDE and asked "where is the file? I need to read it." Gate-reviewed drafts must exist in the target file (clearly marked DRAFT with per-section status) before the approval question is asked; chat is not a review surface.
+- **Owning surface:** `systems/improvement-loop/.claude/skills/vision-to-plan/SKILL.md` (section-drafting step)
+- **Source:** session 148 (2026-07-16), Phase 4 interview Block A2 first gate
+- **Occurrences:** 2026-07-16

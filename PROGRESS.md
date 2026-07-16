@@ -1,16 +1,18 @@
 # Improvement Loop — Progress
 
-Updated: 2026-07-13 (session 146 — gate-clearance COMPLETE under Nick's delegated-judgment
-grant: L-1/L-2/L-4 promotions applied, all 18 harvest rows resolved [14 extracted incl. a
-DD-100 v2 + a DD-97 extend + 2 create-new, 2 merged, 2 dismissed], 11 drift re-extractions
-+ 3 schematic re-evals done. Phase 4 interview structure drafted. Next: Nick gates.)
+Updated: 2026-07-16 (session 148 — Phase 4 interview COMPLETE in one sitting: kernel
+docs `governance/{constitution,prd,actors}.md` all Nick-approved; harness-first ruled
+at checkpoint #2; Phase 3 folded into the kernel compiler. Next: E1 `memory-spec`.)
 
 ## Start here
 
 New session? This file is the only cold-start artifact — read it top to bottom, then act.
 "PROGRESS" / "continue" from Nick = proceed with the **next unit of work** under Current
-milestone, no recital. Orientation lives in `CLAUDE.md` (engine) and `../../CHARTER.md`
-(vision); the foundational-DD spine is `governance/FOUNDATIONS.md`. Shipped work lives in
+milestone, no recital. The engine's **kernel docs** are `governance/constitution.md`
+(vision/values/principles/gates), `governance/prd.md` (users, goals, epics E1–E7 — the
+roadmap's source), and `governance/actors.md` (four actors, orchestration end-state,
+human seat). Orientation lives in `CLAUDE.md` (engine) and `../../CHARTER.md`; the
+foundational-DD spine is `governance/FOUNDATIONS.md`. Shipped work lives in
 [HISTORY.md](HISTORY.md) (newest-first, commit ranges); git carries the atomic log
 (Conventional Commits). Session close = `/session-handoff` (reconcile-in-place; never a
 dated handoff file). Every line here must pass route-then-compact: history → HISTORY.md,
@@ -19,56 +21,59 @@ in `operations/self/` (`/self-improve`; capture hook + store checker are harness
 
 ## North Star
 
-Formalize the engine into an **agentic OS**: a harnessed system (a formal harness layer,
-not agent-remembers-to-invoke-skills) whose `governance/` becomes a **portable kernel** —
-the export unit any downstream agentic system pulls (PRD · constitution · generalized
-asset forms · YAML descriptor), with harness materializations compiled per target.
-Research remains the substrate: the KB grounds every design move. Full capture:
-`project-management/design-notes/2026-06-22-agentic-os-direction.md` + plan §2.
+Formalize the engine into an **agentic OS**: a harnessed, self-describing,
+**single-operator** system (any harness; Claude Code first) whose `governance/` is a
+**portable kernel** — the export unit any downstream system pulls, with harness
+materializations compiled per target. End state: the Owner acts as owner of the whole
+system, waking the other actors off per-actor work queues; the human drops to periodic
+review + occasional use. Canonical statements: constitution §Vision, prd §Vision,
+actors §Orchestration (approved 2026-07-16).
 
 ## Roadmap
 
 **Engine restructure & harness program** — plan of record:
-`operations/plans/2026-07-12-engine-restructure-program.md` (checkpoint #1 outcome
-recorded there, incl. Phase 5 revisions).
+`operations/plans/2026-07-12-engine-restructure-program.md` (checkpoints #1 + #2
+recorded there). Epic definitions, inputs, and binary ACs: `governance/prd.md` §Epics.
 
-- `[x]` **Phase 0 — session-ops restructure** — shipped 2026-07-12 (session 138) · [HISTORY.md](HISTORY.md)
-- `[x]` **Phase 1 — research grounding** — shipped 2026-07-13 (session 144) · [HISTORY.md](HISTORY.md)
-- `[x]` **Phase 2 — substrate audit & memory-system design** — shipped 2026-07-13
-  (session 142); design note ruled; **build (IB-176) shipped session 145** —
-  `/self-improve` loop, demand ledger, calibration registry, SL closed · [HISTORY.md](HISTORY.md)
-- `[ ]` **Phase 3 — user manual** — Nick gates whether/when; audience/altitude locked
-  (Nick-builder; both, direction-bounded); manual-as-kernel-layer question open
-- `[>]` **Phase 4 — structured interview** → engine PRD/constitution/actors; decide
-  generalize-first vs harness-first → plan checkpoint #2
-- `[ ]` **Phase 5 — harness + generalize** (order per Phase 4; checkpoint-#1 revisions:
-  capability-as-composition-unit named input; maintenance/fitness DoD added)
+- `[x]` **Phase 0 — session-ops restructure** — shipped 2026-07-12 (s138) · [HISTORY.md](HISTORY.md)
+- `[x]` **Phase 1 — research grounding** — shipped 2026-07-13 (s144) · [HISTORY.md](HISTORY.md)
+- `[x]` **Phase 2 — substrate audit & memory-system design + build (IB-176)** — shipped
+  2026-07-13 (s142/s145) · [HISTORY.md](HISTORY.md)
+- `[x]` **Phase 3 — user manual** — folded into kernel-compiler (E5) at checkpoint #2;
+  no standalone doc
+- `[x]` **Phase 4 — structured interview** — shipped 2026-07-16 (s148): kernel docs +
+  harness-first ruling · [HISTORY.md](HISTORY.md)
+- `[>]` **memory-layer (E1)** — per-actor memory surfaces; data → reflection → knowledge
+- `[ ]` **task-layer (E2)** — per-actor work queues + task contract; absorbs DD/IB cleanup
+- `[ ]` **self-description (E3)** — one YAML per actor + per harness, root descriptor
+- `[ ]` **harness (E4+E7)** — enforcement points, wake/dispatch, fitness loop
+- `[ ]` **kernel-compiler (E5)** — generalized forms, compile + drift `--check`,
+  human-readable manual layer
+- `[ ]` **audits-ship-remedies (E6)** — floating, order-independent; schedulable any time
 
 ## Current milestone
 
-**Phase 4 — structured interview** (engine PRD/constitution/actors; ends at plan
-checkpoint #2). Nick-present by nature. Phase 3 (user manual) stays Nick-gated and can
-interleave if he opens it.
+**memory-layer (E1)** — the memory & knowledge layer, per-agent + system-wide.
+**DoD (PRD E1):** memory-architecture spec approved; every actor's memory surfaces
+named; one reflection mechanism runs over an accumulation surface and routes outputs by
+shape (decision → DD, pattern → knowledge/, work → task layer); deterministic store
+check with a seeded-violation test.
 
 Scopes (hill):
-- `gate-clearance` — **done**: promotions L-1/L-2/L-4 applied (proposal-log `P-1..P-3`);
-  all 18 harvest rows across 4 queues resolved; 11/11 drift re-extractions + 3 schematic
-  re-evals done. Five corpus-scan gates (DD-97/DD-100) ruled inline under the delegated
-  grant — all two-way doors, listed in HISTORY for Nick's review/override: byte-stable
-  catalog → extend; static-first → seven-layer v2; lesson-store-entry-schema + pruning →
-  create-new; derive-dont-edit twin → merged.
-- `phase4-interview` — **cresting**: structure drafted
-  (`project-management/design-notes/2026-07-13-phase4-interview-structure.md`, adapts
-  CareerBuddy `ops-vision-to-plan`); awaits Nick's gate on its §5 open questions before running.
+- `memory-spec` — the memory-architecture design note (spec before build) — **uphill**;
+  open unknowns: per-actor vs shared store shape, which accumulation surfaces
+  (session runs / tool calls / logs) to start with
+- `reflection-build` — the reflection mechanism — uphill (waits on spec)
+- `store-checks` — deterministic checks + seeded-violation test — uphill (waits on spec)
 
-**Next unit of work:** Nick gates the `phase4-interview` structure (§5 open questions),
-then the interview runs. Optional Nick review: the five DD-97/DD-100 consolidation calls
-in HISTORY (any can be reverted/re-split — all git-reversible).
+**Next unit of work:** `memory-spec` — draft the design note from PRD E1's named inputs
+(`operations/self/` store, frozen SL corpus, KB memory cluster, `governance/actors.md`).
+Nick flagged E1 as potentially the big one; memory-design thoroughness is opted in.
 
 ## Backlog / Icebox
 
-Unscheduled — promote into a milestone when ready. Work items carry IB numbers; triggers
-noted where promotion is event-gated.
+Unscheduled — promote into a milestone when ready. Work items carry IB numbers;
+triggers noted where promotion is event-gated.
 
 - **IB-173** — three-bucket gate tiering, DD-29 refinement (approved direction; absorbs
   IB-103 per gate G7)
@@ -76,14 +81,17 @@ noted where promotion is event-gated.
   session 144; Nick: "save for later")
 - **IB-145** — GSD version-drift re-analysis
 - **IB-174** — meta-skill-author assess follow-ups A/D/E (Nick-gated guard rulings)
-- **IB-175** — governance visualization (strongest input now in KB:
-  `mdx-visual-plans-with-reusable-components` + visual-recap findings, session 144)
-- Findings hybrid search (FTS5 + local embeddings under `app/`) — designed-in component
-  (design note §6); implementation shape parked by Nick (session 142)
+- **IB-175** — governance visualization (strongest input in KB:
+  `mdx-visual-plans-with-reusable-components` + visual-recap findings)
+- **IB-177** — design-mode video-intake spec via `/meta-skill-author` (filed at the
+  Phase 4 Block E sweep; was a blocker line)
+- `/detect-drift` predicate hardening — currency baseline must be
+  max(extraction_date, last_change_report); lesson L-10, second occurrence files the IB
+- Findings hybrid search (FTS5 + local embeddings under `app/`) — designed-in
+  component; implementation shape parked by Nick (session 142)
 - kome.ai fallback backend for transcript-fetcher — trigger: next YouTube IP block
-  (technique in agent memory; fetch.py browser rung already hardened, session 143)
-- Multi-tenant agentic-system design — named research-gap candidate; asker-scoped
-  team-memory datapoint landed session 144; Nick gates promotion
+- Multi-tenant agentic-system design — named research gap (PRD non-goal for now);
+  Nick gates promotion
 - `/link-intake` escalation-language watch item (Rule 11)
 - G3 / G9 guide bifurcation — trigger: DD-102 threshold (45 findings)
 - MongoDB sizing-engine pilot — trigger: `/design-harness` ships
@@ -94,15 +102,10 @@ noted where promotion is event-gated.
 
 ## Blockers / gates (Nick)
 
-- **Phase 4 interview structure gate** — the drafted structure's §5 open questions
-  (sitting count; kernel-doc naming/homes) need a ruling before the interview runs
 - **Five gate-clearance consolidation calls (optional review)** — the DD-97/DD-100
-  extend/version-bump/create-new/merge rulings (HISTORY session 146) were made under the
+  extend/version-bump/create-new/merge rulings (HISTORY s146) were made under the
   delegated grant; all git-reversible if Nick wants a different granularity
-- **"Attachés" clarification** — likely transcription artifact (plan open-question 7);
-  resolve in the Phase 4 interview (now Block 0 of the drafted structure)
-- **Design-mode video-intake spec** — is a formal `/meta-skill-author` spec still wanted?
 - **Verbatim-storage finding null→P3** — session-132 reassessment, unruled
 - **Re-injection correction** — next step unchosen (KB updated; remedy refuted upstream)
-- **"Division, to a degree" garbled fragment** — resolve in the Phase 4 interview
-- **Mirror question** — automate `il-published` subtree push, or retire it
+- **Mirror question** — automate `il-published` subtree push, or retire it (the engine
+  rename, PRD open question, lands before E5 publishes the kernel)
