@@ -59,9 +59,9 @@ is an agentic system* — even a coding agent producing traditional software:
 - **mission + purpose + values** → the *why* (values are pursued for their own sake)
 - **principles** → the *how*
 - this high-level governance flows down to every agent in the system being created
-- *[transcription-ambiguous: the source said "...principles. Division, to a degree." — the
-  "Division, to a degree" fragment is garbled; possibly "provision," "vision to a degree," or a
-  sixth governance element. Flagged for Nick to resolve rather than dropped.]*
+- *[resolved 2026-07-16, Phase 4 interview Block 0: the "Division, to a degree" fragment was
+  garbled transcription noise — nothing intended. The governance stack is complete as listed:
+  vision/mission/purpose/values/principles.]*
 - **`actors.md`** (in the governance directory of the target repo) is therefore always present: it
   specifies the **LLM actors** — agents, task boundaries, permission sets, skills, **souls**,
   dispositions. (Much of this content already lives in agent templates / agent.md Constitution.)
@@ -114,9 +114,11 @@ Per DD-36 (evolution via research) and Rule 11 (abstractions earn their keep), g
 - **[NEED REPO NAME from Nick]** — a repo to examine for **directory taxonomy / clustering** (how to
   structure the skills/agents/components directories).
 - **BMAD** (already a watched library) high-level skills, possibly augmented with **superpowers** and
-  **attachés**; **critical-thinking skills** for generating high-level agentic-system *governance* and
-  *product* layers (PRD, architecture). May need modification to fit our needs. The agentic system
-  should always have a workflow **similar to Archon**.
+  **taches** (*"attachés" resolved 2026-07-16, Phase 4 Block 0: transcription of `taches` — the
+  `taches-cc-resources` watched library, already tracked and analyzed*); **critical-thinking skills**
+  for generating high-level agentic-system *governance* and *product* layers (PRD, architecture). May
+  need modification to fit our needs. The agentic system should always have a workflow **similar to
+  Archon**.
 - **Nate B Jones' "open skills framework"** (newly released) — introduces the same abstraction we'd be
   learning from.
 

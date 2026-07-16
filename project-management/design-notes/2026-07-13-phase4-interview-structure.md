@@ -88,7 +88,19 @@ is expected — resolve by judgment at the gate, not by searching for a referenc
 
 ## 3. Interview blocks
 
-### Block 0 — one-line clarifications (minutes, no drafting)
+> **Run progress (Sitting 1, 2026-07-16):** §5 ruled (start immediately, decide at B/C
+> seam; kernel homes locked as `governance/constitution.md` / `prd.md` / `actors.md`;
+> Q3 moot — queues closed session 146). **Block 0 ✅** — "attachés" = `taches`
+> (`taches-cc-resources`, already watched+analyzed; Phase 1 GAP dissolves); "Division,
+> to a degree" = garbled noise, struck. Both recorded in the direction note.
+> **Block A ✅** — constitution.md complete and approved (A1: drawn-from-CHARTER,
+> selective, no supersession; A2: scope = single-operator, harness-agnostic; A3: seven
+> values + eight principles; A4: hybrid permissions). New vision inputs elicited
+> mid-block, carried to Block B: per-agent + per-harness YAML descriptor set under a
+> root harness YAML (schema deferred, own epic); audit deliverable = efficacy
+> description + portable remediation prompt.
+
+### Block 0 — one-line clarifications (minutes, no drafting) ✅ 2026-07-16
 
 Clear the two transcription artifacts assigned to the interview:
 
@@ -98,7 +110,7 @@ Clear the two transcription artifacts assigned to the interview:
    after "principles"; possibly "provision," "vision to a degree," or a sixth
    governance element?
 
-### Block A — Constitution (re-elicit + diff against CHARTER.md)
+### Block A — Constitution (re-elicit + diff against CHARTER.md) ✅ 2026-07-16
 
 Pre-load: CHARTER.md, FOUNDATIONS.md, direction note §governance-first.
 
@@ -118,7 +130,10 @@ Pre-load: CHARTER.md, FOUNDATIONS.md, direction note §governance-first.
   resolved layer definitions; this question decides constitution *structure* — whether
   permissions get their own kernel section or fold into actors + harness description.
 
-### Block B — PRD
+### Block B — PRD ✅ 2026-07-16 (prd.md complete: 3 users [presenter/evaluator demoted
+to audience], 6 goals, 7 epics — memory + task-management layers added upstream at
+Nick's elicitation — 5 risks, 6 parked questions. Seam ruling: proceed into C+D+E
+same session, context permitting.)
 
 Pre-load: plan §2 (target end state), Phase 1 delta report, PROGRESS Backlog.
 
@@ -141,7 +156,11 @@ Pre-load: plan §2 (target end state), Phase 1 delta report, PROGRESS Backlog.
 - **B5 — Risks & assumptions, open questions:** separate verifiable assumptions from
   mitigatable risks; park unresolved items with an owner and a "matters by when".
 
-### Block C — actors.md
+### Block C — actors.md ✅ 2026-07-16 (C1: four actors, full stop. C2: contracts
+compressed from agents/, memory/queue/descriptor fields deferred to E1/E2/E3.
+C3 elicited the orchestration end-state: Owner as acting owner waking actors in
+separate sessions, per-actor work queues incl. Owner, signal-driven wake-up, human
+reduced to periodic review + occasional use.)
 
 Pre-load: `agents/` definitions, plan §2 single-implicit-agent capture, agent.md
 Constitution sections.
@@ -158,7 +177,8 @@ Constitution sections.
 - **C3 — Nick's seat:** the human gate is an actor with a permission set too; the
   human/AI seam findings (wave-3 ruling) say the kernel should name what stays human.
 
-### Block D — Ordering decision: generalize-first vs harness-first
+### Block D — Ordering decision: generalize-first vs harness-first ✅ 2026-07-16
+(ruled: **harness-first** — E4 before E5; rationale recorded in prd.md §Epics)
 
 Binary decision, options-with-tradeoffs, evidence pre-loaded:
 
@@ -175,7 +195,12 @@ Binary decision, options-with-tradeoffs, evidence pre-loaded:
 
 Outcome feeds Block E directly.
 
-### Block E — Checkpoint #2: plan update + milestone mapping
+### Block E — Checkpoint #2: plan update + milestone mapping ✅ 2026-07-16
+(plan updated — Phase 4 outcome + Phase 5 harness-first + open questions 1/3/4/7
+closed; milestone mapping approved: memory-layer → task-layer → self-description →
+harness → kernel-compiler, E6 floating, next unit of work = E1 `memory-spec`
+[/session-handoff writes PROGRESS at close]; sweep: Phase 3 folded into E5,
+video-intake spec filed as IB-177. **Interview complete — all blocks done.**)
 
 - Update the program plan (§Phase 5 order, §6 open questions closed by Blocks 0/A/D).
 - Propose the epic → milestone mapping for PROGRESS.md in hill vocabulary (milestone

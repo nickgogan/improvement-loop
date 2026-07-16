@@ -197,6 +197,12 @@ components) **is kernel content** — the manual may become the kernel's human-r
 layer rather than a standalone doc (CareerBuddy's `docs/` manual + its sync-audit tax is
 the cautionary tale). → **Plan checkpoint #2 follows.**
 
+> **Ruled 2026-07-16 (checkpoint #2, interview Block E): folded into kernel work.**
+> No standalone manual. The kernel docs (constitution/PRD/actors) + the E3 descriptors
+> carry the content; a **human-readable manual layer lands as an E5-adjacent
+> deliverable** (the compiler's human-facing rendering of the kernel). Phase 3 closes
+> as a phase.
+
 ### Phase 4 — Structured interviewing → what we actually need and why
 
 Adapt `ops-vision-to-plan` (second CareerBuddy import: exportable, Socratic elicitation,
@@ -206,7 +212,22 @@ note's open questions (garbled "Division, to a degree" fragment; governance/perm
 as layers vs cross-cutting). **Decide here: generalize-first vs harness-first.** Update
 this plan accordingly.
 
-### Phase 5 — Harness + generalize *(order per Phase 4)*
+> **✅ Executed 2026-07-16 (Phase 4 interview, single sitting). Checkpoint #2 outcome:**
+> all three kernel docs approved section-by-section — `governance/constitution.md`
+> (drawn selectively from CHARTER, which stays root per DD-105; scope narrowed to
+> **single-operator, harness-agnostic**; hybrid permissions), `governance/prd.md`
+> (3 users, 6 goals, **7 epics** E1–E7, risks, open questions), `governance/actors.md`
+> (**four actors, full stop**; Owner-as-acting-owner orchestration end-state with
+> per-actor work queues and signal-driven wake-up; human seat reduced to periodic
+> review + use). **Ordering ruled: harness-first (E4 → E5).** Nick's elicitation added
+> two upstream epics beyond this plan's Phase 5 scope: **E1 memory & knowledge layer**
+> and **E2 task management layer** (per-agent queues; absorbs DD/IB cleanup + the
+> task-queue study). The PRD's epic set is now the canonical breakdown of the remaining
+> program — Phase 5 below reads as E4+E5 within that larger sequence
+> (E1 → E2 → E3 → E4 → E5, E6 order-independent, E7 after E4). Interview run-spec +
+> per-block record: `project-management/design-notes/2026-07-13-phase4-interview-structure.md`.
+
+### Phase 5 — Harness + generalize *(ruled at checkpoint #2: harness-first — E4 before E5; see PRD epics)*
 
 - **Harness the engine:** formal harness layer per the Phase 1 research + Phase 4 PRD —
   Claude Code is the first target runtime.
@@ -242,18 +263,24 @@ Every import/adaptation gets a Rule-10 assess pass (`/assess-skill`) after landi
 
 ## 6. Open questions (carried, not blocking Phase 0)
 
-1. Generalize-first vs harness-first (→ Phase 4).
+1. ~~Generalize-first vs harness-first~~ — **resolved 2026-07-16 (checkpoint #2):
+   harness-first**; rationale in `governance/prd.md` §Epics.
 2. ~~#8 taxonomy/clustering repo name~~ — resolved (context-hub intake, session 143).
-3. The garbled "Division, to a degree" direction-note fragment (→ Phase 4 interview).
-4. Manual home + length; manual-as-kernel-layer question (→ Phase 3).
+3. ~~The garbled "Division, to a degree" direction-note fragment~~ — **resolved
+   2026-07-16 (interview Block 0): transcription noise, struck**; the governance stack
+   is complete as listed.
+4. ~~Manual home + length; manual-as-kernel-layer question~~ — **resolved 2026-07-16
+   (checkpoint #2): folded into kernel work**; human-readable layer rides with E5
+   (see §Phase 3 ruling).
 5. ~~System Log narrowed role~~ — **resolved 2026-07-12: retired as producer** (see
    §Phase 0 item 6).
 6. Pre-existing carried gates: verbatim null→P3 reassessment; re-injection correction
    disposition; push of unpushed local commits; mirror question (subtree push vs
    retire); design-notes category ruling (now subsumed by the Phase 2 audit).
-7. The direction note's "attachés" term (superpowers ask) appears nowhere in the KB —
-   likely a transcription artifact; needs a one-line Nick clarification (carried from
-   the 2026-07-13 gap-check).
+7. ~~The direction note's "attachés" term~~ — **resolved 2026-07-16 (interview
+   Block 0): transcription of "taches"** — the `taches-cc-resources` watched library,
+   already tracked and analyzed; the Phase 1 gap-check's GAP verdict dissolves to
+   GROUNDED.
 
 ## 7. Plan maintenance
 
