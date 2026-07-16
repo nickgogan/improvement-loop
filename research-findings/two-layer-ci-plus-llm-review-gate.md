@@ -1,34 +1,39 @@
 ---
-name: "Two-Layer CI + LLM Review Gate"
-summary: "Separate deterministic checks from LLM-judgment checks in a two-layer review pipeline. Layer 1 is a scripted battery that blocks on mechanical failures (structure, secrets, links, indexes); Layer 2 is LLM judgment for what scripts can't see (mission fit, superseded claims, naming consistency). Corroborated in two production systems: OB1's PR review (15 CI rules + review-pr admin skill) and CareerBuddy's ops-doc-sync (C1-C16 audit script + fidelity sweep), which adds the sequencing constraints: audit-before-edit, fidelity-not-delta, and re-run-to-exit-0 after fixes."
-implementation_notes: "The engine now has the seed of Layer 1: a pre-commit hook enforcing frontmatter validity, FOUNDATIONS sync, and the PROGRESS line budget. Phase 2's planned ops-doc-sync pattern-lift is the direct adoption path: deterministic battery first (script is ground truth, never propose fixes from memory), then an LLM fidelity sweep scoped to what scripts can't see, then one human-gated fix batch, then re-run the script (must exit 0) before the single commit."
-category: "Governance"
-evidence_strength: "Medium (practitioner-documented, two production systems)"
-adoption_status: "Not Yet Started"
-priority: "P2 (Design Required)"
+name: Two-Layer CI + LLM Review Gate
+summary: 'Separate deterministic checks from LLM-judgment checks in a two-layer review pipeline. Layer 1 is a scripted battery that blocks on mechanical failures (structure, secrets, links, indexes); Layer
+  2 is LLM judgment for what scripts can''t see (mission fit, superseded claims, naming consistency). Corroborated in two production systems: OB1''s PR review (15 CI rules + review-pr admin skill) and CareerBuddy''s
+  ops-doc-sync (C1-C16 audit script + fidelity sweep), which adds the sequencing constraints: audit-before-edit, fidelity-not-delta, and re-run-to-exit-0 after fixes.'
+implementation_notes: 'The engine now has the seed of Layer 1: a pre-commit hook enforcing frontmatter validity, FOUNDATIONS sync, and the PROGRESS line budget. Phase 2''s planned ops-doc-sync pattern-lift
+  is the direct adoption path: deterministic battery first (script is ground truth, never propose fixes from memory), then an LLM fidelity sweep scoped to what scripts can''t see, then one human-gated fix
+  batch, then re-run the script (must exit 0) before the single commit.'
+category: Governance
+evidence_strength: Medium (practitioner-documented, two production systems)
+adoption_status: Not Yet Started
+priority: P2 (Design Required)
 applicability:
-  - "S3 (Claude Code Build)"
-  - "General"
+- S3 (Claude Code Build)
+- General
 adopted_in: []
 sources:
-  - "careerbuddy-ops-doc-sync-audit-battery.md"
+- careerbuddy-ops-doc-sync-audit-battery.md
 related_findings:
-  - file: "deterministic-doc-audit-battery.md"
-    rel: "same-problem"
-  - file: "two-stage-sequential-review.md"
-    rel: "same-problem"
-  - file: "review-pipeline-bottleneck-and-quality-at-source.md"
-    rel: "same-problem"
-  - file: "hook-based-enforcement-for-agent-outputs.md"
-    rel: "enables"
-  - file: "skill-security-scanner-fail-closed.md"
-    rel: "enables"
-  - file: "externalized-real-session-behavior-evals.md"
-    rel: "same-problem"
-date_discovered: "2026-04-20"
-last_updated: "2026-07-13"
-pipeline_status: "classified"
-consumed_by: []
+- file: deterministic-doc-audit-battery.md
+  rel: same-problem
+- file: two-stage-sequential-review.md
+  rel: same-problem
+- file: review-pipeline-bottleneck-and-quality-at-source.md
+  rel: same-problem
+- file: hook-based-enforcement-for-agent-outputs.md
+  rel: enables
+- file: skill-security-scanner-fail-closed.md
+  rel: enables
+- file: externalized-real-session-behavior-evals.md
+  rel: same-problem
+date_discovered: '2026-04-20'
+last_updated: '2026-07-13'
+pipeline_status: synthesized
+consumed_by:
+- agent-governance-and-trust.md
 ---
 
 ## What It Is

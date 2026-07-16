@@ -21,9 +21,10 @@ related_findings:
 proposals: null
 date_discovered: '2026-04-09'
 last_updated: '2026-07-12'
-pipeline_status: extracted
+pipeline_status: synthesized
 consumed_by:
 - skills/eval-driven-tool-iteration-loop.md
+- building-agent-evaluation-suites.md
 ---
 
 ## What It Is

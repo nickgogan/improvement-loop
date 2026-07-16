@@ -1,11 +1,14 @@
 ---
-name: "Loop Detection with Hash-Based Sliding Window"
-summary: |-
-  Sliding window of last 20 tool call hashes per thread for loop detection. Warn at 3 identical
+name: Loop Detection with Hash-Based Sliding Window
+summary: 'Sliding window of last 20 tool call hashes per thread for loop detection. Warn at 3 identical
+
   consecutive calls (inject system message). Hard-stop at 5 (strip tool_calls, force terminal
+
   answer). Tool-frequency limit: 50 calls to same tool type per session. Three response
+
   strategies now documented across repos: warn-then-strip (DeerFlow), trajectory escalation
-  (GSD), and escalate-to-permission-ask (opencode's doom_loop).
+
+  (GSD), and escalate-to-permission-ask (opencode''s doom_loop).'
 implementation_notes: null
 category: Evaluation
 evidence_strength: Medium (practitioner-documented)
@@ -27,7 +30,9 @@ related_findings:
 proposals: null
 date_discovered: '2026-04-19'
 last_updated: '2026-07-12'
-pipeline_status: "classified"
+pipeline_status: synthesized
+consumed_by:
+- building-agent-evaluation-suites.md
 ---
 
 ## What It Is

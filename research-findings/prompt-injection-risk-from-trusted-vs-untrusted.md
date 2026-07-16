@@ -22,8 +22,9 @@ related_findings:
 proposals: []
 date_discovered: '2026-03-22'
 last_updated: '2026-04-19'
-pipeline_status: "classified"
-consumed_by: []
+pipeline_status: synthesized
+consumed_by:
+- agent-safety-and-permissions.md
 ---
 # Prompt Injection Risk from Trusted vs. Untrusted Web Content
 

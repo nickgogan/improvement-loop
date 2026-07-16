@@ -1,31 +1,33 @@
 ---
-name: "Cross-Project Workflow Portability: Register and Run"
-summary: "Archon workflows are project-agnostic by design. Define a workflow once, register any number of repositories, and run the same workflow across all of them. Workflows ship bundled with the CLI (not per-project), and new repos are auto-registered on first workflow run. The workflow definition is decoupled from the target codebase."
+name: 'Cross-Project Workflow Portability: Register and Run'
+summary: Archon workflows are project-agnostic by design. Define a workflow once, register any number of repositories, and run the same workflow across all of them. Workflows ship bundled with the CLI (not
+  per-project), and new repos are auto-registered on first workflow run. The workflow definition is decoupled from the target codebase.
 implementation_notes: null
-category: "Orchestration"
-evidence_strength: "Medium (practitioner-documented)"
-adoption_status: "Not Yet Started"
-priority: "P2 (Design Required)"
+category: Orchestration
+evidence_strength: Medium (practitioner-documented)
+adoption_status: Not Yet Started
+priority: P2 (Design Required)
 applicability:
-  - "S3 (Claude Code Build)"
-  - "General"
+- S3 (Claude Code Build)
+- General
 adopted_in: []
 sources:
-  - "archon-open-source-harness-builder.md"
+- archon-open-source-harness-builder.md
 related_findings:
-  - file: "archon-yaml-defined-harness-workflows.md"
-    rel: "extends"
-  - file: "skills-portability-across-sdk-and-framework-boundaries.md"
-    rel: "same-problem"
-  - file: "multi-ide-portability-via-installer-templates.md"
-    rel: "same-problem"
+- file: archon-yaml-defined-harness-workflows.md
+  rel: extends
+- file: skills-portability-across-sdk-and-framework-boundaries.md
+  rel: same-problem
+- file: multi-ide-portability-via-installer-templates.md
+  rel: same-problem
 proposals: null
-date_discovered: "2026-05-25"
-last_updated: "2026-05-25"
-pipeline_status: "classified"
-consumed_by: []
+date_discovered: '2026-05-25'
+last_updated: '2026-05-25'
+pipeline_status: synthesized
+consumed_by:
+- agent-workflow-and-execution.md
 tags:
-  - "session-95-reextract"
+- session-95-reextract
 ---
 
 ## What It Is

@@ -21,8 +21,9 @@ related_findings:
   rel: extended-by
 - file: two-tree-model-authoring-vs-canonical-generated-pack.md
   rel: enables
-pipeline_status: raw
-consumed_by: []
+pipeline_status: synthesized
+consumed_by:
+- building-agentic-systems.md
 tags:
 - research-pipeline
 - saturation-rules

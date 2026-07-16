@@ -1,7 +1,13 @@
 ---
-name: 'Skill Smells — Symptom-to-Cause Triage Table Layered Before the Full Audit'
-summary: 'A one-page, scannable "smells" table maps observable skill symptoms to likely root causes and the deep-dive reference that diagnoses each — a 30-second pre-check layered in front of the scored audit rubric. Smells are grouped into five categories (triggering, sizing/attention, authoring craft, evaluation/governance, safety) with a quantified verdict rule: 1–2 smells in one category → patch locally; 3+ smells across categories → do not patch in place, run the full audit; any safety-category smell → block, never ship-and-fix-later. Key insight: smells are behavioral and editorial, so they are invisible to deterministic structural validators.'
-implementation_notes: 'Cheapest direct adoption from the CareerBuddy reference layer: a smells pre-pass in front of /assess-skill would let the engine triage its own growing skill roster (and audit-artifacts fan-outs) without paying the full composed-audit cost per artifact. The table shape — symptom you can notice without instrumentation → cause → pointer into the deep reference — also generalizes to other engine assessors (agents, prompts). Overlap with the imported /meta-skill-author toolchain (which ships this as skill-smells.md) vs /assess-skill is a flagged open question for the restructure program''s Phase 2 audit.'
+name: Skill Smells — Symptom-to-Cause Triage Table Layered Before the Full Audit
+summary: 'A one-page, scannable "smells" table maps observable skill symptoms to likely root causes and the deep-dive reference that diagnoses each — a 30-second pre-check layered in front of the scored
+  audit rubric. Smells are grouped into five categories (triggering, sizing/attention, authoring craft, evaluation/governance, safety) with a quantified verdict rule: 1–2 smells in one category → patch
+  locally; 3+ smells across categories → do not patch in place, run the full audit; any safety-category smell → block, never ship-and-fix-later. Key insight: smells are behavioral and editorial, so they
+  are invisible to deterministic structural validators.'
+implementation_notes: 'Cheapest direct adoption from the CareerBuddy reference layer: a smells pre-pass in front of /assess-skill would let the engine triage its own growing skill roster (and audit-artifacts
+  fan-outs) without paying the full composed-audit cost per artifact. The table shape — symptom you can notice without instrumentation → cause → pointer into the deep reference — also generalizes to other
+  engine assessors (agents, prompts). Overlap with the imported /meta-skill-author toolchain (which ships this as skill-smells.md) vs /assess-skill is a flagged open question for the restructure program''s
+  Phase 2 audit.'
 category: Evaluation
 evidence_strength: Medium (practitioner-documented, single production system)
 adoption_status: Not Yet Started
@@ -15,8 +21,9 @@ proposals: null
 date_discovered: '2026-07-12'
 last_updated: '2026-07-12'
 related_findings: []
-pipeline_status: raw
-consumed_by: []
+pipeline_status: synthesized
+consumed_by:
+- building-agent-evaluation-suites.md
 tags:
 - skill-authoring
 - anti-patterns

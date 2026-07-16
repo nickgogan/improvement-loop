@@ -1,38 +1,40 @@
 ---
-name: "Scoped Environment Network Allowlist Governance"
-summary: "Hosted agent environments use explicit network allowlists as the primary security boundary. Each environment declares exactly which external endpoints it can connect to (e.g., 'can connect to mcp.clickup.com'), with MCP access enabled/disabled as a separate flag. The environment type defaults to 'highly limited' -- only the declared endpoints are reachable."
+name: Scoped Environment Network Allowlist Governance
+summary: Hosted agent environments use explicit network allowlists as the primary security boundary. Each environment declares exactly which external endpoints it can connect to (e.g., 'can connect to mcp.clickup.com'),
+  with MCP access enabled/disabled as a separate flag. The environment type defaults to 'highly limited' -- only the declared endpoints are reachable.
 implementation_notes: null
-category: "Governance"
-evidence_strength: "Medium (practitioner-documented)"
-adoption_status: "Not Yet Started"
+category: Governance
+evidence_strength: Medium (practitioner-documented)
+adoption_status: Not Yet Started
 priority: P2 (Design Required)
 applicability:
-  - "S3 (Claude Code Build)"
-  - "General"
+- S3 (Claude Code Build)
+- General
 adopted_in: []
 sources:
-  - "anthropic-managed-agents-platform.md"
+- anthropic-managed-agents-platform.md
 related_findings:
-  - file: "credential-isolation-bundled-auth-vault-proxy.md"
-    rel: same-problem
-  - file: "tool-gateway-security-boundary.md"
-    rel: extends
-  - file: "sandbox-architecture-by-threat-model-microvm-vs-container.md"
-    rel: same-problem
-  - file: "per-node-tool-restrictions-workflow-governance.md"
-    rel: same-problem
-  - file: "explicit-permission-allow-listing-for-agent-resou.md"
-    rel: extends
-  - file: "anthropic-managed-agents-platform.md"
-    rel: extends
+- file: credential-isolation-bundled-auth-vault-proxy.md
+  rel: same-problem
+- file: tool-gateway-security-boundary.md
+  rel: extends
+- file: sandbox-architecture-by-threat-model-microvm-vs-container.md
+  rel: same-problem
+- file: per-node-tool-restrictions-workflow-governance.md
+  rel: same-problem
+- file: explicit-permission-allow-listing-for-agent-resou.md
+  rel: extends
+- file: anthropic-managed-agents-platform.md
+  rel: extends
 proposals: null
-date_discovered: "2026-05-25"
-last_updated: "2026-05-25"
-pipeline_status: "extracted"
+date_discovered: '2026-05-25'
+last_updated: '2026-05-25'
+pipeline_status: synthesized
 consumed_by:
-  - "extracts/rules/scoped-environment-network-allowlist.md"
+- extracts/rules/scoped-environment-network-allowlist.md
+- agent-safety-and-permissions.md
 tags:
-  - "session-95-reextract"
+- session-95-reextract
 ---
 
 ## What It Is

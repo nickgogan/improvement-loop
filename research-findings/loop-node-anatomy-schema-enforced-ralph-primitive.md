@@ -1,54 +1,69 @@
 ---
-name: "Loop-Node Anatomy — Schema-Enforced Ralph Loop as an Engine Primitive"
-summary: |-
-  Plain English: if you're going to run an agent in a loop, the loop itself needs a
+name: Loop-Node Anatomy — Schema-Enforced Ralph Loop as an Engine Primitive
+summary: 'Plain English: if you''re going to run an agent in a loop, the loop itself needs a
+
   complete, checkable spec — not a prompt idiom. Archon v0.5.0 ships the most complete
+
   production loop-anatomy schema in the watched set: a `loop:` node whose config covers
+
   every element of a safe agent loop — completion signal (`until:` string matched in AI
+
   output), deterministic check (`until_bash:` script, exit 0 = done), hard budget
+
   (`max_iterations`, required; `retry` explicitly rejected on loop nodes), context
+
   policy (`fresh_context: true` per-iteration session reset with `$LOOP_PREV_OUTPUT`
-  bridging the prior iteration's cleaned output across), per-iteration human gates
+
+  bridging the prior iteration''s cleaned output across), per-iteration human gates
+
   (`interactive: true` + `gate_message`, feedback injected via `$LOOP_USER_INPUT`),
+
   observability (`loop_iteration_started/completed/failed` events, `loopIterations` in
+
   run metrics), and pause/resume semantics (iteration counter + session id persisted).
-  Maps directly onto the 11.A Loop Engineering init → iterate → evaluate → exit framing.
-implementation_notes: |-
-  If the engine ever designs a loop skill or Ralph-style autonomous session harness,
+
+  Maps directly onto the 11.A Loop Engineering init → iterate → evaluate → exit framing.'
+implementation_notes: 'If the engine ever designs a loop skill or Ralph-style autonomous session harness,
+
   this is the reference checklist of loop-config elements: signal AND deterministic
+
   completion checks, a required iteration budget, an explicit per-iteration context
+
   policy, an optional per-iteration human gate, and iteration-level observability.
+
   Schema-level rejection of retry-on-loop ("the loop manages its own iteration") is a
-  design invariant worth carrying over.
-category: "Orchestration"
-evidence_strength: "Medium (practitioner-documented)"
-adoption_status: "Not Yet Started"
-priority: "P2 (Design Required)"
+
+  design invariant worth carrying over.'
+category: Orchestration
+evidence_strength: Medium (practitioner-documented)
+adoption_status: Not Yet Started
+priority: P2 (Design Required)
 applicability:
-  - "General"
+- General
 adopted_in: []
 sources: []
 related_findings:
-  - file: "ralph-wiggum-execution-pattern.md"
-    rel: "extends"
-  - file: "stop-rules-as-execution-boundaries.md"
-    rel: "extends"
-  - file: "archon-yaml-defined-harness-workflows.md"
-    rel: "extends"
-  - file: "incremental-one-feature-per-session-pattern.md"
-    rel: "same-problem"
-  - file: "spec-frontmatter-state-machine-unattended-dev-loop.md"
-    rel: "same-problem"
+- file: ralph-wiggum-execution-pattern.md
+  rel: extends
+- file: stop-rules-as-execution-boundaries.md
+  rel: extends
+- file: archon-yaml-defined-harness-workflows.md
+  rel: extends
+- file: incremental-one-feature-per-session-pattern.md
+  rel: same-problem
+- file: spec-frontmatter-state-machine-unattended-dev-loop.md
+  rel: same-problem
 proposals: null
-date_discovered: "2026-07-13"
-last_updated: "2026-07-13"
-pipeline_status: "raw"
-consumed_by: []
+date_discovered: '2026-07-13'
+last_updated: '2026-07-13'
+pipeline_status: synthesized
+consumed_by:
+- agent-architecture-decisions.md
 tags:
-  - "orchestration"
-  - "loop-engineering"
-  - "ralph-loop"
-  - "archon"
+- orchestration
+- loop-engineering
+- ralph-loop
+- archon
 ---
 
 # Loop-Node Anatomy — Schema-Enforced Ralph Loop as an Engine Primitive

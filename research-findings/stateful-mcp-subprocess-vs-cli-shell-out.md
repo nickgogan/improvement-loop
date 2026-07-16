@@ -1,42 +1,54 @@
 ---
-name: "Stateful Tools: Long-Lived MCP Subprocess Beats Per-Call CLI Shell-Out"
-summary: |-
-  A boundary condition on the KB's CLI-first rule: when the tool holds state (an open
+name: 'Stateful Tools: Long-Lived MCP Subprocess Beats Per-Call CLI Shell-Out'
+summary: 'A boundary condition on the KB''s CLI-first rule: when the tool holds state (an open
+
   database, a warm engine), a long-lived local MCP stdio subprocess beats shelling out
-  to the tool's CLI per call. Each CLI invocation pays full process startup plus
+
+  to the tool''s CLI per call. Each CLI invocation pays full process startup plus
+
   database open/close, forces the model to compose flags and scrape stdout instead of
+
   using typed tool schemas, and adds one shell-approval surface per command. The MCP
+
   subprocess is one process holding the DB open, exposing typed tools, dying with the
+
   session. Demonstrated with Gbrain: CLI shell-out "works, but is worse as a process"
-  — the MCP path was visibly faster.
-implementation_notes: |-
-  Nuances (does not overturn) the P1 finding cli-first-tool-integration-less-overhead-
+
+  — the MCP path was visibly faster.'
+implementation_notes: 'Nuances (does not overturn) the P1 finding cli-first-tool-integration-less-overhead-
+
   than-mcp and its extracted rule prefer-cli-over-mcp-when-both-exist: that evidence
+
   came from stateless tools where the CLI shares the terminal environment natively.
+
   The decision input is statefulness: stateless tool → CLI-first still holds; stateful
+
   local service (open DB, long-lived engine) → local stdio MCP subprocess. Candidate
-  refinement for the extracted rule's applicability clause — flag to the Codifier.
-category: "Tool Integration"
-evidence_strength: "Medium (practitioner-documented)"
-adoption_status: "Not Yet Started"
-priority: "P2 (Design Required)"
+
+  refinement for the extracted rule''s applicability clause — flag to the Codifier.'
+category: Tool Integration
+evidence_strength: Medium (practitioner-documented)
+adoption_status: Not Yet Started
+priority: P2 (Design Required)
 applicability:
-  - "General"
-  - "IL (tool integration guidance)"
+- General
+- IL (tool integration guidance)
 adopted_in: []
 sources:
-  - "give-your-ai-agent-a-second-brain-gbrain-hermes.md"
+- give-your-ai-agent-a-second-brain-gbrain-hermes.md
 related_findings:
-  - file: "cli-first-tool-integration-less-overhead-than-mcp.md"
-    rel: "extends"
-  - file: "markdown-git-system-of-record-derived-disposable-db.md"
-    rel: "enabled-by"
-  - file: "mcp-n-plus-m-integration-economics.md"
-    rel: "same-problem"
+- file: cli-first-tool-integration-less-overhead-than-mcp.md
+  rel: extends
+- file: markdown-git-system-of-record-derived-disposable-db.md
+  rel: enabled-by
+- file: mcp-n-plus-m-integration-economics.md
+  rel: same-problem
 proposals: null
-date_discovered: "2026-07-12"
-last_updated: "2026-07-12"
-pipeline_status: "raw"
+date_discovered: '2026-07-12'
+last_updated: '2026-07-12'
+pipeline_status: synthesized
+consumed_by:
+- designing-agent-tools.md
 ---
 
 ## What It Is

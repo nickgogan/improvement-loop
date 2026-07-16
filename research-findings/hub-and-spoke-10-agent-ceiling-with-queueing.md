@@ -1,34 +1,36 @@
 ---
-name: "Hub-and-Spoke Sub-Agent Ceiling (10 Concurrent, Queued Beyond)"
-summary: "Claude Code's sub-agent topology is strictly hub-and-spoke: sub-agents report only to the main agent and cannot communicate with each other. Hard limit of 10 concurrent sub-agents; additional tasks are queued. This creates a known bottleneck for tasks requiring inter-agent coordination, which is the explicit escalation trigger for agent teams."
+name: Hub-and-Spoke Sub-Agent Ceiling (10 Concurrent, Queued Beyond)
+summary: 'Claude Code''s sub-agent topology is strictly hub-and-spoke: sub-agents report only to the main agent and cannot communicate with each other. Hard limit of 10 concurrent sub-agents; additional
+  tasks are queued. This creates a known bottleneck for tasks requiring inter-agent coordination, which is the explicit escalation trigger for agent teams.'
 implementation_notes: null
-category: "Orchestration"
-evidence_strength: "Medium (practitioner-documented)"
-adoption_status: "Not Yet Started"
-priority: "P2 (Design Required)"
+category: Orchestration
+evidence_strength: Medium (practitioner-documented)
+adoption_status: Not Yet Started
+priority: P2 (Design Required)
 applicability:
-  - "S3 (Claude Code Build)"
+- S3 (Claude Code Build)
 adopted_in: []
 sources:
-  - "five-agentic-patterns-claude-code.md"
+- five-agentic-patterns-claude-code.md
 related_findings:
-  - file: "sub-agent-context-isolation-for-parallel-complex.md"
-    rel: "extends"
-  - file: "builder-validator-chain-pattern.md"
-    rel: "enables"
-  - file: "agent-teams-shared-communication-channel.md"
-    rel: "same-problem"
-  - file: "five-pattern-complexity-escalation-ladder.md"
-    rel: "enables"
-  - file: "orchestrated-competition-n-sub-agents-solve-same.md"
-    rel: "same-problem"
+- file: sub-agent-context-isolation-for-parallel-complex.md
+  rel: extends
+- file: builder-validator-chain-pattern.md
+  rel: enables
+- file: agent-teams-shared-communication-channel.md
+  rel: same-problem
+- file: five-pattern-complexity-escalation-ladder.md
+  rel: enables
+- file: orchestrated-competition-n-sub-agents-solve-same.md
+  rel: same-problem
 proposals: null
-date_discovered: "2026-05-25"
-last_updated: "2026-05-25"
-pipeline_status: "classified"
-consumed_by: []
+date_discovered: '2026-05-25'
+last_updated: '2026-05-25'
+pipeline_status: synthesized
+consumed_by:
+- agent-architecture-decisions.md
 tags:
-  - "session-95-reextract"
+- session-95-reextract
 ---
 
 ## What It Is

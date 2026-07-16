@@ -1,7 +1,10 @@
 ---
 name: Sandbox Architecture by Threat Model (microVM vs Container)
-summary: E2B and Daytona represent two architectural choices that map to distinct threat models — not pricing-tier differences. E2B uses Firecracker microVMs with a dedicated kernel per session (hardware isolation, ~150ms cold start, optimized for executing untrusted LLM-generated code). Daytona uses Docker containers with a shared kernel (27–90ms cold start, persistent workspaces, optimized for stateful agent workflows where packages/files must survive across interactions). The right choice is determined by "is the code untrusted?" — not by latency or pricing.
-implementation_notes: MetaSystem does not currently sandbox agent code execution. If S3 (Claude Build) ever runs LLM-generated code against real repos, the microVM-vs-container choice maps directly onto MetaSystem's risk model — code drafted by research agents against repo-cache is untrusted-ish (container plausible); code drafted against production Household OS Notion would be untrusted (microVM required).
+summary: E2B and Daytona represent two architectural choices that map to distinct threat models — not pricing-tier differences. E2B uses Firecracker microVMs with a dedicated kernel per session (hardware
+  isolation, ~150ms cold start, optimized for executing untrusted LLM-generated code). Daytona uses Docker containers with a shared kernel (27–90ms cold start, persistent workspaces, optimized for stateful
+  agent workflows where packages/files must survive across interactions). The right choice is determined by "is the code untrusted?" — not by latency or pricing.
+implementation_notes: MetaSystem does not currently sandbox agent code execution. If S3 (Claude Build) ever runs LLM-generated code against real repos, the microVM-vs-container choice maps directly onto
+  MetaSystem's risk model — code drafted by research agents against repo-cache is untrusted-ish (container plausible); code drafted against production Household OS Notion would be untrusted (microVM required).
 category: Sandboxing
 evidence_strength: Strong (production-tested)
 adoption_status: Not Yet Started
@@ -23,8 +26,9 @@ related_findings:
 proposals: null
 date_discovered: '2026-04-23'
 last_updated: '2026-04-23'
-pipeline_status: "classified"
-consumed_by: []
+pipeline_status: synthesized
+consumed_by:
+- agent-safety-and-permissions.md
 ---
 
 # Sandbox Architecture by Threat Model (microVM vs Container)

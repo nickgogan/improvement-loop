@@ -1,45 +1,57 @@
 ---
-name: "Per-Folder Heterogeneous Retrieval Levels, Upgraded on Felt Pain"
-summary: |-
-  A second brain is not one retrieval architecture — each folder gets the retrieval
+name: Per-Folder Heterogeneous Retrieval Levels, Upgraded on Felt Pain
+summary: 'A second brain is not one retrieval architecture — each folder gets the retrieval
+
   level its data shape and query shape deserve: plain routing + markdown here, an LLM
+
   wiki there, a vector index for one bulk-text corpus, a knowledge graph only where
+
   relationship traces are actually asked for. And levels are upgraded per folder only
-  when a concrete pain is felt ("if there's not pain, why create more?"), never
-  speculatively. Nate Herk's five-level ladder: (1) CLAUDE.md routing + folders,
+
+  when a concrete pain is felt ("if there''s not pain, why create more?"), never
+
+  speculatively. Nate Herk''s five-level ladder: (1) CLAUDE.md routing + folders,
+
   (2) LLM wiki with indexes, (3) semantic search, (4) knowledge graph, (5) always-on
-  autonomous brain — with his own production system deliberately sitting at level 2.
-implementation_notes: |-
-  Upgrades the KB's existing scale-threshold heuristic from a system-wide either/or
+
+  autonomous brain — with his own production system deliberately sitting at level 2.'
+implementation_notes: 'Upgrades the KB''s existing scale-threshold heuristic from a system-wide either/or
+
   (markdown vs RAG) to a per-folder decision — directly relevant to how the Librarian
+
   advises consumers and to any future engine retrieval upgrades (e.g., a vector layer
+
   over transcripts only, while findings stay whole-file markdown). The pain-driven
+
   trigger aligns with agent-rules rule 11 (abstractions must earn their keep) —
-  retrieval infrastructure is an abstraction that needs recurrence evidence.
-category: "Context Engineering"
-evidence_strength: "Medium (practitioner-documented)"
-adoption_status: "Partially Adopted"
-priority: "P2 (Design Required)"
+
+  retrieval infrastructure is an abstraction that needs recurrence evidence.'
+category: Context Engineering
+evidence_strength: Medium (practitioner-documented)
+adoption_status: Partially Adopted
+priority: P2 (Design Required)
 applicability:
-  - "General"
-  - "IL (knowledge architecture, Librarian advice)"
+- General
+- IL (knowledge architecture, Librarian advice)
 adopted_in:
-  - "Improvement Loop"
+- Improvement Loop
 sources:
-  - "every-level-of-a-claude-second-brain-explained.md"
+- every-level-of-a-claude-second-brain-explained.md
 related_findings:
-  - file: "scale-threshold-heuristic-obsidian-vs-rag.md"
-    rel: "extends"
-  - file: "context-infrastructure-seven-level-maturity-model.md"
-    rel: "same-problem"
-  - file: "query-shape-first-storage-design.md"
-    rel: "enabled-by"
-  - file: "hybrid-retrieval-pattern-semantic-lexical-graph.md"
-    rel: "same-problem"
+- file: scale-threshold-heuristic-obsidian-vs-rag.md
+  rel: extends
+- file: context-infrastructure-seven-level-maturity-model.md
+  rel: same-problem
+- file: query-shape-first-storage-design.md
+  rel: enabled-by
+- file: hybrid-retrieval-pattern-semantic-lexical-graph.md
+  rel: same-problem
 proposals: null
-date_discovered: "2026-07-12"
-last_updated: "2026-07-12"
-pipeline_status: "raw"
+date_discovered: '2026-07-12'
+last_updated: '2026-07-12'
+pipeline_status: synthesized
+consumed_by:
+- structuring-agent-context.md
 ---
 
 ## What It Is

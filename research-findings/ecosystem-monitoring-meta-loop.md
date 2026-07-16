@@ -1,40 +1,52 @@
 ---
-name: "Ecosystem Monitoring Meta-Loop (the Loop That Manages Loops)"
-summary: |-
-  A meta-loop that manages a growing loop portfolio with three features: a composability
+name: Ecosystem Monitoring Meta-Loop (the Loop That Manages Loops)
+summary: 'A meta-loop that manages a growing loop portfolio with three features: a composability
+
   scan that finds logic repeated across loops and proposes extracting it into a shared
+
   skill; a health check built on a shared write-run-log utility skill so every loop logs
+
   results to one folder (making failing or useless loops visible and killable — token
+
   savings); and convention-based discovery — every loop follows a `*-loop` naming
+
   convention, and each run globs for that pattern, so new loops are picked up
-  automatically with zero registry maintenance.
-implementation_notes: |-
-  The engine runs a growing loop portfolio (research-loop, watch-blogs, watch-upstream,
-  audits, scheduled routines) with no surface that monitors the portfolio's run health —
+
+  automatically with zero registry maintenance.'
+implementation_notes: 'The engine runs a growing loop portfolio (research-loop, watch-blogs, watch-upstream,
+
+  audits, scheduled routines) with no surface that monitors the portfolio''s run health —
+
   this is a concrete recipe for that gap. The two adoptable mechanics: a shared run-log
+
   skill all loops call (one place to update, one place to read health), and
+
   convention-based discovery (compatible with the no-hardcoded-counts rule — the loop
+
   inventory is computed per run, never maintained). Design required: what counts as a
-  "loop" in the engine, log schema, and where run logs live in operations/.
-category: "Orchestration"
-evidence_strength: "Medium (practitioner-documented)"
-adoption_status: "Not Yet Started"
-priority: "P2 (Design Required)"
+
+  "loop" in the engine, log schema, and where run logs live in operations/.'
+category: Orchestration
+evidence_strength: Medium (practitioner-documented)
+adoption_status: Not Yet Started
+priority: P2 (Design Required)
 applicability:
-  - "IL (loop portfolio operations)"
-  - "General"
+- IL (loop portfolio operations)
+- General
 adopted_in: []
 sources:
-  - "8-claude-loops-to-build-10x-faster.md"
+- 8-claude-loops-to-build-10x-faster.md
 related_findings:
-  - file: "monitoring-agent-failure-detection-autonomous-repair.md"
-    rel: "same-problem"
-  - file: "shared-context-folder-as-cross-skill-update-multiplier.md"
-    rel: "same-problem"
+- file: monitoring-agent-failure-detection-autonomous-repair.md
+  rel: same-problem
+- file: shared-context-folder-as-cross-skill-update-multiplier.md
+  rel: same-problem
 proposals: null
-date_discovered: "2026-07-12"
-last_updated: "2026-07-12"
-pipeline_status: "raw"
+date_discovered: '2026-07-12'
+last_updated: '2026-07-12'
+pipeline_status: synthesized
+consumed_by:
+- agent-workflow-and-execution.md
 ---
 
 ## What It Is

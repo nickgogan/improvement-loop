@@ -27,9 +27,10 @@ related_findings:
   rel: same-problem
 - file: claude-routines-webhook-triggered-pipeline-chaining.md
   rel: same-problem
-pipeline_status: "extracted"
+pipeline_status: synthesized
 consumed_by:
-  - "skills/end-to-end-sequential-bug-fix-pipeline.md"
+- skills/end-to-end-sequential-bug-fix-pipeline.md
+- agent-workflow-and-execution.md
 ---
 ## What It Is
 

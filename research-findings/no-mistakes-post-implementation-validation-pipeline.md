@@ -1,54 +1,72 @@
 ---
-name: "Post-Implementation Validation Pipeline (No-Mistakes: Worktree → Intent → Rebase → Adversarial Review → Evidence → Risk-Gated Human Review)"
-summary: |-
-  Plain English: instead of a human reviewing every AI diff (the velocity hard-cap) or
-  trusting the agent's "done," route every first-pass change through a fixed validation
-  pipeline before it becomes a PR. Kun Chen's open-source "no mistakes" pipeline: (1)
+name: 'Post-Implementation Validation Pipeline (No-Mistakes: Worktree → Intent → Rebase → Adversarial Review → Evidence → Risk-Gated Human Review)'
+summary: 'Plain English: instead of a human reviewing every AI diff (the velocity hard-cap) or
+
+  trusting the agent''s "done," route every first-pass change through a fixed validation
+
+  pipeline before it becomes a PR. Kun Chen''s open-source "no mistakes" pipeline: (1)
+
   branch/commit, then run everything in an isolated worktree so validation never touches
+
   the working repo; (2) extract the *real intent* behind the change by analyzing the
+
   agent session that produced it; (3) rebase onto latest main first, resolving conflicts
+
   up front; (4) adversarial review in its own fresh context window — obvious problems
+
   self-correct, ambiguous ones with product implications escalate to the human; (5) test
+
   end-to-end against the original intent, recording evidence artifacts (screenshot,
+
   video, log) attached to the PR as proof-of-done; (6) docs pass + lint, raise the PR,
+
   then babysit it (incoming conflicts, CI failures) until merge. The PR carries a risk
+
   assessment that gates how deeply the human reviews: low-risk changes get no diff read
-  at all.
-implementation_notes: |-
-  The engine's closest analogue is assess-* audits of artifacts, but nothing pipelines
+
+  at all.'
+implementation_notes: 'The engine''s closest analogue is assess-* audits of artifacts, but nothing pipelines
+
   post-change validation with evidence artifacts and risk-gated review depth. Candidate
-  design input for the restructure program's harness phase: intent-extraction-from-
+
+  design input for the restructure program''s harness phase: intent-extraction-from-
+
   session and evidence-artifact-attached-to-output are the two stages the engine lacks
+
   entirely. The adversarial fresh-context stage is independent corroboration of
+
   governance rule 10 (generator-assessor separation) — recorded as one-way links; those
-  findings are owned by another lane this session.
-category: "Evaluation"
-evidence_strength: "Medium (practitioner-documented)"
-adoption_status: "Not Yet Started"
-priority: "P2 (Design Required)"
+
+  findings are owned by another lane this session.'
+category: Evaluation
+evidence_strength: Medium (practitioner-documented)
+adoption_status: Not Yet Started
+priority: P2 (Design Required)
 applicability:
-  - "IL (validation harness design, audit pipeline)"
-  - "General"
+- IL (validation harness design, audit pipeline)
+- General
 adopted_in: []
 sources:
-  - "l8-principals-agentic-engineering-workflow.md"
+- l8-principals-agentic-engineering-workflow.md
 related_findings:
-  - file: "context-pollution-same-window-verification-bias.md"
-    rel: "extends"
-  - file: "generator-assessor-separation-in-skill-iteration.md"
-    rel: "same-problem"
-  - file: "agent-self-reporting-unreliability-independent-eval.md"
-    rel: "same-problem"
-  - file: "holdout-validation-pattern-blind-regression.md"
-    rel: "same-problem"
-  - file: "tiered-review-escalation-strategy.md"
-    rel: "same-problem"
-  - file: "worktree-isolation-for-parallel-agent-sessions.md"
-    rel: "enabled-by"
+- file: context-pollution-same-window-verification-bias.md
+  rel: extends
+- file: generator-assessor-separation-in-skill-iteration.md
+  rel: same-problem
+- file: agent-self-reporting-unreliability-independent-eval.md
+  rel: same-problem
+- file: holdout-validation-pattern-blind-regression.md
+  rel: same-problem
+- file: tiered-review-escalation-strategy.md
+  rel: same-problem
+- file: worktree-isolation-for-parallel-agent-sessions.md
+  rel: enabled-by
 proposals: null
-date_discovered: "2026-07-12"
-last_updated: "2026-07-12"
-pipeline_status: "raw"
+date_discovered: '2026-07-12'
+last_updated: '2026-07-12'
+pipeline_status: synthesized
+consumed_by:
+- building-agent-evaluation-suites.md
 ---
 
 ## What It Is

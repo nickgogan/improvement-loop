@@ -21,9 +21,10 @@ last_updated: 2026-04-08
 related_findings:
 - file: advanced-elicitation-techniques-library.md
   rel: same-problem
-pipeline_status: extracted
+pipeline_status: synthesized
 consumed_by:
 - skills/thinking-models-mental-framework-commands.md
+- model-resilient-prompt-engineering.md
 ---
 # Thinking Models: Mental Framework Commands for Coding Agents
 

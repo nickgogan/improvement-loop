@@ -1,7 +1,11 @@
 ---
-name: 'Always-On Context Minimalism — Minimal Entry File, Pointer-Only State'
-summary: 'The one instruction file the harness injects into every request carries only the irreducible minimum — mission, load order, standing guards, skill pointers — because it is paid for on every request. Volatile state (active user, targets, status) appears pointer-only, never restated. A wake-up idiom lets a bare control-file mention ("PROGRESS", "continue") resolve directly to the recorded next unit of work without recital.'
-implementation_notes: 'The engine already practices pieces of this (wake-up idiom, no-hardcoded-counts rule, lean CLAUDE.md); the CareerBuddy formulation adds the explicit economy rule as a design law — "always-on = minimal; everything else loads on demand" — plus the discipline that the entry file names active state pointer-only. Adoptable as an audit criterion for /assess-agent and /simplify-context: does the always-on surface restate anything that lives elsewhere?'
+name: Always-On Context Minimalism — Minimal Entry File, Pointer-Only State
+summary: The one instruction file the harness injects into every request carries only the irreducible minimum — mission, load order, standing guards, skill pointers — because it is paid for on every request.
+  Volatile state (active user, targets, status) appears pointer-only, never restated. A wake-up idiom lets a bare control-file mention ("PROGRESS", "continue") resolve directly to the recorded next unit
+  of work without recital.
+implementation_notes: 'The engine already practices pieces of this (wake-up idiom, no-hardcoded-counts rule, lean CLAUDE.md); the CareerBuddy formulation adds the explicit economy rule as a design law —
+  "always-on = minimal; everything else loads on demand" — plus the discipline that the entry file names active state pointer-only. Adoptable as an audit criterion for /assess-agent and /simplify-context:
+  does the always-on surface restate anything that lives elsewhere?'
 category: Context Engineering
 evidence_strength: Medium (practitioner-documented, single production system)
 adoption_status: Not Yet Started
@@ -17,8 +21,9 @@ last_updated: '2026-07-13'
 related_findings:
 - file: rules-layer-collapse-monolithic-context-counter-signal.md
   rel: contradicts
-pipeline_status: raw
-consumed_by: []
+pipeline_status: synthesized
+consumed_by:
+- structuring-agent-context.md
 tags:
 - always-on-instructions
 - context-economy

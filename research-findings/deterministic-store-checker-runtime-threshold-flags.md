@@ -1,7 +1,11 @@
 ---
-name: 'Deterministic Store Checker with Runtime-Computed Threshold Flags'
-summary: 'A small script is the deterministic arbiter of a markdown memory store: it regex-validates every entry against the documented schema and emits informational threshold flags (lesson at promotion threshold, skill at eval-readiness) computed at runtime. Counts are never stored in the files themselves — they are recomputed on every check, eliminating a whole class of drift. Exit codes distinguish valid, violated, and not-yet-initialized.'
-implementation_notes: 'How this could apply to the MetaSystem engine — Phase 2 of its restructure program will size a second-brain-for-operations against this store model; IB-172 (layered memory architecture) is the related backlog item. This is Nick''s standing no-hardcoded-counts rule made executable: the checker is where counts live. The engine''s pre-commit frontmatter hook is the same species; a store checker would extend it to operational memory.'
+name: Deterministic Store Checker with Runtime-Computed Threshold Flags
+summary: 'A small script is the deterministic arbiter of a markdown memory store: it regex-validates every entry against the documented schema and emits informational threshold flags (lesson at promotion
+  threshold, skill at eval-readiness) computed at runtime. Counts are never stored in the files themselves — they are recomputed on every check, eliminating a whole class of drift. Exit codes distinguish
+  valid, violated, and not-yet-initialized.'
+implementation_notes: 'How this could apply to the MetaSystem engine — Phase 2 of its restructure program will size a second-brain-for-operations against this store model; IB-172 (layered memory architecture)
+  is the related backlog item. This is Nick''s standing no-hardcoded-counts rule made executable: the checker is where counts live. The engine''s pre-commit frontmatter hook is the same species; a store
+  checker would extend it to operational memory.'
 category: Evaluation
 evidence_strength: Medium (practitioner-documented, single production system with live store evidence)
 adoption_status: Not Yet Started
@@ -15,8 +19,9 @@ proposals: null
 date_discovered: '2026-07-12'
 last_updated: '2026-07-12'
 related_findings: []
-pipeline_status: raw
-consumed_by: []
+pipeline_status: synthesized
+consumed_by:
+- building-agent-evaluation-suites.md
 tags:
 - deterministic-validation
 - schema-check

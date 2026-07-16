@@ -1,30 +1,34 @@
 ---
-name: "Rank Fusion Hybrid Retrieval on MongoDB Atlas"
-summary: "Memongo uses MongoDB Atlas's `$rankFusion` and `$scoreFusion` aggregation stages to combine `$vectorSearch` (embedding-based, Voyage 4 Large auto-embed) with Atlas `$search` (full-text / lexical) into a single ranked result set. For benchmark runs, `$vectorSearch exact:true` is used so there is zero ANN approximation error — making the benchmark purely a measure of the memory model and retrieval recipe, not index quality. Database-native hybrid retrieval primitive, no external reranker service."
-implementation_notes: "Directly consumable by any Atlas-backed system. Replaces the common pattern of fetching top-K from two systems and reranking in application code. The exact:true benchmark discipline is worth adopting in any retrieval eval where ANN noise could confound results — separates 'my recipe is good' from 'my index is well-tuned.'"
-category: "Context Engineering"
-evidence_strength: "Medium (practitioner-documented)"
-adoption_status: "Not Yet Started"
-priority: "P2"
+name: Rank Fusion Hybrid Retrieval on MongoDB Atlas
+summary: Memongo uses MongoDB Atlas's `$rankFusion` and `$scoreFusion` aggregation stages to combine `$vectorSearch` (embedding-based, Voyage 4 Large auto-embed) with Atlas `$search` (full-text / lexical)
+  into a single ranked result set. For benchmark runs, `$vectorSearch exact:true` is used so there is zero ANN approximation error — making the benchmark purely a measure of the memory model and retrieval
+  recipe, not index quality. Database-native hybrid retrieval primitive, no external reranker service.
+implementation_notes: Directly consumable by any Atlas-backed system. Replaces the common pattern of fetching top-K from two systems and reranking in application code. The exact:true benchmark discipline
+  is worth adopting in any retrieval eval where ANN noise could confound results — separates 'my recipe is good' from 'my index is well-tuned.'
+category: Context Engineering
+evidence_strength: Medium (practitioner-documented)
+adoption_status: Not Yet Started
+priority: P2
 applicability:
-  - "S3 (Claude Code Build)"
-  - "General"
+- S3 (Claude Code Build)
+- General
 adopted_in: []
 sources:
-  - "memongo-mongodb-native-agent-memory-github.md"
+- memongo-mongodb-native-agent-memory-github.md
 related_findings:
-  - file: hybrid-retrieval-pattern-semantic-lexical-graph.md
-    rel: extends
-  - file: fundamental-limits-of-single-vector-embedding-retr.md
-    rel: same-problem
-  - file: ace-agentic-context-engineering-rag-based.md
-    rel: same-problem
+- file: hybrid-retrieval-pattern-semantic-lexical-graph.md
+  rel: extends
+- file: fundamental-limits-of-single-vector-embedding-retr.md
+  rel: same-problem
+- file: ace-agentic-context-engineering-rag-based.md
+  rel: same-problem
 proposals: null
-date_discovered: "2026-04-20"
-last_updated: "2026-04-27"
+date_discovered: '2026-04-20'
+last_updated: '2026-04-27'
 pipeline_status: synthesized
 consumed_by:
-  - "session-persistence-and-memory.md"
+- session-persistence-and-memory.md
+- structuring-agent-context.md
 ---
 
 ## What It Is

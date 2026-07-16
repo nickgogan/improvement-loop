@@ -1,37 +1,40 @@
 ---
-name: "Scheduled Skill Chaining with File-Based Activation"
-summary: "Scheduled agent workflows should chain multiple skills in sequence rather than running single prompts, controlled by file-based active/inactive flags. Example: a weekly content digest runs skill A (pull videos) -> skill B (analyze) -> skill C (generate posts using voice profile) -> drop in review folder. File-based activation means toggling a flag in a config file starts or stops a scheduled job — no infrastructure, no VPS, no cloud connectors required."
+name: Scheduled Skill Chaining with File-Based Activation
+summary: 'Scheduled agent workflows should chain multiple skills in sequence rather than running single prompts, controlled by file-based active/inactive flags. Example: a weekly content digest runs skill
+  A (pull videos) -> skill B (analyze) -> skill C (generate posts using voice profile) -> drop in review folder. File-based activation means toggling a flag in a config file starts or stops a scheduled
+  job — no infrastructure, no VPS, no cloud connectors required.'
 implementation_notes: null
-category: "Orchestration"
-evidence_strength: "Medium (practitioner-documented)"
-adoption_status: "Not Yet Started"
+category: Orchestration
+evidence_strength: Medium (practitioner-documented)
+adoption_status: Not Yet Started
 priority: P2 (Design Required)
 applicability:
-  - "S3 (Claude Code Build)"
-  - "General"
+- S3 (Claude Code Build)
+- General
 adopted_in: []
 sources:
-  - "agentic-os-five-pillars-claude-code.md"
+- agentic-os-five-pillars-claude-code.md
 related_findings:
-  - file: five-pillar-agentic-os-framework.md
-    rel: enables
-  - file: claude-routines-webhook-triggered-pipeline-chaining.md
-    rel: same-problem
-  - file: scheduled-task-dashboard-observability-layer.md
-    rel: extends
-  - file: context-aware-routing-skill-classifier-sub-skill.md
-    rel: enables
-  - file: time-window-proactive-agent-loop.md
-    rel: same-problem
-  - file: scheduled-tasks-for-real-time-context-maintenance.md
-    rel: extends
+- file: five-pillar-agentic-os-framework.md
+  rel: enables
+- file: claude-routines-webhook-triggered-pipeline-chaining.md
+  rel: same-problem
+- file: scheduled-task-dashboard-observability-layer.md
+  rel: extends
+- file: context-aware-routing-skill-classifier-sub-skill.md
+  rel: enables
+- file: time-window-proactive-agent-loop.md
+  rel: same-problem
+- file: scheduled-tasks-for-real-time-context-maintenance.md
+  rel: extends
 proposals: null
-date_discovered: "2026-05-25"
-last_updated: "2026-05-25"
-pipeline_status: "classified"
-consumed_by: []
+date_discovered: '2026-05-25'
+last_updated: '2026-05-25'
+pipeline_status: synthesized
+consumed_by:
+- agent-workflow-and-execution.md
 tags:
-  - "session-95-reextract"
+- session-95-reextract
 ---
 # Scheduled Skill Chaining with File-Based Activation
 

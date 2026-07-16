@@ -33,8 +33,9 @@ related_findings:
 proposals: null
 date_discovered: '2026-06-11'
 last_updated: '2026-07-12'
-pipeline_status: raw
-consumed_by: []
+pipeline_status: synthesized
+consumed_by:
+- agent-safety-and-permissions.md
 ---
 
 # Skill Security Audit Obligation (Trust Boundary at Install Time)

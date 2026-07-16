@@ -30,7 +30,9 @@ related_findings:
 proposals: null
 date_discovered: '2026-04-19'
 last_updated: '2026-07-11'
-pipeline_status: classified
+pipeline_status: synthesized
+consumed_by:
+- agent-architecture-decisions.md
 ---
 
 ## What It Is

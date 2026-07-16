@@ -1,7 +1,7 @@
 ---
 name: Monitor vs /loop — Event-Driven vs Time-Driven Background Execution
-summary: Claude Code's Monitor tool and /loop command solve overlapping problems with opposite triggering mechanisms. /loop fires a full API call on a fixed time interval (N minutes); Monitor fires only when
-  a filter-matched event occurs in a background process stream. Monitor costs zero tokens between events; /loop incurs a full API call per iteration regardless of whether anything changed.
+summary: Claude Code's Monitor tool and /loop command solve overlapping problems with opposite triggering mechanisms. /loop fires a full API call on a fixed time interval (N minutes); Monitor fires only
+  when a filter-matched event occurs in a background process stream. Monitor costs zero tokens between events; /loop incurs a full API call per iteration regardless of whether anything changed.
 implementation_notes: When choosing between Monitor and /loop for a background watching task, default to Monitor if the watched system emits observable output (logs, stdout, file events). Use /loop only
   when no event stream exists and you need time-based polling as a fallback. This distinction directly affects token budget in any long-running MetaSystem session.
 category: Tool Integration
@@ -25,8 +25,9 @@ related_findings:
   rel: enabled-by
 - file: session-as-append-only-event-log.md
   rel: same-problem
-pipeline_status: "classified"
-consumed_by: []
+pipeline_status: synthesized
+consumed_by:
+- designing-agent-tools.md
 ---
 # Monitor vs /loop — Event-Driven vs Time-Driven Background Execution
 

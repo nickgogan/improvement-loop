@@ -6,7 +6,7 @@ target_system:
   - "improvement-loop"
 stage: "draft"
 created: "2026-04-19"
-updated: "2026-05-25"
+updated: "2026-07-16"
 author: "claude"
 source_findings:
   - "agent-self-reporting-unreliability-independent-eval"
@@ -55,6 +55,33 @@ source_findings:
   - "factorial-design-eval-systematic-context-variati"
   - "holdout-validation-pattern-blind-regression"
   - "test-driven-development-as-counterweight-to-agenti"
+  - "iterative-refinement-loop-with-quality-gate"
+  - "generator-assessor-separation-in-skill-iteration"
+  - "dual-verification-trajectory-vs-output-correctness"
+  - "repeated-sampling-scaling-law-and-verifier-ceiling"
+  - "with-without-skill-ab-baseline-measurement"
+  - "confirm-failure-first-tdd-agent-discipline"
+  - "agentic-harness-self-assessment-skill"
+  - "balanced-positive-negative-eval-sets"
+  - "convergence-loop-optimizer-family-contract"
+  - "cross-model-verification-for-bug-finding"
+  - "deterministic-store-checker-runtime-threshold-flags"
+  - "enumerate-dont-fix-hostile-reviewer-prompt"
+  - "eval-driven-tool-iteration-loop"
+  - "eval-rubric-carve-outs-subjective-and-script-core-skills"
+  - "five-point-agent-health-checklist"
+  - "harness-cost-readout-unreliability-independent-log-accounting"
+  - "hook-based-enforcement-for-agent-outputs"
+  - "loop-detection-hash-based-sliding-window"
+  - "no-mistakes-post-implementation-validation-pipeline"
+  - "persona-clone-review-board"
+  - "qa-agent-independent-compliance-review"
+  - "self-evolving-loop-pattern"
+  - "skill-description-optimization-loop-held-out-test"
+  - "skill-popularity-vs-measured-efficacy"
+  - "skill-smells-triage-layer-before-full-audit"
+  - "skill-testing-three-tier-trigger-functional-perf"
+  - "task-risk-gradient-for-verification-depth"
 source_dd:
   - "DD-81"
 tags:
@@ -62,14 +89,14 @@ tags:
   - "evaluation"
 contract:
   preconditions: "You have an agent system with defined acceptance criteria. You can run the agent repeatedly on known inputs. You have access to implement deterministic checks (linters, schema validators, test runners) and optionally LLM-as-judge assertions. You understand whether your agents operate in multi-step workflows where reliability compounds."
-  invariants: "All evaluation is independent of the agent under evaluation -- the agent never grades its own output. Every assertion is binary (pass/fail), never subjective. Eval files are locked from agent modification. Infrastructure configuration is documented and controlled as a first-class variable. Published scores are produced by the same product configuration the product ships with; ensemble aggregation rules match the production serving rule and are declared on every result. Validators never receive implementation context that could bias their judgment. Production evaluation runs on every query, not just during development. Test ordering is varied across parallel agents to prevent systematic blind spots."
+  invariants: "All evaluation is independent of the agent under evaluation -- the agent never grades its own output (generator-assessor separation). Every assertion is binary (pass/fail), never subjective -- except where class-aware carve-outs apply (subjective-output and script-core components get re-anchored criteria, never fake assertions). Eval files are locked from agent modification. Infrastructure configuration is documented and controlled as a first-class variable. Published scores are produced by the same product configuration the product ships with; ensemble aggregation rules match the production serving rule and are declared on every result. Validators never receive implementation context that could bias their judgment. Verifiers enumerate findings; they never fix. Both output correctness and trajectory soundness are graded. Parallel sampling and fan-out are sized to the named verifier's capacity. Production evaluation runs on every query, not just during development. Test ordering is varied across parallel agents to prevent systematic blind spots."
   governance: "Eval suites are versioned alongside the agent they evaluate. Eval files cannot be modified by the agent under evaluation. Grading tier selection is reviewed when task requirements change. Capability evals graduate to regression suites at saturation. Published benchmarks carry configuration disclosure (hash, feature-list, or pinned commit) and aggregation rule (single-path / majority / best-of-N with picker / union-of-successes-explicitly-labeled). Tiered review escalation is calibrated periodically based on outcome data. TDD step ordering is embedded in plan artifacts, not prompt instructions. This guide is owned by Meta-System knowledge layer."
-  recovery: "If eval results are inconsistent: check infrastructure configuration first (resource limits, time-of-day effects). If evals always pass: assertions are too easy -- add edge cases, factorial variations, and harder criteria. If eval-aware gaming is suspected: check for benchmark-identification search patterns in agent logs. If an improvement loop stalls after 40+ iterations: review assertions for mutual satisfiability before increasing the cap. If a published score does not survive product use: check whether it was a feature-disabled baseline, an out-of-path benchmark, or used union-of-successes aggregation; re-run at production configuration with the production aggregation rule and republish with the corrected number. If a validation agent produces sycophantic confirmations: implement holdout pattern -- strip all implementation context from the validator. If reliability is insufficient for a multi-step workflow: apply march-of-nines math to identify which steps need per-step reliability investment."
+  recovery: "If eval results are inconsistent: check infrastructure configuration first (resource limits, time-of-day effects). If evals always pass: assertions are too easy -- add edge cases, factorial variations, and harder criteria. If eval-aware gaming is suspected: check for benchmark-identification search patterns in agent logs. If an improvement loop stalls after 40+ iterations: review assertions for mutual satisfiability before increasing the cap. If a published score does not survive product use: check whether it was a feature-disabled baseline, an out-of-path benchmark, or used union-of-successes aggregation; re-run at production configuration with the production aggregation rule and republish with the corrected number. If a validation agent produces sycophantic confirmations: implement holdout pattern -- strip all implementation context from the validator; also flip its task to enumerate-only (forbid fixing). If reliability is insufficient for a multi-step workflow: apply march-of-nines math to identify which steps need per-step reliability investment. If parallel sampling stops converting attempts into results: you have hit the verifier ceiling -- invest in a mechanical checker before adding attempts. If cost or usage numbers look wrong: distrust the harness readout and recompute from logs."
 ---
 
 # Building Agent Evaluation Suites
 
-How to verify your agent actually works -- not by asking it, but by measuring it. This guide covers why self-reports are unreliable, how to design binary assertions that catch real failures, how to structure verification architectures that resist gaming, how to build continuous improvement loops that make agents better while you sleep, and how to run evaluation continuously in production so failures surface in real time.
+How to verify your agent actually works -- not by asking it, but by measuring it. This guide covers why self-reports are unreliable, how to design binary assertions that catch real failures, how to structure verification architectures that resist gaming, how to evaluate skills as first-class eval targets, how to build continuous improvement loops that make agents better while you sleep, and how to run evaluation continuously in production so failures surface in real time.
 
 ## When to Use This Guide
 
@@ -82,6 +109,10 @@ How to verify your agent actually works -- not by asking it, but by measuring it
 - You need to evaluate MCP tool usage correctness
 - You are designing continuous production evaluation for a deployed agent
 - You need to calculate required per-step reliability for a multi-step workflow
+- You are testing whether a skill actually helps (does it trigger, does it work, does it beat baseline?)
+- You are deciding whether to adopt a third-party skill or component
+- You need verification for outputs that have no test suite (reports, decks, docs)
+- You are sizing a parallel fan-out and need to know whether your verifier can keep up
 
 **Do not use for:** writing the agent's acceptance criteria (see *Writing Agent Specifications*, G1), designing the agent's architecture (see *Agent Architecture Decisions*, G3), or managing context (see *Managing Agent Context*, G2).
 
@@ -109,7 +140,17 @@ How to verify your agent actually works -- not by asking it, but by measuring it
 
 **11. Goal-backward verification.** Instead of checking "did the agent do what the plan said?" (forward verification), start from the desired outcome and work backwards to confirm the code actually achieves it. Forward verification catches omissions but misses a critical failure mode: the plan itself may have been incomplete, or tasks may have been marked done without achieving the intended effect. Goal-backward asks: "Does the system now accomplish what this phase was supposed to accomplish?" Explicitly distrust agent-generated summaries -- verify what actually exists, not what the agent claims exists.
 
-**12. TDD as eval structure.** Tests are the primary counterweight to the inherent randomness of LLM-generated code. In agentic workflows, the developer cannot read every line of output -- tests serve as the quality gate. TDD is more important in agentic coding than in traditional development precisely because of model randomness. The critical design insight: embed TDD step ordering (write test, verify failure, implement, verify pass, commit) in the plan artifact structure itself, not in prompt instructions. When the plan document's format enforces TDD, changing the agent or model does not change the process.
+**12. TDD as eval structure.** Tests are the primary counterweight to the inherent randomness of LLM-generated code. In agentic workflows, the developer cannot read every line of output -- tests serve as the quality gate. TDD is more important in agentic coding than in traditional development precisely because of model randomness. The critical design insight: embed TDD step ordering (write test, verify failure, implement, verify pass, commit) in the plan artifact structure itself, not in prompt instructions. When the plan document's format enforces TDD, changing the agent or model does not change the process. And the red step is non-negotiable: confirm the test actually fails before implementing. A test that passes on its first run isn't testing anything -- agents produce false-red tests routinely, and every green after a skipped red is a false victory.
+
+**13. The verifier ceiling.** Throwing more attempts at a problem reliably raises the odds that a correct answer exists somewhere in the pile (Stanford 2024: a cheap model went from 15.9% bugs fixed at 1 attempt to 56% at 250, beating the best single-attempt frontier model). But coverage only converts to results where something mechanical can grade each attempt. Where the system had to pick the best answer itself (majority voting, reward models), selection stalled at roughly 100 attempts. The binding constraint on multi-agent scale is not model quality or token budget -- it is eval quality. Name your verifier before you fan out; where none exists, cap parallelism low.
+
+**14. Verify the path, not just the answer.** An output can look right while the path to it was unsound -- skipped checks, wrong tool calls, lucky guesses. Output evaluation asks "is the final result correct?"; trajectory evaluation asks "was the sequence of tool calls and reasoning sound?" Both axes are required: an answer that looks right but skipped its checks is more dangerous than one that is obviously broken, because the obviously-broken one gets caught.
+
+**15. The task flip is the mechanism.** Generator-assessor separation works because finding problems and solving them are different tasks with different outputs. The cheapest form needs no second model or second context: flip the reviewer's task from "fix" to "only enumerate problems" and forbid fixing anything. Fresh context is better, a different model family is better still -- but the task flip is what all separation patterns share.
+
+**16. Match assertion type to output class.** Demanding binary assertions from every component misdiagnoses two whole classes: subjective-output work (writing voice, tone, design) where forced assertions produce brittle fake gates, and script-core work (renderers, parsers, validators) where the functional guarantee already lives in the script's own tests. Re-anchor the eval criteria per class instead of weakening or faking them. One invariant survives every carve-out: triggering/routing correctness is objective and required of everything.
+
+**17. Popularity is not efficacy.** A skill from a 177k-star repo measured +5% token usage with worse results than no skill at all. Stars measure virality. The only honest signal is a measured marginal impact: run the same task with and without the component and diff the outcomes. Never adopt a third-party skill that claims performance gains without published rigorous evaluation or your own baseline run.
 
 ---
 
@@ -164,6 +205,8 @@ If your workflow has N steps and requires X% overall reliability, solve for the 
 - Track rates over time to detect regressions that single-pass evaluation hides
 - For multi-step workflows, report both per-step and compound rates
 
+**Name the verifier before scaling attempts.** If your strategy involves parallel sampling, repeated attempts, or wide subagent fan-outs, the metric that matters is not "does a correct answer exist in the pile" but "can anything find it." Before any fan-out, name the mechanical check that grades attempts cheaply (test suite, exit code, schema validator, ground-truth document). Where no such check exists, model-side selection (majority vote, reward models) stalls at roughly 100 attempts -- cap parallelism at or below that ceiling, or route to a single agent. Spend past the selection ceiling buys answers that are generated but never found. A weak or gameable checker reintroduces the ceiling silently: attempts optimize against the checker rather than the task.
+
 ### Step 3: Design the Assertion Suite
 
 Build assertions in two layers, always preferring the faster and cheaper layer.
@@ -180,8 +223,12 @@ Fast, cheap, unambiguous. Use for any requirement that can be verified programma
 - **MCP primitive correctness:** Tool selection matches expected primitives, argument values correct, forbidden tools not called
 - **Skill file rules:** Naming conventions, variable usage, path references, invocation syntax, encapsulation boundaries (19 checkable rule categories in production use)
 - **Environment awareness:** Production/test resource tagging verified, destructive operations guarded by environment checks
+- **Data-store schema checks:** For any markdown or file-based store the agent writes to, a small deterministic checker regex-validates every entry against the documented schema (free-text capture drifts within days otherwise). Compute counts and threshold flags at runtime on every check -- never store counts in the files themselves; recomputation eliminates a whole class of drift. Distinct exit codes for valid / violated / not-yet-initialized.
+- **Real-time hook enforcement:** For outputs that modify shared state (labels, tickets, records), validate at the tool-call boundary with a post-tool-use hook that rejects structurally invalid operations before they take effect. Instructions are soft constraints the agent can misinterpret or forget; hooks are hard gates.
 
 Run deterministic checks first. If they fail, the output is structurally broken and there is no point running expensive LLM checks (fail-fast, save cost).
+
+**Balance positive and negative cases.** If assertions and test cases only cover situations where the agent *should* act, optimization drives it to always act -- even when it shouldn't. Claude.ai's web search overtriggered in production because early evals only tested "should search" scenarios; correcting it took many rounds of refinement. Include explicit negative cases where the correct behavior is restraint, and calibrate the balance (not necessarily 50/50) -- over-indexing on negatives produces undertriggering instead.
 
 #### Layer 2: LLM-as-Judge (When Deterministic Checks Cannot)
 
@@ -201,6 +248,22 @@ For semantic quality that resists programmatic checking. Each LLM judge call ret
 - Binary classification ("correct"/"incorrect") outperforms numeric scales
 - The judge receives only the output and acceptance criteria -- never the reasoning chain that produced the output
 - Monitor for judge threshold drift by periodically rerunning against stable reference inputs
+
+#### Class Carve-Outs: When Not to Force Binary Assertions
+
+Uniform assertion requirements feel rigorous but punish the wrong components. Two output classes get re-anchored criteria instead:
+
+| Class | Why forced assertions misdiagnose | Re-anchored criteria |
+|-------|-----------------------------------|---------------------|
+| **Subjective-output** (writing voice, tone, design, art) | Forcing assertions onto judgment produces brittle, misleading gates | Triggering/routing optimization completed AND a documented qualitative method (named review rubric or scorecard + human-in-the-loop review loop) |
+| **Script-core** (renderers, parsers, formatters, validators wrapping tested code) | The functional guarantee already lives in the script's own tests; an LLM judge re-verifying deterministic behavior is itself a misdiagnosis | Triggering/routing optimization completed AND a runnable verification of the program (its tests or a golden-output check) passing alongside structural validation |
+
+Rules for applying carve-outs:
+
+- The binary-assertion and capability/regression requirements still apply in full to components with objectively verifiable output (file transforms, data extraction, code generation, fixed workflow steps).
+- **The invariant that survives every carve-out:** triggering/routing correctness is objective and required regardless of output class. A subjective skill cannot measure output quality with assertions, but whether it fires on the right queries is always measurable.
+- Hybrid components (deterministic core + genuine LLM judgment) are evaluated on both axes: script tests for the deterministic part, assertions or qualitative review for the judgment part.
+- Gate the classification itself -- anchor it to output type, not author preference. Authors will claim "subjective" to dodge eval work, and a stale bundled test suite converts the script-core carve-out into an unverified pass.
 
 ### Step 3b: Design Factorial Variations
 
@@ -258,6 +321,8 @@ For deterministic skill validation (file structure, naming, variable scoping, pa
 - Review coverage after the first 5-10 improvement iterations before running unattended
 - Set iteration caps (40-50 cycles) to prevent cost overruns
 - Verify all assertions are mutually satisfiable before deploying -- conflicting requirements create infinite improvement loops
+- Balance should-act and should-not-act cases -- eval sets that only test action drive overtriggering
+- If the test suite will drive an optimization loop, split it train/test (60/40) and select winners by held-out test score, never train score -- tuning against visible cases overfits
 
 **Holdout and blindness principles:**
 
@@ -279,6 +344,14 @@ The test suite must be designed so that the validator agent is structurally blin
 5. Commit the changes
 
 This structural enforcement means the agent cannot rationalize skipping the red step -- the plan's checkbox ordering makes TDD the only possible execution path. Prompt-level TDD instructions ("Use red/green TDD") depend on agent interpretation and can be circumvented; plan-level TDD is structural.
+
+**Red verification is the load-bearing step.** Classical TDD assumes a thinking human who would notice a test passing immediately; agents follow the recipe literally and can write tests that already pass (false red) -- the green step then validates nothing. Enforce three disciplines:
+
+- The agent must run the new test and observe it fail *before* implementing. If the test passes on first run, stop: the test is malformed.
+- Inspect the failure message, not just the exit code -- a test failing because a file doesn't exist is not confirmation the logic is missing.
+- Require the agent to produce the specific observed error message in its output (and log it as an audit artifact); "I confirmed the test fails" without the message is a self-report.
+
+Scope this discipline to new-behavior tests -- regression tests exist specifically to pass on current code.
 
 ### Step 6: Structure the Verification Architecture
 
@@ -306,6 +379,15 @@ Does this specific agent run produce correct output?
 7. **Anti-skip prompting** -- explicit instructions prevent "looks good" without testing
 
 Pattern #6 (binary pass/fail) is the most important because it forces the verifier to choose a side rather than "going on vibes." Pattern #7 (anti-skip) targets a specific LLM failure mode where models get lazy and skip actual testing.
+
+**The task flip: enumerate, don't fix.** The mechanism underneath all of these patterns is that finding problems and solving them are different tasks with different outputs. Give the verifier a hostile stance ("suspect every claim and every number"), a concrete enumeration checklist (unattributed claims, sourceless numbers, untraceable data, inconsistent formulas, assumptions dressed as facts -- adapt the checklist to your domain), and one terminal contract line: **"don't fix anything, just enumerate."** Mixing find and fix lets the fix impulse paper over the audit -- generation-mode review is biased toward completing, not doubting. The flip works even with the same model reviewing its own output (though fresh context is better and a different model family better still), which makes it the cheapest entry-level rung of verifier independence. Two disciplines keep it useful: rank enumerated issues by severity so the two real problems don't drown under twenty nitpicks, and keep the open "suspect everything" stance alive so novel failure classes outside the checklist still fire.
+
+**Trajectory is a second axis.** Output verification asks "is the final result correct?" Trajectory verification asks "was the path -- the tool calls and reasoning -- sound?" Neither subsumes the other: a correct output from an unsound trajectory is a latent failure; a sound trajectory with a wrong output is a capability gap. The two need different graders: output checks can be deterministic assertions; trajectory checks inspect the tool-call/reasoning trace. Practical disciplines:
+
+- Cheapest first step: add a "procedure followed?" checklist item to existing verification (did the agent actually run the checks its procedure declares?) before building trace-capture infrastructure
+- Derive trajectory rubrics from the agent's own declared procedure (the skill or plan steps become the grading checklist) rather than hand-building rubrics per eval
+- Sample trajectory grading on runs whose outputs *passed*, specifically hunting right-answer-wrong-path cases
+- Grade soundness (checks performed, evidence gathered), not step-order conformance -- over-constraining trajectories punishes legitimate alternative paths
 
 #### Level 2: Harness Integrity Verification
 
@@ -340,6 +422,9 @@ Key design decisions for builder-validator chains:
 - The orchestrator relays only the output and acceptance criteria, not the builder's intermediate steps
 - Consider cross-model validation (different model family for validator) to catch systematic model biases
 - N-of-M validation (multiple validators, majority vote) increases confidence for critical outputs
+- For compliance-shaped validation, give the fresh-context reviewer the requirements artifact (story, spec, acceptance criteria), the architecture/standards docs, and the changed code -- it catches structural issues (files in wrong places, missing docs, dependency violations) the builder rationalized. Use the strongest available model for this reviewer, not the cheapest: validation is "the critical piece that makes sure the agent didn't go off the rails"
+
+**Cross-model disagreement is a signal, not noise.** When findings from model family X are verified by model family Y and vice versa, three confidence bands emerge: bugs confirmed by both models (highest confidence -- act), bugs refuted by the other model (route to human judgment -- this is exactly where human attention pays off), and everything else in between. Different training lineages have different blind spots; the verification step matters more than the finding step. Cost doubles or triples, so reserve cross-model verification for high-stakes review.
 
 **Goal-Backward Verification:** Instead of checking tasks completed (forward), start from the desired outcome and work backwards to confirm the system actually achieves it.
 
@@ -370,6 +455,30 @@ Rules for goal-backward verification:
 ```
 
 The holdout validator is analogous to an ML holdout set: it was never "trained" on the implementation decisions. Any bias the implementation agent accumulated -- defending its own choices, interpreting edge cases charitably -- cannot propagate to validation. StrongDM pioneered this approach for production dark factory codebases where hundreds of AI-authored PRs merge autonomously.
+
+**Post-Implementation Validation Pipeline:** For teams where human review of every AI diff is the throughput hard-cap, compose the patterns above into a fixed rail that takes every first-pass change to a clean PR:
+
+```
+[Change]  -->  [1. Worktree isolation]  -->  [2. Intent extraction]  -->  [3. Rebase-first]
+          -->  [4. Adversarial fresh-context review]  -->  [5. E2E test vs. intent + evidence]
+          -->  [6. Docs + lint + PR + babysit]
+```
+
+1. **Worktree isolation** -- branch, commit, then validate in an isolated worktree; nothing touches the working repo
+2. **Intent extraction** -- recover the *real intent* from the agent session that produced the change, so validation targets what was asked for, not what was built
+3. **Rebase-first** -- rebase onto latest main before review, so review sees the code that will actually land
+4. **Adversarial fresh-context review** -- where most problems get caught; obvious problems self-correct, ambiguous ones with product implications escalate to the human
+5. **Evidence artifacts** -- exercise the change against the recovered intent and attach proof-of-done (screenshot, video, log) to the PR; the human reviews evidence and risk, not diffs
+6. **Risk-gated human review** -- the PR carries a risk assessment that calibrates review depth; low-risk changes may get no diff read at all
+
+Guard the pipeline's own failure modes: the risk assessment inherits self-report unreliability one level up (periodically deep-review a sample of "low-risk" PRs), evidence proves one path works rather than that nothing broke, and babysitting agents that auto-resolve conflicts can make post-review changes nobody reviewed.
+
+**Verification for Outputs Without Tests (Persona Review Boards):** Emails, reports, decks, and strategy docs have no executable checks -- their verifier is the humans who will judge them. Simulate those judges *before* delivery: build persona clones from their documented output (public content for external stakeholders, accumulated review feedback for internal ones) and run their critique as a pre-submission review cycle. Three tiers: a board of domain thought-leaders for strategic work, a cloned end-user/customer for customer-facing work, a cloned manager/reviewer for day-to-day work. Rules:
+
+- The clone is a rehearsal for the real review gate, never a replacement of it -- the human gate stays terminal
+- Generator-assessor separation still applies: fresh context, different instructions
+- Calibrate periodically: compare the clone's verdicts against the real person's to measure fidelity drift, and re-sync as standards evolve
+- Watch for Goodhart: optimizing to please the simulated reviewer diverges from pleasing the real one; a clone captures public style, not private judgment
 
 **Context-Order Diversity:** Bugs can be made visible or invisible by the order in which code is loaded into context. Multiple parallel agents each starting from a different codebase position expose different bugs.
 
@@ -413,6 +522,40 @@ Organize your eval suites into two categories that serve different purposes:
 - Unmaintained regression suites let previously-working features silently degrade
 - Calibration baselines must be updated when models are upgraded; preserve old baselines for regression comparison
 
+### Step 7b: Evaluate Skills and Harness Components
+
+Skills are the primary distribution unit of agent capability, and they are eval targets in their own right -- a skill can be structurally valid and still hurt performance. Layer the evaluation from cheap to expensive:
+
+#### Triage first: the smells check (30 seconds)
+
+Before any full audit, skim a symptom-to-cause smells table against the skill: triggering smells (body edited but description untouched, no should/should-not-trigger queries ever written), sizing smells (body over 500 lines, pasted documentation blocks instead of pointers), authoring smells (deterministic logic written as prose instead of a script, obsolete scaffolding), evaluation smells (author graded their own skill in the same context, "output is good" acceptance criteria, saturated capability evals never graduated), and safety smells (destructive operations with no autonomy gating). Verdict rule: 0 smells -> run the deterministic validator and proceed; 1-2 smells in one category -> patch locally; 3+ smells across categories -> run the full audit before shipping; **any safety smell -> block, never ship-and-fix-later**. Smells are behavioral and editorial -- invisible to deterministic structural validators -- which is exactly why this scannable layer must exist between the linter and the rubric.
+
+#### Three-tier skill testing
+
+| Tier | Question | Test cases | Failure meaning |
+|------|----------|------------|-----------------|
+| **1. Triggering** | Does it load at the right times? | Should-trigger (obvious + paraphrased) AND should-not-trigger (near-misses, not obviously-irrelevant queries) | Skill is invisible or noisy |
+| **2. Functional** | Does it produce correct outputs? | Valid outputs, API success, error handling, edge cases | Skill triggers but doesn't work |
+| **3. Performance** | Does it beat baseline? | Same task with skill vs. without: messages, failed calls, tokens, clarifying questions | Skill is a no-op or a tax |
+
+Each tier has its own failure mode and measurement -- combining them into one "skill quality" score loses signal. Rigor scales with maturity: manual testing for early iteration, scripted for repeatable validation, programmatic eval suites for mature skills. Re-run tier 1 after every description change; triggering regresses silently while function stays stable.
+
+#### Description optimization with a held-out test set
+
+Treat triggering as a measurable classification problem: generate ~20 realistic eval queries (8-10 should-trigger, 8-10 should-not-trigger near-misses; specific and casual, never abstract -- "format this data" is a bad query, a messy real request naming a file is a good one), split 60/40 train/test, run each query 3 times for a reliable trigger rate, let the model propose description improvements from failures, iterate up to 5 times, and **select the best description by held-out test score, never train score**. Train-best descriptions almost always lose to test-best in production. Two caveats: models only consult skills for tasks they can't easily handle, so too-simple queries produce false negatives that aren't description problems; and descriptions are tuned per model version -- re-run the loop after major model changes.
+
+#### The with/without baseline: measuring marginal impact
+
+Skill portfolios accumulate on faith. The cheapest honest experiment: run the same task in fresh headless sessions twice -- once with the skill loaded, once without -- and diff the outcomes. The delta pins down what the skill actually contributes. Run multiple task samples (a single pair is noise), log lessons per round, and trend the delta over time: model improvements erode a skill's marginal value toward zero, and a skill whose baseline has caught up should be retired. The honest baseline is "the model with whatever context the user would otherwise provide," not "the model with nothing."
+
+#### Adoption rule for third-party components
+
+Do not install any external skill (or prompt, agent, MCP server) that claims to improve performance but has published no rigorous evaluation of that claim -- run your own with/without baseline first. Stars and virality carry zero efficacy information and can be anti-correlated (a 177k-star repo's skill measured worse than no skill). The security half is stricter: skills can instruct the agent to execute anything, so installation is a trust decision, not a convenience.
+
+#### Harness-level assessment
+
+Periodically point an evaluation-mode assessment at the harness itself (architecture completeness, safety and permissions coverage, state and durability mechanisms), producing findings ordered by severity with a prioritized upgrade path and tests that confirm each fix. Bias the assessment toward lean architecture -- the most common failure mode in agentic systems is overengineering, not underengineering. This composes with Level 2 harness integrity verification (Step 6): the assessment finds gaps; the smoke-test suite keeps them closed.
+
 ### Step 8: Build the Improvement Loop
 
 For recurring skills, implement the four-mode lifecycle:
@@ -434,11 +577,34 @@ Create  -->  Eval  -->  Improve  -->  Benchmark
 - **Comparator** -- performs blind A/B comparison between skill versions
 - **Analyzer** -- synthesizes results and produces improvement recommendations
 
+**Generator-assessor separation is the load-bearing rule.** The generator never both produces and assesses the same artifact in the same context -- each role above is a separate agent definition spawned in an independent context. This architecture has been arrived at independently by multiple production teams (Anthropic's skill-creator, adversarial build/attack workflows, this system's own governance), which marks it as a recurring solution to a recurring problem, not a convention. Operational mechanics that make it work:
+
+- The grader receives assertions and outputs, never the skill definition itself -- the assessor doesn't decide what good looks like, the spec does; a grader that knows intent judges on intent rather than result
+- Blind comparison hides which output is which (defeats positional bias); run multiple comparisons with shuffled order
+- The analyzer explains the win post-hoc, in fresh context -- useful for humans, but discount it as causal evidence (post-hoc rationalization risk)
+- Watch for convenience erosion: under deadline pressure, authors "grade inline" and the separation collapses exactly when it matters most
+
+**Convergence-loop contract (audit-fix-verify with a termination condition):** "Audit" and "improve" are usually two separate unreliable activities -- reports pile up, fixes regress things, nobody knows when to stop. Fuse them under one contract:
+
+1. **Multi-pass audit** -- each pass a distinct lens (structure, accuracy, security, ...), independent passes in parallel
+2. **Severity rating** -- every finding rated on a shared scale (Blocker > High > Medium > Low > Nit); severity is the control signal: Medium is the fix/ignore boundary, High is the ship/block boundary
+3. **Fix in place** -- every Medium+ finding is fixed, not just reported
+4. **Verify gate** -- re-build/lint/test/re-eval after fixing; any change that regresses is backed out. The verify gate is what licenses autonomy -- fix-in-place without it converts an audit tool into a regression generator
+5. **Convergence loop** -- blind re-audit and repeat until no Medium+ finding remains, or an iteration cap hits (typically 3, extended to 5 while findings still drop >=50% per iteration)
+
+Define the contract once and stamp out per-artifact members that differ only in lens set and verify gate (code: build+lint+tests; prose: fact-check; prompts: held-out eval; skills: trigger eval + collision check; SQL: EXPLAIN parity). Guard against convergence theater: if re-audits are not blind (fresh context), the loop converges because the auditor remembers its own fixes, not because the artifact is clean.
+
+**In-skill quality gates (lightweight variant):** For quality-sensitive generation inside a single skill, embed a draft -> score against explicit criteria (e.g., 4 dimensions rated 1-5, threshold >=4) -> rewrite-addressing-the-specific-failure -> re-score loop, capped at ~3 iterations. Make the scorer a separate adversarial role where possible (self-scoring is biased toward self-approval), define criteria externally, and log scores and failure reasons per iteration for audit.
+
 **The overnight loop:** Configure the improvement loop with an iteration cap (40-50), point it at the assertion suite, and let it run. Wake up to a refined skill with full git history of each change.
 
 **Karpathy's autoresearch pattern:** Binary assertions stored in evals.json drive a tight autonomous loop: make exactly one change, run the eval suite, keep the change only if all assertions pass -- revert otherwise. Two loops operate in concert: an inner skill description loop (refining what the skill does) and an outer main improvement loop (refining how it does it). The revert-on-failure mechanism prevents regressions from accumulating and makes the improvement trajectory monotonically positive within the eval scope. Design for overnight autonomous execution.
 
 **No-label improvement:** Agents can self-improve using naturally available execution feedback -- code execution success/failure, API response codes, test pass/fail -- without requiring labeled training data. The ACE framework achieves +14.8% improvement over baseline using only execution signals. For domains where ground-truth labels are expensive, binary execution signals are sufficient to drive meaningful improvement.
+
+**Eval-driven tool iteration:** The same loop applies to the agent's tools, not just its skills. Run structured evaluations on tools with realistic multi-step tasks (tracking accuracy, runtime, tool calls, tokens, errors), then feed the eval transcripts to the model to refactor the tools. Transcripts reveal patterns human intuition misses -- unexpected tool-calling sequences, consolidation opportunities. Anthropic's Slack MCP tools beat human-written baselines after this treatment. Use held-out test sets to prevent tools overfitting to eval-specific shortcuts.
+
+**Periodic self-evolution at the system level:** Above per-skill loops, run a recurring maintenance cadence: research scan -> compare current system state against the frontier -> delta report -> human-gated changes. Without a structured loop, drift accumulates silently; the human gate at deploy keeps the loop from making unvalidated autonomous changes. Watch for loop fatigue -- if reports consistently show little change, the reviewer starts rubber-stamping and the gate becomes ceremonial.
 
 **Reliability math for improvement targets:** Use the march-of-nines framework to set improvement targets. If your 10-step workflow needs 90% overall reliability, each step needs 99% (0.99^10 = 0.90). If your eval shows a step at 95% per-trial, that step alone brings overall reliability to 0.95 * 0.99^9 = 86%. Focus improvement investment on the lowest-reliability steps -- the compounding effect means a 5% improvement on your worst step outweighs a 1% improvement across all steps.
 
@@ -491,6 +657,16 @@ For high-stakes production agents, implement all four evaluation layers:
 
 Each layer addresses a different failure mode. Together they provide defense-in-depth: a failure missed by one layer is caught by another. Layer 3 specifically uses a false-positive bias because missing a real issue (false negative) is more expensive than flagging a non-issue (false positive) for human review.
 
+#### Periodic Agent Health Review (Five Questions)
+
+Continuous evals catch output failures; they are blind to job drift and value decay. Agents break in two directions -- the world drifts away from them, and the model improves past them. Periodically ask five questions of every serious deployed agent:
+
+1. **What is it eating?** Are its sources current? Did the workflow move? Did an old source become misleading? *(world drift -- run on a time cadence)*
+2. **Test its reach.** Does each permission still fit the current model's strength? A permission harmless for a weaker model may be too broad for a strong one; a restriction that made sense for an unreliable model may hold back a better one. *(run on every model upgrade)*
+3. **Check its job.** Has the job drifted silently (a summary agent becoming a de facto planning agent)? Change the job on purpose or not at all. *(world drift)*
+4. **Check the proof.** Is its evidence a linkable trail a human can inspect -- tickets, quoted language, which sources were checked and which were inaccessible -- not self-report? *(applies to the reviewer too: answer from evidence, not memory)*
+5. **Check the value.** Does anyone read the output? Does it save time after review? Should the agent be rebuilt (model improved) or retired (business changed)? Retirement is a first-class outcome -- zombie agents that pass questions 1-4 while producing unread output are tool-shaped objects.
+
 ### Step 9: Place Quality Gates
 
 Use the four canonical gate types to structure where evaluation fires in your workflow:
@@ -503,6 +679,12 @@ Use the four canonical gate types to structure where evaluation fires in your wo
 | **Abort** | When constraints are violated | Halt execution | "Token budget exceeded" or "Forbidden tool called" |
 
 Every workflow should have at least a pre-flight gate and an abort gate. Revision and escalation gates are added for iterative workflows where the agent may get stuck or produce diminishing returns.
+
+**Loop detection as a runtime gate.** Detect stuck agents mechanically: keep a sliding window of recent tool-call hashes and count identical consecutive calls. Production-corroborated escalation ladder: at 3 identical calls, warn (inject a "you are repeating" system message); at 5, hard-stop (strip tool calls, force a terminal answer) or escalate to a human permission-ask -- the pathological loop becomes an allow/deny gate. Add a per-tool-type frequency cap (e.g., 50 calls per session) as a safety net for loops that vary arguments. Hash-based detection misses semantically-identical-but-syntactically-different loops; pair with trajectory monitoring for those.
+
+**Enforcement gates at the tool boundary.** Gate conditions that can be checked structurally should be enforced by hooks, not instructions (see Step 3, Layer 1): a post-tool-use hook that rejects invalid operations is an abort gate the agent cannot rationalize past.
+
+**Calibrate gate and review depth by risk, not uniformly.** Verification depth is a scarce resource -- uniform depth over-reviews chart drafts while under-reviewing the one number quoted in a board meeting. Grade tasks by consequence-of-error: LOW (formatting, layout, summary wording -- wrongness is cheap and visible), MEDIUM (source attribution, data extraction -- wrongness propagates but is traceable), HIGH (numerical synthesis, financial/compliance language, any claim that travels to decision-makers -- wrongness is expensive, invisible, and mobile). The sharpest criterion is mobility: risk follows the artifact's downstream travel, not its local complexity. The gradient is orthogonal to model choice -- the model helps at every level; only human/adversarial-review investment varies. Guard the gradient itself: misclassification under deadline pressure is the failure mode, and low-stakes artifacts become load-bearing when promoted.
 
 ### Step 10: Control for Infrastructure and Configuration Noise
 
@@ -576,6 +758,8 @@ Log what the agent **did**, not just what it **said**:
 
 Action logging is "easy to add now; expensive to retrofit." Instrument from day one. Structure action events for querying, anomaly detection, and replay-based debugging.
 
+**Distrust the harness's own cost readout.** On subscription plans, in-harness cost surfaces are display features, not accounting systems -- the same session has shown $99 in one readout and $3 in another, and cost lines sometimes don't render at all. Any cost number that drives decisions (model tiering, subagent budgets, plan-vs-API tradeoffs) or enters an evidence record should come from independent log-based accounting (tools that recompute usage from local logs, or pure API metering via a gateway). Instrument cost tracking at session start rather than mining logs post-hoc, treat divergence between two harness surfaces as the signal to distrust both, and note that log-parsing tools break silently when the harness changes its log schema.
+
 **Golden traces:** Capture canonical successful runs as a curated library. Include: successful completions, known failure cases with explanations, edge cases, security tests, cost-stress scenarios. Use for replay-based regression testing against any agent change.
 
 ---
@@ -625,6 +809,9 @@ Action logging is "easy to add now; expensive to retrofit." Instrument from day 
 
 ### Verification Architecture
 - Verification level: {{LEVEL_1_ONLY / LEVEL_1_AND_2 / FULL_MULTI_AGENT}}
+- Named verifier for any fan-out: {{MECHANICAL_CHECK_OR_NONE}} (if NONE: parallelism capped at {{CAP}})
+- Trajectory checks: {{YES/NO}} (if YES: procedure-followed checklist = {{PROCEDURE_SOURCE}})
+- Verifier task contract: enumerate only -- "don't fix anything, just enumerate"
 - Holdout validation: {{YES/NO}} (if YES: validator blind to implementation scope)
 - Context-order diversity: {{YES/NO}} (if YES: {{FLEET_SIZE}} agents, traversal strategies: {{STRATEGIES}})
 - Goal-backward check: {{YES/NO}} (if YES: goal statement = {{GOAL}})
@@ -742,10 +929,71 @@ If INSUFFICIENT_DATA: instrument before deciding.
   - Tests: {{EXPECTED_BEHAVIORS}}
 - [ ] Run test suite -- verify new test FAILS (red)
   - Expected failure: {{EXPECTED_FAILURE_MESSAGE}}
+  - Observed failure message (paste verbatim): {{OBSERVED_FAILURE_MESSAGE}}
 - [ ] Implement: `{{IMPLEMENTATION_FILE_PATH}}`
   - Approach: {{IMPLEMENTATION_NOTES}}
 - [ ] Run test suite -- verify test PASSES (green)
 - [ ] Commit: "{{COMMIT_MESSAGE}}"
+```
+
+### Skill Test Plan (Three-Tier)
+
+| Variable | Type | Required | Description |
+|----------|------|----------|-------------|
+| `SKILL_NAME` | string | Yes | Skill under test |
+| `OUTPUT_CLASS` | enum | Yes | objective / subjective-output / script-core / hybrid (selects assertion style per the class carve-outs) |
+| `SHOULD_TRIGGER_QUERY` | string | Yes (8-10) | Realistic, specific queries the skill must fire on |
+| `SHOULD_NOT_TRIGGER_QUERY` | string | Yes (8-10) | Near-miss queries sharing keywords but needing something different |
+| `BASELINE_METRICS` | list | Yes | Metrics compared with vs. without skill (messages, failed calls, tokens, clarifying questions) |
+| `RUNS_PER_QUERY` | number | Yes | Trials per query for reliable trigger rate (default 3) |
+
+```markdown
+## Skill Test Plan -- {{SKILL_NAME}}
+
+### Smells triage (30 seconds, before anything else)
+- Triggering / sizing / authoring / evaluation / safety smells found: {{SMELL_LIST_OR_NONE}}
+- Verdict: {{PROCEED / PATCH_LOCALLY / FULL_AUDIT / BLOCK_ON_SAFETY}}
+
+### Output class and assertion style
+- Class: {{OUTPUT_CLASS}}
+- If subjective-output: qualitative method = {{NAMED_RUBRIC_PLUS_HITL_LOOP}}
+- If script-core: runnable verification = {{SCRIPT_TESTS_OR_GOLDEN_OUTPUT_CHECK}}
+
+### Tier 1 -- Triggering
+- Should-trigger ({{N}}): {{SHOULD_TRIGGER_QUERY}}, ...
+- Should-not-trigger near-misses ({{N}}): {{SHOULD_NOT_TRIGGER_QUERY}}, ...
+- Runs per query: {{RUNS_PER_QUERY}} | Train/test split: 60/40 | Winner selected by: TEST score
+- Target trigger rate: {{TARGET}} (e.g., 90% of relevant queries)
+
+### Tier 2 -- Functional
+| # | Given | When | Then (binary) |
+|---|-------|------|---------------|
+| 1 | {{PRECONDITION}} | {{ACTION}} | {{ASSERTION}} |
+
+### Tier 3 -- Performance vs. baseline
+- Baseline (without skill): {{BASELINE_METRICS}}
+- With skill: {{WITH_SKILL_METRICS}}
+- Marginal impact verdict: {{KEEP / IMPROVE / RETIRE}}
+- Re-measure cadence: {{CADENCE}} (model improvements erode skill deltas)
+```
+
+**Worked example -- `/transcript-fetcher` (script-core class):**
+
+```
+Smells triage: none found -> proceed
+Output class: script-core (wraps tested Python fetcher)
+  Runnable verification: fetcher's own test suite + golden-output
+  check on one known video ID -- no LLM judge re-verifying parsing
+Tier 1: should-trigger: "grab the transcript for this yt link",
+  "need full text of this video for extraction", ...
+  should-not-trigger near-misses: "summarize this video's comments",
+  "what does this channel usually cover", ...
+  3 runs/query, 60/40 split, select by test score
+Tier 2: Given a valid video URL -> When skill runs -> Then markdown
+  file exists at expected path with non-empty transcript body (binary)
+Tier 3: baseline = manual fetch instructions per session
+  (12 messages, 2 failed attempts) vs. skill (1 invocation, 0 failures)
+  Verdict: KEEP; re-measure after next model upgrade
 ```
 
 ---
@@ -904,6 +1152,30 @@ Checking "did the agent complete all tasks?" (forward verification) misses a cri
 ### 20. Validator sees the implementation
 When a validation agent knows what was just implemented (reads the PR description, commit messages, or issue context), it structures its test interpretation to confirm success. This is sycophantic verification bias. The holdout pattern eliminates it structurally: the validator receives only the codebase state and test suite, never the implementation scope. If your validator has access to git history, branch names, or PR descriptions during testing, the validation is compromised. Fresh context sessions with no continuation from implementation are the architectural enforcement -- not manual discipline.
 
+### 21. Fan-out without a named verifier
+Parallel sampling and multi-agent fan-outs raise the odds that a correct answer exists in the pile -- but without a mechanical check to grade attempts, selection methods (majority voting, reward models) stall at roughly 100 attempts. The right answer is in the pile; nobody can tell which one it is. Every unit of spend past the selection ceiling buys answers that are generated but never found. Name the verifier before you fan out; where none exists, cap parallelism or route to a single agent.
+
+### 22. Grading only the answer, never the path
+Output-only evaluation systematically passes the most dangerous failure class: correct-looking results produced by processes that skipped verification steps, hallucinated intermediate facts, or got lucky. The obviously-broken answer gets caught; the unsound-but-plausible one ships. Add a trajectory axis: was the sequence of tool calls and reasoning sound? Cheapest version: a "procedure followed?" check against the agent's own declared steps.
+
+### 23. Reviewer that fixes instead of enumerating
+A verifier allowed to fix things stops finding them -- the fix impulse papers over the audit, because generation-mode review is biased toward completing, not doubting. Flip the task: the reviewer's only permitted output is a severity-ranked enumeration of issues, with "don't fix anything, just enumerate" as an explicit contract line.
+
+### 24. Forcing assertions on subjective or script-core outputs
+Demanding binary assertion suites from a writing-voice skill produces brittle fake gates bolted on to satisfy the audit; demanding an LLM judge for a renderer that wraps a tested script re-verifies what the script's tests already guarantee. Both misdiagnoses erode trust in the eval regime itself. Re-anchor criteria per output class -- and keep the one universal invariant: triggering/routing correctness is always measurable and always required.
+
+### 25. Adopting components by popularity
+GitHub stars measure virality, not efficacy -- a skill from a 177k-star repo measured +5% tokens with worse results than no skill. Unvetted skills are also a security surface (they can instruct the agent to run anything). Require published rigorous evaluation or run your own with/without baseline before installing anything that claims to improve performance.
+
+### 26. The test that never failed
+An agent can write a test that passes on its first run -- it matches existing behavior or matches nothing -- and then "go green" without implementing anything real. Red verification is the counter: run the new test, observe the failure, inspect the failure message (not just the exit code), and record it. A skipped or unobserved red makes every subsequent green a false victory.
+
+### 27. Uniform verification depth
+Giving every task the same review burden over-reviews the cheap, visible failures and under-reviews the expensive, invisible ones. Calibrate by consequence-of-error, and weight hardest the claims that travel -- numbers and statements that will be quoted downstream in decisions. Watch for gradient gaming under deadline pressure ("optimistic" classification) and for artifacts whose stakes rise after promotion.
+
+### 28. Trusting the harness's cost readout
+In-harness cost displays on subscription plans can disagree with each other by an order of magnitude for the same session. Cost figures that drive routing decisions or enter evidence records must come from independent log-based accounting, not the harness's own display. Divergence between two harness surfaces means distrust both.
+
 ---
 
 ## Related Guides
@@ -911,7 +1183,9 @@ When a validation agent knows what was just implemented (reads the PR descriptio
 - **Acceptance criteria as assertion inputs:** The acceptance criteria from *Writing Agent Specifications* (G1), Step 4 are the input to Step 3's assertion design. Without well-defined acceptance criteria, assertions are arbitrary.
 - **Reliability metrics and architecture baselines:** pass@k and pass^k metrics in Step 2 connect to the single-agent baseline measurement in *Agent Architecture Decisions* (G3), Step 1. Infrastructure noise controls in Step 10 relate to the three-tier infrastructure in G3, Step 6. March-of-nines compound reliability math informs multi-agent architecture selection.
 - **Context engineering for eval isolation:** The context isolation requirement in Step 6 (verification in a separate window) relates to context management practices in *Managing Agent Context* (G2). The LLM-as-judge pattern requires careful context scoping to avoid contaminating the judge with builder reasoning. Holdout validation and context-order diversity are context engineering patterns applied to evaluation.
-- **Tool design and TDD:** TDD step ordering embedded in plan task structure (Step 5) connects to tool contract design in *Designing Agent Tools* (G5) -- tests verify the tool's contract is satisfied.
+- **Tool design and TDD:** TDD step ordering embedded in plan task structure (Step 5) connects to tool contract design in *Designing Agent Tools* (G5) -- tests verify the tool's contract is satisfied. The eval-driven tool iteration loop (Step 8) is the improvement half of G5's tool design procedure.
+- **Safety inheritance:** Independent-eval findings, hook-based enforcement gates (Steps 3/9), loop-detection runtime gates (Step 9), and the safety-smell block rule (Step 7b) also serve *Agent Safety and Permissions* (G6) -- the Evaluation dimension's routing lists G6 as its secondary guide.
+- **Workflow and operations:** The periodic agent health review (Step 8b) and runtime loop-detection gates (Step 9) border on production operations covered in *Agent Workflow and Execution* (G3b).
 
 ---
 
@@ -936,9 +1210,14 @@ When a validation agent knows what was just implemented (reads the PR descriptio
 - Published scores are produced by the same product configuration that ships -- features enabled, code path matching, corpus representative.
 - Ensemble aggregation rules match the production serving rule and are declared as a tuple element on every published result.
 - Validation agents are structurally blind to implementation context (holdout principle).
+- Verifiers enumerate findings; they never fix (task-flip contract line).
+- Both output correctness and trajectory soundness are evaluated; output-only grading is incomplete.
+- Parallel sampling and fan-outs are sized to a named mechanical verifier's capacity.
+- Assertion style is matched to output class: binary assertions for objective outputs, re-anchored criteria (qualitative method or script-test verification) for subjective-output and script-core components; triggering correctness is required of everything.
 - Context ordering is varied across parallel validation agents to prevent systematic blind spots.
 - Production evaluation runs continuously on every query, not just during development.
-- TDD step ordering is embedded in plan artifact structure, not in prompt instructions.
+- TDD step ordering is embedded in plan artifact structure, not in prompt instructions, and red-state failure is observed and recorded before implementation.
+- No third-party component claiming performance gains is adopted without published evaluation or a local with/without baseline.
 
 ### Governance
 - Eval suites are versioned alongside the agent they evaluate.
@@ -950,6 +1229,9 @@ When a validation agent knows what was just implemented (reads the PR descriptio
 - Published benchmarks carry configuration disclosure (hash, feature-list, or pinned commit) and an aggregation rule (single-path / majority vote / best-of-N with picker / union-of-successes-explicitly-labeled). Results without both are not used as comparative product claims.
 - Tiered review escalation criteria are calibrated periodically based on outcome data (which tier caught which bugs).
 - Factorial variation libraries are maintained and extended as new bias patterns are discovered.
+- Skill test plans are re-run at tier 1 (triggering) after every description change and re-measured at tier 3 (marginal impact) after model upgrades; skills whose baseline catches up are retired.
+- Deployed agents get the five-question health review on a cadence (world-drift questions on a time cadence; reach/value questions on every model upgrade).
+- Severity definitions in convergence loops are shared across all artifact optimizers; severity inflation silently moves the fix and ship boundaries.
 - This guide is owned by the Meta-System knowledge layer and updated when new evaluation findings are integrated.
 
 ### Recovery
@@ -960,6 +1242,11 @@ When a validation agent knows what was just implemented (reads the PR descriptio
 - If web-based eval scores degrade over time: check for accumulated query artifacts from prior runs. Switch to cached/snapshot web data or rotate question sets.
 - If a harness change breaks agent behavior: run Level 2 smoke tests. Revert the config change. Re-run Level 2 tests to confirm recovery.
 - If a published benchmark score does not survive real product use: check for feature-disabled baseline (substrate scored without the product's distinctive features), out-of-path optimization (benchmark queries skipping production layers), or union-of-successes aggregation. Re-run at production configuration with the production aggregation rule; republish the corrected number alongside the original (with the original explicitly labeled as feature-disabled or union-aggregated).
-- If a validation agent produces sycophantic confirmations: implement the holdout pattern -- strip all implementation context (git history, PR descriptions, branch names) from the validator's session. Use fresh context sessions with no continuation from implementation.
+- If a validation agent produces sycophantic confirmations: implement the holdout pattern -- strip all implementation context (git history, PR descriptions, branch names) from the validator's session. Use fresh context sessions with no continuation from implementation. Also flip the validator's task to enumerate-only: forbid it from fixing anything.
 - If multi-step workflow reliability is insufficient: apply march-of-nines compound math. Identify the step with lowest per-step reliability. Concentrate harness engineering (deterministic rails, verification loops, fallback paths) on that step. A 5% improvement on the worst step outweighs 1% improvement across all steps.
 - If single-agent review misses bugs that multi-agent review catches: implement context-order diversity -- vary traversal entry points across parallel agents so each sees the code through a different lens.
+- If added parallelism stops improving results: you have hit the verifier ceiling. Invest in a mechanical checker (test suite, schema validator, golden-output check) before adding attempts; do not raise the fan-out.
+- If a convergence loop keeps "converging" but quality doesn't improve: check whether re-audits are blind. An auditor that remembers its own fixes converges by memory, not by artifact quality. Route the re-audit through fresh context (or a different model family).
+- If a subjective-output or script-core skill fails an assertion-based audit: check for the class carve-outs before adding fake assertions -- re-anchor the criteria (qualitative method or script-test verification) instead.
+- If harness cost readouts disagree or look implausible: recompute from logs with an independent accounting tool; treat the harness display as a rendering, not a ledger.
+- If an agent repeats the same tool call: let the loop-detection ladder respond (warn at 3, hard-stop or escalate to a human permission-ask at 5) rather than waiting for token exhaustion.

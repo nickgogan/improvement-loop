@@ -19,8 +19,9 @@ related_findings:
   rel: extends
 - file: tiered-capability-registry-engine-behavior-branching.md
   rel: same-problem
-pipeline_status: raw
-consumed_by: []
+pipeline_status: synthesized
+consumed_by:
+- building-agentic-systems.md
 tags:
 - capability-contracts
 - portability

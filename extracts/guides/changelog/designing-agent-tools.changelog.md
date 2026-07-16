@@ -1,5 +1,13 @@
 # Changelog — Designing Agent Tools
 
+## 2026-07-16 — Session 147 — staleness-threshold
+
+- Findings: 37 (+14, -0 since last synthesis)
+- Added: [[code-as-deterministic-tool-inside-skills]], [[ide-first-claude-code-with-deterministic-hooks]], [[tiered-capability-registry-engine-behavior-branching]], [[skills-mcp-recipes-kitchen-complementarity]], [[stateful-mcp-subprocess-vs-cli-shell-out]], [[monitor-vs-loop-event-driven-vs-time-driven]], [[claude-code-monitor-tool-event-driven-background]], [[tool-pruning-as-harness-maintenance]], [[static-tool-set-mode-changes-as-callable-tools]], [[skill-cross-surface-portability-with-constraints]], [[subscription-tos-single-user-boundary-for-agent-sdks]], [[html-artifact-as-skill-output-design-variations]], [[bun-hot-reload-interactive-html-artifact-feedback-loop]], [[mdx-visual-plans-with-reusable-components]]
+- Structural: added Step 8 (event-driven background watching) and Step 16 (harness pruning); Step 2 gained tiered capability declarations, Step 4 the statefulness boundary on CLI-first + skills-vs-MCP complementarity, Step 5 static-tool-surface/modes-as-callable-tools, Step 7 bundled deterministic scripts, Step 9 variations grids + annotation loops + component libraries, Step 11 deterministic hooks, Step 14 cross-surface constraint matrix, Step 15 subscription-ToS boundary; 2 new templates (Capability Declaration, Mode Transition Tools); Key Concepts 12→16; Pitfalls 16→23; Audit Worksheet +3 sections
+- Preserved: none (no Nick's Annotations or PRESERVE markers found)
+- SL: session-147 (SL retired as producer per session-138 ruling; git is the session record)
+
 ## 2026-05-25 — Session 97 — staleness-threshold
 
 - Findings: 23 (+7, -0 since last synthesis)

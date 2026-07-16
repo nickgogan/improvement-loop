@@ -1,32 +1,34 @@
 ---
-name: "Lossy Compression Boundary at Headless Session Return"
-summary: "In the orchestrator-headless dispatch pattern, each completed headless session returns only a condensed output to the orchestrator, not the full execution log or code changes. The orchestrator ingests only this compressed result, keeping its context lean. This creates an explicit lossy compression boundary at every phase return, trading detail for orchestrator longevity."
+name: Lossy Compression Boundary at Headless Session Return
+summary: In the orchestrator-headless dispatch pattern, each completed headless session returns only a condensed output to the orchestrator, not the full execution log or code changes. The orchestrator
+  ingests only this compressed result, keeping its context lean. This creates an explicit lossy compression boundary at every phase return, trading detail for orchestrator longevity.
 implementation_notes: null
-category: "Context Engineering"
-evidence_strength: "Medium (practitioner-documented)"
-adoption_status: "Not Yet Started"
-priority: "P2 (Design Required)"
+category: Context Engineering
+evidence_strength: Medium (practitioner-documented)
+adoption_status: Not Yet Started
+priority: P2 (Design Required)
 applicability:
-  - "S3 (Claude Code Build)"
+- S3 (Claude Code Build)
 adopted_in: []
 sources:
-  - "gstack-gsd-superpowers-orchestrator-headless.md"
+- gstack-gsd-superpowers-orchestrator-headless.md
 related_findings:
-  - file: "orchestrator-headless-dispatch-context-isolation.md"
-    rel: "extends"
-  - file: "l-d-hypothesis-information-loss-across-agent-bound.md"
-    rel: "same-problem"
-  - file: "context-curation-over-context-stuffing.md"
-    rel: "same-problem"
-  - file: "phase-queue-state-file-as-orchestrator-memory.md"
-    rel: "enables"
+- file: orchestrator-headless-dispatch-context-isolation.md
+  rel: extends
+- file: l-d-hypothesis-information-loss-across-agent-bound.md
+  rel: same-problem
+- file: context-curation-over-context-stuffing.md
+  rel: same-problem
+- file: phase-queue-state-file-as-orchestrator-memory.md
+  rel: enables
 proposals: null
-date_discovered: "2026-05-25"
-last_updated: "2026-05-25"
-pipeline_status: "classified"
-consumed_by: []
+date_discovered: '2026-05-25'
+last_updated: '2026-05-25'
+pipeline_status: synthesized
+consumed_by:
+- structuring-agent-context.md
 tags:
-  - "session-95-reextract"
+- session-95-reextract
 ---
 
 # Lossy Compression Boundary at Headless Session Return

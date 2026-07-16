@@ -1,34 +1,37 @@
 ---
-name: "Three-Tier Orchestration Hierarchy: Scheduler, Worker, Framework"
-summary: "A layered orchestration architecture with three distinct tiers: (1) a scheduler/loop tier that manages the phase queue and dispatch logic, (2) a worker tier of headless sessions that each execute one phase with a fresh context, and (3) a framework tier where specific tools (Superpowers for TDD, gstack for decisions) run inside each worker. Each tier has a different context scope and lifetime, creating strict isolation between dispatch logic, execution work, and framework-specific behavior."
+name: 'Three-Tier Orchestration Hierarchy: Scheduler, Worker, Framework'
+summary: 'A layered orchestration architecture with three distinct tiers: (1) a scheduler/loop tier that manages the phase queue and dispatch logic, (2) a worker tier of headless sessions that each execute
+  one phase with a fresh context, and (3) a framework tier where specific tools (Superpowers for TDD, gstack for decisions) run inside each worker. Each tier has a different context scope and lifetime,
+  creating strict isolation between dispatch logic, execution work, and framework-specific behavior.'
 implementation_notes: null
-category: "Orchestration"
-evidence_strength: "Medium (practitioner-documented)"
-adoption_status: "Not Yet Started"
-priority: "P2 (Design Required)"
+category: Orchestration
+evidence_strength: Medium (practitioner-documented)
+adoption_status: Not Yet Started
+priority: P2 (Design Required)
 applicability:
-  - "S3 (Claude Code Build)"
+- S3 (Claude Code Build)
 adopted_in: []
 sources:
-  - "gstack-gsd-superpowers-orchestrator-headless.md"
+- gstack-gsd-superpowers-orchestrator-headless.md
 related_findings:
-  - file: "orchestrator-headless-dispatch-context-isolation.md"
-    rel: "extends"
-  - file: "five-layer-recursive-ai-loop-architecture.md"
-    rel: "same-problem"
-  - file: "skill-phase-pipeline-shared-session-orchestrator.md"
-    rel: "contradicts"
-  - file: "teach-orchestrator-to-delegate-pattern.md"
-    rel: "extends"
-  - file: "execution-topology-as-runtime-selection.md"
-    rel: "same-problem"
+- file: orchestrator-headless-dispatch-context-isolation.md
+  rel: extends
+- file: five-layer-recursive-ai-loop-architecture.md
+  rel: same-problem
+- file: skill-phase-pipeline-shared-session-orchestrator.md
+  rel: contradicts
+- file: teach-orchestrator-to-delegate-pattern.md
+  rel: extends
+- file: execution-topology-as-runtime-selection.md
+  rel: same-problem
 proposals: null
-date_discovered: "2026-05-25"
-last_updated: "2026-05-25"
-pipeline_status: "classified"
-consumed_by: []
+date_discovered: '2026-05-25'
+last_updated: '2026-05-25'
+pipeline_status: synthesized
+consumed_by:
+- agent-architecture-decisions.md
 tags:
-  - "session-95-reextract"
+- session-95-reextract
 ---
 
 # Three-Tier Orchestration Hierarchy: Scheduler, Worker, Framework

@@ -1,50 +1,64 @@
 ---
-name: "Prototype at Frontier, Then Downshift Execution to Cheaper Models"
-summary: |-
-  Sequencing rule for the two-layer model stack: prove a new capability end-to-end on
+name: Prototype at Frontier, Then Downshift Execution to Cheaper Models
+summary: 'Sequencing rule for the two-layer model stack: prove a new capability end-to-end on
+
   the frontier model first, then decompose the proven flow and migrate sub-tasks to
-  cheaper models, keeping frontier only where it uniquely earns its cost. Jones's worked
+
+  cheaper models, keeping frontier only where it uniquely earns its cost. Jones''s worked
+
   example: a hyper-targeted mailer campaign (Google Maps sun/shade analysis of porches +
+
   3D structure models + custom cards) prototyped entirely with Fable 5 — "once the idea
+
   is prototyped through with Fable 5, you can get a cheaper pipeline put together"; the
-  image-merge step doesn't need frontier, the spatial+logical reasoning that proved the
+
+  image-merge step doesn''t need frontier, the spatial+logical reasoning that proved the
+
   flow did. Each downshift emits a validated task→cheap-model mapping — this is the
-  process that generates routing-table entries rather than consuming them.
-implementation_notes: |-
-  Adopt as the engine's default sequence for new task classes: first instance on the
+
+  process that generates routing-table entries rather than consuming them.'
+implementation_notes: 'Adopt as the engine''s default sequence for new task classes: first instance on the
+
   frontier tier, then record which decomposed sub-tasks downshifted cleanly — each such
+
   record is a KB-grounded routing datapoint feeding task-specific-model-routing-table
-  and the model-capability registry's Nick-gated refresh. Caveat from the same source
-  (Stripe's 50M-line one-day migration): the downshift/harvest step presupposes
+
+  and the model-capability registry''s Nick-gated refresh. Caveat from the same source
+
+  (Stripe''s 50M-line one-day migration): the downshift/harvest step presupposes
+
   verification infrastructure — test coverage and review systems built in advance —
-  otherwise frontier output is "changes nobody could approve."
-category: "Model Selection"
-evidence_strength: "Medium (practitioner-documented)"
-adoption_status: "Not Yet Started"
-priority: "P2 (Design Required)"
+
+  otherwise frontier output is "changes nobody could approve."'
+category: Model Selection
+evidence_strength: Medium (practitioner-documented)
+adoption_status: Not Yet Started
+priority: P2 (Design Required)
 applicability:
-  - "Improvement Loop"
-  - "General"
+- Improvement Loop
+- General
 adopted_in: []
 sources:
-  - "you-cant-compete-on-cheap-models-anymore.md"
+- you-cant-compete-on-cheap-models-anymore.md
 related_findings:
-  - file: "task-specific-model-routing-table-march-2026-bench.md"
-    rel: "enables"
-  - file: "model-tier-routing-expensive-orchestrator-cheap-s.md"
-    rel: "same-problem"
-  - file: "advisor-executor-api-pattern.md"
-    rel: "same-problem"
-  - file: "center-vs-edge-of-distribution-task-classification.md"
-    rel: "enabled-by"
-  - file: "frontier-capability-probing-scouting.md"
-    rel: "enabled-by"
-  - file: "frontier-model-as-harness-designer.md"
-    rel: "same-problem"
+- file: task-specific-model-routing-table-march-2026-bench.md
+  rel: enables
+- file: model-tier-routing-expensive-orchestrator-cheap-s.md
+  rel: same-problem
+- file: advisor-executor-api-pattern.md
+  rel: same-problem
+- file: center-vs-edge-of-distribution-task-classification.md
+  rel: enabled-by
+- file: frontier-capability-probing-scouting.md
+  rel: enabled-by
+- file: frontier-model-as-harness-designer.md
+  rel: same-problem
 proposals: null
-date_discovered: "2026-07-12"
-last_updated: "2026-07-12"
-pipeline_status: "raw"
+date_discovered: '2026-07-12'
+last_updated: '2026-07-12'
+pipeline_status: synthesized
+consumed_by:
+- model-resilient-prompt-engineering.md
 ---
 
 ## What It Is

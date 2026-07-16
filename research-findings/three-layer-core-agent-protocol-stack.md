@@ -1,37 +1,42 @@
 ---
-name: "Three-Layer Core Agent Protocol Stack (MCP + A2A + AGUI)"
-summary: "MCP (tool/data access), A2A (agent coordination), and AGUI (human control) form the three-layer core protocol stack for production agentic systems. Each layer answers one fundamental question about agent operation. The stack composes vertically: MCP gets the agent close to the work, A2A enables delegated expertise across boundaries, AGUI ensures humans can observe, approve, and steer. Teams that ship agents without all three layers accumulate supervision debt, coordination debt, or integration debt respectively."
-implementation_notes: "MetaSystem covers Layer 1 (MCP servers for Perplexity, Context7, Notion, etc.) and partially covers Layer 3 (DD-29 human gate, conversational approval). Layer 2 (A2A) is not needed because MetaSystem's multi-agent architecture is intra-system subagent delegation, not cross-organizational. The composition insight matters: these layers are complementary, not alternatives. Adopting one without planning for the others creates debt."
-category: "Orchestration"
-evidence_strength: "Medium (practitioner-documented)"
-adoption_status: "Partially Adopted"
-priority: "P2 (Design Required)"
+name: Three-Layer Core Agent Protocol Stack (MCP + A2A + AGUI)
+summary: 'MCP (tool/data access), A2A (agent coordination), and AGUI (human control) form the three-layer core protocol stack for production agentic systems. Each layer answers one fundamental question
+  about agent operation. The stack composes vertically: MCP gets the agent close to the work, A2A enables delegated expertise across boundaries, AGUI ensures humans can observe, approve, and steer. Teams
+  that ship agents without all three layers accumulate supervision debt, coordination debt, or integration debt respectively.'
+implementation_notes: 'MetaSystem covers Layer 1 (MCP servers for Perplexity, Context7, Notion, etc.) and partially covers Layer 3 (DD-29 human gate, conversational approval). Layer 2 (A2A) is not needed
+  because MetaSystem''s multi-agent architecture is intra-system subagent delegation, not cross-organizational. The composition insight matters: these layers are complementary, not alternatives. Adopting
+  one without planning for the others creates debt.'
+category: Orchestration
+evidence_strength: Medium (practitioner-documented)
+adoption_status: Partially Adopted
+priority: P2 (Design Required)
 applicability:
-  - "S3 (Claude Code Build)"
-  - "General"
+- S3 (Claude Code Build)
+- General
 adopted_in: []
 sources:
-  - "google-io-mcp-a2a-agui-protocol-stack.md"
+- google-io-mcp-a2a-agui-protocol-stack.md
 related_findings:
-  - file: "agui-human-control-layer-not-ui.md"
-    rel: "extends"
-  - file: "google-a2a-protocol-agent-to-agent-interoperabilit.md"
-    rel: "extends"
-  - file: "mcp-ecosystem-critical-mass-97m-installs.md"
-    rel: "extends"
-  - file: "six-layer-agent-infrastructure-stack.md"
-    rel: "same-problem"
-  - file: "mcp-n-plus-m-integration-economics.md"
-    rel: "extends"
+- file: agui-human-control-layer-not-ui.md
+  rel: extends
+- file: google-a2a-protocol-agent-to-agent-interoperabilit.md
+  rel: extends
+- file: mcp-ecosystem-critical-mass-97m-installs.md
+  rel: extends
+- file: six-layer-agent-infrastructure-stack.md
+  rel: same-problem
+- file: mcp-n-plus-m-integration-economics.md
+  rel: extends
 proposals: null
-date_discovered: "2026-05-25"
-last_updated: "2026-05-25"
-pipeline_status: "classified"
-consumed_by: []
+date_discovered: '2026-05-25'
+last_updated: '2026-05-25'
+pipeline_status: synthesized
+consumed_by:
+- agent-architecture-decisions.md
 tags:
-  - "session-95-reextract"
-  - "orchestration"
-  - "protocols"
+- session-95-reextract
+- orchestration
+- protocols
 ---
 
 # Three-Layer Core Agent Protocol Stack (MCP + A2A + AGUI)

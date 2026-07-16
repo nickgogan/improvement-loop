@@ -32,9 +32,10 @@ related_findings:
   rel: same-problem
 - file: autonomy-gradient-not-binary-delegation.md
   rel: enables
-pipeline_status: extracted
+pipeline_status: synthesized
 consumed_by:
 - rules/explicit-permission-allow-listing-for-agent-resource-access.md
+- agent-safety-and-permissions.md
 ---
 # Explicit Permission Allow-Listing for Agent Resource Access
 

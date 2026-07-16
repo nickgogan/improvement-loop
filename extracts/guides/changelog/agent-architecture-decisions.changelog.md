@@ -1,5 +1,13 @@
 # Changelog — Agent Architecture Decisions
 
+## 2026-07-16 — Session 147 — staleness-threshold
+
+- Findings: 65 (+23, -0 since last synthesis)
+- Added: [[five-pattern-complexity-escalation-ladder]], [[four-estimate-agent-routing-test]], [[effort-scaling-rules-embedded-in-orchestrator]], [[harness-composition-six-pattern-taxonomy]], [[hub-and-spoke-10-agent-ceiling-with-queueing]], [[three-tier-orchestration-hierarchy-scheduler-worker-framework]], [[ralph-wiggum-execution-pattern]], [[loop-node-anatomy-schema-enforced-ralph-primitive]], [[archon-yaml-defined-harness-workflows]], [[planner-executor-deterministic-guardrails]], [[skill-forked-subagent-execution]], [[file-based-task-locking-parallel-agents]], [[issue-based-agent-orchestration-replacing-markdown-plans]], [[database-as-shared-memory-coordination]], [[work-ticket-contract-prompt-mode-vs-work-mode]], [[standardized-io-as-infrastructure-scaling-prerequisite]], [[three-layer-core-agent-protocol-stack]], [[task-complexity-tiering-quick-campaign-deep-build]], [[framework-tension-taxonomy-superpowers-gsd-gstack]], [[gstack-spec-team-parallel-research-agents]], [[parallel-independent-workflow-execution-at-scale]], [[per-function-recursive-loop-composition]], [[meta-agent-prompt-generation-bootstrap-pattern]]
+- Structural: Step 1 gained the four-estimate routing pre-check; Step 2 gained effort-scaling/complexity-tiering investment sizing; Step 3 gained the five-level escalation ladder, Patterns I (shared-substrate coordination) and J (autonomous loop with anatomy spec), the six-micro-pattern composition vocabulary, and hub-and-spoke ceiling limits under Pattern G; Step 4 gained work-ticket contract, standardized-I/O, protocol-stack debt framing, and skill-as-forked-subagent dispatch; Step 8 gained the determinism rule, three-tier scheduler/worker/framework hierarchy, typed node vocabulary, and framework-stacking guidance; new Loop Anatomy Spec template + worked example; Key Concepts 12-15; Pitfalls 14-17.
+- Preserved: none (no Nick's Annotations or PRESERVE markers found)
+- SL: session-147 (SL retired as producer per session-138 ruling; git is the session record)
+
 ## 2026-05-25 — Session 97 — staleness-threshold
 
 - Findings: 42 (+18, -0 since last synthesis)

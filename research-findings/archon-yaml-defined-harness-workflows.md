@@ -75,6 +75,7 @@ last_updated: '2026-07-13'
 pipeline_status: synthesized
 consumed_by:
 - agent-workflow-and-execution.md
+- agent-architecture-decisions.md
 ---
 
 ## What It Is

@@ -1,40 +1,50 @@
 ---
-name: "With/Without-Skill A/B Baseline Runs (Measuring a Skill's Marginal Impact)"
-summary: |-
-  A skill-improvement loop (skill-loop command driving a skill-improver agent over
+name: With/Without-Skill A/B Baseline Runs (Measuring a Skill's Marginal Impact)
+summary: 'A skill-improvement loop (skill-loop command driving a skill-improver agent over
+
   multiple rounds) launches separate headless Claude sessions that run the same task two
+
   ways — once with the skill loaded and once without — and compares the outputs to
-  measure the skill's actual marginal impact. The delta pins down exactly what the skill
+
+  measure the skill''s actual marginal impact. The delta pins down exactly what the skill
+
   contributes and what needs improving; results and lessons are recorded in a learning.md
+
   journal inside the skill. Answers the otherwise-unanswered question "is this skill
-  actually working the way it should?"
-implementation_notes: |-
-  The engine has no quantitative way to show a skill earns its keep — skill value is
+
+  actually working the way it should?"'
+implementation_notes: 'The engine has no quantitative way to show a skill earns its keep — skill value is
+
   asserted, not measured. A with/without baseline run is the minimal experiment: same
+
   task, fresh headless sessions, diff the outcomes. Design required: a small task corpus
+
   per skill, a headless run harness, and what "better" means per skill type (rule 10
-  applies — the skill's author must not be its scorer).
-category: "Evaluation"
-evidence_strength: "Medium (practitioner-documented)"
-adoption_status: "Not Yet Started"
-priority: "P2 (Design Required)"
+
+  applies — the skill''s author must not be its scorer).'
+category: Evaluation
+evidence_strength: Medium (practitioner-documented)
+adoption_status: Not Yet Started
+priority: P2 (Design Required)
 applicability:
-  - "IL (skill evaluation)"
-  - "General"
+- IL (skill evaluation)
+- General
 adopted_in: []
 sources:
-  - "5-insane-claude-loops.md"
+- 5-insane-claude-loops.md
 related_findings:
-  - file: "generator-assessor-separation-in-skill-iteration.md"
-    rel: "same-problem"
-  - file: "self-improving-skill-lessons-log.md"
-    rel: "enables"
-  - file: "externalized-real-session-behavior-evals.md"
-    rel: "same-problem"
+- file: generator-assessor-separation-in-skill-iteration.md
+  rel: same-problem
+- file: self-improving-skill-lessons-log.md
+  rel: enables
+- file: externalized-real-session-behavior-evals.md
+  rel: same-problem
 proposals: null
-date_discovered: "2026-07-12"
-last_updated: "2026-07-13"
-pipeline_status: "raw"
+date_discovered: '2026-07-12'
+last_updated: '2026-07-13'
+pipeline_status: synthesized
+consumed_by:
+- building-agent-evaluation-suites.md
 ---
 
 ## What It Is

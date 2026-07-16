@@ -1,31 +1,33 @@
 ---
-name: "Declarative Goal-Driven Agent Prompting — Define Done, Not Steps"
-summary: "Shift prompts from imperative (tell the agent what to do step-by-step) to declarative (state success criteria and let the agent explore). LLMs are exceptionally good at looping until they meet specific goals; imperative prompts constrain this capability and produce inferior results."
+name: Declarative Goal-Driven Agent Prompting — Define Done, Not Steps
+summary: Shift prompts from imperative (tell the agent what to do step-by-step) to declarative (state success criteria and let the agent explore). LLMs are exceptionally good at looping until they meet
+  specific goals; imperative prompts constrain this capability and produce inferior results.
 implementation_notes: null
-category: "Prompt Craft"
-evidence_strength: "Medium (practitioner-documented)"
-adoption_status: "Not Yet Started"
-priority: "P2 (Design Required)"
+category: Prompt Craft
+evidence_strength: Medium (practitioner-documented)
+adoption_status: Not Yet Started
+priority: P2 (Design Required)
 applicability:
-  - "S3 (Claude Code Build)"
-  - "General / Cross-System"
+- S3 (Claude Code Build)
+- General / Cross-System
 adopted_in: []
 sources:
-  - "karpathy-skills-claudemd-four-principles.md"
+- karpathy-skills-claudemd-four-principles.md
 related_findings:
-  - file: "bmad-outcome-based-skill-rewrite-pattern.md"
-    rel: "same-problem"
-  - file: "context-enrichment-for-task-clarity.md"
-    rel: "enables"
-  - file: "acceptance-criteria-as-verifiable-eval-anchor.md"
-    rel: "same-problem"
-  - file: "agent-clarification-over-assumption-pattern.md"
-    rel: "same-problem"
+- file: bmad-outcome-based-skill-rewrite-pattern.md
+  rel: same-problem
+- file: context-enrichment-for-task-clarity.md
+  rel: enables
+- file: acceptance-criteria-as-verifiable-eval-anchor.md
+  rel: same-problem
+- file: agent-clarification-over-assumption-pattern.md
+  rel: same-problem
 proposals: null
-date_discovered: "2026-04-20"
-last_updated: "2026-04-20"
-pipeline_status: classified
-consumed_by: []
+date_discovered: '2026-04-20'
+last_updated: '2026-04-20'
+pipeline_status: synthesized
+consumed_by:
+- model-resilient-prompt-engineering.md
 ---
 
 ## What It Is

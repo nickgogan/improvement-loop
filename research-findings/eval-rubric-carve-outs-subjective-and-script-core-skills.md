@@ -1,7 +1,13 @@
 ---
-name: 'Audit Rubric Carve-Outs — Subjective-Output and Script-Core Skills Get Re-Anchored Eval Dimensions'
-summary: 'A scored audit rubric that demands binary pass/fail eval assertions for every skill misdiagnoses two whole skill classes: subjective-output skills (writing voice, tone, design) where forcing assertions onto judgment produces brittle, misleading gates, and script-core skills (renderers, parsers, validators wrapping tested code) where the functional guarantee already lives in the script''s own tests. CareerBuddy''s audit rubric formalizes both as explicit carve-outs that re-anchor the Evaluation Design dimension — while keeping description/trigger optimization mandatory for every skill, because triggering is objective regardless of output type.'
-implementation_notes: 'Directly patches a known failure shape in rubric-based assessment: /assess-skill audits against Contract-derived criteria and could score a script-wrapping skill (e.g. /transcript-fetcher, /pdf-to-markdown) or a judgment skill down for lacking an LLM eval suite — exactly the misdiagnosis this carve-out prevents. The re-anchoring move (keep the dimension, swap what a 5/3/1 means for the skill class) is the generalizable mechanic, applicable to any engine rubric with heterogeneous artifact classes. Overlap with the imported /meta-skill-author toolchain''s audit-rubric.md vs /assess-skill is a flagged open question for the restructure program''s Phase 2 audit.'
+name: Audit Rubric Carve-Outs — Subjective-Output and Script-Core Skills Get Re-Anchored Eval Dimensions
+summary: 'A scored audit rubric that demands binary pass/fail eval assertions for every skill misdiagnoses two whole skill classes: subjective-output skills (writing voice, tone, design) where forcing assertions
+  onto judgment produces brittle, misleading gates, and script-core skills (renderers, parsers, validators wrapping tested code) where the functional guarantee already lives in the script''s own tests.
+  CareerBuddy''s audit rubric formalizes both as explicit carve-outs that re-anchor the Evaluation Design dimension — while keeping description/trigger optimization mandatory for every skill, because triggering
+  is objective regardless of output type.'
+implementation_notes: 'Directly patches a known failure shape in rubric-based assessment: /assess-skill audits against Contract-derived criteria and could score a script-wrapping skill (e.g. /transcript-fetcher,
+  /pdf-to-markdown) or a judgment skill down for lacking an LLM eval suite — exactly the misdiagnosis this carve-out prevents. The re-anchoring move (keep the dimension, swap what a 5/3/1 means for the
+  skill class) is the generalizable mechanic, applicable to any engine rubric with heterogeneous artifact classes. Overlap with the imported /meta-skill-author toolchain''s audit-rubric.md vs /assess-skill
+  is a flagged open question for the restructure program''s Phase 2 audit.'
 category: Evaluation
 evidence_strength: Medium (practitioner-documented, single production system)
 adoption_status: Not Yet Started
@@ -17,8 +23,9 @@ last_updated: '2026-07-13'
 related_findings:
 - file: externalized-real-session-behavior-evals.md
   rel: same-problem
-pipeline_status: raw
-consumed_by: []
+pipeline_status: synthesized
+consumed_by:
+- building-agent-evaluation-suites.md
 tags:
 - evaluation
 - audit-rubric

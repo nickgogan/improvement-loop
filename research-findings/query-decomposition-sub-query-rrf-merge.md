@@ -1,32 +1,37 @@
 ---
-name: "Query Decomposition with Sub-Query RRF Merge"
-summary: "At query time, Memongo uses a lightweight LLM (GPT-4-mini) to decompose a user query into multiple sub-queries, runs retrieval on each, and merges the results via reciprocal rank fusion (RRF). The agent's retrieval recipe is: decompose → parallel retrieve → RRF merge → post-retrieval reranking. Decomposition is cheap (small model) and happens before any expensive semantic work; the parallelism means sub-queries can fan out across vector + lexical indexes simultaneously."
-implementation_notes: "A natural complement to native rank fusion — fan-out decomposed queries through `$rankFusion` for each sub-query, then RRF-merge across sub-queries. For Memongo improvement: evaluate whether a larger decomposition model produces better sub-queries for multi-hop temporal reasoning (Memongo's weakest category at 84.0% on LongMemEval-S). The decomposition prompt itself is a prompt-engineering surface worth versioning as a ContractSpec."
-category: "Context Engineering"
-evidence_strength: "Medium (practitioner-documented)"
-adoption_status: "Not Yet Started"
-priority: "P2"
+name: Query Decomposition with Sub-Query RRF Merge
+summary: 'At query time, Memongo uses a lightweight LLM (GPT-4-mini) to decompose a user query into multiple sub-queries, runs retrieval on each, and merges the results via reciprocal rank fusion (RRF).
+  The agent''s retrieval recipe is: decompose → parallel retrieve → RRF merge → post-retrieval reranking. Decomposition is cheap (small model) and happens before any expensive semantic work; the parallelism
+  means sub-queries can fan out across vector + lexical indexes simultaneously.'
+implementation_notes: 'A natural complement to native rank fusion — fan-out decomposed queries through `$rankFusion` for each sub-query, then RRF-merge across sub-queries. For Memongo improvement: evaluate
+  whether a larger decomposition model produces better sub-queries for multi-hop temporal reasoning (Memongo''s weakest category at 84.0% on LongMemEval-S). The decomposition prompt itself is a prompt-engineering
+  surface worth versioning as a ContractSpec.'
+category: Context Engineering
+evidence_strength: Medium (practitioner-documented)
+adoption_status: Not Yet Started
+priority: P2
 applicability:
-  - "S3 (Claude Code Build)"
-  - "General"
+- S3 (Claude Code Build)
+- General
 adopted_in: []
 sources:
-  - "memongo-mongodb-native-agent-memory-github.md"
+- memongo-mongodb-native-agent-memory-github.md
 related_findings:
-  - file: rank-fusion-hybrid-retrieval-mongodb-atlas.md
-    rel: enables
-  - file: programmatic-tool-calling-code-orchestrated-tool-use.md
-    rel: same-problem
-  - file: hybrid-retrieval-pattern-semantic-lexical-graph.md
-    rel: extends
-  - file: agentic-search-memory-retrieval-architecture.md
-    rel: extended-by
+- file: rank-fusion-hybrid-retrieval-mongodb-atlas.md
+  rel: enables
+- file: programmatic-tool-calling-code-orchestrated-tool-use.md
+  rel: same-problem
+- file: hybrid-retrieval-pattern-semantic-lexical-graph.md
+  rel: extends
+- file: agentic-search-memory-retrieval-architecture.md
+  rel: extended-by
 proposals: null
-date_discovered: "2026-04-20"
-last_updated: "2026-04-27"
+date_discovered: '2026-04-20'
+last_updated: '2026-04-27'
 pipeline_status: synthesized
 consumed_by:
-  - "session-persistence-and-memory.md"
+- session-persistence-and-memory.md
+- structuring-agent-context.md
 ---
 
 ## What It Is

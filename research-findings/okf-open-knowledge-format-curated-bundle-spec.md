@@ -1,52 +1,69 @@
 ---
-name: "OKF (Open Knowledge Format): Curated Knowledge Bundle Spec"
-summary: |-
-  Google Cloud's OKF (shipped June 2026, v0.1 spec on GitHub) is the first
+name: 'OKF (Open Knowledge Format): Curated Knowledge Bundle Spec'
+summary: 'Google Cloud''s OKF (shipped June 2026, v0.1 spec on GitHub) is the first
+
   vendor-published open standard for the curated markdown knowledge base: a "bundle" is
+
   a folder of markdown files, one concept per file, YAML frontmatter with `type` as the
+
   only required field, a reserved index.md table of contents for navigation, an
+
   append-only log.md change log, and ordinary markdown links that turn the bundle into
+
   a walkable knowledge graph. The load-bearing category distinction: RAG is a process,
+
   OKF is a format — RAG re-derives knowledge at query time from raw chunks; an OKF
+
   bundle stores curated, cross-linked concepts the agent reads directly. Two
+
   consequences most takes miss: the substrate is read-write (agents edit concepts in
+
   place, so the KB improves itself), and a bundle can feed a RAG pipeline as clean,
-  pre-labeled source — the format composes with the process rather than replacing it.
-implementation_notes: |-
-  Flagged P2 because the engine's research KB is exactly this shape — curated markdown
+
+  pre-labeled source — the format composes with the process rather than replacing it.'
+implementation_notes: 'Flagged P2 because the engine''s research KB is exactly this shape — curated markdown
+
   concepts with YAML frontmatter, filename-based relations, and its own bespoke
+
   `_schema.yaml` — and OKF is the first open spec for that shape. The design work is a
+
   convention-by-convention comparison (index.md vs frontmatter-driven ripgrep
+
   discovery, log.md vs git history + System Log, `type` vs our per-folder schemas)
+
   feeding the Nick-gated conformance question captured in
+
   knowledge-substrate-standardization-cross-agent-interop.md. Not an adoption
-  recommendation; the spec is v0.1 from a single vendor.
-category: "Context Engineering"
-evidence_strength: "Medium (practitioner-documented)"
-adoption_status: "Not Yet Started"
-priority: "P2 (Design Required)"
+
+  recommendation; the spec is v0.1 from a single vendor.'
+category: Context Engineering
+evidence_strength: Medium (practitioner-documented)
+adoption_status: Not Yet Started
+priority: P2 (Design Required)
 applicability:
-  - "IL (research KB substrate)"
-  - "General"
+- IL (research KB substrate)
+- General
 adopted_in: []
 sources:
-  - "google-okf-vs-rag-confusion-finally-cleared-up.md"
-  - "open-standard-for-the-karpathy-llm-wiki.md"
+- google-okf-vs-rag-confusion-finally-cleared-up.md
+- open-standard-for-the-karpathy-llm-wiki.md
 related_findings:
-  - file: "knowledge-substrate-standardization-cross-agent-interop.md"
-    rel: "extended-by"
-  - file: "curated-spine-plus-rag-hybrid-query-router.md"
-    rel: "extended-by"
-  - file: "index-file-navigation-as-rag-replacement.md"
-    rel: "extends"
-  - file: "karpathy-llm-knowledge-base-obsidian-rag.md"
-    rel: "extends"
-  - file: "write-time-vs-query-time-synthesis-kb-poisoning.md"
-    rel: "same-problem"
+- file: knowledge-substrate-standardization-cross-agent-interop.md
+  rel: extended-by
+- file: curated-spine-plus-rag-hybrid-query-router.md
+  rel: extended-by
+- file: index-file-navigation-as-rag-replacement.md
+  rel: extends
+- file: karpathy-llm-knowledge-base-obsidian-rag.md
+  rel: extends
+- file: write-time-vs-query-time-synthesis-kb-poisoning.md
+  rel: same-problem
 proposals: null
-date_discovered: "2026-07-12"
-last_updated: "2026-07-12"
-pipeline_status: "raw"
+date_discovered: '2026-07-12'
+last_updated: '2026-07-12'
+pipeline_status: synthesized
+consumed_by:
+- structuring-agent-context.md
 ---
 
 ## What It Is

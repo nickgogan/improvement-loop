@@ -34,6 +34,9 @@ related_findings:
 proposals: null
 date_discovered: '2026-07-11'
 last_updated: '2026-07-11'
+pipeline_status: synthesized
+consumed_by:
+- model-resilient-prompt-engineering.md
 ---
 
 # Strictness-Escalation Skill Architecture

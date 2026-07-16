@@ -1,7 +1,11 @@
 ---
-name: 'Operational Quirks Discipline — Recurrence-to-Guard, Harness Labels, Permissioning Honesty'
-summary: 'A standing discipline for runtime sharp edges: an environment failure that recurs is promoted to a standing guard (in the always-on file if it can fire on any request, otherwise the relevant memory scope), stated as the durable rule plus the failure it prevents. Every such guard is labeled harness-specific so a future port re-derives rather than copies it, and a new install starts with an empty quirk list plus the discipline. Paired with permissioning honesty: where the platform lacks native enforcement, the guard is carried as prose and the install report must say which guards are prose-only.'
-implementation_notes: 'The engine accumulates quirk knowledge informally (e.g. the retired read-guard hook, zsh/tool quirks in memory). Adoptable directly: (1) the recurrence threshold — first occurrence is tolerated, recurrence earns a guard — matches Nick''s standing tolerate-one-off rule and gives it a promotion path; (2) the harness-specific label keeps the portable kernel clean, since quirks never port; (3) permissioning honesty belongs in the kernel''s trust declaration — the engine currently runs bypassPermissions, so nearly all its guards are prose-only and should be declared as such.'
+name: Operational Quirks Discipline — Recurrence-to-Guard, Harness Labels, Permissioning Honesty
+summary: 'A standing discipline for runtime sharp edges: an environment failure that recurs is promoted to a standing guard (in the always-on file if it can fire on any request, otherwise the relevant memory
+  scope), stated as the durable rule plus the failure it prevents. Every such guard is labeled harness-specific so a future port re-derives rather than copies it, and a new install starts with an empty
+  quirk list plus the discipline. Paired with permissioning honesty: where the platform lacks native enforcement, the guard is carried as prose and the install report must say which guards are prose-only.'
+implementation_notes: 'The engine accumulates quirk knowledge informally (e.g. the retired read-guard hook, zsh/tool quirks in memory). Adoptable directly: (1) the recurrence threshold — first occurrence
+  is tolerated, recurrence earns a guard — matches Nick''s standing tolerate-one-off rule and gives it a promotion path; (2) the harness-specific label keeps the portable kernel clean, since quirks never
+  port; (3) permissioning honesty belongs in the kernel''s trust declaration — the engine currently runs bypassPermissions, so nearly all its guards are prose-only and should be declared as such.'
 category: Governance
 evidence_strength: Medium (practitioner-documented, single production system)
 adoption_status: Not Yet Started
@@ -15,8 +19,9 @@ proposals: null
 date_discovered: '2026-07-12'
 last_updated: '2026-07-12'
 related_findings: []
-pipeline_status: raw
-consumed_by: []
+pipeline_status: synthesized
+consumed_by:
+- agent-governance-and-trust.md
 tags:
 - operational-quirks
 - standing-guards

@@ -1,50 +1,67 @@
 ---
-name: "Autonomy Progression Gated by System Maturity (Level-3 Sandwich)"
-summary: |-
-  Plain English: don't buy autonomy — earn it, and earn it in a specific order. Cole
-  Medin's position (built on Dan Shapiro's five-level ladder, spicy autocomplete → dark
+name: Autonomy Progression Gated by System Maturity (Level-3 Sandwich)
+summary: 'Plain English: don''t buy autonomy — earn it, and earn it in a specific order. Cole
+
+  Medin''s position (built on Dan Shapiro''s five-level ladder, spicy autocomplete → dark
+
   factory): the sweet spot of reliability and autonomy is level 3, where you delegate
+
   100% of the coding *because* human planning and human validation sandwich the
+
   implementation on both sides. Progression to levels 4-5 is not achieved by granting
+
   more autonomy — it is achieved by building a supervised system first, evolving it after
+
   every mistake, and then *removing the human* from steps the system has already proven
+
   it can carry ("you build that muscle of what you can trust your system to accomplish").
+
   The direction is invariant: subtract oversight from a trusted workflow, never add
+
   autonomy to an untrusted one. Notable because Medin — who built his own dark factory
-  experiment — argues from independent evidence for the supervised tier the engine's
-  DD-108 already commits to.
-implementation_notes: |-
-  Third distinct source arguing the supervised-autonomy/maturity-gated-progression
+
+  experiment — argues from independent evidence for the supervised tier the engine''s
+
+  DD-108 already commits to.'
+implementation_notes: 'Third distinct source arguing the supervised-autonomy/maturity-gated-progression
+
   position (with the trust-calibration ramp and autonomy-gradient source sets) —
+
   flagged as a DD-108 evidence-strength candidate for the next /reassess-priorities
+
   pass. Design-relevant detail: the readiness signal for removing a gate is subjective
+
   confidence built from repeated system evolution ("I know my coding agent will knock
-  this out of the park — I don't even have to iterate on the plan"), i.e. per-workflow,
-  not global.
-category: "Governance"
-evidence_strength: "Medium (practitioner-documented)"
-adoption_status: "Partially Adopted"
-priority: "P2 (Design Required)"
+
+  this out of the park — I don''t even have to iterate on the plan"), i.e. per-workflow,
+
+  not global.'
+category: Governance
+evidence_strength: Medium (practitioner-documented)
+adoption_status: Partially Adopted
+priority: P2 (Design Required)
 applicability:
-  - "IL (gate design, DD-108 lane)"
-  - "General"
+- IL (gate design, DD-108 lane)
+- General
 adopted_in:
-  - "Improvement Loop"
+- Improvement Loop
 sources:
-  - "the-best-ai-coding-setup-isnt-the-most-autonomous-one.md"
+- the-best-ai-coding-setup-isnt-the-most-autonomous-one.md
 related_findings:
-  - file: "trust-calibration-progressive-autonomy-ramp.md"
-    rel: "extends"
-  - file: "autonomy-gradient-not-binary-delegation.md"
-    rel: "same-problem"
-  - file: "human-on-the-loop-hotl-autonomy-tiering-framework.md"
-    rel: "same-problem"
-  - file: "dark-factory-ai-only-codebase-management.md"
-    rel: "extends"
+- file: trust-calibration-progressive-autonomy-ramp.md
+  rel: extends
+- file: autonomy-gradient-not-binary-delegation.md
+  rel: same-problem
+- file: human-on-the-loop-hotl-autonomy-tiering-framework.md
+  rel: same-problem
+- file: dark-factory-ai-only-codebase-management.md
+  rel: extends
 proposals: null
-date_discovered: "2026-07-12"
-last_updated: "2026-07-12"
-pipeline_status: "raw"
+date_discovered: '2026-07-12'
+last_updated: '2026-07-12'
+pipeline_status: synthesized
+consumed_by:
+- agent-governance-and-trust.md
 ---
 
 ## What It Is

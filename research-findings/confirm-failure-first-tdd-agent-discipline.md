@@ -1,30 +1,34 @@
 ---
-name: "Confirm-Failure-First TDD Discipline for Coding Agents"
-summary: "When a coding agent runs the red/green TDD cycle, the red-state verification step is non-negotiable — confirm the test actually fails before moving to implementation. Without this, the agent can accidentally write tests that already pass (false red), and the green step becomes meaningless. Plain English: if the test passes on its first run, the test isn't testing anything. Make the agent prove the test fails first, then prove the fix makes it pass."
-implementation_notes: "Embed the verification requirement in any TDD-adjacent skill prompt. 'Use red/green TDD — confirm red before green' is a more reliable instruction than just 'Use red/green TDD' for agents."
-category: "Evaluation"
-evidence_strength: "Strong (production-tested practitioner discipline)"
-adoption_status: "Not Yet Started"
+name: Confirm-Failure-First TDD Discipline for Coding Agents
+summary: 'When a coding agent runs the red/green TDD cycle, the red-state verification step is non-negotiable — confirm the test actually fails before moving to implementation. Without this, the agent can
+  accidentally write tests that already pass (false red), and the green step becomes meaningless. Plain English: if the test passes on its first run, the test isn''t testing anything. Make the agent prove
+  the test fails first, then prove the fix makes it pass.'
+implementation_notes: Embed the verification requirement in any TDD-adjacent skill prompt. 'Use red/green TDD — confirm red before green' is a more reliable instruction than just 'Use red/green TDD' for
+  agents.
+category: Evaluation
+evidence_strength: Strong (production-tested practitioner discipline)
+adoption_status: Not Yet Started
 priority: P2
 applicability:
-  - "General"
-  - "S3 (Claude Code Build)"
+- General
+- S3 (Claude Code Build)
 adopted_in: []
 sources:
-  - "simon-willison-red-green-tdd.md"
+- simon-willison-red-green-tdd.md
 related_findings:
-  - file: test-driven-development-as-counterweight-to-agenti.md
-    rel: extends
-  - file: agent-self-reporting-unreliability-independent-eval.md
-    rel: same-problem
-  - file: tdd-step-ordering-in-plan-tasks.md
-    rel: enables
+- file: test-driven-development-as-counterweight-to-agenti.md
+  rel: extends
+- file: agent-self-reporting-unreliability-independent-eval.md
+  rel: same-problem
+- file: tdd-step-ordering-in-plan-tasks.md
+  rel: enables
 proposals: null
-date_discovered: "2026-04-23"
-last_updated: "2026-04-24"
-pipeline_status: extracted
+date_discovered: '2026-04-23'
+last_updated: '2026-04-24'
+pipeline_status: synthesized
 consumed_by:
-  - "rules/confirm-failure-first-tdd.md"
+- rules/confirm-failure-first-tdd.md
+- building-agent-evaluation-suites.md
 ---
 
 ## What It Is

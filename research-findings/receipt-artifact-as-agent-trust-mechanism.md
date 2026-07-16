@@ -1,44 +1,56 @@
 ---
-name: "Receipt Artifact as Agent Trust Mechanism"
-summary: |-
-  Plain English: what makes a human trust an agent's draft isn't the draft — it's a small
+name: Receipt Artifact as Agent Trust Mechanism
+summary: 'Plain English: what makes a human trust an agent''s draft isn''t the draft — it''s a small
+
   companion artifact that says what the agent used, what it changed, and what still needs
-  approval. When the agent stops at the prepare-don't-submit gate, it leaves three things:
+
+  approval. When the agent stops at the prepare-don''t-submit gate, it leaves three things:
+
   the draft, the proposed action (e.g., a calendar hold), and a receipt listing (1) the
+
   sources it used, (2) what it changed, and (3) what still needs human approval. The
+
   receipt is the difference between "AI handled it" and "I know what happened here and I
+
   can trust the AI" — it makes human review fast enough to be sustainable, which is the
-  precondition for pointing agents at work where real money is on the line.
-implementation_notes: |-
-  P2: direct enrichment candidate for how engine skills and subagents report at human
+
+  precondition for pointing agents at work where real money is on the line.'
+implementation_notes: 'P2: direct enrichment candidate for how engine skills and subagents report at human
+
   gates — a standard sources-used / changes-made / needs-approval triplet is cheap to emit
-  and maps onto the engine's auditability rule ("if it can't be audited, it shouldn't
+
+  and maps onto the engine''s auditability rule ("if it can''t be audited, it shouldn''t
+
   happen"). Related but distinct: the work-ticket claim receipt (proof-of-done vs agent
+
   self-report) from the multi-agent lane covers cross-agent trust; this one covers
-  agent-to-human trust at the gate.
-category: "Governance"
-evidence_strength: "Medium (practitioner-documented)"
-adoption_status: "Partially Adopted"
-priority: "P2 (Design Required)"
+
+  agent-to-human trust at the gate.'
+category: Governance
+evidence_strength: Medium (practitioner-documented)
+adoption_status: Partially Adopted
+priority: P2 (Design Required)
 applicability:
-  - "IL (skill/subagent gate reporting)"
-  - "General"
+- IL (skill/subagent gate reporting)
+- General
 adopted_in: []
 sources:
-  - "i-pointed-my-agent-at-the-bills.md"
+- i-pointed-my-agent-at-the-bills.md
 related_findings:
-  - file: "nine-primitive-document-agent-skeleton.md"
-    rel: "enabled-by"
-  - file: "agent-self-reporting-unreliability-independent-eval.md"
-    rel: "same-problem"
-  - file: "human-on-the-loop-hotl-autonomy-tiering-framework.md"
-    rel: "extends"
-  - file: "five-point-agent-health-checklist.md"
-    rel: "same-problem"
+- file: nine-primitive-document-agent-skeleton.md
+  rel: enabled-by
+- file: agent-self-reporting-unreliability-independent-eval.md
+  rel: same-problem
+- file: human-on-the-loop-hotl-autonomy-tiering-framework.md
+  rel: extends
+- file: five-point-agent-health-checklist.md
+  rel: same-problem
 proposals: null
-date_discovered: "2026-07-12"
-last_updated: "2026-07-13"
-pipeline_status: "raw"
+date_discovered: '2026-07-12'
+last_updated: '2026-07-13'
+pipeline_status: synthesized
+consumed_by:
+- agent-governance-and-trust.md
 ---
 
 # Receipt Artifact as Agent Trust Mechanism

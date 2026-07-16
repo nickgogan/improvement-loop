@@ -31,8 +31,9 @@ related_findings:
 proposals: null
 date_discovered: '2026-06-11'
 last_updated: '2026-07-12'
-pipeline_status: raw
-consumed_by: []
+pipeline_status: synthesized
+consumed_by:
+- structuring-agent-context.md
 ---
 
 # Skill Content Lifecycle — One-Shot Render, Sticky Across Turns, 5K/25K Post-Compaction Budget

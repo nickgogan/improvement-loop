@@ -34,9 +34,10 @@ related_findings:
   rel: extends
 - file: instant-agent-revocation-kill-switch-pattern.md
   rel: same-problem
-pipeline_status: extracted
+pipeline_status: synthesized
 consumed_by:
-  - "rules/screen-as-permissions-model-agent-bypass.md"
+- rules/screen-as-permissions-model-agent-bypass.md
+- agent-governance-and-trust.md
 tags:
 - governance
 - sandboxing

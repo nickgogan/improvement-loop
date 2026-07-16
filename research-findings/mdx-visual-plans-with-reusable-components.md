@@ -1,44 +1,54 @@
 ---
-name: "MDX Visual Plans with Reusable Components (/visual-plan)"
-summary: |-
-  Builder.io's open-source /visual-plan skill renders agent plans as MDX built from a
+name: MDX Visual Plans with Reusable Components (/visual-plan)
+summary: 'Builder.io''s open-source /visual-plan skill renders agent plans as MDX built from a
+
   library of reusable interactive components — pan/zoomable wireframes, diagrams,
+
   commentable API specs, schema-change views, annotated code — instead of markdown walls
+
   or one-off generated HTML. Reusable components give consistency across runs, models,
+
   and agents ("not random HTML slop every time"), look sane checked into a repo, and are
+
   customizable/forkable. The human comments on wireframes and answers open questions
-  visually before the agent works.
-implementation_notes: |-
-  Strongest input yet for the parked governance-visualization session (IB-175): Nick has
+
+  visually before the agent works.'
+implementation_notes: 'Strongest input yet for the parked governance-visualization session (IB-175): Nick has
+
   flagged that prose-heavy DDs/plans make human gating expensive, and this is a working
+
   open-source answer — plans rendered from a bounded component library rather than
-  freeform HTML. The /visual-plan repo is a watched-library candidate (Nick's call, not
+
+  freeform HTML. The /visual-plan repo is a watched-library candidate (Nick''s call, not
+
   actioned here). Adopting an MDX toolchain on first occurrence would fail
-  abstractions-earn-their-keep; extract the pattern, defer the toolchain.
-category: "Tool Integration"
-evidence_strength: "Medium (practitioner-documented)"
-adoption_status: "Not Yet Started"
-priority: "P2 (Design Required)"
+
+  abstractions-earn-their-keep; extract the pattern, defer the toolchain.'
+category: Tool Integration
+evidence_strength: Medium (practitioner-documented)
+adoption_status: Not Yet Started
+priority: P2 (Design Required)
 applicability:
-  - "S3 (Claude Code Build)"
-  - "General"
+- S3 (Claude Code Build)
+- General
 adopted_in: []
 sources:
-  - "introducing-visual-plan-rich-plans-for-claude-code-codex.md"
+- introducing-visual-plan-rich-plans-for-claude-code-codex.md
 related_findings:
-  - file: "plan-level-as-engineering-reasoning-abstraction.md"
-    rel: "extends"
-  - file: "html-output-as-human-in-the-loop-restorer.md"
-    rel: "extends"
-  - file: "html-mockup-generation-as-brainstorm-artifact.md"
-    rel: "same-problem"
-  - file: "visual-recap-post-execution-mirror-artifact.md"
-    rel: "same-problem"
+- file: plan-level-as-engineering-reasoning-abstraction.md
+  rel: extends
+- file: html-output-as-human-in-the-loop-restorer.md
+  rel: extends
+- file: html-mockup-generation-as-brainstorm-artifact.md
+  rel: same-problem
+- file: visual-recap-post-execution-mirror-artifact.md
+  rel: same-problem
 proposals: null
-date_discovered: "2026-07-13"
-last_updated: "2026-07-13"
-pipeline_status: "raw"
-consumed_by: []
+date_discovered: '2026-07-13'
+last_updated: '2026-07-13'
+pipeline_status: synthesized
+consumed_by:
+- designing-agent-tools.md
 ---
 
 # MDX Visual Plans with Reusable Components (/visual-plan)

@@ -29,9 +29,10 @@ related_findings:
   rel: extended-by
 - file: archon-yaml-defined-harness-workflows.md
   rel: same-problem
-pipeline_status: "extracted"
+pipeline_status: synthesized
 consumed_by:
-  - "skills/ralph-wiggum-execution-pattern.md"
+- skills/ralph-wiggum-execution-pattern.md
+- agent-architecture-decisions.md
 ---
 # Ralph Wiggum Execution Pattern
 

@@ -1,34 +1,36 @@
 ---
-name: "Subscription ToS Single-User Boundary for Agent SDKs"
-summary: "SDK subscriptions (Anthropic Max, OpenAI Plus/Pro) restrict usage to the individual subscriber. Deploying an SDK-built agent to multiple users violates terms of service and risks account bans. Multi-user agents must use API keys, jumping costs 10-50x. This hidden constraint is the primary economic forcing function for the SDK-to-framework graduation decision."
+name: Subscription ToS Single-User Boundary for Agent SDKs
+summary: SDK subscriptions (Anthropic Max, OpenAI Plus/Pro) restrict usage to the individual subscriber. Deploying an SDK-built agent to multiple users violates terms of service and risks account bans.
+  Multi-user agents must use API keys, jumping costs 10-50x. This hidden constraint is the primary economic forcing function for the SDK-to-framework graduation decision.
 implementation_notes: null
-category: "Tool Integration"
-evidence_strength: "Medium (practitioner-documented)"
-adoption_status: "Not Yet Started"
+category: Tool Integration
+evidence_strength: Medium (practitioner-documented)
+adoption_status: Not Yet Started
 priority: P2
 applicability:
-  - "S3 (Claude Code Build)"
-  - "General"
+- S3 (Claude Code Build)
+- General
 adopted_in: []
 sources:
-  - "sdk-vs-framework-decision-ai-agents.md"
+- sdk-vs-framework-decision-ai-agents.md
 related_findings:
-  - file: sdk-vs-framework-decision-for-agent-building.md
-    rel: enables
-  - file: claude-code-max-plan-subsidy-vs-api-cost-tool.md
-    rel: same-problem
-  - file: agent-cost-blowup-mitigation-strategies.md
-    rel: same-problem
-  - file: sdk-to-framework-graduation-path.md
-    rel: enables
+- file: sdk-vs-framework-decision-for-agent-building.md
+  rel: enables
+- file: claude-code-max-plan-subsidy-vs-api-cost-tool.md
+  rel: same-problem
+- file: agent-cost-blowup-mitigation-strategies.md
+  rel: same-problem
+- file: sdk-to-framework-graduation-path.md
+  rel: enables
 proposals: null
-date_discovered: "2026-05-25"
-last_updated: "2026-05-25"
-pipeline_status: "extracted"
+date_discovered: '2026-05-25'
+last_updated: '2026-05-25'
+pipeline_status: synthesized
 consumed_by:
-  - "extracts/rules/subscription-tos-single-user-boundary.md"
+- extracts/rules/subscription-tos-single-user-boundary.md
+- designing-agent-tools.md
 tags:
-  - "session-95-reextract"
+- session-95-reextract
 ---
 
 ## What It Is

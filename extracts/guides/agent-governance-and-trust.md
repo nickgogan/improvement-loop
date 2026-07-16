@@ -6,9 +6,29 @@ target_system:
   - "improvement-loop"
 stage: "draft"
 created: "2026-04-19"
-updated: "2026-05-25"
+updated: "2026-07-16"
 author: "claude"
 source_findings:
+  - "agent-owner-card-human-facing-registry"
+  - "autonomy-progression-gated-by-maturity"
+  - "deterministic-doc-audit-battery"
+  - "event-schema-noun-verb-contract"
+  - "governance-registry-blast-radius-classification"
+  - "instant-agent-revocation-kill-switch-pattern"
+  - "north-star-drift-loop-trajectory-extrapolation"
+  - "operational-quirks-recurrence-to-guard-discipline"
+  - "per-proposal-human-gate-promotion-pipeline"
+  - "ratchet-recipe-skill-retirement"
+  - "receipt-artifact-as-agent-trust-mechanism"
+  - "recurrence-threshold-gates-autonomy-not-direction"
+  - "root-context-file-edit-guard"
+  - "screen-as-permissions-model-agent-bypass-failure"
+  - "secure-by-default-posture-as-organizational-invariant"
+  - "skill-invocation-control-side-effect-guard"
+  - "skill-library-drift-failure-mode"
+  - "three-bucket-change-approval-tiering"
+  - "two-layer-ci-plus-llm-review-gate"
+  - "upgrade-direction-degradation-prose-guard-to-policy-engine"
   - "review-bandwidth-as-organizational-bottleneck"
   - "review-obsolescence-as-design-goal"
   - "behavioral-context-portability-intelligence-lock-in"
@@ -58,18 +78,20 @@ tags:
   - "permissions"
   - "auditability"
   - "runtime-governance"
+  - "self-improvement-governance"
+  - "trust-artifacts"
 contract:
-  preconditions: "Agent system with human oversight requirements; governance model needed; an enforcement architecture is chosen (rules, hooks, middleware, or specification) before policies are written; permission model defined for multi-agent delegation if applicable"
-  invariants: "Human retains override authority; audit trail maintained; enforcement-architecture choice is explicit and matches system complexity; rule scope is locality-aware (universal rules central, local rules at the boundary); permissions narrow monotonically across delegation chains; every agent action is traceable to an identity and a governing policy version"
+  preconditions: "Agent system with human oversight requirements; governance model needed; an enforcement architecture is chosen (rules, hooks, middleware, or specification) before policies are written; permission model defined for multi-agent delegation if applicable; for self-modifying systems, a promotion pipeline and change-approval tiering defined before the system may propose changes to its own surfaces"
+  invariants: "Human retains override authority; audit trail maintained; enforcement-architecture choice is explicit and matches system complexity; rule scope is locality-aware (universal rules central, local rules at the boundary); permissions narrow monotonically across delegation chains; every agent action is traceable to an identity and a governing policy version; human gates are per-proposal, never batch; recurrence thresholds gate agent autonomy, never human direction; every deployed agent is enumerable in a registry with a named owner; prose-only guards are declared as prose-only; default posture is deny-by-default"
   governance: "IL-owned draft; Nick deploys to knowledge/guides/"
-  recovery: "If trust violations detected, demote agent to lower autonomy tier; if enforcement bypass detected, audit the architecture choice before adjusting policy; if permission compound detected, audit the delegation chain and apply monotonic narrowing; if audit gap found, freeze autonomous operations until the trail is restored"
+  recovery: "If trust violations detected, demote agent to lower autonomy tier; if enforcement bypass detected, audit the architecture choice before adjusting policy; if permission compound detected, audit the delegation chain and apply monotonic narrowing; if audit gap found, freeze autonomous operations until the trail is restored; if agent misbehavior detected in production, revoke at the identity layer within minutes via the kill switch; if asset-library drift detected, run outcome-linked retirement with an adequate evidence floor"
 ---
 
 # Agent Governance and Trust
 
 How to govern agent autonomy and maintain human oversight as agent output scales beyond human review capacity. This guide addresses the central tension of agentic systems: agents produce at 100x speed, humans review at 3x speed, and the gap between those numbers is where governance either holds or collapses.
 
-The guide covers seven concerns: defining autonomy tiers so agents act within calibrated boundaries, evolving review processes so oversight scales with output, building governance infrastructure so policies are enforced rather than aspirational, managing agent identity so oversight is traceable and portable, making governance machine-readable and enforceable at runtime, managing permissions across agent delegation chains, and tracing agent decisions for auditability.
+The guide covers eight concerns: defining autonomy tiers so agents act within calibrated boundaries, evolving review processes so oversight scales with output, building governance infrastructure so policies are enforced rather than aspirational, managing agent identity so oversight is traceable and portable, making governance machine-readable and enforceable at runtime, managing permissions across agent delegation chains, tracing agent decisions for auditability, and governing self-modifying systems so an agent that improves its own control surfaces stays inside the human gate.
 
 ## When to Use This Guide
 
@@ -87,6 +109,11 @@ The guide covers seven concerns: defining autonomy tiers so agents act within ca
 - You want every agent decision to carry its own proof of authorization
 - Your agents cross multiple backend systems and you need composed audit trails
 - You are shipping agents to production without a control layer and accumulating supervision debt
+- Your system proposes changes to its own skills, rules, or memory, and you need a promotion pipeline that keeps the human gate intact
+- Your skill or asset library keeps growing and nobody has ever retired anything
+- Nobody in the organization can enumerate which agents are running, who owns each, or what each is allowed to touch
+- You need to revoke a misbehaving agent's access in minutes, not deployment cycles
+- Human review of agent output is too slow to sustain, and you need artifacts that make verification cheap
 
 ## Key Concepts
 
@@ -113,6 +140,14 @@ The guide covers seven concerns: defining autonomy tiers so agents act within ca
 **11. Reversibility determines governance intensity.** Every agent action sits on a reversibility spectrum. Fully reversible actions (read-only, draft generation) need minimal gating. Practically irreversible actions (sent communications, triggered payments) require human approval. The reversibility classification must account for actual infrastructure, not theoretical possibility of reversal.
 
 **12. Pattern-scale failure signals systemic, not individual problems.** When governance failures appear at scale (11% of endpoints, not 1 of 200), the root cause is organizational and structural. The correct diagnostic is "what process keeps producing this pattern?" and the correct mitigation is architectural defaults, not training.
+
+**13. Autonomy is earned by subtraction, not granted by setting.** The reliable path to higher autonomy is to build a supervised system first, evolve it after every mistake, and then remove the human from steps the system has proven it can carry. The direction is invariant: subtract oversight from a trusted workflow; never add autonomy to an untrusted one. Trust attaches to the system (harness + process), not to the model.
+
+**14. Self-modifying systems need their own promotion pipeline.** When an agent proposes changes to its own control surfaces, recurrence thresholds gate when the agent may propose — they never gate the human, who can direct a change at zero occurrences. Every proposal is validated in a sandbox, graded in a separate context, and gated one at a time. Batch approval is a failed gate.
+
+**15. Trust artifacts make oversight affordable.** Receipts (what the agent used, changed, and still needs approved), owner cards, and agent registries convert review from re-derivation into verification. A rostered agent with a named owner can be managed; an invisible agent becomes a shadow process. Inspectability, not accuracy claims, is what builds trust.
+
+**16. Defaults and deterministic checks are the real policy.** When teams move fast, the technical default determines outcomes — "what happens when nobody configures security?" must answer "denied." Every governance rule that can be a script should be a script: deterministic checks are free, exact, and repeatable, reserving LLM and human judgment for what scripts cannot see. Prose guards are the enforcement floor, never the ceiling — a host with native gates should upgrade prose to enforcement, never the reverse.
 
 ---
 
@@ -224,6 +259,37 @@ The root issue is not the missing UI elements but the failure to identify contro
 
 Uniform gating (gate everything equally) is safer than no gating but is its own form of debt -- excessive approval friction that masks which operations genuinely need human oversight. The correct investment is classifying operations by actual risk tier: auto-approve (read-only), human-approve (mutations), human-initiate (irreversible).
 
+### Classify the Edit Surface by Blast Radius
+
+Autonomy tiers classify *actions*; a governance registry classifies *files*. Agent autonomy over file edits is only safe when the blast radius of an edit is known in advance. Most systems state the rule ("don't touch governance files without approval") but never enumerate which files those are — so the agent guesses, and guesses drift.
+
+**The registry pattern:** one file classifies every behavior-shaping file in the workspace into two tiers, with reasoning per entry:
+
+| Tier | Edit policy | Typical members |
+|------|-------------|-----------------|
+| **Governance** | Deliberate, human-in-the-loop edits only | Always-on entry file, path-scoped rules, skill packages, planning/vision docs, durable ledgers, memory guardrails, the registry itself |
+| **Working / notes** | Autonomous agent edits fine | Session control surfaces (progress/history tracks), draft artifacts, session memory |
+
+Three properties make the registry load-bearing rather than documentation:
+
+1. **Executable pre-edit check.** The always-on side-effect guard points at the registry; before an autonomous edit, the agent looks up the target file's tier instead of inferring risk from the file's name or content.
+2. **Self-referential guard.** The registry classifies itself as governance, so the classification scheme cannot be loosened autonomously.
+3. **Completeness audit.** A script enforces "every root doc classified" — new behavior-shaping files that skip registration fail the audit, so the registry cannot silently fall behind the tree.
+
+A registry nobody consults is dead weight — wire the lookup into the pre-edit guard or an enforcement hook. Resist adding tiers beyond two until recurrence demands it.
+
+**The root-file special case.** The root context file (CLAUDE.md, AGENTS.md) is the single highest-leverage artifact in a file-structured agent setup and the one most edited by the agent itself. Every new rule feels like it belongs in the front door; it does not — and the degradation is silent because each individual addition looked reasonable. Write the guard into the root file itself: *the agent asks before editing this file.* The rule lives in the file it protects, so every session loads it; only the root is gated, and pointed-to files stay freely editable. Instruction-level guards are soft, so high-stakes setups back this with a mechanical hook or VCS protection.
+
+### Invocation Control as an Autonomy Gate
+
+Skill and workflow harnesses expose invocation-control flags that are autonomy tiers at the artifact level. In Claude Code: `disable-model-invocation: true` blocks the model from auto-triggering a skill on a description match — the human must invoke it explicitly. Use it for:
+
+1. **Side-effect workflows** where timing matters (commit, deploy, send-message): "you don't want the model deciding to deploy because your code looks ready."
+2. **Intentionally harsh modes** (aggressive review postures) whose intensity the user should opt into — a consent gate on register, not just on side effects.
+3. **Predictability economics.** Every model-invocable skill puts its description in context on every request and may misfire or fail to fire — forcing triggering evals. Defaulting side-effect and high-cost skills to user-invoked deletes that problem class, at the price of the human needing to know the roster.
+
+The complementary flag (`user-invocable: false`) hides background-knowledge skills from the human menu while keeping model invocation. Neither flag is a security control — a user can still be induced to invoke a malicious skill — they are autonomy-gating controls: the harness-level expression of "the human gates X."
+
 ---
 
 ## Section 2: Calibrate Trust Progressively
@@ -237,6 +303,18 @@ Trust calibration follows three rules:
 1. **Start restrictive.** Every new task type begins at proposal-first or human-required. No task type starts at full autonomy.
 2. **Promote per task type.** An agent that demonstrates reliability on documentation tasks earns autonomy for documentation only -- not for infrastructure changes.
 3. **Track and threshold.** Define a concrete promotion criterion (e.g., 20 consecutive successful executions) and a demotion trigger (e.g., any failure that reaches production).
+
+### The Direction of Autonomy: Subtract Oversight, Never Add It Away
+
+The trust ramp has a directional corollary. Higher autonomy is achieved not by granting more of it but by building a supervised system first and then *removing* the human from steps the system has proven it can carry. The reference posture is the "sandwich": full delegation of execution is justified only because human planning and human validation bracket it on both sides. Progression means shrinking the sandwich one proven workflow at a time — and only when that workflow reliably needs no plan iteration and no validation findings beyond spot checks.
+
+Three rules operationalize the direction:
+
+1. **Trust attaches to the system, not the model.** A model upgrade does not earn autonomy; a matured harness (rules, skills, validation flow, evolved after every mistake) does. Reject capability-triggered autonomy grants.
+2. **Per-workflow, never global.** Removing the human from feature implementation says nothing about migrations. Trust earned on one workflow silently generalized to another is the failure mode.
+3. **The ratchet runs both ways.** A mistake in a promoted workflow reinstates the removed human touchpoint. Confidence without failure telemetry drifts into supervision debt — replace felt confidence with an objective criterion (N consecutive runs with zero plan iterations and zero validation findings) before removing a gate.
+
+This composes with the static autonomy gradient (Section 1): the blast-radius/reversibility classification sets the *floor* per decision type; maturity gating governs *movement* over time.
 
 ### Decision: When to Promote
 
@@ -335,6 +413,70 @@ Agents produce at ~100x human speed. Human reviewers can scale to ~3x their norm
 
 **Strategy 3: Eliminate review categories.** For every recurring review comment, ask: "How do I make this comment impossible in the future?" Build the check (linter, schema constraint, CI rule) and eliminate the category permanently. This is the constructive response to the bottleneck -- shrink the volume of reviewable material.
 
+### The Two-Layer Review Gate: Deterministic Battery + LLM Judgment
+
+Strategy 3 at maturity is a two-layer pipeline that separates what scripts do exactly from what judgment does best:
+
+**Layer 1 — deterministic battery (blocks).** Every consistency rule that CAN be a script IS a script: structure checks, required files, schema validation, secret scanning, dead links, index bidirectionality, size budgets, scope checks. A production reference implementation runs 16 named checks from a single stdlib-only script — read-only, exit 0 = clean. Durable design properties worth copying:
+
+- **Stable check IDs** (C1...C16) referenced by skills and commit messages.
+- **Error-vs-warn severity split** — warnings inform; only errors gate.
+- **Remediation embedded in the failure message** — every `[FAIL]` names the fix to run, so the finding is actionable without archaeology.
+- **Parse-failure meta-errors** — a check that parses zero rows fails loudly rather than passing vacuously (regex-encoded structure assumptions break silently otherwise).
+
+**Layer 2 — LLM/human judgment (assesses).** Everything scripts genuinely cannot see: mission fit, superseded claims, naming consistency, deep security review of submitted content. Layer 2 runs only after Layer 1 passes, and consumes Layer 1's report as input.
+
+Three sequencing constraints keep the layers honest:
+
+1. **Audit before edit.** The script runs first; never propose fixes from memory of what the system should look like. The script's report is the judgment layer's input, not its output.
+2. **Fidelity, not delta.** The judgment sweep checks completeness against what the system is *now*, not just what changed recently — delta-hunting is structurally blind to what was always missing.
+3. **Close the loop deterministically.** After fixes are applied, the script re-runs and must exit 0 before commit. The deterministic layer both opens and closes the pass; the LLM layer never self-certifies.
+
+A green exit 0 proves structural consistency only, not content truth — that is exactly why Layer 2 exists. And the battery grows monotonically; without a retirement discipline, dead checks accumulate maintenance cost.
+
+### The Receipt Artifact
+
+Reviewing agent output is expensive because the reviewer must *re-derive* correctness. A receipt converts review into *verification*. Whenever the agent stops at a human gate, it emits a standardized companion artifact answering three questions:
+
+1. **What sources did I use** — with addresses back into the stored originals.
+2. **What did I change** — diff-shaped for file-mutating agents.
+3. **What still needs your approval** — the explicit residual decision.
+
+The draft is not the product; the packet is. Checking "do these three listed changes match these three cited sources?" is minutes; re-deriving the draft is hours. The receipt is a review *accelerant*, not a review replacement — citations make review faster, not optional, and spot-checking citations must stay in the loop because a confident receipt whose citations do not support the draft (receipt theater) is still self-reporting. Keep receipts terse: a verbose receipt recreates the review burden it was meant to remove. Accumulate receipts as an audit log rather than discarding them after each gate.
+
+```markdown
+## Receipt — {{TASK_ID}} — {{DATE}}
+
+### Sources used
+- {{SOURCE_1}} ({{ADDRESS_OR_PATH}})
+- {{SOURCE_2}} ({{ADDRESS_OR_PATH}})
+
+### What changed
+- {{CHANGE_1}}
+- {{CHANGE_2}}
+
+### Needs your approval
+- {{PENDING_ACTION_1}}
+```
+
+**Worked example (MetaSystem Codifier gate):**
+
+```markdown
+## Receipt — G9 re-synthesis — 2026-07-16
+
+### Sources used
+- 20 P1/P2 Governance findings (research-findings/, stems listed in guide frontmatter)
+- Guide routing table row G9 (operations/references/guide-routing-table.md)
+
+### What changed
+- Added Key Concepts 13-16, Section 9 (self-modifying systems), 8 new pitfalls
+- Extended contract invariants (per-proposal gates, deny-by-default, registry)
+
+### Needs your approval
+- Deploy of updated guide to knowledge/guides/ (DD-29 gate)
+- 8 harvest-queue rows awaiting per-row ruling
+```
+
 ### Compound Review Debt
 
 Skipping review on agent-produced work creates compound debt. Each unreviewed change embeds assumptions that subsequent changes build upon. Reviewing a chain of 10 unreviewed commits costs far more than reviewing each individually, because the reviewer must untangle cascading dependencies.
@@ -400,6 +542,31 @@ When governance failures appear at pattern-scale (affecting a significant percen
 4. Target the mitigation at the process. Training fixes individual errors. Architectural defaults fix systematic patterns.
 
 If the failure is at pattern-scale, training is the wrong mitigation. Architectural defaults that apply automatically to every action are the correct response.
+
+### Default Posture Determines Outcomes
+
+The clearest architectural default is the security posture. Shift the question from "did you remember to configure security?" to "what is the system's behavior when nobody touches the settings?" The answer must be *denied by default*. Three diagnostic questions:
+
+1. What does the platform look like in two years if nobody touches the security settings after initial setup?
+2. When the team is told to move quickly, where does the technical default land?
+3. If there is no time to discuss architecture, does the system default to authenticated or unauthenticated?
+
+If any answer is "open by default," the system will accumulate unauthenticated surfaces under normal operating pressure — the production-scale reference incident (22 of 200 API endpoints shipped unauthenticated, including production write access, reached by a $20 autonomous agent) was not 22 individual lapses; it was a permissive platform default meeting deadline pressure. Hygiene framing leads to training and checklists; default-posture framing leads to architectural changes that make the secure path the path of least resistance.
+
+**The screen is not a permissions model.** APIs designed for human users treat the UI as an implicit permissions boundary — endpoints are "safe" because humans can only reach them through a gated screen. Agents call APIs programmatically and bypass the screen entirely. Any agentic-era system must treat every API surface as directly callable by an adversarial agent, with authentication on every endpoint and agent permissions scoped separately from user permissions. Autonomous agents probing public endpoints for production data is now normal background radiation, not an exotic threat.
+
+Two cautions: deny-by-default with a heavyweight exception process breeds either velocity collapse or broad exception lists that negate the posture (security theater); and when everything requires approval, reviewers stop reading requests — recreating the permissive default at the human layer.
+
+### Trajectory Oversight: The North-Star Drift Loop
+
+Per-action oversight (everything above) cannot answer a different question: is the *accumulated* work pointed at the declared goals? A scheduled trajectory loop closes that gap:
+
+1. **Lock the North Star** — explicit, concrete goals captured once and treated as fixed reference points.
+2. **Analyze trajectory** — read session history, activity logs, and loop outputs to establish what has actually been worked on.
+3. **Forward-extrapolate** — "if nothing changes, here is where you land in six months." The extrapolation is what makes the output actionable: a trajectory statement is falsifiable in a way a raw activity summary is not.
+4. **Propose direction changes** — when drift is detected, name what is pulling in that direction and propose corrections.
+
+Guardrails: anchor extrapolation in quantitative outputs (run logs, ledgers) rather than session prose alone, which over-represents what was easy to log; distinguish deliberate re-aiming from wandering, or a rigid goal file turns legitimate pivots into nagging; and keep the output *advisory* — the proposal step must surface drift, never steer autonomously.
 
 ### Review Process Template
 
@@ -562,6 +729,13 @@ Rules suffice.  Does the agent have discrete lifecycle events
 
 The architecture choice is not "more is better." Reach for the simplest layer that meets the policy enforcement need; promote when the simpler layer cannot intercept what you need to enforce.
 
+**The enforcement ladder: prose floor, policy-engine ceiling.** Below all four architectures sits a fifth, weakest form: the prose guard ("never push without approval") — an instruction the model must read and honor. Prose is the only universally portable enforcement, so it is the contract's *floor*, never its spec. Two disciplines govern it:
+
+- **Permissioning honesty.** Where the platform lacks native enforcement, carry the guard as prose — and declare, explicitly, which guards are prose-only on this platform. The dangerous failure is silent: a receiving operator assumes enforcement exists, grants autonomy accordingly, and the prose guard fails exactly when it matters.
+- **Upgrade direction is monotonic.** A host WITH native gates (pre-tool-use hooks, execution policies, shell-command matchers) should replace prose guards with real enforcement — allowed to exceed the source, never the reverse. Record the upgrade. Two traps: an upgraded matcher narrower than the prose rule it replaces silently *weakens* the guard while claiming to strengthen it (the guard's invariant, not its mechanism, is the acceptance test); and enforced forms live in host config outside the portable repo, so a re-install can silently re-degrade to prose. Keep the enforced set small (push/deploy/delete side effects); judgment-shaped guards stay prose.
+
+The same discipline applies to environment quirks: a runtime failure that *recurs* is promoted to a standing guard stated as the durable rule *plus the failure it prevents* (so future sessions can judge whether it still applies), labeled harness-specific so a port re-derives rather than copies it. Without the recurrence threshold, the quirk list becomes a context-rot rule pile; guards recorded without their triggering failure become unfalsifiable superstition no session dares delete.
+
 ### Layer 1: Append-Only Governance Memory
 
 An immutable audit log that answers "why did the agent do that?" -- distinct from debug logs, with different retention, access controls, and purpose.
@@ -602,6 +776,15 @@ The technical enforcement mechanism for HITL checkpoints. Without identity infra
 - **Time-boxed decision lanes:** Match approval SLA to risk level -- 15s for low-risk, 2m for PII, 15m for financial. If approval times out, fail-safe to denied.
 - **Challenge-and-response approvals:** Replace "Approve?" with a structured checklist: intent, data lineage, permissions chain, expected blast radius, rollback plan.
 - **Two-factor judgment:** On critical actions, require independent human review or counter-model sanity check before execution.
+
+**Instant revocation (the kill switch).** Identity infrastructure must include the inverse of provisioning: any agent must be revocable within minutes by a human operator — no code deploy, no ticket, no deletion process. The diagnostic question: "Can someone from a console revoke the agent's access in the next 5 minutes while you figure out what happened?" Four required properties:
+
+1. **Immediate** — takes effect within the current execution window, not the next deployment cycle.
+2. **Console-accessible** — operable by an incident responder who may not be a developer.
+3. **Granular** — revokes the specific agent without shutting down the entire system.
+4. **Auditable** — the revocation itself is logged with who, when, and why.
+
+The switch must operate at the identity/credential layer (revoking the agent's tokens across every system it can reach), not the application layer (a feature flag in one system) — agent access is often assembled ad-hoc across multiple service endpoints, so there is no single "disable" button unless one is built. Pair with time-boxed credential leases so access auto-expires even if nobody pulls the switch, and test the revocation procedure before deployment, not during the incident. Watch for: partial revocation (primary credential disabled but service-specific tokens live), cached credentials that outlive the revocation signal until TTL expiry, and cascade damage to multi-agent workflows that depended on the revoked agent's outputs.
 
 ### Layer 4: Distributed Governance Scope
 
@@ -694,6 +877,8 @@ Machine-readable governance requires a dependency-ordered construction sequence.
 | 11 | Capability Contracts | Runtime engines with no independent logic; derive authority from chain |
 
 **The dependency chain narrative:** Meaning dictates events. Events are filtered by policy. Policy governs actors. Actors wield context. Context navigates state. State triggers effects. Effects generate proof. Proof is verified by runtime controls. Runtime is operationalized by capability contracts.
+
+**Layer 2 deserves emphasis: the event schema is a noun-verb contract.** Once the ontology establishes what nouns exist, the event schema set defines what can *happen* — a registry of all permitted events, each scoped to specific noun types, with mandatory fields, semantic bindings, and declared state implications. Agents may only trigger events defined here, with the fields specified, against the noun types permitted; there is no improvised action space. Without defined events, agents invent their own action vocabularies — and two agents using different event semantics for the same operation cannot be audited together or governed by shared policies. The state-implication field is what makes state-machine design (Layer 6) tractable; without it, state machines must be inferred from agent behavior, a reversal of the build order. Watch for mandatory-fields bypass (fields quietly marked optional to dodge unknown values) and schema proliferation (every use case spawning overlapping event types).
 
 **The atomic rule:** One artifact serves exactly one concern. Mixing semantic definitions with runtime thresholds -- or any other cross-layer contamination -- breaks system integrity. This prevents category drift: the failure mode where control, history, trust, and state collapse into an unmanageable blob.
 
@@ -1004,6 +1189,169 @@ Unlike data lock-in (which has export tools, legal frameworks, and migration con
 3. **Define learning boundaries.** Explicitly scope what the agent should and should not learn about your behavior. Some behavioral context is valuable; some is a privacy risk.
 4. **Treat portability as a governance requirement.** Before adopting a persistent agent platform, assess: Can I export behavioral context? Who owns the behavioral model -- user, employer, or provider? What is the switching cost after 6 months?
 
+### Agent Owner Cards and the Human-Facing Registry
+
+Machine-facing identity (passports, JIT provisioning — Sections 4 and 7) answers "which identity performed this action?" The complementary human-facing layer answers "which agents are running, and who answers for each?" The thesis: **the fastest way to make an agent dangerous is to let everyone use it and nobody own it.** Once an agent is visible on a roster it can be managed; an invisible agent becomes a shadow process where work moves through tools and nobody can explain how the output got there.
+
+Two artifacts, no platform required:
+
+**The owner card** — seven fields per agent that matters. Agent-to-agent protocols give agents introduction cards for each other; the owner card is the same certificate pointed at people.
+
+**The registry/roster** — the plain list of agents a team actually uses, each carrying owner, sources, permissions, review cadence, and known failure modes.
+
+The cultural corollary: building an agent should earn no credit; *owning* one that delivers value should. The recurring unowned-agent failure (a stale-data summarizer, a drifting scorecard drafter, a triage agent applying a retired policy) shares one root cause: an agent parachuted into a team where nobody owned it.
+
+#### Agent Owner Card Template
+
+| Variable | Description |
+|----------|-------------|
+| `{{AGENT_NAME}}` | The agent's name as invoked |
+| `{{OWNER}}` | The named human accountable for it |
+| `{{JOB}}` | What it does, in one sentence |
+| `{{SOURCES}}` | What it is allowed to read |
+| `{{CAN}}` / `{{CANT}}` | Capability boundary, both directions |
+| `{{WATCHED_FAILURE_MODE}}` | The specific failure the owner checks for |
+| `{{REVIEW_CADENCE}}` | How often the owner reviews output |
+
+```markdown
+## Owner Card — {{AGENT_NAME}}
+- Owner: {{OWNER}}
+- Job: {{JOB}}
+- Sources: {{SOURCES}}
+- Can: {{CAN}}
+- Can't: {{CANT}}
+- Watched failure mode: {{WATCHED_FAILURE_MODE}}
+- Review cadence: {{REVIEW_CADENCE}}
+```
+
+**Worked example (MetaSystem Codifier):**
+
+```markdown
+## Owner Card — Codifier
+- Owner: Nick
+- Job: Classifies findings, extracts artifacts, synthesizes guides (pipeline stages 2-3)
+- Sources: research-findings/, guide routing table, form-classification rubric
+- Can: Write to extracts/ and operations/ reports; propose classifications
+- Can't: Modify system configs, skills, governance docs, or deploy artifacts
+- Watched failure mode: Compilation instead of synthesis (guide reads as a finding list)
+- Review cadence: Every guide draft gated before deployment (DD-29)
+```
+
+Three failure modes: **registry rot** (a hand-maintained roster drifts from reality — generate the registry from source-of-truth agent files instead of maintaining it by hand), **card theater** (seven fields filled in, owner never actually reviews — ownership on paper), and **ownership without authority** (a named owner who cannot change the agent's sources or permissions cannot act on what they observe).
+
+---
+
+## Section 9: Govern Self-Modifying Agent Systems
+
+A system that improves its own control surfaces — accumulating lessons, editing its own rules, authoring its own skills — is the highest-stakes autonomy surface in this guide. The dangerous step is the write-back: the moment an accumulated lesson modifies a live surface. Two opposite failure modes bound the design space: acting on every one-off observation (noise codified into rules, mechanism spam) and requiring the human to notice everything (the human stays the bottleneck). This section covers the machinery that threads them.
+
+### The Recurrence Threshold: Gates Autonomy, Not Direction
+
+A lesson becomes eligible for promotion to a system change only after N recurrences. The durable formulation is what the threshold *gates*: **the agent needs N occurrences before it may push a proposal; the human needs zero.** Explicit operator direction promotes below threshold at any time — the threshold exists to gate agent autonomy, never to constrain the human. If the threshold is read as gating the human, urgent operator-directed fixes get bureaucratically deferred: the exact anti-pattern the formulation exists to prevent.
+
+Design parameters, each with a paper trail (value, date set, rationale) so a future operator retunes against observed volume instead of cargo-culting:
+
+- **N per severity.** Reference calibration: N=2 for normal severity ("session volume is low and the human gate filters noise — waiting for a third recurrence delays learning more than it protects quality"); N=1 for high severity (data loss, governance breach, user-visible failure). N tuned for one cadence misfires at another: N=2 in a high-volume system floods the gate; N=3+ in a low-volume one lets lessons rot.
+- **Severity pinned to named conditions.** If everything is marked high to skip the wait, the threshold stops filtering — pin `high` to an enumerated list and forbid silent lowering.
+- **Deterministic check.** A store checker counts occurrences and emits the PROMOTE flag mechanically; eligibility is not a judgment call.
+
+### The Promotion Pipeline: Draft → Sandbox → Grade → Gate → Log
+
+Every write-back runs the same five stages; every stage has a hard failure rule; the human sees exactly one decision at a time.
+
+1. **Draft.** The smallest change to the owning surface that prevents recurrence, packaged with: the evidence (occurrences and source traces, verbatim), the blast radius (what else reads the edited surface, one line), and the class (working file vs. governance surface — governance surfaces are proposal-only without exception). If the honest fix is large, the proposal becomes "dispatch a rewrite run," not a direct edit — otherwise the minimality rule pushes real restructuring into repeated small patches.
+2. **Shadow sandbox (fail-closed).** Copy the owning surface, apply the edit to the copy only, run the surface's own validators. Validators fail → the proposal never reaches the gate. Where a sandbox fits poorly (script edits), substitute deterministic verification — regenerate outputs and diff — keeping the validated-before-gate invariant while swapping the mechanism.
+3. **Separate-context grade (hard invariant).** The drafting context never grades. A fresh context receives only the lesson, the proposal, the shadow diff, and a binary rubric: **grounded** (traces to evidence, not taste), **minimal** (scope creep = fail), **effective** (would have prevented the recorded occurrences), **non-regressive** (shadow passes; contradicts no standing guard). Any fail → back to drafting. Under time pressure the temptation is inline self-grading — make declining to self-grade a named stop rule.
+4. **Per-proposal human gate.** Never batch. The operator sees diff, evidence, blast radius, class, and grade — and applies or declines. Both outcomes are terminal and both are logged. A declined proposal is signal, not failure — it often means the owning surface was misidentified. Gate fatigue is the failure mode: at high volume the operator rubber-stamps and the gate degrades into batch approval by another name — cap proposals per session before that happens.
+5. **Append-only log.** Every proposal gets a log row (id, date, lesson ref, applied|declined, grade). Rollback is a git revert plus a *new* log row recording the reversal — the audit trail never rewrites history.
+
+### Three-Bucket Change-Approval Tiering
+
+The per-proposal gate concentrates human attention; tiering decides what reaches it. Every proposed change is classified before anything is applied:
+
+| Bucket | Criteria | Handling |
+|--------|----------|----------|
+| **Auto-approve** | Low-risk, not up for debate (data bloat cleanup, missed linkages, obvious fixes) | Applied automatically; every change logged to a changelog for after-the-fact audit |
+| **Needs sign-off** | Wrong choice could degrade output quality (skill edits, new skills, structural changes) | Written to a dated review file as a checkbox list: approve / reject / approve-and-don't-ask-again |
+| **More context required** | The system cannot classify alone | Appended to the same review file so the human reviews everything in one sitting |
+
+The design sits deliberately mid-spectrum: full automation drifts; review-everything gets abandoned. The don't-ask-again option is the compounding piece — each use converts a class of future sign-off items into auto-approve, so review load shrinks over time. That same compounding is the main risk: the auto-approve surface only ever grows. Countermeasures: periodically audit the accumulated don't-ask-again ruleset for scope creep, and sample auto-approved changes to check whether any were actually sign-off-tier. An audit trail nobody reads is changelog theater — oversight as feeling, not fact.
+
+### Lifecycle Governance: Retire What Underperforms
+
+Self-authored assets (skills, rules, extracts) accumulate — and unbounded accumulation is a named, measured failure mode, not housekeeping. The mechanism compounds silently: assets enter unchecked → retrieval degrades as the library grows → stale assets get injected as false positives and mislead without any error signal. Empirical anchor: ungoverned LLM-authored skills delivered +0.0pp over no-skill baseline while human-curated skills delivered +16.2pp; unbounded accumulation can drive performance *below* the no-skill floor.
+
+The verified minimal recipe has three mechanisms:
+
+1. **Outcome-driven retirement with an evidence floor.** Each asset accumulates a contribution score from an append-only evidence log; retire only when it has enough recorded trials AND a measurably negative contribution (reference calibration: Nmin=100 trials, threshold −0.10). The floor is the load-bearing part: the ablation with a harsh floor (Nmin=20, threshold 0.0) drove performance *below* the no-skill baseline — aggressive pruning on insufficient evidence is worse than the disease.
+2. **Bounded active set.** A hard cap on active assets (reference: C=50), evicting the lowest contributor on overflow. The cap is a stability mechanism, not just a size limit — doubling it kept the mean but multiplied variance six-fold.
+3. **Authoring prior.** A meta-document constraining the asset synthesizer to consistent style reduces harmful/redundant asset birth at the source — in the reference study it alone accounted for the majority of the gain. Governing creation is cheaper than governing accumulation.
+
+Adaptation notes: a human-gated library drifts far slower than an ungoverned one — the risk shifts from junk to staleness; and low-frequency libraries may never reach 100 trials per asset, so the evidence floor needs time-decay or proxy signals instead of raw counts. Watch for score-attribution noise (a miscalibrated critic silently retires good assets) and cap-eviction thrash (new assets evicting assets whose scores have not converged).
+
+### Change-Approval Policy Template
+
+| Variable | Description |
+|----------|-------------|
+| `{{N_NORMAL}}` / `{{N_HIGH}}` | Recurrence thresholds per severity, with rationale |
+| `{{HIGH_SEVERITY_CONDITIONS}}` | Enumerated conditions that qualify as high severity |
+| `{{BUCKET_RULES}}` | Classification criteria per approval bucket |
+| `{{EVIDENCE_FLOOR}}` / `{{ACTIVE_CAP}}` | Retirement floor and active-set cap for self-authored assets |
+
+```markdown
+## Change-Approval Policy — {{SYSTEM_NAME}}
+
+### Recurrence thresholds (gate agent autonomy, not human direction)
+- Normal severity: N={{N_NORMAL}} — rationale: {{RATIONALE}}
+- High severity: N={{N_HIGH}} — qualifying conditions: {{HIGH_SEVERITY_CONDITIONS}}
+- Set on {{DATE}}; retune against observed session volume.
+
+### Promotion pipeline (all write-backs)
+Draft (minimal edit + evidence + blast radius + class) → shadow sandbox (fail-closed)
+→ separate-context grade (grounded / minimal / effective / non-regressive)
+→ per-proposal human gate (never batch) → append-only log (rollback = revert + new row)
+
+### Approval buckets
+| Bucket | Criteria | Handling |
+|--------|----------|----------|
+| Auto-approve | {{BUCKET_RULES}} | Apply + changelog |
+| Needs sign-off | {{BUCKET_RULES}} | Dated review file, per-item checkbox |
+| More context | Cannot classify alone | Same review file, human decides |
+
+### Asset lifecycle
+- Evidence floor: {{EVIDENCE_FLOOR}} trials before retirement eligibility
+- Active-set cap: {{ACTIVE_CAP}}; evict lowest contributor on overflow
+- Authoring prior: {{PATH_TO_STYLE_CONSTRAINT_DOC}}
+```
+
+**Worked example (MetaSystem `/self-improve`):**
+
+```markdown
+## Change-Approval Policy — Improvement Loop /self-improve
+
+### Recurrence thresholds
+- Normal severity: N=2 — session volume is low; the human gate filters noise
+- High severity: N=1 — data loss, governance breach, or user-visible failure
+- Set 2026-07; retune if session cadence changes.
+
+### Promotion pipeline
+store_check.py emits PROMOTE at threshold → draft minimal edit → shadow sandbox
+in ops/tmp/ → fresh-context grade (binary rubric) → Nick gates one proposal at a
+time (DD-29) → append-only proposal log; rollback = git revert + new row
+
+### Approval buckets
+| Bucket | Criteria | Handling |
+|--------|----------|----------|
+| Auto-approve | (none yet — all write-backs gated) | N/A |
+| Needs sign-off | All lesson-driven surface edits | Per-proposal gate |
+| More context | Ambiguous owning surface | Surfaced in scan report |
+
+### Asset lifecycle
+- Evidence floor: not yet outcome-instrumented; retirement is Nick-judged
+- Active-set cap: none (human-gated intake slows accumulation; staleness is the
+  watched risk, per the curated-library adaptation note)
+```
+
 ---
 
 ## Pitfalls
@@ -1058,6 +1406,30 @@ Most multi-agent systems are built in reverse order: agent personas and prompt p
 
 ### 17. Over-engineering the build order for simple systems
 A 3-agent workflow does not need all 11 governance layers. Applying the full build order to low-complexity systems introduces unnecessary overhead. Match governance depth to risk profile.
+
+### 18. Batch approval of self-modification proposals
+Presenting the human with a stack of accumulated proposals to approve at once degrades the gate into a rubber stamp — batch approval is a failed gate by definition. One proposal, one decision, with diff, evidence, blast radius, and grade attached. If volume makes per-proposal gating infeasible, the fix is tiering (auto-approve the mechanical bucket) or capping proposals per session — not batching.
+
+### 19. Accumulation without retirement — and retirement without evidence
+An asset library that only grows silently degrades the agent: retrieval surfaces stale assets that mislead without an error signal. But the naive fix is worse — retirement on insufficient evidence drives performance below the no-asset baseline. Retirement must be outcome-linked AND evidence-floored; the floor is load-bearing, not bureaucracy.
+
+### 20. Prose guards mistaken for enforcement
+A rule the model is asked to read is the weakest enforcement that exists. Carrying prose guards is legitimate — silently letting them masquerade as enforcement is not. Declare which guards are prose-only; upgrade prose to native gates when the host offers them; never port an enforced guard back down to prose without saying so.
+
+### 21. Revocation that requires a deployment
+If disabling a misbehaving agent takes a code deploy, a ticket, or a developer, the incident-response window is unbounded while damage accumulates at machine speed. Build and test the console-level, identity-layer kill switch before the agent ships — the gap is otherwise discovered at 3 AM during a real incident.
+
+### 22. Unrostered agents becoming shadow processes
+An agent nobody can enumerate is an agent nobody can govern. Registry rot (hand-maintained roster drifting from reality), card theater (fields filled in, owner never reviews), and ownership without authority (owner cannot change what they observe) are the three ways the roster fails while appearing to exist.
+
+### 23. Receipt theater
+A confident receipt whose citations do not actually support the draft passes superficial review while being self-reported fiction. Receipts accelerate review; they do not replace it — spot-checking citations stays in the loop, and verbose receipts recreate the review burden they were meant to remove.
+
+### 24. Don't-ask-again scope creep
+Every don't-ask-again decision permanently widens the auto-approve surface, and that surface only ever grows. Without periodic audit of the accumulated ruleset and sampling of auto-approved changes, the three-bucket gate quietly converges on full automation — the drift it was designed to prevent.
+
+### 25. Trusting the screen as a permissions boundary
+Endpoints that are "safe" because humans can only reach them through a gated UI are directly callable by agents. Authenticate every endpoint, scope agent permissions separately from user permissions, and assume adversarial agents probe every public surface — because they do.
 
 ---
 

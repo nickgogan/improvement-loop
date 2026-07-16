@@ -22,8 +22,10 @@ related_findings:
   rel: same-problem
 - file: conway-always-on-persistent-agent.md
   rel: same-problem
-pipeline_status: extracted
-consumed_by: ["patterns/ide-first-with-deterministic-hooks.md"]
+pipeline_status: synthesized
+consumed_by:
+- patterns/ide-first-with-deterministic-hooks.md
+- designing-agent-tools.md
 ---
 
 # IDE-First Claude Code with Deterministic Hooks

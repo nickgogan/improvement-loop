@@ -1,45 +1,59 @@
 ---
-name: "Knowledge-Substrate Standardization for Cross-Agent Interop"
-summary: |-
-  The argument for standardizing the knowledge base layer itself: everyone building a
+name: Knowledge-Substrate Standardization for Cross-Agent Interop
+summary: 'The argument for standardizing the knowledge base layer itself: everyone building a
+
   Karpathy-style LLM wiki structures it differently (metadata fields, folder layout,
-  linking conventions), so nobody's agent can consume anybody else's wiki — small
+
+  linking conventions), so nobody''s agent can consume anybody else''s wiki — small
+
   divergences compound into non-interoperability. A shared format ("what MCP did for
+
   agent-to-tool communication, OKF does for agent-to-knowledge-base communication")
+
   makes knowledge bases both consumable and producible by any conformant agent, and
+
   unlocks concrete mechanics: paste the spec.md into a coding agent to one-shot a
+
   conformant KB or refactor an existing one (parallelize the refactor across
+
   subagents), manage many bundles with two-tier indexing plus a thin CLI, and ship
-  curated knowledge as shareable bundles — a distribution format for expertise.
-implementation_notes: |-
-  Flagged P2 because it puts a live, Nick-gated design question on the table: should
-  the engine's KB (bespoke `_schema.yaml` today — exactly the non-interoperable
+
+  curated knowledge as shareable bundles — a distribution format for expertise.'
+implementation_notes: 'Flagged P2 because it puts a live, Nick-gated design question on the table: should
+
+  the engine''s KB (bespoke `_schema.yaml` today — exactly the non-interoperable
+
   artifact this argues against) be OKF-conformant, or at least OKF-exportable as a
+
   bundle? Decision-relevant context is captured in the body; no engine change is
+
   proposed here. The spec-as-skill and subagent-parallelized-refactor mechanics bound
-  the migration cost if the answer is ever yes.
-category: "Context Engineering"
-evidence_strength: "Medium (practitioner-documented)"
-adoption_status: "Not Yet Started"
-priority: "P2 (Design Required)"
+
+  the migration cost if the answer is ever yes.'
+category: Context Engineering
+evidence_strength: Medium (practitioner-documented)
+adoption_status: Not Yet Started
+priority: P2 (Design Required)
 applicability:
-  - "IL (research KB substrate)"
-  - "General"
+- IL (research KB substrate)
+- General
 adopted_in: []
 sources:
-  - "open-standard-for-the-karpathy-llm-wiki.md"
-  - "google-okf-vs-rag-confusion-finally-cleared-up.md"
+- open-standard-for-the-karpathy-llm-wiki.md
+- google-okf-vs-rag-confusion-finally-cleared-up.md
 related_findings:
-  - file: "okf-open-knowledge-format-curated-bundle-spec.md"
-    rel: "extends"
-  - file: "karpathy-llm-knowledge-base-obsidian-rag.md"
-    rel: "extends"
-  - file: "skills-as-open-portable-standard.md"
-    rel: "same-problem"
+- file: okf-open-knowledge-format-curated-bundle-spec.md
+  rel: extends
+- file: karpathy-llm-knowledge-base-obsidian-rag.md
+  rel: extends
+- file: skills-as-open-portable-standard.md
+  rel: same-problem
 proposals: null
-date_discovered: "2026-07-12"
-last_updated: "2026-07-12"
-pipeline_status: "raw"
+date_discovered: '2026-07-12'
+last_updated: '2026-07-12'
+pipeline_status: synthesized
+consumed_by:
+- structuring-agent-context.md
 ---
 
 ## What It Is

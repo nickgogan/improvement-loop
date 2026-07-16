@@ -1,7 +1,13 @@
 ---
-name: 'Deterministic Documentation-Audit Battery (C1-C16)'
-summary: 'CareerBuddy enforces its entire documentation-governance surface with a single stdlib-only Python script running 16 named checks (C1-C16) — registry completeness, dead links, index bidirectionality, data-boundary hygiene, size budgets, manifest-hash freshness. Every check has a stable ID, error-vs-warn severity, and a remediation instruction embedded in its failure message. The LLM never re-derives consistency from memory; the script is the ground truth and exit 0 is the gate.'
-implementation_notes: 'Direct grounding for the restructure program''s "deterministic enforcement as first-class citizen" principle. The engine already has the seed: a pre-commit hook enforcing frontmatter validity, FOUNDATIONS sync, and the PROGRESS line budget (warn >150, block >250 — same soft/hard-cap shape as C12). Phase 2 plans an ops-doc-sync pattern-lift for whatever second-brain shape lands; this battery is the reference design. Engine-specific check candidates: skills-index bidirectionality (CLAUDE.md skill tables vs .claude/skills/ dirs, per C5), dead relative links in critical-path docs (C2), root-hygiene whitelist (C11), sources↔findings linkage (currently /linkage-repair, could become a check), and no-hardcoded-counts (C7 is exactly workspace Process Rule 3, mechanized). Key transferable properties: stable check IDs, remediation-in-error-message, read-only script, warnings never block.'
+name: Deterministic Documentation-Audit Battery (C1-C16)
+summary: CareerBuddy enforces its entire documentation-governance surface with a single stdlib-only Python script running 16 named checks (C1-C16) — registry completeness, dead links, index bidirectionality,
+  data-boundary hygiene, size budgets, manifest-hash freshness. Every check has a stable ID, error-vs-warn severity, and a remediation instruction embedded in its failure message. The LLM never re-derives
+  consistency from memory; the script is the ground truth and exit 0 is the gate.
+implementation_notes: 'Direct grounding for the restructure program''s "deterministic enforcement as first-class citizen" principle. The engine already has the seed: a pre-commit hook enforcing frontmatter
+  validity, FOUNDATIONS sync, and the PROGRESS line budget (warn >150, block >250 — same soft/hard-cap shape as C12). Phase 2 plans an ops-doc-sync pattern-lift for whatever second-brain shape lands; this
+  battery is the reference design. Engine-specific check candidates: skills-index bidirectionality (CLAUDE.md skill tables vs .claude/skills/ dirs, per C5), dead relative links in critical-path docs (C2),
+  root-hygiene whitelist (C11), sources↔findings linkage (currently /linkage-repair, could become a check), and no-hardcoded-counts (C7 is exactly workspace Process Rule 3, mechanized). Key transferable
+  properties: stable check IDs, remediation-in-error-message, read-only script, warnings never block.'
 category: Governance
 evidence_strength: Medium (practitioner-documented, single production system, script-verifiable)
 adoption_status: Not Yet Started
@@ -23,8 +29,9 @@ related_findings:
   rel: same-problem
 - file: skill-frontmatter-validation-rules.md
   rel: same-problem
-pipeline_status: raw
-consumed_by: []
+pipeline_status: synthesized
+consumed_by:
+- agent-governance-and-trust.md
 tags:
 - deterministic-enforcement
 - doc-governance

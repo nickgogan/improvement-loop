@@ -1,7 +1,11 @@
 ---
-name: 'Per-Proposal Human-Gated Promotion Pipeline (Threshold → Sandbox → Grade → Gate → Log)'
-summary: 'A fixed five-stage pipeline turns an at-threshold lesson into a system change: draft the minimal edit against the owning surface, validate it in a shadow sandbox, grade it in a separate assessor context against a binary rubric, present one human gate per proposal (never batch), and log both outcomes append-only. A declined proposal is signal, not failure. Rollback is a git revert plus a new log row — the audit trail never rewrites history.'
-implementation_notes: 'How this could apply to the MetaSystem engine — Phase 2 of its restructure program will size a second-brain-for-operations against this store model; IB-172 (layered memory architecture) is the related backlog item. The pipeline composes three patterns the engine already holds (sandbox-first validation, generator-assessor separation, human gate) into one concrete production loop with a proposal shape and an audit-log schema that could be lifted nearly verbatim.'
+name: Per-Proposal Human-Gated Promotion Pipeline (Threshold → Sandbox → Grade → Gate → Log)
+summary: 'A fixed five-stage pipeline turns an at-threshold lesson into a system change: draft the minimal edit against the owning surface, validate it in a shadow sandbox, grade it in a separate assessor
+  context against a binary rubric, present one human gate per proposal (never batch), and log both outcomes append-only. A declined proposal is signal, not failure. Rollback is a git revert plus a new log
+  row — the audit trail never rewrites history.'
+implementation_notes: How this could apply to the MetaSystem engine — Phase 2 of its restructure program will size a second-brain-for-operations against this store model; IB-172 (layered memory architecture)
+  is the related backlog item. The pipeline composes three patterns the engine already holds (sandbox-first validation, generator-assessor separation, human gate) into one concrete production loop with
+  a proposal shape and an audit-log schema that could be lifted nearly verbatim.
 category: Governance
 evidence_strength: Medium (practitioner-documented, single production system with live store evidence)
 adoption_status: Not Yet Started
@@ -15,8 +19,9 @@ proposals: null
 date_discovered: '2026-07-12'
 last_updated: '2026-07-12'
 related_findings: []
-pipeline_status: raw
-consumed_by: []
+pipeline_status: synthesized
+consumed_by:
+- agent-governance-and-trust.md
 tags:
 - human-gate
 - promotion-pipeline

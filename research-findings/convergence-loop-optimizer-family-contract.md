@@ -1,7 +1,14 @@
 ---
-name: 'Convergence-Loop Optimizer Family — One Shared Contract, One Router, Per-Artifact Members'
-summary: 'A family of six artifact optimizers (code, prose docs, prompts, skills, SQL, UI design) all implement one shared contract: multi-pass audit with distinct lenses, five-level severity rating (Blocker > High > Medium > Low > Nit), fix every Medium+ finding in place, verify-gate every fix (back out regressions), and loop until no Medium-or-higher finding remains or an iteration cap is hit (typically 3, raised to 5 while findings still drop ≥50% per iteration). A logic-free router skill (deep-optimizer) picks the right member; each member differs only in lens set and verify gate.'
-implementation_notes: 'The engine''s /assess-* skills implement the audit half of this contract (multi-lens findings with severity) but stop at reporting — no fix-in-place, no verify gate, no convergence criterion; "re-run until no Medium+ remains" is a concrete upgrade path that turns assessments from reports into quality gates while keeping generator-assessor separation (the verify gate and blind re-audit are exactly the independent-verifier discipline the engine already enforces via rule 10). The one-router-plus-members shape is also relevant to the asset-catalog form question: the family exposes ONE always-on description (the router) rather than six, which is the hub-and-spoke economics applied to a skill family — and it matches the engine''s existing dispatch-table pattern (route, never re-implement). The per-artifact verify-gate column (build+lint+tests for code, fact-check for prose, held-out eval for prompts, trigger+collision eval for skills, EXPLAIN parity for SQL) is a ready-made template for what "verify" means per engine artifact type.'
+name: Convergence-Loop Optimizer Family — One Shared Contract, One Router, Per-Artifact Members
+summary: 'A family of six artifact optimizers (code, prose docs, prompts, skills, SQL, UI design) all implement one shared contract: multi-pass audit with distinct lenses, five-level severity rating (Blocker
+  > High > Medium > Low > Nit), fix every Medium+ finding in place, verify-gate every fix (back out regressions), and loop until no Medium-or-higher finding remains or an iteration cap is hit (typically
+  3, raised to 5 while findings still drop ≥50% per iteration). A logic-free router skill (deep-optimizer) picks the right member; each member differs only in lens set and verify gate.'
+implementation_notes: 'The engine''s /assess-* skills implement the audit half of this contract (multi-lens findings with severity) but stop at reporting — no fix-in-place, no verify gate, no convergence
+  criterion; "re-run until no Medium+ remains" is a concrete upgrade path that turns assessments from reports into quality gates while keeping generator-assessor separation (the verify gate and blind re-audit
+  are exactly the independent-verifier discipline the engine already enforces via rule 10). The one-router-plus-members shape is also relevant to the asset-catalog form question: the family exposes ONE
+  always-on description (the router) rather than six, which is the hub-and-spoke economics applied to a skill family — and it matches the engine''s existing dispatch-table pattern (route, never re-implement).
+  The per-artifact verify-gate column (build+lint+tests for code, fact-check for prose, held-out eval for prompts, trigger+collision eval for skills, EXPLAIN parity for SQL) is a ready-made template for
+  what "verify" means per engine artifact type.'
 category: Evaluation
 evidence_strength: Medium (practitioner-documented, production system at a large enterprise (repo private, author-shared writeup))
 adoption_status: Not Yet Started
@@ -25,8 +32,9 @@ related_findings:
   rel: same-problem
 - file: dr-research-to-skill-gated-pipeline.md
   rel: enables
-pipeline_status: raw
-consumed_by: []
+pipeline_status: synthesized
+consumed_by:
+- building-agent-evaluation-suites.md
 tags:
 - convergence-loop
 - severity-scale

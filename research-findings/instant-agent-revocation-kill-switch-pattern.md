@@ -1,36 +1,38 @@
 ---
-name: "Instant Agent Revocation (Kill Switch Pattern)"
-summary: "Production agent systems require the ability to revoke an agent's access within minutes — not through code deploys, tickets, or deletion, but through a console-level immediate revocation. Without this, incident response for agent misbehavior has an unbounded window during which a compromised or malfunctioning agent continues operating."
+name: Instant Agent Revocation (Kill Switch Pattern)
+summary: Production agent systems require the ability to revoke an agent's access within minutes — not through code deploys, tickets, or deletion, but through a console-level immediate revocation. Without
+  this, incident response for agent misbehavior has an unbounded window during which a compromised or malfunctioning agent continues operating.
 implementation_notes: null
-category: "Governance"
-evidence_strength: "Strong (production-tested)"
-adoption_status: "Not Yet Started"
-priority: "P2 (Design Required)"
+category: Governance
+evidence_strength: Strong (production-tested)
+adoption_status: Not Yet Started
+priority: P2 (Design Required)
 applicability:
-  - "S3 (Claude Code Build)"
-  - "General"
+- S3 (Claude Code Build)
+- General
 adopted_in: []
 sources:
-  - "lilly-incident-agent-security-permissions.md"
+- lilly-incident-agent-security-permissions.md
 related_findings:
-  - file: "graceful-degradation-modes-for-agent-failure.md"
-    rel: "same-problem"
-  - file: "agent-identity-governance-enforcement-layer.md"
-    rel: "extends"
-  - file: "tool-gateway-security-boundary.md"
-    rel: "extends"
-  - file: "screen-as-permissions-model-agent-bypass-failure.md"
-    rel: "same-problem"
-  - file: "advisory-only-for-persistent-mutations.md"
-    rel: "same-problem"
+- file: graceful-degradation-modes-for-agent-failure.md
+  rel: same-problem
+- file: agent-identity-governance-enforcement-layer.md
+  rel: extends
+- file: tool-gateway-security-boundary.md
+  rel: extends
+- file: screen-as-permissions-model-agent-bypass-failure.md
+  rel: same-problem
+- file: advisory-only-for-persistent-mutations.md
+  rel: same-problem
 proposals: null
-date_discovered: "2026-05-25"
-last_updated: "2026-05-25"
-pipeline_status: "extracted"
+date_discovered: '2026-05-25'
+last_updated: '2026-05-25'
+pipeline_status: synthesized
 consumed_by:
-  - "extracts/rules/instant-agent-revocation-kill-switch.md"
+- extracts/rules/instant-agent-revocation-kill-switch.md
+- agent-governance-and-trust.md
 tags:
-  - "session-95-reextract"
+- session-95-reextract
 ---
 
 # Instant Agent Revocation (Kill Switch Pattern)

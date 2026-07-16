@@ -1,30 +1,37 @@
 ---
 name: Skill Invocation Control — Side-Effect Guard via disable-model-invocation
-summary: |-
-  Claude Code skills carry two frontmatter flags that gate who can invoke them. `disable-model-invocation: true` blocks Claude from auto-loading the skill (user must type /skill-name); use for side-effect workflows (commit, deploy, send-slack) — and, per Cursor's shipped thermo-nuclear review skill, for intentionally harsh modes whose intensity the user should opt into even when no side effects exist. `user-invocable: false` blocks the skill from the / menu but keeps Claude's auto-invocation; use for background-knowledge skills that aren't meaningful as user commands. Default is both-can-invoke. Matt Pocock (missing-manual talk, 06-29) adds a third rationale that turns the flag into a fleet-level design triad: every model-invocable skill costs context load (its description on every request, one more thing to think about) and buys unpredictability (a context pointer the model may simply not follow — forcing triggering evals); user-invoked skills trade that for cognitive load on the user. His repo defaults to user-invoked to delete the triggering-eval problem class entirely.
-implementation_notes: "Side-effect skills should default to disable-model-invocation: true. Specific cases the docs name: /commit, /deploy, /send-slack-message. Reasoning: 'You don't want Claude deciding to deploy because your code looks ready.' Background-knowledge case: a 'legacy-system-context' skill explains an old system — Claude should know it when relevant but /legacy-system-context isn't a user action. Both flags also affect context loading: disable-model-invocation removes the description from Claude's context entirely; user-invocable: false leaves it in."
+summary: 'Claude Code skills carry two frontmatter flags that gate who can invoke them. `disable-model-invocation: true` blocks Claude from auto-loading the skill (user must type /skill-name); use for side-effect
+  workflows (commit, deploy, send-slack) — and, per Cursor''s shipped thermo-nuclear review skill, for intentionally harsh modes whose intensity the user should opt into even when no side effects exist.
+  `user-invocable: false` blocks the skill from the / menu but keeps Claude''s auto-invocation; use for background-knowledge skills that aren''t meaningful as user commands. Default is both-can-invoke.
+  Matt Pocock (missing-manual talk, 06-29) adds a third rationale that turns the flag into a fleet-level design triad: every model-invocable skill costs context load (its description on every request, one
+  more thing to think about) and buys unpredictability (a context pointer the model may simply not follow — forcing triggering evals); user-invoked skills trade that for cognitive load on the user. His
+  repo defaults to user-invoked to delete the triggering-eval problem class entirely.'
+implementation_notes: 'Side-effect skills should default to disable-model-invocation: true. Specific cases the docs name: /commit, /deploy, /send-slack-message. Reasoning: ''You don''t want Claude deciding
+  to deploy because your code looks ready.'' Background-knowledge case: a ''legacy-system-context'' skill explains an old system — Claude should know it when relevant but /legacy-system-context isn''t a
+  user action. Both flags also affect context loading: disable-model-invocation removes the description from Claude''s context entirely; user-invocable: false leaves it in.'
 category: Governance
 evidence_strength: Strong (production-tested)
 adoption_status: Not Yet Started
 priority: P1 (Implement Now)
 applicability:
-  - "S3 (Claude Code Build)"
-  - "General"
+- S3 (Claude Code Build)
+- General
 adopted_in: []
 sources:
-  - "anthropic-claude-code-skills-docs.md"
-  - "cursor-team-kit-thermo-nuclear-review-skill.md"
-  - "building-great-agent-skills-the-missing-manual.md"
+- anthropic-claude-code-skills-docs.md
+- cursor-team-kit-thermo-nuclear-review-skill.md
+- building-great-agent-skills-the-missing-manual.md
 related_findings:
-  - file: "claude-code-skill-frontmatter-extensions.md"
-    rel: "extends"
-  - file: "skill-md-frontmatter-as-discovery-trigger-primitive.md"
-    rel: "extends"
+- file: claude-code-skill-frontmatter-extensions.md
+  rel: extends
+- file: skill-md-frontmatter-as-discovery-trigger-primitive.md
+  rel: extends
 proposals: null
 date_discovered: '2026-06-11'
 last_updated: '2026-07-12'
-pipeline_status: raw
-consumed_by: []
+pipeline_status: synthesized
+consumed_by:
+- agent-governance-and-trust.md
 ---
 
 # Skill Invocation Control — Side-Effect Guard via disable-model-invocation

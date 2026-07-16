@@ -1,35 +1,38 @@
 ---
-name: "Meta-Agent Prompt-Generation Bootstrap Pattern"
-summary: "A composition pattern where an agent platform generates a prompt for a different agent tool to execute. In the observed case: Anthropic's managed agent dashboard has an 'Ask Claude' button that generates a complete prompt for Claude Code to scaffold a frontend. The first agent (dashboard) produces a specification that the second agent (Claude Code) consumes -- a two-agent handoff where the artifact is a prompt."
+name: Meta-Agent Prompt-Generation Bootstrap Pattern
+summary: 'A composition pattern where an agent platform generates a prompt for a different agent tool to execute. In the observed case: Anthropic''s managed agent dashboard has an ''Ask Claude'' button
+  that generates a complete prompt for Claude Code to scaffold a frontend. The first agent (dashboard) produces a specification that the second agent (Claude Code) consumes -- a two-agent handoff where
+  the artifact is a prompt.'
 implementation_notes: null
-category: "Orchestration"
-evidence_strength: "Medium (practitioner-documented)"
-adoption_status: "Not Yet Started"
+category: Orchestration
+evidence_strength: Medium (practitioner-documented)
+adoption_status: Not Yet Started
 priority: P2 (Design Required)
 applicability:
-  - "S3 (Claude Code Build)"
-  - "General"
+- S3 (Claude Code Build)
+- General
 adopted_in: []
 sources:
-  - "anthropic-managed-agents-platform.md"
+- anthropic-managed-agents-platform.md
 related_findings:
-  - file: "spec-as-generator-agent-spec-pattern.md"
-    rel: same-problem
-  - file: "orchestrator-headless-dispatch-context-isolation.md"
-    rel: same-problem
-  - file: "metaprompting-karpathy-autoresearch-for-build.md"
-    rel: extends
-  - file: "anthropic-managed-agents-platform.md"
-    rel: extends
-  - file: "nl-description-to-agent-spec-creation-loop.md"
-    rel: extends
+- file: spec-as-generator-agent-spec-pattern.md
+  rel: same-problem
+- file: orchestrator-headless-dispatch-context-isolation.md
+  rel: same-problem
+- file: metaprompting-karpathy-autoresearch-for-build.md
+  rel: extends
+- file: anthropic-managed-agents-platform.md
+  rel: extends
+- file: nl-description-to-agent-spec-creation-loop.md
+  rel: extends
 proposals: null
-date_discovered: "2026-05-25"
-last_updated: "2026-05-25"
-pipeline_status: "classified"
-consumed_by: []
+date_discovered: '2026-05-25'
+last_updated: '2026-05-25'
+pipeline_status: synthesized
+consumed_by:
+- agent-architecture-decisions.md
 tags:
-  - "session-95-reextract"
+- session-95-reextract
 ---
 
 ## What It Is

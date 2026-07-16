@@ -1,7 +1,11 @@
 ---
-name: 'Recurrence Threshold Gates Autonomy, Not Direction'
-summary: 'A lesson becomes eligible for promotion to a system change only after N recurrences (CareerBuddy: N=2 normal severity, N=1 for high severity). Crossing the threshold makes the agent allowed to draft a proposal — it never weakens the human gate. The inverse also holds: explicit operator direction can promote below threshold, because the threshold exists to gate agent autonomy, not to constrain the human.'
-implementation_notes: 'How this could apply to the MetaSystem engine — Phase 2 of its restructure program will size a second-brain-for-operations against this store model; IB-172 (layered memory architecture) is the related backlog item. Nick''s standing "3+ recurrences before mechanism" rule is the same shape with a different N; CareerBuddy shows N is an operator-set parameter with recorded rationale (low session volume + human gate filters noise → N=2), not a constant.'
+name: Recurrence Threshold Gates Autonomy, Not Direction
+summary: 'A lesson becomes eligible for promotion to a system change only after N recurrences (CareerBuddy: N=2 normal severity, N=1 for high severity). Crossing the threshold makes the agent allowed to
+  draft a proposal — it never weakens the human gate. The inverse also holds: explicit operator direction can promote below threshold, because the threshold exists to gate agent autonomy, not to constrain
+  the human.'
+implementation_notes: How this could apply to the MetaSystem engine — Phase 2 of its restructure program will size a second-brain-for-operations against this store model; IB-172 (layered memory architecture)
+  is the related backlog item. Nick's standing "3+ recurrences before mechanism" rule is the same shape with a different N; CareerBuddy shows N is an operator-set parameter with recorded rationale (low
+  session volume + human gate filters noise → N=2), not a constant.
 category: Governance
 evidence_strength: Medium (practitioner-documented, single production system with live store evidence)
 adoption_status: Not Yet Started
@@ -15,8 +19,9 @@ proposals: null
 date_discovered: '2026-07-12'
 last_updated: '2026-07-12'
 related_findings: []
-pipeline_status: raw
-consumed_by: []
+pipeline_status: synthesized
+consumed_by:
+- agent-governance-and-trust.md
 tags:
 - recurrence-threshold
 - human-gate

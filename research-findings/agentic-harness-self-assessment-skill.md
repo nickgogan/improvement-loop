@@ -22,9 +22,10 @@ related_findings:
   rel: same-problem
 - file: five-point-agent-health-checklist.md
   rel: same-problem
-pipeline_status: extracted
+pipeline_status: synthesized
 consumed_by:
 - skills/agentic-harness-self-assessment.md
+- building-agent-evaluation-suites.md
 ---
 
 ## What It Is

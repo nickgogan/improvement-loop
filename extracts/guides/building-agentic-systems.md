@@ -6,7 +6,7 @@ target_system:
   - "improvement-loop"
 stage: "draft"
 created: "2026-04-27"
-updated: "2026-05-25"
+updated: "2026-07-16"
 author: "claude"
 source_findings:
   - "ai-delegated-knowledge-organization"
@@ -16,14 +16,18 @@ source_findings:
   - "coding-agent-sdk-as-non-coding-agent-foundation"
   - "compounding-knowledge-loop-internal-data"
   - "context-assembly-cost-as-strategy-blocker"
-  - "context-first-build-sequencing-for-agentic-systems"
   - "context-infrastructure-seven-level-maturity-model"
   - "context-layer-operator-role-and-maintenance-cadence"
+  - "dr-research-to-skill-gated-pipeline"
   - "five-layer-recursive-ai-loop-architecture"
   - "five-pillar-agentic-os-framework"
+  - "harness-adaptation-protocol-graded-capability-intersection"
+  - "harness-non-portability-across-model-families"
   - "implementation-is-strategy-for-agentic-systems"
+  - "invariant-column-as-contract-field"
   - "karpathy-llm-knowledge-base-obsidian-rag"
   - "learn-plan-act-review-loop-closing-the-knowledge-gap"
+  - "machine-readable-system-contract-with-wiring-rows"
   - "monitoring-agent-failure-detection-autonomous-repair"
   - "morning-routine-skill-active-experiment-check-in"
   - "multi-agent-proportional-content-summarization"
@@ -35,10 +39,13 @@ source_findings:
   - "pr-acceptance-rate-harness-multiplier-evidence"
   - "progressive-adoption-path-compounding-extensions"
   - "project-onboarding-skill-multi-source-ingestion-dashboard"
+  - "receiver-relative-tier-semantics"
+  - "scale-threshold-heuristic-obsidian-vs-rag"
   - "scheduled-tasks-for-real-time-context-maintenance"
   - "sdk-to-framework-graduation-path"
   - "signal-capture-as-byproduct-of-work"
   - "time-window-proactive-agent-loop"
+  - "wiring-canon-abstract-then-adapt-doc-structure"
 source_dd:
   - "DD-81"
 tags:
@@ -47,9 +54,10 @@ tags:
   - "vault-as-os"
   - "second-brain"
   - "personal-knowledge-management"
+  - "portability"
 contract:
   preconditions: "File-based vault with markdown notes; AI agent with file read/write access; Git (or equivalent) for version control; a designated context operator (you, at single-user; explicit role at L7)."
-  invariants: "Vault remains plain-text and portable across AI vendors. Human gates remain in place at every loop boundary. Capture happens as a byproduct of work, not a separate documentation act. Implementation feasibility is assessed before strategic commitment."
+  invariants: "Vault remains plain-text and portable across AI vendors. Human gates remain in place at every loop boundary. Capture happens as a byproduct of work, not a separate documentation act. Implementation feasibility is assessed before strategic commitment. Portability claims are backed by declared invariants, never assumed."
   governance: "Owner: the practitioner running the system, or the designated context layer operator at L6+. Updated when new architectural patterns surface in research-findings/ under category: Agentic Systems."
   recovery: "Vault corruption -> git history rollback. Operator unavailability -> cadence pause + L7 sync flag. Tool deprecation -> vault is plain text; swap tools without data migration. SDK lock-in -> skills and MCP servers port to framework; agent loop rebuilds."
 ---
@@ -67,6 +75,7 @@ Reach for this guide when:
 - You already have a file-based vault (Obsidian or equivalent) and want to graduate it from a static notes archive into an operational layer.
 - You need to decide between a markdown-and-files approach versus a RAG/vector-DB approach and want a defensible decision rule.
 - You are choosing between an SDK-based prototype and a framework-based production build and want a graduation path.
+- You want the system you built to be installable somewhere else -- a different harness, a teammate's setup, a cheaper model family -- and need contracts that make the port testable instead of hopeful.
 
 This guide does NOT cover: individual agent identity (see *Agent Design Patterns*), agent specifications (see *Writing Agent Specifications*), context management within a single agent's session (see *Managing Agent Context*), or tool integration mechanics (see *Designing Agent Tools*).
 
@@ -74,7 +83,7 @@ This guide does NOT cover: individual agent identity (see *Agent Design Patterns
 
 ## Key Concepts
 
-Seven ideas underpin every section that follows. Skip ahead if you already hold them; come back if a downstream decision feels ungrounded.
+Eight ideas underpin every section that follows. Skip ahead if you already hold them; come back if a downstream decision feels ungrounded.
 
 1. **The system IS the vault.** Plain-text markdown files in a regular folder are the substrate. Every other capability -- ingestion, querying, proactive loops, team sync -- sits on top. The vault outlives the AI vendor; the AI does not own the data.
 
@@ -89,6 +98,8 @@ Seven ideas underpin every section that follows. Skip ahead if you already hold 
 6. **Implementation feasibility IS strategy.** For agent-based systems, implementation constraints -- authentication, permissions, context assembly cost, auditability -- are not downstream of strategic decisions. They are the strategic decisions. If the agent cannot authenticate, cannot audit, or produces unsustainable token costs, the strategy does not work. Assess feasibility before committing architecture, not after.
 
 7. **Self-improvement requires all five layers to run.** A truly self-improving system has five ordered layers: sensor (raw input), policy (autonomy rules), tool (deterministic APIs), quality gate (evals, safety, human review), and learning mechanism (feeds failures back to sensor). Every layer must be present and connected. Missing any single layer breaks the loop -- the system either stops improving or accumulates errors rather than correcting them.
+
+8. **The harness, not the model, is the sticky asset.** A working agentic system is a *harness* -- prompts, memory handling, tool-call conventions, verification wiring -- tuned to a model family. Switching families means rebuilding the work system, not swapping a model call (Lindy's Claude-to-DeepSeek migration was a from-scratch rewrite). Portability is therefore never a free property: it is something you *declare and test* -- via contracts that state what the system requires from any host and which invariants must survive adaptation.
 
 ---
 
@@ -137,17 +148,9 @@ Are you at L6 considering L7?
   -> Backwards order is the most common failure pattern.
 ```
 
-### Context-first build sequencing
+### Build the business brain first
 
-When extending the system, build in this order -- each layer multiplies the next:
-
-1. **Business brain** -- shared context folder containing brand voice, ICP, positioning, client details, domain knowledge.
-2. **Skills that reference the business brain** -- not skills that embed their own context.
-3. **Interaction layers** -- UI, channels, dashboards.
-4. **Scheduled workflows** -- chain context-aware skills on cron.
-5. **Multi-agent orchestration** -- last, not first.
-
-The common mistake is starting with multi-agent orchestration or autonomous workflows and bolting on context later. This produces generic outputs requiring constant manual correction. Three months of "getting this wrong" is the practitioner-documented learning cost. The context layer has the highest marginal return of any investment -- once it exists, every subsequent skill automatically produces contextually relevant outputs.
+Pillar 5 is the foundation layer, and it is also a build-ordering rule: "start with the business brain, not the agents." Every other pillar is multiplied by having solid context underneath -- a skill that references the shared context folder produces contextually relevant output for free; a skill built before that folder exists embeds its own context and produces generic output requiring constant manual correction. Update the business brain once and every skill gets the update. (The detailed context-first build sequence -- context, then skills, then interaction layers, then scheduled workflows, then orchestration -- is covered in *Structuring and Loading Agent Context*.)
 
 ### Compounding extensions, not flat capabilities
 
@@ -256,6 +259,11 @@ The trust property is asymmetric. A markdown vault is inspectable: every entry i
 
 The advice from practitioners deploying this in production: *just try the simpler version*. Migration from Obsidian to RAG is non-trivial only if the wiki structure is deeply coupled to the workflow -- and that coupling is usually a sign that the substrate is doing its job.
 
+This threshold is now corroborated across multiple independent channels, all converging on the same order: **structure first, retrieval infrastructure only on demonstrated pain.** A LlamaIndex study found file search outperforms RAG below a corpus-size boundary -- and the coding-agent ecosystem confirmed it by dropping vector databases entirely in favor of grep and file traversal. Production "business brain" operators deliberately hold their systems at the wiki level with a pain-driven trigger: "find the simplest level that actually fits your needs... if there's not pain, then why create more?" Two refinements follow:
+
+- **The decision is per-folder, not system-wide.** Different folders in the same vault can sit at different retrieval levels; upgrade the folder that hurts, not the whole system.
+- **Coherent file structure is most of the value.** "If you just set up Claude Code with a file structure that is coherent and makes sense, you're like 99% of the way there" -- Obsidian and databases are conveniences on top, not the mechanism.
+
 ### LLM-compiled wiki vs vector DB vs structured ontology
 
 When the vault grows past raw notes, three patterns are available for *organizing* what is in it:
@@ -308,7 +316,7 @@ For multi-agent systems where context needs to travel across agent boundaries (o
 
 ## 4. Choosing Your Build Infrastructure
 
-Two decisions about the agent stack itself: what to build on, and how to avoid the manual-sequencing trap.
+Three decisions about the agent stack itself: what to build on, which model family to commit to, and how to avoid the manual-sequencing trap.
 
 ### SDK prototyping with framework graduation
 
@@ -328,6 +336,17 @@ But SDKs have graduation triggers. When the agent needs to serve multiple users,
 2. Speed requirements (SDK reasoning overhead makes sub-second responses impossible)
 3. Cost sensitivity (API-key usage at scale makes SDK agents prohibitively expensive)
 4. Observability needs (production agents need custom conversation history storage and monitoring)
+
+### Model choice is an architecture-level commitment
+
+The harness you build -- system prompt, memory handling, tool-call conventions, verification wiring -- gets tuned to a model family whether you intend it or not. Switching families later is not replacing a model call; it is replacing the work system. The canonical evidence is Lindy's publicly documented migration from Claude to a DeepSeek architecture: no lift-and-shift was possible -- prompts, memory handling, tool-call handling, and system prompt were rewritten essentially from scratch, because center-of-distribution models need differently tuned harnesses than frontier ones. "A model can be an incredible brain in a jar -- it just isn't useful to you without a harness."
+
+Practical consequences:
+
+- **When evaluating a model switch, cost the harness rewrite, not just the token delta.** This is why ~98%-cheaper parity models do not trigger mass migration -- the switching cost lives in the harness.
+- **ROI screen before migrating:** migration clears ROI mainly for teams whose token costs are the product's margin (AI-as-a-service at scale). For everyone else, cheaper-model parity alone is not a trigger.
+- **Coupling holds at every granularity:** pin the model per session; commit to the family per architecture.
+- **"Model-agnostic" is a design goal, not a property.** Skills and portable substrate still require per-model-family validation and a budgeted re-tuning pass. If portability matters to you, design for it explicitly -- see Section 9.
 
 ### Eliminating AI shepherding
 
@@ -351,7 +370,7 @@ The diagnostic question: are you the orchestrator? If you are remembering the pr
 
 ## 5. Feeding the System (Ingestion)
 
-Five patterns cover the ingestion surface area, anchored by one design principle.
+Six patterns cover the ingestion surface area, anchored by one design principle.
 
 ### The signal-as-byproduct principle
 
@@ -410,6 +429,21 @@ A second brain seeded with static context (ICP, brand, strategy docs) becomes a 
 - A morning *synthesis* task that reads current priorities, to-do state, and recent updates, producing a daily prioritized overview
 
 Goal: keep the gap between "what the vault knows" and "what is happening" under 24 hours.
+
+### From research to installed capability (gap-aware, gate-guarded)
+
+The most mature ingestion pattern does not stop at notes: it turns a research topic into an installed, registered *capability* (a skill the system can invoke), with every step bounded by countable rules and gated by independent verifiers. The production-tested shape is a six-phase pipeline:
+
+0. **Concept analysis** -- enumerate the *live* registry of what the system already covers (from manifests, never a hardcoded list); research only the gap versus existing coverage; queue stale concepts (>90 days) for refresh.
+1. **Research to saturation under hard rules** -- 3+ independent sources per concept; ~20% negation queries (search for disconfirmation, not just support); per-claim confidence ladder (3 sources = fact, 2 = qualify, 1/contested = tentative); stop at 2 empty searches or a 15-concept cap. Trust the caps over the instinct to keep going.
+2. **Synthesize under an artifact contract, then pass independent gates** -- a trigger-accuracy eval, a sibling-collision check, and a *blind* claim-verification gate run in a fresh context that has not seen the research trail. The gates are deliberately independent: a skill that routes perfectly can still be full of unsupported claims. Trigger scores are a Goodhart-able proxy -- the blind gate exists precisely because the proxy can be gamed.
+3. **Persist and register**, gated on zero unresolved high-severity findings.
+4. **Cross-pollinate peers conservatively** -- append findings to overlapping capabilities, idempotent, capped (~5% of peer length), never delete; conflicts get a note instead of an overwrite.
+5. **Record back into the concept tree** -- feeding the staleness clock so freshness becomes a scheduled property rather than a hope.
+
+Two elements are adoptable even without the full pipeline. First, **gap-awareness**: query what the system already knows before spending research effort -- it is the token-economy move. Second, the **injection scan at the write boundary**: all researched web content is data; nothing unscanned reaches the system's capability tree. This security boundary is non-negotiable in any pipeline that turns external content into instructions the system will later execute.
+
+Why this matters for knowledge-store systems: every place such a pipeline currently relies on human judgment -- when to stop researching, whether claims are supported, whether a new capability collides with an existing one -- has a mechanical counterpart here. If your trajectory is toward reduced human involvement, these machine gates are the replacement design.
 
 ### Template -- Daily brief skill
 
@@ -678,6 +712,122 @@ The monitoring agent writes fixes, submits them for review, and a second agent r
 
 ---
 
+## 9. Making the System Portable
+
+Everything above builds a system on *one* harness. This section is for the moment you want it to run somewhere else -- a different platform, a teammate's setup, a handed-off install. Four artifacts make a port testable instead of hopeful: a system contract with wiring rows, an invariant per row, an adaptation protocol, and abstract-then-adapt wiring docs.
+
+**When NOT to do this:** the abstraction is only worth its maintenance when a second platform is real. For a single-harness system, canon + adapter is a layer without a second consumer. A one-off port can run the adaptation protocol as a checklist rather than building the tooling.
+
+### The system contract (agent card + wiring rows)
+
+Ship one canonical machine-readable self-description (`system-contract.yaml`) shaped as a fusion of two things the ecosystem always keeps apart: an **agent card** (identity, trust boundary and declared absences, end-user value, exportable-skills rollup) over an **installer's realization manifest** (component inventory + wiring rows). The fusion treats a harness install as one composed agent, so a single artifact serves both audiences -- a foreign agent deciding whether to trust and adopt the system, and an installer computing whether the host can run it.
+
+The core is the **wiring section**: one row per harness-integration concern (always-on entry file, path-scoped rules, governance registry, memory scopes, skill registry, cold-start chain, invocation context, operational quirks). Each row carries five fields:
+
+| Field | Meaning |
+|-------|---------|
+| `tier` | `required` (do not install without a satisfier -- checked before any adaptation cost is paid) or `optional` (install and record the degradation) |
+| `capabilities` | IDs from a controlled vocabulary (e.g., `always-on-instruction-injection`, `path-scoped-rule-injection`, `scoped-memory-store`, `human-approval-channel`) -- free-text names make receiver-side grading unanswerable |
+| `purpose` | Why the row exists |
+| `degradation` | Always names its prose fallback, so the worst-case host still preserves the invariant |
+| `invariant` | The property that must survive *any* adaptation, however the target platform satisfies the row |
+
+Discipline: the YAML is regenerated by a gated process, never hand-edited (hand edits break the single-source-of-truth guarantee); a prose companion is explicitly derived ("when the two disagree, the YAML wins"). A separate hash manifest records digests of every wired file so drift between documented wiring and live wiring is detected, not discovered. Keep the required set minimal -- tier inflation destroys portability.
+
+### The invariant column -- what must not change
+
+Mechanisms always change across hosts: a path-scoped rule becomes a `.cursor/rules/*.mdc` file on one platform, an `applyTo` glob on another, a prose paragraph on a bare host. The **invariant** states the guarantee the mechanism existed to provide, independent of mechanism -- e.g., "governance-tier files are never edited without explicit human approval." Without it, "did the port work?" degenerates into "did we copy the files?".
+
+The invariant plays three roles: (1) **acceptance test** at install time -- the adaptation plan must state, per row, how the invariant is preserved under the new mechanism ("the mechanism may be anything; the invariant may not bend"); (2) **probe spec** post-install -- one self-administrable binary probe per row, where the row's invariant *is* the probe spec; (3) **degradation bound** -- degradations weaken mechanisms, never invariants. Write invariants as binary-testable guarantees; an invariant written as a mechanism in disguise ("file X exists at path Y") reimports the portability problem, and a vague one ("the system stays safe") is unprobeable.
+
+### Receiver-relative tiers -- one contract, many hosts
+
+Declarations are fixed at the source; what they mean operationally is computed *receiver-side*. Each receiving platform grades its own capability inventory per declared ID -- `native` (a platform mechanism satisfies it directly, named), `partial` (degraded guarantees or manual steps, gap described), `absent` (no mechanism, no reasonable emulation) -- and intersects it with the rows:
+
+- Required row unsatisfied -> stop for that unit with an **explicit refusal naming exactly what would satisfy it**. No workaround without the human accepting the risk in writing.
+- Optional row unsatisfied -> install, apply the row's degradation exactly as written, record it in the install report.
+- Platform exceeds the source -> guards may be *upgraded* to native enforcement (recorded), never weakened.
+
+The same required row is thus a no-op on one host, a native mechanism on another, and a refusal on a third -- one declaration, three enforcement realities, no forked contract. Note the ecosystem norm this rides on: capability negotiation everywhere is **declare-and-adapt, never a live handshake** -- there is no negotiation protocol to lean on, so receiver-side static intersection is the design. The scheme is only as good as the receiver's honesty: "grade honestly; a flattering inventory produces a broken install."
+
+### The adaptation protocol -- what "install" means
+
+The step-ordered protocol for a receiving agent installing the system with no pre-staged adapter:
+
+1. **Read the contract.**
+2. **Inventory the platform's provides** and grade each declared capability (native/partial/absent).
+3. **Compute the intersection** against the wiring rows (refusal/degradation semantics above).
+4. **Propose a per-row adaptation plan** -- mechanism, grade, degradation or upgrade, and how the row's invariant is preserved. The human approves *per step*, not as one blanket yes. Inputs only the human can supply (user identity, always-on file location, memory mounts) are requested as a **typed elicitation list** (name, why needed, shape of answer, required/optional) -- never guessed; fabrication is a contract stop-rule.
+5. **Execute and write an install report** -- mechanism/grade/invariant statement per row; installed-or-not-with-reason per skill; the list of prose-only guards on this platform; pinned contract and skill versions for later drift detection.
+6. **Verify triggering** -- cold-start echo (a fresh session states purpose, active pointer, next unit of work, live-vs-degraded rows) plus per-skill trigger evals.
+7. **Verify behavior** -- one binary invariant probe per wiring row plus a behavioral smoke per skill (fictional-specific task; grader separate from drafter).
+
+Failure routing keeps diagnosis honest: a failed row probe is a mechanism problem (back to the plan); a smoke that fails on the target but passes on the source is port-side; one that fails on the source too is an upstream skill defect -- report it, do not patch locally. Probes are point-in-time evidence, not standing enforcement; that residual gap stays declared in the contract's absences.
+
+### Wiring canon docs -- abstract-then-adapt
+
+Document the wiring layer platform-agnostically from the start: one numbered doc per wiring concern, each with three fixed sections -- **Canon** (the requirement any platform must satisfy), **Adapter-delegated** (what each platform decides, including the named fallback when the mechanism is absent), and **Harness-specific examples** (labeled illustrations from the current install, never requirements). Writing the requirement once and quarantining platform detail makes the essential/incidental split explicit *at authoring time* -- which is what makes the contract's wiring rows derivable at all.
+
+Two supporting disciplines:
+
+- **Router guard:** the canon folder opens with a note telling live-session agents "this is not your entry point" -- install-time docs stay out of runtime context.
+- **Two-source change model:** change enters from exactly two sides. The *system* changed -> gated canon regeneration (diff live wiring vs. docs; propose amendments, never silent rewrites). A *platform* changed -> dated survey, diff, gated plan. Adapter-side findings that imply the canon itself is wrong are flagged and routed to the canon side -- adapt mode never edits the canon.
+
+The derivation chain -- canon docs -> contract wiring rows (one row per doc) -> hash manifest over the wired files -- gives you three artifacts that must agree, with audits checking each seam.
+
+### Template -- Wiring row
+
+```yaml
+- row: {{CONCERN_ID}}                 # e.g., always-on-entry, path-scoped-rules
+  tier: {{REQUIRED_OR_OPTIONAL}}
+  capabilities:
+    - {{CAPABILITY_ID}}               # from your controlled vocabulary
+  purpose: "{{WHY_THIS_ROW_EXISTS}}"
+  degradation: "{{PROSE_FALLBACK}}"   # "none acceptable" for hard-required rows
+  invariant: "{{PROPERTY_THAT_SURVIVES_ANY_ADAPTATION}}"
+```
+
+| Variable | Type | Description | Required |
+|----------|------|-------------|----------|
+| `{{CONCERN_ID}}` | string | The harness-integration concern this row wires | yes |
+| `{{REQUIRED_OR_OPTIONAL}}` | enum | `required` = refuse install without a satisfier; `optional` = degrade and record | yes |
+| `{{CAPABILITY_ID}}` | string | Controlled-vocabulary ID the receiver grades native/partial/absent | yes |
+| `{{WHY_THIS_ROW_EXISTS}}` | string | Purpose statement | yes |
+| `{{PROSE_FALLBACK}}` | string | Named degradation preserving the invariant on the worst-case host | yes |
+| `{{PROPERTY_THAT_SURVIVES_ANY_ADAPTATION}}` | string | Binary-testable, mechanism-independent guarantee; doubles as the install probe spec | yes |
+
+### Worked example -- MetaSystem engine wiring rows
+
+```yaml
+- row: always-on-entry
+  tier: required
+  capabilities:
+    - always-on-instruction-injection
+  purpose: "Workspace CLAUDE.md reaches every session with identity, structure, and hard constraints."
+  degradation: "none acceptable — a host with no unconditional injection point cannot run the system; an agents.md convention is the minimum satisfier"
+  invariant: "Every fresh session knows the governance hard constraints and the canonical progress pointer without being told."
+
+- row: governance-registry
+  tier: required
+  capabilities:
+    - human-approval-channel
+  purpose: "Design Decisions and their immutability discipline."
+  degradation: "prose rule in the always-on file if no native permission gating exists"
+  invariant: "Governance-tier files are never modified without explicit human approval, regardless of enforcement mechanism."
+
+- row: path-scoped-rules
+  tier: optional
+  capabilities:
+    - path-scoped-rule-injection
+  purpose: "System-scoped rules load only when working under systems/improvement-loop/."
+  degradation: "fold scoped rules into the always-on file; weaker guarantee (always loaded) recorded in the install report"
+  invariant: "Engine-scoped rules are in effect whenever engine files are touched."
+```
+
+A receiving platform with native path-scoped rules grades row 3 `native`; a bare host grades it `absent`, folds the rules into the always-on file, and records the degradation -- the invariant holds either way. A host with no unconditional injection point triggers a refusal on row 1 that names the missing satisfier.
+
+---
+
 ## Pitfalls
 
 Synthesized failure modes from across the cluster. Every one of these has been observed in production by at least one practitioner.
@@ -726,6 +876,25 @@ Synthesized failure modes from across the cluster. Every one of these has been o
 - **Missing quality gate** -- Three-layer automation (sensor + policy + tool) without a quality gate acts with false confidence; errors compound rather than resolve.
 - **Monitoring agent misdiagnosis** -- The monitoring agent deploys "fixes" that break other functionality because the review agent rubber-stamps changes it does not fully understand.
 
+### Ingestion-pipeline failures
+
+- **Concept-tree rot** -- Gap-awareness inverts into gap-blindness when the record-back phase is skipped: the tree claims coverage that drifted. Freshness must be scheduled, not hoped for.
+- **Goodharted trigger evals** -- A gamed capability description scores high on the routing eval and routes garbage. Keep the quality gates independent; one gate passing never excuses another.
+- **Gate fatigue** -- Multiple independent gates per artifact is real cost. Amortize by making each gate scriptable; a manual adoption of the full gate stack without automation stalls.
+- **Unscanned web content reaching the capability tree** -- Researched content is data, not instructions. Skipping the injection scan at the write boundary turns your ingestion pipeline into an attack surface.
+
+### Portability failures
+
+- **Assumed portability** -- Treating "model-agnostic" or "harness-agnostic" as a free property. The harness is tuned to a model family at every granularity; portability requires per-family validation and a budgeted re-tuning pass.
+- **Migration costed on token delta alone** -- The switch looks cheap until the harness rewrite lands. Cost the work system, not the model call; screen ROI (token cost as product margin) before committing.
+- **Invariants as mechanisms in disguise** -- "File X exists at path Y" reimports the portability problem. Vague invariants ("the system stays safe") are unprobeable. Write binary-testable, mechanism-independent guarantees.
+- **Flattering self-grades** -- The receiving platform grades `partial` as `native` to ship the install; a required-row refusal silently becomes a broken install. Self-graded inventories have no external check -- the per-step human gate and source-side smoke baseline are the counterweights.
+- **Tier inflation** -- Marking everything `required` destroys portability. Keep the required set minimal.
+- **Hand-edited contract YAML** -- Breaks the single-source-of-truth guarantee. Regeneration must be the only write path.
+- **Canon that is never regenerated** -- Gated regeneration that never runs lets the canon quietly diverge from live wiring; the hash manifest exists to make that divergence loud.
+- **Premature canon abstraction** -- Building the canon/adapter layer with no second platform in sight. The abstraction must earn its keep; run one-off ports as a checklist instead.
+- **Lock-in rationalized by coupling** -- "The harness won't port" becomes the excuse to never re-evaluate model choice even when the ROI screen passes.
+
 ---
 
 ## Contract
@@ -744,6 +913,8 @@ Synthesized failure modes from across the cluster. Every one of these has been o
 - Compounding loops encode outcomes, not just events.
 - Implementation feasibility is assessed before strategic commitment.
 - The maintenance cadence runs.
+- Portability claims are backed by declared invariants and receiver-side verification, never assumed.
+- External content entering the system is scanned at the write boundary before it can become instructions.
 
 ### Governance
 - **Owner** -- the practitioner running the system; or, at L6+, the designated context layer operator.
@@ -756,6 +927,8 @@ Synthesized failure modes from across the cluster. Every one of these has been o
 - **Tool deprecation** (Obsidian, Claude Code, NotebookLM, messaging apps) -> vault is plain text; swap tools without data migration. Skills referencing the deprecated tool are the only thing that needs rewriting.
 - **AI vendor change** -> disconnect the current AI; connect a different one. The vault is the persistence layer, not the AI.
 - **SDK lock-in** -> skills and MCP servers are portable; the agent loop and state management rebuild on the target framework. Plan the graduation before over-investing in SDK-specific infrastructure.
+- **Model-family switch** -> treat as an architecture migration, not a model swap. Cost the harness rewrite (prompts, memory handling, tool-call conventions); re-tune and re-validate per family.
+- **Failed port** -> use the invariant probes to localize: failed row probe = mechanism problem (re-plan that row); smoke fails on target but passes on source = port-side defect; fails on source too = upstream skill defect (report, do not patch locally).
 - **Compounding loop drift** (wiki contradicts itself; quality degrades) -> run a vault audit; surface conflicts; resolve via operator cadence; consider knowledge-linting pipeline (gap detection, stale-data flags, broken-link repair) as a recurring task.
 - **Monitoring agent drift** -> audit the monitoring agent's fix history; if fix quality degrades, tighten the quality gate or reduce the monitoring agent's autonomy tier.
 

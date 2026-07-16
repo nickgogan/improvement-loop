@@ -1,31 +1,37 @@
 ---
 name: Skill Testing — Three-Tier (Triggering, Functional, Performance)
-summary: |-
-  Anthropic's Complete Guide PDF prescribes three test tiers for skills: (1) Triggering tests — does the skill load at the right times (positive and negative cases). (2) Functional tests — does the skill produce correct outputs. (3) Performance comparison — does the skill beat baseline on tool calls, error rate, tokens, user effort. Each tier has named test-case shapes and a baseline-vs-skill comparison format. Three levels of rigor available: manual testing in Claude.ai (fast iteration), scripted testing in Claude Code (repeatable validation), programmatic testing via API (systematic eval suites).
-implementation_notes: "Per-tier guidance from PDF: Triggering — should-trigger + should-NOT-trigger sets, covering paraphrased requests and adjacent-but-distinct queries. Functional — valid outputs, API call success, error handling, edge cases. Performance — baseline (without skill) vs. with-skill: back-and-forth messages, failed API calls, tokens consumed, user clarifying questions. Concrete example: 'Without skill: 15 messages, 3 failed API calls, 12,000 tokens. With skill: 2 clarifying questions, 0 failed calls, 6,000 tokens.' Aspirational targets named: skill triggers on 90% of relevant queries; 0 failed API calls; consistent results across sessions."
+summary: 'Anthropic''s Complete Guide PDF prescribes three test tiers for skills: (1) Triggering tests — does the skill load at the right times (positive and negative cases). (2) Functional tests — does
+  the skill produce correct outputs. (3) Performance comparison — does the skill beat baseline on tool calls, error rate, tokens, user effort. Each tier has named test-case shapes and a baseline-vs-skill
+  comparison format. Three levels of rigor available: manual testing in Claude.ai (fast iteration), scripted testing in Claude Code (repeatable validation), programmatic testing via API (systematic eval
+  suites).'
+implementation_notes: 'Per-tier guidance from PDF: Triggering — should-trigger + should-NOT-trigger sets, covering paraphrased requests and adjacent-but-distinct queries. Functional — valid outputs, API
+  call success, error handling, edge cases. Performance — baseline (without skill) vs. with-skill: back-and-forth messages, failed API calls, tokens consumed, user clarifying questions. Concrete example:
+  ''Without skill: 15 messages, 3 failed API calls, 12,000 tokens. With skill: 2 clarifying questions, 0 failed calls, 6,000 tokens.'' Aspirational targets named: skill triggers on 90% of relevant queries;
+  0 failed API calls; consistent results across sessions.'
 category: Evaluation
 evidence_strength: Strong (production-tested)
 adoption_status: Not Yet Started
 priority: P1 (Implement Now)
 applicability:
-  - "S3 (Claude Code Build)"
-  - "General"
+- S3 (Claude Code Build)
+- General
 adopted_in: []
 sources:
-  - "anthropic-complete-guide-building-skills-pdf.md"
-  - "anthropic-skills-repo.md"
+- anthropic-complete-guide-building-skills-pdf.md
+- anthropic-skills-repo.md
 related_findings:
-  - file: "skill-description-optimization-loop-held-out-test.md"
-    rel: "extends"
-  - file: "generator-assessor-separation-in-skill-iteration.md"
-    rel: "same-problem"
-  - file: "machine-framework-for-agentic-coding-skill-asses.md"
-    rel: "same-problem"
+- file: skill-description-optimization-loop-held-out-test.md
+  rel: extends
+- file: generator-assessor-separation-in-skill-iteration.md
+  rel: same-problem
+- file: machine-framework-for-agentic-coding-skill-asses.md
+  rel: same-problem
 proposals: null
 date_discovered: '2026-06-11'
 last_updated: '2026-06-11'
-pipeline_status: raw
-consumed_by: []
+pipeline_status: synthesized
+consumed_by:
+- building-agent-evaluation-suites.md
 ---
 
 # Skill Testing — Three-Tier (Triggering, Functional, Performance)

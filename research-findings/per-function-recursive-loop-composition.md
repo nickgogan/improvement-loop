@@ -1,33 +1,36 @@
 ---
-name: "Per-Function Recursive Loop Composition"
-summary: "Treat every organizational function (product, support, engineering, sales) as its own independent self-improving recursive AI loop, each running the same five-layer architecture (sensor → policy → tool → quality gate → learning). The company becomes N parallel loops that independently optimize their domain. This is a composition pattern: the same loop template instantiated per function, not one global loop."
+name: Per-Function Recursive Loop Composition
+summary: 'Treat every organizational function (product, support, engineering, sales) as its own independent self-improving recursive AI loop, each running the same five-layer architecture (sensor → policy
+  → tool → quality gate → learning). The company becomes N parallel loops that independently optimize their domain. This is a composition pattern: the same loop template instantiated per function, not one
+  global loop.'
 implementation_notes: null
-category: "Orchestration"
-evidence_strength: "Medium (practitioner-documented)"
-adoption_status: "Not Yet Started"
-priority: "P2 (Design Required)"
+category: Orchestration
+evidence_strength: Medium (practitioner-documented)
+adoption_status: Not Yet Started
+priority: P2 (Design Required)
 applicability:
-  - "S3 (Claude Code Build)"
-  - "General"
+- S3 (Claude Code Build)
+- General
 adopted_in: []
 sources:
-  - "self-improving-company-yc-five-layer-loop.md"
+- self-improving-company-yc-five-layer-loop.md
 related_findings:
-  - file: "five-layer-recursive-ai-loop-architecture.md"
-    rel: "extends"
-  - file: "cross-domain-transfer-of-meta-improvements.md"
-    rel: "same-problem"
-  - file: "time-window-proactive-agent-loop.md"
-    rel: "same-problem"
-  - file: "agent-sprawl-anti-pattern-microservices-redux.md"
-    rel: "contradicts"
+- file: five-layer-recursive-ai-loop-architecture.md
+  rel: extends
+- file: cross-domain-transfer-of-meta-improvements.md
+  rel: same-problem
+- file: time-window-proactive-agent-loop.md
+  rel: same-problem
+- file: agent-sprawl-anti-pattern-microservices-redux.md
+  rel: contradicts
 proposals: null
-date_discovered: "2026-05-25"
-last_updated: "2026-05-25"
-pipeline_status: "classified"
-consumed_by: []
+date_discovered: '2026-05-25'
+last_updated: '2026-05-25'
+pipeline_status: synthesized
+consumed_by:
+- agent-architecture-decisions.md
 tags:
-  - "session-95-reextract"
+- session-95-reextract
 ---
 
 # Per-Function Recursive Loop Composition

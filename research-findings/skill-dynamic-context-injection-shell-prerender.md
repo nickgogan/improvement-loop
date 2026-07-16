@@ -1,29 +1,34 @@
 ---
 name: Skill Dynamic Context Injection — Shell Pre-Render at Activation Time
-summary: Claude Code skills can embed shell commands inline via the `` !`<command>` `` syntax. At skill activation time (not at execution time), each command runs and its output replaces the placeholder in the rendered SKILL.md. Claude only ever sees the final substituted text. This is preprocessing — not a Claude tool call. Multi-line variants use a fenced code block opened with ```!.
-implementation_notes: "Activation-time substitution = once per invocation, not re-evaluated across turns. After compaction, the resolved values persist (not the placeholders). Substitution is one-pass: shell output inserted as plain text is not re-scanned for nested !`...` placeholders. Inline form only recognized when `!` appears at line start or after whitespace (so KEY=!`cmd` is treated as literal). Disablable via `disableSkillShellExecution: true` in settings — useful in managed settings. Use ${CLAUDE_SKILL_DIR} for bundled-script paths so they resolve regardless of CWD. PowerShell available with `shell: powershell` on Windows + CLAUDE_CODE_USE_POWERSHELL_TOOL=1."
+summary: Claude Code skills can embed shell commands inline via the `` !`<command>` `` syntax. At skill activation time (not at execution time), each command runs and its output replaces the placeholder
+  in the rendered SKILL.md. Claude only ever sees the final substituted text. This is preprocessing — not a Claude tool call. Multi-line variants use a fenced code block opened with ```!.
+implementation_notes: 'Activation-time substitution = once per invocation, not re-evaluated across turns. After compaction, the resolved values persist (not the placeholders). Substitution is one-pass:
+  shell output inserted as plain text is not re-scanned for nested !`...` placeholders. Inline form only recognized when `!` appears at line start or after whitespace (so KEY=!`cmd` is treated as literal).
+  Disablable via `disableSkillShellExecution: true` in settings — useful in managed settings. Use ${CLAUDE_SKILL_DIR} for bundled-script paths so they resolve regardless of CWD. PowerShell available with
+  `shell: powershell` on Windows + CLAUDE_CODE_USE_POWERSHELL_TOOL=1.'
 category: Context Engineering
 evidence_strength: Strong (production-tested)
 adoption_status: Not Yet Started
 priority: P1 (Implement Now)
 applicability:
-  - "S3 (Claude Code Build)"
-  - "General"
+- S3 (Claude Code Build)
+- General
 adopted_in: []
 sources:
-  - "anthropic-claude-code-skills-docs.md"
+- anthropic-claude-code-skills-docs.md
 related_findings:
-  - file: "claude-code-skill-frontmatter-extensions.md"
-    rel: "extends"
-  - file: "code-as-deterministic-tool-inside-skills.md"
-    rel: "same-problem"
-  - file: "context-before-loop-initialization-sequence.md"
-    rel: "same-problem"
+- file: claude-code-skill-frontmatter-extensions.md
+  rel: extends
+- file: code-as-deterministic-tool-inside-skills.md
+  rel: same-problem
+- file: context-before-loop-initialization-sequence.md
+  rel: same-problem
 proposals: null
 date_discovered: '2026-06-11'
 last_updated: '2026-06-11'
-pipeline_status: raw
-consumed_by: []
+pipeline_status: synthesized
+consumed_by:
+- structuring-agent-context.md
 ---
 
 # Skill Dynamic Context Injection — Shell Pre-Render at Activation Time

@@ -1,34 +1,46 @@
 ---
-name: "Structural Outline Before Read: Compact Code Summaries as Agent Navigation Maps"
-summary: |-
-  Instead of an agent reading whole files to learn a codebase's shape, it first pulls a compact
+name: 'Structural Outline Before Read: Compact Code Summaries as Agent Navigation Maps'
+summary: 'Instead of an agent reading whole files to learn a codebase''s shape, it first pulls a compact
+
   structural outline — functions, classes, imports, exports with line numbers — and uses it to
-  decide what to actually read. ast-grep's author-measured benchmarks on 7 real repos show
+
+  decide what to actually read. ast-grep''s author-measured benchmarks on 7 real repos show
+
   35-55% cost reduction on large repos (VS Code, Django, OkHttp) at 100% of baseline answer
+
   coverage — but overhead on small repos (under ~1,000 files), so the pattern must be size-gated.
+
   Focused-extraction flags (--match for one symbol, --items imports/exports) act as progressive
-  disclosure of the code surface: shape first, members on demand, full source last.
-implementation_notes: |-
-  Already partially adopted: session 130's ENHANCE verdict landed ast-grep outline in
+
+  disclosure of the code surface: shape first, members on demand, full source last.'
+implementation_notes: 'Already partially adopted: session 130''s ENHANCE verdict landed ast-grep outline in
+
   /repo-analyzer (structural-inventory and import-map dimensions), gated on repo size and tool
+
   availability — which is why adoption_status is Partially Adopted / Improvement Loop. Remaining
+
   design surface: the optional outline pass in /audit-artifacts, and generalizing the size gate
-  (small repos: grep + direct reads already win; the benchmark's break-even sits near ~1,000
-  files). Feature is alpha (v0.44.0) — pin expectations accordingly.
-category: "Context Engineering"
-evidence_strength: "Medium (practitioner-documented)"
-adoption_status: "Partially Adopted"
-priority: "P2 (Design Required)"
+
+  (small repos: grep + direct reads already win; the benchmark''s break-even sits near ~1,000
+
+  files). Feature is alpha (v0.44.0) — pin expectations accordingly.'
+category: Context Engineering
+evidence_strength: Medium (practitioner-documented)
+adoption_status: Partially Adopted
+priority: P2 (Design Required)
 applicability:
-  - "General"
+- General
 adopted_in:
-  - "Improvement Loop"
+- Improvement Loop
 sources:
-  - "ast-grep-outline-structural-summaries.md"
+- ast-grep-outline-structural-summaries.md
 related_findings: []
 proposals: null
-date_discovered: "2026-07-11"
-last_updated: "2026-07-11"
+date_discovered: '2026-07-11'
+last_updated: '2026-07-11'
+consumed_by:
+- structuring-agent-context.md
+pipeline_status: synthesized
 ---
 
 ## What It Is

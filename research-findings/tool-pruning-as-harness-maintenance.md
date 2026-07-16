@@ -1,47 +1,58 @@
 ---
-name: "Tool Pruning as Harness Maintenance Discipline"
-summary: |-
-  Plain English: agents don't monotonically improve as you give them more tools —
+name: Tool Pruning as Harness Maintenance Discipline
+summary: 'Plain English: agents don''t monotonically improve as you give them more tools —
+
   Vercel made its sales agent better by deleting 80% of its tools. The beginner
+
   instinct is to add (a tool, a memory file, a Slack integration, another exception)
-  until the agent looks powerful but can't be trusted; the maintenance instinct asks
+
+  until the agent looks powerful but can''t be trusted; the maintenance instinct asks
+
   what should be removed. Pruning is a recurring maintenance action on the whole
+
   harness surface — tools, and equally piles of accumulated skills — with simplicity
+
   treated as a key to maintainability (Stewart Brand). The mature design question is
-  "what part of this harness will I need to delete later?"
-implementation_notes: |-
-  P2: directly applicable to the engine's own surfaces — the skill roster and any
+
+  "what part of this harness will I need to delete later?"'
+implementation_notes: 'P2: directly applicable to the engine''s own surfaces — the skill roster and any
+
   future tool allowlists. Nothing in the engine currently schedules subtractive review
+
   (audits check consistency and drift, not whether an artifact should be deleted).
-  Candidate input for /system-health or the restructure program's Phase 2 audit; the
+
+  Candidate input for /system-health or the restructure program''s Phase 2 audit; the
+
   triage gate ruled no new mechanism from one source (natural ENHANCE delta if the
-  pattern recurs).
-category: "Tool Integration"
-evidence_strength: "Medium (practitioner-documented)"
-adoption_status: "Not Yet Started"
-priority: "P2 (Design Required)"
+
+  pattern recurs).'
+category: Tool Integration
+evidence_strength: Medium (practitioner-documented)
+adoption_status: Not Yet Started
+priority: P2 (Design Required)
 applicability:
-  - "IL (skill roster, tool surface reviews)"
-  - "General"
+- IL (skill roster, tool surface reviews)
+- General
 adopted_in: []
 sources:
-  - "dont-build-more-ai-agents-until-you-watch-this.md"
+- dont-build-more-ai-agents-until-you-watch-this.md
 related_findings:
-  - file: "bidirectional-agent-breakage-world-drift-model-improvement.md"
-    rel: "same-problem"
-  - file: "skill-pruning-failure-modes-noop-deletion-test.md"
-    rel: "same-problem"
-  - file: "claudemd-context-rot-from-indiscriminate-rule-accu.md"
-    rel: "same-problem"
-  - file: "build-from-observed-workflow.md"
-    rel: "enabled-by"
-  - file: "add-then-retire-lifecycle-at-framework-scale.md"
-    rel: "same-problem"
+- file: bidirectional-agent-breakage-world-drift-model-improvement.md
+  rel: same-problem
+- file: skill-pruning-failure-modes-noop-deletion-test.md
+  rel: same-problem
+- file: claudemd-context-rot-from-indiscriminate-rule-accu.md
+  rel: same-problem
+- file: build-from-observed-workflow.md
+  rel: enabled-by
+- file: add-then-retire-lifecycle-at-framework-scale.md
+  rel: same-problem
 proposals: null
-date_discovered: "2026-07-13"
-last_updated: "2026-07-13"
-pipeline_status: "raw"
-consumed_by: []
+date_discovered: '2026-07-13'
+last_updated: '2026-07-13'
+pipeline_status: synthesized
+consumed_by:
+- designing-agent-tools.md
 ---
 
 # Tool Pruning as Harness Maintenance Discipline

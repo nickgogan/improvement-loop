@@ -1,42 +1,56 @@
 ---
-name: "Persona-Clone Review Board as Verifier for Test-Less Outputs"
-summary: |-
-  For outputs with no test suite (emails, reports, decks, strategy docs), build the
+name: Persona-Clone Review Board as Verifier for Test-Less Outputs
+summary: 'For outputs with no test suite (emails, reports, decks, strategy docs), build the
+
   verifier out of simulated stakeholders — "AI time travel": get the feedback before the
+
   final version is ever submitted. Three tiers: ask-the-board (clone 4-5 public thought
+
   leaders in your vertical from their scraped public content) for strategic work; an
+
   internal focus group (clone of the end user/customer, built by having Claude interview
+
   you about them) for anything customer-facing; and clone-your-manager (an Anthropic
+
   growth marketer cloned his manager from her blog posts, Slack messages, and emails to
+
   get her feedback before submitting to her) for day-to-day work. Extends verification —
-  Anthropic's self-reported highest single quality lever — into domains with no
-  executable checks.
-implementation_notes: |-
-  Fills a real gap: the KB's verifier findings are code-centric, but most engine outputs
+
+  Anthropic''s self-reported highest single quality lever — into domains with no
+
+  executable checks.'
+implementation_notes: 'Fills a real gap: the KB''s verifier findings are code-centric, but most engine outputs
+
   (findings, guides, reports, handoffs) have no executable verifier. A persona-based
-  reviewer is one design option — e.g., a reviewer primed on Nick's documented standing
+
+  reviewer is one design option — e.g., a reviewer primed on Nick''s documented standing
+
   feedback (plain-English-first, no hardcoded counts, minimum viable abstraction) that
+
   pre-screens reports before the real gate. Design required; the clone is a rehearsal for
-  the human gate, never a replacement of it.
-category: "Evaluation"
-evidence_strength: "Medium (practitioner-documented)"
-adoption_status: "Not Yet Started"
-priority: "P2 (Design Required)"
+
+  the human gate, never a replacement of it.'
+category: Evaluation
+evidence_strength: Medium (practitioner-documented)
+adoption_status: Not Yet Started
+priority: P2 (Design Required)
 applicability:
-  - "IL (non-code output verification)"
-  - "General"
+- IL (non-code output verification)
+- General
 adopted_in: []
 sources:
-  - "youre-the-problem-not-claude-6-fixes.md"
+- youre-the-problem-not-claude-6-fixes.md
 related_findings:
-  - file: "generator-assessor-separation-in-skill-iteration.md"
-    rel: "extends"
-  - file: "multi-perspective-review-council.md"
-    rel: "same-problem"
+- file: generator-assessor-separation-in-skill-iteration.md
+  rel: extends
+- file: multi-perspective-review-council.md
+  rel: same-problem
 proposals: null
-date_discovered: "2026-07-12"
-last_updated: "2026-07-12"
-pipeline_status: "raw"
+date_discovered: '2026-07-12'
+last_updated: '2026-07-12'
+pipeline_status: synthesized
+consumed_by:
+- building-agent-evaluation-suites.md
 ---
 
 ## What It Is

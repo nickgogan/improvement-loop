@@ -1,50 +1,67 @@
 ---
-name: "Work-Ticket Contract: Prompt Mode vs Work Mode"
-summary: |-
-  Plain English: when work moves between agents (or agent and human), a chat prompt is
-  not enough — the handoff needs a contract. Nate B Jones's Open Engine defines the
+name: 'Work-Ticket Contract: Prompt Mode vs Work Mode'
+summary: 'Plain English: when work moves between agents (or agent and human), a chat prompt is
+
+  not enough — the handoff needs a contract. Nate B Jones''s Open Engine defines the
+
   work-ticket as the boundary object between "prompt mode" (asking an AI for an answer)
+
   and "work mode" (giving it a job the next agent can pick up): every ticket carries the
+
   outcome wanted, the owner, the source material, explicit scope limits ("where the agent
+
   should stop"), a definition of done, and what it must show when finished. Two contract
+
   mechanics complete it: the claim receipt (agent claim-locks the ticket, moves it to
+
   agent-working, and on completion leaves an auditable receipt proving what was done —
+
   distinct from asking the agent "did you do it?") and the needs-input escalation state
-  (on ambiguity the agent doesn't guess; it parks the ticket in needs-input carrying the
+
+  (on ambiguity the agent doesn''t guess; it parks the ticket in needs-input carrying the
+
   exact blocking question, resumes when answered, and the audit trail stays on the
-  ticket).
-implementation_notes: |-
-  The engine's pipeline is already file-mediated (pipeline_status handoffs, handoff
-  protocol) but its handoff artifacts don't carry a uniform contract: definition-of-done
+
+  ticket).'
+implementation_notes: 'The engine''s pipeline is already file-mediated (pipeline_status handoffs, handoff
+
+  protocol) but its handoff artifacts don''t carry a uniform contract: definition-of-done
+
   and proof-of-done are implicit, and there is no needs-input state — blocked subagents
+
   currently improvise. The ticket field set (outcome / owner / sources / scope limits /
-  definition of done / receipt) is a candidate schema for the engine's subagent task
+
+  definition of done / receipt) is a candidate schema for the engine''s subagent task
+
   prompts and delta-report handoffs. Flagged at triage as a future harness-layer
-  schematic candidate (Nick-gated).
-category: "Orchestration"
-evidence_strength: "Medium (practitioner-documented)"
-adoption_status: "Not Yet Started"
-priority: "P2 (Design Required)"
+
+  schematic candidate (Nick-gated).'
+category: Orchestration
+evidence_strength: Medium (practitioner-documented)
+adoption_status: Not Yet Started
+priority: P2 (Design Required)
 applicability:
-  - "IL (handoff protocol, subagent task contracts)"
-  - "General"
+- IL (handoff protocol, subagent task contracts)
+- General
 adopted_in: []
 sources:
-  - "i-was-the-only-thing-connecting-claude-chatgpt-codex.md"
-  - "codex-your-first-personal-ai-agent-delegation-loop.md"
+- i-was-the-only-thing-connecting-claude-chatgpt-codex.md
+- codex-your-first-personal-ai-agent-delegation-loop.md
 related_findings:
-  - file: "chief-of-staff-home-base-thread.md"
-    rel: "same-problem"
-  - file: "issue-based-agent-orchestration-replacing-markdown-plans.md"
-    rel: "extends"
-  - file: "agent-self-reporting-unreliability-independent-eval.md"
-    rel: "same-problem"
-  - file: "github-label-as-workflow-state.md"
-    rel: "same-problem"
+- file: chief-of-staff-home-base-thread.md
+  rel: same-problem
+- file: issue-based-agent-orchestration-replacing-markdown-plans.md
+  rel: extends
+- file: agent-self-reporting-unreliability-independent-eval.md
+  rel: same-problem
+- file: github-label-as-workflow-state.md
+  rel: same-problem
 proposals: null
-date_discovered: "2026-07-12"
-last_updated: "2026-07-13"
-pipeline_status: "raw"
+date_discovered: '2026-07-12'
+last_updated: '2026-07-13'
+pipeline_status: synthesized
+consumed_by:
+- agent-architecture-decisions.md
 ---
 
 ## What It Is

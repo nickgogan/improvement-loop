@@ -1,30 +1,32 @@
 ---
-name: "Event Schema as Noun-Verb Contract"
-summary: "The second governance layer maps domain nouns to allowed verbs via a formal event schema set — defining mandatory fields, semantic bindings, and state implications for every permitted action before any agent is built."
+name: Event Schema as Noun-Verb Contract
+summary: The second governance layer maps domain nouns to allowed verbs via a formal event schema set — defining mandatory fields, semantic bindings, and state implications for every permitted action before
+  any agent is built.
 implementation_notes: null
-category: "Governance"
-evidence_strength: "Medium (practitioner-documented)"
-adoption_status: "Not Yet Started"
-priority: "P2 (Design Required)"
+category: Governance
+evidence_strength: Medium (practitioner-documented)
+adoption_status: Not Yet Started
+priority: P2 (Design Required)
 applicability:
-  - "General"
+- General
 adopted_in: []
 sources:
-  - "11-step-governance-build-order-multi-agent-systems.md"
+- 11-step-governance-build-order-multi-agent-systems.md
 related_findings:
-  - file: governed-dependency-chain-build-order.md
-    rel: part-of
-  - file: governance-ontology-semantic-foundation.md
-    rel: depends-on
-  - file: policy-as-data-machine-readable-constraints.md
-    rel: enables
-  - file: non-deterministic-tool-contract-model.md
-    rel: same-problem
-date_discovered: "2026-04-19"
-last_updated: "2026-04-19"
-pipeline_status: "extracted"
+- file: governed-dependency-chain-build-order.md
+  rel: part-of
+- file: governance-ontology-semantic-foundation.md
+  rel: depends-on
+- file: policy-as-data-machine-readable-constraints.md
+  rel: enables
+- file: non-deterministic-tool-contract-model.md
+  rel: same-problem
+date_discovered: '2026-04-19'
+last_updated: '2026-04-19'
+pipeline_status: synthesized
 consumed_by:
-  - "rules/event-schema-as-noun-verb-contract.md"
+- rules/event-schema-as-noun-verb-contract.md
+- agent-governance-and-trust.md
 ---
 
 ## What It Is

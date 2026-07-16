@@ -23,9 +23,10 @@ related_findings:
   rel: same-problem
 - file: intent-based-meta-routing-skill.md
   rel: same-problem
-pipeline_status: extracted
+pipeline_status: synthesized
 consumed_by:
 - templates/task-to-file-routing-table-in-context-files.md
+- structuring-agent-context.md
 ---
 # Task-to-File Routing Table in Context Files
 

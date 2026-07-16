@@ -32,8 +32,9 @@ related_findings:
 proposals: null
 date_discovered: '2026-04-20'
 last_updated: '2026-07-13'
-pipeline_status: classified
-consumed_by: []
+pipeline_status: synthesized
+consumed_by:
+- agent-architecture-decisions.md
 ---
 
 # GStack Spec Team — Parallel Research Agents for Spec Gray Areas

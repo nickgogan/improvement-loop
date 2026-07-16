@@ -1,47 +1,61 @@
 ---
-name: "Agent Owner Card and Human-Facing Agent Registry"
-summary: |-
-  A seven-field owner card per agent that matters — name, owner, job, sources (what it
-  reads), what it can do, what it can't do, and the failure mode to watch for — scaled up
+name: Agent Owner Card and Human-Facing Agent Registry
+summary: 'A seven-field owner card per agent that matters — name, owner, job, sources (what it
+
+  reads), what it can do, what it can''t do, and the failure mode to watch for — scaled up
+
   into a team-level agent roster: a plain list of the agents in use with owner, sources,
-  permissions, review cadence, and known failure modes. Framed deliberately as "Google's
+
+  permissions, review cadence, and known failure modes. Framed deliberately as "Google''s
+
   A2A protocol, but for the humans": A2A gives agents introduction cards for each other;
+
   the owner card is the same certificate pointed at people. The claim: once an agent is
+
   visible on a roster it can be managed; invisible agents become shadow processes where
-  work moves through tools and nobody can explain how the output got there.
-implementation_notes: |-
-  P2 because the field set is a concrete, near-zero-cost design input for two engine
+
+  work moves through tools and nobody can explain how the output got there.'
+implementation_notes: 'P2 because the field set is a concrete, near-zero-cost design input for two engine
+
   surfaces: (1) candidate criteria-delta for /assess-agent — does an agent artifact
-  declare owner, job-in-one-sentence, diet/sources, can/can't boundaries, and a watched
-  failure mode? — restructure-Phase-2 audit material, separately gated; (2) the engine's
+
+  declare owner, job-in-one-sentence, diet/sources, can/can''t boundaries, and a watched
+
+  failure mode? — restructure-Phase-2 audit material, separately gated; (2) the engine''s
+
   own agents/ directory + docs ownership map already approximate a registry; the delta is
+
   the per-agent watched-failure-mode and review-cadence fields. Evidence is a
+
   practitioner framework (no production data); the fuller checklist lives behind the
-  author's Substack, not ingested.
-category: "Governance"
-evidence_strength: "Medium (practitioner-documented)"
-adoption_status: "Partially Adopted"
-priority: "P2 (Design Required)"
+
+  author''s Substack, not ingested.'
+category: Governance
+evidence_strength: Medium (practitioner-documented)
+adoption_status: Partially Adopted
+priority: P2 (Design Required)
 applicability:
-  - "Improvement Loop"
-  - "General"
+- Improvement Loop
+- General
 adopted_in:
-  - "Improvement Loop"
+- Improvement Loop
 sources:
-  - "you-cant-run-ai-agents-without-this.md"
+- you-cant-run-ai-agents-without-this.md
 related_findings:
-  - file: "job-diet-boundaries-review-loop-operating-framework.md"
-    rel: "extends"
-  - file: "agent-management-tool-landscape-2026.md"
-    rel: "same-problem"
-  - file: "agent-identity-governance-enforcement-layer.md"
-    rel: "same-problem"
-  - file: "dri-rotation-pattern-time-bounded-sensemaking-ownership.md"
-    rel: "same-problem"
+- file: job-diet-boundaries-review-loop-operating-framework.md
+  rel: extends
+- file: agent-management-tool-landscape-2026.md
+  rel: same-problem
+- file: agent-identity-governance-enforcement-layer.md
+  rel: same-problem
+- file: dri-rotation-pattern-time-bounded-sensemaking-ownership.md
+  rel: same-problem
 proposals: null
-date_discovered: "2026-07-12"
-last_updated: "2026-07-12"
-pipeline_status: "raw"
+date_discovered: '2026-07-12'
+last_updated: '2026-07-12'
+pipeline_status: synthesized
+consumed_by:
+- agent-governance-and-trust.md
 ---
 
 ## What It Is

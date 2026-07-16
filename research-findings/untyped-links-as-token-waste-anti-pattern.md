@@ -1,36 +1,39 @@
 ---
-name: "Untyped Links as Token Waste Anti-Pattern"
-summary: "When knowledge base links carry no relationship type (just 'A links to B'), the agent must load and read both endpoints to determine the nature of the relationship — whether it supports, contradicts, depends on, or is merely tangentially related. This forces exhaustive document loading at every traversal step, directly causing the 15x token overhead observed when comparing untyped PARA links to typed graph edges."
+name: Untyped Links as Token Waste Anti-Pattern
+summary: When knowledge base links carry no relationship type (just 'A links to B'), the agent must load and read both endpoints to determine the nature of the relationship — whether it supports, contradicts,
+  depends on, or is merely tangentially related. This forces exhaustive document loading at every traversal step, directly causing the 15x token overhead observed when comparing untyped PARA links to typed
+  graph edges.
 implementation_notes: null
-category: "Context Engineering"
-evidence_strength: "Medium (practitioner-documented)"
-adoption_status: "Partially Adopted"
+category: Context Engineering
+evidence_strength: Medium (practitioner-documented)
+adoption_status: Partially Adopted
 priority: P2
 applicability:
-  - "S3 (Claude Code Build)"
-  - "General"
+- S3 (Claude Code Build)
+- General
 adopted_in: []
 sources:
-  - "karpathy-second-brain-typed-edge-alternative.md"
+- karpathy-second-brain-typed-edge-alternative.md
 related_findings:
-  - file: typed-edge-knowledge-graph-token-reduction.md
-    rel: enables
-  - file: typed-relationship-memory-graph.md
-    rel: same-problem
-  - file: concept-graph-support-contradiction-detection.md
-    rel: same-problem
-  - file: token-waste-taxonomy-and-two-mode-workflow.md
-    rel: extends
-  - file: ai-as-primary-reader-design-principle.md
-    rel: enables
+- file: typed-edge-knowledge-graph-token-reduction.md
+  rel: enables
+- file: typed-relationship-memory-graph.md
+  rel: same-problem
+- file: concept-graph-support-contradiction-detection.md
+  rel: same-problem
+- file: token-waste-taxonomy-and-two-mode-workflow.md
+  rel: extends
+- file: ai-as-primary-reader-design-principle.md
+  rel: enables
 proposals: null
-date_discovered: "2026-05-25"
-last_updated: "2026-05-25"
-pipeline_status: "extracted"
+date_discovered: '2026-05-25'
+last_updated: '2026-05-25'
+pipeline_status: synthesized
 consumed_by:
-  - "extracts/rules/untyped-links-as-token-waste.md"
+- extracts/rules/untyped-links-as-token-waste.md
+- structuring-agent-context.md
 tags:
-  - "session-95-reextract"
+- session-95-reextract
 ---
 
 # Untyped Links as Token Waste Anti-Pattern

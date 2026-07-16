@@ -25,9 +25,10 @@ related_findings:
 proposals: null
 date_discovered: '2026-04-20'
 last_updated: '2026-07-12'
-pipeline_status: extracted
+pipeline_status: synthesized
 consumed_by:
 - rules/surgical-change-agent-scope.md
+- model-resilient-prompt-engineering.md
 ---
 
 ## What It Is

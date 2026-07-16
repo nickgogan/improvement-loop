@@ -1,7 +1,12 @@
 ---
-name: 'Path-Scoped Guardrails as Edit-Time Prevention Layer'
-summary: 'Conditional instruction files the harness auto-applies only when the agent touches files matching a path pattern, used specifically for guardrails: the rule fires exactly when the risk exists (editing a protected tree), without paying always-on cost. Prevention (rule injected at edit time) complements post-hoc audit scripts. Where the platform lacks path-conditional injection, the documented fallback is folding the rules into the always-on file and recording the weaker guarantee.'
-implementation_notes: 'The engine has path-scoped context (.claude/rules/, system-scoped CLAUDE.md) but uses it for orientation, not guardrails. The adoptable delta is the framing: identify the engine''s highest-risk edit-time mistakes (e.g. hand-editing generated files like FOUNDATIONS.md, writing counts into tracked docs, editing governance-tier files casually) and put the preventing rule on the tree where the mistake happens, paired with the existing audit/hook layer as the post-hoc check. Also a candidate criterion for /assess-* and the portable kernel''s wiring rows (optional tier with a prose fallback).'
+name: Path-Scoped Guardrails as Edit-Time Prevention Layer
+summary: 'Conditional instruction files the harness auto-applies only when the agent touches files matching a path pattern, used specifically for guardrails: the rule fires exactly when the risk exists
+  (editing a protected tree), without paying always-on cost. Prevention (rule injected at edit time) complements post-hoc audit scripts. Where the platform lacks path-conditional injection, the documented
+  fallback is folding the rules into the always-on file and recording the weaker guarantee.'
+implementation_notes: 'The engine has path-scoped context (.claude/rules/, system-scoped CLAUDE.md) but uses it for orientation, not guardrails. The adoptable delta is the framing: identify the engine''s
+  highest-risk edit-time mistakes (e.g. hand-editing generated files like FOUNDATIONS.md, writing counts into tracked docs, editing governance-tier files casually) and put the preventing rule on the tree
+  where the mistake happens, paired with the existing audit/hook layer as the post-hoc check. Also a candidate criterion for /assess-* and the portable kernel''s wiring rows (optional tier with a prose
+  fallback).'
 category: Context Engineering
 evidence_strength: Medium (practitioner-documented, single production system)
 adoption_status: Not Yet Started
@@ -19,8 +24,9 @@ related_findings:
   rel: same-problem
 - file: rules-layer-collapse-monolithic-context-counter-signal.md
   rel: contradicts
-pipeline_status: raw
-consumed_by: []
+pipeline_status: synthesized
+consumed_by:
+- structuring-agent-context.md
 tags:
 - path-scoped-rules
 - guardrails

@@ -1,46 +1,60 @@
 ---
-name: "Five-Point Agent Health Checklist"
-summary: |-
-  Plain English: five questions to ask periodically about any serious deployed agent —
+name: Five-Point Agent Health Checklist
+summary: 'Plain English: five questions to ask periodically about any serious deployed agent —
+
   a concrete fitness-review instrument for the bidirectional-breakage problem.
+
   (1) Inputs: what is it eating — are sources current, did the workflow move, did an old
+
   source become misleading? (2) Reach: what can it touch — does each permission still
-  fit the current model's strength (too broad for a strong model, too narrow for an
+
+  fit the current model''s strength (too broad for a strong model, too narrow for an
+
   improved one)? (3) Job: has the job drifted silently (a summary agent becoming a de
+
   facto planning agent) — change the job on purpose or not at all. (4) Proof: is its
+
   evidence a linkable trail a human can inspect (tickets, quoted language, which
+
   sources checked and which inaccessible), not self-report? (5) Value: does anyone read
+
   the output, does it save time after review, should the agent be rebuilt (model
-  improved) or retired (business changed)?
-implementation_notes: |-
-  P2: the most directly transplantable artifact of the Jones harness-maintenance leg —
+
+  improved) or retired (business changed)?'
+implementation_notes: 'P2: the most directly transplantable artifact of the Jones harness-maintenance leg —
+
   a natural future ENHANCE delta for /system-health or the model-capability-registry
+
   refresh procedure (triage gate: no mechanism from one source; revisit on recurrence).
+
   Feeds the named-deps gap-check next session: the engine has audit skills for
+
   consistency and drift but no periodic instrument asking reach-fits-model or
-  value-still-real about its own agents/skills.
-category: "Evaluation"
-evidence_strength: "Medium (practitioner-documented)"
-adoption_status: "Not Yet Started"
-priority: "P2 (Design Required)"
+
+  value-still-real about its own agents/skills.'
+category: Evaluation
+evidence_strength: Medium (practitioner-documented)
+adoption_status: Not Yet Started
+priority: P2 (Design Required)
 applicability:
-  - "IL (/system-health, registry refresh, agent reviews)"
-  - "General"
+- IL (/system-health, registry refresh, agent reviews)
+- General
 adopted_in: []
 sources:
-  - "dont-build-more-ai-agents-until-you-watch-this.md"
+- dont-build-more-ai-agents-until-you-watch-this.md
 related_findings:
-  - file: "bidirectional-agent-breakage-world-drift-model-improvement.md"
-    rel: "extends"
-  - file: "agentic-harness-self-assessment-skill.md"
-    rel: "same-problem"
-  - file: "receipt-artifact-as-agent-trust-mechanism.md"
-    rel: "same-problem"
+- file: bidirectional-agent-breakage-world-drift-model-improvement.md
+  rel: extends
+- file: agentic-harness-self-assessment-skill.md
+  rel: same-problem
+- file: receipt-artifact-as-agent-trust-mechanism.md
+  rel: same-problem
 proposals: null
-date_discovered: "2026-07-13"
-last_updated: "2026-07-13"
-pipeline_status: "raw"
-consumed_by: []
+date_discovered: '2026-07-13'
+last_updated: '2026-07-13'
+pipeline_status: synthesized
+consumed_by:
+- building-agent-evaluation-suites.md
 ---
 
 # Five-Point Agent Health Checklist

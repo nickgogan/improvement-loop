@@ -1,5 +1,13 @@
 # Changelog — Agent Governance and Trust
 
+## 2026-07-16 — Session 147 — staleness-threshold
+
+- Findings: 58 (+20, -0 since last synthesis; Nick-authorized session-147 guide-refresh sweep)
+- Added: [[agent-owner-card-human-facing-registry]], [[autonomy-progression-gated-by-maturity]], [[deterministic-doc-audit-battery]], [[event-schema-noun-verb-contract]], [[governance-registry-blast-radius-classification]], [[instant-agent-revocation-kill-switch-pattern]], [[north-star-drift-loop-trajectory-extrapolation]], [[operational-quirks-recurrence-to-guard-discipline]], [[per-proposal-human-gate-promotion-pipeline]], [[ratchet-recipe-skill-retirement]], [[receipt-artifact-as-agent-trust-mechanism]], [[recurrence-threshold-gates-autonomy-not-direction]], [[root-context-file-edit-guard]], [[screen-as-permissions-model-agent-bypass-failure]], [[secure-by-default-posture-as-organizational-invariant]], [[skill-invocation-control-side-effect-guard]], [[skill-library-drift-failure-mode]], [[three-bucket-change-approval-tiering]], [[two-layer-ci-plus-llm-review-gate]], [[upgrade-direction-degradation-prose-guard-to-policy-engine]]
+- Structural: New Section 9 (self-modifying systems: recurrence threshold, promotion pipeline, three-bucket tiering, lifecycle retirement) + Change-Approval Policy template; Key Concepts 13-16; Section 1 gained blast-radius registry + invocation control; Section 2 gained subtractive-autonomy direction; Section 3 gained two-layer gate, receipt artifact (+ template), default posture, trajectory oversight; Section 4 gained enforcement ladder + kill switch; Section 8 gained owner cards (+ template); Pitfalls 18-25; contract extended. DD-98 note: unruled 2026-05-25 split proposal stands; no re-emission this regen.
+- Preserved: none (no Nick's Annotations or PRESERVE markers found)
+- SL: session-147 (SL retired as producer per session-138 ruling; git is the session record)
+
 ## 2026-05-25 — Session 98 — staleness-threshold
 
 - Findings: 38 (+22, -0 since last synthesis)

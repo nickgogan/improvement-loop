@@ -1,35 +1,38 @@
 ---
-name: "Parallel Independent Workflow Execution at Scale"
-summary: "Running multiple complete, independent workflow instances simultaneously — each handling a separate task (e.g., fixing different GitHub issues) through the full multi-node DAG. Distinct from sub-agent parallelism (splitting one task into parallel sub-tasks). Archon demonstrates 6+ simultaneous workflow runs, each progressing through classification, investigation, implementation, validation, and PR creation independently."
+name: Parallel Independent Workflow Execution at Scale
+summary: Running multiple complete, independent workflow instances simultaneously — each handling a separate task (e.g., fixing different GitHub issues) through the full multi-node DAG. Distinct from sub-agent
+  parallelism (splitting one task into parallel sub-tasks). Archon demonstrates 6+ simultaneous workflow runs, each progressing through classification, investigation, implementation, validation, and PR
+  creation independently.
 implementation_notes: null
-category: "Orchestration"
-evidence_strength: "Medium (practitioner-documented)"
-adoption_status: "Not Yet Started"
-priority: "P2 (Design Required)"
+category: Orchestration
+evidence_strength: Medium (practitioner-documented)
+adoption_status: Not Yet Started
+priority: P2 (Design Required)
 applicability:
-  - "S3 (Claude Code Build)"
-  - "General"
+- S3 (Claude Code Build)
+- General
 adopted_in: []
 sources:
-  - "archon-open-source-harness-builder.md"
+- archon-open-source-harness-builder.md
 related_findings:
-  - file: "archon-yaml-defined-harness-workflows.md"
-    rel: "extends"
-  - file: "sub-agent-context-isolation-for-parallel-complex.md"
-    rel: "same-problem"
-  - file: "worktree-isolation-for-parallel-agent-sessions.md"
-    rel: "same-problem"
-  - file: "parallel-claude-code-instances-per-workspace.md"
-    rel: "same-problem"
-  - file: "reversible-forks-enable-parallel-sampling.md"
-    rel: "same-problem"
+- file: archon-yaml-defined-harness-workflows.md
+  rel: extends
+- file: sub-agent-context-isolation-for-parallel-complex.md
+  rel: same-problem
+- file: worktree-isolation-for-parallel-agent-sessions.md
+  rel: same-problem
+- file: parallel-claude-code-instances-per-workspace.md
+  rel: same-problem
+- file: reversible-forks-enable-parallel-sampling.md
+  rel: same-problem
 proposals: null
-date_discovered: "2026-05-25"
-last_updated: "2026-07-13"
-pipeline_status: "classified"
-consumed_by: []
+date_discovered: '2026-05-25'
+last_updated: '2026-07-13'
+pipeline_status: synthesized
+consumed_by:
+- agent-architecture-decisions.md
 tags:
-  - "session-95-reextract"
+- session-95-reextract
 ---
 
 ## What It Is

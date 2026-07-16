@@ -1,32 +1,37 @@
 ---
 name: Skill-Description Budget and Context-Overflow Triage
-summary: Claude Code allocates ~1% of the model's context window to skill descriptions in the system prompt (configurable via skillListingBudgetFraction or SLASH_COMMAND_TOOL_CHAR_BUDGET). Per-entry combined description + when_to_use is capped at 1,536 characters (maxSkillDescriptionChars). When the budget overflows, descriptions for least-used skills are dropped first, names always retained. Skills can be set to "name-only" or "off" in skillOverrides to free budget. /doctor diagnoses overflow.
-implementation_notes: "Concrete numbers for a skill-rich session: at 1% of 1M-token context = 10K chars across all skill descriptions. With 1,536-char per-entry cap, that's ~6-7 'full' descriptions. Past that, skills are listed name-only or descriptions truncated. The truncation is graceful (least-recently-used dropped first) but can strip the keywords Claude needs for matching. Operational discipline: trim description+when_to_use at the source, put the highest-signal use case first, and use skillOverrides to silence background-knowledge skills."
+summary: Claude Code allocates ~1% of the model's context window to skill descriptions in the system prompt (configurable via skillListingBudgetFraction or SLASH_COMMAND_TOOL_CHAR_BUDGET). Per-entry combined
+  description + when_to_use is capped at 1,536 characters (maxSkillDescriptionChars). When the budget overflows, descriptions for least-used skills are dropped first, names always retained. Skills can be
+  set to "name-only" or "off" in skillOverrides to free budget. /doctor diagnoses overflow.
+implementation_notes: 'Concrete numbers for a skill-rich session: at 1% of 1M-token context = 10K chars across all skill descriptions. With 1,536-char per-entry cap, that''s ~6-7 ''full'' descriptions.
+  Past that, skills are listed name-only or descriptions truncated. The truncation is graceful (least-recently-used dropped first) but can strip the keywords Claude needs for matching. Operational discipline:
+  trim description+when_to_use at the source, put the highest-signal use case first, and use skillOverrides to silence background-knowledge skills.'
 category: Context Engineering
 evidence_strength: Strong (production-tested)
 adoption_status: Not Yet Started
 priority: P2 (Design Required)
 applicability:
-  - "S3 (Claude Code Build)"
-  - "General"
+- S3 (Claude Code Build)
+- General
 adopted_in: []
 sources:
-  - "anthropic-claude-code-skills-docs.md"
-  - "hub-and-spoke-context-hub.md"
+- anthropic-claude-code-skills-docs.md
+- hub-and-spoke-context-hub.md
 related_findings:
-  - file: "skill-md-frontmatter-as-discovery-trigger-primitive.md"
-    rel: "extends"
-  - file: "skill-content-lifecycle-context-budget.md"
-    rel: "same-problem"
-  - file: "hub-and-spoke-two-tier-skill-taxonomy.md"
-    rel: "same-problem"
-  - file: "trigger-skip-grammar-peer-deferral-graph.md"
-    rel: "extended-by"
+- file: skill-md-frontmatter-as-discovery-trigger-primitive.md
+  rel: extends
+- file: skill-content-lifecycle-context-budget.md
+  rel: same-problem
+- file: hub-and-spoke-two-tier-skill-taxonomy.md
+  rel: same-problem
+- file: trigger-skip-grammar-peer-deferral-graph.md
+  rel: extended-by
 proposals: null
 date_discovered: '2026-06-11'
 last_updated: '2026-07-12'
-pipeline_status: raw
-consumed_by: []
+pipeline_status: synthesized
+consumed_by:
+- structuring-agent-context.md
 ---
 
 # Skill-Description Budget and Context-Overflow Triage

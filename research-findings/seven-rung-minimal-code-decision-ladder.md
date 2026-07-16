@@ -59,7 +59,9 @@ related_findings:
 proposals: null
 date_discovered: '2026-07-12'
 last_updated: '2026-07-12'
-pipeline_status: raw
+pipeline_status: synthesized
+consumed_by:
+- model-resilient-prompt-engineering.md
 ---
 
 # Seven-Rung Minimal-Code Decision Ladder

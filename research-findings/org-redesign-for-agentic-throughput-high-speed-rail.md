@@ -21,8 +21,9 @@ related_findings:
   rel: same-problem
 - file: agent-architecture-layer-impermanence.md
   rel: same-problem
-pipeline_status: "classified"
-consumed_by: []
+pipeline_status: synthesized
+consumed_by:
+- agent-workflow-and-execution.md
 ---
 ## What It Is
 

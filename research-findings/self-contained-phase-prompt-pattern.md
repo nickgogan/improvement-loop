@@ -1,34 +1,37 @@
 ---
-name: "Self-Contained Phase Prompt Pattern"
-summary: "Each phase in an autonomous build queue is represented as a fully self-contained prompt that includes all context the headless session needs to execute the phase without access to the orchestrator's conversation history or prior phase execution details. The prompt is generated during the planning/decomposition stage and stored in the phase-queue state file. This front-loads context engineering into planning time rather than execution time."
+name: Self-Contained Phase Prompt Pattern
+summary: Each phase in an autonomous build queue is represented as a fully self-contained prompt that includes all context the headless session needs to execute the phase without access to the orchestrator's
+  conversation history or prior phase execution details. The prompt is generated during the planning/decomposition stage and stored in the phase-queue state file. This front-loads context engineering into
+  planning time rather than execution time.
 implementation_notes: null
-category: "Context Engineering"
-evidence_strength: "Medium (practitioner-documented)"
-adoption_status: "Not Yet Started"
-priority: "P2 (Design Required)"
+category: Context Engineering
+evidence_strength: Medium (practitioner-documented)
+adoption_status: Not Yet Started
+priority: P2 (Design Required)
 applicability:
-  - "S3 (Claude Code Build)"
+- S3 (Claude Code Build)
 adopted_in: []
 sources:
-  - "gstack-gsd-superpowers-orchestrator-headless.md"
+- gstack-gsd-superpowers-orchestrator-headless.md
 related_findings:
-  - file: "orchestrator-headless-dispatch-context-isolation.md"
-    rel: "enables"
-  - file: "phase-queue-state-file-as-orchestrator-memory.md"
-    rel: "enables"
-  - file: "hands-off-routine-prompt-precision-pattern.md"
-    rel: "same-problem"
-  - file: "spec-as-source-of-truth-for-agent-construction.md"
-    rel: "same-problem"
-  - file: "artifact-as-contract-pattern.md"
-    rel: "extends"
+- file: orchestrator-headless-dispatch-context-isolation.md
+  rel: enables
+- file: phase-queue-state-file-as-orchestrator-memory.md
+  rel: enables
+- file: hands-off-routine-prompt-precision-pattern.md
+  rel: same-problem
+- file: spec-as-source-of-truth-for-agent-construction.md
+  rel: same-problem
+- file: artifact-as-contract-pattern.md
+  rel: extends
 proposals: null
-date_discovered: "2026-05-25"
-last_updated: "2026-05-25"
-pipeline_status: "classified"
-consumed_by: []
+date_discovered: '2026-05-25'
+last_updated: '2026-05-25'
+pipeline_status: synthesized
+consumed_by:
+- structuring-agent-context.md
 tags:
-  - "session-95-reextract"
+- session-95-reextract
 ---
 
 # Self-Contained Phase Prompt Pattern

@@ -32,8 +32,9 @@ related_findings:
 proposals: null
 date_discovered: '2026-06-11'
 last_updated: '2026-07-12'
-pipeline_status: raw
-consumed_by: []
+pipeline_status: synthesized
+consumed_by:
+- model-resilient-prompt-engineering.md
 ---
 
 # Skill Authoring — Explain the Why, Don't Bludgeon With MUSTs

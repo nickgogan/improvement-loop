@@ -22,8 +22,9 @@ related_findings:
   rel: extends
 - file: upgrade-direction-degradation-prose-guard-to-policy-engine.md
   rel: extends
-pipeline_status: raw
-consumed_by: []
+pipeline_status: synthesized
+consumed_by:
+- building-agentic-systems.md
 tags:
 - system-contract
 - agent-card

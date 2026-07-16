@@ -1,30 +1,32 @@
 ---
-name: "Credential Setup Outside the LLM Context Window"
-summary: "Archon's setup wizard detects when API keys need to be entered and spawns a separate terminal process for credential entry. The coding agent guides the user through setup but never sees the actual credentials. This prevents API keys from entering the LLM's context window, where they could be logged, cached, or exposed via prompt injection."
+name: Credential Setup Outside the LLM Context Window
+summary: Archon's setup wizard detects when API keys need to be entered and spawns a separate terminal process for credential entry. The coding agent guides the user through setup but never sees the actual
+  credentials. This prevents API keys from entering the LLM's context window, where they could be logged, cached, or exposed via prompt injection.
 implementation_notes: null
-category: "Governance"
-evidence_strength: "Medium (practitioner-documented)"
-adoption_status: "Not Yet Started"
-priority: "P2 (Design Required)"
+category: Governance
+evidence_strength: Medium (practitioner-documented)
+adoption_status: Not Yet Started
+priority: P2 (Design Required)
 applicability:
-  - "S3 (Claude Code Build)"
-  - "General"
+- S3 (Claude Code Build)
+- General
 adopted_in: []
 sources:
-  - "archon-open-source-harness-builder.md"
+- archon-open-source-harness-builder.md
 related_findings:
-  - file: "credential-isolation-bundled-auth-vault-proxy.md"
-    rel: "same-problem"
-  - file: "tiered-permission-system-bash-safety.md"
-    rel: "same-problem"
+- file: credential-isolation-bundled-auth-vault-proxy.md
+  rel: same-problem
+- file: tiered-permission-system-bash-safety.md
+  rel: same-problem
 proposals: null
-date_discovered: "2026-05-25"
-last_updated: "2026-05-25"
-pipeline_status: "extracted"
+date_discovered: '2026-05-25'
+last_updated: '2026-05-25'
+pipeline_status: synthesized
 consumed_by:
-  - "extracts/rules/credential-setup-outside-llm-context-window.md"
+- extracts/rules/credential-setup-outside-llm-context-window.md
+- agent-safety-and-permissions.md
 tags:
-  - "session-95-reextract"
+- session-95-reextract
 ---
 
 ## What It Is

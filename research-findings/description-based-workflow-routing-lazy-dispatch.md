@@ -1,31 +1,34 @@
 ---
-name: "Description-Based Workflow Routing with Lazy YAML Loading"
-summary: "Archon workflow YAML files include a brief description field that the coding agent reads first to determine which workflow matches the user's intent. The full YAML is only loaded after the routing decision. The agent never sees every workflow definition — it matches intent against short descriptions, then loads the selected workflow. Paired with a skill file copied into target repos so the coding agent knows how to invoke the Archon CLI."
+name: Description-Based Workflow Routing with Lazy YAML Loading
+summary: Archon workflow YAML files include a brief description field that the coding agent reads first to determine which workflow matches the user's intent. The full YAML is only loaded after the routing
+  decision. The agent never sees every workflow definition — it matches intent against short descriptions, then loads the selected workflow. Paired with a skill file copied into target repos so the coding
+  agent knows how to invoke the Archon CLI.
 implementation_notes: null
-category: "Orchestration"
-evidence_strength: "Medium (practitioner-documented)"
-adoption_status: "Not Yet Started"
-priority: "P2 (Design Required)"
+category: Orchestration
+evidence_strength: Medium (practitioner-documented)
+adoption_status: Not Yet Started
+priority: P2 (Design Required)
 applicability:
-  - "S3 (Claude Code Build)"
-  - "General"
+- S3 (Claude Code Build)
+- General
 adopted_in: []
 sources:
-  - "archon-open-source-harness-builder.md"
+- archon-open-source-harness-builder.md
 related_findings:
-  - file: "archon-yaml-defined-harness-workflows.md"
-    rel: "extends"
-  - file: "tiered-context-injection-over-monolithic-files.md"
-    rel: "same-problem"
-  - file: "context-aware-routing-skill-classifier-sub-skill.md"
-    rel: "same-problem"
+- file: archon-yaml-defined-harness-workflows.md
+  rel: extends
+- file: tiered-context-injection-over-monolithic-files.md
+  rel: same-problem
+- file: context-aware-routing-skill-classifier-sub-skill.md
+  rel: same-problem
 proposals: null
-date_discovered: "2026-05-25"
-last_updated: "2026-05-25"
-pipeline_status: "classified"
-consumed_by: []
+date_discovered: '2026-05-25'
+last_updated: '2026-05-25'
+pipeline_status: synthesized
+consumed_by:
+- agent-workflow-and-execution.md
 tags:
-  - "session-95-reextract"
+- session-95-reextract
 ---
 
 ## What It Is

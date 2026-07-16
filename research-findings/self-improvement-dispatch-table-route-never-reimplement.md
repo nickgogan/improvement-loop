@@ -1,7 +1,11 @@
 ---
-name: 'Self-Improvement Dispatch Table — Classify by Owning Surface, Route, Never Re-Implement'
-summary: 'The self-improvement skill is an umbrella dispatcher: it owns only the observation loop (capture, retro, promotion of internal lessons) and routes every other finding class to the skill that owns it via an explicit dispatch table. Classification keys on owning surface, not topic. Unknown classes become internal lessons with the operator flagged — the agent never invents a new route. Recommending a route is autonomous; invoking the routed skill asks first.'
-implementation_notes: 'How this could apply to the MetaSystem engine — Phase 2 of its restructure program will size a second-brain-for-operations against this store model; IB-172 (layered memory architecture) is the related backlog item. The engine already routes retired-SL learnings three ways (DD / knowledge / IB); this pattern is that rule generalized into a maintained table with per-class signals and a named residual owner, letting one intake surface feed many specialized loops without scope creep.'
+name: Self-Improvement Dispatch Table — Classify by Owning Surface, Route, Never Re-Implement
+summary: 'The self-improvement skill is an umbrella dispatcher: it owns only the observation loop (capture, retro, promotion of internal lessons) and routes every other finding class to the skill that owns
+  it via an explicit dispatch table. Classification keys on owning surface, not topic. Unknown classes become internal lessons with the operator flagged — the agent never invents a new route. Recommending
+  a route is autonomous; invoking the routed skill asks first.'
+implementation_notes: How this could apply to the MetaSystem engine — Phase 2 of its restructure program will size a second-brain-for-operations against this store model; IB-172 (layered memory architecture)
+  is the related backlog item. The engine already routes retired-SL learnings three ways (DD / knowledge / IB); this pattern is that rule generalized into a maintained table with per-class signals and a
+  named residual owner, letting one intake surface feed many specialized loops without scope creep.
 category: Orchestration
 evidence_strength: Medium (practitioner-documented, single production system with live store evidence)
 adoption_status: Not Yet Started
@@ -15,8 +19,9 @@ proposals: null
 date_discovered: '2026-07-12'
 last_updated: '2026-07-12'
 related_findings: []
-pipeline_status: raw
-consumed_by: []
+pipeline_status: synthesized
+consumed_by:
+- agent-workflow-and-execution.md
 tags:
 - dispatch-table
 - routing

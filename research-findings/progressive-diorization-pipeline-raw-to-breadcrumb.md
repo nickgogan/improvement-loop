@@ -1,35 +1,38 @@
 ---
-name: "Progressive Diorization Pipeline: Raw Recordings to AI Breadcrumbs"
-summary: "You cannot pump 100,000 hours of recordings into a context window. The pattern: record everything (raw capture) → diorize/categorize into semantic areas (fundraising, hiring, disputes) → synthesize into distilled knowledge artifacts → give AI breadcrumbs (pointers to relevant synthesized content). Each stage reduces volume while preserving what matters. YC regenerated a 150-page user manual from 2,000 hours of recordings in one weekend using this pipeline."
+name: 'Progressive Diorization Pipeline: Raw Recordings to AI Breadcrumbs'
+summary: 'You cannot pump 100,000 hours of recordings into a context window. The pattern: record everything (raw capture) → diorize/categorize into semantic areas (fundraising, hiring, disputes) → synthesize
+  into distilled knowledge artifacts → give AI breadcrumbs (pointers to relevant synthesized content). Each stage reduces volume while preserving what matters. YC regenerated a 150-page user manual from
+  2,000 hours of recordings in one weekend using this pipeline.'
 implementation_notes: null
-category: "Context Engineering"
-evidence_strength: "Medium (practitioner-documented)"
-adoption_status: "Partially Adopted"
-priority: "P2 (Design Required)"
+category: Context Engineering
+evidence_strength: Medium (practitioner-documented)
+adoption_status: Partially Adopted
+priority: P2 (Design Required)
 applicability:
-  - "S3 (Claude Code Build)"
-  - "General"
+- S3 (Claude Code Build)
+- General
 adopted_in: []
 sources:
-  - "self-improving-company-yc-five-layer-loop.md"
+- self-improving-company-yc-five-layer-loop.md
 related_findings:
-  - file: "total-organizational-legibility-as-ai-prerequisite.md"
-    rel: "enables"
-  - file: "distillator-with-round-trip-validation.md"
-    rel: "same-problem"
-  - file: "ace-delta-updates-over-monolithic-rewrites.md"
-    rel: "same-problem"
-  - file: "lossy-compression-boundary-headless-return.md"
-    rel: "same-problem"
-  - file: "four-tier-agent-memory-model-with-write-policy.md"
-    rel: "extends"
+- file: total-organizational-legibility-as-ai-prerequisite.md
+  rel: enables
+- file: distillator-with-round-trip-validation.md
+  rel: same-problem
+- file: ace-delta-updates-over-monolithic-rewrites.md
+  rel: same-problem
+- file: lossy-compression-boundary-headless-return.md
+  rel: same-problem
+- file: four-tier-agent-memory-model-with-write-policy.md
+  rel: extends
 proposals: null
-date_discovered: "2026-05-25"
-last_updated: "2026-05-25"
-pipeline_status: "classified"
-consumed_by: []
+date_discovered: '2026-05-25'
+last_updated: '2026-05-25'
+pipeline_status: synthesized
+consumed_by:
+- structuring-agent-context.md
 tags:
-  - "session-95-reextract"
+- session-95-reextract
 ---
 
 # Progressive Diorization Pipeline: Raw Recordings to AI Breadcrumbs

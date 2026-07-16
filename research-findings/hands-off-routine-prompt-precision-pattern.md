@@ -1,31 +1,34 @@
 ---
-name: "Hands-Off Routine Prompt Precision Pattern"
-summary: "Autonomous routines (unattended, cloud-scheduled agents) require substantially more precise prompts than interactive skills. The session cannot be steered mid-run, so error surface must be minimized upfront: narrow scope, explicit completion criteria, and step-by-step SOP instructions rather than goal-oriented prompts."
-implementation_notes: "Applies directly to MetaSystem's watch-upstream, research-loop, and any future scheduled skills. Prompts for scheduled IL skills should be written to this standard: enumerate steps, define done explicitly, handle edge cases inline."
-category: "Prompt Craft"
-evidence_strength: "Medium (practitioner-documented)"
-adoption_status: "Not Yet Started"
-priority: "P2 (Design Required)"
+name: Hands-Off Routine Prompt Precision Pattern
+summary: 'Autonomous routines (unattended, cloud-scheduled agents) require substantially more precise prompts than interactive skills. The session cannot be steered mid-run, so error surface must be minimized
+  upfront: narrow scope, explicit completion criteria, and step-by-step SOP instructions rather than goal-oriented prompts.'
+implementation_notes: 'Applies directly to MetaSystem''s watch-upstream, research-loop, and any future scheduled skills. Prompts for scheduled IL skills should be written to this standard: enumerate steps,
+  define done explicitly, handle edge cases inline.'
+category: Prompt Craft
+evidence_strength: Medium (practitioner-documented)
+adoption_status: Not Yet Started
+priority: P2 (Design Required)
 applicability:
-  - "S3 (Claude Code Build)"
-  - "General"
+- S3 (Claude Code Build)
+- General
 adopted_in: []
 sources:
-  - "claude-routines-scheduled-automations-webhooks.md"
+- claude-routines-scheduled-automations-webhooks.md
 related_findings:
-  - file: claude-routines-webhook-triggered-pipeline-chaining.md
-    rel: companion
-  - file: anthropic-managed-agents-platform.md
-    rel: companion
-  - file: morning-routine-skill-active-experiment-check-in.md
-    rel: same-problem
-  - file: agent-clarification-over-assumption-pattern.md
-    rel: contrasts-with
+- file: claude-routines-webhook-triggered-pipeline-chaining.md
+  rel: companion
+- file: anthropic-managed-agents-platform.md
+  rel: companion
+- file: morning-routine-skill-active-experiment-check-in.md
+  rel: same-problem
+- file: agent-clarification-over-assumption-pattern.md
+  rel: contrasts-with
 proposals: null
-date_discovered: "2026-04-20"
-last_updated: "2026-04-20"
-pipeline_status: classified
-consumed_by: []
+date_discovered: '2026-04-20'
+last_updated: '2026-04-20'
+pipeline_status: synthesized
+consumed_by:
+- model-resilient-prompt-engineering.md
 ---
 
 ## What It Is

@@ -1,45 +1,56 @@
 ---
-name: "Four-Estimate Agent Routing Test (Chat / Agent / Team / Human)"
-summary: |-
-  Plain English: a one-minute test that tells you whether a task on your desk is a chat
+name: Four-Estimate Agent Routing Test (Chat / Agent / Team / Human)
+summary: 'Plain English: a one-minute test that tells you whether a task on your desk is a chat
+
   task, a single-agent task, a multi-agent task, or a keep-it-human task — so you stop
+
   guessing and stop over-deploying agents. Estimate four things: (1) size — is the task
+
   bigger than one agent can hold at full quality? (2) independence — can the parts be
+
   done without knowing what the other parts did? (3) separation of concerns — do any
-  parts need to be done by different minds (critic who didn't write the draft)?
+
+  parts need to be done by different minds (critic who didn''t write the draft)?
+
   (4) checkability — is checking an answer much cheaper than producing one? The verdict
+
   routes to chat, one agent with a goal, a team of agents, or human judgment (no AI).
-  Deliberately tool-agnostic: the estimates describe the work, not the evolving tools.
-implementation_notes: |-
-  P2 — flagged as a Phase 4 interview / IB-176 design input (per the accepted
-  2026-07-13 link-intake triage): a candidate rubric for the engine's routine
+
+  Deliberately tool-agnostic: the estimates describe the work, not the evolving tools.'
+implementation_notes: 'P2 — flagged as a Phase 4 interview / IB-176 design input (per the accepted
+
+  2026-07-13 link-intake triage): a candidate rubric for the engine''s routine
+
   chat-vs-subagent-vs-fan-out routing decision, not a roster item on one source. The
+
   checkability estimate connects directly to the verifier-ceiling finding: fan-out
-  without a named cheap checker fails estimate 4.
-category: "Orchestration"
-evidence_strength: "Medium (practitioner-documented)"
-adoption_status: "Not Yet Started"
-priority: "P2 (Design Required)"
+
+  without a named cheap checker fails estimate 4.'
+category: Orchestration
+evidence_strength: Medium (practitioner-documented)
+adoption_status: Not Yet Started
+priority: P2 (Design Required)
 applicability:
-  - "IL (task routing, subagent dispatch)"
-  - "General"
+- IL (task routing, subagent dispatch)
+- General
 adopted_in: []
 sources:
-  - "1-6m-agents-registered-for-openclaw-and-did-nothing.md"
+- 1-6m-agents-registered-for-openclaw-and-did-nothing.md
 related_findings:
-  - file: "repeated-sampling-scaling-law-and-verifier-ceiling.md"
-    rel: "enabled-by"
-  - file: "two-constraint-decomposition-memory-vs-eval.md"
-    rel: "same-problem"
-  - file: "effort-scaling-rules-embedded-in-orchestrator.md"
-    rel: "same-problem"
-  - file: "human-ai-seam-identification-three-question-rubric.md"
-    rel: "same-problem"
+- file: repeated-sampling-scaling-law-and-verifier-ceiling.md
+  rel: enabled-by
+- file: two-constraint-decomposition-memory-vs-eval.md
+  rel: same-problem
+- file: effort-scaling-rules-embedded-in-orchestrator.md
+  rel: same-problem
+- file: human-ai-seam-identification-three-question-rubric.md
+  rel: same-problem
 proposals: null
-date_discovered: "2026-07-13"
-last_updated: "2026-07-13"
-pipeline_status: "raw"
-consumed_by: []
+date_discovered: '2026-07-13'
+last_updated: '2026-07-13'
+pipeline_status: synthesized
+consumed_by:
+- agent-architecture-decisions.md
 ---
 
 # Four-Estimate Agent Routing Test (Chat / Agent / Team / Human)

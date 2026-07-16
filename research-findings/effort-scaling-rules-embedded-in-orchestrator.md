@@ -34,11 +34,8 @@ last_updated: '2026-07-13'
 pipeline_status: synthesized
 consumed_by:
 - session-persistence-and-memory.md
-- artifact: tier-based-orchestrator-effort-scaling-rules
-  type: extracted-artifact
-  form: rule
-  date: 2026-04-27
-  session: 83
+- '{''artifact'': ''tier-based-orchestrator-effort-scaling-rules'', ''type'': ''extracted-artifact'', ''form'': ''rule'', ''date'': datetime.date(2026, 4, 27), ''session'': 83}'
+- agent-architecture-decisions.md
 ---
 
 ## What It Is

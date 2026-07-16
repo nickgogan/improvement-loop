@@ -35,9 +35,10 @@ related_findings:
   rel: same-problem
 - file: job-diet-boundaries-review-loop-operating-framework.md
   rel: same-problem
-pipeline_status: extracted
+pipeline_status: synthesized
 consumed_by:
 - skills/iterative-refinement-loop-with-quality-gate.md
+- building-agent-evaluation-suites.md
 ---
 # Iterative Refinement Loop with Quality Gate
 

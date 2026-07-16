@@ -19,9 +19,10 @@ related_findings:
 proposals: null
 date_discovered: '2026-04-07'
 last_updated: '2026-04-07'
-pipeline_status: extracted
+pipeline_status: synthesized
 consumed_by:
 - rules/token-budget-pre-turn-projection.md
+- agent-workflow-and-execution.md
 ---
 
 # Token Budget Tracking with Pre-Turn Projection Checks

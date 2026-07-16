@@ -1,47 +1,58 @@
 ---
-name: "Mandatory Explicit Model per Dispatch with Tiering Heuristics"
-summary: |-
-  Plain English: every subagent dispatch must name its model explicitly, because an
-  omitted model silently inherits the session's most expensive one — one observed
+name: Mandatory Explicit Model per Dispatch with Tiering Heuristics
+summary: 'Plain English: every subagent dispatch must name its model explicitly, because an
+
+  omitted model silently inherits the session''s most expensive one — one observed
+
   Superpowers run put all 26 reviewers on the top tier. v6.0.0 hard-requires a model
+
   in every dispatch template and ships the selection heuristics: a task-complexity →
+
   model-tier mapping, "turn count beats token price" (the cheapest models take 2-3x
+
   the turns on multi-step work and end up costing more), per-task review models scaled
+
   to diff size and risk, and the final whole-branch review pinned to the most capable
+
   model. Model selection becomes a governed resource decision per dispatch, not an
-  inherited default.
-implementation_notes: |-
-  Candidate input for the engine's model capability registry
+
+  inherited default.'
+implementation_notes: 'Candidate input for the engine''s model capability registry
+
   (operations/references/): the registry records what models can do; this finding
+
   supplies the dispatch-side discipline — no dispatch without an explicit tier choice,
+
   and the turn-count-vs-token-price heuristic for multi-step work. The silent-
-  inheritance failure mode applies directly to the engine's subagent fan-outs.
-category: "Model Selection"
-evidence_strength: "Medium (practitioner-documented)"
-adoption_status: "Not Yet Started"
-priority: "P2 (Design Required)"
+
+  inheritance failure mode applies directly to the engine''s subagent fan-outs.'
+category: Model Selection
+evidence_strength: Medium (practitioner-documented)
+adoption_status: Not Yet Started
+priority: P2 (Design Required)
 applicability:
-  - "General"
+- General
 adopted_in: []
 sources: []
 related_findings:
-  - file: "model-tier-routing-expensive-orchestrator-cheap-s.md"
-    rel: "extends"
-  - file: "agent-cost-blowup-mitigation-strategies.md"
-    rel: "same-problem"
-  - file: "model-tiers-aliases-cross-provider-indirection.md"
-    rel: "same-problem"
-  - file: "no-mid-session-model-switching-subagent-handoff.md"
-    rel: "same-problem"
+- file: model-tier-routing-expensive-orchestrator-cheap-s.md
+  rel: extends
+- file: agent-cost-blowup-mitigation-strategies.md
+  rel: same-problem
+- file: model-tiers-aliases-cross-provider-indirection.md
+  rel: same-problem
+- file: no-mid-session-model-switching-subagent-handoff.md
+  rel: same-problem
 proposals: null
-date_discovered: "2026-07-13"
-last_updated: "2026-07-13"
-pipeline_status: "raw"
-consumed_by: []
+date_discovered: '2026-07-13'
+last_updated: '2026-07-13'
+pipeline_status: synthesized
+consumed_by:
+- model-resilient-prompt-engineering.md
 tags:
-  - "model-selection"
-  - "cost-governance"
-  - "subagent-dispatch"
+- model-selection
+- cost-governance
+- subagent-dispatch
 ---
 
 # Mandatory Explicit Model per Dispatch with Tiering Heuristics

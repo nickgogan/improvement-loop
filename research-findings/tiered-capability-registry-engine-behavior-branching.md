@@ -1,53 +1,67 @@
 ---
-name: "Tiered Provider-Capability Registry Driving Engine Behavior"
-summary: |-
-  Plain English: when one engine has to drive many AI backends, declare each backend's
+name: Tiered Provider-Capability Registry Driving Engine Behavior
+summary: 'Plain English: when one engine has to drive many AI backends, declare each backend''s
+
   capabilities as graded values — not booleans — and make the engine branch on the
+
   grade, so every backend gets the same feature at the best fidelity it can support.
-  Archon v0.5.0's provider registry declares capabilities as discriminated values
-  (`structuredOutput: 'enforced' | 'best-effort' | false`; `nativeTools`;
+
+  Archon v0.5.0''s provider registry declares capabilities as discriminated values
+
+  (`structuredOutput: ''enforced'' | ''best-effort'' | false`; `nativeTools`;
+
   `sessionResume`) and the engine selects behavior per grade: grammar-constrained
-  output for 'enforced' providers, a validate-and-reask loop (max 3 attempts) for
-  'best-effort', refusal for unsupported; run management delivered as a native
+
+  output for ''enforced'' providers, a validate-and-reask loop (max 3 attempts) for
+
+  ''best-effort'', refusal for unsupported; run management delivered as a native
+
   in-process tool where `nativeTools` is true and as a generated prompt-section
+
   teaching CLI-over-bash where it is false. One protocol, capability-gated delivery —
-  no scattered per-provider if-branches.
-implementation_notes: |-
-  Directly informs the engine's model-capability registry
+
+  no scattered per-provider if-branches.'
+implementation_notes: 'Directly informs the engine''s model-capability registry
+
   (operations/references/): capability claims should be tiered discriminated values
+
   with per-tier consumer behavior spelled out (enforce / verify-and-retry /
+
   refuse-or-degrade), not booleans. Pairs with the Omnigent bench-verification
+
   finding — Archon supplies the tiered declaration shape, Omnigent supplies the
-  falsifiability discipline.
-category: "Tool Integration"
-evidence_strength: "Medium (practitioner-documented)"
-adoption_status: "Not Yet Started"
-priority: "P2 (Design Required)"
+
+  falsifiability discipline.'
+category: Tool Integration
+evidence_strength: Medium (practitioner-documented)
+adoption_status: Not Yet Started
+priority: P2 (Design Required)
 applicability:
-  - "General"
+- General
 adopted_in: []
 sources: []
 related_findings:
-  - file: "bench-verified-harness-capability-flags.md"
-    rel: "extends"
-  - file: "harness-adaptation-protocol-graded-capability-intersection.md"
-    rel: "same-problem"
-  - file: "receiver-relative-tier-semantics.md"
-    rel: "same-problem"
-  - file: "model-tiers-aliases-cross-provider-indirection.md"
-    rel: "same-problem"
-  - file: "vendor-neutral-skill-vocabulary-per-harness-tool-maps.md"
-    rel: "same-problem"
+- file: bench-verified-harness-capability-flags.md
+  rel: extends
+- file: harness-adaptation-protocol-graded-capability-intersection.md
+  rel: same-problem
+- file: receiver-relative-tier-semantics.md
+  rel: same-problem
+- file: model-tiers-aliases-cross-provider-indirection.md
+  rel: same-problem
+- file: vendor-neutral-skill-vocabulary-per-harness-tool-maps.md
+  rel: same-problem
 proposals: null
-date_discovered: "2026-07-13"
-last_updated: "2026-07-13"
-pipeline_status: "raw"
-consumed_by: []
+date_discovered: '2026-07-13'
+last_updated: '2026-07-13'
+pipeline_status: synthesized
+consumed_by:
+- designing-agent-tools.md
 tags:
-  - "tool-integration"
-  - "capability-registry"
-  - "multi-provider"
-  - "archon"
+- tool-integration
+- capability-registry
+- multi-provider
+- archon
 ---
 
 # Tiered Provider-Capability Registry Driving Engine Behavior

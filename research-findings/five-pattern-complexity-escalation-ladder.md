@@ -1,38 +1,41 @@
 ---
-name: "Five-Pattern Complexity Escalation Ladder"
-summary: "A decision framework for choosing among five agentic patterns — sequential flow, operator (parallel terminals), split-and-merge (sub-agents), agent teams (shared communication), and headless (autonomous) — based on task complexity, inter-task dependency, and human attention budget. Each pattern trades off isolation, coordination, cost, and autonomy. Escalate only when the current pattern's ceiling is hit."
+name: Five-Pattern Complexity Escalation Ladder
+summary: A decision framework for choosing among five agentic patterns — sequential flow, operator (parallel terminals), split-and-merge (sub-agents), agent teams (shared communication), and headless (autonomous)
+  — based on task complexity, inter-task dependency, and human attention budget. Each pattern trades off isolation, coordination, cost, and autonomy. Escalate only when the current pattern's ceiling is
+  hit.
 implementation_notes: null
-category: "Orchestration"
-evidence_strength: "Medium (practitioner-documented)"
-adoption_status: "Not Yet Started"
-priority: "P1 (Implement Now)"
+category: Orchestration
+evidence_strength: Medium (practitioner-documented)
+adoption_status: Not Yet Started
+priority: P1 (Implement Now)
 applicability:
-  - "S3 (Claude Code Build)"
+- S3 (Claude Code Build)
 adopted_in: []
 sources:
-  - "five-agentic-patterns-claude-code.md"
+- five-agentic-patterns-claude-code.md
 related_findings:
-  - file: "worktree-isolation-for-parallel-agent-sessions.md"
-    rel: "same-problem"
-  - file: "agent-teams-shared-communication-channel.md"
-    rel: "same-problem"
-  - file: "sub-agent-context-isolation-for-parallel-complex.md"
-    rel: "same-problem"
-  - file: "orchestrator-headless-dispatch-context-isolation.md"
-    rel: "same-problem"
-  - file: "claude-p-headless-mode-as-openclaw-replacement.md"
-    rel: "same-problem"
-  - file: "end-to-end-sequential-bug-fix-pipeline.md"
-    rel: "same-problem"
-  - file: "context-degradation-40-50-percent-threshold.md"
-    rel: "enables"
+- file: worktree-isolation-for-parallel-agent-sessions.md
+  rel: same-problem
+- file: agent-teams-shared-communication-channel.md
+  rel: same-problem
+- file: sub-agent-context-isolation-for-parallel-complex.md
+  rel: same-problem
+- file: orchestrator-headless-dispatch-context-isolation.md
+  rel: same-problem
+- file: claude-p-headless-mode-as-openclaw-replacement.md
+  rel: same-problem
+- file: end-to-end-sequential-bug-fix-pipeline.md
+  rel: same-problem
+- file: context-degradation-40-50-percent-threshold.md
+  rel: enables
 proposals: null
-date_discovered: "2026-05-25"
-last_updated: "2026-05-25"
-pipeline_status: "classified"
-consumed_by: []
+date_discovered: '2026-05-25'
+last_updated: '2026-05-25'
+pipeline_status: synthesized
+consumed_by:
+- agent-architecture-decisions.md
 tags:
-  - "session-95-reextract"
+- session-95-reextract
 ---
 
 ## What It Is

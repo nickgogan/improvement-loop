@@ -17,8 +17,9 @@ last_updated: '2026-07-12'
 related_findings:
 - file: machine-readable-system-contract-with-wiring-rows.md
   rel: extends
-pipeline_status: raw
-consumed_by: []
+pipeline_status: synthesized
+consumed_by:
+- building-agentic-systems.md
 tags:
 - system-contract
 - invariants

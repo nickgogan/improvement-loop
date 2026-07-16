@@ -23,8 +23,9 @@ related_findings:
   rel: same-problem
 - file: mcp-async-task-model.md
   rel: same-problem
-pipeline_status: "classified"
-consumed_by: []
+pipeline_status: synthesized
+consumed_by:
+- designing-agent-tools.md
 ---
 # Claude Code Monitor Tool — Event-Driven Background Process Monitoring
 

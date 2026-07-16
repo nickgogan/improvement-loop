@@ -1,38 +1,48 @@
 ---
-name: "North Star Drift Loop (Trajectory Extrapolation vs Locked Goals)"
-summary: |-
-  A periodic loop that checks whether accumulated activity actually points at declared
+name: North Star Drift Loop (Trajectory Extrapolation vs Locked Goals)
+summary: 'A periodic loop that checks whether accumulated activity actually points at declared
+
   goals. Four parts: lock in explicit North Star goals; analyze trajectory by reading
+
   Claude session history, ingested data, and loop results; forward-extrapolate ("if
-  nothing changes, here's where you land in six months"); and, if drift is detected,
-  surface what's pulling in that direction and propose direction changes. Goal-alignment
-  drift detection — a different axis from source/doc drift.
-implementation_notes: |-
-  The engine has trajectory signals in CHARTER.md and a /detect-drift skill — but that
+
+  nothing changes, here''s where you land in six months"); and, if drift is detected,
+
+  surface what''s pulling in that direction and propose direction changes. Goal-alignment
+
+  drift detection — a different axis from source/doc drift.'
+implementation_notes: 'The engine has trajectory signals in CHARTER.md and a /detect-drift skill — but that
+
   skill detects source drift (extracts vs their sources), not goal drift. This pattern is
+
   a concrete recipe for a charter-alignment loop: read session history + System Log +
-  loop reports, extrapolate the current trajectory, and diff it against the charter's
+
+  loop reports, extrapolate the current trajectory, and diff it against the charter''s
+
   trajectory signals. Design required: cadence, inputs, and how proposals route through
-  the existing gate (report to Nick, never self-steer).
-category: "Governance"
-evidence_strength: "Medium (practitioner-documented)"
-adoption_status: "Not Yet Started"
-priority: "P2 (Design Required)"
+
+  the existing gate (report to Nick, never self-steer).'
+category: Governance
+evidence_strength: Medium (practitioner-documented)
+adoption_status: Not Yet Started
+priority: P2 (Design Required)
 applicability:
-  - "IL (charter alignment)"
-  - "General"
+- IL (charter alignment)
+- General
 adopted_in: []
 sources:
-  - "8-claude-loops-to-build-10x-faster.md"
+- 8-claude-loops-to-build-10x-faster.md
 related_findings:
-  - file: "session-history-mining-for-skill-discovery.md"
-    rel: "enabled-by"
-  - file: "direction-md-committed-triage-constitution.md"
-    rel: "same-problem"
+- file: session-history-mining-for-skill-discovery.md
+  rel: enabled-by
+- file: direction-md-committed-triage-constitution.md
+  rel: same-problem
 proposals: null
-date_discovered: "2026-07-12"
-last_updated: "2026-07-13"
-pipeline_status: "raw"
+date_discovered: '2026-07-12'
+last_updated: '2026-07-13'
+pipeline_status: synthesized
+consumed_by:
+- agent-governance-and-trust.md
 ---
 
 ## What It Is

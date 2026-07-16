@@ -40,6 +40,9 @@ related_findings:
 proposals: null
 date_discovered: '2026-07-11'
 last_updated: '2026-07-13'
+pipeline_status: synthesized
+consumed_by:
+- agent-governance-and-trust.md
 ---
 
 # Skill-Library Drift — Unbounded Accumulation Degrades the Agent

@@ -1,7 +1,11 @@
 ---
-name: 'Cold-Start Chain as Load Order, Cold-Start Test as System Regression Test'
-summary: 'A fresh agent session follows one documented, ordered load path from zero context to working state: always-on entry file → active-user context → vision layer → control surfaces → method router → task skill. The system''s standing regression test is the cold-start test: a fresh session loading only the standard entry points must state the system''s purpose and the next unit of work with zero guidance. The same test, run as a "cold-start echo," is the acceptance test for installing the system on a new harness.'
-implementation_notes: 'The engine''s Phase 0 spine (PROGRESS.md as the only cold-start artifact, wake-up idiom) is a two-hop version of this. The adoptable delta: (1) document the engine''s full load order explicitly as a chain, (2) institutionalize the cold-start test as a periodic regression check — fresh session, standard entry points only, must state purpose + next unit of work, and (3) use the echo form ("state what actually composed") as the acceptance test whenever wiring changes or the kernel is ported.'
+name: Cold-Start Chain as Load Order, Cold-Start Test as System Regression Test
+summary: 'A fresh agent session follows one documented, ordered load path from zero context to working state: always-on entry file → active-user context → vision layer → control surfaces → method router
+  → task skill. The system''s standing regression test is the cold-start test: a fresh session loading only the standard entry points must state the system''s purpose and the next unit of work with zero
+  guidance. The same test, run as a "cold-start echo," is the acceptance test for installing the system on a new harness.'
+implementation_notes: 'The engine''s Phase 0 spine (PROGRESS.md as the only cold-start artifact, wake-up idiom) is a two-hop version of this. The adoptable delta: (1) document the engine''s full load order
+  explicitly as a chain, (2) institutionalize the cold-start test as a periodic regression check — fresh session, standard entry points only, must state purpose + next unit of work, and (3) use the echo
+  form ("state what actually composed") as the acceptance test whenever wiring changes or the kernel is ported.'
 category: Context Engineering
 evidence_strength: Medium (practitioner-documented, single production system)
 adoption_status: Not Yet Started
@@ -15,8 +19,9 @@ proposals: null
 date_discovered: '2026-07-12'
 last_updated: '2026-07-12'
 related_findings: []
-pipeline_status: raw
-consumed_by: []
+pipeline_status: synthesized
+consumed_by:
+- structuring-agent-context.md
 tags:
 - cold-start
 - session-continuity

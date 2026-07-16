@@ -1,50 +1,65 @@
 ---
-name: "Center vs Edge of Distribution — Task Classification as the Model-Routing Input"
-summary: |-
-  Model routing should start from classifying the task load, not from benchmark tables:
+name: Center vs Edge of Distribution — Task Classification as the Model-Routing Input
+summary: 'Model routing should start from classifying the task load, not from benchmark tables:
+
   center-of-distribution tasks (familiar shapes, millions of prior examples, outputs a
+
   human can inspect quickly) are where models have converged — cheap/open models are at
+
   parity or better. Edge-of-distribution tasks are where models still separate and
+
   frontier spend pays. Quantified anchor (Mitchell Hashimoto, Fable 5 launch): on
+
   ordinary "implement this feature" work, GLM 5.2 (<$1, minutes), GPT 5.5 (~$1.50), and
+
   Fable 5 ($9, 40 min) produced equally acceptable output — 9x cost for parity; on an
+
   edge task, only the frontier model could touch it. Jones: "almost no one has asked
+
   what is your distribution of tasks properly yet" — the classification, not the model
-  choice, is the unsolved input.
-implementation_notes: |-
-  The KB's routing findings (task-specific-model-routing-table, model-tier-routing) name
+
+  choice, is the unsolved input.'
+implementation_notes: 'The KB''s routing findings (task-specific-model-routing-table, model-tier-routing) name
+
   "task classification requires its own rules" as an open failure mode — this supplies
+
   the axis. The model-capability registry refresh and any /design-* model recommendation
+
   should carry a center/edge classification step before consulting per-model rows:
+
   center-of-distribution work routes to the cheap tier by default; frontier is reserved
+
   for edge tasks. Convergence-at-center also explains why cheap-ties-frontier results
-  (Hashimoto's first half) are facts about the task, not the models.
-category: "Model Selection"
-evidence_strength: "Medium (practitioner-documented)"
-adoption_status: "Not Yet Started"
-priority: "P2 (Design Required)"
+
+  (Hashimoto''s first half) are facts about the task, not the models.'
+category: Model Selection
+evidence_strength: Medium (practitioner-documented)
+adoption_status: Not Yet Started
+priority: P2 (Design Required)
 applicability:
-  - "Improvement Loop"
-  - "General"
+- Improvement Loop
+- General
 adopted_in: []
 sources:
-  - "glm-5-2-is-free-and-beats-claude-on-most-work.md"
-  - "you-cant-compete-on-cheap-models-anymore.md"
+- glm-5-2-is-free-and-beats-claude-on-most-work.md
+- you-cant-compete-on-cheap-models-anymore.md
 related_findings:
-  - file: "task-specific-model-routing-table-march-2026-bench.md"
-    rel: "enables"
-  - file: "model-tier-routing-expensive-orchestrator-cheap-s.md"
-    rel: "same-problem"
-  - file: "claude-5-family-retiers-claude-line.md"
-    rel: "same-problem"
-  - file: "harness-non-portability-across-model-families.md"
-    rel: "same-problem"
-  - file: "prototype-at-frontier-then-downshift.md"
-    rel: "enables"
+- file: task-specific-model-routing-table-march-2026-bench.md
+  rel: enables
+- file: model-tier-routing-expensive-orchestrator-cheap-s.md
+  rel: same-problem
+- file: claude-5-family-retiers-claude-line.md
+  rel: same-problem
+- file: harness-non-portability-across-model-families.md
+  rel: same-problem
+- file: prototype-at-frontier-then-downshift.md
+  rel: enables
 proposals: null
-date_discovered: "2026-07-12"
-last_updated: "2026-07-12"
-pipeline_status: "raw"
+date_discovered: '2026-07-12'
+last_updated: '2026-07-12'
+pipeline_status: synthesized
+consumed_by:
+- model-resilient-prompt-engineering.md
 ---
 
 ## What It Is

@@ -1,7 +1,12 @@
 ---
-name: 'Upgrade-Direction Degradation — Prose Guard Floor, Policy-Engine Ceiling'
-summary: 'In a portable system contract, most degradation paths describe how a row weakens on a lesser host. One row inverts the direction: its floor is guards carried as prose (in the always-on file and skill bodies, with the install report naming which guards are prose-only), and a host WITH native permission gates may replace prose guards with real enforcement — explicitly allowed to exceed the source, never the reverse. CareerBuddy''s wiring row 08 is the pattern''s production instance, with a concrete enforcement ladder across Cursor hooks, Codex execpolicy, and Claude Code PreToolUse hooks.'
-implementation_notes: 'Queued by CareerBuddy explicitly as a corpus contribution to this engine. The engine runs the same asymmetry today without declaring it: most guards are prose (governance rules, human-gate constraints) while a few are enforced (pre-commit hook for frontmatter/line-budget; bypassPermissions removes a whole enforcement layer by ruling). A portable-governance-kernel wiring row for permissioning should state the prose floor, name which guards are prose-only on the current harness, and mark the row upgrade-direction so richer hosts harden rather than merely match. Monotonicity rule to keep: upgrades allowed, downgrades never.'
+name: Upgrade-Direction Degradation — Prose Guard Floor, Policy-Engine Ceiling
+summary: 'In a portable system contract, most degradation paths describe how a row weakens on a lesser host. One row inverts the direction: its floor is guards carried as prose (in the always-on file and
+  skill bodies, with the install report naming which guards are prose-only), and a host WITH native permission gates may replace prose guards with real enforcement — explicitly allowed to exceed the source,
+  never the reverse. CareerBuddy''s wiring row 08 is the pattern''s production instance, with a concrete enforcement ladder across Cursor hooks, Codex execpolicy, and Claude Code PreToolUse hooks.'
+implementation_notes: 'Queued by CareerBuddy explicitly as a corpus contribution to this engine. The engine runs the same asymmetry today without declaring it: most guards are prose (governance rules, human-gate
+  constraints) while a few are enforced (pre-commit hook for frontmatter/line-budget; bypassPermissions removes a whole enforcement layer by ruling). A portable-governance-kernel wiring row for permissioning
+  should state the prose floor, name which guards are prose-only on the current harness, and mark the row upgrade-direction so richer hosts harden rather than merely match. Monotonicity rule to keep: upgrades
+  allowed, downgrades never.'
 category: Governance
 evidence_strength: Medium (practitioner-documented, production system; enforcement ladder verified against three platform adapters' live-doc surveys)
 adoption_status: Not Yet Started
@@ -21,8 +26,9 @@ related_findings:
   rel: same-problem
 - file: runtime-governance-gap-buildtime-to-production.md
   rel: same-problem
-pipeline_status: raw
-consumed_by: []
+pipeline_status: synthesized
+consumed_by:
+- agent-governance-and-trust.md
 tags:
 - enforcement
 - prose-guards

@@ -1,30 +1,35 @@
 ---
 name: Skill Description Structure — [What it does] + [When to use it] + [Key capabilities]
-summary: |-
-  Anthropic's Complete Guide PDF prescribes a three-part structure for the skill description field: [What it does] + [When to use it] + [Key capabilities]. Good descriptions are specific and actionable, include trigger phrases users would naturally say, mention file types if relevant, and have a clear value proposition. Bad descriptions are vague, miss trigger phrases, or are too technical. Reserved words 'claude' and 'anthropic' are forbidden in names. Description max 1024 chars; no XML angle brackets.
-implementation_notes: "Worked examples from the PDF: GOOD — 'Analyzes Figma design files and generates developer handoff documentation. Use when user uploads .fig files, asks for design specs, component documentation, or design-to-code handoff.' BAD — 'Helps with projects.' / 'Creates sophisticated multi-page documentation systems.' / 'Implements the Project entity model with hierarchical relationships.' The PDF lists three failure modes: too vague, missing triggers, too technical with no user triggers. Pair with skill-creator's 'be a little bit pushy' guidance: to combat Claude's undertriggering tendency, descriptions should include not just trigger conditions but a slight push toward use ('Make sure to use this skill whenever the user mentions X, Y, Z, even if they don't explicitly ask')."
+summary: 'Anthropic''s Complete Guide PDF prescribes a three-part structure for the skill description field: [What it does] + [When to use it] + [Key capabilities]. Good descriptions are specific and actionable,
+  include trigger phrases users would naturally say, mention file types if relevant, and have a clear value proposition. Bad descriptions are vague, miss trigger phrases, or are too technical. Reserved
+  words ''claude'' and ''anthropic'' are forbidden in names. Description max 1024 chars; no XML angle brackets.'
+implementation_notes: 'Worked examples from the PDF: GOOD — ''Analyzes Figma design files and generates developer handoff documentation. Use when user uploads .fig files, asks for design specs, component
+  documentation, or design-to-code handoff.'' BAD — ''Helps with projects.'' / ''Creates sophisticated multi-page documentation systems.'' / ''Implements the Project entity model with hierarchical relationships.''
+  The PDF lists three failure modes: too vague, missing triggers, too technical with no user triggers. Pair with skill-creator''s ''be a little bit pushy'' guidance: to combat Claude''s undertriggering
+  tendency, descriptions should include not just trigger conditions but a slight push toward use (''Make sure to use this skill whenever the user mentions X, Y, Z, even if they don''t explicitly ask'').'
 category: Prompt Craft
 evidence_strength: Strong (production-tested)
 adoption_status: Not Yet Started
 priority: P1 (Implement Now)
 applicability:
-  - "S3 (Claude Code Build)"
-  - "General"
+- S3 (Claude Code Build)
+- General
 adopted_in: []
 sources:
-  - "anthropic-complete-guide-building-skills-pdf.md"
+- anthropic-complete-guide-building-skills-pdf.md
 related_findings:
-  - file: "skill-md-frontmatter-as-discovery-trigger-primitive.md"
-    rel: "extends"
-  - file: "skill-description-optimization-loop-held-out-test.md"
-    rel: "same-problem"
-  - file: "skill-frontmatter-validation-rules.md"
-    rel: "extends"
+- file: skill-md-frontmatter-as-discovery-trigger-primitive.md
+  rel: extends
+- file: skill-description-optimization-loop-held-out-test.md
+  rel: same-problem
+- file: skill-frontmatter-validation-rules.md
+  rel: extends
 proposals: null
 date_discovered: '2026-06-11'
 last_updated: '2026-06-11'
-pipeline_status: raw
-consumed_by: []
+pipeline_status: synthesized
+consumed_by:
+- model-resilient-prompt-engineering.md
 ---
 
 # Skill Description Structure — [What it does] + [When to use it] + [Key capabilities]

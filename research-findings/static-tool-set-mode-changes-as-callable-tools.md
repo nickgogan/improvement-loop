@@ -1,34 +1,44 @@
 ---
-name: "Static Tool Set with Mode Changes as Callable Tools"
-summary: |-
-  Adding or removing tools mid-conversation breaks the prompt cache because tool definitions
+name: Static Tool Set with Mode Changes as Callable Tools
+summary: 'Adding or removing tools mid-conversation breaks the prompt cache because tool definitions
+
   live in the cached prefix. Claude Code therefore never swaps tool sets: plan mode is not a
+
   restricted toolset but a pair of always-present tools (EnterPlanMode/ExitPlanMode) plus a
+
   system message explaining the constraints. For us this is a design rule for any mode-bearing
-  agent: represent modes as state the model toggles via tools, not as different tool surfaces.
-implementation_notes: |-
-  When designing agents/skills with modes (plan vs execute, read-only vs write, teacher vs
+
+  agent: represent modes as state the model toggles via tools, not as different tool surfaces.'
+implementation_notes: 'When designing agents/skills with modes (plan vs execute, read-only vs write, teacher vs
+
   builder): (1) declare the full tool set once at session start and keep it static; (2) express
+
   mode as a callable transition tool plus behavioral instructions, with enforcement in the
+
   harness/permission layer rather than by hiding tools; (3) this also lets the model enter a
-  mode autonomously (Claude Code's model can call EnterPlanMode itself). Complements deferred
-  tool loading: stubs keep rarely-used tools present-but-cheap instead of removing them.
-category: "Tool Integration"
-evidence_strength: "Strong (production-tested, first-party)"
-adoption_status: "Not Yet Started"
-priority: "P2 (Design Required)"
+
+  mode autonomously (Claude Code''s model can call EnterPlanMode itself). Complements deferred
+
+  tool loading: stubs keep rarely-used tools present-but-cheap instead of removing them.'
+category: Tool Integration
+evidence_strength: Strong (production-tested, first-party)
+adoption_status: Not Yet Started
+priority: P2 (Design Required)
 applicability:
-  - "Improvement Loop"
-  - "General"
+- Improvement Loop
+- General
 adopted_in: []
 sources:
-  - "claude-code-prompt-caching-is-everything.md"
+- claude-code-prompt-caching-is-everything.md
 related_findings:
-  - file: "deny-shrinks-toolset.md"
-    rel: "contradicts"
+- file: deny-shrinks-toolset.md
+  rel: contradicts
 proposals: null
-date_discovered: "2026-07-11"
-last_updated: "2026-07-12"
+date_discovered: '2026-07-11'
+last_updated: '2026-07-12'
+consumed_by:
+- designing-agent-tools.md
+pipeline_status: synthesized
 ---
 
 ## What It Is

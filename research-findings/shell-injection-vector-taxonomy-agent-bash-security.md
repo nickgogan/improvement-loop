@@ -1,7 +1,10 @@
 ---
 name: Shell-Injection Vector Taxonomy for Agent Bash Security
-summary: Claude Code's leaked bashSecurity.ts runs 23 numbered security checks on every bash command; 18 of those checks specifically block Zsh builtins. Beyond pattern allowlisting, the module enumerates and defends against named injection vectors — Zsh equals expansion (`=curl` bypassing a `curl` allowlist), unicode zero-width-space insertion in command names, IFS null-byte injection, and a malformed-token bypass found during a HackerOne bug-bounty review. Teams building bash-access agents need an enumerated injection-vector list, not just an allowlist of known-safe commands.
-implementation_notes: MetaSystem's S3 (Claude Code Build) work involves bash access via hooks. Rules in `.claude/rules/` can block dangerous patterns, but the leaked bashSecurity.ts shows the set of vectors that a mature shell guard must cover. This is a direct input to any future "MetaSystem bash-hook hardening" IB item.
+summary: Claude Code's leaked bashSecurity.ts runs 23 numbered security checks on every bash command; 18 of those checks specifically block Zsh builtins. Beyond pattern allowlisting, the module enumerates
+  and defends against named injection vectors — Zsh equals expansion (`=curl` bypassing a `curl` allowlist), unicode zero-width-space insertion in command names, IFS null-byte injection, and a malformed-token
+  bypass found during a HackerOne bug-bounty review. Teams building bash-access agents need an enumerated injection-vector list, not just an allowlist of known-safe commands.
+implementation_notes: MetaSystem's S3 (Claude Code Build) work involves bash access via hooks. Rules in `.claude/rules/` can block dangerous patterns, but the leaked bashSecurity.ts shows the set of vectors
+  that a mature shell guard must cover. This is a direct input to any future "MetaSystem bash-hook hardening" IB item.
 category: Sandboxing
 evidence_strength: Strong (production-tested)
 adoption_status: Not Yet Started
@@ -25,8 +28,9 @@ related_findings:
 proposals: null
 date_discovered: '2026-04-23'
 last_updated: '2026-04-23'
-pipeline_status: "classified"
-consumed_by: []
+pipeline_status: synthesized
+consumed_by:
+- agent-safety-and-permissions.md
 ---
 
 # Shell-Injection Vector Taxonomy for Agent Bash Security

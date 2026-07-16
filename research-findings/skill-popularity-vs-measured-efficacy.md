@@ -1,39 +1,52 @@
 ---
-name: "Skill Popularity Is Not Skill Efficacy (177k-Star Skill Measured Worse)"
-summary: |-
-  Plain English: GitHub stars measure virality, not whether a skill helps — and the
+name: Skill Popularity Is Not Skill Efficacy (177k-Star Skill Measured Worse)
+summary: 'Plain English: GitHub stars measure virality, not whether a skill helps — and the
+
   starkest data point yet says a wildly popular skill actively hurts. Kun Chen
+
   benchmarked a skill from the 177k-star "Android Skills" repo with Program Bench
+
   (end-to-end program-building eval) and measured +5% token usage with *worse* results.
+
   His rule of thumb: do not install any skill from the internet that claims to make your
+
   agent perform better but has published no rigorous evaluation of the claim. Two
+
   distinct risks compound: unvetted skills are a security surface (they can instruct the
+
   agent to run anything, leak keys/credentials), and even benign ones can degrade
+
   performance. "Their GitHub stars only tell you how popular they are, not whether they
-  are actually helpful."
-implementation_notes: |-
-  Directly applicable to the engine's import path (e.g., the meta-skill-author import)
+
+  are actually helpful."'
+implementation_notes: 'Directly applicable to the engine''s import path (e.g., the meta-skill-author import)
+
   and watched-libraries triage: popularity/star counts appear in our roster signals, and
+
   this finding says they carry zero efficacy information — require published eval
+
   evidence or run our own with/without baseline before adopting external skills. Candidate
-  criteria-delta for /assess-skill intake of third-party skills.
-category: "Evaluation"
-evidence_strength: "Medium (practitioner-documented)"
-adoption_status: "Not Yet Started"
-priority: "P2 (Design Required)"
+
+  criteria-delta for /assess-skill intake of third-party skills.'
+category: Evaluation
+evidence_strength: Medium (practitioner-documented)
+adoption_status: Not Yet Started
+priority: P2 (Design Required)
 applicability:
-  - "IL (skill imports, watched-libraries triage)"
-  - "General"
+- IL (skill imports, watched-libraries triage)
+- General
 adopted_in: []
 sources:
-  - "l8-principals-agentic-engineering-workflow.md"
+- l8-principals-agentic-engineering-workflow.md
 related_findings:
-  - file: "skill-security-audit-obligation.md"
-    rel: "same-problem"
+- file: skill-security-audit-obligation.md
+  rel: same-problem
 proposals: null
-date_discovered: "2026-07-12"
-last_updated: "2026-07-12"
-pipeline_status: "raw"
+date_discovered: '2026-07-12'
+last_updated: '2026-07-12'
+pipeline_status: synthesized
+consumed_by:
+- building-agent-evaluation-suites.md
 ---
 
 ## What It Is

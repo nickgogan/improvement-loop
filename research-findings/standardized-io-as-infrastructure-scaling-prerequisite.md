@@ -1,35 +1,38 @@
 ---
-name: "Standardized I/O as Agent Infrastructure Scaling Prerequisite"
-summary: "Scaling agent automation beyond individual deployments requires moving to an infrastructure layer that standardizes inputs and outputs. The argument: 'Claude is great and Claude Code as a coding harness is also awesome but you need to go one step further to the infrastructure layer if you really want to start automating things at scale -- standardizing inputs and standardizing outputs.' Without standardized I/O, each agent is a bespoke integration."
+name: Standardized I/O as Agent Infrastructure Scaling Prerequisite
+summary: 'Scaling agent automation beyond individual deployments requires moving to an infrastructure layer that standardizes inputs and outputs. The argument: ''Claude is great and Claude Code as a coding
+  harness is also awesome but you need to go one step further to the infrastructure layer if you really want to start automating things at scale -- standardizing inputs and standardizing outputs.'' Without
+  standardized I/O, each agent is a bespoke integration.'
 implementation_notes: null
-category: "Orchestration"
-evidence_strength: "Medium (practitioner-documented)"
-adoption_status: "Not Yet Started"
+category: Orchestration
+evidence_strength: Medium (practitioner-documented)
+adoption_status: Not Yet Started
 priority: P2 (Design Required)
 applicability:
-  - "S3 (Claude Code Build)"
-  - "General"
+- S3 (Claude Code Build)
+- General
 adopted_in: []
 sources:
-  - "anthropic-managed-agents-platform.md"
+- anthropic-managed-agents-platform.md
 related_findings:
-  - file: "task-contract-pattern-schema-first-agent.md"
-    rel: same-problem
-  - file: "artifact-as-contract-pattern.md"
-    rel: same-problem
-  - file: "anthropic-managed-agents-platform.md"
-    rel: extends
-  - file: "build-operate-separation-principle.md"
-    rel: same-problem
-  - file: "agent-architecture-layer-impermanence.md"
-    rel: same-problem
+- file: task-contract-pattern-schema-first-agent.md
+  rel: same-problem
+- file: artifact-as-contract-pattern.md
+  rel: same-problem
+- file: anthropic-managed-agents-platform.md
+  rel: extends
+- file: build-operate-separation-principle.md
+  rel: same-problem
+- file: agent-architecture-layer-impermanence.md
+  rel: same-problem
 proposals: null
-date_discovered: "2026-05-25"
-last_updated: "2026-05-25"
-pipeline_status: "classified"
-consumed_by: []
+date_discovered: '2026-05-25'
+last_updated: '2026-05-25'
+pipeline_status: synthesized
+consumed_by:
+- agent-architecture-decisions.md
 tags:
-  - "session-95-reextract"
+- session-95-reextract
 ---
 
 ## What It Is

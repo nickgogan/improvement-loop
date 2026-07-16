@@ -18,9 +18,10 @@ related_findings:
 proposals: null
 date_discovered: '2026-04-09'
 last_updated: '2026-04-19'
-pipeline_status: extracted
+pipeline_status: synthesized
 consumed_by:
 - rules/balanced-positive-negative-eval-sets.md
+- building-agent-evaluation-suites.md
 ---
 
 ## What It Is

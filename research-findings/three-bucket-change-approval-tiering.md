@@ -53,7 +53,9 @@ related_findings:
 proposals: null
 date_discovered: '2026-07-12'
 last_updated: '2026-07-12'
-pipeline_status: raw
+pipeline_status: synthesized
+consumed_by:
+- agent-governance-and-trust.md
 ---
 
 ## What It Is

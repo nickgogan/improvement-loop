@@ -1,5 +1,14 @@
 # Changelog — Building Agentic Systems
 
+## 2026-07-16 — Session 147 — nick-request
+
+- Findings: 37 (+8, -1 since last synthesis; Nick-authorized session-147 guide-refresh sweep)
+- Added: [[dr-research-to-skill-gated-pipeline]], [[harness-adaptation-protocol-graded-capability-intersection]], [[harness-non-portability-across-model-families]], [[invariant-column-as-contract-field]], [[machine-readable-system-contract-with-wiring-rows]], [[receiver-relative-tier-semantics]], [[scale-threshold-heuristic-obsidian-vs-rag]], [[wiring-canon-abstract-then-adapt-doc-structure]]
+- Removed: [[context-first-build-sequencing-for-agentic-systems]] (recategorized to Context Engineering; routes to G2a; build-ordering note retained under five-pillar coverage)
+- Structural: New Section 9 (Making the System Portable — system contract/wiring rows, invariant column, receiver-relative tiers, adaptation protocol, wiring canon, wiring-row template + worked example); Section 4 gained "Model choice is an architecture-level commitment"; Section 5 gained gap-aware research-to-capability pipeline; Section 3 scale-threshold corroboration; Key Concept #8; Pitfalls gained Portability + Ingestion-pipeline groups. DD-98 split proposal emitted (see operations/split-proposals/).
+- Preserved: none (no Nick's Annotations or PRESERVE markers found)
+- SL: session-147 (SL retired as producer per session-138 ruling; git is the session record)
+
 ## 2026-05-25 — Session 99 — staleness-threshold
 
 - Findings: 30 (+9, -9 since last synthesis)

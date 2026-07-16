@@ -1,43 +1,57 @@
 ---
-name: "Leading Words — Lexical Steering Verified in Reasoning Traces"
-summary: |-
-  Plain English: when a skill isn't obeyed, the fix is usually not more rules — it's picking
+name: Leading Words — Lexical Steering Verified in Reasoning Traces
+summary: 'Plain English: when a skill isn''t obeyed, the fix is usually not more rules — it''s picking
+
   one high-prior-density phrase ("vertical slice", "facts vs decisions") and repeating it
+
   consistently, then confirming it worked by watching the agent echo the phrase in its own
+
   thinking traces. Matt Pocock names this "leading words": short phrases that pack an entire
-  behavior into the model's existing priors. The verification loop is the novel part — the
+
+  behavior into the model''s existing priors. The verification loop is the novel part — the
+
   phrase appearing in reasoning traces is the observable signal that the steering landed.
+
   Applied in production (skills v1.1): a facts-vs-decisions leading-word split (facts the
+
   agent finds by exploring the codebase; decisions only the user can make) fixed interview
+
   skills that were "grilling themselves" — especially on Fable — with just a couple of
-  sentences changed.
-implementation_notes: |-
-  Rubric-relevant for /assess-skill and /design-skill (steering criteria): a checkable test
-  is "does the skill's key behavioral demand exist as a consistent, named phrase — or as
+
+  sentences changed.'
+implementation_notes: 'Rubric-relevant for /assess-skill and /design-skill (steering criteria): a checkable test
+
+  is "does the skill''s key behavioral demand exist as a consistent, named phrase — or as
+
   diffuse prohibitions?" and the acceptance signal is trace echo, not output inspection.
-  Pocock's guidance: if the agent isn't complying, make leading words more consistent and
+
+  Pocock''s guidance: if the agent isn''t complying, make leading words more consistent and
+
   more powerful before adding rules; agents are good at proposing leading-word candidates.
-  Nick-gated restructure Phase 2 decides whether this enters the assess/design substrate.
-category: "Prompt Craft"
-evidence_strength: "Strong (production-tested)"
-adoption_status: "Not Yet Started"
-priority: "P2 (Design Required)"
+
+  Nick-gated restructure Phase 2 decides whether this enters the assess/design substrate.'
+category: Prompt Craft
+evidence_strength: Strong (production-tested)
+adoption_status: Not Yet Started
+priority: P2 (Design Required)
 applicability:
-  - "IL (assess-skill/design-skill substrate)"
-  - "General"
+- IL (assess-skill/design-skill substrate)
+- General
 adopted_in: []
 sources:
-  - "pocock-skills-v1-1-wayfinder-research-implement.md"
-  - "building-great-agent-skills-the-missing-manual.md"
+- pocock-skills-v1-1-wayfinder-research-implement.md
+- building-great-agent-skills-the-missing-manual.md
 related_findings:
-  - file: "fowler-code-smell-names-as-prior-invocation.md"
-    rel: "extended-by"
-  - file: "skill-authoring-explain-the-why-not-musts.md"
-    rel: "same-problem"
+- file: fowler-code-smell-names-as-prior-invocation.md
+  rel: extended-by
+- file: skill-authoring-explain-the-why-not-musts.md
+  rel: same-problem
 proposals: null
-date_discovered: "2026-07-12"
-last_updated: "2026-07-12"
-pipeline_status: "raw"
+date_discovered: '2026-07-12'
+last_updated: '2026-07-12'
+pipeline_status: synthesized
+consumed_by:
+- model-resilient-prompt-engineering.md
 ---
 
 # Leading Words — Lexical Steering Verified in Reasoning Traces

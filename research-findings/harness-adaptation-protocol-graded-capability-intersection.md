@@ -19,8 +19,9 @@ related_findings:
   rel: same-problem
 - file: vendor-neutral-skill-vocabulary-per-harness-tool-maps.md
   rel: same-problem
-pipeline_status: raw
-consumed_by: []
+pipeline_status: synthesized
+consumed_by:
+- building-agentic-systems.md
 tags:
 - adaptation-protocol
 - capability-grading

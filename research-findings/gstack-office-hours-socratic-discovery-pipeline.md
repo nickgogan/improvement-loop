@@ -1,33 +1,35 @@
 ---
-name: "GStack Office Hours — Socratic Discovery Pipeline"
-summary: "Multi-phase Socratic interrogation protocol that forces wedge identification, user behavioral evidence, future-fit analysis, and competitive landscape research before any MVP scope is committed. AI agents push back on over-scoped requests and demand smallest-possible deployable slice."
+name: GStack Office Hours — Socratic Discovery Pipeline
+summary: Multi-phase Socratic interrogation protocol that forces wedge identification, user behavioral evidence, future-fit analysis, and competitive landscape research before any MVP scope is committed.
+  AI agents push back on over-scoped requests and demand smallest-possible deployable slice.
 implementation_notes: null
-category: "Prompt Craft"
-evidence_strength: "Medium (practitioner-documented)"
-adoption_status: "Not Yet Started"
-priority: "P2 (Design Required)"
+category: Prompt Craft
+evidence_strength: Medium (practitioner-documented)
+adoption_status: Not Yet Started
+priority: P2 (Design Required)
 applicability:
-  - "S3 (Claude Code Build)"
-  - "General / Cross-System"
+- S3 (Claude Code Build)
+- General / Cross-System
 adopted_in: []
 sources:
-  - "gstack-planning-multi-persona-spec-review.md"
+- gstack-planning-multi-persona-spec-review.md
 related_findings:
-  - file: bidirectional-prompting-for-spec-creation.md
-    rel: same-problem
-  - file: gstack-specialist-role-architecture.md
-    rel: enabled-by
-  - file: autoplan-auto-decision-pipeline.md
-    rel: extended-by
-  - file: planning-session-bias-separate-context-windows.md
-    rel: same-problem
-  - file: socratic-idea-forge-kill-as-success-exit.md
-    rel: same-problem
+- file: bidirectional-prompting-for-spec-creation.md
+  rel: same-problem
+- file: gstack-specialist-role-architecture.md
+  rel: enabled-by
+- file: autoplan-auto-decision-pipeline.md
+  rel: extended-by
+- file: planning-session-bias-separate-context-windows.md
+  rel: same-problem
+- file: socratic-idea-forge-kill-as-success-exit.md
+  rel: same-problem
 proposals: null
-date_discovered: "2026-04-20"
-last_updated: "2026-07-13"
-pipeline_status: classified
-consumed_by: []
+date_discovered: '2026-04-20'
+last_updated: '2026-07-13'
+pipeline_status: synthesized
+consumed_by:
+- model-resilient-prompt-engineering.md
 ---
 
 # GStack Office Hours — Socratic Discovery Pipeline

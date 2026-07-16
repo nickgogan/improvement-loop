@@ -1,7 +1,13 @@
 ---
-name: 'Hub-and-Spoke Two-Tier Skill Taxonomy with the ≥8-Sibling Hub Threshold'
-summary: 'Because a harness reads every installed skill''s description on every turn, the always-on index cost is N × description length while skill bodies are free (loaded on demand). the context-hub system''s answer: consolidate any family of ≥8 related skills into one HUB skill whose body is a routing table, with the depth pushed into references/ SPOKES that are never indexed individually. A family of 8–30 topics then costs exactly one description in the always-on index instead of 8–30, and depth stays unbounded.'
-implementation_notes: 'Direct input to the engine''s Rule-11 asset-catalog form question (directory convention vs frontmatter-indexed registry vs generated view). The taxonomy''s core claim is orthogonal to physical form: whatever the catalog looks like, the always-on discovery surface must be a small set of routers, with detail reachable only after routing — discoverability is the scarce resource, not storage. The engine''s own skill roster (30+ skills across workspace and IL scopes, each paying an always-on description) is approaching the regime this pattern exists for; the ≥8-sibling threshold gives a concrete, countable trigger for when to consolidate (e.g. the 13 Researcher skills are past it). Below the threshold, the pattern explicitly says do NOT hub — a hub for 3 spokes adds an indirection hop without meaningfully shrinking the index, which matches the engine''s abstractions-earn-their-keep rule.'
+name: Hub-and-Spoke Two-Tier Skill Taxonomy with the ≥8-Sibling Hub Threshold
+summary: 'Because a harness reads every installed skill''s description on every turn, the always-on index cost is N × description length while skill bodies are free (loaded on demand). the context-hub system''s
+  answer: consolidate any family of ≥8 related skills into one HUB skill whose body is a routing table, with the depth pushed into references/ SPOKES that are never indexed individually. A family of 8–30
+  topics then costs exactly one description in the always-on index instead of 8–30, and depth stays unbounded.'
+implementation_notes: 'Direct input to the engine''s Rule-11 asset-catalog form question (directory convention vs frontmatter-indexed registry vs generated view). The taxonomy''s core claim is orthogonal
+  to physical form: whatever the catalog looks like, the always-on discovery surface must be a small set of routers, with detail reachable only after routing — discoverability is the scarce resource, not
+  storage. The engine''s own skill roster (30+ skills across workspace and IL scopes, each paying an always-on description) is approaching the regime this pattern exists for; the ≥8-sibling threshold gives
+  a concrete, countable trigger for when to consolidate (e.g. the 13 Researcher skills are past it). Below the threshold, the pattern explicitly says do NOT hub — a hub for 3 spokes adds an indirection
+  hop without meaningfully shrinking the index, which matches the engine''s abstractions-earn-their-keep rule.'
 category: Context Engineering
 evidence_strength: Medium (practitioner-documented, production system at a large enterprise (repo private, author-shared writeup))
 adoption_status: Not Yet Started
@@ -27,8 +33,9 @@ related_findings:
   rel: same-problem
 - file: cache-stable-progressive-disclosure-catalog.md
   rel: same-problem
-pipeline_status: raw
-consumed_by: []
+pipeline_status: synthesized
+consumed_by:
+- structuring-agent-context.md
 tags:
 - skill-taxonomy
 - hub-and-spoke

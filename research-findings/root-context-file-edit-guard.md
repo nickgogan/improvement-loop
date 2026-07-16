@@ -1,38 +1,47 @@
 ---
-name: "Root Context-File Edit Guard"
-summary: |-
-  A standing rule written INTO the root router file itself: the agent must ask before
+name: Root Context-File Edit Guard
+summary: 'A standing rule written INTO the root router file itself: the agent must ask before
+
   editing the root CLAUDE.md. Everything else in the structure depends on that one
+
   file — if it drifts silently (agent "helpfully" appending rules, absorbing detail
+
   that belongs in pointed-to files), the whole routing system quietly degrades.
-  Every change to the front door is approved on purpose, with intention.
-implementation_notes: |-
-  Trivially adoptable, Nick-gated: one guard line in the workspace/engine CLAUDE.md
+
+  Every change to the front door is approved on purpose, with intention.'
+implementation_notes: 'Trivially adoptable, Nick-gated: one guard line in the workspace/engine CLAUDE.md
+
   ("ask before editing this file"). Complements the existing anti-bloat findings —
+
   they say the router must stay thin; this is the enforcement mechanism that keeps
+
   agents from fattening it unattended. Note the engine already gates CLAUDE.md changes
+
   socially (agent-rules; no agent messages authorize config changes); this makes the
-  gate self-describing inside the artifact.
-category: "Governance"
-evidence_strength: "Medium (practitioner-documented)"
-adoption_status: "Partially Adopted"
-priority: "P2 (Design Required)"
+
+  gate self-describing inside the artifact.'
+category: Governance
+evidence_strength: Medium (practitioner-documented)
+adoption_status: Partially Adopted
+priority: P2 (Design Required)
 applicability:
-  - "General"
-  - "IL (context governance)"
+- General
+- IL (context governance)
 adopted_in:
-  - "Improvement Loop"
+- Improvement Loop
 sources:
-  - "the-folder-structure-that-makes-ai-build-better-software.md"
+- the-folder-structure-that-makes-ai-build-better-software.md
 related_findings:
-  - file: "claudemd-as-knowledge-base-traversal-guide.md"
-    rel: "extends"
-  - file: "context-file-instruction-bloat-eth-zurich.md"
-    rel: "same-problem"
+- file: claudemd-as-knowledge-base-traversal-guide.md
+  rel: extends
+- file: context-file-instruction-bloat-eth-zurich.md
+  rel: same-problem
 proposals: null
-date_discovered: "2026-07-12"
-last_updated: "2026-07-12"
-pipeline_status: "raw"
+date_discovered: '2026-07-12'
+last_updated: '2026-07-12'
+pipeline_status: synthesized
+consumed_by:
+- agent-governance-and-trust.md
 ---
 
 ## What It Is

@@ -1,7 +1,11 @@
 ---
-name: 'Governance Registry — Classify Every Behavior-Shaping File by Edit Blast Radius'
-summary: 'One registry file classifies every behavior-shaping file in the workspace as governance (deliberate, human-in-the-loop edits) or working/notes (autonomous edits fine), with reasoning. It makes the side-effect guard executable — before editing, an agent looks up the file''s tier instead of guessing — and gives audits a completeness target (every root doc classified). The registry classifies itself as governance (self-referential guard).'
-implementation_notes: 'The engine approximates this implicitly (DDs immutable, generated files, PROGRESS.md owned by /session-handoff) but has no single lookup an agent can consult before editing. A registry file in governance/ classifying the engine''s behavior-shaping surfaces (CLAUDE.md files, rules, skills, agent definitions, FOUNDATIONS.md, PROGRESS/HISTORY, templates) would make the human-gate rule mechanically checkable and give /system-audit a completeness target. Low cost, direct adoption; also a natural wiring row (required tier) in the portable governance kernel.'
+name: Governance Registry — Classify Every Behavior-Shaping File by Edit Blast Radius
+summary: One registry file classifies every behavior-shaping file in the workspace as governance (deliberate, human-in-the-loop edits) or working/notes (autonomous edits fine), with reasoning. It makes
+  the side-effect guard executable — before editing, an agent looks up the file's tier instead of guessing — and gives audits a completeness target (every root doc classified). The registry classifies itself
+  as governance (self-referential guard).
+implementation_notes: The engine approximates this implicitly (DDs immutable, generated files, PROGRESS.md owned by /session-handoff) but has no single lookup an agent can consult before editing. A registry
+  file in governance/ classifying the engine's behavior-shaping surfaces (CLAUDE.md files, rules, skills, agent definitions, FOUNDATIONS.md, PROGRESS/HISTORY, templates) would make the human-gate rule mechanically
+  checkable and give /system-audit a completeness target. Low cost, direct adoption; also a natural wiring row (required tier) in the portable governance kernel.
 category: Governance
 evidence_strength: Medium (practitioner-documented, single production system)
 adoption_status: Not Yet Started
@@ -15,8 +19,9 @@ proposals: null
 date_discovered: '2026-07-12'
 last_updated: '2026-07-12'
 related_findings: []
-pipeline_status: raw
-consumed_by: []
+pipeline_status: synthesized
+consumed_by:
+- agent-governance-and-trust.md
 tags:
 - governance-registry
 - blast-radius

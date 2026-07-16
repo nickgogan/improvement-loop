@@ -1,25 +1,27 @@
 ---
-name: "Supply-Chain Hardening for Agent Packages"
-summary: "Agent harness treats npm dependency changes as reviewed code changes. Exact-pinned versions, min-release-age=2 (avoids same-day npm releases), generated shrinkwrap for the distributed package, pre-commit lockfile guards (blocked unless explicit env var), and no lifecycle scripts by default during install."
+name: Supply-Chain Hardening for Agent Packages
+summary: Agent harness treats npm dependency changes as reviewed code changes. Exact-pinned versions, min-release-age=2 (avoids same-day npm releases), generated shrinkwrap for the distributed package,
+  pre-commit lockfile guards (blocked unless explicit env var), and no lifecycle scripts by default during install.
 implementation_notes: null
-category: "Governance"
-evidence_strength: "Medium (practitioner-documented)"
-adoption_status: "Not Yet Started"
-priority: "P2 (Design Required)"
+category: Governance
+evidence_strength: Medium (practitioner-documented)
+adoption_status: Not Yet Started
+priority: P2 (Design Required)
 applicability:
-  - "S3 (Claude Code Build)"
-  - "General"
+- S3 (Claude Code Build)
+- General
 adopted_in: []
 sources: []
 related_findings:
-  - file: "mcp-tool-poisoning-attack-surface.md"
-    rel: "same-problem"
+- file: mcp-tool-poisoning-attack-surface.md
+  rel: same-problem
 proposals: null
-date_discovered: "2026-05-24"
-last_updated: "2026-05-24"
-pipeline_status: "extracted"
+date_discovered: '2026-05-24'
+last_updated: '2026-05-24'
+pipeline_status: synthesized
 consumed_by:
-  - "skills/supply-chain-hardening-for-agent-packages.md"
+- skills/supply-chain-hardening-for-agent-packages.md
+- agent-safety-and-permissions.md
 ---
 
 # Supply-Chain Hardening for Agent Packages

@@ -29,11 +29,8 @@ last_updated: '2026-07-12'
 pipeline_status: synthesized
 consumed_by:
 - session-persistence-and-memory.md
-- artifact: filesystem-lock-parallel-agent-coordination
-  type: extracted-artifact
-  form: skill
-  date: 2026-04-27
-  session: 83
+- '{''artifact'': ''filesystem-lock-parallel-agent-coordination'', ''type'': ''extracted-artifact'', ''form'': ''skill'', ''date'': datetime.date(2026, 4, 27), ''session'': 83}'
+- agent-architecture-decisions.md
 ---
 
 ## What It Is

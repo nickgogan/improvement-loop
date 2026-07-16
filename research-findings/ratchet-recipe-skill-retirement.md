@@ -44,6 +44,9 @@ related_findings:
 proposals: null
 date_discovered: '2026-07-11'
 last_updated: '2026-07-13'
+pipeline_status: synthesized
+consumed_by:
+- agent-governance-and-trust.md
 ---
 
 # Ratchet Recipe — Outcome-Driven Skill Retirement with Evidence Floor and Capacity Cap

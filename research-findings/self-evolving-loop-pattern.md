@@ -27,8 +27,9 @@ related_findings:
   rel: same-problem
 - file: self-improving-skill-lessons-log.md
   rel: extended-by
-pipeline_status: raw
-consumed_by: []
+pipeline_status: synthesized
+consumed_by:
+- building-agent-evaluation-suites.md
 ---
 # Self-Evolving Loop Pattern
 

@@ -32,9 +32,10 @@ related_findings:
   rel: same-problem
 - file: unified-dual-verdict-reviewer.md
   rel: same-problem
-pipeline_status: extracted
+pipeline_status: synthesized
 consumed_by:
 - skills/headless-multi-pass-iterative-review.md
+- agent-workflow-and-execution.md
 ---
 ## What It Is
 

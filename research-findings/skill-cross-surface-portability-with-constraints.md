@@ -1,29 +1,35 @@
 ---
 name: Skill Cross-Surface Portability — Same Format, Different Constraints
-summary: A skill folder works across Claude.ai, Claude Code, the Claude API, the Claude Agent SDK, and any standard-conformant client — but the runtime environment differs by surface. Claude.ai (per-user, varying network), Claude API (workspace-shared, no network, pre-installed packages only), Claude Code (filesystem-based custom only, full network, local installs). Custom skills do not sync across surfaces — separate upload per surface. The same skill behaves differently depending on where it runs.
-implementation_notes: "Constraint matrix from the docs: Claude.ai — network access depends on user/admin settings; individual upload via Settings; not shared org-wide. Claude API — no network, no runtime package installs, only pre-installed packages, workspace-shared; requires three beta headers (code-execution-2025-08-25, skills-2025-10-02, files-api-2025-04-14). Claude Code — full network access (same as user's computer); local package installs preferred over global; filesystem-based (no API upload); shared via plugins or .claude/skills/ commit. Skills targeting one surface's capabilities may not work elsewhere — authors should test on target surfaces or use the compatibility frontmatter field to declare requirements."
+summary: A skill folder works across Claude.ai, Claude Code, the Claude API, the Claude Agent SDK, and any standard-conformant client — but the runtime environment differs by surface. Claude.ai (per-user,
+  varying network), Claude API (workspace-shared, no network, pre-installed packages only), Claude Code (filesystem-based custom only, full network, local installs). Custom skills do not sync across surfaces
+  — separate upload per surface. The same skill behaves differently depending on where it runs.
+implementation_notes: 'Constraint matrix from the docs: Claude.ai — network access depends on user/admin settings; individual upload via Settings; not shared org-wide. Claude API — no network, no runtime
+  package installs, only pre-installed packages, workspace-shared; requires three beta headers (code-execution-2025-08-25, skills-2025-10-02, files-api-2025-04-14). Claude Code — full network access (same
+  as user''s computer); local package installs preferred over global; filesystem-based (no API upload); shared via plugins or .claude/skills/ commit. Skills targeting one surface''s capabilities may not
+  work elsewhere — authors should test on target surfaces or use the compatibility frontmatter field to declare requirements.'
 category: Tool Integration
 evidence_strength: Strong (production-tested)
 adoption_status: Not Yet Started
 priority: P2 (Design Required)
 applicability:
-  - "S3 (Claude Code Build)"
-  - "General"
+- S3 (Claude Code Build)
+- General
 adopted_in: []
 sources:
-  - "anthropic-agent-skills-overview-docs.md"
+- anthropic-agent-skills-overview-docs.md
 related_findings:
-  - file: "skills-as-open-portable-standard.md"
-    rel: "extends"
-  - file: "skill-frontmatter-validation-rules.md"
-    rel: "extends"
-  - file: "claude-code-skill-frontmatter-extensions.md"
-    rel: "same-problem"
+- file: skills-as-open-portable-standard.md
+  rel: extends
+- file: skill-frontmatter-validation-rules.md
+  rel: extends
+- file: claude-code-skill-frontmatter-extensions.md
+  rel: same-problem
 proposals: null
 date_discovered: '2026-06-11'
 last_updated: '2026-06-11'
-pipeline_status: raw
-consumed_by: []
+pipeline_status: synthesized
+consumed_by:
+- designing-agent-tools.md
 ---
 
 # Skill Cross-Surface Portability — Same Format, Different Constraints

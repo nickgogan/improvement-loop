@@ -1,45 +1,59 @@
 ---
-name: "Split Docs by Lifespan, Not Topic (Active / Decisions / Reference / Archive)"
-summary: |-
-  Partition project documentation by how long each document stays TRUE, not by what it
+name: Split Docs by Lifespan, Not Topic (Active / Decisions / Reference / Archive)
+summary: 'Partition project documentation by how long each document stays TRUE, not by what it
+
   is about: active/ (living plans, updated as you go), decisions/ (short records that
-  freeze the why), reference/ (runbooks, registries, guides that don't expire), and
+
+  freeze the why), reference/ (runbooks, registries, guides that don''t expire), and
+
   archive/ (finished work stamped "do not follow"). The reason is agent-specific: a
+
   shipped plan left in the active pile confidently steers the AI at a target you
+
   already hit — "stale docs are worse than no docs. With no docs, the AI asks. With
-  stale docs, it charges off the wrong way, certain that it's right." Moving finished
+
+  stale docs, it charges off the wrong way, certain that it''s right." Moving finished
+
   work to a labeled archive is the cheap defense against being poisoned by your own
-  history.
-implementation_notes: |-
-  Lands on a live engine concern: the vault has archives, generated docs, handoffs,
+
+  history.'
+implementation_notes: 'Lands on a live engine concern: the vault has archives, generated docs, handoffs,
+
   and a growing CLAUDE.md surface, and the KB previously had nothing on docs-lifecycle
+
   partitioning. Concrete candidate deltas (future, Nick-gated — capture only): a
+
   lifespan lens in /maintain-docs drift detection (is anything in an active location
+
   actually finished?), and explicit do-not-follow stamps on archived plans/handoffs.
+
   The decisions/ quadrant is already adopted (DD system); the active-vs-archive
-  lifecycle discipline is the partial gap.
-category: "Context Engineering"
-evidence_strength: "Medium (practitioner-documented)"
-adoption_status: "Partially Adopted"
-priority: "P2 (Design Required)"
+
+  lifecycle discipline is the partial gap.'
+category: Context Engineering
+evidence_strength: Medium (practitioner-documented)
+adoption_status: Partially Adopted
+priority: P2 (Design Required)
 applicability:
-  - "General"
-  - "IL (docs lifecycle, /maintain-docs)"
+- General
+- IL (docs lifecycle, /maintain-docs)
 adopted_in:
-  - "Improvement Loop"
+- Improvement Loop
 sources:
-  - "the-folder-structure-that-makes-ai-build-better-software.md"
+- the-folder-structure-that-makes-ai-build-better-software.md
 related_findings:
-  - file: "bmad-v6-diataxis-documentation-and-llms-txt.md"
-    rel: "same-problem"
-  - file: "evergreen-vs-volatile-ingestion-rule.md"
-    rel: "same-problem"
-  - file: "claudemd-as-knowledge-base-traversal-guide.md"
-    rel: "extends"
+- file: bmad-v6-diataxis-documentation-and-llms-txt.md
+  rel: same-problem
+- file: evergreen-vs-volatile-ingestion-rule.md
+  rel: same-problem
+- file: claudemd-as-knowledge-base-traversal-guide.md
+  rel: extends
 proposals: null
-date_discovered: "2026-07-12"
-last_updated: "2026-07-12"
-pipeline_status: "raw"
+date_discovered: '2026-07-12'
+last_updated: '2026-07-12'
+pipeline_status: synthesized
+consumed_by:
+- structuring-agent-context.md
 ---
 
 ## What It Is

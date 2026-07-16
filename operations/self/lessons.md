@@ -83,3 +83,9 @@ by `store_check.py` in the pre-commit hook.
 - **Owning surface:** `systems/improvement-loop/.claude/skills/extract-artifacts/SKILL.md` (Step 5)
 - **Source:** SL `session-66-codifier-ib-150-acceptance-test.md` (2026-04-26; incident from 2026-04-19 batch)
 - **Occurrences:** 2026-04-19
+
+## L-10 · 2026-07-16 · normal · open
+- **Lesson:** `/detect-drift`'s predicate (finding `last_updated` > artifact `extraction_date`) permanently re-flags artifacts already re-extracted via `--update`, because DD-117 preserves `extraction_date` and records currency in `last_change_session`/`last_change_report` — the currency baseline must be max(extraction_date, last_change_report date), and orchestrators must check `last_change_*` before dispatching re-runs from a dated drift report (session 147 dispatched 6 redundant re-extraction subagents; 7 artifacts got erroneous date bumps, reverted pre-commit).
+- **Owning surface:** `systems/improvement-loop/.claude/skills/detect-drift/SKILL.md`
+- **Source:** session 147 (2026-07-16); drift report `operations/drift-reports/2026-07-13-source-drift.md` vs session-146 re-extractions (commits 242700e, b986afd)
+- **Occurrences:** 2026-07-16

@@ -1,7 +1,11 @@
 ---
 name: 'Claude Code Framework Taxonomy: gstack Thinks, GSD Stabilizes, Superpowers Executes'
-summary: 'Three popular Claude Code orchestration frameworks are not interchangeable — each solves a different primary problem. gstack (23+ specialist slash commands) enforces role-separated thinking via specialist chaining. GSD (Get Shit Done) enforces context stability by running each phase in a fresh Claude instance with explicit artifact handoff. Superpowers (14 interconnected skills, 7-phase TDD workflow) enforces execution discipline via a mega-orchestrator. The failure mode follows from the architecture: Superpowers'' one-big-brain orchestrator hits context limits on long sessions; GSD''s fresh-session-per-phase pays explicit-handoff tax; gstack''s chain rigidity resists ad-hoc work. They stack cleanly rather than compete.'
-implementation_notes: MetaSystem's IL pipeline resembles GSD's "fresh context per phase" topology — agents write findings, later agents read findings, no shared context. This finding is useful as prior art when refining IL's agent handoff protocol or evaluating whether to adopt a specific gstack/Superpowers primitive.
+summary: 'Three popular Claude Code orchestration frameworks are not interchangeable — each solves a different primary problem. gstack (23+ specialist slash commands) enforces role-separated thinking via
+  specialist chaining. GSD (Get Shit Done) enforces context stability by running each phase in a fresh Claude instance with explicit artifact handoff. Superpowers (14 interconnected skills, 7-phase TDD
+  workflow) enforces execution discipline via a mega-orchestrator. The failure mode follows from the architecture: Superpowers'' one-big-brain orchestrator hits context limits on long sessions; GSD''s fresh-session-per-phase
+  pays explicit-handoff tax; gstack''s chain rigidity resists ad-hoc work. They stack cleanly rather than compete.'
+implementation_notes: MetaSystem's IL pipeline resembles GSD's "fresh context per phase" topology — agents write findings, later agents read findings, no shared context. This finding is useful as prior
+  art when refining IL's agent handoff protocol or evaluating whether to adopt a specific gstack/Superpowers primitive.
 category: Orchestration
 evidence_strength: Medium (practitioner-documented)
 adoption_status: Partially Adopted
@@ -28,8 +32,9 @@ related_findings:
 proposals: null
 date_discovered: '2026-04-23'
 last_updated: '2026-05-25'
-pipeline_status: "classified"
-consumed_by: []
+pipeline_status: synthesized
+consumed_by:
+- agent-architecture-decisions.md
 ---
 
 # Claude Code Framework Taxonomy: gstack Thinks, GSD Stabilizes, Superpowers Executes

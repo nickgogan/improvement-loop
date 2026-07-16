@@ -50,7 +50,9 @@ related_findings:
 proposals: null
 date_discovered: '2026-07-12'
 last_updated: '2026-07-13'
-pipeline_status: raw
+pipeline_status: synthesized
+consumed_by:
+- structuring-agent-context.md
 ---
 
 # Branch Analysis — the Externalization Decision Rule for Skill Reference Material

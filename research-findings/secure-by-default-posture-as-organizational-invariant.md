@@ -1,36 +1,38 @@
 ---
-name: "Secure-by-Default Posture as Organizational Invariant"
-summary: "When teams move fast, the technical default determines security outcomes — not policies or documentation. In agentic systems, the question 'what happens when nobody configures security?' must answer 'denied by default.' The Lilly incident's 22 unauthenticated endpoints out of 200 were not individual lapses but evidence that the platform's default posture was open, not closed."
+name: Secure-by-Default Posture as Organizational Invariant
+summary: When teams move fast, the technical default determines security outcomes — not policies or documentation. In agentic systems, the question 'what happens when nobody configures security?' must answer
+  'denied by default.' The Lilly incident's 22 unauthenticated endpoints out of 200 were not individual lapses but evidence that the platform's default posture was open, not closed.
 implementation_notes: null
-category: "Governance"
-evidence_strength: "Strong (production-tested)"
-adoption_status: "Partially Adopted"
-priority: "P1 (Implement Now)"
+category: Governance
+evidence_strength: Strong (production-tested)
+adoption_status: Partially Adopted
+priority: P1 (Implement Now)
 applicability:
-  - "S3 (Claude Code Build)"
-  - "General"
+- S3 (Claude Code Build)
+- General
 adopted_in: []
 sources:
-  - "lilly-incident-agent-security-permissions.md"
+- lilly-incident-agent-security-permissions.md
 related_findings:
-  - file: "screen-as-permissions-model-agent-bypass-failure.md"
-    rel: "same-problem"
-  - file: "velocity-vs-operational-discipline-risk-pattern.md"
-    rel: "same-problem"
-  - file: "tool-gateway-security-boundary.md"
-    rel: "extends"
-  - file: "skill-security-scanner-fail-closed.md"
-    rel: "same-problem"
-  - file: "middleware-as-enforcement-architecture.md"
-    rel: "extends"
+- file: screen-as-permissions-model-agent-bypass-failure.md
+  rel: same-problem
+- file: velocity-vs-operational-discipline-risk-pattern.md
+  rel: same-problem
+- file: tool-gateway-security-boundary.md
+  rel: extends
+- file: skill-security-scanner-fail-closed.md
+  rel: same-problem
+- file: middleware-as-enforcement-architecture.md
+  rel: extends
 proposals: null
-date_discovered: "2026-05-25"
-last_updated: "2026-05-25"
-pipeline_status: "extracted"
+date_discovered: '2026-05-25'
+last_updated: '2026-05-25'
+pipeline_status: synthesized
 consumed_by:
-  - "extracts/rules/secure-by-default-posture.md"
+- extracts/rules/secure-by-default-posture.md
+- agent-governance-and-trust.md
 tags:
-  - "session-95-reextract"
+- session-95-reextract
 ---
 
 # Secure-by-Default Posture as Organizational Invariant

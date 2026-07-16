@@ -1,44 +1,57 @@
 ---
-name: "Query-Shape-First Storage Design"
-summary: |-
-  Design the storage format of knowledge backwards from the questions you will ask it —
+name: Query-Shape-First Storage Design
+summary: 'Design the storage format of knowledge backwards from the questions you will ask it —
+
   how data will be accessed and recalled determines how it should be put in. Concrete
+
   test case: a query like "summarize the March 5th meeting" fails on vector-chunked
+
   storage (retrieval returns a few similarity-matched chunks, never the whole
+
   transcript) but succeeds trivially on one whole markdown file the agent reads in
+
   full. Conversely, "what was rule 17 of our 1,000 rules?" is wasteful as a whole-file
+
   read and ideal as a vector snippet lookup. The anticipated query shape — whole-object
+
   synthesis vs pinpoint lookup vs relationship trace — is the storage-format decision
-  input, not the data's topic or size.
-implementation_notes: |-
-  Directly usable Librarian advice substrate: when consumers ask "should this be
+
+  input, not the data''s topic or size.'
+implementation_notes: 'Directly usable Librarian advice substrate: when consumers ask "should this be
+
   markdown files, a wiki, or vector search?", the first question is what query shapes
-  they anticipate. Also validates the engine's own KB shape — findings are queried as
+
+  they anticipate. Also validates the engine''s own KB shape — findings are queried as
+
   whole documents (read the finding, not chunks of it), which is exactly the shape
+
   markdown-file storage serves. Candidate criteria-delta for /ask-kb Builder-mode
-  design guidance.
-category: "Context Engineering"
-evidence_strength: "Medium (practitioner-documented)"
-adoption_status: "Partially Adopted"
-priority: "P2 (Design Required)"
+
+  design guidance.'
+category: Context Engineering
+evidence_strength: Medium (practitioner-documented)
+adoption_status: Partially Adopted
+priority: P2 (Design Required)
 applicability:
-  - "General"
-  - "IL (knowledge architecture, Librarian advice)"
+- General
+- IL (knowledge architecture, Librarian advice)
 adopted_in:
-  - "Improvement Loop"
+- Improvement Loop
 sources:
-  - "every-level-of-a-claude-second-brain-explained.md"
+- every-level-of-a-claude-second-brain-explained.md
 related_findings:
-  - file: "scale-threshold-heuristic-obsidian-vs-rag.md"
-    rel: "extends"
-  - file: "ai-as-primary-reader-design-principle.md"
-    rel: "same-problem"
-  - file: "per-folder-heterogeneous-retrieval-levels.md"
-    rel: "enables"
+- file: scale-threshold-heuristic-obsidian-vs-rag.md
+  rel: extends
+- file: ai-as-primary-reader-design-principle.md
+  rel: same-problem
+- file: per-folder-heterogeneous-retrieval-levels.md
+  rel: enables
 proposals: null
-date_discovered: "2026-07-12"
-last_updated: "2026-07-12"
-pipeline_status: "raw"
+date_discovered: '2026-07-12'
+last_updated: '2026-07-12'
+pipeline_status: synthesized
+consumed_by:
+- structuring-agent-context.md
 ---
 
 ## What It Is

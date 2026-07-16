@@ -1,33 +1,36 @@
 ---
-name: "Build Loop Skill as Autonomous Phase Driver"
-summary: "A custom Claude Code skill wraps the orchestrator-headless-dispatch pattern into a single invocable command ('build loop'). The skill reads a phase-queue state file, dispatches each incomplete phase as a claude -p headless subprocess, collects summaries, updates the state file, and loops until all phases are complete. This packages the dispatch loop as a reusable, triggerable skill rather than a one-off bash script."
+name: Build Loop Skill as Autonomous Phase Driver
+summary: A custom Claude Code skill wraps the orchestrator-headless-dispatch pattern into a single invocable command ('build loop'). The skill reads a phase-queue state file, dispatches each incomplete
+  phase as a claude -p headless subprocess, collects summaries, updates the state file, and loops until all phases are complete. This packages the dispatch loop as a reusable, triggerable skill rather than
+  a one-off bash script.
 implementation_notes: null
-category: "Orchestration"
-evidence_strength: "Medium (practitioner-documented)"
-adoption_status: "Not Yet Started"
-priority: "P2 (Design Required)"
+category: Orchestration
+evidence_strength: Medium (practitioner-documented)
+adoption_status: Not Yet Started
+priority: P2 (Design Required)
 applicability:
-  - "S3 (Claude Code Build)"
+- S3 (Claude Code Build)
 adopted_in: []
 sources:
-  - "gstack-gsd-superpowers-orchestrator-headless.md"
+- gstack-gsd-superpowers-orchestrator-headless.md
 related_findings:
-  - file: "orchestrator-headless-dispatch-context-isolation.md"
-    rel: "extends"
-  - file: "phase-queue-state-file-as-orchestrator-memory.md"
-    rel: "enables"
-  - file: "ralph-wiggum-execution-pattern.md"
-    rel: "same-problem"
-  - file: "skill-chaining-composing-workflows-from-modular-s.md"
-    rel: "same-problem"
+- file: orchestrator-headless-dispatch-context-isolation.md
+  rel: extends
+- file: phase-queue-state-file-as-orchestrator-memory.md
+  rel: enables
+- file: ralph-wiggum-execution-pattern.md
+  rel: same-problem
+- file: skill-chaining-composing-workflows-from-modular-s.md
+  rel: same-problem
 proposals: null
-date_discovered: "2026-05-25"
-last_updated: "2026-05-25"
-pipeline_status: "extracted"
+date_discovered: '2026-05-25'
+last_updated: '2026-05-25'
+pipeline_status: synthesized
 consumed_by:
-  - "extracts/skills/build-loop-skill-autonomous-phase-driver.md"
+- extracts/skills/build-loop-skill-autonomous-phase-driver.md
+- agent-workflow-and-execution.md
 tags:
-  - "session-95-reextract"
+- session-95-reextract
 ---
 
 # Build Loop Skill as Autonomous Phase Driver

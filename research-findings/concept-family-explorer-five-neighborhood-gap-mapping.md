@@ -1,7 +1,13 @@
 ---
-name: 'Concept-Family Explorer — Five-Neighborhood Family Mapping with Scored Gaps Above the Build Engine'
-summary: 'Where the build engine (/dr) makes a skill for a topic you NAME, concept-family-explorer answers "what am I missing?" It maps a subject''s full conceptual family across five neighborhoods — parent, sibling, child/sub-concept, adjacent/cross-over, frontier — scores every discovered concept against a rubric (novelty, usefulness, coverage gap), then loops the build engine over each viable gap with a bounded brief until the concept tree saturates. Resumable, and it both reads and writes the shared concept tree, so coverage discovery and coverage recording are the same loop.'
-implementation_notes: 'The engine''s research intake is reactive (Nick supplies links/topics; /research-loop scans dimensions) — this is the missing proactive layer: a repeatable procedure for asking "what does the KB not know about domain X" before spending research budget. The five-neighborhood frame is directly adoptable as a checklist inside /research-query or a future gap-analysis skill even without the full loop: for any engine research dimension, enumerate parent/sibling/child/adjacent/frontier concepts and diff against existing findings (the KB''s ~900 findings make the diff cheap with rg). The scored-gaps step matters for Nick-gating: it converts "here is everything we could research" into a ranked shortlist with explicit criteria, which is the shape the engine''s human gate wants. Relevant to the restructure program''s Phase 1 (research grounding): wave planning could be neighborhood-mapped instead of link-driven.'
+name: Concept-Family Explorer — Five-Neighborhood Family Mapping with Scored Gaps Above the Build Engine
+summary: Where the build engine (/dr) makes a skill for a topic you NAME, concept-family-explorer answers "what am I missing?" It maps a subject's full conceptual family across five neighborhoods — parent,
+  sibling, child/sub-concept, adjacent/cross-over, frontier — scores every discovered concept against a rubric (novelty, usefulness, coverage gap), then loops the build engine over each viable gap with
+  a bounded brief until the concept tree saturates. Resumable, and it both reads and writes the shared concept tree, so coverage discovery and coverage recording are the same loop.
+implementation_notes: 'The engine''s research intake is reactive (Nick supplies links/topics; /research-loop scans dimensions) — this is the missing proactive layer: a repeatable procedure for asking "what
+  does the KB not know about domain X" before spending research budget. The five-neighborhood frame is directly adoptable as a checklist inside /research-query or a future gap-analysis skill even without
+  the full loop: for any engine research dimension, enumerate parent/sibling/child/adjacent/frontier concepts and diff against existing findings (the KB''s ~900 findings make the diff cheap with rg). The
+  scored-gaps step matters for Nick-gating: it converts "here is everything we could research" into a ranked shortlist with explicit criteria, which is the shape the engine''s human gate wants. Relevant
+  to the restructure program''s Phase 1 (research grounding): wave planning could be neighborhood-mapped instead of link-driven.'
 category: Orchestration
 evidence_strength: Medium (practitioner-documented, production system at a large enterprise (repo private, author-shared writeup))
 adoption_status: Not Yet Started
@@ -19,8 +25,9 @@ related_findings:
   rel: extends
 - file: skill-tree-architect-whole-tree-shape-audit.md
   rel: same-problem
-pipeline_status: raw
-consumed_by: []
+pipeline_status: synthesized
+consumed_by:
+- agent-workflow-and-execution.md
 tags:
 - gap-analysis
 - concept-mapping

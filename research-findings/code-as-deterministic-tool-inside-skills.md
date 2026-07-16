@@ -1,32 +1,37 @@
 ---
 name: Code as Deterministic Tool Inside Skills (Script Execution Without Context Cost)
-summary: Skills can bundle scripts in scripts/ that Claude runs via bash. The script's code never enters the context window — only the script's output (stdout/stderr) does. This makes scripts dramatically more efficient than having Claude regenerate equivalent logic, and provides deterministic reliability for operations LLMs are bad at (sorting, parsing, validation, network calls). Bundled scripts are part of the Level 3 progressive disclosure tier.
-implementation_notes: "Quote from the engineering post: 'Sorting a list via token generation is far more expensive than simply running a sorting algorithm.' Example pattern: PDF skill bundles a Python script that extracts form fields — Claude executes it without loading either the script's code or the PDF into context. Skills can also bundle scripts as documentation rather than executables (the author should make this clear in SKILL.md). Use ${CLAUDE_SKILL_DIR} in Claude Code skills to reference bundled scripts portably regardless of CWD."
+summary: Skills can bundle scripts in scripts/ that Claude runs via bash. The script's code never enters the context window — only the script's output (stdout/stderr) does. This makes scripts dramatically
+  more efficient than having Claude regenerate equivalent logic, and provides deterministic reliability for operations LLMs are bad at (sorting, parsing, validation, network calls). Bundled scripts are
+  part of the Level 3 progressive disclosure tier.
+implementation_notes: 'Quote from the engineering post: ''Sorting a list via token generation is far more expensive than simply running a sorting algorithm.'' Example pattern: PDF skill bundles a Python
+  script that extracts form fields — Claude executes it without loading either the script''s code or the PDF into context. Skills can also bundle scripts as documentation rather than executables (the author
+  should make this clear in SKILL.md). Use ${CLAUDE_SKILL_DIR} in Claude Code skills to reference bundled scripts portably regardless of CWD.'
 category: Tool Integration
 evidence_strength: Strong (production-tested)
 adoption_status: Not Yet Started
 priority: P1 (Implement Now)
 applicability:
-  - "S3 (Claude Code Build)"
-  - "General"
+- S3 (Claude Code Build)
+- General
 adopted_in: []
 sources:
-  - "anthropic-equipping-agents-with-agent-skills.md"
-  - "anthropic-agent-skills-overview-docs.md"
-  - "anthropic-claude-code-skills-docs.md"
-  - "anthropic-complete-guide-building-skills-pdf.md"
+- anthropic-equipping-agents-with-agent-skills.md
+- anthropic-agent-skills-overview-docs.md
+- anthropic-claude-code-skills-docs.md
+- anthropic-complete-guide-building-skills-pdf.md
 related_findings:
-  - file: "skill-as-directory-progressive-disclosure-three-levels.md"
-    rel: "enabled-by"
-  - file: "mcp-as-code-api-progressive-tool-discovery.md"
-    rel: "same-problem"
-  - file: "skill-dynamic-context-injection-shell-prerender.md"
-    rel: "same-problem"
+- file: skill-as-directory-progressive-disclosure-three-levels.md
+  rel: enabled-by
+- file: mcp-as-code-api-progressive-tool-discovery.md
+  rel: same-problem
+- file: skill-dynamic-context-injection-shell-prerender.md
+  rel: same-problem
 proposals: null
 date_discovered: '2026-06-11'
 last_updated: '2026-06-11'
-pipeline_status: raw
-consumed_by: []
+pipeline_status: synthesized
+consumed_by:
+- designing-agent-tools.md
 ---
 
 # Code as Deterministic Tool Inside Skills

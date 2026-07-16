@@ -1,38 +1,46 @@
 ---
-name: "Harness Cost Readouts Are Unreliable — Use Independent Log-Based Accounting"
-summary: |-
-  On subscription plans, in-harness cost surfaces (Claude Code /cost and /usage, Codex's
+name: Harness Cost Readouts Are Unreliable — Use Independent Log-Based Accounting
+summary: 'On subscription plans, in-harness cost surfaces (Claude Code /cost and /usage, Codex''s
+
   equivalent) can disagree with each other and with reality — one run showed $99 in one
-  readout and $3 in another for the same session, and API-cost lines sometimes don't
+
+  readout and $3 in another for the same session, and API-cost lines sometimes don''t
+
   appear at all. Any cost claim should come from independent log-based accounting
+
   (e.g. `npx ccusage@latest session` for Claude Code, or pure API metering via a
-  gateway), not from the harness's own display.
-implementation_notes: |-
-  Directly applicable to the engine's session telemetry (capture_quality is already
+
+  gateway), not from the harness''s own display.'
+implementation_notes: 'Directly applicable to the engine''s session telemetry (capture_quality is already
+
   "estimated" for cost/token fields) and to any cost figure entering the KB or the
+
   model-capability registry: prefer log-derived numbers, and mark harness-readout
+
   numbers as suspect. Design: a small log-accounting step in telemetry capture rather
-  than trusting /cost.
-category: "Evaluation"
-evidence_strength: "Medium (practitioner-documented)"
-adoption_status: "Not Yet Started"
-priority: "P2 (Design Required)"
+
+  than trusting /cost.'
+category: Evaluation
+evidence_strength: Medium (practitioner-documented)
+adoption_status: Not Yet Started
+priority: P2 (Design Required)
 applicability:
-  - "S3 (Claude Code Build)"
-  - "General"
+- S3 (Claude Code Build)
+- General
 adopted_in: []
 sources:
-  - "i-made-gpt-56-and-fable-5-build-the-same-app.md"
+- i-made-gpt-56-and-fable-5-build-the-same-app.md
 related_findings:
-  - file: "claude-code-max-plan-subsidy-vs-api-cost-tool.md"
-    rel: "same-problem"
-  - file: "gpt-56-soul-vs-fable-5-one-shot-head-to-head.md"
-    rel: "enables"
+- file: claude-code-max-plan-subsidy-vs-api-cost-tool.md
+  rel: same-problem
+- file: gpt-56-soul-vs-fable-5-one-shot-head-to-head.md
+  rel: enables
 proposals: null
-date_discovered: "2026-07-13"
-last_updated: "2026-07-13"
-pipeline_status: "raw"
-consumed_by: []
+date_discovered: '2026-07-13'
+last_updated: '2026-07-13'
+pipeline_status: synthesized
+consumed_by:
+- building-agent-evaluation-suites.md
 ---
 
 # Harness Cost Readouts Are Unreliable — Use Independent Log-Based Accounting

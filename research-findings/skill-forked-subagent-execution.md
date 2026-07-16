@@ -1,31 +1,35 @@
 ---
-name: |-
-  Skill-as-Forked-Subagent Execution Mode (context: fork)
-summary: |-
-  Claude Code skills can run in an isolated subagent context via `context: fork` + `agent: <type>` frontmatter. The skill content becomes the subagent's prompt; the named agent type (Explore, Plan, general-purpose, or any custom .claude/agents/ subagent) provides the system prompt and tool set. The fork has no access to the main conversation history. This is the inverse of the subagent-with-`skills`-field pattern (subagent loads pre-injected skills as reference material).
-implementation_notes: "Frontmatter pattern: context: fork + agent: Explore (or Plan, general-purpose, or custom subagent name). Skills targeted at fork mode must include explicit task instructions, not just guidelines — the warning is explicit: 'context: fork only makes sense for skills with explicit instructions. If your skill contains guidelines like \"use these API conventions\" without a task, the subagent receives the guidelines but no actionable prompt, and returns without meaningful output.' Built-in Explore and Plan agents skip CLAUDE.md and git status to keep context small. The PR-summary example uses context: fork + agent: Explore for read-only PR analysis. The skill becomes the prompt, the agent provides the harness."
+name: 'Skill-as-Forked-Subagent Execution Mode (context: fork)'
+summary: 'Claude Code skills can run in an isolated subagent context via `context: fork` + `agent: <type>` frontmatter. The skill content becomes the subagent''s prompt; the named agent type (Explore, Plan,
+  general-purpose, or any custom .claude/agents/ subagent) provides the system prompt and tool set. The fork has no access to the main conversation history. This is the inverse of the subagent-with-`skills`-field
+  pattern (subagent loads pre-injected skills as reference material).'
+implementation_notes: 'Frontmatter pattern: context: fork + agent: Explore (or Plan, general-purpose, or custom subagent name). Skills targeted at fork mode must include explicit task instructions, not
+  just guidelines — the warning is explicit: ''context: fork only makes sense for skills with explicit instructions. If your skill contains guidelines like "use these API conventions" without a task, the
+  subagent receives the guidelines but no actionable prompt, and returns without meaningful output.'' Built-in Explore and Plan agents skip CLAUDE.md and git status to keep context small. The PR-summary
+  example uses context: fork + agent: Explore for read-only PR analysis. The skill becomes the prompt, the agent provides the harness.'
 category: Orchestration
 evidence_strength: Strong (production-tested)
 adoption_status: Not Yet Started
 priority: P1 (Implement Now)
 applicability:
-  - "S3 (Claude Code Build)"
-  - "General"
+- S3 (Claude Code Build)
+- General
 adopted_in: []
 sources:
-  - "anthropic-claude-code-skills-docs.md"
+- anthropic-claude-code-skills-docs.md
 related_findings:
-  - file: "claude-code-skill-frontmatter-extensions.md"
-    rel: "extends"
-  - file: "skill-dynamic-context-injection-shell-prerender.md"
-    rel: "same-problem"
-  - file: "subagent-persistent-memory-directory.md"
-    rel: "same-problem"
+- file: claude-code-skill-frontmatter-extensions.md
+  rel: extends
+- file: skill-dynamic-context-injection-shell-prerender.md
+  rel: same-problem
+- file: subagent-persistent-memory-directory.md
+  rel: same-problem
 proposals: null
 date_discovered: '2026-06-11'
 last_updated: '2026-07-13'
-pipeline_status: raw
-consumed_by: []
+pipeline_status: synthesized
+consumed_by:
+- agent-architecture-decisions.md
 ---
 
 # Skill-as-Forked-Subagent Execution Mode

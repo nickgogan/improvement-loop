@@ -23,6 +23,7 @@ related_findings:
 pipeline_status: synthesized
 consumed_by:
 - agent-workflow-and-execution.md
+- agent-architecture-decisions.md
 ---
 
 ## What It Is

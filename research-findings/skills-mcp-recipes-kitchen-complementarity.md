@@ -1,29 +1,34 @@
 ---
 name: Skills + MCP — Recipes + Kitchen Complementarity
-summary: |-
-  Anthropic frames Skills and MCP as complementary primitives, not competing ones. MCP provides connectivity (Claude reaches your service — Notion, Linear, etc.) — what Claude *can do*. Skills provide knowledge (Claude knows how to use your service for specific workflows) — how Claude *should do it*. Without a skill, users blame the connector for what's actually a workflow guidance problem. Use cases divide into three categories: standalone skills, workflow-orchestration skills, and MCP-enhancement skills.
-implementation_notes: "Three named use-case categories from the Complete Guide PDF: (1) Document & Asset Creation (frontend-design, docx, pptx, etc.) — output generation with consistent style/quality, no external tools required. (2) Workflow Automation (skill-creator) — multi-step processes with consistent methodology, may coordinate MCP servers. (3) MCP Enhancement (sentry-code-review) — workflow guidance on top of MCP tools. Without skills, MCP integrations suffer 'users connect your MCP but don't know what to do next' — support tickets, inconsistent results, blame on the connector when the issue is workflow guidance. Recommended pattern for MCP authors: ship MCP + skills together; link from MCP docs to skills repo."
+summary: 'Anthropic frames Skills and MCP as complementary primitives, not competing ones. MCP provides connectivity (Claude reaches your service — Notion, Linear, etc.) — what Claude *can do*. Skills provide
+  knowledge (Claude knows how to use your service for specific workflows) — how Claude *should do it*. Without a skill, users blame the connector for what''s actually a workflow guidance problem. Use cases
+  divide into three categories: standalone skills, workflow-orchestration skills, and MCP-enhancement skills.'
+implementation_notes: 'Three named use-case categories from the Complete Guide PDF: (1) Document & Asset Creation (frontend-design, docx, pptx, etc.) — output generation with consistent style/quality, no
+  external tools required. (2) Workflow Automation (skill-creator) — multi-step processes with consistent methodology, may coordinate MCP servers. (3) MCP Enhancement (sentry-code-review) — workflow guidance
+  on top of MCP tools. Without skills, MCP integrations suffer ''users connect your MCP but don''t know what to do next'' — support tickets, inconsistent results, blame on the connector when the issue is
+  workflow guidance. Recommended pattern for MCP authors: ship MCP + skills together; link from MCP docs to skills repo.'
 category: Tool Integration
 evidence_strength: Strong (production-tested)
 adoption_status: Not Yet Started
 priority: P2 (Design Required)
 applicability:
-  - "S3 (Claude Code Build)"
-  - "General"
+- S3 (Claude Code Build)
+- General
 adopted_in: []
 sources:
-  - "anthropic-equipping-agents-with-agent-skills.md"
-  - "anthropic-complete-guide-building-skills-pdf.md"
+- anthropic-equipping-agents-with-agent-skills.md
+- anthropic-complete-guide-building-skills-pdf.md
 related_findings:
-  - file: "mcp-as-code-api-progressive-tool-discovery.md"
-    rel: "same-problem"
-  - file: "skill-as-directory-progressive-disclosure-three-levels.md"
-    rel: "enabled-by"
+- file: mcp-as-code-api-progressive-tool-discovery.md
+  rel: same-problem
+- file: skill-as-directory-progressive-disclosure-three-levels.md
+  rel: enabled-by
 proposals: null
 date_discovered: '2026-06-11'
 last_updated: '2026-06-11'
-pipeline_status: raw
-consumed_by: []
+pipeline_status: synthesized
+consumed_by:
+- designing-agent-tools.md
 ---
 
 # Skills + MCP — Recipes + Kitchen Complementarity

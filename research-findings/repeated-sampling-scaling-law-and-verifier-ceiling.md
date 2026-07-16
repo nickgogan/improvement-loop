@@ -1,50 +1,64 @@
 ---
-name: "Repeated-Sampling Scaling Law and the Verifier Ceiling"
-summary: |-
-  Plain English: throwing more attempts at a problem reliably raises the odds a correct
-  answer exists somewhere in the pile — but without a cheap mechanical checker you can't
+name: Repeated-Sampling Scaling Law and the Verifier Ceiling
+summary: 'Plain English: throwing more attempts at a problem reliably raises the odds a correct
+
+  answer exists somewhere in the pile — but without a cheap mechanical checker you can''t
+
   find it, so eval quality (not model quality or token budget) is the binding constraint
+
   on multi-agent scale. Stanford 2024: a cheap coding model went from 15.9% bugs fixed
-  at 1 attempt to 56% at 250 attempts (beating the best single-attempt frontier model's
+
+  at 1 attempt to 56% at 250 attempts (beating the best single-attempt frontier model''s
+
   43%), on a smooth predictable curve across four orders of magnitude; at 10,000
+
   attempts a correct answer existed in over 95% of runs. But where no automatic checker
+
   existed, every selection method tried (majority voting, reward models) stalled at
-  ~100 attempts. Anthropic's production corroboration: token spend explains 80% of
-  run-quality variance in their multi-agent research system.
-implementation_notes: |-
-  P2: this is the eval-ceiling half of the pending Nate B Jones gap-check against the
+
+  ~100 attempts. Anthropic''s production corroboration: token spend explains 80% of
+
+  run-quality variance in their multi-agent research system.'
+implementation_notes: 'P2: this is the eval-ceiling half of the pending Nate B Jones gap-check against the
+
   engine. Design implication: before any engine workflow fans out to parallel
+
   sampling/competition (e.g. orchestrated competition, wide subagent fan-outs), it
+
   should name its verifier — a mechanical check that grades attempts cheaply. Where no
+
   such check exists, cap parallelism low (~100-attempt selection ceiling) or route to a
+
   single agent. Spend past the selection ceiling buys answers that are generated but
-  never found.
-category: "Evaluation"
-evidence_strength: "Medium (practitioner-documented)"
-adoption_status: "Not Yet Started"
-priority: "P2 (Design Required)"
+
+  never found.'
+category: Evaluation
+evidence_strength: Medium (practitioner-documented)
+adoption_status: Not Yet Started
+priority: P2 (Design Required)
 applicability:
-  - "IL (subagent fan-out sizing, verifier design)"
-  - "General"
+- IL (subagent fan-out sizing, verifier design)
+- General
 adopted_in: []
 sources:
-  - "1-6m-agents-registered-for-openclaw-and-did-nothing.md"
+- 1-6m-agents-registered-for-openclaw-and-did-nothing.md
 related_findings:
-  - file: "orchestrated-competition-n-sub-agents-solve-same.md"
-    rel: "extends"
-  - file: "effort-scaling-rules-embedded-in-orchestrator.md"
-    rel: "same-problem"
-  - file: "ensemble-eval-majority-required-for-success.md"
-    rel: "same-problem"
-  - file: "two-constraint-decomposition-memory-vs-eval.md"
-    rel: "extended-by"
-  - file: "four-estimate-agent-routing-test.md"
-    rel: "enables"
+- file: orchestrated-competition-n-sub-agents-solve-same.md
+  rel: extends
+- file: effort-scaling-rules-embedded-in-orchestrator.md
+  rel: same-problem
+- file: ensemble-eval-majority-required-for-success.md
+  rel: same-problem
+- file: two-constraint-decomposition-memory-vs-eval.md
+  rel: extended-by
+- file: four-estimate-agent-routing-test.md
+  rel: enables
 proposals: null
-date_discovered: "2026-07-13"
-last_updated: "2026-07-13"
-pipeline_status: "raw"
-consumed_by: []
+date_discovered: '2026-07-13'
+last_updated: '2026-07-13'
+pipeline_status: synthesized
+consumed_by:
+- building-agent-evaluation-suites.md
 ---
 
 # Repeated-Sampling Scaling Law and the Verifier Ceiling

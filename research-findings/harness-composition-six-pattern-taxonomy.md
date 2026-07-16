@@ -1,55 +1,71 @@
 ---
-name: "Harness Composition: Six-Pattern Taxonomy"
-summary: |-
-  Anthropic's named taxonomy (first-party: "A harness for every task", Shihipar &
+name: 'Harness Composition: Six-Pattern Taxonomy'
+summary: 'Anthropic''s named taxonomy (first-party: "A harness for every task", Shihipar &
+
   Bidasaria, 2026-06-02) of the six patterns Claude composes when authoring a
+
   task-custom harness: classify-and-act, fan-out-and-synthesize, adversarial
+
   verification (the digest called it worker-critic), generate-and-filter, tournament,
+
   and loop-until-done. Each pattern maps to a specific single-context failure mode —
+
   adversarial verification cures self-preferential bias, loop-until-done cures agentic
+
   laziness, fan-out+synthesize stops bias contamination across clean context windows.
-  Portable: the patterns can be implemented in any coding agent, not just Claude's
-  dynamic workflows. Production-exercised: the Bun Zig→Rust rewrite and Anthropic's
-  shipped /deep-research skill both compose these patterns.
-implementation_notes: |-
-  Direct substrate for the engine's schematic library and the eventual /design-harness
+
+  Portable: the patterns can be implemented in any coding agent, not just Claude''s
+
+  dynamic workflows. Production-exercised: the Bun Zig→Rust rewrite and Anthropic''s
+
+  shipped /deep-research skill both compose these patterns.'
+implementation_notes: 'Direct substrate for the engine''s schematic library and the eventual /design-harness
+
   skill: a harness design step can select from this closed pattern set based on the
-  task's failure-mode profile (unknown work volume → loop-until-done; taste-dominated →
+
+  task''s failure-mode profile (unknown work volume → loop-until-done; taste-dominated →
+
   generate-and-filter; large-N ranking → tournament; self-assessment risk →
-  adversarial verification). Design work needed to reconcile with the KB's existing
+
+  adversarial verification). Design work needed to reconcile with the KB''s existing
+
   per-pattern findings (critic loops, LLM-as-judge, stop rules) before codifying.
+
   Primary Anthropic post ingested 2026-07-12 (session 136) — pattern names verified
-  against it; the digest's "worker-critic" is first-party "adversarial verification".
-category: "Orchestration"
-evidence_strength: "Strong (production-tested)"
-adoption_status: "Not Yet Started"
-priority: "P2 (Design Required)"
+
+  against it; the digest''s "worker-critic" is first-party "adversarial verification".'
+category: Orchestration
+evidence_strength: Strong (production-tested)
+adoption_status: Not Yet Started
+priority: P2 (Design Required)
 applicability:
-  - "Improvement Loop"
-  - "General"
+- Improvement Loop
+- General
 adopted_in: []
 sources:
-  - "claude-can-now-build-its-own-harness.md"
-  - "a-harness-for-every-task-dynamic-workflows-in-claude-code.md"
+- claude-can-now-build-its-own-harness.md
+- a-harness-for-every-task-dynamic-workflows-in-claude-code.md
 related_findings:
-  - file: "frontier-model-as-harness-designer.md"
-    rel: "extends"
-  - file: "pairwise-tournament-judging-over-absolute-scoring.md"
-    rel: "extended-by"
-  - file: "critic-verifier-loop-with-termination.md"
-    rel: "same-problem"
-  - file: "llm-as-judge-pattern-for-verification-agents.md"
-    rel: "same-problem"
-  - file: "context-aware-routing-skill-classifier-sub-skill.md"
-    rel: "same-problem"
-  - file: "stop-rules-as-execution-boundaries.md"
-    rel: "same-problem"
-  - file: "fork-subagent-parallel-trajectory-exploration.md"
-    rel: "same-problem"
+- file: frontier-model-as-harness-designer.md
+  rel: extends
+- file: pairwise-tournament-judging-over-absolute-scoring.md
+  rel: extended-by
+- file: critic-verifier-loop-with-termination.md
+  rel: same-problem
+- file: llm-as-judge-pattern-for-verification-agents.md
+  rel: same-problem
+- file: context-aware-routing-skill-classifier-sub-skill.md
+  rel: same-problem
+- file: stop-rules-as-execution-boundaries.md
+  rel: same-problem
+- file: fork-subagent-parallel-trajectory-exploration.md
+  rel: same-problem
 proposals: null
-date_discovered: "2026-07-12"
-last_updated: "2026-07-12"
-pipeline_status: "raw"
+date_discovered: '2026-07-12'
+last_updated: '2026-07-12'
+pipeline_status: synthesized
+consumed_by:
+- agent-architecture-decisions.md
 ---
 
 ## What It Is

@@ -1,28 +1,32 @@
 ---
-name: "Post-Retrieval Reranking via Weighted Signal Composition"
-summary: "After initial retrieval and rank fusion, Memongo applies post-retrieval reranking via a weighted composition of four explicit signals: keyword overlap (0.30), temporal proximity (0.40), entity name match (0.40), quoted phrase match (0.60). Signals are human-inspectable weights rather than a learned reranker, making the rerank stage auditable and tuneable without retraining."
-implementation_notes: "This is a cheap, interpretable alternative to a neural reranker (ColBERT, Cohere Rerank). The weights make tradeoffs explicit — for instance, quoted phrase (0.60) > temporal (0.40) means exact-phrase memory is prioritized over recency. Worth replicating in any system where reranker opacity is a blocker for debugging retrieval failures. For Memongo improvement: evaluate whether these weights were hand-tuned or swept, and whether task-conditional weights improve on a fixed vector."
-category: "Context Engineering"
-evidence_strength: "Medium (practitioner-documented)"
-adoption_status: "Not Yet Started"
-priority: "P2"
+name: Post-Retrieval Reranking via Weighted Signal Composition
+summary: 'After initial retrieval and rank fusion, Memongo applies post-retrieval reranking via a weighted composition of four explicit signals: keyword overlap (0.30), temporal proximity (0.40), entity
+  name match (0.40), quoted phrase match (0.60). Signals are human-inspectable weights rather than a learned reranker, making the rerank stage auditable and tuneable without retraining.'
+implementation_notes: 'This is a cheap, interpretable alternative to a neural reranker (ColBERT, Cohere Rerank). The weights make tradeoffs explicit — for instance, quoted phrase (0.60) > temporal (0.40)
+  means exact-phrase memory is prioritized over recency. Worth replicating in any system where reranker opacity is a blocker for debugging retrieval failures. For Memongo improvement: evaluate whether these
+  weights were hand-tuned or swept, and whether task-conditional weights improve on a fixed vector.'
+category: Context Engineering
+evidence_strength: Medium (practitioner-documented)
+adoption_status: Not Yet Started
+priority: P2
 applicability:
-  - "S3 (Claude Code Build)"
-  - "General"
+- S3 (Claude Code Build)
+- General
 adopted_in: []
 sources:
-  - "memongo-mongodb-native-agent-memory-github.md"
+- memongo-mongodb-native-agent-memory-github.md
 related_findings:
-  - file: rank-fusion-hybrid-retrieval-mongodb-atlas.md
-    rel: extends
-  - file: hybrid-retrieval-pattern-semantic-lexical-graph.md
-    rel: same-problem
+- file: rank-fusion-hybrid-retrieval-mongodb-atlas.md
+  rel: extends
+- file: hybrid-retrieval-pattern-semantic-lexical-graph.md
+  rel: same-problem
 proposals: null
-date_discovered: "2026-04-20"
-last_updated: "2026-04-27"
+date_discovered: '2026-04-20'
+last_updated: '2026-04-27'
 pipeline_status: synthesized
 consumed_by:
-  - "session-persistence-and-memory.md"
+- session-persistence-and-memory.md
+- structuring-agent-context.md
 ---
 
 ## What It Is
