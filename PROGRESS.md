@@ -1,8 +1,8 @@
 # Improvement Loop — Progress
 
-Updated: 2026-07-16 (session 148 — Phase 4 interview COMPLETE in one sitting: kernel
-docs `governance/{constitution,prd,actors}.md` all Nick-approved; harness-first ruled
-at checkpoint #2; Phase 3 folded into the kernel compiler. Next: E1 `memory-spec`.)
+Updated: 2026-07-18 (session 149 — memory-spec research corpus COMPLETE and stashed:
+A internal briefs + B 12-framework memory survey + C harness survey, all synthesized
+in `operations/plans/memory-spec-inputs/`. Drafting parked; next: YT-retrieval design.)
 
 ## Start here
 
@@ -60,15 +60,22 @@ shape (decision → DD, pattern → knowledge/, work → task layer); determinis
 check with a seeded-violation test.
 
 Scopes (hill):
-- `memory-spec` — the memory-architecture design note (spec before build) — **uphill**;
-  open unknowns: per-actor vs shared store shape, which accumulation surfaces
-  (session runs / tool calls / logs) to start with
+- `memory-spec` — the memory-architecture design note (spec before build) —
+  **cresting**; research corpus complete in `operations/plans/memory-spec-inputs/`
+  (A internal briefs; B 12-framework memory survey + synthesis incl. coding-vs-personal
+  class analysis; C harness survey + harness×memory harmonization with ruled
+  taxonomy/glossary). Both former unknowns answered: per-actor AND shared over one
+  scoped substrate (directory isolation); append-only run log first, with explicit
+  supersession. New seam: reflection *cadence* rides E4's wake/dispatch — the spec
+  states the E1↔E4 coupling rather than ruling cadence standalone. Drafting is
+  section-gated with Nick; parked behind the YT interlude.
 - `reflection-build` — the reflection mechanism — uphill (waits on spec)
 - `store-checks` — deterministic checks + seeded-violation test — uphill (waits on spec)
 
-**Next unit of work:** `memory-spec` — draft the design note from PRD E1's named inputs
-(`operations/self/` store, frozen SL corpus, KB memory cluster, `governance/actors.md`).
-Nick flagged E1 as potentially the big one; memory-design thoroughness is opted in.
+**Next unit of work:** YT-retrieval design (Nick-ruled interlude) — brainstorm + land a
+design for a Researcher enhancement that grabs the latest videos from YouTube
+(relates: `/transcript-fetcher`, `/watch-blogs` pattern, LINKS.md retry backlog,
+kome.ai fallback). Then resume `memory-spec` drafting from the corpus above.
 
 ## Backlog / Icebox
 
@@ -85,6 +92,8 @@ triggers noted where promotion is event-gated.
   `mdx-visual-plans-with-reusable-components` + visual-recap findings)
 - **IB-177** — design-mode video-intake spec via `/meta-skill-author` (filed at the
   Phase 4 Block E sweep; was a blocker line)
+- **IB-178** — KB corrections sweep: 12-item stale/misattributed ledger from the
+  memory survey (canonical list in B-synthesis §KB corrections ledger)
 - `/detect-drift` predicate hardening — currency baseline must be
   max(extraction_date, last_change_report); lesson L-10, second occurrence files the IB
 - Findings hybrid search (FTS5 + local embeddings under `app/`) — designed-in
