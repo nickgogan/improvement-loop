@@ -95,3 +95,9 @@ by `store_check.py` in the pre-commit hook.
 - **Owning surface:** `systems/improvement-loop/.claude/skills/vision-to-plan/SKILL.md` (section-drafting step)
 - **Source:** session 148 (2026-07-16), Phase 4 interview Block A2 first gate
 - **Occurrences:** 2026-07-16
+
+## L-12 · 2026-07-18 · normal · open
+- **Lesson:** A capability design note was presented as final on mechanism verification alone; Nick ruled the true evaluation is building the initial version and scoring its output against available ground truth ("the closer the discovery pass matches the links there, the more correct the skill" — the hand-curated LINKS.md batch). When a design's output has a checkable ground-truth corpus, the design step includes a v0 empirical eval before finalization; the eval also calibrated the spec (strict filter bar via six exemplar verdicts) in a way static review could not.
+- **Owning surface:** `systems/improvement-loop/.claude/skills/design-skill/SKILL.md` (Phase 5 audit is static-only today)
+- **Source:** session 150 (2026-07-18), YT-retrieval interlude; eval at `operations/research-reports/2026-07-18-watch-youtube-eval.md`
+- **Occurrences:** 2026-07-18

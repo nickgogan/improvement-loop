@@ -1,8 +1,8 @@
 # Improvement Loop — Progress
 
-Updated: 2026-07-18 (session 149 — memory-spec research corpus COMPLETE and stashed:
-A internal briefs + B 12-framework memory survey + C harness survey, all synthesized
-in `operations/plans/memory-spec-inputs/`. Drafting parked; next: YT-retrieval design.)
+Updated: 2026-07-18 (session 150 — YT-retrieval interlude shipped: `/watch-youtube`
+designed history-only, v0 built + evaluated against Nick's curated batch (100% recall,
+84% precision, strict filter bar ruled); IB-179 filed. Next: full `/link-intake` run.)
 
 ## Start here
 
@@ -45,7 +45,9 @@ recorded there). Epic definitions, inputs, and binary ACs: `governance/prd.md` �
   harness-first ruling · [HISTORY.md](HISTORY.md)
 - `[>]` **memory-layer (E1)** — per-actor memory surfaces; data → reflection → knowledge
 - `[ ]` **task-layer (E2)** — per-actor work queues + task contract; absorbs DD/IB cleanup
-- `[ ]` **self-description (E3)** — one YAML per actor + per harness, root descriptor
+- `[ ]` **self-description (E3)** — one YAML per actor + per harness, root descriptor.
+  Expanded (Nick, 2026-07-18): a portable JSON/YAML **asset-description language** fully
+  describing engine assets — reusable foundations for port/reharness meta-skills
 - `[ ]` **harness (E4+E7)** — enforcement points, wake/dispatch, fitness loop
 - `[ ]` **kernel-compiler (E5)** — generalized forms, compile + drift `--check`,
   human-readable manual layer
@@ -61,27 +63,36 @@ check with a seeded-violation test.
 
 Scopes (hill):
 - `memory-spec` — the memory-architecture design note (spec before build) —
-  **cresting**; research corpus complete in `operations/plans/memory-spec-inputs/`
-  (A internal briefs; B 12-framework memory survey + synthesis incl. coding-vs-personal
-  class analysis; C harness survey + harness×memory harmonization with ruled
-  taxonomy/glossary). Both former unknowns answered: per-actor AND shared over one
-  scoped substrate (directory isolation); append-only run log first, with explicit
-  supersession. New seam: reflection *cadence* rides E4's wake/dispatch — the spec
-  states the E1↔E4 coupling rather than ruling cadence standalone. Drafting is
-  section-gated with Nick; parked behind the YT interlude.
+  **cresting**; research corpus complete + synthesized in
+  `operations/plans/memory-spec-inputs/` (A internal briefs, B 12-framework survey,
+  C harness survey; both former unknowns answered; the E1↔E4 reflection-cadence seam
+  is stated there). Drafting is section-gated with Nick; parked behind the ruled queue.
 - `reflection-build` — the reflection mechanism — uphill (waits on spec)
 - `store-checks` — deterministic checks + seeded-violation test — uphill (waits on spec)
 
-**Next unit of work:** YT-retrieval design (Nick-ruled interlude) — brainstorm + land a
-design for a Researcher enhancement that grabs the latest videos from YouTube
-(relates: `/transcript-fetcher`, `/watch-blogs` pattern, LINKS.md retry backlog,
-kome.ai fallback). Then resume `memory-spec` drafting from the corpus above.
+**Nick-ruled queue (2026-07-18)** — front-runs memory-spec drafting; E1 scopes stay
+parked-cresting until this clears or Nick re-prioritizes:
+1. **Full `/link-intake`** of the LINKS.md batch (29 links) — process to completion,
+   incl. Nick's inline notes: the Vercel framework video → watched-repo candidate;
+   interest in the mattpocock/skills repo.
+2. **Guide refresh** — update the guides on creating **agent memories, harnesses, and
+   agentic systems** from the processed intake + the memory-spec corpus.
+3. **Asset-description language** — begin the portable JSON/YAML language describing
+   engine assets (pulls E3 forward; foundations for port/reharness meta-skills).
+4. **Eval sophistication** — upgrade `/meta-skill-author`'s eval discipline, anchored
+   on the DeepMind good-skills framework (Schmid, "Don't Ship Skills Without Evals" —
+   `0vphxNt4wyk`, in the batch; Nick endorses their framework).
+
+**Next unit of work:** run `/link-intake` on `LINKS.md` (queue item 1). Items 2–4
+follow in order; queue item 4's anchor talk arrives via item 1's extraction.
 
 ## Backlog / Icebox
 
 Unscheduled — promote into a milestone when ready. Work items carry IB numbers;
 triggers noted where promotion is event-gated.
 
+- **IB-179** — build `/watch-youtube` per the 2026-07-18 design note (v0 tool + eval
+  fixture in place; strict filter bar ruled; regression bar = the eval numbers)
 - **IB-173** — three-bucket gate tiering, DD-29 refinement (approved direction; absorbs
   IB-103 per gate G7)
 - **IB-171** — corpus-wide linkage-hygiene sweep (~87 legacy asymmetries measured
