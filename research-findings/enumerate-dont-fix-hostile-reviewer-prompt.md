@@ -55,7 +55,7 @@ date_discovered: '2026-07-12'
 last_updated: '2026-07-13'
 pipeline_status: synthesized
 consumed_by:
-- building-agent-evaluation-suites.md
+- verifying-agent-output.md
 ---
 
 # Enumerate-Don't-Fix Hostile-Reviewer Prompt

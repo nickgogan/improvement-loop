@@ -21,7 +21,7 @@ related_findings:
 pipeline_status: synthesized
 consumed_by:
 - skills/correct-course-mid-project-pivot.md
-- agent-workflow-and-execution.md
+- production-agent-execution.md
 ---
 
 ## What It Is

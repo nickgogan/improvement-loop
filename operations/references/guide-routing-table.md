@@ -33,8 +33,12 @@ Tracks when `/synthesize-guide` was last run against each cluster, how many find
 | G2a | Structuring and Loading Agent Context | 2026-07-16 | 61 | `extracts/guides/structuring-agent-context.md` | draft |
 | G2b | Defending Against Context Degradation | 2026-07-13 | 37 | `extracts/guides/defending-agent-context.md` | draft |
 | G3 | Agent Architecture Decisions | 2026-07-19 | 72 | `extracts/guides/agent-architecture-decisions.md` | draft |
-| G3b | Agent Workflow and Execution | 2026-07-19 | 42 | `extracts/guides/agent-workflow-and-execution.md` | draft |
-| G4 | Building Agent Evaluation Suites | 2026-07-19 | 77 | `extracts/guides/building-agent-evaluation-suites.md` | draft |
+| G3b | Agent Workflow and Execution | 2026-07-19 | 42 | `archive/guides/agent-workflow-and-execution.md` | deprecated (archived) |
+| G3c | Production Agent Execution | 2026-07-19 | 27 | `extracts/guides/production-agent-execution.md` | draft |
+| G3d | Autonomous and Scheduled Agent Operation | 2026-07-19 | 20 | `extracts/guides/autonomous-scheduled-agent-operation.md` | draft |
+| G4 | Building Agent Evaluation Suites | 2026-07-19 | 77 | `archive/guides/building-agent-evaluation-suites.md` | deprecated (archived) |
+| G4a | Verifying Agent Output | 2026-07-19 | 63 | `extracts/guides/verifying-agent-output.md` | draft |
+| G4b | Eval-Driven Improvement Loops | 2026-07-19 | 17 | `extracts/guides/eval-driven-improvement-loops.md` | draft |
 | G5 | Designing Agent Tools | 2026-07-16 | 37 | `extracts/guides/designing-agent-tools.md` | draft |
 | G6 | Agent Safety and Permissions | 2026-07-16 | 16 | `extracts/guides/agent-safety-and-permissions.md` | draft |
 | G7 | Session Persistence and Memory | 2026-07-19 | 40 | `extracts/guides/session-persistence-and-memory.md` | draft |
@@ -56,8 +60,8 @@ Tracks when `/synthesize-guide` was last run against each cluster, how many find
 | Prompt | Model-Resilient Prompt Engineering | — | Shares guide with Model; split when mass justifies it |
 | Tools | Designing Agent Tools | — | Clean 1:1 mapping |
 | Intent | Writing Agent Specifications | — | Clean 1:1 mapping |
-| Orchestration | Agent Architecture Decisions | Agent Workflow and Execution, Session Persistence and Memory | Architecture gets topology/composition; Workflow gets execution/operations; Session gets state management |
-| Evaluation | Building Agent Evaluation Suites | Agent Safety and Permissions | Safety inherits independent-eval findings |
+| Orchestration | Agent Architecture Decisions | Production Agent Execution (G3c), Autonomous and Scheduled Agent Operation (G3d), Session Persistence and Memory | Architecture gets topology/composition; G3c gets supervised execution/operations; G3d gets unattended/scheduled/autonomous operation; Session gets state management. G3b (Agent Workflow and Execution) split into G3c+G3d, session 152, DD-122 |
+| Evaluation | Verifying Agent Output (G4a), Eval-Driven Improvement Loops (G4b) | Agent Safety and Permissions | Split from G4 in session 152 (DD-123); G4a covers verification architecture (prove output works), G4b covers eval-driven improvement (make agent/skills better). Safety inherits independent-eval findings — secondary stays pointed at G4a. G4b is a future secondary for Tools (eval-driven tool iteration) — note only; no Tools-row change until demand shows. |
 | Sandboxing | Agent Safety and Permissions | — | Clean 1:1 mapping |
 | Governance | Agent Governance and Trust | — | Graduated from unrouted; 10 findings (2 P1 + 8 P2) |
 | Agent Design | Agent Design Patterns | Writing Agent Specs, Session Persistence | Graduated from scattered; 11 P2 findings |
@@ -80,8 +84,12 @@ Current per-cluster finding counts are not enumerated here — they drift per se
 | G2a | Structuring and Loading Agent Context | "How do I structure and load context efficiently — what to include, how to tier it, and how to retrieve it?" | build | Context Engineering |
 | G2b | Defending Against Context Degradation | "How do I prevent context degradation, rot, and cost blowout?" | build | Context Engineering |
 | G3 | Agent Architecture Decisions | "Should I use one agent or many? How do I compose?" | build | Orchestration, Model Selection |
-| G3b | Agent Workflow and Execution | "How do I run agents in production?" | operate | Orchestration |
-| G4 | Building Agent Evaluation Suites | "How do I verify my agent actually works?" | verify | Evaluation |
+| G3b | ~~Agent Workflow and Execution~~ | ~~"How do I run agents in production?"~~ | ~~operate~~ | ~~Orchestration~~ | *(deprecated — split into G3c + G3d, session 152, DD-122)* |
+| G3c | Production Agent Execution | "How do I make production agent workflows reliable, observable, and reviewable?" | operate | Orchestration |
+| G3d | Autonomous and Scheduled Agent Operation | "How do I run agents unattended — scheduled, headless, and autonomous?" | operate | Orchestration |
+| G4 | ~~Building Agent Evaluation Suites~~ | ~~"How do I verify my agent actually works?"~~ | ~~verify~~ | ~~Evaluation~~ | *(deprecated — split into G4a + G4b, session 152, DD-123)* |
+| G4a | Verifying Agent Output | "How do I verify my agent's output actually works?" | verify | Evaluation |
+| G4b | Eval-Driven Improvement Loops | "How do I use evals to drive autonomous improvement of my agent and its skills?" | verify/operate | Evaluation |
 | G5 | Designing Agent Tools | "How do I design tools for agents?" | build | Tool Integration |
 | G6 | Agent Safety and Permissions | "How do I make my agent system safe?" | secure | Sandboxing, Evaluation |
 | G7 | Session Persistence and Memory | "How do I handle memory and session continuity?" | operate | Context Engineering, Orchestration |
@@ -144,9 +152,9 @@ Secondary navigation axis. Agents can query by stage to get all relevant guides 
 |-------|--------|-------------------|
 | **specify** | G1 (Agent Specs), G10 (Agent Design), G11 (Agentic Systems) | Defining what the agent or system should do and how it behaves |
 | **build** | G2a (Context Structuring), G2b (Context Defense), G3 (Architecture), G5 (Tools), G8 (Prompts) | Implementing the agent system |
-| **verify** | G4 (Evaluation) | Checking correctness and reliability |
+| **verify** | G4a (Verifying Agent Output), G4b (Eval-Driven Improvement Loops) | Checking correctness and reliability; driving eval-based improvement |
 | **secure** | G6 (Safety), G9 (Governance) | Hardening permissions, boundaries, and oversight |
-| **operate** | G3b (Workflow/Execution), G7 (Session/Memory) | Running in production, maintaining state |
+| **operate** | G3c (Production Agent Execution), G3d (Autonomous and Scheduled Agent Operation), G4b (Eval-Driven Improvement Loops), G7 (Session/Memory) | Running in production, maintaining state |
 
 ---
 
@@ -160,14 +168,16 @@ For agent-driven guide discovery. An agent encountering these terms in a task de
 | context window, token budget, CLAUDE.md, sharding, tiered loading, retrieval, pointers, progressive loading | G2a |
 | context rot, compaction, degradation, session discipline, cost control, token tax, session atomicity | G2b |
 | multi-agent, single agent, orchestration, delegation, subagent, planner-executor | G3 |
-| eval, verification, assertion, grading, benchmark, pass rate, test suite | G4 |
+| eval, verification, assertion, grading, benchmark, pass rate, test suite, deploy gate | G4a |
+| eval-driven improvement, keep/revert, convergence, skill lifecycle, with/without baseline, skill smells, description optimization | G4b |
 | tool design, tool definition, MCP, tool registry, poka-yoke | G5 |
 | permissions, sandbox, injection, safety, isolation, blast radius | G6 |
 | session, memory, persistence, crash recovery, handoff, state management, memory tiers, write policy | G7 |
 | prompt engineering, model-agnostic, model routing, reasoning model, constraints, elicitation, prompt versioning | G8 |
 | governance, trust, autonomy, oversight, review process, audit trail, human-on-the-loop, trust calibration | G9 |
 | agent identity, constitution, soul, prompt layers, agent lifecycle, behavioral patterns, clarification, self-improvement | G10 |
-| workflow, execution, cost, degradation, stall detection, observability, tracing, sprint contract, durable workflow | G3b |
+| workflow, execution, cost, degradation, stall detection, observability, tracing, sprint contract, quality-at-source, durable workflow | G3c |
+| scheduled, headless, cron, trigger shape, routine, loop contract, autonomous, unattended, reconciliation queue, durable workflow | G3d |
 | vault-as-OS, second brain, personal knowledge management, daily brief, scheduled agent, file-over-app, agentic OS, knowledge store, Obsidian, vault, PKM, context infrastructure | G11 |
 
 ---
@@ -177,3 +187,9 @@ For agent-driven guide discovery. An agent encountering these terms in a task de
 Operational risks where the routing structure is functional but weakened.
 
 **G2a/G2b vs G7 (post-split).** G2a (Structuring and Loading Agent Context), G2b (Defending Against Context Degradation), and G7 (Session Persistence and Memory) all carry `Context Engineering` in their Dimensions field. The G2→G2a/G2b split (session 104) sharpens the discriminator: G2a = what to include and how to load it (build-time structuring); G2b = how to prevent degradation over a session (runtime defense); G7 = how to persist state across sessions (operational persistence). The `bounded-tiered-memory-inference-driven-curation` finding is shared between G2a and G2b, with G7 cross-reference for its eviction/persistence aspect. If a future `/identify-artifacts` run mis-routes between G2a/G2b/G7, consult the trigger-keyword table above and the practitioner question text as discriminators.
+
+**G3c vs G3d (post-split, session 152, DD-122).** G3b (Agent Workflow and Execution) split into G3c (Production Agent Execution) and G3d (Autonomous and Scheduled Agent Operation); both carry `Orchestration`, stage `operate`. Discriminator: G3c = harden a *supervised* production workflow (plan/execute separation, workflow state, per-run observability, cost, degradation, review bandwidth, routing); G3d = remove the human from the loop (scheduling surfaces, trigger shapes, headless composition, loop contracts, portfolio observability, autonomy levels). Five findings are deliberately shared across both `source_findings[]` — `durable-workflow-engine-for-agent-systems`, `durable-checkpointed-sessions-as-framework-default`, `archon-yaml-defined-harness-workflows`, `agent-cost-blowup-mitigation-strategies`, `graceful-degradation-modes-for-agent-failure` (the execution/failure substrate common to both regimes; `durable workflow` keyword routes to both). New Orchestration operate-stage findings route to G3c/G3d, never the deprecated G3b.
+
+**`lint-test-failures-as-remediation-prompts` cross-dimension provenance.** This finding carries `category: Context Engineering`, not Orchestration. It was Nick-routed into the G3b cluster (session 152) as a quality-at-source authoring standard, and on the split it stays with **G3c** (supervised execution's Step 8 review-bandwidth material). If a future `/identify-artifacts` or `/dimension-rebalance` run reconsiders it against Context Engineering (G2a/G2b), the Nick-ruled routing to G3c takes precedence unless Nick re-rules.
+
+**G4a vs G4b (post-split, session 152, DD-123).** G4 (Building Agent Evaluation Suites) split into G4a (Verifying Agent Output) and G4b (Eval-Driven Improvement Loops); both carry `Evaluation`. G4a is stage `verify`; G4b spans `verify` and `operate`. Discriminator: G4a = prove the agent's output works (assertions, reliability metrics, verification architectures — builder-validator/dual-blind/holdout/goal-backward/cross-model/fleet review, benchmark and config discipline, production evaluation, quality gates incl. evals-as-deploy-gate); G4b = use those evals to improve the agent and its skills over time (keep/revert loops, convergence contracts, skill lifecycle evaluation, description optimization, with/without baselines, eval-driven tool iteration, review-feedback→durable-checks). Three findings are deliberately shared across both `source_findings[]` — `capability-vs-regression-eval-lifecycle`, `generator-assessor-separation-in-skill-iteration`, `eval-rubric-carve-outs-subjective-and-script-core-skills` (the lifecycle/separation/carve-out invariants both questions stand on). New Evaluation findings route to G4a/G4b, never the deprecated G4.

@@ -26,7 +26,7 @@ date_discovered: '2026-04-09'
 last_updated: '2026-04-09'
 pipeline_status: synthesized
 consumed_by:
-- building-agent-evaluation-suites.md
+- verifying-agent-output.md
 ---
 # Eval Awareness: Autonomous Benchmark Identification and Answer Extraction
 

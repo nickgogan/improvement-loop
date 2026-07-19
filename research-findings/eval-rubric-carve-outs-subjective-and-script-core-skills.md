@@ -25,7 +25,8 @@ related_findings:
   rel: same-problem
 pipeline_status: synthesized
 consumed_by:
-- building-agent-evaluation-suites.md
+- verifying-agent-output.md
+- eval-driven-improvement-loops.md
 tags:
 - evaluation
 - audit-rubric

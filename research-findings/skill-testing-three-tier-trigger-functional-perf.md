@@ -31,7 +31,7 @@ date_discovered: '2026-06-11'
 last_updated: '2026-06-11'
 pipeline_status: synthesized
 consumed_by:
-- building-agent-evaluation-suites.md
+- eval-driven-improvement-loops.md
 ---
 
 # Skill Testing — Three-Tier (Triggering, Functional, Performance)

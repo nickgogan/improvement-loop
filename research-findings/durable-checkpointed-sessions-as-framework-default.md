@@ -35,7 +35,8 @@ last_updated: "2026-07-18"
 pipeline_status: "synthesized"
 consumed_by:
   - "session-persistence-and-memory.md"
-  - "agent-workflow-and-execution.md"
+  - "production-agent-execution.md"
+  - "autonomous-scheduled-agent-operation.md"
 tags:
   - "orchestration"
   - "durable-execution"

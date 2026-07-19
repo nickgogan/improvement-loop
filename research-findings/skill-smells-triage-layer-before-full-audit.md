@@ -23,7 +23,7 @@ last_updated: '2026-07-12'
 related_findings: []
 pipeline_status: synthesized
 consumed_by:
-- building-agent-evaluation-suites.md
+- eval-driven-improvement-loops.md
 tags:
 - skill-authoring
 - anti-patterns

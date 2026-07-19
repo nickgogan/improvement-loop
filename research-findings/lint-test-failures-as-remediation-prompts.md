@@ -42,7 +42,7 @@ date_discovered: '2026-07-18'
 last_updated: '2026-07-18'
 pipeline_status: synthesized
 consumed_by:
-  - agent-workflow-and-execution.md
+  - production-agent-execution.md
 ---
 
 ## What It Is

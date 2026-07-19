@@ -63,7 +63,7 @@ date_discovered: '2026-04-07'
 last_updated: '2026-07-13'
 pipeline_status: synthesized
 consumed_by:
-- building-agent-evaluation-suites.md
+- verifying-agent-output.md
 - rules/agent-self-reporting-unreliability-independent-eval.md
 ---
 

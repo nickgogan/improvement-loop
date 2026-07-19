@@ -25,7 +25,7 @@ date_discovered: "2026-04-23"
 last_updated: "2026-07-13"
 pipeline_status: synthesized
 consumed_by:
-  - "guides/building-agent-evaluation-suites.md"
+  - "guides/verifying-agent-output.md"
 ---
 
 ## What It Is

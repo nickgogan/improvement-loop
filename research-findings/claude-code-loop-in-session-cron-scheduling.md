@@ -25,7 +25,7 @@ related_findings:
   rel: contrasts-with
 pipeline_status: synthesized
 consumed_by:
-- agent-workflow-and-execution.md
+- autonomous-scheduled-agent-operation.md
 ---
 # Claude Code /loop -- In-Session Cron Scheduling
 

@@ -58,7 +58,7 @@ date_discovered: '2026-07-13'
 last_updated: '2026-07-13'
 pipeline_status: synthesized
 consumed_by:
-- building-agent-evaluation-suites.md
+- verifying-agent-output.md
 ---
 
 # Repeated-Sampling Scaling Law and the Verifier Ceiling

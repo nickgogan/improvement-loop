@@ -46,7 +46,7 @@ date_discovered: '2026-07-12'
 last_updated: '2026-07-12'
 pipeline_status: synthesized
 consumed_by:
-- building-agent-evaluation-suites.md
+- eval-driven-improvement-loops.md
 ---
 
 ## What It Is

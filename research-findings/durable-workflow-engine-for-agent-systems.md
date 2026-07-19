@@ -34,7 +34,8 @@ date_discovered: '2026-04-07'
 last_updated: '2026-04-09'
 pipeline_status: synthesized
 consumed_by:
-- agent-workflow-and-execution.md
+- production-agent-execution.md
+- autonomous-scheduled-agent-operation.md
 ---
 # Durable Workflow Engine for Agent Systems
 

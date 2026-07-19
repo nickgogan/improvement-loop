@@ -28,7 +28,7 @@ related_findings:
   rel: same-problem
 pipeline_status: synthesized
 consumed_by:
-- agent-workflow-and-execution.md
+- production-agent-execution.md
 - session-persistence-and-memory.md
 ---
 # Session Persistence as Recoverable State (Crash-Resilient)

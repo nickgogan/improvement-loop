@@ -35,7 +35,7 @@ related_findings:
 pipeline_status: synthesized
 consumed_by:
 - skills/headless-multi-pass-iterative-review.md
-- agent-workflow-and-execution.md
+- autonomous-scheduled-agent-operation.md
 ---
 ## What It Is
 

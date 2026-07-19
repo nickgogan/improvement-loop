@@ -25,7 +25,7 @@ related_findings:
   rel: same-problem
 pipeline_status: synthesized
 consumed_by:
-  - "building-agent-evaluation-suites.md"
+  - verifying-agent-output.md
   - "rules/production-database-wipeout-agent-context.md"
 ---
 # Production Database Wipeout: Agent Context Blindness Failure Mode

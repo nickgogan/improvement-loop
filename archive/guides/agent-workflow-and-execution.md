@@ -4,7 +4,7 @@ type: "guideline"
 category: "Orchestration"
 target_system:
   - "improvement-loop"
-stage: "draft"
+stage: "deprecated"
 created: "2026-04-19"
 updated: "2026-07-19"
 author: "claude"

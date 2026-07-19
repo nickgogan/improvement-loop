@@ -27,7 +27,7 @@ last_updated: '2026-04-19'
 pipeline_status: synthesized
 consumed_by:
 - rules/hook-based-enforcement-for-agent-outputs.md
-- building-agent-evaluation-suites.md
+- verifying-agent-output.md
 ---
 
 ## What It Is

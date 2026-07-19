@@ -35,7 +35,7 @@ related_findings:
   rel: same-problem
 pipeline_status: synthesized
 consumed_by:
-  - "building-agent-evaluation-suites.md"
+  - verifying-agent-output.md
 ---
 # Four-Layer Agent Evaluation Architecture
 

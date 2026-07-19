@@ -29,7 +29,7 @@ date_discovered: '2026-04-09'
 last_updated: '2026-04-09'
 pipeline_status: synthesized
 consumed_by:
-- agent-workflow-and-execution.md
+- autonomous-scheduled-agent-operation.md
 ---
 # Multi-Day Autonomous Scientific Computing Workflow
 

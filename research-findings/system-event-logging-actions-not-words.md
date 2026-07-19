@@ -27,7 +27,7 @@ related_findings:
   rel: extended-by
 pipeline_status: synthesized
 consumed_by:
-- building-agent-evaluation-suites.md
+- verifying-agent-output.md
 - rules/system-event-logging-actions-not-words.md
 ---
 # System Event Logging (Actions, Not Just Words)

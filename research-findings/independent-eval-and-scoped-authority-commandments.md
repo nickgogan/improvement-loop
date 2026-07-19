@@ -25,7 +25,7 @@ related_findings:
 pipeline_status: synthesized
 consumed_by:
 - agent-safety-and-permissions.md
-- building-agent-evaluation-suites.md
+- verifying-agent-output.md
 ---
 ## What It Is
 Two of Nate B Jones's five commandments for agent deployment, extracted as standalone patterns because they span Evaluation and Sandboxing:

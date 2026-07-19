@@ -22,7 +22,7 @@ date_discovered: '2026-04-07'
 last_updated: '2026-04-07'
 pipeline_status: synthesized
 consumed_by:
-- agent-workflow-and-execution.md
+- production-agent-execution.md
 ---
 # Cloud-Local Plan Handoff (Teleport Pattern)
 

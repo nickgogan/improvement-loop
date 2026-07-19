@@ -29,7 +29,7 @@ related_findings:
   rel: extended-by
 pipeline_status: synthesized
 consumed_by:
-- building-agent-evaluation-suites.md
+- eval-driven-improvement-loops.md
 ---
 # Self-Evolving Loop Pattern
 

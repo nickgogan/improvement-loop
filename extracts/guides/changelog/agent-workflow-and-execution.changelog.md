@@ -1,5 +1,13 @@
 # Changelog — Agent Workflow and Execution
 
+## 2026-07-19 — Session 152 — guide-split
+
+- Findings: 42 → split (A=22, B=15, shared=5)
+- Split into destinations [[production-agent-execution]] and [[autonomous-scheduled-agent-operation]] per [[DD-122]]
+- Source deprecated (stage: deprecated) and archived to archive/guides/agent-workflow-and-execution.md; this changelog stays in extracts/guides/changelog/ (G2 precedent).
+- Preserved: none
+- SL: session-152 (SL retired as producer per session-138 ruling; git is the session record)
+
 ## 2026-07-19 — Session 152 — nick-request
 
 - Findings: 42 (+5, -0 since last synthesis)

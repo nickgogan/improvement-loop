@@ -34,7 +34,7 @@ date_discovered: '2026-05-25'
 last_updated: '2026-07-13'
 pipeline_status: synthesized
 consumed_by:
-- agent-workflow-and-execution.md
+- autonomous-scheduled-agent-operation.md
 tags:
 - session-95-reextract
 ---

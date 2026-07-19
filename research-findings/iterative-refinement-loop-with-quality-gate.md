@@ -38,7 +38,7 @@ related_findings:
 pipeline_status: synthesized
 consumed_by:
 - skills/iterative-refinement-loop-with-quality-gate.md
-- building-agent-evaluation-suites.md
+- eval-driven-improvement-loops.md
 ---
 # Iterative Refinement Loop with Quality Gate
 

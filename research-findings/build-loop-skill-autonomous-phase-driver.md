@@ -28,7 +28,7 @@ last_updated: '2026-05-25'
 pipeline_status: synthesized
 consumed_by:
 - extracts/skills/build-loop-skill-autonomous-phase-driver.md
-- agent-workflow-and-execution.md
+- autonomous-scheduled-agent-operation.md
 tags:
 - session-95-reextract
 ---

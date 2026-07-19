@@ -27,7 +27,7 @@ date_discovered: "2026-05-25"
 last_updated: "2026-05-25"
 pipeline_status: synthesized
 consumed_by:
-  - "building-agent-evaluation-suites.md"
+  - verifying-agent-output.md
   - "templates/tdd-step-ordering-in-plan-tasks.md"
 tags:
   - "session-95-reextract"

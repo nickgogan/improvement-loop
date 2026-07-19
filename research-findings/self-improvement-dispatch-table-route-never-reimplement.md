@@ -21,7 +21,7 @@ last_updated: '2026-07-12'
 related_findings: []
 pipeline_status: synthesized
 consumed_by:
-- agent-workflow-and-execution.md
+- production-agent-execution.md
 tags:
 - dispatch-table
 - routing

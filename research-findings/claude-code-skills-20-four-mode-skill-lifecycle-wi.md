@@ -30,7 +30,7 @@ related_findings:
   rel: same-problem
 pipeline_status: synthesized
 consumed_by:
-- building-agent-evaluation-suites.md
+- eval-driven-improvement-loops.md
 ---
 # Claude Code Skills 2.0 -- Four-Mode Skill Lifecycle with Binary Evals
 

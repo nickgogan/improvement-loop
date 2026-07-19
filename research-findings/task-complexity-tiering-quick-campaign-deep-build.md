@@ -22,7 +22,7 @@ related_findings:
   rel: same-problem
 pipeline_status: synthesized
 consumed_by:
-- agent-workflow-and-execution.md
+- production-agent-execution.md
 - agent-architecture-decisions.md
 ---
 

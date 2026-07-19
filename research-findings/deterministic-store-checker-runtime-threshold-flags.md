@@ -21,7 +21,7 @@ last_updated: '2026-07-12'
 related_findings: []
 pipeline_status: synthesized
 consumed_by:
-- building-agent-evaluation-suites.md
+- verifying-agent-output.md
 tags:
 - deterministic-validation
 - schema-check

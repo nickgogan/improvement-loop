@@ -28,7 +28,7 @@ tags:
   - "session-95-reextract"
 pipeline_status: synthesized
 consumed_by:
-  - building-agent-evaluation-suites.md
+  - verifying-agent-output.md
 ---
 
 # Per-Query Production Eval Pipeline

@@ -51,7 +51,7 @@ last_updated: '2026-07-18'
 pipeline_status: "synthesized"
 consumed_by:
   - "agent-architecture-decisions.md"
-  - "building-agent-evaluation-suites.md"
+  - verifying-agent-output.md
 ---
 
 ## What It Is

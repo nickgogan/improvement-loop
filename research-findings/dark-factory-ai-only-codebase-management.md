@@ -38,7 +38,7 @@ date_discovered: '2026-04-19'
 last_updated: '2026-07-12'
 pipeline_status: synthesized
 consumed_by:
-- agent-workflow-and-execution.md
+- autonomous-scheduled-agent-operation.md
 ---
 
 # Dark Factory: AI-Only Autonomous Codebase Management

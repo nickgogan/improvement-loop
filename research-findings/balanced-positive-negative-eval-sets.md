@@ -21,7 +21,7 @@ last_updated: '2026-04-19'
 pipeline_status: synthesized
 consumed_by:
 - rules/balanced-positive-negative-eval-sets.md
-- building-agent-evaluation-suites.md
+- verifying-agent-output.md
 ---
 
 ## What It Is

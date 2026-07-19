@@ -30,7 +30,7 @@ related_findings:
   rel: same-problem
 pipeline_status: synthesized
 consumed_by:
-  - "building-agent-evaluation-suites.md"
+  - verifying-agent-output.md
 ---
 # March of Nines: Compounding Reliability Math for Multi-Step Agents
 

@@ -30,7 +30,7 @@ date_discovered: '2026-04-19'
 last_updated: '2026-04-20'
 pipeline_status: synthesized
 consumed_by:
-  - "building-agent-evaluation-suites.md"
+  - verifying-agent-output.md
 ---
 # Context-Order Diversity for Bug Detection
 

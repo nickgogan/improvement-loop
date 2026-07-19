@@ -1,5 +1,12 @@
 # Changelog — Building Agent Evaluation Suites
 
+## 2026-07-19 — Session 152 — guide-split
+
+- Findings: 77 (0 net; split into two destinations)
+- Structural: Split into destinations [[verifying-agent-output]] and [[eval-driven-improvement-loops]] per [[DD-123]]. Bifurcation: A=60 (G4a verifying-agent-output), B=14 (G4b eval-driven-improvement-loops), shared=3 (both). G4a=63 findings, G4b=17. Source deprecated (stage: deprecated) and archived to archive/guides/building-agent-evaluation-suites.md; this changelog stays in extracts/guides/changelog/.
+- Preserved: none (no Nick's Annotations or PRESERVE markers)
+- SL: session-152 (SL retired as producer per session-138 ruling; git is the session record)
+
 ## 2026-07-19 — Session 152 — nick-request
 
 - Findings: 77 (+4, -0 since last synthesis; session-152 guide-refresh sweep — Evaluation crossed the 3+ staleness threshold at wave-4)

@@ -28,7 +28,7 @@ related_findings:
   rel: same-problem
 pipeline_status: synthesized
 consumed_by:
-- building-agent-evaluation-suites.md
+- eval-driven-improvement-loops.md
 ---
 # Karpathy Autoresearch Self-Improvement Loop
 

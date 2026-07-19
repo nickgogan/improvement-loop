@@ -48,7 +48,7 @@ date_discovered: '2026-04-07'
 last_updated: '2026-07-12'
 pipeline_status: synthesized
 consumed_by:
-- agent-workflow-and-execution.md
+- production-agent-execution.md
 - agent-architecture-decisions.md
 ---
 # Planner-Executor with Deterministic Guardrails

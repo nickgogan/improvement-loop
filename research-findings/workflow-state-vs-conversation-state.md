@@ -33,7 +33,7 @@ related_findings:
   rel: extended-by
 pipeline_status: synthesized
 consumed_by:
-- agent-workflow-and-execution.md
+- production-agent-execution.md
 - session-persistence-and-memory.md
 ---
 # Workflow State vs. Conversation State Separation

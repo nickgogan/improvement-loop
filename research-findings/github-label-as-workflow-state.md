@@ -33,7 +33,7 @@ date_discovered: '2026-04-20'
 last_updated: '2026-07-12'
 pipeline_status: synthesized
 consumed_by:
-- agent-workflow-and-execution.md
+- autonomous-scheduled-agent-operation.md
 ---
 
 # GitHub Labels as Distributed Workflow State

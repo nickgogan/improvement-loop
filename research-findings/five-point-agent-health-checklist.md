@@ -54,7 +54,7 @@ date_discovered: '2026-07-13'
 last_updated: '2026-07-13'
 pipeline_status: synthesized
 consumed_by:
-- building-agent-evaluation-suites.md
+- verifying-agent-output.md
 ---
 
 # Five-Point Agent Health Checklist

@@ -30,7 +30,7 @@ related_findings:
 pipeline_status: synthesized
 consumed_by:
 - skills/end-to-end-sequential-bug-fix-pipeline.md
-- agent-workflow-and-execution.md
+- autonomous-scheduled-agent-operation.md
 ---
 ## What It Is
 

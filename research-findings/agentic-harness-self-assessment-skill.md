@@ -25,7 +25,7 @@ related_findings:
 pipeline_status: synthesized
 consumed_by:
 - skills/agentic-harness-self-assessment.md
-- building-agent-evaluation-suites.md
+- verifying-agent-output.md
 ---
 
 ## What It Is

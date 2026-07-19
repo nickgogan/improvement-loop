@@ -53,7 +53,7 @@ last_updated: '2026-04-09'
 pipeline_status: synthesized
 consumed_by:
 - skills/cross-model-verification-for-bug-finding.md
-- building-agent-evaluation-suites.md
+- verifying-agent-output.md
 ---
 # Cross-Model Verification for Bug Finding
 

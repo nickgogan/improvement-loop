@@ -34,7 +34,7 @@ related_findings:
   rel: enables
 pipeline_status: synthesized
 consumed_by:
-- building-agent-evaluation-suites.md
+- eval-driven-improvement-loops.md
 tags:
 - convergence-loop
 - severity-scale

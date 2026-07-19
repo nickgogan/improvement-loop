@@ -28,7 +28,7 @@ last_updated: '2026-04-24'
 pipeline_status: synthesized
 consumed_by:
 - rules/confirm-failure-first-tdd.md
-- building-agent-evaluation-suites.md
+- verifying-agent-output.md
 ---
 
 ## What It Is
