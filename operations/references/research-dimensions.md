@@ -491,5 +491,7 @@ Dimensions are top-level scan topics. A **sub-dimension** is a second-level scan
 - `five-layer-recursive-ai-loop-architecture`
 - `per-function-recursive-loop-composition`
 - `human-on-the-loop-hotl-autonomy-tiering-framework`
+- `loop-contract-anatomy-and-evolve-session-cadence`
+- `loop-trigger-taxonomy-poll-then-wake-combo`
 
 **Graduation criteria (when to elevate to a top-level dimension):** Same threshold as the other sub-dimensions — the seed cluster already clears ≥10 findings, so graduation turns on the *other* two tests: multiple sibling-dimension references (e.g., Evaluation citing loop termination, Governance citing loop autonomy envelopes) and an independent Librarian concept file routing consumer questions here. Revisit after the agentic-OS grounding pass.

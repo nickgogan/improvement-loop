@@ -26,9 +26,11 @@ related_findings:
     rel: "same-problem"
   - file: "leg-work-amplification-hiding-future-steps.md"
     rel: "extends"
+  - file: "everyday-default-flow-smart-zone-ticket-sizing.md"
+    rel: "same-problem"
 proposals: null
 date_discovered: "2026-07-12"
-last_updated: "2026-07-12"
+last_updated: "2026-07-18"
 pipeline_status: "raw"
 ---
 

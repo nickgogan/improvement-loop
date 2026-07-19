@@ -17,9 +17,11 @@ sources:
 - five-agentic-patterns-claude-code.md
 proposals: null
 date_discovered: '2026-04-07'
-last_updated: '2026-07-11'
+last_updated: '2026-07-18'
 related_findings:
 - file: competitive-module-development-parallel-teams.md
+  rel: same-problem
+- file: flat-parentless-cross-model-agent-communication.md
   rel: same-problem
 - file: worktree-isolation-for-parallel-agent-sessions.md
   rel: same-problem

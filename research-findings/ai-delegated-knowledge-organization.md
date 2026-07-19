@@ -12,6 +12,7 @@ applicability:
 adopted_in: []
 sources:
   - "karpathy-second-brain-typed-edge-alternative.md"
+  - "ai-organized-my-files-para-claude-code.md"
 related_findings:
   - file: karpathy-llm-knowledge-base-obsidian-rag.md
     rel: same-problem
@@ -21,9 +22,11 @@ related_findings:
     rel: same-problem
   - file: typed-edge-knowledge-graph-token-reduction.md
     rel: enables
+  - file: "agentic-file-classification-reliability-calibration.md"
+    rel: "extended-by"
 proposals: null
 date_discovered: "2026-05-25"
-last_updated: "2026-05-25"
+last_updated: "2026-07-18"
 pipeline_status: "synthesized"
 consumed_by:
   - building-agentic-systems.md
@@ -68,6 +71,17 @@ The Karpathy LLM-compiled wiki pattern (documented separately) provides corrobor
 
 - **Delegation boundary clarity** — define precisely which organizational decisions the AI makes autonomously vs. which require human review (e.g., AI types nodes freely, but humans review edge types on contradiction and depends-on edges)
 - **Quality feedback loop** — track when the human corrects an AI classification decision and use those corrections to improve future classification
+- **Empirical error-rate reference.** A separate real-world trial of agent-delegated
+  classification into a small taxonomy (PARA folders, not a typed graph) measured 78%
+  accuracy with the taxonomy itself independently verified as correctly understood
+  beforehand — errors clustered specifically where a bounded instance (a time-bound
+  project) sat inside a general ongoing category (an area), and where content looked
+  disposable but had unstated future value. See
+  `agentic-file-classification-reliability-calibration.md`. Useful as an external
+  calibration point for how much unreviewed trust to extend to this pattern's own
+  node/edge-typing decisions, and as a hint about where *this* pattern's classification
+  errors may cluster too (general-vs-specific node-type boundaries; low-signal input
+  that's actually load-bearing).
 - **Incremental organization** — organize new input against existing structure rather than batch-processing the entire graph
 
 ## Potential Failure Modes

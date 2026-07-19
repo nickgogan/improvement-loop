@@ -616,6 +616,15 @@ One line each; source dossier in parentheses.
   Superpowers at level 1 ("no memory — context window only"); the v6 progress ledger is a
   partial revision — level 1 undersells the ledger's within-run durability. (process-repos
   §Superpowers)
+- **openwiki absent from the 12-framework survey:** langchain-ai/openwiki (12.3k stars,
+  CI-driven self-updating agent wikis + OKF concept format — direct E1 reflection-loop
+  prior art) was not surveyed; registered as a watched library at the 2026-07-18 link
+  intake. The survey's framework set should note the gap; a /repo-analyzer pass is the
+  remedy. (2026-07-18 link-intake triage, batch D)
+- **Pre-collapse applicability values on live findings:** `ai-delegated-knowledge-organization.md`
+  and `para-based-file-memory.md` still carry `applicability: "S3 (Claude Code Build)"` —
+  Claude Build is archived; current convention is `"IL (...)"` / `"General"`. Symptomatic
+  of a wider pre-collapse-value sweep candidate. (2026-07-18 link-intake Pass 2, batch D)
 
 ---
 

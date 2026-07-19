@@ -14,10 +14,11 @@ notes: |-
   modes) maps nearly 1:1 onto the engine's /assess-skill and /design-skill substrate —
   extraction upgrades that substrate directly. Publishes applied changelogs (Skills
   v1.1) that convert talk-level claims into production evidence.
-source_count: 2
+source_count: 3
 sources:
   - "building-great-agent-skills-the-missing-manual.md"
   - "pocock-skills-v1-1-wayfinder-research-implement.md"
+  - "mattpocock-skills-complete-workflow-end-to-end.md"
 url: "https://www.youtube.com/@mattpocockuk"
 ---
 

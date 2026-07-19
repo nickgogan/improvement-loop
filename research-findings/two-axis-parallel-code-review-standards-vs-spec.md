@@ -26,7 +26,7 @@ implementation_notes: |-
   practice (Pocock v1.1) not deprecated by its originator, so the contradiction is an
   open trade (parallel-axis separation vs single-read economy), not a supersession.
 category: Evaluation
-evidence_strength: Medium (practitioner-documented)
+evidence_strength: Medium (practitioner-documented, single production system)
 adoption_status: Not Yet Started
 priority: P3 (Monitor)
 applicability:
@@ -34,6 +34,7 @@ applicability:
 adopted_in: []
 sources:
 - pocock-skills-v1-1-wayfinder-research-implement.md
+- mattpocock-skills-complete-workflow-end-to-end.md
 related_findings:
 - file: headless-multi-pass-iterative-review.md
   rel: same-problem
@@ -47,7 +48,7 @@ related_findings:
   rel: contradicts
 proposals: null
 date_discovered: '2026-07-12'
-last_updated: '2026-07-13'
+last_updated: '2026-07-18'
 pipeline_status: raw
 ---
 
@@ -84,11 +85,30 @@ context loading: reference material consulted at a known decision point shouldn'
 always-loaded rent. And the refactor relocation keeps the implementation loop (and any AFK
 implement skill) single-purpose.
 
+A second demonstration of this same code-review skill (Pocock's `mattpocock/skills`
+tutorial, 2026-07-16) supplies the rationale for dispatching to subagents *at all*, not
+just for splitting the two axes: "if you do it in the main agent, it means the main agent
+already has written the code, and agents are often really bad at editing or improving code
+they've just written... because they've wrote it, so they just think, 'okay, that's
+fantastic, that's fine.' Whereas if you spawn some agents, then they're going to have a
+clear context window and they're going to do a much better job reviewing the code." This
+is the code-review-specific instance of generator-assessor separation (the same logic
+already cited from `generator-assessor-separation-in-skill-iteration.md`) — the concrete
+failure mode fresh-context dispatch avoids is a reviewer anchored on its own just-written
+code, independent of the two-axis split itself.
+
 ## Why People Are Using It
 
 Graduated out of in-progress status in Pocock's repo — it's the review step his `/implement`
 skill calls on every ticket, so it sits in the default path of one of the most-used skill
 suites in circulation.
+
+Reinforced by a second live demonstration on a different real repo (AI Hero CLI,
+2026-07-16): both axes ran as part of `/implement`'s built-in review step, cross-checked
+every acceptance criterion against the spec, checked against the repo's standards
+(falling back to the Fowler smell catalog since this repo had no `coding-standards.md` of
+its own), passed, and committed — confirming this is Pocock's live default rather than a
+one-off demo from the original release video.
 
 ## Potential Alternatives
 

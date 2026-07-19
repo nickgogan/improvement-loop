@@ -1,0 +1,263 @@
+[
+  {
+    "video_id": "so9l_MwS2yg",
+    "title": "Your Attention Is the Bottleneck, Not Your Agents \u2014 Zack Proser, WorkOS",
+    "channel": "AI Engineer",
+    "duration": 1517,
+    "upload_date": "2026-06-11",
+    "est_tokens": 5562,
+    "fetched": false
+  },
+  {
+    "video_id": "t70YWb03vm0",
+    "title": "Setting Up Pi Subagents Because I Keep Doing 2 Dumb Things",
+    "channel": "Eric Michaud",
+    "duration": 756,
+    "upload_date": "2026-05-18",
+    "est_tokens": 2772,
+    "fetched": false
+  },
+  {
+    "video_id": "-we7iVySwkM",
+    "title": "These AI Agents Talk to EACH OTHER Across Terminals!",
+    "channel": "Eric Michaud",
+    "duration": 690,
+    "upload_date": "2026-05-21",
+    "est_tokens": 2530,
+    "fetched": false
+  },
+  {
+    "video_id": "HjWESsnoU6g",
+    "title": "AI Organized My Files. I Checked Every Decision. (Claude Code + PARA)",
+    "channel": "Tiago Forte",
+    "duration": 743,
+    "upload_date": "2026-04-07",
+    "est_tokens": 2724,
+    "fetched": false
+  },
+  {
+    "video_id": "JQ_We_ztxrI",
+    "title": "I was building loops wrong...",
+    "channel": "AI Jason",
+    "duration": 846,
+    "upload_date": "2026-07-13",
+    "est_tokens": 3102,
+    "fetched": false
+  },
+  {
+    "video_id": "vy7o1g2iHY8",
+    "title": "How I deleted 95% of my agent skills and got better results \u2014 Nick Nisi, WorkOS",
+    "channel": "AI Engineer",
+    "duration": 1062,
+    "upload_date": "2026-05-30",
+    "est_tokens": 3894,
+    "fetched": false
+  },
+  {
+    "video_id": "r5iBG1s_MDk",
+    "title": "Claude Code\u2019s Creator Revealed the 4 Loops That 10x Your AI Output",
+    "channel": "Dream Labs AI",
+    "duration": 1114,
+    "upload_date": "2026-07-12",
+    "est_tokens": 4084,
+    "fetched": true
+  },
+  {
+    "video_id": "OqM67QG_Ikk",
+    "title": "From fork() to Fleet: Designing an Agent Sandbox Cloud \u2014 Abhishek Bhardwaj, OpenAI",
+    "channel": "AI Engineer",
+    "duration": 2673,
+    "upload_date": "2026-07-13",
+    "est_tokens": 9801,
+    "fetched": false
+  },
+  {
+    "video_id": "Q-3fgVdmuVw",
+    "title": "The Ultimate Guide to Building 10x Faster with Claude",
+    "channel": "Austin Marchese",
+    "duration": 1407,
+    "upload_date": "2026-07-11",
+    "est_tokens": 5159,
+    "fetched": true
+  },
+  {
+    "video_id": "ow1we5PzK-o",
+    "title": "The Multi-Agent Architecture That Actually Ships \u2014 Luke Alvoeiro, Factory",
+    "channel": "AI Engineer",
+    "duration": 1110,
+    "upload_date": "2026-05-06",
+    "est_tokens": 4070,
+    "fetched": false
+  },
+  {
+    "video_id": "956DPSPX4wg",
+    "title": "You're Automating The Wrong Layer (How 30,000 People Build AI Without Frameworks)",
+    "channel": "Jake Van Clief",
+    "duration": 1597,
+    "upload_date": "2026-05-20",
+    "est_tokens": 5855,
+    "fetched": false
+  },
+  {
+    "video_id": "WkBPX-oDMnA",
+    "title": "Understanding is the new bottleneck \u2014 Geoffrey Litt, Notion",
+    "channel": "AI Engineer",
+    "duration": 1173,
+    "upload_date": "2026-07-10",
+    "est_tokens": 4301,
+    "fetched": false
+  },
+  {
+    "video_id": "3_gYbhABcAE",
+    "title": "Why (Senior) Engineers Struggle to Build AI Agents \u2014 Philipp Schmid, Google DeepMind",
+    "channel": "AI Engineer",
+    "duration": 639,
+    "upload_date": "2026-05-30",
+    "est_tokens": 2343,
+    "fetched": false
+  },
+  {
+    "video_id": "VONzHfDp4-U",
+    "title": "Claude's Deference, Warmth, Depth, Candor Explained",
+    "channel": "DIY Smart Code",
+    "duration": 286,
+    "upload_date": "2026-07-14",
+    "est_tokens": 1048,
+    "fetched": false
+  },
+  {
+    "video_id": "hYcOFTMesGc",
+    "title": "Your Roadmap Is Why You're Losing to AI-Native Teams.",
+    "channel": "AI News & Strategy Daily | Nate B Jones",
+    "duration": 1072,
+    "upload_date": "2026-07-12",
+    "est_tokens": 3930,
+    "fetched": false
+  },
+  {
+    "video_id": "kfSDc2eVLo4",
+    "title": "How to Leverage Domain Expertise \u2014 Chris Lovejoy, Notius Labs",
+    "channel": "AI Engineer",
+    "duration": 1485,
+    "upload_date": "2026-05-16",
+    "est_tokens": 5445,
+    "fetched": false
+  },
+  {
+    "video_id": "esY99nYXxR4",
+    "title": "How we solved Context Management in Agents \u2014 Sally-Ann Delucia",
+    "channel": "AI Engineer",
+    "duration": 976,
+    "upload_date": "2026-05-10",
+    "est_tokens": 3578,
+    "fetched": false
+  },
+  {
+    "video_id": "0vphxNt4wyk",
+    "title": "Don't Ship Skills Without Evals \u2014 Philipp Schmid, Google DeepMind",
+    "channel": "AI Engineer",
+    "duration": 1305,
+    "upload_date": "2026-07-14",
+    "est_tokens": 4785,
+    "fetched": false
+  },
+  {
+    "video_id": "504PvfXou5Y",
+    "title": "BDD, ADR, PRD, WTF: Capturing Decisions for Humans and AI Alike \u2014 Michal Cichra, Safe Intelligence",
+    "channel": "AI Engineer",
+    "duration": 769,
+    "upload_date": "2026-06-03",
+    "est_tokens": 2819,
+    "fetched": false
+  },
+  {
+    "video_id": "Dtzy3UOJX9M",
+    "title": "Agent Harness Architecture",
+    "channel": "Skill Advancement",
+    "duration": 532,
+    "upload_date": "2026-07-13",
+    "est_tokens": 1950,
+    "fetched": false
+  },
+  {
+    "video_id": "m8VC2SV2igM",
+    "title": "This Completely Changes the Way We Build Production AI Agents (Vercel Eve)",
+    "channel": "Cole Medin",
+    "duration": 983,
+    "upload_date": "2026-07-16",
+    "est_tokens": 3604,
+    "fetched": false
+  },
+  {
+    "video_id": "M6mYodf0dJM",
+    "title": "mattpocock/skills: A complete AI Coding workflow, end-to-end",
+    "channel": "Matt Pocock",
+    "duration": 1037,
+    "upload_date": "2026-07-16",
+    "est_tokens": 3802,
+    "fetched": false
+  },
+  {
+    "video_id": "VktrqzQgytY",
+    "title": "CI/CD Is Dead, Agents Need Continuous Compute and Computers \u2014 Hugo Santos and Madison Faulkner",
+    "channel": "AI Engineer",
+    "duration": 1117,
+    "upload_date": "2026-05-13",
+    "est_tokens": 4095,
+    "fetched": false
+  },
+  {
+    "video_id": "PDJfciNhyHU",
+    "title": "Fable 5 And GPT-5.6 Don't Need Better Prompts. They Need A Clean Setup.",
+    "channel": "AI News & Strategy Daily | Nate B Jones",
+    "duration": 950,
+    "upload_date": "2026-07-15",
+    "est_tokens": 3483,
+    "fetched": false
+  },
+  {
+    "video_id": "Qrpm7E80wQ0",
+    "title": "Why this Claude Code engineer uses HTML files as AI specs | Thariq Shihipar (Anthropic)",
+    "channel": "How I AI",
+    "duration": 2158,
+    "upload_date": "2026-05-18",
+    "est_tokens": 7912,
+    "fetched": false
+  },
+  {
+    "video_id": "am_oeAoUhew",
+    "title": "Harness Engineering: How to Build Software When Humans Steer, Agents Execute \u2014\u00a0Ryan Lopopolo, OpenAI",
+    "channel": "AI Engineer",
+    "duration": 2780,
+    "upload_date": "2026-04-17",
+    "est_tokens": 10193,
+    "fetched": false
+  },
+  {
+    "video_id": "JoXbk2fm7jM",
+    "title": "How to write AI agent loops in Claude Code and Codex",
+    "channel": "How I AI",
+    "duration": 1747,
+    "upload_date": "2026-06-17",
+    "est_tokens": 6405,
+    "fetched": false
+  },
+  {
+    "video_id": "MhHEGMFCEB0",
+    "title": "OpenAI Codex Masterclass  \u2014 Vaibhav Srivastav & Katia Gil Guzman",
+    "channel": "AI Engineer",
+    "duration": 3718,
+    "upload_date": "2026-04-29",
+    "est_tokens": 13632,
+    "fetched": false
+  },
+  {
+    "video_id": "OV56RddyFuU",
+    "title": "Self-Training Agents: Hermes Agent, HF Traces, Skills, MCP & Finetuning  \u2014 Merve Noyan, Hugging Face",
+    "channel": "AI Engineer",
+    "duration": 1150,
+    "upload_date": "2026-05-13",
+    "est_tokens": 4216,
+    "fetched": false
+  }
+]

@@ -12,14 +12,17 @@ applicability:
 adopted_in: []
 sources:
   - "simon-willison-interactive-explanations.md"
+  - "understanding-is-the-new-bottleneck.md"
 related_findings:
   - file: agent-generated-codebase-walkthrough-for-onboarding.md
     rel: extends
   - file: programmatic-snippet-extraction-via-shell-anti-hallucination.md
     rel: same-problem
+  - file: "microworlds-ephemeral-interactive-debuggers.md"
+    rel: "same-problem"
 proposals: null
 date_discovered: "2026-04-23"
-last_updated: "2026-04-24"
+last_updated: "2026-07-18"
 pipeline_status: "synthesized"
 consumed_by:
   - "structuring-agent-context.md"
@@ -48,6 +51,15 @@ For MetaSystem's own documentation needs:
 - **Memory-architecture triangle.** The Memongo / MemPalace / Supermemory comparison across four architectural poles (multi-store, single-store, verbatim, agentic) could ship as an interactive design-space explorer.
 
 For code understanding more broadly: when an algorithm's complexity lives in its execution trace rather than its static structure (spiral-packing, tree-traversal, retry-logic, state-machine transitions), reading the source is not the best path to understanding. An animated visualization is often faster than a walkthrough + static diagrams.
+
+A second, independent practitioner corroborates the core claim from the opposite side
+of the author/reader relationship. Geoffrey Litt (Notion) reports the same
+prose-is-insufficient-for-behavior conclusion, but applied to a builder's own
+understanding rather than an audience's: agent-built ephemeral debuggers ("microworlds")
+that a developer inhabits mid-task, thrown away once the intuition lands rather than
+published as a deliverable. See `microworlds-ephemeral-interactive-debuggers.md` — same
+underlying claim (interactive beats prose for spatial/temporal/state behavior),
+generation-side rather than reader-side.
 
 ## Why People Are Using It
 
