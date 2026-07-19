@@ -1,8 +1,8 @@
 # Improvement Loop — Progress
 
-Updated: 2026-07-18 (session 150 — YT-retrieval interlude shipped: `/watch-youtube`
-designed history-only, v0 built + evaluated against Nick's curated batch (100% recall,
-84% precision, strict filter bar ruled); IB-179 filed. Next: full `/link-intake` run.)
+Updated: 2026-07-19 (session 151 — link-intake wave-4 shipped end-to-end: 30-link triage
+Nick-accepted, Pass 2 extracted into the KB behind the G9.I6 gate, eve + openwiki
+registered, LINKS.md empty; ruled-queue item 1 done. Next: guide refresh.)
 
 ## Start here
 
@@ -71,26 +71,36 @@ Scopes (hill):
 - `store-checks` — deterministic checks + seeded-violation test — uphill (waits on spec)
 
 **Nick-ruled queue (2026-07-18)** — front-runs memory-spec drafting; E1 scopes stay
-parked-cresting until this clears or Nick re-prioritizes:
-1. **Full `/link-intake`** of the LINKS.md batch (29 links) — process to completion,
-   incl. Nick's inline notes: the Vercel framework video → watched-repo candidate;
-   interest in the mattpocock/skills repo.
-2. **Guide refresh** — update the guides on creating **agent memories, harnesses, and
-   agentic systems** from the processed intake + the memory-spec corpus.
-3. **Asset-description language** — begin the portable JSON/YAML language describing
+parked-cresting until this clears or Nick re-prioritizes. (Original item 1 — the full
+`/link-intake` run — shipped session 151 · [HISTORY.md](HISTORY.md).)
+1. **Guide refresh** — update the guides on creating **agent memories, harnesses, and
+   agentic systems** from the wave-4 intake + the memory-spec corpus.
+2. **Asset-description language** — begin the portable JSON/YAML language describing
    engine assets (pulls E3 forward; foundations for port/reharness meta-skills).
-4. **Eval sophistication** — upgrade `/meta-skill-author`'s eval discipline, anchored
-   on the DeepMind good-skills framework (Schmid, "Don't Ship Skills Without Evals" —
-   `0vphxNt4wyk`, in the batch; Nick endorses their framework).
+   Wave-4 prior art in KB: eve's folder-compiled-manifest (carries a flagged
+   `contradicts` tension vs `machine-readable-system-contract-with-wiring-rows` —
+   implicit discovery vs explicit wiring) + the per-control record from `/simplify-
+   context`'s ENHANCE deltas.
+3. **Eval sophistication** — upgrade `/meta-skill-author`'s eval discipline, anchored
+   on the DeepMind good-skills framework. Anchor talk extracted at wave-4: the five
+   ENHANCE deltas (SkillBench numbers, capability-vs-preference taxonomy, executable
+   eval harness, retirement protocol, multi-trial discipline) are in the 2026-07-18
+   triage report §ENHANCE.
 
-**Next unit of work:** run `/link-intake` on `LINKS.md` (queue item 1). Items 2–4
-follow in order; queue item 4's anchor talk arrives via item 1's extraction.
+**Next unit of work:** queue item 1 — the guide refresh. Items 2–3 follow in order.
 
 ## Backlog / Icebox
 
 Unscheduled — promote into a milestone when ready. Work items carry IB numbers;
 triggers noted where promotion is event-gated.
 
+- **Wave-4 follow-ups** (each Nick-gated; canonical list: 2026-07-18 triage report
+  §Follow-up): comprehension-gate skill ADD via `/design-skill` (Litt ExplainDiff
+  gist); ENHANCE deltas for `/self-improve`, `/dd`, `/simplify-context` (the
+  `/meta-skill-author` deltas ride queue item 3); `/repo-analyzer` passes on eve +
+  openwiki; reciprocal back-links via the next `/finding-crosslink` pass
+- **IB-180** — kome.ai fallback backend inside fetch.py (trigger fired twice: s143
+  24/24, s151 7/7 — chunking alone doesn't prevent mid-run IP blocks)
 - **IB-179** — build `/watch-youtube` per the 2026-07-18 design note (v0 tool + eval
   fixture in place; strict filter bar ruled; regression bar = the eval numbers)
 - **IB-173** — three-bucket gate tiering, DD-29 refinement (approved direction; absorbs
@@ -103,13 +113,13 @@ triggers noted where promotion is event-gated.
   `mdx-visual-plans-with-reusable-components` + visual-recap findings)
 - **IB-177** — design-mode video-intake spec via `/meta-skill-author` (filed at the
   Phase 4 Block E sweep; was a blocker line)
-- **IB-178** — KB corrections sweep: 12-item stale/misattributed ledger from the
-  memory survey (canonical list in B-synthesis §KB corrections ledger)
+- **IB-178** — KB corrections sweep: stale/misattributed ledger from the memory survey
+  (canonical list in B-synthesis §KB corrections ledger; wave-4 appended the openwiki
+  survey gap + pre-collapse applicability values)
 - `/detect-drift` predicate hardening — currency baseline must be
   max(extraction_date, last_change_report); lesson L-10, second occurrence files the IB
 - Findings hybrid search (FTS5 + local embeddings under `app/`) — designed-in
   component; implementation shape parked by Nick (session 142)
-- kome.ai fallback backend for transcript-fetcher — trigger: next YouTube IP block
 - Multi-tenant agentic-system design — named research gap (PRD non-goal for now);
   Nick gates promotion
 - `/link-intake` escalation-language watch item (Rule 11)

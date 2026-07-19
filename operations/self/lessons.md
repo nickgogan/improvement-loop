@@ -101,3 +101,15 @@ by `store_check.py` in the pre-commit hook.
 - **Owning surface:** `systems/improvement-loop/.claude/skills/design-skill/SKILL.md` (Phase 5 audit is static-only today)
 - **Source:** session 150 (2026-07-18), YT-retrieval interlude; eval at `operations/research-reports/2026-07-18-watch-youtube-eval.md`
 - **Occurrences:** 2026-07-18
+
+## L-13 · 2026-07-19 · normal · open
+- **Lesson:** zsh does not word-split unquoted scalar variables — a `for x in $list` loop runs once with the whole string, and passing `$files` unquoted hands one giant argument to the first command. Two same-session failures: a per-video dedup grep silently degenerated into one no-op query (a subtler case would have passed a false "no duplicates"), and a batch validation printed a phantom FAIL list. Rule: in this harness's Bash tool, iterate via `echo "$list" | tr ' ' '\n' | while read -r x` (or `find ... | while read`), never bare `$var` expansion.
+- **Owning surface:** orchestrator shell practice (no skill file owns it yet; promotion target would be a workspace CLAUDE.md/rules line if it recurs across sessions)
+- **Source:** session 151 (2026-07-18/19), wave-4 link-intake — dedup loop + staged-file validation loop, both re-run correctly in-session
+- **Occurrences:** 2026-07-18
+
+## L-14 · 2026-07-19 · normal · open
+- **Lesson:** Pass 2 extraction planning derived from triage intake-path labels missed a video whose accepted verdict was "watched-library registration" but which carried a novel-pattern estimate (~3) — the patterns live in the transcript, not the repo registration. Caught at the registration-drafting step and fixed with a sixth extractor. Rule: any accepted verdict with a novel-pattern estimate ≥1 gets an extraction slot, regardless of intake path.
+- **Owning surface:** `systems/improvement-loop/.claude/skills/link-intake/SKILL.md` (KB-ONLY metadata contract feeding Pass 2 planning)
+- **Source:** session 151 (2026-07-18), wave-4 Pass 2 — Vercel Eve video (m8VC2SV2igM), batch-e dispatch
+- **Occurrences:** 2026-07-18
