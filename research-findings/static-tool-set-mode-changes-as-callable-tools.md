@@ -38,7 +38,15 @@ date_discovered: '2026-07-11'
 last_updated: '2026-07-12'
 consumed_by:
 - designing-agent-tools.md
+- rules/never-mutate-cached-prompt-prefix.md
 pipeline_status: synthesized
+extraction_note: |-
+  Mode-as-callable-tool facet merged into
+  [[never-mutate-cached-prompt-prefix]] as a new "Special Case: Mode as Callable
+  Transition Tool" section, parallel to the existing byte-stable-catalog special
+  case (session 152, 2026-07-19, Nick-delegated DD-97 extend-existing ruling). The
+  rule's `applies_to` gained a mode-switching clause. Elaborates the existing
+  static-tool-set invariant rather than creating a twin rule.
 ---
 
 ## What It Is

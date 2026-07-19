@@ -67,6 +67,12 @@ Sourced from a practitioner's retrospective after running a production "dark fac
 
 The mechanism: every LLM call in a chain introduces a stochastic failure surface (nondeterministic output, occasional hallucination, prompt-sensitivity) that a deterministic call does not have. In an unattended pipeline — the retrospective's context is explicitly a workflow with "low visibility by design, because the whole point is that no one is watching" — each unnecessary LLM call is pure downside: it cannot make a reasoning-free step more correct, only occasionally less correct, and its failures are harder to reproduce and debug than a deterministic bug. Subtracting reasoning calls from steps that don't need them shrinks the workflow's total failure surface without giving up any capability the workflow actually needs.
 
+## Special Case: The Trigger/Wake Node
+
+The first node of any scheduled or event-driven loop — the check that decides whether to invoke the reasoning agent at all this cycle — is itself covered by this rule. A cron-interval ticker should run a cheap deterministic pre-check (compare a feed's last-modified/etag, query an API's "updates since" endpoint, diff a known state) and skip the run entirely — no agent invocation, no token spend — when the check finds no new work. Only a positive pre-check result should wake the expensive LLM-driven step. This is the "combo trigger" pattern: cron/schedule (trigger type 2) composed with a cheap deterministic gate before the actual agentic work fires. The trigger/wake check is a node under this rule's Condition ("per workflow node, not once per workflow"), and "is there new work?" is exactly the boolean, fully-input-determined check the Action already names as deterministic-eligible — the rule's general invariant applied to the specific node that starts the workflow.
+
+**Source:** [[loop-trigger-taxonomy-poll-then-wake-combo]] (Strong / production-tested — a support-inbox triage loop polling Intercom every 30 minutes, arrived at via a self-proposed evolve-session optimization after running for a while, not the loop's original design).
+
 ## Failure Modes
 
 - **Reasoning creep.** A step starts genuinely ambiguous (needs an LLM) but stabilizes into a fixed decision procedure over time (e.g., a triage step that in practice always follows the same few branches). Mitigation: periodically re-ask the audit question for long-running workflow nodes, not just at initial design.

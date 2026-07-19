@@ -51,6 +51,7 @@ last_updated: '2026-07-13'
 pipeline_status: synthesized
 consumed_by:
 - agent-architecture-decisions.md
+- skills/four-estimate-routing-test-skill.md
 ---
 
 # Four-Estimate Agent Routing Test (Chat / Agent / Team / Human)
@@ -125,3 +126,6 @@ tool alongside the video.
   and the merged result contradicts itself.
 - Disagreement between instinct and test is signal, not noise — rubber-stamping the
   tool's verdict discards the learning opportunity Jones explicitly calls out.
+
+## Extraction Note — 2026-07-19
+Extracted as **skill**: [[four-estimate-routing-test-skill]] in `extracts/skills/` (harvest-queue promotion, DD-101). The DD-97 corpus scan matched [[seam-map-delegation-rubric]]; ruled **create new (false positive)** per the 2026-07-19 extension-proposals report — orthogonal, sequentially-composable sibling (route task → vehicle; if team, partition the work), not a mode variant of the seam-map rubric.

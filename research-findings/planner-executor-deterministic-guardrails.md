@@ -50,6 +50,7 @@ pipeline_status: synthesized
 consumed_by:
 - production-agent-execution.md
 - agent-architecture-decisions.md
+- rules/deterministic-execution-boundary-rule.md
 ---
 # Planner-Executor with Deterministic Guardrails
 
@@ -70,3 +71,6 @@ Over-rigid plans that cannot adapt to runtime conditions. Planner producing step
 
 ## Extraction Note — 2026-04-19
 Extracted as **pattern**: [[planner-executor-deterministic-guardrails.md]] in `extracts/patterns/`
+
+## Extraction Note — 2026-07-19
+Extracted as **rule**: [[deterministic-execution-boundary-rule]] in `extracts/rules/` (harvest-queue promotion, DD-101). The DD-97 corpus scan matched [[deterministic-nodes-for-non-reasoning-steps]]; ruled **create new (false positive)** per the 2026-07-19 extension-proposals report — distinct architectural phase-boundary rule, complementary sibling to the general per-node audit.

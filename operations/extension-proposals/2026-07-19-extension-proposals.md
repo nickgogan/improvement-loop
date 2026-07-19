@@ -17,6 +17,21 @@ forms_scanned:
 
 Seven rule candidates and one skill candidate scanned across eight separate harvest-queue promotion runs (DD-101, session 152). All eight DD-97 corpus scans (seven over `extracts/rules/`, one over `extracts/skills/`) found a semantic-family match; eight extension proposals are emitted. Source 1: `eval-driven-improvement-loops.harvest-queue.md` (row `garbage-collection-day-persona-review-agents::rule::convert-review-feedback-to-durable-checks`), Status `nick-approved`. Source 2: `autonomous-scheduled-agent-operation.harvest-queue.md` (row `headless-cron-composition-autonomous-scheduled-workflows::rule::headless-output-verifiability-gate`), Status `nick-approved`. Source 3: `agent-architecture-decisions.harvest-queue.md` (row `planner-executor-deterministic-guardrails::rule::deterministic-execution-boundary-rule`), Status `nick-approved`. Source 4: `designing-agent-tools.harvest-queue.md` (row `static-tool-set-mode-changes-as-callable-tools::rule::tool-surface-session-static-modes-as-tools`), Status `nick-approved`. Source 5: `autonomous-scheduled-agent-operation.harvest-queue.md` (row `loop-trigger-taxonomy-poll-then-wake-combo::rule::combo-trigger-cheap-precheck-before-llm-wake`), Status `nick-approved`. Source 6: `agent-architecture-decisions.harvest-queue.md` (row `droid-whispering-per-role-model-assignment::rule::cross-provider-validator-assignment-rule`), Status `nick-approved`. Source 7: `agent-architecture-decisions.harvest-queue.md` (row `four-estimate-agent-routing-test::skill::four-estimate-routing-test-skill`), Status `nick-approved`. Source 8: `designing-agent-tools.harvest-queue.md` (row `stateful-mcp-subprocess-vs-cli-shell-out::rule::statefulness-boundary-on-cli-first-rule`), Status `nick-approved`. Forms scanned: rules, skills. Per DD-97 §Rules #3 this report proposes only — no existing artifact is modified here; Nick rules the merge target per proposal.
 
+## Rulings (session 152, Nick-delegated)
+
+Nick delegated all eight rulings to the orchestrating agent this session ("proceed, I trust your judgement"); every ruling concurs with the Codifier recommendation below, and all eight were executed same-session:
+
+| Proposal | Ruling | Executed as |
+|---|---|---|
+| droid-whispering-per-role-model-assignment | create new | [[cross-provider-validator-assignment-rule]] |
+| four-estimate-agent-routing-test | create new | [[four-estimate-routing-test-skill]] |
+| garbage-collection-day-persona-review-agents | extend existing | merged into [[every-recurring-review-comment-triages-to-mechanism-or-judgment]] |
+| headless-cron-composition-autonomous-scheduled-workflows | create new | [[headless-output-verifiability-gate]] |
+| loop-trigger-taxonomy-poll-then-wake-combo | extend existing | merged into [[deterministic-nodes-for-non-reasoning-steps]] |
+| planner-executor-deterministic-guardrails | create new | [[deterministic-execution-boundary-rule]] |
+| stateful-mcp-subprocess-vs-cli-shell-out | extend existing | merged into [[prefer-cli-over-mcp-when-both-exist-for-the-same-tool]] |
+| static-tool-set-mode-changes-as-callable-tools | extend existing | merged into [[never-mutate-cached-prompt-prefix]] |
+
 ## Proposals
 
 ### droid-whispering-per-role-model-assignment

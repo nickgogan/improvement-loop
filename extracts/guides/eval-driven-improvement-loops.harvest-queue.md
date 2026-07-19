@@ -13,7 +13,7 @@ Rows transferred from the deprecated source guide `building-agent-evaluation-sui
 | 2026-07-16 | extracted | skill | [[with-without-skill-ab-baseline-measurement]] | "with-without-skill-ab-baseline" | extracted to [[with-without-skill-ab-baseline]] |
 | 2026-07-16 | extracted | template | [[convergence-loop-optimizer-family-contract]] | "convergence-and-severity-contract" | extracted to [[convergence-and-severity-contract]] |
 | 2026-07-16 | extracted | rule | [[skill-popularity-vs-measured-efficacy]] | "no-adoption-without-eval-evidence" | extracted to [[no-adoption-without-eval-evidence]] |
-| 2026-07-19 | nick-approved | rule | [[garbage-collection-day-persona-review-agents]] | "convert-review-feedback-to-durable-checks" | extract via /extract-artifacts |
+| 2026-07-19 | extracted | rule | [[garbage-collection-day-persona-review-agents]] | "convert-review-feedback-to-durable-checks" | merged into [[every-recurring-review-comment-triages-to-mechanism-or-judgment]] |
 | 2026-07-16 | extracted | rule | [[eval-rubric-carve-outs-subjective-and-script-core-skills]] | "class-aware-eval-rubric-carve-outs" | extracted to [[class-aware-eval-rubric-carve-outs]] (duplicate of twin) |
 
 ## Per-row details
@@ -111,7 +111,7 @@ Extracted 2026-07-19 — Session 152 — [[eval-driven-improvement-loops.harvest
 ### garbage-collection-day-persona-review-agents::rule::convert-review-feedback-to-durable-checks
 
 - **Date queued:** 2026-07-19
-- **Status:** nick-approved
+- **Status:** extracted
 - **Target form:** rule
 - **Source finding:** [[garbage-collection-day-persona-review-agents]]
 - **Source excerpt:**
@@ -119,9 +119,9 @@ Extracted 2026-07-19 — Session 152 — [[eval-driven-improvement-loops.harvest
 - **Codifier's reading:** An imperative, decidable directive — every recurring review-feedback item is converted into a durable check (test/lint/doc) on a protected cadence rather than re-given — rule form. NOTE: the finding's *persona review agent* facet (one agent per reviewer persona) is agent-shaped and is SUPPRESSED from this queue per DD-82 (logged inline in the run report, never queued). Only the durable-conversion rule is queued. Overlaps the engine's own /self-improve capture-and-promote loop (implementation_notes); Nick may prefer to merge rather than extract standalone.
 - **Suggested headline:** convert-review-feedback-to-durable-checks
 - **Recommendation:** extract via /extract-artifacts
-- **Resolution:**
+- **Resolution:** merged into [[every-recurring-review-comment-triages-to-mechanism-or-judgment]]
 
-Pending merge 2026-07-19 — Session 152 — [[eval-driven-improvement-loops.harvest-queue]] — DD-97 extension proposal emitted at [[operations/extension-proposals/2026-07-19-extension-proposals]]; primary match [[every-recurring-review-comment-triages-to-mechanism-or-judgment]]. Manual apply per DD-97 v1 (Step 1.7 auto-merge prohibition); after apply, row Status flips to `extracted` and Resolution to `merged into [[every-recurring-review-comment-triages-to-mechanism-or-judgment]]` via manual queue edit (or future skill mode).
+Merged 2026-07-19 — Session 152 — [[eval-driven-improvement-loops.harvest-queue]] — Nick-delegated DD-97 extend-existing ruling (concurring with the Codifier recommendation). Durable-conversion-rule facet applied by hand to [[every-recurring-review-comment-triages-to-mechanism-or-judgment]] as an Additional Evidence entry per the diff sketch in [[operations/extension-proposals/2026-07-19-extension-proposals]]; source finding back-annotated (extraction note + consumed_by). The persona-keyed review-agent facet remains DD-82-suppressed, untouched.
 
 ### eval-rubric-carve-outs-subjective-and-script-core-skills::rule::class-aware-eval-rubric-carve-outs
 

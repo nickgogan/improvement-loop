@@ -5,8 +5,8 @@ assigned_form: "rule"
 source_finding: "append-only-context-updates-system-reminder-injection"
 identification_report: "defending-agent-context.harvest-queue.md::append-only-context-updates-system-reminder-injection::rule::never-mutate-cached-prompt-prefix"
 extraction_date: "2026-07-13"
-last_change_session: 146
-last_change_report: "defending-agent-context.harvest-queue"
+last_change_session: 152
+last_change_report: "designing-agent-tools.harvest-queue"
 deployed: false
 deployed_to: null
 context:
@@ -14,6 +14,7 @@ context:
     - "harness or agent-runtime developers assembling multi-turn prompts against inference APIs with prefix caching"
     - "agent designs that rewrite system prompts, instruction files, or session context mid-run and silently pay cache-invalidation costs"
     - "subagent prompt assembly for long sessions where state (time, file contents, modes) changes between turns"
+    - "agent or skill designs that implement mode switching (plan/execute, read-only/write) via tool-surface changes"
   platform_coupling: "agnostic"
   autonomy: "all"
   stage: "build"
@@ -83,6 +84,12 @@ The catalog-stable tactic:
 - **Persist load state in the message history**, not the catalog, so a resumed run recovers what is loaded without any catalog mutation.
 
 **Source:** [[cache-stable-progressive-disclosure-catalog]] (Medium / practitioner-documented). Pydantic AI v2.9.0's deferred-capability loader renders its `load_capability` catalog as a dynamic instruction that lists *every* deferred capability every turn — including already-loaded ones — and bounces redundant loads with a `ModelRetry`; in-code rationale: "one occasional wasted retry is far cheaper than busting the prefix cache on every load." A production instance of this parent rule's "static tool sets" clause, extended to a *growing-knowledge* catalog surface. Merged here via DD-97 extension (session 146) rather than drafted as a standalone rule.
+
+## Special Case: Mode as Callable Transition Tool
+
+A mode-bearing agent (plan vs. execute, read-only vs. write, teacher vs. builder) is a second concrete instance of the "tool definitions and their ordering are stable within a session" invariant, with its own tempting violation: swapping in a restricted toolset when the mode changes. Don't. Model the mode itself as two always-present, callable tools (e.g., `EnterPlanMode` / `ExitPlanMode`) plus a system message describing the mode's constraints; the tool surface never changes, and enforcement of what the mode does or doesn't allow lives in the harness or permission layer — never in tool absence. This also lets the model enter a mode autonomously, since the transition is just another tool call.
+
+**Source:** [[static-tool-set-mode-changes-as-callable-tools]] (Strong / production-tested, first-party — Claude Code's Plan Mode, which models the mode as `EnterPlanMode`/`ExitPlanMode` tools plus a system message rather than a swapped-in read-only toolset; independently cross-harness-corroborated by opencode's `plan_enter`/`plan_exit` tools, though opencode diverges by shrinking the visible toolset per mode rather than keeping it static). A production instance of this parent rule's "tool sets are static within a session" clause, applied to mode toggles. Merged here via DD-97 extension (session 152, Nick-delegated extend-existing ruling) rather than drafted as a standalone rule.
 
 ## Failure Modes
 

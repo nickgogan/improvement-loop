@@ -5,9 +5,9 @@ Nothing here is auto-extracted; rows feed `/extract-artifacts` only after Nick r
 
 | Date queued | Status | Target form | Source finding | Suggested headline | Recommendation |
 |---|---|---|---|---|---|
-| 2026-07-16 | nick-approved | rule | [[static-tool-set-mode-changes-as-callable-tools]] | "tool-surface-session-static-modes-as-tools" | extract via /extract-artifacts |
+| 2026-07-16 | extracted | rule | [[static-tool-set-mode-changes-as-callable-tools]] | "tool-surface-session-static-modes-as-tools" | merged into [[never-mutate-cached-prompt-prefix]] |
 | 2026-07-16 | extracted | rule | [[monitor-vs-loop-event-driven-vs-time-driven]] | "default-event-driven-watching-over-time-polling" | extracted to [[default-event-driven-watching-over-time-based-polling]] |
-| 2026-07-16 | nick-approved | rule | [[stateful-mcp-subprocess-vs-cli-shell-out]] | "statefulness-boundary-on-cli-first-rule" | merge into existing [[prefer-cli-over-mcp-when-both-exist-for-the-same-tool]] |
+| 2026-07-16 | extracted | rule | [[stateful-mcp-subprocess-vs-cli-shell-out]] | "statefulness-boundary-on-cli-first-rule" | merged into [[prefer-cli-over-mcp-when-both-exist-for-the-same-tool]] |
 | 2026-07-16 | extracted | rule | [[tiered-capability-registry-engine-behavior-branching]] | "declare-capabilities-as-tiers-not-booleans" | extracted to [[declare-capabilities-as-tiers-not-booleans]] |
 | 2026-07-16 | extracted | rule | [[skill-cross-surface-portability-with-constraints]] | "declare-skill-compatibility-design-for-most-restricted-surface" | extracted to [[declare-skill-compatibility-design-for-most-restricted-surface]] |
 | 2026-07-16 | extracted | rule | [[code-as-deterministic-tool-inside-skills]] | "reference-bundled-scripts-via-claude-skill-dir" | extracted to [[reference-bundled-scripts-via-claude-skill-dir]] |
@@ -17,7 +17,7 @@ Nothing here is auto-extracted; rows feed `/extract-artifacts` only after Nick r
 ### static-tool-set-mode-changes-as-callable-tools::rule::tool-surface-session-static-modes-as-tools
 
 - **Date queued:** 2026-07-16
-- **Status:** nick-approved
+- **Status:** extracted
 - **Target form:** rule
 - **Source finding:** [[static-tool-set-mode-changes-as-callable-tools]]
 - **Source excerpt:**
@@ -25,9 +25,9 @@ Nothing here is auto-extracted; rows feed `/extract-artifacts` only after Nick r
 - **Codifier's reading:** The finding itself proposes adoption "as a rule in our agent/skill design substrate" — an imperative, machine-checkable directive (audit: does any skill/agent design swap toolsets per mode?). Clean rule-form fit per the form rubric.
 - **Suggested headline:** tool-surface-session-static-modes-as-tools
 - **Recommendation:** extract via /extract-artifacts
-- **Resolution:**
+- **Resolution:** merged into [[never-mutate-cached-prompt-prefix]]
 
-Pending merge 2026-07-19 — Session 152 — designing-agent-tools.harvest-queue — DD-97 extension proposal emitted at [[operations/extension-proposals/2026-07-19-extension-proposals]]; primary match [[never-mutate-cached-prompt-prefix]]. Manual apply per DD-97 v1 (Step 1.7 auto-merge prohibition); after apply, row Status flips to `extracted` and Resolution to `merged into [[never-mutate-cached-prompt-prefix]]` via manual queue edit (or future skill mode).
+Merged 2026-07-19 — Session 152 — designing-agent-tools.harvest-queue — Nick-delegated DD-97 extend-existing ruling (concurring with the Codifier recommendation). Applied by hand per DD-97 v1 (Step 1.7 auto-merge prohibition): a new "Special Case: Mode as Callable Transition Tool" section was added to [[never-mutate-cached-prompt-prefix]] parallel to its byte-stable-catalog special case, and the rule's `applies_to` gained a mode-switching clause; source finding back-annotated (extraction_note + consumed_by). Proposal: [[operations/extension-proposals/2026-07-19-extension-proposals]].
 
 ### monitor-vs-loop-event-driven-vs-time-driven::rule::default-event-driven-watching-over-time-polling
 
@@ -47,7 +47,7 @@ Extracted 2026-07-19 — Session 152 — designing-agent-tools.harvest-queue —
 ### stateful-mcp-subprocess-vs-cli-shell-out::rule::statefulness-boundary-on-cli-first-rule
 
 - **Date queued:** 2026-07-16
-- **Status:** nick-approved
+- **Status:** extracted
 - **Target form:** rule
 - **Source finding:** [[stateful-mcp-subprocess-vs-cli-shell-out]]
 - **Source excerpt:**
@@ -55,9 +55,9 @@ Extracted 2026-07-19 — Session 152 — designing-agent-tools.harvest-queue —
 - **Codifier's reading:** The finding explicitly flags itself as a refinement to the existing extracted rule's applicability clause. Rule-shaped boundary condition; the right disposition is amending the existing rule artifact, not creating a twin.
 - **Suggested headline:** statefulness-boundary-on-cli-first-rule
 - **Recommendation:** merge into existing [[prefer-cli-over-mcp-when-both-exist-for-the-same-tool]]
-- **Resolution:**
+- **Resolution:** merged into [[prefer-cli-over-mcp-when-both-exist-for-the-same-tool]]
 
-Pending merge 2026-07-19 — Session 152 — designing-agent-tools.harvest-queue — DD-97 extension proposal emitted at [[operations/extension-proposals/2026-07-19-extension-proposals]]; primary match [[prefer-cli-over-mcp-when-both-exist-for-the-same-tool]]. Manual apply per DD-97 v1 (Step 1.7 auto-merge prohibition); after apply, row Status flips to `extracted` and Resolution to `merged into [[prefer-cli-over-mcp-when-both-exist-for-the-same-tool]]` via manual queue edit (or future skill mode).
+Merged 2026-07-19 — Session 152 — designing-agent-tools.harvest-queue — Nick-delegated DD-97 extend-existing ruling (concurring with the Codifier recommendation). Applied by hand per DD-97 v1 (Step 1.7 auto-merge prohibition): Scope/applies_to gained the statefulness qualifier + a third scope clause, and a new "Special Case: Stateful Local Services (the statefulness discriminator)" section was added to [[prefer-cli-over-mcp-when-both-exist-for-the-same-tool]]; source finding back-annotated (extraction_note + consumed_by). Proposal: [[operations/extension-proposals/2026-07-19-extension-proposals]].
 
 ### tiered-capability-registry-engine-behavior-branching::rule::declare-capabilities-as-tiers-not-booleans
 

@@ -49,6 +49,7 @@ last_updated: '2026-07-18'
 pipeline_status: synthesized
 consumed_by:
 - autonomous-scheduled-agent-operation.md
+- templates/loop-contract-file-schema.md
 tags:
 - orchestration
 - loop-engineering
@@ -99,3 +100,6 @@ Production-run at Super Divine (the source's company) for "the past months" acro
 - Boundary rules are only as good as what's been thought to write down — the "don't rewrite accurate docs" rule was a reactive fix to an observed failure, not a design that anticipated it; new automations should expect a similar first-failure-then-patch cycle.
 - No described mechanism for cross-loop conflicts (two loops editing overlapping surfaces) — each loop's contract is self-contained, so nothing catches interference between loops at the contract level.
 - If the raw conversation history fed to an evolve session is large, that session itself can be one of the more expensive runs in the loop's lifecycle — worth budgeting separately from regular runs.
+
+## Extraction Note — 2026-07-19
+Extracted as **template**: [[loop-contract-file-schema]] in `extracts/templates/` (the contract/state/log three-section scaffold). Session 152; DD-100 create-new ruling (Nick-delegated) — written as a new baseline template (unsuffixed stem, not a `-v2`) rather than version-bumping [[loop-anatomy-spec-template]], since they address different objects (ongoing lifecycle governance vs. build-time mechanical iteration anatomy) and compose rather than compete.

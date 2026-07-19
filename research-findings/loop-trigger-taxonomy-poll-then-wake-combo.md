@@ -54,6 +54,7 @@ last_updated: '2026-07-18'
 pipeline_status: synthesized
 consumed_by:
 - autonomous-scheduled-agent-operation.md
+- rules/deterministic-nodes-for-non-reasoning-steps.md
 tags:
 - orchestration
 - loop-engineering
@@ -103,3 +104,6 @@ Production-run at Super Divine for months across the four loop examples in the c
 - The combo pattern's cheap check can itself drift out of sync with what the agent actually needs to know about (e.g., an Intercom filter that misses a category of update) — silent under-triggering is harder to notice than over-triggering, because nothing fires to prompt investigation.
 - Standing up a self-hosted daemon for event triggers (trigger type 3) introduces a new always-on piece of infrastructure with its own uptime, security, and maintenance burden — exactly the kind of operational weight the other three trigger types avoid.
 - Continuous (type 1) loops without a token/turn budget can run away; the source's framing assumes a budget is always set, but doesn't describe what enforces that discipline.
+
+## Extraction Note — 2026-07-19
+Merged into [[deterministic-nodes-for-non-reasoning-steps]] (added as the "Special Case: The Trigger/Wake Node" section). Session 152; DD-97 extend-existing ruling (Nick-delegated) — the combo-trigger claim is the same rule and mechanism (a non-reasoning node must be deterministic code) applied to the specific wake/trigger node of a scheduled loop, drawn from this finding as a sibling source in the same guide cluster.

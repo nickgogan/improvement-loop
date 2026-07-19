@@ -45,6 +45,7 @@ last_updated: '2026-07-18'
 pipeline_status: "synthesized"
 consumed_by:
   - "agent-architecture-decisions.md"
+  - "rules/cross-provider-validator-assignment-rule.md"
 ---
 
 ## What It Is
@@ -126,3 +127,6 @@ sitting inside an otherwise strong-evidence production system.
   training data and failure modes are meaningfully uncorrelated — as frontier labs
   converge on similar data sources and techniques, this assumption may weaken over time
   with no signal that it has.
+
+## Extraction Note — 2026-07-19
+Extracted as **rule**: [[cross-provider-validator-assignment-rule]] in `extracts/rules/` (harvest-queue promotion, DD-101). The DD-97 corpus scan matched [[holdout-validation-pattern-blind-regression]]; ruled **create new (false positive)** per the 2026-07-19 extension-proposals report — orthogonal bias-mitigation mechanism (different provider vs. information holdout), complementary sibling.

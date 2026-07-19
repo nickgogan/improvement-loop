@@ -7,12 +7,12 @@ Nothing here is auto-extracted; rows feed `/extract-artifacts` only after Nick r
 |---|---|---|---|---|---|
 | 2026-07-16 | extracted | template | [[loop-node-anatomy-schema-enforced-ralph-primitive]] | "loop-anatomy-spec-template" | extracted to [[loop-anatomy-spec-template]] |
 | 2026-07-16 | extracted | template | [[work-ticket-contract-prompt-mode-vs-work-mode]] | "work-ticket-contract-template" | extracted to [[work-ticket-contract-template]] |
-| 2026-07-16 | nick-approved | skill | [[four-estimate-agent-routing-test]] | "four-estimate-routing-test-skill" | extract via /extract-artifacts |
-| 2026-07-16 | nick-approved | rule | [[planner-executor-deterministic-guardrails]] | "deterministic-execution-boundary-rule" | extract via /extract-artifacts |
+| 2026-07-16 | extracted | skill | [[four-estimate-agent-routing-test]] | "four-estimate-routing-test-skill" | extracted to [[four-estimate-routing-test-skill]] |
+| 2026-07-16 | extracted | rule | [[planner-executor-deterministic-guardrails]] | "deterministic-execution-boundary-rule" | extracted to [[deterministic-execution-boundary-rule]] |
 | 2026-07-16 | extracted | rule | [[effort-scaling-rules-embedded-in-orchestrator]] | "effort-scaling-resource-allocation-rule" | already extracted (pre-dates queue) to [[tier-based-orchestrator-effort-scaling-rules]] |
 | 2026-07-19 | extracted | template | [[structured-handoff-schema-self-healing-multi-agent-missions]] | "worker-handoff-schema-template" | extracted to [[worker-handoff-schema-template]] |
 | 2026-07-19 | extracted | template | [[pre-code-validation-contracts-dual-blind-validators]] | "pre-code-validation-contract-template" | extracted to [[pre-code-validation-contract-template]] |
-| 2026-07-19 | nick-approved | rule | [[droid-whispering-per-role-model-assignment]] | "cross-provider-validator-assignment-rule" | extract via /extract-artifacts |
+| 2026-07-19 | extracted | rule | [[droid-whispering-per-role-model-assignment]] | "cross-provider-validator-assignment-rule" | extracted to [[cross-provider-validator-assignment-rule]] |
 
 ## Per-row details
 
@@ -59,7 +59,7 @@ Extracted 2026-07-19 — Session 152 — [[agent-architecture-decisions.harvest-
 ### four-estimate-agent-routing-test::skill::four-estimate-routing-test-skill
 
 - **Date queued:** 2026-07-16
-- **Status:** nick-approved
+- **Status:** extracted
 - **Target form:** skill
 - **Source finding:** [[four-estimate-agent-routing-test]]
 - **Source excerpt:**
@@ -67,14 +67,14 @@ Extracted 2026-07-19 — Session 152 — [[agent-architecture-decisions.harvest-
 - **Codifier's reading:** A bounded procedure with a clear input (task description), step-by-step estimation sequence, and a closed-enum output (chat/agent/team/human) — skill shape per the rubric's invocation-contract and input/output criteria. The finding itself suggests folding the money dials into "engine skill triggers."
 - **Suggested headline:** four-estimate-routing-test-skill
 - **Recommendation:** extract via /extract-artifacts
-- **Resolution:**
+- **Resolution:** extracted to [[four-estimate-routing-test-skill]]
 
-Pending merge 2026-07-19 — Session 152 — [[agent-architecture-decisions.harvest-queue]] — DD-97 extension proposal emitted at [[operations/extension-proposals/2026-07-19-extension-proposals]]; primary match [[seam-map-delegation-rubric]]. Manual apply per DD-97 v1 (Step 1.7 auto-merge prohibition); after apply, row Status flips to `extracted` and Resolution to `merged into [[seam-map-delegation-rubric]]` via manual queue edit (or future skill mode). Codifier recommendation on record: create new (false positive) — proposal argues the four-estimate routing test and the seam-map partition rubric are orthogonal, sequentially-composable members of the same "pre-deployment human/AI allocation" family (route task → vehicle; if team, partition the work), not one subsuming the other; the `parameterize as mode variant` path is the surfaced alternative. Nick rules.
+Extracted 2026-07-19 — Session 152 — [[agent-architecture-decisions.harvest-queue]] — to [[four-estimate-routing-test-skill]]. The DD-97 extension proposal (primary match [[seam-map-delegation-rubric]], per [[operations/extension-proposals/2026-07-19-extension-proposals]]) was ruled **create new (false positive)** — Nick-delegated ruling, session 152, concurring with the Codifier recommendation on record. Drafted as a standalone skill per the create-new rationale; the proposal's `parameterize as mode variant` diff sketch was explicitly NOT applied. The new skill cross-references the ruled sibling in its body (orthogonal, sequentially-composable: route task → vehicle; if team, partition the work).
 
 ### planner-executor-deterministic-guardrails::rule::deterministic-execution-boundary-rule
 
 - **Date queued:** 2026-07-16
-- **Status:** nick-approved
+- **Status:** extracted
 - **Target form:** rule
 - **Source finding:** [[planner-executor-deterministic-guardrails]]
 - **Source excerpt:**
@@ -82,9 +82,9 @@ Pending merge 2026-07-19 — Session 152 — [[agent-architecture-decisions.harv
 - **Codifier's reading:** An imperative, machine-checkable directive ("execution must be deterministic"; "no LLM reasoning during execution") embedded in a pattern finding. The finding was extracted as a pattern (2026-04-19); the embedded hard rule is a distinct non-pattern form candidate.
 - **Suggested headline:** deterministic-execution-boundary-rule
 - **Recommendation:** extract via /extract-artifacts
-- **Resolution:**
+- **Resolution:** extracted to [[deterministic-execution-boundary-rule]]
 
-Pending merge 2026-07-19 — Session 152 — [[agent-architecture-decisions.harvest-queue]] — DD-97 extension proposal emitted at [[operations/extension-proposals/2026-07-19-extension-proposals]]; primary match [[deterministic-nodes-for-non-reasoning-workflow-steps]]. Manual apply per DD-97 v1 (Step 1.7 auto-merge prohibition); after apply, row Status flips to `extracted` and Resolution to `merged into [[deterministic-nodes-for-non-reasoning-workflow-steps]]` via manual queue edit (or future skill mode). Codifier recommendation on record: create new (false positive) — proposal argues this is a distinct architectural phase-boundary rule, not an extension; Nick rules.
+Extracted 2026-07-19 — Session 152 — [[agent-architecture-decisions.harvest-queue]] — to [[deterministic-execution-boundary-rule]]. The DD-97 extension proposal (primary match [[deterministic-nodes-for-non-reasoning-steps]], per [[operations/extension-proposals/2026-07-19-extension-proposals]]) was ruled **create new (false positive)** — Nick-delegated ruling, session 152, concurring with the Codifier recommendation on record (distinct architectural phase-boundary rule, complementary sibling to the general per-node audit; the new rule cross-references the ruled sibling in its body).
 
 ### effort-scaling-rules-embedded-in-orchestrator::rule::effort-scaling-resource-allocation-rule
 
@@ -134,7 +134,7 @@ Extracted 2026-07-19 — Session 152 — [[agent-architecture-decisions.harvest-
 ### droid-whispering-per-role-model-assignment::rule::cross-provider-validator-assignment-rule
 
 - **Date queued:** 2026-07-19
-- **Status:** nick-approved
+- **Status:** extracted
 - **Target form:** rule
 - **Source finding:** [[droid-whispering-per-role-model-assignment]]
 - **Source excerpt:**
@@ -142,6 +142,6 @@ Extracted 2026-07-19 — Session 152 — [[agent-architecture-decisions.harvest-
 - **Codifier's reading:** An imperative, checkable directive ("run validation on a different provider than the implementer") embedded in a Model-Selection pattern finding — rule shape per the rubric's imperative/machine-enforceable criterion. Distinct from the finding's broader per-role-assignment discussion; the cross-provider validator constraint is the enforceable kernel.
 - **Suggested headline:** cross-provider-validator-assignment-rule
 - **Recommendation:** extract via /extract-artifacts
-- **Resolution:**
+- **Resolution:** extracted to [[cross-provider-validator-assignment-rule]]
 
-Pending merge 2026-07-19 — Session 152 — [[agent-architecture-decisions.harvest-queue]] — DD-97 extension proposal emitted at [[operations/extension-proposals/2026-07-19-extension-proposals]]; primary match [[holdout-validation-pattern-blind-regression]]. Manual apply per DD-97 v1 (Step 1.7 auto-merge prohibition); after apply, row Status flips to `extracted` and Resolution to `merged into [[holdout-validation-pattern-blind-regression]]` via manual queue edit (or future skill mode). Codifier recommendation on record: create new (false positive) — proposal argues context-holdout and cross-provider assignment are orthogonal, composable bias-mitigation mechanisms, not one subsuming the other; Nick rules.
+Extracted 2026-07-19 — Session 152 — [[agent-architecture-decisions.harvest-queue]] — to [[cross-provider-validator-assignment-rule]]. The DD-97 extension proposal (primary match [[holdout-validation-pattern-blind-regression]], per [[operations/extension-proposals/2026-07-19-extension-proposals]]) was ruled **create new (false positive)** — Nick-delegated ruling, session 152, concurring with the Codifier recommendation on record (context-holdout and cross-provider assignment are orthogonal, composable bias-mitigation mechanisms; the new rule cross-references the ruled sibling in its body).

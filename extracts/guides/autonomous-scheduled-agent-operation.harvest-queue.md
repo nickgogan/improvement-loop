@@ -6,20 +6,20 @@ Transferred from the G3b `agent-workflow-and-execution` queue on the DD-122 spli
 
 | Date queued | Status | Target form | Source finding | Suggested headline | Recommendation |
 |---|---|---|---|---|---|
-| 2026-07-16 | nick-approved | rule | [[headless-cron-composition-autonomous-scheduled-workflows]] | "headless-output-verifiability-gate" | extract via /extract-artifacts |
+| 2026-07-16 | extracted | rule | [[headless-cron-composition-autonomous-scheduled-workflows]] | "headless-output-verifiability-gate" | extracted to [[headless-output-verifiability-gate]] |
 | 2026-07-16 | extracted | rule | [[dark-factory-ai-only-codebase-management]] | "deterministic-nodes-for-non-reasoning-steps" | extracted to [[deterministic-nodes-for-non-reasoning-steps]] |
 | 2026-07-16 | extracted | skill | [[ecosystem-monitoring-meta-loop]] | "write-run-log-shared-utility-skill" | extracted to [[write-run-log-shared-utility-skill]] |
 | 2026-07-16 | extracted | template | [[scheduled-skill-chaining-with-file-based-activation]] | "scheduled-job-config-schema-template" | extracted to [[scheduled-job-config-schema-template]] |
 | 2026-07-16 | extracted | template | [[github-label-as-workflow-state]] | "workflow-state-label-schema-template" | extracted to [[workflow-state-label-schema-template]] |
-| 2026-07-19 | nick-approved | template | [[loop-contract-anatomy-and-evolve-session-cadence]] | "loop-contract-file-schema (contract/state/log)" | extract via /extract-artifacts |
-| 2026-07-19 | nick-approved | rule | [[loop-trigger-taxonomy-poll-then-wake-combo]] | "combo-trigger: cheap pre-check before LLM wake" | extract via /extract-artifacts |
+| 2026-07-19 | extracted | template | [[loop-contract-anatomy-and-evolve-session-cadence]] | "loop-contract-file-schema (contract/state/log)" | extracted to [[loop-contract-file-schema]] |
+| 2026-07-19 | extracted | rule | [[loop-trigger-taxonomy-poll-then-wake-combo]] | "combo-trigger: cheap pre-check before LLM wake" | merged into [[deterministic-nodes-for-non-reasoning-steps]] |
 
 ## Per-row details
 
 ### headless-cron-composition-autonomous-scheduled-workflows::rule::headless-output-verifiability-gate
 
 - **Date queued:** 2026-07-16
-- **Status:** nick-approved
+- **Status:** extracted
 - **Target form:** rule
 - **Source finding:** [[headless-cron-composition-autonomous-scheduled-workflows]]
 - **Source excerpt:**
@@ -27,9 +27,9 @@ Transferred from the G3b `agent-workflow-and-execution` queue on the DD-122 spli
 - **Codifier's reading:** Imperative, machine-enforceable directive ("only use headless mode when...; hard-to-undo operations should not run headless") — a binary gate checkable at workflow-definition time. Fits the rule form: never/only phrasing, enforceable at review of any scheduled-job config.
 - **Suggested headline:** headless-output-verifiability-gate
 - **Recommendation:** extract via /extract-artifacts
-- **Resolution:**
+- **Resolution:** extracted to [[headless-output-verifiability-gate]]
 
-Pending merge 2026-07-19 — Session 152 — [[autonomous-scheduled-agent-operation.harvest-queue]] — DD-97 extension proposal emitted at [[operations/extension-proposals/2026-07-19-extension-proposals]]; primary match [[scheduled-workflows-require-human-checkpoint]]. Codifier recommendation: create new (false positive) — distinct scope (design-time headless go/no-go criterion vs. runtime publish-boundary checkpoint) and distinct mechanism. Manual apply per DD-97 v1 (Step 1.7 auto-merge prohibition); after Nick rules, re-invoke `/extract-artifacts --harvest-row headless-cron-composition-autonomous-scheduled-workflows::rule::headless-output-verifiability-gate` to write the new rule (if create-new ruled) or apply the merge manually (if extend ruled).
+Extracted 2026-07-19 — Session 152 — [[autonomous-scheduled-agent-operation.harvest-queue]] — to [[headless-output-verifiability-gate]]. DD-97 extension proposal (primary match [[scheduled-workflows-require-human-checkpoint]]) ruled **create-new** by Nick (delegated ruling, session 152): the two are complementary siblings — this rule is the design-time headless go/no-go criterion; the checkpoint rule is the runtime publish-boundary gate. The new rule cross-references the sibling in its Governance/Rationale; they compose (a workflow may clear this gate to run headless and still need the publish checkpoint).
 
 ### dark-factory-ai-only-codebase-management::rule::deterministic-nodes-for-non-reasoning-steps
 
@@ -98,7 +98,7 @@ Extracted 2026-07-19 — Session 152 — [[autonomous-scheduled-agent-operation.
 ### loop-contract-anatomy-and-evolve-session-cadence::template::loop-contract-file-schema
 
 - **Date queued:** 2026-07-19
-- **Status:** nick-approved
+- **Status:** extracted
 - **Target form:** template
 - **Source finding:** [[loop-contract-anatomy-and-evolve-session-cadence]]
 - **Source excerpt:**
@@ -106,14 +106,14 @@ Extracted 2026-07-19 — Session 152 — [[autonomous-scheduled-agent-operation.
 - **Codifier's reading:** A fixed three-section markdown scaffold (contract / state / log) fillable per automation — placeholder structural form meant for rendering, reusable across any recurring loop. Fits the template form. The guide embeds a fillable Loop Contract File template derived from it (G3d Templates).
 - **Suggested headline:** loop-contract-file-schema (contract/state/log)
 - **Recommendation:** extract via /extract-artifacts
-- **Resolution:**
+- **Resolution:** extracted to [[loop-contract-file-schema]]
 
-Pending version-bump 2026-07-19 — Session 152 — [[autonomous-scheduled-agent-operation.harvest-queue]] — DD-100 version-bump proposal emitted at [[operations/version-bump-proposals/2026-07-19-version-bump-proposals]]; primary match [[loop-anatomy-spec-template]] (current version v1); secondary match [[progressmd-session-bridge-template]] (v1). Codifier recommendation: create new (false positive) — different object (mechanical iteration anatomy vs. ongoing lifecycle contract/state/log), different audience/altitude, composable rather than competing. On Nick ruling: re-invoke `/extract-artifacts --harvest-row loop-contract-anatomy-and-evolve-session-cadence::template::loop-contract-file-schema` to write the new baseline template (if create-new ruled) or apply the version-bump per the proposal's diff sketch (if version-bump ruled).
+Extracted 2026-07-19 — Session 152 — [[autonomous-scheduled-agent-operation.harvest-queue]] — to [[loop-contract-file-schema]]. DD-100 version-bump proposal (primary match [[loop-anatomy-spec-template]] v1) ruled **create-new** by Nick (delegated ruling, session 152): written as a new baseline template at the unsuffixed stem `loop-contract-file-schema` (not a `-v2`), since it addresses a different object (ongoing lifecycle governance: contract/state/log) at a different altitude than the build-time mechanical iteration anatomy of [[loop-anatomy-spec-template]]. The new template's Composition Note cross-references the sibling — a single automation may carry both (anatomy spec at build time, contract file across its lifetime).
 
 ### loop-trigger-taxonomy-poll-then-wake-combo::rule::combo-trigger-cheap-precheck-before-llm-wake
 
 - **Date queued:** 2026-07-19
-- **Status:** nick-approved
+- **Status:** extracted
 - **Target form:** rule
 - **Source finding:** [[loop-trigger-taxonomy-poll-then-wake-combo]]
 - **Source excerpt:**
@@ -121,6 +121,6 @@ Pending version-bump 2026-07-19 — Session 152 — [[autonomous-scheduled-agent
 - **Codifier's reading:** An imperative, machine-checkable directive for scheduled jobs — gate the expensive LLM wake behind a cheap deterministic pre-check; skip the run entirely on no-op. Enforceable at review of any cron-shaped job config. Fits the rule form (a "wake the model only if" gate).
 - **Suggested headline:** combo-trigger: cheap pre-check before LLM wake
 - **Recommendation:** extract via /extract-artifacts
-- **Resolution:**
+- **Resolution:** merged into [[deterministic-nodes-for-non-reasoning-steps]]
 
-Pending merge 2026-07-19 — Session 152 — [[autonomous-scheduled-agent-operation.harvest-queue]] — DD-97 extension proposal emitted at [[operations/extension-proposals/2026-07-19-extension-proposals]]; primary match [[deterministic-nodes-for-non-reasoning-steps]] (drafted earlier in this same processing session from a sibling finding in this guide). Codifier recommendation: extend existing — same claim and mechanism, applied to the trigger/wake node specifically. Manual apply per DD-97 v1 (Step 1.7 auto-merge prohibition); after Nick rules, either apply the merge manually and flip this row to `extracted` / `merged into [[deterministic-nodes-for-non-reasoning-steps]]`, or re-invoke `/extract-artifacts --harvest-row loop-trigger-taxonomy-poll-then-wake-combo::rule::combo-trigger-cheap-precheck-before-llm-wake` if create-new is ruled instead.
+Extracted 2026-07-19 — Session 152 — [[autonomous-scheduled-agent-operation.harvest-queue]] — merged into [[deterministic-nodes-for-non-reasoning-steps]]. DD-97 extension proposal (primary match [[deterministic-nodes-for-non-reasoning-steps]]) ruled **extend-existing** by Nick (delegated ruling, session 152): the "Special Case: The Trigger/Wake Node" section was appended to that rule by hand (blockquote content rendered as normal section prose in house style), with [[loop-trigger-taxonomy-poll-then-wake-combo]] cited as the section's source; the source finding was back-annotated (extraction note + consumed_by) with pipeline_status held at synthesized. No new artifact created — same claim and mechanism applied to the trigger/wake node specifically.

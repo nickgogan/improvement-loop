@@ -46,6 +46,13 @@ last_updated: '2026-07-18'
 pipeline_status: synthesized
 consumed_by:
   - eval-driven-improvement-loops.md
+  - rules/every-recurring-review-comment-triages-to-mechanism-or-judgment.md
+extraction_note: |-
+  Durable-conversion-rule facet merged into
+  [[every-recurring-review-comment-triages-to-mechanism-or-judgment]] as an
+  Additional Evidence entry (session 152, 2026-07-19, Nick-delegated DD-97
+  extend-existing ruling). The persona-keyed review-agent facet is agent-shaped
+  and remains DD-82-suppressed — untouched by this merge.
 ---
 
 ## What It Is

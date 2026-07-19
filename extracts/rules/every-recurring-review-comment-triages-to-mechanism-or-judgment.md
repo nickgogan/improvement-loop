@@ -41,6 +41,7 @@ tags:
 
 **Source:** [[review-obsolescence-as-design-goal]]
 **Source (additional):** [[pattern-scale-signals-systemic-not-individual-failure]]
+**Source (additional):** [[garbage-collection-day-persona-review-agents]]
 **Form:** rule
 **Extraction date:** 2026-04-27
 
@@ -92,6 +93,8 @@ The rule respects mechanism-feasibility over time. A class can move from judgmen
 ### Additional Evidence
 
 The pattern-scale diagnostic framework ([[pattern-scale-signals-systemic-not-individual-failure]]) broadens the application scope of this rule beyond code review to any recurring failure at governance scale. When the same gap appears across multiple governance surfaces — not just PR threads — the diagnostic is the same: a recurring pattern signals a process failure, not individual error. The triage rule applies: the pattern triages to mechanism (a structural default that prevents the gap) or judgment-only (an explicit declaration that the class requires human evaluation). "Count the instances" is the trigger; three or more recurrences of the same governance gap is the threshold for architectural intervention rather than per-instance fixing. Training or per-file remediation is the wrong mitigation at pattern scale; the correct response is the same as for recurring review comments — ship a mechanism or declare judgment-only with reasoning.
+
+The garbage-collection-day pattern ([[garbage-collection-day-persona-review-agents]]) supplies a concrete, named cadence implementation of this rule's "stated cadence" governance requirement — a fixed weekly ritual (every Friday) rather than an ad-hoc or purely count-triggered check-in. It also broadens the trigger condition: rather than waiting for a comment class to recur across two or more changes, the ritual triages *every* piece of review friction observed within the week, once, on a fixed schedule — a stricter cadence variant teams may adopt when they want zero-lag conversion rather than a recurrence-count threshold. It corroborates the judgment-only terminal state's implementation as living documentation: bucketing recurring feedback by the reviewing engineer's persona (front-end architect, reliability engineer, scalability engineer) and consulting that persona's accumulated "what good looks like" doc is one concrete shape a judgment-only triage record can take, subsequently machine-enforced by a per-persona review agent that runs on every push.
 
 ## Failure Modes
 

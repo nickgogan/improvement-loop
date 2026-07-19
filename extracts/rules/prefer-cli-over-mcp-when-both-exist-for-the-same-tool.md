@@ -4,14 +4,15 @@ type: "extracted-artifact"
 assigned_form: "rule"
 source_finding: "cli-first-tool-integration-less-overhead-than-mcp"
 extraction_date: "2026-05-25"
-last_change_session: 102
+last_change_session: 152
 last_change_sl: "session-102-codifier-identify-and-extract-artifacts"
+last_change_report: "designing-agent-tools.harvest-queue"
 identification_report: null
 deployed: false
 deployed_to: null
 context:
   applies_to:
-    - "any agent operating in a terminal-native environment (e.g., a coding agent) that must integrate with a tool offering both a CLI and an MCP server interface"
+    - "any agent operating in a terminal-native environment (e.g., a coding agent) that must integrate with a tool offering both a CLI and an MCP server interface — for stateless tools; stateful local services with a session-scoped serve mode are the documented exception"
   platform_coupling: "agnostic"
   autonomy: "all"
   stage: "specify"
@@ -44,7 +45,7 @@ tags:
 
 An agent is selecting between a CLI tool and an MCP server that expose equivalent functionality for the same underlying tool (e.g., Playwright CLI vs. Playwright MCP server). The agent is operating in a terminal-native environment where both interfaces are accessible.
 
-Scope: applies when both interfaces exist and the CLI can accomplish the required task. Does not apply when the tool has no CLI equivalent, or when the CLI lacks a capability required for the specific task.
+Scope: applies when both interfaces exist and the CLI can accomplish the required task — for *stateless* tools; stateful local services with a session-scoped serve mode are the documented exception. Does not apply when the tool has no CLI equivalent, when the CLI lacks a capability required for the specific task, or when the tool holds session state worth keeping open (open DB, warm engine), where a long-lived local MCP subprocess is preferred.
 
 ## Action
 
@@ -74,6 +75,16 @@ Playwright's head-to-head benchmark is the canonical evidence: the CLI version u
 For terminal-native coding agents, the CLI preference compounds across the session: every MCP server loaded adds a fixed context overhead that persists for the session's duration. Multiple MCP servers can collectively consume a significant fraction of the context window before any task-relevant content is loaded. Switching to CLI for tools that have CLI equivalents recovers that context for task content.
 
 The Google Trends signal — CLI adoption increasing relative to MCP — suggests that practitioners are discovering this asymmetry independently. The rule codifies what production experience is demonstrating.
+
+## Special Case: Stateful Local Services (the statefulness discriminator)
+
+The CLI-first default is scoped to *stateless* tools — where each invocation shares the terminal environment natively and amortizes nothing across calls, so the CLI's zero protocol overhead wins (Playwright is the canonical case). When the tool holds session state worth keeping open — an open database, a warm index, a long-lived engine — the winner flips: a long-lived local stdio MCP subprocess (spawned once, tokenless, session-scoped, dying with the session) beats per-call CLI shell-out, because it amortizes process startup + connection open/close + typed tool schemas across the whole session and removes one shell-approval surface per command.
+
+Discriminator checklist for a tool-integration review: does the tool open a connection/database/index per call? Is there a session-scoped `serve` mode? If yes, prefer the local MCP subprocess for that tool; the CLI-first default does not apply.
+
+Two documented costs to watch: a long-lived subprocess can hold stale state after the underlying store changes externally — it needs reload semantics — and session-scoped servers can register tool-count bloat that taxes the context window.
+
+**Source:** [[stateful-mcp-subprocess-vs-cli-shell-out]] (Medium / practitioner-documented — Gbrain's ~47 engine operations exposed both ways; CLI shell-out "works, but is worse as a process," the local MCP path visibly faster in Hermes Agent). Merged here via DD-97 extension (session 152, Nick-delegated extend-existing ruling) rather than drafted as a standalone rule.
 
 ## Failure Modes
 

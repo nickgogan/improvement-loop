@@ -49,6 +49,14 @@ last_updated: '2026-07-12'
 pipeline_status: synthesized
 consumed_by:
 - designing-agent-tools.md
+- rules/prefer-cli-over-mcp-when-both-exist-for-the-same-tool.md
+extraction_note: |-
+  Statefulness-discriminator facet merged into
+  [[prefer-cli-over-mcp-when-both-exist-for-the-same-tool]] as a scoping amendment
+  (Scope/applies_to statefulness qualifier + third scope clause) plus a new
+  "Special Case: Stateful Local Services" section (session 152, 2026-07-19,
+  Nick-delegated DD-97 extend-existing ruling). Refines the applicability clause of
+  the existing CLI-first rule rather than creating a twin.
 ---
 
 ## What It Is

@@ -14,6 +14,14 @@ no_match_passthrough: 0
 
 One template candidate scanned during a harvest-queue promotion run (DD-101, session 152). The DD-100 corpus scan over `extracts/templates/` found a semantic-family match; one version-bump proposal is emitted. Source: `autonomous-scheduled-agent-operation.harvest-queue.md` (row `loop-contract-anatomy-and-evolve-session-cadence::template::loop-contract-file-schema`), Status `nick-approved`. Per DD-100 this report proposes only — no existing artifact is modified here; Nick rules the version-bump/create-new target per proposal.
 
+## Rulings (session 152, Nick-delegated)
+
+Nick delegated the ruling to the orchestrating agent this session; ruling concurs with the Codifier recommendation and was executed same-session:
+
+| Proposal | Ruling | Executed as |
+|---|---|---|
+| loop-contract-anatomy-and-evolve-session-cadence | create new (not v2) | [[loop-contract-file-schema]] (unsuffixed baseline) |
+
 ## Proposals
 
 ### loop-contract-anatomy-and-evolve-session-cadence

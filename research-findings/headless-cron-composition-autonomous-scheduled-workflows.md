@@ -35,6 +35,7 @@ last_updated: '2026-07-13'
 pipeline_status: synthesized
 consumed_by:
 - autonomous-scheduled-agent-operation.md
+- rules/headless-output-verifiability-gate.md
 tags:
 - session-95-reextract
 ---
@@ -78,3 +79,6 @@ Converts idle time (nights, weekends) into productive agent time. The developer 
 - `--allowed-tools` constraints require the user to know which tools are needed upfront; too restrictive and the task fails silently
 - Cron-scheduled runs may conflict with interactive sessions using the same workspace (file locking, git state)
 - Cost accumulation: scheduled runs burn tokens continuously, and without budget caps a misconfigured cron job can be expensive
+
+## Extraction Note — 2026-07-19
+Extracted as **rule**: [[headless-output-verifiability-gate]] in `extracts/rules/` (the design-time headless go/no-go criterion facet of this finding). Session 152; DD-97 create-new ruling (Nick-delegated) — sibling of [[scheduled-workflows-require-human-checkpoint]] (runtime publish-boundary checkpoint), with which it composes.
