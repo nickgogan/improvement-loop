@@ -113,3 +113,9 @@ by `store_check.py` in the pre-commit hook.
 - **Owning surface:** `systems/improvement-loop/.claude/skills/link-intake/SKILL.md` (KB-ONLY metadata contract feeding Pass 2 planning)
 - **Source:** session 151 (2026-07-18), wave-4 Pass 2 — Vercel Eve video (m8VC2SV2igM), batch-e dispatch
 - **Occurrences:** 2026-07-18
+
+## L-15 · 2026-07-19 · normal · open
+- **Lesson:** `/extract-artifacts` Step 4.8's queue write-back can leave a row's Status field inconsistent with its own Resolution and the on-disk artifact — two independent instances: a session-146 extraction left `deletion-test-for-no-op-instructions`'s row at `nick-approved` (found and reconciled s152), and a session-152 batch lane wrote `Resolution: extracted to [[…]]` on three autonomous-queue rows while leaving Status `nick-approved`. Rule: after any batch of harvest-row promotions, run a deterministic consistency check (`Resolution: extracted…` ⇒ `Status: extracted`; artifact-on-disk ⇒ terminal Status) before committing; the write-back's summary-table and detail-block edits are two surfaces that must be verified together.
+- **Owning surface:** `systems/improvement-loop/.claude/skills/extract-artifacts/SKILL.md` (Step 4.8 write-back)
+- **Source:** session 152 (2026-07-19), harvest-queue sweep — autonomous-scheduled-agent-operation lane partial write-back (fixed pre-commit, dd9266b) + s146 drift on defending-agent-context row
+- **Occurrences:** 2026-07-19

@@ -1,8 +1,8 @@
 # Improvement Loop — Progress
 
-Updated: 2026-07-19 (session 151 — link-intake wave-4 shipped end-to-end: 30-link triage
-Nick-accepted, Pass 2 extracted into the KB behind the G9.I6 gate, eve + openwiki
-registered, LINKS.md empty; ruled-queue item 1 done. Next: guide refresh.)
+Updated: 2026-07-19 (session 152 — guide refresh shipped: 6 guides re-synthesized from
+wave-4 + memory-spec corpus; G3b+G4 splits executed (DD-122/123); harvest queue drained
+79 rows → 67 staged artifacts; 9 DD-97/100 rulings delegated+done. Next: asset-desc language.)
 
 ## Start here
 
@@ -71,23 +71,24 @@ Scopes (hill):
 - `store-checks` — deterministic checks + seeded-violation test — uphill (waits on spec)
 
 **Nick-ruled queue (2026-07-18)** — front-runs memory-spec drafting; E1 scopes stay
-parked-cresting until this clears or Nick re-prioritizes. (Original item 1 — the full
-`/link-intake` run — shipped session 151 · [HISTORY.md](HISTORY.md).)
-1. **Guide refresh** — update the guides on creating **agent memories, harnesses, and
-   agentic systems** from the wave-4 intake + the memory-spec corpus.
-2. **Asset-description language** — begin the portable JSON/YAML language describing
+parked-cresting until this clears or Nick re-prioritizes. (Link-intake shipped s151;
+the guide refresh — plus splits, harvest drain, and rulings — shipped s152 ·
+[HISTORY.md](HISTORY.md).)
+1. **Asset-description language** — begin the portable JSON/YAML language describing
    engine assets (pulls E3 forward; foundations for port/reharness meta-skills).
    Wave-4 prior art in KB: eve's folder-compiled-manifest (carries a flagged
    `contradicts` tension vs `machine-readable-system-contract-with-wiring-rows` —
    implicit discovery vs explicit wiring) + the per-control record from `/simplify-
-   context`'s ENHANCE deltas.
-3. **Eval sophistication** — upgrade `/meta-skill-author`'s eval discipline, anchored
+   context`'s ENHANCE deltas. New s152 substrate: `agent-folder-skeleton` template +
+   `system-contract-wiring-row-schema` template staged in extracts/.
+2. **Eval sophistication** — upgrade `/meta-skill-author`'s eval discipline, anchored
    on the DeepMind good-skills framework. Anchor talk extracted at wave-4: the five
    ENHANCE deltas (SkillBench numbers, capability-vs-preference taxonomy, executable
    eval harness, retirement protocol, multi-trial discipline) are in the 2026-07-18
-   triage report §ENHANCE.
+   triage report §ENHANCE. New s152 substrate: `three-tier-skill-test-plan`,
+   `with-without-skill-ab-baseline`, `skill-description-optimization-loop` staged.
 
-**Next unit of work:** queue item 1 — the guide refresh. Items 2–3 follow in order.
+**Next unit of work:** queue item 1 — the asset-description language. Item 2 follows.
 
 ## Backlog / Icebox
 
@@ -97,8 +98,13 @@ triggers noted where promotion is event-gated.
 - **Wave-4 follow-ups** (each Nick-gated; canonical list: 2026-07-18 triage report
   §Follow-up): comprehension-gate skill ADD via `/design-skill` (Litt ExplainDiff
   gist); ENHANCE deltas for `/self-improve`, `/dd`, `/simplify-context` (the
-  `/meta-skill-author` deltas ride queue item 3); `/repo-analyzer` passes on eve +
+  `/meta-skill-author` deltas ride queue item 2); `/repo-analyzer` passes on eve +
   openwiki; reciprocal back-links via the next `/finding-crosslink` pass
+- **Deferred guide-split proposals** — G7/G3/G10/G11 (operations/split-proposals/
+  2026-07-19-*): all recommend defer; re-fire automatically at the next regen;
+  proceed rulings optional any time
+- **Guide staleness watch** — G2a/G2b, G9, G6 crossed the 3+ threshold at wave-4;
+  refresh when scheduled (normal staleness path)
 - **IB-180** — kome.ai fallback backend inside fetch.py (trigger fired twice: s143
   24/24, s151 7/7 — chunking alone doesn't prevent mid-run IP blocks)
 - **IB-179** — build `/watch-youtube` per the 2026-07-18 design note (v0 tool + eval
@@ -132,9 +138,10 @@ triggers noted where promotion is event-gated.
 
 ## Blockers / gates (Nick)
 
-- **Five gate-clearance consolidation calls (optional review)** — the DD-97/DD-100
-  extend/version-bump/create-new/merge rulings (HISTORY s146) were made under the
-  delegated grant; all git-reversible if Nick wants a different granularity
+- **Delegated-grant rulings (optional review)** — DD-97/DD-100 calls made under
+  Nick's grants: five in s146, plus s152's split executions (DD-122/123) and nine
+  corpus-overlap rulings (tables in operations/{extension,version-bump}-proposals/
+  2026-07-19-*); all git-reversible if Nick wants different granularity
 - **Verbatim-storage finding null→P3** — session-132 reassessment, unruled
 - **Re-injection correction** — next step unchosen (KB updated; remedy refuted upstream)
 - **Mirror question** — automate `il-published` subtree push, or retire it (the engine
