@@ -12,6 +12,9 @@ Nothing here is auto-extracted; rows feed `/extract-artifacts` only after Nick r
 | 2026-07-13 | extracted | rule | [[append-only-lesson-store-owning-surface-identity]] | "pruning-is-status-change-never-deletion" | extracted to [[pruning-is-status-change-never-deletion]] |
 | 2026-07-13 | extracted | rule | [[derive-dont-edit-artifacts-as-log-renders]] | "one-writer-per-artifact-derive-dont-edit" | merged into [[derived-artifacts-single-writer-rule]] |
 | 2026-07-13 | nick-dismissed | template | [[memory-system-evaluation-triad-storage-injection-recall]] | "memory-system-triad-scorecard" | dismissed |
+| 2026-07-19 | queued | rule | [[incremental-snapshotting-copy-on-write-block-diffing]] | "block-level-incremental-snapshot-not-full-disk" | extract via /extract-artifacts |
+| 2026-07-19 | queued | rule | [[posix-tiered-cache-persistence-over-object-storage]] | "posix-compliant-sandbox-storage-not-nfs" | extract via /extract-artifacts |
+| 2026-07-19 | queued | rule | [[agentic-file-classification-reliability-calibration]] | "consequence-weighted-classification-review-gate" | dismiss as inline |
 
 ## Per-row details
 
@@ -96,3 +99,50 @@ Extracted 2026-07-13 — Session 146 — [[session-persistence-and-memory.harves
 - **Suggested headline:** memory-system-triad-scorecard
 - **Recommendation:** dismiss as inline
 - **Resolution:** dismissed
+
+### incremental-snapshotting-copy-on-write-block-diffing::rule::block-level-incremental-snapshot-not-full-disk
+
+- **Date queued:** 2026-07-19
+- **Status:** queued
+- **Target form:** rule
+- **Source finding:** [[incremental-snapshotting-copy-on-write-block-diffing]]
+- **Source excerpt:**
+  > "Four requirements are stated explicitly as the bar any such system must clear:
+  > incremental (not full) snapshots, fast save, fast restore, and configurable scope …
+  > plus a deliberate choice of block-level over file-level diffing specifically to avoid
+  > write amplification on large files that change only slightly."
+- **Codifier's reading:** Imperative, machine-checkable infrastructure directive ("snapshot agent disk state incrementally at block level with configurable scope, never full-disk") instantiating the pattern's stated requirement bar — a crisp, reusable rule for any agent-sandbox persistence layer. Applicability caveat: no live code-execution surface in the engine today (design-stage grounding); the rule is a general external best-practice, not engine-enforced.
+- **Suggested headline:** block-level-incremental-snapshot-not-full-disk
+- **Recommendation:** extract via /extract-artifacts
+- **Resolution:**
+
+### posix-tiered-cache-persistence-over-object-storage::rule::posix-compliant-sandbox-storage-not-nfs
+
+- **Date queued:** 2026-07-19
+- **Status:** queued
+- **Target form:** rule
+- **Source finding:** [[posix-tiered-cache-persistence-over-object-storage]]
+- **Source excerpt:**
+  > "NFS was considered and explicitly rejected as the underlying mechanism: it is both
+  > less performant and not POSIX-compliant, and the coding/agentic models being sandboxed
+  > are pre-trained overwhelmingly on standard POSIX filesystem behavior, so a non-standard
+  > mount degrades their reliability on ordinary file operations."
+- **Codifier's reading:** Imperative, machine-checkable directive ("expose agent sandbox storage through POSIX-compliant filesystem semantics; do not use NFS or other non-standard mounts") with an explicit reliability rationale (models trained on POSIX behavior). Reusable rule for any sandbox persistence substrate. Same no-live-sandbox applicability caveat as the companion snapshot rule.
+- **Suggested headline:** posix-compliant-sandbox-storage-not-nfs
+- **Recommendation:** extract via /extract-artifacts
+- **Resolution:**
+
+### agentic-file-classification-reliability-calibration::rule::consequence-weighted-classification-review-gate
+
+- **Date queued:** 2026-07-19
+- **Status:** queued
+- **Target form:** rule
+- **Source finding:** [[agentic-file-classification-reliability-calibration]]
+- **Source excerpt:**
+  > "A consequence-weighted human-review gate: … stakes vary … routing designs could flag
+  > only classifications whose downstream cost of error is high for review, rather than
+  > reviewing uniformly or not at all."
+- **Codifier's reading:** Reads as a rule-shape ("gate small-taxonomy classifications for human review by consequence, not uniformly"), but the finding itself explicitly disclaims directive status ("not a mandate to add gates … evidence, not a directive"), and the guidance is already carried inline in the regenerated guide's Step 5.1. Surfaced for the audit trail; better left inline than extracted as a standalone rule today.
+- **Suggested headline:** consequence-weighted-classification-review-gate
+- **Recommendation:** dismiss as inline
+- **Resolution:**

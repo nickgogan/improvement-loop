@@ -1,5 +1,13 @@
 # Changelog — Building Agentic Systems
 
+## 2026-07-19 — Session 152 — nick-request
+
+- Findings: 39 (+2, -0 since last synthesis; Nick-ruled queue item 1 light-touch refresh)
+- Added: [[agentic-file-classification-reliability-calibration]], [[shared-spaces-multiplayer-human-agent-surfaces]]
+- Structural: Section 3 gained small-taxonomy classification-reliability calibration (~78% accuracy, context-blind failure mode + delegation-boundary consequences); Section 4 gained an agent-as-folder/Vercel Eve asset-model note (implicit-vs-explicit-wiring counterpoint to Section 9); Section 8 gained a "Shared collaboration surfaces (team scale)" subsection; Pitfalls gained over-trusting-classification + two L7 shared-surface entries. DD-98 split proposal re-emitted (2026-07-19; recommendation: defer — portability cluster unchanged since session 147).
+- Preserved: none (no Nick's Annotations or PRESERVE markers)
+- SL: session-152 (SL retired as producer per session-138 ruling; git is the session record)
+
 ## 2026-07-16 — Session 147 — nick-request
 
 - Findings: 37 (+8, -1 since last synthesis; Nick-authorized session-147 guide-refresh sweep)

@@ -32,8 +32,10 @@ related_findings:
 proposals: null
 date_discovered: "2026-07-18"
 last_updated: "2026-07-18"
-pipeline_status: "raw"
-consumed_by: []
+pipeline_status: "synthesized"
+consumed_by:
+  - "session-persistence-and-memory.md"
+  - "agent-workflow-and-execution.md"
 tags:
   - "orchestration"
   - "durable-execution"

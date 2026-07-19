@@ -1,5 +1,13 @@
 # Changelog — Agent Design Patterns
 
+## 2026-07-19 — Session 152 — nick-request
+
+- Findings: 47 (+3, -0 since last synthesis)
+- Added: [[agent-as-folder-compiled-to-manifest]], [[oracle-evaluator-architect-domain-expert-progression]], [[principal-domain-expert-single-ownership]]
+- Structural: New Step 20 (Install a Principal Domain Expert; Oracle→Evaluator→Architect mode-selection tree + single-owner rules) and new Part II Key Concept 19; new "agent-as-folder convention" pattern under Step 5 (filesystem assembly vs named-registry vs wiring-rows tradeoff); 2 new templates (Agent Folder Skeleton, Domain-Expert Ownership Worksheet); Example 9; Pitfalls 25-27 (convention debt, consensus-by-committee ownership, mode misdiagnosis).
+- Preserved: none
+- SL: none — System Log retired as producer (session-138 ruling); session record in HISTORY.md + git
+
 ## 2026-07-13 — Session 145 — staleness-threshold
 
 - Findings: 44 (+7, -0 since last synthesis)

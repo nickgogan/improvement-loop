@@ -13,6 +13,9 @@ Nothing here is auto-extracted; rows feed `/extract-artifacts` only after Nick r
 | 2026-07-16 | queued | template | [[github-label-as-workflow-state]] | "workflow-state-label-schema-template" | extract via /extract-artifacts |
 | 2026-07-16 | queued | template | [[concept-family-explorer-five-neighborhood-gap-mapping]] | "five-neighborhood-coverage-checklist" | extract via /extract-artifacts |
 | 2026-07-16 | queued | template | [[sprint-contract-negotiation-pattern]] | "sprint-contract-template" | extract via /extract-artifacts |
+| 2026-07-19 | queued | template | [[loop-contract-anatomy-and-evolve-session-cadence]] | "loop-contract-file-schema (contract/state/log)" | extract via /extract-artifacts |
+| 2026-07-19 | queued | rule | [[loop-trigger-taxonomy-poll-then-wake-combo]] | "combo-trigger: cheap pre-check before LLM wake" | extract via /extract-artifacts |
+| 2026-07-19 | queued | rule | [[lint-test-failures-as-remediation-prompts]] | "author lint/test failures as remediation prompts" | extract via /extract-artifacts |
 
 ## Per-row details
 
@@ -125,5 +128,44 @@ Nothing here is auto-extracted; rows feed `/extract-artifacts` only after Nick r
   > "Before each sprint, the generator proposes implementation scope and success criteria; the evaluator reviews and negotiates until both agree on what \"done\" looks like. These contracts contain granular, testable criteria. The evaluator then scores against these specific criteria rather than subjective quality judgments."
 - **Codifier's reading:** The described contract (scope + granular testable criteria + negotiation record) is a fillable document scaffold; the guide embeds a Sprint Contract template derived from it, but no standalone template artifact exists (finding was synthesized in 2026-04, pre-DD-101, and never queue-scanned). Fits the template form.
 - **Suggested headline:** sprint-contract-template
+- **Recommendation:** extract via /extract-artifacts
+- **Resolution:**
+
+### loop-contract-anatomy-and-evolve-session-cadence::template::loop-contract-file-schema
+
+- **Date queued:** 2026-07-19
+- **Status:** queued
+- **Target form:** template
+- **Source finding:** [[loop-contract-anatomy-and-evolve-session-cadence]]
+- **Source excerpt:**
+  > "every autonomous loop/automation gets ONE living markdown file that is simultaneously its constitution and its memory — a 'contract' section (goal, boundaries on what it can do unsupervised vs. what needs human escalation, and an SOP), a deliberately small 'state' section (current hypothesis, open backlog, items shipped but needing follow-up), and an append-only 'log' of what happened each run."
+- **Codifier's reading:** A fixed three-section markdown scaffold (contract / state / log) fillable per automation — placeholder structural form meant for rendering, reusable across any recurring loop. Fits the template form. The guide embeds a prose description of it in Step 9 but no standalone fillable artifact exists.
+- **Suggested headline:** loop-contract-file-schema (contract/state/log)
+- **Recommendation:** extract via /extract-artifacts
+- **Resolution:**
+
+### loop-trigger-taxonomy-poll-then-wake-combo::rule::combo-trigger-cheap-precheck-before-llm-wake
+
+- **Date queued:** 2026-07-19
+- **Status:** queued
+- **Target form:** rule
+- **Source finding:** [[loop-trigger-taxonomy-poll-then-wake-combo]]
+- **Source excerpt:**
+  > "a cron-interval ticker runs a cheap deterministic script first to check programmatically whether there is real new work; only if so does it wake the expensive LLM agent."
+- **Codifier's reading:** An imperative, machine-checkable directive for scheduled jobs — gate the expensive LLM wake behind a cheap deterministic pre-check; skip the run entirely on no-op. Enforceable at review of any cron-shaped job config. Fits the rule form (a "wake the model only if" gate).
+- **Suggested headline:** combo-trigger: cheap pre-check before LLM wake
+- **Recommendation:** extract via /extract-artifacts
+- **Resolution:**
+
+### lint-test-failures-as-remediation-prompts::rule::author-lint-failures-as-remediation-prompts
+
+- **Date queued:** 2026-07-19
+- **Status:** queued
+- **Target form:** rule
+- **Source finding:** [[lint-test-failures-as-remediation-prompts]]
+- **Source excerpt:**
+  > "write every failure message as if it were a prompt ... a failure that states the codebase's convention, the reason for it, and the specific fix ... does [change behavior], because it's legible as an instruction rather than a symptom report."
+- **Codifier's reading:** An imperative authoring standard applicable to every custom lint rule and structural test — "state the convention, the why, and the what-instead, not just the no." Machine-checkable at rule-authoring review (does this failure message carry a fix and a rationale?). Fits the rule form. Scope caveat noted in the finding (embedded-agent-in-test extension is a separate, tightly-scoped concern).
+- **Suggested headline:** author lint/test failures as remediation prompts
 - **Recommendation:** extract via /extract-artifacts
 - **Resolution:**

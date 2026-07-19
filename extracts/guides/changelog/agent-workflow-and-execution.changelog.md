@@ -1,5 +1,13 @@
 # Changelog — Agent Workflow and Execution
 
+## 2026-07-19 — Session 152 — nick-request
+
+- Findings: 42 (+5, -0 since last synthesis)
+- Added: [[loop-contract-anatomy-and-evolve-session-cadence]], [[loop-trigger-taxonomy-poll-then-wake-combo]], [[pre-merge-reconciliation-queue]], [[lint-test-failures-as-remediation-prompts]], [[durable-checkpointed-sessions-as-framework-default]]
+- Structural: Step 9 gained a trigger-shape taxonomy (continuous/cron/event/combo) + the no-native-cron scheduling gap and a loop-contract (contract/state/log + evolve-session) subsection; Step 2 gained durability-as-framework-default; Step 8 gained "write failure messages as prompts"; Step 10 gained the enforcement-locus consensus (structural gates over prose) + an emerging pre-merge reconciliation-queue subsection; Pitfalls 13-14; scheduled-workflow template gained trigger-shape/external-scheduler/pre-check fields. Cites corpus C-synthesis §4a/§4b in prose (not source_findings).
+- Preserved: none
+- SL: session-152 (SL retired as producer per session-138 ruling; git is the session record)
+
 ## 2026-07-16 — Session 147 — staleness-threshold
 
 - Findings: 37 (+17, -0 since last synthesis)

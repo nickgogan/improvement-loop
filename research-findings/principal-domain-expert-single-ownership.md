@@ -37,7 +37,9 @@ related_findings:
 proposals: null
 date_discovered: "2026-07-18"
 last_updated: "2026-07-18"
-pipeline_status: "raw"
+pipeline_status: "synthesized"
+consumed_by:
+  - "agent-design-patterns.md"
 ---
 
 # Principal Domain Expert — Single Ownership Over Committee, Hire for Breadth

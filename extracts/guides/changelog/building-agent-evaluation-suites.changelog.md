@@ -1,5 +1,13 @@
 # Changelog — Building Agent Evaluation Suites
 
+## 2026-07-19 — Session 152 — nick-request
+
+- Findings: 77 (+4, -0 since last synthesis; session-152 guide-refresh sweep — Evaluation crossed the 3+ staleness threshold at wave-4)
+- Added: [[evals-folder-as-first-class-deploy-gate]], [[review-outcome-not-diff-for-agent-changes]], [[pre-code-validation-contracts-dual-blind-validators]], [[garbage-collection-day-persona-review-agents]]
+- Structural: Key Concepts 18-19 (contract-first correctness; review outcome over diff); Step 3 contract-first assertions; Step 6 dual-blind validators (scrutiny + user-testing); Step 8b two subsections (outcome-over-diff at scale; converting review feedback into durable checks); Step 9 evals-as-first-class-deploy-gate; Pitfalls 29-32; Contract invariants/governance/recovery extended. DD-98 split proposal re-emitted at 77 findings (see operations/split-proposals/2026-07-19-building-agent-evaluation-suites-split-proposal.md).
+- Preserved: none (no Nick's Annotations or PRESERVE markers)
+- SL: session-152 (SL retired as producer per session-138 ruling; git is the session record)
+
 ## 2026-07-16 — Session 147 — staleness-threshold
 
 - Findings: 73 (+27, -0 since last synthesis; Nick-authorized session-147 guide-refresh sweep)

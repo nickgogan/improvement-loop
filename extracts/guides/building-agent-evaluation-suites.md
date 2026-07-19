@@ -6,7 +6,7 @@ target_system:
   - "improvement-loop"
 stage: "draft"
 created: "2026-04-19"
-updated: "2026-07-16"
+updated: "2026-07-19"
 author: "claude"
 source_findings:
   - "agent-self-reporting-unreliability-independent-eval"
@@ -82,6 +82,10 @@ source_findings:
   - "skill-smells-triage-layer-before-full-audit"
   - "skill-testing-three-tier-trigger-functional-perf"
   - "task-risk-gradient-for-verification-depth"
+  - "evals-folder-as-first-class-deploy-gate"
+  - "review-outcome-not-diff-for-agent-changes"
+  - "pre-code-validation-contracts-dual-blind-validators"
+  - "garbage-collection-day-persona-review-agents"
 source_dd:
   - "DD-81"
 tags:
@@ -89,7 +93,7 @@ tags:
   - "evaluation"
 contract:
   preconditions: "You have an agent system with defined acceptance criteria. You can run the agent repeatedly on known inputs. You have access to implement deterministic checks (linters, schema validators, test runners) and optionally LLM-as-judge assertions. You understand whether your agents operate in multi-step workflows where reliability compounds."
-  invariants: "All evaluation is independent of the agent under evaluation -- the agent never grades its own output (generator-assessor separation). Every assertion is binary (pass/fail), never subjective -- except where class-aware carve-outs apply (subjective-output and script-core components get re-anchored criteria, never fake assertions). Eval files are locked from agent modification. Infrastructure configuration is documented and controlled as a first-class variable. Published scores are produced by the same product configuration the product ships with; ensemble aggregation rules match the production serving rule and are declared on every result. Validators never receive implementation context that could bias their judgment. Verifiers enumerate findings; they never fix. Both output correctness and trajectory soundness are graded. Parallel sampling and fan-out are sized to the named verifier's capacity. Production evaluation runs on every query, not just during development. Test ordering is varied across parallel agents to prevent systematic blind spots."
+  invariants: "All evaluation is independent of the agent under evaluation -- the agent never grades its own output (generator-assessor separation). Every assertion is binary (pass/fail), never subjective -- except where class-aware carve-outs apply (subjective-output and script-core components get re-anchored criteria, never fake assertions). Eval files are locked from agent modification. Infrastructure configuration is documented and controlled as a first-class variable. Published scores are produced by the same product configuration the product ships with; ensemble aggregation rules match the production serving rule and are declared on every result. Validators never receive implementation context that could bias their judgment. Verifiers enumerate findings; they never fix. Both output correctness and trajectory soundness are graded. Parallel sampling and fan-out are sized to the named verifier's capacity. Production evaluation runs on every query, not just during development. Test ordering is varied across parallel agents to prevent systematic blind spots. Where the workflow allows, the validation contract is authored before the implementation exists and validators run blind to it, covering both code-facing and behavior-facing axes. Eval suites that gate deployment run automatically and hard-block on red."
   governance: "Eval suites are versioned alongside the agent they evaluate. Eval files cannot be modified by the agent under evaluation. Grading tier selection is reviewed when task requirements change. Capability evals graduate to regression suites at saturation. Published benchmarks carry configuration disclosure (hash, feature-list, or pinned commit) and aggregation rule (single-path / majority / best-of-N with picker / union-of-successes-explicitly-labeled). Tiered review escalation is calibrated periodically based on outcome data. TDD step ordering is embedded in plan artifacts, not prompt instructions. This guide is owned by Meta-System knowledge layer."
   recovery: "If eval results are inconsistent: check infrastructure configuration first (resource limits, time-of-day effects). If evals always pass: assertions are too easy -- add edge cases, factorial variations, and harder criteria. If eval-aware gaming is suspected: check for benchmark-identification search patterns in agent logs. If an improvement loop stalls after 40+ iterations: review assertions for mutual satisfiability before increasing the cap. If a published score does not survive product use: check whether it was a feature-disabled baseline, an out-of-path benchmark, or used union-of-successes aggregation; re-run at production configuration with the production aggregation rule and republish with the corrected number. If a validation agent produces sycophantic confirmations: implement holdout pattern -- strip all implementation context from the validator; also flip its task to enumerate-only (forbid fixing). If reliability is insufficient for a multi-step workflow: apply march-of-nines math to identify which steps need per-step reliability investment. If parallel sampling stops converting attempts into results: you have hit the verifier ceiling -- invest in a mechanical checker before adding attempts. If cost or usage numbers look wrong: distrust the harness readout and recompute from logs."
 ---
@@ -152,6 +156,10 @@ How to verify your agent actually works -- not by asking it, but by measuring it
 
 **17. Popularity is not efficacy.** A skill from a 177k-star repo measured +5% token usage with worse results than no skill at all. Stars measure virality. The only honest signal is a measured marginal impact: run the same task with and without the component and diff the outcomes. Never adopt a third-party skill that claims performance gains without published rigorous evaluation or your own baseline run.
 
+**18. Define correctness before the code exists.** Tests written after an implementation don't catch bugs -- they confirm decisions, because their shape is drawn from what the code happens to do rather than from what it was supposed to do. The counter is a *validation contract*: assertions authored during planning, before any implementation, defining correctness independently of it (for a large build, hundreds of assertions, every feature mapped to one or more so their sum covers the contract). Then run the validators *blind* -- they never see the implementation, so validation is adversarial by construction, not by policy. Two validator axes matter and don't subsume each other: a *scrutiny* validator (tests, types, lint, per-feature code review) and a *user-testing* validator that spawns the running system and drives it end-to-end, checking that it behaves, not just that the code looks right. A healthy contract "never succeeds on the first go."
+
+**19. At scale, review the outcome, not the diff.** Once generation and internal validation both run fast and mostly autonomously, diff-reading stops scaling -- there are too many agent-authored changes in flight, and a diff shows which lines changed, not whether the change did the right thing. The human checkpoint narrows to one judgment: was this the intent, and is this the result? "Result" is concrete evidence -- a demo of the feature working, or the verdict of an automated critic (a security-focused or API-conformance-focused reviewer) that already validated the change. The reviewable unit becomes a semantically-grouped batch a human can manage, not one commit. This does not remove the human gate; it changes what the human looks at. Guard it: outcome evidence (a green critic, a passing demo) is a weaker guarantee than reading the mechanism, so keep diff-review for changes where the *mechanism* carries the risk (security, infrastructure).
+
 ---
 
 ## Procedure
@@ -209,7 +217,9 @@ If your workflow has N steps and requires X% overall reliability, solve for the 
 
 ### Step 3: Design the Assertion Suite
 
-Build assertions in two layers, always preferring the faster and cheaper layer.
+**Author the contract before the implementation exists.** Where the workflow allows it, write the assertions during planning -- before any code -- so their shape is drawn from what the artifact is *supposed* to do, not from what it happens to do. Post-hoc tests confirm decisions; pre-code assertions catch bugs. For a large build this is a *validation contract*: potentially hundreds of assertions, every feature assigned one or more, such that their sum covers the whole contract. This is the same generator-assessor separation principle applied one step earlier -- the spec, not the code, decides what good looks like. The engine's own pipeline has the assessor-never-authors half (the `/assess-*` skills, rule 10); the contract-first half is the addition: a lightweight "what must this artifact satisfy" assertion set can be carried by the identification/classification output for the drafter to build against.
+
+Then build assertions in two layers, always preferring the faster and cheaper layer.
 
 #### Layer 1: Deterministic Checks (Always First)
 
@@ -423,6 +433,13 @@ Key design decisions for builder-validator chains:
 - Consider cross-model validation (different model family for validator) to catch systematic model biases
 - N-of-M validation (multiple validators, majority vote) increases confidence for critical outputs
 - For compliance-shaped validation, give the fresh-context reviewer the requirements artifact (story, spec, acceptance criteria), the architecture/standards docs, and the changed code -- it catches structural issues (files in wrong places, missing docs, dependency violations) the builder rationalized. Use the strongest available model for this reviewer, not the cheapest: validation is "the critical piece that makes sure the agent didn't go off the rails"
+
+**Dual blind validators (scrutiny + behavioral).** A production-tested extension of the builder-validator chain runs *two* blind validators against the pre-code validation contract (Concept 18) after each milestone, neither of which has seen the implementation:
+
+- **Scrutiny validator** -- the code-facing axis: test suite, type-checking, lint, plus dedicated code-review sub-agents spawned per completed feature. This is the conventional builder-validator role.
+- **User-testing validator** -- the behavior-facing axis: spawns the actual running application and drives it via computer-use-style interaction (fills forms, clicks buttons, checks rendering), validating functional flows end-to-end rather than checking that code looks right. Most KB verification patterns cover only the code-facing axis; the behavioral validator catches a genuinely different failure surface -- a system whose code passes every static check but does the wrong thing when run.
+
+The two axes are not redundant: "does the code look right" and "does the running system behave right" are different questions with different failure modes. Disciplines: keep both validators strictly context-isolated from the implementation (a leak -- e.g. a validator's tool access incidentally surfacing implementation detail -- silently erodes the adversarial-by-design property with no visible signal); prefer a different model provider for validators to preserve the no-shared-blind-spot property; and budget for the user-testing validator's latency -- its computer-use execution is typically the dominant wall-clock cost, buying behavioral confidence at a real price. The contract it validates against is only as good as the planning conversation that produced it: an under-specified contract still gets faithfully validated against the wrong thing.
 
 **Cross-model disagreement is a signal, not noise.** When findings from model family X are verified by model family Y and vice versa, three confidence bands emerge: bugs confirmed by both models (highest confidence -- act), bugs refuted by the other model (route to human judgment -- this is exactly where human attention pays off), and everything else in between. Different training lineages have different blind spots; the verification step matters more than the finding step. Cost doubles or triples, so reserve cross-model verification for high-stakes review.
 
@@ -644,6 +661,27 @@ Match review depth to the importance and risk profile of each change or query:
 
 **Tier selection logic:** Cost scales with risk. Running fleet review on every commit wastes compute. Running only quick review on a critical authentication change misses bugs. Define quantitative thresholds for automatic tier recommendation: lines changed, number of files, risk tags, security-sensitive file paths, data-destructive operations.
 
+#### Reviewing Batched Agent Changes: Outcome Over Diff
+
+When many agents author changes concurrently, per-change diff review is the throughput hard-cap (Step 6's post-implementation pipeline names the same ceiling). The scaling move is to change *what the human reviews*, not to remove the human:
+
+- **Review intent-vs-result, not the diff.** The human's one judgment becomes "was this the intent, and is this the result?" -- where "result" is concrete evidence: a demo of the feature working, or the verdict of an automated critic (security-focused, API-conformance-focused) that already validated the change before the human saw it. This depends on a pre-merge reconciliation step that serializes and groups concurrent changes first.
+- **Make the reviewable unit a semantic batch.** Group multiple agents' work into "something a human can manage" rather than one-commit-at-a-time; at high agent concurrency there are simply too many individual changes to review each.
+- **Keep the diff for mechanism-risk changes.** Outcome evidence is a weaker guarantee than reading the mechanism -- a green critic or a passing demo can be true while the diff is fragile, over-fit to the shown case, or hides a maintainability cost. Where the *mechanism* carries the risk (security, infrastructure), read the code. Watch two failure modes: gameable/shallow outcome evidence, and unverified automated critics (the security/conformance LLMs need their own validation, or you have re-introduced the LLM-as-judge infinite-regress).
+
+This is an audit lens for existing gates, not just new infrastructure: check whether each human gate (batch manifests, staged-extract summaries, skill-run reports) is already intent-and-result shaped, and flag any that still implicitly ask the human to read a raw diff where a summary would serve.
+
+#### Converting Review Feedback into Durable Checks
+
+Review feedback given once as a comment is re-given every session unless it is converted into a check the system enforces automatically. A production ritual ("garbage collection day") time-boxes that conversion: on a fixed weekly cadence, every reviewer's sole job is to take every piece of slop observed that week and eliminate its *cause* durably -- as a failing test, a lint, or an addition to a review agent's documentation -- so the next occurrence catches itself with no human back in the loop. Paired architecture: bucket review feedback by the *persona* the reviewer was operating as (front-end architect, reliability engineer, scalability engineer), then run one review agent per persona, triggered on every push, that asserts "is this good?" against that persona's accumulated "what good looks like" docs and surfaces any blocking (severity ≥ medium) issue before merge. The payoff is knowledge transfer: one reviewer's judgment, captured once in writing, benefits every agent-driver on the team forever, not just the person who noticed the pattern.
+
+Disciplines and failure modes:
+
+- **Time-box the conversion.** Durable-fix work competes directly with feature work and gets deferred indefinitely without a protected slot -- the exact failure the ritual prevents, and the exact discipline most likely to erode under deadline pressure.
+- **Give the ritual a structured intake.** A running "slop observed this week" log so the session works from a queue, not memory -- otherwise the ritual inherits the context-loss problem it exists to fix.
+- **Garbage-collect the garbage-collectors.** Persona review-agent docs accumulate contradictory or superseded guidance the same way any long-lived CLAUDE.md does; version or expire them, or stale criteria silently keep blocking PRs.
+- **Coverage tracks team composition, not task risk.** A review dimension nobody currently embodies (e.g. accessibility) never gets a persona agent. In this engine the analogous mechanism is `/self-improve`'s capture-and-promote loop: recurring feedback converted into a durable check rather than re-given each session -- compare the fixed weekly cadence against scan-mode's on-demand retro.
+
 #### Four-Layer Defense-in-Depth Architecture
 
 For high-stakes production agents, implement all four evaluation layers:
@@ -679,6 +717,8 @@ Use the four canonical gate types to structure where evaluation fires in your wo
 | **Abort** | When constraints are violated | Halt execution | "Token budget exceeded" or "Forbidden tool called" |
 
 Every workflow should have at least a pre-flight gate and an abort gate. Revision and escalation gates are added for iterative workflows where the agent may get stuck or produce diminishing returns.
+
+**Make the eval suite a first-class deploy gate.** The single highest-leverage placement is to run the eval suite automatically at deploy time and require it green before the update ships. Framework-native versions of this (Vercel's Eve treats `evals` as a first-class folder inside the agent, alongside its skills and tools, run automatically at deploy) turn "did we test before shipping" from a *process* question -- did the team remember to run the suite, is a separate CI pipeline configured -- into a *structural* one: the folder exists or it doesn't; if it exists, the framework runs it. Lowering the ceremony cost of eval coverage matters precisely because eval suites are the first infrastructure teams skip when it is optional overhead. Two cautions: a folder's mere presence proves nothing about coverage quality (a suite that loads is not an agent that behaves -- coverage still has to be designed per Steps 1-5), and an *advisory* gate gets shipped past under deadline pressure the same way any soft gate does. If the eval gate is to mean anything, it must hard-block on red, not merely warn.
 
 **Loop detection as a runtime gate.** Detect stuck agents mechanically: keep a sliding window of recent tool-call hashes and count identical consecutive calls. Production-corroborated escalation ladder: at 3 identical calls, warn (inject a "you are repeating" system message); at 5, hard-stop (strip tool calls, force a terminal answer) or escalate to a human permission-ask -- the pathological loop becomes an allow/deny gate. Add a per-tool-type frequency cap (e.g., 50 calls per session) as a safety net for loops that vary arguments. Hash-based detection misses semantically-identical-but-syntactically-different loops; pair with trajectory monitoring for those.
 
@@ -1176,6 +1216,18 @@ Giving every task the same review burden over-reviews the cheap, visible failure
 ### 28. Trusting the harness's cost readout
 In-harness cost displays on subscription plans can disagree with each other by an order of magnitude for the same session. Cost figures that drive routing decisions or enter evidence records must come from independent log-based accounting, not the harness's own display. Divergence between two harness surfaces means distrust both.
 
+### 29. Tests written after the implementation
+Post-hoc tests don't catch bugs; they confirm decisions -- their shape is drawn from what the code happens to do, so they pass by construction. A high coverage percentage on after-the-fact tests is a false done-signal. Author the validation contract before the implementation exists (Concept 18 / Step 3), and run the validators blind so validation is adversarial by construction. A related trap: validating only that the *code looks right* (static checks) while never running the system -- a build can pass every lint and type check and still behave wrong. Add a behavioral validator that spawns the running system and drives it end-to-end.
+
+### 30. Approving the outcome without being able to trust it
+At scale the human reviews intent-vs-result instead of the diff -- but a demo video or a green automated-critic verdict is a weaker guarantee than reading the mechanism. Both can be true while the underlying change is fragile, over-fit to the shown case, or hides a maintainability cost, and the automated critics themselves are often unvalidated (LLM-as-judge regress). Keep diff review for changes where the mechanism carries the risk (security, infrastructure), and validate your critics before trusting their verdicts. The opposite failure is just as real: reading every diff when a summary would serve doesn't scale past a handful of concurrent agents.
+
+### 31. An eval gate that only proves it exists
+Making evals a first-class, auto-run deploy gate is high-leverage -- but the folder's presence proves nothing about coverage quality (a suite that loads is not an agent that behaves), and an advisory gate gets shipped past under deadline pressure exactly like any other soft gate. If the gate is to mean anything, design real coverage into it (Steps 1-5) and make it hard-block on red, not merely warn.
+
+### 32. Feedback re-given every session instead of converted to a durable check
+Review feedback delivered as a one-off comment is re-delivered next session unless its cause is durably eliminated -- as a failing test, a lint, or an addition to a review agent's documentation. Without a protected, time-boxed conversion slot, the durable-fix work loses to feature work indefinitely and the same slop recurs. Give the conversion a structured intake (a running log of observed slop) so it works from a queue, not memory, and garbage-collect the review criteria themselves -- persona/review docs rot like any long-lived context file and will silently keep blocking on superseded standards.
+
 ---
 
 ## Related Guides
@@ -1218,6 +1270,9 @@ In-harness cost displays on subscription plans can disagree with each other by a
 - Production evaluation runs continuously on every query, not just during development.
 - TDD step ordering is embedded in plan artifact structure, not in prompt instructions, and red-state failure is observed and recorded before implementation.
 - No third-party component claiming performance gains is adopted without published evaluation or a local with/without baseline.
+- Where the workflow allows, the validation contract is authored before the implementation exists (contract-first), validators run blind to the implementation, and both the code-facing (scrutiny) and behavior-facing (user-testing) axes are covered.
+- At high agent concurrency, the human reviews intent-vs-result evidence rather than raw diffs -- while diff review is retained for changes whose mechanism carries the risk, and automated critics that produce outcome evidence are themselves validated.
+- Where an eval suite gates deployment, it runs automatically and hard-blocks on red; an advisory-only gate is not treated as coverage.
 
 ### Governance
 - Eval suites are versioned alongside the agent they evaluate.
@@ -1232,6 +1287,7 @@ In-harness cost displays on subscription plans can disagree with each other by a
 - Skill test plans are re-run at tier 1 (triggering) after every description change and re-measured at tier 3 (marginal impact) after model upgrades; skills whose baseline catches up are retired.
 - Deployed agents get the five-question health review on a cadence (world-drift questions on a time cadence; reach/value questions on every model upgrade).
 - Severity definitions in convergence loops are shared across all artifact optimizers; severity inflation silently moves the fix and ship boundaries.
+- Review feedback is converted into durable automated checks (tests, lints, review-agent docs) on a protected, time-boxed cadence rather than re-given each session; persona and review criteria are versioned and expired so stale standards don't silently keep blocking.
 - This guide is owned by the Meta-System knowledge layer and updated when new evaluation findings are integrated.
 
 ### Recovery
@@ -1250,3 +1306,7 @@ In-harness cost displays on subscription plans can disagree with each other by a
 - If a subjective-output or script-core skill fails an assertion-based audit: check for the class carve-outs before adding fake assertions -- re-anchor the criteria (qualitative method or script-test verification) instead.
 - If harness cost readouts disagree or look implausible: recompute from logs with an independent accounting tool; treat the harness display as a rendering, not a ledger.
 - If an agent repeats the same tool call: let the loop-detection ladder respond (warn at 3, hard-stop or escalate to a human permission-ask at 5) rather than waiting for token exhaustion.
+- If tests pass but the running system misbehaves: you validated the code, not the behavior. Add a user-testing validator that spawns the running system and drives it end-to-end; keep it blind to the implementation.
+- If tests aren't catching bugs, only confirming decisions: they were written after the code. Move to a contract-first validation contract authored during planning, before implementation.
+- If the same review feedback recurs across sessions: convert its cause into a durable test, lint, or review-agent doc; give the conversion a protected slot and a structured intake queue rather than relying on memory.
+- If an eval deploy gate never blocks anything: check whether it is advisory rather than hard-blocking, and whether the suite has real coverage or merely exists -- a folder that loads is not an agent that behaves.

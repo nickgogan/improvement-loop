@@ -6,7 +6,7 @@ target_system:
   - "improvement-loop"
 stage: "draft"
 created: "2026-04-19"
-updated: "2026-07-13"
+updated: "2026-07-19"
 author: "claude"
 source_findings:
   - "session-persistence-crash-resilient"
@@ -44,6 +44,11 @@ source_findings:
   - "memory-system-evaluation-triad-storage-injection-recall"
   - "session-history-import-as-memory-bootstrap"
   - "memory-file-to-skill-migration"
+  - "durable-checkpointed-sessions-as-framework-default"
+  - "incremental-snapshotting-copy-on-write-block-diffing"
+  - "posix-tiered-cache-persistence-over-object-storage"
+  - "snapshot-lineage-aware-fleet-scheduling"
+  - "agentic-file-classification-reliability-calibration"
 source_dd:
   - "DD-81"
 tags:
@@ -54,7 +59,7 @@ tags:
   - "state-management"
 contract:
   preconditions: "You have an agent system that persists beyond a single prompt-response cycle. You can write to a filesystem or database. You understand the difference between what was said (conversation) and what was done (workflow state)."
-  invariants: "Memory is layered with explicit tiers, not a flat persistence target. Workflow state is tracked separately from conversation state. Long-running workflows keep an append-only run log as durable working memory; on resume the log outranks conversation recollection. Derived artifacts are re-rendered from their log, never hand-patched. Sessions leave the system in a clean, resumable state. Memory writes are policy-governed and novelty-gated -- agents do not freely append to long-term stores. Recurring lessons accrete on one identified entry, never as duplicates. Memory banks are scoped (per-agent, per-project, per-session) with cross-bank queries opt-in. Environmental feedback, not self-assessment, drives decisions. Retrieval pipelines are debuggable -- ranked outputs decompose into inspectable signals."
+  invariants: "Memory is layered with explicit tiers, not a flat persistence target. Persistence has two altitudes -- application-level checkpoint (workflow state, run log) and infrastructure-level disk durability (snapshot or always-on substrate) -- decided separately. Workflow state is tracked separately from conversation state. Long-running workflows keep an append-only run log as durable working memory; on resume the log outranks conversation recollection. Derived artifacts are re-rendered from their log, never hand-patched. Sessions leave the system in a clean, resumable state. Memory writes are policy-governed and novelty-gated -- agents do not freely append to long-term stores. Write-time classification into a taxonomy is a judgment call with a measured error rate, not a certainty. Recurring lessons accrete on one identified entry, never as duplicates. Memory banks are scoped (per-agent, per-project, per-session) with cross-bank queries opt-in. Environmental feedback, not self-assessment, drives decisions. Retrieval pipelines are debuggable -- ranked outputs decompose into inspectable signals. Recall mechanism matches corpus scale and query type; embeddings earn their infra cost, they are not the default."
   governance: "Memory tier boundaries, promotion policies, retention rules, and isolation scopes are documented per system. Session boundary conventions are enforced by handoff prompts. Run-log and derived-artifact write discipline (single writer per artifact, append-only log) is documented per workflow. Retrieval recipe (decomposition, fusion, reranking) is versioned as a contract. This guide is owned by the Improvement Loop engine (Codifier synthesizes; Nick gates deployment)."
   recovery: "If an agent crashes mid-task: load the last persisted workflow checkpoint and resume from the last completed step. If compaction wipes working context: read the tail of the append-only run log and git log -- trust them over conversation recollection. If a derived artifact drifts from its decision log: re-render it from the log; do not reconcile by hand. If session handoff loses context: read the progress file and last handoff prompt. If memory is corrupted: fall back to the last known-good tier and reconstruct. If parallel agents conflict: check the lock directory for abandoned locks. If retrieval quality degrades: decompose the rerank score into per-signal contributions to identify the failing stage. If memory is poisoned by bad writes: roll back to a known-good corpus snapshot, re-run the novelty + contradiction filters, audit promotion logs."
 ---
@@ -98,6 +103,10 @@ How to build agent memory that survives crashes, scales across sessions, and doe
 **9. The append-only run log is durable working memory.** Long runs die two deaths: compaction (state evaporates) and state mutation (the artifact and the history disagree). One append-only log per run -- written as decisions happen, never edited, read only on resume -- answers both. On resume, the log and git history outrank the agent's own recollection. Polished artifacts are derived views re-rendered from the log, never hand-patched.
 
 **10. Memory, wikis, and world-KBs are three different stores.** Agent memory remembers your conversations (only what passed through the agent). A domain wiki knows one domain (curated concept pages). A world-KB knows your world (typed pages for people, projects, decisions -- including what never touched any chat). Most "my agent forgot X" complaints are category errors: asking one store a question that belongs to another. The stores compose; they do not compete.
+
+**11. Persistence has two altitudes.** Application-level persistence (workflow-state checkpoints, the append-only run log) answers "what step am I on and what have I done." Infrastructure-level persistence (the disk or filesystem the agent runs on) answers "does my working state survive the machine dying." They are separate decisions: a perfect JSON checkpoint is worthless if the disk it lives on evaporates when the node fails. At fleet scale the substrate splits again into two paradigms — explicit incremental snapshots (point-in-time restore and branching) versus always-on durable storage (never-lose-anything without an explicit call) — and the mature answer treats them as complementary layers, not a choice. Frontier frameworks increasingly ship crash-safe session persistence as a built-in default rather than infrastructure you wire in yourself.
+
+**12. Memory design inherits the class it was built for; process memory is a distinct type.** Memory built for coding agents (repos, tests, tickets) diverges from memory built for personal/companion agents (someone's day-to-day life) on *what* is remembered, *why* it decays, and *how long* it lives — but the two classes converge on substrate mechanics (file-first canonical, append-write/resolve-at-read, bounded injection). The sharpest divergence: coding work has an *oracle* (tests, builds, re-derivation catch stale facts), personal/knowledge work does not, so oracle-free content needs explicit decay and supersession *more*, not less. And "is the *task* progressing" (process/work-state memory — issue status, dependency edges, typed close-reasons) is a distinct type from "what does the agent *know*"; route it to the work-item/task layer with its own write and decay rules, never fold it into the knowledge store. (Framing distilled from the cross-framework memory survey, `operations/plans/memory-spec-inputs/B-synthesis-memory-survey.md` §9, D7.)
 
 ---
 
@@ -240,6 +249,8 @@ The triad turns a vibes comparison into a per-axis one and localizes weaknesses:
 ## Part 2: Build the Retrieval Pipeline
 
 If memory is more than a flat file, retrieval is the hot path. A good retrieval pipeline turns a single user query into the right memories in context. A bad one returns plausible-but-wrong matches that the agent then trusts.
+
+**First, choose your recall altitude — do not default to embeddings.** The steps below describe a full hybrid semantic+lexical pipeline, which is the right architecture at scale. But the better-evidenced default at *small* scale is deterministic keyword/grep recall over the markdown corpus, with embeddings explicitly deferred. A frontier vendor (Codex) chose grep for its native memory layer; verbatim-storage systems hit >96% recall with zero LLM; and keyword-only recall shipped as a *finished* feature ages into a recurring complaint (Hermes' FTS5), whereas keyword-only shipped as a *known-limited interim* is legitimate and vendor-precedented. The trade-off: embeddings catch paraphrase but add a per-machine embedding stack, index-drift against the markdown source of truth, and the "similar text ≠ related fact" ceiling; grep is deterministic, zero-infra, and citation-precise but misses vocabulary drift. Reach for the hybrid pipeline when paraphrase recall genuinely matters *and* the corpus has outgrown what grep serves — not before. Match the mechanism to corpus scale and query type; process/governance queries favor grep, relationship/paraphrase queries favor embeddings. (Contested-axis verdict from `operations/plans/memory-spec-inputs/B-synthesis-memory-survey.md` §3.6; the engine's own deferred-embeddings decision is A1 gap G3.)
 
 ### Step 2.1: Choose Auto-Recall over Tool-Based
 
@@ -463,6 +474,31 @@ Once the run log is canonical truth, invert the relationship between log and pol
 - **Render nondeterminism** — LLM-performed derives can render the same log differently; the "same truth" guarantee is only as stable as the derive procedure. A drift lint (does the artifact match a fresh derive of its log?) catches divergence.
 - **Log-quality ceiling** — artifacts can only be as good as what was logged. Decisions made but not logged vanish from every future render.
 
+### Step 3.7: Choose a Disk-Level Persistence Substrate — Snapshot vs. Always-On
+
+Steps 3.1–3.6 persist *application state* (workflow checkpoints, run logs). But that state lives on a disk, and when an agent runs in a sandbox or on a fleet node, the disk itself is a persistence decision. A flawless JSON checkpoint is worthless if the volume it sits on evaporates when the node dies. If your agents run only on a durable local filesystem (the common single-machine case — including a markdown+git repo), this step is a no-op; adopt it when agents execute in ephemeral sandboxes or across a node fleet.
+
+Two production paradigms, framed by their originators as **complementary, not competing**:
+
+| Paradigm | Mechanism | Guarantees | Reach for it when |
+|----------|-----------|------------|-------------------|
+| **Explicit incremental snapshot** | Copy-on-write writable layer over a base image; block-level extent diffing (e.g., `FIEMAP`) uploads only changed blocks; snapshots chain into a **lineage** (ordered diff chain) that a restore replays onto the base image. Async upload (the save call returns before the upload finishes). | Point-in-time restore, branching, rollback. Cheap enough to call constantly *because* it never pays full-disk cost. | You need named restore points, branch/backtrack exploration (checkpoint → try → restore → try again), or cross-node recovery after failure. |
+| **Always-on durable storage** | A POSIX-compliant filesystem built over durable object storage, exposed to the guest as an ordinary block device (e.g., via NBD) with a write-back in-cluster cache tier. No explicit save call. | "Never lose anything" without being asked; every write persists. | You want durability as a property of the substrate, not a discipline the harness must remember to invoke. |
+
+**Design rules that carry across both:**
+
+- **Incremental, never full-disk.** Full snapshots at every checkpoint are cost-prohibitive at scale; block-level diffing (not file-level) avoids write amplification on large files that change only slightly.
+- **Configurable scope.** Snapshot the folders that actually change (e.g., `/workspace`), not the whole root filesystem by default — scope creep toward full snapshots is a named temptation.
+- **Prefer POSIX-standard semantics.** Agentic/coding models are trained overwhelmingly on standard filesystem behavior; a non-standard mount (NFS was explicitly rejected) degrades reliability on routine file operations. This is a reliability argument, not just a performance one.
+- **Mind the durability window.** Both async-upload snapshots and write-back caches acknowledge locally *before* data is durable remotely. A node failure inside that window can lose writes the agent believed were saved — a real failure mode to bound, not ignore.
+- **Bound lineage growth.** Neither paradigm's source describes snapshot-lineage garbage collection; chains only grow, and every restore pays to replay the whole chain. Plan compaction/GC of old diff layers before it bites.
+
+**Orchestration tie-in (fleet scale only).** Once disk snapshots resolve to lineages, the lineage metadata doubles as a **data-locality signal**: a scheduler can score candidate nodes by how many lineage layers each already holds locally and route a restore to the node needing the least transfer — the same idea as container-registry layer-cache-aware scheduling. This only pays off at real fleet scale with deep lineage chains; for a single-machine or single-operator system there is no fleet to schedule across, so treat it as speculative.
+
+**Adoption signal, not just mechanism.** The underlying durable-execution capability is increasingly shipped as a *framework default* — "every session is a checkpointed workflow that survives crashes and redeploys," bundled alongside sandboxing, human-in-the-loop approval, and eval gates as things you get for free rather than assemble from separate tools. The caveat with defaults: a developer may not know what reliability guarantee they actually have until it is tested under real failure, since the mechanism is neither demonstrated nor inspectable. Verify the guarantee; don't assume it.
+
+**For a markdown+git substrate specifically:** git is the file-shaped analog of lineage-based checkpointing — coarser-grained than block-level COW but cheaper to reason about and losslessly diffable, and (for a single operator) it sidesteps the entire multi-writer/multi-machine sync-fragility failure class that block-store-behind-a-sync-daemon designs incur (see Pitfall 18). Reach for block-level snapshotting only if you build a live code-execution surface where full-disk I/O per checkpoint would dominate cost.
+
 ---
 
 ## Part 4: Manage Session Lifecycle
@@ -544,6 +580,8 @@ When one orchestrator dispatches many worker sessions, do not let it accumulate 
 
 Without governance, memory becomes a compounding liability. Every write must pass through a series of gates: policy authorization, novelty filtering, contradiction detection, and provenance attachment.
 
+**Gated promotion beats autonomous promotion — this is the single most corroborated finding across a broad cross-framework memory survey.** Self-rewriting memory that clobbers good work is the most-triangulated failure in the field (independent practitioner reports, rebuild post-mortems, and the reactive `write_approval`/`guard`/`reset` mitigations frameworks bolted on *after* the damage). Autonomous promotion buys zero operator friction and continuous accretion but incurs junk accumulation, self-rewrite clobbering, and a persistence-attack surface; gated promotion costs throughput and risks cold-start under-promotion but buys quality and auditability. The reports do not discriminate by stakes, so "trusted autonomous promotion for low-stakes writes" is not a safe relaxation — keep durable-tier promotion human-gated (or gated per-batch), and if you want a lightweight audit trail without approving every write, keep a human-reviewable consolidation diary ("why this got promoted") separate from the promotion decision itself. (Contested-axis verdict, `operations/plans/memory-spec-inputs/B-synthesis-memory-survey.md` §3.3, §6 D3.)
+
 ### Step 5.1: Policy-Gated Promotion
 
 Every cross-tier movement is governed by an explicit policy:
@@ -563,6 +601,14 @@ Every cross-tier movement is governed by an explicit policy:
 - *Governance tier:* Append-only by system, immutable by agents.
 
 The highest-risk operation is **episodic-to-semantic promotion**. A noisy episode getting promoted to durable knowledge pollutes every future session that retrieves from semantic memory. Define explicit ownership and approval for this boundary.
+
+**The classify step (step 2) is a judgment call with a measured error rate — do not treat it as certain.** Routing a candidate into a small fixed taxonomy (working/episodic/semantic, or decision/pattern/work-item, or accept/reject/monitor) is the same task shape as any agentic small-taxonomy classification. A rare real-world calibration (creator of the PARA method hand-checking every one of an agent's 32 placements, with the model's *taxonomy comprehension independently verified as flawless first*) measured **~78% accuracy — roughly a 1-in-4 error rate even with perfect understanding of the categories.** The errors were not random: they clustered where a **bounded instance sits inside a general category** (a time-bound project filed at the level of the ongoing area it lives in) and where classification **requires context the artifact does not contain** (something that looks disposable but has unstated future value). Both are missing-context failures, not comprehension failures — so adding more taxonomy instructions does not fix them; only a targeted clarifying question or a human review does.
+
+Design implications for the write path:
+
+- **Prefer read-time resolution over write-time classification where you can.** The best-evidenced recent move (mem0's April-2026 pivot) *removed* write-time UPDATE/DELETE in favor of append + resolve-at-retrieval, citing halved cost and the fact that a bad write-time classification is silent and permanent-until-reprocess ("saved fine, retrieved wrong"). Write-time classification buys richer recall metadata and cheap reads but makes misclassifications invisible until a later failed recall. Read-time buys robust cheap writes at per-query cost. (Contested-axis verdict, survey §3.1.)
+- **When you must classify at write time, gate by consequence, not uniformly.** Flag for human review only the classifications whose downstream cost of error is high (a misrouted governance decision, an irreversible action) — reviewing every placement is as wasteful as reviewing none. File moves are cheaply reversible, so post-hoc review sufficed in the trial; irreversible or time-sensitive routing needs a *pre-hoc* gate.
+- **Log corrections as calibration data.** Track where the classifier is overridden over time; the recurring boundary-ambiguity types tell you where to add a narrow clarifying-question prompt.
 
 ### Step 5.2: Novelty Filtering at Write Time
 
@@ -1314,6 +1360,20 @@ START: What is failing?
   |
   +-- "Two memory systems — which is better?"
   |     -> Step 1.7: Score both on storage / injection / recall (plus curation)
+  |     -> Pitfall 17: distrust vendor benchmarks; build a small hand-audited eval set on your workload
+  |
+  +-- "Agent's disk/sandbox doesn't survive node failure or long runs"
+  |     -> Step 3.7: Choose a disk-level persistence substrate (snapshot vs. always-on)
+  |
+  +-- "An agent auto-routes content into a taxonomy — how much do I trust it?"
+  |     -> Step 5.1 (classify step): ~1-in-4 error even with perfect taxonomy comprehension;
+  |        prefer read-time resolution, or gate by consequence; log corrections as calibration
+  |
+  +-- "Multi-machine memory keeps diverging / DB-vs-git conflicts"
+  |     -> Pitfall 18: drop the concurrency plumbing; a single-writer plain-file store is immune
+  |
+  +-- "Durable state got auto-marked failed/expired/forgotten on a guess"
+  |     -> Pitfall 19: never auto-expire on a staleness inference; surface to a human; use explicit supersession
 ```
 
 ---
@@ -1368,6 +1428,15 @@ Without keying lessons by (owning surface, failure pattern), one recurring idiom
 ### 16. Cold-starting a memory system empty
 Installing a memory system with an empty store throws away the history you already paid to produce — and the system is useless for weeks while it re-accumulates. Bootstrap from existing session history at setup (Step 6.4). But bulk import without dated provenance lets stale decisions outrank current reality; distill with a cheap model and keep the raw corpus reachable for citation.
 
+### 17. Trusting a memory system's benchmark score
+Every headline memory-recall percentage in the market is vendor-reported or disputed: audits have found answer keys with wrong entries, LLM judges accepting large fractions of intentionally-wrong answers, and multiple vendors retracting their own numbers. Treat every quoted recall percentage as marketing, not ground truth — do not use one to pick your architecture. If you need to know how a memory system performs *on your workload*, build a small hand-audited eval set over your own content; the public benchmarks (LoCoMo, LongMemEval) are conversational/personal-agent-centric and structurally miss coding/governance-agent bottlenecks (process state, verifiable-convention memory, run-log recovery).
+
+### 18. Buying concurrency plumbing you don't need
+Putting the canonical store *behind* an opaque sync layer (an embedded database syncing to git, a sync daemon) buys multi-writer concurrency guarantees — and imports an entire failure class with them: database-vs-git divergence, unmergeable forks across clones, "issues that both exist and don't exist," silent local-state destruction. Every severe complaint of this shape traces to a multi-writer or multi-machine context; no single-writer/embedded-mode account fails this way. A single-operator system with a directly-diffable plain-file store (markdown+git) has *no separate database to diverge from git*, so it is structurally immune. Do not adopt DB-behind-sync plumbing to solve a concurrent-write-contention problem you do not have.
+
+### 19. Auto-expiring or auto-failing on a staleness guess
+Never let the system flip durable state to "failed," "expired," or "forgotten" on an inference about liveness. Real incidents: a startup routine flipping *all* running rows to failed and aborting live work; impossible token counts corrupting the compaction that depends on them; blocks silently rendered but unreachable. Staleness in oracle-free content (a governance decision, a personal fact) is unfalsifiable by machine — the world changed and nobody told the agent. Surface the ambiguity to a human instead of guessing; pair explicit supersession (a status transition on the record) with importance-based decay and a permanent/foundational exemption, never a wall-clock auto-expire that silently drops a true-but-rare entry.
+
 ---
 
 ## Related Guides
@@ -1381,6 +1450,7 @@ Installing a memory system with an empty store throws away the history you alrea
 - **Subagent memory connects to spec design:** Subagent memory directories (Step 1.4) are a specification-level decision — see *Writing Agent Specifications* (G1) for how to declare them in a subagent's contract.
 - **Orchestrator state connects to workflow execution:** The phase-queue state file (Step 4.4) and run log (Step 3.5) are the persistence half of the orchestration and durable-workflow patterns in *Agent Workflow and Execution* (G3b) — G3b covers how to run the loop; G7 covers what survives its crashes.
 - **Vault-as-OS memory substrate:** *[[building-agentic-systems]]* (G11) covers system-shape questions (open-brain, ai-managed-vault, compounding-knowledge-loop) that share findings with G7. G7 covers the substrate-level memory mechanics; G11 covers how those mechanics compose into an agentic OS.
+- **Disk-level persistence is also a sandboxing concern:** The disk-substrate paradigms in Step 3.7 (incremental snapshotting, always-on POSIX storage, lineage-aware scheduling) originate in agent-sandbox infrastructure and share findings with *[[agent-safety-and-permissions]]* (G6). G7 covers what the substrate buys for state durability and crash recovery; G6 covers the isolation/threat-model side of the same sandbox.
 
 ---
 
@@ -1394,11 +1464,15 @@ Installing a memory system with an empty store throws away the history you alrea
 ### Invariants
 - Memory is organized into explicit tiers with defined read/write policies per tier.
 - Storage topology (single-store / multi-store / flat-file) is chosen against documented criteria, not by deployment speed.
+- Application-level persistence (checkpoints, run log) and infrastructure-level disk durability (snapshot or always-on substrate) are decided separately; agents in ephemeral sandboxes have an explicit disk-persistence substrate.
+- Recall mechanism is matched to corpus scale and query type; embeddings are adopted when they earn their per-machine infra cost, not by default.
 - Workflow state is tracked separately from conversation state and is the authoritative record of progress.
 - Long-running workflows keep an append-only run log; on resume, the log and git history outrank conversation recollection.
 - Derived artifacts are re-rendered from their canonical log by a single writer; hand-edits to derived artifacts do not survive.
 - Sessions leave the system in a clean, resumable state verified by automated checks.
 - Memory writes are policy-governed AND novelty-gated AND contradiction-checked — agents do not freely append to long-term stores without provenance, classification, and authorization.
+- Promotion into durable tiers is human-gated (or gated per-batch), never fully autonomous; write-time classification into a taxonomy is treated as a judgment call with a measured error rate and gated by consequence.
+- Durable state is never auto-expired or auto-failed on a staleness inference; supersession is an explicit status transition, and ambiguity is surfaced to a human.
 - Recurring lessons accrete evidence on one identified entry (owning surface + failure pattern); pruning is a status change, never a deletion.
 - Memory banks are scoped (per-agent, per-project, per-user, or per-session); cross-bank queries are opt-in.
 - Environmental feedback, not self-assessment, drives agent decisions at every state-modifying step.

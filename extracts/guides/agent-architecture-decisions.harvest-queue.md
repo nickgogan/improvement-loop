@@ -10,6 +10,9 @@ Nothing here is auto-extracted; rows feed `/extract-artifacts` only after Nick r
 | 2026-07-16 | queued | skill | [[four-estimate-agent-routing-test]] | "four-estimate-routing-test-skill" | extract via /extract-artifacts |
 | 2026-07-16 | queued | rule | [[planner-executor-deterministic-guardrails]] | "deterministic-execution-boundary-rule" | extract via /extract-artifacts |
 | 2026-07-16 | queued | rule | [[effort-scaling-rules-embedded-in-orchestrator]] | "effort-scaling-resource-allocation-rule" | extract via /extract-artifacts |
+| 2026-07-19 | queued | template | [[structured-handoff-schema-self-healing-multi-agent-missions]] | "worker-handoff-schema-template" | extract via /extract-artifacts |
+| 2026-07-19 | queued | template | [[pre-code-validation-contracts-dual-blind-validators]] | "pre-code-validation-contract-template" | extract via /extract-artifacts |
+| 2026-07-19 | queued | rule | [[droid-whispering-per-role-model-assignment]] | "cross-provider-validator-assignment-rule" | extract via /extract-artifacts |
 
 ## Per-row details
 
@@ -85,5 +88,44 @@ Nothing here is auto-extracted; rows feed `/extract-artifacts` only after Nick r
   > "Explicit rules embedded in the lead agent's prompt that govern resource allocation based on query complexity. ... (1) Simple factual queries: 1 subagent, 3-10 tool calls. (2) Comparison queries: 2-4 subagents, 10-15 tool calls. (3) Complex multi-source research: 10+ subagents with explicitly divided roles."
 - **Codifier's reading:** Tiered numeric allocation directives suitable for verbatim embedding in an orchestrator prompt — imperative and enforceable, rule shape. The finding was extracted as a pattern (2026-04-19); the embedded allocation table is a distinct rule-form candidate.
 - **Suggested headline:** effort-scaling-resource-allocation-rule
+- **Recommendation:** extract via /extract-artifacts
+- **Resolution:**
+
+### structured-handoff-schema-self-healing-multi-agent-missions::template::worker-handoff-schema-template
+
+- **Date queued:** 2026-07-19
+- **Status:** queued
+- **Target form:** template
+- **Source finding:** [[structured-handoff-schema-self-healing-multi-agent-missions]]
+- **Source excerpt:**
+  > "each worker fills out a fixed schema at the end of its feature: (1) what was completed; (2) what was explicitly left undone; (3) every command run paired with its exit code; (4) issues discovered; (5) whether the worker's actual behavior abided by the orchestrator's defined procedures."
+- **Codifier's reading:** A fixed five-field schema a worker renders at each boundary — a structural scaffold with placeholder fields meant for rendering, template form per the rubric. The guide now embeds a Worker Handoff Schema template derived from it; a standalone template artifact would make it reusable outside this guide (P1 finding, so high extraction value).
+- **Suggested headline:** worker-handoff-schema-template
+- **Recommendation:** extract via /extract-artifacts
+- **Resolution:**
+
+### pre-code-validation-contracts-dual-blind-validators::template::pre-code-validation-contract-template
+
+- **Date queued:** 2026-07-19
+- **Status:** queued
+- **Target form:** template
+- **Source finding:** [[pre-code-validation-contracts-dual-blind-validators]]
+- **Source excerpt:**
+  > "a validation contract written by the orchestrator during planning, before any code exists ... hundreds of individual assertions; every feature assigned one or more assertions such that the sum of all features' assertions covers the full contract ... two blind adversarial validators run after each milestone, neither of which has seen the implementation: a scrutiny validator ... and a user-testing validator."
+- **Codifier's reading:** The contract structure (assertion set + feature-assignment coverage rule + two named blind validators) is a fillable structural scaffold — template form. The guide embeds a Pre-Code Validation Contract template derived from it; a standalone artifact would make the before-code assertion pattern reusable.
+- **Suggested headline:** pre-code-validation-contract-template
+- **Recommendation:** extract via /extract-artifacts
+- **Resolution:**
+
+### droid-whispering-per-role-model-assignment::rule::cross-provider-validator-assignment-rule
+
+- **Date queued:** 2026-07-19
+- **Status:** queued
+- **Target form:** rule
+- **Source finding:** [[droid-whispering-per-role-model-assignment]]
+- **Source excerpt:**
+  > "validation should run on a model from a different provider than implementation — bias decorrelation (different training data, not just a different context window), not cost/capability optimization."
+- **Codifier's reading:** An imperative, checkable directive ("run validation on a different provider than the implementer") embedded in a Model-Selection pattern finding — rule shape per the rubric's imperative/machine-enforceable criterion. Distinct from the finding's broader per-role-assignment discussion; the cross-provider validator constraint is the enforceable kernel.
+- **Suggested headline:** cross-provider-validator-assignment-rule
 - **Recommendation:** extract via /extract-artifacts
 - **Resolution:**

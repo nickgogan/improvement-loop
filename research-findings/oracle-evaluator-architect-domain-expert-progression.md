@@ -44,7 +44,10 @@ related_findings:
 proposals: null
 date_discovered: "2026-07-18"
 last_updated: "2026-07-18"
-pipeline_status: "raw"
+pipeline_status: "synthesized"
+consumed_by:
+  - "agent-architecture-decisions.md"
+  - "agent-design-patterns.md"
 ---
 
 # Oracle → Evaluator → Architect — The Domain-Expert Progression Framework

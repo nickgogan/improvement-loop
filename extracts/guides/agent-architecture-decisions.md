@@ -6,7 +6,7 @@ target_system:
   - "improvement-loop"
 stage: "draft"
 created: "2026-04-19"
-updated: "2026-07-16"
+updated: "2026-07-19"
 author: "claude"
 source_findings:
   - "capability-saturation-threshold-45-percent"
@@ -74,6 +74,13 @@ source_findings:
   - "parallel-independent-workflow-execution-at-scale"
   - "per-function-recursive-loop-composition"
   - "meta-agent-prompt-generation-bootstrap-pattern"
+  - "five-pattern-multi-agent-communication-taxonomy"
+  - "missions-three-role-architecture-serial-targeted-parallelization"
+  - "flat-parentless-cross-model-agent-communication"
+  - "droid-whispering-per-role-model-assignment"
+  - "structured-handoff-schema-self-healing-multi-agent-missions"
+  - "pre-code-validation-contracts-dual-blind-validators"
+  - "oracle-evaluator-architect-domain-expert-progression"
 source_dd:
   - "DD-81"
 tags:
@@ -139,6 +146,12 @@ This guide provides empirically-grounded decision frameworks for agent system to
 **14. The coordination substrate is a design decision.** Orchestrator-free multi-agent coordination is real and production-proven: parallel agents can coordinate entirely through a shared substrate -- lock files plus git, a queryable issue graph, a versioned database, or a ticket queue with explicit work contracts. Anthropic built a 100,000-line Rust C compiler with parallel Claude instances coordinating through nothing but lock files and git. Choose the substrate as deliberately as the topology.
 
 **15. A loop is a composition primitive with a required anatomy.** Any agent-in-a-loop needs a complete, checkable spec: a completion signal, a deterministic completion check, a hard iteration budget, an explicit per-iteration context policy, optional human gates, and iteration-level observability. "The model says it's done" and "the tests pass" are different facts -- declare both. Dangerous omissions (no budget) should be structurally unrepresentable.
+
+**16. Agent-to-agent communication has a five-pattern vocabulary.** How agents talk is a distinct design axis from how they are composed. Five structurally different patterns cover it -- delegation (spawn-and-return), creator-verifier (a stakeless second agent checks the first), direct communication (peer-to-peer, no coordinator), negotiation (agents coordinate over a shared resource), and broadcast (one-to-many status/context). Each has a named cost and failure mode; direct communication is the most expensive and the most fragile (state fragments with no single source of truth), which is why production systems (Factory's Missions) deliberately compose the other four and omit it. Pick the communication pattern by the coordination need, not by whichever is easiest to wire (which is always delegation).
+
+**17. Mandatory rules belong in the harness, not in prose.** The strongest cross-vendor consensus in the harness landscape (surveyed across three LLM-first harnesses -- Claude Code, Codex, opencode -- and confirmed in code-first, orchestrator, and platform classes) is that anything the system declares *mandatory* must be enforced *outside the model's reach*: a `PreToolUse`-style hook or a deny-by-default permission rule that makes the disallowed action invisible, never a CLAUDE.md instruction the model is asked to remember. LLM-first harnesses describe *control flow*; they must not be trusted to *enforce*. A source-verified "hard" rule is necessary but not sufficient -- opencode's Plan Mode is a hard ruleset in source yet leaks in practice (subagent delegation, background/resumed sessions, mode transitions), so enforcement must be *empirically tested* on those exact leak-prone paths, not assumed from the design. (See `operations/plans/memory-spec-inputs/C-synthesis-harness-memory-harmonization.md` §4b.)
+
+**18. Structured handoffs make multi-agent runs self-healing.** A worker that reports "done" gives the orchestrator nothing to check; a worker that fills a fixed handoff schema -- what was completed, what was left undone, every command run with its exit code, issues discovered, whether it abided by the defined procedure -- lets the orchestrator catch and scope corrective work at each milestone boundary. This field-level schema (not an abstract gesture) is the specific mechanism by which Factory's multi-day missions "self-heal" across dozens of workers; it is the concrete way to reduce information loss (L) at agent boundaries.
 
 ---
 
@@ -206,6 +219,16 @@ Is the task parallelizable?
 **Size the coordination investment.** Once multi-agent is justified, scale the resource allocation to query complexity rather than spawning maximally. Anthropic's production tiers: simple factual queries → 1 subagent, 3-10 tool calls; comparison queries → 2-4 subagents, 10-15 tool calls; complex multi-source research → 10+ subagents with explicitly divided roles. Token usage explains ~80% of performance variance in multi-agent systems, so these effort-scaling rules are the primary budget-control mechanism -- without them, orchestrators spawn 50 subagents for a factual question. The same logic applies at the human interface as task-complexity tiering: **quick task** (inline, minimal planning) / **campaign** (subtask decomposition, multiple deliverables) / **deep build** (full phase-based planning) -- the tier signals expected planning depth and session architecture.
 
 **Error-aware backtracking.** For long-horizon workflows where compound errors are a concern (90% per-step accuracy on 10 steps = 35% overall), design agents that can backtrack to a decision point and try a different branch rather than continuing on a corrupt path. Checkpoint-based backtracking (save state at each decision point) is more practical than undo chains. Confidence-gated progression (don't advance to step N+1 until step N passes a threshold) prevents silent error propagation.
+
+**Size the human-in-the-loop role, not just the agent count.** Where the domain expert sits relative to the assess-and-improve loop is its own architecture decision, and over-building it is a documented cause of AI-project failure. Three modes form a necessity-driven progression -- do not skip ahead of what your quality signal supports:
+
+| Mode | The expert's role | Precondition |
+|------|-------------------|--------------|
+| **Oracle** | The expert personally *assesses and improves* output (reads traces, tweaks prompts/docs/tools). No measurement layer, no engineers. | Quality is a taste call -- cannot be measured objectively. |
+| **Evaluator** | The expert *defines* quality (metrics, capture system: user signals, hired reviewers, LLM-as-judge); a separate engineer loop does the fixing. | Quality is objectively measurable, and manual iteration (expert flags → engineer fixes) still keeps pace. |
+| **Architect** | The expert designs a system that *measures and improves itself* with minimal human-in-the-loop, learning from usage. | Quality is measurable *and* manual iteration can no longer keep pace with the variation. |
+
+Answer two questions in order: (1) Can quality be measured objectively, or is it a taste call? If taste → **Oracle** (and if one person can't hold the whole domain, a *decentralized oracle* -- several experts each owning a subset). (2) If measurable: is manual iteration still fast enough? Yes → **Evaluator**; no → **Architect**. The dominant failure is *mode misdiagnosis* -- building Architect-grade self-improvement before quality is even measurable (nothing solid to optimize against), or formalizing Evaluator dashboards while manual iteration was still fine. The dual-blind validation apparatus of Step 3/Step 4 is what the *Architect* end of this progression operationalizes; a taste-domain product may correctly stay Oracle forever.
 
 ### Step 3: Choose a Composition Pattern
 
@@ -441,6 +464,20 @@ These compose: a production document-verification harness is fan-out (one agent 
 - **Prompt as handoff artifact.** One agent system can generate a complete, context-compressed prompt for a different agent system to execute from cold start (dashboard agent → "here's the prompt, paste into Claude Code"). The two agents share no state -- the prompt is the entire connection point. Useful for bootstrapping integrations; fragile as a recurring mechanism (no feedback loop if the target misinterprets).
 - **Composition at organizational scale.** The same loop template (sensor → policy → tool → quality gate → learning) can be instantiated once per function/domain as N independent self-improving loops rather than one global loop. Each loop optimizes its domain at its own pace with its own quality gate. Watch for local optimization creating global incoherence, and apply the agent-sprawl test to loop proliferation too.
 
+#### The Communication-Pattern Axis: How Agents Talk
+
+Orthogonal to *how agents are composed* (macro-patterns A-J) and *what they compose into at runtime* (the six micro-patterns) is *how they talk to each other*. Five structurally distinct communication patterns cover the field; naming the one you mean prevents defaulting to delegation for coordination it can't carry.
+
+| Pattern | Shape | Best for | Cost / failure mode |
+|---------|-------|----------|---------------------|
+| **Delegation** | One agent spawns another, gets a response | Standard sub-agent usage; the default | Cheapest; over-used as a substitute for real coordination |
+| **Creator-verifier** | One agent builds, a separate *stakeless* agent checks | Any generate-then-assess step (same logic as human code review) | Cheap; degenerates if the verifier shares the creator's context/bias |
+| **Direct communication** | Agents message peer-to-peer, no coordinator | Genuinely peer tasks with no natural hub | Most fragile -- state fragments across conversations with no single source of truth |
+| **Negotiation** | Agents coordinate over a *shared resource* (same API, code region) | Interdependent work where a win-win exists (best case is positive-sum) | Expensive; can deadlock or thrash on the shared resource |
+| **Broadcast** | One agent → many (status, new shared context, constraints) | Keeping many workers coherent over a long-running task | Cheap but easily skipped; its absence shows up as drift, not an error |
+
+**Production evidence:** Factory's Missions (a multi-day production agent system) deliberately composes *four* of the five -- delegation, creator-verifier, broadcast, and negotiation -- and **omits direct communication** as a coordination primitive, precisely because peer-to-peer messaging fragments state. Treat direct communication (and its structural cousin, Pattern F rooms and the flat/parentless topology in Step 3b) as the pattern that must justify itself against the "no single source of truth" cost. The taxonomy is descriptive of what one production system built, not proven exhaustive -- a market/auction allocation pattern may be a sixth; blend patterns where a real system needs two at once.
+
 ### Step 3b: Select Execution Topology
 
 After choosing a composition pattern, decide how the plan executes. This is a runtime parameter, not an architectural constant.
@@ -458,6 +495,17 @@ After choosing a composition pattern, decide how the plan executes. This is a ru
 1. **Sub-agent parallelism** -- one task split into parallel sub-tasks within a session (Patterns C, G).
 2. **Workspace parallelism** -- multiple operator-driven sessions in separate worktrees (Pattern A).
 3. **Task-level parallelism** -- multiple *complete, independent workflow instances* running concurrently, each producing an independent output (e.g., six issue-fix workflows each running its full classify → investigate → implement → validate → PR pipeline). This converts a serial queue of N tasks into N concurrent workflows; per-node model tiering keeps the economics viable. Watch for rate-limit exhaustion when many instances hit expensive nodes simultaneously, and for merge conflicts when parallel workflows touch the same files.
+
+**Serial-with-targeted-parallelization -- the production default for interdependent work.** Factory's Missions system tried naive N-way parallelism (≈10 agents at once) and *rejected it*: agents "conflict, step on each other's changes, duplicate work, make inconsistent architectural decisions." The shipped topology instead runs **exactly one worker or validator active at any point on the feature graph**, and confines parallelism to **read-only operations** -- searching the codebase, researching APIs, parallel code-review passes inside a validator. This is the same L > D finding at the topology layer: interdependent *write* work degrades when split, so it stays serial; independent *read* work is a legitimate parallel domain. The payoff is throughput, not per-task speed -- the same 5-engineer team went from ~10 to ~30 concurrent workstreams, on a system whose longest completed mission ran 16 days. The discipline scales because each worker starts on **clean context** ("no accumulated baggage, no degraded attention"), commits via git, and hands off through a structured schema (Step 4) rather than shared memory.
+
+**The flat / parentless extreme -- and why it is rarely worth it.** At the opposite end from serial hierarchy sits fully flat, orchestrator-free topology: N independent *top-level* sessions (not sub-agents), each named so peers can address it, messaging peer-to-peer with no parent agent -- optionally each on a *different model* (a demo mixed four frontier models across four named sessions). It is the structural opposite of both the Missions hierarchy and standard sub-agent dispatch. Its honest failure-mode profile is the reason to reach for it only as a human-supervised idea pre-filter, never an autonomous loop:
+
+- **Speed-mismatch bottleneck** -- mixing models of different inference speed stalls the group on the slowest; match model *speed* as a selection criterion, not just capability (Step 5).
+- **Sycophantic false consensus** -- with no hierarchy forcing dissent, peers converge into "four agents nodding at each other" unless critique is a *structurally assigned* role (the devil's-advocate lesson from Pattern C, made mandatory).
+- **Emergent informal leadership** -- an agent assigned a role spontaneously began asserting authority ("No, I'm in charge"); flat design does not prevent hierarchy, it just leaves it unmanaged.
+- **No structural circuit-breaker** -- there is no built-in human gate; safety depends entirely on operator discipline.
+
+Choose serial-with-read-only-parallelism as the default for interdependent build work; reserve flat/parentless topology for bounded, human-observed divergent-thinking tasks where the fragmented-state cost is acceptable.
 
 **Shared-session vs. artifact-only handoff.** Two orchestration models exist in tension:
 
@@ -486,7 +534,11 @@ Without contracts, agents negotiate interfaces in natural language -- introducin
 
 **The work-ticket contract** is the boundary contract for work moving between agents (or agent and human) over a queue (Pattern I). "A prompt asks for an answer; a ticket asks for a result." A conformant ticket carries: **outcome** (result wanted, not request), **owner**, **sources** (background material travels with the work -- nothing depends on reading a chat transcript), **scope limits** (where the agent must stop), **definition of done**, and **receipt** (what it must show when finished). Three lifecycle mechanics map to three failure modes: **claim receipt** (claim-lock before working; no claim → duplicate work), **done receipt** (auditable proof of what was done, explicitly replacing trust in the agent's self-report; no receipt → unverifiable completion), and **needs-input escalation** (on ambiguity the agent parks the ticket carrying the exact blocking question rather than guessing; no such state → silent stalls or invented answers).
 
-**Agent type enforcement:** Consider a formal type system where each role (Explore, Plan, Verify, Execute) has its own allowed tool set and explicit behavioral constraints. An Explore agent that physically cannot edit files eliminates an entire class of errors. Claude Code implements six built-in types; you can define custom types per project.
+**The structured handoff schema** is the boundary contract for a *worker returning to an orchestrator* (as opposed to the work-ticket, which travels with work *into* an agent). "Done" is not a handoff. A conformant handoff forces the worker to fill a fixed schema: **(1) what was completed**, **(2) what was explicitly left undone**, **(3) every command run paired with its exit code**, **(4) issues discovered along the way**, and **(5) whether the worker's actual behavior abided by the orchestrator's defined procedure**. This is what makes a multi-agent run *self-healing*: the orchestrator reads accumulated handoffs at each milestone boundary, detects gaps against the plan, and scopes corrective work precisely from the documented account rather than hoping the next worker infers upstream state. It is the field-level implementation of "reduce information loss (L) at agent boundaries," and in production it is credited as the specific enabling condition for multi-day (16+ day) missions. Two failure modes to design against: **schema blind spots** (a worker fills every field and still omits what matters because no slot exists for it -- version the schema as gaps surface) and **opaque commands** (one large script yields one exit code that hides everything inside -- prefer granular commands so field 3 stays informative). The self-heal only works if the orchestrator actually reads and acts on every handoff; skipping that step under load captures the information but leaves the mission to drift.
+
+**The pre-code validation contract** moves correctness *upstream of implementation*. The orchestrator writes the contract **during planning, before any code exists** -- for a complex project, hundreds of individual assertions, with every feature assigned one or more assertions such that the union of all features' assertions covers the whole contract. Because the assertions predate the code, they cannot be shaped by what the code happens to do (the failure mode of tests-written-after-implementation, which "confirm decisions rather than catch bugs"). The contract is then checked after each milestone by **two blind adversarial validators, neither of which has seen the implementation**: a **scrutiny validator** (test suite, type-check, lint, plus code-review sub-agents spawned per completed feature) and a **user-testing validator** (spawns the running app and drives it via computer-use-style interaction -- fills forms, clicks, checks rendering -- validating behavior end-to-end, not just static shape). This is the Step 3 *adversarial-verification* and *creator-verifier* micro-patterns made concrete at the contract layer; validator blindness is enforced structurally (the validators' tool access must not incidentally surface implementation) and hardened further by assigning the validators a *different model provider* than the implementer (Step 5). Expect it to "never succeed on the first go" -- follow-up features are normal, and the user-testing validator, waiting on real execution, is usually the dominant wall-clock cost. The contract is only as good as the planning conversation that produced it: a wrong assertion is faithfully validated against the wrong thing.
+
+**Agent type enforcement:** Consider a formal type system where each role (Explore, Plan, Verify, Execute) has its own allowed tool set and explicit behavioral constraints. An Explore agent that physically cannot edit files eliminates an entire class of errors. Claude Code implements six built-in types; you can define custom types per project. This is the same enforcement-locus principle as Key Concept 17 -- a tool the agent *cannot call* is a stronger constraint than an instruction it is asked to obey.
 
 **Sub-agent dispatch as tool call.** Implement sub-agent dispatch as a standard entry in the tool registry -- called identically to bash, file-read, or web-search. This ensures hooks, logging, and permission checks work on sub-agent calls without modification. The tool registry becomes the single source of capabilities. Frameworks that give delegation its own API surface add complexity that the uniform interface avoids.
 
@@ -513,6 +565,8 @@ Use task characteristics to route to the appropriate model:
 | Sub-agent (narrow, well-defined tasks) | Cheap/fast model (Sonnet/Flash) | Sub-task requirements are within smaller model capability |
 
 **Model-tier routing principle:** Use a premium model for orchestration (user interaction, planning, aggregation) and a cheaper/faster model for narrow sub-agent tasks. This makes parallel sub-agent architectures economically viable at scale. In production, one harness consumed 7K orchestrator tokens vs. 323K total sub-agent tokens -- model tiering kept the cost tractable. Since token usage explains ~80% of multi-agent performance variance, model tiering plus effort-scaling rules (Step 2) are the two levers that control the budget.
+
+**Role-based model assignment (beyond tier routing).** Tier routing (premium orchestrator / cheap sub-agent) is a *cost* axis. A second, orthogonal axis is assigning *different models to different roles by capability*, because no single model or provider is simultaneously best at planning, implementation, and validation: planning rewards slow careful reasoning; implementation rewards fast code fluency; validation rewards precise instruction-following. The distinguishing move -- Factory calls it "droid whispering" -- is running **validation on a different provider entirely than implementation**, so the validator's failure modes are *decorrelated* from the implementer's (different training data, not merely a different context window). This is a capability/bias decision, not a cost one, and it is the concrete way to harden the "validator hasn't seen the implementation" property of the pre-code validation contract (Step 4). A model-agnostic architecture is a structural advantage: "you're only as strong as your weakest link -- if you're locked into one provider, you're constrained by that family's weakest capability," and good surrounding structure (validation contracts, milestone checkpoints) lets weaker or open-weight models safely fill some roles. Two cautions: cross-provider assignment multiplies operational surface (auth, rate limits, cost tracking, differing tool-call semantics -- post-training is harness-specific), and the decorrelation premise weakens silently as frontier labs converge on similar data and techniques. Treat the per-role model map as a versioned, customizable default, not fixed tribal knowledge. When agents of different providers run *concurrently* (flat topology, Step 3b), add inference *speed* to the selection criteria -- the group stalls on the slowest member.
 
 **Subscription vs. API economics.** Claude Code Max plan ($200/month) provides effectively $2,500-$5,000 in subsidized API-equivalent usage. Any tool that requires bypassing Max (using API credentials directly) faces a 12.5-25x cost headwind. For tool selection decisions, the correct question is "does this tool provide enough incremental value to justify API costs vs. the Max plan subsidy?"
 
@@ -583,9 +637,24 @@ Once topology, contracts, models, and infrastructure tiers are decided, decide *
 | **Generic harness** | Reusable scaffolding (skills, hooks, slash commands) that runs across many tasks. Phase transitions and tool permissions are codified but the agent still decides most steps. | Higher | Medium (amortized) | Medium | Claude Code (the harness), GSD, Cursor's agent mode |
 | **Specialized harness** | Purpose-built code wraps LLM calls with explicit phase gates, structured output schemas, sub-agent delegation, persistent state, and model-tier routing. Each phase is a function with validation. | Highest (determinism by construction) | High | High (rigid schemas break on real-world drift) | Stripe's PR validator (1,300 PRs/week), contract-review harness, Archon YAML DAGs |
 
-**The harness engineering evolution.** This spectrum reflects a broader maturation: prompt engineering (2022-2024, single LLM output) → context engineering (2024-2025, single agent, curated context window) → harness engineering (2025-2026, multiple agent sessions, orchestrated workflow). Each evolution builds on the previous. Harness engineering requires good context engineering at each node -- a harness that wraps poorly contexted agents just produces bad output faster. The payoff is measurable: raw AI PR acceptance runs ~6.7%; harnessed, ~70%.
+**The harness engineering evolution.** This spectrum reflects a broader maturation: prompt engineering (2022-2024, single LLM output) → context engineering (2024-2025, single agent, curated context window) → harness engineering (2025-2026, multiple agent sessions, orchestrated workflow with deterministic validation steps). Each evolution builds on the previous. Harness engineering requires good context engineering at each node -- a harness that wraps poorly contexted agents just produces bad output faster. The payoff is measurable: raw AI PR acceptance runs ~6.7%; harnessed, ~70%; 40% of Claude Code's own codebase is harness infrastructure, and Stripe ships 1,300 AI PRs/week through one. Independent corroboration comes from outside the Anthropic/Stripe/Archon evidence base: the term's originator (Ryan Lopopolo, after nine months building software exclusively through agents at OpenAI) defines a good harness operationally as "giving the model text at the right time so it can look at the work it has done and the information around what a good job looks like" -- the discipline is about *when* context arrives, not merely *that* it exists. The human's job shifts from writing code to durably encoding the **~500 small non-functional-requirement decisions that separate acceptable code from slop** -- ADRs, personas, QA plans, lint rules, review-agent instructions -- surfaced just-in-time at lint/test/review checkpoints rather than front-loaded into a plan. (Reported there: 3-5 PRs/engineer/day, a 750-package workspace, >1B output tokens/day.)
 
 **The determinism rule inside any zone: plans may be probabilistic; execution of side effects must be deterministic.** The planner (LLM) produces step plans with explicit dependencies and quality constraints; the executor runs steps deterministically -- schema validation and tool invocation, no LLM reasoning mid-execution; a verifier checks each output before the next step proceeds. Letting an agent decide process flow at runtime is "like ripping up your railroad and sticking your train on the ground and saying kind of go that way" -- the agent's value is *within* each step (composing text, calling tools), not deciding step order. Compliance controls and retry logic should be deterministic, not probabilistic.
+
+**The enforcement-locus consensus: mandatory rules live in the harness, never in prose.** The single strongest cross-vendor finding in the harness landscape is a refinement of the determinism rule for *governance* specifically: an LLM-first harness describes control flow but must never be trusted to *enforce* it. Three LLM-first harnesses (Claude Code, Codex, opencode) independently designed every safety-critical guardrail to live *outside the model's reach*, and code-first, orchestrator, and platform classes enforce structurally too. The practical rule: anything you declare *mandatory* belongs in a `PreToolUse`-equivalent hook or a **deny-by-default permission rule** -- which makes the disallowed action *invisible*, never entering the model's option set -- and **never** in a CLAUDE.md instruction the model is asked to remember. Evidence that prose is not enforcement: Codex correctly *summarized* a rule and then stopped *applying* it a few turns later; opencode's own governance table labels its instruction file "Soft." And a source-verified "hard" rule is necessary but not sufficient -- opencode's Plan Mode is a hard ruleset in source that nonetheless *leaks* in practice (subagents bypass the read-only restriction, Bash executes during Plan Mode, files get edited despite the mode), because it is delivered through two mechanisms that do not always agree and subagent delegation slips between them. So **empirically test** enforcement on the exact leak-prone paths -- subagent delegation, background/resumed sessions, mode transitions -- with a deliberately seeded violation; do not infer delivered enforcement from designed enforcement. Distinguish this from the capability question: METR found a specialized scaffold beat a generic ReAct baseline in only ~50.7% of samples, so do *not* gold-plate the capability-boosting surface (elaborate skill routing, dynamic sub-harnesses) on faith -- but the enforcement surface (hooks, deny-rules) is load-bearing and consensus-backed. The discipline that resolves "how much harness is enough": build only what observably breaks when you remove it. (Both findings: `operations/plans/memory-spec-inputs/C-synthesis-harness-memory-harmonization.md` §4b.)
+
+**Position the harness on six dimensions, not one.** The prompt-driven / generic / specialized spectrum is the most visible axis, but a harness-landscape survey cuts real systems along six, which together locate a harness more precisely than the single spectrum does. Naming your position on each is a sharper design act than picking a zone:
+
+| Dimension | The question | The engine's / a governance-first position |
+|-----------|--------------|-------------------------------------------|
+| **D1 -- shape ownership** | Does your code compile the loop's shape ahead of time (a graph/state-machine), or does the model reach the loop's controls *through* ordinary tool calls? | Model-reached (LLM-first) -- Plan Mode is a permission gate its tool calls trip against, not a script outside its reach. Steering is ~always the model's; *shape* is the real discriminator. |
+| **D2 -- persistence** | Where does memory live -- ephemeral, or a durable external store? | This is *where memory lives*, and it is a near-deterministic function of harness class (see below). |
+| **D3 -- enforcement locus** | Advisory (prose) or structural (hooks/deny-rules)? | Structural. The most load-bearing dimension for a governance-first system -- see the consensus above. |
+| **D4 -- coordination topology** | Single, fixed graph, or dynamic routing? | Configurable autonomy is table stakes; most frameworks offer both code- and model-owned routing as a knob. |
+| **D5 -- lifecycle layer** | Is this surface dev-time, run-time, or ops-time? | Separates an inspector/ADE (dev) from the harness (run) from evaluation/optimization (ops) -- resolves apparent overlaps. |
+| **D6 -- packaging** | A library you embed, a product you enter, a substrate, or a managed service? | "Meta-harness" / "agent-OS" is a marketing umbrella, not a cell -- always specify posture (wrap / own / generate) + lifecycle layer. |
+
+**Harness class largely picks your memory home.** Because D2 is near-deterministic given the harness class, choosing a class chooses which memory patterns come free and which you must fight for. The evidenced pairings: **LLM-first harness + file-first markdown memory** (CLAUDE.md/AGENTS.md + hooks as the attach point -- the engine's own pairing, and the strongest-evidenced one); **code-first framework + typed checkpointer/store split** (LangGraph/CrewAI/ADK -- but embedding one into a file-first system reintroduces two sources of truth); **cloud platform + managed metered DB memory** (non-file, non-inspectable across all three hyperscalers); **personal daemon + always-on accumulation to markdown+index**. A capability that fights its class is a bolt-on to budget for -- e.g., semantic/embedding recall is non-native to every LLM-first harness (Codex, a frontier vendor, *chose* grep), so grep-first with embeddings deferred is the path of least resistance, not a limitation to route around. (Full harness × memory join: `operations/plans/memory-spec-inputs/C-synthesis-harness-memory-harmonization.md` §3.)
 
 **Specialized-harness primitives** (when you commit to that zone):
 
@@ -783,6 +852,53 @@ For any Pattern J autonomous loop -- declare all elements before the first itera
 - Cost ceiling: 500K tokens total
 ```
 
+### Worker Handoff Schema
+
+For any worker returning to an orchestrator (Step 4). "Done" is not a handoff -- every field is a checkable account the orchestrator reads at the milestone boundary to catch and scope corrective work.
+
+```markdown
+## Worker Handoff -- {{WORKER_ID}} / {{FEATURE}}
+
+- Completed: {{WHAT_WAS_DONE}}
+- Left undone (explicit): {{WHAT_WAS_NOT_DONE}}
+- Commands run (each with exit code):
+  - `{{COMMAND_1}}` → exit {{CODE_1}}
+  - `{{COMMAND_2}}` → exit {{CODE_2}}
+- Issues discovered: {{ISSUES}}
+- Abided by defined procedure? {{YES/NO}} -- deviations: {{DEVIATIONS}}
+- Handoff artifact / commit: {{COMMIT_OR_FILE}}
+```
+
+**Variable Reference:**
+
+| Variable | Type | Required | Description |
+|----------|------|----------|-------------|
+| `WHAT_WAS_NOT_DONE` | string | Yes | Explicit scope of the incomplete -- the field that makes the run self-healing |
+| `CODE_n` | number | Yes | Exit code per command; prefer granular commands so one opaque script doesn't hide failures |
+| `DEVIATIONS` | string | Yes | Where actual behavior diverged from the orchestrator's procedure |
+
+### Pre-Code Validation Contract
+
+For the Step 4 correctness contract, written during planning before code exists. Assertions predate implementation so they can't be shaped by it; two blind validators (neither having seen the code) check them per milestone.
+
+```markdown
+## Validation Contract -- {{PROJECT}}
+
+### Assertions (written before implementation)
+- A1: {{ASSERTION}} — owning feature(s): {{FEATURE}}
+- A2: {{ASSERTION}} — owning feature(s): {{FEATURE}}
+  (union of all features' assertions MUST cover the whole contract)
+
+### Validators (blind to implementation)
+- Scrutiny validator: {{TEST_SUITE / TYPECHECK / LINT / PER-FEATURE CODE-REVIEW SUBAGENTS}}
+- User-testing validator: {{APP_LAUNCH + COMPUTER-USE FLOWS}} — flows: {{FLOWS}}
+- Validator model provider: {{PROVIDER}} (DIFFERENT from implementer's provider — decorrelation)
+
+### Expectations
+- First-pass success expected? NO (follow-up features are normal)
+- Dominant wall-clock cost: {{USUALLY THE USER-TESTING VALIDATOR}}
+```
+
 ### Infrastructure Longevity Audit
 
 ```markdown
@@ -966,6 +1082,21 @@ Work-ticket fields filled with boilerplate, receipts that assert completion rath
 ### 17. Overestimated independence
 Parts that look separable share hidden state, and the merged result contradicts itself -- the most common failure of both parallel workflows and shared-substrate coordination. Symptoms: merge conflicts between parallel workers, contradictory outputs the hub must reconcile, queued tasks gone stale because earlier results changed the context. The independence estimate (four-estimate test #2) deserves the most skepticism of the four; track verdicts against outcomes to learn where it misjudges.
 
+### 18. Mandatory rules written as prose instead of enforcement
+Putting a must-never rule in CLAUDE.md and trusting the model to remember it. Prose is control-flow guidance, not enforcement -- production harnesses show a model faithfully *summarizing* a rule and then ceasing to *apply* it a few turns later. Anything genuinely mandatory belongs in a hook or a deny-by-default permission rule that removes the action from the model's option set. Worse: assuming a source-verified "hard" rule is actually delivered -- hard rulesets leak through subagent delegation, resumed/background sessions, and mode transitions. Test enforcement with a deliberately seeded violation on those exact paths; don't infer it from the design.
+
+### 19. Flat/parentless topology mistaken for cheap parallelism
+Launching N peer agents with no orchestrator looks like free parallelism but degenerates predictably: sycophantic false consensus (peers nod at each other with no structurally-assigned dissenter), emergent informal leadership (an agent spontaneously asserts authority the flat design didn't grant), and a group that stalls on its slowest model when providers are mixed. It has no built-in human circuit-breaker. Reserve it for bounded, human-observed divergent-thinking pre-filters; make critique a mandatory role; never run it as an autonomous loop.
+
+### 20. Unread plans that still bind the agent
+Approving a plan you didn't read is a *distinct* failure mode from having no plan -- not a safer middle ground. An unread but approved plan still "encodes a bunch of instructions you don't necessarily want followed," silently steering the harness. Either read and own the plan, or lean on just-in-time instruction surfacing at lint/test/review checkpoints; don't rubber-stamp a plan whose contents you haven't accepted.
+
+### 21. Building Architect-grade automation before quality is measurable
+Investing in self-measuring, self-improving review architecture (the Architect mode) while output quality is still a taste call, or standing up Evaluator dashboards while manual expert-flags-then-engineer-fixes iteration was still fast enough. The oracle→evaluator→architect progression is necessity-driven: diagnose the mode from the two-question tree (measurable? manual iteration fast enough?) before building the apparatus. Over-building the human-in-the-loop layer is a documented root cause of abandoned AI projects.
+
+### 22. Cross-provider decorrelation treated as permanent
+Assigning validators a different model provider than the implementer decorrelates their failure modes -- a real hardening move today -- but the premise erodes silently as frontier labs converge on similar data and techniques, and it multiplies operational surface (auth, rate limits, cost tracking, tool-call semantics). Treat the per-role model map as a versioned, revisited default, not a set-once convention that calcifies into unversioned tribal knowledge.
+
 ---
 
 ## Related Guides
@@ -1000,6 +1131,12 @@ Parts that look separable share hidden state, and the merged result contradicts 
 - The coordination substrate (hub, channel, room, or shared substrate) is an explicit design decision, not an accident of tooling.
 - Every autonomous loop declares its full anatomy: completion signal, deterministic check, iteration budget, context policy, and observability.
 - Composition micro-patterns are selected by the task's failure-mode profile, not by available compute.
+- The agent-to-agent communication pattern (delegation / creator-verifier / direct / negotiation / broadcast) is a named choice, not the default of delegation; direct/peer communication must justify itself against its no-single-source-of-truth cost.
+- Interdependent write work stays serial; parallelism is confined to independent read-only work unless empirical evidence shows the split is safe.
+- Worker→orchestrator handoffs use a structured schema (completed / left-undone / commands+exit-codes / issues / procedure-adherence), not a "done" report.
+- Anything declared mandatory is enforced structurally (hook or deny-by-default rule), never as prose the model is asked to remember; delivered enforcement is verified with a seeded violation on subagent/resumed-session/mode-transition paths.
+- Correctness contracts are written before implementation and checked by validators blind to the implementation; validators are decorrelated from the implementer (different provider where feasible).
+- The human-in-the-loop role (oracle / evaluator / architect) is sized to the quality signal, not built ahead of it.
 - Room scope (Pattern F) is defined by bounded-context characteristics, not by convenience or org-chart structure.
 - Model selection is task-based and tier-aware, not provider-based or prestige-based; resource allocation follows effort-scaling rules matched to query class.
 - Infrastructure dependencies are classified as architectural bets or transitional shims.
@@ -1012,7 +1149,7 @@ Parts that look separable share hidden state, and the merged result contradicts 
 - The agent count decision tree and ladder position are re-evaluated when task scope changes significantly or model capabilities improve (size estimates drift as models improve -- what needed a team last quarter may fit one agent now).
 - Model routing tables are re-evaluated monthly given the compressed release cadence.
 - Infrastructure longevity audits are performed when new native protocols emerge.
-- This guide is owned by the Meta-System knowledge layer and updated when new orchestration findings are integrated.
+- This guide is IL-owned (engine knowledge layer) and updated when new orchestration findings are integrated; Nick deploys.
 
 ### Recovery
 - If a multi-agent system produces worse results than expected: measure single-agent baseline. If single-agent exceeds 45%, collapse back to single agent and invest in improving it.

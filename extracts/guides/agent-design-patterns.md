@@ -6,9 +6,10 @@ target_system:
   - "improvement-loop"
 stage: "draft"
 created: "2026-04-19"
-updated: "2026-07-13"
+updated: "2026-07-19"
 author: "claude"
 source_findings:
+  - "agent-as-folder-compiled-to-manifest"
   - "agent-aware-api-surface-design"
   - "agent-clarification-over-assumption-pattern"
   - "agent-description-auto-dispatch-routing"
@@ -39,8 +40,10 @@ source_findings:
   - "initializer-agent-scaffolding-pattern"
   - "nl-description-to-agent-spec-creation-loop"
   - "operating-surface-underspecification-anti-pattern"
+  - "oracle-evaluator-architect-domain-expert-progression"
   - "planning-session-bias-separate-context-windows"
   - "pre-compression-identity-pinning"
+  - "principal-domain-expert-single-ownership"
   - "role-voting-for-autonomous-design-decisions"
   - "runtime-self-modification-via-extension-api"
   - "self-improving-agent-prompt-tool-diagnosis"
@@ -64,11 +67,13 @@ tags:
   - "self-improvement"
   - "reliability"
   - "composition"
+  - "domain-expert-ownership"
+  - "filesystem-assembly"
 contract:
   preconditions: "Agent role identified; need to design the agent's internal architecture, operational lifecycle, or self-improvement mechanisms"
-  invariants: "Agent identity consistent across sessions and surviving compaction; prompt layers maintain separation of concerns; clarification behavior distinguishes resolvable from intent-dependent gaps; subagent variants declare every skill they depend on (no implicit inheritance) and run as flat workflows (no nested spawning); Tools and Capabilities are defined as separate constructs; responsibilities shared across agents are packaged as declared composition units (instructions + tools + guards + settings together), not scattered across the prompt; every layer between the developer and the model preserves prompt/response transparency; on-demand catalogs stay byte-stable across turns; model slots are declared in config, not chosen at runtime via heuristics; operating surface is specified before model selection; agents obtain environmental ground-truth feedback at every decision point; first-try reliability is the product bar; session boundaries prevent work disavowal; self-improvement mechanisms accumulate operational wisdom at the skill level"
+  invariants: "Agent identity consistent across sessions and surviving compaction; prompt layers maintain separation of concerns; clarification behavior distinguishes resolvable from intent-dependent gaps; subagent variants declare every skill they depend on (no implicit inheritance) and run as flat workflows (no nested spawning); Tools and Capabilities are defined as separate constructs; responsibilities shared across agents are packaged as declared composition units (instructions + tools + guards + settings together), not scattered across the prompt; filesystem-assembled agents keep an inspectable compiled manifest and guard against silent misplacement; every layer between the developer and the model preserves prompt/response transparency; on-demand catalogs stay byte-stable across turns; model slots are declared in config, not chosen at runtime via heuristics; operating surface is specified before model selection; agents obtain environmental ground-truth feedback at every decision point; first-try reliability is the product bar; session boundaries prevent work disavowal; self-improvement mechanisms accumulate operational wisdom at the skill level; a single named principal domain expert owns AI-quality decisions (not an advisory committee), and that owner's role mode — Oracle, Evaluator, or Architect — is matched to whether quality is measurable and whether manual iteration keeps pace"
   governance: "IL-owned draft; Nick deploys to knowledge/guides/"
-  recovery: "If agent shows descent-into-madness symptoms, simplify prompt layers and add clarification behavior. If a subagent variant relies on implicit parent state, hoist that state into explicit skill declarations or prompt content. If extension conflicts appear, audit extension registration order and scope isolation. If model routing produces unexpected quality/cost results, review slot assignments against task-type requirements. If agent exhibits work disavowal near context limits, enforce session boundaries and external verification. If skills stagnate, adopt a self-improvement mechanism (lessons log, shared learnings, or meta-generation). If planning bias degrades implementation, separate planning and implementation into distinct sessions with a plan artifact as the only bridge. If debugging is blocked because a framework hides the exact prompts and responses, strip abstraction layers until the model boundary is inspectable. If a shared composition unit misbehaves when mounted by a second agent, audit it for hidden global-state assumptions."
+  recovery: "If agent shows descent-into-madness symptoms, simplify prompt layers and add clarification behavior. If a subagent variant relies on implicit parent state, hoist that state into explicit skill declarations or prompt content. If extension conflicts appear, audit extension registration order and scope isolation. If model routing produces unexpected quality/cost results, review slot assignments against task-type requirements. If agent exhibits work disavowal near context limits, enforce session boundaries and external verification. If skills stagnate, adopt a self-improvement mechanism (lessons log, shared learnings, or meta-generation). If planning bias degrades implementation, separate planning and implementation into distinct sessions with a plan artifact as the only bridge. If debugging is blocked because a framework hides the exact prompts and responses, strip abstraction layers until the model boundary is inspectable. If a shared composition unit misbehaves when mounted by a second agent, audit it for hidden global-state assumptions. If AI-quality decisions stall or the domain expert keeps getting overruled after the fact, name a single accountable principal owner and put them in the room when decisions happen. If the quality loop cannot keep pace with need, advance the owner's mode from Oracle to Evaluator to Architect only when quality is measurable and manual iteration has stopped keeping up."
 ---
 
 # Agent Design Patterns
@@ -90,6 +95,8 @@ How to design an individual agent's identity, prompts, behavior, operational lif
 - You are designing session boundaries to prevent context-limit failure modes
 - You need to create a new agent from scratch using a natural-language-to-spec workflow
 - You are evaluating whether your agent's operating surface is sufficiently specified for production
+- You are deciding how the parts of a multi-file agent (instructions, skills, tools, sub-agents) stay assembled without hand-maintained wiring
+- You need to decide who owns your agent's or AI product's quality over time — and what that role should be doing as you scale
 
 ---
 
@@ -265,6 +272,10 @@ Whichever unit you choose, keep the seams aligned with responsibilities: a unit 
 
 **Declarative agent specs need an honest boundary.** Config-defined agents (YAML/JSON naming a model plus units) are diffable, storable, and generateable — but only if the spec is honest about what config can express. Give every unit a stable serialization name in a registry (so specs survive renames), and let units that hold live code explicitly opt out of spec construction rather than pretending to round-trip. A spec that loads is still not an agent that behaves — declarative construction does not replace behavioral evals.
 
+**The agent-as-folder convention — assembly by filesystem presence.** At the far end of "collapse the agent to model + units" is a structural embodiment: make the *whole agent* a parent folder of named subfolders, one primitive per folder, and let a compile step traverse the tree and resolve everything into a single manifest. Vercel's Eve is the reference instance — `instructions/`, an `agent.ts` definition (model + config), `skills/` (one markdown file each, with a trigger description, Claude-Code-style), `tools/` (one typed TypeScript file per operation), plus optional `sandbox/`, `channels/`, `connections/` (MCP servers), `sub-agents/`, and `schedules/`. The minimum viable agent is just `agent.ts` naming a model; every other folder is optional and additive. The payoff is that **capability inclusion becomes structural, not declared**: adding a capability means dropping a file in the matching folder, and the main entry file never imports or calls out the other folders — there is no wiring site that can drift out of sync with what it references.
+
+This is one answer to the assembly question; know its tradeoff before adopting it. It sits on a spectrum against the declarative-spec approach above (every part named in a registry) and against explicit wiring rows (wiring declared, versioned, and hash-checked for drift). Implicit folder-presence-is-inclusion is the lowest-ceremony option and the least auditable: a file dropped in the wrong folder or a naming collision has no wiring site to error at, and once dozens of skills/tools/sub-agents accumulate there is no central manifest a human can *read* without running the compiler. **If you adopt filesystem assembly, add back the two things it removes: a manifest-inspect/diff view (so "why wasn't my skill picked up" is debuggable) and drift detection between folder source and compiled manifest.** Reserve the convention for agents whose part-count stays legible; prefer a named-registry spec or explicit wiring rows when auditability of the wiring itself is a requirement.
+
 **The framework transparency check.** Before adopting any framework's composition primitive, verify you can still inspect the exact prompts and responses crossing the model boundary. Framework abstraction is a tax paid at debugging time: teams that start with direct API calls and simple composable patterns develop deeper understanding of model behavior, and the most successful production implementations stay framework-light. "No framework" is not the rule — reinventing wheels has its own cost — the rule is that every layer you accept must preserve visibility. If you standardize on a framework's bundle type, you also inherit its abstraction tax; price that in.
 
 #### Step 6: Specify the Operating Surface
@@ -393,6 +404,8 @@ Modern agent harnesses expose a typed extension API that allows runtime registra
 **17. Agent lifecycle extends beyond running/done.** Production agents need formal lifecycle states (idle, spawning, running, stuck, dead, stopped) with external monitoring. An agent cannot declare itself dead — only an external witness can, via heartbeat timeout detection. This separation of execution from monitoring prevents silent hangs.
 
 **18. Skills should improve from experience.** Three independent approaches to skill self-improvement have emerged: self-modification with lessons logs (fastest feedback), external learnings stores (broadest applicability), and meta-skills for skill generation (highest leverage). The convergence on the problem without convergence on mechanism confirms this is a genuine unmet need.
+
+**19. Someone must own the agent's quality — and mode matters more than model.** Beyond the agent's own machinery sits an organizational question: who is accountable for whether the agent's output is actually good, and what is that person doing? The dominant failure is diffusion — "a domain expert" hired without a defined role, or quality owned by a committee where everyone advises and no one decides. The counter-position: name a single **principal domain expert** with real ownership (in the room when decisions happen, not a consultant asked afterward), and match their **mode** to the product. The mode progresses — Oracle (the expert improves output directly), Evaluator (the expert defines quality and metrics; others fix), Architect (the expert designs a loop that measures and improves itself) — driven by necessity, not planned in advance. The thesis behind it: the system for incorporating domain insight matters more than model sophistication, and mode-mismatch (an Oracle-shaped hire dropped into a product that needs an Evaluator) is why teams that "hired a domain expert" still stall.
 
 ---
 
@@ -558,6 +571,44 @@ Before finalizing your design, run this diagnostic:
 | Initial speed gains are eroding over time | Technical debt from unreviewed output | Add human gate at stage boundaries; invest in quality infrastructure |
 
 **The diagnostic rule:** If a second agent exists because the first produces unreliable output, the design is wrong. If a second agent exists because the task genuinely requires different capabilities (e.g., coding agent + testing agent with different toolsets), the design may be sound.
+
+#### Step 20: Install a Principal Domain Expert and Match Its Mode
+
+The most durable agent still needs someone accountable for whether its output is *good* — and getting that role wrong is an organizational failure that no amount of internal design fixes. Two decisions: who owns quality, and what mode they operate in.
+
+**Decision A — Choose the mode (Oracle → Evaluator → Architect).** Ask, in order:
+
+```
+Can this agent's quality be measured in objective metrics, or is it fundamentally a taste call?
+├─ Not measurable (taste) ────────────────────────────────► ORACLE
+│     (the domain expert reads traces / uses the product and improves it
+│      directly — tweaks prompts, adds docs/tools. No measurement layer.)
+│     Sub-question: is one person enough at your scale, or do you need
+│     several, each owning a clean slice? → decentralized oracle.
+└─ Measurable
+      └─ Is manual iteration (expert flags an issue, engineer hand-fixes it)
+         still fast enough to keep up with need?
+         ├─ Yes ──────────────────────────────────────────► EVALUATOR
+         │     (the expert stops fixing directly and instead *defines*
+         │      quality — sets metrics, builds the capture system,
+         │      identifies what's failing; a separate loop does the fixing.)
+         └─ No — too much variation / scale / edge cases to hand-fix ─► ARCHITECT
+               (the expert designs a loop that measures and improves
+                itself with minimal human-in-the-middle; leverage moves
+                from reviewing outputs to designing the review mechanism.)
+```
+
+Progression is sequential and driven by necessity — most start at Oracle and advance only when the current mode stops keeping pace. Some products rationally *stay* Oracle at scale (Granola kept a single human reviewing meeting-note quality even at ~$1B valuation, because "best meeting note" is taste, not metric). Do not build Architect-grade automation before quality is even measurable — you will optimize against nothing solid (see Pitfall 27).
+
+**Decision B — Install the owner (three organizational rules):**
+
+1. **Name a single principal domain expert.** One individual is ultimately accountable for AI-quality decisions and empowered to make the call. This is a speed decision as much as a clarity one: "consensus by committee where it's everybody's responsibility so nobody's truly responsible" is the documented stall — at one company two senior clinicians were hired side by side, neither established as principal, both left advisory; the quality system progressed very slowly and both left within 12–18 months, taking their tacit context with them.
+2. **Give ownership, not an advisory seat.** The owner must be in the room when decisions happen, not asked for opinions after they are effectively made. Advisory-only domain expertise cannot shape a differentiated product; it rubber-stamps.
+3. **Hire (or assemble) for breadth, anchored on domain expertise.** The full skill span across the three modes — domain expertise, prompting, data-science intuition, statistics, product, engineering familiarity — is a big ask for one person. Make domain expertise non-negotiable, get as many adjacent skills in the same person as you can, and **pair with a specialist** for what's missing (e.g., a non-statistician expert paired with a statistician) rather than hand the role to a domain-only hire who will hit a ceiling and force a disruptive re-org when the product needs them to grow into Evaluator/Architect.
+
+**A note on partitioning.** Splitting ownership across several principals is safe only with clean partitions — each owns a distinct specialty or geography slice with no overlapping decisions (the "decentralized oracle"). The failure case is two owners contending over the *same* decisions. Partition clarity, not owner count, is the discriminator.
+
+**Tension to hold, not resolve.** This single-owner rule pulls against the role-voting pattern (Step 18), which deliberately diffuses an in-the-moment decision across multiple personas. They are not contradictory — Step 18 resolves one low-stakes decision in real time without a human; Step 20 assigns accountability for a domain's quality over months — but they pull opposite directions on "is diffusing a decision a strength or a liability." Keep both in view; apply by timescale and stakes.
 
 ---
 
@@ -836,6 +887,51 @@ If any lesson learned, update this file immediately.
 | 1 | {{DATE}} | {{WHAT_WENT_WRONG}} | {{WHAT_RULE_WAS_ADDED_OR_CHANGED}} |
 ```
 
+### Agent Folder Skeleton (filesystem assembly)
+
+```
+{{AGENT_NAME}}/
+  {{DEFINITION_FILE}}          # required — names the model + top-level config (minimum viable agent)
+  instructions/                # optional — system prompt / global rules
+  skills/                      # optional — one file per skill, each with a trigger description
+  tools/                       # optional — one typed file per operation (validate inputs)
+  connections/                 # optional — MCP servers
+  sub-agents/                  # optional — dispatched for token-heavy / isolated work
+  sandbox/                     # optional — isolated code execution
+  channels/                    # optional — integrations (Slack/Discord/etc.)
+  schedules/                   # optional — recurring / autonomous runs
+
+# Assembly rule: capability inclusion is structural — drop a file in the matching folder;
+#   the definition file never imports the others. A compile step resolves the tree to one manifest.
+# REQUIRED safeguards to add back (filesystem assembly removes them):
+#   - manifest-inspect/diff view: {{HOW_YOU_INSPECT_THE_COMPILED_MANIFEST}}
+#   - source→manifest drift check: {{HOW_YOU_DETECT_MISPLACED_OR_UNPICKED_FILES}}
+# Adopt only if part-count stays legible; prefer a named-registry spec or explicit
+#   wiring rows when auditability of the wiring itself is required.
+```
+
+### Domain-Expert Ownership & Mode-Selection Worksheet
+
+```markdown
+## AI-Quality Ownership — {{AGENT_OR_PRODUCT_NAME}}
+
+### Mode selection
+| Question | Answer | Implied mode |
+|----------|--------|--------------|
+| Is quality objectively measurable, or a taste call? | {{MEASURABLE / TASTE}} | {{taste → Oracle}} |
+| (If measurable) Is manual iteration still fast enough? | {{YES / NO}} | {{yes → Evaluator / no → Architect}} |
+| Chosen mode | {{ORACLE / EVALUATOR / ARCHITECT}} | |
+| Trigger to advance mode | {{WHAT_MUST_BREAK_TO_PROGRESS}} | |
+
+### Ownership install
+| Rule | Status | Evidence |
+|------|--------|----------|
+| Single named principal domain expert | {{NAMED: <who> / DIFFUSED — FIX}} | {{WHERE_ACCOUNTABILITY_IS_RECORDED}} |
+| Ownership, not advisory seat (in the room at decision time) | {{OWNER / ADVISORY — FIX}} | {{DECISION_RIGHTS}} |
+| Breadth anchored on domain expertise (+ paired specialist for gaps) | {{ADEQUATE / CEILING-RISK}} | {{ADJACENT_SKILLS_PRESENT_OR_PAIRED}} |
+| Partitioning (if >1 owner): clean, non-overlapping slices | {{CLEAN / OVERLAP — FIX}} | {{PARTITION_DEFINITION}} |
+```
+
 ---
 
 ## Worked Examples
@@ -1020,6 +1116,23 @@ statement carries a citation to its source entry. If the KB has no entry, say so
 
 **Payoff observed:** when the citation-check hook was tightened, both agents inherited the fix in one change. The catalog line stays byte-identical every turn — the support agent loads the unit only on grounded-question turns, and the prompt cache stays warm across the session.
 
+### Example 9: Mode Selection and Ownership for a Vertical Extraction Agent
+
+A team runs an agent that extracts structured findings from research sources. They want to know who should own its quality and what that person should do.
+
+**Mode selection:**
+
+| Question | Answer | Implied mode |
+|----------|--------|--------------|
+| Is extraction quality objectively measurable? | Partly — schema-conformance and dedup are scorable; "is this the *right* pattern to extract" is a taste call | Mixed → start Oracle on the taste dimension |
+| Is manual iteration still fast enough? | Yes at current volume — one expert reviews the day's extractions and adjusts prompts | Evaluator not yet needed |
+| Chosen mode | **Oracle** (with scorable guardrails auto-checked) | |
+| Trigger to advance | When source volume outruns one reviewer, or edge-case variety makes hand-fixing too slow → move to **Evaluator** (define metrics, hire reviewers/LLM-judge) | |
+
+**Ownership install:** One named editor owns extraction quality and sits in the room when the schema or dimension set changes — not asked afterward. They have deep domain range but are not a statistician; when the team later needs inter-rater-reliability metrics (the Evaluator step), they pair the editor with a data-science specialist rather than replacing them. The anti-pattern they explicitly avoid: two co-editors with overlapping say over the same schema decisions (the two-clinician stall). If they ever split ownership, it will be by clean partition — e.g., one owns "Context Engineering" findings, another owns "Evaluation" findings, with no shared decisions.
+
+**Why not jump to Architect?** Building a self-improving extraction-grading loop now would optimize against a quality signal that is still half taste and not yet measured — effort spent on a system with nothing solid to optimize against (Pitfall 27).
+
 ---
 
 ## Pitfalls
@@ -1096,6 +1209,15 @@ A composition unit that quietly assumes global agent state — shared memory, im
 ### 24. Cache-busting disclosure catalogs
 Mutating the on-demand catalog as items load (dropping loaded entries to "save tokens") rewrites the prompt prefix and invalidates the provider cache on every load. Keep the catalog byte-identical every turn and bounce redundant loads with a cheap retry — an occasional wasted retry costs far less than a per-load cache bust.
 
+### 25. Convention debt in filesystem-assembled agents
+Adopting folder-presence-is-inclusion assembly and then letting the part-count grow unbounded. Once dozens of skills, tools, and sub-agents accumulate, "just drop a file in" loses the legibility it started with — there is no central manifest a human can read without running the compiler, and a misplaced file or naming collision has no wiring site to error at (silent misplacement). If you use the convention, add a manifest-inspect/diff view and source→manifest drift detection back in, and keep the tree legible; otherwise prefer a named-registry spec or explicit wiring rows.
+
+### 26. Consensus-by-committee quality ownership
+Owning AI quality through a committee, or hiring "a domain expert" as an advisor consulted after decisions are effectively made. Diffused ownership is a documented stall: decisions are slow, final say is ambiguous, and the people carrying tacit domain knowledge leave because they never had real ownership — taking that context with them. Name one accountable principal owner, give them decision rights in the room, and split ownership only along clean, non-overlapping partitions.
+
+### 27. Mode misdiagnosis
+Matching the wrong ownership mode to the product. Building Architect-grade self-improving automation before quality is even measurable optimizes against nothing solid; formalizing Evaluator metrics and dashboards while manual iteration was still fast enough is process overhead the org did not yet need; dropping an Oracle-shaped hire into a product that actually needs an Evaluator gives it the wrong skill emphasis. Diagnose with the two questions (measurable? manual-fast-enough?) and advance mode only when the current one stops keeping pace — and note progression can run backward if a product's variation drops.
+
 ---
 
 ## Related Guides
@@ -1107,6 +1229,7 @@ Mutating the on-demand catalog as items load (dropping loaded entries to "save t
 - **G4 — Building Agent Evaluation Suites:** Covers how to evaluate whether the agent behaviors designed in this guide actually work. First-try reliability targets (Step 15) become eval success criteria in G4.
 - **G5 — Designing Agent Tools:** Covers tool interface design. The tool-vs-capability classification (Step 4) and composition-unit packaging (Step 5) connect to G5's tool description quality principles.
 - **G6 — Agent Governance and Trust:** Covers trust calibration and autonomy gradients. The operating surface specification (Step 6) and human-gate decisions connect to G6's governance framework.
+- **G3 — Agent Architecture Decisions / G11 — Building Agentic Systems:** The domain-expert ownership model (Step 20) is an organizational-design question that also surfaces at the ensemble and system altitude — how the human role that owns quality is staffed and how it evolves. This guide covers installing that owner around an individual agent; G3/G11 cover it across a multi-agent system or product. The mode-selection tree's "is quality measurable?" branch feeds directly into G4's eval design.
 
 ---
 
@@ -1127,6 +1250,9 @@ Mutating the on-demand catalog as items load (dropping loaded entries to "save t
 - Subagent workflows are flat — no nested spawning; nested delegation is flattened into Skills or main-thread chains.
 - Tools and Capabilities are defined as separate constructs with different execution models, error handling, and cost profiles.
 - Responsibilities shared across agents are packaged as declared composition units — instructions, tools, hooks/guardrails, and settings together — with ordering constraints declared in the unit, not in list-position convention.
+- Filesystem-assembled agents (folder-presence-is-inclusion) keep an inspectable compiled manifest and source→manifest drift detection; the convention is used only where the part-count stays legible.
+- A single named principal domain expert owns AI-quality decisions with real decision rights, not an advisory seat or a committee; multi-owner splits use clean, non-overlapping partitions.
+- The domain expert's role mode (Oracle / Evaluator / Architect) is matched to whether quality is measurable and whether manual iteration keeps pace, and advances only when the current mode stops keeping up.
 - Every layer between the developer and the model preserves prompt/response transparency; opaque abstraction is not accepted at any layer.
 - The always-loaded prompt is bounded to identity, task boundaries, global safety, and routing; everything else loads on demand, and on-demand catalogs stay byte-stable across turns.
 - Model slots are declared in configuration, not chosen at runtime via prompt-level heuristics.
@@ -1165,3 +1291,6 @@ Mutating the on-demand catalog as items load (dropping loaded entries to "save t
 - If a shared composition unit misbehaves when a second agent mounts it: audit the unit for hidden global-state assumptions (shared memory, implicit ordering) and encode its ordering constraints explicitly (Step 5).
 - If the always-loaded prompt keeps regrowing: re-apply the eager whitelist — identity, task boundaries, global safety, routing — and defer everything else (Step 5).
 - If agent fails in novel environments: invest in error recognition and recovery rather than domain coverage — the agent needs to detect unfamiliar territory and ask for help, not handle every edge case in advance.
+- If a filesystem-assembled agent silently ignores a capability ("why wasn't my skill picked up"): add a manifest-inspect/diff view and a source→manifest drift check; verify no file is misplaced or name-colliding (Step 5).
+- If AI-quality decisions stall or the domain expert is routinely overruled after the fact: name one accountable principal owner, give them decision rights in the room, and remove the advisory-only framing (Step 20, Pitfall 26).
+- If quality-loop effort is not paying off: re-check the ownership mode against the two questions (measurable? manual-fast-enough?) — you may be building Architect automation before quality is measurable, or formalizing Evaluator metrics before you needed them (Step 20, Pitfall 27).

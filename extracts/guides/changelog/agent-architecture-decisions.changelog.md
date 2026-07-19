@@ -1,5 +1,13 @@
 # Changelog — Agent Architecture Decisions
 
+## 2026-07-19 — Session 152 — nick-request
+
+- Findings: 72 (+7, -0 since last synthesis)
+- Added: [[five-pattern-multi-agent-communication-taxonomy]], [[missions-three-role-architecture-serial-targeted-parallelization]], [[flat-parentless-cross-model-agent-communication]], [[droid-whispering-per-role-model-assignment]], [[structured-handoff-schema-self-healing-multi-agent-missions]], [[pre-code-validation-contracts-dual-blind-validators]], [[oracle-evaluator-architect-domain-expert-progression]]
+- Structural: Key Concepts 16-18 (five-pattern communication vocabulary, enforcement-locus consensus, self-healing handoffs); Step 2 gained the oracle/evaluator/architect human-role sizing tree; Step 3 gained the communication-pattern axis; Step 3b gained Missions serial-with-read-only-parallelization and the flat/parentless topology extreme; Step 4 gained the structured handoff schema (P1) and pre-code validation contract with dual-blind validators; Step 5 gained role-based/cross-provider model assignment; Step 8 sharpened with the six harness dimensions, the enforcement-locus consensus, and harness×memory pairings from the C-synthesis corpus, plus wave-4 harness-engineering updates (Lopopolo corroboration, ~500-NFR framing, just-in-time surfacing); new Worker Handoff + Validation Contract templates; Pitfalls 18-22; Contract invariants +7. Two additions (pre-code-validation → Evaluation, oracle-evaluator → Agent Design) are Nick-routed cross-category.
+- Preserved: none (no Nick's Annotations or PRESERVE markers)
+- SL: session-152 (SL retired as producer per session-138 ruling; git is the session record)
+
 ## 2026-07-16 — Session 147 — staleness-threshold
 
 - Findings: 65 (+23, -0 since last synthesis)

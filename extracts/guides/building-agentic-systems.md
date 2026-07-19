@@ -6,9 +6,10 @@ target_system:
   - "improvement-loop"
 stage: "draft"
 created: "2026-04-27"
-updated: "2026-07-16"
+updated: "2026-07-19"
 author: "claude"
 source_findings:
+  - "agentic-file-classification-reliability-calibration"
   - "ai-delegated-knowledge-organization"
   - "ai-managed-vault-separate-from-human-vault"
   - "ai-shepherding-anti-pattern-manual-workflow-sequencing"
@@ -43,6 +44,7 @@ source_findings:
   - "scale-threshold-heuristic-obsidian-vs-rag"
   - "scheduled-tasks-for-real-time-context-maintenance"
   - "sdk-to-framework-graduation-path"
+  - "shared-spaces-multiplayer-human-agent-surfaces"
   - "signal-capture-as-byproduct-of-work"
   - "time-window-proactive-agent-loop"
   - "wiring-canon-abstract-then-adapt-doc-structure"
@@ -297,6 +299,14 @@ For systems where the AI handles the organizational work -- classifying notes, t
 
 The delegation boundary matters: define which organizational decisions the AI makes autonomously versus which require human review. A sensible default: the AI types nodes and generates summaries freely; humans review edge types on contradiction and depends-on edges, where misclassification has the highest downstream cost.
 
+**Calibrate that boundary against a real error rate, not an assumed one.** In a checked-every-decision trial (the creator of the PARA method handing an agent 32 real files with the taxonomy comprehension independently verified as flawless beforehand), the agent classified at **~78% accuracy -- roughly a 1-in-4 error rate even with perfect understanding of the categories.** The errors were not random. They clustered in exactly two places: the agent could not tell a *bounded, time-sensitive instance* (this year's tax filing) apart from the *general ongoing category* it nests inside (finances), and it could not detect *hidden future value* in content that looked disposable. Both are gaps in lived/future context the agent structurally cannot have -- not comprehension gaps. Three design consequences:
+
+- **More taxonomy instruction does not fix a context gap.** Adding "little subtle instructions" (the PARA-skill response) raises accuracy against comprehension errors, but the context-blind failures only close with a clarifying question or human review.
+- **Ask the narrowly-scoped question, not the broad one.** Both named failures resolve with one targeted prompt at the exact ambiguity class ("is this a sub-project of X, or does it belong at the X level?" / "archival, or planned future use?") -- cheaper and more accurate than interrogating every classification.
+- **Weight the review gate by consequence.** A misfiled meme costs nothing; a buried tax document risks a missed deadline. Route only high-error-cost classifications to review. And note the reversibility caveat: post-hoc "checked every decision" review catches errors *after* the fact -- sufficient when moves are cheaply reversible (file moves), but an irreversible or time-sensitive routing decision needs a *pre*-hoc gate instead.
+
+This calibration generalizes to any small-taxonomy classifier in the system -- memory-tier routing, decision/pattern/work-item triage, accept/reject/monitor gates. Treat ~78% as a shape-of-failure prior, not a constant (n=32, single trial, single model).
+
 ### AI-managed vault separate from human vault
 
 For systems where the AI generates substantial content (summaries, entity pages, project docs), maintain **two distinct vaults**:
@@ -336,6 +346,8 @@ But SDKs have graduation triggers. When the agent needs to serve multiple users,
 2. Speed requirements (SDK reasoning overhead makes sub-second responses impossible)
 3. Cost sensitivity (API-key usage at scale makes SDK agents prohibitively expensive)
 4. Observability needs (production agents need custom conversation history storage and monitoring)
+
+**Watch the emerging "agent-as-folder" asset model.** A newer framework shape (Vercel's Eve, a `study`-tier watched library) treats an entire agent as *one folder of named subfolders* -- `instructions/`, `agent.ts`, `skills/`, `tools/`, `channels/`, `connections/` (MCP), `sub-agents/`, `schedules/` -- with a compile step that traverses the folder, discovers every piece, and emits a single manifest with all connections resolved. Capability inclusion becomes *structural* (a file exists in the right folder) rather than *declared* (an import or registry entry that can drift). This is the implicit-wiring end of a spectrum whose explicit end -- machine-readable contracts with hand-declared, hash-checked wiring rows -- is covered in Section 9; the two are direct counterpoints on the same question ("how do the parts of a multi-file agentic artifact stay assembled?"). Pick a position with eyes open: implicit wiring buys zero-boilerplate extension at the cost of a central manifest you can read without running the compiler; explicit wiring buys auditability and per-row invariants at the cost of a declaration site per capability.
 
 ### Model choice is an architecture-level commitment
 
@@ -655,6 +667,15 @@ At L6+, designate one human as **the context operator**. The role covers:
 
 The role is informal in single-user setups (you are the operator). It must be **explicitly designated** at L7 -- diffused accountability is the most reliable path to vault degradation.
 
+### Shared collaboration surfaces (team scale)
+
+At L7 the default failure is not vault entropy but *invisible context*: each teammate runs a private 1:1 chat with their own agent instance and manually relays what they learned. Shared understanding -- the thing that lets a team communicate and generate ideas together -- is bottlenecked by every person's context being invisible to the others. The fix is a **multiplayer surface** where humans *and* agents both show up and every turn is visible to all participants. Two shapes:
+
+1. **Multiplayer threads.** One thread, multiple humans and multiple agents. A teammate can pull in a different agent mid-conversation and everyone sees the exchange -- "going from one-on-one conversations to Slack channels." (Notion ships coding agents that live inside pages for exactly this reason.)
+2. **Commentable artifacts.** An agent-authored plan lives in a shared doc, not a local chat log. A human leaves an inline comment; a teammate chimes in on the same thread. Discussion attaches to the artifact, not a side channel.
+
+The general shape -- a persistent, commentable, multi-party surface with live agent access -- is vendor-neutral even though every concrete implementation (Notion pages, a shared wiki, a chat-plus-bot integration) is not. Adopting it is a deliberate host choice made *before* it becomes actionable, not an aspiration. Two disciplines keep it from backfiring: **structured provenance** (tag which agent said what and when, so understanding-drift stays traceable when several agents contribute to one thread) and an **access-control boundary** (who can invoke which agent, on whose behalf, with what authority -- a governance question, not only a UX one). This surface is where the engine's own Owner/Nick review gate would live if it graduated from a single chat thread to an artifact-attached, multi-party review.
+
 ### Maintenance cadence
 
 The cadence is the difference between a compounding system and a degrading one. Concrete weekly checklist:
@@ -850,6 +871,7 @@ Synthesized failure modes from across the cluster. Every one of these has been o
 - **Active documentation requirement** -- The system demands a separate documentation step. The most valuable context (judgment-rich, high-stakes) is the most likely to be withheld.
 - **Passive-capture noise** -- Over-correcting toward passive capture floods the vault with low-signal data. Quantity does not equal quality.
 - **AI classification drift** -- Without periodic human review of AI organizational decisions, the AI drifts in how it applies node types and edge types, creating inconsistency across the knowledge graph.
+- **Over-trusting small-taxonomy classification** -- Assuming that because the agent understands the taxonomy it will apply it correctly. A checked trial saw ~1-in-4 errors *with verified comprehension*, clustered where a bounded instance nests inside a general category or where content has hidden future value the artifact does not carry. More instructions do not close a context gap -- only a scoped clarifying question or a consequence-weighted review gate does.
 
 ### Architecture failures
 
@@ -865,6 +887,8 @@ Synthesized failure modes from across the cluster. Every one of these has been o
 - **AI shepherding as default** -- Manually invoking skills in sequence because "it works." Process amnesia (forgotten steps), inconsistency (varied sequences), and human bottleneck (process runs only when the human is active).
 - **Routing drift** -- `CLAUDE.md` not updated as vault grows. Agent traverses to dead paths.
 - **Context assembly cost ignored** -- Each agent run reassembles the same business context from scratch. Token costs scale with run frequency instead of data-change frequency. Viable at low volume; non-viable at scale.
+- **Siloed per-person agent context (L7)** -- Every teammate runs a private 1:1 agent chat and relays findings by hand. Shared understanding degrades the moment someone forgets to copy-paste; the team's collective model of "what's going on" desyncs invisibly. A multiplayer surface is the fix.
+- **Multiplayer surface without access control or provenance** -- A shared human+agent thread with no boundary on who can invoke which agent, on whose behalf, becomes a governance hole; and more voices in one thread can *dilute* the "one canonical author" clarity that makes a plan reviewable. Tag agent provenance and scope invocation authority deliberately, or the shared surface trades siloing for illegibility.
 
 ### Proactive-loop failures
 

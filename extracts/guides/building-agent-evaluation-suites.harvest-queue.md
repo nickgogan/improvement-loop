@@ -18,6 +18,8 @@ Nothing here is auto-extracted; rows feed `/extract-artifacts` only after Nick r
 | 2026-07-16 | queued | rule | [[harness-cost-readout-unreliability-independent-log-accounting]] | "log-based-cost-accounting-over-harness-readouts" | extract via /extract-artifacts |
 | 2026-07-16 | queued | rule | [[skill-popularity-vs-measured-efficacy]] | "no-adoption-without-eval-evidence" | extract via /extract-artifacts |
 | 2026-07-16 | queued | skill | [[no-mistakes-post-implementation-validation-pipeline]] | "post-implementation-validation-pipeline" | extract via /extract-artifacts |
+| 2026-07-19 | queued | rule | [[pre-code-validation-contracts-dual-blind-validators]] | "validation-contract-before-code" | extract via /extract-artifacts |
+| 2026-07-19 | queued | rule | [[garbage-collection-day-persona-review-agents]] | "convert-review-feedback-to-durable-checks" | extract via /extract-artifacts |
 
 ## Per-row details
 
@@ -187,5 +189,31 @@ Nothing here is auto-extracted; rows feed `/extract-artifacts` only after Nick r
   > "Stages, in order: 1. Worktree isolation... 2. Intent extraction — the pipeline analyzes the agent session that produced the change to recover the real intent... 4. Adversarial fresh-context review... 5. End-to-end test against intent, with evidence... 6. Documentation pass, lint, PR, babysitting... also invocable as a skill so any implementing agent can hand itself off to validation."
 - **Codifier's reading:** A fixed six-stage orchestrated procedure with defined input (a first-pass change), output (a clean PR with evidence + risk assessment), and explicit invocation contract ("invocable as a skill") — skill shape. Two stages the engine lacks entirely per implementation_notes: intent extraction and evidence artifacts.
 - **Suggested headline:** post-implementation-validation-pipeline
+- **Recommendation:** extract via /extract-artifacts
+- **Resolution:**
+
+### pre-code-validation-contracts-dual-blind-validators::rule::validation-contract-before-code
+
+- **Date queued:** 2026-07-19
+- **Status:** queued
+- **Target form:** rule
+- **Source finding:** [[pre-code-validation-contracts-dual-blind-validators]]
+- **Source excerpt:**
+  > "a validation contract, written by the orchestrator during planning before any code exists, defines correctness independently of any implementation... Targets a named failure mode directly: 'tests written after implementation don't catch bugs, they confirm decisions.'"
+- **Codifier's reading:** A machine-checkable imperative on assertion provenance — author the validation contract before implementation, so tests can't be shaped by the code — rule form per the form rubric. Strong (production-tested) evidence. The finding's implementation_notes propose /identify-artifacts carry a lightweight validation-contract field for /extract-artifacts to draft against; the rule is the general directive under that design.
+- **Suggested headline:** validation-contract-before-code
+- **Recommendation:** extract via /extract-artifacts
+- **Resolution:**
+
+### garbage-collection-day-persona-review-agents::rule::convert-review-feedback-to-durable-checks
+
+- **Date queued:** 2026-07-19
+- **Status:** queued
+- **Target form:** rule
+- **Source finding:** [[garbage-collection-day-persona-review-agents]]
+- **Source excerpt:**
+  > "take every piece of 'slop' observed that week in PR review and durably eliminate the underlying cause — not with more review comments, but with documentation, tests, or lints that make the failure structurally impossible to repeat."
+- **Codifier's reading:** An imperative, decidable directive — every recurring review-feedback item is converted into a durable check (test/lint/doc) on a protected cadence rather than re-given — rule form. NOTE: the finding's *persona review agent* facet (one agent per reviewer persona) is agent-shaped and is SUPPRESSED from this queue per DD-82 (logged inline in the run report, never queued). Only the durable-conversion rule is queued. Overlaps the engine's own /self-improve capture-and-promote loop (implementation_notes); Nick may prefer to merge rather than extract standalone.
+- **Suggested headline:** convert-review-feedback-to-durable-checks
 - **Recommendation:** extract via /extract-artifacts
 - **Resolution:**

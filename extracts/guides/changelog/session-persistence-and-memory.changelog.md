@@ -1,5 +1,13 @@
 # Changelog — Session Persistence and Memory
 
+## 2026-07-19 — Session 152 — nick-request
+
+- Findings: 40 (+5, -0 since last synthesis)
+- Added: [[durable-checkpointed-sessions-as-framework-default]], [[incremental-snapshotting-copy-on-write-block-diffing]], [[posix-tiered-cache-persistence-over-object-storage]], [[snapshot-lineage-aware-fleet-scheduling]], [[agentic-file-classification-reliability-calibration]]
+- Structural: Added Step 3.7 (disk-level persistence substrate — snapshot vs. always-on, lineage-aware scheduling, framework-default packaging); Key Concepts 11 (persistence altitudes) + 12 (build-class axis / process-memory type); Part 2 recall-altitude gate (keyword-first-at-scale verdict); Step 5.1 write-time-classification calibration + Part 5 gated>autonomous verdict; 3 pitfalls (#17 benchmark inflation, #18 multi-writer sync fragility, #19 liveness-inference auto-forgetting); 5 decision-tree branches; G6 cross-ref; new invariants. Contested-axis verdicts + failure catalog woven from the memory-spec survey (steering context; cited by path — no corpus docs in source_findings).
+- Preserved: none
+- SL: none — System Log retired as producer (session-138 ruling); session record lives in HISTORY.md + git
+
 ## 2026-07-13 — Session 145 — staleness-threshold
 
 - Findings: 35 (+8, -0 since last synthesis)

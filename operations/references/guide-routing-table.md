@@ -9,7 +9,7 @@ type: "reference"
 target_system:
   - "improvement-loop"
 created: "2026-04-19"
-updated: "2026-07-16"
+updated: "2026-07-19"
 source_dd:
   - "DD-81"
 ---
@@ -32,16 +32,16 @@ Tracks when `/synthesize-guide` was last run against each cluster, how many find
 | G2 | Managing Agent Context | 2026-05-25 | 64 | `archive/guides/managing-agent-context.md` | deprecated (archived) |
 | G2a | Structuring and Loading Agent Context | 2026-07-16 | 61 | `extracts/guides/structuring-agent-context.md` | draft |
 | G2b | Defending Against Context Degradation | 2026-07-13 | 37 | `extracts/guides/defending-agent-context.md` | draft |
-| G3 | Agent Architecture Decisions | 2026-07-16 | 65 | `extracts/guides/agent-architecture-decisions.md` | draft |
-| G3b | Agent Workflow and Execution | 2026-07-16 | 37 | `extracts/guides/agent-workflow-and-execution.md` | draft |
-| G4 | Building Agent Evaluation Suites | 2026-07-16 | 73 | `extracts/guides/building-agent-evaluation-suites.md` | draft |
+| G3 | Agent Architecture Decisions | 2026-07-19 | 72 | `extracts/guides/agent-architecture-decisions.md` | draft |
+| G3b | Agent Workflow and Execution | 2026-07-19 | 42 | `extracts/guides/agent-workflow-and-execution.md` | draft |
+| G4 | Building Agent Evaluation Suites | 2026-07-19 | 77 | `extracts/guides/building-agent-evaluation-suites.md` | draft |
 | G5 | Designing Agent Tools | 2026-07-16 | 37 | `extracts/guides/designing-agent-tools.md` | draft |
 | G6 | Agent Safety and Permissions | 2026-07-16 | 16 | `extracts/guides/agent-safety-and-permissions.md` | draft |
-| G7 | Session Persistence and Memory | 2026-07-13 | 35 | `extracts/guides/session-persistence-and-memory.md` | draft |
+| G7 | Session Persistence and Memory | 2026-07-19 | 40 | `extracts/guides/session-persistence-and-memory.md` | draft |
 | G8 | Model-Resilient Prompt Engineering | 2026-07-16 | 37 | `extracts/guides/model-resilient-prompt-engineering.md` | draft |
 | G9 | Agent Governance and Trust | 2026-07-16 | 58 | `extracts/guides/agent-governance-and-trust.md` | draft |
-| G10 | Agent Design Patterns | 2026-07-13 | 44 | `extracts/guides/agent-design-patterns.md` | draft |
-| G11 | Building Agentic Systems | 2026-07-16 | 37 | `extracts/guides/building-agentic-systems.md` | draft |
+| G10 | Agent Design Patterns | 2026-07-19 | 47 | `extracts/guides/agent-design-patterns.md` | draft |
+| G11 | Building Agentic Systems | 2026-07-19 | 39 | `extracts/guides/building-agentic-systems.md` | draft |
 
 **Staleness indicator:** If a cluster's finding count (in the Guide Clusters table below) exceeds "Findings at Synthesis" by 3+, the guide should be re-synthesized to incorporate new material.
 

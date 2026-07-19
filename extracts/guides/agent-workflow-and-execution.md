@@ -6,7 +6,7 @@ target_system:
   - "improvement-loop"
 stage: "draft"
 created: "2026-04-19"
-updated: "2026-07-16"
+updated: "2026-07-19"
 author: "claude"
 source_findings:
   - "planner-executor-deterministic-guardrails"
@@ -46,6 +46,11 @@ source_findings:
   - "correct-course-mid-project-pivot-command"
   - "org-redesign-for-agentic-throughput-high-speed-rail"
   - "end-to-end-sequential-bug-fix-pipeline"
+  - "loop-contract-anatomy-and-evolve-session-cadence"
+  - "loop-trigger-taxonomy-poll-then-wake-combo"
+  - "pre-merge-reconciliation-queue"
+  - "lint-test-failures-as-remediation-prompts"
+  - "durable-checkpointed-sessions-as-framework-default"
 source_dd:
   - "DD-81"
 tags:
@@ -207,6 +212,8 @@ For multi-hour and multi-day workflows, use a durable execution platform (Tempor
 
 The architectural separation: "LLMs decide what to do; the workflow engine guarantees it gets done reliably."
 
+**Durability is shifting from an add-on to a framework default.** Newer agent frameworks ship checkpointing and resumable state as the built-in mode rather than a bolt-on -- durable execution modes, per-superstep checkpointers, and event-sourced session stores are becoming the default persistence layer a framework hands you, not something you assemble from a raw event log. The practical consequence for this step: before building a bespoke checkpoint file, check whether your chosen framework (or harness) already exposes a durable/resumable session primitive, and prefer it -- a framework-native checkpointer is inspected, tested, and resumed by the framework, whereas a hand-rolled one is code you own and must debug. The persistence-vs-portability caveat still applies: a framework's opaque checkpoint store can become a *second* source of truth alongside your file/git state, so for a markdown+git system prefer the persistence primitive that projects to inspectable files over one that hides state in a database. See *Session Persistence and Memory* (G7) for the full framework-default persistence treatment.
+
 ### Step 3: Classify Task Complexity
 
 Not every task needs the same execution depth. Classify before executing:
@@ -347,6 +354,8 @@ Build quality into generation rather than adding review layers after the fact. E
 
 The "AI Developer's Descent into Madness" cycle: generate code -> find bugs -> add review agents -> need a framework to coordinate agents -> repeat. Quality at source breaks this cycle.
 
+**Write failure messages as prompts.** The highest-frequency touchpoint an agent has with "did I do this right" is a lint or test failure -- and at the moment the agent reads a failed CI run, that failure text *is* a prompt, whether you authored it as one or not. A bare failure that names the symptom ("unknown type at this depth") does not change repeat behavior; a failure that states the convention, the reason for it, and the specific fix ("you shouldn't have an `unknown` here -- we parse, don't validate, at the edge") does, because it reads as an instruction rather than a symptom report. Author every custom lint rule and structural test's failure message this way: the "why" and the "what instead," not just the "no." The cost is paid once (write the remediation text when you write the rule); it fires on every future violation for free, turning the CI gate into a teaching surface. Two extensions: when authoring good remediation text becomes its own time sink, point a coding agent at your prompting cookbook and have it synthesize the remediation prompts; and for checks too judgment-shaped for a regex or AST rule, embed an agent-SDK call inside the test so the "test" is an LLM assessing acceptability. Scope that last one tightly -- a nondeterministic, costed network call inside a fast deterministic gate erodes the reliability the rest of the harness depends on, so reserve it for checks that genuinely cannot be expressed as a mechanical rule. Watch also for convention drift: a remediation prompt keeps citing a rule that has since changed, the same way any embedded documentation drifts.
+
 #### Staged Delivery
 
 Deliver work in reviewer-calibrated chunks, not agent-calibrated chunks.
@@ -395,6 +404,21 @@ For agents that run on schedules, as background workers, or across multi-day aut
 
 **Use cases:** PR babysitting, deployment monitoring, CI pipeline polling, code quality scans, daily summaries, morning reports generated before the developer wakes up.
 
+#### Trigger Shapes: How the Loop Wakes
+
+The surface ladder above is about *where* a scheduled agent runs and how long its state survives. Orthogonal to it is *how the loop is woken* -- and there are four distinct trigger shapes, not one. Choosing the wrong shape is a common cost and correctness bug.
+
+| Trigger shape | Wakes on | Native support | Best for |
+|---------------|----------|----------------|----------|
+| **Continuous** | Runs in a while-loop until a goal condition or budget is hit | Native (`go`/goal commands) | Tasks with immediate feedback and a well-defined spec |
+| **Cron / schedule** | A fixed time interval | Native (`/loop`, OS cron, cloud routines, Codex Automations) | Recurring monitoring, digests, periodic scans |
+| **Event-based** | An external signal (new email, incident, webhook) | **Not native** to Claude Code or Codex -- requires your own local daemon exposing a webhook URL | Things needing immediate handling on an external trigger |
+| **Combo / workflow** | A cron ticker runs a **cheap deterministic pre-check** first; only if there is real new work does it wake the expensive LLM agent | Composed from cron + a script | The most useful in practice -- the general cost lever |
+
+**The combo pattern is the concrete cost lever.** A support-inbox loop that polls every 30 minutes and skips the run entirely when nothing changed pays LLM cost only for cycles with real work. Any cron-shaped periodic job -- a blog watcher, an upstream-dependency watcher -- can gain a cheap pre-check (compare a feed's last-modified/etag before invoking the agent subagent) to skip no-op runs. This is the same "decide cheaply, act expensively" subtraction as Step 1's deterministic nodes, applied at the wake boundary.
+
+**The scheduling gap.** Claude Code has *no native cron* -- neither timed nor event-based wake is provided by the harness itself, so any scheduled or event-driven cadence must ride an *external* scheduler: OS cron/launchd around `claude -p` (the documented pattern), a native-scheduler harness (Codex Automations is the exception that ships cron/webhook/app-event triggers surviving machine-off), or a workflow-orchestrator wake layer over the harness. Event-based triggers specifically require standing up your own daemon with a webhook endpoint -- there is no built-in listener. Design consequence: a "scheduled" agent operation on a cron-less harness is really *two* components -- the wake/dispatch layer (external) and the work (the harness invocation) -- and they fail independently, so the wake layer needs its own observability (Step 5) just as much as the work does. The harness-landscape survey documents this gap and the option space in full (`operations/plans/memory-spec-inputs/C-synthesis-harness-memory-harmonization.md` §4a, "the scheduling gap bites"): external cron around `claude -p`, a native-scheduler harness, adopting a workflow orchestrator as the wake layer, or a custom scheduler -- an unsettled engineering choice, not a configuration flag.
+
 #### Headless Composition Rules
 
 The headless pattern (`claude -p "<prompt>"`) removes the human from the loop entirely -- no conversation, no approvals. Three rules govern safe composition:
@@ -430,6 +454,16 @@ For extended autonomous sessions (validated by Anthropic's multi-day scientific 
 
 This pattern compresses months of domain work into days by shifting the human role from line-by-line coding to occasional oversight and plan refinement.
 
+#### The Loop Contract: One File per Recurring Autonomous Loop
+
+A multi-day session has a start and an end; a *recurring* loop (a nightly triage, a CRM-lifecycle sweep, a documentation-drift check) runs indefinitely and needs a durable home for its own governance and memory. The production pattern is one living markdown file per loop that is simultaneously its constitution and its notebook, with three sections:
+
+- **Contract** -- the loop's goal, its boundaries (what it may do unsupervised vs. what must escalate to a human), and its SOP. This is the always-loaded governance the loop reads on every wake.
+- **State** -- deliberately small: current hypothesis, open backlog, and items shipped but needing follow-up. Kept small on purpose so it stays legible and cheap to load.
+- **Log** -- append-only, one entry per run: what happened, what was decided, what failed.
+
+This is loop-level self-tuning, distinct in altitude from a system-wide research scan or an engine-wide lesson store -- the contract governs *one* automation. A second cadence rides on top: every 5-10 runs, a dedicated **evolve session** hands the agent its own past contract, its state/log history, and raw run transcripts, and asks it to propose changes to its own contract, prune stale state, or convert a repetitive SOP step into a script. The evolve session is where a loop earns the right to shed a manual step (turn it into deterministic code, Step 1) or tighten its own boundaries. Governance caveat: proposed changes to a loop's *contract* -- especially its escalation boundaries -- are a human-gated decision, not an autonomous self-rewrite; the evolve session drafts, a human approves. Uncontrolled self-modification of a loop's own governance is exactly the failure mode Step 10's autonomy discipline guards against.
+
 ### Step 10: Run Autonomous Pipelines at the Right Autonomy Level
 
 Scheduling removes the human from *when* work runs; autonomy removes the human from *whether the work is right*. Treat them separately, and climb the autonomy ladder deliberately.
@@ -453,7 +487,7 @@ When a pipeline does earn high autonomy, the production-validated shape is:
 
 - **A cron orchestrator** that wakes on schedule, reads workflow state (labels, Step 2), and dispatches work -- with a batch cap per cycle (Step 6).
 - **A small set of single-purpose workflows** (triage → implement → validate → fix), each a plan-execute-verify DAG (Step 1), each mixing agentic decision nodes with deterministic action nodes.
-- **A governance layer injected everywhere:** a mission file and a rules file included as shared context in every workflow, so autonomous decisions stay anchored to intent.
+- **A governance layer injected everywhere:** a mission file and a rules file included as shared context in every workflow, so autonomous decisions stay anchored to intent. **But intent-anchoring is not enforcement.** The strongest cross-vendor finding in the harness-landscape survey is that safety-critical guardrails must live *outside the model's reach* -- as a `PreToolUse`-equivalent hook or a deny-by-default permission rule that makes the disallowed action invisible -- never as prose in a rules file the model may correctly summarize and then stop applying a few turns later (`operations/plans/memory-spec-inputs/C-synthesis-harness-memory-harmonization.md` §4b, the enforcement-locus consensus, triangulated across three independent LLM-first vendors). For an unattended pipeline this is not optional: the mission/rules file steers judgment, but anything the pipeline *must not* do under any circumstance belongs in a structural gate the agent cannot argue its way past. A source-verified "hard" rule is still only evidence of what is *designed*, not what is *delivered* -- test the leak-prone paths (subagent delegation, resumed/background sessions, mode transitions) with a deliberately seeded violation, because those are exactly where enforcement empirically slips.
 - **Blind validation:** the validating agent runs regression without knowing what was just implemented, preventing sycophantic confirmation of the implementer's choices (the holdout pattern -- see G4).
 - **Human escalation states** built into the state machine (`needs-human` after 2 failures).
 
@@ -468,6 +502,10 @@ Below full autonomy, two mid-ladder patterns convert multi-hour human workflows 
 - **Sequential end-to-end pipelines.** Chain every stage of a fixed process in strict order within one orchestrator thread (read ticket → reproduce → research → implement → review → verify → commit → deploy → QA). Stage N cannot start before N-1 completes; sub-agents appear *within* stages (research, review) but results return to the main thread before the next stage. The pipeline encodes institutional process -- you cannot skip verification, you cannot deploy without review. Add conditional halts (if reproduction fails, stop and notify) and human gates before irreversible stages.
 - **Autonomous phase drivers.** A driver skill reads a phase-queue state file, dispatches each incomplete phase as a fresh headless subprocess, collects the summary, updates the state file, and loops until all phases complete -- breadth-first across a project (contrast with an iteration loop, which is depth-first on one task). The orchestrator session stays under ~10% context because it only manages dispatch. Known limits: no mid-run human gate (a bad phase poisons subsequent phases), exit-code-only completion checks miss quality failures, and sequential dispatch wastes time on independent phases.
 - **Fresh-context multi-pass review.** Run N headless review passes over the same target, each with a fresh context window (no memory of prior passes), each internally fanning out sub-agent reviewers; aggregate all findings, weighting issues flagged by multiple passes. Fresh context eliminates implementation-aware reviewer bias. Budget-gate it first (Step 6) -- the invocation count multiplies quickly.
+
+#### When Many Agents Write at Once: The Pre-Merge Reconciliation Queue (Emerging)
+
+As autonomy scales, the unit of work shifts from the diff to the *intent*. A near-term production shape already in use: work starts from a written intent/plan rather than a PR diff, an agent harness checks out a well-known commit and self-validates against the repo's own build/test assets, and a lightweight human check-in ("continue" becomes the most common human utterance) gates progress before a conventional merge queue. The forward-looking extension -- framed as "weeks to months, not years" out by practitioners already living the volume -- is a genuine *reconciliation queue*: with many agent-authored changes in flight against the same codebase simultaneously, changes land in a "pre-merge" queue instead of going straight to the repository, where a reconciliation process resolves them against each other for serializability before the ledger write. The forcing function is volume: teams report PR-equivalent throughput already several times pre-agent levels, and the PR-as-unit-of-work model does not survive that concurrency. Treat this as a horizon signal, not a build-now item -- but if your autonomy climb is producing concurrent writes to one codebase, the merge queue is where contention will first surface, and intent-plus-self-validation (not diff review) is the shape to plan toward.
 
 ### Step 11: Route Work to the Right Workflow
 
@@ -666,6 +704,9 @@ The "start new session" option when teleporting back prevents stale conversation
 
 - Active: {{TRUE/FALSE}}                # file-based activation flag
 - Surface: {{LOOP/DESKTOP/OS_CRON_HEADLESS/CLOUD_ROUTINE}}
+- Trigger shape: {{CONTINUOUS/CRON/EVENT/COMBO}}   # combo = cheap pre-check gates the LLM wake
+- External scheduler (if harness has no native cron): {{OS_CRON/LAUNCHD/ORCHESTRATOR/NATIVE}}
+- Cheap pre-check before LLM wake (combo only): {{SCRIPT_OR_CHECK_THAT_SKIPS_NO-OP_RUNS}}
 - Schedule or trigger: {{CRON_EXPRESSION_OR_WEBHOOK_EVENT}}
 - Skill chain: {{ORDERED_LIST_OF_SKILLS}}
 - Output destination: {{REVIEW_FOLDER_OR_REPORT_PATH}}
@@ -816,6 +857,12 @@ Each scheduled loop added is standing operational debt. Without a shared run log
 
 ### 12. Routing by memory instead of by description
 When workflow discovery depends on the human remembering what exists, the human is the router and the bottleneck. Ambiguous or stale workflow descriptions misroute work; workflows that quietly re-implement each other's jobs grow without bound. Maintain routable descriptions, re-check them when definitions change, and classify by owning surface with an explicit dispatch table.
+
+### 13. Enforcing mandatory constraints in prose instead of in a gate
+A rule written into a mission or CLAUDE.md file is a hint the model can correctly summarize and then, a few turns later, stop applying -- production vendors document exactly this drift. Anything an autonomous pipeline *must not* do belongs in a `PreToolUse`-equivalent hook or a deny-by-default permission rule that removes the action from the model's option set entirely, never in prose. And a "hard" rule verified in source is not proof of *delivered* enforcement: test the leak-prone paths -- subagent delegation, resumed/background sessions, mode transitions -- with a deliberately seeded violation, because that is where enforcement empirically slips.
+
+### 14. Assuming "scheduled" means native
+Claude Code has no native cron -- neither timed nor event-based wake ships with the harness. A cadence you assume is built in is really an external scheduler you have not yet built (OS cron around `claude -p`, a native-scheduler harness, or an orchestrator wake layer), and event triggers need your own webhook daemon. The wake/dispatch layer fails independently of the work and needs its own observability; a "green" work run says nothing about whether the scheduler fired at all.
 
 ---
 

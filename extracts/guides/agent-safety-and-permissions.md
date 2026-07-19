@@ -418,6 +418,7 @@ An allowlist of safe commands is defeated by `=curl`, zero-width characters, IFS
 - **Hard constraint enforcement → boundary design:** Hard constraints that need structural enforcement are defined in *Writing Agent Specifications* (G1), Step 3a.
 - **Untrusted content → context curation:** When agents read untrusted web content, context curation principles from the context guides (G2a/G2b) apply alongside the injection defenses in Step 7.
 - **Oversight and autonomy tiers → governance:** Who approves what, autonomy gradation, change-approval tiering, and kill switches are governance concerns — *Agent Governance and Trust* (G9). This guide supplies the enforcement mechanics beneath those policies.
+- **Sandbox isolation → state durability:** The sandbox/microVM isolation this guide covers shares its infrastructure with the disk-level persistence substrate in *[[session-persistence-and-memory]]* (G7), Step 3.7 (incremental snapshotting, always-on POSIX storage, lineage-aware scheduling). G6 covers the isolation/threat-model side; G7 covers what the same sandbox buys for crash recovery and durable state.
 
 ---
 
