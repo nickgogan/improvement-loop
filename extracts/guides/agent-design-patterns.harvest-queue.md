@@ -10,9 +10,9 @@ Nothing here is auto-extracted; rows feed `/extract-artifacts` only after Nick r
 | 2026-07-13 | extracted | template | [[capability-as-agent-composition-primitive]] | "composition-unit-bundle-scaffold" | extracted to [[composition-unit-bundle-scaffold]] |
 | 2026-07-13 | extracted | rule | [[disclosure-granularity-decision-rubric]] | "eager-prompt-whitelist" | extracted to [[eager-prompt-whitelist]] |
 | 2026-07-13 | extracted | rule | [[cache-stable-progressive-disclosure-catalog]] | "byte-stable-disclosure-catalog" | merged into [[never-mutate-cached-prompt-prefix]] |
-| 2026-07-19 | queued | template | [[agent-as-folder-compiled-to-manifest]] | "agent-folder-skeleton" | extract via /extract-artifacts |
-| 2026-07-19 | queued | template | [[oracle-evaluator-architect-domain-expert-progression]] | "domain-expert-mode-selection-tree" | extract via /extract-artifacts |
-| 2026-07-19 | queued | rule | [[principal-domain-expert-single-ownership]] | "name-single-principal-domain-expert" | extract via /extract-artifacts |
+| 2026-07-19 | extracted | template | [[agent-as-folder-compiled-to-manifest]] | "agent-folder-skeleton" | extracted to [[agent-folder-skeleton]] |
+| 2026-07-19 | extracted | template | [[oracle-evaluator-architect-domain-expert-progression]] | "domain-expert-mode-selection-tree" | extracted to [[domain-expert-mode-selection-tree]] |
+| 2026-07-19 | extracted | rule | [[principal-domain-expert-single-ownership]] | "name-single-principal-domain-expert" | extracted to [[name-single-principal-domain-expert]] |
 
 ## Per-row details
 
@@ -69,7 +69,7 @@ Merge applied 2026-07-13 (session 146, delegated-judgment grant): DD-97 extensio
 ### agent-as-folder-compiled-to-manifest::template::agent-folder-skeleton
 
 - **Date queued:** 2026-07-19
-- **Status:** queued
+- **Status:** extracted
 - **Target form:** template
 - **Source finding:** [[agent-as-folder-compiled-to-manifest]]
 - **Source excerpt:**
@@ -80,12 +80,14 @@ Merge applied 2026-07-13 (session 146, delegated-judgment grant): DD-97 extensio
 - **Codifier's reading:** A fixed named-subfolder taxonomy with a required-vs-optional slot structure is a structural scaffold meant for rendering per agent — template shape per the form rubric. The guide already embeds an "Agent Folder Skeleton" template synthesized from this; a standalone extract would carry the safeguard checklist (manifest-inspect + drift check) with it.
 - **Suggested headline:** agent-folder-skeleton
 - **Recommendation:** extract via /extract-artifacts
-- **Resolution:**
+- **Resolution:** extracted to [[agent-folder-skeleton]]
+
+Extracted 2026-07-19 — Session 152 — [[agent-design-patterns.harvest-queue]] — to [[agent-folder-skeleton]].
 
 ### oracle-evaluator-architect-domain-expert-progression::template::domain-expert-mode-selection-tree
 
 - **Date queued:** 2026-07-19
-- **Status:** queued
+- **Status:** extracted
 - **Target form:** template
 - **Source finding:** [[oracle-evaluator-architect-domain-expert-progression]]
 - **Source excerpt:**
@@ -96,12 +98,14 @@ Merge applied 2026-07-13 (session 146, delegated-judgment grant): DD-97 extensio
 - **Codifier's reading:** An ordered decision tree with fixed branch labels and mode outputs is a fillable decision-rubric scaffold — template shape per the form rubric. Embedded in the guide as the Mode-Selection Worksheet; separable as a standalone mode-selection decision template.
 - **Suggested headline:** domain-expert-mode-selection-tree
 - **Recommendation:** extract via /extract-artifacts
-- **Resolution:**
+- **Resolution:** extracted to [[domain-expert-mode-selection-tree]]
+
+Extracted 2026-07-19 — Session 152 — [[agent-design-patterns.harvest-queue]] — to [[domain-expert-mode-selection-tree]].
 
 ### principal-domain-expert-single-ownership::rule::name-single-principal-domain-expert
 
 - **Date queued:** 2026-07-19
-- **Status:** queued
+- **Status:** extracted
 - **Target form:** rule
 - **Source finding:** [[principal-domain-expert-single-ownership]]
 - **Source excerpt:**
@@ -111,4 +115,6 @@ Merge applied 2026-07-13 (session 146, delegated-judgment grant): DD-97 extensio
 - **Codifier's reading:** Imperative directives ("name a single owner", "not an advisory seat") read as rule shape. Enforceability is organizational/checklist-grade, not machine-lintable — Nick may prefer this stays inline as guide guidance (Step 20); queued for his ruling per DD-101 loose calibration.
 - **Suggested headline:** name-single-principal-domain-expert
 - **Recommendation:** extract via /extract-artifacts
-- **Resolution:**
+- **Resolution:** extracted to [[name-single-principal-domain-expert]]
+
+Extracted 2026-07-19 — Session 152 — [[agent-design-patterns.harvest-queue]] — to [[name-single-principal-domain-expert]].

@@ -24,6 +24,7 @@ related_findings:
 pipeline_status: synthesized
 consumed_by:
 - building-agentic-systems.md
+- rules/injection-scan-at-write-boundary.md
 tags:
 - research-pipeline
 - saturation-rules
@@ -100,3 +101,6 @@ passing never excuses another.
 - **Gate fatigue.** Three gates plus a sync gate per artifact is real cost; the pipeline
   amortizes it by making each gate scriptable, but a manual adoption of this design
   without automation would stall.
+
+## Extraction Note — 2026-07-19
+Extracted as **rule**: [[injection-scan-at-write-boundary]] in `extracts/rules/`

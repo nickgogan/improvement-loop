@@ -22,6 +22,7 @@ related_findings: []
 pipeline_status: synthesized
 consumed_by:
 - structuring-agent-context.md
+- skills/cold-start-regression-test.md
 tags:
 - cold-start
 - session-continuity
@@ -78,3 +79,6 @@ sessions can mask a broken chain for weeks. The echo can pass while lying if the
 is the same session that composed (self-assessment); run it fresh and verify the stated
 next unit of work against the control surface. A chain with too many hops reintroduces
 the ramp-up cost the pattern exists to kill.
+
+## Extraction Note — 2026-07-19
+Extracted as **skill**: [[cold-start-regression-test]] in `extracts/skills/`

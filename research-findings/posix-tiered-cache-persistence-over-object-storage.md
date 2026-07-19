@@ -35,6 +35,7 @@ last_updated: "2026-07-18"
 pipeline_status: "synthesized"
 consumed_by:
   - "session-persistence-and-memory.md"
+  - "rules/posix-compliant-sandbox-storage-not-nfs.md"
 tags:
   - "sandboxing"
   - "infrastructure"
@@ -104,3 +105,6 @@ choosing only one when designing from scratch.
   sizing or eviction; tiered-cache architectures are exactly the kind of "boring
   infrastructure" that is easy to under-invest in until it becomes load-bearing at
   scale.
+
+## Extraction Note — 2026-07-19
+Extracted as **rule**: [[posix-compliant-sandbox-storage-not-nfs]] in `extracts/rules/`

@@ -52,6 +52,8 @@ pipeline_status: "synthesized"
 consumed_by:
   - "agent-architecture-decisions.md"
   - verifying-agent-output.md
+  - "templates/pre-code-validation-contract-template.md"
+  - "rules/validation-contract-before-code.md"
 ---
 
 ## What It Is
@@ -134,3 +136,9 @@ work.
   strict context isolation being maintained in practice; a leak (e.g., a validator's tool
   access incidentally surfacing implementation details) would silently erode the
   adversarial-by-design property with no visible signal that it happened.
+
+## Extraction Note — 2026-07-19
+Extracted as **template**: [[pre-code-validation-contract-template]] in `extracts/templates/`
+
+## Extraction Note — 2026-07-19
+Extracted as **rule**: [[validation-contract-before-code]] in `extracts/rules/`

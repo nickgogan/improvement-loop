@@ -24,6 +24,7 @@ related_findings:
 pipeline_status: synthesized
 consumed_by:
 - structuring-agent-context.md
+- rules/always-on-minimal-pointer-only-state.md
 tags:
 - always-on-instructions
 - context-economy
@@ -81,3 +82,6 @@ regrows — every incident tempts a new always-on paragraph. Pointer-only state 
 pointed-to surface is reliably loadable; a broken pointer is worse than a stale copy
 because nothing visibly fails. The wake-up idiom needs the "ambiguous → ask" branch, or
 it becomes an autonomy bypass.
+
+## Extraction Note — 2026-07-19
+Extracted as **rule**: [[always-on-minimal-pointer-only-state]] in `extracts/rules/`

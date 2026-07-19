@@ -21,6 +21,7 @@ last_updated: '2026-04-19'
 pipeline_status: synthesized
 consumed_by:
 - production-agent-execution.md
+- templates/sprint-contract-template.md
 ---
 
 ## What It Is
@@ -42,3 +43,6 @@ Auto-generation of criteria from specifications. Difficulty calibration to preve
 ## Potential Failure Modes
 
 Over-specification (too many criteria per sprint) can make evaluation brittle. Criteria that are testable but not meaningful can create a "teaching to the test" effect.
+
+## Extraction Note — 2026-07-19
+Extracted as **template**: [[sprint-contract-template]] in `extracts/templates/`

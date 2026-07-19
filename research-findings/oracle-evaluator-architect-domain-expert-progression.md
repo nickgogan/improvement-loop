@@ -48,6 +48,7 @@ pipeline_status: "synthesized"
 consumed_by:
   - "agent-architecture-decisions.md"
   - "agent-design-patterns.md"
+  - "templates/domain-expert-mode-selection-tree.md"
 ---
 
 # Oracle → Evaluator → Architect — The Domain-Expert Progression Framework
@@ -165,3 +166,6 @@ rather than a fourth named mode, despite having materially different scaling pro
 - **The 50% abandonment root cause is asserted, not measured** here — Lovejoy cites
   Gartner's statistic and attributes it to this gap, but the causal link is his
   interpretation, not something the talk demonstrates directly.
+
+## Extraction Note — 2026-07-19
+Extracted as **template**: [[domain-expert-mode-selection-tree]] in `extracts/templates/`

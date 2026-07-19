@@ -5,19 +5,19 @@ Nothing here is auto-extracted; rows feed `/extract-artifacts` only after Nick r
 
 | Date queued | Status | Target form | Source finding | Suggested headline | Recommendation |
 |---|---|---|---|---|---|
-| 2026-07-16 | queued | rule | [[static-tool-set-mode-changes-as-callable-tools]] | "tool-surface-session-static-modes-as-tools" | extract via /extract-artifacts |
-| 2026-07-16 | queued | rule | [[monitor-vs-loop-event-driven-vs-time-driven]] | "default-event-driven-watching-over-time-polling" | extract via /extract-artifacts |
-| 2026-07-16 | queued | rule | [[stateful-mcp-subprocess-vs-cli-shell-out]] | "statefulness-boundary-on-cli-first-rule" | merge into existing [[prefer-cli-over-mcp-when-both-exist-for-the-same-tool]] |
-| 2026-07-16 | queued | rule | [[tiered-capability-registry-engine-behavior-branching]] | "declare-capabilities-as-tiers-not-booleans" | extract via /extract-artifacts |
-| 2026-07-16 | queued | rule | [[skill-cross-surface-portability-with-constraints]] | "declare-skill-compatibility-design-for-most-restricted-surface" | extract via /extract-artifacts |
-| 2026-07-16 | queued | rule | [[code-as-deterministic-tool-inside-skills]] | "reference-bundled-scripts-via-claude-skill-dir" | extract via /extract-artifacts |
+| 2026-07-16 | nick-approved | rule | [[static-tool-set-mode-changes-as-callable-tools]] | "tool-surface-session-static-modes-as-tools" | extract via /extract-artifacts |
+| 2026-07-16 | extracted | rule | [[monitor-vs-loop-event-driven-vs-time-driven]] | "default-event-driven-watching-over-time-polling" | extracted to [[default-event-driven-watching-over-time-based-polling]] |
+| 2026-07-16 | nick-approved | rule | [[stateful-mcp-subprocess-vs-cli-shell-out]] | "statefulness-boundary-on-cli-first-rule" | merge into existing [[prefer-cli-over-mcp-when-both-exist-for-the-same-tool]] |
+| 2026-07-16 | extracted | rule | [[tiered-capability-registry-engine-behavior-branching]] | "declare-capabilities-as-tiers-not-booleans" | extracted to [[declare-capabilities-as-tiers-not-booleans]] |
+| 2026-07-16 | extracted | rule | [[skill-cross-surface-portability-with-constraints]] | "declare-skill-compatibility-design-for-most-restricted-surface" | extracted to [[declare-skill-compatibility-design-for-most-restricted-surface]] |
+| 2026-07-16 | extracted | rule | [[code-as-deterministic-tool-inside-skills]] | "reference-bundled-scripts-via-claude-skill-dir" | extracted to [[reference-bundled-scripts-via-claude-skill-dir]] |
 
 ## Per-row details
 
 ### static-tool-set-mode-changes-as-callable-tools::rule::tool-surface-session-static-modes-as-tools
 
 - **Date queued:** 2026-07-16
-- **Status:** queued
+- **Status:** nick-approved
 - **Target form:** rule
 - **Source finding:** [[static-tool-set-mode-changes-as-callable-tools]]
 - **Source excerpt:**
@@ -27,10 +27,12 @@ Nothing here is auto-extracted; rows feed `/extract-artifacts` only after Nick r
 - **Recommendation:** extract via /extract-artifacts
 - **Resolution:**
 
+Pending merge 2026-07-19 — Session 152 — designing-agent-tools.harvest-queue — DD-97 extension proposal emitted at [[operations/extension-proposals/2026-07-19-extension-proposals]]; primary match [[never-mutate-cached-prompt-prefix]]. Manual apply per DD-97 v1 (Step 1.7 auto-merge prohibition); after apply, row Status flips to `extracted` and Resolution to `merged into [[never-mutate-cached-prompt-prefix]]` via manual queue edit (or future skill mode).
+
 ### monitor-vs-loop-event-driven-vs-time-driven::rule::default-event-driven-watching-over-time-polling
 
 - **Date queued:** 2026-07-16
-- **Status:** queued
+- **Status:** extracted
 - **Target form:** rule
 - **Source finding:** [[monitor-vs-loop-event-driven-vs-time-driven]]
 - **Source excerpt:**
@@ -38,12 +40,14 @@ Nothing here is auto-extracted; rows feed `/extract-artifacts` only after Nick r
 - **Codifier's reading:** Implementation notes carry a crisp default-with-exception decision rule ("default to X if …; use Y only when …") — imperative and enforceable at design-review time. Rule form per the rubric's directive test.
 - **Suggested headline:** default-event-driven-watching-over-time-polling
 - **Recommendation:** extract via /extract-artifacts
-- **Resolution:**
+- **Resolution:** extracted to [[default-event-driven-watching-over-time-based-polling]]
+
+Extracted 2026-07-19 — Session 152 — designing-agent-tools.harvest-queue — to [[default-event-driven-watching-over-time-based-polling]].
 
 ### stateful-mcp-subprocess-vs-cli-shell-out::rule::statefulness-boundary-on-cli-first-rule
 
 - **Date queued:** 2026-07-16
-- **Status:** queued
+- **Status:** nick-approved
 - **Target form:** rule
 - **Source finding:** [[stateful-mcp-subprocess-vs-cli-shell-out]]
 - **Source excerpt:**
@@ -53,10 +57,12 @@ Nothing here is auto-extracted; rows feed `/extract-artifacts` only after Nick r
 - **Recommendation:** merge into existing [[prefer-cli-over-mcp-when-both-exist-for-the-same-tool]]
 - **Resolution:**
 
+Pending merge 2026-07-19 — Session 152 — designing-agent-tools.harvest-queue — DD-97 extension proposal emitted at [[operations/extension-proposals/2026-07-19-extension-proposals]]; primary match [[prefer-cli-over-mcp-when-both-exist-for-the-same-tool]]. Manual apply per DD-97 v1 (Step 1.7 auto-merge prohibition); after apply, row Status flips to `extracted` and Resolution to `merged into [[prefer-cli-over-mcp-when-both-exist-for-the-same-tool]]` via manual queue edit (or future skill mode).
+
 ### tiered-capability-registry-engine-behavior-branching::rule::declare-capabilities-as-tiers-not-booleans
 
 - **Date queued:** 2026-07-16
-- **Status:** queued
+- **Status:** extracted
 - **Target form:** rule
 - **Source finding:** [[tiered-capability-registry-engine-behavior-branching]]
 - **Source excerpt:**
@@ -64,12 +70,14 @@ Nothing here is auto-extracted; rows feed `/extract-artifacts` only after Nick r
 - **Codifier's reading:** Implementation notes state an imperative constraint on registry design ("should be X, not Y") directly applicable to the engine's model-capability registry — checkable against any capability declaration. Rule form; a companion template (tiered declaration schema) now lives in the guide's Templates section.
 - **Suggested headline:** declare-capabilities-as-tiers-not-booleans
 - **Recommendation:** extract via /extract-artifacts
-- **Resolution:**
+- **Resolution:** extracted to [[declare-capabilities-as-tiers-not-booleans]]
+
+Extracted 2026-07-19 — Session 152 — designing-agent-tools.harvest-queue — to [[declare-capabilities-as-tiers-not-booleans]].
 
 ### skill-cross-surface-portability-with-constraints::rule::declare-skill-compatibility-design-for-most-restricted-surface
 
 - **Date queued:** 2026-07-16
-- **Status:** queued
+- **Status:** extracted
 - **Target form:** rule
 - **Source finding:** [[skill-cross-surface-portability-with-constraints]]
 - **Source excerpt:**
@@ -77,12 +85,14 @@ Nothing here is auto-extracted; rows feed `/extract-artifacts` only after Nick r
 - **Codifier's reading:** Two paired imperatives (design for most-restricted surface; declare extra requirements in `compatibility`) that are lintable against SKILL.md frontmatter — fits rule form's machine-enforceability criterion.
 - **Suggested headline:** declare-skill-compatibility-design-for-most-restricted-surface
 - **Recommendation:** extract via /extract-artifacts
-- **Resolution:**
+- **Resolution:** extracted to [[declare-skill-compatibility-design-for-most-restricted-surface]]
+
+Extracted 2026-07-19 — Session 152 — designing-agent-tools.harvest-queue — to [[declare-skill-compatibility-design-for-most-restricted-surface]].
 
 ### code-as-deterministic-tool-inside-skills::rule::reference-bundled-scripts-via-claude-skill-dir
 
 - **Date queued:** 2026-07-16
-- **Status:** queued
+- **Status:** extracted
 - **Target form:** rule
 - **Source finding:** [[code-as-deterministic-tool-inside-skills]]
 - **Source excerpt:**
@@ -90,4 +100,6 @@ Nothing here is auto-extracted; rows feed `/extract-artifacts` only after Nick r
 - **Codifier's reading:** Narrow imperative directive embedded in a pattern finding — grep-checkable across every SKILL.md that bundles scripts (flag hard-coded `scripts/` relative paths). Rule form; the broader script-bundling pattern stays in the guide body.
 - **Suggested headline:** reference-bundled-scripts-via-claude-skill-dir
 - **Recommendation:** extract via /extract-artifacts
-- **Resolution:**
+- **Resolution:** extracted to [[reference-bundled-scripts-via-claude-skill-dir]]
+
+Extracted 2026-07-19 — Session 152 — designing-agent-tools.harvest-queue — to [[reference-bundled-scripts-via-claude-skill-dir]].

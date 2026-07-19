@@ -51,6 +51,7 @@ last_updated: '2026-07-13'
 pipeline_status: synthesized
 consumed_by:
 - agent-governance-and-trust.md
+- templates/receipt-schema-sources-changes-approval.md
 ---
 
 # Receipt Artifact as Agent Trust Mechanism
@@ -92,3 +93,6 @@ Receipt theater — an agent can emit a confident receipt whose citations don't 
 support the draft; spot-checking citations must stay in the review loop. Verbose receipts
 recreate the review burden they were meant to remove. Self-reported "what I changed" is
 still self-reporting; for adversarial settings pair with independent verification.
+
+## Extraction Note — 2026-07-19
+Extracted as **template**: [[receipt-schema-sources-changes-approval]] in `extracts/templates/`

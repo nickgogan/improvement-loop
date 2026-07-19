@@ -43,6 +43,7 @@ last_updated: '2026-07-18'
 pipeline_status: synthesized
 consumed_by:
   - production-agent-execution.md
+  - rules/author-lint-failures-as-remediation-prompts.md
 ---
 
 ## What It Is
@@ -113,3 +114,6 @@ offenses — the model needed the "why" and the "what instead," not just the "no
   costed, nondeterministic network call into what's conventionally a fast deterministic
   gate — needs explicit scoping to checks that genuinely can't be expressed as a
   mechanical rule, or it erodes the reliability the rest of the harness depends on.
+
+## Extraction Note — 2026-07-19
+Extracted as **rule**: [[author-lint-failures-as-remediation-prompts]] in `extracts/rules/`

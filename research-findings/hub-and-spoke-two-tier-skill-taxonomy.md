@@ -36,6 +36,7 @@ related_findings:
 pipeline_status: synthesized
 consumed_by:
 - structuring-agent-context.md
+- rules/hub-at-eight-siblings-never-below.md
 tags:
 - skill-taxonomy
 - hub-and-spoke
@@ -108,3 +109,6 @@ against both.
   unreachable — cross-hub placement is a first-class audit category, not a cosmetic one.
 - **Premature hubbing.** Consolidating 3–4 skills buys almost no index savings and costs
   a routing hop on every use.
+
+## Extraction Note — 2026-07-19
+Extracted as **rule**: [[hub-at-eight-siblings-never-below]] in `extracts/rules/`

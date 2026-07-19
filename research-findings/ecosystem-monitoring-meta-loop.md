@@ -47,6 +47,7 @@ last_updated: '2026-07-12'
 pipeline_status: synthesized
 consumed_by:
 - autonomous-scheduled-agent-operation.md
+- skills/write-run-log-shared-utility-skill.md
 ---
 
 ## What It Is
@@ -98,3 +99,6 @@ so far.
   coverage gaps) and false-positives on non-loop skills that happen to match.
 - Composability suggestions can drive premature abstraction if applied on first
   duplication rather than clear recurrence.
+
+## Extraction Note — 2026-07-19
+Extracted as **skill**: [[write-run-log-shared-utility-skill]] in `extracts/skills/`

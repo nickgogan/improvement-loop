@@ -45,6 +45,7 @@ last_updated: '2026-07-13'
 pipeline_status: synthesized
 consumed_by:
 - eval-driven-improvement-loops.md
+- skills/with-without-skill-ab-baseline.md
 ---
 
 ## What It Is
@@ -97,3 +98,6 @@ journals).
   rounds.
 - Unverifiable domains: where output quality has no hard check, "with is better than
   without" is itself a model judgment and inherits its biases.
+
+## Extraction Note — 2026-07-19
+Extracted as **skill**: [[with-without-skill-ab-baseline]] in `extracts/skills/`

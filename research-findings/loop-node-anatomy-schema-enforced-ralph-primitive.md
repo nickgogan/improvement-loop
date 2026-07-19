@@ -59,6 +59,7 @@ last_updated: '2026-07-13'
 pipeline_status: synthesized
 consumed_by:
 - agent-architecture-decisions.md
+- templates/loop-anatomy-spec-template.md
 tags:
 - orchestration
 - loop-engineering
@@ -105,3 +106,6 @@ Loop-level cost budgets (`maxBudgetUsd` exists per node; a per-loop cumulative c
 ## Potential Failure Modes
 
 Signal-string matching is spoofable — a model can emit the completion token without the work being done (mitigated by `until_bash` but only when authors use it). `$LOOP_PREV_OUTPUT` bridging reintroduces cross-iteration contamination if the "cleaned" output carries hallucinated state. Interactive loops turn a human into a per-iteration blocker — the gate that makes the loop safe also caps its autonomy.
+
+## Extraction Note — 2026-07-19
+Extracted as **template**: [[loop-anatomy-spec-template]] in `extracts/templates/`

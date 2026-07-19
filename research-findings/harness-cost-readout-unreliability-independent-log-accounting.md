@@ -41,6 +41,7 @@ last_updated: '2026-07-13'
 pipeline_status: synthesized
 consumed_by:
 - verifying-agent-output.md
+- rules/log-based-cost-accounting-over-harness-readouts.md
 ---
 
 # Harness Cost Readouts Are Unreliable — Use Independent Log-Based Accounting
@@ -93,3 +94,6 @@ usage costs.
   is a modeled number even when the token counts are right.
 - **n=1 evidence for the specific bug** — the discrepancy pattern is one practitioner's
   observation on one harness version pair.
+
+## Extraction Note — 2026-07-19
+Extracted as **rule**: [[log-based-cost-accounting-over-harness-readouts]] in `extracts/rules/`

@@ -30,6 +30,7 @@ last_updated: '2026-06-11'
 pipeline_status: synthesized
 consumed_by:
 - designing-agent-tools.md
+- rules/declare-skill-compatibility-design-for-most-restricted-surface.md
 ---
 
 # Skill Cross-Surface Portability — Same Format, Different Constraints
@@ -83,3 +84,6 @@ Per-surface conformance levels in the spec ("API-conformant" vs. "harness-confor
 **Workspace-shared API skills as governance surface.** API skills are workspace-shared, which means uploads affect all workspace members. The deployment authority is workspace-scoped — different from claude.ai's per-user model. Governance for "who can upload" lives outside the skill format.
 
 **Runtime constraints invisible at install.** A skill installed on the API doesn't fail until run; users don't know they've installed something incompatible until they try to use it. Pre-flight surface compatibility checks would help; they don't exist.
+
+## Extraction Note — 2026-07-19
+Extracted as **rule**: [[declare-skill-compatibility-design-for-most-restricted-surface]] in `extracts/rules/`

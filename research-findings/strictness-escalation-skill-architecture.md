@@ -37,6 +37,7 @@ last_updated: '2026-07-11'
 pipeline_status: synthesized
 consumed_by:
 - model-resilient-prompt-engineering.md
+- templates/strict-mode-review-skill-overlay.md
 ---
 
 # Strictness-Escalation Skill Architecture
@@ -73,3 +74,6 @@ Shipped in Cursor's official plugins repo (cursor-team-kit), maintained on main.
 - **False-positive aggression**: an aggressive-flag list without evidence requirements produces confident escalation on borderline cases; the anti-flooding rule mitigates but does not eliminate this.
 - **Tone drift on long outputs**: literal phrase calibration anchors early output; late findings may still soften. Reinforcing tone in the output-ordering section helps.
 - **Blocker inflation**: adding blockers over time without pruning turns the approval bar into a de facto rejection of all change; the blocker set needs the same lifecycle governance as any rule set.
+
+## Extraction Note — 2026-07-19
+Extracted as **template**: [[strict-mode-review-skill-overlay]] in `extracts/templates/`

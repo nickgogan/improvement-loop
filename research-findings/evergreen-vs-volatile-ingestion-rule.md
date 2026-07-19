@@ -46,6 +46,7 @@ last_updated: '2026-07-12'
 pipeline_status: synthesized
 consumed_by:
 - structuring-agent-context.md
+- rules/evergreen-only-ingestion-gate.md
 ---
 
 ## What It Is
@@ -99,3 +100,6 @@ The evergreen judgment is made at ingestion time and can be wrong — "durable" 
 get superseded (mitigate with a decisions log that appends supersessions rather than
 silently rotting). Under-ingestion: if access tooling to the system of record is
 missing or broken, the brain simply doesn't know the volatile half exists.
+
+## Extraction Note — 2026-07-19
+Extracted as **rule**: [[evergreen-only-ingestion-gate]] in `extracts/rules/`

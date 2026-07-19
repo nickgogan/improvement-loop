@@ -47,6 +47,7 @@ last_updated: '2026-07-12'
 pipeline_status: synthesized
 consumed_by:
 - model-resilient-prompt-engineering.md
+- rules/discount-dev-cost-in-design-decisions.md
 ---
 
 ## What It Is
@@ -89,3 +90,6 @@ repeatedly observing the estimate-vs-actual mismatch ("I have done this so many 
   controlled eval; magnitude may vary by model and task
 - Human-facing estimates still need human timelines when humans execute — the rule must
   not leak into project planning for people
+
+## Extraction Note — 2026-07-19
+Extracted as **rule**: [[discount-dev-cost-in-design-decisions]] in `extracts/rules/`

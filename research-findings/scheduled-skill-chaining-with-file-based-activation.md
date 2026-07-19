@@ -33,6 +33,7 @@ last_updated: '2026-05-25'
 pipeline_status: synthesized
 consumed_by:
 - autonomous-scheduled-agent-operation.md
+- templates/scheduled-job-config-schema-template.md
 tags:
 - session-95-reextract
 ---
@@ -81,3 +82,6 @@ The file-based activation pattern would benefit from a standard schema: job name
 ## Potential Failure Modes
 
 File-based activation is fragile: a typo in the config file silently disables a job. No alerting when a scheduled job fails or when the entire scheduler stops running (laptop closed, machine rebooted). Skill chaining without error propagation means a failed early step produces garbage input for subsequent steps. The practitioner's 20% failure rate in fully autonomous workflows likely includes chain-propagation failures.
+
+## Extraction Note — 2026-07-19
+Extracted as **template**: [[scheduled-job-config-schema-template]] in `extracts/templates/`

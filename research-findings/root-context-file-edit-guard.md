@@ -42,6 +42,7 @@ last_updated: '2026-07-12'
 pipeline_status: synthesized
 consumed_by:
 - agent-governance-and-trust.md
+- rules/ask-before-editing-root-context-file.md
 ---
 
 ## What It Is
@@ -87,3 +88,6 @@ pointed-to file should hold?).
 Instruction-level guards are soft — an agent can fail to honor the rule it was asked
 to read, so high-stakes setups still want a mechanical backstop. Over-extension (asking
 before editing *any* file) recreates prompt-fatigue and trains reflexive approval.
+
+## Extraction Note — 2026-07-19
+Extracted as **rule**: [[ask-before-editing-root-context-file]] in `extracts/rules/`

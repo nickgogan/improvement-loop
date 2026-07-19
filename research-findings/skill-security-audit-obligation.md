@@ -36,6 +36,7 @@ last_updated: '2026-07-12'
 pipeline_status: synthesized
 consumed_by:
 - agent-safety-and-permissions.md
+- rules/audit-skills-before-install.md
 ---
 
 # Skill Security Audit Obligation (Trust Boundary at Install Time)
@@ -93,3 +94,6 @@ Signed skills with cryptographic provenance. Per-skill capability declaration (t
 **Allowed-tools grant inflation.** A skill checked into a project with `allowed-tools: Bash(*) Read Write` grants itself broad authority. Project trust dialog accepts the broad grant. Users may not realize the grant is at skill-level, not per-invocation.
 
 **Auditor != installer.** Enterprise deployments push skills to many users. The auditor is one role; the installer/runner is another. The audit needs to scale to the audience, and the audit results need to be communicated to runners.
+
+## Extraction Note — 2026-07-19
+Extracted as **rule**: [[audit-skills-before-install]] in `extracts/rules/`

@@ -20,6 +20,7 @@ related_findings:
 pipeline_status: synthesized
 consumed_by:
 - building-agentic-systems.md
+- rules/wiring-rows-must-declare-testable-invariant.md
 tags:
 - system-contract
 - invariants
@@ -83,3 +84,6 @@ unprobeable — the field only earns its keep if each invariant is binary-testab
 fresh session. And invariants are only checked at install/audit time in this design;
 between runs they are declared, not enforced (an absence CareerBuddy's contract itself
 declares).
+
+## Extraction Note — 2026-07-19
+Extracted as **rule**: [[wiring-rows-must-declare-testable-invariant]] in `extracts/rules/`

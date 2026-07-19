@@ -45,6 +45,7 @@ last_updated: "2026-07-18"
 pipeline_status: "synthesized"
 consumed_by:
   - "session-persistence-and-memory.md"
+  - "rules/block-level-incremental-snapshot-not-full-disk.md"
 tags:
   - "sandboxing"
   - "infrastructure"
@@ -136,3 +137,6 @@ pattern, since lineage chains only grow.
 - **FIEMAP dependency** — block-level extent-diffing requires the underlying filesystem
   to expose changed-extent tracking; this is not a universal capability across all
   storage backends or operating systems.
+
+## Extraction Note — 2026-07-19
+Extracted as **rule**: [[block-level-incremental-snapshot-not-full-disk]] in `extracts/rules/`

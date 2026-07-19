@@ -35,6 +35,7 @@ related_findings:
 pipeline_status: synthesized
 consumed_by:
 - eval-driven-improvement-loops.md
+- templates/convergence-and-severity-contract.md
 tags:
 - convergence-loop
 - severity-scale
@@ -109,3 +110,6 @@ verified*.
   only works if severity definitions are shared across all members.
 - **Convergence theater.** If re-audits are not blind (fresh context), the loop converges
   because the auditor remembers its own fixes, not because the artifact is clean.
+
+## Extraction Note — 2026-07-19
+Extracted as **template**: [[convergence-and-severity-contract]] in `extracts/templates/`

@@ -25,6 +25,7 @@ related_findings:
 pipeline_status: synthesized
 consumed_by:
 - building-agentic-systems.md
+- templates/system-contract-wiring-row-schema.md
 tags:
 - system-contract
 - agent-card
@@ -105,3 +106,6 @@ the only write path. An over-detailed vocabulary invites classification debates 
 of installs. The contract is only as honest as its trust section; omitting a declared
 absence (e.g. prose-only permission guards) produces installs that assume enforcement
 that does not exist.
+
+## Extraction Note — 2026-07-19
+Extracted as **template**: [[system-contract-wiring-row-schema]] in `extracts/templates/`

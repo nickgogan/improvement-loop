@@ -24,6 +24,7 @@ related_findings: []
 pipeline_status: synthesized
 consumed_by:
 - eval-driven-improvement-loops.md
+- templates/skill-smells-triage-table.md
 tags:
 - skill-authoring
 - anti-patterns
@@ -54,3 +55,6 @@ The quantified verdict rule does the routing: 0 smells → run the deterministic
 ## How It Could Fail
 
 The table only stays cheap if it stays one page; growing it toward completeness turns it back into the audit it was meant to precede. Every smell row must point into a maintained deep reference — orphaned rows ("go to" targets that moved) silently kill trust in the whole table. And the 3+/cross-category threshold is a heuristic calibrated on one production system; other rosters may need different cut-offs.
+
+## Extraction Note — 2026-07-19
+Extracted as **template**: [[skill-smells-triage-table]] in `extracts/templates/`

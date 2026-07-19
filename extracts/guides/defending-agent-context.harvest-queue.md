@@ -83,7 +83,7 @@ Nothing here is auto-extracted; rows feed `/extract-artifacts` only after Nick r
 ### memory-file-to-skill-migration::skill::memory-file-to-skill-migration-pass
 
 - **Date queued:** 2026-07-13
-- **Status:** nick-approved
+- **Status:** extracted
 - **Target form:** skill
 - **Source finding:** [[memory-file-to-skill-migration]]
 - **Source excerpt:**
@@ -96,11 +96,12 @@ Nothing here is auto-extracted; rows feed `/extract-artifacts` only after Nick r
 - **Recommendation:** extract via /extract-artifacts
 - **Resolution:** extracted to [[memory-file-to-skill-migration-pass]]
 - Extracted 2026-07-13 — Session 146 — [[defending-agent-context.harvest-queue]] — to [[memory-file-to-skill-migration-pass]]. DD-97 corpus scan of `extracts/skills/` found no match.
+- Status reconciled 2026-07-19 — Session 152 — [[defending-agent-context.harvest-queue]] — per-row Status field was stuck at `nick-approved` despite the artifact, Resolution, and the session-146 footer already reflecting the extraction (idempotent-recovery path per this skill's Failure Modes table: Step 3 dedup detected the existing [[memory-file-to-skill-migration-pass]] for source_finding `memory-file-to-skill-migration`, skipped drafting, and Step 4.8 Branch B completed the queue write-back); flipped to `extracted` to match. No new artifact written.
 
 ### skill-pruning-failure-modes-noop-deletion-test::rule::deletion-test-for-no-op-instructions
 
 - **Date queued:** 2026-07-13
-- **Status:** nick-approved
+- **Status:** extracted
 - **Target form:** rule
 - **Source finding:** [[skill-pruning-failure-modes-noop-deletion-test]]
 - **Source excerpt:**
@@ -112,3 +113,4 @@ Nothing here is auto-extracted; rows feed `/extract-artifacts` only after Nick r
 - **Recommendation:** extract via /extract-artifacts
 - **Resolution:** extracted to [[deletion-test-for-no-op-instructions]]
 - Extracted 2026-07-13 — Session 146 — [[defending-agent-context.harvest-queue]] — to [[deletion-test-for-no-op-instructions]]. DD-97 corpus scan of `extracts/rules/` found no match (the `claudemd-minimum-viable-rule` is an authorship-side global-truth gate on additions; the deletion test is a distinct audit-side no-op-detection primitive).
+- Status reconciled 2026-07-19 — Session 152 — [[defending-agent-context.harvest-queue]] — per-row Status field was stuck at `nick-approved` despite the artifact, Resolution, and this footer already reflecting the session-146 extraction (idempotent-recovery path per this skill's Failure Modes table); flipped to `extracted` to match. No new artifact written.

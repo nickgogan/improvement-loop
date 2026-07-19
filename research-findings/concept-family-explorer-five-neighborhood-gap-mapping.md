@@ -28,6 +28,7 @@ related_findings:
 pipeline_status: synthesized
 consumed_by:
 - production-agent-execution.md
+- templates/five-neighborhood-coverage-checklist.md
 tags:
 - gap-analysis
 - concept-mapping
@@ -94,3 +95,6 @@ coverage* of a domain; use the build engine directly when you already know the t
   map) is the cheap correction.
 - **Saturation without freshness.** A saturated tree goes stale; this only works long-
   term because the concept tree carries a staleness clock that re-queues old concepts.
+
+## Extraction Note — 2026-07-19
+Extracted as **template**: [[five-neighborhood-coverage-checklist]] in `extracts/templates/`

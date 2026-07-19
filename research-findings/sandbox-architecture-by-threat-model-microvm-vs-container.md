@@ -32,6 +32,7 @@ last_updated: '2026-07-18'
 pipeline_status: synthesized
 consumed_by:
 - agent-safety-and-permissions.md
+- rules/untrusted-code-requires-hardware-isolation.md
 ---
 
 # Sandbox Architecture by Threat Model (microVM vs Container)
@@ -74,3 +75,6 @@ A "graduated sandboxing" pattern that defaults to containers and escalates to mi
 - Stateful workflow forced onto microVM → every session starts from scratch; the persistence premise breaks
 - Per-sandbox resource ceilings (both providers) bite large-batch workloads before pricing does
 - OpenAI's talk corroborates and sharpens this finding's cost side: guest/host context switches carry real performance overhead; memory reclaim requires a balloon driver and is reactive, not immediate (the guest must be asked to give memory back, it can't be reclaimed on demand); and GPU access is hard inside a microVM — `virtio-GPU` gives only high-level graphics-library access, while `VFIO` gives direct hardware access but can only be held by one sandbox at a time (no multi-tenant sharing)
+
+## Extraction Note — 2026-07-19
+Extracted as **rule**: [[untrusted-code-requires-hardware-isolation]] in `extracts/rules/`

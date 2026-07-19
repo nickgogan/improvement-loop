@@ -67,6 +67,7 @@ last_updated: '2026-07-12'
 pipeline_status: synthesized
 consumed_by:
 - verifying-agent-output.md
+- skills/post-implementation-validation-pipeline.md
 ---
 
 ## What It Is
@@ -144,3 +145,6 @@ so any implementing agent can hand itself off to validation.
   against it convincingly
 - Babysitting agents that auto-resolve PR conflicts can silently make post-review changes
   that were never reviewed
+
+## Extraction Note — 2026-07-19
+Extracted as **skill**: [[post-implementation-validation-pipeline]] in `extracts/skills/`

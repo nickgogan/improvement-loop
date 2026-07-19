@@ -5,20 +5,20 @@ Nothing here is auto-extracted; rows feed `/extract-artifacts` only after Nick r
 
 | Date queued | Status | Target form | Source finding | Suggested headline | Recommendation |
 |---|---|---|---|---|---|
-| 2026-07-16 | queued | rule | [[mandatory-explicit-model-per-dispatch]] | "explicit-model-per-subagent-dispatch" | extract via /extract-artifacts |
-| 2026-07-16 | queued | rule | [[no-mid-session-model-switching-subagent-handoff]] | "pin-model-per-session-delegate-instead" | extract via /extract-artifacts |
-| 2026-07-16 | queued | rule | [[dev-cost-estimation-bias-correction]] | "discount-dev-cost-in-design-decisions" | extract via /extract-artifacts |
-| 2026-07-16 | queued | rule | [[seven-rung-minimal-code-decision-ladder]] | "reuse-before-write-decision-ladder" | extract via /extract-artifacts |
-| 2026-07-16 | queued | template | [[skill-description-structure-what-when-capabilities]] | "skill-description-three-part-template" | extract via /extract-artifacts |
-| 2026-07-16 | queued | template | [[strictness-escalation-skill-architecture]] | "strict-mode-review-skill-overlay" | extract via /extract-artifacts |
-| 2026-07-16 | queued | template | [[hands-off-routine-prompt-precision-pattern]] | "unattended-routine-prompt-sop-checklist" | dismiss as inline |
+| 2026-07-16 | extracted | rule | [[mandatory-explicit-model-per-dispatch]] | "explicit-model-per-subagent-dispatch" | extracted to [[explicit-model-per-subagent-dispatch]] |
+| 2026-07-16 | extracted | rule | [[no-mid-session-model-switching-subagent-handoff]] | "pin-model-per-session-delegate-instead" | extracted to [[pin-model-per-session-delegate-instead]] |
+| 2026-07-16 | extracted | rule | [[dev-cost-estimation-bias-correction]] | "discount-dev-cost-in-design-decisions" | extracted to [[discount-dev-cost-in-design-decisions]] |
+| 2026-07-16 | extracted | rule | [[seven-rung-minimal-code-decision-ladder]] | "reuse-before-write-decision-ladder" | extracted to [[reuse-before-write-decision-ladder]] |
+| 2026-07-16 | extracted | template | [[skill-description-structure-what-when-capabilities]] | "skill-description-three-part-template" | extracted to [[skill-description-three-part-template]] |
+| 2026-07-16 | extracted | template | [[strictness-escalation-skill-architecture]] | "strict-mode-review-skill-overlay" | extracted to [[strict-mode-review-skill-overlay]] |
+| 2026-07-16 | nick-dismissed | template | [[hands-off-routine-prompt-precision-pattern]] | "unattended-routine-prompt-sop-checklist" | dismissed |
 
 ## Per-row details
 
 ### mandatory-explicit-model-per-dispatch::rule::explicit-model-per-subagent-dispatch
 
 - **Date queued:** 2026-07-16
-- **Status:** queued
+- **Status:** extracted
 - **Target form:** rule
 - **Source finding:** [[mandatory-explicit-model-per-dispatch]]
 - **Source excerpt:**
@@ -26,12 +26,14 @@ Nothing here is auto-extracted; rows feed `/extract-artifacts` only after Nick r
 - **Codifier's reading:** Imperative, machine-enforceable directive ("every dispatch MUST name a model") with a checkable property (model field present + tier distribution auditable). Clean rule-form fit per the form rubric; the finding itself frames it as a dispatch-time governance rule. Directly applicable to the engine's own fan-outs (see the session-146 fan-out model-class ruling).
 - **Suggested headline:** explicit-model-per-subagent-dispatch
 - **Recommendation:** extract via /extract-artifacts
-- **Resolution:**
+- **Resolution:** extracted to [[explicit-model-per-subagent-dispatch]]
+
+Extracted 2026-07-19 — Session 152 — [[model-resilient-prompt-engineering.harvest-queue]] — to [[explicit-model-per-subagent-dispatch]].
 
 ### no-mid-session-model-switching-subagent-handoff::rule::pin-model-per-session-delegate-instead
 
 - **Date queued:** 2026-07-16
-- **Status:** queued
+- **Status:** extracted
 - **Target form:** rule
 - **Source finding:** [[no-mid-session-model-switching-subagent-handoff]]
 - **Source excerpt:**
@@ -39,12 +41,14 @@ Nothing here is auto-extracted; rows feed `/extract-artifacts` only after Nick r
 - **Codifier's reading:** Never-X-do-Y-instead directive, enforceable at design-review time ("any skill that suggests changing model mid-run gets flagged" — the finding proposes exactly this design-time check). Rule form per the rubric's imperative test; implementation notes already name the target surfaces (skill/agent design templates, /design-agent variant B).
 - **Suggested headline:** pin-model-per-session-delegate-instead
 - **Recommendation:** extract via /extract-artifacts
-- **Resolution:**
+- **Resolution:** extracted to [[pin-model-per-session-delegate-instead]]
+
+Extracted 2026-07-19 — Session 152 — [[model-resilient-prompt-engineering.harvest-queue]] — to [[pin-model-per-session-delegate-instead]].
 
 ### dev-cost-estimation-bias-correction::rule::discount-dev-cost-in-design-decisions
 
 - **Date queued:** 2026-07-16
-- **Status:** queued
+- **Status:** extracted
 - **Target form:** rule
 - **Source finding:** [[dev-cost-estimation-bias-correction]]
 - **Source excerpt:**
@@ -52,12 +56,14 @@ Nothing here is auto-extracted; rows feed `/extract-artifacts` only after Nick r
 - **Codifier's reading:** Literal one-line standing rule intended for always-loaded context — the artifact IS a rule by the source's own framing. The finding's implementation notes name it "directly adoptable as a candidate standing rule in the engine's CLAUDE.md / agent constitutions," with the Occam's-razor interaction caveat to carry into the artifact's applicability clause.
 - **Suggested headline:** discount-dev-cost-in-design-decisions
 - **Recommendation:** extract via /extract-artifacts
-- **Resolution:**
+- **Resolution:** extracted to [[discount-dev-cost-in-design-decisions]]
+
+Extracted 2026-07-19 — Session 152 — [[model-resilient-prompt-engineering.harvest-queue]] — to [[discount-dev-cost-in-design-decisions]].
 
 ### seven-rung-minimal-code-decision-ladder::rule::reuse-before-write-decision-ladder
 
 - **Date queued:** 2026-07-16
-- **Status:** queued
+- **Status:** extracted
 - **Target form:** rule
 - **Source finding:** [[seven-rung-minimal-code-decision-ladder]]
 - **Source excerpt:**
@@ -65,12 +71,14 @@ Nothing here is auto-extracted; rows feed `/extract-artifacts` only after Nick r
 - **Codifier's reading:** Ordered pre-generation checklist with a mandatory-sequence directive ("must climb before generating") — rule-shaped and model-independent per the finding's own implementation notes ("a candidate rule for any engine surface that generates code"). The Ponytail plugin wrapper is skill-shaped, but the extractable core is the ladder itself.
 - **Suggested headline:** reuse-before-write-decision-ladder
 - **Recommendation:** extract via /extract-artifacts
-- **Resolution:**
+- **Resolution:** extracted to [[reuse-before-write-decision-ladder]]
+
+Extracted 2026-07-19 — Session 152 — [[model-resilient-prompt-engineering.harvest-queue]] — to [[reuse-before-write-decision-ladder]].
 
 ### skill-description-structure-what-when-capabilities::template::skill-description-three-part-template
 
 - **Date queued:** 2026-07-16
-- **Status:** queued
+- **Status:** extracted
 - **Target form:** template
 - **Source finding:** [[skill-description-structure-what-when-capabilities]]
 - **Source excerpt:**
@@ -78,12 +86,14 @@ Nothing here is auto-extracted; rows feed `/extract-artifacts` only after Nick r
 - **Codifier's reading:** A structural scaffold meant for rendering — fixed slot structure plus validation constraints, exactly template form per the rubric. P1 finding; natural substrate for `/design-skill`'s Template skeleton and `/assess-skill`'s description check. Guide Template 7 embodies it; a standalone template artifact would make it reusable outside the guide.
 - **Suggested headline:** skill-description-three-part-template
 - **Recommendation:** extract via /extract-artifacts
-- **Resolution:**
+- **Resolution:** extracted to [[skill-description-three-part-template]]
+
+Extracted 2026-07-19 — Session 152 — [[model-resilient-prompt-engineering.harvest-queue]] — to [[skill-description-three-part-template]].
 
 ### strictness-escalation-skill-architecture::template::strict-mode-review-skill-overlay
 
 - **Date queued:** 2026-07-16
-- **Status:** queued
+- **Status:** extracted
 - **Target form:** template
 - **Source finding:** [[strictness-escalation-skill-architecture]]
 - **Source excerpt:**
@@ -91,12 +101,14 @@ Nothing here is auto-extracted; rows feed `/extract-artifacts` only after Nick r
 - **Codifier's reading:** The finding's own implementation notes propose the artifact: an eight-slot structural scaffold for audit-grade skills — template form (structure meant for rendering into new SKILL.md drafts), not a skill to adopt as-is. Target surface: `/design-skill` Template skeleton as an optional overlay.
 - **Suggested headline:** strict-mode-review-skill-overlay
 - **Recommendation:** extract via /extract-artifacts
-- **Resolution:**
+- **Resolution:** extracted to [[strict-mode-review-skill-overlay]]
+
+Extracted 2026-07-19 — Session 152 — [[model-resilient-prompt-engineering.harvest-queue]] — to [[strict-mode-review-skill-overlay]].
 
 ### hands-off-routine-prompt-precision-pattern::template::unattended-routine-prompt-sop-checklist
 
 - **Date queued:** 2026-07-16
-- **Status:** queued
+- **Status:** nick-dismissed
 - **Target form:** template
 - **Source finding:** [[hands-off-routine-prompt-precision-pattern]]
 - **Source excerpt:**
@@ -104,4 +116,6 @@ Nothing here is auto-extracted; rows feed `/extract-artifacts` only after Nick r
 - **Codifier's reading:** The embedded five-point authorship checklist is template-shaped (a scaffold for writing routine prompts), but it is speculative in the source ("could add") and the guide's Step 2 decision tree already carries the full discipline inline. Queued for completeness per DD-101's LLM-loose calibration; recommending dismissal as inline unless scheduled-skill authoring recurs as a demand.
 - **Suggested headline:** unattended-routine-prompt-sop-checklist
 - **Recommendation:** dismiss as inline
-- **Resolution:**
+- **Resolution:** dismissed
+
+Dismissed 2026-07-19 — Session 152 — [[model-resilient-prompt-engineering.harvest-queue]] — per --harvest-dismiss invocation.

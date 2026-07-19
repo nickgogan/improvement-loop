@@ -22,6 +22,7 @@ related_findings: []
 pipeline_status: synthesized
 consumed_by:
 - agent-governance-and-trust.md
+- templates/governance-files-blast-radius-registry.md
 tags:
 - governance-registry
 - blast-radius
@@ -76,3 +77,6 @@ always-on guard or an enforcement hook, not left as documentation. Binary tiers 
 too coarse (some files want "autonomous but reviewed"); resist adding tiers until
 recurrence demands it. Without the completeness audit, the registry decays into a
 partial list that gives false confidence — the audit is load-bearing, not optional.
+
+## Extraction Note — 2026-07-19
+Extracted as **template**: [[governance-files-blast-radius-registry]] in `extracts/templates/`

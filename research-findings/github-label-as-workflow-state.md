@@ -34,6 +34,7 @@ last_updated: '2026-07-12'
 pipeline_status: synthesized
 consumed_by:
 - autonomous-scheduled-agent-operation.md
+- templates/workflow-state-label-schema-template.md
 ---
 
 # GitHub Labels as Distributed Workflow State
@@ -81,3 +82,6 @@ StrongDM uses a similar label/status approach in their production dark factory. 
 - Label namespace collision if the repo is used for non-factory purposes (human engineers may misinterpret or accidentally apply factory labels)
 - GitHub API rate limits under high-volume label operations (100+ issues per triage cycle)
 - Race condition: two orchestrator cycles start simultaneously and both read `no label` before either applies `in-progress`
+
+## Extraction Note — 2026-07-19
+Extracted as **template**: [[workflow-state-label-schema-template]] in `extracts/templates/`

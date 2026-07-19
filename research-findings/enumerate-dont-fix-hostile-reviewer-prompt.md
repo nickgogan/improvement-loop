@@ -56,6 +56,7 @@ last_updated: '2026-07-13'
 pipeline_status: synthesized
 consumed_by:
 - verifying-agent-output.md
+- rules/enumerate-dont-fix-verifier-contract-line.md
 ---
 
 # Enumerate-Don't-Fix Hostile-Reviewer Prompt
@@ -103,3 +104,6 @@ The reviewer only finds what the checklist names — novel failure classes need 
 "suspect everything" stance to actually fire. Same-model enumeration still shares the
 generator's blind spots (shared training priors); cross-model review reduces but does not
 eliminate this.
+
+## Extraction Note — 2026-07-19
+Extracted as **rule**: [[enumerate-dont-fix-verifier-contract-line]] in `extracts/rules/`

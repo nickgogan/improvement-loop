@@ -22,6 +22,7 @@ related_findings: []
 pipeline_status: synthesized
 consumed_by:
 - production-agent-execution.md
+- templates/dispatch-table-schema-template.md
 tags:
 - dispatch-table
 - routing
@@ -54,3 +55,6 @@ A reference table in the skill package with one row per finding class. Each row 
 - The table is only as good as its class boundaries — CareerBuddy's own eval loop found trigger-surface confusion born exactly at skill-boundary edits (its L-16), and dispatch tables inherit the same seam risk.
 - Residual-duty rows quietly grow: "what this skill still does" is where scope creep hides if not audited.
 - A stale table routes to retired skills; because amendments go through the promotion gate, the table lags roster changes by at least one gated cycle.
+
+## Extraction Note — 2026-07-19
+Extracted as **template**: [[dispatch-table-schema-template]] in `extracts/templates/`

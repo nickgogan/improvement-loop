@@ -40,6 +40,7 @@ last_updated: "2026-07-18"
 pipeline_status: "synthesized"
 consumed_by:
   - "agent-design-patterns.md"
+  - "rules/name-single-principal-domain-expert.md"
 ---
 
 # Principal Domain Expert — Single Ownership Over Committee, Hire for Breadth
@@ -142,3 +143,6 @@ partition clarity, but this is inferred, not stated by Lovejoy.
 - **Narrow domain-only hires hit a ceiling** — set up for a later, disruptive
   re-organization when the org needs them to progress toward Evaluator/Architect and they
   lack the adjacent skills to grow into it.
+
+## Extraction Note — 2026-07-19
+Extracted as **rule**: [[name-single-principal-domain-expert]] in `extracts/rules/`

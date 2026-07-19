@@ -32,6 +32,7 @@ last_updated: '2026-07-12'
 pipeline_status: synthesized
 consumed_by:
 - agent-governance-and-trust.md
+- rules/side-effect-skills-require-explicit-invocation.md
 ---
 
 # Skill Invocation Control — Side-Effect Guard via disable-model-invocation
@@ -89,3 +90,6 @@ A `requires-confirmation: true` middle option — Claude can invoke but the user
 **Override settings shadow the flag.** `skillOverrides` in settings can flip a skill to `"user-invocable-only"` from outside the skill — the skill author's intent is overridable per user. Trust boundaries blur.
 
 **False sense of security.** `disable-model-invocation` prevents auto-loading but the user can still invoke the skill, and a malicious skill that gets the user to type its name still runs. The flag is a Claude-gating control, not a destructive-action control.
+
+## Extraction Note — 2026-07-19
+Extracted as **rule**: [[side-effect-skills-require-explicit-invocation]] in `extracts/rules/`

@@ -56,6 +56,7 @@ last_updated: '2026-07-12'
 pipeline_status: synthesized
 consumed_by:
 - agent-governance-and-trust.md
+- templates/seven-field-agent-owner-card.md
 ---
 
 ## What It Is
@@ -133,3 +134,6 @@ demonstrable oversight.
   ownership on paper, not in practice.
 - **Ownership without authority:** a named owner who cannot change the agent's sources
   or permissions can't act on what they observe.
+
+## Extraction Note — 2026-07-19
+Extracted as **template**: [[seven-field-agent-owner-card]] in `extracts/templates/`

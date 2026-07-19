@@ -32,6 +32,7 @@ last_updated: '2026-07-12'
 pipeline_status: synthesized
 consumed_by:
 - structuring-agent-context.md
+- rules/skill-description-char-caps.md
 ---
 
 # Skill-Description Budget and Context-Overflow Triage
@@ -105,3 +106,6 @@ consolidate behind one hub description, and spokes are never indexed at all.
 **Override settings as load-bearing.** Once `skillOverrides` is used to manage budget, it becomes a config surface that has to be maintained. Skills added to a project may not be discovered until override settings are updated.
 
 **`/doctor` is reactive, not preventive.** The user has to notice degraded behavior before checking the diagnostic. There's no automatic warning when the budget gets tight.
+
+## Extraction Note — 2026-07-19
+Extracted as **rule**: [[skill-description-char-caps]] in `extracts/rules/`

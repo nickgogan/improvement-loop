@@ -57,6 +57,7 @@ last_updated: '2026-07-13'
 pipeline_status: synthesized
 consumed_by:
 - designing-agent-tools.md
+- rules/declare-capabilities-as-tiers-not-booleans.md
 tags:
 - tool-integration
 - capability-registry
@@ -95,3 +96,6 @@ Bench-verify the tiered claims the way Omnigent verifies boolean ones — a decl
 ## Potential Failure Modes
 
 Declared tiers drift from actual provider behavior (declaration without verification). Tier vocabulary ossifies — a new provider capability that doesn't fit the enum forces either a lossy mapping or a breaking schema change. The validate-and-reask ladder can triple token cost on best-effort providers before failing anyway.
+
+## Extraction Note — 2026-07-19
+Extracted as **rule**: [[declare-capabilities-as-tiers-not-booleans]] in `extracts/rules/`

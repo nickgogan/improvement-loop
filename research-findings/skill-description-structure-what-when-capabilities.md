@@ -30,6 +30,7 @@ last_updated: '2026-06-11'
 pipeline_status: synthesized
 consumed_by:
 - model-resilient-prompt-engineering.md
+- templates/skill-description-three-part-template.md
 ---
 
 # Skill Description Structure — [What it does] + [When to use it] + [Key capabilities]
@@ -95,3 +96,6 @@ A description lint that scores against the three-part structure. Templates for c
 **Description bloat.** Three-part structure plus pushy language plus trigger phrases easily exceeds the 1,024-char limit. Hard wall — the description gets truncated at install or fails validation.
 
 **Description-body mismatch.** Description promises capabilities the body doesn't deliver. The skill triggers, then fails to perform.
+
+## Extraction Note — 2026-07-19
+Extracted as **template**: [[skill-description-three-part-template]] in `extracts/templates/`

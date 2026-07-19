@@ -46,6 +46,7 @@ last_updated: '2026-07-13'
 pipeline_status: synthesized
 consumed_by:
 - model-resilient-prompt-engineering.md
+- rules/pin-model-per-session-delegate-instead.md
 ---
 
 ## What It Is
@@ -88,3 +89,6 @@ Lindy could not lift-and-shift prompts, memory handling, or tool calls when movi
 Claude — the same model↔system coupling, one level up. Model choice binds at the session
 (this finding, cache economics) and at the architecture (Lindy, harness engineering);
 neither is a mid-flight dial.
+
+## Extraction Note — 2026-07-19
+Extracted as **rule**: [[pin-model-per-session-delegate-instead]] in `extracts/rules/`

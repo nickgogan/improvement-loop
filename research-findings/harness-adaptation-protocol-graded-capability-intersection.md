@@ -22,6 +22,7 @@ related_findings:
 pipeline_status: synthesized
 consumed_by:
 - building-agentic-systems.md
+- skills/harness-adaptation-install-protocol.md
 tags:
 - adaptation-protocol
 - capability-grading
@@ -93,3 +94,6 @@ be run as a checklist rather than built as tooling. Its honesty depends on the g
 and installer being the same agent with an incentive to ship; the per-step human gate
 and the source-side smoke baseline are the counterweights. Declared-but-unread trust
 sections reproduce the enforcement-assumption failure the contract exists to prevent.
+
+## Extraction Note — 2026-07-19
+Extracted as **skill**: [[harness-adaptation-install-protocol]] in `extracts/skills/`

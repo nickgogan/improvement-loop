@@ -27,6 +27,7 @@ pipeline_status: synthesized
 consumed_by:
 - verifying-agent-output.md
 - eval-driven-improvement-loops.md
+- rules/class-aware-eval-rubric-carve-outs.md
 tags:
 - evaluation
 - audit-rubric
@@ -56,3 +57,6 @@ Two explicit carve-outs on the Evaluation Design dimension (Specification Engine
 ## How It Could Fail
 
 Carve-outs are an escape hatch: authors will claim "subjective" to dodge eval work, so classification itself needs a gate (the source anchors it to output type, not author preference). And the script-core carve-out assumes the bundled tests are real and run — a stale test suite converts the carve-out into an unverified pass.
+
+## Extraction Note — 2026-07-19
+Extracted as **rule**: [[class-aware-eval-rubric-carve-outs]] in `extracts/rules/`

@@ -12,9 +12,9 @@ Nothing here is auto-extracted; rows feed `/extract-artifacts` only after Nick r
 | 2026-07-13 | extracted | rule | [[append-only-lesson-store-owning-surface-identity]] | "pruning-is-status-change-never-deletion" | extracted to [[pruning-is-status-change-never-deletion]] |
 | 2026-07-13 | extracted | rule | [[derive-dont-edit-artifacts-as-log-renders]] | "one-writer-per-artifact-derive-dont-edit" | merged into [[derived-artifacts-single-writer-rule]] |
 | 2026-07-13 | nick-dismissed | template | [[memory-system-evaluation-triad-storage-injection-recall]] | "memory-system-triad-scorecard" | dismissed |
-| 2026-07-19 | queued | rule | [[incremental-snapshotting-copy-on-write-block-diffing]] | "block-level-incremental-snapshot-not-full-disk" | extract via /extract-artifacts |
-| 2026-07-19 | queued | rule | [[posix-tiered-cache-persistence-over-object-storage]] | "posix-compliant-sandbox-storage-not-nfs" | extract via /extract-artifacts |
-| 2026-07-19 | queued | rule | [[agentic-file-classification-reliability-calibration]] | "consequence-weighted-classification-review-gate" | dismiss as inline |
+| 2026-07-19 | extracted | rule | [[incremental-snapshotting-copy-on-write-block-diffing]] | "block-level-incremental-snapshot-not-full-disk" | extracted to [[block-level-incremental-snapshot-not-full-disk]] |
+| 2026-07-19 | extracted | rule | [[posix-tiered-cache-persistence-over-object-storage]] | "posix-compliant-sandbox-storage-not-nfs" | extracted to [[posix-compliant-sandbox-storage-not-nfs]] |
+| 2026-07-19 | nick-dismissed | rule | [[agentic-file-classification-reliability-calibration]] | "consequence-weighted-classification-review-gate" | dismissed |
 
 ## Per-row details
 
@@ -103,7 +103,7 @@ Extracted 2026-07-13 — Session 146 — [[session-persistence-and-memory.harves
 ### incremental-snapshotting-copy-on-write-block-diffing::rule::block-level-incremental-snapshot-not-full-disk
 
 - **Date queued:** 2026-07-19
-- **Status:** queued
+- **Status:** extracted
 - **Target form:** rule
 - **Source finding:** [[incremental-snapshotting-copy-on-write-block-diffing]]
 - **Source excerpt:**
@@ -114,12 +114,16 @@ Extracted 2026-07-13 — Session 146 — [[session-persistence-and-memory.harves
 - **Codifier's reading:** Imperative, machine-checkable infrastructure directive ("snapshot agent disk state incrementally at block level with configurable scope, never full-disk") instantiating the pattern's stated requirement bar — a crisp, reusable rule for any agent-sandbox persistence layer. Applicability caveat: no live code-execution surface in the engine today (design-stage grounding); the rule is a general external best-practice, not engine-enforced.
 - **Suggested headline:** block-level-incremental-snapshot-not-full-disk
 - **Recommendation:** extract via /extract-artifacts
-- **Resolution:**
+- **Resolution:** extracted to [[block-level-incremental-snapshot-not-full-disk]]
+
+Extracted 2026-07-19 — Session 152 — [[session-persistence-and-memory.harvest-queue]] — to [[block-level-incremental-snapshot-not-full-disk]].
+
+Extracted 2026-07-19 — Session 152 — [[session-persistence-and-memory.harvest-queue]] — to [[block-level-incremental-snapshot-not-full-disk]].
 
 ### posix-tiered-cache-persistence-over-object-storage::rule::posix-compliant-sandbox-storage-not-nfs
 
 - **Date queued:** 2026-07-19
-- **Status:** queued
+- **Status:** extracted
 - **Target form:** rule
 - **Source finding:** [[posix-tiered-cache-persistence-over-object-storage]]
 - **Source excerpt:**
@@ -130,12 +134,14 @@ Extracted 2026-07-13 — Session 146 — [[session-persistence-and-memory.harves
 - **Codifier's reading:** Imperative, machine-checkable directive ("expose agent sandbox storage through POSIX-compliant filesystem semantics; do not use NFS or other non-standard mounts") with an explicit reliability rationale (models trained on POSIX behavior). Reusable rule for any sandbox persistence substrate. Same no-live-sandbox applicability caveat as the companion snapshot rule.
 - **Suggested headline:** posix-compliant-sandbox-storage-not-nfs
 - **Recommendation:** extract via /extract-artifacts
-- **Resolution:**
+- **Resolution:** extracted to [[posix-compliant-sandbox-storage-not-nfs]]
+
+Extracted 2026-07-19 — Session 152 — [[session-persistence-and-memory.harvest-queue]] — to [[posix-compliant-sandbox-storage-not-nfs]].
 
 ### agentic-file-classification-reliability-calibration::rule::consequence-weighted-classification-review-gate
 
 - **Date queued:** 2026-07-19
-- **Status:** queued
+- **Status:** nick-dismissed
 - **Target form:** rule
 - **Source finding:** [[agentic-file-classification-reliability-calibration]]
 - **Source excerpt:**
@@ -145,4 +151,6 @@ Extracted 2026-07-13 — Session 146 — [[session-persistence-and-memory.harves
 - **Codifier's reading:** Reads as a rule-shape ("gate small-taxonomy classifications for human review by consequence, not uniformly"), but the finding itself explicitly disclaims directive status ("not a mandate to add gates … evidence, not a directive"), and the guidance is already carried inline in the regenerated guide's Step 5.1. Surfaced for the audit trail; better left inline than extracted as a standalone rule today.
 - **Suggested headline:** consequence-weighted-classification-review-gate
 - **Recommendation:** dismiss as inline
-- **Resolution:**
+- **Resolution:** dismissed
+
+Dismissed 2026-07-19 — Session 152 — [[session-persistence-and-memory.harvest-queue]] — per --harvest-dismiss invocation.

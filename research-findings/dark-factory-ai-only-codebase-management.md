@@ -39,6 +39,7 @@ last_updated: '2026-07-12'
 pipeline_status: synthesized
 consumed_by:
 - autonomous-scheduled-agent-operation.md
+- rules/deterministic-nodes-for-non-reasoning-steps.md
 ---
 
 # Dark Factory: AI-Only Autonomous Codebase Management
@@ -101,3 +102,6 @@ stay at supervised level 3 until per-workflow trust is earned, then subtract ove
   triggering deploys) should be plain code, not LLM calls — reliability by subtraction.
 - **Adoption signal update:** StrongDM remains the documented production example;
   undocumented deployments rumored in banking. Still "the dream," not the recommendation.
+
+## Extraction Note — 2026-07-19
+Extracted as **rule**: [[deterministic-nodes-for-non-reasoning-steps]] in `extracts/rules/`

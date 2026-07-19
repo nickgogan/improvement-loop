@@ -7,21 +7,21 @@ Rows transferred from the deprecated source guide `building-agent-evaluation-sui
 
 | Date queued | Status | Target form | Source finding | Suggested headline | Recommendation |
 |---|---|---|---|---|---|
-| 2026-07-16 | queued | skill | [[skill-description-optimization-loop-held-out-test]] | "skill-description-optimization-loop" | extract via /extract-artifacts |
-| 2026-07-16 | queued | template | [[skill-testing-three-tier-trigger-functional-perf]] | "three-tier-skill-test-plan" | extract via /extract-artifacts |
-| 2026-07-16 | queued | template | [[skill-smells-triage-layer-before-full-audit]] | "skill-smells-triage-table" | extract via /extract-artifacts |
-| 2026-07-16 | queued | skill | [[with-without-skill-ab-baseline-measurement]] | "with-without-skill-ab-baseline" | extract via /extract-artifacts |
-| 2026-07-16 | queued | template | [[convergence-loop-optimizer-family-contract]] | "convergence-and-severity-contract" | extract via /extract-artifacts |
-| 2026-07-16 | queued | rule | [[skill-popularity-vs-measured-efficacy]] | "no-adoption-without-eval-evidence" | extract via /extract-artifacts |
-| 2026-07-19 | queued | rule | [[garbage-collection-day-persona-review-agents]] | "convert-review-feedback-to-durable-checks" | extract via /extract-artifacts |
-| 2026-07-16 | queued | rule | [[eval-rubric-carve-outs-subjective-and-script-core-skills]] | "class-aware-eval-rubric-carve-outs" | extract via /extract-artifacts |
+| 2026-07-16 | extracted | skill | [[skill-description-optimization-loop-held-out-test]] | "skill-description-optimization-loop" | extracted to [[skill-description-optimization-loop]] |
+| 2026-07-16 | extracted | template | [[skill-testing-three-tier-trigger-functional-perf]] | "three-tier-skill-test-plan" | extracted to [[three-tier-skill-test-plan]] |
+| 2026-07-16 | extracted | template | [[skill-smells-triage-layer-before-full-audit]] | "skill-smells-triage-table" | extracted to [[skill-smells-triage-table]] |
+| 2026-07-16 | extracted | skill | [[with-without-skill-ab-baseline-measurement]] | "with-without-skill-ab-baseline" | extracted to [[with-without-skill-ab-baseline]] |
+| 2026-07-16 | extracted | template | [[convergence-loop-optimizer-family-contract]] | "convergence-and-severity-contract" | extracted to [[convergence-and-severity-contract]] |
+| 2026-07-16 | extracted | rule | [[skill-popularity-vs-measured-efficacy]] | "no-adoption-without-eval-evidence" | extracted to [[no-adoption-without-eval-evidence]] |
+| 2026-07-19 | nick-approved | rule | [[garbage-collection-day-persona-review-agents]] | "convert-review-feedback-to-durable-checks" | extract via /extract-artifacts |
+| 2026-07-16 | extracted | rule | [[eval-rubric-carve-outs-subjective-and-script-core-skills]] | "class-aware-eval-rubric-carve-outs" | extracted to [[class-aware-eval-rubric-carve-outs]] (duplicate of twin) |
 
 ## Per-row details
 
 ### skill-description-optimization-loop-held-out-test::skill::skill-description-optimization-loop
 
 - **Date queued:** 2026-07-16
-- **Status:** queued
+- **Status:** extracted
 - **Target form:** skill
 - **Source finding:** [[skill-description-optimization-loop-held-out-test]]
 - **Source excerpt:**
@@ -29,12 +29,14 @@ Rows transferred from the deprecated source guide `building-agent-evaluation-sui
 - **Codifier's reading:** A complete numbered procedure with defined input (eval set + skill path), invocation contract (the run_loop CLI), step-by-step structure, and termination condition (5 iterations, test-score selection) — skill shape per the form rubric.
 - **Suggested headline:** skill-description-optimization-loop
 - **Recommendation:** extract via /extract-artifacts
-- **Resolution:**
+- **Resolution:** extracted to [[skill-description-optimization-loop]]
+
+Extracted 2026-07-19 — Session 152 — [[eval-driven-improvement-loops.harvest-queue]] — to [[skill-description-optimization-loop]].
 
 ### skill-testing-three-tier-trigger-functional-perf::template::three-tier-skill-test-plan
 
 - **Date queued:** 2026-07-16
-- **Status:** queued
+- **Status:** extracted
 - **Target form:** template
 - **Source finding:** [[skill-testing-three-tier-trigger-functional-perf]]
 - **Source excerpt:**
@@ -42,12 +44,14 @@ Rows transferred from the deprecated source guide `building-agent-evaluation-sui
 - **Codifier's reading:** The three-tier structure with named test-case shapes, given/when/then scaffolds, and a baseline-comparison format is a structural scaffold meant for rendering per skill — template form. (The guide's Skill Test Plan template embeds a merged variant; the standalone scaffold is the residual candidate.)
 - **Suggested headline:** three-tier-skill-test-plan
 - **Recommendation:** extract via /extract-artifacts
-- **Resolution:**
+- **Resolution:** extracted to [[three-tier-skill-test-plan]]
+
+Extracted 2026-07-19 — Session 152 — [[eval-driven-improvement-loops.harvest-queue]] — to [[three-tier-skill-test-plan]].
 
 ### skill-smells-triage-layer-before-full-audit::template::skill-smells-triage-table
 
 - **Date queued:** 2026-07-16
-- **Status:** queued
+- **Status:** extracted
 - **Target form:** template
 - **Source finding:** [[skill-smells-triage-layer-before-full-audit]]
 - **Source excerpt:**
@@ -55,12 +59,14 @@ Rows transferred from the deprecated source guide `building-agent-evaluation-sui
 - **Codifier's reading:** A fixed table shape (symptom → cause → pointer) with five named categories and a quantified verdict rule is a fillable structural scaffold for any assessor roster — template form. Finding is P1 (Direct Adoption); its implementation_notes name a smells pre-pass for /assess-skill.
 - **Suggested headline:** skill-smells-triage-table
 - **Recommendation:** extract via /extract-artifacts
-- **Resolution:**
+- **Resolution:** extracted to [[skill-smells-triage-table]]
+
+Extracted 2026-07-19 — Session 152 — [[eval-driven-improvement-loops.harvest-queue]] — to [[skill-smells-triage-table]].
 
 ### with-without-skill-ab-baseline-measurement::skill::with-without-skill-ab-baseline
 
 - **Date queued:** 2026-07-16
-- **Status:** queued
+- **Status:** extracted
 - **Target form:** skill
 - **Source finding:** [[with-without-skill-ab-baseline-measurement]]
 - **Source excerpt:**
@@ -68,12 +74,14 @@ Rows transferred from the deprecated source guide `building-agent-evaluation-sui
 - **Codifier's reading:** Defined input (skill + task corpus), procedure (fresh headless sessions, paired runs, diff), and output (marginal-impact delta + lessons log) — skill shape. Rule 10 note in the finding: the skill's author must not be its scorer.
 - **Suggested headline:** with-without-skill-ab-baseline
 - **Recommendation:** extract via /extract-artifacts
-- **Resolution:**
+- **Resolution:** extracted to [[with-without-skill-ab-baseline]]
+
+Extracted 2026-07-19 — Session 152 — [[eval-driven-improvement-loops.harvest-queue]] — to [[with-without-skill-ab-baseline]].
 
 ### convergence-loop-optimizer-family-contract::template::convergence-and-severity-contract
 
 - **Date queued:** 2026-07-16
-- **Status:** queued
+- **Status:** extracted
 - **Target form:** template
 - **Source finding:** [[convergence-loop-optimizer-family-contract]]
 - **Source excerpt:**
@@ -81,12 +89,14 @@ Rows transferred from the deprecated source guide `building-agent-evaluation-sui
 - **Codifier's reading:** A shared contract document with a five-part fixed structure and a per-member verify-gate column is a structural scaffold stamped out per artifact type — template form. Implementation_notes call the per-artifact verify-gate column "a ready-made template."
 - **Suggested headline:** convergence-and-severity-contract
 - **Recommendation:** extract via /extract-artifacts
-- **Resolution:**
+- **Resolution:** extracted to [[convergence-and-severity-contract]]
+
+Extracted 2026-07-19 — Session 152 — [[eval-driven-improvement-loops.harvest-queue]] — to [[convergence-and-severity-contract]].
 
 ### skill-popularity-vs-measured-efficacy::rule::no-adoption-without-eval-evidence
 
 - **Date queued:** 2026-07-16
-- **Status:** queued
+- **Status:** extracted
 - **Target form:** rule
 - **Source finding:** [[skill-popularity-vs-measured-efficacy]]
 - **Source excerpt:**
@@ -94,12 +104,14 @@ Rows transferred from the deprecated source guide `building-agent-evaluation-sui
 - **Codifier's reading:** A clean adoption imperative with a decidable check (published eval evidence OR local with/without baseline before install) — rule form. Implementation_notes name it a criteria-delta candidate for /assess-skill third-party intake and watched-libraries triage.
 - **Suggested headline:** no-adoption-without-eval-evidence
 - **Recommendation:** extract via /extract-artifacts
-- **Resolution:**
+- **Resolution:** extracted to [[no-adoption-without-eval-evidence]]
+
+Extracted 2026-07-19 — Session 152 — [[eval-driven-improvement-loops.harvest-queue]] — to [[no-adoption-without-eval-evidence]].
 
 ### garbage-collection-day-persona-review-agents::rule::convert-review-feedback-to-durable-checks
 
 - **Date queued:** 2026-07-19
-- **Status:** queued
+- **Status:** nick-approved
 - **Target form:** rule
 - **Source finding:** [[garbage-collection-day-persona-review-agents]]
 - **Source excerpt:**
@@ -109,10 +121,12 @@ Rows transferred from the deprecated source guide `building-agent-evaluation-sui
 - **Recommendation:** extract via /extract-artifacts
 - **Resolution:**
 
+Pending merge 2026-07-19 — Session 152 — [[eval-driven-improvement-loops.harvest-queue]] — DD-97 extension proposal emitted at [[operations/extension-proposals/2026-07-19-extension-proposals]]; primary match [[every-recurring-review-comment-triages-to-mechanism-or-judgment]]. Manual apply per DD-97 v1 (Step 1.7 auto-merge prohibition); after apply, row Status flips to `extracted` and Resolution to `merged into [[every-recurring-review-comment-triages-to-mechanism-or-judgment]]` via manual queue edit (or future skill mode).
+
 ### eval-rubric-carve-outs-subjective-and-script-core-skills::rule::class-aware-eval-rubric-carve-outs
 
 - **Date queued:** 2026-07-16
-- **Status:** queued
+- **Status:** extracted
 - **Target form:** rule
 - **Source finding:** [[eval-rubric-carve-outs-subjective-and-script-core-skills]]
 - **Source excerpt:**
@@ -120,4 +134,6 @@ Rows transferred from the deprecated source guide `building-agent-evaluation-sui
 - **Codifier's reading:** Imperative, machine-checkable directives ("must not be scored down", "required of every skill") that re-anchor an audit dimension — rule form. Directly patches a known /assess-skill misdiagnosis shape; finding is P1 (Direct Adoption). Shared finding — same row also appears in the G4a (verifying-agent-output) harvest queue.
 - **Suggested headline:** class-aware-eval-rubric-carve-outs
 - **Recommendation:** extract via /extract-artifacts
-- **Resolution:**
+- **Resolution:** extracted to [[class-aware-eval-rubric-carve-outs]] (resolved as duplicate of the shared-substrate twin)
+
+Extracted 2026-07-19 — Session 152 — [[eval-driven-improvement-loops.harvest-queue]] — resolved as duplicate of the G4a twin row (same source_finding `eval-rubric-carve-outs-subjective-and-script-core-skills`), already extracted earlier today from [[verifying-agent-output.harvest-queue]] to [[class-aware-eval-rubric-carve-outs]]. Per Rule #4 dedup-at-write / DD-97 single-match: no second artifact written; the shared finding is already back-annotated with `consumed_by: rules/class-aware-eval-rubric-carve-outs.md`.

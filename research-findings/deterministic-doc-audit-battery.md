@@ -32,6 +32,7 @@ related_findings:
 pipeline_status: synthesized
 consumed_by:
 - agent-governance-and-trust.md
+- skills/deterministic-doc-audit-script-battery.md
 tags:
 - deterministic-enforcement
 - doc-governance
@@ -88,3 +89,6 @@ Design properties that make the battery durable: stable check IDs referenced by 
 - Checks encode structure assumptions (table formats, heading names) in regex; a doc reformat silently breaks parsing — the script guards this with "parsed to zero rows" meta-errors, a pattern worth copying.
 - A green exit 0 proves structural consistency only, not content truth — CareerBuddy pairs it with an explicit LLM judgment sweep for that reason (see the two-layer finding).
 - Battery growth is monotonic; without a retirement discipline, dead checks accumulate maintenance cost.
+
+## Extraction Note — 2026-07-19
+Extracted as **skill**: [[deterministic-doc-audit-script-battery]] in `extracts/skills/` (harvest-queue promotion, DD-101 — row `deterministic-doc-audit-battery::skill::deterministic-doc-audit-script-battery` from [[agent-governance-and-trust.harvest-queue]]).

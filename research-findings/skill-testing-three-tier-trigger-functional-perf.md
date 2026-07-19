@@ -32,6 +32,7 @@ last_updated: '2026-06-11'
 pipeline_status: synthesized
 consumed_by:
 - eval-driven-improvement-loops.md
+- templates/three-tier-skill-test-plan.md
 ---
 
 # Skill Testing — Three-Tier (Triggering, Functional, Performance)
@@ -108,3 +109,6 @@ Per-tier test-case templates for common skill categories. Cross-tier diagnostics
 **Tiers run sequentially.** Authors who test tier 1 then move to tier 2 may not revisit tier 1 after changing the description. Triggering can regress silently while functional behavior is stable.
 
 **Tier 3 baseline is unfair.** If the baseline is "Claude with no context at all," the skill always looks great. The honest baseline is "Claude with whatever context the user would otherwise provide" — harder to measure but more truthful.
+
+## Extraction Note — 2026-07-19
+Extracted as **template**: [[three-tier-skill-test-plan]] in `extracts/templates/`

@@ -62,6 +62,7 @@ last_updated: '2026-07-12'
 pipeline_status: synthesized
 consumed_by:
 - model-resilient-prompt-engineering.md
+- rules/reuse-before-write-decision-ladder.md
 ---
 
 # Seven-Rung Minimal-Code Decision Ladder
@@ -109,3 +110,6 @@ shared components. Repo-wide simplification refactors carry real regression risk
 measured-delta/staging-clone finding — the source itself doesn't trust the audit output
 unverified). Vendor benchmark numbers are single-model and self-reported; treat the 94%
 headline as marketing until replicated.
+
+## Extraction Note — 2026-07-19
+Extracted as **rule**: [[reuse-before-write-decision-ladder]] in `extracts/rules/`

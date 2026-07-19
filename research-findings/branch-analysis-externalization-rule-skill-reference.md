@@ -53,6 +53,7 @@ last_updated: '2026-07-13'
 pipeline_status: synthesized
 consumed_by:
 - structuring-agent-context.md
+- rules/branch-analysis-reference-placement.md
 ---
 
 # Branch Analysis — the Externalization Decision Rule for Skill Reference Material
@@ -121,3 +122,6 @@ partial-branch material.
 - **Drift across files**: externalized templates version separately from the steps that
   use them; single-source-of-truth discipline has to span the skill folder, not just
   SKILL.md.
+
+## Extraction Note — 2026-07-19
+Extracted as **rule**: [[branch-analysis-reference-placement]] in `extracts/rules/`

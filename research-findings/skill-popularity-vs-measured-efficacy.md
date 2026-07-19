@@ -47,6 +47,7 @@ last_updated: '2026-07-12'
 pipeline_status: synthesized
 consumed_by:
 - eval-driven-improvement-loops.md
+- rules/no-adoption-without-eval-evidence.md
 ---
 
 ## What It Is
@@ -95,3 +96,6 @@ infrastructure are starting to publish negative results.
   published evals; the remedy is running your own baseline, not blanket rejection
 - Local evals can mismeasure: a skill can lose on a generic bench but win on the specific
   workflow it was written for
+
+## Extraction Note — 2026-07-19
+Extracted as **rule**: [[no-adoption-without-eval-evidence]] in `extracts/rules/`

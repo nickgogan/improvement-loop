@@ -32,6 +32,7 @@ last_updated: '2026-06-11'
 pipeline_status: synthesized
 consumed_by:
 - designing-agent-tools.md
+- rules/reference-bundled-scripts-via-claude-skill-dir.md
 ---
 
 # Code as Deterministic Tool Inside Skills
@@ -82,3 +83,6 @@ Standard script harness with structured output (JSON envelopes, error codes) so 
 **Security surface expansion.** A bundled script can do anything the user environment permits — file deletion, network exfiltration, credential access. The "audit before trust" obligation falls on the user/admin, but the script body isn't in the system prompt where it would otherwise be visible.
 
 **Network unavailability on surface mismatch.** Claude API runtime has no network; a skill whose bundled script makes HTTP calls works on Claude Code but fails on the API.
+
+## Extraction Note — 2026-07-19
+Extracted as **rule**: [[reference-bundled-scripts-via-claude-skill-dir]] in `extracts/rules/`

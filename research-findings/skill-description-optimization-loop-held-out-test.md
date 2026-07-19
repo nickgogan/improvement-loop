@@ -36,6 +36,7 @@ last_updated: '2026-07-12'
 pipeline_status: synthesized
 consumed_by:
 - eval-driven-improvement-loops.md
+- skills/skill-description-optimization-loop.md
 ---
 
 # Skill Description Optimization Loop with Held-Out Test Set
@@ -99,3 +100,6 @@ Continuous online optimization — log real user queries that did or didn't trig
 **Model-version dependency.** Running the loop with model X produces a description tuned for X's triggering behavior. A model upgrade may regress triggering accuracy. The loop should be re-run after major model changes; nothing automates that.
 
 **Triggering ≠ effectiveness.** A skill that triggers reliably but produces poor output gets a high trigger score but is a bad skill. The loop optimizes only the triggering layer.
+
+## Extraction Note — 2026-07-19
+Extracted as **skill**: [[skill-description-optimization-loop]] in `extracts/skills/`

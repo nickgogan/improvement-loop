@@ -56,6 +56,7 @@ last_updated: "2026-07-18"
 pipeline_status: "synthesized"
 consumed_by:
   - "agent-design-patterns.md"
+  - "templates/agent-folder-skeleton.md"
 tags:
   - "agent-design"
   - "agent-composition"
@@ -184,3 +185,6 @@ presenter's own single "Eve analyst" agent talking to a data warehouse and to Sl
 - **Sponsorship-calibrated evidence** — this is a launch demo by a paid partner (Vercel
   disclosed); no independent third-party production deployment is shown, only the
   presenter's own demo agent and Vercel's own infrastructure claims.
+
+## Extraction Note — 2026-07-19
+Extracted as **template**: [[agent-folder-skeleton]] in `extracts/templates/`

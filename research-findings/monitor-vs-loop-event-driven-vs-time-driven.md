@@ -28,6 +28,7 @@ related_findings:
 pipeline_status: synthesized
 consumed_by:
 - designing-agent-tools.md
+- rules/default-event-driven-watching-over-time-based-polling.md
 ---
 # Monitor vs /loop — Event-Driven vs Time-Driven Background Execution
 
@@ -54,3 +55,6 @@ The decision is often made by default (using /loop because it was the only optio
 ## Potential Failure Modes
 - Using /loop where Monitor applies wastes tokens and adds latency
 - Using Monitor where no reliable event stream exists produces silent false-negatives (no events = no awareness of problems)
+
+## Extraction Note — 2026-07-19
+Extracted as **rule**: [[default-event-driven-watching-over-time-based-polling]] in `extracts/rules/`

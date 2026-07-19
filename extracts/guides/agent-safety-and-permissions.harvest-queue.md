@@ -5,16 +5,16 @@ Nothing here is auto-extracted; rows feed `/extract-artifacts` only after Nick r
 
 | Date queued | Status | Target form | Source finding | Suggested headline | Recommendation |
 |---|---|---|---|---|---|
-| 2026-07-16 | queued | rule | [[shell-injection-vector-taxonomy-agent-bash-security]] | "bash-hook-injection-vector-checklist" | extract via /extract-artifacts |
-| 2026-07-16 | queued | rule | [[sandbox-architecture-by-threat-model-microvm-vs-container]] | "untrusted-code-requires-hardware-isolation" | extract via /extract-artifacts |
-| 2026-07-16 | queued | rule | [[skill-security-audit-obligation]] | "audit-skills-before-install" | extract via /extract-artifacts |
+| 2026-07-16 | extracted | rule | [[shell-injection-vector-taxonomy-agent-bash-security]] | "bash-hook-injection-vector-checklist" | extracted to [[bash-hook-injection-vector-checklist]] |
+| 2026-07-16 | extracted | rule | [[sandbox-architecture-by-threat-model-microvm-vs-container]] | "untrusted-code-requires-hardware-isolation" | extracted to [[untrusted-code-requires-hardware-isolation]] |
+| 2026-07-16 | extracted | rule | [[skill-security-audit-obligation]] | "audit-skills-before-install" | extracted to [[audit-skills-before-install]] |
 
 ## Per-row details
 
 ### shell-injection-vector-taxonomy-agent-bash-security::rule::bash-hook-injection-vector-checklist
 
 - **Date queued:** 2026-07-16
-- **Status:** queued
+- **Status:** extracted
 - **Target form:** rule
 - **Source finding:** [[shell-injection-vector-taxonomy-agent-bash-security]]
 - **Source excerpt:**
@@ -22,12 +22,14 @@ Nothing here is auto-extracted; rows feed `/extract-artifacts` only after Nick r
 - **Codifier's reading:** Imperative, machine-checkable audit directive ("for any proposed bash hook, confirm defenses against each named vector") with a closed enumerated checklist — fits the rule form's machine-enforceable-directive criterion. The finding itself proposes the rule-checklist as an improvement, so extraction intent is explicit in the source.
 - **Suggested headline:** bash-hook-injection-vector-checklist
 - **Recommendation:** extract via /extract-artifacts
-- **Resolution:**
+- **Resolution:** extracted to [[bash-hook-injection-vector-checklist]]
+
+Extracted 2026-07-19 — Session 152 — [[agent-safety-and-permissions.harvest-queue]] — to [[bash-hook-injection-vector-checklist]].
 
 ### sandbox-architecture-by-threat-model-microvm-vs-container::rule::untrusted-code-requires-hardware-isolation
 
 - **Date queued:** 2026-07-16
-- **Status:** queued
+- **Status:** extracted
 - **Target form:** rule
 - **Source finding:** [[sandbox-architecture-by-threat-model-microvm-vs-container]]
 - **Source excerpt:**
@@ -35,12 +37,14 @@ Nothing here is auto-extracted; rows feed `/extract-artifacts` only after Nick r
 - **Codifier's reading:** The finding is pattern-shaped overall, but its core decision criterion compresses to an imperative directive ("never route untrusted/model-generated code to a shared-kernel sandbox; require hardware isolation") that is binary-testable at architecture-review time — rule form.
 - **Suggested headline:** untrusted-code-requires-hardware-isolation
 - **Recommendation:** extract via /extract-artifacts
-- **Resolution:**
+- **Resolution:** extracted to [[untrusted-code-requires-hardware-isolation]]
+
+Extracted 2026-07-19 — Session 152 — [[agent-safety-and-permissions.harvest-queue]] — to [[untrusted-code-requires-hardware-isolation]].
 
 ### skill-security-audit-obligation::rule::audit-skills-before-install
 
 - **Date queued:** 2026-07-16
-- **Status:** queued
+- **Status:** extracted
 - **Target form:** rule
 - **Source finding:** [[skill-security-audit-obligation]]
 - **Source excerpt:**
@@ -48,4 +52,6 @@ Nothing here is auto-extracted; rows feed `/extract-artifacts` only after Nick r
 - **Codifier's reading:** Imperative install-time obligations ("install only from trusted sources", "audit before use") with three enumerated attack surfaces to check — machine-enforceable as a pre-install gate; fits rule form. Finding is still `pipeline_status: raw` with no prior extraction, so no merge target exists.
 - **Suggested headline:** audit-skills-before-install
 - **Recommendation:** extract via /extract-artifacts
-- **Resolution:**
+- **Resolution:** extracted to [[audit-skills-before-install]]
+
+Extracted 2026-07-19 — Session 152 — [[agent-safety-and-permissions.harvest-queue]] — to [[audit-skills-before-install]].

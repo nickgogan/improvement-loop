@@ -5,21 +5,21 @@ Nothing here is auto-extracted; rows feed `/extract-artifacts` only after Nick r
 
 | Date queued | Status | Target form | Source finding | Suggested headline | Recommendation |
 |---|---|---|---|---|---|
-| 2026-07-16 | queued | template | [[loop-node-anatomy-schema-enforced-ralph-primitive]] | "loop-anatomy-spec-template" | extract via /extract-artifacts |
-| 2026-07-16 | queued | template | [[work-ticket-contract-prompt-mode-vs-work-mode]] | "work-ticket-contract-template" | extract via /extract-artifacts |
-| 2026-07-16 | queued | skill | [[four-estimate-agent-routing-test]] | "four-estimate-routing-test-skill" | extract via /extract-artifacts |
-| 2026-07-16 | queued | rule | [[planner-executor-deterministic-guardrails]] | "deterministic-execution-boundary-rule" | extract via /extract-artifacts |
-| 2026-07-16 | queued | rule | [[effort-scaling-rules-embedded-in-orchestrator]] | "effort-scaling-resource-allocation-rule" | extract via /extract-artifacts |
-| 2026-07-19 | queued | template | [[structured-handoff-schema-self-healing-multi-agent-missions]] | "worker-handoff-schema-template" | extract via /extract-artifacts |
-| 2026-07-19 | queued | template | [[pre-code-validation-contracts-dual-blind-validators]] | "pre-code-validation-contract-template" | extract via /extract-artifacts |
-| 2026-07-19 | queued | rule | [[droid-whispering-per-role-model-assignment]] | "cross-provider-validator-assignment-rule" | extract via /extract-artifacts |
+| 2026-07-16 | extracted | template | [[loop-node-anatomy-schema-enforced-ralph-primitive]] | "loop-anatomy-spec-template" | extracted to [[loop-anatomy-spec-template]] |
+| 2026-07-16 | extracted | template | [[work-ticket-contract-prompt-mode-vs-work-mode]] | "work-ticket-contract-template" | extracted to [[work-ticket-contract-template]] |
+| 2026-07-16 | nick-approved | skill | [[four-estimate-agent-routing-test]] | "four-estimate-routing-test-skill" | extract via /extract-artifacts |
+| 2026-07-16 | nick-approved | rule | [[planner-executor-deterministic-guardrails]] | "deterministic-execution-boundary-rule" | extract via /extract-artifacts |
+| 2026-07-16 | extracted | rule | [[effort-scaling-rules-embedded-in-orchestrator]] | "effort-scaling-resource-allocation-rule" | already extracted (pre-dates queue) to [[tier-based-orchestrator-effort-scaling-rules]] |
+| 2026-07-19 | extracted | template | [[structured-handoff-schema-self-healing-multi-agent-missions]] | "worker-handoff-schema-template" | extracted to [[worker-handoff-schema-template]] |
+| 2026-07-19 | extracted | template | [[pre-code-validation-contracts-dual-blind-validators]] | "pre-code-validation-contract-template" | extracted to [[pre-code-validation-contract-template]] |
+| 2026-07-19 | nick-approved | rule | [[droid-whispering-per-role-model-assignment]] | "cross-provider-validator-assignment-rule" | extract via /extract-artifacts |
 
 ## Per-row details
 
 ### loop-node-anatomy-schema-enforced-ralph-primitive::template::loop-anatomy-spec-template
 
 - **Date queued:** 2026-07-16
-- **Status:** queued
+- **Status:** extracted
 - **Target form:** template
 - **Source finding:** [[loop-node-anatomy-schema-enforced-ralph-primitive]]
 - **Source excerpt:**
@@ -31,12 +31,14 @@ Nothing here is auto-extracted; rows feed `/extract-artifacts` only after Nick r
 - **Codifier's reading:** The loop-config element table is a structural scaffold meant for rendering — a complete fill-in spec for any agent loop (signal, check, budget, context policy, gate, observability, resume). It fits the template form: placeholder fields, structural form, reusable across loop implementations. The guide now embeds a Loop Anatomy Spec template derived from it; a standalone template artifact would make it reusable outside the guide.
 - **Suggested headline:** loop-anatomy-spec-template
 - **Recommendation:** extract via /extract-artifacts
-- **Resolution:**
+- **Resolution:** extracted to [[loop-anatomy-spec-template]]
+
+Extracted 2026-07-19 — Session 152 — [[agent-architecture-decisions.harvest-queue]] — to [[loop-anatomy-spec-template]].
 
 ### work-ticket-contract-prompt-mode-vs-work-mode::template::work-ticket-contract-template
 
 - **Date queued:** 2026-07-16
-- **Status:** queued
+- **Status:** extracted
 - **Target form:** template
 - **Source finding:** [[work-ticket-contract-prompt-mode-vs-work-mode]]
 - **Source excerpt:**
@@ -50,12 +52,14 @@ Nothing here is auto-extracted; rows feed `/extract-artifacts` only after Nick r
 - **Codifier's reading:** A fixed field list defining the boundary object for agent-to-agent/human work handoff, plus lifecycle states (claim receipt, done receipt, needs-input). Reads as a fillable structural scaffold — template form per the rubric's "structural form meant for rendering" criterion.
 - **Suggested headline:** work-ticket-contract-template
 - **Recommendation:** extract via /extract-artifacts
-- **Resolution:**
+- **Resolution:** extracted to [[work-ticket-contract-template]]
+
+Extracted 2026-07-19 — Session 152 — [[agent-architecture-decisions.harvest-queue]] — to [[work-ticket-contract-template]].
 
 ### four-estimate-agent-routing-test::skill::four-estimate-routing-test-skill
 
 - **Date queued:** 2026-07-16
-- **Status:** queued
+- **Status:** nick-approved
 - **Target form:** skill
 - **Source finding:** [[four-estimate-agent-routing-test]]
 - **Source excerpt:**
@@ -65,10 +69,12 @@ Nothing here is auto-extracted; rows feed `/extract-artifacts` only after Nick r
 - **Recommendation:** extract via /extract-artifacts
 - **Resolution:**
 
+Pending merge 2026-07-19 — Session 152 — [[agent-architecture-decisions.harvest-queue]] — DD-97 extension proposal emitted at [[operations/extension-proposals/2026-07-19-extension-proposals]]; primary match [[seam-map-delegation-rubric]]. Manual apply per DD-97 v1 (Step 1.7 auto-merge prohibition); after apply, row Status flips to `extracted` and Resolution to `merged into [[seam-map-delegation-rubric]]` via manual queue edit (or future skill mode). Codifier recommendation on record: create new (false positive) — proposal argues the four-estimate routing test and the seam-map partition rubric are orthogonal, sequentially-composable members of the same "pre-deployment human/AI allocation" family (route task → vehicle; if team, partition the work), not one subsuming the other; the `parameterize as mode variant` path is the surfaced alternative. Nick rules.
+
 ### planner-executor-deterministic-guardrails::rule::deterministic-execution-boundary-rule
 
 - **Date queued:** 2026-07-16
-- **Status:** queued
+- **Status:** nick-approved
 - **Target form:** rule
 - **Source finding:** [[planner-executor-deterministic-guardrails]]
 - **Source excerpt:**
@@ -78,10 +84,12 @@ Nothing here is auto-extracted; rows feed `/extract-artifacts` only after Nick r
 - **Recommendation:** extract via /extract-artifacts
 - **Resolution:**
 
+Pending merge 2026-07-19 — Session 152 — [[agent-architecture-decisions.harvest-queue]] — DD-97 extension proposal emitted at [[operations/extension-proposals/2026-07-19-extension-proposals]]; primary match [[deterministic-nodes-for-non-reasoning-workflow-steps]]. Manual apply per DD-97 v1 (Step 1.7 auto-merge prohibition); after apply, row Status flips to `extracted` and Resolution to `merged into [[deterministic-nodes-for-non-reasoning-workflow-steps]]` via manual queue edit (or future skill mode). Codifier recommendation on record: create new (false positive) — proposal argues this is a distinct architectural phase-boundary rule, not an extension; Nick rules.
+
 ### effort-scaling-rules-embedded-in-orchestrator::rule::effort-scaling-resource-allocation-rule
 
 - **Date queued:** 2026-07-16
-- **Status:** queued
+- **Status:** extracted
 - **Target form:** rule
 - **Source finding:** [[effort-scaling-rules-embedded-in-orchestrator]]
 - **Source excerpt:**
@@ -89,12 +97,14 @@ Nothing here is auto-extracted; rows feed `/extract-artifacts` only after Nick r
 - **Codifier's reading:** Tiered numeric allocation directives suitable for verbatim embedding in an orchestrator prompt — imperative and enforceable, rule shape. The finding was extracted as a pattern (2026-04-19); the embedded allocation table is a distinct rule-form candidate.
 - **Suggested headline:** effort-scaling-resource-allocation-rule
 - **Recommendation:** extract via /extract-artifacts
-- **Resolution:**
+- **Resolution:** already extracted to [[tier-based-orchestrator-effort-scaling-rules]]
+
+Dedup-skip 2026-07-19 — Session 152 — [[agent-architecture-decisions.harvest-queue]] — Step 3 dedup-at-write check (Rule #4) found an existing artifact `extracts/rules/tier-based-orchestrator-effort-scaling-rules.md` with the identical `source_finding: effort-scaling-rules-embedded-in-orchestrator`, extracted session 83 (2026-04-27) via the pre-DD-101 identification-report pipeline (`session-persistence-and-memory.harvest-queue.md::effort-scaling-rules-embedded-in-orchestrator::rule::tier-based-orchestrator-effort-scaling-rules`). This queue row was generated by a later `/synthesize-guide` co-occurrence scan without cross-checking prior extraction; no new artifact written. No `--harvest-row` invocation needed for this row going forward.
 
 ### structured-handoff-schema-self-healing-multi-agent-missions::template::worker-handoff-schema-template
 
 - **Date queued:** 2026-07-19
-- **Status:** queued
+- **Status:** extracted
 - **Target form:** template
 - **Source finding:** [[structured-handoff-schema-self-healing-multi-agent-missions]]
 - **Source excerpt:**
@@ -102,12 +112,14 @@ Nothing here is auto-extracted; rows feed `/extract-artifacts` only after Nick r
 - **Codifier's reading:** A fixed five-field schema a worker renders at each boundary — a structural scaffold with placeholder fields meant for rendering, template form per the rubric. The guide now embeds a Worker Handoff Schema template derived from it; a standalone template artifact would make it reusable outside this guide (P1 finding, so high extraction value).
 - **Suggested headline:** worker-handoff-schema-template
 - **Recommendation:** extract via /extract-artifacts
-- **Resolution:**
+- **Resolution:** extracted to [[worker-handoff-schema-template]]
+
+Extracted 2026-07-19 — Session 152 — [[agent-architecture-decisions.harvest-queue]] — to [[worker-handoff-schema-template]].
 
 ### pre-code-validation-contracts-dual-blind-validators::template::pre-code-validation-contract-template
 
 - **Date queued:** 2026-07-19
-- **Status:** queued
+- **Status:** extracted
 - **Target form:** template
 - **Source finding:** [[pre-code-validation-contracts-dual-blind-validators]]
 - **Source excerpt:**
@@ -115,12 +127,14 @@ Nothing here is auto-extracted; rows feed `/extract-artifacts` only after Nick r
 - **Codifier's reading:** The contract structure (assertion set + feature-assignment coverage rule + two named blind validators) is a fillable structural scaffold — template form. The guide embeds a Pre-Code Validation Contract template derived from it; a standalone artifact would make the before-code assertion pattern reusable.
 - **Suggested headline:** pre-code-validation-contract-template
 - **Recommendation:** extract via /extract-artifacts
-- **Resolution:**
+- **Resolution:** extracted to [[pre-code-validation-contract-template]]
+
+Extracted 2026-07-19 — Session 152 — [[agent-architecture-decisions.harvest-queue]] — to [[pre-code-validation-contract-template]].
 
 ### droid-whispering-per-role-model-assignment::rule::cross-provider-validator-assignment-rule
 
 - **Date queued:** 2026-07-19
-- **Status:** queued
+- **Status:** nick-approved
 - **Target form:** rule
 - **Source finding:** [[droid-whispering-per-role-model-assignment]]
 - **Source excerpt:**
@@ -129,3 +143,5 @@ Nothing here is auto-extracted; rows feed `/extract-artifacts` only after Nick r
 - **Suggested headline:** cross-provider-validator-assignment-rule
 - **Recommendation:** extract via /extract-artifacts
 - **Resolution:**
+
+Pending merge 2026-07-19 — Session 152 — [[agent-architecture-decisions.harvest-queue]] — DD-97 extension proposal emitted at [[operations/extension-proposals/2026-07-19-extension-proposals]]; primary match [[holdout-validation-pattern-blind-regression]]. Manual apply per DD-97 v1 (Step 1.7 auto-merge prohibition); after apply, row Status flips to `extracted` and Resolution to `merged into [[holdout-validation-pattern-blind-regression]]` via manual queue edit (or future skill mode). Codifier recommendation on record: create new (false positive) — proposal argues context-holdout and cross-provider assignment are orthogonal, composable bias-mitigation mechanisms, not one subsuming the other; Nick rules.

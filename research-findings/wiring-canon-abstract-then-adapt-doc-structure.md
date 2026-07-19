@@ -18,6 +18,7 @@ related_findings: []
 pipeline_status: synthesized
 consumed_by:
 - building-agentic-systems.md
+- templates/three-section-wiring-canon-doc-format.md
 tags:
 - wiring-canon
 - abstract-then-adapt
@@ -82,3 +83,6 @@ abstractions-earn-their-keep test applies). Examples drift into requirements whe
 harness-specific label is skipped. If regeneration is gated but never run, the canon
 quietly diverges from live wiring — the hash manifest exists precisely to make that
 divergence loud.
+
+## Extraction Note — 2026-07-19
+Extracted as **template**: [[three-section-wiring-canon-doc-format]] in `extracts/templates/`

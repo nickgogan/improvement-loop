@@ -55,6 +55,7 @@ last_updated: '2026-07-13'
 pipeline_status: synthesized
 consumed_by:
 - verifying-agent-output.md
+- templates/five-question-agent-health-review.md
 ---
 
 # Five-Point Agent Health Checklist
@@ -116,3 +117,6 @@ lighter — five questions an operator can run without tooling.
 - Answering from memory instead of evidence (point 4 applies to the reviewer too).
 - Skipping point 5 because retirement feels like failure; zombie agents that pass
   points 1-4 while producing unread output.
+
+## Extraction Note — 2026-07-19
+Extracted as **template**: [[five-question-agent-health-review]] in `extracts/templates/`

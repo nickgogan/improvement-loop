@@ -51,6 +51,7 @@ last_updated: '2026-07-12'
 pipeline_status: synthesized
 consumed_by:
 - verifying-agent-output.md
+- templates/task-risk-gradient-rubric.md
 ---
 
 # Task Risk Gradient for Calibrating Verification Depth
@@ -93,3 +94,6 @@ Misclassification is the whole risk: a "low-risk" summary wording change that al
 number's meaning slips under the light review tier. Gradients drift — what was low-stakes
 becomes load-bearing when an artifact gets promoted (a scratch model becomes the board
 model). Teams game the gradient under deadline pressure by classifying optimistically.
+
+## Extraction Note — 2026-07-19
+Extracted as **template**: [[task-risk-gradient-rubric]] in `extracts/templates/`

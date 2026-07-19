@@ -62,6 +62,7 @@ last_updated: '2026-07-13'
 pipeline_status: synthesized
 consumed_by:
 - agent-architecture-decisions.md
+- templates/work-ticket-contract-template.md
 ---
 
 ## What It Is
@@ -143,3 +144,6 @@ definition-of-done + receipt to standard + proof — adding the lifecycle mechan
 (claim-lock, needs-input) that only matter once multiple agents share the queue. Newer
 framing leads per the recency rule; the five-element version remains the right
 starting shape for single-operator loops.
+
+## Extraction Note — 2026-07-19
+Extracted as **template**: [[work-ticket-contract-template]] in `extracts/templates/`

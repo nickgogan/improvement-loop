@@ -31,6 +31,7 @@ last_updated: '2026-04-23'
 pipeline_status: synthesized
 consumed_by:
 - agent-safety-and-permissions.md
+- rules/bash-hook-injection-vector-checklist.md
 ---
 
 # Shell-Injection Vector Taxonomy for Agent Bash Security
@@ -74,3 +75,6 @@ Anthropic ships it in Claude Code's production bash tool; the leak surfaced it p
 - New injection vectors are invented; the taxonomy is a point-in-time snapshot
 - Overly aggressive blocking breaks legitimate workflows (e.g., all `curl` variants)
 - Hooks that don't run the module defeat the guarantee; single-point-of-defense is fragile
+
+## Extraction Note — 2026-07-19
+Extracted as **rule**: [[bash-hook-injection-vector-checklist]] in `extracts/rules/`

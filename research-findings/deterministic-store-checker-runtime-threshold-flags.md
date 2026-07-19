@@ -22,6 +22,7 @@ related_findings: []
 pipeline_status: synthesized
 consumed_by:
 - verifying-agent-output.md
+- rules/runtime-computed-counts-never-stored.md
 tags:
 - deterministic-validation
 - schema-check
@@ -57,3 +58,6 @@ Exit codes: `0` = schema valid (flags are informational), `1` = violations, `2` 
 - Regex grammars are brittle against legitimate new annotation needs — CareerBuddy needed two schema amendments in five days; without a cheap gated amendment path the checker becomes a reason to stop capturing.
 - Informational flags that nobody reads are dead code; CareerBuddy wires them into the skill's `status` mode so every store read surfaces them.
 - A checker validates shape, not truth — an untraceable or wrong lesson in valid format passes; the evidence-trace rule is enforced by procedure, not by the script.
+
+## Extraction Note — 2026-07-19
+Extracted as **rule**: [[runtime-computed-counts-never-stored]] in `extracts/rules/`

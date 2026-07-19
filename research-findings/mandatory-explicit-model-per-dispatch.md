@@ -49,6 +49,7 @@ last_updated: '2026-07-13'
 pipeline_status: synthesized
 consumed_by:
 - model-resilient-prompt-engineering.md
+- rules/explicit-model-per-subagent-dispatch.md
 tags:
 - model-selection
 - cost-governance
@@ -118,3 +119,6 @@ incident; part of an eval-backed rewrite that cut flow cost ~50%. Source: Observ
   mapping needs a refresh owner.
 - **Compliance theater** — controllers can satisfy the letter by always naming the
   default model; audits should check tier *distribution*, not field presence.
+
+## Extraction Note — 2026-07-19
+Extracted as **rule**: [[explicit-model-per-subagent-dispatch]] in `extracts/rules/`

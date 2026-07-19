@@ -56,6 +56,7 @@ last_updated: '2026-07-12'
 pipeline_status: synthesized
 consumed_by:
 - agent-governance-and-trust.md
+- templates/three-bucket-change-review-file.md
 ---
 
 ## What It Is
@@ -120,3 +121,6 @@ reach the same tier-the-gate conclusion from the escalation direction.
 - Bucket-1 scope creep via don't-ask-again — the auto-approve surface only ever grows.
 - Changelog theater: an audit trail nobody reads gives the feeling of oversight without
   the fact of it.
+
+## Extraction Note — 2026-07-19
+Extracted as **template**: [[three-bucket-change-review-file]] in `extracts/templates/`

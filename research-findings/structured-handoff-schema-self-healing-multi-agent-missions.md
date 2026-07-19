@@ -43,6 +43,7 @@ last_updated: '2026-07-18'
 pipeline_status: "synthesized"
 consumed_by:
   - "agent-architecture-decisions.md"
+  - "templates/worker-handoff-schema-template.md"
 ---
 
 ## What It Is
@@ -111,3 +112,6 @@ nice-to-have.
   and acting on handoffs at every milestone boundary; if that step is skipped or rushed
   under load, the schema's information is captured but not used, and the mission drifts
   anyway.
+
+## Extraction Note — 2026-07-19
+Extracted as **template**: [[worker-handoff-schema-template]] in `extracts/templates/`
