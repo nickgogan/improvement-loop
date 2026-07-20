@@ -7,7 +7,7 @@ target_system:
   - "improvement-loop"
 stage: "review"
 created: "2026-07-19"
-updated: "2026-07-19"
+updated: "2026-07-20"
 author: "claude"
 source_dd: []
 tags:
@@ -21,7 +21,10 @@ tags:
 # Asset-Description Language v0
 
 **Status: drafted autonomously under the Nick-ruled queue (2026-07-18, item 1);
-every ruling below is a proposal until Nick gates it.** This note is the spec-before-
+every ruling below is a proposal until Nick gates it.** Amended 2026-07-20 after an
+adversarial review pass (fresh-context critic; verdict ACCEPT-WITH-AMENDMENTS): the
+agent-class extension, two missing wiring rows, the Layer-2 staging honesty, and the
+expanded §7 gate list all originate from that critique. This note is the spec-before-
 build artifact for the portable JSON/YAML asset-description language. It pulls epic
 E3 forward: E3's acceptance criteria (prd.md §E3) fix the end-state — a ruled
 descriptor schema, one YAML per agent and per harness under a root descriptor, and a
@@ -44,20 +47,21 @@ compiler get a substrate they can check mechanically.
 
 Enumerated from the live filesystem (2026-07-19). The inventory is the *class* list —
 v0 does not commit to describing every instance of every class (see §7 open
-questions).
+questions). Counts are deliberately absent (workspace Process Rule: no hardcoded
+counts); the filesystem is the census.
 
-| Asset class | Where it lives today | Notes |
-|---|---|---|
-| Agents | `agents/{owner,researcher,codifier,librarian}/` + workspace `.claude/agents/*.md` | dual materialization: definition dir + harness subagent stub |
-| Skills | `systems/improvement-loop/.claude/skills/` (engine, DD-109) + workspace `.claude/skills/` (cross-system) | ~45 engine + 12 workspace |
-| Rules | `.claude/rules/governance.md`, `governance/*-rules.md` | harness-injected vs engine-law |
-| Hooks | git `pre-commit` (symlink → `operations/kb-maintenance-scripts/hooks/`), `settings.json` UserPromptSubmit → `capture_query.py` | two hook substrates: git and harness |
-| Kernel docs | `governance/constitution.md`, `prd.md`, `actors.md`, `FOUNDATIONS.md` (generated) | the export unit's core |
-| Governance databases | `project-management/design-decisions/`, `implementation-backlog/` | frontmatter is source of truth |
-| Knowledge | `knowledge/{guides,patterns,templates,reference,schematics}/` + `extracts/` (two bodies, DD-111) | |
-| Session-ops spine | `PROGRESS.md`, `HISTORY.md`, git conventions | behavior enforced by pre-commit hook |
-| Self-store | `operations/self/` (lessons, demand ledger, store checker) | |
-| Memory surfaces | harness auto-memory dir (`~/.claude/projects/…/memory/`) | **stubbed in v0** — E1 names these; the schema carries the field empty, mirroring E3's declared dependency on E1 |
+| Asset class | `class` enum value | Where it lives today | Notes |
+|---|---|---|---|
+| Agents | `agent` | `agents/{owner,researcher,codifier,librarian}/` + workspace `.claude/agents/*.md` | dual materialization: definition dir + harness subagent stub |
+| Skills | `skill` | `systems/improvement-loop/.claude/skills/` (engine, DD-109) + workspace `.claude/skills/` (cross-system) | |
+| Rules | `rule` | `.claude/rules/governance.md`, `governance/*-rules.md` | harness-injected vs engine-law |
+| Hooks | `hook` | git `pre-commit` (symlink → `operations/kb-maintenance-scripts/hooks/`), `settings.json` UserPromptSubmit → `capture_query.py` | two hook substrates: git and harness |
+| Kernel docs | `kernel-doc` | `governance/constitution.md`, `prd.md`, `actors.md`, `FOUNDATIONS.md` (generated) | the export unit's core |
+| Governance databases | `gov-db` | `project-management/design-decisions/`, `implementation-backlog/` | frontmatter is source of truth |
+| Knowledge | `knowledge` | `knowledge/{guides,patterns,templates,reference,schematics}/` + `extracts/` (two bodies, DD-111) | |
+| Session-ops spine | `ops-surface` | `PROGRESS.md`, `HISTORY.md`, git conventions | behavior enforced by pre-commit hook |
+| Self-store | `ops-surface` | `operations/self/` (lessons, demand ledger, store checker) | shares the `ops-surface` class with the spine |
+| Memory surfaces | `memory-surface` | harness auto-memory dir (`~/.claude/projects/…/memory/`) | **stubbed in v0** — E1 names these; the schema carries the field empty, mirroring E3's declared dependency on E1 |
 
 Two observations drive the design. First, the engine is **already folder-shaped**
 (DD-52 fractal; agent-as-directory DD-82): class membership is largely decidable from
@@ -72,16 +76,17 @@ parts of a multi-file agentic system stay wired to their description":
 
 - **Explicit wiring rows** — `machine-readable-system-contract-with-wiring-rows`
   (template: `system-contract-wiring-row-schema`). One row per harness-integration
-  concern; five fields: `tier` (required|optional), `capabilities` (IDs from a
-  controlled vocabulary), `purpose`, `degradation`, `invariant`. Hash manifest over
-  wired files detects contract-vs-reality drift. YAML is generated by a gated skill,
-  never hand-edited. Evidence: one production system's design-gate verdict; the
-  per-row invariant column has no prior art in the A2A/MCPB/OASF survey.
+  concern; row key `concern` plus five fields: `tier` (required|optional),
+  `capabilities` (IDs from a controlled vocabulary), `purpose`, `degradation`,
+  `invariant`. Hash manifest over wired files detects contract-vs-reality drift.
+  YAML is generated by a gated skill, never hand-edited. Evidence: one production
+  system's design-gate verdict; the per-row invariant column has no prior art in the
+  A2A/MCPB/OASF survey.
 - **Implicit folder discovery** — `agent-as-folder-compiled-to-manifest` (Vercel
   Eve; template: `agent-folder-skeleton`). Inclusion is structural — a file in the
   right folder — and a compile step produces one manifest; the entry point references
-  nothing. Evidence: active 3.8k-star framework. Known failure modes: silent
-  misplacement, no drift surface, legibility loss at scale.
+  nothing. Evidence: active multi-thousand-star framework. Known failure modes:
+  silent misplacement, no drift surface, legibility loss at scale.
 - **Named-registry declaration** — `declarative-agent-spec-with-serialization-registry`
   (pydantic-ai AgentSpec): every part declares a stable serialization name; parts that
   can't round-trip opt out honestly rather than failing at load.
@@ -89,11 +94,15 @@ parts of a multi-file agentic system stay wired to their description":
 **Proposed ruling — discover-then-declare hybrid, each stance at the layer where its
 evidence is strong:**
 
-1. **Inventory is discovered** (Eve's move). A compile step walks the fractal folders
-   and derives the asset inventory from path conventions. The engine should not
-   hand-maintain a list of ~60 skills that git already knows. The compiled descriptor
-   — not a re-read of the tree — is the authoritative record (the template's own
-   invariant).
+1. **Inventory is discovered** (Eve's move) — *from v2, when the compile step
+   exists*. A compile step walks the fractal folders and derives the asset inventory
+   from path conventions; the engine should not hand-maintain a census of a skill
+   corpus git already knows. **Staging honesty:** until that compiler ships, every
+   record is hand-authored — v0/v1 records are *declared, compiler-verified later*.
+   The Eve invariant ("the compiled manifest, not a re-read of the tree, is
+   authoritative") activates at v2, not before. The judgment fields (`who_owns`,
+   `misuse_risk`, `wiring_refs`) can never be discovered from paths at any version;
+   their source of truth is a §7 ruling.
 2. **Harness wiring is declared** (wiring-row move). What the engine *requires from a
    harness* cannot be discovered from folders — required-vs-optional, degradation
    paths, and invariants are judgments. These are explicit five-field rows, gated and
@@ -102,11 +111,22 @@ evidence is strong:**
    `manifest-hash-drift-detection-for-derived-docs`).
 3. **Registry honesty at the boundary** (AgentSpec's move). Anything the language
    cannot fully express (e.g. a hook's script behavior) declares itself
-   `described: partial` with a pointer, instead of pretending the YAML is complete.
+   `described: partial` with a mandatory `pointer` to where the rest lives, instead
+   of pretending the YAML is complete.
 
 This resolves the `contradicts` link deliberately: Eve is right about *inventory*,
 the wiring canon is right about *requirements*, and the tension dissolves once the
 two jobs are separated.
+
+**The single-harness warning, answered.** The wiring-canon finding's own failure
+mode — "for a single-harness system, canon + adapter is a layer without a second
+consumer" — applies here and is not dodged: the engine runs on one harness today.
+The named consumers that justify the layer anyway are not a hypothetical second
+platform but committed epics: E3's AC consumes the schema directly, E4's enforcement
+points are enumerated in the harness descriptor, E5 compiles from it, and the
+port/reharness meta-skills are the Nick-ruled goal of this queue item (2026-07-18
+expansion). If Nick rejects that reasoning, the fallback is Layer 3 alone (wiring
+rows, no per-asset records) — see §7 Q1.
 
 ## 3. The language — three layers
 
@@ -120,55 +140,86 @@ never requirement).
 ### Layer 1 — root system descriptor (`engine.yaml`, one per system)
 
 The card-over-manifest fusion from the KB finding, minus what the engine doesn't
-need yet (Occam):
+need yet (Occam). Identity and trust are **pointers into the kernel docs**, never
+restatements (route-then-compact) — only declared absences are stated inline,
+because omission is exactly what a pointer can't express:
 
 ```yaml
 system:
   id: improvement-loop
-  identity:                # canon — objective, hard constraints, autonomy, stop rules
-  trust:                   # canon — human-gate boundary (DD-29), declared absences
-composition:               # generated — asset inventory, discovered per Layer 2
-wiring:                    # declared — harness requirements, per Layer 3
-harness:                   # adapter-delegated — one block per target; claude-code first
+  schema_version: "0.1"        # canon — PRD names schema versioning as the lock-in mitigation
+  identity_ref: governance/constitution.md          # canon — objective, constraints, stop rules live there
+  trust_ref: governance/constitution.md             # canon — DD-29 human-gate boundary lives there
+  declared_absences: []        # canon — inline by design: what the system does NOT enforce
+composition:                   # v2: generated by the compile step; v1: declared per Layer 2
+wiring:                        # declared — harness requirements, per Layer 3
+harness:                       # adapter-delegated — one block per target; claude-code first
 ```
 
-### Layer 2 — per-asset record (generated, one per described asset)
+### Layer 2 — per-asset record (declared in v0/v1; compiler-verified from v2)
 
 Seeded from the wave-4 per-control record (where-lives / when-loads / what-job /
 who-owns / evidence / misuse-risk), which the triage report already named as the
-candidate seed for this schema:
+candidate seed for this schema. Two deliberate deltas from the seed: the `evidence`
+field is dropped (engine assets are not research artifacts — their evidence is git
+history and the KB citations already on them), and `misuse_risk` is kept verbatim.
+
+**Reuse-by-pointer rule (canon):** any field whose value already exists on the asset
+(skill frontmatter description, DD-78/DD-92 blocks, DD frontmatter) is a `ref:`, not
+a copy. Inline prose is permitted only for asset classes that lack a description
+surface of their own (hooks, ops-surfaces). This keeps the record a thin
+ownership-and-wiring sidecar, not a parallel corpus restating description semantics.
 
 ```yaml
 asset:
   id: session-handoff            # stable slug
   class: skill                   # canon enum: agent|skill|rule|hook|kernel-doc|gov-db|knowledge|ops-surface|memory-surface
   where_lives: .claude/skills/session-handoff/SKILL.md   # adapter-delegated (path is harness-materialized)
-  when_loads: "on /session-handoff invocation or session-close phrases"  # canon
-  what_job: "reconcile PROGRESS.md + HISTORY.md in place at session close"  # canon
-  who_owns: owner                # canon — actor slug from actors.md
-  described: full                # canon enum: full|partial (registry honesty; partial ⇒ pointer)
-  misuse_risk: "mid-session or manual PROGRESS edits bypass Process Rule 2"  # canon
+  what_job: "ref:frontmatter.description"    # reuse-by-pointer — skills state their own job
+  when_loads: "ref:frontmatter.description"  # skills carry their own triggers; inline only for classes that don't
+  who_owns: owner                # canon — actor slug from actors.md, or nick | unassigned
+  described: full                # canon enum: full | partial
+  pointer: null                  # canon — required (non-null) when described: partial
+  misuse_risk: "mid-session or manual PROGRESS edits bypass Process Rule 2"  # canon — no existing surface states this
   contract_ref: frontmatter      # pointer to the asset's DD-78/DD-92 blocks — never restated here
-  wiring_refs: [skill-registry]  # which Layer-3 rows this asset depends on
+  wiring_refs: [skill-registry, session-spine, commit-gate]  # every Layer-3 row this asset depends on
   memory: null                   # stub — E1 fills the field; schema carries it now
 ```
 
-The record **points at** existing description layers (`contract_ref`) rather than
-copying them — DD-78/DD-92 stay canonical on the artifact; the language adds only
-what no existing layer states (load timing, ownership, wiring dependency,
-misuse risk).
+**Class extension — `agent` (required when `class: agent`).** E3's acceptance
+criteria require each actor's callable tools, resources held, access rights,
+execution access, and memory system stated machine-readably, with the spot-check
+"a reader given only the YAML can list each agent's tools and access." The common
+record above cannot carry that; agents get an extension block, seedable from the
+actors.md tables:
+
+```yaml
+  agent:
+    tools: []                    # canon — callable skills/tools, by slug
+    resources: []                # canon — data surfaces held (KB, governance DBs, …)
+    access_rights: []            # canon — read/write scopes (DD-30/DD-80 boundaries)
+    execution_access: ""         # canon — how it runs: default-disposition | subagent | scheduled
+    memory: null                 # canon — per-actor memory surfaces; E1 fills
+```
+
+Other classes may earn extensions the same way (recurrence evidence first); none are
+proposed in v0.
 
 ### Layer 3 — wiring rows (declared, one per harness-integration concern)
 
 Adopted unchanged from the staged template `system-contract-wiring-row-schema`
-(five fields: concern, tier, capabilities, purpose, degradation, invariant). The
-controlled capability vocabulary starts minimal — only IDs the engine actually uses
-(§4) — and grows by gated addition.
+(row key `concern` plus five fields: tier, capabilities, purpose, degradation,
+invariant; a `required` row names its minimum satisfier inside the degradation
+string and carries no fallback path). The controlled capability vocabulary starts
+minimal — only IDs the engine actually uses (§4) — and grows by gated addition.
 
 ## 4. Worked instance A — the engine's own wiring rows
 
 Per the source finding's implementation note ("start by enumerating the engine's own
-wiring rows before formalizing YAML"). Enumerated from the live install:
+wiring rows before formalizing YAML"). Enumerated from the live install. **Every
+tier assignment below is a proposal for Nick's ruling, not a fact** — see §7 Q5;
+`commit-gate` and `skill-registry` are the contestable ones (both have imaginable
+degradations; `required` asserts the engine should refuse to run without them).
 
 ```yaml
 wiring:
@@ -176,8 +227,14 @@ wiring:
     tier: required
     capabilities: [always-on-instruction-injection]
     purpose: "workspace + engine CLAUDE.md injected into every session"
-    degradation: "none — no acceptable degradation; agents.md convention is the minimum satisfier"
+    degradation: "none — minimum satisfier: the agents.md convention"
     invariant: "an agent in any session can state the human-gate rule (DD-29) without being asked to read a file"
+  - concern: human-approval-channel
+    tier: required
+    capabilities: [human-approval-channel]
+    purpose: "DD-29 human gate at every stage boundary — the engine recommends and stages; Nick promotes"
+    degradation: "none — minimum satisfier: a blocking review turn in the primary session channel"
+    invariant: "no artifact crosses a stage boundary into a live surface without a recorded human decision"
   - concern: scoped-rules
     tier: optional
     capabilities: [path-scoped-rule-injection]
@@ -188,20 +245,26 @@ wiring:
     tier: required
     capabilities: [named-skill-invocation]
     purpose: "system-scoped (DD-109) + workspace skills discoverable and invocable by slug"
-    degradation: "none — the pipeline's stage boundaries are skill-shaped"
+    degradation: "none — minimum satisfier: by-name dispatch from a single prose skill index in the always-on file"
     invariant: "each pipeline stage is invocable by name and carries its own gate discipline"
   - concern: commit-gate
     tier: required
     capabilities: [pre-commit-hook-execution]
-    purpose: "git pre-commit enforces frontmatter validity, FOUNDATIONS sync, PROGRESS line budget"
-    degradation: "none for the export unit — enforcement points are E4's floor"
+    purpose: "git pre-commit enforces frontmatter validity, FOUNDATIONS sync, PROGRESS line budget, self-store check"
+    degradation: "none — minimum satisfier: any pre-write validation hook point (git hook or harness pre-tool hook)"
     invariant: "a schema-invalid governance file cannot enter the git history"
   - concern: prompt-capture
     tier: optional
     capabilities: [session-lifecycle-hooks]
     purpose: "UserPromptSubmit hook appends to the self-store query ledger"
     degradation: "manual /self-improve capture; demand signal gets sparser, not absent"
-    invariant: "the demand ledger remains append-only regardless of capture path"
+    invariant: "no silent capture gaps — a prompt lands in the ledger or the active degradation (manual capture) is the recorded state"
+  - concern: external-connections
+    tier: optional
+    capabilities: [external-service-connections]
+    purpose: "MCP servers (Perplexity research, Context7 docs, Notion ops) plus the settings.json permission allow/deny surface"
+    degradation: "web-fetch/CLI equivalents or manual research; the permission surface degrades to prose rules"
+    invariant: "external calls stay within the declared allow-list, whatever mechanism enforces it"
   - concern: memory-store
     tier: optional            # provisional — E1 may promote to required
     capabilities: [scoped-memory-store]
@@ -218,48 +281,73 @@ wiring:
     tier: required
     capabilities: [version-control-substrate]
     purpose: "git carries the atomic log; HISTORY.md + PROGRESS.md ride on it"
-    degradation: "none — the three-artifact spine presumes git"
+    degradation: "none — minimum satisfier: any content-addressed VCS with commit metadata"
     invariant: "shipped work is reconstructible from commits without conversation history"
 ```
 
 ## 5. Worked instance B — per-asset record
 
 The `/session-handoff` skill record shown in §3 Layer 2 is real, verified against
-`SKILL.md` frontmatter and workspace Process Rule 2 — it demonstrates that the record
-adds only non-duplicated facts (load trigger, owner, wiring dependency, misuse risk)
-on top of the existing frontmatter.
+`SKILL.md` frontmatter and workspace Process Rule 2. Under the reuse-by-pointer rule
+it demonstrates the intended thinness: `what_job` and `when_loads` are refs into the
+skill's own frontmatter (which already states both); the record's net-new content is
+ownership, the three wiring dependencies (`skill-registry` to be invocable,
+`session-spine` because the skill *is* the spine's reconciler, `commit-gate` because
+the PROGRESS line budget it answers to is hook-enforced), and the misuse risk. Its
+`who_owns: owner` is itself an instance of §7 Q6 — the skill is workspace-scoped
+while the Owner is an engine actor; `nick | unassigned` exist in the domain for
+assets no actor owns.
 
-## 6. Deterministic check (contract sketch only — build post-ruling)
+## 6. Deterministic check (contract sketch — v1 deliverable, not deferred)
 
-Mirrors E1's store-check pattern and E3's AC:
+E3's AC requires the check ("a deterministic check exists and a seeded schema
+violation fails it"), so it ships with the v1 instances, not with the v2 compiler.
+Mirrors E1's store-check pattern:
 
 - `check_descriptors.py` validates: every Layer-2 record against the schema (closed
-  enums, required fields); every wiring row carries exactly five fields; every
-  `required` row has degradation `none — …`; every capability ID is in the
-  vocabulary; every `who_owns` is an actors.md slug; every `wiring_refs` entry
-  resolves to a row.
+  enums, required fields); `described: partial` ⇒ non-null `pointer`;
+  `class: agent` ⇒ the agent extension block present and non-empty; every wiring row
+  carries the row key plus exactly five fields; every `required` row's degradation
+  matches `none — minimum satisfier: …`; every capability ID is in the vocabulary;
+  every `who_owns` is an actors.md slug or `nick`/`unassigned`; every `wiring_refs`
+  entry resolves to a row; `schema_version` present at the root.
 - **Seeded-violation test:** a fixture descriptor with a deliberate violation (e.g. a
-  required row carrying a degradation path) must fail the check.
+  required row carrying a fallback degradation) must fail the check.
 - Drift: a hash manifest over wired files (per the KB template's pairing) — deferred
-  to the compile step (E5 seam), not v0.
+  to the compile step (v2, E5 seam).
 
 ## 7. Staged roadmap and open questions for Nick
 
 **Roadmap:** v0 = this spec, Nick rules → v1 = descriptor instances for the four
-actors + claude-code harness block (E3 proper; memory fields filled by E1) → v2 =
-compile step + deterministic check + drift hash (E4/E5 seam).
+actors + the claude-code harness block **plus `check_descriptors.py` and the
+seeded-violation fixture** (v1 discharges E3's AC in full; memory fields filled by
+E1) → v2 = compile step (inventory becomes generated) + drift-hash manifest (E4/E5
+seam).
 
 **Open questions (the gate):**
 
-1. **Stance** — accept the discover-then-declare hybrid (§2), or rule differently on
-   the explicit-vs-implicit tension?
-2. **v0 instance scope** — which asset classes get records first? Proposal: agents +
-   skills + hooks only (the port-critical set); knowledge and gov-db classes are
-   already frontmatter-described and can join late.
-3. **Home** — where does the language spec live once ruled? Proposal:
-   `governance/` (it is kernel — the export unit), with the schema file next to
-   `actors.md`; alternative: `knowledge/reference/`.
-4. **Naming** — "asset-description language" vs the KB's "system contract" vocabulary;
-   affects file names (`engine.yaml` vs `system-contract.yaml`).
-5. **memory-store tier** — provisionally `optional` (§4); E1's spec may promote it to
-   `required`. Flagging now so the E1↔E3 seam is explicit.
+1. **Stance** — accept the discover-then-declare hybrid (§2) *including its staging
+   honesty* (records are hand-declared until the v2 compiler exists)? Fallback if
+   the per-asset layer fails the abstraction test for you: ship Layer 3 alone.
+2. **Layer-2 source of truth** — where do the judgment fields live canonically:
+   the record file itself (record-as-canonical, current assumption), an extension of
+   each asset's own frontmatter (touches every SKILL.md), or a sidecar per asset?
+3. **Pointer-only vs self-contained** — the reuse-by-pointer rule (§3) keeps records
+   thin but means the YAML set alone can't describe a skill off-harness without its
+   frontmatter. Accept pointer-first, or permit duplication for export
+   self-containment?
+4. **Agent extension fields** — is tools / resources / access_rights /
+   execution_access / memory the right field set for E3's "list each agent's tools
+   and access" spot-check?
+5. **The tier table** — each required/optional in §4 is a ruling. `commit-gate` and
+   `skill-registry` are the contestable `required`s; `memory-store` is provisionally
+   `optional` pending E1.
+6. **Scope boundary** — does the per-system `engine.yaml` own workspace-root assets
+   (`.claude/rules/`, cross-system skills, `.claude/agents/*.md` stubs), or does the
+   workspace need its own thin descriptor above it?
+7. **v0 instance scope** — which asset classes get records first? Proposal: agents +
+   skills + hooks (the port-critical set); knowledge and gov-db are already
+   frontmatter-described and can join late.
+8. **Home and naming** — where the ruled spec lives (`governance/` next to
+   `actors.md`, or `knowledge/reference/`), and what the root file is called
+   (`engine.yaml` vs the KB's `system-contract.yaml` vocabulary).
