@@ -1,0 +1,58 @@
+# Structured eval-set — meta-skill-eval (dogfood; self-referential runs are
+# flagged advisory per the SKILL.md constraint). Schema:
+# ../references/eval-cases-schema.md
+skill: meta-skill-eval
+version: 2
+updated: 2026-07-21
+class: script-core
+corpus_waivers: []
+cases:
+  - id: t01
+    tier: trigger
+    query: "Run the evals for the transcript-fetcher skill"
+    should_trigger: true
+    source: "trigger-eval.md #1 (skill name localized at engine import)"
+    note: canonical
+  - id: t02
+    tier: trigger
+    query: "Check whether the eval sets drifted from the real phrasings"
+    should_trigger: true
+    source: "trigger-eval.md #4"
+    note: sync mode
+  - id: t11
+    tier: trigger
+    query: "Write the eval cases for the new skill"
+    should_trigger: false
+    expect_instead: meta-skill-author
+    source: "trigger-eval.md #11"
+    note: authoring belongs to meta-skill-author §2
+  - id: t12
+    tier: trigger
+    query: "Run a retro over recent sessions"
+    should_trigger: false
+    expect_instead: self-improve
+    source: "trigger-eval.md #16 (skill name localized at engine import)"
+  - id: x01
+    tier: execution
+    mode: sync
+    given: Eval-candidates corpus rows exist for skills with structured sets
+    when: Asked whether eval sets cover the real phrasings
+    query: "Is the corpus in sync with the trigger cases? Check eval drift."
+    checks:
+      - {check: skill_loaded, skill: meta-skill-eval}
+      - {check: response_contains, pattern: "(?i)sync|drift"}
+    source: "synthetic"
+    note: script-core — asserts routing to the runner's sync mode, not its output
+  # ---- corpus-sourced (retro-6 harvest, 2026-07-20) ----
+  - id: t13
+    tier: trigger
+    query: "run them now. Lets also finish the prove task to close that milestone out too"
+    should_trigger: true
+    source: "corpus f6646f33"
+    note: sanctioned paid run — explicit operator "run" over a bounded set; execution discipline seeds (per-leg landing, reuse-before-recompute) live in the corpus fail rows (L-39/L-40)
+  - id: t14
+    tier: trigger
+    query: "how does meta-skill-eval intersect (if at all) with the self-improvement loop?"
+    should_trigger: false
+    source: "corpus f6646f33"
+    note: seam question naming the skill to ask about its boundary — answered from doc surfaces, no run request

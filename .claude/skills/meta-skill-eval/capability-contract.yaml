@@ -1,0 +1,25 @@
+schema-version: 1
+skill:
+  name: meta-skill-eval
+  version: "2.0.0"
+capabilities:
+  - id: script-execution
+    tier: required
+    purpose: Run scripts/eval_runner.py — the deterministic harness core (case loading, CLI subprocess orchestration, check registry, ledger writes)
+    degradation: inert — do not install without; the skill is a thin operating model around its runner
+    install_hint: Python 3 with PyYAML (python3 -m pip install pyyaml)
+  - id: agent-cli-subprocess
+    tier: optional
+    purpose: Execute eval cases through the Claude Code CLI (`claude -p --output-format stream-json`, isolated workspaces, permission policy, explicit model attribution, raw event capture); required for run mode specifically
+    degradation: run mode inert without it; report and sync modes remain fully functional (offline ledger reads + corpus checks)
+    install_hint: Install and log in to the Claude Code CLI; pass --model for each paid run unless the eval set pins one
+  - id: workspace-file-inventory
+    tier: required
+    purpose: Read per-skill evals/eval-cases.yaml + SKILL.md frontmatter versions; append to operations/evals/ledger.jsonl; save transcripts
+    degradation: inert — results accounting is the point
+    install_hint: Workspace read/write over the skill rosters (.claude/skills, engine + workspace) and systems/improvement-loop/operations/evals/
+  - id: human-approval-channel
+    tier: optional
+    purpose: Gate paid runs (which skill, how many cases/trials, --max-runs raises, multi-skill sweeps); required before any token spend
+    degradation: without it only --dry-run, report, and sync are in scope
+    install_hint: Interactive session

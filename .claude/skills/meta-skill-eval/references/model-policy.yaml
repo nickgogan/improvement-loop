@@ -1,0 +1,11 @@
+# Model policy — explicit attribution without repository-owned personal defaults (v4)
+#
+# A paid run must name `--model` unless its eval set deliberately pins
+# `model:`. This keeps personal model and reasoning choices user-scoped while
+# ensuring every ledger row records the exact execution model. `--effort` is
+# likewise explicit; omission is recorded as `cli-default`.
+
+default: null
+default_effort: null
+policy_version: 4
+updated: 2026-07-21
