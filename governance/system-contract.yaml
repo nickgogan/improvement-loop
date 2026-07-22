@@ -1,0 +1,98 @@
+# system-contract.yaml — the engine's machine-readable self-description (v0)
+#
+# Ruled by DD-124 (2026-07-22); schema and rationale in the 2026-07-19
+# asset-description-language design note. v0 scope: root descriptor + wiring rows
+# only. Per-asset records (composition detail) are deferred to E3's build.
+#
+# STATUS: hand-declared, Nick-gated content. From v2 (E5 compiler) parts of this
+# file become generated; until then, edit only through a ruled change — never
+# casually. Row semantics follow the system-contract-wiring-row-schema template:
+# tier `required` = a harness lacking a satisfier cannot host the engine (install
+# blocked); tier `optional` = install proceeds, the named degradation is recorded.
+
+system:
+  id: improvement-loop
+  schema_version: "0.1"
+  identity_ref: governance/constitution.md        # objective, values, constraints, stop rules
+  trust_ref: governance/constitution.md           # DD-29 human-gate boundary; gates section
+  declared_absences:
+    - "permission enforcement beyond the harness allow-list is prose-only (rules, not runtime authz)"
+    - "no contract-vs-reality drift detection yet — the hash manifest lands with the v2 compiler"
+    - "no runtime isolation between the four actors; separation is skill- and convention-enforced"
+
+composition: null   # deferred to E3 build (DD-124) — per-asset records; schema ruled in the design note
+
+wiring:
+  - concern: always-on-entry
+    tier: required
+    capabilities: [always-on-instruction-injection]
+    purpose: "workspace + engine CLAUDE.md injected into every session"
+    degradation: "none — minimum satisfier: the agents.md convention"
+    invariant: "an agent in any session can state the human-gate rule (DD-29) without being asked to read a file"
+  - concern: human-approval-channel
+    tier: required
+    capabilities: [human-approval-channel]
+    purpose: "DD-29 human gate at every stage boundary — the engine recommends and stages; Nick promotes"
+    degradation: "none — minimum satisfier: a blocking review turn in the primary session channel"
+    invariant: "no artifact crosses a stage boundary into a live surface without a recorded human decision"
+  - concern: skill-registry
+    tier: required
+    capabilities: [named-skill-invocation]
+    purpose: "system-scoped (DD-109) + workspace skills discoverable and invocable by slug"
+    degradation: "none — minimum satisfier: by-name dispatch from a single prose skill index in the always-on file"
+    invariant: "each pipeline stage is invocable by name and carries its own gate discipline"
+  - concern: commit-gate
+    tier: required
+    capabilities: [pre-commit-hook-execution]
+    purpose: "git pre-commit enforces frontmatter validity, FOUNDATIONS sync, PROGRESS line budget, self-store check"
+    degradation: "none — minimum satisfier: any pre-write validation hook point (git hook or harness pre-tool hook)"
+    invariant: "a schema-invalid governance file cannot enter the git history"
+  - concern: session-spine
+    tier: required
+    capabilities: [version-control-substrate]
+    purpose: "git carries the atomic log; HISTORY.md + PROGRESS.md ride on it"
+    degradation: "none — minimum satisfier: any content-addressed VCS with commit metadata"
+    invariant: "shipped work is reconstructible from commits without conversation history"
+  - concern: scoped-rules
+    tier: optional
+    capabilities: [path-scoped-rule-injection]
+    purpose: ".claude/rules/governance.md auto-applies workspace-wide"
+    degradation: "fold rules into the always-on file; record the weaker guarantee"
+    invariant: "governance process rules reach every session that touches governed paths"
+  - concern: prompt-capture
+    tier: optional
+    capabilities: [session-lifecycle-hooks]
+    purpose: "UserPromptSubmit hook appends to the self-store query ledger"
+    degradation: "manual /self-improve capture; demand signal gets sparser, not absent"
+    invariant: "no silent capture gaps — a prompt lands in the ledger or the active degradation (manual capture) is the recorded state"
+  - concern: external-connections
+    tier: optional
+    capabilities: [external-service-connections]
+    purpose: "MCP servers (Perplexity research, Context7 docs, Notion ops) plus the settings.json permission allow/deny surface"
+    degradation: "web-fetch/CLI equivalents or manual research; the permission surface degrades to prose rules"
+    invariant: "external calls stay within the declared allow-list, whatever mechanism enforces it"
+  - concern: memory-store
+    tier: optional            # provisional — E1 may promote to required (DD-124)
+    capabilities: [scoped-memory-store]
+    purpose: "harness auto-memory persists user/feedback/project facts across sessions"
+    degradation: "PROGRESS.md + memory-shaped files in-repo (structural-memory value)"
+    invariant: "no learning lives only in conversation history"
+  - concern: subagent-dispatch
+    tier: optional
+    capabilities: [subagent-spawn]
+    purpose: "skill passes and audits run as subagents (session-137 ruling)"
+    degradation: "inline execution; slower, context-heavier, same outputs"
+    invariant: "generator-assessor separation survives — the generator never grades its own output"
+
+harness:
+  claude-code:                 # adapter-delegated — current satisfiers, illustrations not requirements
+    always-on-entry: "CLAUDE.md (workspace root + systems/improvement-loop/)"
+    human-approval-channel: "interactive session turns + AskUserQuestion; plan-mode approval"
+    skill-registry: ".claude/skills/ (workspace) + systems/improvement-loop/.claude/skills/ (DD-109)"
+    commit-gate: ".git/hooks/pre-commit → operations/kb-maintenance-scripts/hooks/pre-commit"
+    session-spine: "git (origin: MetaSystem monorepo; il-published subtree mirror per DD-84)"
+    scoped-rules: ".claude/rules/governance.md"
+    prompt-capture: ".claude/settings.json UserPromptSubmit → capture_query.py"
+    external-connections: "MCP: perplexity, claude.ai Context7/Notion/…; .claude/settings.json permissions"
+    memory-store: "~/.claude/projects/-Users-nickgogan-MetaSystem/memory/"
+    subagent-dispatch: "Agent tool (owner/librarian subagent stubs in .claude/agents/)"

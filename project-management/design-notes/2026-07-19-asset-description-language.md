@@ -5,11 +5,12 @@ type: "design-note"
 category: "self-description"
 target_system:
   - "improvement-loop"
-stage: "review"
+stage: "stable"
 created: "2026-07-19"
-updated: "2026-07-20"
+updated: "2026-07-22"
 author: "claude"
-source_dd: []
+source_dd:
+  - "DD-124"
 tags:
   - "design-note"
   - "owner"
@@ -20,8 +21,12 @@ tags:
 
 # Asset-Description Language v0
 
-**Status: drafted autonomously under the Nick-ruled queue (2026-07-18, item 1);
-every ruling below is a proposal until Nick gates it.** Amended 2026-07-20 after an
+**Status: RULED (DD-124, 2026-07-22).** Nick ruled the §7 questions in a
+question-by-question interview: wiring rows ship now as
+`governance/system-contract.yaml`; per-asset records defer to E3's build (schema
+stays ruled here); all five `required` tiers stand; the record-layer questions
+re-open at E3. §7 below records the rulings. Originally drafted autonomously under
+the Nick-ruled queue (2026-07-18, item 1). Amended 2026-07-20 after an
 adversarial review pass (fresh-context critic; verdict ACCEPT-WITH-AMENDMENTS): the
 agent-class extension, two missing wiring rows, the Layer-2 staging honesty, and the
 expanded §7 gate list all originate from that critique. This note is the spec-before-
@@ -216,10 +221,11 @@ minimal — only IDs the engine actually uses (§4) — and grows by gated addit
 ## 4. Worked instance A — the engine's own wiring rows
 
 Per the source finding's implementation note ("start by enumerating the engine's own
-wiring rows before formalizing YAML"). Enumerated from the live install. **Every
-tier assignment below is a proposal for Nick's ruling, not a fact** — see §7 Q5;
-`commit-gate` and `skill-registry` are the contestable ones (both have imaginable
-degradations; `required` asserts the engine should refuse to run without them).
+wiring rows before formalizing YAML"). Enumerated from the live install. **Tiers
+ruled 2026-07-22 (DD-124): all five `required` rows stand** — Nick kept
+`commit-gate` and `skill-registry` as hosting preconditions despite their imaginable
+degradations. The live rows are now canonical in `governance/system-contract.yaml`;
+the block below is the design-time record.
 
 ```yaml
 wiring:
@@ -316,38 +322,30 @@ Mirrors E1's store-check pattern:
 - Drift: a hash manifest over wired files (per the KB template's pairing) — deferred
   to the compile step (v2, E5 seam).
 
-## 7. Staged roadmap and open questions for Nick
+## 7. Rulings (interview 2026-07-22 — DD-124)
 
-**Roadmap:** v0 = this spec, Nick rules → v1 = descriptor instances for the four
-actors + the claude-code harness block **plus `check_descriptors.py` and the
-seeded-violation fixture** (v1 discharges E3's AC in full; memory fields filled by
-E1) → v2 = compile step (inventory becomes generated) + drift-hash manifest (E4/E5
-seam).
+**Ruled roadmap:** v0 = `governance/system-contract.yaml` (root descriptor + ten
+wiring rows) — **shipped with the ruling** → v1 = per-asset records + agent
+extensions + `check_descriptors.py` with the seeded-violation fixture, built as
+part of E3 (memory fields filled by E1) → v2 = compile step (inventory becomes
+generated) + drift-hash manifest (E4/E5 seam).
 
-**Open questions (the gate):**
-
-1. **Stance** — accept the discover-then-declare hybrid (§2) *including its staging
-   honesty* (records are hand-declared until the v2 compiler exists)? Fallback if
-   the per-asset layer fails the abstraction test for you: ship Layer 3 alone.
-2. **Layer-2 source of truth** — where do the judgment fields live canonically:
-   the record file itself (record-as-canonical, current assumption), an extension of
-   each asset's own frontmatter (touches every SKILL.md), or a sidecar per asset?
-3. **Pointer-only vs self-contained** — the reuse-by-pointer rule (§3) keeps records
-   thin but means the YAML set alone can't describe a skill off-harness without its
-   frontmatter. Accept pointer-first, or permit duplication for export
-   self-containment?
-4. **Agent extension fields** — is tools / resources / access_rights /
-   execution_access / memory the right field set for E3's "list each agent's tools
-   and access" spot-check?
-5. **The tier table** — each required/optional in §4 is a ruling. `commit-gate` and
-   `skill-registry` are the contestable `required`s; `memory-store` is provisionally
+1. **Stance — RULED: wiring rows now.** The hybrid is accepted at Layer-3 scope;
+   the per-asset record layer (Layer 2, including the reuse-by-pointer rule and the
+   agent class extension) stays ruled *schema* in this note but is not instantiated
+   until E3's build. Rationale: queue item 1 asked to *begin* the language; the
+   rows are the port-critical piece with near-zero maintenance, and records before
+   a compiler exist would be a hand-maintained corpus without a consumer.
+2. **Tier table — RULED: all five `required` rows stand** (always-on-entry,
+   human-approval-channel, skill-registry, commit-gate, session-spine). Commit-gate
+   stays a hosting precondition — mechanical governance enforcement is
+   non-negotiable, bypassability aside. `memory-store` remains provisionally
    `optional` pending E1.
-6. **Scope boundary** — does the per-system `engine.yaml` own workspace-root assets
-   (`.claude/rules/`, cross-system skills, `.claude/agents/*.md` stubs), or does the
-   workspace need its own thin descriptor above it?
-7. **v0 instance scope** — which asset classes get records first? Proposal: agents +
-   skills + hooks (the port-critical set); knowledge and gov-db are already
-   frontmatter-described and can join late.
-8. **Home and naming** — where the ruled spec lives (`governance/` next to
-   `actors.md`, or `knowledge/reference/`), and what the root file is called
-   (`engine.yaml` vs the KB's `system-contract.yaml` vocabulary).
+3. **Home — RULED: `governance/`.** The contract is kernel-shaped and part of the
+   export unit E4/E5 consume.
+4. **Naming — RULED: `system-contract.yaml`.** Name-agnostic across the open
+   engine-rename question; matches the KB pattern vocabulary.
+5. **Deferred to E3's build (re-asked then):** Layer-2 source of truth
+   (record-as-canonical vs frontmatter extension vs sidecar); pointer-only vs
+   self-contained records; the agent extension field set; workspace-root vs
+   engine-scoped ownership; v1 instance scope.
