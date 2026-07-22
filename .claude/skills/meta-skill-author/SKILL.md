@@ -24,9 +24,8 @@ compatibility: >-
   capability carries a named degradation in capability-contract.yaml.
 allowed-tools: Read, Write, Bash(python*), Bash(bash*), Bash(skills-ref*)
 metadata:
-  distribution-scope: "exportable"
-  version: "1.14.0"
-  upstream: "nickgogan/CareerBuddy .github/skills/meta-skill-author @ 1.15.0 (CHANGELOG; upstream SKILL.md metadata lags at 1.14.0)"
+  version: "1.20.0"
+  upstream: "nickgogan/CareerBuddy .github/skills/meta-skill-author @ 1.20.0 (synced 2026-07-22; prior import 1.15.0 on 2026-07-12)"
   imported: "2026-07-12 — engine adaptation notes in ADAPTATION.md; body kept upstream-diffable"
 ---
 
@@ -85,19 +84,30 @@ Strategic Context · Constraints · Decision Types/Autonomy · **Stop Rules** (m
 commonly omitted — always confirm present). Declare execution mode: **interactive**
 (outcome-based) or **scheduled/unattended** (numbered SOP, completion signal).
 
-Declare **distribution scope** — ask the human; never assume:
+Declare the **packaging bar** — one universal bar since MV45 (2026-07-20; plan:
+`system/plans/skill-audit-machinery.md`). Every skill in this workspace carries the
+**audit machinery**: `README.md`, `CHANGELOG.md` + a semver `metadata.version`,
+`capability-contract.yaml` at the skill root (§4.0), and `evals/eval-cases.yaml`
+(§2.1). Rationale: the self-improvement loop (`ops-self-improve` promote mode) edits
+*any* skill, and every such change needs a per-package audit trail — a CHANGELOG
+entry and version bump ride along with each applied proposal.
 
-| Scope | Layout consequence |
-|-------|--------------------|
-| **Internal** — lives and dies in this workspace | Lean: SKILL.md + only the `references/`/`scripts/` it actually runs. No README/CHANGELOG/SOURCES — git + the workspace changelog are its version history. May bind to workspace paths and sibling skills freely |
-| **Exportable** — will leave the workspace (marketplace, another harness, a work tenant) | Full distribution package (§6): README, CHANGELOG (semver), explicit versioning, source traceability if research-derived, and the separability bar from day one — zero user/workspace-specific content, environment bindings expressed as a capability contract, `capability-contract.yaml` at the skill root from day one (§4.0) |
+What the universal bar does **not** change:
 
-Scaffolding scales with **distribution distance**, not importance. Declaring late is the
-expensive failure: an internal skill promoted to exportable needs a §4.0 generalize pass
-+ retrofitted versioning, so an undeclared scope defaults to **internal** and any later
-export must run stage-1 Generalize first. Record the answer as
-`metadata.distribution-scope: "internal" | "exportable"` in the SKILL.md frontmatter —
-the declaration travels with the skill, not a registry.
+- **Bindings stay free.** Skills may bind to workspace paths and sibling skills —
+  those paths travel with the whole-workspace install, which is the distribution
+  channel. No path generalization is required by the bar.
+- **Separability is unchanged in scope**: zero *user* content in any skill (the
+  export-set scan enforces this as before); the sidecar declares environment
+  bindings, it does not eliminate them.
+- **No standalone-export program** for domain skills (decision conserved from the
+  2026-07-20 export-value analysis): value props ride the whole-workspace channel.
+  Standalone packaging of an individual skill remains a port-mode deliverable
+  produced only when a real consuming platform exists (§6 `ports/` rule).
+
+The `metadata.distribution-scope` field is **retired** (MV45 S1): its semantics are
+void; it is removed from each skill's frontmatter at that skill's MV45 S2 retrofit
+(or next touch), and no validator or audit reads it. Do not add it to new skills.
 
 ### 1.4 Frontmatter authoring
 
@@ -150,14 +160,17 @@ scores them (majority rule across re-runs). After any roster change, re-run
 seam-scoped via `--skills` (edited + adjacent siblings) — collisions are born at
 boundary edits.
 
-**Exportable skills: the set graduates into the package.** Iteration residue stays
-in the sibling eval workspace (target-skill-clean rule, `scripts/eval.sh`), but for
-skills declared exportable the finished set is distilled into **`evals/trigger-eval.md`**
+**The set graduates into the package (universal since MV45).** Iteration residue stays
+in the sibling eval workspace (target-skill-clean rule, `scripts/eval.sh`), but
+the finished set is distilled into **`evals/eval-cases.yaml`** (structured schema:
+`meta-skill-eval` references, since MV46)
 inside the package — each query paired with its expected verdict (trigger / abstain,
 plus the expected routing when the near-miss belongs to a sibling skill) so a receiving
-agent can self-administer it as the install acceptance check, no harness required.
+agent can self-administer the trigger cases as the install acceptance check, no harness
+required — while the **`meta-skill-eval`** harness executes the full set as a program
+(trials, transcript-derived verdicts, attributed pass-rate ledger) where the CLI exists.
 
-**Generic by construction.** An exportable skill's eval set is written
+**Generic by construction.** A skill's eval set is written
 user-content-free from the first draft — the internal set and the shipped set are the
 same file, so there is no sanitization step to miss. Real invocation phrasings (a live
 capture corpus, where the host workspace keeps one) are the *seed*: they reveal true
@@ -177,6 +190,25 @@ Full rubric, levels, and handoff block: `references/audit-rubric.md`.
 Three tiers: triggering (90% target, positive + negative cases) · functional
 (valid outputs, errors, edge cases) · performance (skill vs. baseline).
 Capability evals graduate to regression near 100%; regression evals alert on any drop.
+**Execution routes to `meta-skill-eval`** (MV46): this section owns the *method*;
+the harness skill runs the cases (per-mode execution tiers, deterministic
+check-registry assertions, 3-trial default) and the graduation/saturation/retirement
+lifecycle is read from its attributed ledger at `system/ops/evals/`, never asserted.
+
+**Author output-first.** At eval-set design time, optionally classify the skill as
+`capability-uplift` (does it improve output over a skill-masked baseline, and can it
+eventually retire?) or `encoded-preference` (does output faithfully follow the intended
+workflow?). This frames the baseline question without forcing a value class onto every
+legacy set. Functional cases grade final artifacts first and assign a typed failure
+category from the `meta-skill-eval` schema. Where deterministic artifact verification
+is possible, construct a known-good oracle and require it to pass every verifier before
+accepting the case. Keep assertions parsimonious and distinct.
+
+Trajectory and single-step grading are diagnostic: inspect failures, surprising passes,
+graduation cases, and model/harness changes; use ordered-step checks only for procedures
+whose order is actually invariant. Stop broad trace review when it no longer discovers
+new failure categories. The paired performance read is
+`meta-skill-eval report --paired`; trigger success is not a proxy for output quality.
 
 ### 2.5 Deterministic structural validation
 
@@ -229,8 +261,9 @@ the workspace- and harness-neutral canon of the skill. Classify every binding in
 
 The generic carries the bundled-file manifest (§4.2) with platform-neutral fates and is
 written as a valid open-standard SKILL.md body (Goal + Constraints + Context, §4.4-clean).
-For **exportable** skills stage 1 also emits **`capability-contract.yaml`** at the skill
-root — the canonical, machine-readable contract (schema + vocabulary:
+Stage 1 also emits **`capability-contract.yaml`** at the skill
+root (universal since MV45 — every skill carries one; port mode refreshes it) — the
+canonical, machine-readable contract (schema + vocabulary:
 `references/capability-vocabulary.md`). The generic's contract table, the SKILL.md
 `compatibility` prose, and every port's capability block are **derived** from the sidecar,
 never hand-maintained separately; authors who skip the declaration ship non-portable
@@ -338,19 +371,28 @@ optimal? projected impact?). Full 16 HITL primitives: `references/safety-gates.m
 
 ## §6 Distribution & Lifecycle
 
-- Applies to skills declared **exportable** at the §1.3 spec gate; internal skills skip
-  this section by design — do not retrofit its ceremony onto them.
+- Applies to **every skill in this workspace** (MV45 — one universal packaging bar,
+  §1.3): the audit machinery is the per-package change trail, not export ceremony.
+  SOURCES.md remains conditional — required only when the body carries
+  `[finding-name]` citations.
 - Directory name must match `name`; validate via `scripts/validate.sh ./skill-dir`
   (portable, no network) or `skills-ref validate ./skill-dir`. Standard layout:
-  `SKILL.md` + optional `references/`, `scripts/`, `assets/` — plus, for exportable
-  skills, `evals/trigger-eval.md` (§2.1) and `capability-contract.yaml` (§4.0);
+  `SKILL.md` + `README.md` + `CHANGELOG.md` + `capability-contract.yaml` (§4.0) +
+  `evals/eval-cases.yaml` (§2.1) + optional `references/`, `scripts/`, `assets/`;
   claude.ai upload = folder + zip.
-- **Install acceptance**: the shipped `evals/trigger-eval.md` is the receiving side's
+- **Install acceptance**: the shipped `evals/eval-cases.yaml` is the receiving side's
   triggering-conformance check — a receiving-agent protocol (e.g. an onboarding
-  ADAPTATION step) administers it after install and compares observed against expected
+  ADAPTATION step) administers its trigger cases after install and compares observed
+  against expected
   verdicts. Triggering only: behavioral conformance remains the declared §4.0 gap. The
   eval file is part of the export surface — the separability audit covers it; the
   capability sidecar may point to it but never restates it.
+- **`ports/` is conditional, not part of the packaging baseline**: `ports/generic.md`
+  and `ports/<platform>-*.md` are §4.0 port-mode *deliverables* — they ship once a
+  generalize or apply pass has actually run for that skill. A skill that
+  has never been ported carries no `ports/` and is spec-conformant; scaffolding
+  scales with distribution distance (§1.3), and a port profile with no consuming
+  platform is fabricated weight.
 - Inheritance: `specializes: <core-skill-name>`; core skills live in a shared repo
   with `skills-lock.json` versioning (pinned reinstall = rollback).
 - Every modification goes through §3.2 sandbox-first validation before commit; full

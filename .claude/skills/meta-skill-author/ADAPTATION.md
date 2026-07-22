@@ -1,14 +1,40 @@
 # Engine adaptation — meta-skill-author in MetaSystem
 
 > **Downstream copy.** Upstream source: `nickgogan/CareerBuddy`
-> `.github/skills/meta-skill-author` @ **1.15.0** per its CHANGELOG (imported
-> 2026-07-12, session 133). Upstream inconsistency noted at import: upstream
-> SKILL.md `metadata.version` lags at 1.14.0 — report upstream on next exchange.
+> `.github/skills/meta-skill-author` @ **1.20.0** per its CHANGELOG (synced
+> 2026-07-22; original import @ 1.15.0 on 2026-07-12, session 133; the 1.14.0
+> SKILL.md version lag noted at first import was fixed upstream at 1.19.0).
 > Import discipline: the skill's own §4.0 Port model — Claude Code is stage-2 target;
 > per `adapters/claude.md`, Claude Code is the reference implementation and provides
 > every `capability-contract.yaml` row natively, so the whole package imports intact.
 > The SKILL.md body is kept **upstream-diffable**: engine-specific rules live here, not
 > inline. Re-derive check: diff against upstream before adopting upstream releases.
+
+## 2026-07-22 upstream sync (1.15.0 → 1.20.0) — the eval-sophistication arc
+
+Adopted upstream releases 1.16–1.20 wholesale (queue item 2, Nick-ruled scope
+"sync + executor port"). What arrived: **1.18** — eval *execution* routed to the
+sibling `meta-skill-eval` harness skill; prose `evals/trigger-eval.md` retired in
+favor of structured `evals/eval-cases.yaml` (schema in the sibling's references).
+**1.19** — output-first eval doctrine: optional capability-uplift vs
+encoded-preference classification, known-good oracle required where deterministic
+artifact verification is feasible, typed output-failure categories,
+trajectory/single-step evaluation as diagnostic only, paired skill-vs-masked
+uplift via `meta-skill-eval report --paired`. **1.20** — neutral
+`agent-cli-subprocess` capability ID for the eval backend (the seam this engine's
+claude-CLI backend port plugs into). **1.16/1.17** — capability-vocabulary
+additions only.
+
+Engine mappings for the new body references (body left upstream-diffable):
+
+- `meta-skill-eval` (sibling by name) = the engine's imported copy at
+  `systems/improvement-loop/.claude/skills/meta-skill-eval/` (own ADAPTATION.md).
+- `system/ops/evals/` (upstream ledger home) ↦ engine
+  `systems/improvement-loop/operations/evals/`.
+- Corpus supplier `eval-candidates.md` (upstream `ops-self-improve`) ↦ the engine's
+  `/self-improve` store (`operations/self/`); absent corpus = clean pass until the
+  engine starts capturing eval-candidate phrasings.
+- The engine's prior prose eval set lives in git history before this sync commit.
 
 ## What was changed at import (complete list)
 

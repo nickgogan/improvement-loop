@@ -2,6 +2,56 @@
 
 All notable changes to the **meta-skill-author** package are recorded here.
 
+## [Unreleased]
+
+## [1.20.0] — 2026-07-21
+
+### Changed
+
+- Added neutral `agent-cli-subprocess` capability vocabulary for the Codex-native
+  eval backend; retained `copilot-cli-subprocess` as a historical identifier only.
+
+### Changed
+
+- Ports re-derived (Glean bundle refresh 2026-07-20): glean-agent.md caught up to
+  v1.19.0 — the shared-agent acceptance-query discipline now carries the
+  output-first eval doctrine (deterministic-bias checks, known-good example);
+  both manifests name `evals/eval-cases.yaml` (trigger-eval.md retired).
+
+### Changed
+
+- Eval set restructured (MV46 S2, eval-set v1 — no skill semver bump): prose `evals/trigger-eval.md` migrated into structured `evals/eval-cases.yaml` (schema: meta-skill-eval references); corpus-sourced trigger cases from real archive phrasings + a deterministic execution case added. The prose set lives in git history before the S2 commit.
+- Eval set v2 (no semver bump): live-capture near-miss c04 — recurring mechanical-rename shape, correctly executed inline below authoring-mode threshold (C19 coverage).
+
+## [1.19.0] — 2026-07-20
+
+### Changed
+
+- Eval authoring is explicitly output-first: optional capability-uplift vs
+  encoded-preference classification, known-good oracle required where deterministic
+  artifact verification is feasible, typed output-failure categories, and parsimonious
+  distinct checks.
+- Trajectory/single-step evaluation is diagnostic (failures, surprising passes,
+  graduation, model/harness changes) and stops at failure-class saturation; paired
+  skill-vs-masked output uplift routes to `meta-skill-eval report --paired`.
+- Fixed pre-existing package version drift: capability contract 1.17.0 → 1.19.0 to
+  match SKILL.md/changelog lineage.
+
+## [1.18.0] — 2026-07-20
+
+### Changed
+
+- **Eval execution routed to `meta-skill-eval`** (MV46 S4): §2.1/§2.3 keep the
+  authoring *method* (description-optimization loop, three-tier frame,
+  graduation semantics) but execution — runs, trials, transcript-derived
+  verdicts, the graduation/saturation/retirement lifecycle — now reads from the
+  harness skill's attributed ledger at `system/ops/evals/`, never asserted.
+- Package-layout references updated §1.3/§2.1/§6: `evals/trigger-eval.md` →
+  structured `evals/eval-cases.yaml` (install acceptance = self-administering
+  the trigger cases; the full set runs as a program via meta-skill-eval).
+- `references/capability-vocabulary.md`: new v1 capability ID
+  `copilot-cli-subprocess` (the eval harness's run-mode dependency).
+
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and
 the package uses [Semantic Versioning](https://semver.org/). Because the package
 ships a refresher helper skill, version history is a user-facing surface: it tells
@@ -16,15 +66,32 @@ heading. A change to any of the five foundational findings (see `README.md`) is 
 
 ---
 
-## [Downstream import — MetaSystem engine] — 2026-07-12
+## [1.17.0] — 2026-07-20
 
-Imported into `nickgogan/MetaSystem` at `systems/improvement-loop/.claude/skills/`
-from upstream 1.15.0 via the package's own §4.0 Port model (stage-2 target: Claude
-Code, the reference implementation — all contract capabilities native). Changes at
-import (full list + engine overlay: `ADAPTATION.md`): three `agents/*` rubric-path
-pointers re-homed; `allowed-tools` gains `Bash(bash*)` (covers `scripts/validate.sh`,
-which upstream's grants missed); provenance metadata added. Upstream
-`SKILL.md metadata.version` observed lagging (1.14.0) behind this CHANGELOG (1.15.0).
+### Added
+- **Three capability IDs** in `references/capability-vocabulary.md` —
+  `browser-automation`, `image-text-extraction`, `generated-media-pipeline`
+  (MV42 scope 1, plan `system/plans/capability-matrix.md`): the externally-satisfied
+  capabilities the workspace's domain/tool skills lean on, needed by the
+  system-contract `capability_matrix` so consuming agents can grade host fit for the
+  whole installed set. Gated-change checklist run: all existing sidecars unaffected
+  (none declare them); adapter Provides tables unchanged (bindings land MV42 scope 5).
+  Note: the plan's draft `internal-corpus-search` was **not** added — existing
+  `internal-document-search` ("workspace files or indexed org content") already
+  covers it; the matrix uses the existing ID.
+- **`transcript-archive` backfilled** into the vocabulary — the ops-session-handoff
+  sidecar has declared it since MV27 but it never entered the controlled list
+  (drift found by the MV42 matrix-consistency pass).
+
+## [1.16.0] — 2026-07-13
+
+### Added
+- **`live-web-retrieval` capability ID** in `references/capability-vocabulary.md` —
+  search + fetch over public web sources. First consumer: the `company-research`
+  skill (the first exportable skill whose evidence base is live public research).
+  Gated-change checklist run: all existing sidecars unaffected (none declare it);
+  all six adapter Provides tables extended with the new row (claude/copilot/
+  perplexity native; codex/cursor/glean partial with verify notes).
 
 ## [1.15.0] — 2026-07-11
 

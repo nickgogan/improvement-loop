@@ -379,3 +379,4 @@ on them (L-10 discipline).
 | `human-approval-channel` | **native** | Interactive chat |
 | `reference-bundle-attachment` | **native** | `references/`/`assets/` read on demand (L3 progressive disclosure) |
 | `byproduct-store` | absent | No designated ephemeral store documented |
+| `live-web-retrieval` | **native** | `search_web` and web tools — the platform's core strength |

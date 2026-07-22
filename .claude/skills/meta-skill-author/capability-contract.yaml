@@ -1,7 +1,7 @@
 schema-version: 1
 skill:
   name: meta-skill-author
-  version: "1.14.0"
+  version: "1.20.0"
 capabilities:
   - id: human-approval-channel
     tier: required

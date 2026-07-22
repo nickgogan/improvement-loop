@@ -1,6 +1,6 @@
 # Glean Agent Port — Agent Author (meta)
 
-> Generated from `meta-skill-author` SKILL.md v1.14.0 via `meta-skill-author` Port mode
+> Generated from `meta-skill-author` SKILL.md v1.19.0 via `meta-skill-author` Port mode
 > (adapter: `meta-skill-author/adapters/glean.md`). The SKILL.md is canonical; re-derive
 > this port when it changes. On Glean the authoring target shifts from SKILL.md files to
 > **Glean agents and prompts** — the method (spec-first, four disciplines,
@@ -15,7 +15,7 @@
 2. Copy the **Name**, **Description**, and **Instructions** blocks below.
 3. Tool grants: **Company Search + Read document ON** (to find existing agents' docs,
    team conventions, prior specs); web search optional; no write tools needed.
-4. Acceptance: self-administer the bundled `evals/trigger-eval.md` per its header
+4. Acceptance: self-administer the bundled `evals/acceptance-set.md` per its header
    protocol — pose each query in a fresh chat, compare the agent's engage/decline
    behavior against the expected verdict; a persistent mismatch is fixed in the
    Description above, never by editing the queries.
@@ -40,7 +40,7 @@ the optional rows degrade as noted.
 | Source file(s) | Fate in this port |
 |---|---|
 | `SKILL.md` | Distilled into Instructions below (the four disciplines, spec-first gate incl. the sharing-scope declaration, autonomy gradient, primitive-selection test). Port mode (§4) **dropped with reason** — file-harness skill-porting has no Glean analog |
-| `evals/trigger-eval.md` | **Travels with the port** — the distilled install-acceptance set (20 queries, expected verdicts); self-administered post-install (install step 4). Triggering conformance only |
+| `evals/eval-cases.yaml` | **Distilled into `evals/acceptance-set.md`** that travels with the port — the trigger-tier cases as install-acceptance queries with expected verdicts (install step 4). Execution-tier cases stay home: they run as a program via the `meta-skill-eval` harness, which has no Glean equivalent |
 | `references/audit-rubric.md`, `references/anti-patterns.md`, `references/skill-smells.md` | **Optional Resources** — generalize well; attach if you want audits to cite the full rubric instead of the inlined summary |
 | `references/superset-spec.md`, `references/platform-matrix.md`, `references/git-integration.md`, `references/safety-gates.md` | **Dropped with reason** — SKILL.md-frontmatter, file-harness, and git mechanics that have no Glean equivalent |
 | `scripts/validate.sh`, `scripts/eval.sh` (eval gate) | **Dropped with reason** — validate SKILL.md structure / gate held-out trigger evals; no script execution on Glean. The description-quality check survives as audit discipline 4, and the acceptance-query-set discipline survives in Design mode step 3 |
@@ -106,7 +106,12 @@ Before designing anything, rule out cheaper options and say so plainly:
    **acceptance query set** in its companion doc — ~20 fictional-specific queries
    (half in-scope, half near-miss out-of-scope) with expected engage/decline verdicts,
    re-run after any description change so discovery drift is caught, never patched by
-   editing the queries.
+   editing the queries. **Author evals output-first**: acceptance queries check
+   discovery, but the agent's real quality bar is the completeness and correctness of
+   its *outputs* — define what a good final artifact looks like, bias every check
+   toward deterministic verification (exact fields present, named sections, checkable
+   assertions — simple pattern checks go surprisingly far), and where deterministic
+   verification is feasible, keep one known-good example the checks must pass.
 4. **Draft the definition.**
    - *Name*: the job-to-be-done, as a colleague would search the Agent Library for it.
    - *Description*: what it does + when to use it + what it will ask for — written for a

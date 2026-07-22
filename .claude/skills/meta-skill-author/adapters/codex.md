@@ -2,7 +2,7 @@
 
 OpenAI Codex CLI uses `AGENTS.md` as its primary auto-loaded context file convention.
 `AGENTS.md` is part of the de-facto cross-platform context-file taxonomy (CLAUDE.md,
-SOUL.md, AGENTS.md, PROGRESS.md, MEMORY.md, RULES.md) that has emerged across coding
+SOUL.md, AGENTS.md, system/PROGRESS.md, MEMORY.md, RULES.md) that has emerged across coding
 agents. [context-file-taxonomy-claudemd-soulmd-agentsmd] gstack generates SKILL.md files
 for Codex alongside Claude Code, Cursor, and 5 other platforms from a single template
 source, confirming SKILL.md-based architecture is portable to Codex conventions.
@@ -58,8 +58,8 @@ Caveats: Windows requires `mklink /D`; tarball/zip distribution may not preserve
 ones. Quality over quantity — load only what the agent needs. [context-file-taxonomy-claudemd-soulmd-agentsmd]
 
 **Context-file taxonomy:** `AGENTS.md` is designated as the tool-agnostic conventions file in
-the de-facto taxonomy. SOUL.md (values and philosophy) and PROGRESS.md (session bridging)
-may complement it. A minimal starting set is `AGENTS.md` + `PROGRESS.md`.
+the de-facto taxonomy. SOUL.md (values and philosophy) and system/PROGRESS.md (session bridging)
+may complement it. A minimal starting set is `AGENTS.md` + `system/PROGRESS.md`.
 [context-file-taxonomy-claudemd-soulmd-agentsmd]
 
 ---
@@ -326,3 +326,4 @@ OpenAI Codex docs before a port relies on them (L-10 discipline).
 | `human-approval-channel` | **native** | Interactive CLI chat |
 | `reference-bundle-attachment` | partial | Whether on-demand L3 file reading is supported is unverified |
 | `byproduct-store` | partial | Workspace directory by convention; no platform-defined lifecycle |
+| `live-web-retrieval` | partial | Sandbox network access is restricted/configurable — verify per deployment |

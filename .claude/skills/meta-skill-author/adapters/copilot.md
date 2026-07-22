@@ -19,7 +19,7 @@ adoption window after Anthropic's December 2025 publication. [skills-as-open-por
 | Agent Skills format | Copilot also accepts `SKILL.md` files; details of multi-skill support — Unknown, verify against current GitHub Copilot docs |
 
 **Context-file taxonomy:** Among the de-facto standard files (CLAUDE.md, SOUL.md, AGENTS.md,
-PROGRESS.md, MEMORY.md, RULES.md), Copilot reads `AGENTS.md` as its preferred auto-loaded
+system/PROGRESS.md, MEMORY.md, RULES.md), Copilot reads `AGENTS.md` as its preferred auto-loaded
 context file when structured agent instructions are intended. The symlink strategy
 (`AGENTS.md -> CLAUDE.md`) provides zero-drift dual-harness support for repos targeting both
 Copilot and Claude Code. [context-file-taxonomy-claudemd-soulmd-agentsmd]
@@ -288,3 +288,4 @@ What this platform supplies against the controlled capability vocabulary
 | `human-approval-channel` | **native** | Interactive chat approval; weaker per-skill permissioning than Claude Code — gate side effects in prose |
 | `reference-bundle-attachment` | **native** | Skill-folder files readable on demand |
 | `byproduct-store` | partial | Any workspace directory by convention; no platform-defined cleanup lifecycle |
+| `live-web-retrieval` | **native** | Built-in web fetch/search tools; MCP servers extend to connected data sources |

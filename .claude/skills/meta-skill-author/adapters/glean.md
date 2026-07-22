@@ -47,7 +47,7 @@ Re-verify tenant-specific tool availability (write tools, MCP tools, memory) bef
 | `references/` + `templates/` (L3 depth) | **Attach as Resources** — upload each runtime-essential reference/template to an indexed source (e.g. a Drive folder per agent) and attach it in the Resources field; Instructions then point to each by name. Only inline what is short and load-bearing on every run. Background-research files (design rationale, build plans) stay home — they are authoring-time, not runtime |
 | `scripts/` (deterministic validators) | No script execution in the builder. Convert each validator into an **in-prompt deterministic checklist** reported item-by-item, or a **custom tool / remote MCP tool** if the tenant has one configured. Workspace-specific scripts that don't generalize are dropped explicitly, with a note in the port |
 | `allowed-tools` | The **Tools** grants (retrieval, web search, connector read/write tools, custom/MCP tools) — set at build time, enforced by the platform; write tools additionally gated by per-use user confirmation |
-| Files the skill reads/writes (PROGRESS.md, profiles, guides) | **Designated documents in an indexed connector** (e.g. a "Project PROGRESS" Google Doc), attached as Resources or retrieved by title. Writes: **draft-first by default**; where the tenant grants a write tool (e.g. Google Docs edit), the agent may apply the update **through that tool with user confirmation** — never claim persistence that didn't go through a granted tool |
+| Files the skill reads/writes (system/PROGRESS.md, profiles, guides) | **Designated documents in an indexed connector** (e.g. a "Project PROGRESS" Google Doc), attached as Resources or retrieved by title. Writes: **draft-first by default**; where the tenant grants a write tool (e.g. Google Docs edit), the agent may apply the update **through that tool with user confirmation** — never claim persistence that didn't go through a granted tool |
 | git (commit log, diffs, checkpoints) | Does not exist. Drop commit-convention mechanics; keep the *information discipline* (one logical change per update, rationale recorded). Agent-definition changes are covered by Glean's built-in 30-version history |
 | `/memories/*` scopes | Run/session memory only, plus the optional user-personalization memory layer (deployment-dependent). Durable *project* state must live in the designated documents themselves — which is exactly the PROGRESS-as-session-bridge pattern |
 | Sibling-skill handoffs | Port as **sub-agent calls** (an agent step can run another agent) or merge the arc into one agent — never reference a sibling that doesn't exist on the tenant |
@@ -94,6 +94,7 @@ note in its "Host capabilities required" block.
 | `human-approval-channel` | **native** | Per-use write-tool confirmation; conversational approval in chat-trigger agents |
 | `reference-bundle-attachment` | **native** | The Resources field (documents, folders, collections) |
 | `byproduct-store` | absent | No designated ephemeral store — avoid byproducts or route them to a designated doc |
+| `live-web-retrieval` | partial | Web search only where the tenant enables a web tool; core surface is indexed-connector retrieval |
 
 ## Porting Procedure (three-layer pattern applied)
 

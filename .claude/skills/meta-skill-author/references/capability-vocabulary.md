@@ -55,6 +55,13 @@ preflight/conformance checker is a known, deliberate gap (the "C upgrade path").
 | `human-approval-channel` | Presenting a proposal and receiving explicit per-item human approval before acting |
 | `reference-bundle-attachment` | Attaching the skill's reference/template files so they are readable at invocation |
 | `byproduct-store` | A designated location for ephemeral tool outputs/caches with a defined cleanup lifecycle |
+| `live-web-retrieval` | Search and fetch over public web sources (built-in browsing, search API, or connected external-data tools) |
+| `browser-automation` | Driving a live browser page — navigate, inspect, interact — beyond static fetch (peer sampling, UI verification) |
+| `image-text-extraction` | Extracting text from images or image-only documents (OCR toolchain or vision-capable model) |
+| `generated-media-pipeline` | Generating and downloading derived media artifacts (audio, video, decks) from supplied sources via an external generation service |
+| `transcript-archive` | Raw session transcripts readable/copyable into a durable workspace store (episodic memory tier) |
+| `copilot-cli-subprocess` | Historical ID for the former GitHub Copilot-specific eval backend; do not add to new sidecars. |
+| `agent-cli-subprocess` | Driving a standalone agent CLI as a subprocess — non-interactive prompting, sandbox/permission policy, explicit model attribution, transcript capture — for isolated per-case agent runs. |
 
 ## Wiring/activation IDs (v2) — moved (MV23/E20 vocabulary split)
 

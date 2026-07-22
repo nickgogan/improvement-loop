@@ -141,7 +141,7 @@ Which file names trigger auto-load in which harness:
 
 **ETH Zurich quality constraint (applies to all harnesses):** Manually written, concise context files outperform auto-generated files. LLM-generated context files reduce success rates ~3% and increase inference cost 20%. [context-file-taxonomy-claudemd-soulmd-agentsmd][context-file-instruction-bloat-eth-zurich]
 
-Minimum viable file set per ETH Zurich: `CLAUDE.md` + `SOUL.md` + `PROGRESS.md` reduces Day 1 overhead while leaving room to grow. [context-file-taxonomy-claudemd-soulmd-agentsmd]
+Minimum viable file set per ETH Zurich: `CLAUDE.md` + `SOUL.md` + `system/PROGRESS.md` reduces Day 1 overhead while leaving room to grow. [context-file-taxonomy-claudemd-soulmd-agentsmd]
 
 **OpenClaw SOUL.md stack:** SOUL → tools → memory → skills → overlays; ~20K char cap per layer. [context-file-taxonomy-claudemd-soulmd-agentsmd]
 

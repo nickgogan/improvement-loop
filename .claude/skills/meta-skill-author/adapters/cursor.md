@@ -47,7 +47,7 @@ routing.
 | **Description-matched auto-load** | Not available; Cursor does not implement LLM-based description routing as in Claude Code [skill-md-frontmatter-as-discovery-trigger-primitive] |
 
 **Context-file taxonomy:** Among the de-facto standard files (CLAUDE.md, SOUL.md, AGENTS.md,
-PROGRESS.md, MEMORY.md, RULES.md), Cursor reads `.cursorrules` rather than CLAUDE.md.
+system/PROGRESS.md, MEMORY.md, RULES.md), Cursor reads `.cursorrules` rather than CLAUDE.md.
 [context-file-taxonomy-claudemd-soulmd-agentsmd] ETH Zurich confirmed that manually written,
 concise context files outperform auto-generated ones; quality over quantity applies here as
 much as anywhere. [context-file-taxonomy-claudemd-soulmd-agentsmd]
@@ -270,3 +270,4 @@ Cursor docs before a port relies on them (L-10 discipline).
 | `human-approval-channel` | **native** | Interactive editor chat |
 | `reference-bundle-attachment` | partial | Rules load eagerly (.mdc); on-demand reference reading in agent mode — verify |
 | `byproduct-store` | partial | Any workspace directory by convention; no platform-defined cleanup lifecycle |
+| `live-web-retrieval` | partial | Web search in agent mode documented; fetch scope — verify |

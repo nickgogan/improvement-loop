@@ -345,3 +345,4 @@ install without it"; unmet **optional** ⇒ the port carries the contract's degr
 | `human-approval-channel` | **native** | Interactive chat + permission prompts; `disable-model-invocation` gates side-effect skills |
 | `reference-bundle-attachment` | **native** | Skill-directory `references/` read on demand (L3 progressive disclosure) |
 | `byproduct-store` | partial | Any workspace directory by convention; no platform-defined cleanup lifecycle |
+| `live-web-retrieval` | **native** | WebSearch/WebFetch tools; MCP servers extend to connected data sources |

@@ -194,7 +194,7 @@ delegated to skills.
 | Source file(s) | Platform-neutral fate |
 |---|---|
 | `SKILL.md` | Distilled into this generic; the source remains canonical — re-derive on change |
-| `evals/trigger-eval.md` | **Ships with every port** — the §6 install-acceptance set (queries + expected verdicts, generic by construction); the receiving agent self-administers it post-install. Triggering conformance only |
+| `evals/eval-cases.yaml` | **Ships with every port** — the structured eval set (schema: meta-skill-eval references); each port distills the trigger-tier cases into its install-acceptance set (queries + expected verdicts, generic by construction), self-administered post-install. Execution-tier cases run as a program where the host has the `meta-skill-eval` harness |
 | `references/audit-rubric.md`, `references/anti-patterns.md`, `references/skill-smells.md` | Abstracted into the **reference bundle** contract row — method content that generalizes; attach where hosts carry resources, else the inlined summaries above stand in |
 | `references/superset-spec.md`, `references/platform-matrix.md`, `references/git-integration.md`, `references/safety-gates.md` | **Stage-2 decision per platform** — field/format/git mechanics; attach on file-based harnesses, drop-with-reason elsewhere |
 | `scripts/validate.sh`, `scripts/prep_eval_loop.py` + `scripts/score_run.py` (eval harness) | Abstracted into the **deterministic structural validation** and **eval harness** contract rows; port the scripts where execution exists, degrade per contract otherwise |

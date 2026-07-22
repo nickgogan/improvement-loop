@@ -219,16 +219,14 @@ else
 fi
 
 # ============================================================================
-# CATEGORY 7 — Capability contract (exportable skills, §4.0 sidecar)
+# CATEGORY 7 — Capability contract (universal bar, MV45; §4.0 sidecar)
 # ============================================================================
-echo "Category 7: Capability contract (exportable skills)"
+echo "Category 7: Capability contract (universal bar)"
 
-SCOPE="$(printf '%s\n' "$FM" | sed -n 's/^[[:space:]]*distribution-scope:[[:space:]]*//p' | head -n1 | tr -d '\"' | sed "s/'//g;s/[[:space:]]*$//")"
 CONTRACT="$DIR/capability-contract.yaml"
-if [ "$SCOPE" = "exportable" ]; then
-  if [ ! -f "$CONTRACT" ]; then
-    err "distribution-scope 'exportable' but no capability-contract.yaml at skill root (§4.0 sidecar)"
-  else
+if [ ! -f "$CONTRACT" ]; then
+  warn "no capability-contract.yaml at skill root — universal audit machinery (MV45 §1.3); required once this skill's MV45 S2 retrofit lands"
+else
     ok "capability-contract.yaml present"
     if grep -qE '^schema-version:[[:space:]]*1[[:space:]]*$' "$CONTRACT"; then ok "schema-version 1"; else
       err "capability-contract.yaml missing 'schema-version: 1'"
@@ -272,9 +270,6 @@ EOF
     else
       warn "controlled vocabulary not found next to this script — vocabulary check skipped"
     fi
-  fi
-else
-  ok "internal scope (or undeclared) — no capability contract required"
 fi
 
 # ============================================================================
