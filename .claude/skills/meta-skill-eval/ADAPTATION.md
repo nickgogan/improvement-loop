@@ -77,6 +77,24 @@ one).
   the expected shapes; a real transcript confirms them. First paid run is
   Nick-gated per the skill's own cost discipline.
 
+## Rule-10 assess pass (2026-07-22) — finding dispositions
+
+`/assess-skill` ran in a fresh Librarian context same-day (report:
+`operations/artifact-audits/2026-07-22-eval-packages-assess.md`; 6 findings —
+1 Violated, 5 Satisfied; safety-critical classification confirmed, G9.I6 posture
+strong). Dispositions:
+
+- **Violated — `capability-contract.yaml` human-approval-channel row
+  self-contradiction** (tier `optional` vs purpose text "required before any
+  token spend") — **fixed same-day**: purpose/degradation reworded so the row is
+  a coherent optional-with-degradation — run mode (any spend) is out of scope
+  without the channel, never self-approved; offline modes remain available. Tier
+  stays `optional` deliberately: a host without a human channel can still run
+  report/sync/dry-run.
+- **Follow-ups (both pre-declared here as verify-at-first-paid-run):** `--effort`
+  CLI support and stream event shapes — confirmed correctly declared, remain
+  open until the first Nick-gated smoke run.
+
 ## Engine-context overlay
 
 - **Home & registration:** engine-scoped at

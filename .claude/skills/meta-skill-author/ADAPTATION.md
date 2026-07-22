@@ -107,6 +107,27 @@ bundled files present). Dispositions:
 - **#7 no cost ceiling on Improve-mode fan-out** — real gap, upstream-inheritable;
   candidate upstream contribution alongside the two already queued.
 
+## Rule-10 assess pass (2026-07-22, post-1.20.0 sync) — finding dispositions
+
+`/assess-skill` ran in a fresh Librarian context after the sync (report:
+`operations/artifact-audits/2026-07-22-eval-packages-assess.md`; 9 findings).
+Dispositions:
+
+- **New — Grader/Comparator/Analyzer subagent specs name no model** —
+  engine-overlay rule (no body edit; upstream-diffable): subagent spawns from
+  this package follow the workspace standing rule — if the model class isn't
+  specified, ask Nick before fan-out (his session-146 ruling). Candidate
+  upstream contribution alongside the two already queued.
+- **Carried, still open — #7 Improve-mode fan-out cost ceiling** — unresolved by
+  1.16–1.20; remains a queued upstream contribution. Interim posture unchanged
+  (harness permission prompts + the workspace push-gate).
+- **Carried, still open — #4/#5 tool-grant scoping runtime verification**
+  (follow-up B) — unchanged by the sync; do not narrow grants until answered.
+- Upstream-convention findings re-confirmed as **accepted, no rewrite**
+  (the upstream-diffable-body principle outranks engine cosmetic parity).
+- Boundary statement vs `meta-skill-eval` ("author owns method / eval
+  executes") — assessed **consistent**; no action.
+
 ## First acceptance target
 
 Redesign/improve the YouTube-intake capability (`/transcript-fetcher`, and its seam
